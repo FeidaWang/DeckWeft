@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {readFile,writeFile,readdir,symlink,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {spawnSync,spawn} from 'node:child_process';
@@ -138,7 +139,7 @@ test('host drafting cannot drop or alter explicitly supplied source lines or num
  const good=await draftWithHost(brief,{...options,runner:fakeHost({outline:brief.sourceText})});assert.equal(good.ok,true);assert.equal(good.task.sourceInput.text,brief.sourceText);
 });
 test('public CLI rejects accidental live calls and stale revisions before starting a host',async t=>{
- const cwd=await temp(t),bin=new URL('../bin/deckweft.mjs',import.meta.url).pathname,brief=path.join(cwd,'brief.json'),out=path.join(cwd,'task');await writeFile(brief,JSON.stringify({request:'One\nText\n---\nTwo\nMore'}));
+ const cwd=await temp(t),bin=fileURLToPath(new URL('../bin/deckweft.mjs',import.meta.url)),brief=path.join(cwd,'brief.json'),out=path.join(cwd,'task');await writeFile(brief,JSON.stringify({request:'One\nText\n---\nTwo\nMore'}));
  let r=spawnSync(process.execPath,[bin,'visual-task','--brief',brief,'--out',out,'--host','codex'],{cwd,encoding:'utf8'});assert.notEqual(r.status,0);assert.ok(r.stderr.includes('HOST_LIVE_OPT_IN_REQUIRED'));assert.deepEqual(await readdir(cwd),['brief.json']);
  r=spawnSync(process.execPath,[bin,'visual-task','--brief',brief,'--out',out],{cwd,encoding:'utf8'});assert.equal(r.status,0,r.stderr);
  const before=await readFile(path.join(out,'task.json'),'utf8');
@@ -147,7 +148,7 @@ test('public CLI rejects accidental live calls and stale revisions before starti
 
 test('CLI cancellation terminates the actual child and releases the checkpoint lock',async t=>{
  if(process.platform==='win32')return;
- const cwd=await temp(t),bin=new URL('../bin/deckweft.mjs',import.meta.url).pathname,tools=path.join(cwd,'tools');await mkdir(tools);
+ const cwd=await temp(t),bin=fileURLToPath(new URL('../bin/deckweft.mjs',import.meta.url)),tools=path.join(cwd,'tools');await mkdir(tools);
  const fake=path.join(tools,'codex');await writeFile(fake,'#!'+process.execPath+'\n'+`import fs from 'node:fs';
 const args=process.argv.slice(2);
 if(args.includes('--version')){console.log('codex-cli 0.160.0');process.exit(0);}
