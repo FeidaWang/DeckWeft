@@ -9,14 +9,18 @@ export async function rejectSymlinks(target) {
 }
 /** Windows can briefly deny replacement while another process holds the destination.
  * Retry the same atomic rename only; never delete the destination or change permissions.
+ * Replacement is bounded to 50 attempts / 5 seconds.
  * Dependencies are injectable for deterministic filesystem-failure tests.
  */
 export async function renameWrittenFile(temporary,file,{platform=process.platform,renameFile=rename,wait=ms=>new Promise(resolve=>setTimeout(resolve,ms))}={}){
+  const deadline=Date.now()+5000;
   for(let attempt=0;;attempt++){
     try{return await renameFile(temporary,file);}
     catch(error){
-      if(platform!=='win32'||!['EPERM','EACCES','EBUSY'].includes(error.code)||attempt>=7)throw error;
-      await wait(Math.min(10*2**attempt,100));
+      if(platform!=='win32'||!['EPERM','EACCES','EBUSY'].includes(error.code)||attempt>=49||Date.now()>=deadline)throw error;
+      // Stagger retries so periodic checkpoint readers cannot keep the same phase.
+      const backoff=Math.min(10*2**Math.min(attempt,4),100)+(attempt*17%29);
+      await wait(Math.min(backoff,Math.max(0,deadline-Date.now())));
     }
   }
 }

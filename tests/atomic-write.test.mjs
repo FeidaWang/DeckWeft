@@ -14,7 +14,7 @@ test('transient Windows replacement failures keep the old JSON intact until atom
 test('persistent Windows permission failures stay bounded and retain both original and completed candidate',async t=>{
  const home=await temp(t),file=path.join(home,'checkpoint.json'),pending=path.join(home,'pending.json');await writeFile(file,'original');await writeFile(pending,'candidate');let calls=0,totalWait=0;const denied=Object.assign(Error('access remains denied'),{code:'EPERM'});
  await assert.rejects(renameWrittenFile(pending,file,{platform:'win32',renameFile:async()=>{calls++;throw denied;},wait:async ms=>{totalWait+=ms;}}),e=>e===denied);
- assert.ok(calls>1&&calls<=10);assert.ok(totalWait>0&&totalWait<=1000);assert.equal(await readFile(file,'utf8'),'original');assert.equal(await readFile(pending,'utf8'),'candidate');
+ assert.ok(calls>1&&calls<=50);assert.ok(totalWait>0&&totalWait<=6500);assert.equal(await readFile(file,'utf8'),'original');assert.equal(await readFile(pending,'utf8'),'candidate');
 });
 test('non-Windows permission errors and unrelated Windows errors fail immediately',async t=>{
  const home=await temp(t),file=path.join(home,'checkpoint.json'),pending=path.join(home,'pending.json');await writeFile(file,'original');await writeFile(pending,'candidate');
