@@ -14,7 +14,7 @@ import { assertVisualProject, assertVisualLocks } from '../src/core/visual-proje
 import { VisualProjectStore } from '../src/services/visual-store.mjs';
 const fixture=async fn=>{const home=await realpath(await mkdtemp(path.join(os.tmpdir(),'dw-compositions-')));try{await fn(home);}finally{await rm(home,{recursive:true,force:true});}};
 test('VIS-006: six typed families provide three candidates in all themes and both languages without changing facts or assets',()=>fixture(async home=>{
- assert.equal(compositions.length,18);
+ assert.equal(compositions.filter(c=>!families[c.family].explicit).length,18);assert.equal(compositions.length,36);
  for(const locale of ['en','zh-CN'])for(const theme of ['cream-collage','electric-violet','dark-data']){
   const p=await createCompositionDemo(locale,home);p.plan.scenes.forEach(s=>{s.theme=theme;});
   const candidates=candidateProjects(p);

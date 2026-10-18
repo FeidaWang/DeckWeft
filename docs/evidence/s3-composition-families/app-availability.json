@@ -1,0 +1,8 @@
+{
+ "checkedAt": "2026-10-19",
+ "method": "Read-only existence check of /Applications/<name>.app; nothing was launched",
+ "found": ["Microsoft PowerPoint", "Keynote", "Figma", "Safari", "Google Chrome"],
+ "notFound": ["LibreOffice", "Adobe After Effects 2025", "Adobe After Effects 2026", "Firefox"],
+ "used": "Chrome for Testing 151.0.7922.34 from the Playwright cache in ~/Library/Caches/ms-playwright (outside /Applications), temporary profiles only",
+ "notRun": "PowerPoint, Keynote and Figma: no v3 compiler exists for them (TARGET_UNIMPLEMENTED). Safari and Google Chrome: installed browsers are read-only for this work."
+}

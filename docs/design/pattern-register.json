@@ -55,18 +55,20 @@
         "V"
       ],
       "referenceVerified": true,
-      "repositoryStatus": "partial",
+      "repositoryStatus": "exists",
       "repositoryState": "LocalVerified",
       "implementedBy": [
         "VIS-005",
         "VIS-006",
+        "src/design/compositions.mjs",
         "themes/electric-violet/theme.json"
       ],
       "verifiedBy": [
-        "docs/evidence/visual-studio/review.md"
+        "docs/evidence/visual-studio/review.md",
+        "docs/evidence/s3-composition-families/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Only Electric Violet has a chapter composition (violet-chapter); no cross-theme chapter family."
+      "repositoryNote": "S3 chapter family (chapter-low, chapter-index, chapter-margin) in all three themes, text only, one large heading; violet-chapter stays Electric Violet's own colour page."
     },
     {
       "id": "F03",
@@ -288,14 +290,17 @@
       ],
       "referenceVerified": false,
       "repositoryStatus": "partial",
-      "repositoryState": "Implemented",
+      "repositoryState": "LocalVerified",
       "implementedBy": [
         "VIS-002",
-        "src/render/web/components/blocks.mjs"
+        "src/render/web/components/blocks.mjs",
+        "src/design/compositions.mjs"
       ],
-      "verifiedBy": [],
+      "verifiedBy": [
+        "docs/evidence/s3-composition-families/review.md"
+      ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "A quote block renders as blockquote; no quote composition, no speaker/organisation fields and no browser evidence."
+      "repositoryNote": "S3 quote family separates the verbatim quote block, its attributing citation (directly under it) and paraphrase paragraphs in three geometries; speaker and organisation are citation text, not typed fields."
     },
     {
       "id": "F11",
@@ -1544,12 +1549,17 @@
         "S"
       ],
       "referenceVerified": false,
-      "repositoryStatus": "missing",
-      "repositoryState": "Proposed",
-      "implementedBy": [],
-      "verifiedBy": [],
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "src/design/compositions.mjs",
+        "src/design/rhythm.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/s3-composition-families/review.md"
+      ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No faceted layout with a declared shared scale.",
+      "repositoryNote": "S3 small-multiples layout: equal panels on a declared shared scale (same chart type, unit, fixed value axis and categories) and a layout-only split into continuation pages. Drawing panels at panel size, so more than two fit a 1440 px page, is S4.",
       "chartClass": "new"
     },
     {
@@ -1732,13 +1742,15 @@
       "repositoryState": "LocalVerified",
       "implementedBy": [
         "VIS-009",
-        "src/motion/timeline.mjs"
+        "src/motion/timeline.mjs",
+        "src/design/compositions.mjs"
       ],
       "verifiedBy": [
-        "docs/evidence/vis-009/review.md"
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s3-composition-families/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "image-compare tabs; no slider or permanent before/after labels contract.",
+      "repositoryNote": "image-compare tabs (VIS-009); S3 before-after family shows both states in equal frames with permanent Before · baseline / After labels and refuses unequal aspect ratios; no slider.",
       "chartClass": "existing"
     },
     {

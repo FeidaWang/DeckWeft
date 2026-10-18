@@ -395,3 +395,41 @@ node --test tests/handoff-contracts.test.mjs   # 13 pass
 node --test tests/design-registers.test.mjs    # 3 pass, 1 skipped
 npm run verify                # 355 tests, 354 pass, 0 fail, 1 skipped; types, check (1,083 files), build, demos
 ```
+
+## 12. S3 result — six composition families, 2026-10-19
+
+Checked against `232060e` (S2) plus the S3 changes. State: **LocalVerified** for HTML layout in Chromium. [Review](../evidence/s3-composition-families/review.md) · [manual](../en/visual-studio.md#six-more-composition-families-s3).
+
+### Chosen and left out
+
+The S3 instruction listed seven candidates. Six were added: `chapter`, `before-after`, `system-map`, `small-multiples`, `quote`, `closing`. `compositions.mjs` now holds twelve families and 36 geometries. All three schemas and all three theme packs enumerate them.
+
+**Table / Reference was left out.** The comparison family already owns tables in three geometries, so a reference family could not be told apart by content. Its method appendix belongs with F08 (progressive disclosure).
+
+**Changes against §5.** ProductStage and case-study were not in the S3 list and remain open. SmallMultiples, deferred in §5, is layout only. Its shared scale is a declared fixed axis that the current renderer already draws, so no S4 contract was needed.
+
+### Decisions
+
+| Topic | Decision | Why |
+|---|---|---|
+| Inference | New families are explicit only (composition id or Studio control) | `chapter`, `closing` and `statement` need the same blocks; keeping inference unchanged also keeps the VIS-006, component and interaction suites' candidates unchanged |
+| Quote attribution | Verbatim = quote block, attribution = a citation of one of the quote's sources, paraphrase = paragraph. No schema field | Uses existing blocks. Speaker / organisation typed fields go back to the S1 field list |
+| Before / after "same object" | Two images, same factual kind, same displayed aspect ratio (checked with assets in `assertVisualProject`). The baseline is the first image and is labelled by generated text | The object's identity cannot be verified by code; framing and kind can |
+| Small multiples | Same chart type, unit, fixed axis and categories; two panels per 1440 px page; `splitSmallMultiples()` for more | The current 800-unit chart canvas needs at least 572 px per panel for 10 px text |
+| Rhythm | Repeat and card-run rules are DP costs (100 each) over a two-page state; variety is advice | Selection only varies geometry within families chosen by content and author; locked compositions stay and are reported |
+| C9 | `applySceneTheme` never writes `colorMode`; violet chapter only when the mode allows chapter colour | Theme switches change composition and type roles only; the round trip is now lossless |
+
+### Pattern register
+
+F02 → `exists` / LocalVerified. F10 → LocalVerified (still `partial`: no typed speaker fields). C17 → `partial` / LocalVerified (layout only). C22 → LocalVerified (still `partial`: no slider). Pattern summary: F 6 exist / 5 partial / 1 missing; M unchanged; C 5 / 10 / 9.
+
+### Open after S3
+
+| Item | Owner |
+|---|---|
+| Panel-sized chart drawing (more than two panels per page), narrow drawing for branching relationship maps | S4 |
+| Before/after slider (M08), quote carousel (M06) | S5 |
+| C12 line-end CJK punctuation measured as overflow; C13 header font; CJK heading breaks inside phrases; theme packs declaring the S1 token roles | S8 |
+| Studio control for splitting small multiples; typed quote speaker fields | S9 / S1 field list |
+| ProductStage, case-study, Table / Reference | VIS-014 decision |
+

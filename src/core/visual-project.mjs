@@ -4,6 +4,7 @@ import schema from '../../schemas/visual-project.schema.json' with { type: 'json
 import { validateSchema } from './schema.mjs';
 import { assertPresentation } from './blocks.mjs';
 import { assertDesignPlan } from '../design/plan.mjs';
+import { assertCompositionAssets } from '../design/compositions.mjs';
 import { identifier } from './model.mjs';
 import { DeckError } from './errors.mjs';
 export function assertVisualProject(project) {
@@ -21,6 +22,7 @@ export function assertVisualProject(project) {
  }
  for(const s of project.plan.scenes)assertImageSlots(project.document,s,project.assets);
  for(const b of project.document.blocks)if(b.type==='image'&&!project.assets.some(a=>a.id===b.assetId))fail('An image references a missing asset manifest.');
+ for(const s of project.plan.scenes)assertCompositionAssets(project.document,s,project.assets);
  for(const key of ['createdAt','updatedAt'])if(!Number.isFinite(Date.parse(project.revision[key])))fail('Revision timestamps must be valid ISO dates.');
  return project;
 }

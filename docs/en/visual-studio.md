@@ -102,4 +102,50 @@ A candidate fails if content overflows, is clipped, has inadequate measured cont
 
 The six families are statement (split/banner/center), image narrative (left/sequential/right), oversized number (left/band/right), data evidence (plot left/full width/plot right), comparison (matrix/side rail/dimension cards), and process (horizontal/vertical/stepped). English and Chinese representative content was checked under Cream Collage, Electric Violet and Dark Data. [Measured geometry, screenshots, failures and repairs](../evidence/vis-006/review.md).
 
+## Six more composition families (S3)
+
+S3 adds six families to the six above, so a page can now use twelve. They are never inferred from content: choose them yourself.
+
+1. Select a page and open **Design → Composition family**. The new families follow the original six: Chapter, Before / after, System map, Small multiples, Quotation, Conclusion / next step. A family is disabled when the page lacks its required block.
+2. Click **Compare three compositions**. Expect three measured previews. If the page breaks a family contract, comparing stops with a reason (for example *Attribute every verbatim quotation*). Nothing is repaired or removed for you.
+3. Choose a passing candidate, or **Apply measured deck rhythm**. Your family choice is kept; rhythm only picks among its three geometries.
+4. Save and reload. The composition stays.
+
+| Family | Needs | Three geometries (reading path) | 1440 / 1024 / 390 px |
+|---|---|---|---|
+| Chapter | heading; text only (no chart, table, diagram, image, metric, code) | headline low left, intro beside it · headline and intro left, contents index right · contents in a narrow margin, headline right | 2 / 2 / 1 |
+| Before / after | exactly two images, both factual or both illustrations, shown at the same aspect ratio | baseline left, after right · text rail, baseline above after · baseline, what changed, after | 2 / 2 / 1 (triptych 3 / 3 / 1) |
+| System map | a relationship diagram that branches or loops (a single chain is a process) | header row, full-width map, key row · map left, text right · key left, map right | 2 / 2 / 1; rail and key stack at 1024 |
+| Small multiples | two or more charts with the same chart type, unit, fixed value axis (same range and scale) and, for line, area, stacked and heatmap, the same categories | panels side by side, notes below · heading beside the reading note, panels below · centered heading, note and key on a centre line, panels below | 2 / 1 / 1 |
+| Quotation | a quote block, each quote attributed by a citation of one of its sources | centered quote · paraphrase left, quote right · full-width quote band | 1 / 1 / 1 (centre), 2 / 2 / 1 |
+| Conclusion / next step | a list of next steps | conclusion left, steps right · steps in one row · centered conclusion and ask | 2 / 2 / 1 |
+
+What each contract protects:
+
+- **Before / after.** The first image in block order is the baseline. Every geometry places it first (left, top or first in the row) and labels both images *Before · baseline* and *After* above the frame, so the label is visible without interaction, in the no-JavaScript view and in print. Both frames have the same size. If the two images are shown at different aspect ratios, saving fails: crop them to the same framing. A comparison control on this page must pair the baseline with the changed image and may not open on the changed image alone.
+- **Small multiples.** The shared scale is declared, not inferred: every panel needs a fixed value axis with the same range. Panels are always the same size. With the current chart drawing, two panels fit a 1440 px page; at 1024 and 390 px they stack. To split a page with more panels, call `splitSmallMultiples(project, sceneId, perPage)` from `src/design/rhythm.mjs`. Every page keeps the heading and the sources, the panels stay in order, and text blocks stay on the first page. It refuses pages with interactions, locks, or a page size that would leave one panel alone. There is no Studio control for this yet.
+- **Quotation.** Verbatim words are the quote block, set in the display type with an ornamental mark. The citation that attributes it sits directly under it. Paraphrase is a paragraph, in body type, separated by a rule; it is never styled as a quotation. Speaker and organisation are written in the citation text: the quote block has no separate speaker fields.
+
+### Rhythm rules
+
+**Apply measured deck rhythm** now also follows three handoff rules. The report under the button lists any that remain:
+
+- The same composition appears at most twice in a row. Runs of one comparison family (comparison, process, before / after, small multiples) are allowed: a sequence may keep its structure.
+- No three heading-plus-cards pages in a row (comparison dimension cards or next steps in one row, with three or more cards).
+- A 10–15 page deck uses at least four families. Families come from your content and choices, so this rule is advice. The report suggests pages that could use an unused family; nothing changes on its own.
+
+Author choices win. A composition locked with **Lock this scene’s theme and composition** is kept even when it breaks a rule; the report marks it *kept: author lock*. A rule that remains without a lock means no measured candidate could avoid it.
+
+### Theme changes keep the colour mode
+
+Changing a page's theme now changes only its theme and, when needed, its composition. The colour mode is left as it was. Changing to another theme and back returns the original plan and the same render hash. Violet chapter is offered only when the page can use the chapter colour; a page whose colour mode is explicitly *default* gets reading flow instead.
+
+### If something goes wrong
+
+- *Show both states at the same aspect ratio*: edit one crop until both match, then save.
+- *Declare the shared scale*: give every chart the same `axis: {policy: "fixed", min, max}`.
+- *No measured candidate fits*: keep the content. Choose another family, shorten the text yourself, or split small multiples into more pages.
+
+[S3 measured candidates, contact sheets, failures and open issues](../evidence/s3-composition-families/review.md).
+
 For source preservation, named slots and protected crops, follow the [asset manual](assets.md). Run `npm run studio:assets` for the bilingual lab.

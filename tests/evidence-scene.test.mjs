@@ -49,8 +49,9 @@ test('S2 theme switch changes composition and type roles, never facts, ids, sour
   const dark=await evidenceProject(locale,{staticState:'structure-first'}),before=semanticView(dark);
   const cream=applySceneTheme(dark,'evidence','cream-collage'),back=applySceneTheme(cream,'evidence','dark-data');
   assert.deepEqual(semanticView(cream),before);assert.deepEqual(semanticView(back),before);
-  // Conflict C9: the round trip writes colorMode "default" that the original plan omitted (render-equivalent, but the scene source hash changes).
-  const {colorMode,...rest}=sceneOf(back);assert.equal(colorMode,'default');assert.deepEqual(rest,sceneOf(dark));
+  // Conflict C9 (fixed in S3): the round trip leaves the plan, the scene source hash and the render hash unchanged.
+  assert.deepEqual(back.plan,dark.plan);assert.equal('colorMode' in sceneOf(back),false);assert.equal('colorMode' in sceneOf(cream),false);
+  assert.equal(html(back).renderHash,html(dark).renderHash);
   assert.equal(sceneOf(dark).composition,'chart-with-evidence-rail');assert.equal(sceneOf(cream).composition,'reading-flow');assert.equal(sceneOf(cream).theme,'cream-collage');
   const roles=p=>{const t=resolveTheme(sceneOf(p).theme,sceneOf(p).themeVersion,locale);return {display:t.display,body:t.body,paper:t.paper};};
   assert.notEqual(roles(cream).display,roles(dark).display);assert.notEqual(roles(cream).paper,roles(dark).paper);

@@ -1,4 +1,5 @@
 import {effectiveProfile,resolveTheme} from './theme-registry.mjs';
+import {compositions} from './compositions.mjs';
 
 /** Rendering direction, not a rewrite of the saved document or the author's plan. */
 export function sceneDirection(document,plan,index){
@@ -10,6 +11,12 @@ export function sceneDirection(document,plan,index){
  const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{profile,role:scene.role,colorMode});
  const zh=document.locale==='zh-CN',length=[...(heading?.text||'')].length;
  let headline=has('chart')?64:has('table')||has('diagram')||has('code')?72:has('metric')?(zh?76:96):beat==='opening'||beat==='closing'?112:88;
+ // S3 families set their own tier: a chapter is a pause, a quotation carries its page, paired evidence needs the height.
+ const family=compositions.find(c=>c.id===scene.composition)?.family;
+ if(family==='chapter')headline=112;
+ if(family==='quote')headline=zh?40:44;
+ if(family==='before-after'||family==='small-multiples'||family==='system-map')headline=Math.min(headline,64);
+ if(family==='closing')headline=Math.min(headline,88);
  // A long authored headline gets a different type tier, never truncation or hidden text.
  if(length>(zh?34:85))headline=Math.min(headline,76);
  if(length>(zh?60:140))headline=Math.min(headline,60);
@@ -28,5 +35,11 @@ export function narrativeCost(scene,descriptor,index,total){
  if(family==='image')preferred=phase==='closing'?'image-strip':'image-left';
  if(family==='comparison')preferred='comparison-matrix';
  if(family==='process')preferred=phase==='closing'?'process-line':'process-rail';
+ if(family==='chapter')preferred=phase==='opening'?'chapter-index':'chapter-low';
+ if(family==='before-after')preferred='before-after-split';
+ if(family==='system-map')preferred='system-map-wide';
+ if(family==='small-multiples')preferred='small-multiples-row';
+ if(family==='quote')preferred=phase==='opening'||phase==='closing'?'quote-center':'quote-split';
+ if(family==='closing')preferred=phase==='closing'?'closing-focus':'closing-split';
  return {phase,preferred:preferred||id,cost:preferred&&id!==preferred?3:0};
 }

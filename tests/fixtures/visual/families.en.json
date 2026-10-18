@@ -1,0 +1,545 @@
+{
+ "document": {
+  "format": "deckweft-presentation",
+  "schemaVersion": 3,
+  "id": "s3-families-en",
+  "title": "Six new compositions, one complete story",
+  "locale": "en",
+  "visualBrief": {
+   "audience": "Design and product teams reviewing composition families",
+   "outputLanguage": "en",
+   "profile": {
+    "colorIntensity": "bold",
+    "typographicContrast": "expressive",
+    "density": "comfortable",
+    "motionIntensity": "off",
+    "imageEmphasis": "large"
+   }
+  },
+  "blocks": [
+   {
+    "id": "chapter-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Part two\nThe evidence, page by page"
+   },
+   {
+    "id": "chapter-intro",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "This section moves from the claim to its proof. Every page keeps its source beside the figure it supports."
+   },
+   {
+    "id": "chapter-contents",
+    "type": "list",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "items": [
+     "One photograph, two crops",
+     "How a change reaches every export",
+     "Two teams on one scale",
+     "What reviewers asked for"
+    ]
+   },
+   {
+    "id": "pair-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Same photograph,\na deliberate crop"
+   },
+   {
+    "id": "pair-before",
+    "type": "image",
+    "sourceIds": [
+     "workbench-asset"
+    ],
+    "assetId": "asset_70c32da27c9df448e0749ce3",
+    "alt": "The full workbench photograph as supplied, uncropped.",
+    "factual": false
+   },
+   {
+    "id": "pair-after",
+    "type": "image",
+    "sourceIds": [
+     "workbench-asset"
+    ],
+    "assetId": "asset_70c32da27c9df448e0749ce3",
+    "alt": "The same photograph cropped to the spool and the paper cards.",
+    "factual": false
+   },
+   {
+    "id": "pair-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Only the frame changed. The subject, the pixels and the aspect ratio are the same, so the two states can be compared directly."
+   },
+   {
+    "id": "pair-note",
+    "type": "callout",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Nothing was redrawn."
+   },
+   {
+    "id": "pair-source",
+    "type": "citation",
+    "sourceIds": [
+     "workbench-asset"
+    ],
+    "sourceId": "workbench-asset",
+    "text": "Generated decorative artwork · local asset"
+   },
+   {
+    "id": "map-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "One change,\nevery export"
+   },
+   {
+    "id": "map-diagram",
+    "type": "diagram",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "diagramType": "relationship",
+    "nodes": [
+     {
+      "id": "document",
+      "label": "Document"
+     },
+     {
+      "id": "plan",
+      "label": "Design plan"
+     },
+     {
+      "id": "theme",
+      "label": "Theme pack"
+     },
+     {
+      "id": "scene",
+      "label": "Web scene"
+     },
+     {
+      "id": "export",
+      "label": "HTML export"
+     }
+    ],
+    "edges": [
+     {
+      "from": "document",
+      "to": "scene"
+     },
+     {
+      "from": "plan",
+      "to": "scene"
+     },
+     {
+      "from": "theme",
+      "to": "scene"
+     },
+     {
+      "from": "scene",
+      "to": "export"
+     }
+    ]
+   },
+   {
+    "id": "map-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Facts live in the document. The plan and the theme only arrange them, so a theme switch cannot change a number."
+   },
+   {
+    "id": "map-key",
+    "type": "list",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "items": [
+     "Document: facts, values and sources",
+     "Design plan: order, composition and locks",
+     "Theme pack: colour and type roles"
+    ]
+   },
+   {
+    "id": "map-source",
+    "type": "citation",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Illustrative architecture sketch",
+    "sourceId": "family-sample"
+   },
+   {
+    "id": "panels-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Two teams,\none scale"
+   },
+   {
+    "id": "panel-a",
+    "type": "chart",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "datasetId": "team-a",
+    "chartType": "line",
+    "axis": {
+     "policy": "fixed",
+     "min": 0,
+     "max": 40
+    }
+   },
+   {
+    "id": "panel-b",
+    "type": "chart",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "datasetId": "team-b",
+    "chartType": "line",
+    "axis": {
+     "policy": "fixed",
+     "min": 0,
+     "max": 40
+    }
+   },
+   {
+    "id": "panels-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Both panels share a fixed 0–40 hour axis, so a lower line is genuinely lower. The values are synthetic."
+   },
+   {
+    "id": "panels-note",
+    "type": "callout",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Same axis, same weeks, same unit."
+   },
+   {
+    "id": "panels-source",
+    "type": "citation",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "sourceId": "family-sample",
+    "text": "Synthetic weekly review hours · not measured"
+   },
+   {
+    "id": "quote-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "What reviewers asked for"
+   },
+   {
+    "id": "quote-words",
+    "type": "quote",
+    "sourceIds": [
+     "review-notes"
+    ],
+    "text": "Put the number next to the claim. If I have to turn the page to check it, I stop trusting the slide."
+   },
+   {
+    "id": "quote-attribution",
+    "type": "citation",
+    "sourceIds": [
+     "review-notes"
+    ],
+    "sourceId": "review-notes",
+    "text": "Reviewer A, design review (illustrative interview)"
+   },
+   {
+    "id": "quote-paraphrase",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "In other words: evidence belongs on the page that makes the claim."
+   },
+   {
+    "id": "close-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Decide with the evidence in view"
+   },
+   {
+    "id": "close-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Every page kept its facts, sources and order through three themes and two languages."
+   },
+   {
+    "id": "close-steps",
+    "type": "list",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "items": [
+     "Choose a composition for each page",
+     "Review the measured candidates",
+     "Export and archive the reviewed deck"
+    ]
+   },
+   {
+    "id": "close-ask",
+    "type": "callout",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "Next review: Monday 2 November 2026"
+   }
+  ],
+  "datasets": [
+   {
+    "id": "team-a",
+    "unit": "h",
+    "synthetic": true,
+    "categories": [
+     "W1",
+     "W2",
+     "W3",
+     "W4",
+     "W5",
+     "W6"
+    ],
+    "categoryIds": [
+     "w1",
+     "w2",
+     "w3",
+     "w4",
+     "w5",
+     "w6"
+    ],
+    "series": [
+     {
+      "id": "team-a-hours",
+      "label": "Team A review hours (synthetic)",
+      "values": [
+       31,
+       28,
+       26,
+       22,
+       19,
+       17
+      ]
+     }
+    ],
+    "sourceIds": [
+     "family-sample"
+    ]
+   },
+   {
+    "id": "team-b",
+    "unit": "h",
+    "synthetic": true,
+    "categories": [
+     "W1",
+     "W2",
+     "W3",
+     "W4",
+     "W5",
+     "W6"
+    ],
+    "categoryIds": [
+     "w1",
+     "w2",
+     "w3",
+     "w4",
+     "w5",
+     "w6"
+    ],
+    "series": [
+     {
+      "id": "team-b-hours",
+      "label": "Team B review hours (synthetic)",
+      "values": [
+       24,
+       25,
+       23,
+       24,
+       22,
+       23
+      ]
+     }
+    ],
+    "sourceIds": [
+     "family-sample"
+    ]
+   }
+  ],
+  "sources": [
+   {
+    "id": "family-sample",
+    "title": "DeckWeft S3 illustrative sample (synthetic)",
+    "url": "https://example.org/deckweft/s3-illustrative-sample"
+   },
+   {
+    "id": "review-notes",
+    "title": "Illustrative review notes · synthetic, not a real person",
+    "url": "https://example.org/deckweft/s3-review-notes"
+   },
+   {
+    "id": "workbench-asset",
+    "title": "DeckWeft local demonstration asset",
+    "url": "https://example.org/deckweft/workbench-asset"
+   }
+  ],
+  "authorOverrides": {
+   "lockedBlockIds": [],
+   "sceneLocks": []
+  },
+  "migration": {}
+ },
+ "plan": {
+  "format": "deckweft-design-plan",
+  "version": 1,
+  "documentId": "s3-families-en",
+  "scenes": [
+   {
+    "id": "chapter",
+    "role": "opening",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "chapter-low",
+    "blockIds": [
+     "chapter-title",
+     "chapter-intro",
+     "chapter-contents"
+    ],
+    "focalBlockId": "chapter-title"
+   },
+   {
+    "id": "before-after",
+    "role": "evidence",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "before-after-split",
+    "blockIds": [
+     "pair-title",
+     "pair-before",
+     "pair-after",
+     "pair-body",
+     "pair-note",
+     "pair-source"
+    ],
+    "focalBlockId": "pair-title",
+    "crops": [
+     {
+      "blockId": "pair-before",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+     },
+     {
+      "blockId": "pair-after",
+      "x": 0.3,
+      "y": 0.18,
+      "width": 0.5,
+      "height": 0.5
+     }
+    ]
+   },
+   {
+    "id": "system-map",
+    "role": "process",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "system-map-wide",
+    "blockIds": [
+     "map-title",
+     "map-diagram",
+     "map-body",
+     "map-key",
+     "map-source"
+    ],
+    "focalBlockId": "map-title"
+   },
+   {
+    "id": "small-multiples",
+    "role": "evidence",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "small-multiples-row",
+    "blockIds": [
+     "panels-title",
+     "panel-a",
+     "panel-b",
+     "panels-body",
+     "panels-note",
+     "panels-source"
+    ],
+    "focalBlockId": "panels-title"
+   },
+   {
+    "id": "quote",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "quote-split",
+    "blockIds": [
+     "quote-title",
+     "quote-words",
+     "quote-attribution",
+     "quote-paraphrase"
+    ],
+    "focalBlockId": "quote-title"
+   },
+   {
+    "id": "closing",
+    "role": "closing",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "closing-split",
+    "blockIds": [
+     "close-title",
+     "close-body",
+     "close-steps",
+     "close-ask"
+    ],
+    "focalBlockId": "close-title"
+   }
+  ]
+ },
+ "assets": [
+  {
+   "id": "asset_70c32da27c9df448e0749ce3",
+   "hash": "70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1",
+   "mime": "image/png",
+   "width": 1536,
+   "height": 1024,
+   "path": "assets/70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1.png",
+   "provenance": "Original host-generated decorative artwork, retained from the MB-11–15 build. Not documentary photography or product evidence.",
+   "license": "Generated artwork; no third-party rights clearance asserted",
+   "allowedUse": "Local DeckWeft demonstration; review rights for your own redistribution",
+   "alt": "Blank paper story cards linked by blue thread on a wooden workbench",
+   "fallback": "A series of paper cards joined by blue thread; decorative artwork."
+  }
+ ]
+}
