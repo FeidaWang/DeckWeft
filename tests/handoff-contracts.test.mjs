@@ -165,9 +165,10 @@ test('S1 scene takeaway, content status and key states build on the authored ope
  const frozen=staticInteractionState(d,sceneOf(later));assert.deepEqual(frozen[0].seriesIds,['guided']);assert.equal(frozen[0].fromId,'q4');
  assert.deepEqual(staticInteractionState(d,scene)[0].seriesIds,['guided','manual']);
  const drawable=structuredClone(d);delete datasetOf(drawable).events;for(const s of datasetOf(drawable).series)delete s.interval;
- assert.deepEqual(presentationCapabilities('html',drawable,{},later).issues.map(i=>i.code),['STATIC_STATE_UNIMPLEMENTED']);
+ // S2 applies a frozen chart selection and the static fallback, so neither placeholder refusal remains (tests/evidence-scene.test.mjs).
+ assert.deepEqual(presentationCapabilities('html',drawable,{},later).issues.map(i=>i.code),[]);
  const staticFallback=structuredClone(later);sceneOf(staticFallback).motion.reducedMotion='static';assertDesignPlan(d,staticFallback);
- assert.deepEqual(presentationCapabilities('html',drawable,{},staticFallback).issues.map(i=>i.code),['STATIC_STATE_UNIMPLEMENTED','REDUCED_MOTION_FALLBACK_UNIMPLEMENTED']);
+ assert.deepEqual(presentationCapabilities('html',drawable,{},staticFallback).issues.map(i=>i.code),[]);
  const {useInteractionOpening}=await import('../public/studio/interactions.js');
  drawable.authorOverrides.lockedBlockIds=[];const project=createVisualProject(drawable,p,{id:'s1-opening'}),spec=compileCues(project.document,sceneOf(project.plan)).interactions[0];
  const opened=useInteractionOpening(project,'evidence',[{id:spec.id,seriesIds:['manual'],fromId:'q2',toId:'q5'}]);

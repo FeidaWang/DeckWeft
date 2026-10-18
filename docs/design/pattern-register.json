@@ -151,13 +151,15 @@
         "src/design/compositions.mjs",
         "src/components/charts/render.mjs",
         "src/design/scene-semantics.mjs",
-        "src/components/charts/semantics.mjs"
+        "src/components/charts/semantics.mjs",
+        "src/render/web/static-state.mjs"
       ],
       "verifiedBy": [
-        "docs/evidence/vis-008/review.md"
+        "docs/evidence/vis-008/review.md",
+        "docs/evidence/s2-vertical-sample/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Heading, chart, notes and citation blocks share one scene. S1 (2026-10-19) added the typed scene takeaway (design-plan scene.takeaway → a block id) and chart question/takeaway fields; a typed method note is still a paragraph block."
+      "repositoryNote": "Heading, chart, notes and citation blocks share one scene. S1 (2026-10-19) added the typed scene takeaway (design-plan scene.takeaway → a block id) and chart question/takeaway fields; a typed method note is still a paragraph block. S2 (2026-10-19) checked the four layers in an illustrative bilingual evidence scene at 1440/390 px with and without JavaScript: title, takeaway block, chart with visible labels and legend, chart caption, authored caption and source are visible text. Chart question/takeaway and dataset definition/sample/dates are declared but not drawn (conflict C10); at 390 px ranked-bar values sit in a horizontal scroller (C2)."
     },
     {
       "id": "F06",
@@ -452,10 +454,11 @@
         "src/render/web/document.mjs"
       ],
       "verifiedBy": [
-        "docs/evidence/vis-009/review.md"
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s2-vertical-sample/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Page position changes with previous/next; no chapter-level reading state."
+      "repositoryNote": "Page position changes with previous/next; no chapter-level reading state. S2 (2026-10-19) vertical sample: keyboard and pointer focus changes in a chart never change the page (1 / 2 stays), and six rapid Next/Previous pairs leave 0 pending page timers, scene timers and animations; a focused SVG chart mark still lets ArrowRight change the page (conflict C14). Chapter-level reading state remains missing."
     },
     {
       "id": "M05",
@@ -689,14 +692,17 @@
         "VIS-009",
         "src/motion/timeline.mjs",
         "src/components/charts/semantics.mjs",
-        "src/design/scene-semantics.mjs"
+        "src/design/scene-semantics.mjs",
+        "src/render/web/static-state.mjs",
+        "public/runtime/static-state.js"
       ],
       "verifiedBy": [
         "docs/evidence/vis-009/review.md",
-        "docs/evidence/explanatory-authoring/review.md"
+        "docs/evidence/explanatory-authoring/review.md",
+        "docs/evidence/s2-vertical-sample/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "chart-select provides series focus and category range; S1 added the static chart sort declaration and the named staticState over the authored opening. Interactive sort is missing (ranked-bar sort is static)."
+      "repositoryNote": "chart-select provides series focus and category range; S1 added the static chart sort declaration and the named staticState over the authored opening. Interactive sort is missing (ranked-bar sort is static). S2 (2026-10-19) applies the author's static state in web output: the no-JS view draws the frozen chart selection with a text line of every shown value and the full table, and reading/presentation views start at that cue boundary; reduced motion can fall back to it. On a single-series ranked bar the legend focus is degenerate (conflict C1) and the range filter uses author order, not rank (C3)."
     },
     {
       "id": "M14",

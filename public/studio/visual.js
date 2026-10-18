@@ -1,4 +1,4 @@
-import {addExplanatoryInteractions,useInteractionOpening} from './interactions.js';
+import {addExplanatoryInteractions,useInteractionOpening,useStaticState} from './interactions.js';
 import {mountWorkbench} from './workbench.js';
 import {base64,sourceMime,decodeLocalSource} from './assets.js';
 const $=s=>document.querySelector(s),x=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -171,10 +171,12 @@ function drawInteractionFields(){
  const p=state.project,s=scene(),locks=p.document.authorOverrides.sceneLocks?.find(l=>l.sceneId===s.id)?.fields||[];
  $('#enableInteractions').disabled=!!state.drafts.size||locks.some(f=>['interactions','cues'].includes(f));
  $('#sceneMotion').value=s.motion?.policy||'';$('#sceneMotion').disabled=locks.includes('motion');
+ const keyStates=s.keyStates||[];$('#staticState').innerHTML=`<option value="">${x(t('Authored opening (default)','作者设定的开场（默认）'))}</option>`+keyStates.map(k=>`<option value="${x(k.id)}">${x(k.position+' · '+(k.label||k.id))}</option>`).join('');$('#staticState').value=s.staticState?.keyStateId||'';$('#staticState').disabled=!keyStates.length||!!state.drafts.size||locks.some(f=>['cues','motion'].includes(f));
  const notes=new Map((p.document.explanations||[]).map(n=>[n.id,n]));
  $('#explanationFields').innerHTML=(s.interactions||[]).filter(i=>i.kind==='steps').map(i=>`<fieldset class="field-card"><legend>${x(t('Step explanations','分步讲解'))}</legend>${i.steps.map((step,k)=>{const n=notes.get(step.explanationId),locked=p.plan.scenes.some(sc=>(sc.interactions||[]).some(v=>p.document.authorOverrides.lockedBlockIds.includes(v.blockId)&&v.steps?.some(st=>st.explanationId===step.explanationId)));return `<label>${k+1} · ${x(t('Label','标题'))}<input maxlength="100" data-explanation="${x(n.id)}" data-note-field="label" value="${x(n.label)}" ${locked?'disabled':''}></label><label>${x(t('Explanation','说明'))}<textarea maxlength="2000" data-explanation="${x(n.id)}" data-note-field="text" ${locked?'disabled':''}>${x(n.text)}</textarea></label>`;}).join('')}</fieldset>`).join('');
 }
 $('#enableInteractions').onclick=()=>{try{if(state.drafts.size)throw Error(t('Repair unapplied edits first.','请先修复未应用的编辑。'));const next=addExplanatoryInteractions(state.project,state.active);changed(()=>{state.project=next;},{fields:true});}catch(e){error(e);}};
+$('#staticState').onchange=e=>{try{const next=useStaticState(state.project,state.active,e.target.value||null);changed(()=>{state.project=next;},{fields:true});message(t('Static state applied. Save and export to retain it.','已应用静态状态，保存并导出即可保留。'));}catch(err){error(err);drawInteractionFields();}};
 $('#sceneMotion').onchange=e=>changed(()=>{if(e.target.value)scene().motion={...(scene().motion||{}),policy:e.target.value,durationMs:e.target.value==='off'?0:240};else delete scene().motion;},{fields:true});
 $('#explanationFields').addEventListener('change',e=>{const n=e.target;if(!n.dataset.explanation)return;if(!n.value.trim()){error(new Error(t('An explanation cannot be empty.','说明不能为空。')));drawInteractionFields();return;}changed(()=>{state.project.document.explanations.find(v=>v.id===n.dataset.explanation)[n.dataset.noteField]=n.value;},{fields:true});});
 

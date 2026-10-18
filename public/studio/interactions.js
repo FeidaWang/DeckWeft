@@ -55,3 +55,13 @@ export function useInteractionOpening(project,sceneId,states){
  }
  return next;
 }
+
+/** Choose which key state static output and the static reduced-motion fallback freeze. Cue and motion locks keep it. */
+export function useStaticState(project,sceneId,keyStateId){
+ const next=structuredClone(project),scene=next.plan.scenes.find(s=>s.id===sceneId),d=next.document;
+ if(!scene)throw Error('Select an existing scene.');
+ if(d.authorOverrides.sceneLocks?.some(l=>l.sceneId===sceneId&&l.fields.some(f=>['cues','motion'].includes(f))))throw Error('Unlock this scene cue order and motion first.');
+ if(keyStateId===null){if(scene.motion?.reducedMotion==='static')throw Error('The static reduced-motion fallback needs a static state. Choose a key state, or set reducedMotion to instant first.');delete scene.staticState;return next;}
+ if(!scene.keyStates?.some(k=>k.id===keyStateId))throw Error('Choose an existing key state of this scene.');
+ scene.staticState={keyStateId};return next;
+}

@@ -48,5 +48,8 @@ export function assertVisualLocks(previous,next) {
  for(const lock of old.authorOverrides.sceneLocks||[]){const retained=doc.authorOverrides.sceneLocks?.find(l=>l.sceneId===lock.sceneId),a=previous.plan.scenes.find(s=>s.id===lock.sceneId),b=next.plan.scenes.find(s=>s.id===lock.sceneId);
   for(const key of lock.fields)if(retained?.fields.includes(key)&&JSON.stringify(a?.[key])!==JSON.stringify(b?.[key]))fail();
   if(lock.fields.includes('imageSlots')&&retained?.fields.includes('imageSlots')&&JSON.stringify(a?.crops)!==JSON.stringify(b?.crops))fail();
+  // A static state names a cue boundary: cue and motion locks keep both the chosen key state and its position.
+  const frozen=s=>s?.staticState?[s.staticState.keyStateId,s.keyStates?.find(k=>k.id===s.staticState.keyStateId)?.position]:null;
+  if(['cues','motion'].some(f=>lock.fields.includes(f)&&retained?.fields.includes(f))&&JSON.stringify(frozen(a))!==JSON.stringify(frozen(b)))fail();
  }
 }

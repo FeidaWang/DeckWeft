@@ -383,6 +383,10 @@ Checked against the same commit `058b939` plus the uncommitted S1 changes. State
 - Separate lock fields for text / data / sources / composition: the existing locks express all four (mapping above).
 - `sceneLocks.fields` allows nine values but `maxItems` is 8, so all nine cannot be locked at once. Noted, not changed in S1.
 
+### Returned from S2
+
+The [vertical sample](design-handoff-vertical-sample.md#returned-to-the-s1-field-list) sends five items back to this field list, without a new schema: legend focus on single-series ranked bars (C1), “absent `staticState` means the opening” versus existing no-JS output (C7), declared-but-not-drawn chart and dataset fields that are not refused (C10), a versioning rule for the embedded runtime (C6), and the lock mapping, which now keeps `staticState` under `cues` and `motion` (C18, done). S2 applied the static state and the `static` reduced-motion fallback in web output; the S2 rows of “Still open after S1” are closed except the items in its conflict list.
+
 ### Commands run for S1
 
 ```bash

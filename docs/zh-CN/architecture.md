@@ -56,8 +56,8 @@ MB-01～05 的本地构建详见[演示指南](presenting.md)。`src/contracts/p
 | `takeaway {blockId}` | 同一场景中的 heading、paragraph、callout、quote 或 metric 块承载结论。把该块 id 放入 `lockedBlockIds` 即锁定结论文字。 | 引用 `blockIds` 内、类型为文字或指标的块。 |
 | `contentStatus`（`sourced`、`illustrative`、`evidence-required`） | `sourced` 要求非合成且有来源的数据集、有来源的指标和有来源的结论；其余两个值只记录意图。 | 把合成素材标为 `illustrative`，或补来源。 |
 | `keyStates[] {id, position, label}` | 命名的提示边界：`position` 0 是作者选定的开场（初始系列／范围、标签页、步骤），`n` 是前 `n` 个提示执行后的状态。 | 保持 `position ≤ cues.length`，id 唯一。 |
-| `staticState {keyStateId}` | 指定静态输出所冻结的状态；`staticInteractionState()` 返回冻结的筛选／聚焦选择。缺省即开场。位置大于 0 时，S2 实现之前 HTML 导出返回 `STATIC_STATE_UNIMPLEMENTED`。 | 指向已存在的关键状态。 |
-| `motion.trigger: "manual"`、`motion.clock: "cues"`、`motion.reducedMotion`（默认 `instant`，可 `static`） | 对现有播放器的声明：提示由重播／下一步／定位在同一个确定性提示时钟上推进；减少动态时状态即时生效。`effectiveMotion()` 忽略新键。`static` 需要 `staticState`，且 S2 之前对 HTML 返回 `REDUCED_MOTION_FALLBACK_UNIMPLEMENTED`。 | 删除该声明，或补上静态状态。 |
+| `staticState {keyStateId}` | 指定静态输出所冻结的状态；`staticInteractionState()` 返回冻结的筛选／聚焦选择。缺省即开场。自 S2 起网页输出会应用它（[见下文](#网页输出中的静态状态s22026-10-19)）；若静态状态改变了步骤、图片比较或热点的选择，HTML 导出返回 `STATIC_STATE_UNIMPLEMENTED`。 | 指向已存在的关键状态；含步骤／比较／热点的页面请选择只改变图表的关键状态，或开场。 |
+| `motion.trigger: "manual"`、`motion.clock: "cues"`、`motion.reducedMotion`（默认 `instant`，可 `static`） | 对现有播放器的声明：提示由重播／下一步／定位在同一个确定性提示时钟上推进；减少动态时状态即时生效。`effectiveMotion()` 忽略新键。`static` 需要 `staticState`；自 S2 起，减少动态时网页播放器显示静态状态，不播放提示。 | 删除该声明，或补上静态状态。 |
 
 ### 主题包 token（`theme-pack`）
 
@@ -65,4 +65,22 @@ MB-01～05 的本地构建详见[演示指南](presenting.md)。`src/contracts/p
 
 ### 锁定类别
 
-没有新增锁定字段。交接包的四类锁定映射到现有锁：**文字** → `authorOverrides.lockedBlockIds`（块内容，包括结论块）；**数据** → 锁定图表块即锁定其数据集，包括 `definition`、`missing`、`events` 与区间；**来源** → 与锁定块或其说明相连的来源；**构图** → `sceneLocks.fields: ["composition"]`，同组还有 `theme`、`interactions`、`cues`、`motion`、`profile`。[锁定测试](../../tests/handoff-contracts.test.mjs)覆盖每一种映射。
+没有新增锁定字段。交接包的四类锁定映射到现有锁：**文字** → `authorOverrides.lockedBlockIds`（块内容，包括结论块）；**数据** → 锁定图表块即锁定其数据集，包括 `definition`、`missing`、`events` 与区间；**来源** → 与锁定块或其说明相连的来源；**构图** → `sceneLocks.fields: ["composition"]`，同组还有 `theme`、`interactions`、`cues`、`motion`、`profile`。[锁定测试](../../tests/handoff-contracts.test.mjs)覆盖每一种映射。自 S2 起，`cues` 与 `motion` 场景锁同时保护 `staticState` 及其关键状态的位置（[测试](../../tests/evidence-scene.test.mjs)）。
+
+## 网页输出中的静态状态（S2，2026-10-19）
+
+声明了 `staticState` 的页面按该状态导出。状态：一页中英双语证据页的图表选择为 **LocalVerified**（[证据](../evidence/s2-vertical-sample/review.md)、[冲突清单](../plans/design-handoff-vertical-sample.md)）。
+
+| 视图 | 预期结果 |
+| --- | --- |
+| 无 JavaScript | 图表按 `staticInteractionState()` 绘制冻结的选择。图形上方一行文字写明关键状态名称和每个显示值。**查看完整数据** 仍是未经筛选的完整表格；选择之外的数据点在表格中保留锚点。 |
+| 阅读视图 | 播放器从静态状态所在的提示边界开始。页面停在该边界时这行文字保持可见，读者自行探索时隐藏。 |
+| 演示视图 | 从同一边界开始。**重播提示序列** 仍从作者设定的开场（位置 0）开始，依次播放全部提示。 |
+| 减少动态，`reducedMotion: "static"` | 系统设置或页面的 **减少动态效果** 开启时，页面回到静态状态，**重播提示序列** 不可用，并显示“不自动播放提示”的说明。`deckweftInteractions.play()` 保持静态状态。**下一提示** 和提示位置滑块仍可用，状态即时生效。 |
+| 减少动态，`instant`（默认） | 不变：提示照常播放，只去掉动画。 |
+
+兼容方式：网页运行时、图表渲染器和 CSS 会原样嵌入每份导出文件，直接修改会改变所有现有文件。静态状态代码放在 [static-state.mjs](../../src/render/web/static-state.mjs) 和[运行时模块](../../public/runtime/static-state.js)中，只加入声明了静态状态的文稿。没有 `staticState` 的页面与 S1 逐字节一致（[基线测试](../../tests/handoff-contracts.test.mjs)）。这类页面的运行时数据带有 `staticState {keyStateId, position, reducedMotion}`，因此全局动效 **关闭** 不会丢掉静态回退。
+
+边界：审查门的版式测量记录的是开场而非静态状态；无 JavaScript 时不绘制冻结的步骤、比较标签与热点；390px 屏幕上排序条形图仍在图形区内横向滚动。三项都列在[冲突清单](../plans/design-handoff-vertical-sample.md#conflict-list)中。
+
+恢复：导出返回 `STATIC_STATE_UNIMPLEMENTED` 时，选择只改变图表选择的关键状态或开场。Studio 拒绝修改静态状态时，先取消 **锁定本页交互计划**。要删除静态状态，先把 `reducedMotion` 改为 `instant`。

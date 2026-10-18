@@ -117,8 +117,8 @@ The design handoff's SceneSpec, ChartSpec, MotionPlan and StaticState are mapped
 | `takeaway {blockId}` | A heading, paragraph, callout, quote or metric block of the same scene carries the takeaway. Locking that block id in `lockedBlockIds` locks the takeaway text. | Reference a block that is in `blockIds` and has a text or metric type. |
 | `contentStatus` (`sourced`, `illustrative`, `evidence-required`) | `sourced` requires non-synthetic, sourced datasets, sourced metrics and a sourced takeaway. The other values record intent only. | Mark synthetic material `illustrative`, or add the sources. |
 | `keyStates[] {id, position, label}` | Named cue boundaries: `position` 0 is the authored opening (initial series/range, tab and step), `n` is the state after the first `n` cues. | Keep `position ≤ cues.length` and ids unique. |
-| `staticState {keyStateId}` | Names the frozen state for static output; `staticInteractionState()` returns the frozen filter/focus selection. Absent means the opening. A position above 0 answers `STATIC_STATE_UNIMPLEMENTED` for HTML until S2 applies it. | Name an existing key state. |
-| `motion.trigger: "manual"`, `motion.clock: "cues"`, `motion.reducedMotion` (`instant` default, `static`) | Declarations of the current player: cues advance by replay/next/seek on one deterministic cue clock; reduced motion applies state instantly. `effectiveMotion()` ignores the new keys. `static` needs a `staticState` and answers `REDUCED_MOTION_FALLBACK_UNIMPLEMENTED` for HTML until S2. | Remove the declaration or add the static state. |
+| `staticState {keyStateId}` | Names the frozen state for static output; `staticInteractionState()` returns the frozen filter/focus selection. Absent means the opening. Applied in web output since S2 ([below](#static-state-in-web-output-s2-2026-10-19)); a static state that changes a step, comparison or hotspot answers `STATIC_STATE_UNIMPLEMENTED`. | Name an existing key state; for step/comparison/hotspot scenes choose a key state that changes charts only, or the opening. |
+| `motion.trigger: "manual"`, `motion.clock: "cues"`, `motion.reducedMotion` (`instant` default, `static`) | Declarations of the current player: cues advance by replay/next/seek on one deterministic cue clock; reduced motion applies state instantly. `effectiveMotion()` ignores the new keys. `static` needs a `staticState`; since S2 the web player then shows the static state under reduced motion and does not play cues. | Remove the declaration or add the static state. |
 
 ### Theme pack tokens (`theme-pack`)
 
@@ -126,4 +126,22 @@ Optional `typography.numeric`, `palette.reference`, `palette.missing`, `spacing.
 
 ### Lock categories
 
-No new lock fields were added. The handoff's four categories map onto existing locks: **text** → `authorOverrides.lockedBlockIds` (block content, including the takeaway block); **data** → a locked chart block locks its dataset, including `definition`, `missing`, `events` and intervals; **sources** → sources linked to a locked block or its explanations; **composition** → `sceneLocks.fields: ["composition"]`, alongside `theme`, `interactions`, `cues`, `motion` and `profile`. The [lock test](../../tests/handoff-contracts.test.mjs) exercises each mapping.
+No new lock fields were added. The handoff's four categories map onto existing locks: **text** → `authorOverrides.lockedBlockIds` (block content, including the takeaway block); **data** → a locked chart block locks its dataset, including `definition`, `missing`, `events` and intervals; **sources** → sources linked to a locked block or its explanations; **composition** → `sceneLocks.fields: ["composition"]`, alongside `theme`, `interactions`, `cues`, `motion` and `profile`. The [lock test](../../tests/handoff-contracts.test.mjs) exercises each mapping. Since S2, `cues` and `motion` scene locks also keep `staticState` and the position of its key state ([test](../../tests/evidence-scene.test.mjs)).
+
+## Static state in web output (S2, 2026-10-19)
+
+A scene that declares `staticState` is exported in that state. State: **LocalVerified** for chart selections in one bilingual evidence scene ([evidence](../evidence/s2-vertical-sample/review.md), [conflicts](../plans/design-handoff-vertical-sample.md)).
+
+| View | Expected result |
+| --- | --- |
+| Without JavaScript | The chart draws the frozen selection from `staticInteractionState()`. A line above the figure states the key state's label and every shown value as text. **View all data** keeps the complete, unfiltered table; marks outside the selection keep their anchors there. |
+| Reading view | The player starts at the static state's cue boundary. The same text line stays visible while the scene is at that boundary and hides while the reader explores. |
+| Presentation view | Starts at the same boundary. **Replay cue sequence** still starts from the authored opening (position 0) and plays every cue. |
+| Reduced motion, `reducedMotion: "static"` | With the system setting or the page's **Reduce motion** control, the scene returns to its static state, **Replay cue sequence** is disabled and a notice says cues do not play. `deckweftInteractions.play()` keeps the static state. **Next cue** and the cue slider still work and apply state instantly. |
+| Reduced motion, `instant` (default) | Unchanged: cues still play; animation is removed. |
+
+How it stays compatible: the web runtime, chart renderer and CSS are embedded verbatim in every export, so editing them would change every existing file. The static-state code lives in [static-state.mjs](../../src/render/web/static-state.mjs) and [the runtime module](../../public/runtime/static-state.js), and is added only to documents with a declared static state. A scene without `staticState` renders byte-identically to S1 ([baseline test](../../tests/handoff-contracts.test.mjs)). The runtime data carry `staticState {keyStateId, position, reducedMotion}` for such scenes, so a global motion **Off** cannot drop the fallback.
+
+Limits: the review gate's fit receipt is measured at the opening, not at the static state; frozen steps, comparison tabs and hotspots are not drawn without JavaScript; on a 390 px screen a ranked bar still scrolls inside its plot. All three are listed in the [conflict list](../plans/design-handoff-vertical-sample.md#conflict-list).
+
+Recovery: if export answers `STATIC_STATE_UNIMPLEMENTED`, choose a key state that changes only chart selections, or the opening. If Studio refuses the static-state choice, unlock **Lock this scene interaction plan** first. To remove the static state, set `reducedMotion` to `instant` first.

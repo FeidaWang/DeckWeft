@@ -4,6 +4,8 @@ import { DeckError } from '../core/errors.mjs';
 import { assetHash } from '../assets/registry.mjs';
 import {chartSemantics} from '../components/charts/semantics.mjs';
 import {staticStatePosition} from '../design/scene-semantics.mjs';
+import {compileInteractions,staticInteractionState} from '../motion/cues.mjs';
+import {initialInteractionState} from '../motion/timeline.mjs';
 export function presentationCapabilities(target,document,resources={},plan=null){
  const issues=[];
  // Declared semantics that no compiler draws yet are refused, never silently dropped from the figure.
@@ -15,9 +17,10 @@ export function presentationCapabilities(target,document,resources={},plan=null)
   if(s.intervalSeriesIds.length)issues.push({code:'CHART_INTERVAL_UNIMPLEMENTED',blockId:b.id,message:'Interval bounds are declared but no dot-interval renderer exists yet (planned in S4); uncertainty is never dropped silently.'});
   if(s.eventIds.length)issues.push({code:'CHART_EVENTS_UNIMPLEMENTED',blockId:b.id,message:'Dataset events are declared but not drawn yet (planned in S4).'});
  }
- if(target==='html'&&plan)for(const scene of plan.scenes){
-  if(staticStatePosition(scene)>0)issues.push({code:'STATIC_STATE_UNIMPLEMENTED',sceneId:scene.id,message:'Static output renders the authored opening; a later static state is applied in S2.'});
-  if(scene.motion?.reducedMotion==='static')issues.push({code:'REDUCED_MOTION_FALLBACK_UNIMPLEMENTED',sceneId:scene.id,message:'Reduced motion applies state instantly today; the static fallback is applied in S2.'});
+ // A frozen chart selection is drawn for readers without JavaScript; frozen steps, comparison tabs and hotspots are not yet.
+ if(target==='html'&&plan)for(const scene of plan.scenes)if(staticStatePosition(scene)>0){
+  const specs=compileInteractions(document,scene),opening=initialInteractionState(specs),frozen=staticInteractionState(document,scene);
+  if(frozen.some((state,i)=>state.kind!=='chart-select'&&JSON.stringify(state)!==JSON.stringify(opening[i])))issues.push({code:'STATIC_STATE_UNIMPLEMENTED',sceneId:scene.id,message:'The static state changes a step, comparison or hotspot selection. Static output draws frozen chart selections only; choose a key state that changes charts only, or the opening.'});
  }
  if(!['html','json'].includes(target))issues.push({code:'TARGET_UNIMPLEMENTED',message:`Version 3 ${target} export has no native compiler yet.`});
  if(target==='html')for(const b of document.blocks.filter(b=>b.type==='image')){

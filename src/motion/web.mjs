@@ -2,6 +2,7 @@ import {x} from '../render/web/components/escape.mjs';
 import {compileCues} from './cues.mjs';
 import {objectAnchor} from '../components/annotations/identity.mjs';
 import {resolveTheme} from '../design/theme-registry.mjs';
+import {staticStatePosition} from '../design/scene-semantics.mjs';
 export function compileInteractionRuntime(document,plan,resources={}){
  const blocks=new Map(document.blocks.map(b=>[b.id,b]));
  return {version:1,locale:document.locale,scenes:plan.scenes.map(scene=>{
@@ -19,7 +20,7 @@ export function compileInteractionRuntime(document,plan,resources={}){
    components[spec.id]=detail;
   }
   const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{profile:document.visualBrief?.profile});
-  return {id:scene.id,interactions:compiled.interactions,cues:compiled.cues,motion:document.visualBrief?.profile.motionIntensity==='off'?{policy:'off',durationMs:0}:scene.motion||{policy:theme.motion.durationMs?'subtle':'off',durationMs:theme.motion.durationMs},components};
+  return {id:scene.id,interactions:compiled.interactions,cues:compiled.cues,motion:document.visualBrief?.profile.motionIntensity==='off'?{policy:'off',durationMs:0}:scene.motion||{policy:theme.motion.durationMs?'subtle':'off',durationMs:theme.motion.durationMs},components,...(scene.staticState?{staticState:{keyStateId:scene.staticState.keyStateId,position:staticStatePosition(scene),reducedMotion:scene.motion?.reducedMotion||'instant'}}:{})};
  })};
 }
 /** Fixed runtime code and inert data are embedded offline; no eval or dynamic module requests. */

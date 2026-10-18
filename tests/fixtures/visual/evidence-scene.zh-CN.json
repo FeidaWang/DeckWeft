@@ -1,0 +1,170 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "s2-evidence-scene-zh-CN",
+    "title": "先写结论，评审更快？六种写作习惯的示意排序——合成数据（2026 年），非实测结果",
+    "locale": "zh-CN",
+    "visualBrief": {
+      "audience": "正在决定是否试行“先写结论”的评审负责人；需要在一页内看到问题、排序与限定条件。",
+      "outputLanguage": "zh-CN",
+      "profile": {
+        "colorIntensity": "bold",
+        "typographicContrast": "expressive",
+        "density": "comfortable",
+        "motionIntensity": "subtle",
+        "imageEmphasis": "large"
+      }
+    },
+    "blocks": [
+      {
+        "id": "evidence-title",
+        "type": "heading",
+        "sourceIds": ["illustrative-sample"],
+        "text": "先写结论，评审更快：先写要点、再做页面的团队，评审时间降幅最大——示意排序（合成数据，2026 年）。"
+      },
+      {
+        "id": "evidence-chart",
+        "type": "chart",
+        "sourceIds": ["illustrative-sample"],
+        "datasetId": "review-time",
+        "chartType": "ranked-bar",
+        "axis": {"policy": "zero", "scale": "linear"},
+        "sort": "value-desc",
+        "question": "哪种写作习惯的评审时间降幅最大？",
+        "takeaway": "先写结论的团队示意降幅最大（38%）。"
+      },
+      {
+        "id": "evidence-takeaway",
+        "type": "callout",
+        "sourceIds": ["illustrative-sample"],
+        "text": "先写结论的团队：评审时间减少 38%，约为套用模板团队（19%）的两倍。"
+      },
+      {
+        "id": "evidence-caption",
+        "type": "paragraph",
+        "sourceIds": ["illustrative-sample"],
+        "text": "条形按评审工时的示意降幅为六种习惯排序；每个数值都是该团队采用前自身工时的百分比。数据为合成并已标注：不声称任何产品成效。"
+      },
+      {
+        "id": "evidence-source",
+        "type": "citation",
+        "sourceIds": ["illustrative-sample"],
+        "sourceId": "illustrative-sample",
+        "text": "示意样本 · 合成数据，非实测"
+      },
+      {
+        "id": "close-title",
+        "type": "heading",
+        "sourceIds": ["illustrative-sample"],
+        "text": "下一步：用实测数据检验这一结论。"
+      },
+      {
+        "id": "close-body",
+        "type": "paragraph",
+        "sourceIds": ["illustrative-sample"],
+        "text": "在把它当作证据展示之前，请用有来源的数据集替换示意样本；问题、定义与分母保持不变。"
+      },
+      {
+        "id": "close-source",
+        "type": "citation",
+        "sourceIds": ["illustrative-sample"],
+        "sourceId": "illustrative-sample",
+        "text": "方法说明 · 同一合成样本"
+      }
+    ],
+    "datasets": [
+      {
+        "id": "review-time",
+        "unit": "%",
+        "synthetic": true,
+        "categories": ["先写结论", "先列提纲", "先看数据", "套用模板", "逐页推进", "无固定习惯"],
+        "categoryIds": ["claim-first", "outline-first", "data-first", "template", "slide-by-slide", "no-habit"],
+        "series": [
+          {
+            "id": "reduction",
+            "label": "评审工时降幅（示意）",
+            "values": [38, 31, 27, 19, 12, 9]
+          }
+        ],
+        "sourceIds": ["illustrative-sample"],
+        "version": "s2-sample-2026-10",
+        "collectedAt": "2026-10-01",
+        "validPeriod": {"from": "2026-01-01", "to": "2026-09-30"},
+        "definition": {
+          "denominator": "各团队采用前自身的评审工时（合成）",
+          "sample": "n = 6 个习惯组，合成",
+          "normalized": true,
+          "betterDirection": "higher"
+        }
+      }
+    ],
+    "sources": [
+      {
+        "id": "illustrative-sample",
+        "title": "DeckWeft S2 示意样本（合成）",
+        "url": "https://example.org/deckweft/s2-illustrative-sample"
+      }
+    ],
+    "authorOverrides": {"lockedBlockIds": []},
+    "migration": {},
+    "rules": {"misreading": "strict"}
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "s2-evidence-scene-zh-CN",
+    "scenes": [
+      {
+        "id": "evidence",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": ["evidence-title", "evidence-chart", "evidence-takeaway", "evidence-caption", "evidence-source"],
+        "focalBlockId": "evidence-title",
+        "takeaway": {"blockId": "evidence-takeaway"},
+        "contentStatus": "illustrative",
+        "interactions": [
+          {"id": "focus-habits", "kind": "chart-select", "blockId": "evidence-chart"}
+        ],
+        "cues": [
+          {
+            "id": "focus-structure-first",
+            "event": "data.filter",
+            "interactionId": "focus-habits",
+            "seriesIds": ["reduction"],
+            "fromId": "claim-first",
+            "toId": "data-first",
+            "label": "聚焦三种先搭结构的习惯"
+          },
+          {
+            "id": "restore-ranking",
+            "event": "data.filter",
+            "interactionId": "focus-habits",
+            "seriesIds": ["reduction"],
+            "fromId": "claim-first",
+            "toId": "no-habit",
+            "label": "恢复全部六种习惯"
+          }
+        ],
+        "keyStates": [
+          {"id": "opening", "position": 0, "label": "全部六种习惯"},
+          {"id": "structure-first", "position": 1, "label": "先搭结构的习惯（6 种中的 3 种）"},
+          {"id": "complete", "position": 2, "label": "已恢复全部六种习惯"}
+        ],
+        "staticState": {"keyStateId": "opening"},
+        "motion": {"policy": "subtle", "durationMs": 240, "trigger": "manual", "clock": "cues", "reducedMotion": "static"}
+      },
+      {
+        "id": "next-step",
+        "role": "closing",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "reading-flow",
+        "blockIds": ["close-title", "close-body", "close-source"],
+        "focalBlockId": "close-title"
+      }
+    ]
+  }
+}

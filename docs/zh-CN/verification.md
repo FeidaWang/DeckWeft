@@ -4,6 +4,10 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S2 设计交接垂直样本 — 2026-10-19
+
+一页示意证据页（结论、排序条形图、来源、焦点）以中英文完整走过 Studio 导入、两套主题包、字体测量、鼠标与键盘焦点、暂停与定位、新增的静态状态选择、现有的测量后导出审查门，以及导出文件的各个视图。静态输出现在会把已声明的 `staticState` 应用到图表选择；`reducedMotion: "static"` 时显示该状态而不播放提示；现有输出保持逐字节一致。`npm run verify` 通过 **362 项测试**（361 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。`tests/browser_evidence_scene.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过；已查看 1440 与 390px 的全部 20 张截图。键盘焦点从未翻页，快速翻页后待执行计时器为 0。PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 After Effects 与 LibreOffice。20 项冲突附复现步骤列出。[证据](../evidence/s2-vertical-sample/review.md) · [冲突清单](../plans/design-handoff-vertical-sample.md)。
+
 ## S1 设计交接契约扩展 — 2026-10-19
 
 仅契约变更，状态 **Implemented**。四个 v3 schema 新增可选交接字段（场景结论、内容状态、关键状态与静态状态；数据集身份、定义、缺失原因、区间与事件；按图声明的刻度、排序与截断；动效触发／时钟／减少动态；主题 token 角色）。`npm run verify` 通过 **355 项测试**（354 通过，1 项按环境跳过）、类型重新生成、1,083 个文件的源码与链接检查、可复现打包和演示。新增 13 项测试覆盖六条误读守卫（各含一正一反）、旧示例与反例、显式 `declareChartSemantics()` 迁移、锁定映射与主题默认值；其中一项证明 12 份现有 HTML／JSON 输出和 12 份主题解析结果与变更前记录的哈希完全一致。未运行浏览器、宿主、PowerPoint、Keynote、Figma 或 After Effects，未做任何视觉检查。尚无渲染器的声明会以具名错误码拒绝 HTML 导出。[字段与恢复](architecture.md#版本-3-交接字段s12026-10-19) · [计划记录](../plans/design-handoff-alignment.md#11-s1-result--contract-extension-2026-10-19)。
