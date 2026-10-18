@@ -1,7 +1,7 @@
 {
   "project": "DeckWeft",
   "version": "0.1.0-alpha.2",
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "statusMeaning": "implemented-local means local source/test evidence, not production or authenticated host certification",
   "phases": [
     {
@@ -1169,11 +1169,21 @@
         "VIS-013"
       ],
       "title": "First visual release gate",
-      "state": "planned",
+      "state": "partial",
       "acceptance": [
         "all three initial themes pass the bilingual 12-page gallery; each theme produces a coherent bilingual 8-page story; at least three interaction types work; both actual hosts finish a prompt-to-artifact task and a scoped revision; the standalone exported package works outside the repository. Compare the same content against VIS-001's baseline. Approve the whole story, including weakest pages, not only selected hero screenshots."
       ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+      "remaining": "Claude prompt-to-artifact and scoped revision remain deferred by the user, so the both-hosts criterion is unmet. Missing glyphs are not detected (C13); the 390 px heatmap still scrolls (S4 follow-up); CJK headings break inside words (C12); single-file exports are 6.8–7.0 MB against the ~2 MB starting budget. The advisory scored review is 74–77/100, below the 80 pilot threshold, and needs author calibration. Screen reader, IME, 200% zoom, projection and native applications remain untested; remote CI has not run this branch.",
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/vis-014/review.md",
+      "implemented": [
+        "Frozen requirements §9 gallery (decision C): 12 pages, four per theme, English and Simplified Chinese, per-page content hashes enforced by a test (docs/visual-acceptance/gallery-manifest.json)",
+        "One bilingual 8-page story drawn by each theme; facts, data tables, sources and citations identical across themes for gallery and stories (tested)",
+        "scripts/release-gate.mjs: VIS-010 quality pipeline on all eight decks (0 issues, 96 of 96 traces at 1440/1024/390 px), eleven explicit cases (10 pass), VIS-001 legacy comparison, standalone exports offline outside the repository in Chromium 151, Firefox 153 and WebKit 26.5, and the portable bundle run there",
+        "Six renderer failures found by the gallery fixed (cover citation contrast and split number, trend label overlap, heatmap label margin, before/after labels under the compare panel, linear process diagrams); render baseline re-recorded with no visible word or value change",
+        "Real Codex CLI drafted-deck run: prompt to reviewed export, page-3-only revision, second image review and export (attempt 3; attempts recorded)",
+        "S3, S4 and S5 merged with a layered chart-focus rule (decisions in design-handoff-alignment.md §13)"
+      ]
     },
     {
       "id": "VIS-015",
@@ -1348,6 +1358,15 @@
     "DW-110"
   ],
   "currentBuild": {
+    "scope": "VIS-014 first visual release gate (S6)",
+    "implementation": "implemented-local",
+    "acceptance": "partial: frozen bilingual gallery, three bilingual 8-page stories, four interaction types, explicit cases, legacy comparison, standalone exports in three engines and a real Codex prompt-to-artifact task with a scoped revision; Claude deferred; missing-glyph detection open; advisory review below threshold",
+    "evidence": "docs/evidence/vis-014/review.md",
+    "remainingManualAcceptance": [
+      "Deferred Claude route, author calibration of the scored review, missing-glyph detection, accessibility (screen reader, IME, 200% zoom), projection, native applications and remote CI"
+    ]
+  },
+  "previousWorkbenchBuild": {
     "scope": "VIS-013 prompt-first Visual Studio workbench",
     "implementation": "implemented-local",
     "acceptance": "Local real UI generation/capture/review boundary, actual Codex selected-page revision and reviewed changed HTML, source/lock/privacy/recovery checks; Claude deferred",
@@ -1384,7 +1403,8 @@
     "VIS-010",
     "VIS-011",
     "VIS-012",
-    "VIS-013"
+    "VIS-013",
+    "VIS-014"
   ],
   "previousBuild": {
     "scope": "MB-06 through MB-10",
@@ -1474,8 +1494,8 @@
   "planningMeaning": "nextExecutionOrder is planning, not authorization. executionOrder retains historical batches; authorizedTaskIds includes the directly requested VIS-013.",
   "openAcceptanceGates": [
     "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",
-    "VIS-014 twelve families, fixed bilingual gallery, coherent stories and standalone packaging",
-    "Other engines, actual screen reader/IME/200% zoom; native v3 applications only when implemented"
+    "VIS-014 partial: Claude host deferred, missing-glyph detection, 390 px heatmap scroll, CJK heading breaks, payload budget, author calibration of the scored review",
+    "Actual screen reader/IME/200% zoom and projection; native v3 applications only when implemented (Chromium, Firefox and WebKit standalone loads now recorded for VIS-014)"
   ],
   "previousVisualTaskBuild": {
     "scope": "VIS-011 local design director and one-task production loop",

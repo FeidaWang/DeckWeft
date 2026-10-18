@@ -1,0 +1,287 @@
+{
+  "rows": [
+    {
+      "fixture": "product-en",
+      "legacyCapture": "docs/visual-baseline/product-en.png",
+      "renders": [
+        {
+          "variant": "migrated",
+          "theme": "cream-collage",
+          "compositions": [
+            "reading-flow",
+            "reading-flow"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/product-en-migrated-cream-collage.png",
+            "sha256": "78141668b743918d166ee33fc443954014968bc01c99379e4f9c9f90ed84a81a"
+          }
+        },
+        {
+          "variant": "migrated",
+          "theme": "dark-data",
+          "compositions": [
+            "reading-flow",
+            "reading-flow"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/product-en-migrated-dark-data.png",
+            "sha256": "489e93949ea435ce1966a605443c0544d742404b10b210c287ff56d2768ffbf7"
+          }
+        },
+        {
+          "variant": "migrated",
+          "theme": "electric-violet",
+          "compositions": [
+            "violet-chapter",
+            "violet-chapter"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/product-en-migrated-electric-violet.png",
+            "sha256": "404cc5a8cd4049175f655e6c9c5e9bab997f9275cfa138d7c3fe0c88207b1208"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "cream-collage",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/product-en-composed-cream-collage.png",
+            "sha256": "f74f81070b9df7943127ae99d4c28b553728f10ab044f33ff378baafc3e8354e"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "dark-data",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/product-en-composed-dark-data.png",
+            "sha256": "11886c9bd930669b4165afb84808cc05910285386c9600f3afa924d32af1ef90"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "electric-violet",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/product-en-composed-electric-violet.png",
+            "sha256": "2f3f77d5f27413e521acd08fd61a4920e99e6b19ccceda82aec74afad4b61315"
+          }
+        }
+      ],
+      "sheet": {
+        "file": "legacy/product-en-sheet.png",
+        "sha256": "e37d8679fbd4098381df4544edac590d5f003c799fcc49fbb70d7889cf207b80"
+      }
+    },
+    {
+      "fixture": "strategy-zh-CN",
+      "legacyCapture": "docs/visual-baseline/strategy-zh-CN.png",
+      "renders": [
+        {
+          "variant": "migrated",
+          "theme": "cream-collage",
+          "compositions": [
+            "reading-flow",
+            "reading-flow"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/strategy-zh-CN-migrated-cream-collage.png",
+            "sha256": "04c5ea25f5b12110c9854cdd35ebbad2162a33e25fbf4c101b39679e760807ab"
+          }
+        },
+        {
+          "variant": "migrated",
+          "theme": "dark-data",
+          "compositions": [
+            "reading-flow",
+            "reading-flow"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/strategy-zh-CN-migrated-dark-data.png",
+            "sha256": "8b9a8677d237c793f74d88b61b4c7ad4ff134735c40f5187c361996e17ca8e04"
+          }
+        },
+        {
+          "variant": "migrated",
+          "theme": "electric-violet",
+          "compositions": [
+            "violet-chapter",
+            "violet-chapter"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/strategy-zh-CN-migrated-electric-violet.png",
+            "sha256": "69d377056d8872e3a9c77969936c403c13a272128bbe57a7711380374da2711e"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "cream-collage",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/strategy-zh-CN-composed-cream-collage.png",
+            "sha256": "f5316e4166ff924b7890a05890682bc893f58a63a70f3b83cdd7fc5aab5e0828"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "dark-data",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/strategy-zh-CN-composed-dark-data.png",
+            "sha256": "7aa300fa5e56698be66c2f1ef25aeb56380ff186a48f722f36b3268b73fb0e3a"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "electric-violet",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/strategy-zh-CN-composed-electric-violet.png",
+            "sha256": "296dcb67f8766b44c41c27d5ec3f710add57ace69fc9eb7a47a4412a42cab8b7"
+          }
+        }
+      ],
+      "sheet": {
+        "file": "legacy/strategy-zh-CN-sheet.png",
+        "sha256": "1ec0120dbc1ff2c395c0bd135891ec4b8144f0f6cb2e568443e0b8df477ddfa4"
+      }
+    },
+    {
+      "fixture": "technical-en",
+      "legacyCapture": "docs/visual-baseline/technical-en.png",
+      "renders": [
+        {
+          "variant": "migrated",
+          "theme": "cream-collage",
+          "compositions": [
+            "reading-flow",
+            "reading-flow"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/technical-en-migrated-cream-collage.png",
+            "sha256": "d73df6397182966a7b2ea0863402be105c6156e58d9ea6389f8c5e4c3bf2e62c"
+          }
+        },
+        {
+          "variant": "migrated",
+          "theme": "dark-data",
+          "compositions": [
+            "reading-flow",
+            "reading-flow"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/technical-en-migrated-dark-data.png",
+            "sha256": "024ff6cad9e22428f18ba8b33f86be2cf38dfdacbcbccbc20ab5e22749073283"
+          }
+        },
+        {
+          "variant": "migrated",
+          "theme": "electric-violet",
+          "compositions": [
+            "violet-chapter",
+            "violet-chapter"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/technical-en-migrated-electric-violet.png",
+            "sha256": "1d86c3e3a1c80d2f1e0defc6eaac579e081f8a650cd548efd554f18e17472cd3"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "cream-collage",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/technical-en-composed-cream-collage.png",
+            "sha256": "4cce58b55ca7da7352f11db950303c6b6fa437e4b7a84b3373cfd51efa8df24d"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "dark-data",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/technical-en-composed-dark-data.png",
+            "sha256": "c8f58cfeab764c173dedaac97840205b757a1913ddb55d21eb83a075610e5960"
+          }
+        },
+        {
+          "variant": "composed",
+          "theme": "electric-violet",
+          "compositions": [
+            "statement-split",
+            "statement-split"
+          ],
+          "missingText": [],
+          "issues": [],
+          "capture": {
+            "file": "legacy/technical-en-composed-electric-violet.png",
+            "sha256": "bd4a036c9642a2ad10b731d9d403c74c0e69f300ea809c77aebfc659eeaa85cc"
+          }
+        }
+      ],
+      "sheet": {
+        "file": "legacy/technical-en-sheet.png",
+        "sha256": "b3d4cce129b5f2d3feac241b5be39d04c0b29466b55f3e9485e094dbd39b3d94"
+      }
+    }
+  ],
+  "ok": true
+}

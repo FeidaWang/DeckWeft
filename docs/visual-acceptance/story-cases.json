@@ -1,0 +1,325 @@
+{
+  "format": "deckweft-vis-014-story-cases",
+  "version": 1,
+  "recordedAt": "2026-10-19",
+  "note": "One bilingual 8-page document drawn by each theme. Machine status awaiting-visual-review means every automated check passed; the visual judgment is in review.md.",
+  "stories": [
+    {
+      "theme": "cream-collage",
+      "compositions": {
+        "st-open": "diagonal-cover",
+        "st-context": "metric-band",
+        "st-evidence": "evidence-left",
+        "st-compare": "comparison-matrix",
+        "st-process": "process-stair",
+        "st-pair": "before-after-split",
+        "st-quote": "quote-split",
+        "st-close": "closing-steps"
+      },
+      "interactions": [
+        "chart-select (st-evidence)",
+        "steps (st-process)",
+        "image-compare (st-pair)"
+      ],
+      "staticState": "st-evidence: opening (author key state); the export-final-state case freezes the argument key state",
+      "runs": [
+        {
+          "locale": "en",
+          "deck": "story-cream-collage-en",
+          "machineStatus": "awaiting-visual-review",
+          "issues": 0,
+          "traces": "12/12",
+          "contactSheet": "../evidence/vis-014/story-cream-collage-en-contact.png"
+        },
+        {
+          "locale": "zh-CN",
+          "deck": "story-cream-collage-zh-CN",
+          "machineStatus": "awaiting-visual-review",
+          "issues": 0,
+          "traces": "12/12",
+          "contactSheet": "../evidence/vis-014/story-cream-collage-zh-CN-contact.png"
+        }
+      ],
+      "weakestPage": {
+        "page": 5,
+        "sceneId": "st-process",
+        "why": "process-stair gives the diagram a narrow centre column; node labels are about 10 px at 1440 px"
+      }
+    },
+    {
+      "theme": "dark-data",
+      "compositions": {
+        "st-open": "statement-banner",
+        "st-context": "metric-left",
+        "st-evidence": "chart-with-evidence-rail",
+        "st-compare": "comparison-rail",
+        "st-process": "process-line",
+        "st-pair": "before-after-rail",
+        "st-quote": "quote-band",
+        "st-close": "closing-focus"
+      },
+      "interactions": [
+        "chart-select (st-evidence)",
+        "steps (st-process)",
+        "image-compare (st-pair)"
+      ],
+      "staticState": "st-evidence: opening (author key state); the export-final-state case freezes the argument key state",
+      "runs": [
+        {
+          "locale": "en",
+          "deck": "story-dark-data-en",
+          "machineStatus": "awaiting-visual-review",
+          "issues": 0,
+          "traces": "12/12",
+          "contactSheet": "../evidence/vis-014/story-dark-data-en-contact.png"
+        },
+        {
+          "locale": "zh-CN",
+          "deck": "story-dark-data-zh-CN",
+          "machineStatus": "awaiting-visual-review",
+          "issues": 0,
+          "traces": "12/12",
+          "contactSheet": "../evidence/vis-014/story-dark-data-zh-CN-contact.png"
+        }
+      ],
+      "weakestPage": {
+        "page": 3,
+        "sceneId": "st-evidence",
+        "why": "cue toolbar, range controls and the static-state statement crowd the top before the chart"
+      }
+    },
+    {
+      "theme": "electric-violet",
+      "compositions": {
+        "st-open": "violet-chapter",
+        "st-context": "metric-right",
+        "st-evidence": "evidence-top",
+        "st-compare": "comparison-stack",
+        "st-process": "process-rail",
+        "st-pair": "before-after-triptych",
+        "st-quote": "quote-center",
+        "st-close": "closing-split"
+      },
+      "interactions": [
+        "chart-select (st-evidence)",
+        "steps (st-process)",
+        "image-compare (st-pair)"
+      ],
+      "staticState": "st-evidence: opening (author key state); the export-final-state case freezes the argument key state",
+      "runs": [
+        {
+          "locale": "en",
+          "deck": "story-electric-violet-en",
+          "machineStatus": "awaiting-visual-review",
+          "issues": 0,
+          "traces": "12/12",
+          "contactSheet": "../evidence/vis-014/story-electric-violet-en-contact.png"
+        },
+        {
+          "locale": "zh-CN",
+          "deck": "story-electric-violet-zh-CN",
+          "machineStatus": "awaiting-visual-review",
+          "issues": 0,
+          "traces": "12/12",
+          "contactSheet": "../evidence/vis-014/story-electric-violet-zh-CN-contact.png"
+        }
+      ],
+      "weakestPage": {
+        "page": 5,
+        "sceneId": "st-process",
+        "why": "the diagram sits half-size in the right rail; the left column is empty under a short heading"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "long-title",
+      "locale": "en",
+      "page": "gallery 1 · cc-cover",
+      "state": "opening",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Open the gallery at 1440, 1024 and 390 px.",
+      "passed": true,
+      "observed": {
+        "390": [],
+        "1024": [],
+        "1440": []
+      },
+      "fix": "Cover citation and metric fixes in ee20343."
+    },
+    {
+      "id": "long-title",
+      "locale": "zh-CN",
+      "page": "gallery 1 · cc-cover",
+      "state": "opening",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Open the gallery at 1440, 1024 and 390 px.",
+      "passed": true,
+      "observed": {
+        "390": [],
+        "1024": [],
+        "1440": []
+      },
+      "fix": "Cover citation and metric fixes in ee20343."
+    },
+    {
+      "id": "overlong-legend",
+      "locale": "en",
+      "page": "gallery 8 · ev-evidence",
+      "state": "opening",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Replace both series labels of the grouped bar with ~90-character names; open at 1440 and 390 px.",
+      "passed": true,
+      "observed": {
+        "390": [],
+        "1440": []
+      },
+      "fix": "None needed: legend and row labels wrap."
+    },
+    {
+      "id": "overlong-legend",
+      "locale": "zh-CN",
+      "page": "gallery 8 · ev-evidence",
+      "state": "opening",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Replace both series labels of the grouped bar with ~90-character names; open at 1440 and 390 px.",
+      "passed": true,
+      "observed": {
+        "390": [],
+        "1440": []
+      },
+      "fix": "None needed: legend and row labels wrap."
+    },
+    {
+      "id": "missing-glyph",
+      "locale": "en",
+      "page": "story 1 · st-open (cream-collage)",
+      "state": "opening",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Append U+E000 to the cover title; open at 1440 px; read Chromium platform fonts for the heading.",
+      "passed": false,
+      "observed": {
+        "renderChecks": [],
+        "platformFonts": [
+          {
+            "familyName": "Iowan Old Style",
+            "postScriptName": "IowanOldStyle-Roman",
+            "isCustomFont": false,
+            "glyphCount": 40
+          }
+        ],
+        "lastResortGlyphs": 0
+      },
+      "fix": "Open: the fit audit and the Studio gate do not report missing glyphs (C13); only this probe does.",
+      "detectedBy": "not detected"
+    },
+    {
+      "id": "no-image-asset",
+      "locale": "en",
+      "page": "gallery 5 · ev-photo",
+      "state": "opening",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Delete the starfield PNG from a copy of the asset home, then export and open the gallery.",
+      "passed": true,
+      "observed": {
+        "export": "refused",
+        "code": "TARGET_CAPABILITY",
+        "message": "This target cannot represent the requested presentation yet.",
+        "details": [
+          {
+            "code": "ASSET_UNRESOLVED",
+            "blockId": "photo-image",
+            "message": "Restore the hash-matching local image or replace this image. No remote asset fallback is used."
+          }
+        ]
+      },
+      "fix": "None needed: the failure is named, not hidden."
+    },
+    {
+      "id": "missing-data",
+      "locale": "en",
+      "page": "gallery 9 · dd-trend",
+      "state": "opening",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Open the trend page at 390 px; the 390 px series has no value at 11:00.",
+      "passed": true,
+      "observed": {
+        "polylines": 4,
+        "note": "Missing · 390 px, Oct 19, 11:00 AM: not collected — The 390 px run at 11:00 was not collected.",
+        "noteVisible": true,
+        "cell": [
+          "Missing · not collected"
+        ]
+      },
+      "fix": "None needed: drawn as a gap, named in a visible note and the table; never zero."
+    },
+    {
+      "id": "reload",
+      "locale": "en",
+      "page": "story 3, 5, 6 (dark-data)",
+      "state": "explored → reload",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Change the chart range, select step 2 and the second image, then reload.",
+      "passed": true,
+      "observed": {
+        "changed": true,
+        "restored": true,
+        "storage": {
+          "local": 0,
+          "session": 0
+        }
+      },
+      "fix": "None needed: the authored opening returns; nothing is stored."
+    },
+    {
+      "id": "rapid-paging",
+      "locale": "en",
+      "page": "story (dark-data), from page 3",
+      "state": "replaying",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Replay page 3, then press Next/Next/Previous ten times and Previous twelve times without waiting.",
+      "passed": true,
+      "observed": {
+        "page": "1 / 8",
+        "timers": 0,
+        "animations": 0,
+        "busy": []
+      },
+      "fix": "None needed."
+    },
+    {
+      "id": "pause-resume",
+      "locale": "en",
+      "page": "story 3 · st-evidence (dark-data)",
+      "state": "playing → paused → playing",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Play the cue sequence, pause after the first cue, wait 1.2 s, play again.",
+      "passed": true,
+      "observed": {
+        "pausedAt": 1,
+        "afterWait": 1,
+        "playingWhilePaused": false,
+        "timersWhilePaused": 0,
+        "resumedTo": 2,
+        "cues": 2
+      },
+      "fix": "None needed."
+    },
+    {
+      "id": "export-final-state",
+      "locale": "en",
+      "page": "story 3 · st-evidence (dark-data)",
+      "state": "static state “argument” (position 1)",
+      "host": "local isolated Chromium (file://)",
+      "reproduction": "Set the static state to the argument key state, export, open without JavaScript and with reduced motion.",
+      "passed": true,
+      "observed": {
+        "noJsRows": 3,
+        "noJsStatement": "Static view · Argument pages (3 of 6): Evidence 6.5 hours, Method 4 hours, Appendix 3.5 hours. Filter: author order, Evidence → Appendix (3 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3. Complete data below.",
+        "reducedOpensAt": 1,
+        "frozen": true
+      },
+      "fix": "None needed."
+    }
+  ]
+}

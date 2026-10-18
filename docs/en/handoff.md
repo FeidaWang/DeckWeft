@@ -1,4 +1,13 @@
-VIS-013 is now implemented locally in the existing Visual Studio. Preserve [workbench evidence](../evidence/vis-013/review.md), independent preferences, scoped choices and strict image-reviewed export. Claude remains deferred; VIS-014 is planned, not automatically authorized.
+S6 (VIS-014 visual release gate) is **partial** as of 2026-10-19 on branch `claude/s6-start-1c14f9`. The branch merges S3, S4 and S5 and is not pushed. Start from it, not from `main`: `main` has none of S1–S6. The decisions are in [alignment §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19):
+
+- gallery option C
+- the layered chart-focus rule
+- Claude deferred
+
+Run the gate with `node scripts/release-gate.mjs` ([manual](../visual-acceptance/README.md)). Embedded player changes still bump `PLAYER_VERSION` (now `semantic-player.4`) and re-record the baseline in their own commit.
+
+Open after S6: missing-glyph detection, the 390 px heatmap scroll, CJK heading breaks, payload size, and author calibration of the [scored review](../visual-acceptance/review.md) (74–77, below 80). Next in the plan is S7: output levels and VIS-016. It is not authorized by this handoff.
+
 
 # Continue from the current visual implementation
 

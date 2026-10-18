@@ -1,4 +1,13 @@
-VIS-013 已在现有 Visual Studio 中本地实现，保留[工作台证据](../evidence/vis-013/review.md)、独立偏好、范围选择及严格图片审阅导出。Claude 继续暂缓，VIS-014 是后续计划，不自动授权执行。
+截至 2026-10-19，S6（VIS-014 视觉发布门）在分支 `claude/s6-start-1c14f9` 上为 **partial**。该分支已合并 S3、S4、S5，尚未推送。请从这个分支继续，而不是 `main`：`main` 上没有任何 S1–S6 的内容。相关决定见[对齐文档 §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)：
+
+- 画廊采用方案 C
+- 分层图表聚焦规则
+- Claude 继续 deferred
+
+用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.4`），并在单独的提交中重录基线。
+
+S6 之后仍未完成：缺字形检测、390 px 热力图横向滚动、中文标题在词中断行、页面体积，以及作者对[评分审阅](../visual-acceptance/review.md)（74–77，低于 80）的校准。计划中的下一步是 S7：输出等级与 VIS-016。本交接不构成对它的授权。
+
 
 # 从当前视觉实现继续
 

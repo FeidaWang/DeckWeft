@@ -4,6 +4,35 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## VIS-014 first visual release gate — 2026-10-19
+
+State **partial**. [Evidence](../evidence/vis-014/review.md) · [Gate manual](../visual-acceptance/README.md) · [Scored review](../visual-acceptance/review.md).
+
+Results:
+
+- `npm run verify` passed **410 tests** (409 pass, 1 environment-gated skip), plus types, source and link checks over 1,271 files, packaging and demos.
+- `scripts/release-gate.mjs` ran in isolated Chrome for Testing 151 with temporary contexts. The frozen gallery and the three stories, in both languages, had 0 issues and 96 of 96 interaction traces at 1440, 1024 and 390 px.
+- Ten of eleven explicit cases passed. The missing glyph is not detected.
+- The three VIS-001 legacy decks keep all their text in every theme.
+- All eight exports opened offline from an OS temp folder in Chromium 151, Firefox 153 (cached build) and WebKit 26.5. The copied bundle ran a local task there.
+- A real Codex CLI 0.160.0 run drafted a deck from a prompt, reviewed seven actual captures, exported it, revised page 3 only, reviewed again and exported. It passed on attempt 3. Attempt 1 was a gate-script defect; attempt 2 was a rejected host review, whose reason the adapter now names.
+- Claude is deferred.
+- Re-run on the merged branch:
+  - `tests/browser_evidence_scene.mjs` (S2)
+  - `browser_motion_state.mjs` (S5)
+  - `browser_chart_kinds.mjs` (S4)
+  - `browser_families.mjs` (S3)
+  - `browser_compositions.mjs` (VIS-006)
+  - `browser_interaction_visual_parity.mjs` (VIS-009, 216 comparisons)
+
+  The S2 and S5 scripts were updated for the layered focus rule and S4's HTML bar marks.
+
+Viewed: every deck's 1440 px contact sheet, two 390 px sheets, the case, legacy and per-engine captures, and the host before/after pages.
+
+The advisory review scores 74–77/100, below the 80 pilot threshold.
+
+PowerPoint, Keynote and Figma were installed but not run (no v3 compiler). LibreOffice and After Effects were not found.
+
 ## S6 integration of S3, S4 and S5 — 2026-10-19
 
 Re-recorded a second time in S6 (`semantic-player.4`, `visual-art-direction.6`) for six renderer failures the VIS-014 gallery exposed: diagonal-cover citation contrast, a split cover number, overlapping trend time labels, heatmap row labels outside the frame, mislabelled before/after images under the compare panel, and wrapped linear process diagrams. Against the previous recording (`8252c10`) no visible word or value changed in any of the 12 HTML entries; anchors and data tables are equal. [Receipt](../evidence/s6-integration/baseline-diff-gallery-fixes.json).

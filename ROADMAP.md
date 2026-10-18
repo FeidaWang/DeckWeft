@@ -2,6 +2,28 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## VIS-014 — first visual release gate (S6), 2026-10-19
+
+VIS-014 is **partial**. The gate runs locally:
+
+- a frozen bilingual 12-page gallery (requirements §9)
+- one bilingual 8-page story per theme, with identical facts in every theme
+- the VIS-010 pipeline on all eight decks (0 issues, 96 of 96 interaction traces)
+- eleven explicit cases, ten of which pass
+- the VIS-001 legacy comparison
+- standalone exports opened offline outside the repository in Chromium, Firefox and WebKit
+
+A real Codex CLI run drafted a deck from a prompt, reviewed its actual captures, exported it, revised one page and exported it again. The gate found six renderer failures, which were fixed with a deliberate baseline re-recording.
+
+What remains open:
+
+- Claude is deferred, so the both-hosts criterion is unmet.
+- Missing glyphs are not detected.
+- The 390 px heatmap scrolls, and CJK headings break inside words.
+- The advisory scored review is 74–77/100, below the pilot threshold, and needs the author's calibration.
+
+S3, S4 and S5 were merged into this branch first, with a layered chart-focus rule. [Gate manual](docs/visual-acceptance/README.md) · [Scored review](docs/visual-acceptance/review.md) · [Evidence](docs/evidence/vis-014/review.md).
+
 ## Verified source publication — 2026-10-18
 
 VIS-001 now has clean-checkout and remote CI acceptance for the recorded source. All 338 tests/types/check/build/export gates passed locally and on GitHub Node 22 for Ubuntu, macOS and Windows. The complete interaction gallery and actual preview/export image comparison passed; wider host/native/accessibility and VIS-014 release gates remain separate. [Evidence](docs/evidence/interaction-visual-regression/review.md).
@@ -18,7 +40,7 @@ VIS-012 is **implemented locally, partial acceptance**: Codex and Claude Code sh
 
 The [updated visual-first requirements](DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) now distinguish the old committed audit from the current visual implementation. VIS-001 baseline/CI acceptance is recorded; VIS-002–011 are implemented locally with the evidence below. `roadmap.json` includes every remaining VIS/SRC/DOC/EXP task and its dependencies. Historical batch orders and authorization records are retained; `nextExecutionOrder` is planning only.
 
-VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. Next planned implementation: **VIS-014 visual release gate**. Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
+VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. VIS-014 is partial (see above); the design-handoff plan continues with S7 (output levels and VIS-016). Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
 
 [Reconciliation and current validation](docs/evidence/roadmap-reconciliation/review.md) · [Next-task handoff](docs/en/handoff.md).
 

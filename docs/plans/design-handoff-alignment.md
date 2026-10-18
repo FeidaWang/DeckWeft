@@ -476,3 +476,21 @@ The user decided these at the start of S6 (VIS-014). They are recorded here so S
 | Claude host | Stays **deferred**. Only Codex runs a real prompt-to-artifact task and scoped revision. | VIS-014 needs both hosts, so the most its evidence can support is `partial`. |
 | Decision 2 — T01–T03 | Not asked; not needed for VIS-014. | Open for S8. |
 
+
+## 14. S6 result — VIS-014 release gate, 2026-10-19
+
+State: **partial** (roadmap) / LocalVerified for the gate's local scope; HostVerified for one Codex run; Claude deferred. [Evidence](../evidence/vis-014/review.md) · [gate manual](../visual-acceptance/README.md) · [scored review](../visual-acceptance/review.md).
+
+| Kickoff step | Result |
+|---|---|
+| 1. Gallery in both languages per theme; facts identical | Frozen §9 gallery (decision C) with per-page content hashes; every page drawn in every theme keeps identical tables, links and citations (tested) |
+| 2. One coherent bilingual 8-page story per theme; weakest page | Three stories from one document; weakest pages named (`st-process`, `st-evidence`, `st-process`) |
+| 3. At least three interaction types with real traces | Four kinds, 96 of 96 traces at 1440 / 1024 / 390 px |
+| 4. Explicit cases | 10 of 11 pass; missing glyph undetected (C13, S8) |
+| 5. Compare with the VIS-001 baseline | Text preserved in every theme; side-by-side sheets viewed |
+| 6. Standalone package outside the repository | 8 of 8 decks offline in Chromium 151, Firefox 153 and WebKit 26.5; bundle ran a local task there |
+| 7. Host runs | Codex drafted → reviewed → exported → page-3 revision → reviewed → exported (attempt 3); Claude deferred |
+
+Found and fixed by the gate (renderer `visual-art-direction.6`, player `semantic-player.4`): diagonal-cover citation contrast and split cover number, trend label overlap, heatmap label margin, before/after labels under the compare panel, linear process layout. Also: the host adapter now names which review check failed.
+
+Handoff decisions not changed by S6: ProductStage, case-study and Table / Reference are not added; the page-42 storyboard stays a P1 exit check for S8; T01–T03 (decision 2) stays open for S8.

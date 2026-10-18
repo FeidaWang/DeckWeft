@@ -4,6 +4,35 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## VIS-014 首个视觉发布门 — 2026-10-19
+
+状态 **partial**。[证据（英文）](../evidence/vis-014/review.md) · [发布门手册](visual-acceptance.md) · [评分审阅（英文）](../visual-acceptance/review.md)。
+
+结果：
+
+- `npm run verify` 通过 **410 项测试**（409 通过，1 项按环境跳过），以及类型检查、1,271 个文件的源码与链接检查、打包和示例。
+- `scripts/release-gate.mjs` 在隔离的 Chrome for Testing 151 和临时上下文中运行。冻结画廊与三份故事的中英文版本在 1440、1024、390 px 下均为 0 个问题，96/96 条交互轨迹通过。
+- 11 个显式用例中 10 个通过；缺字形无法被检测。
+- 三份 VIS-001 旧版整稿在每个主题中都保留全部文字。
+- 8 份导出文件从系统临时目录离线打开，在 Chromium 151、Firefox 153（缓存版本）和 WebKit 26.5 中均正常；复制出去的运行包也在那里完成了一个本地任务。
+- 真实 Codex CLI 0.160.0 运行：从提示起草整稿，审阅 7 张实际截图后导出，只修订第 3 页，再次审阅并导出，第 3 次尝试通过。第 1 次是发布门脚本的缺陷；第 2 次是宿主审阅被拒，适配器现在会写明拒绝原因。
+- Claude 仍为 deferred。
+- 在合并后的分支上重新运行：
+  - `tests/browser_evidence_scene.mjs`（S2）
+  - `browser_motion_state.mjs`（S5）
+  - `browser_chart_kinds.mjs`（S4）
+  - `browser_families.mjs`（S3）
+  - `browser_compositions.mjs`（VIS-006）
+  - `browser_interaction_visual_parity.mjs`（VIS-009，216 项对照）
+
+  S2 与 S5 脚本已按分层聚焦规则和 S4 的 HTML 条形标记更新。
+
+已查看：每份整稿的 1440 px 对照表、两张 390 px 对照表、用例截图、旧基线对照、各引擎截图，以及宿主修订前后的页面。
+
+咨询性评分为 74–77/100，低于 80 的试点门槛。
+
+PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 LibreOffice 与 After Effects。
+
 ## S6 合并 S3、S4、S5 — 2026-10-19
 
 S6 中又重录了一次（`semantic-player.4`、`visual-art-direction.6`），原因是 VIS-014 画廊暴露出六个渲染缺陷：斜切封面的引用对比度、封面数字被拆行、趋势图时间标签重叠、热力图行标签超出画框、比较面板下前后对比图片标签错误、线性流程图换行。与上一次记录（`8252c10`）相比，12 个 HTML 条目中没有任何可见文字或数值变化；锚点与数据表相同。[回执](../evidence/s6-integration/baseline-diff-gallery-fixes.json)。

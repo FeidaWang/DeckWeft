@@ -1,0 +1,194 @@
+{
+  "cases": [
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "long-title",
+      "locale": "en",
+      "page": "gallery 1 · cc-cover",
+      "state": "opening",
+      "reproduction": "Open the gallery at 1440, 1024 and 390 px.",
+      "observed": {
+        "390": [],
+        "1024": [],
+        "1440": []
+      },
+      "passed": true,
+      "fix": "Cover citation and metric fixes in ee20343."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "long-title",
+      "locale": "zh-CN",
+      "page": "gallery 1 · cc-cover",
+      "state": "opening",
+      "reproduction": "Open the gallery at 1440, 1024 and 390 px.",
+      "observed": {
+        "390": [],
+        "1024": [],
+        "1440": []
+      },
+      "passed": true,
+      "fix": "Cover citation and metric fixes in ee20343."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "overlong-legend",
+      "locale": "en",
+      "page": "gallery 8 · ev-evidence",
+      "state": "opening",
+      "reproduction": "Replace both series labels of the grouped bar with ~90-character names; open at 1440 and 390 px.",
+      "observed": {
+        "390": [],
+        "1440": []
+      },
+      "passed": true,
+      "fix": "None needed: legend and row labels wrap."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "overlong-legend",
+      "locale": "zh-CN",
+      "page": "gallery 8 · ev-evidence",
+      "state": "opening",
+      "reproduction": "Replace both series labels of the grouped bar with ~90-character names; open at 1440 and 390 px.",
+      "observed": {
+        "390": [],
+        "1440": []
+      },
+      "passed": true,
+      "fix": "None needed: legend and row labels wrap."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "missing-glyph",
+      "locale": "en",
+      "page": "story 1 · st-open (cream-collage)",
+      "state": "opening",
+      "reproduction": "Append U+E000 to the cover title; open at 1440 px; read Chromium platform fonts for the heading.",
+      "observed": {
+        "renderChecks": [],
+        "platformFonts": [
+          {
+            "familyName": "Iowan Old Style",
+            "postScriptName": "IowanOldStyle-Roman",
+            "isCustomFont": false,
+            "glyphCount": 40
+          }
+        ],
+        "lastResortGlyphs": 0
+      },
+      "passed": false,
+      "detectedBy": "not detected",
+      "fix": "Open: the fit audit and the Studio gate do not report missing glyphs (C13); only this probe does."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "no-image-asset",
+      "locale": "en",
+      "page": "gallery 5 · ev-photo",
+      "state": "opening",
+      "reproduction": "Delete the starfield PNG from a copy of the asset home, then export and open the gallery.",
+      "observed": {
+        "export": "refused",
+        "code": "TARGET_CAPABILITY",
+        "message": "This target cannot represent the requested presentation yet.",
+        "details": [
+          {
+            "code": "ASSET_UNRESOLVED",
+            "blockId": "photo-image",
+            "message": "Restore the hash-matching local image or replace this image. No remote asset fallback is used."
+          }
+        ]
+      },
+      "passed": true,
+      "fix": "None needed: the failure is named, not hidden."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "missing-data",
+      "locale": "en",
+      "page": "gallery 9 · dd-trend",
+      "state": "opening",
+      "reproduction": "Open the trend page at 390 px; the 390 px series has no value at 11:00.",
+      "observed": {
+        "polylines": 4,
+        "note": "Missing · 390 px, Oct 19, 11:00 AM: not collected — The 390 px run at 11:00 was not collected.",
+        "noteVisible": true,
+        "cell": [
+          "Missing · not collected"
+        ]
+      },
+      "passed": true,
+      "fix": "None needed: drawn as a gap, named in a visible note and the table; never zero."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "reload",
+      "locale": "en",
+      "page": "story 3, 5, 6 (dark-data)",
+      "state": "explored → reload",
+      "reproduction": "Change the chart range, select step 2 and the second image, then reload.",
+      "observed": {
+        "changed": true,
+        "restored": true,
+        "storage": {
+          "local": 0,
+          "session": 0
+        }
+      },
+      "passed": true,
+      "fix": "None needed: the authored opening returns; nothing is stored."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "rapid-paging",
+      "locale": "en",
+      "page": "story (dark-data), from page 3",
+      "state": "replaying",
+      "reproduction": "Replay page 3, then press Next/Next/Previous ten times and Previous twelve times without waiting.",
+      "observed": {
+        "page": "1 / 8",
+        "timers": 0,
+        "animations": 0,
+        "busy": []
+      },
+      "passed": true,
+      "fix": "None needed."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "pause-resume",
+      "locale": "en",
+      "page": "story 3 · st-evidence (dark-data)",
+      "state": "playing → paused → playing",
+      "reproduction": "Play the cue sequence, pause after the first cue, wait 1.2 s, play again.",
+      "observed": {
+        "pausedAt": 1,
+        "afterWait": 1,
+        "playingWhilePaused": false,
+        "timersWhilePaused": 0,
+        "resumedTo": 2,
+        "cues": 2
+      },
+      "passed": true,
+      "fix": "None needed."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "export-final-state",
+      "locale": "en",
+      "page": "story 3 · st-evidence (dark-data)",
+      "state": "static state “argument” (position 1)",
+      "reproduction": "Set the static state to the argument key state, export, open without JavaScript and with reduced motion.",
+      "observed": {
+        "noJsRows": 3,
+        "noJsStatement": "Static view · Argument pages (3 of 6): Evidence 6.5 hours, Method 4 hours, Appendix 3.5 hours. Filter: author order, Evidence → Appendix (3 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3. Complete data below.",
+        "reducedOpensAt": 1,
+        "frozen": true
+      },
+      "passed": true,
+      "fix": "None needed."
+    }
+  ],
+  "ok": false
+}

@@ -1,0 +1,707 @@
+{
+  "format": "deckweft-real-host-visual-acceptance",
+  "version": 1,
+  "host": "codex",
+  "browser": "151.0.7922.34",
+  "case": "drafted",
+  "scope": "Copied bundle: the host drafts a deck from a prompt, reviews its actual captures, exports it, then revises one page and exports again; not native desktop/plugin discovery",
+  "ok": true,
+  "runs": [
+    {
+      "stage": "before",
+      "receipt": {
+        "format": "deckweft-quality-receipt",
+        "version": 1,
+        "basis": "8a7e330daedf6ca3a6aa6b5cca69fc3cf33b4761979240745f1ffc78d45bcca1",
+        "captures": [
+          {
+            "file": "capture-1-1440.png",
+            "sha256": "bafa5cb16a821a640934b8db15a9ec5af7e9602931c52dc4babdc5ecedb37fb4",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-390.png",
+            "sha256": "d33bcd5c2d99d2876d0bfae413abc41afba3e005067793d1f35d2c24ecda1f48",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-1.png",
+            "sha256": "22d7194984337a531671cf6cfaed31b6908e24331b3115f8149c2a3d236e1b1d",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-2.png",
+            "sha256": "5224b136381784a6e0ad2e2a697e5be7a1b447e962b4e53b868454cae2e2f3e0",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-3.png",
+            "sha256": "a399bb9edd31203b1d045df52a104f7d7fb484e94f88f8781b6dfad9075f7069",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-4.png",
+            "sha256": "e595a93821ba005b416336a2ee95607b8790085f0115d83b1461171c0701eb7b",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-5.png",
+            "sha256": "2c13066dec8567d21fc690112572bc3d1331a998e93cb7b3bc94ae0e01f878c2",
+            "reviewRequired": true
+          }
+        ],
+        "checks": {
+          "ok": true,
+          "issues": [],
+          "coverage": [
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_9e573cf153794973",
+              "nodeId": "r529770147f195571b28e",
+              "blockId": "b0_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_9e573cf153794973",
+              "nodeId": "ra510648830df91a05567",
+              "blockId": "b0_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "r15acbbdd848df09a9d59",
+              "blockId": "b1_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "rf0a52d04143992586b29",
+              "blockId": "b1_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_435f53145f7e4209",
+              "nodeId": "r61222ec02c4609ca8613",
+              "blockId": "b2_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_435f53145f7e4209",
+              "nodeId": "r38c69aacde5049dc4a06",
+              "blockId": "b2_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "r35ed291b18f1ad7b0a28",
+              "blockId": "b3_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "rd502830a0cb7fc7c79ec",
+              "blockId": "b3_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_fc406d5d3f664fb6",
+              "nodeId": "r0fa16008b3fc94361fb5",
+              "blockId": "b4_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_fc406d5d3f664fb6",
+              "nodeId": "r6a37751ae4a376315712",
+              "blockId": "b4_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_9e573cf153794973",
+              "nodeId": "r529770147f195571b28e",
+              "blockId": "b0_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_9e573cf153794973",
+              "nodeId": "ra510648830df91a05567",
+              "blockId": "b0_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "r15acbbdd848df09a9d59",
+              "blockId": "b1_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "rf0a52d04143992586b29",
+              "blockId": "b1_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_435f53145f7e4209",
+              "nodeId": "r61222ec02c4609ca8613",
+              "blockId": "b2_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_435f53145f7e4209",
+              "nodeId": "r38c69aacde5049dc4a06",
+              "blockId": "b2_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "r35ed291b18f1ad7b0a28",
+              "blockId": "b3_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "rd502830a0cb7fc7c79ec",
+              "blockId": "b3_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_fc406d5d3f664fb6",
+              "nodeId": "r0fa16008b3fc94361fb5",
+              "blockId": "b4_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_fc406d5d3f664fb6",
+              "nodeId": "r6a37751ae4a376315712",
+              "blockId": "b4_body",
+              "missing": [],
+              "sources": []
+            }
+          ],
+          "traceCount": 0
+        },
+        "review": {
+          "reviewer": "codex local CLI",
+          "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 418e05df-5526-4c25-94c3-319f8249881e",
+          "images": [
+            "capture-1-1440.png",
+            "capture-1-390.png",
+            "capture-1-scene-1.png",
+            "capture-1-scene-2.png",
+            "capture-1-scene-3.png",
+            "capture-1-scene-4.png",
+            "capture-1-scene-5.png"
+          ],
+          "judgment": "All seven attached images were visually inspected. Text remains legible without visible clipping or overlap. Strong contrast and consistent hierarchy survive mobile reflow. Alternating split, left-aligned and centered compositions provide rhythm; scene 2 is the weakest instructional page.\ncapture-1-1440.png: All five scenes are visible and consistently aligned. Split layouts on scenes 1 and 4 frame the centered scene 3; scenes 2 and 5 repeat the red-divider treatment. No visible clipping or overlap.\ncapture-1-390.png: All five scenes reflow legibly into one column. Wrapped headings and paragraphs stay within the margins, including the wide final title. Contrast and hierarchy remain clear, though stacking reduces the desktop compositional variation.\ncapture-1-scene-1.png: The large opening title and separated supporting paragraph establish clear hierarchy. Both fit comfortably; the thin vertical divider preserves separation without overlap.\ncapture-1-scene-2.png: Heading, red divider and body are readable and unclipped. This is the weakest page: the sparse instruction offers no visible shape example or options to support the choice.\ncapture-1-scene-3.png: Centered heading and supporting text form a coherent focal group with comfortable separation. Strong contrast and generous whitespace create a clear midpoint pause.\ncapture-1-scene-4.png: The two-line title remains balanced and fully visible. The right-hand paragraph aligns cleanly beside its divider, restoring the opening split composition without collision.\ncapture-1-scene-5.png: The prominent closing title and red divider clearly signal the final step. Supporting text is comfortably spaced and fully visible; the reference to the next workshop provides closure.",
+          "issues": [
+            {
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "b1_body",
+              "bounds": {
+                "x": 48,
+                "y": 498,
+                "width": 350,
+                "height": 64
+              },
+              "severity": "warning",
+              "reason": "In capture-1-scene-2.png, the brief paragraph leaves the choice step visually underdeveloped: no concrete shape example or options support the heading.",
+              "suggestion": "Add a concise example or two shape options to make the instruction more concrete while retaining the spacious layout."
+            }
+          ],
+          "verdict": "pass"
+        },
+        "status": "passed",
+        "id": "88faa209d299e7752236cb0d4d0dd4288ce84f75d32f58c79931ee37f401b125"
+      },
+      "htmlHash": "5d7e8f3d00fe9c3a7a227f6d0ae2ad0182beb0b82a81d02b51ddb1da1488899f"
+    },
+    {
+      "stage": "after",
+      "receipt": {
+        "format": "deckweft-quality-receipt",
+        "version": 1,
+        "basis": "52b62ceda30f257ef5d93fcf4abfc7ece56ea59741a593960f7344d7563f64f6",
+        "captures": [
+          {
+            "file": "capture-2-1440.png",
+            "sha256": "c134612398b04043bc54bbc006552e9339dce9dbcbe5c29d2d71244d06c7ca6f",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-390.png",
+            "sha256": "d33bcd5c2d99d2876d0bfae413abc41afba3e005067793d1f35d2c24ecda1f48",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-1.png",
+            "sha256": "22d7194984337a531671cf6cfaed31b6908e24331b3115f8149c2a3d236e1b1d",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-2.png",
+            "sha256": "5224b136381784a6e0ad2e2a697e5be7a1b447e962b4e53b868454cae2e2f3e0",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-3.png",
+            "sha256": "7d25d9467a72aecad51cf1df2d813b4bc239e6e2cbac9a580acdb96cac8d9f93",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-4.png",
+            "sha256": "e595a93821ba005b416336a2ee95607b8790085f0115d83b1461171c0701eb7b",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-5.png",
+            "sha256": "2c13066dec8567d21fc690112572bc3d1331a998e93cb7b3bc94ae0e01f878c2",
+            "reviewRequired": true
+          }
+        ],
+        "checks": {
+          "ok": true,
+          "issues": [],
+          "coverage": [
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_9e573cf153794973",
+              "nodeId": "r529770147f195571b28e",
+              "blockId": "b0_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_9e573cf153794973",
+              "nodeId": "ra510648830df91a05567",
+              "blockId": "b0_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "r15acbbdd848df09a9d59",
+              "blockId": "b1_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "rf0a52d04143992586b29",
+              "blockId": "b1_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_435f53145f7e4209",
+              "nodeId": "r61222ec02c4609ca8613",
+              "blockId": "b2_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_435f53145f7e4209",
+              "nodeId": "r38c69aacde5049dc4a06",
+              "blockId": "b2_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "r35ed291b18f1ad7b0a28",
+              "blockId": "b3_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "rd502830a0cb7fc7c79ec",
+              "blockId": "b3_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_fc406d5d3f664fb6",
+              "nodeId": "r0fa16008b3fc94361fb5",
+              "blockId": "b4_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_fc406d5d3f664fb6",
+              "nodeId": "r6a37751ae4a376315712",
+              "blockId": "b4_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_9e573cf153794973",
+              "nodeId": "r529770147f195571b28e",
+              "blockId": "b0_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_9e573cf153794973",
+              "nodeId": "ra510648830df91a05567",
+              "blockId": "b0_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "r15acbbdd848df09a9d59",
+              "blockId": "b1_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_b8383da6811c48c8",
+              "nodeId": "rf0a52d04143992586b29",
+              "blockId": "b1_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_435f53145f7e4209",
+              "nodeId": "r61222ec02c4609ca8613",
+              "blockId": "b2_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_435f53145f7e4209",
+              "nodeId": "r38c69aacde5049dc4a06",
+              "blockId": "b2_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "r35ed291b18f1ad7b0a28",
+              "blockId": "b3_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "rd502830a0cb7fc7c79ec",
+              "blockId": "b3_body",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_fc406d5d3f664fb6",
+              "nodeId": "r0fa16008b3fc94361fb5",
+              "blockId": "b4_title",
+              "missing": [],
+              "sources": []
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "slide_fc406d5d3f664fb6",
+              "nodeId": "r6a37751ae4a376315712",
+              "blockId": "b4_body",
+              "missing": [],
+              "sources": []
+            }
+          ],
+          "traceCount": 0
+        },
+        "review": {
+          "reviewer": "codex local CLI",
+          "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 83f44e92-e199-48a1-a1b5-2c86d5726bbd",
+          "images": [
+            "capture-2-1440.png",
+            "capture-2-390.png",
+            "capture-2-scene-1.png",
+            "capture-2-scene-2.png",
+            "capture-2-scene-3.png",
+            "capture-2-scene-4.png",
+            "capture-2-scene-5.png"
+          ],
+          "judgment": "All seven attached images inspected. No visible clipping, unintended overlap, or text-contrast failures. Hierarchy is clear across desktop, mobile, and individual scenes. Scene 4 is the weakest page because its composition and message repeat scene 3, slowing the story rhythm.\ncapture-2-1440.png: All five scenes are visible with consistent margins and clear title/body hierarchy. Scenes 2 and 5 provide horizontal-rule variation; consecutive split layouts in scenes 3 and 4 feel repetitive. No visible clipping or overlap.\ncapture-2-390.png: All five scenes reflow cleanly into a readable single column. Titles, paragraphs, rules, and numbering remain within the viewport with strong contrast. Scene 4 adds little visual variation after scene 3.\ncapture-2-scene-1.png: Scene 1: dominant title and separated introductory paragraph establish a clear opening. The divider has adequate clearance; text is legible without clipping or overlap.\ncapture-2-scene-2.png: Scene 2: title, red rule, and supporting paragraph form a clear reading sequence and change the opening composition. Strong contrast and ample spacing; no visible clipping.\ncapture-2-scene-3.png: Scene 3: two-line title balances the three-line instruction across the divider. Line breaks are readable and neither text block overlaps surrounding elements.\ncapture-2-scene-4.png: Scene 4: typography, contrast, and spacing remain clean. Weakest page: it closely repeats scene 3’s composition and checking theme, with no visual detail distinguishing inspection from comparison.\ncapture-2-scene-5.png: Scene 5: large closing title and red rule restore compositional variation. The supporting paragraph fits comfortably and gives a clear next-workshop conclusion; no visible clipping or overlap.",
+          "issues": [
+            {
+              "sceneId": "slide_0e35bd3d5d094719",
+              "nodeId": "b3_body",
+              "bounds": {
+                "x": 889,
+                "y": 350,
+                "width": 400,
+                "height": 88
+              },
+              "severity": "warning",
+              "reason": "In capture-2-scene-4.png, the inspection instruction repeats scene 3’s checking theme and split composition, weakening the visual progression.",
+              "suggestion": "Pair the instruction with an annotated fold detail or a concrete inspection example to give this step a distinct visual focus."
+            }
+          ],
+          "verdict": "pass"
+        },
+        "status": "passed",
+        "id": "628132f5a00e1e1d1c4e3f33f0398f337db459de92fd1cfcea81a83a1c21d6e3"
+      },
+      "htmlHash": "39f38adab690e45f759ccd2636fca01e9e4259d0bbbf0e67549c53dfe81547fe"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "draftReceipt": {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "5a4d2168-2f92-479a-a4e8-c49ebff17c43",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "61a0aaaba3f39f6e663b45606deb731c0b90c9333c9144e022db42e64f7acb35",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "available",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "27f74c639a63a0ee8d67a6c00d8086d35b31e51648d127527de10c742e97e5ac",
+    "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+    "images": [],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 6645,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "306b80d116848532480af21847bcfcf051f8d24b466708c9549b03055b2b2ad9"
+  },
+  "revision": {
+    "page": 3,
+    "sceneId": "slide_435f53145f7e4209",
+    "from": "statement-center",
+    "to": "statement-split"
+  },
+  "exactScope": "Only page 3 composition changed; semantic document and all other scenes byte-equivalent",
+  "hostReceipts": [
+    "036cb96b-afc7-44c8-9fd4-481d1de97856",
+    "418e05df-5526-4c25-94c3-319f8249881e",
+    "5a4d2168-2f92-479a-a4e8-c49ebff17c43",
+    "83f44e92-e199-48a1-a1b5-2c86d5726bbd"
+  ]
+}
