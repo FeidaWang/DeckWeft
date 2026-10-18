@@ -3,9 +3,6 @@ import {inspectImage} from '../assets/formats.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { assetHash } from '../assets/registry.mjs';
 import {chartSemantics} from '../components/charts/semantics.mjs';
-import {staticStatePosition} from '../design/scene-semantics.mjs';
-import {compileInteractions,staticInteractionState} from '../motion/cues.mjs';
-import {initialInteractionState} from '../motion/timeline.mjs';
 export function presentationCapabilities(target,document,resources={},plan=null){
  const issues=[];
  // Declared semantics that no compiler draws yet are refused, never silently dropped from the figure.
@@ -16,11 +13,6 @@ export function presentationCapabilities(target,document,resources={},plan=null)
   if(s.sort!==(kind==='ranked-bar'?'value-desc':'author'))issues.push({code:'CHART_SORT_UNIMPLEMENTED',blockId:b.id,message:'Only the default sort is drawn (ranked bars by value, others in author order; planned in S4).'});
   if(s.intervalSeriesIds.length)issues.push({code:'CHART_INTERVAL_UNIMPLEMENTED',blockId:b.id,message:'Interval bounds are declared but no dot-interval renderer exists yet (planned in S4); uncertainty is never dropped silently.'});
   if(s.eventIds.length)issues.push({code:'CHART_EVENTS_UNIMPLEMENTED',blockId:b.id,message:'Dataset events are declared but not drawn yet (planned in S4).'});
- }
- // A frozen chart selection is drawn for readers without JavaScript; frozen steps, comparison tabs and hotspots are not yet.
- if(target==='html'&&plan)for(const scene of plan.scenes)if(staticStatePosition(scene)>0){
-  const specs=compileInteractions(document,scene),opening=initialInteractionState(specs),frozen=staticInteractionState(document,scene);
-  if(frozen.some((state,i)=>state.kind!=='chart-select'&&JSON.stringify(state)!==JSON.stringify(opening[i])))issues.push({code:'STATIC_STATE_UNIMPLEMENTED',sceneId:scene.id,message:'The static state changes a step, comparison or hotspot selection. Static output draws frozen chart selections only; choose a key state that changes charts only, or the opening.'});
  }
  if(!['html','json'].includes(target))issues.push({code:'TARGET_UNIMPLEMENTED',message:`Version 3 ${target} export has no native compiler yet.`});
  if(target==='html')for(const b of document.blocks.filter(b=>b.type==='image')){

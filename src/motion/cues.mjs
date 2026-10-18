@@ -1,13 +1,17 @@
 import {DeckError} from '../core/errors.mjs';
 import {initialInteractionState,reduceInteractionState,seekInteractionState} from './timeline.mjs';
 import {staticStatePosition} from '../design/scene-semantics.mjs';
-export const SEMANTIC_EVENTS=['scene.enter','scene.exit','step.next','tab.select','data.filter','annotation.reveal'];
+import {chartModel} from '../components/charts/model.mjs';
+import {chartSemantics} from '../components/charts/semantics.mjs';
+export const SEMANTIC_EVENTS=['scene.enter','scene.exit','step.next','tab.select','data.filter','data.focus','annotation.reveal'];
 export function compileInteractions(document,scene){
  return (scene.interactions||[]).map(spec=>{
   if(spec.kind==='steps')return {...structuredClone(spec),steps:spec.steps.map(step=>{const note=document.explanations.find(n=>n.id===step.explanationId);return {...structuredClone(step),label:note.label,text:note.text};})};
   if(spec.kind!=='chart-select')return structuredClone(spec);
-  const b=document.blocks.find(b=>b.id===spec.blockId),d=document.datasets.find(d=>d.id===b.datasetId);
-  return {...structuredClone(spec),seriesIds:d.series.map(s=>s.id),categoryIds:[...d.categoryIds],initialSeriesIds:spec.initialSeriesIds||d.series.map(s=>s.id),initialFromId:spec.initialFromId||d.categoryIds[0],initialToId:spec.initialToId||d.categoryIds.at(-1)};
+  const b=document.blocks.find(b=>b.id===spec.blockId),d=document.datasets.find(d=>d.id===b.datasetId),semantics=chartSemantics(b,d);
+  // The explanation line describes the top rank of a ranked bar and the last category (the latest, for time) of every other chart kind.
+  const captionOrder=semantics.kind==='ranked-bar'?chartModel(b,d).order.map(i=>d.categoryIds[i]):[...d.categoryIds].reverse();
+  return {...structuredClone(spec),datasetId:d.id,chartType:semantics.kind,sortKey:semantics.sort,scale:semantics.scale,seriesIds:d.series.map(s=>s.id),categoryIds:[...d.categoryIds],captionOrder,initialSeriesIds:spec.initialSeriesIds||d.series.map(s=>s.id),initialFocusSeriesId:spec.initialFocusSeriesId??null,initialFromId:spec.initialFromId||d.categoryIds[0],initialToId:spec.initialToId||d.categoryIds.at(-1)};
  });
 }
 export function assertSceneInteractions(document,scene){
@@ -34,7 +38,7 @@ export function assertSceneInteractions(document,scene){
  }
  try{
   const compiled=compileInteractions(document,scene);let state=initialInteractionState(compiled);
-  for(const spec of compiled.filter(s=>s.kind==='chart-select'))state=reduceInteractionState(compiled,state,{event:'data.filter',interactionId:spec.id,seriesIds:spec.initialSeriesIds,fromId:spec.initialFromId,toId:spec.initialToId});
+  for(const spec of compiled.filter(s=>s.kind==='chart-select')){state=reduceInteractionState(compiled,state,{event:'data.filter',interactionId:spec.id,seriesIds:spec.initialSeriesIds,fromId:spec.initialFromId,toId:spec.initialToId});if(spec.initialFocusSeriesId)state=reduceInteractionState(compiled,state,{event:'data.focus',interactionId:spec.id,seriesId:spec.initialFocusSeriesId});}
   const cues=scene.cues||[];if(new Set(cues.map(c=>c.id)).size!==cues.length)fail('Use unique stable cue ids.');
   for(const cue of cues)state=reduceInteractionState(compiled,state,cue);
  }catch(error){fail(error.message);}

@@ -45,3 +45,13 @@ Recovery:
 - `INVALID_PRESENTATION … denominator of percentage dataset`: a hand-edited document set `rules` without the declaration. Add the denominator or remove `rules`.
 
 Legacy fixtures and the negative case are checked by `node --test tests/handoff-contracts.test.mjs`: `tests/fixtures/visual/wave-a.*.json` load unchanged, `semantic-chart.en.json` carries every new field, and `semantic-chart.negative.json` is rejected.
+
+## Series focus and static states (S5): nothing to migrate
+
+S5 (2026-10-19) added two optional plan fields: `initialFocusSeriesId` on a chart selection and the `data.focus` cue ([how to use them](interactions.md#focus-one-series-or-hide-it)). Existing plans load and export as before; nothing is converted.
+
+1. A scene without `staticState` keeps its output: without JavaScript it draws the complete authored data, and the player opens at the authored opening (decision C7). Expected: the reader-visible markup of every existing export is byte-identical ([baseline test](../../tests/handoff-contracts.test.mjs)).
+2. To freeze the opening in output without JavaScript, add a key state at position 0 and name it as the static state, for example `"keyStates":[{"id":"opening","position":0}],"staticState":{"keyStateId":"opening"}`. Expected: the export draws the opening selection, step, tab or hotspot with a statement line.
+3. Exports made before S5 keep their embedded player. Re-export to get the S5 player (key guard, focus, static-state measurement).
+
+Recovery: a plan whose `data.focus` cue or `initialFocusSeriesId` names a series that is hidden at that point is refused (`INVALID_INTERACTION … Show a series before focusing it`); show the series first or change the focus. `STATIC_STATE_UNIMPLEMENTED` no longer exists.

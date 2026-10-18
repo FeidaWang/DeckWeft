@@ -1,10 +1,13 @@
 import {domain,chartModel} from '../../components/charts/model.mjs';
 import {chart} from '../../components/charts/render.mjs';
 import {x} from './components/escape.mjs';
-import {initialInteractionState,reduceInteractionState,seekInteractionState,selectedDataset} from '../../motion/timeline.mjs';
+import {captionSubject,initialInteractionState,reduceInteractionState,seekInteractionState,selectedDataset} from '../../motion/timeline.mjs';
 import {effectiveMotion} from '../../motion/policies.mjs';
+import {createCueClock} from '../../motion/clock.mjs';
+import {MOTION_PRIMITIVES,motionPlan} from '../../motion/primitives.mjs';
 import {createSceneResources} from '../../../public/runtime/resources.js';
-import {mountChartSelection} from '../../../public/runtime/charts.js';
+import {focusTheme,captionText,mountChartSelection} from '../../../public/runtime/charts.js';
 import {mountImageComparison,mountStepExplanation,mountImageHotspots} from '../../../public/runtime/components.js';
 import {mountSemanticInteractions} from '../../../public/runtime/semantic.js';
-export const interactionBundle=[x,domain,chartModel,chart,initialInteractionState,reduceInteractionState,seekInteractionState,selectedDataset,effectiveMotion,createSceneResources,mountChartSelection,mountImageComparison,mountStepExplanation,mountImageHotspots,mountSemanticInteractions].map(fn=>'const '+fn.name+' = '+fn.toString()+';').join('\n');
+import {turnsPage} from '../../../public/runtime/keys.js';
+export const interactionBundle=['const MOTION_PRIMITIVES = '+JSON.stringify(MOTION_PRIMITIVES)+';',...[x,domain,chartModel,chart,captionSubject,initialInteractionState,reduceInteractionState,seekInteractionState,selectedDataset,effectiveMotion,createCueClock,motionPlan,createSceneResources,focusTheme,captionText,mountChartSelection,mountImageComparison,mountStepExplanation,mountImageHotspots,mountSemanticInteractions,turnsPage].map(fn=>'const '+fn.name+' = '+fn.toString()+';')].join('\n');

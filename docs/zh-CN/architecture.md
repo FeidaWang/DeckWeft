@@ -67,20 +67,38 @@ MB-01～05 的本地构建详见[演示指南](presenting.md)。`src/contracts/p
 
 没有新增锁定字段。交接包的四类锁定映射到现有锁：**文字** → `authorOverrides.lockedBlockIds`（块内容，包括结论块）；**数据** → 锁定图表块即锁定其数据集，包括 `definition`、`missing`、`events` 与区间；**来源** → 与锁定块或其说明相连的来源；**构图** → `sceneLocks.fields: ["composition"]`，同组还有 `theme`、`interactions`、`cues`、`motion`、`profile`。[锁定测试](../../tests/handoff-contracts.test.mjs)覆盖每一种映射。自 S2 起，`cues` 与 `motion` 场景锁同时保护 `staticState` 及其关键状态的位置（[测试](../../tests/evidence-scene.test.mjs)）。
 
-## 网页输出中的静态状态（S2，2026-10-19）
+## 网页输出中的静态状态（S2，2026-10-19；S5 扩展）
 
-声明了 `staticState` 的页面按该状态导出。状态：一页中英双语证据页的图表选择为 **LocalVerified**（[证据](../evidence/s2-vertical-sample/review.md)、[冲突清单](../plans/design-handoff-vertical-sample.md)）。
+声明了 `staticState` 的页面按该状态导出。状态：一页中英双语证据页的图表选择为 **LocalVerified**（S2）；S5 起，双语交互样例中的聚焦系列、图解与代码步骤、比较标签和热点也为 **LocalVerified**（[S2 证据](../evidence/s2-vertical-sample/review.md)、[S5 证据](../evidence/s5-motion-state/review.md)、[冲突清单](../plans/design-handoff-vertical-sample.md)）。
 
 | 视图 | 预期结果 |
 | --- | --- |
-| 无 JavaScript | 图表按 `staticInteractionState()` 绘制冻结的选择。图形上方一行文字写明关键状态名称和每个显示值。**查看完整数据** 仍是未经筛选的完整表格；选择之外的数据点在表格中保留锚点。 |
+| 无 JavaScript | 绘制 `staticInteractionState()` 给出的冻结状态：图表选择与聚焦；标出的步骤节点、关系或原文行；所选比较图片，另一张放在关闭的展开区中；编号热点标记，展开的那个加框。每个组件上方一行文字写明关键状态名称及其显示内容（每个图表显示值、步骤说明、展开的注释）。**查看完整数据** 仍是未经筛选的完整表格；选择之外的数据点在表格中保留锚点。 |
 | 阅读视图 | 播放器从静态状态所在的提示边界开始。页面停在该边界时这行文字保持可见，读者自行探索时隐藏。 |
 | 演示视图 | 从同一边界开始。**重播提示序列** 仍从作者设定的开场（位置 0）开始，依次播放全部提示。 |
-| 减少动态，`reducedMotion: "static"` | 系统设置或页面的 **减少动态效果** 开启时，页面回到静态状态，**重播提示序列** 不可用，并显示“不自动播放提示”的说明。`deckweftInteractions.play()` 保持静态状态。**下一提示** 和提示位置滑块仍可用，状态即时生效。 |
+| 减少动态，`reducedMotion: "static"` | 系统设置或页面的 **减少动态效果** 开启时，页面回到静态状态，**重播提示序列** 与 **播放提示** 不可用，并显示“不自动播放提示”的说明。`deckweftInteractions.play()` 保持静态状态。**上一提示**、**下一提示** 和提示位置滑块仍可用，状态即时生效。 |
 | 减少动态，`instant`（默认） | 不变：提示照常播放，只去掉动画。 |
+| 审查门 | 版式回执（`window.deckweftFit`）包含每页开场的 `checks`，以及每个已声明静态状态的 `states`；`POST /api/visual/measure` 拒绝缺少任一通过项的回执。 |
 
-兼容方式：网页运行时、图表渲染器和 CSS 会原样嵌入每份导出文件，直接修改会改变所有现有文件。静态状态代码放在 [static-state.mjs](../../src/render/web/static-state.mjs) 和[运行时模块](../../public/runtime/static-state.js)中，只加入声明了静态状态的文稿。没有 `staticState` 的页面与 S1 逐字节一致（[基线测试](../../tests/handoff-contracts.test.mjs)）。这类页面的运行时数据带有 `staticState {keyStateId, position, reducedMotion}`，因此全局动效 **关闭** 不会丢掉静态回退。
+实现方式：S5 起，静态状态播放逻辑并入唯一的内嵌播放器（[运行时](../../src/render/web/runtime.mjs)、[semantic.js](../../public/runtime/semantic.js)）；服务端生成的冻结标记在 [static-state.mjs](../../src/render/web/static-state.mjs) 中，只加入声明了静态状态的页面，其他页面的标记不变。播放器挂载前先移除仅供无 JavaScript 读者使用的标记（`[data-static-only]`、`details[data-static-wrapper]`），再自行绘制同一状态。运行时数据带有 `staticState {keyStateId, position, reducedMotion}`，因此全局动效 **关闭** 不会丢掉静态回退。
 
-边界：审查门的版式测量记录的是开场而非静态状态；无 JavaScript 时不绘制冻结的步骤、比较标签与热点；390px 屏幕上排序条形图仍在图形区内横向滚动。三项都列在[冲突清单](../plans/design-handoff-vertical-sample.md#conflict-list)中。
+边界：390px 屏幕上排序条形图仍在图形区内横向滚动（C2）；无 JavaScript 的图表比交互图表更高（C19）。
 
-恢复：导出返回 `STATIC_STATE_UNIMPLEMENTED` 时，选择只改变图表选择的关键状态或开场。Studio 拒绝修改静态状态时，先取消 **锁定本页交互计划**。要删除静态状态，先把 `reducedMotion` 改为 `instant`。
+恢复：只有选了静态状态时测量才不通过，说明冻结视图本身放不下；请换一个关键状态或缩短内容。Studio 拒绝修改静态状态时，先取消 **锁定本页交互计划**。要删除静态状态，先把 `reducedMotion` 改为 `instant`。
+
+## 动效状态与内嵌播放器（S5，2026-10-19）
+
+状态：在隔离浏览器中以 1440 与 390px、中英文验证，**LocalVerified**（[证据](../evidence/s5-motion-state/review.md)）。保留 VIS-009 的状态转换器、提示与生命周期；S5 拆分状态、统一时钟，并为动效原语命名。
+
+| 部分 | 位置 | 规则 |
+| --- | --- | --- |
+| 图表状态（EvidenceStage） | [timeline.mjs](../../src/motion/timeline.mjs) | `datasetId`、`metricId`、`seriesIds`（显示中）、`focusSeriesId`、`fromId`／`toId`、`sortKey`、`scale` 和 `caption {categoryId, seriesIds}` 分开保存。`data.filter` 改变显示的系列与范围；`data.focus` 只改变聚焦，且不会显示已隐藏的系列；隐藏聚焦系列会结束聚焦。`datasetId`、`sortKey`、`scale` 来自图表声明，`metricId` 为 `null`：在指标切换（M14）、交互排序（M13）或刻度切换（M12）能够绘制之前，没有事件会改变它们。 |
+| 说明对象（C4） | [cues.mjs](../../src/motion/cues.mjs) `captionOrder` | 说明行描述排序条形图当前范围内的第一名，其他图表描述范围内最后一个类别，对象是聚焦系列或全部显示系列。 |
+| 统一时钟 | [clock.mjs](../../src/motion/clock.mjs) | 播放、暂停、定位、下一、上一、重播、探索与减少动态回退共用一个位置和一个可取消的计时器。暂停、定位、探索、离开页面、隐藏标签页和 `pagehide` 会同时取消计时器、动画和已登记资源。 |
+| 动效原语 | [primitives.mjs](../../src/motion/primitives.mjs) | FadeIn、SlideSmall、Crossfade、RevealMask、SeriesReveal、AnnotationReveal 挂在已有提示事件上；`motionPlan()` 把事件和前后两个状态映射为原语与稳定目标，因此播放、定位和重播的动效一致。每个动画以原语名称作为 Web Animations 的 `id`。减少动态时的结果：内容可见、进入目标布局、显示完整图形。没有随机视觉，因此不保存 seed。 |
+| 翻页按键（C14） | [keys.js](../../public/runtime/keys.js) `turnsPage()` | 控件、链接、滑块、标签、可编辑区域或可获得焦点的元素（包括带 `tabindex` 的 SVG 图表标记）获得焦点时，以及按键带修饰键时，翻页逻辑不响应。 |
+| 开场回复（C20） | [runtime.mjs](../../src/render/web/runtime.mjs)、[interactions.js](../../public/studio/interactions.js) | `deckweft:opening` 携带 `position`、`exploring` 与 `staticPosition`；对未经探索的后续提示位置，`useInteractionOpening()` 拒绝写入开场。 |
+
+逐字节一致（C6）：S5 把 S2 的条件扩展并入唯一的播放器，而不是再加一个扩展，因为按键守卫（C14）和说明行（C4）是所有交互导出共有的缺陷，不只存在于声明了静态状态的文稿。`PLAYER_VERSION` 标识播放器字节（运行时加交互模块，包括内嵌的图表渲染器）。规则：这些字节的任何改动都要提升 `PLAYER_VERSION`，并在单独提交中重新记录 [render-baseline.json](../../tests/fixtures/visual/render-baseline.json)（`node tests/render-baseline.mjs --write`）；若同一版本对应两组字节，`playerHistory` 会使测试失败。基线为每个 HTML 条目分别记录读者可见标记、运行时数据、播放器脚本和 CSS 的哈希，因此重新记录时可以证明文字、数值和锚点未变。
+
+未声明 `staticState` 的页面的静态输出（C7，S5 决定）：保持不变。无 JavaScript 视图绘制完整的作者数据，播放器从作者开场开始。冻结开场是作者的明确选择（把位置 0 的关键状态设为静态状态），绝不自动迁移。

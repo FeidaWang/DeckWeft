@@ -4,6 +4,10 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S5 动效状态与播放器冲突 — 2026-10-19
+
+S2 的静态状态扩展并入唯一的内嵌播放器（`PLAYER_VERSION` 为 `semantic-player.2`）：一个提示时钟统一播放、暂停、定位、下一、上一、重播与减少动态；六个具名动效原语，各自声明减少动态时的结果；EvidenceStage 图表状态分开保存（聚焦不等于隐藏）；控件或图表标记获得焦点时按键不会翻页；审查门同时测量每个已声明的静态状态；Studio 开场操作拒绝复制静态状态；无 JavaScript 时绘制冻结的步骤、比较标签与热点。未声明 `staticState` 的输出保持不变（C7）。`render-baseline.json` 在单独提交中有意重新记录：10 个 HTML 条目只有播放器脚本与 CSS 变化（交互样例的运行时数据另有新增字段）；读者可见标记、两个 JSON 条目和全部 12 个主题条目不变。`npm run verify` 通过 **373 项测试**（372 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。`tests/browser_motion_state.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过：中英文、1440 与 390px 下共 2,864 次按键均未翻页；已查看全部 28 张截图。S2 脚本、VIS-009 验收和讲解编辑浏览器测试在新播放器上通过；预览／导出像素一致性测试在 S2 提交和本版本上都因 390px 图解边缘像素而失败。PowerPoint、Keynote、Figma 已安装但未运行；未发现 After Effects 与 LibreOffice。[证据](../evidence/s5-motion-state/review.md) · [冲突](../plans/design-handoff-vertical-sample.md#s5-update-2026-10-19) · [交互](interactions.md#提示时钟动效与键盘)。
+
 ## S2 设计交接垂直样本 — 2026-10-19
 
 一页示意证据页（结论、排序条形图、来源、焦点）以中英文完整走过 Studio 导入、两套主题包、字体测量、鼠标与键盘焦点、暂停与定位、新增的静态状态选择、现有的测量后导出审查门，以及导出文件的各个视图。静态输出现在会把已声明的 `staticState` 应用到图表选择；`reducedMotion: "static"` 时显示该状态而不播放提示；现有输出保持逐字节一致。`npm run verify` 通过 **362 项测试**（361 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。`tests/browser_evidence_scene.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过；已查看 1440 与 390px 的全部 20 张截图。键盘焦点从未翻页，快速翻页后待执行计时器为 0。PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 After Effects 与 LibreOffice。20 项冲突附复现步骤列出。[证据](../evidence/s2-vertical-sample/review.md) · [冲突清单](../plans/design-handoff-vertical-sample.md)。

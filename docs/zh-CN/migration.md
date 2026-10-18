@@ -39,3 +39,13 @@ const strict=declareChartSemantics(document,{datasets:{'adoption-quarterly':{def
 - `INVALID_PRESENTATION … denominator of percentage dataset`：手工编辑的文稿设置了 `rules` 却没有声明。补上分母或删除 `rules`。
 
 旧示例与反例由 `node --test tests/handoff-contracts.test.mjs` 检查：`tests/fixtures/visual/wave-a.*.json` 原样加载，`semantic-chart.en.json` 携带全部新字段，`semantic-chart.negative.json` 被拒绝。
+
+## 系列聚焦与静态状态（S5）：无需迁移
+
+S5（2026-10-19）新增两个可选计划字段：图表选择上的 `initialFocusSeriesId` 和 `data.focus` 提示（[用法](interactions.md#聚焦一个系列或隐藏它)）。现有计划照常加载与导出，不做任何转换。
+
+1. 未声明 `staticState` 的页面输出不变：无 JavaScript 时绘制完整的作者数据，播放器从作者开场开始（决定 C7）。预期：每份现有导出的读者可见标记逐字节一致（[基线测试](../../tests/handoff-contracts.test.mjs)）。
+2. 若要在无 JavaScript 的输出中冻结开场，请添加位置为 0 的关键状态并将其设为静态状态，例如 `"keyStates":[{"id":"opening","position":0}],"staticState":{"keyStateId":"opening"}`。预期：导出文件绘制开场时的选择、步骤、标签或热点，并附一行说明。
+3. S5 之前导出的文件保留其内嵌播放器。重新导出即可获得 S5 播放器（按键守卫、聚焦、静态状态测量）。
+
+恢复：若 `data.focus` 提示或 `initialFocusSeriesId` 指向当时已隐藏的系列，计划会被拒绝（`INVALID_INTERACTION … Show a series before focusing it`）；请先显示该系列或修改聚焦对象。`STATIC_STATE_UNIMPLEMENTED` 已不存在。

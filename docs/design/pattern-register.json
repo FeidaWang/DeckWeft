@@ -451,14 +451,16 @@
       "repositoryState": "LocalVerified",
       "implementedBy": [
         "VIS-009",
-        "src/render/web/document.mjs"
+        "src/render/web/document.mjs",
+        "public/runtime/keys.js"
       ],
       "verifiedBy": [
         "docs/evidence/vis-009/review.md",
-        "docs/evidence/s2-vertical-sample/review.md"
+        "docs/evidence/s2-vertical-sample/review.md",
+        "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Page position changes with previous/next; no chapter-level reading state. S2 (2026-10-19) vertical sample: keyboard and pointer focus changes in a chart never change the page (1 / 2 stays), and six rapid Next/Previous pairs leave 0 pending page timers, scene timers and animations; a focused SVG chart mark still lets ArrowRight change the page (conflict C14). Chapter-level reading state remains missing."
+      "repositoryNote": "Page position changes with previous/next; no chapter-level reading state. S2 (2026-10-19) vertical sample: keyboard and pointer focus changes in a chart never change the page (1 / 2 stays), and six rapid Next/Previous pairs leave 0 pending page timers, scene timers and animations; a focused SVG chart mark still let ArrowRight change the page (conflict C14). S5 (2026-10-19) fixed C14: page keys never apply while a control, link, slider, tab or focusable chart mark has focus; keyboard traces at 1440/390 px in both languages changed no page, and fast paging leaves 0 timers, animations and registered resources. Chapter-level reading state remains missing."
     },
     {
       "id": "M05",
@@ -482,13 +484,15 @@
       "repositoryState": "LocalVerified",
       "implementedBy": [
         "VIS-009",
-        "src/motion/timeline.mjs"
+        "src/motion/timeline.mjs",
+        "src/render/web/static-state.mjs"
       ],
       "verifiedBy": [
-        "docs/evidence/vis-009/review.md"
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Image-compare tabs and chart series selection exist; no generic tab stage switching between charts or samples."
+      "repositoryNote": "Image-compare tabs and chart series selection exist; no generic tab stage switching between charts or samples. S5 (2026-10-19): a static state can freeze a comparison tab; output without JavaScript shows the chosen image and keeps the other in a closed original-image disclosure."
     },
     {
       "id": "M06",
@@ -694,15 +698,16 @@
         "src/components/charts/semantics.mjs",
         "src/design/scene-semantics.mjs",
         "src/render/web/static-state.mjs",
-        "public/runtime/static-state.js"
+        "public/runtime/charts.js"
       ],
       "verifiedBy": [
         "docs/evidence/vis-009/review.md",
         "docs/evidence/explanatory-authoring/review.md",
-        "docs/evidence/s2-vertical-sample/review.md"
+        "docs/evidence/s2-vertical-sample/review.md",
+        "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "chart-select provides series focus and category range; S1 added the static chart sort declaration and the named staticState over the authored opening. Interactive sort is missing (ranked-bar sort is static). S2 (2026-10-19) applies the author's static state in web output: the no-JS view draws the frozen chart selection with a text line of every shown value and the full table, and reading/presentation views start at that cue boundary; reduced motion can fall back to it. On a single-series ranked bar the legend focus is degenerate (conflict C1) and the range filter uses author order, not rank (C3)."
+      "repositoryNote": "chart-select provides series focus and category range; S1 added the static chart sort declaration and the named staticState over the authored opening. Interactive sort is missing (ranked-bar sort is static). S2 (2026-10-19) applies the author's static state in web output: the no-JS view draws the frozen chart selection with a text line of every shown value and the full table, and reading/presentation views start at that cue boundary; reduced motion can fall back to it. On a single-series ranked bar the legend focus is degenerate (conflict C1) and the range filter uses author order, not rank (C3). S5 (2026-10-19) separates focus from hiding: data.focus / initialFocusSeriesId emphasise one shown series and keep the others as muted context; data.filter hides whole series; hiding the focused series ends the focus. The chart state keeps dataset, metric, shown series, focus, range, sort, scale and caption subject as separate fields, and static output freezes the author focus. Interactive sort is still missing; a ranked-bar category focus is still undecided (C1)."
     },
     {
       "id": "M14",
@@ -850,13 +855,15 @@
       "repositoryState": "LocalVerified",
       "implementedBy": [
         "VIS-009",
-        "src/motion/cues.mjs"
+        "src/motion/cues.mjs",
+        "src/motion/primitives.mjs"
       ],
       "verifiedBy": [
-        "docs/evidence/vis-009/review.md"
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cue replay of data.filter gives series reveal; annotation.reveal is limited to image hotspots, not chart annotations."
+      "repositoryNote": "Cue replay of data.filter gives series reveal; annotation.reveal is limited to image hotspots, not chart annotations. S5 (2026-10-19): SeriesReveal animates the marks of each newly shown series one after another while axes, units and baseline stay still; the static state shows the complete frozen graphic. Chart annotation reveal is still missing."
     },
     {
       "id": "M20",
@@ -880,13 +887,15 @@
       "implementedBy": [
         "VIS-005",
         "VIS-009",
-        "src/motion/policies.mjs"
+        "src/motion/policies.mjs",
+        "src/motion/primitives.mjs"
       ],
       "verifiedBy": [
-        "docs/evidence/vis-009/review.md"
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Finite fade/small translate up to 400 ms; no mask or stagger primitive."
+      "repositoryNote": "Finite fade/small translate up to 400 ms. S5 (2026-10-19) names six primitives on the existing cue events — FadeIn, SlideSmall, Crossfade (panel fades into its new layout; no shared-element morph), RevealMask (clip-path from the reading edge), SeriesReveal (per-series stagger) and AnnotationReveal — each with a declared reduced-motion result (content visible, target layout, full graphic); all six observed with their registry keyframes in the browser. ImagePan is not added; the 400 ms cap stays."
     },
     {
       "id": "C01",
