@@ -1,4 +1,5 @@
 import {annotationTargetExists} from './annotations/model.mjs';
+import {validateChartSemantics} from './charts/semantics.mjs';
 export function validateComponents(document,fail){
  for(const d of document.datasets){
   if(d.categoryIds&&d.categoryIds.length!==d.categories.length)fail('Category identities must match every category.');
@@ -25,7 +26,7 @@ export function validateComponents(document,fail){
      if(values.some(v=>v!==null&&(v<a.min||v>a.max)))fail('Fixed axes cannot hide data outside the range.');
      if(kind==='stacked'&&d.categories.some((_,i)=>d.series.reduce((n,s)=>n+Math.max(0,s.values[i]??0),0)>a.max||d.series.reduce((n,s)=>n+Math.min(0,s.values[i]??0),0)<a.min))fail('Fixed stacked axis must contain signed totals.');
     }else if(a.min!==undefined||a.max!==undefined)fail('Only fixed axes accept min/max.');
-    if(['area','ranked-bar','stacked'].includes(kind)&&key==='axis'&&(a.policy==='extent'||a.policy==='fixed'&&(a.min>0||a.max<0)))fail('Filled marks require a zero baseline.');
+    if(['area','ranked-bar','stacked'].includes(kind)&&key==='axis'&&!b.truncation&&(a.policy==='extent'||a.policy==='fixed'&&(a.min>0||a.max<0)))fail('Filled marks require a zero baseline unless truncation is declared with a note.');
    }
   }
   if(b.type==='diagram'){
@@ -37,4 +38,5 @@ export function validateComponents(document,fail){
   }
   if(b.type==='annotation'&&!annotationTargetExists(b.target,document))fail('Annotation target is missing or incompatible. Restore the stable target; do not retarget by position.');
  }
+ validateChartSemantics(document,fail);
 }

@@ -1,6 +1,7 @@
 import {assertSceneInteractions} from '../motion/cues.mjs';
 import {assertImageSlots} from '../assets/brief.mjs';
 import { assertComposition } from './compositions.mjs';
+import { assertSceneSemantics } from './scene-semantics.mjs';
 import schema from '../../schemas/design-plan.schema.json' with { type: 'json' };
 import { validateSchema } from '../core/schema.mjs';
 import { assertPresentation } from '../core/blocks.mjs';
@@ -20,7 +21,7 @@ export function assertDesignPlan(document, plan) {
     for(const id of scene.blockIds){const b=blocks.get(id);if(b.type==='annotation'&&!scene.blockIds.includes(b.target.blockId))fail('Annotations must share a scene with their stable target.');}
     assertSceneInteractions(document,scene);for(const i of scene.interactions||[])for(const step of i.steps||[])usedExplanations.add(step.explanationId);
     scene.blockIds.forEach(id => used.add(id));
-    assertComposition(document,scene);assertImageSlots(document,scene);
+    assertComposition(document,scene);assertImageSlots(document,scene);assertSceneSemantics(document,scene);
     const kinds = scene.blockIds.map(id => blocks.get(id).type);
     if (scene.composition === 'diagonal-cover' && (scene.theme !== 'cream-collage' || !kinds.includes('heading') || !kinds.includes('metric'))) fail('Diagonal cover needs Cream Collage, a heading and a metric.');
     if (scene.composition === 'chart-with-evidence-rail' && (scene.theme !== 'dark-data' || !kinds.includes('chart') || !kinds.includes('heading'))) fail('Chart evidence needs Dark Data, a heading and a chart.');

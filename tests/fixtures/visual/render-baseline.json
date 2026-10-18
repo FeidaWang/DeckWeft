@@ -1,0 +1,33 @@
+{
+  "format": "deckweft-render-baseline",
+  "renderer": "visual-art-direction.3",
+  "entries": {
+    "wave-a.en.html": "8835dde10e57ca02e3a5d99f7bf1fcff09bbc53db96e5630c3376727f65b6014",
+    "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
+    "wave-a.zh-CN.html": "7c120750f60ec861d9bb70b13e458b5f30e3bedae2c61a3988b88f12202e6d3c",
+    "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
+    "visual-demo.en.html": "33cbd94076c42f80feabc6afd23559204f09e61283d51cacaf238b3f358961d5",
+    "visual-demo.zh-CN.html": "0b5e4ffd0187c1bf1ea8d7882fdcb069ce8d42cc919e7d4068c28576c15627b9",
+    "component-demo.en.html": "952fa76784a4548c3cc1bc7ad12ed26ea7437f39e3e685545b21d181e45f752a",
+    "component-demo.zh-CN.html": "7909e2f4228a2ae6adaa1052ff19dc97d66e83831e7f0362bf58c3d79ed7f7f3",
+    "interaction-demo.en.html": "dab1f376255ccb37fd8ce13f4d1db836f5d16e567c924c409c14102f4d868386",
+    "interaction-demo.zh-CN.html": "310a57f0aa32ad3ff4610e0e92cc4e763147580baea3bfa2f8c15f997c94fdeb",
+    "composition-demo.en.html": "6d751d7dbaa9ea0a94ab5bee4faddd4fe0567cae832cf79f440de4f5cbe4f10a",
+    "composition-demo.zh-CN.html": "2c8a56945905758e3987c5b1f0c292dee0d6bfb020131a92b36cb1444ccce93d",
+    "theme.cream-collage.en.default": "a83209bf2c8ab789f70edb4707b59cc4774aa8f9403a5390c52e43945ba91cbb",
+    "theme.cream-collage.en.chapter": "288ff3c0ec800d09d9b859f5fd8a2dc665e9847bff69710c0d276679217adfeb",
+    "theme.cream-collage.zh-CN.default": "359c0520c01e837ba1b447bd8da43e1c3f7b708f7d470d525c0b79c7950436d3",
+    "theme.cream-collage.zh-CN.chapter": "0d6d9430dbe0dae144930e7d9798e611e9b08591bf60fe813e241f8f9b25ea1c",
+    "theme.dark-data.en.default": "d164519a5456ffe1a877f0ad537d15b1fd9596422fb850aad18ff468220ba990",
+    "theme.dark-data.en.chapter": "b7873e7d8f20597759978ce78e390c58db2e3f35593be7db5cce7c5cf580c406",
+    "theme.dark-data.zh-CN.default": "ca91f0f69494e02c1bd2302038125249de83ff1be960a8f64755c5432e173089",
+    "theme.dark-data.zh-CN.chapter": "73486f827acd8336e4ace00f8f69353b4912107ef61459f5f5d97c0fe7e5620e",
+    "theme.electric-violet.en.default": "d1bb45362d5f57c423b5c7a23357e1b10171e93746c6e6fd55aec876bd1d4f54",
+    "theme.electric-violet.en.chapter": "5eccd182e129d47d3b6ee09715205a0f19b39cc776eb28ada488a1b6bfdc98a7",
+    "theme.electric-violet.zh-CN.default": "e25b2aeb801aca4fe708394e96dbbe9c4dfcf5e9bdbcf582009766df37b6a542",
+    "theme.electric-violet.zh-CN.chapter": "421d32e34e9b6e2868fa406b99478935847885fe02272e3640bc3cdf41ebd72e"
+  },
+  "recordedAt": "2026-10-19",
+  "sourceCommit": "058b939",
+  "note": "Recorded before the S1 contract extension from the committed renderer. Regenerate only with a deliberate renderer change and say so in docs/en/verification.md."
+}

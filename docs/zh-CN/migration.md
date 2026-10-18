@@ -20,3 +20,22 @@ node bin/deckweft.mjs check imported.deck.json
 新安装器只写新目录，不会删除旧插件。先验收新的导出流程，再通过宿主管理器移除旧插件。排查问题时尽量不要同时启用两套相似触发器。
 
 活动代码、界面、包名和手册使用 DeckWeft；旧名只在迁移、审计和 [NOTICE](../../NOTICE.md) 中作为来源保留。原 [LICENSE](../../LICENSE) 完整保留。
+
+## 启用严格误读守卫
+
+v3 文稿在 2026-10-19 新增了可选的图表、数据集、场景、动效与主题字段（[字段清单](architecture.md#版本-3-交接字段s12026-10-19)）。六条误读守卫中有五条只在相关字段存在时生效，所以现有 v3 文稿全部原样加载。第六条——百分比必须声明分母——会拒绝现有示例与演示，因此改为显式启用：`rules.misreading: "strict"`。
+
+```js
+import {declareChartSemantics} from './src/core/adapters/chart-semantics.mjs';
+const strict=declareChartSemantics(document,{datasets:{'adoption-quarterly':{definition:{denominator:'当季活跃团队'},collectedAt:'2026-09-30'}}});
+```
+
+预期结果：得到一份已校验的副本，带有 `rules.misreading` 和所声明的定义；输入文稿不被修改，各系列数值逐字节相同。
+
+恢复：
+
+- `MIGRATION_DECLARATION … No denominator was inferred`：某个百分比数据集没有声明分母。在 `datasets.<id>.definition.denominator` 中补上；迁移永远不会猜测。
+- `MIGRATION_DECLARATION … does not exist`：声明引用了文稿中不存在的数据集 id。
+- `INVALID_PRESENTATION … denominator of percentage dataset`：手工编辑的文稿设置了 `rules` 却没有声明。补上分母或删除 `rules`。
+
+旧示例与反例由 `node --test tests/handoff-contracts.test.mjs` 检查：`tests/fixtures/visual/wave-a.*.json` 原样加载，`semantic-chart.en.json` 携带全部新字段，`semantic-chart.negative.json` 被拒绝。

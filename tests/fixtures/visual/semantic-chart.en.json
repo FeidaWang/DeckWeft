@@ -1,0 +1,348 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "visual-semantic-chart-en",
+    "title": "One claim, one chart, one declared reading",
+    "locale": "en",
+    "blocks": [
+      {
+        "id": "cover-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Make room\nfor bold ideas."
+      },
+      {
+        "id": "cover-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Content is the starting point. Composition gives it a voice. Keep the words editable and the choices deliberate."
+      },
+      {
+        "id": "cover-metric",
+        "type": "metric",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "value": 12,
+        "unit": "scenes",
+        "label": "A synthetic gallery brief, ready to explore."
+      },
+      {
+        "id": "cover-note",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "01 / FROM WORDS TO A WORLD"
+      },
+      {
+        "id": "cover-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "Fixture content · no product results claimed"
+      },
+      {
+        "id": "data-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Two paths.\nOne visible difference."
+      },
+      {
+        "id": "data-chart",
+        "type": "chart",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "datasetId": "adoption-quarterly",
+        "chartType": "line",
+        "axis": {
+          "policy": "zero",
+          "scale": "linear"
+        },
+        "sort": "author",
+        "question": "Did the guided workflow adopt faster than the manual one?",
+        "takeaway": "The guided series rises faster in every synthetic quarter after launch."
+      },
+      {
+        "id": "data-callout",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Keep the evidence in view."
+      },
+      {
+        "id": "data-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Compare both series on the same scale. Exact values remain in the table below. These figures are synthetic, not measured product outcomes."
+      },
+      {
+        "id": "data-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "Synthetic quarterly dataset · units: %"
+      }
+    ],
+    "datasets": [
+      {
+        "id": "adoption-quarterly",
+        "unit": "%",
+        "synthetic": true,
+        "categories": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6"
+        ],
+        "series": [
+          {
+            "id": "guided",
+            "label": "Guided workflow",
+            "values": [
+              18,
+              28,
+              41,
+              46,
+              62,
+              78
+            ],
+            "interval": {
+              "type": "ci",
+              "level": 95,
+              "method": "Synthetic bootstrap, 1,000 resamples",
+              "lower": [
+                15,
+                24,
+                37,
+                42,
+                58,
+                74
+              ],
+              "upper": [
+                21,
+                32,
+                45,
+                50,
+                66,
+                82
+              ]
+            }
+          },
+          {
+            "id": "manual",
+            "label": "Manual workflow",
+            "values": [
+              18,
+              22,
+              null,
+              33,
+              39,
+              45
+            ],
+            "interval": {
+              "type": "ci",
+              "level": 95,
+              "method": "Synthetic bootstrap, 1,000 resamples",
+              "lower": [
+                15,
+                19,
+                null,
+                29,
+                35,
+                41
+              ],
+              "upper": [
+                21,
+                25,
+                null,
+                37,
+                43,
+                49
+              ]
+            }
+          }
+        ],
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "categoryIds": [
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6"
+        ],
+        "version": "fixture-2026-10",
+        "collectedAt": "2026-09-30",
+        "validPeriod": {
+          "from": "2025-04-01",
+          "to": "2026-09-30"
+        },
+        "definition": {
+          "denominator": "Teams active in the quarter (synthetic)",
+          "sample": "n = 240 synthetic teams",
+          "normalized": false,
+          "betterDirection": "higher"
+        },
+        "missing": [
+          {
+            "seriesId": "manual",
+            "categoryId": "q3",
+            "reason": "not-collected",
+            "note": "The manual cohort was not surveyed in Q3 (synthetic)."
+          }
+        ],
+        "events": [
+          {
+            "id": "guided-launch",
+            "categoryId": "q4",
+            "label": "Guided workflow launched",
+            "relation": "temporal",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "synthetic-source",
+        "title": "DeckWeft synthetic fixture",
+        "url": "https://example.org/deckweft/synthetic"
+      }
+    ],
+    "authorOverrides": {
+      "lockedBlockIds": [
+        "data-chart"
+      ]
+    },
+    "migration": {},
+    "rules": {
+      "misreading": "strict"
+    }
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "visual-semantic-chart-en",
+    "scenes": [
+      {
+        "id": "collage",
+        "role": "opening",
+        "theme": "cream-collage",
+        "themeVersion": "1.0.0",
+        "composition": "diagonal-cover",
+        "blockIds": [
+          "cover-title",
+          "cover-body",
+          "cover-metric",
+          "cover-note",
+          "cover-source"
+        ],
+        "focalBlockId": "cover-title",
+        "contentStatus": "illustrative",
+        "takeaway": {
+          "blockId": "cover-title"
+        }
+      },
+      {
+        "id": "evidence",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": [
+          "data-title",
+          "data-chart",
+          "data-callout",
+          "data-body",
+          "data-source"
+        ],
+        "focalBlockId": "data-title",
+        "takeaway": {
+          "blockId": "data-callout"
+        },
+        "contentStatus": "illustrative",
+        "interactions": [
+          {
+            "id": "select-adoption",
+            "kind": "chart-select",
+            "blockId": "data-chart"
+          }
+        ],
+        "cues": [
+          {
+            "id": "focus-guided",
+            "event": "data.filter",
+            "interactionId": "select-adoption",
+            "seriesIds": [
+              "guided"
+            ],
+            "fromId": "q4",
+            "toId": "q6",
+            "label": "Focus on the guided series after launch"
+          },
+          {
+            "id": "restore-all",
+            "event": "data.filter",
+            "interactionId": "select-adoption",
+            "seriesIds": [
+              "guided",
+              "manual"
+            ],
+            "fromId": "q1",
+            "toId": "q6",
+            "label": "Restore the full exact dataset"
+          }
+        ],
+        "keyStates": [
+          {
+            "id": "opening",
+            "position": 0,
+            "label": "Both series, all quarters"
+          },
+          {
+            "id": "focused",
+            "position": 1,
+            "label": "Guided series after launch"
+          },
+          {
+            "id": "complete",
+            "position": 2,
+            "label": "Full comparison restored"
+          }
+        ],
+        "staticState": {
+          "keyStateId": "opening"
+        },
+        "motion": {
+          "policy": "subtle",
+          "durationMs": 240,
+          "trigger": "manual",
+          "clock": "cues",
+          "reducedMotion": "instant"
+        }
+      }
+    ]
+  }
+}

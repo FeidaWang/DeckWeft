@@ -813,6 +813,22 @@
                 "type": "integer",
                 "minimum": 0,
                 "maximum": 400
+              },
+              "trigger": {
+                "enum": [
+                  "manual"
+                ]
+              },
+              "clock": {
+                "enum": [
+                  "cues"
+                ]
+              },
+              "reducedMotion": {
+                "enum": [
+                  "instant",
+                  "static"
+                ]
               }
             },
             "required": [
@@ -861,6 +877,68 @@
               "density",
               "motionIntensity",
               "imageEmphasis"
+            ],
+            "additionalProperties": false
+          },
+          "takeaway": {
+            "type": "object",
+            "properties": {
+              "blockId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              }
+            },
+            "required": [
+              "blockId"
+            ],
+            "additionalProperties": false
+          },
+          "contentStatus": {
+            "enum": [
+              "sourced",
+              "illustrative",
+              "evidence-required"
+            ]
+          },
+          "keyStates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "position": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                }
+              },
+              "required": [
+                "id",
+                "position"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 20
+          },
+          "staticState": {
+            "type": "object",
+            "properties": {
+              "keyStateId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              }
+            },
+            "required": [
+              "keyStateId"
             ],
             "additionalProperties": false
           }

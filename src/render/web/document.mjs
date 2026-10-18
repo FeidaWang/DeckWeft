@@ -18,7 +18,7 @@ const sha = text => createHash('sha256').update(text).digest('base64');
 export function exportPresentation(document, format, {plan,experimentalWeb=false,assetResources={},preview=false}={}) {
   if (!experimentalWeb) throw new DeckError('EXPERIMENTAL_WEB_REQUIRED','Explicitly enable experimentalWeb for the version 3 presentation path.');
   assertPresentation(document);
-  assertPresentationTarget(format,document,assetResources);
+  assertPresentationTarget(format,document,assetResources,plan);
   if (format === 'json') return {body:JSON.stringify(document,null,2)+'\n',mime:'application/json',extension:'presentation.json'};
   const scenes = compileWebScenes(document,plan), zh=document.locale==='zh-CN';
   const sceneMarkup=scenes.map((s,i)=>{const direction=sceneDirection(document,plan,i),theme=direction.theme, blocks=new Map(document.blocks.map(b=>[b.id,b]));

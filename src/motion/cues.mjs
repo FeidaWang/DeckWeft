@@ -1,5 +1,6 @@
 import {DeckError} from '../core/errors.mjs';
-import {initialInteractionState,reduceInteractionState} from './timeline.mjs';
+import {initialInteractionState,reduceInteractionState,seekInteractionState} from './timeline.mjs';
+import {staticStatePosition} from '../design/scene-semantics.mjs';
 export const SEMANTIC_EVENTS=['scene.enter','scene.exit','step.next','tab.select','data.filter','annotation.reveal'];
 export function compileInteractions(document,scene){
  return (scene.interactions||[]).map(spec=>{
@@ -42,4 +43,8 @@ export function assertSceneInteractions(document,scene){
 export function compileCues(document,scene){
  const lifecycle=[{id:scene.id+'-enter',event:'scene.enter',sceneId:scene.id},...(scene.cues||[]).map(c=>({...c,sceneId:scene.id})),{id:scene.id+'-exit',event:'scene.exit',sceneId:scene.id}];
  return {sceneId:scene.id,interactions:compileInteractions(document,scene),cues:structuredClone(scene.cues||[]),lifecycle};
+}
+/** The frozen filter/focus selection for static output: the authored opening, or the named static state's cue boundary. */
+export function staticInteractionState(document,scene){
+ return seekInteractionState(compileInteractions(document,scene),scene.cues||[],staticStatePosition(scene));
 }

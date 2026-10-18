@@ -35,6 +35,14 @@
         "secondary": {
           "type": "string",
           "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "reference": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "missing": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
         }
       },
       "required": [
@@ -72,6 +80,11 @@
           "type": "number",
           "minimum": 0.7,
           "maximum": 1.4
+        },
+        "numeric": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
         }
       },
       "required": [
@@ -96,6 +109,21 @@
           "type": "number",
           "minimum": 12,
           "maximum": 60
+        },
+        "captionGap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 60
+        },
+        "sectionGap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 120
+        },
+        "safeArea": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 120
         }
       },
       "required": [
@@ -192,6 +220,31 @@
           "enum": [
             "none",
             "fade"
+          ]
+        },
+        "distance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 80
+        },
+        "easing": {
+          "enum": [
+            "linear",
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out"
+          ]
+        },
+        "delay": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 600
+        },
+        "fallback": {
+          "enum": [
+            "instant",
+            "static"
           ]
         }
       },

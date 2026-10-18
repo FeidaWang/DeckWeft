@@ -90,3 +90,40 @@ English is the source language. Chinese docs, sample content, and UI labels are 
 ## Interaction modules
 
 `public/interaction.js` owns bounded edit history, IME-aware keyboard decisions and native dialogs with explicit Tab wrapping/focus return. `public/history.js` owns the read-only history workflow. `public/app.js` guards preview responses by generation, content counter and slide id; save responses update the revision but cannot clear later edits. Leave-confirmation handlers are scoped per opening to avoid queued-close races.
+
+## Version 3 handoff fields (S1, 2026-10-19)
+
+The design handoff's SceneSpec, ChartSpec, MotionPlan and StaticState are mapped onto the existing contracts instead of new schemas. Every field is optional; a version 3 document, plan or theme without them validates and renders exactly as before ([byte-identical proof](../../tests/handoff-contracts.test.mjs), [baseline](../../tests/fixtures/visual/render-baseline.json)). Validation lives in [chart semantics](../../src/components/charts/semantics.mjs) and [scene semantics](../../src/design/scene-semantics.mjs). Declarations that no compiler draws yet are refused for HTML with a named code, never dropped from the figure. State: **Implemented** (unit tests only; no browser evidence).
+
+### Semantic document (`presentation-v3`)
+
+| Field | Expected result | Recovery when rejected |
+| --- | --- | --- |
+| `rules.misreading: "strict"` | Opts the document into the percentage guard: every dataset whose unit is a percentage (`%`, `percent`, `pct`, `百分比`…) must declare `definition.denominator`. | Declare the denominator with `declareChartSemantics()` ([migration](migration.md#opt-into-the-strict-misreading-guards)) or remove `rules`. Nothing is inferred. |
+| dataset `version`, `collectedAt`, `validPeriod {from,to}` | Dataset identity. Dates are real calendar days (`YYYY-MM-DD`); `from` is not after `to`. | Correct the date; no date is normalized. |
+| dataset `definition {denominator, sample, normalized, betterDirection}` | Field definitions. `datasetSemantics()` resolves absent values to `null`, `null`, `false`, `"none"`. | Only the denominator is ever required, and only under strict rules. |
+| dataset `missing[] {seriesId, categoryId, reason, note}` | A reason for a `null`. Needs stable `categoryIds`; one reason per value; the value stays `null`. | Point the reason at an existing null, or restore the null. A reason never replaces a value with zero. |
+| dataset `events[] {id, categoryId, label, relation, sourceIds}` | `temporal` events mark adjacency only and their label cannot contain a causal connective (`because`, `caused`, `led to`, `导致`, `因为`…). `attributed` events need at least one source. HTML export answers `CHART_EVENTS_UNIMPLEMENTED` until S4 draws them. | Reword the label, or change the relation to `attributed` and cite the source. |
+| series `interval {type, level, method, lower[], upper[]}` | `ci` needs `level` in (0, 100); `sd`, `iqr`, `range` carry none. All intervals in one dataset share type and level. Bounds enclose each value and are `null` exactly where the value is `null`. HTML export answers `CHART_INTERVAL_UNIMPLEMENTED` until S4 adds the dot-interval renderer. | Use one interval type per dataset; split the other series into another dataset. |
+| chart `question`, `takeaway` | Plain text; the chart block's own `sourceIds` are its sources. | — |
+| chart `axis.scale`, `xAxis.scale` (`linear` default, `log`) | Declared per chart; a dataset-level scale is an unknown field. `log` needs strictly positive values, `extent` or a positive `fixed` range, and no filled marks. HTML export answers `CHART_SCALE_UNIMPLEMENTED` until S4. | Keep `linear`, or fix the range and remove zero/negative values from the dataset you cite. |
+| chart `sort` (`author`, `value-desc`, `value-asc`) | Default is `value-desc` for `ranked-bar` and `author` elsewhere. Value sorts apply to ranked bars and stacks with category data only. A non-default sort answers `CHART_SORT_UNIMPLEMENTED` for HTML until S4. | Use the default or a `ranked-bar`. |
+| chart `truncation {note}` | Only for `area`, `ranked-bar`, `stacked`, and only when the axis actually excludes zero (`extent`, or `fixed` with `min > 0` / `max < 0`). Without it, filled marks still require a zero baseline. HTML export answers `CHART_TRUNCATION_UNIMPLEMENTED` until S4. | Add the note, or return to `policy: "zero"`. |
+
+### Design plan scene (`design-plan`, passed through to `web-scene`)
+
+| Field | Expected result | Recovery when rejected |
+| --- | --- | --- |
+| `takeaway {blockId}` | A heading, paragraph, callout, quote or metric block of the same scene carries the takeaway. Locking that block id in `lockedBlockIds` locks the takeaway text. | Reference a block that is in `blockIds` and has a text or metric type. |
+| `contentStatus` (`sourced`, `illustrative`, `evidence-required`) | `sourced` requires non-synthetic, sourced datasets, sourced metrics and a sourced takeaway. The other values record intent only. | Mark synthetic material `illustrative`, or add the sources. |
+| `keyStates[] {id, position, label}` | Named cue boundaries: `position` 0 is the authored opening (initial series/range, tab and step), `n` is the state after the first `n` cues. | Keep `position ≤ cues.length` and ids unique. |
+| `staticState {keyStateId}` | Names the frozen state for static output; `staticInteractionState()` returns the frozen filter/focus selection. Absent means the opening. A position above 0 answers `STATIC_STATE_UNIMPLEMENTED` for HTML until S2 applies it. | Name an existing key state. |
+| `motion.trigger: "manual"`, `motion.clock: "cues"`, `motion.reducedMotion` (`instant` default, `static`) | Declarations of the current player: cues advance by replay/next/seek on one deterministic cue clock; reduced motion applies state instantly. `effectiveMotion()` ignores the new keys. `static` needs a `staticState` and answers `REDUCED_MOTION_FALLBACK_UNIMPLEMENTED` for HTML until S2. | Remove the declaration or add the static state. |
+
+### Theme pack tokens (`theme-pack`)
+
+Optional `typography.numeric`, `palette.reference`, `palette.missing`, `spacing.captionGap`, `spacing.sectionGap`, `spacing.safeArea` and `motion.distance`, `motion.easing`, `motion.delay`, `motion.fallback`. `themeTokens(id, locale)` resolves them; `resolveTheme()` is unchanged, so no theme output changes. Defaults are the values the renderer already uses: numeric = the locale body stack, reference = ink, missing = ink, captionGap 14, sectionGap = gap, safeArea = page, distance 4, easing `ease-out`, delay 0, fallback `instant`. No packaged theme declares any of them yet; a declared value is reported under `declared` and is not yet consumed by the renderer.
+
+### Lock categories
+
+No new lock fields were added. The handoff's four categories map onto existing locks: **text** → `authorOverrides.lockedBlockIds` (block content, including the takeaway block); **data** → a locked chart block locks its dataset, including `definition`, `missing`, `events` and intervals; **sources** → sources linked to a locked block or its explanations; **composition** → `sceneLocks.fields: ["composition"]`, alongside `theme`, `interactions`, `cues`, `motion` and `profile`. The [lock test](../../tests/handoff-contracts.test.mjs) exercises each mapping.

@@ -2,8 +2,23 @@ import {componentCapabilities} from '../components/capabilities.mjs';
 import {inspectImage} from '../assets/formats.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { assetHash } from '../assets/registry.mjs';
-export function presentationCapabilities(target,document,resources={}){
+import {chartSemantics} from '../components/charts/semantics.mjs';
+import {staticStatePosition} from '../design/scene-semantics.mjs';
+export function presentationCapabilities(target,document,resources={},plan=null){
  const issues=[];
+ // Declared semantics that no compiler draws yet are refused, never silently dropped from the figure.
+ if(target==='html')for(const b of document.blocks.filter(b=>b.type==='chart')){
+  const d=document.datasets.find(d=>d.id===b.datasetId);if(!d)continue;const s=chartSemantics(b,d),kind=s.kind;
+  if(s.scale.y==='log'||s.scale.x==='log')issues.push({code:'CHART_SCALE_UNIMPLEMENTED',blockId:b.id,message:'A log axis is declared but the HTML chart draws linear axes only (planned in S4). Use a linear scale or wait for the log renderer.'});
+  if(s.truncation)issues.push({code:'CHART_TRUNCATION_UNIMPLEMENTED',blockId:b.id,message:'Declared truncation has no bar renderer yet (planned in S4). Use a zero baseline for HTML output.'});
+  if(s.sort!==(kind==='ranked-bar'?'value-desc':'author'))issues.push({code:'CHART_SORT_UNIMPLEMENTED',blockId:b.id,message:'Only the default sort is drawn (ranked bars by value, others in author order; planned in S4).'});
+  if(s.intervalSeriesIds.length)issues.push({code:'CHART_INTERVAL_UNIMPLEMENTED',blockId:b.id,message:'Interval bounds are declared but no dot-interval renderer exists yet (planned in S4); uncertainty is never dropped silently.'});
+  if(s.eventIds.length)issues.push({code:'CHART_EVENTS_UNIMPLEMENTED',blockId:b.id,message:'Dataset events are declared but not drawn yet (planned in S4).'});
+ }
+ if(target==='html'&&plan)for(const scene of plan.scenes){
+  if(staticStatePosition(scene)>0)issues.push({code:'STATIC_STATE_UNIMPLEMENTED',sceneId:scene.id,message:'Static output renders the authored opening; a later static state is applied in S2.'});
+  if(scene.motion?.reducedMotion==='static')issues.push({code:'REDUCED_MOTION_FALLBACK_UNIMPLEMENTED',sceneId:scene.id,message:'Reduced motion applies state instantly today; the static fallback is applied in S2.'});
+ }
  if(!['html','json'].includes(target))issues.push({code:'TARGET_UNIMPLEMENTED',message:`Version 3 ${target} export has no native compiler yet.`});
  if(target==='html')for(const b of document.blocks.filter(b=>b.type==='image')){
   const r=resources[b.assetId];
@@ -15,8 +30,8 @@ export function presentationCapabilities(target,document,resources={}){
  }
  return {target,ok:issues.length===0,issues,components:document.blocks.map(b=>componentCapabilities(b,target))};
 }
-export function assertPresentationTarget(target,document,resources={}){
- const result=presentationCapabilities(target,document,resources);
+export function assertPresentationTarget(target,document,resources={},plan=null){
+ const result=presentationCapabilities(target,document,resources,plan);
  if(!result.ok)throw new DeckError('TARGET_CAPABILITY','This target cannot represent the requested presentation yet.',422,result.issues);
  return result;
 }
