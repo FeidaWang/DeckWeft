@@ -13,6 +13,7 @@ import {createInteractionDemo} from '../src/core/interaction-demo.mjs';
 import {compileCues} from '../src/motion/cues.mjs';
 import {seekInteractionState} from '../src/motion/timeline.mjs';
 import {MOTION_PRIMITIVES} from '../src/motion/primitives.mjs';
+import {PLAYER_VERSION} from '../src/render/web/runtime.mjs';
 import {revealStudio} from './studio-controls.mjs';
 import {evidenceProject} from './evidence-scene.mjs';
 if(!process.env.CHROMIUM_PATH||!process.env.PLAYWRIGHT_MODULE)throw Error('Set CHROMIUM_PATH (isolated testing binary outside Applications) and PLAYWRIGHT_MODULE.');
@@ -87,7 +88,7 @@ try{
    const saved=await store.save(project,{create:true}),fits=[];studio.on('console',()=>{});
    await studio.goto(app.url+'/visual?project='+saved.id+'&ui='+locale);await measured();
    const preview=(await studio.locator('#preview').getAttribute('src')).split('#')[0],fit=await studio.frameLocator('#preview').locator('body').evaluate(()=>window.deckweftFit);
-   assert.equal(fit.ok,true);assert.equal(fit.player,'semantic-player.2');assert.deepEqual(fit.states.map(s=>[s.sceneId,s.keyStateId,s.position]),project.plan.scenes.filter(s=>s.staticState).map(s=>[s.id,s.staticState.keyStateId,s.keyStates.find(k=>k.id===s.staticState.keyStateId).position]));
+   assert.equal(fit.ok,true);assert.equal(fit.player,PLAYER_VERSION);assert.deepEqual(fit.states.map(s=>[s.sceneId,s.keyStateId,s.position]),project.plan.scenes.filter(s=>s.staticState).map(s=>[s.id,s.staticState.keyStateId,s.keyStates.find(k=>k.id===s.staticState.keyStateId).position]));
    const download=studio.waitForEvent('download');await studio.locator('#exportHTML').click();const file=path.join(out,`${locale}-${name}.html`);await (await download).saveAs(file);
    const exported=await readFile(file,'utf8');assert.equal(exported,await (await fetch(app.url+preview)).text(),'the download is the measured preview');files[name]={file,url:pathToFileURL(file).href,project:saved};
    log('gate',locale,{project:name,measuredStates:fit.states.map(s=>({sceneId:s.sceneId,keyStateId:s.keyStateId,position:s.position,overflow:s.overflow.length,clip:s.clipIssues.length,contrast:s.contrastIssues.length})),ok:fit.ok,viewport:fit.viewport,bytes:Buffer.byteLength(exported),sha256:hash(exported)});

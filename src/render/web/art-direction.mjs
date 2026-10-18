@@ -81,7 +81,7 @@ export const artDirectionCSS = `
 .web-scene .region[data-component=citation]{margin-top:20px;padding-top:16px;border-top:1px solid currentColor;grid-column:1 / -1}
 .web-scene .citation{font:400 12px/1.6 var(--body);letter-spacing:0;max-width:90ch;margin:0}
 .web-scene .web-image figcaption{font:400 12px/1.5 var(--body);max-width:60ch;margin-top:14px}
-.web-scene .metric strong{font-family:var(--body);font-size:clamp(112px,16vw,230px);font-weight:650;letter-spacing:-.075em;line-height:.88;color:var(--accent);font-variant-numeric:tabular-nums}
+.web-scene .metric strong{font-family:var(--body);font-size:clamp(112px,16vw,230px);font-weight:650;letter-spacing:-.075em;line-height:.88;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:normal;word-break:keep-all}
 .web-scene .metric strong small{font-size:.17em;line-height:1.3;letter-spacing:.03em;margin-top:24px}
 .web-scene .metric span{font-size:18px;line-height:1.5;margin-top:22px;max-width:24ch}
 .web-scene[data-theme=cream-collage] .metric strong{color:var(--secondary)}

@@ -1,7 +1,7 @@
 import {interactionBundle} from './interaction-bundle.mjs';
 import { contrastScript, clippingScript } from './contrast.mjs';
 /** Identity of the embedded player bytes (this runtime plus the interaction bundle, including the chart renderer). Bump it with every change to those bytes and re-record tests/fixtures/visual/render-baseline.json in its own commit. */
-export const PLAYER_VERSION = 'semantic-player.3';
+export const PLAYER_VERSION = 'semantic-player.4';
 export const runtime = `(() => {
  ${interactionBundle}
  ${contrastScript}
