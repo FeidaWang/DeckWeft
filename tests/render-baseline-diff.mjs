@@ -6,7 +6,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 const sha=text=>createHash('sha256').update(text).digest('hex');
-/** The same twelve HTML outputs that render-baseline.mjs hashes, rendered by the source tree at root. */
+/** The same ten HTML outputs that render-baseline.mjs hashes, rendered by the source tree at root. */
 export async function baselineBodies(root){
  const load=file=>import(pathToFileURL(path.join(root,file)).href);
  const [{createVisualDemo},{createComponentDemo},{createInteractionDemo},{createCompositionDemo},{visualAssetResources},{exportDeck}]=await Promise.all(['src/core/visual-demo.mjs','src/core/component-demo.mjs','src/core/interaction-demo.mjs','src/core/composition-demo.mjs','src/assets/visual.mjs','src/render/export.mjs'].map(load));

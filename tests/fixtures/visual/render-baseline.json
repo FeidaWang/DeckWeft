@@ -1,19 +1,19 @@
 {
   "format": "deckweft-render-baseline",
-  "renderer": "visual-art-direction.3",
+  "renderer": "visual-art-direction.4",
   "entries": {
-    "wave-a.en.html": "8835dde10e57ca02e3a5d99f7bf1fcff09bbc53db96e5630c3376727f65b6014",
+    "wave-a.en.html": "44ba0a6ef48fba7d22d685a412332a0b26df69ff733bbb4676812f4fecb9e71b",
     "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-    "wave-a.zh-CN.html": "7c120750f60ec861d9bb70b13e458b5f30e3bedae2c61a3988b88f12202e6d3c",
+    "wave-a.zh-CN.html": "60e1ce828fc430fb87e118993cfc0376828263d168efc9d21f55f280bbfd7f8c",
     "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-    "visual-demo.en.html": "33cbd94076c42f80feabc6afd23559204f09e61283d51cacaf238b3f358961d5",
-    "visual-demo.zh-CN.html": "0b5e4ffd0187c1bf1ea8d7882fdcb069ce8d42cc919e7d4068c28576c15627b9",
-    "component-demo.en.html": "952fa76784a4548c3cc1bc7ad12ed26ea7437f39e3e685545b21d181e45f752a",
-    "component-demo.zh-CN.html": "7909e2f4228a2ae6adaa1052ff19dc97d66e83831e7f0362bf58c3d79ed7f7f3",
-    "interaction-demo.en.html": "dab1f376255ccb37fd8ce13f4d1db836f5d16e567c924c409c14102f4d868386",
-    "interaction-demo.zh-CN.html": "310a57f0aa32ad3ff4610e0e92cc4e763147580baea3bfa2f8c15f997c94fdeb",
-    "composition-demo.en.html": "6d751d7dbaa9ea0a94ab5bee4faddd4fe0567cae832cf79f440de4f5cbe4f10a",
-    "composition-demo.zh-CN.html": "2c8a56945905758e3987c5b1f0c292dee0d6bfb020131a92b36cb1444ccce93d",
+    "visual-demo.en.html": "7f25f3f638c4a0a47a21a2926302ffbbd04f965a26da01db86522f91e051ac46",
+    "visual-demo.zh-CN.html": "c9420540e600478f3a57b3bf3f46e437a93a3e69182ff9742120ba11fe858f63",
+    "component-demo.en.html": "6633fda1f22db536404aaa581d067534e7f5a1a584687645ea5093ffa97e9ba1",
+    "component-demo.zh-CN.html": "1f6ac91cbaabfa23803b1d6ff533cc61bec04b67c6aa882b40dcb515e5088777",
+    "interaction-demo.en.html": "dc50b3727bdfb270201082f33fab93bcdaaa546fd7f16f94722904226801f9de",
+    "interaction-demo.zh-CN.html": "abb40597c56cd50cff7671e9b5b643bdc8937cf049b17b61ce2a302e76780e06",
+    "composition-demo.en.html": "dcff3e835b9652fc2ec42e4b0486b2e2be36849b830670161cc28eeafdabb49b",
+    "composition-demo.zh-CN.html": "ec255aa64f04ab073010e41cce4c46d73af4f0b42fbd35440b7c3eae1737b8e9",
     "theme.cream-collage.en.default": "a83209bf2c8ab789f70edb4707b59cc4774aa8f9403a5390c52e43945ba91cbb",
     "theme.cream-collage.en.chapter": "288ff3c0ec800d09d9b859f5fd8a2dc665e9847bff69710c0d276679217adfeb",
     "theme.cream-collage.zh-CN.default": "359c0520c01e837ba1b447bd8da43e1c3f7b708f7d470d525c0b79c7950436d3",
@@ -28,6 +28,22 @@
     "theme.electric-violet.zh-CN.chapter": "421d32e34e9b6e2868fa406b99478935847885fe02272e3640bc3cdf41ebd72e"
   },
   "recordedAt": "2026-10-19",
-  "sourceCommit": "058b939",
-  "note": "Recorded before the S1 contract extension from the committed renderer. Regenerate only with a deliberate renderer change and say so in docs/en/verification.md."
+  "sourceCommit": "8ef6987",
+  "previous": {
+    "renderer": "visual-art-direction.3",
+    "sourceCommit": "058b939",
+    "changedEntries": [
+      "wave-a.en.html",
+      "wave-a.zh-CN.html",
+      "visual-demo.en.html",
+      "visual-demo.zh-CN.html",
+      "component-demo.en.html",
+      "component-demo.zh-CN.html",
+      "interaction-demo.en.html",
+      "interaction-demo.zh-CN.html",
+      "composition-demo.en.html",
+      "composition-demo.zh-CN.html"
+    ]
+  },
+  "note": "Re-recorded in S4 (design-handoff chart renderer) after a deliberate renderer change: chart(), its CSS and the renderer version are embedded in every HTML export, so all 10 HTML hashes changed; the 2 JSON and 12 theme hashes did not. Per-entry text, value, table and anchor comparison: docs/evidence/s4-chart-renderer/baseline-diff.json. Regenerate only with a deliberate renderer change and say so in docs/en/verification.md."
 }

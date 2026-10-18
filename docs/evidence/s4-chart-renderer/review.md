@@ -27,8 +27,9 @@ The chart renderer now draws every S1 chart declaration it can, closes the chart
 ```bash
 npm test                                       # before S4: 362 tests, 361 pass, 1 skipped
 node --test tests/chart-renderer.test.mjs      # 13 pass (new)
-node --test tests/evidence-scene.test.mjs tests/handoff-contracts.test.mjs   # 20 tests; 19 pass until the baseline is re-recorded, then 20
-npm test                                       # 375 tests; see verification.md for the final count
+node --test tests/evidence-scene.test.mjs tests/handoff-contracts.test.mjs   # 20 tests; 19 pass between the two commits (baseline), 20 after
+node tests/render-baseline-diff.mjs <worktree of 232060e> docs/evidence/s4-chart-renderer/baseline-diff.json   # per-entry diff, see Byte identity
+npm run verify                                 # after the baseline commit: 375 tests, 374 pass, 0 fail, 1 skipped; types, check (1,149 files), build, demos
 CHROMIUM_PATH=<isolated Chrome for Testing 151> PLAYWRIGHT_MODULE=<playwright 1.61.1 index.mjs> node tests/browser_chart_kinds.mjs      # ok: 12 views, 132 captures + 10 sheets
 CHROMIUM_PATH=… PLAYWRIGHT_MODULE=… node tests/browser_evidence_scene.mjs      # ok: 20 captures (S2 sample rerun with S4 assertions)
 CHROMIUM_PATH=… PLAYWRIGHT_MODULE=… node tests/browser_interactions.mjs        # ok: 6 cases, 146 captures (existing suite)
@@ -54,7 +55,18 @@ Every image in this folder was opened and looked at, plus each per-scene capture
 
 ## Byte identity
 
-`chart()` is embedded in every export, so this change re-records the render baseline deliberately in a separate, final commit, with `WEB_RENDERER_VERSION` raised to `visual-art-direction.4`. The per-entry diff that keeps text, values and anchors is recorded with that commit (see below once it lands).
+`chart()`, the chart CSS and the renderer version are embedded in every HTML export, so no chart drawing change can keep existing HTML byte-identical. The [render baseline](../../../tests/fixtures/visual/render-baseline.json) was therefore re-recorded deliberately, in a separate commit after the renderer commit `8ef6987`. **`WEB_RENDERER_VERSION` changes** from `visual-art-direction.3` to `visual-art-direction.4`: a scene's `sourceHash` covers the document, scene, theme and renderer version but not the chart code, so keeping `.3` would let a scene claim the old renderer for a different drawing.
+
+Receipt: [baseline-diff.json](baseline-diff.json), from `node tests/render-baseline-diff.mjs <git worktree of 232060e> …`, which renders the ten baseline HTML outputs with both trees and compares anchors, data tables (`<tbody>`), visible values and visible words.
+
+| Entry (en and zh-CN) | Why it changed | Anchors | Data tables | Visible values | Visible text |
+|---|---|---|---|---|---|
+| `wave-a` | Embedded runtime, chart CSS and renderer version; the line legend key is now inline SVG | 12, identical | 1, identical | 47, identical | identical |
+| `visual-demo` | Same | 12, identical | 1, identical | 51, identical | identical |
+| `composition-demo` | Same | 15, identical | 2, identical | 59, identical | identical |
+| `component-demo`, `interaction-demo` | Same, and the ranked bar is now HTML rows | 103, identical | 7, identical | every value kept; one `0` axis tick added | caption `ranked-bar` → `ranked bar · sorted by value, highest first` (zh adds `按数值从高到低`); the old bar SVG's `<desc>` copy of the missing-value sentence and its in-plot unit label are gone (the sentence stays in **View all data**, the unit in the caption and table header); 9 hover-only SVG titles of that chart are gone, and every value they held is visible text |
+
+Unchanged: `wave-a.en.json`, `wave-a.zh-CN.json` and all 12 resolved theme hashes. `tests/handoff-contracts.test.mjs` compares all 24 entries again and passes.
 
 ## Not available or not run
 
