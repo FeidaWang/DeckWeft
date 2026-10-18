@@ -42,12 +42,16 @@ MB-01～05 的本地构建详见[演示指南](presenting.md)。`src/contracts/p
 | 数据集 `version`、`collectedAt`、`validPeriod {from,to}` | 数据集身份。日期须为真实日历日（`YYYY-MM-DD`），`from` 不晚于 `to`。 | 改正日期；不会归一化。 |
 | 数据集 `definition {denominator, sample, normalized, betterDirection}` | 字段定义。`datasetSemantics()` 把缺省值解析为 `null`、`null`、`false`、`"none"`。 | 只有分母会被要求，且仅在 strict 下。 |
 | 数据集 `missing[] {seriesId, categoryId, reason, note}` | 为某个 `null` 说明原因。需要稳定的 `categoryIds`；每个值一个原因；值保持 `null`。 | 让原因指向已有的 null，或恢复 null。原因永远不会把值改成零。 |
-| 数据集 `events[] {id, categoryId, label, relation, sourceIds}` | `temporal` 事件只标记时间邻近，标签不能含因果连接词（`because`、`caused`、`led to`、`导致`、`因为`……）；`attributed` 事件至少需要一个来源。S4 绘制之前，HTML 导出返回 `CHART_EVENTS_UNIMPLEMENTED`。 | 改写标签，或改为 `attributed` 并引用来源。 |
-| 系列 `interval {type, level, method, lower[], upper[]}` | `ci` 需要 (0, 100) 之间的 `level`；`sd`、`iqr`、`range` 不带 level。同一数据集内所有区间类型与 level 相同。上下界包住每个值，并且恰好在值为 `null` 处为 `null`。S4 加入点区间渲染器之前，HTML 导出返回 `CHART_INTERVAL_UNIMPLEMENTED`。 | 一个数据集只用一种区间类型；其他系列拆到另一个数据集。 |
-| 图表 `question`、`takeaway` | 纯文本；图表块自身的 `sourceIds` 就是其来源。 | — |
-| 图表 `axis.scale`、`xAxis.scale`（默认 `linear`，可 `log`） | 按图声明；数据集级别的 scale 是未知字段。`log` 要求全部为正值、`extent` 或正的 `fixed` 范围，且不能用于填充图形。S4 之前 HTML 导出返回 `CHART_SCALE_UNIMPLEMENTED`。 | 保持 `linear`，或修正范围并处理所引用数据集中的零／负值。 |
-| 图表 `sort`（`author`、`value-desc`、`value-asc`） | `ranked-bar` 默认 `value-desc`，其余默认 `author`。按值排序只适用于类别数据的排序条形与堆叠。非默认排序在 S4 之前对 HTML 返回 `CHART_SORT_UNIMPLEMENTED`。 | 使用默认值或改用 `ranked-bar`。 |
-| 图表 `truncation {note}` | 仅用于 `area`、`ranked-bar`、`stacked`，且仅当坐标轴确实不含零（`extent`，或 `fixed` 且 `min > 0` / `max < 0`）。未声明时填充图形仍必须含零基线。S4 之前 HTML 导出返回 `CHART_TRUNCATION_UNIMPLEMENTED`。 | 补上说明，或改回 `policy: "zero"`。 |
+| 数据集 `events[] {id, categoryId, label, relation, sourceIds}` | `temporal` 事件只标记时间邻近，标签不能含因果连接词（`because`、`caused`、`led to`、`导致`、`因为`……）；`attributed` 事件至少需要一个来源。S4 起在折线、面积、堆叠、条形、点与区间、小多图和基准表上绘制带编号的虚线或行旁编号，并写出关系注释；散点与热力矩阵返回 `CHART_EVENTS_UNIMPLEMENTED`。 | 改写标签，或改为 `attributed` 并引用来源。 |
+| 系列 `interval {type, level, method, lower[], upper[]}` | `ci` 需要 (0, 100) 之间的 `level`；`sd`、`iqr`、`range` 不带 level。同一数据集内所有区间类型与 level 相同。上下界包住每个值，并且恰好在值为 `null` 处为 `null`。S4 起折线绘制误差线、`dot-interval` 绘制区间，并在注释中写明类型、水平与方法；其他类型返回 `CHART_INTERVAL_UNIMPLEMENTED`。 | 一个数据集只用一种区间类型；其他系列拆到另一个数据集。 |
+| 图表 `question`、`takeaway` | 纯文本；图表块自身的 `sourceIds` 就是其来源。S4 起两种网页视图都在图的开头显示问题、在图例之后显示结论。 | — |
+| 图表 `axis.scale`、`xAxis.scale`（默认 `linear`，可 `log`） | 按图声明；数据集级别的 scale 是未知字段。`log` 要求全部为正值、`extent` 或正的 `fixed` 范围，且不能用于填充图形。S4 起折线、散点、点与区间和小多图绘制整十倍对数轴并加注释；其他类型返回 `CHART_SCALE_UNIMPLEMENTED`。 | 保持 `linear`，或修正范围并处理所引用数据集中的零／负值。 |
+| 图表 `sort`（`author`、`value-desc`、`value-asc`） | `ranked-bar` 默认 `value-desc`，其余默认 `author`。按值排序只适用于类别数据的排序条形与堆叠。S4 起所有排序均可绘制（`author` 绘制直接标注条形；堆叠按净总量排序），该错误码已移除。 | 使用默认值或改用 `ranked-bar`。 |
+| 图表 `truncation {note}` | 仅用于 `area`、`ranked-bar`、`stacked` 和 S4 新增的 `grouped-bar`，且仅当坐标轴确实不含零（`extent`，或 `fixed` 且 `min > 0` / `max < 0`）。未声明时填充图形仍必须含零基线。S4 起绘制断轴标记、说明行中的“截断坐标轴”和作者说明，该错误码已移除。 | 补上说明，或改回 `policy: "zero"`。 |
+| 图表 `focus {categoryIds}` 或 `{seriesIds}`（S4） | 二选一。类别重点用于排序条形、分组条形、点与区间和基准表；系列重点用于含两个及以上系列的折线、分组条形、点与区间和小多图，且不能包含全部系列。重点为实色，其余较浅并带描边，图例写明两种状态。 | 单系列图不能聚焦系列（C1）：请声明承载结论的类别。 |
+| 图表 `labels`（默认 `points`，可 `end`）（S4） | `end` 绘制末端标注的折线趋势：不逐点标注，末端标签互不重叠。 | 只用于 `line`。 |
+| 图表 `chartType` 新增 `grouped-bar`、`dot-interval`、`small-multiples`、`benchmark-table`（S4） | 见[图表类型](components.md#图表类型与声明s42026-10-19)。 | 分组条形与小多图需要两个及以上系列；点与区间要求每个系列都有区间。 |
+| 数据集 `qualifiers[] {seriesId, categoryId, label, note}`（S4） | 为单个数值添加带编号的限定说明，显示在图表注释和数据表中；编号按数据集中的顺序。 | 每个数值最多一条，不能用于 `null`（请改用缺失原因）；需要 `categoryIds`。 |
 
 ### 设计计划场景（`design-plan`，透传到 `web-scene`）
 
@@ -81,6 +85,6 @@ MB-01～05 的本地构建详见[演示指南](presenting.md)。`src/contracts/p
 
 兼容方式：网页运行时、图表渲染器和 CSS 会原样嵌入每份导出文件，直接修改会改变所有现有文件。静态状态代码放在 [static-state.mjs](../../src/render/web/static-state.mjs) 和[运行时模块](../../public/runtime/static-state.js)中，只加入声明了静态状态的文稿。没有 `staticState` 的页面与 S1 逐字节一致（[基线测试](../../tests/handoff-contracts.test.mjs)）。这类页面的运行时数据带有 `staticState {keyStateId, position, reducedMotion}`，因此全局动效 **关闭** 不会丢掉静态回退。
 
-边界：审查门的版式测量记录的是开场而非静态状态；无 JavaScript 时不绘制冻结的步骤、比较标签与热点；390px 屏幕上排序条形图仍在图形区内横向滚动。三项都列在[冲突清单](../plans/design-handoff-vertical-sample.md#conflict-list)中。
+边界：审查门的版式测量记录的是开场而非静态状态；无 JavaScript 时不绘制冻结的步骤、比较标签与热点。两项都列在[冲突清单](../plans/design-handoff-vertical-sample.md#conflict-list)中。S4 起，390px 屏幕上的排序条形图不再横向滚动，静态陈述分别写明筛选与排序，两种视图以相同尺寸绘制图表。
 
 恢复：导出返回 `STATIC_STATE_UNIMPLEMENTED` 时，选择只改变图表选择的关键状态或开场。Studio 拒绝修改静态状态时，先取消 **锁定本页交互计划**。要删除静态状态，先把 `reducedMotion` 改为 `instant`。

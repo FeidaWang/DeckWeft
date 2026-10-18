@@ -1,0 +1,1642 @@
+{
+  "step": "S4 rerun of the S2 vertical sample",
+  "browser": "151.0.7922.34",
+  "binary": "isolated Chrome for Testing outside /Applications; Playwright temporary profile per context",
+  "stages": [
+    {
+      "locale": "en",
+      "stage": "import data",
+      "route": "Studio #projectFile → POST /api/visual/import",
+      "projectId": "visual_dc85686a69f7424f",
+      "blocks": 8,
+      "datasets": [
+        {
+          "id": "review-time",
+          "synthetic": true,
+          "categories": 6,
+          "unit": "%"
+        }
+      ],
+      "contentStatus": "illustrative",
+      "valuesUnchanged": true
+    },
+    {
+      "locale": "en",
+      "stage": "choose theme",
+      "semanticDocumentEqual": true,
+      "themes": {
+        "cream-collage": {
+          "composition": "reading-flow",
+          "colorMode": "default",
+          "fit": true
+        },
+        "dark-data": {
+          "composition": "chart-with-evidence-rail",
+          "colorMode": "default",
+          "fit": true
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "stage": "measure fonts",
+      "themes": {
+        "cream-collage": {
+          "status": "loaded",
+          "faces": 0,
+          "fit": [
+            {
+              "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+              "loaded": true,
+              "probeWidth": 439.9
+            },
+            {
+              "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+              "loaded": true,
+              "probeWidth": 120.5
+            },
+            {
+              "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+              "loaded": true,
+              "probeWidth": 228
+            },
+            {
+              "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+              "loaded": true,
+              "probeWidth": 166.8
+            },
+            {
+              "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+              "loaded": true,
+              "probeWidth": 111.2
+            }
+          ],
+          "platform": {
+            "document-title": [
+              "Arial (120)"
+            ],
+            "title": [
+              "Iowan Old Style (139)"
+            ],
+            "takeaway": [
+              "Avenir Next Demi Bold (87)"
+            ],
+            "caption": [
+              "Avenir Next (187)"
+            ],
+            "chart-caption": [
+              "Avenir Next (84)",
+              "Avenir Next Demi Bold (56)"
+            ],
+            "category-label": [
+              "Avenir Next (10)"
+            ],
+            "value-label": [
+              "Avenir Next (2)"
+            ],
+            "legend": [
+              "Avenir Next (17)"
+            ],
+            "source": [
+              "Avenir Next (91)"
+            ]
+          }
+        },
+        "dark-data": {
+          "status": "loaded",
+          "faces": 0,
+          "fit": [
+            {
+              "family": "\"Helvetica Neue\", Arial, sans-serif",
+              "loaded": true,
+              "probeWidth": 450.7
+            },
+            {
+              "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+              "loaded": true,
+              "probeWidth": 120.5
+            },
+            {
+              "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+              "loaded": true,
+              "probeWidth": 228
+            },
+            {
+              "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+              "loaded": true,
+              "probeWidth": 166.8
+            },
+            {
+              "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+              "loaded": true,
+              "probeWidth": 111.2
+            }
+          ],
+          "platform": {
+            "document-title": [
+              "Arial (120)"
+            ],
+            "title": [
+              "Helvetica Neue (137)"
+            ],
+            "takeaway": [
+              "Avenir Next Demi Bold (87)"
+            ],
+            "caption": [
+              "Avenir Next (187)"
+            ],
+            "chart-caption": [
+              "Avenir Next (84)",
+              "Avenir Next Demi Bold (56)"
+            ],
+            "category-label": [
+              "Avenir Next (10)"
+            ],
+            "value-label": [
+              "Avenir Next (2)"
+            ],
+            "legend": [
+              "Avenir Next (17)"
+            ],
+            "source": [
+              "Avenir Next (91)"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "stage": "switch legend focus",
+      "focus": [
+        {
+          "input": "mouse click on the series (legend) button",
+          "page": "1 / 2",
+          "state": {
+            "id": "focus-habits",
+            "kind": "chart-select",
+            "seriesIds": [
+              "reduction"
+            ],
+            "fromId": "claim-first",
+            "toId": "no-habit"
+          },
+          "pressed": [
+            "true",
+            "true"
+          ]
+        },
+        {
+          "input": "pointer selection of the To category",
+          "page": "1 / 2",
+          "state": {
+            "id": "focus-habits",
+            "kind": "chart-select",
+            "seriesIds": [
+              "reduction"
+            ],
+            "fromId": "claim-first",
+            "toId": "data-first"
+          },
+          "bars": 3
+        },
+        {
+          "input": "keyboard ArrowDown/ArrowRight/ArrowLeft on the To category",
+          "page": "1 / 2",
+          "state": {
+            "id": "focus-habits",
+            "kind": "chart-select",
+            "seriesIds": [
+              "reduction"
+            ],
+            "fromId": "claim-first",
+            "toId": "template"
+          },
+          "bars": 4
+        },
+        {
+          "input": "keyboard Enter/Tab/Space/ArrowRight on the series buttons",
+          "page": "1 / 2",
+          "state": {
+            "id": "focus-habits",
+            "kind": "chart-select",
+            "seriesIds": [
+              "reduction"
+            ],
+            "fromId": "claim-first",
+            "toId": "template"
+          },
+          "focused": "Drop in review hours (illustrative)"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "stage": "pause and seek",
+      "playingTimers": 1,
+      "paused": {
+        "position": 1,
+        "timers": 0
+      },
+      "seekPosition": 2,
+      "rapidNavigation": {
+        "timers": 0,
+        "scenes": [
+          {
+            "sceneId": "evidence",
+            "playing": false,
+            "animations": 0,
+            "timers": 0,
+            "registered": 0
+          },
+          {
+            "sceneId": "next-step",
+            "playing": false,
+            "animations": 0,
+            "timers": 0,
+            "registered": 0
+          }
+        ],
+        "animations": 0
+      }
+    },
+    {
+      "locale": "en",
+      "stage": "freeze static state",
+      "picker": "#staticState",
+      "chosen": "structure-first",
+      "position": 1,
+      "lockedPickerDisabled": true,
+      "lockedServerSave": {
+        "status": 409,
+        "code": "AUTHOR_LOCK"
+      },
+      "saved": {
+        "keyStateId": "structure-first"
+      }
+    },
+    {
+      "locale": "en",
+      "stage": "export html",
+      "gate": "preview ticket measured in this browser, POST /api/visual/export",
+      "bytes": 131929,
+      "sha256": "c517d9969dcb2af7a9918c31dfd6bcdddbc6311020145504f1b195616c18ebae",
+      "renderHash": "439daaa36958f7406bf8f88b5c658ea5622b06c39f24fb95b155d976f41295b2"
+    },
+    {
+      "locale": "en",
+      "stage": "conclusion-label gate",
+      "width": 390,
+      "injected": ".chart-rows{min-width:600px} inside an overflow-x:auto view",
+      "issues": 3,
+      "reasons": [
+        "Conclusion label is clipped or only reachable by scrolling"
+      ],
+      "afterRemoval": 0
+    },
+    {
+      "locale": "en",
+      "stage": "static state and reduced motion",
+      "views": {
+        "reading-1440": {
+          "position": 1,
+          "fit": true,
+          "content": {
+            "width": 1440,
+            "title": true,
+            "chart": true,
+            "question": true,
+            "chartTakeaway": true,
+            "definition": "Denominator: Each team's own review hours before adoption (synthetic) · Sample: n = 6 habit groups, synthetic · Normalized · Higher is better · Version: s2-sample-2026-10 · Collected: 2026-10-01 · Valid: 2026-01-01 – 2026-09-30",
+            "size": [
+              942,
+              125
+            ],
+            "takeaway": true,
+            "caption": true,
+            "chartCaption": true,
+            "legend": [
+              "Focus: Claim first",
+              "Other categories"
+            ],
+            "source": true,
+            "staticNote": "Static view · Structure-first habits (3 of 6): Claim first 38 %, Outline first 31 %, Data first 27 %. Filter: author order, Claim first → Data first (3 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3. Complete data below.",
+            "marks": [
+              {
+                "objectId": "claim-first",
+                "category": "Claim first",
+                "value": "38",
+                "focus": "true",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 996,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "outline-first",
+                "category": "Outline first",
+                "value": "31",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 854,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "data-first",
+                "category": "Data first",
+                "value": "27",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 773,
+                "inStaticNote": true
+              }
+            ],
+            "bars": 3,
+            "scroller": null,
+            "pointerOnly": [],
+            "horizontalPageScroll": false
+          }
+        },
+        "present-1440": {
+          "startPosition": 1,
+          "replayStart": 0,
+          "replayEnd": 2,
+          "pending": {
+            "timers": 0,
+            "scenes": [
+              {
+                "sceneId": "evidence",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              },
+              {
+                "sceneId": "next-step",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              }
+            ],
+            "animations": 0
+          }
+        },
+        "nojs-1440": {
+          "content": {
+            "width": 1440,
+            "title": true,
+            "chart": true,
+            "question": true,
+            "chartTakeaway": true,
+            "definition": "Denominator: Each team's own review hours before adoption (synthetic) · Sample: n = 6 habit groups, synthetic · Normalized · Higher is better · Version: s2-sample-2026-10 · Collected: 2026-10-01 · Valid: 2026-01-01 – 2026-09-30",
+            "size": [
+              942,
+              125
+            ],
+            "takeaway": true,
+            "caption": true,
+            "chartCaption": true,
+            "legend": [
+              "Focus: Claim first",
+              "Other categories"
+            ],
+            "source": true,
+            "staticNote": "Static view · Structure-first habits (3 of 6): Claim first 38 %, Outline first 31 %, Data first 27 %. Filter: author order, Claim first → Data first (3 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3. Complete data below.",
+            "marks": [
+              {
+                "objectId": "claim-first",
+                "category": "Claim first",
+                "value": "38",
+                "focus": "true",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 996,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "outline-first",
+                "category": "Outline first",
+                "value": "31",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 854,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "data-first",
+                "category": "Data first",
+                "value": "27",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 773,
+                "inStaticNote": true
+              }
+            ],
+            "bars": 3,
+            "scroller": null,
+            "pointerOnly": [],
+            "horizontalPageScroll": false
+          }
+        },
+        "reading-390": {
+          "position": 1,
+          "fit": true,
+          "content": {
+            "width": 390,
+            "title": true,
+            "chart": true,
+            "question": true,
+            "chartTakeaway": true,
+            "definition": "Denominator: Each team's own review hours before adoption (synthetic) · Sample: n = 6 habit groups, synthetic · Normalized · Higher is better · Version: s2-sample-2026-10 · Collected: 2026-10-01 · Valid: 2026-01-01 – 2026-09-30",
+            "size": [
+              346,
+              186
+            ],
+            "takeaway": true,
+            "caption": true,
+            "chartCaption": true,
+            "legend": [
+              "Focus: Claim first",
+              "Other categories"
+            ],
+            "source": true,
+            "staticNote": "Static view · Structure-first habits (3 of 6): Claim first 38 %, Outline first 31 %, Data first 27 %. Filter: author order, Claim first → Data first (3 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3. Complete data below.",
+            "marks": [
+              {
+                "objectId": "claim-first",
+                "category": "Claim first",
+                "value": "38",
+                "focus": "true",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 352,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "outline-first",
+                "category": "Outline first",
+                "value": "31",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 295,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "data-first",
+                "category": "Data first",
+                "value": "27",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 263,
+                "inStaticNote": true
+              }
+            ],
+            "bars": 3,
+            "scroller": null,
+            "pointerOnly": [],
+            "horizontalPageScroll": false
+          }
+        },
+        "present-390": {
+          "startPosition": 1,
+          "replayStart": 0,
+          "replayEnd": 2,
+          "pending": {
+            "timers": 0,
+            "scenes": [
+              {
+                "sceneId": "evidence",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              },
+              {
+                "sceneId": "next-step",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              }
+            ],
+            "animations": 0
+          }
+        },
+        "nojs-390": {
+          "content": {
+            "width": 390,
+            "title": true,
+            "chart": true,
+            "question": true,
+            "chartTakeaway": true,
+            "definition": "Denominator: Each team's own review hours before adoption (synthetic) · Sample: n = 6 habit groups, synthetic · Normalized · Higher is better · Version: s2-sample-2026-10 · Collected: 2026-10-01 · Valid: 2026-01-01 – 2026-09-30",
+            "size": [
+              342,
+              186
+            ],
+            "takeaway": true,
+            "caption": true,
+            "chartCaption": true,
+            "legend": [
+              "Focus: Claim first",
+              "Other categories"
+            ],
+            "source": true,
+            "staticNote": "Static view · Structure-first habits (3 of 6): Claim first 38 %, Outline first 31 %, Data first 27 %. Filter: author order, Claim first → Data first (3 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3. Complete data below.",
+            "marks": [
+              {
+                "objectId": "claim-first",
+                "category": "Claim first",
+                "value": "38",
+                "focus": "true",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 350,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "outline-first",
+                "category": "Outline first",
+                "value": "31",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 294,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "data-first",
+                "category": "Data first",
+                "value": "27",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 262,
+                "inStaticNote": true
+              }
+            ],
+            "bars": 3,
+            "scroller": null,
+            "pointerOnly": [],
+            "horizontalPageScroll": false
+          }
+        }
+      },
+      "reducedMotion": {
+        "system": {
+          "position": 1,
+          "playing": false,
+          "replayDisabled": true,
+          "pending": {
+            "timers": 0,
+            "scenes": [
+              {
+                "sceneId": "evidence",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              },
+              {
+                "sceneId": "next-step",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              }
+            ],
+            "animations": 0
+          }
+        },
+        "userControl": {
+          "position": 1,
+          "playing": false,
+          "pending": {
+            "timers": 0,
+            "scenes": [
+              {
+                "sceneId": "evidence",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              },
+              {
+                "sceneId": "next-step",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              }
+            ],
+            "animations": 0
+          }
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "stage": "declared pptx/pdf levels",
+      "pptx": {
+        "refused": [
+          "TARGET_UNIMPLEMENTED"
+        ],
+        "components": [
+          {
+            "blockId": "evidence-title",
+            "component": "heading",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-chart",
+            "component": "ranked-bar",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-takeaway",
+            "component": "callout",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-caption",
+            "component": "paragraph",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-source",
+            "component": "citation",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-title",
+            "component": "heading",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-body",
+            "component": "paragraph",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-source",
+            "component": "citation",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          }
+        ]
+      },
+      "pdf": {
+        "refused": [
+          "TARGET_UNIMPLEMENTED"
+        ],
+        "components": [
+          {
+            "blockId": "evidence-title",
+            "component": "heading",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-chart",
+            "component": "ranked-bar",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-takeaway",
+            "component": "callout",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-caption",
+            "component": "paragraph",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-source",
+            "component": "citation",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-title",
+            "component": "heading",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-body",
+            "component": "paragraph",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-source",
+            "component": "citation",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          }
+        ]
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "import data",
+      "route": "Studio #projectFile → POST /api/visual/import",
+      "projectId": "visual_fd01ac4bed3f4cb5",
+      "blocks": 8,
+      "datasets": [
+        {
+          "id": "review-time",
+          "synthetic": true,
+          "categories": 6,
+          "unit": "%"
+        }
+      ],
+      "contentStatus": "illustrative",
+      "valuesUnchanged": true
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "choose theme",
+      "semanticDocumentEqual": true,
+      "themes": {
+        "cream-collage": {
+          "composition": "reading-flow",
+          "colorMode": "default",
+          "fit": true
+        },
+        "dark-data": {
+          "composition": "chart-with-evidence-rail",
+          "colorMode": "default",
+          "fit": true
+        }
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "measure fonts",
+      "themes": {
+        "cream-collage": {
+          "status": "loaded",
+          "faces": 0,
+          "fit": [
+            {
+              "family": "\"Songti SC\", SimSun, serif",
+              "loaded": true,
+              "probeWidth": 407.3
+            },
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 122.4
+            },
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 228.9
+            },
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 169.5
+            },
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 113
+            }
+          ],
+          "platform": {
+            "document-title": [
+              "Arial (7)",
+              "PingFang SC (34)"
+            ],
+            "title": [
+              "Songti SC (51)"
+            ],
+            "takeaway": [
+              "PingFang SC (36)"
+            ],
+            "caption": [
+              "PingFang SC (61)"
+            ],
+            "chart-caption": [
+              "PingFang SC (32)",
+              "PingFang SC (16)"
+            ],
+            "category-label": [
+              "PingFang SC (4)"
+            ],
+            "value-label": [
+              "PingFang SC (2)"
+            ],
+            "legend": [
+              "PingFang SC (7)"
+            ],
+            "source": [
+              "PingFang SC (38)"
+            ]
+          }
+        },
+        "dark-data": {
+          "status": "loaded",
+          "faces": 0,
+          "fit": [
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 457.8
+            },
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 122.4
+            },
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 228.9
+            },
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 169.5
+            },
+            {
+              "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+              "loaded": true,
+              "probeWidth": 113
+            }
+          ],
+          "platform": {
+            "document-title": [
+              "Arial (7)",
+              "PingFang SC (34)"
+            ],
+            "title": [
+              "PingFang SC (51)"
+            ],
+            "takeaway": [
+              "PingFang SC (36)"
+            ],
+            "caption": [
+              "PingFang SC (61)"
+            ],
+            "chart-caption": [
+              "PingFang SC (32)",
+              "PingFang SC (16)"
+            ],
+            "category-label": [
+              "PingFang SC (4)"
+            ],
+            "value-label": [
+              "PingFang SC (2)"
+            ],
+            "legend": [
+              "PingFang SC (7)"
+            ],
+            "source": [
+              "PingFang SC (38)"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "switch legend focus",
+      "focus": [
+        {
+          "input": "mouse click on the series (legend) button",
+          "page": "1 / 2",
+          "state": {
+            "id": "focus-habits",
+            "kind": "chart-select",
+            "seriesIds": [
+              "reduction"
+            ],
+            "fromId": "claim-first",
+            "toId": "no-habit"
+          },
+          "pressed": [
+            "true",
+            "true"
+          ]
+        },
+        {
+          "input": "pointer selection of the To category",
+          "page": "1 / 2",
+          "state": {
+            "id": "focus-habits",
+            "kind": "chart-select",
+            "seriesIds": [
+              "reduction"
+            ],
+            "fromId": "claim-first",
+            "toId": "data-first"
+          },
+          "bars": 3
+        },
+        {
+          "input": "keyboard ArrowDown/ArrowRight/ArrowLeft on the To category",
+          "page": "1 / 2",
+          "state": {
+            "id": "focus-habits",
+            "kind": "chart-select",
+            "seriesIds": [
+              "reduction"
+            ],
+            "fromId": "claim-first",
+            "toId": "template"
+          },
+          "bars": 4
+        },
+        {
+          "input": "keyboard Enter/Tab/Space/ArrowRight on the series buttons",
+          "page": "1 / 2",
+          "state": {
+            "id": "focus-habits",
+            "kind": "chart-select",
+            "seriesIds": [
+              "reduction"
+            ],
+            "fromId": "claim-first",
+            "toId": "template"
+          },
+          "focused": "评审工时降幅（示意）"
+        }
+      ]
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "pause and seek",
+      "playingTimers": 1,
+      "paused": {
+        "position": 1,
+        "timers": 0
+      },
+      "seekPosition": 2,
+      "rapidNavigation": {
+        "timers": 0,
+        "scenes": [
+          {
+            "sceneId": "evidence",
+            "playing": false,
+            "animations": 0,
+            "timers": 0,
+            "registered": 0
+          },
+          {
+            "sceneId": "next-step",
+            "playing": false,
+            "animations": 0,
+            "timers": 0,
+            "registered": 0
+          }
+        ],
+        "animations": 0
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "freeze static state",
+      "picker": "#staticState",
+      "chosen": "structure-first",
+      "position": 1,
+      "lockedPickerDisabled": true,
+      "lockedServerSave": {
+        "status": 409,
+        "code": "AUTHOR_LOCK"
+      },
+      "saved": {
+        "keyStateId": "structure-first"
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "export html",
+      "gate": "preview ticket measured in this browser, POST /api/visual/export",
+      "bytes": 131781,
+      "sha256": "dd911df39bb7ea8bb937200af26f76a707532c4f5d6f2a8cf12ecae755415a4d",
+      "renderHash": "b54cc027b4fe3ade9e25cabc17399e26f8e53c7240e70f15d4a2cf8c810522f6"
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "conclusion-label gate",
+      "width": 390,
+      "injected": ".chart-rows{min-width:600px} inside an overflow-x:auto view",
+      "issues": 3,
+      "reasons": [
+        "Conclusion label is clipped or only reachable by scrolling"
+      ],
+      "afterRemoval": 0
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "static state and reduced motion",
+      "views": {
+        "reading-1440": {
+          "position": 1,
+          "fit": true,
+          "content": {
+            "width": 1440,
+            "title": true,
+            "chart": true,
+            "question": true,
+            "chartTakeaway": true,
+            "definition": "分母：各团队采用前自身的评审工时（合成） · 样本：n = 6 个习惯组，合成 · 已归一化 · 数值越高越好 · 版本：s2-sample-2026-10 · 采集日期：2026-10-01 · 有效期：2026-01-01 – 2026-09-30",
+            "size": [
+              942,
+              125
+            ],
+            "takeaway": true,
+            "caption": true,
+            "chartCaption": true,
+            "legend": [
+              "重点：先写结论",
+              "其他类别"
+            ],
+            "source": true,
+            "staticNote": "静态视图 · 先搭结构的习惯（6 种中的 3 种）：先写结论 38 %，先列提纲 31 %，先看数据 27 %。筛选：按作者顺序 先写结论 → 先看数据（6 个类别中的 3 个）。按数值从高到低；在全部 6 个类别中的排名：1，2，3。完整数据见下方。",
+            "marks": [
+              {
+                "objectId": "claim-first",
+                "category": "先写结论",
+                "value": "38",
+                "focus": "true",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 995,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "outline-first",
+                "category": "先列提纲",
+                "value": "31",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 843,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "data-first",
+                "category": "先看数据",
+                "value": "27",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 759,
+                "inStaticNote": true
+              }
+            ],
+            "bars": 3,
+            "scroller": null,
+            "pointerOnly": [],
+            "horizontalPageScroll": false
+          }
+        },
+        "present-1440": {
+          "startPosition": 1,
+          "replayStart": 0,
+          "replayEnd": 2,
+          "pending": {
+            "timers": 0,
+            "scenes": [
+              {
+                "sceneId": "evidence",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              },
+              {
+                "sceneId": "next-step",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              }
+            ],
+            "animations": 0
+          }
+        },
+        "nojs-1440": {
+          "content": {
+            "width": 1440,
+            "title": true,
+            "chart": true,
+            "question": true,
+            "chartTakeaway": true,
+            "definition": "分母：各团队采用前自身的评审工时（合成） · 样本：n = 6 个习惯组，合成 · 已归一化 · 数值越高越好 · 版本：s2-sample-2026-10 · 采集日期：2026-10-01 · 有效期：2026-01-01 – 2026-09-30",
+            "size": [
+              942,
+              125
+            ],
+            "takeaway": true,
+            "caption": true,
+            "chartCaption": true,
+            "legend": [
+              "重点：先写结论",
+              "其他类别"
+            ],
+            "source": true,
+            "staticNote": "静态视图 · 先搭结构的习惯（6 种中的 3 种）：先写结论 38 %，先列提纲 31 %，先看数据 27 %。筛选：按作者顺序 先写结论 → 先看数据（6 个类别中的 3 个）。按数值从高到低；在全部 6 个类别中的排名：1，2，3。完整数据见下方。",
+            "marks": [
+              {
+                "objectId": "claim-first",
+                "category": "先写结论",
+                "value": "38",
+                "focus": "true",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 995,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "outline-first",
+                "category": "先列提纲",
+                "value": "31",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 843,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "data-first",
+                "category": "先看数据",
+                "value": "27",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 759,
+                "inStaticNote": true
+              }
+            ],
+            "bars": 3,
+            "scroller": null,
+            "pointerOnly": [],
+            "horizontalPageScroll": false
+          }
+        },
+        "reading-390": {
+          "position": 1,
+          "fit": true,
+          "content": {
+            "width": 390,
+            "title": true,
+            "chart": true,
+            "question": true,
+            "chartTakeaway": true,
+            "definition": "分母：各团队采用前自身的评审工时（合成） · 样本：n = 6 个习惯组，合成 · 已归一化 · 数值越高越好 · 版本：s2-sample-2026-10 · 采集日期：2026-10-01 · 有效期：2026-01-01 – 2026-09-30",
+            "size": [
+              346,
+              186
+            ],
+            "takeaway": true,
+            "caption": true,
+            "chartCaption": true,
+            "legend": [
+              "重点：先写结论",
+              "其他类别"
+            ],
+            "source": true,
+            "staticNote": "静态视图 · 先搭结构的习惯（6 种中的 3 种）：先写结论 38 %，先列提纲 31 %，先看数据 27 %。筛选：按作者顺序 先写结论 → 先看数据（6 个类别中的 3 个）。按数值从高到低；在全部 6 个类别中的排名：1，2，3。完整数据见下方。",
+            "marks": [
+              {
+                "objectId": "claim-first",
+                "category": "先写结论",
+                "value": "38",
+                "focus": "true",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 351,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "outline-first",
+                "category": "先列提纲",
+                "value": "31",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 292,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "data-first",
+                "category": "先看数据",
+                "value": "27",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 262,
+                "inStaticNote": true
+              }
+            ],
+            "bars": 3,
+            "scroller": null,
+            "pointerOnly": [],
+            "horizontalPageScroll": false
+          }
+        },
+        "present-390": {
+          "startPosition": 1,
+          "replayStart": 0,
+          "replayEnd": 2,
+          "pending": {
+            "timers": 0,
+            "scenes": [
+              {
+                "sceneId": "evidence",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              },
+              {
+                "sceneId": "next-step",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              }
+            ],
+            "animations": 0
+          }
+        },
+        "nojs-390": {
+          "content": {
+            "width": 390,
+            "title": true,
+            "chart": true,
+            "question": true,
+            "chartTakeaway": true,
+            "definition": "分母：各团队采用前自身的评审工时（合成） · 样本：n = 6 个习惯组，合成 · 已归一化 · 数值越高越好 · 版本：s2-sample-2026-10 · 采集日期：2026-10-01 · 有效期：2026-01-01 – 2026-09-30",
+            "size": [
+              342,
+              186
+            ],
+            "takeaway": true,
+            "caption": true,
+            "chartCaption": true,
+            "legend": [
+              "重点：先写结论",
+              "其他类别"
+            ],
+            "source": true,
+            "staticNote": "静态视图 · 先搭结构的习惯（6 种中的 3 种）：先写结论 38 %，先列提纲 31 %，先看数据 27 %。筛选：按作者顺序 先写结论 → 先看数据（6 个类别中的 3 个）。按数值从高到低；在全部 6 个类别中的排名：1，2，3。完整数据见下方。",
+            "marks": [
+              {
+                "objectId": "claim-first",
+                "category": "先写结论",
+                "value": "38",
+                "focus": "true",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 349,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "outline-first",
+                "category": "先列提纲",
+                "value": "31",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 291,
+                "inStaticNote": true
+              },
+              {
+                "objectId": "data-first",
+                "category": "先看数据",
+                "value": "27",
+                "focus": "false",
+                "categoryVisible": true,
+                "valueVisible": true,
+                "valueRight": 261,
+                "inStaticNote": true
+              }
+            ],
+            "bars": 3,
+            "scroller": null,
+            "pointerOnly": [],
+            "horizontalPageScroll": false
+          }
+        }
+      },
+      "reducedMotion": {
+        "system": {
+          "position": 1,
+          "playing": false,
+          "replayDisabled": true,
+          "pending": {
+            "timers": 0,
+            "scenes": [
+              {
+                "sceneId": "evidence",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              },
+              {
+                "sceneId": "next-step",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              }
+            ],
+            "animations": 0
+          }
+        },
+        "userControl": {
+          "position": 1,
+          "playing": false,
+          "pending": {
+            "timers": 0,
+            "scenes": [
+              {
+                "sceneId": "evidence",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              },
+              {
+                "sceneId": "next-step",
+                "playing": false,
+                "animations": 0,
+                "timers": 0,
+                "registered": 0
+              }
+            ],
+            "animations": 0
+          }
+        }
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "stage": "declared pptx/pdf levels",
+      "pptx": {
+        "refused": [
+          "TARGET_UNIMPLEMENTED"
+        ],
+        "components": [
+          {
+            "blockId": "evidence-title",
+            "component": "heading",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-chart",
+            "component": "ranked-bar",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-takeaway",
+            "component": "callout",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-caption",
+            "component": "paragraph",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-source",
+            "component": "citation",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-title",
+            "component": "heading",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-body",
+            "component": "paragraph",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-source",
+            "component": "citation",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          }
+        ]
+      },
+      "pdf": {
+        "refused": [
+          "TARGET_UNIMPLEMENTED"
+        ],
+        "components": [
+          {
+            "blockId": "evidence-title",
+            "component": "heading",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-chart",
+            "component": "ranked-bar",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-takeaway",
+            "component": "callout",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-caption",
+            "component": "paragraph",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "evidence-source",
+            "component": "citation",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-title",
+            "component": "heading",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-body",
+            "component": "paragraph",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          },
+          {
+            "blockId": "close-source",
+            "component": "citation",
+            "level": null,
+            "supported": false,
+            "representation": "unimplemented"
+          }
+        ]
+      }
+    }
+  ],
+  "captures": [
+    {
+      "file": "en-theme-cream-collage-1440.png",
+      "sha256": "9825a44098706ed04b578da2dd937108516d268cc531e23b12ba317259ffc432"
+    },
+    {
+      "file": "en-theme-dark-data-1440.png",
+      "sha256": "7dd5ae7bbb9815a598d1685149f9ed594fc1410edaccbcd39789cea8646008ff"
+    },
+    {
+      "file": "en-studio-static-state.png",
+      "sha256": "0690235ad2126e8129354618a5602a5acc9d93235df6db900e13983a6ce334db"
+    },
+    {
+      "file": "en-reading-1440.png",
+      "sha256": "d1222a09fdfc3a2c4e367055dc57281b515fa78dbf7b66fb3410a9dd0c442c2d"
+    },
+    {
+      "file": "en-present-1440.png",
+      "sha256": "df60bf076ba510ed3f6a32c0a2f465e17cf328758ef7d1a5e689088718b9417d"
+    },
+    {
+      "file": "en-nojs-1440.png",
+      "sha256": "f38d645305c3fc2489b62aa9778e195a0dc66746080d17bb06a3603039289ca1"
+    },
+    {
+      "file": "en-reading-390.png",
+      "sha256": "f70eae50b7003b0a11d7b52b876193b80515ef83cd02d49516dc004299213c61"
+    },
+    {
+      "file": "en-present-390.png",
+      "sha256": "a2801a886aed540062130283b1f60be975fbf74024b05e0ab75c8ad15549efd9"
+    },
+    {
+      "file": "en-nojs-390.png",
+      "sha256": "c6ca49835e4204b519a3f00a55b757e90ea48ebee9658292e08a71d68d47cda7"
+    },
+    {
+      "file": "en-reduced-1440.png",
+      "sha256": "21c255368168dc22edde2fd03063d2413c2294471aa76d187d47d4c0a7626c3c"
+    },
+    {
+      "file": "zh-CN-theme-cream-collage-1440.png",
+      "sha256": "e97e3d79a4b7831f93436890f2aeea654ab31efc27bc9606a2d6cab3cec7f85d"
+    },
+    {
+      "file": "zh-CN-theme-dark-data-1440.png",
+      "sha256": "a98092bc3d0bed84a89676fa24a90886532c51b81b05c9f5ffa1a937e9c9d3b6"
+    },
+    {
+      "file": "zh-CN-studio-static-state.png",
+      "sha256": "13b3e15c08911ba3c8769de0645b7468442e59a71270b7dd7362f791a542a168"
+    },
+    {
+      "file": "zh-CN-reading-1440.png",
+      "sha256": "c364dfb14269ee6d12516e0e36a057d13fe1a9a9ae5ca830599398728ffe07fe"
+    },
+    {
+      "file": "zh-CN-present-1440.png",
+      "sha256": "5720497c2d829744bc6aa3eebeb85e8c94564759ff30e425e7a9fe1be9c28894"
+    },
+    {
+      "file": "zh-CN-nojs-1440.png",
+      "sha256": "5980dd501f69ed9223c230fdd67c4c7ce122b9854f9767afda5f0e6dc308d8c0"
+    },
+    {
+      "file": "zh-CN-reading-390.png",
+      "sha256": "df63698b7f7d66709b4137dc507e830b0c87d9e42c56aee77093a22ea1349e46"
+    },
+    {
+      "file": "zh-CN-present-390.png",
+      "sha256": "538e4925edab422c89b900d4f3516ec7dfd6a7498efd0fa8ce8cb0eb41441590"
+    },
+    {
+      "file": "zh-CN-nojs-390.png",
+      "sha256": "2b6795e81d0c55cc737c2634fe046c7c9ae80270d951c4f4f86edaf21323ab05"
+    },
+    {
+      "file": "zh-CN-reduced-1440.png",
+      "sha256": "6df27205d3628e40cda3c7eb99d6c8565cc4f3d4c7a355168778d635557dd8c3"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "C1",
+      "observed": "S4 draws the declared category focus (Claim first) in both views; the runtime series switch still reports both buttons aria-pressed=true and changes nothing (S5 replaces it for single-series charts)",
+      "locale": "en"
+    },
+    {
+      "id": "C1",
+      "observed": "S4 draws the declared category focus (Claim first) in both views; the runtime series switch still reports both buttons aria-pressed=true and changes nothing (S5 replaces it for single-series charts)",
+      "locale": "zh-CN"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "ok": true
+}

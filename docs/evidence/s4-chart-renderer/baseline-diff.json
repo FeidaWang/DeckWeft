@@ -1,0 +1,394 @@
+{
+  "format": "deckweft-render-baseline-diff",
+  "older": "git worktree of 232060e (S2, renderer visual-art-direction.3)",
+  "entries": [
+    {
+      "entry": "wave-a.en.html",
+      "changed": true,
+      "before": "8835dde10e57ca02e3a5d99f7bf1fcff09bbc53db96e5630c3376727f65b6014",
+      "after": "44ba0a6ef48fba7d22d685a412332a0b26df69ff733bbb4676812f4fecb9e71b",
+      "anchors": {
+        "before": 12,
+        "after": 12,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 1,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 47,
+        "after": 47,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 13,
+        "after": 13,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "wave-a.zh-CN.html",
+      "changed": true,
+      "before": "7c120750f60ec861d9bb70b13e458b5f30e3bedae2c61a3988b88f12202e6d3c",
+      "after": "60e1ce828fc430fb87e118993cfc0376828263d168efc9d21f55f280bbfd7f8c",
+      "anchors": {
+        "before": 12,
+        "after": 12,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 1,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 47,
+        "after": 47,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 13,
+        "after": 13,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "visual-demo.en.html",
+      "changed": true,
+      "before": "33cbd94076c42f80feabc6afd23559204f09e61283d51cacaf238b3f358961d5",
+      "after": "7f25f3f638c4a0a47a21a2926302ffbbd04f965a26da01db86522f91e051ac46",
+      "anchors": {
+        "before": 12,
+        "after": 12,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 1,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 51,
+        "after": 51,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 13,
+        "after": 13,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "visual-demo.zh-CN.html",
+      "changed": true,
+      "before": "0b5e4ffd0187c1bf1ea8d7882fdcb069ce8d42cc919e7d4068c28576c15627b9",
+      "after": "c9420540e600478f3a57b3bf3f46e437a93a3e69182ff9742120ba11fe858f63",
+      "anchors": {
+        "before": 12,
+        "after": 12,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 1,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 51,
+        "after": 51,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 13,
+        "after": 13,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "component-demo.en.html",
+      "changed": true,
+      "before": "952fa76784a4548c3cc1bc7ad12ed26ea7437f39e3e685545b21d181e45f752a",
+      "after": "6633fda1f22db536404aaa581d067534e7f5a1a584687645ea5093ffa97e9ba1",
+      "anchors": {
+        "before": 103,
+        "after": 103,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 7,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 232,
+        "after": 233,
+        "removed": [],
+        "added": [
+          "0"
+        ]
+      },
+      "visibleWords": {
+        "removed": [
+          "ranked-bar",
+          "values",
+          "remain",
+          "gaps;",
+          "no",
+          "interpolation.",
+          "Stacks",
+          "with",
+          "any",
+          "member",
+          "gaps.",
+          "Scatter",
+          "need",
+          "both",
+          "coordinates.",
+          "hours",
+          "Missing",
+          "missing",
+          "points"
+        ],
+        "added": [
+          "ranked",
+          "bar",
+          "sorted",
+          "value,",
+          "highest",
+          "first",
+          "0",
+          "by"
+        ]
+      },
+      "hoverOnlyTitles": {
+        "before": 99,
+        "after": 90,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "component-demo.zh-CN.html",
+      "changed": true,
+      "before": "7909e2f4228a2ae6adaa1052ff19dc97d66e83831e7f0362bf58c3d79ed7f7f3",
+      "after": "1f6ac91cbaabfa23803b1d6ff533cc61bec04b67c6aa882b40dcb515e5088777",
+      "anchors": {
+        "before": 103,
+        "after": 103,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 7,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 236,
+        "after": 237,
+        "removed": [],
+        "added": [
+          "0"
+        ]
+      },
+      "visibleWords": {
+        "removed": [
+          "缺失值保留为空缺，不插值；堆叠中任一缺失使整组留空；散点需要两个坐标。",
+          "小时"
+        ],
+        "added": [
+          "按数值从高到低",
+          "0"
+        ]
+      },
+      "hoverOnlyTitles": {
+        "before": 99,
+        "after": 90,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "interaction-demo.en.html",
+      "changed": true,
+      "before": "dab1f376255ccb37fd8ce13f4d1db836f5d16e567c924c409c14102f4d868386",
+      "after": "dc50b3727bdfb270201082f33fab93bcdaaa546fd7f16f94722904226801f9de",
+      "anchors": {
+        "before": 103,
+        "after": 103,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 7,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 234,
+        "after": 235,
+        "removed": [],
+        "added": [
+          "0"
+        ]
+      },
+      "visibleWords": {
+        "removed": [
+          "ranked-bar",
+          "values",
+          "remain",
+          "gaps;",
+          "no",
+          "interpolation.",
+          "Stacks",
+          "with",
+          "any",
+          "member",
+          "gaps.",
+          "Scatter",
+          "need",
+          "coordinates.",
+          "hours",
+          "Missing",
+          "missing",
+          "points",
+          "both"
+        ],
+        "added": [
+          "ranked",
+          "bar",
+          "sorted",
+          "value,",
+          "highest",
+          "0",
+          "by",
+          "first"
+        ]
+      },
+      "hoverOnlyTitles": {
+        "before": 99,
+        "after": 90,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "interaction-demo.zh-CN.html",
+      "changed": true,
+      "before": "310a57f0aa32ad3ff4610e0e92cc4e763147580baea3bfa2f8c15f997c94fdeb",
+      "after": "abb40597c56cd50cff7671e9b5b643bdc8937cf049b17b61ce2a302e76780e06",
+      "anchors": {
+        "before": 103,
+        "after": 103,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 7,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 238,
+        "after": 239,
+        "removed": [],
+        "added": [
+          "0"
+        ]
+      },
+      "visibleWords": {
+        "removed": [
+          "缺失值保留为空缺，不插值；堆叠中任一缺失使整组留空；散点需要两个坐标。",
+          "小时"
+        ],
+        "added": [
+          "按数值从高到低",
+          "0"
+        ]
+      },
+      "hoverOnlyTitles": {
+        "before": 99,
+        "after": 90,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "composition-demo.en.html",
+      "changed": true,
+      "before": "6d751d7dbaa9ea0a94ab5bee4faddd4fe0567cae832cf79f440de4f5cbe4f10a",
+      "after": "dcff3e835b9652fc2ec42e4b0486b2e2be36849b830670161cc28eeafdabb49b",
+      "anchors": {
+        "before": 15,
+        "after": 15,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 2,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 59,
+        "after": 59,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 16,
+        "after": 16,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "composition-demo.zh-CN.html",
+      "changed": true,
+      "before": "2c8a56945905758e3987c5b1f0c292dee0d6bfb020131a92b36cb1444ccce93d",
+      "after": "ec255aa64f04ab073010e41cce4c46d73af4f0b42fbd35440b7c3eae1737b8e9",
+      "anchors": {
+        "before": 15,
+        "after": 15,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 2,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 59,
+        "after": 59,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 16,
+        "after": 16,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    }
+  ]
+}

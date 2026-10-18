@@ -24,6 +24,10 @@ PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；�
 
 [证据](../evidence/s3-composition-families/review.md) · [逐字节对照](../evidence/s3-composition-families/byte-identity.json) · [说明](visual-studio.md#新增六类构图s3)。
 
+## S4 设计交接图表渲染器 — 2026-10-19
+
+图表渲染器现在绘制 S1 的各项声明（对数轴、带说明的截断、作者顺序／升序排序、区间、事件、缺失原因），关闭 S2 的图表冲突 C1、C2、C3、C10 与 C19，并新增六种 P1 图表：直接标注条形、`grouped-bar`、`dot-interval`、末端标注趋势、`small-multiples`，以及带限定说明的 `benchmark-table`。图形、标签、文字陈述和数据表都来自同一个数据对象；三套主题下的数据表逐字节一致。`npm run verify` 通过 **375 项测试**（374 通过，1 项按环境跳过），以及类型、1,149 个文件的源码与链接检查、打包和演示。`tests/browser_chart_kinds.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过，覆盖中英文、1440／1024／390px、有无 JavaScript 和灰度：每个视图 119 个结论标签，无一被隐藏或只能滚动查看；注入滚动容器后，Studio 测量审查门以 `VISUAL_FIT` 拒绝。S2 垂直样本与现有交互套件再次通过；已提交的所有图片均已查看。**渲染基线经有意重新记录**，单独提交：10 个 HTML 哈希全部变化（嵌入的图表代码、CSS 与 `WEB_RENDERER_VERSION` `visual-art-direction.4`），每个文件的锚点、数据表和数值均未改变；JSON 与主题哈希不变。PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 After Effects 与 LibreOffice。[证据](../evidence/s4-chart-renderer/review.md) · [字段决定](../plans/design-handoff-alignment.md#s4-field-list-decisions-2026-10-19)。
+
 ## S2 设计交接垂直样本 — 2026-10-19
 
 一页示意证据页（结论、排序条形图、来源、焦点）以中英文完整走过 Studio 导入、两套主题包、字体测量、鼠标与键盘焦点、暂停与定位、新增的静态状态选择、现有的测量后导出审查门，以及导出文件的各个视图。静态输出现在会把已声明的 `staticState` 应用到图表选择；`reducedMotion: "static"` 时显示该状态而不播放提示；现有输出保持逐字节一致。`npm run verify` 通过 **362 项测试**（361 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。`tests/browser_evidence_scene.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过；已查看 1440 与 390px 的全部 20 张截图。键盘焦点从未翻页，快速翻页后待执行计时器为 0。PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 After Effects 与 LibreOffice。20 项冲突附复现步骤列出。[证据](../evidence/s2-vertical-sample/review.md) · [冲突清单](../plans/design-handoff-vertical-sample.md)。

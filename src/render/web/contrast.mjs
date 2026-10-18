@@ -31,5 +31,18 @@ export const clippingScript = String.raw`function auditClipping(scene){
    for(let a=node.parentElement;a&&a!==scene;a=a.parentElement){const style=getComputedStyle(a),clipX=['hidden','clip'].includes(style.overflowX),clipY=['hidden','clip'].includes(style.overflowY);if(!clipX&&!clipY)continue;const box=a.getBoundingClientRect();if(rects.some(r=>clipX&&(r.left<box.left-1||r.right>box.right+1)||clipY&&(r.top<box.top-1||r.bottom>box.bottom+1))){issues.push({regionId:region.id,element:a.tagName,text:node.textContent.slice(0,80)});failed=true;break;}}
   }
  }
+ // Labels a chart needs to state its conclusion are marked data-conclusion-label. Each must be displayed, uncovered by other such labels, and inside every clipping or scrolling box and the viewport without scrolling.
+ for(const figure of scene.querySelectorAll('.chart')){
+  const region=figure.closest('.region'),boxes=[];
+  for(const label of figure.querySelectorAll('[data-conclusion-label]')){
+   if(label.closest('details:not([open])'))continue;
+   const style=getComputedStyle(label),rects=[...label.getClientRects()].filter(r=>r.width>.1&&r.height>.1),text=label.textContent.slice(0,80);
+   if(!rects.length||style.visibility==='hidden'||Number(style.opacity)===0){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion label is not displayed'});continue;}
+   let failed=false;
+   for(let a=label.parentElement;a&&a!==document.body&&!failed;a=a.parentElement){const s=getComputedStyle(a);if(s.overflowX==='visible'&&s.overflowY==='visible')continue;const box=a.getBoundingClientRect();if(rects.some(r=>r.left<box.left-1||r.right>box.right+1||r.top<box.top-1||r.bottom>box.bottom+1)){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion label is clipped or only reachable by scrolling',scroller:a.className&&String(a.className.baseVal??a.className)||a.tagName});failed=true;}}
+   if(!failed&&rects.some(r=>r.left<-1||r.right>document.documentElement.clientWidth+1)){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion label is outside the viewport'});failed=true;}
+   for(const r of rects){const other=boxes.find(b=>b.label!==label&&!b.label.contains(label)&&!label.contains(b.label)&&Math.min(r.right,b.r.right)-Math.max(r.left,b.r.left)>1&&Math.min(r.bottom,b.r.bottom)-Math.max(r.top,b.r.top)>1);if(other&&!failed){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion labels overlap',other:other.label.textContent.slice(0,80)});failed=true;}boxes.push({label,r});}
+  }
+ }
  return issues;
 }`;

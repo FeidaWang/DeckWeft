@@ -52,10 +52,9 @@ test('S1 positive fixture carries semantic, chart, motion and static-state field
  for(const key of ['takeaway','contentStatus','keyStates','staticState','motion'])assert.deepEqual(web[key],scene[key],key);
  assert.equal(staticStatePosition(scene),0);
  assert.deepEqual(staticInteractionState(d,scene),seekInteractionState(compileCues(d,scene).interactions,scene.cues,0));
- // Declared-but-not-drawn chart semantics are refused for HTML rather than dropped from the figure.
- const refused=presentationCapabilities('html',d,{},p);
- assert.equal(refused.ok,false);assert.deepEqual(refused.issues.map(i=>i.code).sort(),['CHART_EVENTS_UNIMPLEMENTED','CHART_INTERVAL_UNIMPLEMENTED']);
- rejects(()=>html(d,p),'TARGET_CAPABILITY');
+ // S1 refused the undrawn events and intervals; since S4 a line draws both, so HTML export carries them as visible text and marks.
+ assert.deepEqual(presentationCapabilities('html',d,{},p).issues,[]);
+ const drawn=html(d,p).body;for(const fact of ['Synthetic bootstrap, 1,000 resamples','Guided workflow launched (adjacent in time; not a cause)','The manual cohort was not surveyed in Q3 (synthetic).',d.blocks[6].question,d.blocks[6].takeaway])assert.ok(drawn.includes(fact),fact);
  assert.equal(presentationCapabilities('json',d,{},p).ok,true);
  const drawable=structuredClone(d);delete datasetOf(drawable).events;for(const s of datasetOf(drawable).series)delete s.interval;
  assert.equal(presentationCapabilities('html',drawable,{},p).ok,true);
@@ -83,7 +82,7 @@ test('S1 guard 1: bars start at zero unless truncation is declared with a note',
  rejects(()=>assertPresentation(bars),'INVALID_PRESENTATION',/zero baseline unless truncation/);
  const declared=structuredClone(bars);chartOf(declared).truncation={note:'Axis starts at 10 to separate the top quarters; differences are exaggerated.'};
  assertPresentation(declared);assertDesignPlan(declared,p);
- assert.deepEqual(presentationCapabilities('html',declared,{},p).issues.map(i=>i.code),['CHART_TRUNCATION_UNIMPLEMENTED']);
+ assert.deepEqual(presentationCapabilities('html',declared,{},p).issues.map(i=>i.code),[]); // S4 draws the truncated axis, its break mark and the note
  const empty=structuredClone(declared);chartOf(empty).truncation={note:''};rejects(()=>assertPresentation(empty),'INVALID_PRESENTATION');
  const zero=structuredClone(declared);chartOf(zero).axis={policy:'zero'};rejects(()=>assertPresentation(zero),'INVALID_PRESENTATION',/still starts at zero/);
  const line=structuredClone(d);chartOf(line).truncation={note:'n/a'};chartOf(line).axis={policy:'extent'};rejects(()=>assertPresentation(line),'INVALID_PRESENTATION',/only for bars, stacks and areas/);
@@ -93,7 +92,7 @@ test('S1 guard 2: log axes are declared per chart, never inherited',async()=>{
  const {document:d,plan:p}=await legacy();
  const log=structuredClone(d);chartOf(log).axis={policy:'extent',scale:'log'};
  assertPresentation(log);assert.equal(chartSemantics(chartOf(log),datasetOf(log)).scale.y,'log');
- assert.deepEqual(presentationCapabilities('html',log,{},p).issues.map(i=>i.code),['CHART_SCALE_UNIMPLEMENTED']);
+ assert.deepEqual(presentationCapabilities('html',log,{},p).issues.map(i=>i.code),[]); // S4 draws log axes on lines
  const shared=structuredClone(log);shared.blocks.push({id:'linear-twin',type:'chart',sourceIds:[],datasetId:'adoption-quarterly',axis:{policy:'zero',scale:'linear'}});const plan=structuredClone(p);plan.scenes[1].blockIds.push('linear-twin');
  assertDesignPlan(shared,plan);assert.deepEqual(shared.blocks.filter(b=>b.type==='chart').map(b=>chartSemantics(b,datasetOf(shared)).scale.y),['log','linear']);
  const inherited=structuredClone(d);datasetOf(inherited).scale='log';rejects(()=>assertPresentation(inherited),'INVALID_PRESENTATION',/Unknown field/);
@@ -128,7 +127,8 @@ test('S1 guard 5: missing values keep their null and carry reasons, never zero',
  const {document:d}=await semantic(),before=JSON.stringify(d);
  assertPresentation(d);assert.equal(JSON.stringify(d),before);
  assert.equal(datasetOf(d).series[1].values[2],null);
- assert.deepEqual(chartModel(chartOf(d),datasetOf(d)).domain,[0,78]);
+ // The null never widens or narrows the range; since S4 the drawn interval bounds (upper 82) do.
+ assert.deepEqual(chartModel(chartOf(d),datasetOf(d)).domain,[0,82]);
  const coerced=structuredClone(d);datasetOf(coerced).series[1].values[2]='0';rejects(()=>assertPresentation(coerced),'INVALID_PRESENTATION');
  const present=structuredClone(d);datasetOf(present).series[1].values[2]=0;rejects(()=>assertPresentation(present),'INVALID_PRESENTATION',/can only explain a null/);
  const duplicate=structuredClone(d);datasetOf(duplicate).missing.push({...datasetOf(duplicate).missing[0]});rejects(()=>assertPresentation(duplicate),'INVALID_PRESENTATION',/one reason/);
