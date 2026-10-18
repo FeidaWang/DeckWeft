@@ -17,7 +17,7 @@ import {compileInteractionRuntime} from '../src/motion/web.mjs';
 import {resolveTheme,themePacks,themeTokens,TOKEN_DEFAULTS} from '../src/design/theme-registry.mjs';
 import {validateSchema} from '../src/core/schema.mjs';
 import {chartModel} from '../src/components/charts/model.mjs';
-import {renderBaseline} from './render-baseline.mjs';
+import {renderBaseline,playerHistory,playerHistoryIssues} from './render-baseline.mjs';
 import themeSchema from '../schemas/theme-pack.schema.json' with {type:'json'};
 const read=name=>readFile(new URL(`fixtures/visual/${name}`,import.meta.url),'utf8').then(JSON.parse);
 const legacy=()=>read('wave-a.en.json'),semantic=()=>read('semantic-chart.en.json');
@@ -29,7 +29,12 @@ const sceneOf=p=>p.scenes.find(s=>s.id==='evidence');
 test('S1 legacy v3 fixtures load unchanged and existing HTML, JSON and theme output stay byte-identical',async()=>{
  const baseline=await read('render-baseline.json'),current=await renderBaseline();
  assert.equal(current.renderer,baseline.renderer);
+ // Reader-visible markup (text, values, anchors) first, so a player change is reported separately from a content change.
+ assert.deepEqual(Object.fromEntries(Object.entries(current.parts).map(([k,v])=>[k,v.markup])),Object.fromEntries(Object.entries(baseline.parts).map(([k,v])=>[k,v.markup])));
+ assert.deepEqual(current.player,baseline.player,'The embedded player changed: bump PLAYER_VERSION and re-record the baseline in its own commit (node tests/render-baseline.mjs --write).');
+ assert.deepEqual(current.parts,baseline.parts);
  assert.deepEqual(current.entries,baseline.entries);
+ assert.deepEqual(playerHistoryIssues(baseline.playerHistory),[]);assert.deepEqual(playerHistory(baseline,current),baseline.playerHistory);
  for(const locale of ['en','zh-CN']){
   const raw=await readFile(new URL(`fixtures/visual/wave-a.${locale}.json`,import.meta.url),'utf8'),{document,plan}=JSON.parse(raw);
   assert.equal(assertPresentation(document),document);assertDesignPlan(document,plan);

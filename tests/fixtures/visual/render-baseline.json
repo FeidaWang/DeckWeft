@@ -1,6 +1,10 @@
 {
   "format": "deckweft-render-baseline",
   "renderer": "visual-art-direction.3",
+  "player": {
+    "version": "semantic-player.1",
+    "sha256": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26"
+  },
   "entries": {
     "wave-a.en.html": "8835dde10e57ca02e3a5d99f7bf1fcff09bbc53db96e5630c3376727f65b6014",
     "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
@@ -27,7 +31,75 @@
     "theme.electric-violet.zh-CN.default": "e25b2aeb801aca4fe708394e96dbbe9c4dfcf5e9bdbcf582009766df37b6a542",
     "theme.electric-violet.zh-CN.chapter": "421d32e34e9b6e2868fa406b99478935847885fe02272e3640bc3cdf41ebd72e"
   },
+  "parts": {
+    "wave-a.en.html": {
+      "markup": "375ff19f3992c3cf3e5c8cb8170bfe73a6f274aa350b0b9786e696b65413bb0f",
+      "data": "d7eb21c3534ab6b6c3b36a15ed5fb7bedaafbd7a5ef2fc55f22c5fd8079a15d1",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "wave-a.zh-CN.html": {
+      "markup": "58ef3318163aa5b3c84173b254da294eb410685c8347bf80cdc09de8afba6b99",
+      "data": "dab714546da7d1751dec11d409d830e9cec6918992955dd30f36e1fec30f744c",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "visual-demo.en.html": {
+      "markup": "fe638377ba1e0dadc1d4ea6e7c31b05e2c2d08248ef31557fce836a41ad94906",
+      "data": "122f6b169c70c1bef4ac5db0c905badbee58ac90bbb1823ccc2cdc8ddadd6419",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "visual-demo.zh-CN.html": {
+      "markup": "3318635c8e2fca26204b097efbd75b89efebcbd24095ff7e3e9544bb21218bab",
+      "data": "e0aac96b2ac915e40dfe5371f322207b1a020b819b2a9782ad3bc063534d8245",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "component-demo.en.html": {
+      "markup": "c78c6a95b965ff289eeb42cad338e9b9ddebe001165459ec9d8d3fc679c6c712",
+      "data": "b5eb69de63f6d31aea9f858c9dcae492d596cb701fc74d79415fbd3e69894394",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "component-demo.zh-CN.html": {
+      "markup": "b548758d42b095bb68ee8660ebbb2299bbc3c867d166dbc8a1c8ced73124e135",
+      "data": "f58aff60f9d494fda9a6bb8e04e77ec6b4d4b03bdf63998b39b61e9348b8559f",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "interaction-demo.en.html": {
+      "markup": "f2db618763260426cac5c2a56d39aabc40349c497aabf1dc0e2e6b56df279d7f",
+      "data": "62819d5cecf433cce59e341c555deb98e102ec81969184d763fd14bc7b5339d1",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "interaction-demo.zh-CN.html": {
+      "markup": "d34b2f4519bc139392b0429e24daeac9a7d340b019eba729e8da8929b0a4cdde",
+      "data": "dfc4e717282948dc8cce5327aac77210c5b85e2486c05720f9245cc9283e276f",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "composition-demo.en.html": {
+      "markup": "176cb5ef34c5a108667cd330d4951583c092f209ec9d2def8b46a7c3bf4b6a0f",
+      "data": "6c24595ade3cdfd1863cba36e3954dce883547de82ef9a347b2efea7ade84abb",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    },
+    "composition-demo.zh-CN.html": {
+      "markup": "a6441ea97844f210366c987e470560339da6d3676c1321b0f50eecd1bfc16d84",
+      "data": "fb9bbee5d53414b80a40d06e289b3200f0b91927aec5ae1c192beced41a4e703",
+      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
+      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+    }
+  },
+  "playerHistory": [
+    {
+      "version": "semantic-player.1",
+      "sha256": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26"
+    }
+  ],
   "recordedAt": "2026-10-19",
   "sourceCommit": "058b939",
-  "note": "Recorded before the S1 contract extension from the committed renderer. Regenerate only with a deliberate renderer change and say so in docs/en/verification.md."
+  "note": "Entries recorded before the S1 contract extension from the committed renderer (058b939). Parts, player and playerHistory added in S5 on 232060e without changing any entry. Regenerate only with a deliberate renderer change, in its own commit, and say so in docs/en/verification.md."
 }
