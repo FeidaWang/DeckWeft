@@ -1,0 +1,996 @@
+{
+  "step": "S4 chart renderer",
+  "browser": "151.0.7922.34",
+  "binary": "isolated Chrome for Testing outside /Applications; Playwright temporary profile per context",
+  "scenes": [
+    "direct-bar",
+    "filter-sort",
+    "ranked-truncated",
+    "grouped",
+    "dot-interval",
+    "dot-log",
+    "trend",
+    "log-line",
+    "small-multiples",
+    "benchmark",
+    "stacked-sorted",
+    "area-truncated"
+  ],
+  "views": [
+    {
+      "locale": "en",
+      "width": 1440,
+      "javascript": true,
+      "fit": true,
+      "conclusionLabels": 119,
+      "hidden": 0,
+      "scrollersWithConclusionLabels": 0,
+      "minTextPixels": 12.159216772151899
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "javascript": false,
+      "conclusionLabels": 119,
+      "hidden": 0
+    },
+    {
+      "locale": "en",
+      "width": 1024,
+      "javascript": true,
+      "fit": true,
+      "conclusionLabels": 119,
+      "hidden": 0,
+      "scrollersWithConclusionLabels": 0,
+      "minTextPixels": 12.25
+    },
+    {
+      "locale": "en",
+      "width": 1024,
+      "javascript": false,
+      "conclusionLabels": 119,
+      "hidden": 0
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "javascript": true,
+      "fit": true,
+      "conclusionLabels": 119,
+      "hidden": 0,
+      "scrollersWithConclusionLabels": 0,
+      "minTextPixels": 12.539150280898877
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "javascript": false,
+      "conclusionLabels": 119,
+      "hidden": 0
+    },
+    {
+      "locale": "zh-CN",
+      "width": 1440,
+      "javascript": true,
+      "fit": true,
+      "conclusionLabels": 119,
+      "hidden": 0,
+      "scrollersWithConclusionLabels": 0,
+      "minTextPixels": 12.159216772151899
+    },
+    {
+      "locale": "zh-CN",
+      "width": 1440,
+      "javascript": false,
+      "conclusionLabels": 119,
+      "hidden": 0
+    },
+    {
+      "locale": "zh-CN",
+      "width": 1024,
+      "javascript": true,
+      "fit": true,
+      "conclusionLabels": 119,
+      "hidden": 0,
+      "scrollersWithConclusionLabels": 0,
+      "minTextPixels": 12.25
+    },
+    {
+      "locale": "zh-CN",
+      "width": 1024,
+      "javascript": false,
+      "conclusionLabels": 119,
+      "hidden": 0
+    },
+    {
+      "locale": "zh-CN",
+      "width": 390,
+      "javascript": true,
+      "fit": true,
+      "conclusionLabels": 119,
+      "hidden": 0,
+      "scrollersWithConclusionLabels": 0,
+      "minTextPixels": 12.539150280898877
+    },
+    {
+      "locale": "zh-CN",
+      "width": 390,
+      "javascript": false,
+      "conclusionLabels": 119,
+      "hidden": 0
+    }
+  ],
+  "parity": [
+    {
+      "locale": "en",
+      "width": 1440,
+      "js": {
+        "rows": [
+          1296,
+          159
+        ],
+        "region": 1296,
+        "marks": [
+          "claim 38",
+          "outline 31",
+          "data 27",
+          "slide 12"
+        ],
+        "statement": "Static view · Four habits by author order: Claim first 38 %, Outline first 31 %, Data first 27 %, Slide by slide 12 %. Filter: author order, Claim first → Slide by slide (4 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3, 6. Complete data below."
+      },
+      "nojs": {
+        "rows": [
+          1296,
+          159
+        ],
+        "region": 1296,
+        "marks": [
+          "claim 38",
+          "outline 31",
+          "data 27",
+          "slide 12"
+        ],
+        "statement": "Static view · Four habits by author order: Claim first 38 %, Outline first 31 %, Data first 27 %, Slide by slide 12 %. Filter: author order, Claim first → Slide by slide (4 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3, 6. Complete data below."
+      }
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "js": {
+        "rows": [
+          346,
+          240
+        ],
+        "region": 346,
+        "marks": [
+          "claim 38",
+          "outline 31",
+          "data 27",
+          "slide 12"
+        ],
+        "statement": "Static view · Four habits by author order: Claim first 38 %, Outline first 31 %, Data first 27 %, Slide by slide 12 %. Filter: author order, Claim first → Slide by slide (4 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3, 6. Complete data below."
+      },
+      "nojs": {
+        "rows": [
+          342,
+          240
+        ],
+        "region": 342,
+        "marks": [
+          "claim 38",
+          "outline 31",
+          "data 27",
+          "slide 12"
+        ],
+        "statement": "Static view · Four habits by author order: Claim first 38 %, Outline first 31 %, Data first 27 %, Slide by slide 12 %. Filter: author order, Claim first → Slide by slide (4 of 6 categories). Sorted by value, highest first; ranks among all 6: 1, 2, 3, 6. Complete data below."
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "width": 1440,
+      "js": {
+        "rows": [
+          1296,
+          159
+        ],
+        "region": 1296,
+        "marks": [
+          "claim 38",
+          "outline 31",
+          "data 27",
+          "slide 12"
+        ],
+        "statement": "静态视图 · 按作者顺序的四种习惯：先写结论 38 %，先列提纲 31 %，先看数据 27 %，逐页制作 12 %。筛选：按作者顺序 先写结论 → 逐页制作（6 个类别中的 4 个）。按数值从高到低；在全部 6 个类别中的排名：1，2，3，6。完整数据见下方。"
+      },
+      "nojs": {
+        "rows": [
+          1296,
+          159
+        ],
+        "region": 1296,
+        "marks": [
+          "claim 38",
+          "outline 31",
+          "data 27",
+          "slide 12"
+        ],
+        "statement": "静态视图 · 按作者顺序的四种习惯：先写结论 38 %，先列提纲 31 %，先看数据 27 %，逐页制作 12 %。筛选：按作者顺序 先写结论 → 逐页制作（6 个类别中的 4 个）。按数值从高到低；在全部 6 个类别中的排名：1，2，3，6。完整数据见下方。"
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "width": 390,
+      "js": {
+        "rows": [
+          346,
+          240
+        ],
+        "region": 346,
+        "marks": [
+          "claim 38",
+          "outline 31",
+          "data 27",
+          "slide 12"
+        ],
+        "statement": "静态视图 · 按作者顺序的四种习惯：先写结论 38 %，先列提纲 31 %，先看数据 27 %，逐页制作 12 %。筛选：按作者顺序 先写结论 → 逐页制作（6 个类别中的 4 个）。按数值从高到低；在全部 6 个类别中的排名：1，2，3，6。完整数据见下方。"
+      },
+      "nojs": {
+        "rows": [
+          342,
+          240
+        ],
+        "region": 342,
+        "marks": [
+          "claim 38",
+          "outline 31",
+          "data 27",
+          "slide 12"
+        ],
+        "statement": "静态视图 · 按作者顺序的四种习惯：先写结论 38 %，先列提纲 31 %，先看数据 27 %，逐页制作 12 %。筛选：按作者顺序 先写结论 → 逐页制作（6 个类别中的 4 个）。按数值从高到低；在全部 6 个类别中的排名：1，2，3，6。完整数据见下方。"
+      }
+    }
+  ],
+  "gate": [
+    {
+      "locale": "en",
+      "width": 390,
+      "injected": null,
+      "fitOk": true,
+      "measureStatus": 200,
+      "code": null,
+      "reasons": []
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "injected": ".chart-rows{min-width:640px} inside an overflow-x:auto figure",
+      "fitOk": false,
+      "measureStatus": 422,
+      "code": "VISUAL_FIT",
+      "reasons": [
+        "Conclusion label is clipped or only reachable by scrolling"
+      ]
+    },
+    {
+      "locale": "zh-CN",
+      "width": 390,
+      "injected": null,
+      "fitOk": true,
+      "measureStatus": 200,
+      "code": null,
+      "reasons": []
+    },
+    {
+      "locale": "zh-CN",
+      "width": 390,
+      "injected": ".chart-rows{min-width:640px} inside an overflow-x:auto figure",
+      "fitOk": false,
+      "measureStatus": 422,
+      "code": "VISUAL_FIT",
+      "reasons": [
+        "Conclusion label is clipped or only reachable by scrolling"
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "file": "en-1440-direct-bar.png",
+      "sha256": "2804455e580cb066cc961bb8002d1c9d1d3612a7c6f6d27b5d52663823d36870"
+    },
+    {
+      "file": "en-1440-filter-sort.png",
+      "sha256": "2b729d86c63875708f58c3108de4f9b56511185424a2ef092c7e4595bda7fbb8"
+    },
+    {
+      "file": "en-1440-ranked-truncated.png",
+      "sha256": "d3c6db366908e5f25eedda419f084928ea0b57f6564a7ca09dc360a7601935c8"
+    },
+    {
+      "file": "en-1440-grouped.png",
+      "sha256": "b36b2117893e9d1e042f3bef88413acd257e42f8f7111f319d606b6eb7359570"
+    },
+    {
+      "file": "en-1440-dot-interval.png",
+      "sha256": "5a3ad4d5cf4f12f1df020b49e16e334445315958e0745014a098e5188a485e59"
+    },
+    {
+      "file": "en-1440-dot-log.png",
+      "sha256": "852bd2bd197aece7810d57978d6c0e58c9706ad89e34eef721ad7e780fd5a4f3"
+    },
+    {
+      "file": "en-1440-trend.png",
+      "sha256": "24528a557b004f54a6e0c7e3ab8b4c5476e8f534c9bed03b919b5522b7b996e1"
+    },
+    {
+      "file": "en-1440-log-line.png",
+      "sha256": "485d000c36a2115f3b0b7fea6f921a30c6f8af2f484bd2be118fa28ae0a0839b"
+    },
+    {
+      "file": "en-1440-small-multiples.png",
+      "sha256": "2b8795207dd1f533c039131fb6b02adaab9e34cda59b9a689fe939c570033e2f"
+    },
+    {
+      "file": "en-1440-benchmark.png",
+      "sha256": "b7896bd938c4bafaf51642c896818492ba49709bf7f2707d889e30b29e30b73d"
+    },
+    {
+      "file": "en-1440-stacked-sorted.png",
+      "sha256": "bb3ca9f634a42e717630856360c37d5369d1e720b99fc0601d14ee559cc77963"
+    },
+    {
+      "file": "en-1440-area-truncated.png",
+      "sha256": "546adc2653ddd7e31ef08b976acde89e91a3d629a323d405194f4786350a710f"
+    },
+    {
+      "file": "en-grayscale-grouped.png",
+      "sha256": "57393efc1b316dfcee72ae5a6099eb157b41b312936f4a2247f98d9c6785b42a"
+    },
+    {
+      "file": "en-grayscale-dot-interval.png",
+      "sha256": "4141eff21b8a28981a8d9a4000a60503559231ce2b141d79e9576acedd90bc0f"
+    },
+    {
+      "file": "en-grayscale-trend.png",
+      "sha256": "55d870fd54ae23811bd63e51086d859be7f445bcbcc003b9f8e1bcbf1337e288"
+    },
+    {
+      "file": "en-grayscale-small-multiples.png",
+      "sha256": "823d9af121217b1b5467d76f97a634e8d32ee2beb29ce612fb2040ab7ba49065"
+    },
+    {
+      "file": "en-grayscale-direct-bar.png",
+      "sha256": "4f832db2999301642dd5de1b24176bb65e6febcbff280d1d0b12c5ad66c06824"
+    },
+    {
+      "file": "en-grayscale-benchmark.png",
+      "sha256": "b9093123942c0ea59ab24053bb5680ab087ba60c1d62a28e62cefcbe22da9b41"
+    },
+    {
+      "file": "en-1440-nojs-direct-bar.png",
+      "sha256": "5c09d3a788ea9d4fd8898f5965533745f12104cda9158d82749e1fd4cf99f167"
+    },
+    {
+      "file": "en-1440-nojs-filter-sort.png",
+      "sha256": "8cad764acffa3f1c5f4116a051094770b6ec51887d00b3818af12c243e537c60"
+    },
+    {
+      "file": "en-1440-nojs-ranked-truncated.png",
+      "sha256": "6a58105d6227b2ac0b625d8ebab5c0ae29f930e6c7ce6223b6bde137fb8de574"
+    },
+    {
+      "file": "en-1440-nojs-grouped.png",
+      "sha256": "540b8fa8567eae23606a89c44995a20f9da0053b986fe7f38a8338fd544b1897"
+    },
+    {
+      "file": "en-1440-nojs-dot-interval.png",
+      "sha256": "618b7537276429ffbc5106fbe257b6ddc5313929f9db0e359f08ebae69395d44"
+    },
+    {
+      "file": "en-1440-nojs-dot-log.png",
+      "sha256": "0a75c5523d72bc72250cd3811887f929d0f3a6d39660dbffc0f7f43363dd98d3"
+    },
+    {
+      "file": "en-1440-nojs-trend.png",
+      "sha256": "fa0c483f9c90f22406cfc11153b81cfd115d4d9b3ab443d2f05e5a4fea39667e"
+    },
+    {
+      "file": "en-1440-nojs-log-line.png",
+      "sha256": "c1703b914f8c5b9cd7b1e1e0fbfff7f66e984c8e3d33521d2e8ff5026325c41f"
+    },
+    {
+      "file": "en-1440-nojs-small-multiples.png",
+      "sha256": "a20874d2440438349191b55d58b27c39af01b358e6d1ea8708749e46590b6a64"
+    },
+    {
+      "file": "en-1440-nojs-benchmark.png",
+      "sha256": "aa221db81a61ffb039b5543c66b6033143acb06558d1ecedf5cceddb7f982c12"
+    },
+    {
+      "file": "en-1440-nojs-stacked-sorted.png",
+      "sha256": "b0124c9220b978f4a4311a6d65390a4c646552f517a02d4aa06edfc39c305c38"
+    },
+    {
+      "file": "en-1440-nojs-area-truncated.png",
+      "sha256": "54feae8c96deb2ccc086f8c6804eb09e3f3a59599b5d3a6730ad14690dce4e34"
+    },
+    {
+      "file": "en-1024-direct-bar.png",
+      "sha256": "739fe1a4d93c1cbaf1e826394905f398539ebb68fdaab7b13d5cde6baa75dcc3"
+    },
+    {
+      "file": "en-1024-filter-sort.png",
+      "sha256": "9330ad6e5689033476deee5e587d9a9996de77651fd6ea693ca0eab40250bcd2"
+    },
+    {
+      "file": "en-1024-ranked-truncated.png",
+      "sha256": "4f25b23ae8b03daea4a0ae343851b32e5929bb10e9ae35bc90324fe20854a1d3"
+    },
+    {
+      "file": "en-1024-grouped.png",
+      "sha256": "07ff404b0d1a14b8347e5b205f535cf0406902de7322aec672bb1d4d9eb18ac0"
+    },
+    {
+      "file": "en-1024-dot-interval.png",
+      "sha256": "3a5dde0cb29314a444d898cf7c0af616f576a82d575121330a262f21b9dca1d8"
+    },
+    {
+      "file": "en-1024-dot-log.png",
+      "sha256": "081b077f6b73434aec62c483bae32da2421cc614f6e808599a4d0ee8f4c1a5d5"
+    },
+    {
+      "file": "en-1024-trend.png",
+      "sha256": "9859597f6e0940add48e3446d2a267cfd20ef27a98c6c145e5589b7baf03fc1d"
+    },
+    {
+      "file": "en-1024-log-line.png",
+      "sha256": "830894388aeb0de7a9eddbed7f6b00d81631095c226cf64e7c337898061ce972"
+    },
+    {
+      "file": "en-1024-small-multiples.png",
+      "sha256": "c7632dac4152f7487bb628e6c4ccf861928fd5e28699e91b5b885a6617cd6685"
+    },
+    {
+      "file": "en-1024-benchmark.png",
+      "sha256": "9b4783fb21badb63ff1212b23cf57f09481e63dc68f61751d31557885a66d0c2"
+    },
+    {
+      "file": "en-1024-stacked-sorted.png",
+      "sha256": "6b1bf0d0fb1a69ed8c8367a1696943565dff33e167a256dc94a1c69f2a51af67"
+    },
+    {
+      "file": "en-1024-area-truncated.png",
+      "sha256": "53c3edbeece8b4d5d2a01b63d65efbb640aba97a2b06ccaa5f245dcd455fae86"
+    },
+    {
+      "file": "en-390-direct-bar.png",
+      "sha256": "c0c497c3ae49c2be8fe7f3110b075598cd89eea6721ed4d52ceb8ac8f288415f"
+    },
+    {
+      "file": "en-390-filter-sort.png",
+      "sha256": "fac579748cfd960c344c668b38ab8af8e7a1f8fe6b293ae6e4ad2abb044a2a3b"
+    },
+    {
+      "file": "en-390-ranked-truncated.png",
+      "sha256": "3e05a08150bfcdda738b653c18eace6dbec561cb337b1217837fdf1312cfd3a9"
+    },
+    {
+      "file": "en-390-grouped.png",
+      "sha256": "424544f82b347745daff3a0e63d5bbeb4a8f87ec48b5e06a2579059720a065f7"
+    },
+    {
+      "file": "en-390-dot-interval.png",
+      "sha256": "89b30a1e66476bc365b7e8cc772e92d82e08c06cd477cc9658d6ea013cdc64a8"
+    },
+    {
+      "file": "en-390-dot-log.png",
+      "sha256": "1ed0ce1d8c57dd50fd6c0c7ec314cb5f689dafe6d34e37610cd00353f0caeaaf"
+    },
+    {
+      "file": "en-390-trend.png",
+      "sha256": "49925cfce0288afd18d82b72402a24f8a10ff27b08809820ddfa6bf451eb8d0f"
+    },
+    {
+      "file": "en-390-log-line.png",
+      "sha256": "96a8fcaaa4633a43091e3b299b5856af51bb180f604dc9340b76ac14817aa533"
+    },
+    {
+      "file": "en-390-small-multiples.png",
+      "sha256": "0bd7febaf060db59c8dc0693c6902816b18ae9325be515a021e4db147561db2a"
+    },
+    {
+      "file": "en-390-benchmark.png",
+      "sha256": "4fc57aca075e37db3a71f9d05787e6248da303e3acc48d152f8c625dc9a9fedd"
+    },
+    {
+      "file": "en-390-stacked-sorted.png",
+      "sha256": "e23d63d142e9977131573d070b95e280b524c700245c77feda8277f4bb2c3860"
+    },
+    {
+      "file": "en-390-area-truncated.png",
+      "sha256": "9b09c9b7c3651db703d5453ecee1fe86a88ac0a9900dae90413f41b75ec17840"
+    },
+    {
+      "file": "en-390-nojs-direct-bar.png",
+      "sha256": "f021de3353530bbb8f13bc77ff8d57fa4c446cbb1978fa0c981ac9f14f459909"
+    },
+    {
+      "file": "en-390-nojs-filter-sort.png",
+      "sha256": "15291fad3fbfa06a59a2c6cf6dc6e4892d646b0e598602eba90d1f6b8d14499f"
+    },
+    {
+      "file": "en-390-nojs-ranked-truncated.png",
+      "sha256": "ae202daf8697ff53ab270e482a99d05f3b752f43b482d62bab9193de5a83e151"
+    },
+    {
+      "file": "en-390-nojs-grouped.png",
+      "sha256": "27e9a8e613ee185620b900ef3a7d454586daf27789ed9a205f0921368a93a1a8"
+    },
+    {
+      "file": "en-390-nojs-dot-interval.png",
+      "sha256": "471cd97be1a3577f2f44f3adf4f321b8900208a7d2d5bb61e221e4663bcacce9"
+    },
+    {
+      "file": "en-390-nojs-dot-log.png",
+      "sha256": "b6ee814f1dcd696e0552950e503c05f650a4f9caa1b3cfbf5cffa245deded0aa"
+    },
+    {
+      "file": "en-390-nojs-trend.png",
+      "sha256": "f6c84c173b4209fbbbf3396e5aa1edf466b4ff7f4195dfb33c14a12283321cb8"
+    },
+    {
+      "file": "en-390-nojs-log-line.png",
+      "sha256": "7f54af592964058aa246d02ed778156545369ecea67427d98e19e5bb8d5345c1"
+    },
+    {
+      "file": "en-390-nojs-small-multiples.png",
+      "sha256": "3b847ce63cb0daf0f6f786c7598e376e0e5dec7add8287b4a88e389ba7df446f"
+    },
+    {
+      "file": "en-390-nojs-benchmark.png",
+      "sha256": "2f3250056a5e4456882520749e732142a0d3182ef5252acbec29febbaf5a6f0d"
+    },
+    {
+      "file": "en-390-nojs-stacked-sorted.png",
+      "sha256": "652ba9a727f9de8c8436ff46a4c8eba43c321bb17b47b4f44f02ff8c0501dc98"
+    },
+    {
+      "file": "en-390-nojs-area-truncated.png",
+      "sha256": "c7f8bb8b19750d171f1cb7e0272e9735229b0961ebb30bbc38d903feeec41989"
+    },
+    {
+      "file": "zh-CN-1440-direct-bar.png",
+      "sha256": "b232c96a139cf405dc4ab839add49bcc67083a602157df6cc9428460bbf36c33"
+    },
+    {
+      "file": "zh-CN-1440-filter-sort.png",
+      "sha256": "887532e64cf32942bb958fe474ffe756e8d96197bea83ec22f014ceb468bcbd2"
+    },
+    {
+      "file": "zh-CN-1440-ranked-truncated.png",
+      "sha256": "421013d90064cbb7a837082fea970fdedabb4f9946e95af791fee5f0faa9c6b1"
+    },
+    {
+      "file": "zh-CN-1440-grouped.png",
+      "sha256": "1a75d389186cf97948ceab3b8cd190ba73a40e95341b6b74f166c03053401c07"
+    },
+    {
+      "file": "zh-CN-1440-dot-interval.png",
+      "sha256": "d6ab4bce808ccd388c5c460b03d01b10b4b4c5ef8fef83c394479ad8fb34d546"
+    },
+    {
+      "file": "zh-CN-1440-dot-log.png",
+      "sha256": "88c460bbaa4775281135beebf1e7626fc26010d502a1b1a2b34afd936c2f3ea3"
+    },
+    {
+      "file": "zh-CN-1440-trend.png",
+      "sha256": "ba2b2973f0738dfa1404236efb87920654acd7cf42808047f9d252561b269a45"
+    },
+    {
+      "file": "zh-CN-1440-log-line.png",
+      "sha256": "08ea509e18d1c378fbc62c8bfcdb6670ef59bbec82c83d38cf24d6813028b4ca"
+    },
+    {
+      "file": "zh-CN-1440-small-multiples.png",
+      "sha256": "6f8dfcd2e7057289201502a94747be7f5214bfc833badff0548b141c6a8d6298"
+    },
+    {
+      "file": "zh-CN-1440-benchmark.png",
+      "sha256": "4d8b26bb990feb492e3f3a2b73e4533bbbc9573b1a83bc4a8b7358430e763542"
+    },
+    {
+      "file": "zh-CN-1440-stacked-sorted.png",
+      "sha256": "3361569aca2e8c463c320e039f8835bb5426b336d8e7760c27ec20e10a8e815e"
+    },
+    {
+      "file": "zh-CN-1440-area-truncated.png",
+      "sha256": "9bf64282eed28b56b8f7afd9fe644860766ced60f4418e73acca7754a0846656"
+    },
+    {
+      "file": "zh-CN-grayscale-grouped.png",
+      "sha256": "4a9cfa498fa0ded6235380cc118e3c5fefce5080111eafe1f40abf845fc21603"
+    },
+    {
+      "file": "zh-CN-grayscale-dot-interval.png",
+      "sha256": "6198acbf45beb3a7130f23c20e7ffadec6dcb3760a5d33ace371d51ccc739bde"
+    },
+    {
+      "file": "zh-CN-grayscale-trend.png",
+      "sha256": "3caa385f93901394a9f87054f72ff8b5444d43d3b441611bc449ca21317e3b7c"
+    },
+    {
+      "file": "zh-CN-grayscale-small-multiples.png",
+      "sha256": "0a69589c8d21232ba04e0e26649d8fd1586ae1a2e8f10d2413ee9cb35f672462"
+    },
+    {
+      "file": "zh-CN-grayscale-direct-bar.png",
+      "sha256": "756cd9b3952763e232686a94476333301bc220776bac6252fe8e88df4f6b6eef"
+    },
+    {
+      "file": "zh-CN-grayscale-benchmark.png",
+      "sha256": "775711932f4da570ae134122eb45dcd4d1093bacbd2a7774af56bc2ef4ef4486"
+    },
+    {
+      "file": "zh-CN-1440-nojs-direct-bar.png",
+      "sha256": "091aaa91c7882a15ae7505d3d39404f03797ad1c2c5c9d1c1dedd0b53cf322a1"
+    },
+    {
+      "file": "zh-CN-1440-nojs-filter-sort.png",
+      "sha256": "d4968ef5fa98c941df20c668ccf80626a6e93b6ef502266b579ce37d55d4a66d"
+    },
+    {
+      "file": "zh-CN-1440-nojs-ranked-truncated.png",
+      "sha256": "24d74d5162bae5e5a7a9c2bee4cdaa1cc02b41db5e3c3201e03b87a454eb40d8"
+    },
+    {
+      "file": "zh-CN-1440-nojs-grouped.png",
+      "sha256": "69af6c603aa249c7f9d92885278bc063d5aa78b872c5354aef13770fb60ca403"
+    },
+    {
+      "file": "zh-CN-1440-nojs-dot-interval.png",
+      "sha256": "9771001c1930638190f41a5dfaa301463be79ca4a8b372ab4b9609adc657e1f2"
+    },
+    {
+      "file": "zh-CN-1440-nojs-dot-log.png",
+      "sha256": "da40d26b787267191336b45bf681d513db5c80eef4fa9567cd24bd1577e86827"
+    },
+    {
+      "file": "zh-CN-1440-nojs-trend.png",
+      "sha256": "5e2153c7bea0b00d171f2a644c6511a2c698a7853c088e6c3f248dd56e9c3c4a"
+    },
+    {
+      "file": "zh-CN-1440-nojs-log-line.png",
+      "sha256": "d67c86ad9cc2fb5c115c8e96a6d5a5a97d0fcb57473a72206d0463e1cc126278"
+    },
+    {
+      "file": "zh-CN-1440-nojs-small-multiples.png",
+      "sha256": "471083264a3c24d24b8a05b2f050d853c22631ab4e0741d73572de57d9a88e3e"
+    },
+    {
+      "file": "zh-CN-1440-nojs-benchmark.png",
+      "sha256": "3b0b15eb815d0aea4367307bdd9acfa14d276279ec4c87e69f693c4b56f5a71c"
+    },
+    {
+      "file": "zh-CN-1440-nojs-stacked-sorted.png",
+      "sha256": "a7b2b8a089995bdfdf978af0537184e93fa52a4eae26b06d4cd3f666fbf5994d"
+    },
+    {
+      "file": "zh-CN-1440-nojs-area-truncated.png",
+      "sha256": "89c5b8cb07e36080cca174f7f770e9943d91f7caa7e28f48097d3bfa0a75e70b"
+    },
+    {
+      "file": "zh-CN-1024-direct-bar.png",
+      "sha256": "dcf9759ebd0b5bb9beff3aec9d99fb6de58b4de9bfc25d8317bea6aa3270d469"
+    },
+    {
+      "file": "zh-CN-1024-filter-sort.png",
+      "sha256": "faff2e748a78a8106ca88e7ce011d3fb4216190fa715e857983b53ed94ef6800"
+    },
+    {
+      "file": "zh-CN-1024-ranked-truncated.png",
+      "sha256": "c42e6fa11c73e3dd731f76721902aeb4e499e06070283f551d530bb2448d6b1e"
+    },
+    {
+      "file": "zh-CN-1024-grouped.png",
+      "sha256": "8d9f14e6bdc738b2791114db43b1d5f57f84994796e5f244825c90ab116e7b56"
+    },
+    {
+      "file": "zh-CN-1024-dot-interval.png",
+      "sha256": "8e3e096eb40a63a011ea426cb17c2eeb234a696c1e9a0055cbea18c103314abb"
+    },
+    {
+      "file": "zh-CN-1024-dot-log.png",
+      "sha256": "8ae34051dd5e5ac5f914852d87b4675aa1da98984854b600560db14a88638bf6"
+    },
+    {
+      "file": "zh-CN-1024-trend.png",
+      "sha256": "6e34aaa6a2dd6394f3f49a8264255277175328a37205f624de27211be563e5ae"
+    },
+    {
+      "file": "zh-CN-1024-log-line.png",
+      "sha256": "ce04fbe5342a9f1d1fd486adcf5cd98d3a16b682bb828a4403cbe37ec16c0114"
+    },
+    {
+      "file": "zh-CN-1024-small-multiples.png",
+      "sha256": "330af4951e2804874748a19447ed5168fcb23a6574e9b42c30a84575afc78c45"
+    },
+    {
+      "file": "zh-CN-1024-benchmark.png",
+      "sha256": "22543e34783b455f79d6a43f69769cc43858617365b73acd66888a115da3732e"
+    },
+    {
+      "file": "zh-CN-1024-stacked-sorted.png",
+      "sha256": "9904dbff9146047fbf850f35b21f70ce6c63c020b6ca17793777c2a35422022a"
+    },
+    {
+      "file": "zh-CN-1024-area-truncated.png",
+      "sha256": "4ec68352f79b77744ad0a0089badfee51a13709062403e37be98b240904a5df4"
+    },
+    {
+      "file": "zh-CN-390-direct-bar.png",
+      "sha256": "b7046b1aed28c28d0efe2ce791cf7ea16fcf572755736ddd5598da50f52a8b87"
+    },
+    {
+      "file": "zh-CN-390-filter-sort.png",
+      "sha256": "a49f81015ed6f5371274a0538d4a15374f8f5fb98ade9c05e9c631a423b53906"
+    },
+    {
+      "file": "zh-CN-390-ranked-truncated.png",
+      "sha256": "c66012649c0609b2235cac0aaee6640365b7745b5b2cb60fa7711f13d2843e06"
+    },
+    {
+      "file": "zh-CN-390-grouped.png",
+      "sha256": "fa9cd25ddc0777015e19076685a6b10a384d644da18804e0a89bad8de729ff5e"
+    },
+    {
+      "file": "zh-CN-390-dot-interval.png",
+      "sha256": "47c6349a1b7d1b20ac7429bb36a42b58a779f09748ec7801d7c3382d6287d992"
+    },
+    {
+      "file": "zh-CN-390-dot-log.png",
+      "sha256": "8ddb1bbc6a1370d6285ba2b434cd6852baa79132bda0f62bfb850fc01e840338"
+    },
+    {
+      "file": "zh-CN-390-trend.png",
+      "sha256": "491d7fc0771d0b95fddb9db87a193aec5dfbd693a3e7a0ef0deeba5788d8b1d8"
+    },
+    {
+      "file": "zh-CN-390-log-line.png",
+      "sha256": "c8835ce187d3461777ac70ad58736f73225f491d55d7bc2ce5b51c4b62881eac"
+    },
+    {
+      "file": "zh-CN-390-small-multiples.png",
+      "sha256": "187b3435cc9083698d319395da12b478e17a98468e4a001ff06db8ce7904451d"
+    },
+    {
+      "file": "zh-CN-390-benchmark.png",
+      "sha256": "ffffdafb635571f936a1b5c4b1a8a548aa3f0b2539fd9b928ccec89cda0e7bcd"
+    },
+    {
+      "file": "zh-CN-390-stacked-sorted.png",
+      "sha256": "a47c0166a69a3d3c9318f76f21a70e2b04570e82059ed8a77bf85ef7df719eb4"
+    },
+    {
+      "file": "zh-CN-390-area-truncated.png",
+      "sha256": "53240217b63af5e5b2d52e5f6214fc9c1244a4d7e564815335fee254fca5dbd9"
+    },
+    {
+      "file": "zh-CN-390-nojs-direct-bar.png",
+      "sha256": "b9d8b01b38d1f5f61a4a64ed8af24f080746bc56f5d47594a8c75f393bdf4715"
+    },
+    {
+      "file": "zh-CN-390-nojs-filter-sort.png",
+      "sha256": "531f81ed3697d359aabe59d49965b0ef26bd58c4d8a6839829f7ca0bc1fded90"
+    },
+    {
+      "file": "zh-CN-390-nojs-ranked-truncated.png",
+      "sha256": "ad27dd3e36044fbfedbd6d47459ebf2bb3622848368c39baf19a9f38af06b797"
+    },
+    {
+      "file": "zh-CN-390-nojs-grouped.png",
+      "sha256": "89526311aa04c96c7538f63eea4da71c44e03d37d0a57aef93fa003f853aab08"
+    },
+    {
+      "file": "zh-CN-390-nojs-dot-interval.png",
+      "sha256": "d080c8cb132bff215185e338cd090be3fe3188619a231e611ac9271a668bc9e4"
+    },
+    {
+      "file": "zh-CN-390-nojs-dot-log.png",
+      "sha256": "48a2ae68b5da140105a25ce490706dda2a48994b2df7fcede934dc7fed66ef78"
+    },
+    {
+      "file": "zh-CN-390-nojs-trend.png",
+      "sha256": "1fb55c87a955d83488ff224e6500bfaf5e0fdbf4ab718ffd9809db768f3588c5"
+    },
+    {
+      "file": "zh-CN-390-nojs-log-line.png",
+      "sha256": "c8835ce187d3461777ac70ad58736f73225f491d55d7bc2ce5b51c4b62881eac"
+    },
+    {
+      "file": "zh-CN-390-nojs-small-multiples.png",
+      "sha256": "daa76f0cc50900e238a9ab385d8f05779279afed8c4ebb7e52d505bd708c0fde"
+    },
+    {
+      "file": "zh-CN-390-nojs-benchmark.png",
+      "sha256": "aa7037145ee0ab5cac8243488682b1a177f72898bd390fa0a10ea28f9c402f4d"
+    },
+    {
+      "file": "zh-CN-390-nojs-stacked-sorted.png",
+      "sha256": "6246b34067be761b64d00f8098d9a0fc5eb3f079f379f91fcd3c7f5bd9c770d4"
+    },
+    {
+      "file": "zh-CN-390-nojs-area-truncated.png",
+      "sha256": "841bd2e82bee6beb9e5390a0339972be4c5b80a598dcaea2192719acd35be3c2"
+    },
+    {
+      "file": "en-1440-sheet.png",
+      "sha256": "88c2df899f54c32aafc1081614b7b538e94ed1866095205aa414d9461f11e416",
+      "sheetOf": [
+        "en-1440-direct-bar.png",
+        "en-1440-filter-sort.png",
+        "en-1440-ranked-truncated.png",
+        "en-1440-grouped.png",
+        "en-1440-dot-interval.png",
+        "en-1440-dot-log.png",
+        "en-1440-trend.png",
+        "en-1440-log-line.png",
+        "en-1440-small-multiples.png",
+        "en-1440-benchmark.png",
+        "en-1440-stacked-sorted.png",
+        "en-1440-area-truncated.png"
+      ]
+    },
+    {
+      "file": "en-1024-sheet.png",
+      "sha256": "58bdea27b02b2bd46780bb63ec7f5d0df6050f9151dd271cd5bd567627ee5faa",
+      "sheetOf": [
+        "en-1024-direct-bar.png",
+        "en-1024-filter-sort.png",
+        "en-1024-ranked-truncated.png",
+        "en-1024-grouped.png",
+        "en-1024-dot-interval.png",
+        "en-1024-dot-log.png",
+        "en-1024-trend.png",
+        "en-1024-log-line.png",
+        "en-1024-small-multiples.png",
+        "en-1024-benchmark.png",
+        "en-1024-stacked-sorted.png",
+        "en-1024-area-truncated.png"
+      ]
+    },
+    {
+      "file": "en-390-sheet.png",
+      "sha256": "9c9e90638e7c79ce9dfef14378ba4f74f149f9e60ec9c4498352efc17779dcbc",
+      "sheetOf": [
+        "en-390-direct-bar.png",
+        "en-390-filter-sort.png",
+        "en-390-ranked-truncated.png",
+        "en-390-grouped.png",
+        "en-390-dot-interval.png",
+        "en-390-dot-log.png",
+        "en-390-trend.png",
+        "en-390-log-line.png",
+        "en-390-small-multiples.png",
+        "en-390-benchmark.png",
+        "en-390-stacked-sorted.png",
+        "en-390-area-truncated.png"
+      ]
+    },
+    {
+      "file": "en-390-nojs-sheet.png",
+      "sha256": "3bbee59e15e2e393fb82034e519170eca82b3c9acc3e253dbeb481552e0805ee",
+      "sheetOf": [
+        "en-390-nojs-direct-bar.png",
+        "en-390-nojs-filter-sort.png",
+        "en-390-nojs-ranked-truncated.png",
+        "en-390-nojs-grouped.png",
+        "en-390-nojs-dot-interval.png",
+        "en-390-nojs-dot-log.png",
+        "en-390-nojs-trend.png",
+        "en-390-nojs-log-line.png",
+        "en-390-nojs-small-multiples.png",
+        "en-390-nojs-benchmark.png",
+        "en-390-nojs-stacked-sorted.png",
+        "en-390-nojs-area-truncated.png"
+      ]
+    },
+    {
+      "file": "en-grayscale-sheet.png",
+      "sha256": "ef8b4f1088f16f4d2c97e49d780cebcd9ff19e7aebc75d035678a47e0e6b57c8",
+      "sheetOf": [
+        "en-grayscale-grouped.png",
+        "en-grayscale-dot-interval.png",
+        "en-grayscale-trend.png",
+        "en-grayscale-small-multiples.png",
+        "en-grayscale-direct-bar.png",
+        "en-grayscale-benchmark.png"
+      ]
+    },
+    {
+      "file": "zh-CN-1440-sheet.png",
+      "sha256": "0d756ee6c4cab423ef76b8d40cf9f4816c2c774aab7382d99b83794f94cece09",
+      "sheetOf": [
+        "zh-CN-1440-direct-bar.png",
+        "zh-CN-1440-filter-sort.png",
+        "zh-CN-1440-ranked-truncated.png",
+        "zh-CN-1440-grouped.png",
+        "zh-CN-1440-dot-interval.png",
+        "zh-CN-1440-dot-log.png",
+        "zh-CN-1440-trend.png",
+        "zh-CN-1440-log-line.png",
+        "zh-CN-1440-small-multiples.png",
+        "zh-CN-1440-benchmark.png",
+        "zh-CN-1440-stacked-sorted.png",
+        "zh-CN-1440-area-truncated.png"
+      ]
+    },
+    {
+      "file": "zh-CN-1024-sheet.png",
+      "sha256": "388ce52b1310847e7b5ce0daa9b070e67bacb97d21130b23e18983ca7d9a7188",
+      "sheetOf": [
+        "zh-CN-1024-direct-bar.png",
+        "zh-CN-1024-filter-sort.png",
+        "zh-CN-1024-ranked-truncated.png",
+        "zh-CN-1024-grouped.png",
+        "zh-CN-1024-dot-interval.png",
+        "zh-CN-1024-dot-log.png",
+        "zh-CN-1024-trend.png",
+        "zh-CN-1024-log-line.png",
+        "zh-CN-1024-small-multiples.png",
+        "zh-CN-1024-benchmark.png",
+        "zh-CN-1024-stacked-sorted.png",
+        "zh-CN-1024-area-truncated.png"
+      ]
+    },
+    {
+      "file": "zh-CN-390-sheet.png",
+      "sha256": "60fe3d51f3fbc317f118c459c99f35f0cdbf78de703790ea00fef69c0cbe1336",
+      "sheetOf": [
+        "zh-CN-390-direct-bar.png",
+        "zh-CN-390-filter-sort.png",
+        "zh-CN-390-ranked-truncated.png",
+        "zh-CN-390-grouped.png",
+        "zh-CN-390-dot-interval.png",
+        "zh-CN-390-dot-log.png",
+        "zh-CN-390-trend.png",
+        "zh-CN-390-log-line.png",
+        "zh-CN-390-small-multiples.png",
+        "zh-CN-390-benchmark.png",
+        "zh-CN-390-stacked-sorted.png",
+        "zh-CN-390-area-truncated.png"
+      ]
+    },
+    {
+      "file": "zh-CN-390-nojs-sheet.png",
+      "sha256": "63b99a56200c53b66c780744d7e8b71a65d1ae94436cbf4428e1f24c72c2d117",
+      "sheetOf": [
+        "zh-CN-390-nojs-direct-bar.png",
+        "zh-CN-390-nojs-filter-sort.png",
+        "zh-CN-390-nojs-ranked-truncated.png",
+        "zh-CN-390-nojs-grouped.png",
+        "zh-CN-390-nojs-dot-interval.png",
+        "zh-CN-390-nojs-dot-log.png",
+        "zh-CN-390-nojs-trend.png",
+        "zh-CN-390-nojs-log-line.png",
+        "zh-CN-390-nojs-small-multiples.png",
+        "zh-CN-390-nojs-benchmark.png",
+        "zh-CN-390-nojs-stacked-sorted.png",
+        "zh-CN-390-nojs-area-truncated.png"
+      ]
+    },
+    {
+      "file": "zh-CN-grayscale-sheet.png",
+      "sha256": "582b7406d4234bfcdc6e89ae284a09960f2990e7d0195be98bb977eff52fa8bf",
+      "sheetOf": [
+        "zh-CN-grayscale-grouped.png",
+        "zh-CN-grayscale-dot-interval.png",
+        "zh-CN-grayscale-trend.png",
+        "zh-CN-grayscale-small-multiples.png",
+        "zh-CN-grayscale-direct-bar.png",
+        "zh-CN-grayscale-benchmark.png"
+      ]
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "ok": true
+}

@@ -65,10 +65,12 @@ test('S2 static export draws the frozen chart selection without JavaScript and k
   const frozen=staticInteractionState(project.document,scene)[0];assert.deepEqual([frozen.fromId,frozen.toId],['claim-first','data-first']);
   const figure=markup.slice(markup.indexOf('<figure class="chart"'),markup.indexOf('</figure>')),plot=figure.slice(0,figure.indexOf('<details>'));
   // Title, chart, visible labels, legend identity, takeaway, source and caption, with no fact only in a hover title.
-  assert.equal((plot.match(/<rect /g)||[]).length,3);
-  for(const [i,id]of ['claim-first','outline-first','data-first'].entries()){const k=d.categoryIds.indexOf(id);assert.ok(plot.includes(`>${d.categories[k]}</text>`));assert.ok(plot.includes(`>${d.series[0].values[k]}</text>`));assert.ok(plot.includes(`id="${objectAnchor('evidence','evidence-chart',id,'reduction')}"`),String(i));}
+  // Since S4 the ranked bar is HTML rows: real category and value text beside each bar, never only in a hover title (C2).
+  const rows=plot.slice(plot.indexOf('<ol class="chart-rows"'),plot.indexOf('</ol>'));assert.equal((rows.match(/<rect /g)||[]).length,3);
+  for(const [i,id]of ['claim-first','outline-first','data-first'].entries()){const k=d.categoryIds.indexOf(id);assert.ok(rows.includes(`<span data-conclusion-label="true">${d.categories[k]}</span>`));assert.ok(rows.includes(`<span class="chart-value" data-conclusion-label="true">${d.series[0].values[k]}</span>`));assert.ok(plot.includes(`id="${objectAnchor('evidence','evidence-chart',id,'reduction')}"`),String(i));}
   for(const id of ['template','slide-by-slide','no-habit'])assert.equal(plot.includes(objectAnchor('evidence','evidence-chart',id,'reduction')),false);
-  assert.match(plot,/<ul class="legend"><li><span style="background:[^"]+"><\/span>[^<]+<\/li><\/ul>/);
+  // The declared category focus (C1) replaces a single-series legend: one focus key and one key for the other bars.
+  assert.match(plot,/<ul class="legend"><li><svg class="legend-key"[^>]*>.*?<\/svg>[^<]+<\/li><li><svg class="legend-key"[^>]*>.*?<\/svg>[^<]+<\/li><\/ul>/);
   const note=markup.match(/<p class="component-note static-state-note" data-static-state="structure-first">([^<]+)<\/p><figure class="chart"/)[1];
   assert.ok(note.includes(scene.keyStates[1].label));for(const v of values[locale])assert.ok(note.includes(v),v);
   assert.ok(plot.includes(locale==='zh-CN'?'合成演示数据':'Synthetic demonstration data'));

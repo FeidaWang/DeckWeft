@@ -195,27 +195,27 @@ SmallMultiples and Table/Reference wait because they need chart contract work or
 
 Class: **existing** means it maps to a current variant or block. **extension** means it changes a current variant. **new** means it needs a new variant or contract.
 
-Summary: 6 existing, 9 extension, 9 new.
+Summary: 6 existing, 9 extension, 9 new. After S4 (2026-10-19), C01, C02, C05, C09, C13, C14 and C17 exist and are LocalVerified; C04, C06 (log axis drawn, connected ordering not), C22 and C23 remain partial.
 
 | ID | Chart | P | Marks | Class | Closest existing | Status | State | Evidence | Repository note |
 |---|---|---|---|---|---|---|---|---|---|
-| C01 | Direct-labelled bar | P1 | D+S | extension | ranked-bar | partial | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | ranked-bar is a single-series, value-sorted, direct-labelled bar; author order is not available. |
-| C02 | Grouped bar | P1 | S | extension | ranked-bar | missing | Proposed | — | No multi-series grouped bars; would extend ranked-bar geometry with grouping and author order. |
+| C01 | Direct-labelled bar | P1 | D+S | extension | ranked-bar | exists | LocalVerified | [s4](../../docs/evidence/s4-chart-renderer/review.md) | S4: `ranked-bar` with `sort: author` (or `value-asc`) draws HTML rows with the value at each bar end, a declared category focus and row event marks. |
+| C02 | Grouped bar | P1 | S | extension | ranked-bar | exists | LocalVerified | [s4](../../docs/evidence/s4-chart-renderer/review.md) | S4: new `chartType: grouped-bar` (two or more series, author order, zero baseline or declared truncation); every bar line names its series. |
 | C03 | Stacked composition | P1 | D+S | existing | stacked | exists | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | stacked variant with positive/negative stacking and null gaps. |
 | C04 | Sortable ranking matrix | P1 | S+V | extension | heatmap | partial | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | heatmap gives a value matrix; no rank semantics, change markers or interactive sort. |
-| C05 | Benchmark table with qualifiers | P1 | D+V | extension | table block | partial | LocalVerified | [vis-006](../../docs/evidence/vis-006/review.md) | table block in comparison family; no per-cell qualifiers or missing-value reasons. Table block, not a chart variant. |
+| C05 | Benchmark table with qualifiers | P1 | D+V | extension | table block | exists | LocalVerified | [s4](../../docs/evidence/s4-chart-renderer/review.md) | S4: dataset-backed `chartType: benchmark-table` with units, missing reasons, new dataset `qualifiers[]` and a best mark per column under `betterDirection`; the plain table block is unchanged. |
 | C06 | Cost–performance frontier | P1 | D+S+V | extension | scatter | partial | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | scatter exists; connected ordering and log axes are missing. |
 | C07 | Relationship scatter | P1 | D | existing | scatter | exists | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | scatter variant with explicit xUnit; fit/reference lines are not drawn. |
 | C08 | Metric card | P1 | D | existing | metric block | exists | LocalVerified | [vis-006](../../docs/evidence/vis-006/review.md) | metric block with metric-left/band/right compositions. Metric block, not a chart variant; no reporting-period field. |
-| C09 | Dot and interval | P1 | D | new | — | missing | Proposed | — | No interval bounds or method in the dataset contract. |
+| C09 | Dot and interval | P1 | D | new | — | exists | LocalVerified | [s4](../../docs/evidence/s4-chart-renderer/review.md) | S4: new `chartType: dot-interval` drawing the S1 series `interval` (type, level, method, bounds) on a linear or log axis. |
 | C10 | Box plot | P2 | D | new | — | missing | Proposed | — | No distribution summary contract. |
 | C11 | Area bubble overview | P2 | D | new | — | missing | Proposed | — | No area-encoded bubble layout. |
 | C12 | Choropleth map | P2 | D+S | new | — | missing | Proposed | — | No geographic shapes. |
-| C13 | Time trend with end labels | P1 | D+S | extension | line | partial | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | line with datetime categories and time zones; labels every point, no end-label strategy or muted background series. |
-| C14 | Area trend with event notes | P1 | S | extension | area | partial | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | area variant exists; no event annotations on a chart axis. |
+| C13 | Time trend with end labels | P1 | D+S | extension | line | exists | LocalVerified | [s4](../../docs/evidence/s4-chart-renderer/review.md) | S4: `line` with `labels: end` (collision-free end labels) and a series `focus` that mutes background series. |
+| C14 | Area trend with event notes | P1 | S | extension | area | exists | LocalVerified | [s4](../../docs/evidence/s4-chart-renderer/review.md) | S4: dataset `events` draw as numbered rules on line, area and stacked axes, numbered row marks on bars and tables, and a visible note with the relation. |
 | C15 | Waterfall | P2 | D | new | — | missing | Proposed | — | No waterfall decomposition. |
 | C16 | Cumulative concentration (Lorenz) | P2 | D | new | — | missing | Proposed | — | No cumulative-share/Lorenz semantics with equality reference. |
-| C17 | Faceted small multiples | P1 | D+S | new | — | missing | Proposed | — | No faceted layout with a declared shared scale. |
+| C17 | Faceted small multiples | P1 | D+S | new | — | exists | LocalVerified | [s4](../../docs/evidence/s4-chart-renderer/review.md) | S4: new `chartType: small-multiples`, one panel per series on one shared, stated scale, other series as faint context. |
 | C18 | Network / computation path | P2 | D | extension | relationship diagram | partial | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | relationship diagram with directed supplied edges; bounded routing, no layered path layout. Diagram block, not a chart variant. |
 | C19 | Process and feedback loop | P1 | D+S | existing | process/sequence diagram | exists | LocalVerified | [vis-008](../../docs/evidence/vis-008/review.md) | process/sequence diagrams draw supplied edges, including back edges. Diagram block, not a chart variant. |
 | C20 | Object anatomy and part focus | P1 | S+V | existing | image-hotspots | exists | LocalVerified | [vis-009](../../docs/evidence/vis-009/review.md) | image-hotspots with stable annotations. Image component, not a chart variant. |
@@ -282,7 +282,7 @@ Priorities are the handoff's. "Owner" is the existing task or kickoff step that 
 | Gap | Items | Owner |
 |---|---|---|
 | Families | Six new families (section 5) | VIS-014 → S3 |
-| Charts | C02 grouped bar, C09 dot-interval, C17 small multiples; extensions C01, C04, C05, C06, C13, C14, C23 | DWD-110 → S4 |
+| Charts | Done in S4: C02, C09, C17, C01, C05, C13, C14. Open: C04 ranking matrix, C06 connected frontier (log axis done), C23 dated milestone axis | DWD-110 → S4 (open items: S4 follow-up) |
 | Motion | M20 mask/stagger, M19 chart annotation reveal, M08 slider, M05 tab stage, M13 interactive sort, M07 paired layers | DWD-120/125 → S5 |
 | Quote and media | F10 speaker/organisation fields; F12 v3 video/recording block with player controls; F02 cross-theme chapter | S3 |
 | Low-value P1 motion | M01 skippable intro, M03 hover cards, M06 carousel. Each conflicts with "no unsolicited autoplay" or adds pointer-only state. Propose re-ranking | user/S5 |
@@ -362,13 +362,13 @@ Checked against the same commit `058b939` plus the uncommitted S1 changes. State
 
 **Version strategy.** No new `schemaVersion`. Five guards are structural: they can only fire on the new fields (log scale, truncation, intervals, missing reasons, events), so every existing v3 document, demo and fixture still loads unchanged. The percentage-denominator guard would have rejected every existing fixture (all use unit `%` with no denominator), so it is opt-in through `rules.misreading: "strict"`, entered by the explicit migration `declareChartSemantics()`, which never infers a denominator. Legacy fixture: `wave-a.*.json` unchanged. Negative fixture: `semantic-chart.negative.json`. Byte-identical proof: [render-baseline.json](../../tests/fixtures/visual/render-baseline.json) hashes 12 HTML/JSON outputs and 12 resolved themes recorded before the change; the S1 test regenerates and compares them.
 
-**Declared but not drawn.** The HTML target refuses, with a named code, every declaration that no compiler renders yet instead of dropping it from the figure: `CHART_SCALE_UNIMPLEMENTED`, `CHART_TRUNCATION_UNIMPLEMENTED`, `CHART_SORT_UNIMPLEMENTED`, `CHART_INTERVAL_UNIMPLEMENTED`, `CHART_EVENTS_UNIMPLEMENTED` (S4), `STATIC_STATE_UNIMPLEMENTED`, `REDUCED_MOTION_FALLBACK_UNIMPLEMENTED` (S2). JSON export always carries them.
+**Declared but not drawn.** The HTML target refuses, with a named code, every declaration that no compiler renders yet instead of dropping it from the figure: `CHART_SCALE_UNIMPLEMENTED`, `CHART_TRUNCATION_UNIMPLEMENTED`, `CHART_SORT_UNIMPLEMENTED`, `CHART_INTERVAL_UNIMPLEMENTED`, `CHART_EVENTS_UNIMPLEMENTED` (S4), `STATIC_STATE_UNIMPLEMENTED`, `REDUCED_MOTION_FALLBACK_UNIMPLEMENTED` (S2). JSON export always carries them. Since S4, `CHART_TRUNCATION_UNIMPLEMENTED` and `CHART_SORT_UNIMPLEMENTED` are removed, and the other three chart codes fire only on kinds without that drawing (see the S4 field list below).
 
 ### Still open after S1
 
 | Remaining | Owner |
 |---|---|
-| Drawing log axes, truncated bars, author/ascending sort, dot-intervals (C09), event marks (C14); showing missing reasons, question and takeaway in output | S4 |
+| ~~Drawing log axes, truncated bars, author/ascending sort, dot-intervals (C09), event marks (C14); showing missing reasons, question and takeaway in output~~ Done in S4 (see below) | S4 |
 | Applying `staticState` beyond the opening and the `static` reduced-motion fallback in static export; the vertical sample | S2 |
 | Theme packs declaring the new tokens and the renderer consuming them (numeric type role, reference/missing colours, spacing, motion distance/easing/delay) | S3 / S8 |
 | Trigger kinds beyond `manual` (enter, scroll), a media clock (M16), RevealMask/Crossfade primitives | S5 |
@@ -386,6 +386,22 @@ Checked against the same commit `058b939` plus the uncommitted S1 changes. State
 ### Returned from S2
 
 The [vertical sample](design-handoff-vertical-sample.md#returned-to-the-s1-field-list) sends five items back to this field list, without a new schema: legend focus on single-series ranked bars (C1), “absent `staticState` means the opening” versus existing no-JS output (C7), declared-but-not-drawn chart and dataset fields that are not refused (C10), a versioning rule for the embedded runtime (C6), and the lock mapping, which now keeps `staticState` under `cues` and `motion` (C18, done). S2 applied the static state and the `static` reduced-motion fallback in web output; the S2 rows of “Still open after S1” are closed except the items in its conflict list.
+
+### S4 field-list decisions, 2026-10-19
+
+State: **LocalVerified** for the chart renderer ([evidence](../evidence/s4-chart-renderer/review.md), [conflicts](design-handoff-vertical-sample.md#conflict-list)). No new schema; the optional fields below extend `presentation-v3`.
+
+| Item | Decision | Contract |
+|---|---|---|
+| C1 legend focus on a single-series ranked bar | **Declared category focus.** A single-series chart has no series to focus: every bar belongs to the one series. The author names the categories that carry the conclusion; series focus exists only where there are two or more series. | Chart `focus {categoryIds[]}` for `ranked-bar`, `grouped-bar`, `dot-interval`, `benchmark-table`; `focus {seriesIds[]}` for `line`, `grouped-bar`, `dot-interval`, `small-multiples`, never naming every series. Exactly one of the two. Rejected: `focus.seriesIds` on a single-series dataset ("cannot focus a series"). Drawing: focused marks solid, others lighter and outlined; the legend names both. **For S5:** the chart-select state gains `focusIds` initialised from the block; the player passes `{...block, focus}` to `chart()`; the series switch is not offered for single-series charts. |
+| C3 filter versus sort | **Separate concepts.** `sort` orders what is shown; it never removes a category. A chart-select range (`fromId` → `toId`) filters in author (`categoryIds`) order; it never reorders. | The static statement names both: "Filter: author order, A → B (n of N categories)" and "Sorted by value, highest first; ranks among all N: …". A "top N by rank" filter is a different filter kind; **for S5** it needs its own field, not an author range. |
+| C10 declared but not drawn | **Drawn.** No field is refused. | Chart `question` (figure caption heading) and `takeaway` (labelled line); dataset `definition` (denominator, sample, normalized, better direction), `version`, `collectedAt` and `validPeriod` as one visible definition line. |
+| C6 embedded runtime versioning | **Deliberate re-recording, with a renderer version bump.** `chart()` is embedded in every export, so any drawing change changes every HTML hash. A conditional extension (as S2 did) would leave two chart drawings in circulation. | `WEB_RENDERER_VERSION` `visual-art-direction.3` → `.4`; [render-baseline.json](../../tests/fixtures/visual/render-baseline.json) re-recorded in a separate commit with a per-entry diff that keeps text, values and anchors ([evidence](../evidence/s4-chart-renderer/review.md#byte-identity)). |
+| New kinds | `chartType` adds `grouped-bar`, `dot-interval`, `small-multiples`, `benchmark-table`. | Grouped bars and small multiples need two or more series; a dot-interval needs an interval on every series; grouped bars are filled (zero baseline or declared truncation, never log). |
+| End labels (C13) | Chart `labels: "points" \| "end"`, line only. | A label strategy, not a new kind; a theme may move labels but never switch the strategy. |
+| Qualifiers (C05) | Dataset `qualifiers[] {seriesId, categoryId, label, note?}`. | One per value, never on a null (a null takes a missing reason); needs `categoryIds`. Numbered in the dataset's own order, so filtered views and the full table share numbers. |
+| Where each S1 declaration is drawn | Truncation: every filled kind. Sort: ranked bars and stacks (by net total). Log axis: line, scatter, dot-interval, small multiples. Intervals: line, dot-interval. Events: line, area, stacked, ranked, grouped, dot-interval, small multiples, benchmark table. Missing reasons and qualifiers: every kind (notes and table). | Anything else stays refused for HTML with `CHART_SCALE_UNIMPLEMENTED`, `CHART_INTERVAL_UNIMPLEMENTED` or `CHART_EVENTS_UNIMPLEMENTED`. Capability receipts list the drawn declarations per component (`declarations`). |
+| Conclusion labels (C2) | Labels a chart needs for its conclusion carry `data-conclusion-label`. | The fit audit fails when one is hidden, clipped, only reachable by scrolling, outside the viewport or covered by another; the Studio gate then answers `VISUAL_FIT`. Legacy line/area/stacked/scatter/heatmap point labels are not marked and still scroll on narrow screens (open). |
 
 ### Commands run for S1
 

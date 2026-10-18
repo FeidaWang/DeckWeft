@@ -1,7 +1,15 @@
 /** Chart and dataset semantics from the design handoff (S1). Declarations only: nothing here changes a stored number or draws a mark. */
 export const PERCENT_UNITS=/^(%|％|percent(?:age)?(?: points?)?|pct|百分比|百分点)$/i;
 export const CAUSAL_WORDS=/\b(because|caused?|causes|causing|due to|led to|leads? to|results?(?:ed)? (?:in|from)|owing to|thanks to|triggered)\b|导致|因为|由于|引起|造成|致使|使得|促成|归因/i;
-export const FILLED_KINDS=['area','ranked-bar','stacked'];
+export const FILLED_KINDS=['area','ranked-bar','stacked','grouped-bar'];
+/** Where each S4 declaration is drawn. A category focus needs one ranking per row; a series focus needs two or more series to tell apart (C1). */
+export const CATEGORY_FOCUS_KINDS=['ranked-bar','grouped-bar','dot-interval','benchmark-table'],SERIES_FOCUS_KINDS=['line','grouped-bar','dot-interval','small-multiples'];
+/** Chart kinds whose HTML renderer draws a log axis, interval bounds or events (S4). The same declaration on another kind is refused for HTML with a named code. */
+export const HTML_CHART_DRAWS={log:['line','scatter','dot-interval','small-multiples'],intervals:['line','dot-interval'],events:['line','area','stacked','ranked-bar','grouped-bar','dot-interval','small-multiples','benchmark-table']};
+/** Every chart declaration the HTML renderer draws for one kind, for capability receipts. */
+export function htmlChartDeclarations(kind){
+ return ['question','takeaway','definition','version','collectedAt','validPeriod','missing','qualifiers',...(FILLED_KINDS.includes(kind)?['truncation']:[]),...(['ranked-bar','stacked'].includes(kind)?['sort']:[]),...(CATEGORY_FOCUS_KINDS.includes(kind)?['focus.categoryIds']:[]),...(SERIES_FOCUS_KINDS.includes(kind)?['focus.seriesIds']:[]),...(kind==='line'?['labels']:[]),...(HTML_CHART_DRAWS.log.includes(kind)?['axis.scale']:[]),...(HTML_CHART_DRAWS.intervals.includes(kind)?['interval']:[]),...(HTML_CHART_DRAWS.events.includes(kind)?['events']:[])];
+}
 export const isPercentUnit=unit=>PERCENT_UNITS.test(String(unit).trim());
 const excludesZero=(axis,values)=>axis?.policy==='fixed'?axis.min>0||axis.max<0:axis?.policy==='extent'?values.every(v=>v>0)||values.every(v=>v<0):false;
 /** Resolved per-chart declarations with the documented defaults applied. */
@@ -42,6 +50,16 @@ export function validateChartSemantics(document,fail){
     s.values.forEach((value,i)=>{const lo=v.lower[i],hi=v.upper[i];if(value===null?lo!==null||hi!==null:lo===null||hi===null||lo>value||value>hi)fail('Interval bounds must enclose each value and stay null where the value is null.');});
    }
   }
+  if(d.qualifiers?.length){
+   if(!d.categoryIds)fail('Qualifiers need stable categoryIds; never bind a qualifier to a label position.');
+   const seen=new Set();
+   for(const q of d.qualifiers){
+    const s=d.series.find(s=>s.id===q.seriesId),i=index(q.categoryId),key=q.seriesId+'\u0000'+q.categoryId;
+    if(!s||i<0)fail('A qualifier must name an existing series and category.');
+    if(seen.has(key))fail('Give each value one qualifier.');seen.add(key);
+    if(s.values[i]===null)fail('A qualifier qualifies a value; explain a null with a missing-value reason instead.');
+   }
+  }
   if(d.events?.length){
    if(!d.categoryIds)fail('Events need stable categoryIds to bind their position.');
    if(new Set(d.events.map(e=>e.id)).size!==d.events.length)fail('Use unique event ids.');
@@ -67,6 +85,23 @@ export function validateChartSemantics(document,fail){
    if(!FILLED_KINDS.includes(kind))fail('Truncation is declared only for bars, stacks and areas.');
    if(!excludesZero(b.axis,values))fail('Truncation is declared but the axis still starts at zero; remove the flag or the non-zero range.');
   }
+  if(b.focus){
+   const keys=Object.keys(b.focus);
+   if(keys.length!==1)fail('Declare a focus on categories or on series, not both and not neither.');
+   if(b.focus.categoryIds){
+    if(!CATEGORY_FOCUS_KINDS.includes(kind))fail(`A category focus is drawn for ${CATEGORY_FOCUS_KINDS.join(', ')} only.`);
+    if(!d.categoryIds||b.focus.categoryIds.some(id=>!d.categoryIds.includes(id)))fail('A category focus needs stable categoryIds and names existing categories.');
+   }
+   if(b.focus.seriesIds){
+    if(d.series.length<2)fail('A single-series chart cannot focus a series; every bar already belongs to it. Declare a category focus instead.');
+    if(!SERIES_FOCUS_KINDS.includes(kind))fail(`A series focus is drawn for ${SERIES_FOCUS_KINDS.join(', ')} only.`);
+    if(b.focus.seriesIds.some(id=>!d.series.some(s=>s.id===id)))fail('A series focus names existing series.');
+    if(b.focus.seriesIds.length===d.series.length)fail('A series focus that names every series focuses nothing; remove it.');
+   }
+  }
+  if(b.labels==='end'&&kind!=='line')fail('End labels are a line-trend strategy; other kinds label their marks directly.');
+  if(['grouped-bar','small-multiples'].includes(kind)&&d.series.length<2)fail('Grouped bars and small multiples compare two or more series; use a ranked bar or a line for one.');
+  if(kind==='dot-interval'&&d.series.some(s=>!s.interval))fail('A dot-and-interval chart needs an interval on every series; uncertainty is never implied.');
   if(b.sort&&b.sort!=='author'){
    if(!['ranked-bar','stacked'].includes(kind))fail('Value sorting applies to ranked bars and stacks only.');
    if(d.categoryKind==='datetime')fail('Time categories keep their order; sort by value is not allowed.');

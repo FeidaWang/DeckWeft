@@ -2,20 +2,19 @@ import {componentCapabilities} from '../components/capabilities.mjs';
 import {inspectImage} from '../assets/formats.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { assetHash } from '../assets/registry.mjs';
-import {chartSemantics} from '../components/charts/semantics.mjs';
+import {chartSemantics,HTML_CHART_DRAWS} from '../components/charts/semantics.mjs';
 import {staticStatePosition} from '../design/scene-semantics.mjs';
 import {compileInteractions,staticInteractionState} from '../motion/cues.mjs';
 import {initialInteractionState} from '../motion/timeline.mjs';
+const {log:LOG_KINDS,intervals:INTERVAL_KINDS,events:EVENT_KINDS}=HTML_CHART_DRAWS;
 export function presentationCapabilities(target,document,resources={},plan=null){
  const issues=[];
- // Declared semantics that no compiler draws yet are refused, never silently dropped from the figure.
+ // Declared semantics that no compiler draws yet are refused, never silently dropped from the figure. S4 draws every truncation and sort; the rest per kind.
  if(target==='html')for(const b of document.blocks.filter(b=>b.type==='chart')){
   const d=document.datasets.find(d=>d.id===b.datasetId);if(!d)continue;const s=chartSemantics(b,d),kind=s.kind;
-  if(s.scale.y==='log'||s.scale.x==='log')issues.push({code:'CHART_SCALE_UNIMPLEMENTED',blockId:b.id,message:'A log axis is declared but the HTML chart draws linear axes only (planned in S4). Use a linear scale or wait for the log renderer.'});
-  if(s.truncation)issues.push({code:'CHART_TRUNCATION_UNIMPLEMENTED',blockId:b.id,message:'Declared truncation has no bar renderer yet (planned in S4). Use a zero baseline for HTML output.'});
-  if(s.sort!==(kind==='ranked-bar'?'value-desc':'author'))issues.push({code:'CHART_SORT_UNIMPLEMENTED',blockId:b.id,message:'Only the default sort is drawn (ranked bars by value, others in author order; planned in S4).'});
-  if(s.intervalSeriesIds.length)issues.push({code:'CHART_INTERVAL_UNIMPLEMENTED',blockId:b.id,message:'Interval bounds are declared but no dot-interval renderer exists yet (planned in S4); uncertainty is never dropped silently.'});
-  if(s.eventIds.length)issues.push({code:'CHART_EVENTS_UNIMPLEMENTED',blockId:b.id,message:'Dataset events are declared but not drawn yet (planned in S4).'});
+  if((s.scale.y==='log'&&!LOG_KINDS.includes(kind))||(s.scale.x==='log'&&kind!=='scatter'))issues.push({code:'CHART_SCALE_UNIMPLEMENTED',blockId:b.id,message:`A log axis is drawn for ${LOG_KINDS.join(', ')} only. Use a linear scale or one of those kinds.`});
+  if(s.intervalSeriesIds.length&&!INTERVAL_KINDS.includes(kind))issues.push({code:'CHART_INTERVAL_UNIMPLEMENTED',blockId:b.id,message:`Interval bounds are drawn for ${INTERVAL_KINDS.join(', ')} only; uncertainty is never dropped silently. Use a dot-and-interval chart or a line.`});
+  if(s.eventIds.length&&!EVENT_KINDS.includes(kind))issues.push({code:'CHART_EVENTS_UNIMPLEMENTED',blockId:b.id,message:'Dataset events are drawn on category axes and rows; a scatter or heatmap has neither. Use a line, area, bar or table kind.'});
  }
  // A frozen chart selection is drawn for readers without JavaScript; frozen steps, comparison tabs and hotspots are not yet.
  if(target==='html'&&plan)for(const scene of plan.scenes)if(staticStatePosition(scene)>0){

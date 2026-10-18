@@ -1,5 +1,5 @@
-import {domain,chartModel} from '../../components/charts/model.mjs';
-import {chart} from '../../components/charts/render.mjs';
+import {domain,chartModel,chartShare,chartTicks,chartText,chartFacts} from '../../components/charts/model.mjs';
+import {chart,chartDash,chartShape,chartNotes,chartTable,svgPlot,rowPlot,trendPlot,facetPlot,benchmarkPlot} from '../../components/charts/render.mjs';
 import {x} from './components/escape.mjs';
 import {initialInteractionState,reduceInteractionState,seekInteractionState,selectedDataset} from '../../motion/timeline.mjs';
 import {effectiveMotion} from '../../motion/policies.mjs';
@@ -7,4 +7,4 @@ import {createSceneResources} from '../../../public/runtime/resources.js';
 import {mountChartSelection} from '../../../public/runtime/charts.js';
 import {mountImageComparison,mountStepExplanation,mountImageHotspots} from '../../../public/runtime/components.js';
 import {mountSemanticInteractions} from '../../../public/runtime/semantic.js';
-export const interactionBundle=[x,domain,chartModel,chart,initialInteractionState,reduceInteractionState,seekInteractionState,selectedDataset,effectiveMotion,createSceneResources,mountChartSelection,mountImageComparison,mountStepExplanation,mountImageHotspots,mountSemanticInteractions].map(fn=>'const '+fn.name+' = '+fn.toString()+';').join('\n');
+export const interactionBundle=[x,domain,chartModel,chartShare,chartTicks,chartText,chartFacts,chart,chartDash,chartShape,chartNotes,chartTable,svgPlot,rowPlot,trendPlot,facetPlot,benchmarkPlot,initialInteractionState,reduceInteractionState,seekInteractionState,selectedDataset,effectiveMotion,createSceneResources,mountChartSelection,mountImageComparison,mountStepExplanation,mountImageHotspots,mountSemanticInteractions].map(fn=>'const '+fn.name+' = '+fn.toString()+';').join('\n');

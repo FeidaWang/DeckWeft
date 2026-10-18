@@ -390,6 +390,40 @@
             },
             "minItems": 0,
             "maxItems": 50
+          },
+          "qualifiers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seriesId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "categoryId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 60
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 500
+                }
+              },
+              "required": [
+                "seriesId",
+                "categoryId",
+                "label"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 200
           }
         },
         "required": [
@@ -996,7 +1030,11 @@
             "ranked-bar",
             "stacked",
             "scatter",
-            "heatmap"
+            "heatmap",
+            "grouped-bar",
+            "dot-interval",
+            "small-multiples",
+            "benchmark-table"
           ]
         },
         "axis": {
@@ -1093,6 +1131,38 @@
             "note"
           ],
           "additionalProperties": false
+        },
+        "focus": {
+          "type": "object",
+          "properties": {
+            "categoryIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "uniqueItems": true
+            },
+            "seriesIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "minItems": 1,
+              "maxItems": 8,
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "labels": {
+          "enum": [
+            "points",
+            "end"
+          ]
         }
       },
       "required": [

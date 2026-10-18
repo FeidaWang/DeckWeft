@@ -31,6 +31,11 @@
         "chartType": "ranked-bar",
         "axis": {"policy": "zero", "scale": "linear"},
         "sort": "value-desc",
+        "focus": {
+          "categoryIds": [
+            "claim-first"
+          ]
+        },
         "question": "Which writing habit saw the largest drop in review time?",
         "takeaway": "Claim-first teams show the largest illustrative drop (38%)."
       },
