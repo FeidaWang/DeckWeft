@@ -6,6 +6,8 @@
 
 ## S6 合并 S3、S4、S5 — 2026-10-19
 
+S6 中又重录了一次（`semantic-player.4`、`visual-art-direction.6`），原因是 VIS-014 画廊暴露出六个渲染缺陷：斜切封面的引用对比度、封面数字被拆行、趋势图时间标签重叠、热力图行标签超出画框、比较面板下前后对比图片标签错误、线性流程图换行。与上一次记录（`8252c10`）相比，12 个 HTML 条目中没有任何可见文字或数值变化；锚点与数据表相同。[回执](../evidence/s6-integration/baseline-diff-gallery-fixes.json)。
+
 S3、S4、S5 是从 S2 分出的三个平行分支，各自重录过渲染基线。S6 按 S3 → S4 → S5 的顺序合并，并应用分层图表聚焦规则（[决定](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)）。`PLAYER_VERSION` 现为 `semantic-player.3`，`WEB_RENDERER_VERSION` 为 `visual-art-direction.5`。**渲染基线已在单独的提交中有意重录**，保留播放器历史（`.1`、`.2`、`.3`）。全部 12 个 HTML 条目的字节都有变化。与各分支末端逐条对照：相对 S4，任何条目的可见文字和数值都没有变化，锚点与数据表相同；相对 S3 和 S5，唯一的文字变化就是 S4 本身对排序条形图的修改（“按数值从高到低”说明、0 刻度、图表类型措辞），锚点与数据表相同。2 个 JSON 哈希不变。[S3](../evidence/s6-integration/baseline-diff-s3.json) · [S4](../evidence/s6-integration/baseline-diff-s4.json) · [S5](../evidence/s6-integration/baseline-diff-s5.json)。
 
 ## S5 动效状态与播放器冲突 — 2026-10-19

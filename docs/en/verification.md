@@ -6,6 +6,8 @@ Prepared 2026-10-16. These are observed local results, not a promise that every 
 
 ## S6 integration of S3, S4 and S5 — 2026-10-19
 
+Re-recorded a second time in S6 (`semantic-player.4`, `visual-art-direction.6`) for six renderer failures the VIS-014 gallery exposed: diagonal-cover citation contrast, a split cover number, overlapping trend time labels, heatmap row labels outside the frame, mislabelled before/after images under the compare panel, and wrapped linear process diagrams. Against the previous recording (`8252c10`) no visible word or value changed in any of the 12 HTML entries; anchors and data tables are equal. [Receipt](../evidence/s6-integration/baseline-diff-gallery-fixes.json).
+
 S3, S4 and S5 were sibling branches off S2; each re-recorded the render baseline on its own. S6 merged them (S3 → S4 → S5) and applied the layered chart-focus rule ([decisions](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)). `PLAYER_VERSION` is now `semantic-player.3` and `WEB_RENDERER_VERSION` `visual-art-direction.5`. **Render baseline re-recorded deliberately** in its own commit, keeping the player history (`.1`, `.2`, `.3`). All 12 HTML entries changed bytes. Per-entry receipts against each branch tip: against S4, no visible word or value changed in any entry, and anchors and data tables are equal; against S3 and S5, the only text changes are S4's own ranked-bar changes (sorted-by-value caption, a 0 tick, chart-type wording), with equal anchors and data tables. The 2 JSON hashes are unchanged. [S3](../evidence/s6-integration/baseline-diff-s3.json) · [S4](../evidence/s6-integration/baseline-diff-s4.json) · [S5](../evidence/s6-integration/baseline-diff-s5.json).
 
 ## S5 motion state and player conflicts — 2026-10-19
