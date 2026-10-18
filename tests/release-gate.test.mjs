@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,realpath,rm} from 'node:fs/promises';
+import {mkdtemp,readFile,realpath,rm} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {GALLERY_PAGES,STORY_COMPOSITIONS,THEMES,LOCALES,WCAG_143,releaseProject,releaseGallery,releaseStory,releaseAssets} from './release-gate.mjs';
+import {GALLERY_PAGES,STORY_COMPOSITIONS,THEMES,LOCALES,WCAG_143,releaseProject,releaseGallery,releaseStory,releaseAssets,galleryManifest} from './release-gate.mjs';
 import {assertVisualProject} from '../src/core/visual-project.mjs';
 import {applySceneTheme} from '../src/design/profile.mjs';
 import {compositions} from '../src/design/compositions.mjs';
@@ -35,6 +35,11 @@ test('VIS-014 gallery is the frozen requirements §9 set: 12 pages, four per the
  assert.deepEqual(ids(en),ids(zh));
  // Numbers never change with the language.
  assert.deepEqual(en.document.datasets.map(d=>d.series.map(s=>s.values)),zh.document.datasets.map(d=>d.series.map(s=>s.values)));
+});
+
+test('VIS-014 gallery content is frozen: the recorded manifest matches every page in both languages',async()=>{
+ const recorded=JSON.parse(await readFile(new URL('../docs/visual-acceptance/gallery-manifest.json',import.meta.url),'utf8'));
+ assert.deepEqual(galleryManifest(assets),recorded,'A gallery page changed. Rewrite docs/visual-acceptance/gallery-manifest.json deliberately and say why in the acceptance review.');
 });
 
 test('VIS-014 facts, data tables and sources are identical across the three themes',async()=>{

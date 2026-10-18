@@ -128,7 +128,7 @@ test('schema-valid image review still requires every actual capture hash and cur
  task.observation={};task.receipt=createQualityReceipt(task.project,{}, {ok:true,issues:[]},['one.png','two.png'].map(file=>({file,sha256,reviewRequired:true})));
  const options={host:'codex',cwd,live:true},images=['one.png','two.png'].map(file=>({file,sha256,finding:'Visible fixture pixels, not a real layout review.'}));
  const value={verdict:'pass',judgment:'Synthetic controller test only',images,issues:[]};
- assert.equal((await reviewWithHost({task},{...options,runner:fakeHost({...value,images:[images[0]]})})).error,'HOST_REVIEW_FINDINGS_INVALID');
+ const partial=await reviewWithHost({task},{...options,runner:fakeHost({...value,images:[images[0]]})});assert.equal(partial.error,'HOST_REVIEW_FINDINGS_INVALID');assert.equal(partial.reason,'HOST_IMAGE_FINDINGS_INCOMPLETE','the rejected check is named');
  assert.equal((await reviewWithHost({task},{...options,runner:fakeHost({...value,issues:[{sceneId:task.scope[0],nodeId:'missing',bounds:{x:0,y:0,width:1,height:1},severity:'error',reason:'fixture',suggestion:'fixture'}]})})).ok,false);
  const complete=await reviewWithHost({task},{...options,runner:fakeHost(value)});assert.equal(complete.ok,true);assert.deepEqual(complete.review.images,['one.png','two.png']);
 });

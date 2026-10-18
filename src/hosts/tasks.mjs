@@ -50,10 +50,10 @@ export async function reviewWithHost({task,receipt=task?.receipt,project=task?.p
  for(const issue of run.value.issues){const s=project.plan.scenes.find(s=>s.id===issue.sceneId);if(!s||!s.blockIds.includes(issue.nodeId))throw Error('HOST_REVIEW_IDENTITY_INVALID');}
  await application(run,{receiptId:receipt.id},run.value,'render.inspect-review');
  return {...run,review:{receiptId:receipt.id,reviewer:options.host+' local CLI',delivery:'Attached actual local images through '+options.host+'; per-image visual findings in host response; receipt '+run.receipt.requestId,images:paths,judgment:run.value.judgment+'\n'+run.value.images.map(i=>i.file+': '+i.finding).join('\n'),issues:run.value.issues,verdict:run.value.verdict}};
- }catch{await application(run,{receiptId:receipt.id},null,'render.inspect-review');return {...run,ok:false,error:'HOST_REVIEW_FINDINGS_INVALID'};}
+ }catch(error){await application(run,{receiptId:receipt.id},null,'render.inspect-review');return {...run,ok:false,error:'HOST_REVIEW_FINDINGS_INVALID',reason:error.message};}
 }
 /** One probe is reused through a run; capture stays an explicit local capability. */
 export async function runHostVisualTask(task,{capture,checkpoint,home,...options}){
  const {probeHost}=await import('./capabilities.mjs');const capabilities=options.capabilities||await probeHost(options);
- return runVisualTask(task,{home,capture,checkpoint,review:async input=>{const r=await reviewWithHost(input,{...options,capabilities});if(!r.ok)throw Error(r.error||r.receipt.error||'HOST_REVIEW_FAILED');return r.review;}});
+ return runVisualTask(task,{home,capture,checkpoint,review:async input=>{const r=await reviewWithHost(input,{...options,capabilities});if(!r.ok)throw Error((r.error||r.receipt.error||'HOST_REVIEW_FAILED')+(r.reason?': '+r.reason:''));return r.review;}});
 }

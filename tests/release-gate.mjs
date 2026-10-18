@@ -1,4 +1,5 @@
 import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import {registerAsset} from '../src/assets/registry.mjs';
 import {createVisualProject} from '../src/core/visual-project.mjs';
 /**
@@ -282,4 +283,23 @@ export function releaseStory(locale,theme,assets){
 export async function releaseProject(kind,locale,home,theme='cream-collage'){
  const assets=await releaseAssets(home),{document,plan}=kind==='gallery'?releaseGallery(locale,assets):releaseStory(locale,theme,assets);
  return createVisualProject(document,plan,{assets:Object.values(assets),id:kind==='gallery'?`vis-014-gallery-${locale.toLowerCase()}`:`vis-014-story-${theme}-${locale.toLowerCase()}`});
+}
+/**
+ * The frozen gallery record: per page its §9 task, theme, composition and, per language, a hash of everything a reader is told
+ * (blocks, datasets, sources, explanations it uses, interactions and cues). docs/visual-acceptance/gallery-manifest.json
+ * must equal this; a content change therefore fails until the manifest is deliberately rewritten.
+ */
+export function galleryManifest(assets){
+ const pages=GALLERY_PAGES.map(p=>({...p,hashes:{}}));
+ for(const locale of LOCALES){
+  const {document,plan}=releaseGallery(locale,assets);
+  for(const page of pages){
+   const scene=plan.scenes.find(s=>s.id===page.id),blocks=scene.blockIds.map(id=>document.blocks.find(b=>b.id===id)),datasetIds=new Set(blocks.map(b=>b.datasetId).filter(Boolean));
+   const sourceIds=new Set([...blocks.flatMap(b=>[...b.sourceIds,...(b.sourceId?[b.sourceId]:[])]),...document.datasets.filter(d=>datasetIds.has(d.id)).flatMap(d=>d.sourceIds)]);
+   const explanationIds=new Set((scene.interactions||[]).flatMap(i=>(i.steps||[]).map(s=>s.explanationId)));
+   const content={blocks,datasets:document.datasets.filter(d=>datasetIds.has(d.id)),sources:document.sources.filter(s=>sourceIds.has(s.id)),explanations:(document.explanations||[]).filter(e=>explanationIds.has(e.id)),interactions:scene.interactions||[],cues:scene.cues||[],contentStatus:scene.contentStatus};
+   page.contentStatus=scene.contentStatus;page.interactions=(scene.interactions||[]).map(i=>i.kind);page.hashes[locale]=createHash('sha256').update(JSON.stringify(content)).digest('hex');
+  }
+ }
+ return {format:'deckweft-vis-014-gallery',version:1,decision:'docs/plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19 (option C: requirements §9 gallery)',frozenAt:'2026-10-19',locales:LOCALES,themes:THEMES,pages};
 }

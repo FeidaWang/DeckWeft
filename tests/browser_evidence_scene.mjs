@@ -77,17 +77,17 @@ try{
   const artifact=(await studio.locator('#preview').getAttribute('src')).split('#')[0],present=await (await context({viewport:{width:1440,height:1000}})).newPage();present.on('pageerror',e=>report.errors.push(locale+' present: '+e.message));
   await ready(present,app.url+artifact+'#scene=evidence');assert.equal(await pageLabel(present),'1 / 2');
   const specs=compileCues(source.document,source.plan.scenes[0]),focus=[];
-  const series=present.locator('#evidence .chart-series-switch button');await series.nth(1).click();
-  focus.push({input:'mouse click on the series focus button',page:await pageLabel(present),state:(await snapshot(present)).state[0],pressed:await series.evaluateAll(b=>b.map(n=>n.getAttribute('aria-pressed')))});
+  // Layered focus rule (S6): a single-series chart offers no series focus or show/hide controls; its emphasis is the declared category focus.
+  focus.push({input:'series controls on a single-series chart',page:await pageLabel(present),state:(await snapshot(present)).state[0],hidden:await present.locator('#evidence .chart-series-switch').isHidden()&&await present.locator('#evidence .chart-series-visibility').isHidden()});
   await present.locator('#evidence select[data-range="toId"]').selectOption('data-first');
   focus.push({input:'pointer selection of the To category',page:await pageLabel(present),state:(await snapshot(present)).state[0],bars:await present.locator('#evidence .chart-current-view .chart-mark rect').count()});
   await present.locator('#evidence select[data-range="toId"]').focus();await present.keyboard.press('ArrowDown');await present.keyboard.press('ArrowRight');await present.keyboard.press('ArrowLeft');
   focus.push({input:'keyboard ArrowDown/ArrowRight/ArrowLeft on the To category',page:await pageLabel(present),state:(await snapshot(present)).state[0],bars:await present.locator('#evidence .chart-current-view .chart-mark rect').count()});
-  await series.nth(0).focus();await present.keyboard.press('Enter');await present.keyboard.press('Tab');await present.keyboard.press('Space');await present.keyboard.press('ArrowRight');
-  focus.push({input:'keyboard Enter/Tab/Space/ArrowRight on the series buttons',page:await pageLabel(present),state:(await snapshot(present)).state[0],focused:await present.evaluate(()=>document.activeElement.textContent)});
+  await present.locator('#evidence select[data-range="fromId"]').focus();await present.keyboard.press('Enter');await present.keyboard.press('Tab');await present.keyboard.press('ArrowRight');
+  focus.push({input:'keyboard Enter/Tab/ArrowRight on the range controls',page:await pageLabel(present),state:(await snapshot(present)).state[0],focused:await present.evaluate(()=>document.activeElement.textContent)});
   assert.ok(focus.every(f=>f.page==='1 / 2'),'keyboard and pointer focus changes never advance the page');assert.deepEqual(focus[1].state.toId,'data-first');assert.equal(focus[1].bars,3);assert.equal(focus[2].state.toId,'template');
-  // S4 draws the declared category focus; S5's series buttons focus one series. On a single-series ranked bar the series focus changes only the pressed state and the caption subject (resolved by the layered focus rule).
-  assert.deepEqual(focus[0].pressed,['false','true']);assert.equal(focus[0].state.focusSeriesId,'reduction');const focusRows=await present.locator('#evidence .chart-current-view .chart-row').evaluateAll(rows=>rows.map(r=>r.dataset.focus));assert.deepEqual(focusRows,['true',...Array(focusRows.length-1).fill('false')]);report.conflicts.push({id:'C1',observed:'S4 draws the declared category focus (Claim first) in both views; the S5 series button on a single-series ranked bar changes the pressed state and caption subject only',locale});
+  // S4 draws the declared category focus; with no series controls the reader's focus stays empty, so the declared focus is what both views draw.
+  assert.equal(focus[0].hidden,true);assert.equal(focus[0].state.focusSeriesId,null);const focusRows=await present.locator('#evidence .chart-current-view .chart-row').evaluateAll(rows=>rows.map(r=>r.dataset.focus));assert.deepEqual(focusRows,['true',...Array(focusRows.length-1).fill('false')]);report.conflicts.push({id:'C1',observed:'Fixed in S6 (layered rule): the declared category focus (Claim first) is drawn in both views; a single-series chart offers no series controls',locale});
   stage(locale,'switch legend focus',{focus});
   const timeline=present.locator('#evidence .semantic-timeline'),replay=timeline.locator('button').nth(0),pause=timeline.locator('[data-cue-pause]'),seek=timeline.locator('[data-cue-position]');
   await replay.click();const playing=await snapshot(present);assert.equal(playing.playing,true);assert.equal(playing.resources.timers,1);
