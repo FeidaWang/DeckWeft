@@ -26,6 +26,8 @@ Local coding-host adapters now support opt-in structured drafting, scoped revisi
 
 Enter a prompt or select a saved source in the existing Visual Studio, then watch, revise a page, inspect actual screenshots and export reviewed HTML. Language/style preferences, author locks and recovery persist locally. [Prompt-first workbench](docs/en/workbench.md) · [VIS-013 evidence](docs/evidence/vis-013/review.md). Claude login remains deferred.
 
+Existing works now support source-bound chart switching, editable step explanations, finite motion and saved opening selections in Visual Studio. Full bilingual interaction regression and actual preview/export image comparison passed; see the [interaction manual](docs/en/interactions.md) and [current evidence](docs/evidence/interaction-visual-regression/review.md).
+
 ## Visual-first local implementation
 
 [Visual Studio](docs/en/visual-studio.md) now edits and saves v3 semantic projects inside the local app. Cream Collage, Dark Data and Electric Violet have bilingual examples, live DOM/SVG previews, numeric data tables, scoped theme/content locks, local image cropping and history recovery. Run `npm run studio:visual-demo`, or follow Visual Studio from the classic library. The full release gallery, host generation and native v3 exports remain later gates. The [reconciled requirements](DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) continue from VIS-002–011; VIS-012 adapters now have local implementation with deferred Claude acceptance, with the local VIS-013 workbench and planned VIS-014 release acceptance.
@@ -44,7 +46,7 @@ Four actual Codex CLI turns compared the same six short tasks at medium/high, tw
 
 The current local build adds a [private presenter and audience window](docs/en/presenting.md), slide-following teleprompter, editor light/dark/system appearance, shared motion preferences and semantic action controls. Visual exports omit private notes by default; use the explicit presenter option when needed. The development type pilot preserves direct offline runtime startup. These local checks do not close the outstanding host or real projection gates.
 
-Browser-measured multilingual text, safer keyboard/dialog/save handling, and a read-only version browser with restore-as-copy. **DW-020 remains blocked overall:** the authenticated Codex CLI skill run now passes with reviewed output; Claude sign-in was deferred, and Codex desktop activation and remote CI remain untested. The [host acceptance guide](docs/en/host-acceptance.md) links the current evidence. [Release notes](docs/en/alpha-2.md) · [Evidence](docs/en/verification.md).
+Browser-measured multilingual text, safer keyboard/dialog/save handling, and a read-only version browser with restore-as-copy. **DW-020 remains blocked overall:** the authenticated Codex CLI skill run now passes with reviewed output; Claude sign-in was deferred, and Codex desktop activation remains untested. The [host acceptance guide](docs/en/host-acceptance.md) links the current evidence. [Release notes](docs/en/alpha-2.md) · [Evidence](docs/en/verification.md).
 
 ## Try it
 
@@ -119,7 +121,7 @@ npm run build
 npm run demo
 ```
 
-`npm run verify` runs all four. See [architecture](docs/en/architecture.md), [contributing](CONTRIBUTING.md), and [next-task handoff](docs/en/handoff.md). GitHub CI is configured, but local checks are not a claim that a remote CI run has happened.
+`npm run verify` runs all four. See [architecture](docs/en/architecture.md), [contributing](CONTRIBUTING.md), and [next-task handoff](docs/en/handoff.md). The current committed source passed clean-checkout verification and Node 22 CI on Ubuntu, macOS and Windows. [Publication and visual regression evidence](docs/evidence/interaction-visual-regression/review.md) keeps these results separate from native host/application acceptance.
 
 English is the source language for code and documentation. Simplified Chinese has separate, human-readable pages. We do not mix two full manuals into one crowded page.
 

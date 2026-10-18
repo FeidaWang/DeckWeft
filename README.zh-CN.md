@@ -29,6 +29,8 @@
 
 本地宿主适配已支持显式启用的结构化起草、局部修订及实际截图反馈，复用共享任务工具。Claude 真实验收继续暂缓，VIS-012 保持 partial。[宿主手册](docs/zh-CN/hosts.md) · [证据](docs/evidence/vis-012/review.md)。
 
+已有作品可在 Visual Studio 中直接启用图表切换、可编辑分步讲解、有限动效和开场选择。完整双语交互图库与真实预览／导出画面对照已通过，当前源码也通过干净目录安装及 Ubuntu／macOS／Windows 的 Node 22 远程 CI。[交互说明](docs/zh-CN/interactions.md) · [当前验证记录](docs/evidence/interaction-visual-regression/review.md)。
+
 ## 视觉优先重建：首批实现
 
 [Visual Studio](docs/zh-CN/visual-studio.md) 已在本地应用内接入 v3 语义编辑与保存。Cream Collage、Dark Data、Electric Violet 均有双语样例，支持 DOM/SVG 实测预览、数值表、主题／内容锁定、本地图片裁切与历史恢复。执行 `npm run studio:visual-demo`，或从经典文稿库进入。完整发布样例库、宿主生成与 v3 原生导出仍待后续验收。
@@ -107,7 +109,7 @@ MIT 许可证和原作者声明见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE.md)。
 
 ## alpha.2 更新
 
-工作台新增浏览器真实文字测量，预览和导出复用同一份排版；命令行仍明确使用离线估算。加入只读历史版本浏览和“恢复为新副本”，并修复输入法、键盘焦点、过期预览及保存竞争。**DW-020 整体验收仍阻塞**：已登录 Codex CLI 的独立项目技能任务已通过，并完成输出审阅；按用户要求暂不登录 Claude，Codex 桌面原生激活和远程 CI 也尚未验证。详见[当前宿主证据](docs/zh-CN/host-acceptance.md)。
+工作台新增浏览器真实文字测量，预览和导出复用同一份排版；命令行仍明确使用离线估算。加入只读历史版本浏览和“恢复为新副本”，并修复输入法、键盘焦点、过期预览及保存竞争。**DW-020 整体验收仍阻塞**：已登录 Codex CLI 的独立项目技能任务已通过，并完成输出审阅；按用户要求暂不登录 Claude，Codex 桌面原生激活尚未验证。详见[当前宿主证据](docs/zh-CN/host-acceptance.md)。
 
 [更新说明](docs/zh-CN/alpha-2.md) · [宿主验收指南](docs/zh-CN/host-acceptance.md) · [当前验证报告](docs/zh-CN/verification.md)
 

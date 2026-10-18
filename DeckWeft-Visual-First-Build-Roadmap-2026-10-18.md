@@ -2,7 +2,7 @@
 
 Date: 2026-10-18
 
-Status: requirements and implementation plan reconciled with the local working tree on 2026-10-18. VIS-002–011 have recorded local implementations; VIS-001 remains partial. VIS-012 is implemented locally with partial acceptance (Claude login/live task deferred). VIS-013 is implemented locally; VIS-014–016, SRC-001–007, DOC-001 and EXP-001 remain planned. These IDs are local roadmap records, not claims that GitHub issues exist. Local implementation does not establish host or release acceptance.
+Status: requirements and implementation plan reconciled with the local working tree on 2026-10-18. VIS-002–011 have recorded local implementations; VIS-001 has recorded clean-checkout and remote CI acceptance. VIS-012 is implemented locally with partial acceptance (Claude login/live task deferred). VIS-013 is implemented locally; VIS-014–016, SRC-001–007, DOC-001 and EXP-001 remain planned. These IDs are local roadmap records, not claims that GitHub issues exist. Local implementation does not establish host or release acceptance.
 
 Audited baselines:
 
@@ -16,7 +16,7 @@ The checked-out HEAD is still `9204f21161fd5b5c15c4040bd2414bed55fb4d99`; the su
 
 | Tasks | Current local implementation | Evidence and remaining gate |
 |---|---|---|
-| VIS-001 | CI installs locked tools; three legacy baseline decks and capture harness exist. | [Wave A evidence](docs/evidence/visual-wave-a/review.md); successful remote CI and clean-checkout acceptance remain open. |
+| VIS-001 | CI installs locked tools; three legacy baseline decks and capture harness exist. | [Wave A evidence](docs/evidence/visual-wave-a/review.md); [clean-checkout and three-platform CI acceptance is recorded](docs/evidence/interaction-visual-regression/publication.json). |
 | VIS-002–005 | Strict v3 semantic/design/WebScene contracts, explicit legacy copy migration, revisioned Visual Studio, three versioned theme packs and scoped locks. | [Studio evidence](docs/evidence/visual-studio/review.md); local scope only. |
 | VIS-006 | Six families × three geometric candidates, measured selection, whole-deck rhythm and stable reorder. | [Composition evidence](docs/evidence/vis-006/review.md); six further families are required before VIS-014. |
 | VIS-007 | Local original PNG/JPEG/WebP retention, derivatives, saved-document image extraction, named slots and author-protected crops. | [Asset evidence](docs/evidence/vis-007/review.md); arbitrary PPTX/PDF extraction, detected subjects and v3 generation transport remain open. |
@@ -184,7 +184,7 @@ Priority indicates product order. Dependencies indicate merge/runtime prerequisi
 
 ### VIS-001 — Reproducible baseline and working CI
 
-Current state: **partial**. See section 0 and `roadmap.json` for scope and remaining acceptance.
+Current state: **implemented-local, baseline/CI acceptance recorded**. Clean committed source installs and passes verification locally and on three remote platforms; see section 0 and `roadmap.json`.
 
 **P0 · S · Dependencies: none**
 
@@ -484,7 +484,7 @@ The initial interfaces, local themes/components and renderer/QA waves are implem
 
 | Wave | Work and current scope | Concrete review artifact |
 |---|---|---|
-| A | Local implementation recorded; VIS-001 remote CI remains open | Baseline plus one bilingual collage page and one semantic chart page |
+| A | Local implementation recorded; VIS-001 baseline/CI acceptance recorded | Baseline plus one bilingual collage page and one semantic chart page |
 | B | VIS-005–009 implemented locally | Three visibly different themes, geometry candidates, images, live chart/diagram interaction |
 | C | VIS-010/011 local; VIS-012–014 next | One-prompt complete stories from both real hosts, with visual repair and portable exports |
 | D | VIS-015/016 and SRC-001–003 in independent lanes | More art directions, editable native output, first live local-folder website |

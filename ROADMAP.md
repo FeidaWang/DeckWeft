@@ -2,6 +2,10 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## Verified source publication — 2026-10-18
+
+VIS-001 now has clean-checkout and remote CI acceptance for the recorded source. All 338 tests/types/check/build/export gates passed locally and on GitHub Node 22 for Ubuntu, macOS and Windows. The complete interaction gallery and actual preview/export image comparison passed; wider host/native/accessibility and VIS-014 release gates remain separate. [Evidence](docs/evidence/interaction-visual-regression/review.md).
+
 ## VIS-013 — prompt-first workbench, 2026-10-18
 
 VIS-013 is **implemented-local** inside the existing Visual Studio: prompt/source generation, independent languages and typed scoped design choices, actual screenshot/Codex review, distinct selected-page revision and reviewed HTML export. Durable conflicts, locks, private-note boundaries, cancellation, explicit source sync and last-valid recovery remain enforced. Claude stays deferred; broader release acceptance remains VIS-014. [Manual](docs/en/workbench.md) · [Evidence](docs/evidence/vis-013/review.md).
@@ -12,9 +16,9 @@ VIS-012 is **implemented locally, partial acceptance**: Codex and Claude Code sh
 
 ## Current requirements reconciliation — 2026-10-18
 
-The [updated visual-first requirements](DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) now distinguish the old committed audit from the current visual implementation. VIS-001 is partial; VIS-002–011 are implemented locally with the evidence below. `roadmap.json` includes every remaining VIS/SRC/DOC/EXP task and its dependencies. Historical batch orders and authorization records are retained; `nextExecutionOrder` is planning only.
+The [updated visual-first requirements](DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) now distinguish the old committed audit from the current visual implementation. VIS-001 baseline/CI acceptance is recorded; VIS-002–011 are implemented locally with the evidence below. `roadmap.json` includes every remaining VIS/SRC/DOC/EXP task and its dependencies. Historical batch orders and authorization records are retained; `nextExecutionOrder` is planning only.
 
-VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. Next planned implementation: **VIS-014 visual release gate**. Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep VIS-001 remote CI, actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
+VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. Next planned implementation: **VIS-014 visual release gate**. Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
 
 [Reconciliation and current validation](docs/evidence/roadmap-reconciliation/review.md) · [Next-task handoff](docs/en/handoff.md).
 

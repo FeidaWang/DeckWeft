@@ -92,7 +92,7 @@
       "id": "VIS-A",
       "name": "Visual-first semantic web foundation",
       "dependsOn": [],
-      "state": "VIS-002–007 implemented-local; VIS-001 remote CI remains open",
+      "state": "VIS-002–007 implemented-local; VIS-001 clean-checkout / remote CI accepted for the recorded source",
       "goal": "Establish reproducible visual evidence and a separate semantic DOM/SVG path without changing v1/v2 storage.",
       "tasks": [
         "VIS-001",
@@ -902,17 +902,19 @@
       "id": "VIS-001",
       "priority": "P0",
       "title": "Reproducible baseline and working CI",
-      "state": "partial",
+      "state": "implemented-local",
       "dependsOn": [],
       "implemented": [
         "Locked npm ci before verify in CI",
-        "Three frozen legacy decks; isolated browser screenshots and source/font/output fingerprints"
+        "Three frozen legacy decks; isolated browser screenshots and source/font/output fingerprints",
+        "Clean committed checkout npm ci/verify passed locally and on GitHub Node 22 for Ubuntu, macOS and Windows; actual image comparison receipts retained"
       ],
-      "remaining": "Remote CI and clean-checkout remote acceptance remain unrun.",
+      "remaining": "Baseline/CI acceptance passed for the recorded source commit; broader visual, accessibility, host and native release acceptance remains in its separate tasks.",
       "evidence": "docs/evidence/visual-wave-a/review.md",
       "acceptance": [
         "Full acceptance remains defined in the supplied visual-first roadmap; this record covers the initial Wave A slice only."
-      ]
+      ],
+      "currentEvidence": "docs/evidence/interaction-visual-regression/review.md"
     },
     {
       "id": "VIS-002",
@@ -1471,7 +1473,6 @@
   ],
   "planningMeaning": "nextExecutionOrder is planning, not authorization. executionOrder retains historical batches; authorizedTaskIds includes the directly requested VIS-013.",
   "openAcceptanceGates": [
-    "VIS-001 successful remote CI and clean-checkout acceptance",
     "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",
     "VIS-014 twelve families, fixed bilingual gallery, coherent stories and standalone packaging",
     "Other engines, actual screen reader/IME/200% zoom; native v3 applications only when implemented"

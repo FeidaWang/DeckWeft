@@ -6,7 +6,7 @@ VIS-013 已在现有 Visual Studio 中本地实现，保留[工作台证据](../
 
 VIS-012 已有[本地适配实现](hosts.md)及[真实运行证据](../evidence/vis-012/review.md)，不要重做。严格 Codex 单页有效修订、图片审阅及变更后 HTML 导出已通过，保留 responsive-closure 证据。Claude 登录／真实验收继续暂缓，整体仍为 partial。后续计划实现为 VIS-014，此交接不自动授予执行权限。
 
-仓库 HEAD 为 `9204f21161fd5b5c15c4040bd2414bed55fb4d99`，有大量未提交的本地实现，必须保留。VIS-002～011 已有本地证据；VIS-001 远程 CI 仍开放。先读最新[任务流程](task-loop.md)及[验证记录](verification.md)。历史回执只覆盖各自来源指纹，不能自动验收后续包。
+视觉工作台及讲解交互已推送到 `origin/main`。运行时源码 `5427aa9b10e07aea5ea0734562be6d01d4a1a92e` 已通过本地干净目录 338 项测试及 Node 22 的 Ubuntu／macOS／Windows CI；后续文档与测试回执保留各自提交身份。当前目录状态以 `git status`、`git log` 为准。[推送与视觉证据](../evidence/interaction-visual-regression/review.md)。VIS-002～013 保留各自本地／宿主边界。先读最新[任务流程](task-loop.md)及[验证记录](verification.md)。历史回执只覆盖各自来源指纹，不能自动验收后续包。
 
 以下步骤用于另行请求的实现任务：
 
@@ -16,6 +16,6 @@ VIS-012 已有[本地适配实现](hosts.md)及[真实运行证据](../evidence/
 4. 为 VIS-014 补充另外六类构图、固定双语 12 页样例库、每主题双语 8 页故事、真实宿主验收及仓库外独立包检查。VIS-010 代表性故事不能替代此关卡。
 5. 执行 `npm run verify`。视觉变更另需等待字体／图片就绪后真实截图并实际看图；记录命令、结果、查看的产物和不可用应用。
 
-Claude 登录继续暂缓，未经新请求不要重试。旧版 Codex CLI 证据不验收当前 v3 宿主闭环或桌面原生激活。PowerPoint／Keynote／Figma／AE 的兼容性声明需要实际目标应用证据；既有无障碍、投屏及远程 CI 关卡仍开放。
+Claude 登录继续暂缓，未经新请求不要重试。旧版 Codex CLI 证据不验收当前 v3 宿主闭环或桌面原生激活。PowerPoint／Keynote／Figma／AE 的兼容性声明需要实际目标应用证据；既有无障碍、投屏及原生宿主关卡仍开放；通用三平台 CI 已通过。
 
 浏览器自动化使用 `/Applications` 外的隔离程序和临时配置，已安装应用包及个人配置只读。未经直接请求，不发布、不推送、不接收费服务、不上传来源、不创建定时任务。保留 LICENSE／NOTICE、本地回环存储、私密备注边界、精确事实及显式迁移。由源码构建到 `dist/`，不改生成物，不删除历史来通过检查。

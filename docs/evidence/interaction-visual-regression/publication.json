@@ -1,0 +1,174 @@
+{
+  "repository": "https://github.com/FeidaWang/DeckWeft",
+  "branch": "main",
+  "verifiedSourceCommit": "5427aa9b10e07aea5ea0734562be6d01d4a1a92e",
+  "runUrl": "https://github.com/FeidaWang/DeckWeft/actions/runs/39125595637",
+  "runId": 39125595637,
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "verify (macos-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/FeidaWang/DeckWeft/actions/runs/39125595637/job/117669931189",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run verify",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "verify (ubuntu-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/FeidaWang/DeckWeft/actions/runs/39125595637/job/117669931286",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run verify",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "verify (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/FeidaWang/DeckWeft/actions/runs/39125595637/job/117669931369",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run verify",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "localCleanCheckout": {
+    "command": "npm ci && npm run verify",
+    "sourceCommit": "5427aa9b10e07aea5ea0734562be6d01d4a1a92e",
+    "passed": 338,
+    "failed": 0,
+    "skipped": 0,
+    "log": "clean-checkout-verify.txt"
+  },
+  "previousFailures": [
+    {
+      "runId": 39124664929,
+      "reason": "CLI test used URL pathname as a Windows filesystem path",
+      "resolution": "fileURLToPath; functional assertions retained"
+    },
+    {
+      "runId": 39124801837,
+      "reason": "Workbench checkpoint waits/blocked state under Windows I/O",
+      "resolution": "Bounded wall-clock wait and checkpoint error diagnostics"
+    },
+    {
+      "runId": 39124992539,
+      "reason": "Job exited while its final running=false checkpoint was not persisted",
+      "resolution": "Track the actual background promise failure"
+    },
+    {
+      "runId": 39125187360,
+      "reason": "Windows checkpoint error EPERM; original source retained",
+      "resolution": "Bounded atomic replacement retry"
+    },
+    {
+      "runId": 39125370695,
+      "reason": "Initial short replacement retry failed the new concurrent reader stress case",
+      "resolution": "Staggered 50-attempt/5-second maximum; persistent errors still fail without deleting destination"
+    }
+  ]
+}

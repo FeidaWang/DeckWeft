@@ -2,6 +2,10 @@
 
 [English](../../ROADMAP.md) · [任务数据](../../roadmap.json) · [证据](verification.md)
 
+## 源码推送与验证 — 2026-10-18
+
+VIS-001 已有对应源码的干净目录与远程 CI 验收：338 项测试及类型／源码／构建／导出检查在本地及 GitHub Node 22 的 Ubuntu、macOS、Windows 均通过。完整交互图库和真实预览／导出画面对照已通过；更广的宿主／原生应用／无障碍及 VIS-014 发布关卡仍单独保留。[证据](../evidence/interaction-visual-regression/review.md)。
+
 ## VIS-013 — 提示词优先工作台，2026-10-18
 
 VIS-013 已 **implemented-local**，复用现有 Visual Studio 与任务工具：提示词／来源生成、独立语言及范围偏好、实际截图／Codex 审阅、有效单页修订及已审阅 HTML 导出，保留冲突、作者锁、私有讲稿边界、取消、来源同步及最后有效产物恢复。Claude 继续暂缓，VIS-014 更广发布验收仍开放。[手册](workbench.md) · [证据](../evidence/vis-013/review.md)。
@@ -12,9 +16,9 @@ VIS-012 已**完成本地实现，整体验收 partial**：Codex 与 Claude Code
 
 ## 当前需求校准 — 2026-10-18
 
-[更新后的视觉优先需求](../../DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) 已区分旧提交审计与当前未提交实现。VIS-001 为 partial；VIS-002～011 已有本地实现及下文证据。`roadmap.json` 补齐其余 VIS/SRC/DOC/EXP 任务和依赖；保留历史批次及授权记录，`nextExecutionOrder` 仅表示计划。
+[更新后的视觉优先需求](../../DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) 已区分旧提交审计与当前视觉实现。VIS-001 已有基线／CI 验收；VIS-002～011 已有本地实现及下文证据。`roadmap.json` 补齐其余 VIS/SRC/DOC/EXP 任务和依赖；保留历史批次及授权记录，`nextExecutionOrder` 仅表示计划。
 
-VIS-012 宿主适配已完成本地实现，Claude 验收暂缓；VIS-013 已本地实现，后续计划为 **VIS-014 视觉发布验收**。为 VIS-014 补充另外六类构图、固定双语样例库与完整故事；VIS-001 远程 CI、实际宿主图像输入、无障碍和仓库外独立包仍需分别验收。v3 原生导出归 VIS-016，本地同步和云连接器属于后续显式启用范围。现有 bridge mock、确定性提纲规划及代表性质量样例不能关闭这些关卡。
+VIS-012 宿主适配已完成本地实现，Claude 验收暂缓；VIS-013 已本地实现，后续计划为 **VIS-014 视觉发布验收**。为 VIS-014 补充另外六类构图、固定双语样例库与完整故事；实际宿主图像输入、无障碍和仓库外独立包仍需分别验收。v3 原生导出归 VIS-016，本地同步和云连接器属于后续显式启用范围。现有 bridge mock、确定性提纲规划及代表性质量样例不能关闭这些关卡。
 
 [校准和本次验证](../evidence/roadmap-reconciliation/review.md) · [后续交接](handoff.md)。
 

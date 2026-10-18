@@ -6,7 +6,7 @@ VIS-013 is now implemented locally in the existing Visual Studio. Preserve [work
 
 VIS-012 now has [local adapter implementation](hosts.md) and [real-run evidence](../evidence/vis-012/review.md). The strict Codex distinct-page revision, image review and changed HTML export now pass; preserve the responsive-closure evidence. Continue from it; Claude login/live acceptance remains deferred and the overall task stays partial. VIS-014 is the next planned implementation, not automatically authorized by this handoff.
 
-The repository HEAD is `9204f21161fd5b5c15c4040bd2414bed55fb4d99`, with substantial uncommitted local implementation. Preserve those changes. VIS-002–011 have local evidence; VIS-001 remote CI remains open. Read the latest [task-loop manual](task-loop.md) and [verification](verification.md). Historical receipts identify their own source fingerprints and do not accept a later bundle automatically.
+The visual workbench and explanatory interactions are published on `origin/main`. Runtime source `5427aa9b10e07aea5ea0734562be6d01d4a1a92e` passed 338 tests from a clean local archive and Node 22 CI on Ubuntu/macOS/Windows; subsequent documentation/test receipts identify their own commits. Use `git status` and `git log` for current checkout state. [Publication and visual evidence](../evidence/interaction-visual-regression/review.md). VIS-002–013 retain their recorded local/host limits. Read the latest [task-loop manual](task-loop.md) and [verification](verification.md). Historical receipts identify their own source fingerprints and do not accept a later bundle automatically.
 
 For separately requested implementation work:
 
@@ -16,6 +16,6 @@ For separately requested implementation work:
 4. Prepare VIS-014's six additional composition families, fixed bilingual 12-page gallery, complete 8-page stories per theme, actual host acceptance and standalone package checks. Representative VIS-010 stories do not replace this gate.
 5. Run `npm run verify`. Visual changes also require real browser capture after font/image readiness and actual image review. Record exact tests, inspected output and unavailable applications.
 
-Claude sign-in remains deferred; do not retry it without a new request. Prior legacy Codex CLI evidence does not certify the current v3 host loop or native desktop activation. PowerPoint/Keynote/Figma/AE compatibility needs actual target-application evidence. Existing accessibility, projection and remote CI gates remain open.
+Claude sign-in remains deferred; do not retry it without a new request. Prior legacy Codex CLI evidence does not certify the current v3 host loop or native desktop activation. PowerPoint/Keynote/Figma/AE compatibility needs actual target-application evidence. Existing accessibility, projection and native-host gates remain open; generic three-platform CI has passed.
 
 Use an isolated automation browser outside `/Applications` and temporary profiles. Installed browser bundles and personal profiles are read-only. Do not publish, push, add paid providers, upload sources or create scheduled jobs without a direct request. Retain LICENSE/NOTICE, local loopback storage, private-note boundaries, exact facts and explicit migrations. Build from source into `dist/`; do not edit generated output or delete history to pass checks.

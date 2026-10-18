@@ -1,0 +1,7 @@
+{
+  "ok": false,
+  "cases": 6,
+  "captures": 134,
+  "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#snapshot') to be visible\u001b[22m\n\u001b[2m    63 × locator resolved to hidden <textarea readonly hidden=\"\" id=\"snapshot\" aria-label=\"Read-only snapshot\"></textarea>\u001b[22m\n\n    at /Users/feida/Developer/DeckWeft/tests/browser_interactions.mjs:77:166",
+  "out": "/Users/feida/Developer/DeckWeft/dist/visual-interactions/acceptance"
+}

@@ -38,7 +38,7 @@
     },
     {
       "path": "tests/browser_interactions.mjs",
-      "sha256": "c862895f89978058cb63e5c780f25b1145835e7f0fd45f0e53a3ee266e10d1cc"
+      "sha256": "bb96aed59210ec47c42cf5aa3b6e4ba76fb5e8e29bffce813c5f1a44ab4e491b"
     },
     {
       "path": "tests/browser_interaction_visual_parity.mjs",
@@ -47,6 +47,22 @@
     {
       "path": "tests/browser_explanatory_authoring.mjs",
       "sha256": "262abc8eb15a2d50e7327a61914737411e0a01355fe37b8eef612b8e38a2551c"
+    },
+    {
+      "path": "src/services/io.mjs",
+      "sha256": "a579d6d084b5ec9a2f3f00c2008da2219631c20a99ec5f3e438123fc6f231e0a"
+    },
+    {
+      "path": "tests/atomic-write.test.mjs",
+      "sha256": "e62a0299c5afac5c528957e7b6169774a64a3281f079da8f757fe4be1178d985"
+    },
+    {
+      "path": "tests/host-adapters.test.mjs",
+      "sha256": "8ee715435355e152303e05a6768cbe113fb7dae740c657bfd45d84cb16c9f60d"
+    },
+    {
+      "path": "tests/workbench.test.mjs",
+      "sha256": "1519e49de4e2d6203818fee6d0fe55edb17170da96792a91c8d7121cce2b2c92"
     }
   ]
 }

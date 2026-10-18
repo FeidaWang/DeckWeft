@@ -9,7 +9,7 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
-    "passed": 334,
+    "passed": 338,
     "failed": 0,
     "skipped": 0,
     "environment": {
@@ -110,10 +110,13 @@
     "afterEffects": "handoff generation, parser/static/cancel tests only; real app not run"
   },
   "publication": {
-    "github": "not published",
-    "remoteCI": "configured, not run",
+    "github": "https://github.com/FeidaWang/DeckWeft",
+    "remoteCI": "passed: Node 22 on ubuntu-latest, macos-latest and windows-latest",
     "npm": "private:true prevents accidental publishing",
-    "nameReservation": "not claimed"
+    "nameReservation": "not claimed",
+    "branch": "main",
+    "verifiedSourceCommit": "5427aa9b10e07aea5ea0734562be6d01d4a1a92e",
+    "evidence": "docs/evidence/interaction-visual-regression/publication.json"
   },
   "notImplemented": [
     "automatic web research",
@@ -129,8 +132,7 @@
   "nextTasks": [
     "VIS-012 Claude live acceptance remains deferred; VIS-014 is next planned",
     "VIS-014 six additional families, fixed bilingual gallery/stories and standalone package acceptance",
-    "VIS-001 successful remote CI and clean-checkout acceptance",
-    "DW-020 Claude authentication (deferred), Codex desktop native activation and remote CI",
+    "DW-020 Claude authentication (deferred), Codex desktop native activation",
     "DW-120 manual device / accessibility / direct-browser checks",
     "DW-130 cross-font / cross-app comparison",
     "DW-110 retention preview and project archive",
@@ -151,11 +153,11 @@
   "taskResults": {
     "DW-020": {
       "status": "blocked",
-      "reason": "Claude is not authenticated and user deferred sign-in; Codex native desktop activation and remote CI not tested.",
+      "reason": "Claude is not authenticated and user deferred sign-in; Codex native desktop activation remains untested. Generic source CI now passes on all three platforms.",
       "evidence": "docs/evidence/dw-020/review.json",
       "codexCLI": "Prior recorded authenticated task passed; latest bridge/theme bundle not rerun.",
       "nativeDesktop": "not tested",
-      "remoteCI": "not run",
+      "remoteCI": "passed for the current recorded source; see publication evidence",
       "claude": "validator passed; authenticated task deferred by user"
     },
     "DW-130": {
@@ -566,6 +568,7 @@
     "coverMetricSurface": "Explicit contrasting source-preserving DOM surface",
     "responsiveDiagramEdges": "Separate label rows and tracks for repeated/reverse adjacent edges",
     "evidence": "docs/evidence/interaction-visual-regression/review.md",
-    "nativeApplicationsTested": false
+    "nativeApplicationsTested": false,
+    "windowsPersistence": "Bounded atomic rename retry (50 attempts / 5 seconds), staggered against periodic readers; old destination is never deleted"
   }
 }
