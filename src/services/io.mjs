@@ -7,13 +7,26 @@ export async function rejectSymlinks(target) {
   let current=path.parse(full).root;
   for(const part of parts){current=path.join(current,part);try{if((await lstat(current)).isSymbolicLink())throw new DeckError('SYMLINK_PATH','Choose a real folder, not a symbolic link.',403);}catch(e){if(e.code!=='ENOENT')throw e;}}
 }
+/** Windows can briefly deny replacement while another process holds the destination.
+ * Retry the same atomic rename only; never delete the destination or change permissions.
+ * Dependencies are injectable for deterministic filesystem-failure tests.
+ */
+export async function renameWrittenFile(temporary,file,{platform=process.platform,renameFile=rename,wait=ms=>new Promise(resolve=>setTimeout(resolve,ms))}={}){
+  for(let attempt=0;;attempt++){
+    try{return await renameFile(temporary,file);}
+    catch(error){
+      if(platform!=='win32'||!['EPERM','EACCES','EBUSY'].includes(error.code)||attempt>=7)throw error;
+      await wait(Math.min(10*2**attempt,100));
+    }
+  }
+}
 export async function atomicWrite(file,data){
   await rejectSymlinks(file);await mkdir(path.dirname(file),{recursive:true});
   const temporary=`${file}.tmp-${randomUUID()}`;
   try{
     const handle=await open(temporary,'wx',0o600);
     try{await handle.writeFile(data);await handle.sync();}finally{await handle.close();}
-    await rename(temporary,file);
+    await renameWrittenFile(temporary,file);
   }finally{await rm(temporary,{force:true});}
 }
 export async function readJSON(file,maxBytes=4_000_000){
