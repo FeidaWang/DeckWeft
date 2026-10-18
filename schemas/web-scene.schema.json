@@ -596,6 +596,10 @@
                 "minItems": 1,
                 "uniqueItems": true
               },
+              "initialFocusSeriesId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
               "initialFromId": {
                 "type": "string",
                 "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
@@ -823,6 +827,37 @@
               "seriesIds",
               "fromId",
               "toId"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "event": {
+                "const": "data.focus"
+              },
+              "interactionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "seriesId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "event",
+              "interactionId"
             ],
             "additionalProperties": false
           },

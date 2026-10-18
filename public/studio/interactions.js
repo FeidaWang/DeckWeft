@@ -36,10 +36,16 @@ export function addExplanatoryInteractions(project,sceneId,{newId=()=> 'i-'+cryp
  return next;
 }
 
-/** Commit only explicit opening choices, never the viewer's transient replay/resources. */
-export function useInteractionOpening(project,sceneId,states){
+/**
+ * Commit only explicit opening choices, never the viewer's transient replay/resources. `cue` is where the preview stands: a state
+ * reached by playing or seeking to a later cue (for example the static state the preview opens on) is not an author's choice, so it
+ * is refused unless the author explored it or the preview is at the opening (position 0).
+ */
+export function useInteractionOpening(project,sceneId,states,cue){
  const next=structuredClone(project),scene=next.plan.scenes.find(s=>s.id===sceneId),d=next.document;
  if(!scene||!Array.isArray(states))throw Error('Missing current scene state.');
+ if(!cue||!Number.isSafeInteger(cue.position)||typeof cue.exploring!=='boolean')throw Error('Refresh the current preview.');
+ if(cue.position!==0&&!cue.exploring)throw Error(`The preview shows cue position ${cue.position}${cue.position===cue.staticPosition?' (the static state)':''}, not an explored selection. Change the chart or step in the preview first, or move Cue position to 0; the opening is unchanged.`);
  if(d.authorOverrides.sceneLocks?.some(l=>l.sceneId===sceneId&&l.fields.includes('interactions')))throw Error('Unlock this scene interaction plan first.');
  for(const spec of scene.interactions||[]){
   if(!['chart-select','steps'].includes(spec.kind))continue;
@@ -48,7 +54,9 @@ export function useInteractionOpening(project,sceneId,states){
   if(spec.kind==='chart-select'){
    const block=d.blocks.find(b=>b.id===spec.blockId),dataset=d.datasets.find(v=>v.id===block.datasetId),from=dataset.categoryIds.indexOf(value.fromId),to=dataset.categoryIds.indexOf(value.toId);
    if(from<0||to<from||!Array.isArray(value.seriesIds)||!value.seriesIds.length||new Set(value.seriesIds).size!==value.seriesIds.length||value.seriesIds.some(id=>!dataset.series.some(s=>s.id===id)))throw Error('Invalid chart opening.');
+   if(value.focusSeriesId!=null&&!value.seriesIds.includes(value.focusSeriesId))throw Error('Invalid chart opening.');
    spec.initialSeriesIds=dataset.series.filter(s=>value.seriesIds.includes(s.id)).map(s=>s.id);spec.initialFromId=value.fromId;spec.initialToId=value.toId;
+   if(value.focusSeriesId)spec.initialFocusSeriesId=value.focusSeriesId;else delete spec.initialFocusSeriesId;
   }else{
    if(!spec.steps.some(s=>s.id===value.stepId))throw Error('Invalid step opening.');spec.initialStepId=value.stepId;
   }

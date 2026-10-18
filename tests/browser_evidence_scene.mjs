@@ -78,7 +78,7 @@ try{
   await ready(present,app.url+artifact+'#scene=evidence');assert.equal(await pageLabel(present),'1 / 2');
   const specs=compileCues(source.document,source.plan.scenes[0]),focus=[];
   const series=present.locator('#evidence .chart-series-switch button');await series.nth(1).click();
-  focus.push({input:'mouse click on the series (legend) button',page:await pageLabel(present),state:(await snapshot(present)).state[0],pressed:await series.evaluateAll(b=>b.map(n=>n.getAttribute('aria-pressed')))});
+  focus.push({input:'mouse click on the series focus button',page:await pageLabel(present),state:(await snapshot(present)).state[0],pressed:await series.evaluateAll(b=>b.map(n=>n.getAttribute('aria-pressed')))});
   await present.locator('#evidence select[data-range="toId"]').selectOption('data-first');
   focus.push({input:'pointer selection of the To category',page:await pageLabel(present),state:(await snapshot(present)).state[0],bars:await present.locator('#evidence .chart-current-view .chart-mark rect').count()});
   await present.locator('#evidence select[data-range="toId"]').focus();await present.keyboard.press('ArrowDown');await present.keyboard.press('ArrowRight');await present.keyboard.press('ArrowLeft');
@@ -86,7 +86,8 @@ try{
   await series.nth(0).focus();await present.keyboard.press('Enter');await present.keyboard.press('Tab');await present.keyboard.press('Space');await present.keyboard.press('ArrowRight');
   focus.push({input:'keyboard Enter/Tab/Space/ArrowRight on the series buttons',page:await pageLabel(present),state:(await snapshot(present)).state[0],focused:await present.evaluate(()=>document.activeElement.textContent)});
   assert.ok(focus.every(f=>f.page==='1 / 2'),'keyboard and pointer focus changes never advance the page');assert.deepEqual(focus[1].state.toId,'data-first');assert.equal(focus[1].bars,3);assert.equal(focus[2].state.toId,'template');
-  assert.deepEqual(focus[0].pressed,['true','true']);const focusRows=await present.locator('#evidence .chart-current-view .chart-row').evaluateAll(rows=>rows.map(r=>r.dataset.focus));assert.deepEqual(focusRows,['true',...Array(focusRows.length-1).fill('false')]);report.conflicts.push({id:'C1',observed:'S4 draws the declared category focus (Claim first) in both views; the runtime series switch still reports both buttons aria-pressed=true and changes nothing (S5 replaces it for single-series charts)',locale});
+  // S4 draws the declared category focus; S5's series buttons focus one series. On a single-series ranked bar the series focus changes only the pressed state and the caption subject (resolved by the layered focus rule).
+  assert.deepEqual(focus[0].pressed,['false','true']);assert.equal(focus[0].state.focusSeriesId,'reduction');const focusRows=await present.locator('#evidence .chart-current-view .chart-row').evaluateAll(rows=>rows.map(r=>r.dataset.focus));assert.deepEqual(focusRows,['true',...Array(focusRows.length-1).fill('false')]);report.conflicts.push({id:'C1',observed:'S4 draws the declared category focus (Claim first) in both views; the S5 series button on a single-series ranked bar changes the pressed state and caption subject only',locale});
   stage(locale,'switch legend focus',{focus});
   const timeline=present.locator('#evidence .semantic-timeline'),replay=timeline.locator('button').nth(0),pause=timeline.locator('[data-cue-pause]'),seek=timeline.locator('[data-cue-position]');
   await replay.click();const playing=await snapshot(present);assert.equal(playing.playing,true);assert.equal(playing.resources.timers,1);
@@ -115,13 +116,13 @@ try{
   // 7. Export HTML through the existing review gate: measured preview ticket → /measure → /export.
   const download=studio.waitForEvent('download');await studio.locator('#exportHTML').click();const file=path.join(out,locale+'-export.html');await (await download).saveAs(file);
   const exported=await readFile(file,'utf8'),preview=await (await fetch(app.url+(await studio.locator('#preview').getAttribute('src')).split('#')[0])).text();
-  assert.equal(exported,preview,'the download is the measured preview');assert.ok(exported.includes('applyStaticStates'));
+  assert.equal(exported,preview,'the download is the measured preview');assert.ok(exported.includes('createCueClock'));assert.ok(exported.includes('"staticState":{"keyStateId":"structure-first","position":1,"reducedMotion":"static"}'));
   stage(locale,'export html',{gate:'preview ticket measured in this browser, POST /api/visual/export',bytes:Buffer.byteLength(exported),sha256:hash(exported),renderHash:exported.match(/deckweft-render-hash" content="([^"]+)"/)[1]});
   // 8. The exported file: reading, presentation, no-JavaScript and reduced-motion views at 1440 and 390 px.
   const url=pathToFileURL(file).href,views={};
   for(const width of [1440,390]){
    const reading=await (await context({viewport:{width,height:width===390?844:1000}})).newPage();reading.on('pageerror',e=>report.errors.push(locale+' reading: '+e.message));await ready(reading,url);
-   const start=await snapshot(reading);assert.equal(start.position,1);assert.deepEqual(start.state[0],{id:'focus-habits',kind:'chart-select',seriesIds:['reduction'],fromId:'claim-first',toId:'data-first'});
+   const start=await snapshot(reading);assert.equal(start.position,1);assert.deepEqual(start.state,seekInteractionState(specs.interactions,specs.cues,1));assert.deepEqual([start.state[0].seriesIds,start.state[0].fromId,start.state[0].toId],[['reduction'],'claim-first','data-first']);
    views[`reading-${width}`]={position:start.position,fit:await reading.evaluate(()=>window.deckweftFit.ok),content:await staticContent(reading)};assert.equal(views[`reading-${width}`].fit,true);
    await capture(reading,`${locale}-reading-${width}.png`,{fullPage:true});await reading.context().close();
    const presentation=await (await context({viewport:{width,height:width===390?844:1000}})).newPage();presentation.on('pageerror',e=>report.errors.push(locale+' presentation: '+e.message));await ready(presentation,url+'#scene=evidence');

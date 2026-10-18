@@ -28,8 +28,8 @@ test('Explicit opening commits survive compilation and reject stale targets atom
  let p=await createCompositionDemo('en',home);p=addExplanatoryInteractions(p,'evidence');p=addExplanatoryInteractions(p,'process');
  const chart=compileCues(p.document,p.plan.scenes.find(s=>s.id==='evidence')).interactions[0],flow=compileCues(p.document,p.plan.scenes.find(s=>s.id==='process')).interactions[0];
  const c={id:chart.id,seriesIds:[chart.seriesIds[1]],fromId:chart.categoryIds.at(-1),toId:chart.categoryIds.at(-1)};
- const saved=useInteractionOpening(useInteractionOpening(p,'evidence',[c]),'process',[{id:flow.id,stepId:flow.steps[1].id}]);assertVisualProject(saved);assertVisualLocks(p,saved);
+ const explored={position:0,exploring:true},saved=useInteractionOpening(useInteractionOpening(p,'evidence',[c],explored),'process',[{id:flow.id,stepId:flow.steps[1].id}],explored);assertVisualProject(saved);assertVisualLocks(p,saved);
  const initial=seekInteractionState(compileCues(saved.document,saved.plan.scenes.find(s=>s.id==='evidence')).interactions,[],0)[0];assert.deepEqual(initial.seriesIds,c.seriesIds);assert.equal(initial.fromId,c.fromId);
  assert.equal(compileCues(saved.document,saved.plan.scenes.find(s=>s.id==='process')).interactions[0].initialStepId,flow.steps[1].id);
- const before=structuredClone(saved);assert.throws(()=>useInteractionOpening(saved,'evidence',[{...c,toId:'stale'}]));assert.deepEqual(saved,before);assert.throws(()=>useInteractionOpening(saved,'process',[{id:flow.id,stepId:'stale'}]));
+ const before=structuredClone(saved);assert.throws(()=>useInteractionOpening(saved,'evidence',[{...c,toId:'stale'}],explored));assert.deepEqual(saved,before);assert.throws(()=>useInteractionOpening(saved,'process',[{id:flow.id,stepId:'stale'}],explored));
 });

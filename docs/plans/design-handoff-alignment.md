@@ -371,7 +371,7 @@ Checked against the same commit `058b939` plus the uncommitted S1 changes. State
 | ~~Drawing log axes, truncated bars, author/ascending sort, dot-intervals (C09), event marks (C14); showing missing reasons, question and takeaway in output~~ Done in S4 (see below) | S4 |
 | Applying `staticState` beyond the opening and the `static` reduced-motion fallback in static export; the vertical sample | S2 |
 | Theme packs declaring the new tokens and the renderer consuming them (numeric type role, reference/missing colours, spacing, motion distance/easing/delay) | S3 / S8 |
-| Trigger kinds beyond `manual` (enter, scroll), a media clock (M16), RevealMask/Crossfade primitives | S5 |
+| Trigger kinds beyond `manual` (enter, scroll), a media clock (M16), RevealMask/Crossfade primitives | S5 — primitives done (see below); trigger kinds and the media clock still open |
 | Studio editing of the new fields (only motion-policy preservation was added to the editor) | S2 / S9 |
 | Browser evidence for any of the above (state stays Implemented) | S2 onward |
 
@@ -385,7 +385,20 @@ Checked against the same commit `058b939` plus the uncommitted S1 changes. State
 
 ### Returned from S2
 
-The [vertical sample](design-handoff-vertical-sample.md#returned-to-the-s1-field-list) sends five items back to this field list, without a new schema: legend focus on single-series ranked bars (C1), “absent `staticState` means the opening” versus existing no-JS output (C7), declared-but-not-drawn chart and dataset fields that are not refused (C10), a versioning rule for the embedded runtime (C6), and the lock mapping, which now keeps `staticState` under `cues` and `motion` (C18, done). S2 applied the static state and the `static` reduced-motion fallback in web output; the S2 rows of “Still open after S1” are closed except the items in its conflict list.
+The [vertical sample](design-handoff-vertical-sample.md#returned-to-the-s1-field-list) sends five items back to this field list, without a new schema: legend focus on single-series ranked bars (C1), “absent `staticState` means the opening” versus existing no-JS output (C7), declared-but-not-drawn chart and dataset fields that are not refused (C10), a versioning rule for the embedded runtime (C6), and the lock mapping, which now keeps `staticState` under `cues` and `motion` (C18, done). S2 applied the static state and the `static` reduced-motion fallback in web output; the S2 rows of “Still open after S1” are closed except the items in its conflict list. S5 decided C6 and C7 ([below](#s5-decisions-on-the-field-list-2026-10-19)); C1 and C10 remain open.
+
+### S5 decisions on the field list (2026-10-19)
+
+Checked on the S2 commit `232060e` plus the S5 changes ([vertical sample](design-handoff-vertical-sample.md#s5-update-2026-10-19), [evidence](../evidence/s5-motion-state/review.md)).
+
+| Item | Decision | Fields |
+| --- | --- | --- |
+| C7 — absent `staticState` | **Keep.** “Absent means the opening” holds for the player; the no-JavaScript view keeps drawing the complete authored data, so existing output does not change. Freezing the opening is an explicit author choice: a key state at position 0 named as the static state. No migration is added, because nothing is converted. | none |
+| Series focus (EvidenceStage, M13) | Focus and hide are separate. Hide stays `data.filter` (`seriesIds`); focus is a new cue event and an optional opening field. Schema-validated, refused when the series is hidden at that point; legacy plans are unaffected (both are optional). | design-plan and web-scene: chart-select `initialFocusSeriesId`; cue `{event: "data.focus", interactionId, seriesId?}` (omit `seriesId` to clear) |
+| EvidenceStage state | `datasetId`, `metricId`, `focusSeriesId`, `sortKey`, `scale` and `caption` are separate fields of the runtime state, not schema fields. `datasetId`, `sortKey` and `scale` come from the chart declaration; `metricId` is `null`. No event changes them until a metric switch (M14, S9), an interactive sort (M13) or a scale shift (M12, S9) is drawn. | none (runtime state only) |
+| C6 — embedded runtime versioning | `PLAYER_VERSION` names the player bytes. Any change bumps it and re-records `render-baseline.json` in its own commit; `playerHistory` refuses one version with two byte sequences; separate markup/data/script/style hashes per HTML entry. | none (test fixture) |
+| Motion primitives (M19, M20) | Six named primitives on existing cue events with a declared reduced-motion result; no new motion field. The 400 ms cap stays; the handoff's 450–800 ms proposal is not adopted. ImagePan is not added. | none |
+| Still open | Trigger kinds beyond `manual` (enter, scroll), the scroll-story advancement mode, a media clock (M16), a category focus for single-series ranked bars (C1). | — |
 
 ### S4 field-list decisions, 2026-10-19
 

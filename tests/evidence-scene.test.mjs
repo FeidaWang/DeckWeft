@@ -11,15 +11,14 @@ import {applySceneTheme} from '../src/design/profile.mjs';
 import {resolveTheme} from '../src/design/theme-registry.mjs';
 import {exportDeck} from '../src/render/export.mjs';
 import {runtime} from '../src/render/web/runtime.mjs';
-import {staticStateRuntime} from '../src/render/web/static-state.mjs';
 import {blockHTML} from '../src/render/web/components/blocks.mjs';
 import {presentationCapabilities} from '../src/targets/capabilities.mjs';
 import {chartSemantics} from '../src/components/charts/semantics.mjs';
 import {objectAnchor} from '../src/components/annotations/identity.mjs';
 import {staticInteractionState} from '../src/motion/cues.mjs';
 import {createCompositionDemo} from '../src/core/composition-demo.mjs';
+import {createCueClock} from '../src/motion/clock.mjs';
 import {addExplanatoryInteractions,useStaticState} from '../public/studio/interactions.js';
-import {applyStaticStates} from '../public/runtime/static-state.js';
 import {evidenceScene,evidenceProject,semanticView,declaredExportLevels} from './evidence-scene.mjs';
 const html=project=>exportDeck(project.document,'html',{experimentalWeb:true,plan:project.plan});
 const section=(body,id)=>body.slice(body.indexOf(`<section id="${id}"`),body.indexOf('</section>',body.indexOf(`<section id="${id}"`)));
@@ -81,27 +80,27 @@ test('S2 static export draws the frozen chart selection without JavaScript and k
   const table=figure.slice(figure.indexOf('<details>'));assert.equal((table.match(/<tr><th scope="row">/g)||[]).length,6);
   for(const id of d.categoryIds)for(const s of ['','reduction'])assert.equal(markup.split(`id="${objectAnchor('evidence','evidence-chart',id,s)}"`).length,2,id+s);
   assert.equal((table.match(/data-excluded-anchor="true"/g)||[]).length,6);
-  // The player starts at the same boundary through a runtime extension that only this document carries.
-  assert.ok(out.body.includes(`<script>${staticStateRuntime}</script>`));assert.equal(out.body.includes(`<script>${runtime}</script>`),false);
-  assert.ok(out.csp.includes(createHash('sha256').update(staticStateRuntime).digest('base64')));
+  // S5 folded the S2 static-state extension into the one embedded player: every export carries the same runtime.
+  assert.ok(out.body.includes(`<script>${runtime}</script>`));
+  assert.ok(out.csp.includes(createHash('sha256').update(runtime).digest('base64')));
+  assert.deepEqual(out.staticStates,[{sceneId:'evidence',keyStateId:'structure-first',position:1}]);
   assert.deepEqual(runtimeData(out.body).scenes.map(s=>s.staticState),[{keyStateId:'structure-first',position:1,reducedMotion:'static'},undefined]);
   assert.deepEqual(runtimeData(out.body).scenes[0].interactions[0].initialSeriesIds,['reduction']);assert.equal(runtimeData(out.body).scenes[0].interactions[0].initialToId,'no-habit');
   // Without a static state the scene renders exactly as before: plain runtime and the unfrozen chart.
   const legacy=structuredClone(project);delete sceneOf(legacy).staticState;sceneOf(legacy).motion.reducedMotion='instant';
-  const plain=html(legacy);assert.ok(plain.body.includes(`<script>${runtime}</script>`));assert.equal(plain.body.includes('static-state-note'),false);assert.equal(runtimeData(plain.body).scenes[0].staticState,undefined);
+  const plain=html(legacy);assert.ok(plain.body.includes(`<script>${runtime}</script>`));assert.equal(section(plain.body,'evidence').includes('static-state-note'),false);assert.deepEqual(plain.staticStates,[]);assert.equal(runtimeData(plain.body).scenes[0].staticState,undefined);
   const theme=resolveTheme('dark-data','1.0.0',locale,{role:'evidence',profile:legacy.document.visualBrief.profile});
   assert.ok(section(plain.body,'evidence').includes(blockHTML(legacy.document.blocks[1],legacy.document,theme,{sceneId:'evidence'})));
-  assert.ok(staticStateRuntime.startsWith(runtime.slice(0,runtime.indexOf('const semantic=mountSemanticInteractions'))));
  }
 });
 
-test('S2 static states that change steps, comparisons or hotspots stay refused for HTML',async()=>{
+test('S2 static states that change steps are drawn for HTML since S5 (C8); STATIC_STATE_UNIMPLEMENTED is gone',async()=>{
  const home=await realpath(await mkdtemp(path.join(os.tmpdir(),'dw-s2-steps-')));
  try{
   const p=addExplanatoryInteractions(await createCompositionDemo('en',home),'process'),scene=p.plan.scenes.find(s=>s.id==='process');
   scene.keyStates=[{id:'opening',position:0},{id:'second-step',position:1}];scene.staticState={keyStateId:'second-step'};assertVisualProject(p);
   const codes=()=>presentationCapabilities('html',p.document,{},p.plan).issues.filter(i=>i.code.startsWith('STATIC_STATE')).map(i=>[i.code,i.sceneId]);
-  assert.deepEqual(codes(),[['STATIC_STATE_UNIMPLEMENTED','process']]);
+  assert.deepEqual(codes(),[]);
   scene.staticState={keyStateId:'opening'};assert.deepEqual(codes(),[]);
  }finally{await rm(home,{recursive:true,force:true});}
 });
@@ -123,26 +122,15 @@ test('S2 Studio static-state choice names an existing key state and respects cue
  const other=structuredClone(project);other.document.authorOverrides.sceneLocks=[{sceneId:'evidence',fields:['interactions','composition']}];useStaticState(other,'evidence','structure-first');
 });
 
-test('S2 runtime extension seeks to the static state, and under reduced motion shows it instead of playing cues',()=>{
- const saved={document:globalThis.document,matchMedia:globalThis.matchMedia},listeners={media:[],click:[]},calls=[],media={matches:false,addEventListener:(_,fn)=>listeners.media.push(fn)};
- const replay={disabled:false},nodes=[],statement={hidden:false},sceneEvents=[],timeline={querySelector:()=>replay,append:n=>nodes.push(n)},sceneNode={querySelector:selector=>({'.semantic-timeline':timeline,'.static-state-note':statement})[selector]||null,addEventListener:(_,fn)=>sceneEvents.push(fn)},motionButton={addEventListener:(_,fn)=>listeners.click.push(fn)};
- const body=new Set();
- globalThis.matchMedia=()=>media;
- globalThis.document={body:{classList:{contains:c=>body.has(c)}},getElementById:id=>id==='semantic-motion'?motionButton:id==='evidence'?sceneNode:null,createElement:()=>({dataset:{},hidden:false,textContent:''})};
- try{
-  let snap={sceneId:'evidence',playing:false,exploring:false,position:0};
-  const signal=()=>sceneEvents.forEach(fn=>fn());
-  const semantic={snapshot:()=>[snap],seek:(id,position)=>{calls.push(['seek',id,position]);snap={...snap,playing:false,exploring:false,position};signal();},play:id=>{calls.push(['play',id]);snap={...snap,playing:true,position:0};signal();}};
-  applyStaticStates({locale:'en',scenes:[{id:'evidence',staticState:{keyStateId:'structure-first',position:1,reducedMotion:'static'}},{id:'next-step'}]},semantic);
-  assert.deepEqual(calls,[['seek','evidence',1]]);assert.equal(replay.disabled,false);assert.equal(nodes[0].hidden,true);assert.equal(statement.hidden,false);
-  semantic.play('evidence');assert.deepEqual(calls.at(-1),['play','evidence']);assert.equal(statement.hidden,true,'the frozen-value statement hides away from the static state');
-  snap={...snap,position:1,exploring:true};signal();assert.equal(statement.hidden,true);
-  body.add('semantic-reduced');listeners.click.forEach(fn=>fn());
-  assert.deepEqual(calls.at(-1),['seek','evidence',1]);assert.equal(replay.disabled,true);assert.equal(nodes[0].hidden,false);assert.match(nodes[0].textContent,/static state/);
-  const count=calls.length;semantic.play('evidence');assert.equal(calls.length,count,'a frozen scene neither plays nor re-seeks');
-  body.delete('semantic-reduced');media.matches=true;listeners.media.forEach(fn=>fn());assert.equal(replay.disabled,true);
-  media.matches=false;listeners.media.forEach(fn=>fn());assert.equal(replay.disabled,false);semantic.play('evidence');assert.deepEqual(calls.at(-1),['play','evidence']);
- }finally{Object.assign(globalThis,saved);}
+test('S2 static state on the one clock: the player opens there, and reduced motion shows it instead of playing cues',()=>{
+ // S5 replaced the S2 runtime extension with the cue clock every export embeds (tests/motion-state.test.mjs covers the clock itself).
+ const pending=new Set(),log=[],schedule=fn=>{const t={fn};pending.add(t);return ()=>pending.delete(t);},clock=createCueClock({count:2,schedule,apply:(position,reason)=>log.push([reason,position]),staticState:{keyStateId:'structure-first',position:1,reducedMotion:'static'}});
+ clock.seek(1,'static');assert.deepEqual(log,[['static',1]]);
+ assert.equal(clock.restart(),true);assert.deepEqual(log.at(-1),['restart',0]);assert.equal(pending.size,1,'Replay still starts from the authored opening');
+ clock.explore();assert.equal(pending.size,0);clock.setReduced(true);assert.deepEqual(log.at(-1),['static',1]);assert.equal(clock.frozen,true);
+ const count=log.length;assert.equal(clock.play(),false);assert.equal(clock.restart(),false);assert.equal(log.length,count,'a frozen scene neither plays nor re-seeks');assert.equal(pending.size,0);
+ clock.next();assert.deepEqual(log.at(-1),['next',2]);clock.setReduced(true);assert.deepEqual(log.at(-1),['static',1],'reduction returns to the static state');
+ clock.setReduced(false);assert.equal(clock.frozen,false);assert.equal(clock.restart(),true);assert.deepEqual(log.at(-1),['restart',0]);
 });
 
 test('S2 declared PPTX and PDF levels: no component declares L1, L2 or L3 and both targets are refused',async()=>{

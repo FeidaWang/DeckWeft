@@ -1,6 +1,20 @@
 /** Pure, browser-compatible state. Numeric source arrays are never mutated. */
+/** The category and series that the chart explanation line describes: the focused series if any, else every shown series, at the first category of the caption order inside the current range. */
+export function captionSubject(spec,state){
+ const from=spec.categoryIds.indexOf(state.fromId),to=spec.categoryIds.indexOf(state.toId),categoryId=spec.captionOrder.find(id=>{const i=spec.categoryIds.indexOf(id);return i>=from&&i<=to;});
+ return {categoryId,seriesIds:state.focusSeriesId?[state.focusSeriesId]:[...state.seriesIds]};
+}
+/**
+ * EvidenceStage state: a chart keeps its dataset, metric, shown series, focused series, range, order, scale and caption subject as separate fields, never one index.
+ * Shown series (seriesIds) hide or show whole series; focusSeriesId emphasises one shown series and hides nothing. datasetId, metricId, sortKey and scale
+ * are the chart's declarations; no event changes them until a metric switch, an interactive sort or a scale shift is drawn.
+ */
 export function initialInteractionState(specs){
- return specs.map(s=>({id:s.id,kind:s.kind,...(s.kind==='chart-select'?{seriesIds:[...s.initialSeriesIds],fromId:s.initialFromId,toId:s.initialToId}:s.kind==='image-compare'?{tabId:s.initialTab||'both'}:s.kind==='steps'?{stepId:s.initialStepId||s.steps[0].id}:{hotspotId:null})}));
+ return specs.map(s=>{
+  if(s.kind!=='chart-select')return {id:s.id,kind:s.kind,...(s.kind==='image-compare'?{tabId:s.initialTab||'both'}:s.kind==='steps'?{stepId:s.initialStepId||s.steps[0].id}:{hotspotId:null})};
+  const view={seriesIds:[...s.initialSeriesIds],focusSeriesId:s.initialFocusSeriesId??null,fromId:s.initialFromId,toId:s.initialToId};
+  return {id:s.id,kind:s.kind,datasetId:s.datasetId,metricId:null,...view,sortKey:s.sortKey,scale:{...s.scale},caption:captionSubject(s,view)};
+ });
 }
 export function reduceInteractionState(specs,state,event){
  const spec=specs.find(s=>s.id===event.interactionId),old=state.find(s=>s.id===event.interactionId);if(!spec||!old)throw Error('Unknown stable interaction identity.');
@@ -9,6 +23,14 @@ export function reduceInteractionState(specs,state,event){
   if(!Array.isArray(event.seriesIds)||!event.seriesIds.length||new Set(event.seriesIds).size!==event.seriesIds.length||event.seriesIds.some(id=>!spec.seriesIds.includes(id)))throw Error('Select at least one existing series.');
   const from=spec.categoryIds.indexOf(event.fromId),to=spec.categoryIds.indexOf(event.toId);if(from<0||to<from)throw Error('Select an ordered range of existing categories.');
   next.seriesIds=spec.seriesIds.filter(id=>event.seriesIds.includes(id));next.fromId=event.fromId;next.toId=event.toId;
+  // Hiding the focused series ends the focus; the focus never moves to another series.
+  if(next.focusSeriesId&&!next.seriesIds.includes(next.focusSeriesId))next.focusSeriesId=null;
+  next.caption=captionSubject(spec,next);
+ }else if(event.event==='data.focus'&&spec.kind==='chart-select'){
+  const seriesId=event.seriesId??null;
+  if(seriesId!==null&&spec.chartType==='heatmap')throw Error('Series focus is not drawn on heatmaps; show or hide rows instead.');
+  if(seriesId!==null&&!old.seriesIds.includes(seriesId))throw Error('Show a series before focusing it; focus never reveals a hidden series.');
+  next.focusSeriesId=seriesId;next.caption=captionSubject(spec,next);
  }else if(event.event==='tab.select'&&spec.kind==='image-compare'){
   if(!['first','second','both'].includes(event.tabId))throw Error('Unknown comparison tab.');next.tabId=event.tabId;
  }else if(event.event==='step.next'&&spec.kind==='steps'){

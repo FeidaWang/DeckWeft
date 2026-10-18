@@ -84,7 +84,8 @@ export function chartFacts(block,d,locale){
  const best=d.series.map((s,j)=>{if(better==='none')return new Set();const v=s.values.map((v,i)=>v===null||qualifierAt(j,i)?null:v),pick=better==='higher'?Math.max(...v.filter(v=>v!==null)):Math.min(...v.filter(v=>v!==null));return new Set(v.flatMap((v,i)=>v!==null&&v===pick?[i]:[]));});
  const focus=block.focus?.categoryIds?{categories:new Set(block.focus.categoryIds.filter(id=>index.has(id))),series:null}:block.focus?.seriesIds?{categories:null,series:new Set(block.focus.seriesIds)}:{categories:null,series:null};
  return {kind,model,t,locale,unit:d.unit,ids,display,categories:d.categories,series:d.series,text,cell,missing,missingAt,qualifiers,qualifierAt,marks,events,interval,better,best,focus,
-  withUnit:value=>value+(d.unit?' '+d.unit:''),
+  // A missing value is named and never given a unit.
+  withUnit:value=>value===t.missing||!d.unit?value:value+' '+d.unit,
   sortLabel:['ranked-bar','stacked'].includes(kind)&&(kind==='ranked-bar'||model.sort!=='author')?t.sorts[model.sort]:null,
   intervalText:(j,i)=>{const s=d.series[j];return s.interval&&s.values[i]!==null?`${s.interval.lower[i]}–${s.interval.upper[i]}`:'';}};
 }

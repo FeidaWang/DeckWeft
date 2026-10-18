@@ -14,10 +14,11 @@ import {compileCues,staticInteractionState} from '../src/motion/cues.mjs';
 import {seekInteractionState} from '../src/motion/timeline.mjs';
 import {effectiveMotion} from '../src/motion/policies.mjs';
 import {compileInteractionRuntime} from '../src/motion/web.mjs';
+import {MOTION_PRIMITIVES} from '../src/motion/primitives.mjs';
 import {resolveTheme,themePacks,themeTokens,TOKEN_DEFAULTS} from '../src/design/theme-registry.mjs';
 import {validateSchema} from '../src/core/schema.mjs';
 import {chartModel} from '../src/components/charts/model.mjs';
-import {renderBaseline} from './render-baseline.mjs';
+import {renderBaseline,playerHistory,playerHistoryIssues} from './render-baseline.mjs';
 import themeSchema from '../schemas/theme-pack.schema.json' with {type:'json'};
 const read=name=>readFile(new URL(`fixtures/visual/${name}`,import.meta.url),'utf8').then(JSON.parse);
 const legacy=()=>read('wave-a.en.json'),semantic=()=>read('semantic-chart.en.json');
@@ -31,7 +32,12 @@ test('S1 legacy v3 fixtures load unchanged and existing HTML, JSON and theme out
  assert.equal(current.renderer,baseline.renderer);
  // Content first: text, values, ids, links and scripts. A byte-only difference after this point is a stylesheet or theme-list change to record deliberately.
  assert.deepEqual(current.content,baseline.content);
+ // Reader-visible markup (text, values, anchors) next, so a player change is reported separately from a content change.
+ assert.deepEqual(Object.fromEntries(Object.entries(current.parts).map(([k,v])=>[k,v.markup])),Object.fromEntries(Object.entries(baseline.parts).map(([k,v])=>[k,v.markup])));
+ assert.deepEqual(current.player,baseline.player,'The embedded player changed: bump PLAYER_VERSION and re-record the baseline in its own commit (node tests/render-baseline.mjs --write).');
+ assert.deepEqual(current.parts,baseline.parts);
  assert.deepEqual(current.entries,baseline.entries);
+ assert.deepEqual(playerHistoryIssues(baseline.playerHistory),[]);assert.deepEqual(playerHistory(baseline,current),baseline.playerHistory);
  for(const locale of ['en','zh-CN']){
   const raw=await readFile(new URL(`fixtures/visual/wave-a.${locale}.json`,import.meta.url),'utf8'),{document,plan}=JSON.parse(raw);
   assert.equal(assertPresentation(document),document);assertDesignPlan(document,plan);
@@ -173,8 +179,8 @@ test('S1 scene takeaway, content status and key states build on the authored ope
  assert.deepEqual(presentationCapabilities('html',drawable,{},staticFallback).issues.map(i=>i.code),[]);
  const {useInteractionOpening}=await import('../public/studio/interactions.js');
  drawable.authorOverrides.lockedBlockIds=[];const project=createVisualProject(drawable,p,{id:'s1-opening'}),spec=compileCues(project.document,sceneOf(project.plan)).interactions[0];
- const opened=useInteractionOpening(project,'evidence',[{id:spec.id,seriesIds:['manual'],fromId:'q2',toId:'q5'}]);
- assert.deepEqual(staticInteractionState(opened.document,sceneOf(opened.plan))[0],{id:spec.id,kind:'chart-select',seriesIds:['manual'],fromId:'q2',toId:'q5'});
+ const opened=useInteractionOpening(project,'evidence',[{id:spec.id,seriesIds:['manual'],fromId:'q2',toId:'q5'}],{position:0,exploring:true});
+ assert.deepEqual(staticInteractionState(opened.document,sceneOf(opened.plan))[0],{id:spec.id,kind:'chart-select',datasetId:spec.datasetId,metricId:null,seriesIds:['manual'],focusSeriesId:null,fromId:'q2',toId:'q5',sortKey:'author',scale:{y:'linear',x:'linear'},caption:{categoryId:'q5',seriesIds:['manual']}});
  assert.deepEqual(sceneOf(opened.plan).keyStates,scene.keyStates);
 });
 test('S1 motion declarations stay compatible with effectiveMotion and the runtime config',async()=>{
@@ -188,7 +194,8 @@ test('S1 motion declarations stay compatible with effectiveMotion and the runtim
 });
 test('S1 theme token roles default to the current rendering and no packaged theme declares them yet',async()=>{
  const styles=await readFile(new URL('../src/render/web/art-direction.mjs',import.meta.url),'utf8'),resources=await readFile(new URL('../public/runtime/resources.js',import.meta.url),'utf8');
- assert.ok(styles.includes(`margin-top:${TOKEN_DEFAULTS.captionGap}px`));assert.ok(resources.includes(`translateY(${TOKEN_DEFAULTS.motion.distance}px)`));assert.ok(resources.includes(`easing:'${TOKEN_DEFAULTS.motion.easing}'`));
+ // S5 moved the keyframes into the named primitives; the slide distance and easing are unchanged.
+ assert.ok(styles.includes(`margin-top:${TOKEN_DEFAULTS.captionGap}px`));assert.equal(MOTION_PRIMITIVES.SlideSmall.frames[0].transform,`translateY(${TOKEN_DEFAULTS.motion.distance}px)`);assert.ok(resources.includes(`easing:'${TOKEN_DEFAULTS.motion.easing}'`));
  for(const pack of themePacks())for(const locale of ['en','zh-CN']){
   const tokens=themeTokens(pack.id,locale);
   assert.deepEqual(tokens,{id:pack.id,version:pack.version,typography:{numeric:locale==='zh-CN'?pack.typography.bodyZh:pack.typography.bodyEn},palette:{reference:pack.palette.ink,missing:pack.palette.ink},spacing:{captionGap:14,sectionGap:pack.spacing.gap,safeArea:pack.spacing.page},motion:{distance:4,easing:'ease-out',delay:0,fallback:'instant'},declared:{typography:false,reference:false,missing:false,spacing:[],motion:[]}});

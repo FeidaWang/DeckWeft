@@ -3,9 +3,6 @@ import {inspectImage} from '../assets/formats.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { assetHash } from '../assets/registry.mjs';
 import {chartSemantics,HTML_CHART_DRAWS} from '../components/charts/semantics.mjs';
-import {staticStatePosition} from '../design/scene-semantics.mjs';
-import {compileInteractions,staticInteractionState} from '../motion/cues.mjs';
-import {initialInteractionState} from '../motion/timeline.mjs';
 const {log:LOG_KINDS,intervals:INTERVAL_KINDS,events:EVENT_KINDS}=HTML_CHART_DRAWS;
 export function presentationCapabilities(target,document,resources={},plan=null){
  const issues=[];
@@ -15,11 +12,6 @@ export function presentationCapabilities(target,document,resources={},plan=null)
   if((s.scale.y==='log'&&!LOG_KINDS.includes(kind))||(s.scale.x==='log'&&kind!=='scatter'))issues.push({code:'CHART_SCALE_UNIMPLEMENTED',blockId:b.id,message:`A log axis is drawn for ${LOG_KINDS.join(', ')} only. Use a linear scale or one of those kinds.`});
   if(s.intervalSeriesIds.length&&!INTERVAL_KINDS.includes(kind))issues.push({code:'CHART_INTERVAL_UNIMPLEMENTED',blockId:b.id,message:`Interval bounds are drawn for ${INTERVAL_KINDS.join(', ')} only; uncertainty is never dropped silently. Use a dot-and-interval chart or a line.`});
   if(s.eventIds.length&&!EVENT_KINDS.includes(kind))issues.push({code:'CHART_EVENTS_UNIMPLEMENTED',blockId:b.id,message:'Dataset events are drawn on category axes and rows; a scatter or heatmap has neither. Use a line, area, bar or table kind.'});
- }
- // A frozen chart selection is drawn for readers without JavaScript; frozen steps, comparison tabs and hotspots are not yet.
- if(target==='html'&&plan)for(const scene of plan.scenes)if(staticStatePosition(scene)>0){
-  const specs=compileInteractions(document,scene),opening=initialInteractionState(specs),frozen=staticInteractionState(document,scene);
-  if(frozen.some((state,i)=>state.kind!=='chart-select'&&JSON.stringify(state)!==JSON.stringify(opening[i])))issues.push({code:'STATIC_STATE_UNIMPLEMENTED',sceneId:scene.id,message:'The static state changes a step, comparison or hotspot selection. Static output draws frozen chart selections only; choose a key state that changes charts only, or the opening.'});
  }
  if(!['html','json'].includes(target))issues.push({code:'TARGET_UNIMPLEMENTED',message:`Version 3 ${target} export has no native compiler yet.`});
  if(target==='html')for(const b of document.blocks.filter(b=>b.type==='image')){
