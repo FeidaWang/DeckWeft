@@ -2,22 +2,22 @@
   "format": "deckweft-render-baseline",
   "renderer": "visual-art-direction.3",
   "player": {
-    "version": "semantic-player.1",
-    "sha256": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26"
+    "version": "semantic-player.2",
+    "sha256": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7"
   },
   "entries": {
-    "wave-a.en.html": "8835dde10e57ca02e3a5d99f7bf1fcff09bbc53db96e5630c3376727f65b6014",
+    "wave-a.en.html": "c7d12d9868c4a5ec75d73ddc47cf6c69b84e94f30f00cd19d5cfa220f0b9f145",
     "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-    "wave-a.zh-CN.html": "7c120750f60ec861d9bb70b13e458b5f30e3bedae2c61a3988b88f12202e6d3c",
+    "wave-a.zh-CN.html": "01238d6c437d5be141560fd4b750f5805ad998bf5aec32053177bed5a7edaa13",
     "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-    "visual-demo.en.html": "33cbd94076c42f80feabc6afd23559204f09e61283d51cacaf238b3f358961d5",
-    "visual-demo.zh-CN.html": "0b5e4ffd0187c1bf1ea8d7882fdcb069ce8d42cc919e7d4068c28576c15627b9",
-    "component-demo.en.html": "952fa76784a4548c3cc1bc7ad12ed26ea7437f39e3e685545b21d181e45f752a",
-    "component-demo.zh-CN.html": "7909e2f4228a2ae6adaa1052ff19dc97d66e83831e7f0362bf58c3d79ed7f7f3",
-    "interaction-demo.en.html": "dab1f376255ccb37fd8ce13f4d1db836f5d16e567c924c409c14102f4d868386",
-    "interaction-demo.zh-CN.html": "310a57f0aa32ad3ff4610e0e92cc4e763147580baea3bfa2f8c15f997c94fdeb",
-    "composition-demo.en.html": "6d751d7dbaa9ea0a94ab5bee4faddd4fe0567cae832cf79f440de4f5cbe4f10a",
-    "composition-demo.zh-CN.html": "2c8a56945905758e3987c5b1f0c292dee0d6bfb020131a92b36cb1444ccce93d",
+    "visual-demo.en.html": "2d3a3989876837d3d258088c347cb6b9585919334336017ee16c9c162481c895",
+    "visual-demo.zh-CN.html": "83024a177ec02770672f34a1dd926617b348328116053c35f636c837b83017c2",
+    "component-demo.en.html": "3845d7f57c5217c75491fa359519a785d8adc17b41b2aeab9e3bf3c0ace9156b",
+    "component-demo.zh-CN.html": "08f6896cbc378f792316e89f9f6a5e2f3634aa0583ea7132e5f623671ce4e214",
+    "interaction-demo.en.html": "9c0f98a3486d4c9329ebd6bb659719cc24add5dcf6c5580b023eebc1a0937aed",
+    "interaction-demo.zh-CN.html": "733bb4c467a707923753d06439e53265b429b0e5220eb9c5cbfa20ef77055f22",
+    "composition-demo.en.html": "a38032658796a444bb84d35236fd594379ba3a8a506299405e31d3738955d34e",
+    "composition-demo.zh-CN.html": "7fd01fe9b50549248fd5fd35b5cfb425d7870b74c77ec61616eea6db27539e06",
     "theme.cream-collage.en.default": "a83209bf2c8ab789f70edb4707b59cc4774aa8f9403a5390c52e43945ba91cbb",
     "theme.cream-collage.en.chapter": "288ff3c0ec800d09d9b859f5fd8a2dc665e9847bff69710c0d276679217adfeb",
     "theme.cream-collage.zh-CN.default": "359c0520c01e837ba1b447bd8da43e1c3f7b708f7d470d525c0b79c7950436d3",
@@ -35,71 +35,75 @@
     "wave-a.en.html": {
       "markup": "375ff19f3992c3cf3e5c8cb8170bfe73a6f274aa350b0b9786e696b65413bb0f",
       "data": "d7eb21c3534ab6b6c3b36a15ed5fb7bedaafbd7a5ef2fc55f22c5fd8079a15d1",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "wave-a.zh-CN.html": {
       "markup": "58ef3318163aa5b3c84173b254da294eb410685c8347bf80cdc09de8afba6b99",
       "data": "dab714546da7d1751dec11d409d830e9cec6918992955dd30f36e1fec30f744c",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "visual-demo.en.html": {
       "markup": "fe638377ba1e0dadc1d4ea6e7c31b05e2c2d08248ef31557fce836a41ad94906",
       "data": "122f6b169c70c1bef4ac5db0c905badbee58ac90bbb1823ccc2cdc8ddadd6419",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "visual-demo.zh-CN.html": {
       "markup": "3318635c8e2fca26204b097efbd75b89efebcbd24095ff7e3e9544bb21218bab",
       "data": "e0aac96b2ac915e40dfe5371f322207b1a020b819b2a9782ad3bc063534d8245",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "component-demo.en.html": {
       "markup": "c78c6a95b965ff289eeb42cad338e9b9ddebe001165459ec9d8d3fc679c6c712",
       "data": "b5eb69de63f6d31aea9f858c9dcae492d596cb701fc74d79415fbd3e69894394",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "component-demo.zh-CN.html": {
       "markup": "b548758d42b095bb68ee8660ebbb2299bbc3c867d166dbc8a1c8ced73124e135",
       "data": "f58aff60f9d494fda9a6bb8e04e77ec6b4d4b03bdf63998b39b61e9348b8559f",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "interaction-demo.en.html": {
       "markup": "f2db618763260426cac5c2a56d39aabc40349c497aabf1dc0e2e6b56df279d7f",
-      "data": "62819d5cecf433cce59e341c555deb98e102ec81969184d763fd14bc7b5339d1",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "data": "1ccc941ecf17d7a9ffa2cc5b962385aeac6145f44c7d7b99f1bd0cfac7193ca7",
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "interaction-demo.zh-CN.html": {
       "markup": "d34b2f4519bc139392b0429e24daeac9a7d340b019eba729e8da8929b0a4cdde",
-      "data": "dfc4e717282948dc8cce5327aac77210c5b85e2486c05720f9245cc9283e276f",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "data": "7810652e0d2a03ae673fd590151082d401dcecd37dfb382286dae05e70d52d7c",
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "composition-demo.en.html": {
       "markup": "176cb5ef34c5a108667cd330d4951583c092f209ec9d2def8b46a7c3bf4b6a0f",
       "data": "6c24595ade3cdfd1863cba36e3954dce883547de82ef9a347b2efea7ade84abb",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     },
     "composition-demo.zh-CN.html": {
       "markup": "a6441ea97844f210366c987e470560339da6d3676c1321b0f50eecd1bfc16d84",
       "data": "fb9bbee5d53414b80a40d06e289b3200f0b91927aec5ae1c192beced41a4e703",
-      "script": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26",
-      "style": "ae6d5c4d197a6a153c2f1b40a3e22bebbeee64ad82b0648e16ee8f8a5042bb4b"
+      "script": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7",
+      "style": "f868fe229e49b72762f2dfa5d2cdf5e25fe1cd56c09868e3ebfe2a6aef490df3"
     }
   },
   "playerHistory": [
     {
       "version": "semantic-player.1",
       "sha256": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26"
+    },
+    {
+      "version": "semantic-player.2",
+      "sha256": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7"
     }
   ],
   "recordedAt": "2026-10-19",
-  "sourceCommit": "058b939",
-  "note": "Entries recorded before the S1 contract extension from the committed renderer (058b939). Parts, player and playerHistory added in S5 on 232060e without changing any entry. Regenerate only with a deliberate renderer change, in its own commit, and say so in docs/en/verification.md."
+  "sourceCommit": "232060e + S5",
+  "note": "Entries first recorded before the S1 contract extension (058b939). Re-recorded once in S5 for PLAYER_VERSION semantic-player.2 (one embedded player, key guard, focus, caption subject, cue clock, motion primitives, static-state measurement) and its CSS; reader-visible markup of every entry is unchanged. Regenerate only with a deliberate renderer change, in its own commit, and say so in docs/en/verification.md."
 }
