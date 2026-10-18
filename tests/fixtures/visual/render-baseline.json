@@ -1,63 +1,155 @@
 {
- "format": "deckweft-render-baseline",
- "renderer": "visual-art-direction.3",
- "entries": {
-  "wave-a.en.html": "577873936ae442f75396b2a5f93f39c2dda9c350705048961fd5050c9bf66a1c",
-  "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-  "wave-a.zh-CN.html": "c4b4796b5ecd80c922f3c5c8886ac2fc30bd344753ec2bb74cfec13a0febdd73",
-  "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-  "visual-demo.en.html": "bee41a52dd2b702852f7403d5d57769d9a86e53a25fc9b5e2a0dd4ffb0940754",
-  "visual-demo.zh-CN.html": "4fbbb9473c3c3bddae35429fffaea277b8039eeca40c1302a3ac48fe4cabf5fe",
-  "component-demo.en.html": "7a6eec7c3529859214cd152bb3d64a84c559c21dacf271c025b7db95ddaa0ecd",
-  "component-demo.zh-CN.html": "612d37d89121586a6e9f14e0e842371d42bd007f789202cd3c4688cf480fb9c9",
-  "interaction-demo.en.html": "37ae282652dfa0a65eba1c11f4d7e4a1bef667d976b66d313d6526ee8b7ff7e3",
-  "interaction-demo.zh-CN.html": "fdaa248477a2a632d3106f08d92fd149cd517ffe90d4e62a6936ac99e76c4904",
-  "composition-demo.en.html": "a1bc104254718a9107a893246c46603bd2ec7886fb14a2000369a919b47eb56f",
-  "composition-demo.zh-CN.html": "9944eb4589d408f6c6c63d383a3c7f9ea84fc23270c29ef20b5791b799269bd4",
-  "families.en.html": "bd22fff34aaadc88ac277541d27f67a15bca103f339057932b26d69f37345704",
-  "families.zh-CN.html": "3f8bd3d9844aaf4651c4275f5174b03de6995786b59d46f58c0f6b02e832cc59",
-  "theme.cream-collage.en.default": "9119946a0327ef9ab8d9f038b1861fd655182bc4e5d4f50dc0eb7c2b0dd8eac2",
-  "theme.cream-collage.en.chapter": "f679f6529f3a56a4037c56cb1e2791c7ca454286bc50c7cae267e717f340bc55",
-  "theme.cream-collage.zh-CN.default": "a755df2ea82c3db818122115ef5cf7e7b488f8947aa7951a495311b549dc231f",
-  "theme.cream-collage.zh-CN.chapter": "5e0480b464d96c9b0903e8af800755a1dce5aecf54df42b5e160f01b6ab2f0e3",
-  "theme.dark-data.en.default": "46387973e67f7ce6b411a544d8a6fea1db1bc2164b972ae4bfc1342d6d6a1f41",
-  "theme.dark-data.en.chapter": "75d768fbefa21fe808fcf72bae0ce75066a809558bba50a53391438fffacf1c2",
-  "theme.dark-data.zh-CN.default": "54f42aac8c57c185a4bb5296aa7aa088890972f492cc4b49375b3b594fc9741d",
-  "theme.dark-data.zh-CN.chapter": "863715b8839fe107749bda907a44bd0349b9196431851abc4c4ec36d99d9f9ca",
-  "theme.electric-violet.en.default": "e93837fde455822833454c9c867366d6a430c9a613f73fa7e217ac17eb3c7eb3",
-  "theme.electric-violet.en.chapter": "c90f64ec068309e2a848266319dc5be607bfaf6e3037dca9ebd33c2e20f79cff",
-  "theme.electric-violet.zh-CN.default": "de55db8556d81691cbcd30d45b6b0d2be3585572c05c32379227bc79b388d7c9",
-  "theme.electric-violet.zh-CN.chapter": "8360252103efec27672abf34b2820e131f2ae2277869a33c82381b634ebf6c88"
- },
- "content": {
-  "wave-a.en.html": "1dc883a90fddb893c56cc26cee0f6f3626f1a278034a3d82c227fcba24c8db4d",
-  "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-  "wave-a.zh-CN.html": "663fbf09ff82e16ec2405cca717c8496805eb2cf0529b97e9d153e75da96ee50",
-  "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-  "visual-demo.en.html": "09fd2f0d664abfd23c5e35f635d497337a56cffa777fbc02aed30a33ade7eb1b",
-  "visual-demo.zh-CN.html": "d117a8dea81daa08ab4e0c1decb216c788a087bf5337cd6508295556ab154618",
-  "component-demo.en.html": "477eee28e280174b7b67f8800b74b9155f5bae9ba12424bf909c9bf0968e7dbd",
-  "component-demo.zh-CN.html": "55e312b6bda55d764ad90e5ee66f2d4b58e7f812662fde2e387c15d684ae1a78",
-  "interaction-demo.en.html": "3d45916a8716c5e5d55222c2c1b1714a04a9422c8b26209ede51b04c15400831",
-  "interaction-demo.zh-CN.html": "607d84d9d5b5069b8c866da523949f6ffe4179c6d376038847c4f66640967c51",
-  "composition-demo.en.html": "4e61f82381d16b4411e33421644f945095fee79c71e6e028b712587799c593e8",
-  "composition-demo.zh-CN.html": "9d48ab9bc4bd6bef2ae571825b4ad6917d04c0497503db0c844af5c939aeff18",
-  "families.en.html": "380ae056f98cf9c6c49bb39396bd6315ebd1b23b7f66324d47795c1a6ff1d3b2",
-  "families.zh-CN.html": "e51a43eddd791102bf707bbace6b033178090cbabb87a6aa3adecbcf2b920c1c",
-  "theme.cream-collage.en.default": "1d132106a229bee6672b181b9fe997cbb5aec6dd00b3e38de1efe9ed6f65f275",
-  "theme.cream-collage.en.chapter": "dac79c29bac8825222ea3140915cf15d3cf899d432f94e1bbb98c5eb9503eec7",
-  "theme.cream-collage.zh-CN.default": "b0568a30a51cdf623b18bda3bfa3bc753e21f21ebff00f0145c71b6f1d87be81",
-  "theme.cream-collage.zh-CN.chapter": "894de75f5736339a2923c653c5669f47df756f5a4b8fc4b3fece51a5ff15a6e3",
-  "theme.dark-data.en.default": "180229a79f801cef3e9d420e9818bf8f070c6cea753d0094ae43793fc6f0884b",
-  "theme.dark-data.en.chapter": "9438bcf2669c584bf2debd6880c53de2377f9ef2649397708396454bec8ab891",
-  "theme.dark-data.zh-CN.default": "6f417152b09fb880f1464b9deb17730f5c744a848964d8e267af2d0c3c811d55",
-  "theme.dark-data.zh-CN.chapter": "649e4e39c03615a6cce0947f41bd183f1234dc8b14eaf46dd6f3032fcf42d46f",
-  "theme.electric-violet.en.default": "4de540ceb430726235341a63d5921bed5caeaa76276f54e7c658f10998d5c09e",
-  "theme.electric-violet.en.chapter": "645a7ac064ac04d1a76622699405722834c89ff07600582cb0ff3f7168eecb91",
-  "theme.electric-violet.zh-CN.default": "7519883e2fe0861e60f0871098a133e0c98a84fd190e9dfda954f47906ac98ab",
-  "theme.electric-violet.zh-CN.chapter": "305bfbd7e151aa4880355b98dc412d0630e54d99488b0716e3bef224bcf285d8"
- },
- "recordedAt": "2026-10-19",
- "sourceCommit": "630e6eb",
- "note": "Re-recorded deliberately in S3: composition CSS and theme composition lists reach every export, so 22 byte hashes changed while every content hash stayed equal to 232060e (docs/evidence/s3-composition-families/byte-identity.json). The two families entries are new. Regenerate only with a deliberate renderer change, compare content against the previous commit with renderBaseline({root}), and say so in docs/en/verification.md."
+  "format": "deckweft-render-baseline",
+  "renderer": "visual-art-direction.5",
+  "player": {
+    "version": "semantic-player.3",
+    "sha256": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04"
+  },
+  "entries": {
+    "wave-a.en.html": "836e54a9c58c2b3c72e4cc376d92d32451575cf66b077b00df6d8058262b7d9b",
+    "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
+    "wave-a.zh-CN.html": "ac9591ca6ffa78cd959105db6b8399c6c28ada2e8a11ff92b64245e37853fb13",
+    "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
+    "visual-demo.en.html": "d2e1e8d9201ae0cf3807b38893b89853b41d91fec385d94789385412daa49762",
+    "visual-demo.zh-CN.html": "6517d1579f1433f697f0dd12f0ed0bf75b6c84a1f33944c2e9c43aab0b6662b1",
+    "component-demo.en.html": "885e37c22d1fbb78862dd1e0eab72fddc89e006ffe80d330eca184847b3f7e5b",
+    "component-demo.zh-CN.html": "8173d7964a2bc9383f3d2684588e45e8615aa0b1d8fcc8c45d813dd847fad48a",
+    "interaction-demo.en.html": "2b7edc82ca53d5816232269cc3d3a9fa43673a339ffdca99c830f25a6849582d",
+    "interaction-demo.zh-CN.html": "de5382a706a754120700aaaad8f59d4d71cdecdfb4147072ea41e8ed670873d4",
+    "composition-demo.en.html": "9b12c8df0af9a5876193f23cd03d49ba412a97a41fe90e9086a65f3f8209f66d",
+    "composition-demo.zh-CN.html": "b180682f194b04d64b47f3653cab1c08e0d219bf428891727776873a832a8bb0",
+    "families.en.html": "b56c2de7592c6a772d20a5d503f3c990bb0ae811656116852701b27ec9efe75a",
+    "families.zh-CN.html": "b3a86c7eaf4a06b288239cd76f4a6d1c91833c8befdd973aa6c4465f1fa3ed5a",
+    "theme.cream-collage.en.default": "9119946a0327ef9ab8d9f038b1861fd655182bc4e5d4f50dc0eb7c2b0dd8eac2",
+    "theme.cream-collage.en.chapter": "f679f6529f3a56a4037c56cb1e2791c7ca454286bc50c7cae267e717f340bc55",
+    "theme.cream-collage.zh-CN.default": "a755df2ea82c3db818122115ef5cf7e7b488f8947aa7951a495311b549dc231f",
+    "theme.cream-collage.zh-CN.chapter": "5e0480b464d96c9b0903e8af800755a1dce5aecf54df42b5e160f01b6ab2f0e3",
+    "theme.dark-data.en.default": "46387973e67f7ce6b411a544d8a6fea1db1bc2164b972ae4bfc1342d6d6a1f41",
+    "theme.dark-data.en.chapter": "75d768fbefa21fe808fcf72bae0ce75066a809558bba50a53391438fffacf1c2",
+    "theme.dark-data.zh-CN.default": "54f42aac8c57c185a4bb5296aa7aa088890972f492cc4b49375b3b594fc9741d",
+    "theme.dark-data.zh-CN.chapter": "863715b8839fe107749bda907a44bd0349b9196431851abc4c4ec36d99d9f9ca",
+    "theme.electric-violet.en.default": "e93837fde455822833454c9c867366d6a430c9a613f73fa7e217ac17eb3c7eb3",
+    "theme.electric-violet.en.chapter": "c90f64ec068309e2a848266319dc5be607bfaf6e3037dca9ebd33c2e20f79cff",
+    "theme.electric-violet.zh-CN.default": "de55db8556d81691cbcd30d45b6b0d2be3585572c05c32379227bc79b388d7c9",
+    "theme.electric-violet.zh-CN.chapter": "8360252103efec27672abf34b2820e131f2ae2277869a33c82381b634ebf6c88"
+  },
+  "content": {
+    "wave-a.en.html": "51967137d2f7d1d426bc361d30a382d0a211abfbe216065c74ee8c469dd19082",
+    "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
+    "wave-a.zh-CN.html": "d16273e8f3eda3095ff860d90a8f2ef0492bc6454257c50c77d30fb6bec8bb4a",
+    "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
+    "visual-demo.en.html": "0e146a7c637b869048f67212954a8fbd4c3728b08ac44ace1b91e1483770f315",
+    "visual-demo.zh-CN.html": "b1d6e638a13914a0eb7647fe4692f22d952521de89346190152875183663472b",
+    "component-demo.en.html": "34430e5bb7475860fa0dbf0fcbdb6c2ae789c2cc42734243d6d61b3f7b811405",
+    "component-demo.zh-CN.html": "c64c2f40df890467d32c410a0a79cd9fbb6970ca87c367a83c0e899dd73a8191",
+    "interaction-demo.en.html": "454110eda047748df079ac02189627e51c10fe4d8523453708d5fbbf33e6d080",
+    "interaction-demo.zh-CN.html": "4acd34012c08041aec0970f6b5e327e76727843b29aab6b1a32b0450a257e670",
+    "composition-demo.en.html": "9b810aa23f0c206b4b7ecebb3faaa8118139e8d69c26541db28b6a0156d3a2e1",
+    "composition-demo.zh-CN.html": "d399e521a24430f48d234d8fe72b21f1dbeadbdac84e795319d04cbce47995cc",
+    "families.en.html": "0bf41ad031fd68ab52797a8d70948215fcd4b5ee27d7bd0b79926c9003634197",
+    "families.zh-CN.html": "3b4c3ae2f48b2405073fafa79fe6d3ddfdbfe2f40ee16b1830259db62e7cf1c2",
+    "theme.cream-collage.en.default": "1d132106a229bee6672b181b9fe997cbb5aec6dd00b3e38de1efe9ed6f65f275",
+    "theme.cream-collage.en.chapter": "dac79c29bac8825222ea3140915cf15d3cf899d432f94e1bbb98c5eb9503eec7",
+    "theme.cream-collage.zh-CN.default": "b0568a30a51cdf623b18bda3bfa3bc753e21f21ebff00f0145c71b6f1d87be81",
+    "theme.cream-collage.zh-CN.chapter": "894de75f5736339a2923c653c5669f47df756f5a4b8fc4b3fece51a5ff15a6e3",
+    "theme.dark-data.en.default": "180229a79f801cef3e9d420e9818bf8f070c6cea753d0094ae43793fc6f0884b",
+    "theme.dark-data.en.chapter": "9438bcf2669c584bf2debd6880c53de2377f9ef2649397708396454bec8ab891",
+    "theme.dark-data.zh-CN.default": "6f417152b09fb880f1464b9deb17730f5c744a848964d8e267af2d0c3c811d55",
+    "theme.dark-data.zh-CN.chapter": "649e4e39c03615a6cce0947f41bd183f1234dc8b14eaf46dd6f3032fcf42d46f",
+    "theme.electric-violet.en.default": "4de540ceb430726235341a63d5921bed5caeaa76276f54e7c658f10998d5c09e",
+    "theme.electric-violet.en.chapter": "645a7ac064ac04d1a76622699405722834c89ff07600582cb0ff3f7168eecb91",
+    "theme.electric-violet.zh-CN.default": "7519883e2fe0861e60f0871098a133e0c98a84fd190e9dfda954f47906ac98ab",
+    "theme.electric-violet.zh-CN.chapter": "305bfbd7e151aa4880355b98dc412d0630e54d99488b0716e3bef224bcf285d8"
+  },
+  "parts": {
+    "wave-a.en.html": {
+      "markup": "4a1b531c9d6b822ba25f6c51dc5ff171f9b4f33eba75c8a7354a61129977d6fa",
+      "data": "d7eb21c3534ab6b6c3b36a15ed5fb7bedaafbd7a5ef2fc55f22c5fd8079a15d1",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "wave-a.zh-CN.html": {
+      "markup": "0aa16923c333dd2eead126c8f29eb55a51d5306573bce3adcf377081756116e6",
+      "data": "dab714546da7d1751dec11d409d830e9cec6918992955dd30f36e1fec30f744c",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "visual-demo.en.html": {
+      "markup": "592b519ba25354d7bcbe96489a07c78eb051de1b21b4ad0561a80f137622dcc3",
+      "data": "122f6b169c70c1bef4ac5db0c905badbee58ac90bbb1823ccc2cdc8ddadd6419",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "visual-demo.zh-CN.html": {
+      "markup": "525bbfc3127ceb6c2f528c44f624cb3a4c3f0b2de04c2d7712010f4b7dcb8d47",
+      "data": "e0aac96b2ac915e40dfe5371f322207b1a020b819b2a9782ad3bc063534d8245",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "component-demo.en.html": {
+      "markup": "59a4f2196dc1921154d1debfb2e584960238f37d0d9cd5e5193e3ef5daf23447",
+      "data": "b5eb69de63f6d31aea9f858c9dcae492d596cb701fc74d79415fbd3e69894394",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "component-demo.zh-CN.html": {
+      "markup": "3a2a4c06d89805b555f5921ae4795ff14ad5dab0e2fc9742c0201f913edb1b06",
+      "data": "f58aff60f9d494fda9a6bb8e04e77ec6b4d4b03bdf63998b39b61e9348b8559f",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "interaction-demo.en.html": {
+      "markup": "ca3751cf2f01fb418d7f6018e11878f825e6302a5206b4afd820f9477d1a95a8",
+      "data": "4bfa9a3c4214bffb3347c2c31f80f3c4e4528a4a1d24133ab0002f1910b9a3d8",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "interaction-demo.zh-CN.html": {
+      "markup": "f8975141162841263ae6705e5ee4aa97024f27a1970beebe3ef9bc9689c8461d",
+      "data": "00e82dd9fcb5c88b502f37180146d2ba1e46174c90207f87fdb21c39529cf024",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "composition-demo.en.html": {
+      "markup": "3f76e8ca038a180e48a3967073bcc051b30416885640a5bafbdeb30a260053c6",
+      "data": "6c24595ade3cdfd1863cba36e3954dce883547de82ef9a347b2efea7ade84abb",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "composition-demo.zh-CN.html": {
+      "markup": "e665001e2761449fc0f4dec36ceecac741ea657104f5332548331cc03b7895b2",
+      "data": "fb9bbee5d53414b80a40d06e289b3200f0b91927aec5ae1c192beced41a4e703",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "families.en.html": {
+      "markup": "1bf3d58eb06e05411e34c99bf65d07cc42aa913ebac2b1b17b6e33c295eff7dd",
+      "data": "2aeb9171e8b3f3536b3e80dd5a9d28e38007376ac38fddfbb3772b81bee01ad9",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    },
+    "families.zh-CN.html": {
+      "markup": "d6ba5843374fda7b446bf2ec3b01c92f53a5b73615527673a7cc809daf931d33",
+      "data": "ab9a5a3d6161d498b1b0cd22ec33aec3656c610e0c68e56db015c51d86a88063",
+      "script": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04",
+      "style": "d093ed57f920b7d2d399fbd2336cf24ac8eb58a35f852da023f25195c22e0445"
+    }
+  },
+  "playerHistory": [
+    {
+      "version": "semantic-player.1",
+      "sha256": "9f6f22fc3de3d73811ead4f25c36795d203881eea7c9613ac70116151c3aed26"
+    },
+    {
+      "version": "semantic-player.2",
+      "sha256": "04a77ef0a02851c919377ebee56834ed306de652c660df0aa3641ba80b62cdf7"
+    },
+    {
+      "version": "semantic-player.3",
+      "sha256": "55a602ade91bc2ff87a6ae61f740fba9a2acd3ee60cb2d0719703938a8f90b04"
+    }
+  ],
+  "recordedAt": "2026-10-19",
+  "sourceCommit": "e472254",
+  "note": "Entries first recorded before the S1 contract extension (058b939). Re-recorded in S3 (stylesheet and theme composition lists), S4 (chart renderer, visual-art-direction.4) and S5 (one embedded player, semantic-player.2) on sibling branches, then once more in S6 after merging them: PLAYER_VERSION semantic-player.3 and WEB_RENDERER_VERSION visual-art-direction.5 (merged player, chart renderer and CSS, layered chart focus). Regenerate only with a deliberate renderer change, in its own commit, and say so in docs/en/verification.md."
 }

@@ -6,14 +6,15 @@ import os from 'node:os';
 import path from 'node:path';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 const sha=text=>createHash('sha256').update(text).digest('hex');
-/** The same ten HTML outputs that render-baseline.mjs hashes, rendered by the source tree at root. */
+/** The HTML outputs that render-baseline.mjs hashes, rendered by the source tree at root (the S3 family sample only where that tree has it). */
 export async function baselineBodies(root){
  const load=file=>import(pathToFileURL(path.join(root,file)).href);
- const [{createVisualDemo},{createComponentDemo},{createInteractionDemo},{createCompositionDemo},{visualAssetResources},{exportDeck}]=await Promise.all(['src/core/visual-demo.mjs','src/core/component-demo.mjs','src/core/interaction-demo.mjs','src/core/composition-demo.mjs','src/assets/visual.mjs','src/render/export.mjs'].map(load));
+ const [{createVisualDemo},{createComponentDemo},{createInteractionDemo},{createCompositionDemo},{visualAssetResources},{exportDeck},{createVisualProject},{registerAsset}]=await Promise.all(['src/core/visual-demo.mjs','src/core/component-demo.mjs','src/core/interaction-demo.mjs','src/core/composition-demo.mjs','src/assets/visual.mjs','src/render/export.mjs','src/core/visual-project.mjs','src/assets/registry.mjs'].map(load));
  const bodies={};
  for(const locale of ['en','zh-CN']){const {document,plan}=JSON.parse(await readFile(path.join(root,`tests/fixtures/visual/wave-a.${locale}.json`),'utf8'));bodies[`wave-a.${locale}.html`]=exportDeck(document,'html',{experimentalWeb:true,plan}).body;}
  const home=await realpath(await mkdtemp(path.join(os.tmpdir(),'deckweft-baseline-diff-')));
- try{for(const [name,create] of [['visual',createVisualDemo],['component',createComponentDemo],['interaction',createInteractionDemo],['composition',createCompositionDemo]])for(const locale of ['en','zh-CN']){const project=await create(locale,home,{id:`baseline-${name}-${locale}`});bodies[`${name}-demo.${locale}.html`]=exportDeck(project.document,'html',{experimentalWeb:true,plan:project.plan,assetResources:await visualAssetResources(project,home)}).body;}}
+ try{for(const [name,create] of [['visual',createVisualDemo],['component',createComponentDemo],['interaction',createInteractionDemo],['composition',createCompositionDemo]])for(const locale of ['en','zh-CN']){const project=await create(locale,home,{id:`baseline-${name}-${locale}`});bodies[`${name}-demo.${locale}.html`]=exportDeck(project.document,'html',{experimentalWeb:true,plan:project.plan,assetResources:await visualAssetResources(project,home)}).body;}
+  if(await readFile(path.join(root,'tests/fixtures/visual/families.en.json')).then(()=>true,()=>false))for(const locale of ['en','zh-CN']){const {document,plan,assets}=JSON.parse(await readFile(path.join(root,`tests/fixtures/visual/families.${locale}.json`),'utf8'));await registerAsset(home,await readFile(path.join(root,'public/assets/visual/workbench.png')),assets[0]);const project=createVisualProject(document,plan,{assets,id:`baseline-families-${locale.toLowerCase()}`});bodies[`families.${locale}.html`]=exportDeck(project.document,'html',{experimentalWeb:true,plan:project.plan,assetResources:await visualAssetResources(project,home)}).body;}}
  finally{await rm(home,{recursive:true,force:true});}
  return bodies;
 }
@@ -28,7 +29,7 @@ const minus=(a,b)=>{const left=new Map();for(const v of b)left.set(v,(left.get(v
 const hoverTitles=body=>(main(body).match(/<title>[\s\S]*?<\/title>/g)||[]).map(t=>t.slice(7,-8));
 /** Per-entry receipt: hashes, anchors, data tables, visible values and the exact words that changed. */
 export function compareBodies(before,after){
- return Object.keys(before).map(name=>{
+ return Object.keys(before).filter(name=>name in after).map(name=>{
   const a=before[name],b=after[name],ta=visible(a),tb=visible(b),wa=words(ta),wb=words(tb);
   return {entry:name,changed:sha(a)!==sha(b),before:sha(a),after:sha(b),anchors:{before:anchors(a).length,after:anchors(b).length,equal:JSON.stringify(anchors(a))===JSON.stringify(anchors(b))},dataTables:{count:tables(a).length,equal:JSON.stringify(tables(a))===JSON.stringify(tables(b))},
    visibleValues:{before:numbers(ta).length,after:numbers(tb).length,removed:minus(numbers(ta),numbers(tb)),added:minus(numbers(tb),numbers(ta))},

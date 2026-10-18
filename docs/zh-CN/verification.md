@@ -4,6 +4,10 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S6 合并 S3、S4、S5 — 2026-10-19
+
+S3、S4、S5 是从 S2 分出的三个平行分支，各自重录过渲染基线。S6 按 S3 → S4 → S5 的顺序合并，并应用分层图表聚焦规则（[决定](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)）。`PLAYER_VERSION` 现为 `semantic-player.3`，`WEB_RENDERER_VERSION` 为 `visual-art-direction.5`。**渲染基线已在单独的提交中有意重录**，保留播放器历史（`.1`、`.2`、`.3`）。全部 12 个 HTML 条目的字节都有变化。与各分支末端逐条对照：相对 S4，任何条目的可见文字和数值都没有变化，锚点与数据表相同；相对 S3 和 S5，唯一的文字变化就是 S4 本身对排序条形图的修改（“按数值从高到低”说明、0 刻度、图表类型措辞），锚点与数据表相同。2 个 JSON 哈希不变。[S3](../evidence/s6-integration/baseline-diff-s3.json) · [S4](../evidence/s6-integration/baseline-diff-s4.json) · [S5](../evidence/s6-integration/baseline-diff-s5.json)。
+
 ## S5 动效状态与播放器冲突 — 2026-10-19
 
 S2 的静态状态扩展并入唯一的内嵌播放器（`PLAYER_VERSION` 为 `semantic-player.2`）：一个提示时钟统一播放、暂停、定位、下一、上一、重播与减少动态；六个具名动效原语，各自声明减少动态时的结果；EvidenceStage 图表状态分开保存（聚焦不等于隐藏）；控件或图表标记获得焦点时按键不会翻页；审查门同时测量每个已声明的静态状态；Studio 开场操作拒绝复制静态状态；无 JavaScript 时绘制冻结的步骤、比较标签与热点。未声明 `staticState` 的输出保持不变（C7）。`render-baseline.json` 在单独提交中有意重新记录：10 个 HTML 条目只有播放器脚本与 CSS 变化（交互样例的运行时数据另有新增字段）；读者可见标记、两个 JSON 条目和全部 12 个主题条目不变。`npm run verify` 通过 **373 项测试**（372 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。`tests/browser_motion_state.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过：中英文、1440 与 390px 下共 2,864 次按键均未翻页；已查看全部 28 张截图。S2 脚本、VIS-009 验收和讲解编辑浏览器测试在新播放器上通过；预览／导出像素一致性测试在 S2 提交和本版本上都因 390px 图解边缘像素而失败。PowerPoint、Keynote、Figma 已安装但未运行；未发现 After Effects 与 LibreOffice。[证据](../evidence/s5-motion-state/review.md) · [冲突](../plans/design-handoff-vertical-sample.md#s5-update-2026-10-19) · [交互](interactions.md#提示时钟动效与键盘)。
