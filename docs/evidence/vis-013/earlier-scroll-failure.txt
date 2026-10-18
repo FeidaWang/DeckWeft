@@ -1,0 +1,10 @@
+{
+  "ok": false,
+  "checks": 3,
+  "captures": 1,
+  "errors": [],
+  "failure": "locator.scrollIntoViewIfNeeded: Timeout 29993.486999999997ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n\n    at clickPreview (/Users/feida/Developer/DeckWeft/tests/browser_visual_studio.mjs:28:107)\n    at /Users/feida/Developer/DeckWeft/tests/browser_visual_studio.mjs:44:261",
+  "lastMessage": "Unsaved changes",
+  "lastFit": [],
+  "out": "/Users/feida/Developer/DeckWeft/dist/visual-studio/acceptance"
+}

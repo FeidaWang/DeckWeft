@@ -1,0 +1,2218 @@
+{
+  "pixelTolerance": {
+    "usualChannelDifference": 1,
+    "sparseEdgeChannelDifference": 16,
+    "maximumSparseEdgePixelFraction": 0.00001,
+    "reason": "Browser SVG edge raster rounding only; exact HTML/scene markup and selected state are checked separately."
+  },
+  "browser": "151.0.7922.34",
+  "cases": [
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "renderHash": "863aa6f3374eaa8a9f4602109642db0e1aa48e61aff3dbec1efaf0316a743f4e",
+      "htmlHash": "cc30b53a1376b34e6af48833b9a206389d3c3476c5d46d51a432e0fb197fdd0a",
+      "sameArtifactBytes": true
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "renderHash": "a9366951b86c2cc8fec0be49c293b3351430969ad656295fce3cd525514c8885",
+      "htmlHash": "77b3b9d65ddd2a53ecae4f87ca4d11253d943841b9b8b8a1adeaffbe3969560c",
+      "sameArtifactBytes": true
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "renderHash": "37f9f90e90e2c23b5957b13a2766365208479894802e4ecf1d58b32bacf983bc",
+      "htmlHash": "33febd0ae3cf6b759cf75b13631c514cdfaac2b9189c3a771b21d790a0e28284",
+      "sameArtifactBytes": true
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "renderHash": "c26a012d58ac62828e7721471762c7ef2900097eb1f755eece565843076cb9d7",
+      "htmlHash": "3a667e67124eff45be9894453b930170a4bcb978d66a285067c55853bda42ca3",
+      "sameArtifactBytes": true
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "renderHash": "2beff12a214eea6ec222683a20d269f351b0c5c191b914fc997635dfbd4f77cc",
+      "htmlHash": "ab6bdc3a5da2c4427e38ca3df9d3c3e7d8bb676068ca1c7ceb2f98b177b3a59d",
+      "sameArtifactBytes": true
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "renderHash": "7ccb60e5af9fe127c62fb4aebdf923e91a92a10748cb2c76a110681b1f793252",
+      "htmlHash": "05a224ba349f564be1d76609abfd5ceb5a6f6861c0d2cc14cac83dd6362e0204",
+      "sameArtifactBytes": true
+    }
+  ],
+  "comparisons": [
+    {
+      "name": "en-cream-collage-1440-collage",
+      "previewHash": "6f5d717e895043fa3ece98a8c8dddc92b246fcd13c2b197774ad1a1d65144dcb",
+      "exportHash": "37b2faa486841e3242053eb16b1e35060046e03ae4c58c7998e9080389e90c20",
+      "maximumChannelDifference": 1,
+      "differingPixels": 1,
+      "sparseEdgePixels": 0,
+      "totalPixels": 1127520,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-evidence",
+      "previewHash": "816f3e9bd90d20b4a03a9702828bfd2808d3cf7a6d12f19ccc76bcfd1dea8dc9",
+      "exportHash": "816f3e9bd90d20b4a03a9702828bfd2808d3cf7a6d12f19ccc76bcfd1dea8dc9",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-violet",
+      "previewHash": "84f25f90df135b7435eb7945e3c4751b33bf7950a0b4354efed6ebe7dac3967b",
+      "exportHash": "84f25f90df135b7435eb7945e3c4751b33bf7950a0b4354efed6ebe7dac3967b",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-chapter",
+      "previewHash": "b51f9e5c0cb9cc31aef30b7b345da016d6557a8564d4c9316ffbb55ce7dfe6a1",
+      "exportHash": "b51f9e5c0cb9cc31aef30b7b345da016d6557a8564d4c9316ffbb55ce7dfe6a1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-line",
+      "previewHash": "9c2451e7afd86667d8a898e3ed51b7e938a05d2c4f40801f26a25ccb780a433f",
+      "exportHash": "9c2451e7afd86667d8a898e3ed51b7e938a05d2c4f40801f26a25ccb780a433f",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-area",
+      "previewHash": "2195e219dc57736e0ae99b9e3f2907534b83fb41d1b024d460044228a1531140",
+      "exportHash": "2195e219dc57736e0ae99b9e3f2907534b83fb41d1b024d460044228a1531140",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-ranked-bar",
+      "previewHash": "179bfae3f6d4b2cfcda651fedb22f3d031d086e66c5966d7abe843bc66e0b65a",
+      "exportHash": "179bfae3f6d4b2cfcda651fedb22f3d031d086e66c5966d7abe843bc66e0b65a",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-stacked",
+      "previewHash": "8872cb9165af5487544fb7289da07ed562feeaf4a60fc78f1ca639695ad19c52",
+      "exportHash": "8872cb9165af5487544fb7289da07ed562feeaf4a60fc78f1ca639695ad19c52",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-scatter",
+      "previewHash": "a3dc2aa61346c31c785a567131f09ac35e6843c61435c6f7c280f637bbd777f0",
+      "exportHash": "a3dc2aa61346c31c785a567131f09ac35e6843c61435c6f7c280f637bbd777f0",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-heatmap",
+      "previewHash": "12dfc62029dc1a5dfc36f08106aceabc51cfd1de35beccf6c56edec4879e9ef6",
+      "exportHash": "12dfc62029dc1a5dfc36f08106aceabc51cfd1de35beccf6c56edec4879e9ef6",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-relationship",
+      "previewHash": "ac746f251810f614e53c434ce1a8538ac54215267a7f0de324c639c546c28c85",
+      "exportHash": "ac746f251810f614e53c434ce1a8538ac54215267a7f0de324c639c546c28c85",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-sequence",
+      "previewHash": "3a0ad63329c25582cad8762ddf8e04a405cebad43d15bfe6b46344718459d1c4",
+      "exportHash": "3a0ad63329c25582cad8762ddf8e04a405cebad43d15bfe6b46344718459d1c4",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-process",
+      "previewHash": "9af840e11d92dfe39facc2f35b43cbd8e47e73879f5d08d530c19468f4a872e8",
+      "exportHash": "9af840e11d92dfe39facc2f35b43cbd8e47e73879f5d08d530c19468f4a872e8",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-code",
+      "previewHash": "9bf0ede5f17a1d47e62a0d3499708119dd3ac91505b52ddc2b93fd002619feb9",
+      "exportHash": "9bf0ede5f17a1d47e62a0d3499708119dd3ac91505b52ddc2b93fd002619feb9",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-image-comparison",
+      "previewHash": "60ed94399b2a5fc66f8644cf2f47b2aec41e421e03381db3a566007a15157a54",
+      "exportHash": "60ed94399b2a5fc66f8644cf2f47b2aec41e421e03381db3a566007a15157a54",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-line-selected",
+      "previewHash": "b592fbfe46b5421144d1668d89affd008261e53f404f56a0b9f93d4daeec0804",
+      "exportHash": "b592fbfe46b5421144d1668d89affd008261e53f404f56a0b9f93d4daeec0804",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-component-process-selected",
+      "previewHash": "f2ce9888424b6f1e3ccd92dc955d40a8e67bf4a8e92d5074aea0e9bb8c293e35",
+      "exportHash": "f2ce9888424b6f1e3ccd92dc955d40a8e67bf4a8e92d5074aea0e9bb8c293e35",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-1440-image-comparison-selected",
+      "previewHash": "14c7f4c9590d42a7c009cf399c553ca8260cb6c1b9cf8b07ea7b3e8d3d054755",
+      "exportHash": "14c7f4c9590d42a7c009cf399c553ca8260cb6c1b9cf8b07ea7b3e8d3d054755",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-collage",
+      "previewHash": "79bc3451660db465000490ced4e0f869608f942a83554121eff279de41a9e2da",
+      "exportHash": "79bc3451660db465000490ced4e0f869608f942a83554121eff279de41a9e2da",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-evidence",
+      "previewHash": "3f8920aef7623eee63218318fa1377485234ebc0dea98f43bc7af47244f4b3e8",
+      "exportHash": "3f8920aef7623eee63218318fa1377485234ebc0dea98f43bc7af47244f4b3e8",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-violet",
+      "previewHash": "da8948941b40c72a6bba67da0da4335a22d542715a86632f060c272d2e3f28dd",
+      "exportHash": "da8948941b40c72a6bba67da0da4335a22d542715a86632f060c272d2e3f28dd",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-chapter",
+      "previewHash": "e827b7d2370813d414147b1d4bd526b02b1ad787f360dd4960f2eef51dcac8c3",
+      "exportHash": "e827b7d2370813d414147b1d4bd526b02b1ad787f360dd4960f2eef51dcac8c3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-line",
+      "previewHash": "0f18f83b3b5ea0b4c6611d4e9cc7e7f587f0707aecc582f840c3555f42d114a0",
+      "exportHash": "0f18f83b3b5ea0b4c6611d4e9cc7e7f587f0707aecc582f840c3555f42d114a0",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-area",
+      "previewHash": "9bde9d44a892afd7ffc62449f94d459cebbea51024dbcb12e5a72c8c51861e0d",
+      "exportHash": "95d47e61d14a2d15903ad92fe1287b20d904be2dc3ca523be13e73825a6d149d",
+      "maximumChannelDifference": 7,
+      "differingPixels": 3,
+      "sparseEdgePixels": 1,
+      "totalPixels": 470730,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-ranked-bar",
+      "previewHash": "e9256f8faf677a643322152d126e2ad672aa7827c42e903c27c21479ae693130",
+      "exportHash": "33a0220551079cdc910a681baf38a6618530d30cf743459a017be10566768ea8",
+      "maximumChannelDifference": 1,
+      "differingPixels": 64,
+      "sparseEdgePixels": 0,
+      "totalPixels": 432510,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-stacked",
+      "previewHash": "a1093b35bb7d8fcd34f05b5662a4033074bf72c6d48eaf5ab60b52802b4fd6a3",
+      "exportHash": "a1093b35bb7d8fcd34f05b5662a4033074bf72c6d48eaf5ab60b52802b4fd6a3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-scatter",
+      "previewHash": "edd4635d88344f1d9a9b43ad5b44f6745392628bbc4153c249f4b8c09e4a0652",
+      "exportHash": "edd4635d88344f1d9a9b43ad5b44f6745392628bbc4153c249f4b8c09e4a0652",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-heatmap",
+      "previewHash": "e7ba25b37efaf846269785e444859791ad7ca62806a4f43e119b4a95074f048e",
+      "exportHash": "e7ba25b37efaf846269785e444859791ad7ca62806a4f43e119b4a95074f048e",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-relationship",
+      "previewHash": "5e207d14dd47a3db18091fe76317cbfa53c3edf9c11a6f2643cfb455591ebb88",
+      "exportHash": "5e207d14dd47a3db18091fe76317cbfa53c3edf9c11a6f2643cfb455591ebb88",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-sequence",
+      "previewHash": "0ec8319446196a425be1b7389fbfdf7fdec70054b9f306e3e941db65c7c0472b",
+      "exportHash": "0ec8319446196a425be1b7389fbfdf7fdec70054b9f306e3e941db65c7c0472b",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-process",
+      "previewHash": "54baf812891ece41ad6db2bc42b93bfcebe856a1f2d97f89dd4bed4c5f9fd504",
+      "exportHash": "54baf812891ece41ad6db2bc42b93bfcebe856a1f2d97f89dd4bed4c5f9fd504",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-code",
+      "previewHash": "22a2b62952f6ddae8ad8cb130d54667718965c972b2f83f9cb46d7dbf02426d9",
+      "exportHash": "22a2b62952f6ddae8ad8cb130d54667718965c972b2f83f9cb46d7dbf02426d9",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-image-comparison",
+      "previewHash": "96c4f0a608685a87755c047845591dbebe4c5f357bc3ebedd0c8fb047662904d",
+      "exportHash": "96c4f0a608685a87755c047845591dbebe4c5f357bc3ebedd0c8fb047662904d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-line-selected",
+      "previewHash": "0f18f83b3b5ea0b4c6611d4e9cc7e7f587f0707aecc582f840c3555f42d114a0",
+      "exportHash": "0f18f83b3b5ea0b4c6611d4e9cc7e7f587f0707aecc582f840c3555f42d114a0",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-component-process-selected",
+      "previewHash": "54baf812891ece41ad6db2bc42b93bfcebe856a1f2d97f89dd4bed4c5f9fd504",
+      "exportHash": "54baf812891ece41ad6db2bc42b93bfcebe856a1f2d97f89dd4bed4c5f9fd504",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-cream-collage-390-image-comparison-selected",
+      "previewHash": "96c4f0a608685a87755c047845591dbebe4c5f357bc3ebedd0c8fb047662904d",
+      "exportHash": "96c4f0a608685a87755c047845591dbebe4c5f357bc3ebedd0c8fb047662904d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-collage",
+      "previewHash": "37b2faa486841e3242053eb16b1e35060046e03ae4c58c7998e9080389e90c20",
+      "exportHash": "6f5d717e895043fa3ece98a8c8dddc92b246fcd13c2b197774ad1a1d65144dcb",
+      "maximumChannelDifference": 1,
+      "differingPixels": 1,
+      "sparseEdgePixels": 0,
+      "totalPixels": 1127520,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-evidence",
+      "previewHash": "816f3e9bd90d20b4a03a9702828bfd2808d3cf7a6d12f19ccc76bcfd1dea8dc9",
+      "exportHash": "816f3e9bd90d20b4a03a9702828bfd2808d3cf7a6d12f19ccc76bcfd1dea8dc9",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-violet",
+      "previewHash": "7b205645f9508ddeffad243082963d2efaf2bf10c15be022c2b337d436197f35",
+      "exportHash": "7b205645f9508ddeffad243082963d2efaf2bf10c15be022c2b337d436197f35",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-chapter",
+      "previewHash": "b51f9e5c0cb9cc31aef30b7b345da016d6557a8564d4c9316ffbb55ce7dfe6a1",
+      "exportHash": "b51f9e5c0cb9cc31aef30b7b345da016d6557a8564d4c9316ffbb55ce7dfe6a1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-line",
+      "previewHash": "36c43f70a66d3d60e84568434235805b8be6c35f78fab7aeb64bc4791fad5927",
+      "exportHash": "36c43f70a66d3d60e84568434235805b8be6c35f78fab7aeb64bc4791fad5927",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-area",
+      "previewHash": "f99bfa26f9bc9702561375c690e9f91f753f98f0418375ae24519fbf7fd44e4c",
+      "exportHash": "f99bfa26f9bc9702561375c690e9f91f753f98f0418375ae24519fbf7fd44e4c",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-ranked-bar",
+      "previewHash": "c0265931fda5dd5a68d9591693e7a6cdc93ac5f15d74c459feeab76ba38b47ad",
+      "exportHash": "c0265931fda5dd5a68d9591693e7a6cdc93ac5f15d74c459feeab76ba38b47ad",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-stacked",
+      "previewHash": "51f30419a9e6403d24dce961293fcb269391548460ef6816d017c7b21f94d89d",
+      "exportHash": "51f30419a9e6403d24dce961293fcb269391548460ef6816d017c7b21f94d89d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-scatter",
+      "previewHash": "b1afc6f54382bd58ec29501459948b763a0c34feace7f5c0138594b9e9f7de6b",
+      "exportHash": "b1afc6f54382bd58ec29501459948b763a0c34feace7f5c0138594b9e9f7de6b",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-heatmap",
+      "previewHash": "53113d3ed3dbc0fded37097c09494bd93105a23c3ba7ae6c8ed21c80af1c4713",
+      "exportHash": "53113d3ed3dbc0fded37097c09494bd93105a23c3ba7ae6c8ed21c80af1c4713",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-relationship",
+      "previewHash": "607cf1430fdf944452b7b44c63a54dc48e1f55eefae5d3ec8e68ac9bee8ce4eb",
+      "exportHash": "607cf1430fdf944452b7b44c63a54dc48e1f55eefae5d3ec8e68ac9bee8ce4eb",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-sequence",
+      "previewHash": "fcd028337df9582b112cdcf163c795e3750b8180b23df32cdd9a6508c5a9bed1",
+      "exportHash": "fcd028337df9582b112cdcf163c795e3750b8180b23df32cdd9a6508c5a9bed1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-process",
+      "previewHash": "39bf21bbed33781a72cc6c6396e07a7b574d5d2cefbc57fa758d62174604a14c",
+      "exportHash": "39bf21bbed33781a72cc6c6396e07a7b574d5d2cefbc57fa758d62174604a14c",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-code",
+      "previewHash": "027e32d07ee0af45da5e79b5c3c6e198be22cc6eabf0ea41060373757a7ad3c1",
+      "exportHash": "027e32d07ee0af45da5e79b5c3c6e198be22cc6eabf0ea41060373757a7ad3c1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-image-comparison",
+      "previewHash": "d00c36fbc5a532e8a5fbc60bcfc5b74745a062c4534e5fadffade241e6152ee2",
+      "exportHash": "d00c36fbc5a532e8a5fbc60bcfc5b74745a062c4534e5fadffade241e6152ee2",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-line-selected",
+      "previewHash": "65bad83ea3524da3281ccf36b6fc10efb3e8ac79eccf4d613ce6c4ad0ba83a98",
+      "exportHash": "65bad83ea3524da3281ccf36b6fc10efb3e8ac79eccf4d613ce6c4ad0ba83a98",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-component-process-selected",
+      "previewHash": "3aa0a55e71584ddeead04f64c693bc4e96bc2dc03e2b5817c08c14b7c8c493e7",
+      "exportHash": "3aa0a55e71584ddeead04f64c693bc4e96bc2dc03e2b5817c08c14b7c8c493e7",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-1440-image-comparison-selected",
+      "previewHash": "bc79f1f3f1bd9c503b991a2675ec7ecadcfbbfb81e2a267b2fc93b7a210f7cab",
+      "exportHash": "bc79f1f3f1bd9c503b991a2675ec7ecadcfbbfb81e2a267b2fc93b7a210f7cab",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-collage",
+      "previewHash": "79bc3451660db465000490ced4e0f869608f942a83554121eff279de41a9e2da",
+      "exportHash": "79bc3451660db465000490ced4e0f869608f942a83554121eff279de41a9e2da",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-evidence",
+      "previewHash": "3f8920aef7623eee63218318fa1377485234ebc0dea98f43bc7af47244f4b3e8",
+      "exportHash": "3f8920aef7623eee63218318fa1377485234ebc0dea98f43bc7af47244f4b3e8",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-violet",
+      "previewHash": "b20d970104eac61f90a301cb0c0f8bc1df2b9f4c198095f050e35aaa4ce4ef49",
+      "exportHash": "b20d970104eac61f90a301cb0c0f8bc1df2b9f4c198095f050e35aaa4ce4ef49",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-chapter",
+      "previewHash": "e827b7d2370813d414147b1d4bd526b02b1ad787f360dd4960f2eef51dcac8c3",
+      "exportHash": "e827b7d2370813d414147b1d4bd526b02b1ad787f360dd4960f2eef51dcac8c3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-line",
+      "previewHash": "b40ed2ac81c0f48c2eeedf5be8bf2a7b89afbc1c121690c248a704c4caefdae3",
+      "exportHash": "b40ed2ac81c0f48c2eeedf5be8bf2a7b89afbc1c121690c248a704c4caefdae3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-area",
+      "previewHash": "c9f09cc42422468b852c6743c23926f5b3bd9822d0f9acfd9432689daffe12c4",
+      "exportHash": "c9f09cc42422468b852c6743c23926f5b3bd9822d0f9acfd9432689daffe12c4",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-ranked-bar",
+      "previewHash": "69a2565d74c76a5be32923b949e985334da0ba4ae8805f7fe986cf6c62d8e009",
+      "exportHash": "69a2565d74c76a5be32923b949e985334da0ba4ae8805f7fe986cf6c62d8e009",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-stacked",
+      "previewHash": "ccaa3e6e029ea93ce5f4b17d30707796f1d57a793909a20b2cc1e352a08a9491",
+      "exportHash": "ccaa3e6e029ea93ce5f4b17d30707796f1d57a793909a20b2cc1e352a08a9491",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-scatter",
+      "previewHash": "4024e8b2d649f9a70691780a2bd436332d6883783126904d53f446cacdfefc08",
+      "exportHash": "4024e8b2d649f9a70691780a2bd436332d6883783126904d53f446cacdfefc08",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-heatmap",
+      "previewHash": "e18aa75c371b20529766befd4b7f540b7988fdc8f16ecfaf537aa8af1bc4e4eb",
+      "exportHash": "e18aa75c371b20529766befd4b7f540b7988fdc8f16ecfaf537aa8af1bc4e4eb",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-relationship",
+      "previewHash": "666a86cfff8c7cb91f7c73d0d3f89b81787b33623a07b5eb0b5139d06762568d",
+      "exportHash": "666a86cfff8c7cb91f7c73d0d3f89b81787b33623a07b5eb0b5139d06762568d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-sequence",
+      "previewHash": "09048ddd2c563768c6d2bf3d031c22b7b0ce1f3664a553d496bf30dd738fa0bb",
+      "exportHash": "bf9c63599c88eb41e287622b3f7887863c886f79462c06be403a50120c17b946",
+      "maximumChannelDifference": 1,
+      "differingPixels": 320,
+      "sparseEdgePixels": 0,
+      "totalPixels": 398580,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-process",
+      "previewHash": "4f02d69cc6d2fd5f0474ffb086a6198ad1bf99847dc67916571f95560425ba0d",
+      "exportHash": "4f02d69cc6d2fd5f0474ffb086a6198ad1bf99847dc67916571f95560425ba0d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-code",
+      "previewHash": "dd7c055e12a9ebd9dad87246540264a2f6cc7359d309193e938a342159cac9d0",
+      "exportHash": "dd7c055e12a9ebd9dad87246540264a2f6cc7359d309193e938a342159cac9d0",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-image-comparison",
+      "previewHash": "9d86aa6450fe7fa049e8ccf81b3b469a07539b34c35bb94fa30d1eeacab194fb",
+      "exportHash": "9d86aa6450fe7fa049e8ccf81b3b469a07539b34c35bb94fa30d1eeacab194fb",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-line-selected",
+      "previewHash": "b40ed2ac81c0f48c2eeedf5be8bf2a7b89afbc1c121690c248a704c4caefdae3",
+      "exportHash": "b40ed2ac81c0f48c2eeedf5be8bf2a7b89afbc1c121690c248a704c4caefdae3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-component-process-selected",
+      "previewHash": "4f02d69cc6d2fd5f0474ffb086a6198ad1bf99847dc67916571f95560425ba0d",
+      "exportHash": "4f02d69cc6d2fd5f0474ffb086a6198ad1bf99847dc67916571f95560425ba0d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-electric-violet-390-image-comparison-selected",
+      "previewHash": "9d86aa6450fe7fa049e8ccf81b3b469a07539b34c35bb94fa30d1eeacab194fb",
+      "exportHash": "9d86aa6450fe7fa049e8ccf81b3b469a07539b34c35bb94fa30d1eeacab194fb",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-collage",
+      "previewHash": "68974a6a8810a02c949a68f4b9608d36296f7983c9fbd3185cb0009eb84d6edd",
+      "exportHash": "68974a6a8810a02c949a68f4b9608d36296f7983c9fbd3185cb0009eb84d6edd",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-evidence",
+      "previewHash": "816f3e9bd90d20b4a03a9702828bfd2808d3cf7a6d12f19ccc76bcfd1dea8dc9",
+      "exportHash": "816f3e9bd90d20b4a03a9702828bfd2808d3cf7a6d12f19ccc76bcfd1dea8dc9",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-violet",
+      "previewHash": "e2e10252fc2f564a52147a4bb4580346f1989511b07052b6e99ca5885558e42f",
+      "exportHash": "e2e10252fc2f564a52147a4bb4580346f1989511b07052b6e99ca5885558e42f",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-chapter",
+      "previewHash": "b51f9e5c0cb9cc31aef30b7b345da016d6557a8564d4c9316ffbb55ce7dfe6a1",
+      "exportHash": "b51f9e5c0cb9cc31aef30b7b345da016d6557a8564d4c9316ffbb55ce7dfe6a1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-line",
+      "previewHash": "d8f5c89c60ef837cdb111d6db4b0f1c77f8e7e6663c3776d84591776de059574",
+      "exportHash": "d8f5c89c60ef837cdb111d6db4b0f1c77f8e7e6663c3776d84591776de059574",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-area",
+      "previewHash": "f84c0aaae966f080b6ab41bbe02cf6595435c21a5dacfa99e7c4f6ca96a09a29",
+      "exportHash": "f84c0aaae966f080b6ab41bbe02cf6595435c21a5dacfa99e7c4f6ca96a09a29",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-ranked-bar",
+      "previewHash": "195ba3edd3d4f7e906815b6103faa8c1071412cf9bfb2ceb724d11867d04807e",
+      "exportHash": "2cb780ec91700ef742f8e78ae902821d9e44e24e8c0e00ccc1b4d544a69bc089",
+      "maximumChannelDifference": 9,
+      "differingPixels": 2,
+      "sparseEdgePixels": 2,
+      "totalPixels": 1364160,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-stacked",
+      "previewHash": "e7d72f1bd27d09a187e332df5ba7c53e9519cb31ba64b1dbb4666af0566ea0e9",
+      "exportHash": "e7d72f1bd27d09a187e332df5ba7c53e9519cb31ba64b1dbb4666af0566ea0e9",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-scatter",
+      "previewHash": "55aef2adde01eb4663dd6995abab3ccc1efda2f6204980fb6c199dd0ab39b685",
+      "exportHash": "55aef2adde01eb4663dd6995abab3ccc1efda2f6204980fb6c199dd0ab39b685",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-heatmap",
+      "previewHash": "58504d3a289d9b40b1922ca70b3355b63b09f7ffcfae40b5c76b04e67d81de02",
+      "exportHash": "58504d3a289d9b40b1922ca70b3355b63b09f7ffcfae40b5c76b04e67d81de02",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-relationship",
+      "previewHash": "52b962cca0c2f6ee1ac910e103589b8971e132946b8f3f9db0076bac29de33ab",
+      "exportHash": "52b962cca0c2f6ee1ac910e103589b8971e132946b8f3f9db0076bac29de33ab",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-sequence",
+      "previewHash": "74b2ed91961ca970385814e15e72cb6c00373e53f55960c080bf09a9056704b5",
+      "exportHash": "74b2ed91961ca970385814e15e72cb6c00373e53f55960c080bf09a9056704b5",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-process",
+      "previewHash": "554a9311e0999cea4c1f40d53a15539231d06e4d07cde2e5a831fad36242395e",
+      "exportHash": "554a9311e0999cea4c1f40d53a15539231d06e4d07cde2e5a831fad36242395e",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-code",
+      "previewHash": "93a558832b8707cb002d69cb38256508c565bb49059c24adc29cd8000347e9f9",
+      "exportHash": "93a558832b8707cb002d69cb38256508c565bb49059c24adc29cd8000347e9f9",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-image-comparison",
+      "previewHash": "b8bf0efe0b38240f861c544b60d06eb335e09dc36bdbf8dd82707e2f5869c0fc",
+      "exportHash": "b8bf0efe0b38240f861c544b60d06eb335e09dc36bdbf8dd82707e2f5869c0fc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-line-selected",
+      "previewHash": "2323e4c35088f66618b154bf26d1a7fd6cff733cf91ec01d03b27ea6dddb2f5b",
+      "exportHash": "2323e4c35088f66618b154bf26d1a7fd6cff733cf91ec01d03b27ea6dddb2f5b",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-component-process-selected",
+      "previewHash": "65a710a35124049ac9ce990b9eac58aa9ec9b53f8f89e0b2fcb570418b8d955d",
+      "exportHash": "65a710a35124049ac9ce990b9eac58aa9ec9b53f8f89e0b2fcb570418b8d955d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-1440-image-comparison-selected",
+      "previewHash": "c50166c59e0cdb39785dcfb644c2e4dc32a056b03c8886c5d79b2762c05d07a5",
+      "exportHash": "c50166c59e0cdb39785dcfb644c2e4dc32a056b03c8886c5d79b2762c05d07a5",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-collage",
+      "previewHash": "79bc3451660db465000490ced4e0f869608f942a83554121eff279de41a9e2da",
+      "exportHash": "79bc3451660db465000490ced4e0f869608f942a83554121eff279de41a9e2da",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-evidence",
+      "previewHash": "3f8920aef7623eee63218318fa1377485234ebc0dea98f43bc7af47244f4b3e8",
+      "exportHash": "3f8920aef7623eee63218318fa1377485234ebc0dea98f43bc7af47244f4b3e8",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-violet",
+      "previewHash": "02a55beb586e451218f7183afe93f85d56a402bf858e154453870f876155da4a",
+      "exportHash": "02a55beb586e451218f7183afe93f85d56a402bf858e154453870f876155da4a",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-chapter",
+      "previewHash": "d59b463bb59bbce4897b11f6e4fb999c486119a1b866b60b6d5414bff74abfc7",
+      "exportHash": "d59b463bb59bbce4897b11f6e4fb999c486119a1b866b60b6d5414bff74abfc7",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-line",
+      "previewHash": "9bfc0df2227028cddd8a2eeac9a250bc89370ff8e1656b9f04f697cc5637748c",
+      "exportHash": "9bfc0df2227028cddd8a2eeac9a250bc89370ff8e1656b9f04f697cc5637748c",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-area",
+      "previewHash": "519227d06a69a9c27ad5ea379ab88a9ffa7db063ff33e5dacc9aa196dc8a5520",
+      "exportHash": "519227d06a69a9c27ad5ea379ab88a9ffa7db063ff33e5dacc9aa196dc8a5520",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-ranked-bar",
+      "previewHash": "c9bb5efb4b07c5a13456971266f75e27968a5828dd53f7166607dd80db4ef594",
+      "exportHash": "c2c165d0bb53c1569fc0c58b806a4412ed47c0cfdc7c778af0e877434283e075",
+      "maximumChannelDifference": 1,
+      "differingPixels": 140,
+      "sparseEdgePixels": 0,
+      "totalPixels": 432510,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-stacked",
+      "previewHash": "d995958f8474b6cfa67794cb9f3d5df4df05b9f0b7fadcc45b2e8026d1855e7f",
+      "exportHash": "d995958f8474b6cfa67794cb9f3d5df4df05b9f0b7fadcc45b2e8026d1855e7f",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-scatter",
+      "previewHash": "a71ba6a23e35480ee0f4c202083a77796b478c743b65cc6a5f3f521c6a8192c7",
+      "exportHash": "a71ba6a23e35480ee0f4c202083a77796b478c743b65cc6a5f3f521c6a8192c7",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-heatmap",
+      "previewHash": "f9bc9dc5ced6b86b6279474ae6f2c3f9e898c31f7a3a0252acfc3ebbcb6fbe47",
+      "exportHash": "f9bc9dc5ced6b86b6279474ae6f2c3f9e898c31f7a3a0252acfc3ebbcb6fbe47",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-relationship",
+      "previewHash": "fd748ddea22210d1132e254e0ef009235fdb036e4c1a90e5b19404de7b69a5e8",
+      "exportHash": "fd748ddea22210d1132e254e0ef009235fdb036e4c1a90e5b19404de7b69a5e8",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-sequence",
+      "previewHash": "d0cd164845591262270b49148abadb3f6abf2c8499b4dac17356c6f7c1693fad",
+      "exportHash": "6dc808aa0537719ef18d383ddac52ecc0392256fb5edcebd02bbe4d6d7e01c00",
+      "maximumChannelDifference": 1,
+      "differingPixels": 182,
+      "sparseEdgePixels": 0,
+      "totalPixels": 398970,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-process",
+      "previewHash": "c3f71b49d99c4088e98f96fcf369feb98917fe5212877f7d9c57fb9d668974c6",
+      "exportHash": "c3f71b49d99c4088e98f96fcf369feb98917fe5212877f7d9c57fb9d668974c6",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-code",
+      "previewHash": "28add334f2b1106d994f21c85abd530cd7315fd2cf55d233fb1adcd722700556",
+      "exportHash": "28add334f2b1106d994f21c85abd530cd7315fd2cf55d233fb1adcd722700556",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-image-comparison",
+      "previewHash": "043d7daa1945e7196ba794622a06750de77dca0a5a2cbceb1b1ce10189f0d974",
+      "exportHash": "043d7daa1945e7196ba794622a06750de77dca0a5a2cbceb1b1ce10189f0d974",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-line-selected",
+      "previewHash": "9bfc0df2227028cddd8a2eeac9a250bc89370ff8e1656b9f04f697cc5637748c",
+      "exportHash": "9bfc0df2227028cddd8a2eeac9a250bc89370ff8e1656b9f04f697cc5637748c",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-component-process-selected",
+      "previewHash": "c3f71b49d99c4088e98f96fcf369feb98917fe5212877f7d9c57fb9d668974c6",
+      "exportHash": "c3f71b49d99c4088e98f96fcf369feb98917fe5212877f7d9c57fb9d668974c6",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "en-dark-data-390-image-comparison-selected",
+      "previewHash": "043d7daa1945e7196ba794622a06750de77dca0a5a2cbceb1b1ce10189f0d974",
+      "exportHash": "043d7daa1945e7196ba794622a06750de77dca0a5a2cbceb1b1ce10189f0d974",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-collage",
+      "previewHash": "b526f6dac81e7215d9b47e6fa74d295397d45120f99f9c1bfbc3674f90db12b3",
+      "exportHash": "b526f6dac81e7215d9b47e6fa74d295397d45120f99f9c1bfbc3674f90db12b3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-evidence",
+      "previewHash": "a07122d755c935b7504bd1f534358c1ff4933576a492a394e7f9e7974a27c2ef",
+      "exportHash": "a07122d755c935b7504bd1f534358c1ff4933576a492a394e7f9e7974a27c2ef",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-violet",
+      "previewHash": "651c6e88b4f9583e2836405141ad0f30078a3f421c8eb8d366aa66d38aef68e4",
+      "exportHash": "651c6e88b4f9583e2836405141ad0f30078a3f421c8eb8d366aa66d38aef68e4",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-chapter",
+      "previewHash": "cd511b63fc7410c2b1f1ae2377980c861d402a967d66e43ce65f439e445f853c",
+      "exportHash": "cd511b63fc7410c2b1f1ae2377980c861d402a967d66e43ce65f439e445f853c",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-line",
+      "previewHash": "e85b9f5f8230edc7fd3901f68b31f30a6ce925259c53f368552758df0284c05e",
+      "exportHash": "e85b9f5f8230edc7fd3901f68b31f30a6ce925259c53f368552758df0284c05e",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-area",
+      "previewHash": "5dfb8091393e164e54d0a838c8d2aa1f4c3bbb92d0538b7efa2531383f99d4e4",
+      "exportHash": "5dfb8091393e164e54d0a838c8d2aa1f4c3bbb92d0538b7efa2531383f99d4e4",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-ranked-bar",
+      "previewHash": "f3d6b59acaadf00c666a729d8fa7388d062e6cad84c1da87bc3d9a843dd5f1c1",
+      "exportHash": "f3d6b59acaadf00c666a729d8fa7388d062e6cad84c1da87bc3d9a843dd5f1c1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-stacked",
+      "previewHash": "ebdd5c682148d36d5e66cbdafc29cc553eebc82409a69357f3a171d47120df09",
+      "exportHash": "ebdd5c682148d36d5e66cbdafc29cc553eebc82409a69357f3a171d47120df09",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-scatter",
+      "previewHash": "eaa13a5d9a1ae1ba1e8748b577b325bd62fdac2a0662425e20eaaa03541fe39a",
+      "exportHash": "eaa13a5d9a1ae1ba1e8748b577b325bd62fdac2a0662425e20eaaa03541fe39a",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-heatmap",
+      "previewHash": "15d87e60182ac49c0b2e7b9b1c524dea8f01fbb3c2009ebd830857fe8011934b",
+      "exportHash": "15d87e60182ac49c0b2e7b9b1c524dea8f01fbb3c2009ebd830857fe8011934b",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-relationship",
+      "previewHash": "b20cd9b7258715f67e0f07eee9d87a9cdbf2fb8f00e33effab652995e5be5cac",
+      "exportHash": "b20cd9b7258715f67e0f07eee9d87a9cdbf2fb8f00e33effab652995e5be5cac",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-sequence",
+      "previewHash": "1a0eb1153d1ce31324ee39db18f42233a94c3f12b2ead676d42a52e5a01e42b6",
+      "exportHash": "1a0eb1153d1ce31324ee39db18f42233a94c3f12b2ead676d42a52e5a01e42b6",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-process",
+      "previewHash": "2f55482881fc4f74f4262b7d88449f91f962b53546d9a8e05e291a9c2e6b1059",
+      "exportHash": "2f55482881fc4f74f4262b7d88449f91f962b53546d9a8e05e291a9c2e6b1059",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-code",
+      "previewHash": "36ec325e47404fdb63dfc7e5b8de43f3133584e9dc07a0cf46313e87001778cb",
+      "exportHash": "36ec325e47404fdb63dfc7e5b8de43f3133584e9dc07a0cf46313e87001778cb",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-image-comparison",
+      "previewHash": "3bd35f42f4ad92e801b68064ab270f84a498e3d7053f93e0c64b9f3fd72191c1",
+      "exportHash": "3bd35f42f4ad92e801b68064ab270f84a498e3d7053f93e0c64b9f3fd72191c1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-line-selected",
+      "previewHash": "60c26ac421b2b38e19826cbbe20c2414e52d8bc4f860118fcabf9a32a9fe43f6",
+      "exportHash": "60c26ac421b2b38e19826cbbe20c2414e52d8bc4f860118fcabf9a32a9fe43f6",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-component-process-selected",
+      "previewHash": "ce0d284d35474e582452f0a50322698bd46c6b75c0657d7bbc1acba488f62ebd",
+      "exportHash": "ce0d284d35474e582452f0a50322698bd46c6b75c0657d7bbc1acba488f62ebd",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-1440-image-comparison-selected",
+      "previewHash": "5f2c900f1a321de50a989c66453a4a84e5a81b0d05a4368ae1d903aa9ea384e3",
+      "exportHash": "5f2c900f1a321de50a989c66453a4a84e5a81b0d05a4368ae1d903aa9ea384e3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-collage",
+      "previewHash": "4b105bb6b2926959c34f32fffbe6ad4f6c7cd2b0e9f382a826a06a4a87aa1b13",
+      "exportHash": "4b105bb6b2926959c34f32fffbe6ad4f6c7cd2b0e9f382a826a06a4a87aa1b13",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-evidence",
+      "previewHash": "9c353958cf1278f4204bce757b231650dde257e431eced477742d466b1a8f1cc",
+      "exportHash": "9c353958cf1278f4204bce757b231650dde257e431eced477742d466b1a8f1cc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-violet",
+      "previewHash": "956d9bcad308f060581b824fb73bc92a7b0cb543f1410337b6467219af7bff6b",
+      "exportHash": "956d9bcad308f060581b824fb73bc92a7b0cb543f1410337b6467219af7bff6b",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-chapter",
+      "previewHash": "596fd804e94c59f957f31e8c846f9f8d97be06706637840abfe7ed75f0b3d740",
+      "exportHash": "596fd804e94c59f957f31e8c846f9f8d97be06706637840abfe7ed75f0b3d740",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-line",
+      "previewHash": "74381b82093f304a6e51ab0b63fc0152048b2c48c9fb7f895ae00e888571c00a",
+      "exportHash": "74381b82093f304a6e51ab0b63fc0152048b2c48c9fb7f895ae00e888571c00a",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-area",
+      "previewHash": "daa873fe3a5278c5b60ba3bf46a4e84c619c529b5321175a12638c23fd4e72f8",
+      "exportHash": "daa873fe3a5278c5b60ba3bf46a4e84c619c529b5321175a12638c23fd4e72f8",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-ranked-bar",
+      "previewHash": "1f229e08ca1395bb466fd41b4e7d5aaedba8181726692faa85faee40497b6b40",
+      "exportHash": "cc90869edff8baa678c9d8e031906be6b5ed92746bef27dc1b8b99c3d49881af",
+      "maximumChannelDifference": 1,
+      "differingPixels": 141,
+      "sparseEdgePixels": 0,
+      "totalPixels": 418080,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-stacked",
+      "previewHash": "7a948b8d94440d4fa79ef3774119d122a335fb26618fd3a8550843866ea70ddf",
+      "exportHash": "7a948b8d94440d4fa79ef3774119d122a335fb26618fd3a8550843866ea70ddf",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-scatter",
+      "previewHash": "d99cdca44c8be660ece1a3be55c1f1e4d0d93c41aba1e18d3d5d81a81494f424",
+      "exportHash": "d99cdca44c8be660ece1a3be55c1f1e4d0d93c41aba1e18d3d5d81a81494f424",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-heatmap",
+      "previewHash": "0ffb796c99f26b5930c010e3071420d4a2d6c6a60d1e733e8c7be78d6993e143",
+      "exportHash": "0ffb796c99f26b5930c010e3071420d4a2d6c6a60d1e733e8c7be78d6993e143",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-relationship",
+      "previewHash": "557fd0f51e0c079848053e5c4b1d8149e82c374f1444dbef4f94ce774a88baf0",
+      "exportHash": "557fd0f51e0c079848053e5c4b1d8149e82c374f1444dbef4f94ce774a88baf0",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-sequence",
+      "previewHash": "4f848d90a988899dcb35c7fedd0ce92d74ae7c04731b3c2af5c7515909adccd5",
+      "exportHash": "8b9aa0b84eb9b95461f92960a91cd70f82167e6aa59eaace819f85b1748bee41",
+      "maximumChannelDifference": 1,
+      "differingPixels": 327,
+      "sparseEdgePixels": 0,
+      "totalPixels": 393120,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-process",
+      "previewHash": "9c855ec84daeb4d16898f7784107bbb3050ff0dd012fcf52da5e1818ac939479",
+      "exportHash": "9c855ec84daeb4d16898f7784107bbb3050ff0dd012fcf52da5e1818ac939479",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-code",
+      "previewHash": "0531f8e2a56593ca26433a30c97160bbc24bfc1a1da5c382379852b1dbb5e422",
+      "exportHash": "0531f8e2a56593ca26433a30c97160bbc24bfc1a1da5c382379852b1dbb5e422",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-image-comparison",
+      "previewHash": "6cb02ef6fd2fbc408d82f06c0eebe56d4e5e4acfb0ef3deee7b6ee63d69926fb",
+      "exportHash": "6cb02ef6fd2fbc408d82f06c0eebe56d4e5e4acfb0ef3deee7b6ee63d69926fb",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-line-selected",
+      "previewHash": "74381b82093f304a6e51ab0b63fc0152048b2c48c9fb7f895ae00e888571c00a",
+      "exportHash": "74381b82093f304a6e51ab0b63fc0152048b2c48c9fb7f895ae00e888571c00a",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-component-process-selected",
+      "previewHash": "9c855ec84daeb4d16898f7784107bbb3050ff0dd012fcf52da5e1818ac939479",
+      "exportHash": "6324714f02938c7543fa02b29f6f941e8f5cf4ecb8011786e1e956d62d24b4b4",
+      "maximumChannelDifference": 10,
+      "differingPixels": 3,
+      "sparseEdgePixels": 3,
+      "totalPixels": 479700,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-cream-collage-390-image-comparison-selected",
+      "previewHash": "6cb02ef6fd2fbc408d82f06c0eebe56d4e5e4acfb0ef3deee7b6ee63d69926fb",
+      "exportHash": "6cb02ef6fd2fbc408d82f06c0eebe56d4e5e4acfb0ef3deee7b6ee63d69926fb",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-collage",
+      "previewHash": "b526f6dac81e7215d9b47e6fa74d295397d45120f99f9c1bfbc3674f90db12b3",
+      "exportHash": "b526f6dac81e7215d9b47e6fa74d295397d45120f99f9c1bfbc3674f90db12b3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-evidence",
+      "previewHash": "a07122d755c935b7504bd1f534358c1ff4933576a492a394e7f9e7974a27c2ef",
+      "exportHash": "a07122d755c935b7504bd1f534358c1ff4933576a492a394e7f9e7974a27c2ef",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-violet",
+      "previewHash": "16a861258700af78f54a696c5ba9934032feaae0ac4fd6d9bb8beae8f3d682bd",
+      "exportHash": "5933523af6f434650d51bf115c6349450dbca183f23b0e52435261831c04f1e5",
+      "maximumChannelDifference": 1,
+      "differingPixels": 52,
+      "sparseEdgePixels": 0,
+      "totalPixels": 1222176,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-chapter",
+      "previewHash": "cd511b63fc7410c2b1f1ae2377980c861d402a967d66e43ce65f439e445f853c",
+      "exportHash": "cd511b63fc7410c2b1f1ae2377980c861d402a967d66e43ce65f439e445f853c",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-line",
+      "previewHash": "ba3fcf4db88ce0689e0f9682fdcbb1659a609606560e10bcbdcec2b4cd00758d",
+      "exportHash": "ba3fcf4db88ce0689e0f9682fdcbb1659a609606560e10bcbdcec2b4cd00758d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-area",
+      "previewHash": "ca7b2d3ea8ea1260dbc31542e6bb12c4763920d100c4b776d27560680ce01a52",
+      "exportHash": "ca7b2d3ea8ea1260dbc31542e6bb12c4763920d100c4b776d27560680ce01a52",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-ranked-bar",
+      "previewHash": "19c255fd402a2220f81a66d83ff69aaee32f629d5eae46cc14496c0ae147eead",
+      "exportHash": "19c255fd402a2220f81a66d83ff69aaee32f629d5eae46cc14496c0ae147eead",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-stacked",
+      "previewHash": "c940e67d041891d945b02d9da985d125c46932cf7decae4837fd89ca739d23e2",
+      "exportHash": "c940e67d041891d945b02d9da985d125c46932cf7decae4837fd89ca739d23e2",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-scatter",
+      "previewHash": "a51f17585abc205555fe628b9db8db3deebd1cb162bf338ba0608c08003a4c0d",
+      "exportHash": "a51f17585abc205555fe628b9db8db3deebd1cb162bf338ba0608c08003a4c0d",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-heatmap",
+      "previewHash": "1d5c5498793da79bc77de4dabdb3fe9342aebc8fd5cf14897429e43b88b67329",
+      "exportHash": "1d5c5498793da79bc77de4dabdb3fe9342aebc8fd5cf14897429e43b88b67329",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-relationship",
+      "previewHash": "5af51cf004da99e0eb98970d62eb5181698461c18606408f974b64459f68cae2",
+      "exportHash": "5af51cf004da99e0eb98970d62eb5181698461c18606408f974b64459f68cae2",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-sequence",
+      "previewHash": "4d398dd77e8192712501eade81e65a5bd3993fdd7842bd5a39b165bece4d7d50",
+      "exportHash": "4d398dd77e8192712501eade81e65a5bd3993fdd7842bd5a39b165bece4d7d50",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-process",
+      "previewHash": "c2808bfe74d3f830723a51aeac073eda38f4e06e57d21643dce15ff46243d3da",
+      "exportHash": "c2808bfe74d3f830723a51aeac073eda38f4e06e57d21643dce15ff46243d3da",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-code",
+      "previewHash": "31396e3e4f3a634936014f91d391c3afa47bf43352868196bfdc3cba304f8575",
+      "exportHash": "31396e3e4f3a634936014f91d391c3afa47bf43352868196bfdc3cba304f8575",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-image-comparison",
+      "previewHash": "b812d8a7edab35c5aee83c77ec18f9030e5e45cb339ebe0b3a5045f6698aa4c4",
+      "exportHash": "b812d8a7edab35c5aee83c77ec18f9030e5e45cb339ebe0b3a5045f6698aa4c4",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-line-selected",
+      "previewHash": "65ef5ecdc7edc19451444e6f8402368e4b74e69fd887cac987c1c458b07f2649",
+      "exportHash": "65ef5ecdc7edc19451444e6f8402368e4b74e69fd887cac987c1c458b07f2649",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-component-process-selected",
+      "previewHash": "81f0b56ec434a20874bd168f157764902ebf9c3f5a942b31e15b3b7251208fed",
+      "exportHash": "81f0b56ec434a20874bd168f157764902ebf9c3f5a942b31e15b3b7251208fed",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-1440-image-comparison-selected",
+      "previewHash": "41964bc59eff805c421e7036d0fbcf1be992a706364bc7a9ba83c7fa3c8bda5b",
+      "exportHash": "41964bc59eff805c421e7036d0fbcf1be992a706364bc7a9ba83c7fa3c8bda5b",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-collage",
+      "previewHash": "4b105bb6b2926959c34f32fffbe6ad4f6c7cd2b0e9f382a826a06a4a87aa1b13",
+      "exportHash": "4b105bb6b2926959c34f32fffbe6ad4f6c7cd2b0e9f382a826a06a4a87aa1b13",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-evidence",
+      "previewHash": "9c353958cf1278f4204bce757b231650dde257e431eced477742d466b1a8f1cc",
+      "exportHash": "9c353958cf1278f4204bce757b231650dde257e431eced477742d466b1a8f1cc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-violet",
+      "previewHash": "d792a58c27a17f6f814820c7ed2e06252f7dd5beb07434003728cf17d54898f7",
+      "exportHash": "d792a58c27a17f6f814820c7ed2e06252f7dd5beb07434003728cf17d54898f7",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-chapter",
+      "previewHash": "596fd804e94c59f957f31e8c846f9f8d97be06706637840abfe7ed75f0b3d740",
+      "exportHash": "596fd804e94c59f957f31e8c846f9f8d97be06706637840abfe7ed75f0b3d740",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-line",
+      "previewHash": "552ab434913e4229a19b1054397c7c843623aaaff0239b4cfd3d8b45e8cfb3b5",
+      "exportHash": "552ab434913e4229a19b1054397c7c843623aaaff0239b4cfd3d8b45e8cfb3b5",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-area",
+      "previewHash": "0d32858e68613677a07bb5263f21cf63a836c29bf4e6c1560759a737ff50ccfe",
+      "exportHash": "0d32858e68613677a07bb5263f21cf63a836c29bf4e6c1560759a737ff50ccfe",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-ranked-bar",
+      "previewHash": "284fe41b5033247fe154c13f1b695092b93ddcc6df3ff690aea71c53417ce45e",
+      "exportHash": "284fe41b5033247fe154c13f1b695092b93ddcc6df3ff690aea71c53417ce45e",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-stacked",
+      "previewHash": "58119b0ded57b56a02d6855863771686b71919ea973bffa6659d0e84b5ea2d9e",
+      "exportHash": "58119b0ded57b56a02d6855863771686b71919ea973bffa6659d0e84b5ea2d9e",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-scatter",
+      "previewHash": "02f265a09d507fef4b82af4f0e484ddd391542c458ac5822afc79dd69ae4e6be",
+      "exportHash": "02f265a09d507fef4b82af4f0e484ddd391542c458ac5822afc79dd69ae4e6be",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-heatmap",
+      "previewHash": "3f659ba63aff863da40f933c6f13a27e09971b973d7373c90ac212d0ec150fa2",
+      "exportHash": "3f659ba63aff863da40f933c6f13a27e09971b973d7373c90ac212d0ec150fa2",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-relationship",
+      "previewHash": "ca7fcea816f631bcf22cd2918fdcf7c14cd197144657f117c02835dc59159bdf",
+      "exportHash": "ca7fcea816f631bcf22cd2918fdcf7c14cd197144657f117c02835dc59159bdf",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-sequence",
+      "previewHash": "f93b9775aa885174bbad1aad0a9327e4bb05bf6ee3f9466fedfb2eb98ce52310",
+      "exportHash": "f93b9775aa885174bbad1aad0a9327e4bb05bf6ee3f9466fedfb2eb98ce52310",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-process",
+      "previewHash": "f208c7c552de450f02adf201bed2482ca441b7524c47c4cc8426d634b3a6c1f9",
+      "exportHash": "f208c7c552de450f02adf201bed2482ca441b7524c47c4cc8426d634b3a6c1f9",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-code",
+      "previewHash": "16dc17d003082c859afbe633969993e4ee5f33c1a734c0641cf007df21bbec40",
+      "exportHash": "16dc17d003082c859afbe633969993e4ee5f33c1a734c0641cf007df21bbec40",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-image-comparison",
+      "previewHash": "32fd8ae32b04a779373ce84819e38735d7b76eccc7c2b509d8908e354008c4fc",
+      "exportHash": "32fd8ae32b04a779373ce84819e38735d7b76eccc7c2b509d8908e354008c4fc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-line-selected",
+      "previewHash": "552ab434913e4229a19b1054397c7c843623aaaff0239b4cfd3d8b45e8cfb3b5",
+      "exportHash": "552ab434913e4229a19b1054397c7c843623aaaff0239b4cfd3d8b45e8cfb3b5",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-component-process-selected",
+      "previewHash": "764381133c1453afb1024340c6478574b45f5ab165521a8a9e01d24aea26426e",
+      "exportHash": "f208c7c552de450f02adf201bed2482ca441b7524c47c4cc8426d634b3a6c1f9",
+      "maximumChannelDifference": 12,
+      "differingPixels": 3,
+      "sparseEdgePixels": 3,
+      "totalPixels": 479700,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-electric-violet-390-image-comparison-selected",
+      "previewHash": "32fd8ae32b04a779373ce84819e38735d7b76eccc7c2b509d8908e354008c4fc",
+      "exportHash": "32fd8ae32b04a779373ce84819e38735d7b76eccc7c2b509d8908e354008c4fc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-collage",
+      "previewHash": "b526f6dac81e7215d9b47e6fa74d295397d45120f99f9c1bfbc3674f90db12b3",
+      "exportHash": "b526f6dac81e7215d9b47e6fa74d295397d45120f99f9c1bfbc3674f90db12b3",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-evidence",
+      "previewHash": "a07122d755c935b7504bd1f534358c1ff4933576a492a394e7f9e7974a27c2ef",
+      "exportHash": "a07122d755c935b7504bd1f534358c1ff4933576a492a394e7f9e7974a27c2ef",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-violet",
+      "previewHash": "c0a0747bc10a2c407da0ad3156140d00c491ac4113966e4bf758d33d5e33d10f",
+      "exportHash": "c0a0747bc10a2c407da0ad3156140d00c491ac4113966e4bf758d33d5e33d10f",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-chapter",
+      "previewHash": "cd511b63fc7410c2b1f1ae2377980c861d402a967d66e43ce65f439e445f853c",
+      "exportHash": "cd511b63fc7410c2b1f1ae2377980c861d402a967d66e43ce65f439e445f853c",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-line",
+      "previewHash": "e9cc3e286479b4141808d4604059d5a059c3861e65722f1ef608edd47fb26075",
+      "exportHash": "e9cc3e286479b4141808d4604059d5a059c3861e65722f1ef608edd47fb26075",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-area",
+      "previewHash": "d5a149eca13f1fb259e63c1827a3c4fa3a3c26a972440caec1ba8baa6b2b63e1",
+      "exportHash": "d5a149eca13f1fb259e63c1827a3c4fa3a3c26a972440caec1ba8baa6b2b63e1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-ranked-bar",
+      "previewHash": "9bcf3b29ef72e4fbbc27fa9bd4448f5f49048c35662cfb11f5b183e1e36b1956",
+      "exportHash": "9bcf3b29ef72e4fbbc27fa9bd4448f5f49048c35662cfb11f5b183e1e36b1956",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-stacked",
+      "previewHash": "1b1f558dbe307938921a2b2df66f44f7efadf9e32eca644ec9a9e1cbf10649f5",
+      "exportHash": "1b1f558dbe307938921a2b2df66f44f7efadf9e32eca644ec9a9e1cbf10649f5",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-scatter",
+      "previewHash": "86b37181d36d07f0252b65b03b3b919189ce42e81339f35ac65968d0b9de9cfa",
+      "exportHash": "86b37181d36d07f0252b65b03b3b919189ce42e81339f35ac65968d0b9de9cfa",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-heatmap",
+      "previewHash": "13f677988f9906ff7b7f3244ad03b59bcefd88da0eba9d9466c233a75ca5e95b",
+      "exportHash": "13f677988f9906ff7b7f3244ad03b59bcefd88da0eba9d9466c233a75ca5e95b",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-relationship",
+      "previewHash": "d1ab411a5e48067a7dad854065342632b0dfef44142b9236fbe37e8631148afb",
+      "exportHash": "d1ab411a5e48067a7dad854065342632b0dfef44142b9236fbe37e8631148afb",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-sequence",
+      "previewHash": "cdcd6e7ec4db9af2a3637bcf821bb79c895fe1e0ae51d99b969bc9b3f3ab88f5",
+      "exportHash": "cdcd6e7ec4db9af2a3637bcf821bb79c895fe1e0ae51d99b969bc9b3f3ab88f5",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-process",
+      "previewHash": "fb50aa568f5b5bce8f3884d7252773a0e8198c6b8baca5bc9f72e19b47a97476",
+      "exportHash": "fb50aa568f5b5bce8f3884d7252773a0e8198c6b8baca5bc9f72e19b47a97476",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-code",
+      "previewHash": "b4e0e7e396b21e544329a6da26a45e59f2cbbbcf7fded44cf39654423e52a21c",
+      "exportHash": "b4e0e7e396b21e544329a6da26a45e59f2cbbbcf7fded44cf39654423e52a21c",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-image-comparison",
+      "previewHash": "d15b1da96c0bae5b2b79b9b8f4c06bd5f37ca8149f0309e59965d0882d2e12db",
+      "exportHash": "d15b1da96c0bae5b2b79b9b8f4c06bd5f37ca8149f0309e59965d0882d2e12db",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-line-selected",
+      "previewHash": "f43eafc5c8bfd3644a05b17a40c7305bbec5e17afe8c15f77f265b439e13124a",
+      "exportHash": "f43eafc5c8bfd3644a05b17a40c7305bbec5e17afe8c15f77f265b439e13124a",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-component-process-selected",
+      "previewHash": "45ecec475d525c2d50567bccb0fc5f7a4416283fc3a203092ba9c51699ff0fd1",
+      "exportHash": "45ecec475d525c2d50567bccb0fc5f7a4416283fc3a203092ba9c51699ff0fd1",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-1440-image-comparison-selected",
+      "previewHash": "6e702073a8c2b2fe9e8630dfba6a213ae60af8fb222ab9c9429b30321b0b6968",
+      "exportHash": "6e702073a8c2b2fe9e8630dfba6a213ae60af8fb222ab9c9429b30321b0b6968",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-collage",
+      "previewHash": "4b105bb6b2926959c34f32fffbe6ad4f6c7cd2b0e9f382a826a06a4a87aa1b13",
+      "exportHash": "4b105bb6b2926959c34f32fffbe6ad4f6c7cd2b0e9f382a826a06a4a87aa1b13",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-evidence",
+      "previewHash": "9c353958cf1278f4204bce757b231650dde257e431eced477742d466b1a8f1cc",
+      "exportHash": "9c353958cf1278f4204bce757b231650dde257e431eced477742d466b1a8f1cc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-violet",
+      "previewHash": "5b3a16d2d16aaf82fc93e995312fbd5ed65760337cdbb9304858cca476a935ef",
+      "exportHash": "5b3a16d2d16aaf82fc93e995312fbd5ed65760337cdbb9304858cca476a935ef",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-chapter",
+      "previewHash": "52af823ad90e23ba8d767382d71ada0c4afe0c922a5c6d7c674ee7e1693233d6",
+      "exportHash": "52af823ad90e23ba8d767382d71ada0c4afe0c922a5c6d7c674ee7e1693233d6",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-line",
+      "previewHash": "b70e1074684eb687e87e3bfc863a1179e0cb8ca00f143d5485f0d9e11af7c6e5",
+      "exportHash": "b70e1074684eb687e87e3bfc863a1179e0cb8ca00f143d5485f0d9e11af7c6e5",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-area",
+      "previewHash": "79a667204965936fe41cf07eb89ed8918ef091b5e7a25d04811b29c93c805857",
+      "exportHash": "79a667204965936fe41cf07eb89ed8918ef091b5e7a25d04811b29c93c805857",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-ranked-bar",
+      "previewHash": "f001da243908ef3de65ee716ce1e6db2fd802c8f7ab4af6b86700f10385723a2",
+      "exportHash": "cf1b88685510d2729fa63b44707c3e5c34d08ce1f686c270f0e6887047656f9f",
+      "maximumChannelDifference": 1,
+      "differingPixels": 204,
+      "sparseEdgePixels": 0,
+      "totalPixels": 417690,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-stacked",
+      "previewHash": "1e390871eee790d7df27daac44ba4271ed43e073ceef61d58fae630cdf4e4df7",
+      "exportHash": "1e390871eee790d7df27daac44ba4271ed43e073ceef61d58fae630cdf4e4df7",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-scatter",
+      "previewHash": "c1811c73db5d2154f30c00bd9c00476906e90bf84ecc9fee15048e655624b54e",
+      "exportHash": "c1811c73db5d2154f30c00bd9c00476906e90bf84ecc9fee15048e655624b54e",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-heatmap",
+      "previewHash": "b21a43816cdd731e5a6a000856887ed60e7d2c57df2636c2f358a65a74c7dd4a",
+      "exportHash": "b21a43816cdd731e5a6a000856887ed60e7d2c57df2636c2f358a65a74c7dd4a",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-relationship",
+      "previewHash": "7ae999ee609485318037eb1e42b9310f24cee7d9199e07f25987d09149f4a3d4",
+      "exportHash": "7ae999ee609485318037eb1e42b9310f24cee7d9199e07f25987d09149f4a3d4",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-sequence",
+      "previewHash": "af825daca786b1a980a4f0d65b5b9ccba51979e497dc00f208b4a23e84fc9f13",
+      "exportHash": "af825daca786b1a980a4f0d65b5b9ccba51979e497dc00f208b4a23e84fc9f13",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-process",
+      "previewHash": "06d3f36519604e1b5c644dcebbfde48caa2d5065c358cb86658243044dca6edc",
+      "exportHash": "06d3f36519604e1b5c644dcebbfde48caa2d5065c358cb86658243044dca6edc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-code",
+      "previewHash": "827811da297ca76c287c370b5b8215c02f7c34be0e261f8ebf2a0fdfc6a4dddc",
+      "exportHash": "827811da297ca76c287c370b5b8215c02f7c34be0e261f8ebf2a0fdfc6a4dddc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-image-comparison",
+      "previewHash": "ed1410def090e622c4d399f7ba9eec7a4f0a63d1e47fa84fef846e63e78d6826",
+      "exportHash": "ed1410def090e622c4d399f7ba9eec7a4f0a63d1e47fa84fef846e63e78d6826",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-line-selected",
+      "previewHash": "b70e1074684eb687e87e3bfc863a1179e0cb8ca00f143d5485f0d9e11af7c6e5",
+      "exportHash": "b70e1074684eb687e87e3bfc863a1179e0cb8ca00f143d5485f0d9e11af7c6e5",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-component-process-selected",
+      "previewHash": "06d3f36519604e1b5c644dcebbfde48caa2d5065c358cb86658243044dca6edc",
+      "exportHash": "06d3f36519604e1b5c644dcebbfde48caa2d5065c358cb86658243044dca6edc",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    },
+    {
+      "name": "zh-CN-dark-data-390-image-comparison-selected",
+      "previewHash": "ed1410def090e622c4d399f7ba9eec7a4f0a63d1e47fa84fef846e63e78d6826",
+      "exportHash": "ed1410def090e622c4d399f7ba9eec7a4f0a63d1e47fa84fef846e63e78d6826",
+      "maximumChannelDifference": 0,
+      "differingPixels": 0,
+      "sparseEdgePixels": 0,
+      "totalPixels": 0,
+      "withinTolerance": true
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "ok": true
+}

@@ -2,7 +2,7 @@ import {crc32} from '../render/zip.mjs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {mkdir,readFile,lstat} from 'node:fs/promises';
-import {atomicWrite,rejectSymlinks} from '../services/io.mjs';
+import {writeImmutable,rejectSymlinks} from '../services/io.mjs';
 import {DeckError} from '../core/errors.mjs';
 export const assetHash=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function inspectPNG(bytes){
@@ -27,7 +27,7 @@ export async function registerAsset(home,bytes,metadata){
  const dimensions=inspectPNG(bytes),hash=assetHash(bytes);
  for(const key of ['provenance','license','allowedUse','alt','fallback'])if(typeof metadata?.[key]!=='string'||!metadata[key].trim()||[...metadata[key]].length>({provenance:2000,license:500,allowedUse:500,alt:1000,fallback:1000}[key]))throw new DeckError('ASSET_METADATA','Supply provenance, rights, allowed use, alt text and a text fallback.',422);
  const record={id:'asset_'+hash.slice(0,24),hash,mime:'image/png',...dimensions,path:`assets/${hash}.png`,...Object.fromEntries(['provenance','license','allowedUse','alt','fallback'].map(k=>[k,metadata[k]]))};
- const file=path.join(home,record.path);await rejectSymlinks(file);await mkdir(path.dirname(file),{recursive:true,mode:0o700});await atomicWrite(file,bytes);return record;
+ const file=path.join(home,record.path);await rejectSymlinks(file);await mkdir(path.dirname(file),{recursive:true,mode:0o700});await writeImmutable(file,bytes);return record;
 }
 export async function assetResources(project,home){
  const resources=Object.create(null);if(!home)return resources;let bytesTotal=0,pixelsTotal=0,projectedBytes=0;

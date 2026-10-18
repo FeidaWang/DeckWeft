@@ -1,0 +1,87 @@
+{
+  "browser": "151.0.7922.34",
+  "isolation": "Cached testing browser outside Applications; ephemeral contexts",
+  "checks": [
+    {
+      "crop": "portrait",
+      "cropRect": {
+        "blockId": "violet-image",
+        "x": 0.25,
+        "y": 0,
+        "width": 0.5,
+        "height": 1
+      },
+      "protected": {
+        "x": 0.4,
+        "y": 0.25,
+        "width": 0.2,
+        "height": 0.4
+      }
+    },
+    {
+      "crop": "square",
+      "cropRect": {
+        "blockId": "violet-image",
+        "x": 0.16666666666666669,
+        "y": 0,
+        "width": 0.6666666666666666,
+        "height": 1
+      },
+      "protected": {
+        "x": 0.4,
+        "y": 0.25,
+        "width": 0.2,
+        "height": 0.4
+      }
+    },
+    {
+      "crop": "wide",
+      "cropRect": {
+        "blockId": "violet-image",
+        "x": 0,
+        "y": 0.02812500000000001,
+        "width": 1,
+        "height": 0.84375
+      },
+      "protected": {
+        "x": 0.4,
+        "y": 0.25,
+        "width": 0.2,
+        "height": 0.4
+      }
+    },
+    "Impossible protected crop is disabled and refused by API; deliberate contain retains complete source"
+  ],
+  "captures": [
+    {
+      "file": "studio-protected-region.png",
+      "sha256": "23b865a974ea2a9e1b97ea9fb96007f9b883ef4c12b4e4e5ffc1df95374d0834"
+    },
+    {
+      "file": "studio-safe-portrait.png",
+      "sha256": "95c656b346823e433ecea47351d3eca0bd07f17e02cdcf6b698817965a3fcd8c"
+    },
+    {
+      "file": "studio-safe-square.png",
+      "sha256": "4692c829c88aa40579378f6d024812de64cab515e698cd524470222f46bf996c"
+    },
+    {
+      "file": "studio-safe-wide.png",
+      "sha256": "d6915eb9a441719bb3ca84756aed33d544824516f2fd1edf709f0bb643a5951a"
+    },
+    {
+      "file": "studio-impossible-crop.png",
+      "sha256": "66a09f2c16dfd4e860aada7646346f8ca7095a807dd531fdd06cb1666a424694"
+    },
+    {
+      "file": "failure.png",
+      "sha256": "d872e8f4e63787b8d58102a5f96354da73c64c579179b4ebce250a03b82dd65d"
+    }
+  ],
+  "cases": [],
+  "errors": [],
+  "externalRequests": [],
+  "ok": false,
+  "failure": "page.evaluate: TypeError: Failed to fetch\n    at eval (eval at evaluate (:303:30), <anonymous>:1:219)\n    at async <anonymous>:329:30\n    at nativePixels (/Users/feida/Developer/DeckWeft/tests/browser_assets.mjs:32:193)\n    at async file:///Users/feida/Developer/DeckWeft/tests/browser_assets.mjs:55:461",
+  "lastMessage": "Saved on this computer"
+}

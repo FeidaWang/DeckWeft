@@ -1,0 +1,401 @@
+{
+  "task": "VIS-009",
+  "date": "2026-10-18",
+  "state": "implemented-local",
+  "automatedVerification": {
+    "command": "npm run verify",
+    "tests": 271,
+    "failed": 0,
+    "skipped": 0,
+    "status": "passed",
+    "log": "docs/evidence/vis-009/verify.txt"
+  },
+  "browser": {
+    "version": "151.0.7922.34",
+    "stories": 6,
+    "pagesPerStory": 15,
+    "interactivePages": 72,
+    "widths": [
+      390,
+      1024,
+      1440
+    ],
+    "captures": 146,
+    "candidatePages": 270,
+    "candidatePagesPassing": 264,
+    "minimumFeasiblePerPage": 2,
+    "nativeTouchCases": 6,
+    "nativeBackgroundVisibility": {
+      "ok": true,
+      "method": "Actual loopback preview and native foreground/background tabs; isolated profile; noDefaults CDP; no request routing or synthetic visibility event",
+      "hidden": {
+        "hidden": true,
+        "released": 1,
+        "state": {
+          "sceneId": "component-code",
+          "active": false,
+          "position": 0,
+          "playing": false,
+          "exploring": false,
+          "state": [
+            {
+              "id": "explain-code",
+              "kind": "steps",
+              "stepId": "signature"
+            }
+          ],
+          "resources": {
+            "animations": 0,
+            "timers": 0,
+            "registered": 0
+          }
+        }
+      },
+      "resumed": {
+        "sceneId": "component-code",
+        "active": true,
+        "position": 0,
+        "playing": false,
+        "exploring": false,
+        "state": [
+          {
+            "id": "explain-code",
+            "kind": "steps",
+            "stepId": "signature"
+          }
+        ],
+        "resources": {
+          "animations": 1,
+          "timers": 0,
+          "registered": 0
+        }
+      },
+      "errors": [],
+      "externalRequests": []
+    },
+    "errors": [],
+    "externalRequests": [],
+    "isolation": "Cached testing binary outside Applications; ephemeral test contexts and an independent native-driver process/profile; no personal browser profile or installed app modified",
+    "report": "docs/evidence/vis-009/browser.json"
+  },
+  "regressions": {
+    "components": {
+      "stories": 6,
+      "captures": 110,
+      "log": "components-regression.txt"
+    },
+    "visualStudio": {
+      "checks": 22,
+      "captures": 31,
+      "log": "studio-regression.txt"
+    },
+    "compositions": {
+      "candidatePages": 108,
+      "captures": 135,
+      "log": "compositions-regression.txt"
+    },
+    "assets": {
+      "cropCases": 36,
+      "captures": 53,
+      "log": "assets-regression.txt"
+    },
+    "legacyPlayer": {
+      "editions": 2,
+      "checks": "Actual hashed player execution, native clock tick/idle/run/pause timer counts, keyboard navigation, reduced motion and static reading",
+      "evidence": "legacy-browser.json"
+    }
+  },
+  "visualReview": {
+    "delivery": "Actual screenshots and complete-story/interaction contact sheets delivered through view_image as image input, not hash-only review",
+    "inspected": [
+      {
+        "file": "en-cream-collage-story-contact.png",
+        "sha256": "6990e9f8640e33dda6083c87370bfcb4bba2598809a8f29efab894bd719415a9"
+      },
+      {
+        "file": "en-cream-collage-interaction-contact.png",
+        "sha256": "e2c199c790bd14a2b8f59431f76102b4d007779870e66457401f8706ff474e70"
+      },
+      {
+        "file": "en-electric-violet-story-contact.png",
+        "sha256": "f9ecc4cc02978ae19c025b5c3ee207a71251a4b4f148a43397e8dc5df52ad27a"
+      },
+      {
+        "file": "en-electric-violet-interaction-contact.png",
+        "sha256": "e0580be9f67b3373a32d6ca91af902913d56074fc69fdcf4ba480cf25d4cefc1"
+      },
+      {
+        "file": "en-dark-data-story-contact.png",
+        "sha256": "1244fb2fe0693ee021cd7a913b8d91e9e4c2c240647aa67ed637e70499b85cf4"
+      },
+      {
+        "file": "en-dark-data-interaction-contact.png",
+        "sha256": "0ee9bd4fe594171084541acd5fa0724903fa0cd69501213931f587cc80b87358"
+      },
+      {
+        "file": "zh-CN-cream-collage-story-contact.png",
+        "sha256": "621adee76a0c7585ec0767848fdaa1a6567e28a58ee602b7a6098e54729ce187"
+      },
+      {
+        "file": "zh-CN-cream-collage-interaction-contact.png",
+        "sha256": "638f87fc6f1cab4c1cc2f439db80a3518e2f3e2ef96aa70d603f977dcb11183d"
+      },
+      {
+        "file": "zh-CN-electric-violet-story-contact.png",
+        "sha256": "3eefb623e085d5d9e9faa8eb5e0b0dd0ec9d3d0c741135558c05556f1035fed1"
+      },
+      {
+        "file": "zh-CN-electric-violet-interaction-contact.png",
+        "sha256": "797f570c9c1dd787eef27eddf151384bb1bdb89f40eef165f2c7428437d6c24e"
+      },
+      {
+        "file": "zh-CN-dark-data-story-contact.png",
+        "sha256": "5123635b7e5f81e21c23c806aaaf982c46835d9e187d3c115d0bbbe0beb452ea"
+      },
+      {
+        "file": "zh-CN-dark-data-interaction-contact.png",
+        "sha256": "b00870d0752bc6d13b4082a3e1a1fa57caa744373ec5a1da5456d196d5d7af04"
+      },
+      {
+        "file": "studio-interaction-edit.png",
+        "sha256": "cde7f66e0f5249858688e9fdb65bd2c0adacdf30cdbd25fc8c3a8a282af425b4"
+      },
+      {
+        "file": "studio-restored-reordered.png",
+        "sha256": "341632a04a9c6d7074031aa1844ad3c85fe723c3f790d11021f91840e5ff2cc4"
+      },
+      {
+        "file": "zh-CN-dark-data-code-calculation.png",
+        "sha256": "f12faae67d9944a0c29c3faa60d58c29fcaa7793106592c0d6572810b3530c85"
+      },
+      {
+        "file": "en-cream-collage-component-process.png",
+        "sha256": "e1c9ec5024f2ca4dd0dcb0b7170026fcb8fccd5af17aa65182ce0989748b236f"
+      },
+      {
+        "file": "zh-CN-electric-violet-touch.png",
+        "sha256": "dc1d000719915b31249fb5375ae84b48a746e805e05cef8b181380a5caafc6f1"
+      }
+    ],
+    "fullScreenshots": [
+      {
+        "file": "dist/visual-interactions/acceptance/en-cream-collage-full-deck.png",
+        "sha256": "92823454f0b5ba3511b8cb49f4a79ee35c8f0a7b137b858df007cabe6615d97a"
+      },
+      {
+        "file": "dist/visual-interactions/acceptance/en-dark-data-full-deck.png",
+        "sha256": "8f3da63c3c0f346268981d236159f28b0c5c5a076dbcf17f0cbb2914011e16ba"
+      },
+      {
+        "file": "dist/visual-interactions/acceptance/en-electric-violet-full-deck.png",
+        "sha256": "555621282a7ab9b678384dfc9467f93c697a71904360e8583d30684190e56b85"
+      },
+      {
+        "file": "dist/visual-interactions/acceptance/zh-CN-cream-collage-full-deck.png",
+        "sha256": "1d7ca4e4f5bd7eb8ef821b8211729c10e91f206dee194b8e259c163009866c63"
+      },
+      {
+        "file": "dist/visual-interactions/acceptance/zh-CN-dark-data-full-deck.png",
+        "sha256": "5a8531a265065bc2357b2924e33fdf011c4d0736b77e8d960e659dc14bb00084"
+      },
+      {
+        "file": "dist/visual-interactions/acceptance/zh-CN-electric-violet-full-deck.png",
+        "sha256": "a82ed488f93d8d92c9f0a203ce9ea453fd293daba8e04b7cd7157d9b3147dd61"
+      }
+    ],
+    "result": "Representative final values/legends, actual comparison crops/hotspots, supplied arrow directions, exact code/excerpts, both languages and full-story continuity inspected. Observed crop/budget, native keyboard, measurement focus/disclosure and same-document scene routing defects repaired; native visibility tested without focus emulation."
+  },
+  "contentArchitecture": {
+    "semantic": "document.explanations stores labels/text/sourceIds once",
+    "design": "stable explanationId/object/series/block/cue references; no copied explanatory facts",
+    "audienceState": "temporary pure reducer state; never persisted to author document",
+    "animation": "finite subtle motion up to 400ms; explicit finite cue playback; no autoplay",
+    "static": "complete original content plus explanations/cue order available without JavaScript"
+  },
+  "applications": {
+    "PowerPoint": "installed, not run; v3 native compiler unsupported",
+    "Keynote": "installed, not run; v3 native compiler unsupported",
+    "Figma": "installed, not run; v3 native compiler unsupported",
+    "AfterEffects": "not found in Applications; not run"
+  },
+  "runtimeDependenciesAdded": 0,
+  "remoteServicesAdded": 0,
+  "automaticImageRequests": 0,
+  "publishedOrPushed": false,
+  "remaining": [
+    "Other browser engines, actual screen-reader/IME/200% zoom",
+    "Exhaustive state/complex routing/label-collision coverage",
+    "Native v3 compilers and real target/host acceptance",
+    "VIS-001 remote CI and broader VIS-014 release gates"
+  ],
+  "sources": [
+    {
+      "file": "public/runtime/charts.js",
+      "sha256": "9dd0db51ba8ec6e24c70f3d3b85f13ef8d2a6d92b4c966e32534fc7dc17eb19e"
+    },
+    {
+      "file": "public/runtime/components.js",
+      "sha256": "bcf388a82f24ffad18ba021752cf5ea829dfc208a24e74b83fd28e69ad8b9276"
+    },
+    {
+      "file": "public/runtime/resources.js",
+      "sha256": "0f35c66a415b8952e47faf3940630787d477cb110568c328e82dd7c90622d13b"
+    },
+    {
+      "file": "public/runtime/semantic.js",
+      "sha256": "be4750c4642780c5b6f6eba547cf6ff2ee50962b704d25b809715f7b8ecbc136"
+    },
+    {
+      "file": "public/studio/visual.html",
+      "sha256": "0ba8246428fce667b008ebe489022fad637f95f3979cb93d6fc46907072679a2"
+    },
+    {
+      "file": "public/studio/visual.js",
+      "sha256": "71c5dbd3ac0697d66db8c9846b218342e805fa434dd627753b8b46c3704b2ce3"
+    },
+    {
+      "file": "schemas/design-plan.schema.json",
+      "sha256": "05f20403a1d382939f5fea128b6add3c76cae644665e27fef8175d440fa70c14"
+    },
+    {
+      "file": "schemas/presentation-v3.schema.json",
+      "sha256": "c0a6d9d056123c6ec0eb91f4c1a7652b559f06ad3e13e04ada7263b7840f71fc"
+    },
+    {
+      "file": "schemas/web-scene.schema.json",
+      "sha256": "15746c5d3ea231dad47ddc5ad0658c8d943499f0b62fd3f5fea0df3636dffcc3"
+    },
+    {
+      "file": "scripts/preview-visual-studio.mjs",
+      "sha256": "9c946df6b854fc1ba51ec20c1169020c615c68b40adbed917b88be69b1870ee4"
+    },
+    {
+      "file": "scripts/render-interaction-demo.mjs",
+      "sha256": "b44efbe3c73cf4cf14cd11fd9baa50644c244b3e9bf13ba9fab3469061c6197b"
+    },
+    {
+      "file": "src/components/annotations/identity.mjs",
+      "sha256": "28798b9d3efdfb4d38ac74d2c77b6f56c410d82f019e8fe7064bb7af03a39887"
+    },
+    {
+      "file": "src/components/annotations/model.mjs",
+      "sha256": "deb228a5eab2994f092f5447301e7dc2d4e31b3c3735b1bd2f62ddc51f98c572"
+    },
+    {
+      "file": "src/components/annotations/render.mjs",
+      "sha256": "bd2e794c3ff7448cacf661f1b67d6399f0a826e50d9ea2586920bc5fff856ec0"
+    },
+    {
+      "file": "src/components/capabilities.mjs",
+      "sha256": "124e09d2a8e56a455f461331e15a1fb03ae45ca649717041141955bf76f25e3a"
+    },
+    {
+      "file": "src/components/charts/model.mjs",
+      "sha256": "75910b918ca353b4b0f25f6af3770424223ecd167c875f8ffcde390ec796a941"
+    },
+    {
+      "file": "src/components/charts/render.mjs",
+      "sha256": "5c23cb782c9ca711d45bcdfe63a6663da1fa4cf50f91087ce5110369cae41f81"
+    },
+    {
+      "file": "src/components/code/render.mjs",
+      "sha256": "835d70ce980566307cc257ae1a19e698a200469ab52fb1f932999340dd76508d"
+    },
+    {
+      "file": "src/components/diagrams/render.mjs",
+      "sha256": "4fbe028e9d96bade27ae5a8182078e59f2018e79f7de9bd7bc11f122af9520d1"
+    },
+    {
+      "file": "src/components/validate.mjs",
+      "sha256": "6c528565002869e0de8ce8da3efc40ae71e484b729c447917bb8f2279b0c5069"
+    },
+    {
+      "file": "src/core/blocks.mjs",
+      "sha256": "ca49105718ccec43ed3f961b3cc5ba0556447e8e496dfc85b7c021f94d0255c3"
+    },
+    {
+      "file": "src/core/interaction-demo.mjs",
+      "sha256": "e5d9e8f5c4c612ca623b47353c80610a97a6d2429dbf11f8de0be06b1231e287"
+    },
+    {
+      "file": "src/core/visual-project.mjs",
+      "sha256": "cb418c041b9d9a792df41041efcfab1ca8cf4dc4c1f6ce3b225e2b9ef4d71ccb"
+    },
+    {
+      "file": "src/design/plan.mjs",
+      "sha256": "c077ec1100d5e185e1549e0a424a2c5e024563accf463b83db6b2c73ccd420fc"
+    },
+    {
+      "file": "src/motion/cues.mjs",
+      "sha256": "97ec986ea30adf733822a4e8ecf572636e982247876f4a9f38983386ba346fb2"
+    },
+    {
+      "file": "src/motion/policies.mjs",
+      "sha256": "9243eabc9ed60549586491047c532a4d85d339ee32da2026fbb3bb1cb3561fd7"
+    },
+    {
+      "file": "src/motion/timeline.mjs",
+      "sha256": "76c00c69e9a072bd21bf239139f0b571e1a921b4283bf0d5701ffaae9b6e78a5"
+    },
+    {
+      "file": "src/motion/web.mjs",
+      "sha256": "7efd048ae29f0b5f9c4ae7f86119fab04379e472c15755000ac32c32130a2ec3"
+    },
+    {
+      "file": "src/render/html.mjs",
+      "sha256": "aab510d40a0ea7d09c3bd00d09bb3e8a9d8465d58940a3ec13a0a29b940dd1d0"
+    },
+    {
+      "file": "src/render/player.mjs",
+      "sha256": "3194f5a01adc48b62d849316187eb2ef2495d4c9cbc77953ce0304ae89537dbf"
+    },
+    {
+      "file": "src/render/web/document.mjs",
+      "sha256": "1757685d5ea2463ac0a57987f20057786083827a80cc3c2f42edce371799236d"
+    },
+    {
+      "file": "src/render/web/interaction-bundle.mjs",
+      "sha256": "e9fc0ec78e1ee6d0616168d56e5f194ce84bdfe537b3109a3061c1e1295ce25c"
+    },
+    {
+      "file": "src/render/web/runtime.mjs",
+      "sha256": "0deb9874fe59d9d010bcd14053e209c362fdb121c2f6c61b94ae2b176a56348c"
+    },
+    {
+      "file": "src/render/web/styles.mjs",
+      "sha256": "11e38cd4b66ce905c40177cdd66bddae20299feaa7ab0816c4ca9637e2d480c5"
+    },
+    {
+      "file": "src/scene/web/compile.mjs",
+      "sha256": "142fc0e4935b232908828fca66c30874add7bdf2d31675b83731d983f47604b3"
+    },
+    {
+      "file": "src/scene/web/validate.mjs",
+      "sha256": "6227cad9321e2cb29ec5254012a94be89101b23e944ffc655cc058230f815c4b"
+    },
+    {
+      "file": "tests/browser_interactions.mjs",
+      "sha256": "cd179f11839ff3d91d15071aa95d46d003346bdc891f626497e4a0bc01c1b22d"
+    },
+    {
+      "file": "tests/browser_native_visibility.mjs",
+      "sha256": "34e3f4632e5256cf2cd9f181694ab918d947f6e0d9154ff0d04cf7a5e9d692c6"
+    },
+    {
+      "file": "tests/motion.test.mjs",
+      "sha256": "5411f257882a8d97a1630371b4e52ea78861524a88e4ad4f9af20bec96b9a3dd"
+    },
+    {
+      "file": "tests/native_visibility.mjs",
+      "sha256": "56dbe447868419686d6bbd429059f70d4af81f9ba4bcfa011684a3fc6e32e57d"
+    },
+    {
+      "file": "tests/planning-jobs.test.mjs",
+      "sha256": "dc7864d10a42c53af6fb69a965353d1c996aa1a1af6836895703c63757c80134"
+    },
+    {
+      "file": "type-tests/web.mts",
+      "sha256": "cafc7c76415d83363ba5dcf6e9137214bad5f5d1db8b595150f95e962897efa1"
+    }
+  ]
+}

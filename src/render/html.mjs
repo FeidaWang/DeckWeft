@@ -5,6 +5,7 @@ import {sceneToSVG,escapeXML} from './svg.mjs';
 import {playerScript} from './player.mjs';
 import {speechStats} from '../core/speech.mjs';
 export function renderHTML(project,resolved,{includeNotes=false,motion="system"}={}){
+ if(!['system','off','reduced','full'].includes(motion))throw new TypeError('Use a supported explicit motion policy.');
  const x=escapeXML,title=x(project.title),zh=project.locale==='zh-CN',t=(en,cn)=>zh?cn:en,plan=project.extensions?.deckweftPresentation;
  // Optional metadata is data. Invalid third-party extension values never break export.
  let stats;try{stats=speechStats(project,{wpm:plan?.wpm??140,minutes:plan?.minutes??5});}catch{stats=speechStats(project,{wpm:140});}

@@ -70,3 +70,5 @@ The local bridge cannot remove permissions a host already has. A capable host mu
 Run `npm run verify` for local source, contract, subprocess, lease, persistence, export and packaging checks. Local protocol tests and the actual Codex CLI task do not certify Dot desktop, Claude sign-in or native plugin activation.
 
 The current [media and workers guide](media-workers.md) covers separate CLI identities, selected snapshots, worker progress and local image jobs. Dot desktop acceptance remains open.
+
+VIS-011 adds opt-in `workflow: "visual"` jobs and the scoped MCP `deckweft_visual_tool`. See the [task loop](task-loop.md) for the seven shared tools, expected-sequence conflicts, explicit browser/image receipts and recovery. This is local protocol support, not VIS-012 authenticated host acceptance.

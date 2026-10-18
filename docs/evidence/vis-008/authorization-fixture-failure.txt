@@ -1,0 +1,331 @@
+
+> deckweft@0.1.0-alpha.2 verify
+> npm run types && npm test && npm run check && npm run build && npm run demo
+
+
+> deckweft@0.1.0-alpha.2 types
+> node scripts/types.mjs
+
+Type contracts, negative fixtures and emitted runtime passed. {"compilerVersion":"Version 5.9.3","elapsedMs":710,"schemaBytes":1795,"emittedSmoke":true}
+
+> deckweft@0.1.0-alpha.2 test
+> node --test tests/*.test.mjs
+
+✔ AE parser reads valid Unicode JSON and escaped characters (3.509166ms)
+✔ AE parser rejects non-data input: {"x":1,} (1.024125ms)
+✔ AE parser rejects non-data input: [1,] (0.833792ms)
+✔ AE parser rejects non-data input: {"__proto__":{}} (1.158875ms)
+✔ AE parser rejects non-data input: {"constructor":{}} (1.345083ms)
+✔ AE parser rejects non-data input: {"a":function(){}} (0.650542ms)
+✔ AE parser rejects non-data input: true;alert(1) (1.772666ms)
+✔ AE parser rejects non-data input: 1e999 (1.893125ms)
+✔ AE parser rejects non-data input: [ (1.242875ms)
+✔ AE cancellation starts no undo group and does not access a project (0.709416ms)
+✔ Figma manifest template requests no network and invents no plugin id (5.458542ms)
+✔ Figma mock imports editable layers rather than raster slide fills (19.199083ms)
+✔ agent bridge fails closed without user opt-in and live heartbeat (85.635666ms)
+✔ agent jobs are idempotent and bind the exact selected input (138.252792ms)
+✔ agent draft validates and cannot overwrite the input project (235.367333ms)
+✔ English requests reject Chinese content even under an English locale (155.460792ms)
+✔ cancel and disconnect invalidate an in-flight lease (320.076ms)
+✔ stale connections and generation leases expire without silent retry (211.803417ms)
+✔ second worker cannot replace the first identity and a third is refused (72.709333ms)
+✔ UI status polling and worker polling tolerate ordinary lock contention (387.564375ms)
+✔ agent result with content overflow is refused (296.890791ms)
+✔ credential fields remain outside both queued input and generated projects (25.348042ms)
+✔ connected-computer CLI persists a lease across worker processes (1176.68ms)
+✔ actual MCP subprocess claims an opt-in HTTP job and returns a reviewable copy (122.901708ms)
+✔ presentation targets travel with the immutable job and reject invalid timing (24.080875ms)
+✔ Studio serves local icons, the actual demo project and an authenticated Dot task (13.459708ms)
+✔ VIS-007: portrait and wide crops preserve the protected subject and satisfy focal/ratio geometry (0.662541ms)
+✔ VIS-007: real PNG/JPEG/WebP containers, EXIF orientation, truncation and animated WebP rejection (14.412792ms)
+✔ VIS-007: original/native/derivative hashes bind immutable bytes, and duplicates reuse rather than overwrite (84.33925ms)
+✔ VIS-007: source extraction preserves source files and all attribution; changed bytes and symlinks stop extraction (126.21275ms)
+✔ VIS-007: replacing a named slot preserves family, theme, other content and shared-image bindings (147.783041ms)
+✔ VIS-007: unsafe crop, insufficient pixels, generated evidence and author locks fail without repairing the project (132.259541ms)
+✔ VIS-007: web derivatives are opt-in by slot; product screenshots/factual evidence retain native PNG (172.278375ms)
+✔ VIS-007: slot directions/originals survive stale-save refusal and history restore; missing generation is honest (414.146958ms)
+✔ VIS-008 bilingual strict contract, themes, candidates and stable movement (96.36225ms)
+✔ VIS-008 signed domains, null gaps, all missing and stable ranking without source mutation (0.894708ms)
+✔ VIS-008 exact changes update marks, labels, series legends and accessible table (2.681334ms)
+✔ VIS-008 reject misleading axes, invalid time zones, ambiguous times and malformed coordinates (15.086958ms)
+✔ VIS-008 supplied directed edges, self-loops, sequence order and stable annotations (5.92525ms)
+✔ VIS-008 code exact whitespace, escaped markup, emphasis and source anchor (1.888417ms)
+✔ VIS-008 locks bind chart datasets and exact code; truthful per-component capabilities (0.711792ms)
+✔ VIS-008 exact components persist through conflicts, immutable history and restore-as-copy (207.970583ms)
+✔ VIS-006: six typed families provide three candidates in all themes and both languages without changing facts or assets (244.4155ms)
+✔ VIS-006: family requirements reject incompatible content without repair; reading paths are derived without mutating blocks (70.21075ms)
+✔ VIS-006: rhythm finds the global minimum across all five transition terms and excludes failed candidates (77.761958ms)
+✔ VIS-006: author scene/content/crop locks and theme identities survive candidates, rhythm and reordering (94.614416ms)
+✔ VIS-006: candidates never earn feasibility through clipped, overflowing, low-contrast or oversized content (0.209666ms)
+✔ VIS-006: selected rhythm persists with revision conflicts and history recovery intact (276.893792ms)
+✔ VIS-006: exact metric decimals and selected geometry survive presentation and theme revisions (76.400125ms)
+✔ a new project satisfies the closed schema (4.175375ms)
+✔ markdown preserves title, body, points, and slide boundaries (0.53475ms)
+✔ empty and excessive outlines are rejected (0.144333ms)
+✔ validation rejects required fields without silently repairing it (0.230125ms)
+✔ validation rejects unknown fields without silently repairing it (0.100584ms)
+✔ validation rejects unknown versions without silently repairing it (0.099ms)
+✔ validation rejects unsupported locale without silently repairing it (0.099125ms)
+✔ validation rejects unsafe ids without silently repairing it (0.102625ms)
+✔ validation rejects duplicate slides without silently repairing it (0.465333ms)
+✔ validation rejects missing source target without silently repairing it (0.375958ms)
+✔ validation rejects nonfinite numeric input without silently repairing it (0.26775ms)
+✔ validation rejects negative revision without silently repairing it (0.228791ms)
+✔ validation rejects empty slide array without silently repairing it (0.14325ms)
+✔ validation rejects control characters without silently repairing it (0.158083ms)
+✔ validation rejects invalid Unicode without silently repairing it (0.255167ms)
+✔ validation rejects reserved keys without silently repairing it (0.186667ms)
+✔ valid Unicode, emoji, and arbitrary safe extension metadata survive (0.184542ms)
+✔ unsafe source protocol or credentials rejected: javascript:alert(1) (0.237958ms)
+✔ unsafe source protocol or credentials rejected: file:///etc/passwd (0.140291ms)
+✔ unsafe source protocol or credentials rejected: https://user:password@example.com (0.141792ms)
+✔ HTTP source references are validated but not marked verified (0.181125ms)
+✔ duplicate / reorder / remove actions are immutable and preserve unique ids (0.437292ms)
+✔ last slide deletion and invalid move fail (0.201708ms)
+✔ legacy import retains original data and explains lossy rendering (0.499875ms)
+✔ legacy unsafe and duplicate ids are regenerated (0.186625ms)
+✔ unsupported import and broken current schema are rejected (0.069334ms)
+✔ DW-110: history is newest-first and stable cursor paging excludes live revision (517.627375ms)
+✔ DW-110: first save has no earlier versions (60.320125ms)
+✔ DW-110: restore makes revision-one copy with lineage, preserves source bytes (232.126959ms)
+✔ DW-110: a retried request reuses its copy; changed options conflict (182.663667ms)
+✔ DW-110: snapshot hash pins what was inspected before restoring (121.873584ms)
+✔ DW-110: invalid or mismatched snapshot is visible but not silently repaired (97.660542ms)
+✔ DW-110: invalid cursors and revisions never turn into file paths (74.435583ms)
+✔ DW-110: symlink snapshots are refused rather than dereferenced (28.4255ms)
+✔ DW-110: divergent pre-existing snapshot blocks save without overwriting either file (19.389792ms)
+✔ DW-110: identical interrupted-save snapshot can be safely reused (53.907166ms)
+✔ DW-110: filename mismatch and exhausted revision counter are rejected (38.402666ms)
+✔ DW-020: evidence redacts known tokens, email and supplied local paths (0.642625ms)
+✔ DW-020: a truly absent executable is blocked, never a simulated host pass (13.253875ms)
+✔ DW-020: subprocess probes capture a real executable version, not generated evidence (15.321625ms)
+✔ DW-020: a hanging subprocess is terminated with a timeout flag (84.288209ms)
+✔ DW-020: Claude normal permission mode follows the installed help and fails closed (0.237625ms)
+✔ DW-020: invalid timeout is rejected before a workspace or evidence is created (0.503125ms)
+✔ DW-020: interrupted evidence without a report cannot be overwritten (17.220875ms)
+✔ DW-020: artifact verification reruns the real bundled CLI and compares both exports (352.931833ms)
+✔ DW-020: nonempty fake HTML or PowerPoint cannot satisfy artifact verification (586.126208ms)
+✔ DW-020: an unrelated valid deck cannot satisfy the task nonce check (56.727458ms)
+✔ DW-020: symlinked artifacts are rejected before copying local files into evidence (67.782042ms)
+✔ DW-120: typing bursts coalesce but different fields and elapsed pauses do not (1.920458ms)
+✔ DW-120: undo/redo restore selection but preserve the latest saved revision (0.36425ms)
+✔ DW-120: branching edits discard redo and bound memory (0.206583ms)
+✔ DW-120: input context suppresses application hotkeys {"composing":true} (1.588ms)
+✔ DW-120: input context suppresses application hotkeys {"modal":true} (0.138666ms)
+✔ DW-120: IME 229, repeat, modifier keys, and native text undo do not trigger deck changes (0.225958ms)
+✔ DW-120: normal save, layout and presentation keys are intentional (0.202541ms)
+✔ DW-120: boundary actions never dirty a deck (0.148875ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 1 (9.103041ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 2 (1.595708ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 3 (2.420875ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 4 (1.112333ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 5 (2.024041ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 6 (1.05975ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 7 (9.859375ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 8 (0.785042ms)
+✔ DW-130: lossless grapheme-safe wrapping fixture 9 (0.088375ms)
+✔ DW-130: oversized content never shrinks below floor or deletes source (97.271292ms)
+✔ DW-130: fingerprint is deterministic and ignores saved revision only (1.291959ms)
+✔ DW-130: plans cover all directions; validated fits replay into the same export scene (10.562042ms)
+✔ DW-130: stale project changes cannot reuse an export ticket; save-only change can (6.962917ms)
+✔ DW-130: expired/consumed plans and expired render tickets fail closed (13.021125ms)
+✔ DW-130: bounded plan cache evicts oldest, and missing boxes are rejected (15.232583ms)
+✔ DW-130: rejects malformed measurement wrongId (0.323167ms)
+✔ DW-130: rejects malformed measurement droppedText (0.287833ms)
+✔ DW-130: rejects malformed measurement splitEmoji (0.283125ms)
+✔ DW-130: rejects malformed measurement wrongFamily (0.25575ms)
+✔ DW-130: rejects malformed measurement smallFont (0.244166ms)
+✔ DW-130: rejects malformed measurement nanWidth (0.286542ms)
+✔ DW-130: rejects malformed measurement zeroWidth (0.265792ms)
+✔ DW-130: rejects malformed measurement negativeAscent (0.242458ms)
+✔ DW-130: rejects malformed measurement duplicateRange (0.255167ms)
+✔ image requests require review/consent and do not repeat unknown tool outcomes (110.319917ms)
+✔ generated media reopens offline; all exports preserve independent text and image nodes (244.406625ms)
+✔ image completion and attachment reject changed drafts, bytes and revoked requests (177.18025ms)
+✔ two scoped workers claim independently; no selected conversation or leases cross worker boundaries (442.966ms)
+✔ code jobs create isolated exact-path copies and reject competing path grants (206.401917ms)
+✔ spatial contracts reject arbitrary recipes; static exports retain native fallback shapes and editable text (15.890541ms)
+✔ Figma imports individual media, records node/font mapping and requires explicit font fallback (124.912875ms)
+✔ Figma cancellation during font loading creates no layers (2.120708ms)
+✔ AE validation refuses invalid timing and text before touching the project (3.2365ms)
+✔ AE cancellation and layer failure remove only newly created items and balance undo (2.978958ms)
+✔ matching in-flight image requests cannot create duplicate paid work with new request ids (50.9825ms)
+✔ PNG imports reject corrupted chunks and trailing payloads (0.904167ms)
+✔ AE report serializer works without host JSON and parser rejects duplicate keys (1.053292ms)
+✔ AE cancelling the media-folder chooser never accesses the project (12.762334ms)
+✔ AE failed media import cleans its own new files and leaves existing media alone (19.214958ms)
+✔ v1 remains unchanged and migration produces a strict separately identified v2 copy (2.636625ms)
+✔ brief produces inspectable claims, evidence references and scripts without inventing sources (0.395458ms)
+✔ v2 rejects unknown fields, source/asset mismatches, bad interaction states and extension bypass (0.624042ms)
+✔ all six semantic families preserve source text and native geometry in every ratio (288.651959ms)
+✔ allowlisted interaction yields offline keyboard controls and declared static alternatives (21.532875ms)
+✔ content-addressed PNG stays outside project JSON; hash, symlink and missing-media recovery checked (65.207125ms)
+✔ required Astra effort blocks a host without selection; grants never grant chat or implicit code scope (225.989625ms)
+✖ capsule pins adopted tasks, source/rules and input baseline; restart preserves monotonic events (169.441333ms)
+✔ checkpoint retries are explicit, hash verified and issue a new grant and lease (269.994417ms)
+✔ revocation rejects checkpoints, late results and application; no duplicate events on exact checkpoint replay (211.081833ms)
+✔ deck and code grants have distinct submission routes; bounded patch retains a base hash without editing (141.718792ms)
+✔ ETA waits for comparable samples, excludes disconnected/review time and effort escalation honors ceiling (0.21275ms)
+✔ replanning an existing v2 preserves reviewed visual choices, assets and interactions (0.239334ms)
+✔ host failures are named and resumable only with a retained verified checkpoint (81.033166ms)
+✔ application and cancellation share the queue lock and replay never creates a second result (103.245958ms)
+✔ PowerPoint rounded cards encode their scene radius instead of the preset default (5.282916ms)
+✔ disabling revokes expired grants and retains an already produced draft for read-only inspection (68.496666ms)
+✔ generation cannot silently downgrade v2 or discard supplied source attribution (41.090833ms)
+✔ single-host concurrency never grants two live leases (56.283458ms)
+✔ owned lease and session strings cannot leak through speaker text or checkpoint fields (25.603584ms)
+✔ dry run has no install side effects and names the two skill locations (19.190708ms)
+✔ invalid scope and target are rejected (0.218417ms)
+✔ skill install is self-contained and uninstalls unchanged owned files (2001.943625ms)
+✔ update requires explicit replace and retains backup (165.887625ms)
+✔ modified installations are not deleted (103.463125ms)
+✔ all targets are preflighted before any existing target is changed (2.19575ms)
+✔ symlinked installation paths fail safely (0.845833ms)
+✔ generated bundle executes after an isolated copy without source paths (471.933834ms)
+✔ build refuses an unowned output directory rather than merging into it (1.286ms)
+✔ build output is byte-stable for unchanged source (508.152208ms)
+✔ copied runtime needs no compiler and serves the new presentation assets offline (326.743542ms)
+✔ CLI supports explicit output and refuses accidental overwrite (154.973416ms)
+✔ spoken plan counts only notes and keeps pauses outside estimated speech (1.78375ms)
+✔ generation timing rejects coercion and unknown fields (0.425583ms)
+✔ English DevDay pitch has a five-minute schedule and editable native exports (378.579167ms)
+✔ offline player executes only a hashed fixed script, escapes imported text, and preserves native scenes (4.180042ms)
+✔ showcase exports keep editable text and deduplicate only bundled image assets (962.27675ms)
+✔ showcase variants differ, preserve content and fail clearly on an unsupported stage ratio/version (214.289958ms)
+✔ Three.js is pinned, locally linked, and all offline code is covered by its CSP hash (362.248167ms)
+✔ workbench screenshots have real PNG dimensions and preserve their aspect ratio in PowerPoint (308.9545ms)
+✔ speech uses independent English/Chinese rates and explicit pauses (1.866875ms)
+✔ speech cues preserve exact text, Unicode and contiguous time/character anchors (0.277375ms)
+✔ monotonic script clock pauses, resumes and seeks without animation-duration limits (0.126167ms)
+✔ local preferences are strict and OS reduction outranks full authored playback (0.110083ms)
+✔ public projection holds only allowlisted scene data and scoped read-only authority (16.443541ms)
+✔ presentation expiry and memory/count budgets release capabilities (10.915ms)
+✔ audience HTML/PPTX/handoffs omit notes; explicit presenter exports and JSON retain them (39.800167ms)
+✔ separate audience origin exposes no editor bootstrap/storage APIs or mutations (72.604833ms)
+✔ out-of-order presenter commands cannot restore a stale slide or motion policy (3.303958ms)
+✔ presentations require exact measured snapshots and authenticated control (50.445167ms)
+✔ four ranked choices have distinct geometry and stable scores (36.185666ms)
+✔ shared scene fits a short deck: 16:9 / paper (10.246542ms)
+✔ shared scene fits a short deck: 16:9 / midnight (9.251208ms)
+✔ shared scene fits a short deck: 16:9 / ocean (8.687125ms)
+✔ shared scene fits a short deck: 16:9 / signal (9.231833ms)
+✔ shared scene fits a short deck: 4:3 / paper (8.8515ms)
+✔ shared scene fits a short deck: 4:3 / midnight (10.093125ms)
+✔ shared scene fits a short deck: 4:3 / ocean (9.309041ms)
+✔ shared scene fits a short deck: 4:3 / signal (8.814291ms)
+✔ shared scene fits a short deck: 1:1 / paper (10.422834ms)
+✔ shared scene fits a short deck: 1:1 / midnight (10.512333ms)
+✔ shared scene fits a short deck: 1:1 / ocean (9.76425ms)
+✔ shared scene fits a short deck: 1:1 / signal (13.051583ms)
+✔ shared scene fits a short deck: 9:16 / paper (9.255208ms)
+✔ shared scene fits a short deck: 9:16 / midnight (8.985334ms)
+✔ shared scene fits a short deck: 9:16 / ocean (9.209125ms)
+✔ shared scene fits a short deck: 9:16 / signal (10.06775ms)
+✔ editorial retains all semantic content (1.719959ms)
+✔ spotlight retains all semantic content (1.022042ms)
+✔ grid retains all semantic content (1.77325ms)
+✔ timeline retains all semantic content (1.805333ms)
+✔ dense text is a blocker, never a silently truncated export (498.99625ms)
+✔ all renderers share selected geometry and notes (15.598083ms)
+✔ SVG escapes markup instead of executing it (4.384375ms)
+✔ HTML contains offline slides, notes, and sources (9.860459ms)
+✔ invalid format and selected SVG page fail clearly (16.019292ms)
+✔ ZIP CRC, UTF-8 paths, and deterministic output round-trip (0.616834ms)
+✔ ZIP writer rejects traversal and duplicate paths (0.098834ms)
+✔ PPTX is a ZIP of native shapes, text, theme, notes, and relationships (13.525542ms)
+✔ contrast math has expected endpoints (0.041625ms)
+✔ metric cards reserve label height for the bundled CJK example without overlap (12.927416ms)
+✔ PPTX has a separate notes theme and a presentation theme relationship (9.500583ms)
+✔ loopback session, headers, and static allowlist (57.160625ms)
+✔ API requires a token except safe health/session bootstrap (21.816917ms)
+✔ cross-site, malformed origin, and forged Host requests fail (24.22825ms)
+✔ invalid JSON, non-object input, and content type have specific errors (29.519209ms)
+✔ create / reopen / stale save / export API works end to end (149.40375ms)
+✔ preview gives four layouts and imports create a distinct id (47.623292ms)
+✔ oversized JSON is rejected with an explicit 413 response (27.334958ms)
+✔ DW-130: measurement API binds export to the exact measured content (54.946833ms)
+✔ DW-110: history HTTP read, pagination, restore and forbidden overwrite (201.68475ms)
+✔ DW-130: shared text and interaction modules are the only added static routes (28.08825ms)
+✔ create, save, reopen, and history use durable revisioned files (95.819917ms)
+✔ create does not overwrite an existing id (83.054833ms)
+✔ stale or missing revisions do not overwrite newer data (133.7775ms)
+✔ two project ids remain independent (162.742125ms)
+✔ only one concurrent save for a revision wins (105.057959ms)
+✔ unsafe ids and symlink destinations are rejected (50.535833ms)
+✔ corrupt files remain visible in the library (10.579417ms)
+✔ stale lock does not get deleted automatically (43.750875ms)
+✔ failed validation creates no lock and successful writes leave no temp (36.486416ms)
+✔ VIS-002: visual library preserves revisions, immutable snapshots and idempotent restore-as-copy (290.1115ms)
+✔ VIS-002: locks protect chart data, semantic blocks and scoped scene decisions (179.655583ms)
+✔ VIS-002/003: source anchors, image crop bounds and region IDs are strictly validated (49.766542ms)
+✔ VIS-004: local images are embedded with a normalized crop and hashes bind actual bytes (135.835833ms)
+✔ VIS-005: all three executable packs carry grammar, scoped rules and validated system font fallbacks (63.089208ms)
+✔ VIS Studio API: token/origin boundaries, explicit migration, native refusal and stale export gate (234.995375ms)
+✔ VIS-005: scoped rule conflicts resolve by role/mode without leaking between packs (0.157125ms)
+✔ VIS-003: local gradients, clipping, transforms, groups and breakpoint bindings render without executable source (81.444875ms)
+✔ VIS-004: repeated image bindings are included in the local output resource budget (46.873583ms)
+✔ v3 numeric charts, CJK headings, code and citations survive JSON round trip (15.609875ms)
+✔ v3 rejects coercion, nonfinite numbers, broken references and unknown executable fields (5.452083ms)
+✔ closed contracts cover all initial semantic block types (3.605083ms)
+✔ legacy adaptation is an explicit nonmutating copy and never guesses numbers (84.181417ms)
+✔ legacy revision conflicts and read-only source preservation remain enforced (111.951ms)
+✔ target-specific unsupported native exports do not block valid web output (2.034334ms)
+✔ design plans never omit facts, point at absent blocks, or masquerade themes (1.7595ms)
+✔ WebScene is derived, closed, stable across reordering, and requires exact reading order (1.455833ms)
+✔ render hashes are deterministic, source-bound and private metadata stays out of HTML (4.545833ms)
+ℹ tests 263
+ℹ suites 0
+ℹ pass 262
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3825.9045
+
+✖ failing tests:
+
+test at tests/planning-jobs.test.mjs:28:1
+✖ capsule pins adopted tasks, source/rules and input baseline; restart preserves monotonic events (169.441333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+
+    [
+      'MB-01',
+      'MB-02',
+      'MB-03',
+      'MB-04',
+  ...
+      'VIS-007',
+  +   'VIS-008'
+    ]
+
+      at TestContext.<anonymous> (file:///Users/feida/Developer/DeckWeft/tests/planning-jobs.test.mjs:28:222)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [
+      'MB-01',   'MB-02',   'MB-03',
+      'MB-04',   'MB-05',   'MB-06',
+      'MB-07',   'MB-08',   'MB-09',
+      'MB-10',   'MB-11',   'MB-12',
+      'MB-13',   'MB-14',   'MB-15',
+      'VIS-001', 'VIS-002', 'VIS-003',
+      'VIS-004', 'VIS-005', 'VIS-006',
+      'VIS-007', 'VIS-008'
+    ],
+    expected: [
+      'MB-01',   'MB-02',   'MB-03',
+      'MB-04',   'MB-05',   'MB-06',
+      'MB-07',   'MB-08',   'MB-09',
+      'MB-10',   'MB-11',   'MB-12',
+      'MB-13',   'MB-14',   'MB-15',
+      'VIS-001', 'VIS-002', 'VIS-003',
+      'VIS-004', 'VIS-005', 'VIS-006',
+      'VIS-007'
+    ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

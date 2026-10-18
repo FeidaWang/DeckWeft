@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "attribution": "Palette and direction from supplied DeckWeft Visual-First Roadmap 2026-10-18 §4, referencing Open-Deck-Skill O4/O5/O6. Executable layout, typography and rules authored for DeckWeft; no fonts bundled.",
+  "spacing": {
+    "page": 48,
+    "gap": 36
+  },
+  "density": "comfortable",
+  "motion": {
+    "durationMs": 240,
+    "effect": "fade"
+  },
+  "id": "dark-data",
+  "palette": {
+    "paper": "#112120",
+    "ink": "#F1F4E9",
+    "accent": "#B9EF79",
+    "secondary": "#B5A0EC"
+  },
+  "typography": {
+    "displayEn": "\"Helvetica Neue\", Arial, sans-serif",
+    "displayZh": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "bodyEn": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+    "bodyZh": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "code": "Menlo, Consolas, monospace",
+    "displayScale": 1
+  },
+  "imageGrammar": {
+    "split": 0.56,
+    "treatment": "evidence",
+    "caption": "visible"
+  },
+  "chartColors": [
+    "#A6F05F",
+    "#B299FF",
+    "#F19EE2",
+    "#79CFFF",
+    "#FFC67A",
+    "#E0E0E0",
+    "#FF8C8C",
+    "#7DE8CB"
+  ],
+  "compositions": [
+    "chart-with-evidence-rail",
+    "reading-flow",
+    "statement-split",
+    "statement-banner",
+    "statement-center",
+    "image-left",
+    "image-strip",
+    "image-right",
+    "metric-left",
+    "metric-band",
+    "metric-right",
+    "evidence-left",
+    "evidence-top",
+    "evidence-right",
+    "comparison-matrix",
+    "comparison-rail",
+    "comparison-stack",
+    "process-line",
+    "process-rail",
+    "process-stair"
+  ],
+  "modes": {
+    "default": "dark",
+    "chapter": "dark"
+  },
+  "rules": [
+    {
+      "sceneRole": "any",
+      "mode": "any",
+      "property": "contrast",
+      "value": "required-text-readable",
+      "severity": "require",
+      "rationale": "Required text must remain readable in every profile."
+    },
+    {
+      "sceneRole": "any",
+      "mode": "default",
+      "property": "composition",
+      "value": "chart-with-evidence-rail",
+      "severity": "prefer",
+      "rationale": "Keep the selected visual system structurally distinctive."
+    }
+  ]
+}

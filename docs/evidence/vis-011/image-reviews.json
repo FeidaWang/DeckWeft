@@ -1,0 +1,50 @@
+[
+  {
+    "task": "before.task.json",
+    "review": {
+      "receiptId": "ac9f21a5bccc1a6dae7decd939b0e4531b40835d7cb1fdeaae8b2e2514e2fa9f",
+      "reviewer": "Codex visual review in this task",
+      "delivery": "functions.view_image delivered all three named PNG files as actual pixels in this chat on 2026-10-18; tall desktop images were downscaled, with native page 4 also inspected; final recapture byte identity verified against those actually viewed images before binding this receipt",
+      "images": [
+        "story-1-1440.png",
+        "story-1-390.png",
+        "story-1-scene4.png"
+      ],
+      "judgment": "Actual desktop and mobile complete-story pixels and the native fourth page were inspected. Five pages keep a clear opening/planning/inspection/evidence/recovery order, consistent cream/coral colors and intact original wording. Desktop whitespace is intentionally spacious; mobile headings and body wrap without clipping.",
+      "issues": [],
+      "verdict": "pass"
+    }
+  },
+  {
+    "task": "after.task.json",
+    "review": {
+      "receiptId": "860d6faffa693450b261f8b87dae43acbcfabd9aed94822e21a5c0f9505cea5c",
+      "reviewer": "Codex visual review in this task",
+      "delivery": "functions.view_image delivered all three named PNG files as actual pixels in this chat on 2026-10-18; tall desktop images were downscaled, with native page 4 also inspected; final recapture byte identity verified against those actually viewed images before binding this receipt",
+      "images": [
+        "revision-2-1440.png",
+        "revision-2-390.png",
+        "revision-2-scene4.png"
+      ],
+      "judgment": "Actual complete-story desktop/mobile pixels and the native fourth page were inspected against the original. Only page 4 gains the two-series exact supplied chart and original source citation. Original text, cream surface and coral/blue palette remain; all other pages keep their previous geometry. Q1–Q6, legends, signed baseline and supplied values are readable at desktop. Mobile retains horizontal chart scrolling and the full-data disclosure; it does not show all categories at once. Nonblocking: shared Q1 value 18 overlaps between the two series; the citation repeats its source title.",
+      "issues": [],
+      "verdict": "pass"
+    }
+  },
+  {
+    "task": "repair.task.json",
+    "review": {
+      "receiptId": "10bb3c5d4933ac716758eaf42ef00a88502f231bf98ad4a5ddfdd4a72f555da7",
+      "reviewer": "Codex visual review in this task",
+      "delivery": "functions.view_image delivered all three named PNG files as actual pixels in this chat on 2026-10-18; tall desktop images were downscaled, with native page 4 also inspected; final recapture byte identity verified against those actually viewed images before binding this receipt",
+      "images": [
+        "bounded-repair-4-1440.png",
+        "bounded-repair-4-390.png",
+        "bounded-repair-4-scene4.png"
+      ],
+      "judgment": "Actual complete-story desktop/mobile pixels and the native fourth page were inspected. The originally repeated split sequence now changes only page 4 to a headline/banner layout, with the original explanatory sentence below a coral divider. Remaining pages and source content stay intact. This is a minimal repetition repair, not an optimized editorial redesign.",
+      "issues": [],
+      "verdict": "pass"
+    }
+  }
+]

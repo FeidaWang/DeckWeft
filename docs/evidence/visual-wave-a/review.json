@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-18",
+  "sourceCommit": "9204f21161fd5b5c15c4040bd2414bed55fb4d99",
+  "branch": "main",
+  "committed": false,
+  "sourceTreeHash": "4d6a24201046c9559a3b671901a08d879b68c350073bbee7cbedeb1bac4f1ed5",
+  "guide": "docs/en/visual-first.md",
+  "contracts": {
+    "presentation": 3,
+    "designPlan": 1,
+    "webScene": 1,
+    "themes": "1.0.0",
+    "renderer": "wave-a.1"
+  },
+  "tasks": {
+    "VIS-001": "partial",
+    "VIS-002": "partial",
+    "VIS-003": "partial",
+    "VIS-004": "partial",
+    "VIS-005": "partial"
+  },
+  "tests": {
+    "command": "npm run verify",
+    "passed": 231,
+    "failed": 0,
+    "skipped": 0,
+    "log": "docs/evidence/visual-wave-a/verify.txt"
+  },
+  "browser": {
+    "version": "151.0.7922.34",
+    "cases": 9,
+    "widths": [
+      390,
+      1024,
+      1440
+    ],
+    "pageErrors": [],
+    "externalRequests": [],
+    "captureManifest": "docs/visual-baseline/capture-manifest.json"
+  },
+  "visualReview": {
+    "method": "Actual screenshot pixels provided to the model with view_image",
+    "legacyDecks": 3,
+    "newScenes": 4,
+    "viewportWidths": [
+      390,
+      1024,
+      1440
+    ],
+    "findings": [
+      "Initial cream-on-cream metric contrast fixed by safe-region placement",
+      "Mobile/tablet chart labels enlarged",
+      "Chinese mobile cover orphan character fixed with smaller display scale"
+    ],
+    "limitations": [
+      "Not a general contrast or aesthetic certificate",
+      "Chinese narrow-column wrapping remains an editorial refinement"
+    ]
+  },
+  "runtimeDependenciesAdded": 0,
+  "remoteCI": "not run",
+  "hostGeneration": "not run",
+  "nativeApps": "PowerPoint/Keynote/Figma installed but not run; After Effects not found",
+  "nextReady": [
+    "VIS-001 remote CI with direct authorization to push/run",
+    "Complete VIS-002/003 contracts and v3 editing/storage integration",
+    "Complete VIS-004/005 layout and theme grammar before VIS-006 gallery/candidates"
+  ]
+}

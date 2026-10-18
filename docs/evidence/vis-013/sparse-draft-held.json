@@ -1,0 +1,57 @@
+{
+  "status": "scoped-visual-diagnostic",
+  "taskStatus": "quality-failed",
+  "review": {
+    "reviewer": "codex local CLI",
+    "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 7ca39285-16fc-4aae-b4c5-1a2d3dc60628",
+    "images": [
+      "capture-1792319256117-1440.png",
+      "capture-1792319256117-390.png"
+    ],
+    "judgment": "Both images were inspected. Text has strong contrast and no visible clipping or overlap. Hierarchy is clear, but excessive desktop whitespace and vague workshop instructions weaken the story rhythm and usefulness.\ncapture-1792319256117-1440.png: Scene 1 clearly separates title and preparation text. Scene 2 has a strong accent rule but little supporting content. Scene 3 is the weakest page: its centered heading and single sentence leave most of the canvas empty and provide no comparison criteria. Scene 4 repeats scene 1's arrangement without showing how to record observations. All four pages have readable contrast and no visible clipping or overlap; oversized empty areas slow the sequence.\ncapture-1792319256117-390.png: Scene 1 stacks cleanly, with natural body wrapping. Scene 2 preserves clear hierarchy and its accent rule. Scene 3's larger heading fits, but the instruction does not explain what to compare. Scene 4 remains legible but offers no recording structure. No visible clipping or overlap; mobile spacing is substantially tighter than desktop, though the procedural story remains underdeveloped.",
+    "issues": [
+      {
+        "sceneId": "slide_7df43f3ea9644af3",
+        "nodeId": "b1_body",
+        "bounds": {
+          "x": 22,
+          "y": 558,
+          "width": 346,
+          "height": 32
+        },
+        "severity": "warning",
+        "reason": "In the 390px capture, 'Use a simple design' supplies no concrete shape or example, leaving the selection step underspecified.",
+        "suggestion": "Name a starter shape and add a small example or selection criterion."
+      },
+      {
+        "sceneId": "slide_b3ca33aebb9b4fc0",
+        "nodeId": "b2_body",
+        "bounds": {
+          "x": 22,
+          "y": 803,
+          "width": 346,
+          "height": 33
+        },
+        "severity": "warning",
+        "reason": "In the 390px capture, the weakest page promises 'Fold and compare' but only instructs following a crease; no comparison target or observable result is supplied.",
+        "suggestion": "Add a fold illustration and a specific feature to compare against the model."
+      },
+      {
+        "sceneId": "slide_2f1d54a0651f423d",
+        "nodeId": "b3_body",
+        "bounds": {
+          "x": 22,
+          "y": 1040,
+          "width": 346,
+          "height": 33
+        },
+        "severity": "warning",
+        "reason": "In the 390px capture, the closing instruction asks users to save observations without specifying what to record, so the sequence ends without a concrete outcome.",
+        "suggestion": "Provide a short recording prompt covering the chosen shape, fold result, and observed difference."
+      }
+    ],
+    "verdict": "fail"
+  },
+  "exported": false,
+  "sourceTextRetainedOnUserDisk": true
+}

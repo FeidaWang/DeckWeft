@@ -10,6 +10,26 @@ DeckWeft turns an outline into an editable presentation on your own computer. Th
 
 ![DeckWeft Studio, rendered from the running application](docs/assets/studio-desktop.png)
 
+Run `npm run studio:compositions` for six composition families, three measured candidates per page, and whole-deck rhythm selection. [Usage and recovery](docs/en/visual-studio.md) · [VIS-006 visual evidence](docs/evidence/vis-006/review.md).
+
+Run `npm run studio:assets` for source-preserving image slots, local JPEG/WebP conversion and author-protected crop choices. [Asset manual](docs/en/assets.md) · [VIS-007 evidence](docs/evidence/vis-007/review.md).
+
+Run `npm run studio:components` for editable exact-data charts, directed diagrams, original code and stable annotations across three themes and both languages. [Component manual](docs/en/components.md) · [VIS-008 evidence](docs/evidence/vis-008/review.md).
+
+Run `npm run studio:interactions` for real chart filters, image comparison/hotspots, step explanations and deterministic offline cue replay. Keyboard, touch and reduced motion share the same source-preserving state. [Interaction manual](docs/en/interactions.md) · [VIS-009 evidence](docs/evidence/vis-009/review.md).
+
+Run `npm run visual:verify` for local browser quality capture and bounded composition repair, then `npm run visual:review` to explore complete stories, diagnostics and native screenshots. Passing receipts require actual image review. [Quality manual](docs/en/visual-quality.md) · [VIS-010 evidence](docs/evidence/vis-010/review.md).
+
+Run `npm run deck:create -- --brief examples/task-brief.en.json --out dist/my-task` for a source-preserving local task checkpoint and preview. The shared tools connect planning, exact-data revisions, real browser checks, actual image review, bounded repair and reviewed HTML export. [Task manual](docs/en/task-loop.md) · [VIS-011 evidence](docs/evidence/vis-011/review.md). VIS-012 adapters have local implementation with deferred Claude acceptance; the prompt-first workbench (VIS-013) is implemented locally.
+
+Local coding-host adapters now support opt-in structured drafting, scoped revisions and actual captured-image feedback through the shared task tools. Claude live acceptance remains deferred; VIS-012 is partial. [Host manual](docs/en/hosts.md) · [Evidence](docs/evidence/vis-012/review.md).
+
+Enter a prompt or select a saved source in the existing Visual Studio, then watch, revise a page, inspect actual screenshots and export reviewed HTML. Language/style preferences, author locks and recovery persist locally. [Prompt-first workbench](docs/en/workbench.md) · [VIS-013 evidence](docs/evidence/vis-013/review.md). Claude login remains deferred.
+
+## Visual-first local implementation
+
+[Visual Studio](docs/en/visual-studio.md) now edits and saves v3 semantic projects inside the local app. Cream Collage, Dark Data and Electric Violet have bilingual examples, live DOM/SVG previews, numeric data tables, scoped theme/content locks, local image cropping and history recovery. Run `npm run studio:visual-demo`, or follow Visual Studio from the classic library. The full release gallery, host generation and native v3 exports remain later gates. The [reconciled requirements](DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) continue from VIS-002–011; VIS-012 adapters now have local implementation with deferred Claude acceptance, with the local VIS-013 workbench and planned VIS-014 release acceptance.
+
 ## Local media and multiple workers
 
 The MB-11–15 build adds optional host-image requests with local reuse, two scoped workers, orbit/layer 3D recipes with editable static fallbacks, and richer Figma/AE handoffs. A real concurrent CLI pair and direct-browser media/3D flows passed. **Dot desktop, native Figma import and actual AE rendering remain open gates.** [Guide](docs/en/media-workers.md) · [Evidence](docs/evidence/mb-11-15/review.md).

@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "attribution": "Palette and direction from supplied DeckWeft Visual-First Roadmap 2026-10-18 §4, referencing Open-Deck-Skill O4/O5/O6. Executable layout, typography and rules authored for DeckWeft; no fonts bundled.",
+  "spacing": {
+    "page": 48,
+    "gap": 36
+  },
+  "density": "comfortable",
+  "motion": {
+    "durationMs": 240,
+    "effect": "fade"
+  },
+  "id": "cream-collage",
+  "palette": {
+    "paper": "#F5EBD9",
+    "ink": "#1C2C3C",
+    "accent": "#BD4027",
+    "secondary": "#2454CF"
+  },
+  "typography": {
+    "displayEn": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+    "displayZh": "\"Songti SC\", \"SimSun\", serif",
+    "bodyEn": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+    "bodyZh": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "code": "Menlo, Consolas, monospace",
+    "displayScale": 1
+  },
+  "imageGrammar": {
+    "split": 0.56,
+    "treatment": "hard-edge",
+    "caption": "visible"
+  },
+  "chartColors": [
+    "#2657D7",
+    "#F05A39",
+    "#116B58",
+    "#52226D",
+    "#855600",
+    "#242424",
+    "#9A2338",
+    "#005F82"
+  ],
+  "compositions": [
+    "diagonal-cover",
+    "reading-flow",
+    "statement-split",
+    "statement-banner",
+    "statement-center",
+    "image-left",
+    "image-strip",
+    "image-right",
+    "metric-left",
+    "metric-band",
+    "metric-right",
+    "evidence-left",
+    "evidence-top",
+    "evidence-right",
+    "comparison-matrix",
+    "comparison-rail",
+    "comparison-stack",
+    "process-line",
+    "process-rail",
+    "process-stair"
+  ],
+  "modes": {
+    "default": "light",
+    "chapter": "light"
+  },
+  "rules": [
+    {
+      "sceneRole": "any",
+      "mode": "any",
+      "property": "contrast",
+      "value": "required-text-readable",
+      "severity": "require",
+      "rationale": "Required text must remain readable in every profile."
+    },
+    {
+      "sceneRole": "any",
+      "mode": "default",
+      "property": "composition",
+      "value": "diagonal-cover",
+      "severity": "prefer",
+      "rationale": "Keep the selected visual system structurally distinctive."
+    }
+  ]
+}

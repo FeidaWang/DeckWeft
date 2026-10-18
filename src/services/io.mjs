@@ -22,3 +22,6 @@ export async function readJSON(file,maxBytes=4_000_000){
   try{return JSON.parse(content.toString('utf8'));}catch{throw new DeckError('INVALID_JSON','This file is not valid JSON. Check for missing commas or brackets.',400);}
 }
 export const stringify=value=>JSON.stringify(value,null,2)+'\n';
+
+/** Content addressed asset files are immutable; repeated uploads reuse identical bytes. */
+export async function writeImmutable(file,bytes){await rejectSymlinks(file);try{const existing=await readFile(file);if(!existing.equals(bytes))throw new DeckError('ASSET_COLLISION','A content-addressed file differs. Restore it explicitly; original files are never overwritten.',409);return;}catch(e){if(e.code!=='ENOENT')throw e;}await mkdir(path.dirname(file),{recursive:true,mode:0o700});await atomicWrite(file,bytes);}

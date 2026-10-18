@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "checks": [
+    "Actual semantic interaction invalidates prior receipt",
+    "Browser detects locked repeated layout",
+    "Both rounds refuse author-locked changes",
+    "Last valid HTML remains byte-identical",
+    "Incomplete source and HTML remain available"
+  ]
+}

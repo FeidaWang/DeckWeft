@@ -1,0 +1,106 @@
+{
+  "task": "VIS-013",
+  "date": "2026-10-18",
+  "implementation": "implemented-local",
+  "evidenceScope": "Actual local workbench UI and opt-in Codex CLI; not Claude/desktop plugin/VIS-014 release acceptance",
+  "runtimeDependenciesAdded": 0,
+  "automated": {
+    "command": "npm run verify",
+    "passed": 323,
+    "failed": 0,
+    "skipped": 0,
+    "log": "verify.txt",
+    "workbenchTests": 11
+  },
+  "browser": {
+    "version": "153.0.8010.12",
+    "realCaptureTransport": "Node built-in WebSocket CDP, isolated executable outside Applications, temporary profile, loopback artifact",
+    "studioRegressionChecks": 22,
+    "studioCaptures": 31,
+    "uiWidths": [
+      1600,
+      390
+    ],
+    "artifactWidths": [
+      1440,
+      390
+    ],
+    "errors": [],
+    "externalRequests": []
+  },
+  "actualCodex": {
+    "route": "Existing local CLI settings; explicit UI opt-in, no login/model/provider fallback",
+    "selectedPageRevision": true,
+    "beforeReview": "pass",
+    "afterReview": "pass",
+    "beforeHash": "0803cb32ea7a36ec4d14b127e298a2927527cc4c0215aa4bdbda476f3da288bf",
+    "afterHash": "0faa72cffa4ee67acf7c01654347ed5afc50fe10bd8eaaee7832ed6f22d4b14e",
+    "exactScope": "Actual page-4-only composition change; semantic document/assets/other scenes retained",
+    "imagesPerReview": 8,
+    "hostModel": "unknown unless reported by host receipt",
+    "billingRoute": "unknown; no subscription inference",
+    "explicitResume": "First post-patch host findings failed strict identity/hash validation; no export was granted. A separately initiated UI capture/review operation passed without changing source, scopes or budget."
+  },
+  "recovery": {
+    "actualAuthorLockFailure": true,
+    "newCandidateBlocked": true,
+    "lastAcceptedHtmlByteExact": true,
+    "evidence": "recovery.json",
+    "interruptedResume": true
+  },
+  "privacy": {
+    "privateSpeakerSentinelAbsentFromHtml": true,
+    "publicReferencesRetained": true,
+    "audienceNavigationWithoutEditor": true,
+    "checkpointsRemainPrivateLocalData": true
+  },
+  "claude": {
+    "loginAttempted": false,
+    "liveAttempted": false,
+    "status": "deferred by user"
+  },
+  "primaryVisualInspection": {
+    "method": "Actual view_image pixels; tall story sheets downscaled and native chart/diagram images also viewed",
+    "files": [
+      "capture-1792319689343-1440.png",
+      "capture-1792319689343-1440-evidence.png",
+      "capture-1792319689343-1440-process.png",
+      "capture-1792319689343-390.png",
+      "capture-1792319689343-390-evidence.png",
+      "capture-1792319689343-390-process.png",
+      "workbench-generated-zh.png",
+      "workbench-mobile.png",
+      "workbench-mobile-viewport.png",
+      "workbench-mobile-canvas.png"
+    ],
+    "findings": [
+      "Complete desktop/mobile story retains every scene and readable headings.",
+      "All six chart periods, separated shared 18 labels and exact 78/45 endpoints fit the mobile view.",
+      "The mobile Draft/Compare/Review chain is fully visible; desktop routing remains circuitous.",
+      "The Chinese shell keeps English source/output separate. The generated audience view has presentation navigation without editor chrome.",
+      "An on-screen mobile viewport capture confirms the embedded canvas itself paints correctly; full-page offscreen iframe culling is not treated as evidence of a blank product."
+    ]
+  },
+  "applications": {
+    "PowerPoint": "present, not opened",
+    "Keynote": "present, not opened",
+    "Figma": "present, not opened",
+    "AfterEffects": "not found under Applications; not run"
+  },
+  "limits": [
+    "Local supplied-text mode preserves source instead of rewriting tone; natural-language local grammar and host composition/chart contract remain bounded.",
+    "Actual interaction traces are required; the new capture adapter does not fabricate exhaustive action coverage.",
+    "Synthetic six-family evidence is not the VIS-014 coherent-story gallery; whitespace and desktop connector routing warnings remain.",
+    "Claude, native desktop activation, Windows, other engines/accessibility, remote CI and native v3 compatibility remain open."
+  ],
+  "sourceManifest": "source-manifest.json",
+  "actualDraft": {
+    "evidence": "host-generation.json",
+    "explicitHost": "codex",
+    "sourceLinesExact": true,
+    "manualLayoutEdits": 0,
+    "imageVerdict": "pass",
+    "rendererBasis": "3a9eeadf131ab5c9a365e66d6642a443b903bff45108d5290ed1050080a4977e",
+    "scope": "Own earlier captured-source receipt; final task-loop renderer basis remains independently checked in after.json"
+  }
+}

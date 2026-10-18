@@ -1,0 +1,15 @@
+
+> deckweft@0.1.0-alpha.2 deck:verify
+> node tests/browser_visual_task.mjs
+
+{
+  "ok": true,
+  "statuses": [
+    "awaiting-image-review",
+    "awaiting-image-review",
+    "awaiting-image-review",
+    "repair-exhausted"
+  ],
+  "shots": "/Users/feida/Developer/DeckWeft/dist/visual-task/browser-captures",
+  "out": "/Users/feida/Developer/DeckWeft/dist/visual-task"
+}

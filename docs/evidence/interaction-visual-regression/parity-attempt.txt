@@ -1,0 +1,10 @@
+en-cream-collage passed
+en-electric-violet passed
+en-dark-data passed
+zh-CN-cream-collage passed
+{
+  "ok": false,
+  "cases": 5,
+  "comparisons": 178,
+  "failure": "AssertionError [ERR_ASSERTION]: zh-CN-electric-violet-390-component-process-selected: {\"maximumChannelDifference\":12,\"differingPixels\":3}\n    at compare (file:///Users/feida/Developer/DeckWeft/tests/browser_interaction_visual_parity.mjs:26:9)\n    at async file:///Users/feida/Developer/DeckWeft/tests/browser_interaction_visual_parity.mjs:46:232"
+}

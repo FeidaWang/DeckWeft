@@ -1,0 +1,27 @@
+
+> deckweft@0.1.0-alpha.2 doctor
+> node bin/deckweft.mjs doctor
+
+{
+  "application": "DeckWeft",
+  "version": "0.1.0-alpha.2",
+  "node": "v24.14.0",
+  "nodeSupported": true,
+  "hosts": {
+    "codex": {
+      "found": true,
+      "version": "codex-cli 0.160.0",
+      "authenticated": "not checked"
+    },
+    "claude": {
+      "found": true,
+      "version": "2.1.288 (Claude Code)",
+      "authenticated": "not checked"
+    }
+  },
+  "networkRequired": false,
+  "desktopApps": {
+    "figma": "not checked",
+    "afterEffects": "not checked"
+  }
+}

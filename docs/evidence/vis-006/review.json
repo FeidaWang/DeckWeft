@@ -1,0 +1,539 @@
+{
+  "date": "2026-10-18",
+  "task": "VIS-006",
+  "state": "implemented-local",
+  "verify": {
+    "command": "npm run verify",
+    "log": "verify.txt",
+    "tests": 247,
+    "passed": true,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "version": "151.0.7922.34",
+    "cases": 18,
+    "candidateScenes": 108,
+    "accepted": 96,
+    "minimumPassingPerRepresentative": 2,
+    "distinctMeasuredGeometriesPerRepresentative": 3,
+    "captures": 135,
+    "pageErrors": [],
+    "externalRequests": [],
+    "report": "browser.json",
+    "legacyRegression": "legacy-browser.json"
+  },
+  "representatives": [
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "scene": "chapter",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "scene": "violet",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "scene": "collage",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "scene": "evidence",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "scene": "comparison",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "scene": "process",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "scene": "chapter",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "scene": "violet",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "scene": "collage",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "scene": "evidence",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "scene": "comparison",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "scene": "process",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "scene": "chapter",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "scene": "violet",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "scene": "collage",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "scene": "evidence",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "scene": "comparison",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "scene": "process",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scene": "chapter",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scene": "violet",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scene": "collage",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scene": "evidence",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scene": "comparison",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scene": "process",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scene": "chapter",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scene": "violet",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scene": "collage",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scene": "evidence",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scene": "comparison",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scene": "process",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scene": "chapter",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scene": "violet",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scene": "collage",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scene": "evidence",
+      "passing": 2,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scene": "comparison",
+      "passing": 3,
+      "geometryVariants": 3
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scene": "process",
+      "passing": 3,
+      "geometryVariants": 3
+    }
+  ],
+  "rejectedCandidates": [
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "scene": "violet",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (981px)"
+      ],
+      "height": 980.390625,
+      "features": {
+        "focus": "left:top",
+        "density": 0.31113391825881626,
+        "imageRatio": 0.1950315682066529
+      }
+    },
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "scene": "evidence",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (911px)"
+      ],
+      "height": 910.96875,
+      "features": {
+        "focus": "center:top",
+        "density": 0.5574697349132756,
+        "imageRatio": 0
+      }
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "scene": "violet",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (981px)"
+      ],
+      "height": 980.390625,
+      "features": {
+        "focus": "left:top",
+        "density": 0.3106737451260026,
+        "imageRatio": 0.1950315682066529
+      }
+    },
+    {
+      "locale": "en",
+      "theme": "electric-violet",
+      "scene": "evidence",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (911px)"
+      ],
+      "height": 910.96875,
+      "features": {
+        "focus": "center:top",
+        "density": 0.5564477081063641,
+        "imageRatio": 0
+      }
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "scene": "violet",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (981px)"
+      ],
+      "height": 980.390625,
+      "features": {
+        "focus": "left:top",
+        "density": 0.3106737451260026,
+        "imageRatio": 0.1950315682066529
+      }
+    },
+    {
+      "locale": "en",
+      "theme": "dark-data",
+      "scene": "evidence",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (911px)"
+      ],
+      "height": 910.96875,
+      "features": {
+        "focus": "center:top",
+        "density": 0.5564477081063641,
+        "imageRatio": 0
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scene": "violet",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (1002px)"
+      ],
+      "height": 1001.984375,
+      "features": {
+        "focus": "left:top",
+        "density": 0.32063246800664413,
+        "imageRatio": 0.19082844585161376
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scene": "evidence",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (918px)"
+      ],
+      "height": 917.171875,
+      "features": {
+        "focus": "center:top",
+        "density": 0.5683204965601835,
+        "imageRatio": 0
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scene": "violet",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (1002px)"
+      ],
+      "height": 1001.984375,
+      "features": {
+        "focus": "left:top",
+        "density": 0.32063246800664413,
+        "imageRatio": 0.19082844585161376
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scene": "evidence",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (918px)"
+      ],
+      "height": 917.171875,
+      "features": {
+        "focus": "center:top",
+        "density": 0.5683204965601835,
+        "imageRatio": 0
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scene": "violet",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (1002px)"
+      ],
+      "height": 1001.984375,
+      "features": {
+        "focus": "left:top",
+        "density": 0.32063246800664413,
+        "imageRatio": 0.19082844585161376
+      }
+    },
+    {
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scene": "evidence",
+      "candidate": 1,
+      "ok": false,
+      "reasons": [
+        "Scene exceeds 900px presentation budget (918px)"
+      ],
+      "height": 917.171875,
+      "features": {
+        "focus": "center:top",
+        "density": 0.5683204965601835,
+        "imageRatio": 0
+      }
+    }
+  ],
+  "visuallyInspected": [
+    "Six bilingual/theme contact sheets covering all eighteen geometries",
+    "Six full six-page selected-deck screenshots",
+    "Individual Chinese metric, both editors, enlarged candidate and live rhythm report"
+  ],
+  "preserved": [
+    "Full semantic documents, exact datasets and metric decimals",
+    "Sources, snapshot anchors, assets, crops, author locks",
+    "Theme and scene identities after reorder",
+    "v1/v2 storage and migration, stale revisions, history restore-as-copy"
+  ],
+  "failuresAndRepairs": [
+    {
+      "attempt": "attempt-1.json",
+      "failure": "Presentation stress check ran at the preceding 390px reading viewport",
+      "repair": "Set the stress-test viewport explicitly to 1440px; no app gate weakened"
+    },
+    {
+      "attempt": "attempt-2.json",
+      "failure": "QA asset seeded in parent library, while Visual Studio reads its visual sublibrary",
+      "repair": "Use store.home consistently; missing-asset export refusal retained"
+    },
+    {
+      "attempt": "legacy-overlap-failure.json",
+      "failure": "Playwright child-frame bounding boxes omitted iframe transform and clicked the later citation region",
+      "repair": "Use observed frame/child DOM geometry to transform a real mouse click; data table then opens. No forced/dispatched click or browser changes."
+    },
+    {
+      "failure": "Comparison third variant originally read too similarly to the wide matrix",
+      "repair": "Use dimension cards with stacked, labelled attributes; preserve all original headings and cells"
+    },
+    {
+      "failure": "Metric formatter default rounded beyond three decimals",
+      "repair": "Render with 21 significant-digit budget; 81.250125 regression"
+    },
+    {
+      "failure": "Selection left previous measured export enabled while awaiting the response",
+      "repair": "Clear current render before selection; await the new measured preview"
+    }
+  ],
+  "applications": {
+    "Microsoft PowerPoint": [
+      "/Applications/Microsoft PowerPoint.app"
+    ],
+    "Keynote": [
+      "/Applications/Keynote.app"
+    ],
+    "Figma": [
+      "/Applications/Figma.app"
+    ],
+    "After Effects": []
+  },
+  "notRun": [
+    "PowerPoint, Keynote, Figma native acceptance",
+    "After Effects (not found)",
+    "Other engines, real OS IME, screen reader, 200% zoom, projection",
+    "Remote CI, real host generation, VIS-014 broader release gate"
+  ],
+  "boundaries": {
+    "runtimeDependenciesAdded": 0,
+    "remoteServicesAdded": 0,
+    "automaticImageRequests": 0,
+    "installedBrowsersModified": false,
+    "publishedOrPushed": false
+  }
+}

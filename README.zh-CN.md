@@ -12,6 +12,27 @@
 
 ![实际运行的 DeckWeft 工作台](docs/assets/studio-desktop.png)
 
+运行 `npm run studio:compositions`，体验六类构图、每页三种实测候选与整稿节奏选择。[操作与恢复](docs/zh-CN/visual-studio.md) · [VIS-006 视觉证据](docs/evidence/vis-006/review.md)。
+
+运行 `npm run studio:assets`，体验原件保留、具名图片槽、本地 JPEG／WebP 转换与作者保护区裁切。[素材说明](docs/zh-CN/assets.md) · [VIS-007 证据](docs/evidence/vis-007/review.md)。
+
+运行 `npm run studio:components`，体验三主题、中英文的可编辑精确图表、定向图解、原文代码与稳定注释。[组件说明](docs/zh-CN/components.md) · [VIS-008 证据](docs/evidence/vis-008/review.md)。
+
+运行 `npm run studio:interactions`，体验真实图表筛选、图片比较／热点、分步说明与确定性离线提示重播。键盘、触控和减少动态效果共用不改写来源的状态。[交互说明](docs/zh-CN/interactions.md) · [VIS-009 证据](docs/evidence/vis-009/review.md)。
+
+运行 `npm run visual:verify` 执行本地浏览器质量捕获与有界构图修复，再运行 `npm run visual:review` 查看整稿、诊断和原尺寸截图。质量回执必须经过实际图像审阅。[质量说明](docs/zh-CN/visual-quality.md) · [VIS-010 证据](docs/evidence/vis-010/review.md)。
+
+执行 `npm run deck:create -- --brief examples/task-brief.zh-CN.json --out dist/my-task`，生成保留源内容的本地任务检查点和预览。共享工具连接规划、精确数据修订、真实浏览器检查、实际图像审阅、有界修复与已审阅 HTML 导出。[任务说明](docs/zh-CN/task-loop.md) · [VIS-011 证据](docs/evidence/vis-011/review.md)。VIS-012 宿主适配已有本地实现，Claude 验收暂缓；VIS-013 工作台已有本地实现。
+
+
+当前需求已按实际代码校准：VIS-002～011 为本地实现，VIS-012 宿主适配已有本地实现及暂缓的 Claude 验收，VIS-013 工作台已有本地实现，VIS-014 发布验收仍为后续计划。完整样例库、真实宿主和 v3 原生导出仍有待验证或开发；详见[路线图](docs/zh-CN/roadmap.md)。
+
+本地宿主适配已支持显式启用的结构化起草、局部修订及实际截图反馈，复用共享任务工具。Claude 真实验收继续暂缓，VIS-012 保持 partial。[宿主手册](docs/zh-CN/hosts.md) · [证据](docs/evidence/vis-012/review.md)。
+
+## 视觉优先重建：首批实现
+
+[Visual Studio](docs/zh-CN/visual-studio.md) 已在本地应用内接入 v3 语义编辑与保存。Cream Collage、Dark Data、Electric Violet 均有双语样例，支持 DOM/SVG 实测预览、数值表、主题／内容锁定、本地图片裁切与历史恢复。执行 `npm run studio:visual-demo`，或从经典文稿库进入。完整发布样例库、宿主生成与 v3 原生导出仍待后续验收。
+
 ## 本地素材与多个 worker
 
 MB-11～15 增加可选宿主图片请求/本地复用、两个独立授权 worker、轨道/层叠 3D 与可编辑静态后备，以及更完整的 Figma/AE 交接。真实并发 CLI 与直接浏览器素材/3D 流程已通过；**Dot 桌面、Figma 原生导入与 AE 实际渲染仍未验收。**[指南](docs/zh-CN/media-workers.md) · [证据](docs/evidence/mb-11-15/review.md)。
@@ -89,3 +110,5 @@ MIT 许可证和原作者声明见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE.md)。
 工作台新增浏览器真实文字测量，预览和导出复用同一份排版；命令行仍明确使用离线估算。加入只读历史版本浏览和“恢复为新副本”，并修复输入法、键盘焦点、过期预览及保存竞争。**DW-020 整体验收仍阻塞**：已登录 Codex CLI 的独立项目技能任务已通过，并完成输出审阅；按用户要求暂不登录 Claude，Codex 桌面原生激活和远程 CI 也尚未验证。详见[当前宿主证据](docs/zh-CN/host-acceptance.md)。
 
 [更新说明](docs/zh-CN/alpha-2.md) · [宿主验收指南](docs/zh-CN/host-acceptance.md) · [当前验证报告](docs/zh-CN/verification.md)
+
+VIS-013 提示词工作台已接入现有 Visual Studio：输入提示词或选择来源、观看预览、单页修订、实际截图审阅及已审阅 HTML 导出，保留独立语言／风格偏好、作者锁与恢复。Claude 登录继续暂缓。[工作台手册](docs/zh-CN/workbench.md) · [证据](docs/evidence/vis-013/review.md)。

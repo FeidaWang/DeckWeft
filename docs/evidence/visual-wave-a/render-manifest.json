@@ -1,0 +1,29 @@
+{
+  "format": "deckweft-visual-render",
+  "version": 1,
+  "case": "wave-a",
+  "artifacts": [
+    {
+      "file": "wave-a.en.html",
+      "locale": "en",
+      "sourceHash": "351715f169f8e57a297f0dd18e26bbf3133473803181b0d76253fa6c6801bca7",
+      "outputHash": "23ae62618679858d1945aa9c9df944a3250d66561643fdf4ca8c6cc27d841ad5",
+      "renderHash": "b6925e7af78e71ae880dfebb19bf33f4c1fb65bedf6c444e24a65b331060184a",
+      "sceneHashes": [
+        "9fb45ebee6113849ca5623603f4f04e628367a1f4181a9662a8d5e01bb10b0aa",
+        "3188f6d83c5c602a4662ff6275f858ff9ab4b9bd525be620c866ea22220b442c"
+      ]
+    },
+    {
+      "file": "wave-a.zh-CN.html",
+      "locale": "zh-CN",
+      "sourceHash": "01194aad8eb37fcab967c27b8edda2109323aeadbf24888317a114d7d1bc726e",
+      "outputHash": "8d72f1b0fe45f43d29010fdf6f442bdf904fde6e1974596d022d3f69c766431c",
+      "renderHash": "071b94570a946039abebbcb6fe67ce9599b9723e0b932ee542e243895c526bcb",
+      "sceneHashes": [
+        "aec870f87463ea637a068d71f6a6edc6eb1e2e3a31ef3a264fc9f048524e0878",
+        "7c5e1908045a63ff717fc1f5063e3a86e27521df5e0d721f5e942d179c842d82"
+      ]
+    }
+  ]
+}

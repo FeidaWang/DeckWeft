@@ -1,0 +1,2 @@
+Usage: CHROMIUM_PATH=/isolated/browser PLAYWRIGHT_MODULE=/qa/playwright-core/index.mjs npm run host:visual -- --host codex|claude-code --live --out dist/host-visual-NEW
+Runs the selected existing host for drafting, real captured-image review, scoped revision and reviewed HTML export from an isolated bundled runtime. No login, provider fallback, desktop certification or global installation. Existing host configuration may consume its allowance.

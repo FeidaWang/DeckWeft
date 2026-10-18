@@ -1,0 +1,35 @@
+{
+  "application": "DeckWeft",
+  "version": "0.1.0-alpha.2",
+  "hosts": [
+    {
+      "format": "deckweft-host-capabilities",
+      "version": 1,
+      "host": "claude-code",
+      "surface": "local-cli",
+      "checkedAt": "2026-10-18T06:19:07.396Z",
+      "workspaceHash": "60d9224927d543ec6d8b39aea102927fad8d5e0ad3688e8001aa893ef0c8b20d",
+      "configurationFingerprint": "c924d468613c5d8cd2b8c402a66c157061d7070ec86aff400e08771652244bda",
+      "available": true,
+      "cliVersion": "2.1.288 (Claude Code)",
+      "authentication": {
+        "status": "unknown",
+        "evidence": "not-probed"
+      },
+      "billingRoute": "unknown; existing host configuration is retained",
+      "structuredOutput": "advertised",
+      "imageInput": "advertised-not-delivery-verified",
+      "permissionMode": "manual",
+      "writableScope": "built-in tools disabled; parent applies validated local tools",
+      "renderer": "shared local renderer; actual capture is supplied separately",
+      "domDiagnostics": "requires explicit browser capture callback",
+      "imageBackend": "unknown; no generation request",
+      "timeout": {
+        "supported": true,
+        "maximumMs": 600000
+      },
+      "ready": true,
+      "id": "0242fed3e3b7c02e23a145100395d9b5e77d991f8099e50e637fe7eb82af6edd"
+    }
+  ]
+}

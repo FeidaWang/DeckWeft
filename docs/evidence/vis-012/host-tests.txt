@@ -1,0 +1,41 @@
+✔ preflight records advertised capabilities without auth probes, inference or raw output (4.583167ms)
+✔ missing or failed help is not treated as a usable host (0.780708ms)
+✔ explicit auth probe discards secret/account-bearing status text (0.721083ms)
+✔ Codex parser requires completion and reads final schema message separately from JSONL (0.194709ms)
+✔ Claude extracts structured_output only and rejects errors and denied permissions (0.350334ms)
+✔ both adapter paths validate bound request identity and write only safe receipts (4.525083ms)
+✔ malformed/stale/extra structured results fail without repair or fallback (5.438041ms)
+✔ host timeout/nonzero/cancellation/output-limit never parse plausible partial output (3.575ms)
+✔ live opt-in and capability host/workspace bindings are checked before invoking a host (1.007167ms)
+✔ process transports prompt literally on stdin, preserves Unicode, and bounds output/timeout/cancel (72.867917ms)
+✔ image transport binds actual bytes and Claude uses native base64 blocks without bypass/bare (4.712167ms)
+✔ symlinked final output and invalid image bytes are refused without importing their content (3.853125ms)
+✔ host drafts remain unverified content and revisions pass through shared author locks/scope (13.166417ms)
+✔ host payload omits legacy private-note archive and unrelated extensions (4.376958ms)
+✔ review refuses changed capture bytes and incomplete or fabricated image findings (2.427042ms)
+✔ portable package includes adapters/schema/themes and runs visual-task without source scripts (444.231167ms)
+✔ capability receipt expires and configuration changes require a fresh probe (1.459875ms)
+✔ captured-image path traversal cannot upload a file outside the task workspace (1.971541ms)
+✔ schema-valid image review still requires every actual capture hash and current block identity (9.291875ms)
+✔ host drafting cannot drop or alter explicitly supplied source lines or numbers (5.070875ms)
+✔ public CLI rejects accidental live calls and stale revisions before starting a host (207.670208ms)
+✔ CLI cancellation terminates the actual child and releases the checkpoint lock (157.510917ms)
+✔ DW-020: evidence redacts known tokens, email and supplied local paths (0.528125ms)
+✔ DW-020: a truly absent executable is blocked, never a simulated host pass (3.084292ms)
+✔ DW-020: subprocess probes capture a real executable version, not generated evidence (13.604458ms)
+✔ DW-020: a hanging subprocess is terminated with a timeout flag (82.286167ms)
+✔ DW-020: Claude normal permission mode follows the installed help and fails closed (0.224791ms)
+✔ DW-020: invalid timeout is rejected before a workspace or evidence is created (0.499792ms)
+✔ DW-020: interrupted evidence without a report cannot be overwritten (2.643625ms)
+✔ DW-020: artifact verification reruns the real bundled CLI and compares both exports (273.999125ms)
+✔ DW-020: nonempty fake HTML or PowerPoint cannot satisfy artifact verification (439.017209ms)
+✔ DW-020: an unrelated valid deck cannot satisfy the task nonce check (30.058959ms)
+✔ DW-020: symlinked artifacts are rejected before copying local files into evidence (29.738625ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 997.314375

@@ -1,0 +1,15 @@
+{
+  "method": "Read-only path discovery; no target application launched",
+  "applications": {
+    "Microsoft PowerPoint": [
+      "/Applications/Microsoft PowerPoint.app"
+    ],
+    "Keynote": [
+      "/Applications/Keynote.app"
+    ],
+    "Figma": [
+      "/Applications/Figma.app"
+    ],
+    "After Effects": []
+  }
+}

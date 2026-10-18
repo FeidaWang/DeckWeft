@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "checks": 22,
+  "captures": 31,
+  "errors": [],
+  "out": "/Users/feida/Developer/DeckWeft/dist/visual-studio/acceptance"
+}

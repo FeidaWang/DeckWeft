@@ -1,0 +1,62 @@
+{
+  "ok": true,
+  "liveHost": true,
+  "home": "/Users/feida/Developer/DeckWeft/dist/vis013-draft-acceptance/library",
+  "id": "8d2bea60-bc1e-41a5-b404-1ef480adc842",
+  "captures": [
+    {
+      "file": "capture-1792319422612-1440.png",
+      "sha256": "b80f898c38979c21ca76e1441760dda64d8daaa3ce20961d6913a936faf594b4",
+      "reviewRequired": true
+    },
+    {
+      "file": "capture-1792319422612-390.png",
+      "sha256": "771c4f21ce8e90e39df13b4c407b8dc2c10732b8685db22951b1d4410e9c6ca6",
+      "reviewRequired": true
+    }
+  ],
+  "sourceLinesExact": true,
+  "manualLayoutEdits": 0,
+  "audienceNavigation": true,
+  "noEditorChrome": true,
+  "unreviewedExportBlocked": false,
+  "actualHostReview": {
+    "reviewer": "codex local CLI",
+    "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 008508dc-0d5a-486c-b848-31f65375c085",
+    "images": [
+      "capture-1792319422612-1440.png",
+      "capture-1792319422612-390.png"
+    ],
+    "judgment": "Both attached images were inspected. No visible clipping, overlap, or contrast failures. Heading hierarchy is clear at both widths. Story rhythm could improve through more balanced desktop spacing and clearer mobile paragraph separation.\ncapture-1792319422612-1440.png: All four scenes are readable and contained. Scenes 1 and 4 use consistent split layouts; scene 3 provides a centered variation. Scene 2 is weakest: its compact instructions sit above extensive empty space, reducing visual momentum.\ncapture-1792319422612-390.png: All four scenes reflow cleanly without horizontal clipping or collisions. Titles retain clear hierarchy and text has strong contrast. Scene 3 is weakest: consecutive instructions form a dense paragraph block with little separation.",
+    "issues": [
+      {
+        "sceneId": "slide_ced70b2835894d3b",
+        "nodeId": "b1_body",
+        "bounds": {
+          "x": 47,
+          "y": 709,
+          "width": 406,
+          "height": 52
+        },
+        "severity": "warning",
+        "reason": "Desktop instructions occupy a small area near the top, leaving most of the scene empty and weakening pacing.",
+        "suggestion": "Rebalance vertical spacing or add a simple fold illustration alongside the instructions."
+      },
+      {
+        "sceneId": "slide_e95adaf05f854709",
+        "nodeId": "b2_body",
+        "bounds": {
+          "x": 22,
+          "y": 1051,
+          "width": 346,
+          "height": 197
+        },
+        "severity": "warning",
+        "reason": "On mobile, the three instructional paragraphs run together visually, making the action sequence harder to scan.",
+        "suggestion": "Add space between the three paragraphs to distinguish pressing, comparing, and recording."
+      }
+    ],
+    "verdict": "pass"
+  },
+  "errors": []
+}

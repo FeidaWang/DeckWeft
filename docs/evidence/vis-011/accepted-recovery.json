@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "captures": 1,
+  "browser": "153.0.8010.12",
+  "status": "repair-exhausted",
+  "spent": {
+    "rounds": 2,
+    "candidates": 4,
+    "sceneChanges": 0,
+    "milliseconds": 3
+  },
+  "attempts": [
+    {
+      "round": 1,
+      "proposal": {
+        "sceneId": "slide_9a2cbda382db472b",
+        "composition": "statement-banner"
+      },
+      "status": "rejected",
+      "reason": "Unlock the affected content or scene explicitly before changing it."
+    },
+    {
+      "round": 1,
+      "proposal": {
+        "sceneId": "slide_9a2cbda382db472b",
+        "composition": "statement-center"
+      },
+      "status": "rejected",
+      "reason": "Unlock the affected content or scene explicitly before changing it."
+    },
+    {
+      "round": 2,
+      "proposal": {
+        "sceneId": "slide_9a2cbda382db472b",
+        "composition": "statement-banner"
+      },
+      "status": "rejected",
+      "reason": "Unlock the affected content or scene explicitly before changing it."
+    },
+    {
+      "round": 2,
+      "proposal": {
+        "sceneId": "slide_9a2cbda382db472b",
+        "composition": "statement-center"
+      },
+      "status": "rejected",
+      "reason": "Unlock the affected content or scene explicitly before changing it."
+    }
+  ],
+  "lastValidHash": "2f01d643ca6e0303a6fff389680faac4a1462e6f47574eca8fdc4c9166a85fe6",
+  "checks": [
+    "Actual failed rerun after accepted export",
+    "Both rounds reject locked candidates before rendering",
+    "Previous accepted source and HTML bytes retained"
+  ],
+  "errors": [],
+  "external": []
+}

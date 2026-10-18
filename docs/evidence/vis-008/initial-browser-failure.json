@@ -1,0 +1,803 @@
+{
+  "browser": "151.0.7922.34",
+  "isolation": "Isolated cached testing binary; ephemeral context; installed apps and personal profiles untouched",
+  "checks": [],
+  "cases": [
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "fit": {
+        "version": 1,
+        "renderHash": "dbfec25d8a24e82d2783e9403910aac194d02e259ab84396674182dc01bd5e29",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.30227290771016674,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "6fe684ecf2f81d8cef1d02f273e4d380d92477704f63dea6d70ffb64b6580588",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "Georgia, serif",
+                "font": "500 79.2px / 82.368px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 711.7432250976562
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.4568220651141022,
+              "imageRatio": 0
+            },
+            "height": 947.875,
+            "sourceHash": "deeef3fb8a0823e97ab023e61037bb298febb3f89551884f0c81799f5040120d",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "Arial, sans-serif",
+                "font": "500 60px / 63.6px Arial, sans-serif",
+                "loaded": true,
+                "probeWidth": 545.771484375
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "28px / 33.6px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 254.693359375
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "16px / 24px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 145.5390625
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "inside": false
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.5145757806226747,
+              "imageRatio": 0.4250019740637195
+            },
+            "height": 1119.890625,
+            "sourceHash": "d7c5802533ad8a80c237f5c81d44455c59cbad805872b8f02bd9d6ca0f3b2c7b",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 66.24px / 68.8896px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 617.2802734375
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "13px / 19.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 118.25048828125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.2735296841325431,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "91ca7d3dee6bb18131ef53c49f6f389e24896086cc936cb061a8e1cdbf2b9d36",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 100px / 104px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 931.884765625
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-line",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5418149272177564,
+              "imageRatio": 0
+            },
+            "height": 782.390625,
+            "sourceHash": "0b4bb20269a5454491ae0be473cecfb39668e8b297f303b4f27cd20261266f6c",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r2233bae96c255f123215",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r17bcc8ca8310a2bc41b5",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "redd2720eaf464e3f3d06",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r2233bae96c255f123215",
+                "inside": true
+              },
+              {
+                "regionId": "r17bcc8ca8310a2bc41b5",
+                "inside": false
+              },
+              {
+                "regionId": "redd2720eaf464e3f3d06",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-area",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5418149272177564,
+              "imageRatio": 0
+            },
+            "height": 782.390625,
+            "sourceHash": "022aac65990883703ea7164aa6cff51baf33048d178080cc51e44c0379042c4d",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r188455de386a44b2dfb4",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "ra26c82c7453c8c961256",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "rf6c75305541eedf00c1c",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r188455de386a44b2dfb4",
+                "inside": true
+              },
+              {
+                "regionId": "ra26c82c7453c8c961256",
+                "inside": false
+              },
+              {
+                "regionId": "rf6c75305541eedf00c1c",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-ranked-bar",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5418149272177564,
+              "imageRatio": 0
+            },
+            "height": 782.390625,
+            "sourceHash": "972e09ac5d34e63eb8a61e833587d5a0d58e237529e227059c59607669a1d253",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r15b38ba2a39b46566e2b",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "rf3628d469550dbbdf4e3",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "rc5f817af7f982a63512f",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r15b38ba2a39b46566e2b",
+                "inside": true
+              },
+              {
+                "regionId": "rf3628d469550dbbdf4e3",
+                "inside": false
+              },
+              {
+                "regionId": "rc5f817af7f982a63512f",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-stacked",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5418149272177564,
+              "imageRatio": 0
+            },
+            "height": 782.390625,
+            "sourceHash": "334cf3e1da07e969bbc0357cf034debdb6dd40a9a87709a741baf622f211aa98",
+            "contrastIssues": [],
+            "clipIssues": [
+              {
+                "regionId": "r357162b28f3076cdb721",
+                "element": "svg text",
+                "text": "8.25",
+                "reason": "Text outside component viewBox",
+                "bounds": {
+                  "x": 781.0000610351562,
+                  "y": 184.5940399169922,
+                  "width": 27.250001907348633,
+                  "height": 16
+                }
+              }
+            ],
+            "fonts": [
+              {
+                "regionId": "r74eea795a485a35c1556",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r357162b28f3076cdb721",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r70d1754e58475d8765bc",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r74eea795a485a35c1556",
+                "inside": true
+              },
+              {
+                "regionId": "r357162b28f3076cdb721",
+                "inside": false
+              },
+              {
+                "regionId": "r70d1754e58475d8765bc",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-scatter",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5418149272177564,
+              "imageRatio": 0
+            },
+            "height": 782.390625,
+            "sourceHash": "f4d3f67f11a3d0fa43b9ec81e273cbc5543cad8bba377f76a91fdef7faaf6973",
+            "contrastIssues": [],
+            "clipIssues": [
+              {
+                "regionId": "r23da9f118ffab9fef705",
+                "element": "svg text",
+                "text": "Deliver: 9, 6",
+                "reason": "Text outside component viewBox",
+                "bounds": {
+                  "x": 750.0000610351562,
+                  "y": 62.81318283081055,
+                  "width": 74.6964340209961,
+                  "height": 16
+                }
+              }
+            ],
+            "fonts": [
+              {
+                "regionId": "r0eb544eb31943e680ad3",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r23da9f118ffab9fef705",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "rbe57d02db67debdca242",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r0eb544eb31943e680ad3",
+                "inside": true
+              },
+              {
+                "regionId": "r23da9f118ffab9fef705",
+                "inside": false
+              },
+              {
+                "regionId": "rbe57d02db67debdca242",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-heatmap",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5418149272177564,
+              "imageRatio": 0
+            },
+            "height": 782.390625,
+            "sourceHash": "352dabcbb633f2fa54be33b0ee6af8176662a2047aebfcedba37220ef1c8e797",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r8c98ba1f139db0e5dc88",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r7afad02f00dd3bc225f2",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r04222c7156905ed4436a",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r8c98ba1f139db0e5dc88",
+                "inside": true
+              },
+              {
+                "regionId": "r7afad02f00dd3bc225f2",
+                "inside": false
+              },
+              {
+                "regionId": "r04222c7156905ed4436a",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-relationship",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5907684812210685,
+              "imageRatio": 0
+            },
+            "height": 931.890625,
+            "sourceHash": "acd0a8ddb2ca2832924bc7f2893f9693d6c736235b13e883f417defe2679ae40",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r1d95f306f859ce4eb0fa",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "rb598c3232a13028947d4",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "rc98149b003b530aba826",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r1d95f306f859ce4eb0fa",
+                "inside": true
+              },
+              {
+                "regionId": "rb598c3232a13028947d4",
+                "inside": true
+              },
+              {
+                "regionId": "rc98149b003b530aba826",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-sequence",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.6139190112733305,
+              "imageRatio": 0
+            },
+            "height": 999.921875,
+            "sourceHash": "ec2da94f49e8161e84dba6d25d5e0a165364850dc7c11f1cdec39d3ee1c9f1a2",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r55bc06a9c9ffc1772177",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r4403b8828b159d3909fc",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r3b694bf1c0df4b4faa20",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r55bc06a9c9ffc1772177",
+                "inside": true
+              },
+              {
+                "regionId": "r4403b8828b159d3909fc",
+                "inside": true
+              },
+              {
+                "regionId": "r3b694bf1c0df4b4faa20",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-process",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5907684812210685,
+              "imageRatio": 0
+            },
+            "height": 931.890625,
+            "sourceHash": "63b357a35917d07faccf3ac4d0fb5292aeabe12989252fbb23db863087ad3266",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rdd542a3c805bc1100366",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "rc197aa9b4e2a86dbdaf4",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r97ba69e0a045faeb38d6",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rdd542a3c805bc1100366",
+                "inside": true
+              },
+              {
+                "regionId": "rc197aa9b4e2a86dbdaf4",
+                "inside": true
+              },
+              {
+                "regionId": "r97ba69e0a045faeb38d6",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-code",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.29487697557471265,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "dc1f2488928e4075cea3368ec3d8e979e170ee03f15f6bf7a5877fc43bec1a69",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r57ef8121802c91713722",
+                "family": "Georgia, serif",
+                "font": "500 48px / 49.92px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 431.4140625
+              },
+              {
+                "regionId": "r314cc911b5c14a7adef6",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r08dc2950fa1560280a41",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r57ef8121802c91713722",
+                "inside": true
+              },
+              {
+                "regionId": "r314cc911b5c14a7adef6",
+                "inside": true
+              },
+              {
+                "regionId": "r08dc2950fa1560280a41",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": false
+      }
+    }
+  ],
+  "captures": [
+    {
+      "file": "failure.png",
+      "sha256": "abb883e99a9984b579a997344d87c4dbdbd826c84a3f75dd8371e80c85810230"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "ok": false,
+  "failure": "AssertionError [ERR_ASSERTION]: [{\"sceneId\":\"evidence\",\"visualFeatures\":{\"focus\":\"left:top\",\"density\":0.4568220651141022,\"imageRatio\":0},\"height\":947.875,\"sourceHash\":\"deeef3fb8a0823e97ab023e61037bb298febb3f89551884f0c81799f5040120d\",\"contrastIssues\":[],\"clipIssues\":[],\"fonts\":[{\"regionId\":\"r4dc492a5778917ddda35\",\"family\":\"Arial, sans-serif\",\"font\":\"500 60px / 63.6px Arial, sans-serif\",\"loaded\":true,\"probeWidth\":545.771484375},{\"regionId\":\"r21b7ed492835ccd967d8\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":109.154296875},{\"regionId\":\"r398248ae205b8cb4d408\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"28px / 33.6px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":254.693359375},{\"regionId\":\"r34bed02a94cce3852840\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"16px / 24px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":145.5390625},{\"regionId\":\"r131e9af00b5a9f606da1\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px / 19.2px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":109.154296875}],\"overflow\":[],\"text\":[{\"regionId\":\"r4dc492a5778917ddda35\",\"inside\":true},{\"regionId\":\"r21b7ed492835ccd967d8\",\"inside\":false},{\"regionId\":\"r398248ae205b8cb4d408\",\"inside\":true},{\"regionId\":\"r34bed02a94cce3852840\",\"inside\":true},{\"regionId\":\"r131e9af00b5a9f606da1\",\"inside\":true}]},{\"sceneId\":\"component-line\",\"visualFeatures\":{\"focus\":\"center:top\",\"density\":0.5418149272177564,\"imageRatio\":0},\"height\":782.390625,\"sourceHash\":\"0b4bb20269a5454491ae0be473cecfb39668e8b297f303b4f27cd20261266f6c\",\"contrastIssues\":[],\"clipIssues\":[],\"fonts\":[{\"regionId\":\"r2233bae96c255f123215\",\"family\":\"Georgia, serif\",\"font\":\"500 60px / 62.4px Georgia, serif\",\"loaded\":true,\"probeWidth\":539.267578125},{\"regionId\":\"r17bcc8ca8310a2bc41b5\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":109.154296875},{\"regionId\":\"redd2720eaf464e3f3d06\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"18px / 27px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":163.7314453125}],\"overflow\":[],\"text\":[{\"regionId\":\"r2233bae96c255f123215\",\"inside\":true},{\"regionId\":\"r17bcc8ca8310a2bc41b5\",\"inside\":false},{\"regionId\":\"redd2720eaf464e3f3d06\",\"inside\":true}]},{\"sceneId\":\"component-area\",\"visualFeatures\":{\"focus\":\"center:top\",\"density\":0.5418149272177564,\"imageRatio\":0},\"height\":782.390625,\"sourceHash\":\"022aac65990883703ea7164aa6cff51baf33048d178080cc51e44c0379042c4d\",\"contrastIssues\":[],\"clipIssues\":[],\"fonts\":[{\"regionId\":\"r188455de386a44b2dfb4\",\"family\":\"Georgia, serif\",\"font\":\"500 60px / 62.4px Georgia, serif\",\"loaded\":true,\"probeWidth\":539.267578125},{\"regionId\":\"ra26c82c7453c8c961256\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":109.154296875},{\"regionId\":\"rf6c75305541eedf00c1c\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"18px / 27px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":163.7314453125}],\"overflow\":[],\"text\":[{\"regionId\":\"r188455de386a44b2dfb4\",\"inside\":true},{\"regionId\":\"ra26c82c7453c8c961256\",\"inside\":false},{\"regionId\":\"rf6c75305541eedf00c1c\",\"inside\":true}]},{\"sceneId\":\"component-ranked-bar\",\"visualFeatures\":{\"focus\":\"center:top\",\"density\":0.5418149272177564,\"imageRatio\":0},\"height\":782.390625,\"sourceHash\":\"972e09ac5d34e63eb8a61e833587d5a0d58e237529e227059c59607669a1d253\",\"contrastIssues\":[],\"clipIssues\":[],\"fonts\":[{\"regionId\":\"r15b38ba2a39b46566e2b\",\"family\":\"Georgia, serif\",\"font\":\"500 60px / 62.4px Georgia, serif\",\"loaded\":true,\"probeWidth\":539.267578125},{\"regionId\":\"rf3628d469550dbbdf4e3\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":109.154296875},{\"regionId\":\"rc5f817af7f982a63512f\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"18px / 27px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":163.7314453125}],\"overflow\":[],\"text\":[{\"regionId\":\"r15b38ba2a39b46566e2b\",\"inside\":true},{\"regionId\":\"rf3628d469550dbbdf4e3\",\"inside\":false},{\"regionId\":\"rc5f817af7f982a63512f\",\"inside\":true}]},{\"sceneId\":\"component-stacked\",\"visualFeatures\":{\"focus\":\"center:top\",\"density\":0.5418149272177564,\"imageRatio\":0},\"height\":782.390625,\"sourceHash\":\"334cf3e1da07e969bbc0357cf034debdb6dd40a9a87709a741baf622f211aa98\",\"contrastIssues\":[],\"clipIssues\":[{\"regionId\":\"r357162b28f3076cdb721\",\"element\":\"svg text\",\"text\":\"8.25\",\"reason\":\"Text outside component viewBox\",\"bounds\":{\"x\":781.0000610351562,\"y\":184.5940399169922,\"width\":27.250001907348633,\"height\":16}}],\"fonts\":[{\"regionId\":\"r74eea795a485a35c1556\",\"family\":\"Georgia, serif\",\"font\":\"500 60px / 62.4px Georgia, serif\",\"loaded\":true,\"probeWidth\":539.267578125},{\"regionId\":\"r357162b28f3076cdb721\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":109.154296875},{\"regionId\":\"r70d1754e58475d8765bc\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"18px / 27px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":163.7314453125}],\"overflow\":[],\"text\":[{\"regionId\":\"r74eea795a485a35c1556\",\"inside\":true},{\"regionId\":\"r357162b28f3076cdb721\",\"inside\":false},{\"regionId\":\"r70d1754e58475d8765bc\",\"inside\":true}]},{\"sceneId\":\"component-scatter\",\"visualFeatures\":{\"focus\":\"center:top\",\"density\":0.5418149272177564,\"imageRatio\":0},\"height\":782.390625,\"sourceHash\":\"f4d3f67f11a3d0fa43b9ec81e273cbc5543cad8bba377f76a91fdef7faaf6973\",\"contrastIssues\":[],\"clipIssues\":[{\"regionId\":\"r23da9f118ffab9fef705\",\"element\":\"svg text\",\"text\":\"Deliver: 9, 6\",\"reason\":\"Text outside component viewBox\",\"bounds\":{\"x\":750.0000610351562,\"y\":62.81318283081055,\"width\":74.6964340209961,\"height\":16}}],\"fonts\":[{\"regionId\":\"r0eb544eb31943e680ad3\",\"family\":\"Georgia, serif\",\"font\":\"500 60px / 62.4px Georgia, serif\",\"loaded\":true,\"probeWidth\":539.267578125},{\"regionId\":\"r23da9f118ffab9fef705\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":109.154296875},{\"regionId\":\"rbe57d02db67debdca242\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"18px / 27px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":163.7314453125}],\"overflow\":[],\"text\":[{\"regionId\":\"r0eb544eb31943e680ad3\",\"inside\":true},{\"regionId\":\"r23da9f118ffab9fef705\",\"inside\":false},{\"regionId\":\"rbe57d02db67debdca242\",\"inside\":true}]},{\"sceneId\":\"component-heatmap\",\"visualFeatures\":{\"focus\":\"center:top\",\"density\":0.5418149272177564,\"imageRatio\":0},\"height\":782.390625,\"sourceHash\":\"352dabcbb633f2fa54be33b0ee6af8176662a2047aebfcedba37220ef1c8e797\",\"contrastIssues\":[],\"clipIssues\":[],\"fonts\":[{\"regionId\":\"r8c98ba1f139db0e5dc88\",\"family\":\"Georgia, serif\",\"font\":\"500 60px / 62.4px Georgia, serif\",\"loaded\":true,\"probeWidth\":539.267578125},{\"regionId\":\"r7afad02f00dd3bc225f2\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":109.154296875},{\"regionId\":\"r04222c7156905ed4436a\",\"family\":\"Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"18px / 27px Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":163.7314453125}],\"overflow\":[],\"text\":[{\"regionId\":\"r8c98ba1f139db0e5dc88\",\"inside\":true},{\"regionId\":\"r7afad02f00dd3bc225f2\",\"inside\":false},{\"regionId\":\"r04222c7156905ed4436a\",\"inside\":true}]}]\n\nfalse !== true\n\n    at file:///Users/feida/Developer/DeckWeft/tests/browser_components.mjs:31:48"
+}

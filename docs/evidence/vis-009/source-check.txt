@@ -1,0 +1,1 @@
+Checked 752 source files: syntax, relative document links, schema subset, examples, task dependencies, version identity, and font exclusions.

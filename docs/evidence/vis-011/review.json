@@ -1,0 +1,147 @@
+{
+  "task": "VIS-011",
+  "date": "2026-10-18",
+  "implementation": "implemented-local",
+  "hostAcceptance": "not-run; VIS-012 remains open",
+  "workbench": "VIS-013 remains open",
+  "runtimeDependenciesAdded": 0,
+  "browser": "153.0.8010.12",
+  "localBrowser": {
+    "ok": true,
+    "widths": [
+      1440,
+      390
+    ],
+    "pageErrors": [],
+    "externalRequests": [],
+    "checks": [
+      "Natural supplied story rendered at desktop/mobile",
+      "Page 4 only: exact typed data, words, colors, sources and identities preserved",
+      "Missing data refused without fabricated chart",
+      "Actual browser quality failure repaired within default budget",
+      "Locked failure retained after two rounds"
+    ]
+  },
+  "reviewedExports": [
+    {
+      "task": "before.task.json",
+      "status": "exported",
+      "receiptId": "ac9f21a5bccc1a6dae7decd939b0e4531b40835d7cb1fdeaae8b2e2514e2fa9f",
+      "artifact": "before.html",
+      "htmlHash": "684d1c47f47e8b0f0ce825d9d6d605aa9863b7caaa5d583f8699f0ad9951a792"
+    },
+    {
+      "task": "after.task.json",
+      "status": "exported",
+      "receiptId": "860d6faffa693450b261f8b87dae43acbcfabd9aed94822e21a5c0f9505cea5c",
+      "artifact": "after.html",
+      "htmlHash": "2f01d643ca6e0303a6fff389680faac4a1462e6f47574eca8fdc4c9166a85fe6"
+    },
+    {
+      "task": "repair.task.json",
+      "status": "exported",
+      "receiptId": "10bb3c5d4933ac716758eaf42ef00a88502f231bf98ad4a5ddfdd4a72f555da7",
+      "artifact": "repair.html",
+      "htmlHash": "3e3e1ae73e0048bab03735ad8e404dcdcb06e15aea3d8999d3b8e91d487b6c73"
+    }
+  ],
+  "repairSpent": {
+    "rounds": 1,
+    "candidates": 1,
+    "sceneChanges": 1,
+    "milliseconds": 594
+  },
+  "lockedFailureSpent": {
+    "rounds": 2,
+    "candidates": 4,
+    "sceneChanges": 0,
+    "milliseconds": 3
+  },
+  "actualAcceptedRecovery": {
+    "ok": true,
+    "captures": 1,
+    "browser": "153.0.8010.12",
+    "status": "repair-exhausted",
+    "spent": {
+      "rounds": 2,
+      "candidates": 4,
+      "sceneChanges": 0,
+      "milliseconds": 3
+    },
+    "attempts": [
+      {
+        "round": 1,
+        "proposal": {
+          "sceneId": "slide_9a2cbda382db472b",
+          "composition": "statement-banner"
+        },
+        "status": "rejected",
+        "reason": "Unlock the affected content or scene explicitly before changing it."
+      },
+      {
+        "round": 1,
+        "proposal": {
+          "sceneId": "slide_9a2cbda382db472b",
+          "composition": "statement-center"
+        },
+        "status": "rejected",
+        "reason": "Unlock the affected content or scene explicitly before changing it."
+      },
+      {
+        "round": 2,
+        "proposal": {
+          "sceneId": "slide_9a2cbda382db472b",
+          "composition": "statement-banner"
+        },
+        "status": "rejected",
+        "reason": "Unlock the affected content or scene explicitly before changing it."
+      },
+      {
+        "round": 2,
+        "proposal": {
+          "sceneId": "slide_9a2cbda382db472b",
+          "composition": "statement-center"
+        },
+        "status": "rejected",
+        "reason": "Unlock the affected content or scene explicitly before changing it."
+      }
+    ],
+    "lastValidHash": "2f01d643ca6e0303a6fff389680faac4a1462e6f47574eca8fdc4c9166a85fe6",
+    "checks": [
+      "Actual failed rerun after accepted export",
+      "Both rounds reject locked candidates before rendering",
+      "Previous accepted source and HTML bytes retained"
+    ],
+    "errors": [],
+    "external": []
+  },
+  "imageReview": {
+    "deliveredImages": [
+      "story-1-1440.png",
+      "story-1-390.png",
+      "story-1-scene4.png",
+      "revision-2-1440.png",
+      "revision-2-390.png",
+      "revision-2-scene4.png",
+      "bounded-repair-4-1440.png",
+      "bounded-repair-4-390.png",
+      "bounded-repair-4-scene4.png",
+      "locked-recovery-5-1440.png",
+      "locked-recovery-5-390.png",
+      "locked-recovery-5-scene4.png",
+      "accepted-recovery-failure.png"
+    ],
+    "method": "functions.view_image actual pixels in this chat; tall desktop sheets downscaled; page 4 also native",
+    "failureJudgment": "Locked run visibly repeats the split layout; the accepted recovery failure keeps the exact chart and words under a changed locked layout. Both are incomplete quality results, not valid exports."
+  },
+  "unitEvidence": "Synthetic browser/image capabilities in tests/visual-task.test.mjs are controller tests, not actual render/host acceptance.",
+  "limitations": [
+    "Offline content/reference inspection does not externally verify source claims. Demo numbers are original labelled synthetic fixture data.",
+    "Local natural-language outline planning is deterministic; short inputs repeat supplied content across roles. Richer story drafting remains the existing authorized host responsibility.",
+    "Precise local grammar supports numbered chart requests and structured composition patches, not arbitrary semantic editing.",
+    "Mobile charts scroll; shared initial chart labels overlap; duplicated source title is a nonblocking presentation warning.",
+    "PowerPoint, Keynote and Figma installed but not run; After Effects not available; other engines/accessibility, native v3 exports, remote CI and host acceptance remain open."
+  ],
+  "controllerTestCount": 11,
+  "reviewRebinding": "Final source recapture screenshot bytes match actual delivered images; see review-rebind.json."
+}

@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "method": "Actual loopback preview and native foreground/background tabs; isolated profile; noDefaults CDP; no request routing or synthetic visibility event",
+  "hidden": {
+    "hidden": true,
+    "released": 1,
+    "state": {
+      "sceneId": "component-code",
+      "active": false,
+      "position": 0,
+      "playing": false,
+      "exploring": false,
+      "state": [
+        {
+          "id": "explain-code",
+          "kind": "steps",
+          "stepId": "signature"
+        }
+      ],
+      "resources": {
+        "animations": 0,
+        "timers": 0,
+        "registered": 0
+      }
+    }
+  },
+  "resumed": {
+    "sceneId": "component-code",
+    "active": true,
+    "position": 0,
+    "playing": false,
+    "exploring": false,
+    "state": [
+      {
+        "id": "explain-code",
+        "kind": "steps",
+        "stepId": "signature"
+      }
+    ],
+    "resources": {
+      "animations": 1,
+      "timers": 0,
+      "registered": 0
+    }
+  },
+  "errors": [],
+  "externalRequests": []
+}

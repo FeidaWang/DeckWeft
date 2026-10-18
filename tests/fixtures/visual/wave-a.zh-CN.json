@@ -1,0 +1,189 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "visual-wave-a-zh-CN",
+    "title": "让想法拥有更鲜明的舞台",
+    "locale": "zh-CN",
+    "blocks": [
+      {
+        "id": "cover-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "让大胆的想法\n拥有自己的舞台。"
+      },
+      {
+        "id": "cover-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "内容是起点，构图让它拥有声音。保留可编辑的文字，让每一种视觉选择都有明确的理由。"
+      },
+      {
+        "id": "cover-metric",
+        "type": "metric",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "value": 12,
+        "unit": "页",
+        "label": "合成样例简报，等待逐页探索。"
+      },
+      {
+        "id": "cover-note",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "01 / 从文字走向视觉"
+      },
+      {
+        "id": "cover-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "固定样例内容 · 不代表产品成果"
+      },
+      {
+        "id": "data-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "两条路径，\n让差异清晰可见。"
+      },
+      {
+        "id": "data-chart",
+        "type": "chart",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "datasetId": "adoption-quarterly"
+      },
+      {
+        "id": "data-callout",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "让证据始终可见。"
+      },
+      {
+        "id": "data-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "在同一尺度下比较两组数据。下表保留每一个精确数值。这些数字是合成演示数据，并非真实产品成效。"
+      },
+      {
+        "id": "data-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "合成季度数据集 · 单位：%"
+      }
+    ],
+    "datasets": [
+      {
+        "id": "adoption-quarterly",
+        "unit": "%",
+        "synthetic": true,
+        "categories": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6"
+        ],
+        "series": [
+          {
+            "id": "guided",
+            "label": "引导流程",
+            "values": [
+              18,
+              28,
+              41,
+              46,
+              62,
+              78
+            ]
+          },
+          {
+            "id": "manual",
+            "label": "手动流程",
+            "values": [
+              18,
+              22,
+              26,
+              33,
+              39,
+              45
+            ]
+          }
+        ],
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "synthetic-source",
+        "title": "DeckWeft 合成样例",
+        "url": "https://example.org/deckweft/synthetic"
+      }
+    ],
+    "authorOverrides": {
+      "lockedBlockIds": [
+        "data-chart"
+      ]
+    },
+    "migration": {}
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "visual-wave-a-zh-CN",
+    "scenes": [
+      {
+        "id": "collage",
+        "role": "opening",
+        "theme": "cream-collage",
+        "themeVersion": "1.0.0",
+        "composition": "diagonal-cover",
+        "blockIds": [
+          "cover-title",
+          "cover-body",
+          "cover-metric",
+          "cover-note",
+          "cover-source"
+        ],
+        "focalBlockId": "cover-title"
+      },
+      {
+        "id": "evidence",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": [
+          "data-title",
+          "data-chart",
+          "data-callout",
+          "data-body",
+          "data-source"
+        ],
+        "focalBlockId": "data-title"
+      }
+    ]
+  }
+}

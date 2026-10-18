@@ -1,0 +1,47 @@
+[
+  {
+    "file": "story-1-1440.png",
+    "sha256": "21b48f47cd667058b4f2087f24da67fce745e1fb17981fc02c2a8edfed14fb59",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  },
+  {
+    "file": "story-1-390.png",
+    "sha256": "4defdb3911ee5600117abcbfe20f2e7a8e7178ce5c689ea8e72d93e2bff175bb",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  },
+  {
+    "file": "story-1-scene4.png",
+    "sha256": "539ab97f631af307daf33fd47df81d42e8b175158c05ead10e36a5d0a314ff67",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  },
+  {
+    "file": "revision-2-1440.png",
+    "sha256": "0110e8bb5b84975a191f3ee6b6491ad9c062c9a1d5173fcace95bb71fbffe189",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  },
+  {
+    "file": "revision-2-390.png",
+    "sha256": "bd2275d56981d1c57bc2c3f4aa786d08eb190ba2889abb32a5f3c19d530b2098",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  },
+  {
+    "file": "revision-2-scene4.png",
+    "sha256": "f473063346d17abea894a3873e5eb0f318a567aab0dbccb184f7e70b1407fbfe",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  },
+  {
+    "file": "bounded-repair-4-1440.png",
+    "sha256": "92c23d02a78788e7454d9e55abfe1ef39583b455e29af17cf0ac1511e9a876a2",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  },
+  {
+    "file": "bounded-repair-4-390.png",
+    "sha256": "46244377dd8ea3894fb29e7e3166fa7cd2b1c9f5daedb94c4d511748fae3c916",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  },
+  {
+    "file": "bounded-repair-4-scene4.png",
+    "sha256": "a21856d81bb8a2d0de5350c7e727e4c30b0168c99b7a04cd43a39814903acfd7",
+    "judgmentReuse": "Identical to actual pixels already delivered via functions.view_image in this chat"
+  }
+]

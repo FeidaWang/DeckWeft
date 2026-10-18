@@ -43,3 +43,7 @@ html[data-motion=reduced] *,html[data-motion=reduced] *::before,html[data-motion
 @media print{.three-scene-overlay,.spatial-controls{display:none!important}.spatial-static-fallback{opacity:1!important}}
 
 #agentWorkers,#imageStatus{overflow-wrap:anywhere}
+
+.visual-studio-link{font-size:12px;padding:8px 12px;border:1px solid currentColor;border-radius:6px;text-decoration:none;color:inherit;white-space:nowrap}
+
+.visual-studio-link{display:block;flex:none;text-align:center;margin-top:10px}

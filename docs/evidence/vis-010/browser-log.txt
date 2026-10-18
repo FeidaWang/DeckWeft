@@ -1,0 +1,71 @@
+
+> deckweft@0.1.0-alpha.2 visual:verify
+> node scripts/visual-verify.mjs
+
+{
+  "status": "awaiting-visual-review",
+  "machineOk": true,
+  "cases": [
+    {
+      "name": "en-cream-collage",
+      "issues": [],
+      "repair": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 726
+      }
+    },
+    {
+      "name": "en-dark-data",
+      "issues": [],
+      "repair": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 705
+      }
+    },
+    {
+      "name": "en-electric-violet",
+      "issues": [],
+      "repair": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 804
+      }
+    },
+    {
+      "name": "zh-CN-cream-collage",
+      "issues": [],
+      "repair": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 737
+      }
+    },
+    {
+      "name": "zh-CN-dark-data",
+      "issues": [],
+      "repair": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 733
+      }
+    },
+    {
+      "name": "zh-CN-electric-violet",
+      "issues": [],
+      "repair": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 725
+      }
+    }
+  ],
+  "out": "/Users/feida/Developer/DeckWeft/dist/visual-quality"
+}

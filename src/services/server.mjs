@@ -1,3 +1,4 @@
+import {createVisualService} from './visual-api.mjs';
 import {ImageJobs} from '../assets/generation.mjs';
 import {threeBundle} from '../render/three-bundle.mjs';
 import http from 'node:http';
@@ -27,6 +28,8 @@ for(const file of ['preferences.js','actions.js','presenter.js','storyboard.js']
 staticFiles['/workspace.css']=['workspace.css','text/css; charset=utf-8'];
 staticFiles['/shared/preferences.mjs']=['../src/core/preferences.mjs','text/javascript; charset=utf-8'];
 staticFiles['/shared/clock.mjs']=['../src/presentation/clock.mjs','text/javascript; charset=utf-8'];
+for(const file of ['visual.js','visual.css','interactions.js','assets.js','workbench.js','prompt.js','profile.js','revisions.js'])staticFiles['/studio/'+file]=['studio/'+file,file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8'];
+staticFiles['/visual']=['studio/visual.html','text/html; charset=utf-8'];
 const secureHeaders={
   'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',
   'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
@@ -43,11 +46,12 @@ async function body(req){
   return value;
 }
 function tokenMatches(value,token){const a=Buffer.from(String(value||'')),b=Buffer.from(`Bearer ${token}`);return a.length===b.length&&timingSafeEqual(a,b);}
-export async function startStudio({port=4179,home,seed=true}={}){
+export async function startStudio({port=4179,home,seed=true,captureBrowser,workbenchCapture,hostOptions}={}){
   if(!Number.isInteger(port)||port<0||port>65535)throw new DeckError('PORT','Use a port number from 0 to 65535.');
   const store=await new ProjectStore(home).init();
   const agentBridge=new AgentBridge(store.home);
   if(seed&&(await store.list()).length===0){const initial=JSON.parse(await readFile(path.join(root,'examples/welcome.deck.json'),'utf8'));await store.save(initial,{create:true});}
+  const visual=await createVisualService({home:store.home,legacyStore:store,body,send,browserPath:captureBrowser,workbenchCapture,hostOptions});
   const measurements=new MeasurementSessions();
   const presentations=new PresentationSessions(),audience=await startAudienceServer(presentations);
   const token=randomBytes(32).toString('hex');let actualPort=port;
@@ -63,8 +67,10 @@ export async function startStudio({port=4179,home,seed=true}={}){
       const url=new URL(req.url,`http://127.0.0.1:${actualPort}`),method=req.method;
       if(method==='GET'&&url.pathname==='/api/health')return send(res,200,{ok:true,name:'DeckWeft',version:VERSION});
       if(method==='GET'&&url.pathname==='/api/session')return send(res,200,{token,version:VERSION});
+      if(visual.artifact(req,res,url))return;
       if(url.pathname.startsWith('/api/')){
         if(!tokenMatches(req.headers.authorization,token))throw new DeckError('AUTH_REQUIRED','Reload the studio to start a new local session.',401);
+        if(await visual.route(req,res,url))return;
         if(method==='POST'&&url.pathname==='/api/presentations'){
           const data=await body(req);assertProject(data.project);
           if(!data.renderTicket)throw new DeckError('MEASUREMENT_REQUIRED','Wait for the measured preview before presenting.',409);
@@ -183,5 +189,5 @@ export async function startStudio({port=4179,home,seed=true}={}){
   server.requestTimeout=15_000;server.headersTimeout=10_000;
   try{await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});}catch(e){await audience.close();throw e;}
   actualPort=server.address().port;
-  return {server,store,url:`http://127.0.0.1:${actualPort}`,close:async()=>{await Promise.all([audience.close(),new Promise((resolve,reject)=>server.close(e=>e?reject(e):resolve()))]);}};
+  return {server,store,url:`http://127.0.0.1:${actualPort}`,close:async()=>{await visual.close();await Promise.all([audience.close(),new Promise((resolve,reject)=>server.close(e=>e?reject(e):resolve()))]);}};
 }

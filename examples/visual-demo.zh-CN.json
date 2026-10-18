@@ -1,0 +1,376 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "visual-wave-a-zh-CN",
+    "title": "让想法拥有更鲜明的舞台",
+    "locale": "zh-CN",
+    "blocks": [
+      {
+        "id": "cover-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "让大胆的想法\n拥有自己的舞台。"
+      },
+      {
+        "id": "cover-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "内容是起点，构图让它拥有声音。保留可编辑的文字，让每一种视觉选择都有明确的理由。"
+      },
+      {
+        "id": "cover-metric",
+        "type": "metric",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "value": 12,
+        "unit": "页",
+        "label": "合成样例简报，等待逐页探索。"
+      },
+      {
+        "id": "cover-note",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "01 / 从文字走向视觉"
+      },
+      {
+        "id": "cover-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "固定样例内容 · 不代表产品成果"
+      },
+      {
+        "id": "data-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "两条路径，\n让差异清晰可见。"
+      },
+      {
+        "id": "data-chart",
+        "type": "chart",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "datasetId": "adoption-quarterly"
+      },
+      {
+        "id": "data-callout",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "让证据始终可见。"
+      },
+      {
+        "id": "data-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "在同一尺度下比较两组数据。下表保留每一个精确数值。这些数字是合成演示数据，并非真实产品成效。"
+      },
+      {
+        "id": "data-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "合成季度数据集 · 单位：%"
+      },
+      {
+        "id": "violet-title",
+        "type": "heading",
+        "text": "让好故事，\n值得靠近。",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "violet-body",
+        "type": "paragraph",
+        "text": "让图像拥有空间，让表达保持清楚。鲜明的视觉语言，也可以保留每一句可编辑的文字。",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "violet-image",
+        "type": "image",
+        "assetId": "asset_70c32da27c9df448e0749ce3",
+        "alt": "生成的装饰性工作桌插画：纸卡与蓝色线轴。",
+        "factual": false,
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "violet-caption",
+        "type": "callout",
+        "text": "装饰性生成插画 / 原有本地素材",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "chapter-title",
+        "type": "heading",
+        "text": "表达可以改变。\n事实始终保留。",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "chapter-body",
+        "type": "paragraph",
+        "text": "整页紫色，给叙事一次有意的停顿。切换主题时，保留内容、数值、引用与作者锁定。",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      }
+    ],
+    "datasets": [
+      {
+        "id": "adoption-quarterly",
+        "unit": "%",
+        "synthetic": true,
+        "categories": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6"
+        ],
+        "series": [
+          {
+            "id": "guided",
+            "label": "引导流程",
+            "values": [
+              18,
+              28,
+              41,
+              46,
+              62,
+              78
+            ]
+          },
+          {
+            "id": "manual",
+            "label": "手动流程",
+            "values": [
+              18,
+              22,
+              26,
+              33,
+              39,
+              45
+            ]
+          }
+        ],
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "synthetic-source",
+        "title": "DeckWeft 合成样例",
+        "url": "https://example.org/deckweft/synthetic"
+      }
+    ],
+    "authorOverrides": {
+      "lockedBlockIds": [],
+      "sceneLocks": []
+    },
+    "migration": {},
+    "visualBrief": {
+      "audience": "Design and product teams",
+      "outputLanguage": "zh-CN",
+      "profile": {
+        "colorIntensity": "bold",
+        "typographicContrast": "expressive",
+        "density": "comfortable",
+        "motionIntensity": "off",
+        "imageEmphasis": "large"
+      }
+    },
+    "sourceSnapshots": [
+      {
+        "id": "synthetic-v1",
+        "sourceId": "synthetic-source",
+        "version": "fixture-2026-10-18",
+        "hash": "59943d78ff4b85435887c3df4d19afb6084c8044bc00f049bd82d9795b5a7100",
+        "permission": "local-copy",
+        "anchors": [
+          {
+            "blockId": "cover-title",
+            "anchor": "fixture/cover-title"
+          },
+          {
+            "blockId": "cover-body",
+            "anchor": "fixture/cover-body"
+          },
+          {
+            "blockId": "cover-metric",
+            "anchor": "fixture/cover-metric"
+          },
+          {
+            "blockId": "cover-note",
+            "anchor": "fixture/cover-note"
+          },
+          {
+            "blockId": "cover-source",
+            "anchor": "fixture/cover-source"
+          },
+          {
+            "blockId": "data-title",
+            "anchor": "fixture/data-title"
+          },
+          {
+            "blockId": "data-chart",
+            "anchor": "fixture/data-chart"
+          },
+          {
+            "blockId": "data-callout",
+            "anchor": "fixture/data-callout"
+          },
+          {
+            "blockId": "data-body",
+            "anchor": "fixture/data-body"
+          },
+          {
+            "blockId": "data-source",
+            "anchor": "fixture/data-source"
+          },
+          {
+            "blockId": "violet-title",
+            "anchor": "fixture/violet-title"
+          },
+          {
+            "blockId": "violet-body",
+            "anchor": "fixture/violet-body"
+          },
+          {
+            "blockId": "violet-image",
+            "anchor": "fixture/violet-image"
+          },
+          {
+            "blockId": "violet-caption",
+            "anchor": "fixture/violet-caption"
+          },
+          {
+            "blockId": "chapter-title",
+            "anchor": "fixture/chapter-title"
+          },
+          {
+            "blockId": "chapter-body",
+            "anchor": "fixture/chapter-body"
+          }
+        ]
+      }
+    ]
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "visual-wave-a-zh-CN",
+    "scenes": [
+      {
+        "id": "collage",
+        "role": "opening",
+        "theme": "cream-collage",
+        "themeVersion": "1.0.0",
+        "composition": "diagonal-cover",
+        "blockIds": [
+          "cover-title",
+          "cover-body",
+          "cover-metric",
+          "cover-note",
+          "cover-source"
+        ],
+        "focalBlockId": "cover-title"
+      },
+      {
+        "id": "evidence",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": [
+          "data-title",
+          "data-chart",
+          "data-callout",
+          "data-body",
+          "data-source"
+        ],
+        "focalBlockId": "data-title"
+      },
+      {
+        "id": "violet",
+        "role": "context",
+        "theme": "electric-violet",
+        "themeVersion": "1.0.0",
+        "composition": "photo-split",
+        "colorMode": "default",
+        "blockIds": [
+          "violet-title",
+          "violet-body",
+          "violet-image",
+          "violet-caption"
+        ],
+        "focalBlockId": "violet-title",
+        "crops": [
+          {
+            "blockId": "violet-image",
+            "x": 0.34,
+            "y": 0,
+            "width": 0.53,
+            "height": 1
+          }
+        ]
+      },
+      {
+        "id": "chapter",
+        "role": "closing",
+        "theme": "electric-violet",
+        "themeVersion": "1.0.0",
+        "composition": "violet-chapter",
+        "colorMode": "chapter",
+        "blockIds": [
+          "chapter-title",
+          "chapter-body"
+        ],
+        "focalBlockId": "chapter-title"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "asset_70c32da27c9df448e0749ce3",
+      "hash": "70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "path": "assets/70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1.png",
+      "provenance": "Original host-generated decorative artwork, retained from the MB-11–15 build. Not documentary photography or product evidence.",
+      "license": "Generated artwork; no third-party rights clearance asserted",
+      "allowedUse": "Local DeckWeft demonstration; review rights for your own redistribution",
+      "alt": "Blank paper story cards linked by blue thread on a wooden workbench",
+      "fallback": "A series of paper cards joined by blue thread; decorative artwork."
+    }
+  ]
+}

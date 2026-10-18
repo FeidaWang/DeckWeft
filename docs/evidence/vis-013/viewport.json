@@ -1,0 +1,17 @@
+{
+  "class": "preview playing",
+  "html": "<section id=\"evidence\" class=\"web-scene evidence-top active\" style=\"--paper:#F5F2FF;--ink:#28115C;--accent:#5114F6;--secondary:#5114F6;--display:Arial, sans-serif;--body:Arial, &quot;PingFang SC&quot;, sans-serif;--code:Menlo, Consolas, monospace;--page:48px;--gap:36px;--display-scale:1;--image-split:44%;--motion-ms:0ms\" data-source-hash=\"99ed12db8a981243c10863a1fe573d98d1015d8a65bb8027c9ae4ab76db",
+  "active": 1,
+  "rects": [
+    {
+      "x": 22,
+      "y": 86,
+      "width": 346,
+      "height": 74.875,
+      "top": 86,
+      "right": 368,
+      "bottom": 160.875,
+      "left": 22
+    }
+  ]
+}

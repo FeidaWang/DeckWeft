@@ -1,0 +1,189 @@
+{
+  "scope": "VIS-010",
+  "date": "2026-10-18",
+  "state": "implemented-local",
+  "browser": "151.0.7922.34",
+  "sourceTreeHash": "0e5bf5996517ea1216153179181993b6e3a3ba85bab7ffa58bcb3437e6b0711f",
+  "qualityGate": "passed",
+  "stories": 6,
+  "scenesPerStory": 15,
+  "viewports": [
+    1440,
+    1024,
+    390
+  ],
+  "realActionTraces": 234,
+  "regionCoverageRecords": 1872,
+  "captures": 132,
+  "actualImagesReviewed": 48,
+  "reviewDelivery": "Actual pixel inputs for 48 distinct QA screenshot paths; all six final complete-page PNGs delivered again after capture stabilization. Thirty unchanged native/contact PNGs reuse previously delivered actual-image reviews with byte identity verification.",
+  "faultKinds": [
+    "broken-interaction",
+    "clipping",
+    "contrast",
+    "missing-asset",
+    "repeated-composition"
+  ],
+  "repairBudget": {
+    "maxRounds": 2,
+    "maxCandidates": 6,
+    "maxSceneChanges": 2,
+    "maxMilliseconds": 60000
+  },
+  "repairs": [
+    {
+      "name": "en-cream-collage",
+      "changes": [
+        {
+          "round": 1,
+          "proposal": {
+            "sceneId": "component-stacked",
+            "composition": "evidence-left"
+          },
+          "status": "accepted",
+          "basis": "4ba0701127557968db08db53ee51898d66dd70b3e04b46dcf3547feaed7997b3",
+          "withinBudget": true
+        }
+      ],
+      "spent": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 726
+      }
+    },
+    {
+      "name": "en-dark-data",
+      "changes": [
+        {
+          "round": 1,
+          "proposal": {
+            "sceneId": "component-stacked",
+            "composition": "evidence-left"
+          },
+          "status": "accepted",
+          "basis": "4a7cdea58312b314830f3b38a0459c60aee1a66c3f364aedae85b3dffcb00267",
+          "withinBudget": true
+        }
+      ],
+      "spent": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 705
+      }
+    },
+    {
+      "name": "en-electric-violet",
+      "changes": [
+        {
+          "round": 1,
+          "proposal": {
+            "sceneId": "component-stacked",
+            "composition": "evidence-left"
+          },
+          "status": "accepted",
+          "basis": "769d8f21a90fbef6d400f46305ca7f04f5ad7edf00afa28b83d0354b32c84ddc",
+          "withinBudget": true
+        }
+      ],
+      "spent": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 804
+      }
+    },
+    {
+      "name": "zh-CN-cream-collage",
+      "changes": [
+        {
+          "round": 1,
+          "proposal": {
+            "sceneId": "component-stacked",
+            "composition": "evidence-left"
+          },
+          "status": "accepted",
+          "basis": "c329df615f77dc6d1a8c0ba5deb518acbba50b1994b0de6d7e1d6067b576a6d0",
+          "withinBudget": true
+        }
+      ],
+      "spent": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 737
+      }
+    },
+    {
+      "name": "zh-CN-dark-data",
+      "changes": [
+        {
+          "round": 1,
+          "proposal": {
+            "sceneId": "component-stacked",
+            "composition": "evidence-left"
+          },
+          "status": "accepted",
+          "basis": "86c6776369b8a04e26271ce42528ee6c965d7ea911abf502b715f12411a8ca31",
+          "withinBudget": true
+        }
+      ],
+      "spent": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 733
+      }
+    },
+    {
+      "name": "zh-CN-electric-violet",
+      "changes": [
+        {
+          "round": 1,
+          "proposal": {
+            "sceneId": "component-stacked",
+            "composition": "evidence-left"
+          },
+          "status": "accepted",
+          "basis": "31585597138fb7c3ffde532e449973e5b0bd4689d5ba748f535920cf4f2df85d",
+          "withinBudget": true
+        }
+      ],
+      "spent": {
+        "rounds": 1,
+        "candidates": 1,
+        "sceneChanges": 1,
+        "milliseconds": 725
+      }
+    }
+  ],
+  "lastValidRecovery": "Real browser failure-recovery.json: two author-locked rounds rejected; exact last-valid HTML retained; incomplete project and HTML recorded.",
+  "remaining": [
+    "One warning per story: filtered missing label close to zero-axis tick",
+    "Mobile native code/plots/diagrams use horizontal scrollers and source alternatives, not simultaneous full-width display",
+    "Exhaustive states, other engines, screen reader, IME, 200% zoom and host/native export acceptance remain open"
+  ],
+  "applications": {
+    "tested": "Isolated Chrome for Testing 151; installed browsers untouched",
+    "installedNotRun": [
+      "PowerPoint",
+      "Keynote",
+      "Figma"
+    ],
+    "unavailable": [
+      "After Effects"
+    ]
+  },
+  "evidence": [
+    "browser.json",
+    "image-reviews.json",
+    "failure-recovery.json",
+    "responsive-states.json",
+    "studio-regression.txt",
+    "verify.txt"
+  ],
+  "nodeTestsPassed": 279,
+  "sourceLinkChecks": "Actual decoded anchors, including ampersands; source JSON alone cannot satisfy coverage",
+  "archiveChecks": "Consecutive failures and pending reviews preserve accepted bytes/source; altered files are refused"
+}

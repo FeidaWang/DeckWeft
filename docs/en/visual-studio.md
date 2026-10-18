@@ -1,0 +1,105 @@
+# Visual Studio
+
+[简体中文](../zh-CN/visual-studio.md) · [Build review](../evidence/visual-studio/review.md) · [Earlier Wave A](visual-first.md)
+
+Visual Studio is the v3 editing workspace in the same local DeckWeft application. Open **Visual Studio · v3** below the classic Studio's library selector, or open `/visual` on its printed loopback address. Existing v1/v2 projects remain in the classic workspace. Migration is explicit and creates a separate saved copy.
+
+## Visual expression in existing presentations
+
+The shared renderer gives existing v3 projects a content-aware type hierarchy. Openings use larger display type; evidence and comparison pages reserve room for their data. Cream Collage combines serif headlines, warm paper, blue numbers and a rust accent. Electric Violet pairs strong sans-serif headlines with quiet image pages and saturated authored chapters. Dark Data uses a deep green surface with light type and distinct chart colors. All fonts are system fallbacks; no font files or remote resources are loaded.
+
+1. Open an existing presentation in `/visual`. Inspect the opening, a content page and the ending. Expect different title tiers, bounded text widths and more deliberate space around focal content.
+2. Select **Edit page → Design** to adjust typographic contrast or density. Balanced contrast lowers the display tier; compact density reduces spacing. These choices keep exact text and data.
+3. Compare image compositions. Tall images scale within their authored aspect and crop; they are not stretched or cropped again to force a fit.
+4. Use **Explore compositions and story rhythm → Compare three compositions**. Apply measured rhythm only after reviewing the candidates. The selector balances an entrance, proof and closing emphasis against adjacent repetition, and excludes failed candidates.
+5. Check **Reading · 390**. Chinese has a separate reading type tier to avoid overly fragmented headlines. Original line breaks remain in the source.
+6. Inspect and export the current work again. The same derived typography, spacing and palettes reach preview, filmstrip and audience HTML. Renderer changes invalidate previous review receipts; a previous accepted artifact remains explicitly historical.
+
+Sparse scenes use open space; dense scenes retain every region and can grow or fail the presentation budget. Source citations stay visible. No source wording, numeric value, theme identity, crop or author lock is rewritten by these renderer rules. A visual change is not evidence that a claim is true.
+
+## Start with the examples
+
+1. Run `npm run studio:visual-demo` from the source checkout, using Node.js 22 or newer.
+2. Open the printed Visual Studio URL. This command uses an isolated library under `dist/visual-studio/library`, rather than your usual library.
+3. Select the English or Chinese example. Each has four scenes: Cream Collage cover, Dark Data evidence, Electric Violet image story and violet chapter.
+4. Select scene 3. Open **Design** to inspect the theme, author preferences and image crop. Open **Content** to edit its words.
+5. Click **Save**, then reload. Expect your edits, theme, crop and preferences to remain.
+6. Click **Export HTML** after the measured-preview indicator appears. Open the file independently: it includes its runtime and local PNG bytes, with reading/presentation navigation.
+7. Press `Ctrl+C` in the terminal to stop both local servers.
+
+For your usual library, start `node bin/deckweft.mjs studio --open`, then follow the Visual Studio link. An empty visual library offers **New visual example** or **Bring an existing deck**. The demo's data is synthetic; its workbench image is retained generated decorative artwork, not documentary photography or product evidence. No model, image tool, remote provider or connector runs when an example is created.
+
+## Edit facts and design separately
+
+Select a scene in the left rail. The Content panel edits text, list items, numeric metrics, exact chart datasets, image alternative text and other typed blocks. Chart values are JSON numbers; changing a series updates its marks and accessible table. Source references and versioned snapshot anchors have an advanced JSON editor. Source records preserve attribution, not proof that a claim is true.
+
+The Design panel changes only the selected scene's theme/composition. Cream Collage uses serif display type and diagonal planes; Dark Data uses an evidence rail, numeric charts and a dark palette; Electric Violet uses a large image split or a full-color chapter with sans-serif display type. A compatible composition is chosen without rewriting facts, captions, asset references or other scenes.
+
+Author preferences persist color intensity, typographic contrast, density, motion and image emphasis. **Audience** and **Output language / font preference** belong to the document; **Interface language** belongs to the local UI. Switching language does not translate existing words. Motion defaults to off, and system reduced-motion disables entrances.
+
+Lock individual content blocks or the current scene's theme/composition. Locked chart content also protects its numeric dataset and linked source records. Unlock explicitly before editing protected content. Locks remain during save, reload and theme changes. The APIs reject conflicts rather than silently dropping locks.
+
+Use **Undo** / **Redo** for local edits. Invalid JSON remains in its field when you switch scenes and blocks save/HTML export. Repair it, or click **Discard unapplied field edits** to retain the last valid content. Project JSON with unapplied fields is an explicit draft recovery wrapper; repair its fields before importing it as a visual project.
+
+## Images and cropping
+
+1. Select a scene. In Design, choose **Use a local PNG**.
+2. Choose a PNG smaller than 1.3 MB. Supply provenance, license, allowed use, alternative text and a text fallback.
+3. Attach it. An existing image block is replaced in place; its composition, crop, datasets and other author decisions remain.
+4. Set normalized crop `x`, `y`, `width`, `height`. Keep `x + width ≤ 1` and `y + height ≤ 1`. A crop outside the original fails validation; it is not repaired automatically.
+5. Save and inspect the measured preview before exporting.
+
+Local PNGs are content-addressed and verified against their hashes. Source bytes are preserved; crop changes use semantic image markup rather than creating a screenshot of the page. The built-in 2.4 MiB artwork is preloaded directly from the package; browser imports have the smaller limit above. Resource budgets count every scene binding, including repeated uses of the same image.
+
+Missing or changed assets stop HTML export with a recovery message. Restore the hash-matching file, or attach a replacement deliberately. The [VIS-007 asset workflow](assets.md) adds preserved JPEG/WebP originals, local derivatives, author-protected crop choices and source-document reuse. Automatic subject detection and a v3 image-generation transport remain unavailable.
+
+## Save, history and recovery
+
+Visual projects live under `<library>/visual/projects/`; image bytes are in `<library>/visual/assets/`. V1/v2 projects stay under the original library paths. Both stores use the same atomic-write, revision-conflict, immutable-history and restore-as-copy implementation.
+
+If another window saved first, your edits remain in the window. Export Project JSON to keep them, then open the newer version or import a separate copy. If you edit during a save, only that save's snapshot is committed; later edits stay dirty and can be saved next.
+
+Open **History**, inspect a read-only snapshot, then select **Restore as a new copy**. The current project remains unchanged. Retrying the same restore request reuses its existing copy.
+
+**Bring an existing deck** migrates the selected saved v1/v2 project. The original JSON and its hash are archived. Legacy metric strings remain text; old assets, design intent and private notes are retained in the archive with explicit limitations. Migration does not guess chart numbers or claim visual parity.
+
+Project JSON is the complete private envelope: semantic document, plan, asset manifest, revisions and archives. It references local asset files rather than embedding them; keep the assets folder for transfer to another library. Import validates the original envelope before assigning a new copy identity. HTML is portable and embeds the required images, but omits migration archives and private notes. V3 PPTX/Figma/AE/SVG export remains unsupported and fails explicitly; classic Studio retains its existing exporters and presenter.
+
+## Verification and contracts
+
+```bash
+npm ci
+npm run verify
+npm run visual:render -- --case studio --locale all
+```
+
+The last command writes deterministic three-theme standalone examples to `dist/visual/studio/`. `--case wave-a` retains the earlier two-scene fixtures. `--case release-gallery` is still unsupported. Use `--help` on the rendering and preview commands for their current arguments.
+
+Optional direct-browser acceptance:
+
+```bash
+CHROMIUM_PATH=/isolated/test/browser PLAYWRIGHT_MODULE=/qa/playwright/index.mjs node tests/browser_visual_studio.mjs
+```
+
+Use a test browser outside `/Applications`. The harness refuses installed app paths and uses ephemeral contexts. Its artifacts go to `dist/visual-studio/acceptance/`. It exercises actual editing, locks, themes, datasets, in-flight/stale saves, history recovery, local image upload, legacy copy migration, export and no-JavaScript reading. Both language editions are captured at 390/1024/1440 widths, with actual platform-font evidence, DOM measurements, image decode and render/screenshot hashes. Negative cases insert white-on-white text and a clipped heading and require scene-specific failures.
+
+The browser checks text bounds, clipping ancestors and text contrast against page surfaces and actual SVG path geometry. Gradient stops are checked conservatively. Fit receipts are explicitly browser-reported, bound to exact input and render hashes, and expire with their preview artifact. They are not cryptographic attestations or an independent accessibility certification. Export uses the same artifact that passed the current browser checks; subsequent edits invalidate it.
+
+Contracts: `presentation-v3.schema.json`, `design-plan.schema.json`, `web-scene.schema.json`, `visual-project.schema.json`, and `theme-pack.schema.json`. Content and design remain separate. The derived scene protocol includes registered components, stable block/data bindings, groups, reading order, breakpoints, bounded SVG paths/transforms/clips/gradients and normalized image crops. No executable imported HTML is accepted. Themes are packaged versioned JSON with typography, spacing, image grammar, chart colors, motion, modes and scoped rules. Schema-derived types share these contracts.
+
+This is local implementation evidence for VIS-002–005. The complete 12-page gallery, coherent eight-page stories, composition candidates, prompt generation, broader host acceptance, native v3 output and general visual correction remain later roadmap work. The current embedded-image demo is larger than the suggested 2 MB initial-payload target; media optimization/lazy loading is not claimed. Remote CI has not been triggered or passed by this work.
+
+## Compare compositions and choose the deck rhythm (VIS-006)
+
+1. Run `npm run studio:compositions`. Open the printed `/visual` address. This uses `dist/visual-compositions/library` and seeds two six-page examples. In another visual library, select **New six-family example**.
+2. Select a page, open **Design**, and choose its composition family. Families requiring a missing image, metric, chart, table or diagram are disabled. Every family includes three different structures; changing the family keeps all existing blocks.
+3. Click **Compare three compositions** below the main preview. Expect three real previews and a measured status for each. The browser measures all pages at 1440px after fonts and images are ready. Use **View larger** to inspect a candidate, then close the inspection window.
+4. Choose **Use this composition** on a passing candidate, or **Apply measured deck rhythm** to choose across all pages. The rhythm considers narrative suitability for the opening, scene role and closing, together with actual focal position, occupied content area, image area, color mode and repeated adjacent geometry. It chooses compositions in the current page order; it preserves themes, color modes, focal bindings, crops, facts, sources, assets and locks. The combined rhythm cost is a layout heuristic, not a quality or truth score. A basis-hashed decision report is saved in the project's extensions when rhythm is applied.
+5. Inspect the updated preview and rhythm explanations. Click **Save**. Reload and expect the chosen compositions to remain. **Undo**, revision conflict handling and **History → Restore as a new copy** work as before.
+6. Use **Move up** / **Move down** to change page order. Themes follow stable page identities. Compare again after reordering or editing: old measurements cannot be used for changed content.
+
+A candidate fails if content overflows, is clipped, has inadequate measured contrast, uses an unready font, or exceeds the 900px presentation height budget at 1440px width. Failure retains the full content and shows the reason. If all candidates fail, selection stops: retain the wording and repair the layout or deliberately divide the material into additional pages. Reading views can grow vertically; the height budget is a presentation-candidate gate. Comparing again replaces expired measurements (ten minutes), and saving invalidates receipts tied to the previous revision.
+
+The six families are statement (split/banner/center), image narrative (left/sequential/right), oversized number (left/band/right), data evidence (plot left/full width/plot right), comparison (matrix/side rail/dimension cards), and process (horizontal/vertical/stepped). English and Chinese representative content was checked under Cream Collage, Electric Violet and Dark Data. [Measured geometry, screenshots, failures and repairs](../evidence/vis-006/review.md).
+
+For source preservation, named slots and protected crops, follow the [asset manual](assets.md). Run `npm run studio:assets` for the bilingual lab.

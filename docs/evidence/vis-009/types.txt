@@ -1,0 +1,5 @@
+
+> deckweft@0.1.0-alpha.2 types
+> node scripts/types.mjs
+
+Type contracts, negative fixtures and emitted runtime passed. {"compilerVersion":"Version 5.9.3","elapsedMs":712,"schemaBytes":1795,"emittedSmoke":true}

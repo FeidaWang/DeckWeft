@@ -1,0 +1,23 @@
+{
+  "format": "deckweft-visual-baseline",
+  "version": 1,
+  "sourceCommit": "9204f21161fd5b5c15c4040bd2414bed55fb4d99",
+  "measurement": "estimated legacy CLI; screenshot capture is separate",
+  "artifacts": [
+    {
+      "file": "product-en.html",
+      "sourceHash": "593bec973aabc1ca42eceaf26989d090effd48868d77612e407bc9aa86adb837",
+      "outputHash": "3ec71afd661470efd76beb7bc226768be3bdd1a529978f3dbad212d3317e9118"
+    },
+    {
+      "file": "strategy-zh-CN.html",
+      "sourceHash": "8a040af2d7d0aa05d2f875304e555922355854947a061d66dba4df8a9c4e418b",
+      "outputHash": "6b7ff3fe42dfeae245bd5603ae6530d68d5f0e35109e64abf4878988d8303ffc"
+    },
+    {
+      "file": "technical-en.html",
+      "sourceHash": "0df9e181723618f519df7e8fe2e0899a7dddcf56f0c78f95d664c28b6b3ec027",
+      "outputHash": "3aebb195a8423b8ed837cdf7a540ba5e2138078942f089d0e8b7b461519863e0"
+    }
+  ]
+}

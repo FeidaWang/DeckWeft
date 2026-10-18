@@ -1,0 +1,2028 @@
+{
+  "format": "deckweft-real-host-visual-acceptance",
+  "version": 1,
+  "host": "codex",
+  "browser": "153.0.8010.12",
+  "scope": "Copied bundle CLI drafting plus supplied synthetic diagnostic gallery; not native desktop/plugin discovery or VIS-014 story release",
+  "ok": true,
+  "runs": [
+    {
+      "stage": "before",
+      "receipt": {
+        "format": "deckweft-quality-receipt",
+        "version": 1,
+        "basis": "d04d823fb5ad30c10cc7bfe930a39e10f198e2df05106b3aed2b27f0800189d2",
+        "captures": [
+          {
+            "file": "capture-1-1440.png",
+            "sha256": "d66b28c66c0b1d4c88635487262769d6157b24f0ecf78616c4b886e7fe896e57",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-390.png",
+            "sha256": "07255694d268965f5c8207a51ffe9bf355aecd65b63fec0bc5daab44b94f5efe",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-mobile-scene-4.png",
+            "sha256": "fef33d52aa71c2d016386304a12f734146863ca83a3470c50a84fa25e85eb6d8",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-mobile-scene-6.png",
+            "sha256": "dd2f9b1a38e2cc1f926d1ea62e89acf78da595028001eb90ddb5fa2889608fd3",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-1.png",
+            "sha256": "d5649a4edc027b29402bf861884edc00052cc0b0c642ffed2fa09f018c15d714",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-2.png",
+            "sha256": "0edd90302d4d1f1db555acaed4a55449581b0cac11b03cc0128430d117a6997e",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-3.png",
+            "sha256": "2ace3fc34b4ee5b5356283237f06fb39ab444fc525c8169dfc03bf573eadd9b5",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-4.png",
+            "sha256": "98f2c57aa763d734ea689648d32d53fa7e6cecde5dd2da789d4eb8c55bd59746",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-5.png",
+            "sha256": "724b5b236a4e92809d81bfd2efa421fd2351af02920259b69a86b171fedea962",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-1-scene-6.png",
+            "sha256": "770590619821221a3d594ae8a57d27a4045c67323896718330b6e08f4dc67778",
+            "reviewRequired": true
+          }
+        ],
+        "checks": {
+          "ok": true,
+          "issues": [],
+          "coverage": [
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "chapter",
+              "nodeId": "rd49c68fe2c5484139502",
+              "blockId": "chapter-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "chapter",
+              "nodeId": "r8312349d1fcfe6f47bdd",
+              "blockId": "chapter-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "r5758aa6e8107854c0665",
+              "blockId": "violet-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "reb9f9109a646af27b012",
+              "blockId": "violet-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "rfe988f0bf62b69caa2ba",
+              "blockId": "violet-image",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "r5194eb0d828a14debd10",
+              "blockId": "violet-caption",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rf87b09c0078cfbb8c7da",
+              "blockId": "cover-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rb6a583191f39b77c8d55",
+              "blockId": "cover-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rc18090e4d52b3ace519c",
+              "blockId": "cover-metric",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "r4c58f6fbaab9acce3e13",
+              "blockId": "cover-note",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "r61a7455a451db5fe977e",
+              "blockId": "cover-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r4dc492a5778917ddda35",
+              "blockId": "data-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r21b7ed492835ccd967d8",
+              "blockId": "data-chart",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r398248ae205b8cb4d408",
+              "blockId": "data-callout",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r34bed02a94cce3852840",
+              "blockId": "data-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r131e9af00b5a9f606da1",
+              "blockId": "data-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r0b879c8eb9d87034e651",
+              "blockId": "comparison-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r0aa26395557f6c7ab324",
+              "blockId": "comparison-table",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r5735aeed16f6a143df33",
+              "blockId": "comparison-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r1fc47dd6b0cf6a45e6ff",
+              "blockId": "comparison-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r7147eb1b82e52d820741",
+              "blockId": "process-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r92d0000f3e4c2452d18f",
+              "blockId": "process-diagram",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r82ccc6d200fcbf303232",
+              "blockId": "process-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r82447fbee64a0c3e4f15",
+              "blockId": "process-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "chapter",
+              "nodeId": "rd49c68fe2c5484139502",
+              "blockId": "chapter-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "chapter",
+              "nodeId": "r8312349d1fcfe6f47bdd",
+              "blockId": "chapter-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "r5758aa6e8107854c0665",
+              "blockId": "violet-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "reb9f9109a646af27b012",
+              "blockId": "violet-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "rfe988f0bf62b69caa2ba",
+              "blockId": "violet-image",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "r5194eb0d828a14debd10",
+              "blockId": "violet-caption",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rf87b09c0078cfbb8c7da",
+              "blockId": "cover-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rb6a583191f39b77c8d55",
+              "blockId": "cover-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rc18090e4d52b3ace519c",
+              "blockId": "cover-metric",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "r4c58f6fbaab9acce3e13",
+              "blockId": "cover-note",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "r61a7455a451db5fe977e",
+              "blockId": "cover-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r4dc492a5778917ddda35",
+              "blockId": "data-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r21b7ed492835ccd967d8",
+              "blockId": "data-chart",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r398248ae205b8cb4d408",
+              "blockId": "data-callout",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r34bed02a94cce3852840",
+              "blockId": "data-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r131e9af00b5a9f606da1",
+              "blockId": "data-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r0b879c8eb9d87034e651",
+              "blockId": "comparison-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r0aa26395557f6c7ab324",
+              "blockId": "comparison-table",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r5735aeed16f6a143df33",
+              "blockId": "comparison-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r1fc47dd6b0cf6a45e6ff",
+              "blockId": "comparison-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r7147eb1b82e52d820741",
+              "blockId": "process-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r92d0000f3e4c2452d18f",
+              "blockId": "process-diagram",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r82ccc6d200fcbf303232",
+              "blockId": "process-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r82447fbee64a0c3e4f15",
+              "blockId": "process-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            }
+          ],
+          "traceCount": 0
+        },
+        "review": {
+          "reviewer": "codex local CLI",
+          "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 8b56bf0d-08b3-4001-89f1-c1fbaa74662c",
+          "images": [
+            "capture-1-1440.png",
+            "capture-1-390.png",
+            "capture-1-mobile-scene-4.png",
+            "capture-1-mobile-scene-6.png",
+            "capture-1-scene-1.png",
+            "capture-1-scene-2.png",
+            "capture-1-scene-3.png",
+            "capture-1-scene-4.png",
+            "capture-1-scene-5.png",
+            "capture-1-scene-6.png"
+          ],
+          "judgment": "All ten supplied images were visually inspected. No visible clipping, text collisions, or serious contrast failures. Typography, imagery, and theme changes establish clear hierarchy and varied story rhythm. The desktop process scene is the weakest page: its connector routing makes a simple sequence unnecessarily difficult to follow.\ncapture-1-1440.png: All six scenes are visible. Chapter, image, metric, chart, table, and process compositions provide varied rhythm. No apparent clipping; process connectors are less clear than the other visual elements.\ncapture-1-390.png: All six scenes reflow into readable single columns without visible horizontal overflow. The comparison table remains contained; the vertical process sequence reads more clearly than its desktop counterpart.\ncapture-1-mobile-scene-4.png: Evidence scene: title, chart, legend, disclosure, explanation, and citation remain visible. Chart labels are compact but distinguishable, with strong contrast and no visible collisions.\ncapture-1-mobile-scene-6.png: Process scene: centered vertical nodes and downward arrows establish an unambiguous sequence. Heading, supporting text, and citation fit without clipping or overlap.\ncapture-1-scene-1.png: Chapter scene: white text contrasts strongly with violet. The divider separates title and body cleanly; generous empty space supports the intended pause.\ncapture-1-scene-2.png: Violet scene: the workbench image balances the large heading and supporting copy. Image caption is contained and legible; no text overlaps the artwork.\ncapture-1-scene-3.png: Collage scene: oversized metric and serif heading create a clear two-column hierarchy. Body, note, and citation have adequate separation and dark-on-cream contrast.\ncapture-1-scene-4.png: Evidence scene: both series, numeric labels, axes, and legend are distinguishable against black. Explanatory copy occupies a separate column without intruding into the chart.\ncapture-1-scene-5.png: Comparison scene: prominent heading leads into an aligned, readable three-column table. Header contrast is strong; rows, explanatory copy, and citation are visibly separated.\ncapture-1-scene-6.png: Process scene: text and nodes are legible and unclipped. This is the weakest page because long connectors enter destination nodes from below and crowd the area beneath Compare, slowing left-to-right reading.",
+          "issues": [
+            {
+              "sceneId": "process",
+              "nodeId": "process-diagram",
+              "bounds": {
+                "x": 80,
+                "y": 327,
+                "width": 736,
+                "height": 150
+              },
+              "severity": "warning",
+              "reason": "In capture-1-scene-6.png, the horizontal sequence uses downward detours and upward arrowheads into destination bottoms. The adjacent incoming and outgoing routes beneath Compare make the simple Draft → Compare → Review progression harder to trace.",
+              "suggestion": "Connect each node's right edge directly to the next node's left edge with right-pointing arrows, retaining the clear vertical routing on mobile."
+            }
+          ],
+          "verdict": "pass"
+        },
+        "status": "passed",
+        "id": "11d033012191faeb5618efbd59bfe2f7c237dd2237d81989d1a8b9f3bd4eb781"
+      },
+      "htmlHash": "d843b9ffc99b1eecdcc82ca3d1f60947c8c52de590b440015f2db09c618440e7"
+    },
+    {
+      "stage": "after",
+      "receipt": {
+        "format": "deckweft-quality-receipt",
+        "version": 1,
+        "basis": "2059b699bc00c03aacc16c6482cef0a29ee8be25decae7364ebde3472454d5f1",
+        "captures": [
+          {
+            "file": "capture-2-1440.png",
+            "sha256": "4f0794f008a5ab74e47b84f4102494ce0b0fbd0147661d9922e84cccab4219ce",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-390.png",
+            "sha256": "07255694d268965f5c8207a51ffe9bf355aecd65b63fec0bc5daab44b94f5efe",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-mobile-scene-4.png",
+            "sha256": "fef33d52aa71c2d016386304a12f734146863ca83a3470c50a84fa25e85eb6d8",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-mobile-scene-6.png",
+            "sha256": "dd2f9b1a38e2cc1f926d1ea62e89acf78da595028001eb90ddb5fa2889608fd3",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-1.png",
+            "sha256": "d5649a4edc027b29402bf861884edc00052cc0b0c642ffed2fa09f018c15d714",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-2.png",
+            "sha256": "0edd90302d4d1f1db555acaed4a55449581b0cac11b03cc0128430d117a6997e",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-3.png",
+            "sha256": "2ace3fc34b4ee5b5356283237f06fb39ab444fc525c8169dfc03bf573eadd9b5",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-4.png",
+            "sha256": "132e78f214a19c8e775db8553140af1c7ba757e623ecb864cc0ce6addb8fe159",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-5.png",
+            "sha256": "0fdd59ee5aabd5c05bbad8d8b6f46aca03474636fe1438cd8c445d8497e70f16",
+            "reviewRequired": true
+          },
+          {
+            "file": "capture-2-scene-6.png",
+            "sha256": "478590f830a0cb93c37ab166aa262642180a6c48361224cbe19e57feff12ada7",
+            "reviewRequired": true
+          }
+        ],
+        "checks": {
+          "ok": true,
+          "issues": [],
+          "coverage": [
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "chapter",
+              "nodeId": "rd49c68fe2c5484139502",
+              "blockId": "chapter-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "chapter",
+              "nodeId": "r8312349d1fcfe6f47bdd",
+              "blockId": "chapter-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "r5758aa6e8107854c0665",
+              "blockId": "violet-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "reb9f9109a646af27b012",
+              "blockId": "violet-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "rfe988f0bf62b69caa2ba",
+              "blockId": "violet-image",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "r5194eb0d828a14debd10",
+              "blockId": "violet-caption",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rf87b09c0078cfbb8c7da",
+              "blockId": "cover-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rb6a583191f39b77c8d55",
+              "blockId": "cover-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rc18090e4d52b3ace519c",
+              "blockId": "cover-metric",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "r4c58f6fbaab9acce3e13",
+              "blockId": "cover-note",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "r61a7455a451db5fe977e",
+              "blockId": "cover-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r4dc492a5778917ddda35",
+              "blockId": "data-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r21b7ed492835ccd967d8",
+              "blockId": "data-chart",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r398248ae205b8cb4d408",
+              "blockId": "data-callout",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r34bed02a94cce3852840",
+              "blockId": "data-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r131e9af00b5a9f606da1",
+              "blockId": "data-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r0b879c8eb9d87034e651",
+              "blockId": "comparison-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r0aa26395557f6c7ab324",
+              "blockId": "comparison-table",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r5735aeed16f6a143df33",
+              "blockId": "comparison-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r1fc47dd6b0cf6a45e6ff",
+              "blockId": "comparison-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r7147eb1b82e52d820741",
+              "blockId": "process-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r92d0000f3e4c2452d18f",
+              "blockId": "process-diagram",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r82ccc6d200fcbf303232",
+              "blockId": "process-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 1440,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r82447fbee64a0c3e4f15",
+              "blockId": "process-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "chapter",
+              "nodeId": "rd49c68fe2c5484139502",
+              "blockId": "chapter-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "chapter",
+              "nodeId": "r8312349d1fcfe6f47bdd",
+              "blockId": "chapter-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "r5758aa6e8107854c0665",
+              "blockId": "violet-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "reb9f9109a646af27b012",
+              "blockId": "violet-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "rfe988f0bf62b69caa2ba",
+              "blockId": "violet-image",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "violet",
+              "nodeId": "r5194eb0d828a14debd10",
+              "blockId": "violet-caption",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rf87b09c0078cfbb8c7da",
+              "blockId": "cover-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rb6a583191f39b77c8d55",
+              "blockId": "cover-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "rc18090e4d52b3ace519c",
+              "blockId": "cover-metric",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "r4c58f6fbaab9acce3e13",
+              "blockId": "cover-note",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "collage",
+              "nodeId": "r61a7455a451db5fe977e",
+              "blockId": "cover-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r4dc492a5778917ddda35",
+              "blockId": "data-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r21b7ed492835ccd967d8",
+              "blockId": "data-chart",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r398248ae205b8cb4d408",
+              "blockId": "data-callout",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r34bed02a94cce3852840",
+              "blockId": "data-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "evidence",
+              "nodeId": "r131e9af00b5a9f606da1",
+              "blockId": "data-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r0b879c8eb9d87034e651",
+              "blockId": "comparison-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r0aa26395557f6c7ab324",
+              "blockId": "comparison-table",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r5735aeed16f6a143df33",
+              "blockId": "comparison-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "comparison",
+              "nodeId": "r1fc47dd6b0cf6a45e6ff",
+              "blockId": "comparison-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r7147eb1b82e52d820741",
+              "blockId": "process-title",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r92d0000f3e4c2452d18f",
+              "blockId": "process-diagram",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r82ccc6d200fcbf303232",
+              "blockId": "process-body",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 1000,
+                "dpr": 1
+              },
+              "sceneId": "process",
+              "nodeId": "r82447fbee64a0c3e4f15",
+              "blockId": "process-source",
+              "missing": [],
+              "sources": [
+                {
+                  "id": "synthetic-source",
+                  "present": true,
+                  "rendered": true
+                }
+              ]
+            }
+          ],
+          "traceCount": 0
+        },
+        "review": {
+          "reviewer": "codex local CLI",
+          "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 8c4e668d-9fac-4272-a3e2-f4ec661cf8b1",
+          "images": [
+            "capture-2-1440.png",
+            "capture-2-390.png",
+            "capture-2-mobile-scene-4.png",
+            "capture-2-mobile-scene-6.png",
+            "capture-2-scene-1.png",
+            "capture-2-scene-2.png",
+            "capture-2-scene-3.png",
+            "capture-2-scene-4.png",
+            "capture-2-scene-5.png",
+            "capture-2-scene-6.png"
+          ],
+          "judgment": "All ten images were visually inspected. No visible clipping, text overlap, or contrast failure. Desktop and mobile layouts preserve readable hierarchy. The weakest page is comparison: its table offers little substantive contrast. Desktop process connectors also need clearer routing. This judgment covers supplied screenshots only; no tests or application checks ran.\ncapture-2-1440.png: All six scenes are visible. Violet opening, photographic scene, cream metric, and dark chart establish varied story rhythm. No apparent clipping; comparison is the weakest narrative beat, and desktop process connectors are unnecessarily indirect.\ncapture-2-390.png: All six scenes reflow into a coherent narrow column without visible horizontal overflow. Image, metric, table, and vertical process remain distinct. Chart annotations and table headers are the densest elements.\ncapture-2-mobile-scene-4.png: Evidence scene has strong contrast and an unclipped title. Chart values, quarter labels, and legend remain readable without visible collisions. Supporting copy and citation fit; the chart is noticeably smaller than the surrounding typography.\ncapture-2-mobile-scene-6.png: Process scene has clear vertical Draft → Compare → Review flow. Arrowheads stop before the next box, labels are centered, and title, body, and citation remain unclipped.\ncapture-2-scene-1.png: Chapter scene uses strong white-on-violet contrast, a dominant two-line heading, and a clean divider. Generous empty space creates an intentional opening pause; neither text column is clipped.\ncapture-2-scene-2.png: Photographic scene balances a large image with a readable heading and supporting copy. Image description fits underneath; text and artwork do not overlap. Wide separation creates a calm editorial rhythm.\ncapture-2-scene-3.png: Collage scene gives the metric and serif heading distinct emphasis. Dark text contrasts well with cream, supporting copy and citation fit, and no elements collide. The large lower whitespace sustains the spacious pacing.\ncapture-2-scene-4.png: Evidence scene clearly separates title, chart, legend, and explanation. Series colors contrast against black, values remain distinguishable, and no labels visibly overlap. Citation and bottom copy stay within the image.\ncapture-2-scene-5.png: Comparison scene has clean table alignment, readable headers, adequate row spacing, and no clipping. It is the weakest page because the tradeoff headline promises more differentiation than the nearly identical columns provide.\ncapture-2-scene-6.png: Process scene has readable text, clear boxes, and ample whitespace. Desktop connectors travel beneath the boxes and point upward into destinations, making the left-to-right sequence less immediate than the mobile version.",
+          "issues": [
+            {
+              "sceneId": "comparison",
+              "nodeId": "comparison-table",
+              "bounds": {
+                "x": 48,
+                "y": 269,
+                "width": 1296,
+                "height": 250
+              },
+              "severity": "warning",
+              "reason": "In capture-2-scene-5.png, only Revision differs; Exact value and Sources repeat. The table provides limited support for the headline's promise of tradeoffs, weakening the story before its close.",
+              "suggestion": "Frame this page around preserved evidence across revisions, or supply meaningful, supported differences that explain the choices."
+            },
+            {
+              "sceneId": "process",
+              "nodeId": "process-diagram",
+              "bounds": {
+                "x": 80,
+                "y": 328,
+                "width": 736,
+                "height": 150
+              },
+              "severity": "warning",
+              "reason": "In capture-2-scene-6.png, staggered connectors leave box bottoms, run underneath adjacent nodes, and point upward. Their proximity makes a simple three-step sequence slower to trace.",
+              "suggestion": "Route each connector directly from the right edge of its source to the left edge of its destination, keeping arrowheads in the gaps."
+            }
+          ],
+          "verdict": "pass"
+        },
+        "status": "passed",
+        "id": "0f5f5d1acc9c68213c0c07fcd6bd2f1b46f059af4f72b46a6734d8cc242f4a9d"
+      },
+      "htmlHash": "272328e065fadc6d07288d90db75d15ac9cc413fbb7fda1049fa8cb2683dee53"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "draftReceipt": {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "bc029a72-53d6-486b-89cc-51800a63c018",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "7d3f74e3bf4eae34eb84c26140da069b69f552288a62690fc59dfff96cdff1a0",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "available",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "27f74c639a63a0ee8d67a6c00d8086d35b31e51648d127527de10c742e97e5ac",
+    "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+    "images": [],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 6020,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "533dbc72c057afde49cb42e9d187f7226bedb89fddb7002f88c35b9f117d4edf"
+  },
+  "patchReceipt": {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "da583ee8-5a68-4abc-8498-68aec4d8a249",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "7d3f74e3bf4eae34eb84c26140da069b69f552288a62690fc59dfff96cdff1a0",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "available",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "fb931a22f12ccee3a3a2cac3827e9a9b2e5b2e741c7270d0137addb15f19d769",
+    "schemaHash": "6c918cb7cfd5981bf157a4e4ac50b81e85c0f04988d790c4d805c4295e0635f6",
+    "images": [],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 6068,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "f5fc42a76af9253c04e8e16f5ab6647535a392a001dbef430f793ba7d4307c09"
+  },
+  "exactScope": "Only page 4 composition changed; semantic document and all other scenes byte-equivalent",
+  "hostReceipts": [
+    "8b56bf0d-08b3-4001-89f1-c1fbaa74662c",
+    "8c4e668d-9fac-4272-a3e2-f4ec661cf8b1",
+    "bc029a72-53d6-486b-89cc-51800a63c018",
+    "da583ee8-5a68-4abc-8498-68aec4d8a249"
+  ]
+}

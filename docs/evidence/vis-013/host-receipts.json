@@ -1,0 +1,273 @@
+[
+  {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "37a5c15c-4040-4b17-98a7-5cce34e40ae8",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "f02c45f8701730f8492f5b5498847d9989d0641773267c0a357ba6f4ea8e7585",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "unknown",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "6f82ff9844c1654c622a990f841ce8b89f42f41274a48116601abbe4213beefa",
+    "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+    "images": [
+      {
+        "file": "capture-1792319598643-1440.png",
+        "hash": "289a3d7d3cbdd5a198bcfe9f327504ed4a90fc3bdfc462f128ea31ca84ea1e79",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319598643-1440-violet.png",
+        "hash": "b05187379c168dcac3ba402b2961e3a05f20dccc7a9c4d808a63906ccb8d2f84",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319598643-1440-evidence.png",
+        "hash": "2268737568bd4c99e2f17c70e63476ea165064a66127d8c2e2aeaedb1b16c2ca",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319598643-1440-process.png",
+        "hash": "ac2ae8cd07ed3a129679a24a65157153144fa5e8a8ee2c84b9dc0e1d4da6ecea",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319598643-390.png",
+        "hash": "5e7b0b629b71f0aa449dfa022fd8f33750b1ad6c382022d3b718e1c386a62a23",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319598643-390-violet.png",
+        "hash": "53ec4713b6a67b4753490a9aeca3dd8277de4d2f383c9a77d1abf070dcaf1ba1",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319598643-390-evidence.png",
+        "hash": "b851e2debb55d5814bc608b9a53c6ad3031be029bf4014b5eac7433156cff94f",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319598643-390-process.png",
+        "hash": "100e6aea20c396459f9e3711a415dacec066657e6a6aa9906b1797d6d2b37825",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      }
+    ],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 30998,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "42258409813dd491354894981938a4c8cda65b75290b02a1ad1a38ca23b82e5b"
+  },
+  {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "80e3e891-4a7f-4ade-bc23-30f37c3e2ccf",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "760d99979a1b9a0e083ad801b7d82a4abb59b27cefcd48d5c6e22577840839ea",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "unknown",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "776f78966269e2549676a3d5e98b771364d6a6bd89f38e291b15d79f4ad0db24",
+    "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+    "images": [
+      {
+        "file": "capture-1792319556964-1440.png",
+        "hash": "f916d12c273d11bbf42f3f5ddf48902472c01b9d7bd3df0a40a3c78ad81729f0",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319556964-1440-violet.png",
+        "hash": "b05187379c168dcac3ba402b2961e3a05f20dccc7a9c4d808a63906ccb8d2f84",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319556964-1440-evidence.png",
+        "hash": "6b78cee9783128f5cc1926ffe40257b994967ee62873a526aeb15e52fac9816e",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319556964-1440-process.png",
+        "hash": "0e7bc90f30303e17d8f4b17f40e71e9a91530bde71c0e2fb633a0aad194ea976",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319556964-390.png",
+        "hash": "5e7b0b629b71f0aa449dfa022fd8f33750b1ad6c382022d3b718e1c386a62a23",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319556964-390-violet.png",
+        "hash": "53ec4713b6a67b4753490a9aeca3dd8277de4d2f383c9a77d1abf070dcaf1ba1",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319556964-390-evidence.png",
+        "hash": "b851e2debb55d5814bc608b9a53c6ad3031be029bf4014b5eac7433156cff94f",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319556964-390-process.png",
+        "hash": "100e6aea20c396459f9e3711a415dacec066657e6a6aa9906b1797d6d2b37825",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      }
+    ],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 33086,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "94cb9cc94f73b02cf2d374fad49d91e180d7b5cc7628a75b69cb642d34bcb7a5"
+  },
+  {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "d44968d4-d1c1-45c3-b056-94fc5d14a72e",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "363115ad1a740b0e98ea0794c3bbe60088c59b4810fc13928b8676d43b222573",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "unknown",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "6856efe0d453b827d9bf2d72d23d7bca2dd6c4d8b34c65e7b1045e8832fa2c32",
+    "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+    "images": [
+      {
+        "file": "capture-1792319689343-1440.png",
+        "hash": "289a3d7d3cbdd5a198bcfe9f327504ed4a90fc3bdfc462f128ea31ca84ea1e79",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319689343-1440-violet.png",
+        "hash": "b05187379c168dcac3ba402b2961e3a05f20dccc7a9c4d808a63906ccb8d2f84",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319689343-1440-evidence.png",
+        "hash": "2268737568bd4c99e2f17c70e63476ea165064a66127d8c2e2aeaedb1b16c2ca",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319689343-1440-process.png",
+        "hash": "ac2ae8cd07ed3a129679a24a65157153144fa5e8a8ee2c84b9dc0e1d4da6ecea",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319689343-390.png",
+        "hash": "5e7b0b629b71f0aa449dfa022fd8f33750b1ad6c382022d3b718e1c386a62a23",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319689343-390-violet.png",
+        "hash": "53ec4713b6a67b4753490a9aeca3dd8277de4d2f383c9a77d1abf070dcaf1ba1",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319689343-390-evidence.png",
+        "hash": "b851e2debb55d5814bc608b9a53c6ad3031be029bf4014b5eac7433156cff94f",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319689343-390-process.png",
+        "hash": "100e6aea20c396459f9e3711a415dacec066657e6a6aa9906b1797d6d2b37825",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      }
+    ],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 34620,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "ba065b2835e748d6092924f6ba0722f7e87cf7129fafc962645bd48636bb00c5"
+  },
+  {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "35cd13df-b5ca-47b4-956c-33260468dd1b",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "45776c3860af395703aa330667e27aa87dc72557e1e29e910292739678b0078f",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "unknown",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "0ac9eea4c24ba4e3e255e08171f1ae293a285e5cb2c28e466c319736537cd1c7",
+    "schemaHash": "6c918cb7cfd5981bf157a4e4ac50b81e85c0f04988d790c4d805c4295e0635f6",
+    "images": [],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 4697,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "7eef9f437bf6264428e1269d7949ece4802b1244a71212bb27aae9101f1af481"
+  }
+]

@@ -35,3 +35,6 @@ export function proposeStoryboard(original,brief){
  project.slides.forEach((s,i)=>{s.intent??=intentFor(s,project,i);if(!s.notes)s.notes=[s.content.title,s.content.body,...s.content.items].filter(Boolean).join('\n\n');});
  assertProject(project);return {project,notice:'Reviewable proposal from supplied content. Sources are references to inspect; claims have not been fact-checked.'};
 }
+
+// VIS-011 explicit semantic planning. Legacy proposals/migration remain unchanged.
+export {planStory as proposeVisualStoryboard} from '../agent/director.mjs';

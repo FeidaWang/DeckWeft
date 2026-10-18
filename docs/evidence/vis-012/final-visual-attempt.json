@@ -1,0 +1,43 @@
+{
+  "format": "deckweft-real-host-visual-acceptance",
+  "version": 1,
+  "host": "codex",
+  "browser": "153.0.8010.12",
+  "scope": "Copied bundle CLI drafting plus supplied synthetic diagnostic gallery; not native desktop/plugin discovery or VIS-014 story release",
+  "ok": false,
+  "runs": [],
+  "errors": [],
+  "externalRequests": [],
+  "draftReceipt": {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "bdd3df66-2323-4afa-95bf-f7abf4af8af5",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "ed558f751d2e5ef9e38c34bdbfe6fec298e716d1c605781eaa00fbb9dcbee8d7",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "available",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "27f74c639a63a0ee8d67a6c00d8086d35b31e51648d127527de10c742e97e5ac",
+    "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+    "images": [],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 6271,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "4f2e44316c7cfe7d31fda3f9bf9559c600b98a361161375ba6a6a1f56ed24b21"
+  },
+  "failure": "ERR_ASSERTION"
+}

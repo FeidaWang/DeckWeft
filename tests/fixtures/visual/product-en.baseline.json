@@ -1,0 +1,71 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 1,
+  "id": "product-en",
+  "title": "Ideas deserve a clearer stage",
+  "locale": "en",
+  "aspectRatio": "16:9",
+  "theme": "paper",
+  "brief": {
+    "prompt": "",
+    "audience": "",
+    "outcome": ""
+  },
+  "slides": [
+    {
+      "id": "slide_0",
+      "role": "opening",
+      "content": {
+        "eyebrow": "",
+        "title": "Ideas deserve a clearer stage",
+        "body": "An offline workbench for a fictional product team.",
+        "items": [
+          "Keep your content editable",
+          "Compare visual arrangements",
+          "Carry the result away"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_1",
+      "role": "closing",
+      "content": {
+        "eyebrow": "",
+        "title": "A repeatable local workflow",
+        "body": "",
+        "items": [
+          "Draft the story",
+          "Review every page",
+          "Save a separate copy"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-18T00:00:00.000Z",
+    "updatedAt": "2026-10-18T00:00:00.000Z"
+  },
+  "extensions": {}
+}

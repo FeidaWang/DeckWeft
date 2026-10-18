@@ -1,0 +1,179 @@
+{
+  "date": "2026-10-18",
+  "task": "VIS-007",
+  "state": "implemented-local",
+  "verify": {
+    "command": "npm run verify",
+    "log": "verify.txt",
+    "tests": 255,
+    "passed": true,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "version": "151.0.7922.34",
+    "checks": 12,
+    "cropCases": 36,
+    "captures": 53,
+    "pageErrors": [],
+    "externalRequests": [],
+    "report": "browser.json",
+    "legacyRegression": "legacy-browser.json",
+    "compositionRegression": "composition-browser.json"
+  },
+  "pixelRoundTrips": [
+    {
+      "import": "JPEG → native PNG + web WebP",
+      "originalHash": "4b3647c408ab77af08d156a5c5364d37251a61eb3e7937de40b7ce69dfffd1a7",
+      "nativeHash": "750de338c0cf55bb80ada3e40f19d22a4c385ba264adb95b298bca69481d7228",
+      "derivative": {
+        "hash": "b0c62f2ba5bce4a7c142749cf42d9d246652658851c247fd1e1d0bcfd922b85a",
+        "mime": "image/webp",
+        "width": 1200,
+        "height": 800,
+        "orientation": 1,
+        "path": "asset-originals/b0c62f2ba5bce4a7c142749cf42d9d246652658851c247fd1e1d0bcfd922b85a.webp",
+        "sourceHash": "4b3647c408ab77af08d156a5c5364d37251a61eb3e7937de40b7ce69dfffd1a7",
+        "method": "browser-canvas",
+        "lossy": true
+      },
+      "downloadedBytesUnchanged": true,
+      "pixelRoundTrip": {
+        "sourceWidth": 1200,
+        "sourceHeight": 800,
+        "nativeWidth": 1200,
+        "nativeHeight": 800,
+        "maxChannelDifference": 0
+      }
+    },
+    {
+      "import": "webp",
+      "original": {
+        "hash": "b960de5b793cd24a9e441687fc612dada0895755d452b1bb187ab317e699bb9e",
+        "mime": "image/webp",
+        "width": 1200,
+        "height": 800,
+        "orientation": 1,
+        "path": "asset-originals/b960de5b793cd24a9e441687fc612dada0895755d452b1bb187ab317e699bb9e.webp"
+      },
+      "native": {
+        "width": 1200,
+        "height": 800
+      },
+      "derivatives": [
+        {
+          "hash": "5e2514d53d67eecf26a96154aa6358575c586c30154f9f4c4c3da0082953615e",
+          "mime": "image/jpeg",
+          "width": 1200,
+          "height": 800,
+          "orientation": 1,
+          "path": "asset-originals/5e2514d53d67eecf26a96154aa6358575c586c30154f9f4c4c3da0082953615e.jpg",
+          "sourceHash": "b960de5b793cd24a9e441687fc612dada0895755d452b1bb187ab317e699bb9e",
+          "method": "browser-canvas",
+          "lossy": true
+        }
+      ],
+      "pixelRoundTrip": {
+        "sourceWidth": 1200,
+        "sourceHeight": 800,
+        "nativeWidth": 1200,
+        "nativeHeight": 800,
+        "maxChannelDifference": 0
+      }
+    },
+    {
+      "import": "oriented-jpeg",
+      "original": {
+        "hash": "746f3ff0eed24bc23712698a1a88dbc0a2069c418480c013a1be9aa2fb3654a1",
+        "mime": "image/jpeg",
+        "width": 1200,
+        "height": 800,
+        "orientation": 6,
+        "path": "asset-originals/746f3ff0eed24bc23712698a1a88dbc0a2069c418480c013a1be9aa2fb3654a1.jpg"
+      },
+      "native": {
+        "width": 800,
+        "height": 1200
+      },
+      "derivatives": [],
+      "pixelRoundTrip": {
+        "sourceWidth": 800,
+        "sourceHeight": 1200,
+        "nativeWidth": 800,
+        "nativeHeight": 1200,
+        "maxChannelDifference": 0
+      }
+    }
+  ],
+  "preserved": [
+    "SHA-256 native, original and derivative byte identities",
+    "Provenance, license, allowed use, alternatives, factual classification and document source references",
+    "Author image/crop/slot locks; immutable source revisions and files",
+    "Scene family/theme, unrelated content, datasets, citations, shared-block bindings",
+    "v1/v2 legacy storage, v2 source extraction, revision conflict and history restore-as-copy"
+  ],
+  "visuallyInspected": [
+    "English/Chinese three-theme portrait/wide/contain contact sheets",
+    "Six complete six-page source/crop decks",
+    "Original/subject guide, portrait, impossible crop/contain, source extraction and Chinese controls"
+  ],
+  "failuresAndRepairs": [
+    {
+      "failure": "Initial unit test expected generic format error for corrupted PNG and used a restore request id below 16 characters",
+      "repair": "Use existing PNG-specific error contract and a valid explicit restore id"
+    },
+    {
+      "failure": "Indirect crop changes were not covered by image-slot-only scene lock comparison",
+      "repair": "Image-slot locks also compare derived scene crop decisions; tampering now fails"
+    },
+    {
+      "failure": "CSP correctly refused fetch(data:) in a new QA pixel probe",
+      "evidence": "pixel-probe-attempt.json",
+      "repair": "Decode source/native blobs directly in memory; CSP remains unchanged"
+    },
+    {
+      "failure": "Visual review found the illustrative protected rectangle slightly smaller than the full orange subject",
+      "repair": "Expand the author-marked fixture region to include the whole subject"
+    },
+    {
+      "failure": "Requested project opened correctly but library selector displayed another project",
+      "repair": "Activate selects the matching project id"
+    },
+    {
+      "failure": "Original/derivative/source-file absence produced a generic I/O failure",
+      "repair": "Return a specific restore-the-hash-matching-file error; never repair silently"
+    },
+    {
+      "failure": "Full-page mobile capture showed an unpainted offscreen iframe despite passing runtime measurements",
+      "repair": "Bring the main preview into view and wait two animation frames before capture; verified screenshot now shows the live slide",
+      "evidence": "mobile-before-paint.png"
+    }
+  ],
+  "limits": [
+    "Source extraction covers registered assets in saved local v2/v3 projects; no arbitrary PPTX/PDF parser",
+    "Protected regions and source/original classification are author supplied; no subject detection or independent truth verification",
+    "Server validates containers/dimensions/hashes; native pixel conversion and derivative quality are browser-derived",
+    "1.3 MB per source/encoded upload; native PNG retains full oriented dimensions",
+    "V3 image generation transport remains unavailable; no automatic requests or legacy job authorization inheritance",
+    "Native v3 exports, real host integration, other engines/accessibility/projection/remote CI remain open"
+  ],
+  "applications": {
+    "PowerPoint": [
+      "/Applications/Microsoft PowerPoint.app"
+    ],
+    "Keynote": [
+      "/Applications/Keynote.app"
+    ],
+    "Figma": [
+      "/Applications/Figma.app"
+    ],
+    "After Effects": []
+  },
+  "boundaries": {
+    "runtimeDependenciesAdded": 0,
+    "remoteServicesAdded": 0,
+    "automaticImageRequests": 0,
+    "installedBrowsersModified": false,
+    "publishedOrPushed": false
+  }
+}

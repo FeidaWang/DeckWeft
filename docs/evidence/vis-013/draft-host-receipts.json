@@ -1,0 +1,77 @@
+[
+  {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "89bbdbad-06f1-47da-b128-b1a44ab49ae3",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "0edffdb682d11f85419f401b33a05e3f00c7f4e7ce4efded9e6de944ea5e2be6",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "unknown",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "8c3be112ee576bdd81ad3906f10ce24c56ba1cf997646b4cbafcf6cba5468913",
+    "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+    "images": [],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 7113,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "23a854c0cd76874a7637ce58abd241a3b7da395d33874d29fc4c493abe986738"
+  },
+  {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "008508dc-0d5a-486c-b848-31f65375c085",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "79ef6b54637ce96d33b881f4e1295f0358548bc312b8862735279c7e0fff3511",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "unknown",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "e341c0dc3edf5a158eb63bc8bf4afd1eb2553658b0c88cf76ba6f28f1b6616de",
+    "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+    "images": [
+      {
+        "file": "capture-1792319422612-1440.png",
+        "hash": "b80f898c38979c21ca76e1441760dda64d8daaa3ce20961d6913a936faf594b4",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      },
+      {
+        "file": "capture-1792319422612-390.png",
+        "hash": "771c4f21ce8e90e39df13b4c407b8dc2c10732b8685db22951b1d4410e9c6ca6",
+        "mime": "image/png",
+        "delivery": "submitted-to-cli; model finding required"
+      }
+    ],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 21151,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "e508c65a251a9da680dc1c6de20cf4643caebe46cb80fb56c47b4a8b59bdeadc"
+  }
+]

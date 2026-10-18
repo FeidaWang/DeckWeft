@@ -1,0 +1,40 @@
+{
+  "summaries": [
+    {
+      "task": "before.task.json",
+      "status": "exported",
+      "receiptId": "ac9f21a5bccc1a6dae7decd939b0e4531b40835d7cb1fdeaae8b2e2514e2fa9f",
+      "artifact": "before.html",
+      "htmlHash": "684d1c47f47e8b0f0ce825d9d6d605aa9863b7caaa5d583f8699f0ad9951a792"
+    },
+    {
+      "task": "after.task.json",
+      "status": "exported",
+      "receiptId": "860d6faffa693450b261f8b87dae43acbcfabd9aed94822e21a5c0f9505cea5c",
+      "artifact": "after.html",
+      "htmlHash": "2f01d643ca6e0303a6fff389680faac4a1462e6f47574eca8fdc4c9166a85fe6"
+    },
+    {
+      "task": "repair.task.json",
+      "status": "exported",
+      "receiptId": "10bb3c5d4933ac716758eaf42ef00a88502f231bf98ad4a5ddfdd4a72f555da7",
+      "artifact": "repair.html",
+      "htmlHash": "3e3e1ae73e0048bab03735ad8e404dcdcb06e15aea3d8999d3b8e91d487b6c73"
+    }
+  ],
+  "failure": {
+    "status": "repair-exhausted",
+    "lastValidHash": "2f01d643ca6e0303a6fff389680faac4a1462e6f47574eca8fdc4c9166a85fe6",
+    "diagnostics": [
+      {
+        "code": "REPAIR_EXHAUSTED",
+        "recovery": "Restore a missing resource or revise the affected unlocked layout. Keep this checkpoint and last valid artifact; start an explicit new task for more rounds."
+      }
+    ]
+  },
+  "staleReceipt": {
+    "code": "STALE_RECEIPT",
+    "message": "Final HTML needs a current passing machine and actual image review receipt.",
+    "recovery": "Reload this checkpoint; preserve original and lastValid. Correct only the diagnosed input or scope and retry."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "commit": "9204f21161fd5b5c15c4040bd2414bed55fb4d99",
+  "branch": "main",
+  "workingTree": "dirty; user changes preserved, no commit/push",
+  "sourceHashes": {
+    "src/cli.mjs": "e88159d17c7fc7a2c623e7e91149795986dfe381d5cf604dde0091f3b37cdf4c",
+    "scripts/deck-task.mjs": "15c5e22bdfc7fc27578b629a314228a3e1dae7f3cf5be2b62163c57d43f117f4",
+    "scripts/host-visual-acceptance.mjs": "e7600578127c4a44a2fdc22d6ed922e25f940eeb66ef3dbe960fa40a9a07becd",
+    "scripts/types.mjs": "15fa50397b0895485179f71288009997762755f7a3e766e4f6755b6a42427c3d",
+    "schemas/host-response.schema.json": "8858d4431748e146668e73d95f2ed835eb984391023f6c8d265f0b7834b49a67",
+    "skills/deck/SKILL.md": "dbb0b7d710ec48934d08dc8726f77c35211b9ab5a91fb55c86ea25ec8906a80b",
+    "package.json": "bdfc8323e928a4db5d1babddd693a9261f6013918bcaf11261b316c7a6ae394b",
+    "tests/host-adapters.test.mjs": "8f22fa156cc035ecd3af270c6f558f596c5a7d8275eadbc352169422951db499",
+    "tests/planning-jobs.test.mjs": "cac68a3de79b26278255b109342891c3b52150822489befdb8f857ddee6cc8b3",
+    "src/hosts/capabilities.mjs": "1ee21b8db33d27e09928cd6e93a1c00d1c894a2d7d1c099118d70fc4f1980f65",
+    "src/hosts/claude-code.mjs": "eaadca66232f8cc437a646890b18dd36aabb8ffdbc05224dd876dd7b9f423d3a",
+    "src/hosts/codex.mjs": "7cbf6d4361cfee8a2dd05854ef90ec57ea7c239a13ff5ac0bbfb5c55db2e54c7",
+    "src/hosts/process.mjs": "2303d4255c2bce7258e82fb10494e2e7cb8e649f59bb3950fb0e2b8ee1558d63",
+    "src/hosts/run-receipt.mjs": "9970f15ea8c14f7da023487403de71608e0749030303772c7ca90034da715bfb",
+    "src/hosts/task-cli.mjs": "8ac0c1d285e8aeac56383b9a63980945dc7d2d58dc4738eb11443af82a70e456",
+    "src/hosts/tasks.mjs": "b8e3f7a0bbd228c8a28af16a16fddd9a4f8da39972938ec4c52a71f0fbdeec2a"
+  }
+}

@@ -15,3 +15,9 @@ const {buildPresenterDemo}=await import('./presenter-demo.mjs');await buildPrese
 
 // The preserved original artwork is a source fixture, never regenerated during a build.
 await import('./media-demo.mjs');
+
+const {renderVisual}=await import('./render-visual.mjs');
+await renderVisual({caseName:'studio'});console.log('Created both language editions of the three-theme Visual Studio example in dist/visual/studio.');
+const {renderAssetDemo}=await import('./render-asset-demo.mjs');await renderAssetDemo();console.log('Created bilingual source-preserving asset/crop examples in dist/visual-assets/demo.');
+const {renderComponentDemo}=await import('./render-component-demo.mjs');await renderComponentDemo();console.log('Created six bilingual three-theme semantic component stories in dist/visual-components/demo.');
+const {renderInteractionDemo}=await import('./render-interaction-demo.mjs');await renderInteractionDemo();console.log('Created six offline bilingual semantic interaction stories in dist/visual-interactions/demo.');

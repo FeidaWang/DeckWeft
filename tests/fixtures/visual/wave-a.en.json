@@ -1,0 +1,189 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "visual-wave-a-en",
+    "title": "A bolder local canvas",
+    "locale": "en",
+    "blocks": [
+      {
+        "id": "cover-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Make room\nfor bold ideas."
+      },
+      {
+        "id": "cover-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Content is the starting point. Composition gives it a voice. Keep the words editable and the choices deliberate."
+      },
+      {
+        "id": "cover-metric",
+        "type": "metric",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "value": 12,
+        "unit": "scenes",
+        "label": "A synthetic gallery brief, ready to explore."
+      },
+      {
+        "id": "cover-note",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "01 / FROM WORDS TO A WORLD"
+      },
+      {
+        "id": "cover-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "Fixture content · no product results claimed"
+      },
+      {
+        "id": "data-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Two paths.\nOne visible difference."
+      },
+      {
+        "id": "data-chart",
+        "type": "chart",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "datasetId": "adoption-quarterly"
+      },
+      {
+        "id": "data-callout",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Keep the evidence in view."
+      },
+      {
+        "id": "data-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Compare both series on the same scale. Exact values remain in the table below. These figures are synthetic, not measured product outcomes."
+      },
+      {
+        "id": "data-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "Synthetic quarterly dataset · units: %"
+      }
+    ],
+    "datasets": [
+      {
+        "id": "adoption-quarterly",
+        "unit": "%",
+        "synthetic": true,
+        "categories": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6"
+        ],
+        "series": [
+          {
+            "id": "guided",
+            "label": "Guided workflow",
+            "values": [
+              18,
+              28,
+              41,
+              46,
+              62,
+              78
+            ]
+          },
+          {
+            "id": "manual",
+            "label": "Manual workflow",
+            "values": [
+              18,
+              22,
+              26,
+              33,
+              39,
+              45
+            ]
+          }
+        ],
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "synthetic-source",
+        "title": "DeckWeft synthetic fixture",
+        "url": "https://example.org/deckweft/synthetic"
+      }
+    ],
+    "authorOverrides": {
+      "lockedBlockIds": [
+        "data-chart"
+      ]
+    },
+    "migration": {}
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "visual-wave-a-en",
+    "scenes": [
+      {
+        "id": "collage",
+        "role": "opening",
+        "theme": "cream-collage",
+        "themeVersion": "1.0.0",
+        "composition": "diagonal-cover",
+        "blockIds": [
+          "cover-title",
+          "cover-body",
+          "cover-metric",
+          "cover-note",
+          "cover-source"
+        ],
+        "focalBlockId": "cover-title"
+      },
+      {
+        "id": "evidence",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": [
+          "data-title",
+          "data-chart",
+          "data-callout",
+          "data-body",
+          "data-source"
+        ],
+        "focalBlockId": "data-title"
+      }
+    ]
+  }
+}

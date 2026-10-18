@@ -70,3 +70,5 @@ node /absolute/path/to/DeckWeft/bin/deckweft-worker.mjs complete \
 运行 `npm run verify` 检查源码、契约、子进程、租约、持久化、导出和打包。本地协议测试与真实 Codex CLI 任务不能代替 Dot 桌面、Claude 登录或原生插件激活验收。
 
 现行[素材与 worker 指南](media-workers.md)补充两个独立身份、明确选择的会话文字快照、worker 进度与本地图片任务。单个文稿请求仍只授权指定 worker；不授予真实会话读取、源码、网络或工具权限。Dot 桌面验收仍开放。
+
+VIS-011 增加可选 `workflow: "visual"` 任务及受作用域约束的 MCP `deckweft_visual_tool`。七个共享工具、版本冲突、明确的浏览器/图像回执及恢复操作见[任务闭环](task-loop.md)。这属于本地协议支持，不代表 VIS-012 真实宿主验收。

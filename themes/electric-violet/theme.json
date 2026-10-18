@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "attribution": "Palette and direction from supplied DeckWeft Visual-First Roadmap 2026-10-18 §4, referencing Open-Deck-Skill O4/O5/O6. Executable layout, typography and rules authored for DeckWeft; no fonts bundled.",
+  "spacing": {
+    "page": 48,
+    "gap": 36
+  },
+  "density": "comfortable",
+  "motion": {
+    "durationMs": 240,
+    "effect": "fade"
+  },
+  "id": "electric-violet",
+  "palette": {
+    "paper": "#FAF9F5",
+    "ink": "#1B1826",
+    "accent": "#5420E8",
+    "secondary": "#5420E8"
+  },
+  "typography": {
+    "displayEn": "\"Helvetica Neue\", Arial, sans-serif",
+    "displayZh": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "bodyEn": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+    "bodyZh": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "code": "Menlo, Consolas, monospace",
+    "displayScale": 1
+  },
+  "imageGrammar": {
+    "split": 0.56,
+    "treatment": "full-height",
+    "caption": "visible"
+  },
+  "chartColors": [
+    "#5114F6",
+    "#B33C1E",
+    "#116B58",
+    "#52226D",
+    "#855600",
+    "#242424",
+    "#9A2338",
+    "#005F82"
+  ],
+  "compositions": [
+    "photo-split",
+    "violet-chapter",
+    "reading-flow",
+    "statement-split",
+    "statement-banner",
+    "statement-center",
+    "image-left",
+    "image-strip",
+    "image-right",
+    "metric-left",
+    "metric-band",
+    "metric-right",
+    "evidence-left",
+    "evidence-top",
+    "evidence-right",
+    "comparison-matrix",
+    "comparison-rail",
+    "comparison-stack",
+    "process-line",
+    "process-rail",
+    "process-stair"
+  ],
+  "modes": {
+    "default": "light",
+    "chapter": "violet"
+  },
+  "rules": [
+    {
+      "sceneRole": "any",
+      "mode": "any",
+      "property": "contrast",
+      "value": "required-text-readable",
+      "severity": "require",
+      "rationale": "Required text must remain readable in every profile."
+    },
+    {
+      "sceneRole": "any",
+      "mode": "default",
+      "property": "composition",
+      "value": "photo-split",
+      "severity": "prefer",
+      "rationale": "Keep the selected visual system structurally distinctive."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Create: deckweft visual-task --brief brief.json --out dist/my-task [--home asset-home] [--host codex|claude-code --live]
+Continue: --task task.json --tool TOOL --args args.json
+Host revision: --task task.json --host codex --live --tool design.patch --request "..." --expected-sequence N
+Host pixel review: --task task.json --host codex --live --tool render.inspect --expected-sequence N
+Options: --model exact-model (otherwise host default), --timeout-ms 120000 (1000–600000).
+Every continuation requires the current expectedSequence. HTML requires current browser capture and actual image review. Host selection uses existing configured authentication and may consume its allowance; no host/model fallback. Without --host, all work stays deterministic and local.

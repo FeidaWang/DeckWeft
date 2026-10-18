@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "name": "welcome",
+      "slides": 6,
+      "idleIntervals": 0,
+      "runningIntervals": 1,
+      "pausedIntervals": 0,
+      "checks": [
+        "Hashed fixed player executed",
+        "Actual elapsed clock tick",
+        "Native keyboard scene change",
+        "Reduced motion toggle",
+        "Return to static reading"
+      ]
+    },
+    {
+      "name": "welcome.zh-CN",
+      "slides": 6,
+      "idleIntervals": 0,
+      "runningIntervals": 1,
+      "pausedIntervals": 0,
+      "checks": [
+        "Hashed fixed player executed",
+        "Actual elapsed clock tick",
+        "Native keyboard scene change",
+        "Reduced motion toggle",
+        "Return to static reading"
+      ]
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "ok": true
+}

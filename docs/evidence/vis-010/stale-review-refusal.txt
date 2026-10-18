@@ -1,0 +1,24 @@
+
+> deckweft@0.1.0-alpha.2 visual:verify
+> node scripts/visual-verify.mjs --review /Users/feida/Developer/DeckWeft/docs/evidence/vis-010/image-reviews.json
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Renderer/contract/theme changed; recapture before review
++ actual - expected
+
++ 'bac35dcc21bb44695fef4d470fbd95015c62350a3f6ed7605baf1d87ee050a7b'
+- '5ee56415a65d44e8f22496a11c68d4231f77ce82a1552f5ec290ce10c59299a2'
+
+    at file:///Users/feida/Developer/DeckWeft/scripts/visual-verify.mjs:33:9 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'bac35dcc21bb44695fef4d470fbd95015c62350a3f6ed7605baf1d87ee050a7b',
+  expected: '5ee56415a65d44e8f22496a11c68d4231f77ce82a1552f5ec290ce10c59299a2',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

@@ -1,0 +1,19 @@
+✔ preferences stay typed and languages/tone/style are independent (0.634083ms)
+✔ scoped styles retain source, locks and project defaults (10.782833ms)
+✔ no browser leaves durable preview, refuses both export routes, rejects stale sequence and resumes after restart (93.684167ms)
+✔ source revision changes conflict without overwriting newer editor content (99.802166ms)
+✔ capture failure and cancellation retain checkpoint without fake approval (86.263333ms)
+✔ live host and selected source require explicit current authorization (9.406167ms)
+✔ sync is explicit, preserves cumulative repair and private recovery, and invalidates approval (146.036167ms)
+✔ typed scoped color/image choices affect only that scene and keep project defaults (4.593666ms)
+✔ automatic scoped choices cannot change a locked theme (1.439542ms)
+✔ original attached source persists independently of task success (79.355667ms)
+✔ shared automatic repair persists via revisions and recaptures without resetting budget (synthetic controller only) (173.461417ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 771.126625

@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "scope": "Actual Codex structured patch and local preview only; no current image review/final HTML export claimed",
+  "before": "900ee8293bab359d153c9d426526e551460152fe426183f3b78a5e91be4f93f2",
+  "after": "08f824ca87e0ba55fb7d529519eca7c38fcee4ee6117cf55389305ec73a095dd",
+  "changedScene": "evidence",
+  "compositionBefore": "evidence-top",
+  "compositionAfter": "evidence-right",
+  "sourceAndAssetsExact": true,
+  "otherScenesExact": true,
+  "hostReceipt": {
+    "format": "deckweft-host-run",
+    "version": 1,
+    "requestId": "7f7983b9-99ca-465c-b153-5aff96c283c7",
+    "host": "codex",
+    "surface": "local-cli",
+    "capabilityId": "4837669b88447207aedcfe9d7bebba388218e06fc67d696deb40618f43d03b76",
+    "requestedModel": null,
+    "actualModel": null,
+    "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+    "authentication": "unknown",
+    "billingRoute": "unknown; existing host configuration is retained",
+    "inputHash": "70b19e30c20153513557126f4b8b351cdcea223a5332c9ca4311273c6a681682",
+    "schemaHash": "6c918cb7cfd5981bf157a4e4ac50b81e85c0f04988d790c4d805c4295e0635f6",
+    "images": [],
+    "timeoutMs": 120000,
+    "status": "validated",
+    "error": null,
+    "hostAcceptance": false,
+    "process": {
+      "exitCode": 0,
+      "elapsedMs": 5474,
+      "timedOut": false,
+      "outputLimited": false,
+      "cancelled": false
+    },
+    "events": {
+      "completedTurns": 1
+    },
+    "outputHash": "456c1695f335946486950e9abde1b4f80073ce2f6e2c81331b6578c5bdfe6958"
+  },
+  "qualityStatus": "preview-ready"
+}

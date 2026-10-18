@@ -1,0 +1,376 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "visual-wave-a-en",
+    "title": "A bolder local canvas",
+    "locale": "en",
+    "blocks": [
+      {
+        "id": "cover-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Make room\nfor bold ideas."
+      },
+      {
+        "id": "cover-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Content is the starting point. Composition gives it a voice. Keep the words editable and the choices deliberate."
+      },
+      {
+        "id": "cover-metric",
+        "type": "metric",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "value": 12,
+        "unit": "scenes",
+        "label": "A synthetic gallery brief, ready to explore."
+      },
+      {
+        "id": "cover-note",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "01 / FROM WORDS TO A WORLD"
+      },
+      {
+        "id": "cover-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "Fixture content · no product results claimed"
+      },
+      {
+        "id": "data-title",
+        "type": "heading",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Two paths.\nOne visible difference."
+      },
+      {
+        "id": "data-chart",
+        "type": "chart",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "datasetId": "adoption-quarterly"
+      },
+      {
+        "id": "data-callout",
+        "type": "callout",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Keep the evidence in view."
+      },
+      {
+        "id": "data-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "text": "Compare both series on the same scale. Exact values remain in the table below. These figures are synthetic, not measured product outcomes."
+      },
+      {
+        "id": "data-source",
+        "type": "citation",
+        "sourceIds": [
+          "synthetic-source"
+        ],
+        "sourceId": "synthetic-source",
+        "text": "Synthetic quarterly dataset · units: %"
+      },
+      {
+        "id": "violet-title",
+        "type": "heading",
+        "text": "A story worth\ngetting close to.",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "violet-body",
+        "type": "paragraph",
+        "text": "Give the image room. Keep the message clear. A distinct art direction can still leave every word and number editable.",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "violet-image",
+        "type": "image",
+        "assetId": "asset_70c32da27c9df448e0749ce3",
+        "alt": "Generated decorative workbench illustration: paper cards and blue thread.",
+        "factual": false,
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "violet-caption",
+        "type": "callout",
+        "text": "Decorative generated artwork / original local asset",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "chapter-title",
+        "type": "heading",
+        "text": "Different form.\nThe same truth.",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      },
+      {
+        "id": "chapter-body",
+        "type": "paragraph",
+        "text": "A full-violet chapter creates a deliberate pause. Theme changes preserve content, numeric data, citations and author locks.",
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      }
+    ],
+    "datasets": [
+      {
+        "id": "adoption-quarterly",
+        "unit": "%",
+        "synthetic": true,
+        "categories": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6"
+        ],
+        "series": [
+          {
+            "id": "guided",
+            "label": "Guided workflow",
+            "values": [
+              18,
+              28,
+              41,
+              46,
+              62,
+              78
+            ]
+          },
+          {
+            "id": "manual",
+            "label": "Manual workflow",
+            "values": [
+              18,
+              22,
+              26,
+              33,
+              39,
+              45
+            ]
+          }
+        ],
+        "sourceIds": [
+          "synthetic-source"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "synthetic-source",
+        "title": "DeckWeft synthetic fixture",
+        "url": "https://example.org/deckweft/synthetic"
+      }
+    ],
+    "authorOverrides": {
+      "lockedBlockIds": [],
+      "sceneLocks": []
+    },
+    "migration": {},
+    "visualBrief": {
+      "audience": "Design and product teams",
+      "outputLanguage": "en",
+      "profile": {
+        "colorIntensity": "bold",
+        "typographicContrast": "expressive",
+        "density": "comfortable",
+        "motionIntensity": "off",
+        "imageEmphasis": "large"
+      }
+    },
+    "sourceSnapshots": [
+      {
+        "id": "synthetic-v1",
+        "sourceId": "synthetic-source",
+        "version": "fixture-2026-10-18",
+        "hash": "8e266a1c58bed0eae27d5a1231ca201a640f654c4517d27e599aab94f9d9e5d2",
+        "permission": "local-copy",
+        "anchors": [
+          {
+            "blockId": "cover-title",
+            "anchor": "fixture/cover-title"
+          },
+          {
+            "blockId": "cover-body",
+            "anchor": "fixture/cover-body"
+          },
+          {
+            "blockId": "cover-metric",
+            "anchor": "fixture/cover-metric"
+          },
+          {
+            "blockId": "cover-note",
+            "anchor": "fixture/cover-note"
+          },
+          {
+            "blockId": "cover-source",
+            "anchor": "fixture/cover-source"
+          },
+          {
+            "blockId": "data-title",
+            "anchor": "fixture/data-title"
+          },
+          {
+            "blockId": "data-chart",
+            "anchor": "fixture/data-chart"
+          },
+          {
+            "blockId": "data-callout",
+            "anchor": "fixture/data-callout"
+          },
+          {
+            "blockId": "data-body",
+            "anchor": "fixture/data-body"
+          },
+          {
+            "blockId": "data-source",
+            "anchor": "fixture/data-source"
+          },
+          {
+            "blockId": "violet-title",
+            "anchor": "fixture/violet-title"
+          },
+          {
+            "blockId": "violet-body",
+            "anchor": "fixture/violet-body"
+          },
+          {
+            "blockId": "violet-image",
+            "anchor": "fixture/violet-image"
+          },
+          {
+            "blockId": "violet-caption",
+            "anchor": "fixture/violet-caption"
+          },
+          {
+            "blockId": "chapter-title",
+            "anchor": "fixture/chapter-title"
+          },
+          {
+            "blockId": "chapter-body",
+            "anchor": "fixture/chapter-body"
+          }
+        ]
+      }
+    ]
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "visual-wave-a-en",
+    "scenes": [
+      {
+        "id": "collage",
+        "role": "opening",
+        "theme": "cream-collage",
+        "themeVersion": "1.0.0",
+        "composition": "diagonal-cover",
+        "blockIds": [
+          "cover-title",
+          "cover-body",
+          "cover-metric",
+          "cover-note",
+          "cover-source"
+        ],
+        "focalBlockId": "cover-title"
+      },
+      {
+        "id": "evidence",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": [
+          "data-title",
+          "data-chart",
+          "data-callout",
+          "data-body",
+          "data-source"
+        ],
+        "focalBlockId": "data-title"
+      },
+      {
+        "id": "violet",
+        "role": "context",
+        "theme": "electric-violet",
+        "themeVersion": "1.0.0",
+        "composition": "photo-split",
+        "colorMode": "default",
+        "blockIds": [
+          "violet-title",
+          "violet-body",
+          "violet-image",
+          "violet-caption"
+        ],
+        "focalBlockId": "violet-title",
+        "crops": [
+          {
+            "blockId": "violet-image",
+            "x": 0.34,
+            "y": 0,
+            "width": 0.53,
+            "height": 1
+          }
+        ]
+      },
+      {
+        "id": "chapter",
+        "role": "closing",
+        "theme": "electric-violet",
+        "themeVersion": "1.0.0",
+        "composition": "violet-chapter",
+        "colorMode": "chapter",
+        "blockIds": [
+          "chapter-title",
+          "chapter-body"
+        ],
+        "focalBlockId": "chapter-title"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "asset_70c32da27c9df448e0749ce3",
+      "hash": "70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "path": "assets/70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1.png",
+      "provenance": "Original host-generated decorative artwork, retained from the MB-11–15 build. Not documentary photography or product evidence.",
+      "license": "Generated artwork; no third-party rights clearance asserted",
+      "allowedUse": "Local DeckWeft demonstration; review rights for your own redistribution",
+      "alt": "Blank paper story cards linked by blue thread on a wooden workbench",
+      "fallback": "A series of paper cards joined by blue thread; decorative artwork."
+    }
+  ]
+}

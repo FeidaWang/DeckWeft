@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "cases": 18,
+  "captures": 135,
+  "out": "/Users/feida/Developer/DeckWeft/dist/visual-compositions/acceptance"
+}

@@ -1,0 +1,16 @@
+{
+  "browser": "151.0.7922.34",
+  "isolation": "Isolated cached testing binary; ephemeral context; installed apps and personal profiles untouched",
+  "checks": [],
+  "cases": [],
+  "captures": [
+    {
+      "file": "failure.png",
+      "sha256": "cb9c3b8047859412e8abcaed51ad9ecefb4bd820c8849af4992e593d500d1836"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "ok": false,
+  "failure": "DeckError: Photo split needs Electric Violet, a heading and a local image.\n    at fail (file:///Users/feida/Developer/DeckWeft/src/design/plan.mjs:11:35)\n    at assertDesignPlan (file:///Users/feida/Developer/DeckWeft/src/design/plan.mjs:31:131)\n    at compileWebScenes (file:///Users/feida/Developer/DeckWeft/src/scene/web/compile.mjs:9:2)\n    at exportPresentation (file:///Users/feida/Developer/DeckWeft/src/render/web/document.mjs:21:18)\n    at exportDeck (file:///Users/feida/Developer/DeckWeft/src/render/export.mjs:11:55)\n    at render (file:///Users/feida/Developer/DeckWeft/tests/browser_interactions.mjs:24:90)\n    at async file:///Users/feida/Developer/DeckWeft/tests/browser_interactions.mjs:30:35"
+}

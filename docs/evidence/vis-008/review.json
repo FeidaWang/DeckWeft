@@ -1,0 +1,264 @@
+{
+  "task": "VIS-008",
+  "date": "2026-10-18",
+  "state": "implemented-local",
+  "browser": {
+    "version": "151.0.7922.34",
+    "stories": 6,
+    "pagesPerStory": 14,
+    "componentPages": 60,
+    "captures": 110,
+    "viewports": [
+      390,
+      1024,
+      1440
+    ],
+    "candidatePages": 252,
+    "candidatePagesPassing": 240,
+    "minimumFeasiblePerPage": 2,
+    "pageErrors": [],
+    "externalRequests": [],
+    "isolation": "Isolated cached testing binary; ephemeral context; installed apps and personal profiles untouched",
+    "report": "docs/evidence/vis-008/browser.json"
+  },
+  "regressions": {
+    "visualStudio": {
+      "checks": 22,
+      "log": "studio-regression.txt"
+    },
+    "compositions": {
+      "candidatePages": 108,
+      "log": "composition-regression.txt"
+    },
+    "assets": {
+      "cropCases": 36,
+      "log": "assets-regression.txt"
+    }
+  },
+  "visualReview": {
+    "delivery": "Actual images supplied through view_image tool, including full-deck screenshots and contact sheets, not hash-only review",
+    "inspected": [
+      {
+        "file": "en-cream-collage-contact.png",
+        "sha256": "d6e5adf4502f0e380ac7f4a121adaff62d564a52b6bb735d0ac2a3113d8825cf"
+      },
+      {
+        "file": "en-cream-collage-story-contact.png",
+        "sha256": "d577772498cdd0ba57e6d94d95371c816e8f83e5990b4f4d1df4366e4316a620"
+      },
+      {
+        "file": "en-electric-violet-contact.png",
+        "sha256": "71312cd8964e006193416d2455af5906f7c440e4f65be8991d70c693bb8d1ce0"
+      },
+      {
+        "file": "en-electric-violet-story-contact.png",
+        "sha256": "358d3bdd614529e5ebf03b6f4c3207604b54c3360cab035213fb928aa877bae3"
+      },
+      {
+        "file": "en-dark-data-contact.png",
+        "sha256": "f4dd1d2515748881a88c5133c42a3920f4a19fd7a531e6c68cf57eb825e38ab2"
+      },
+      {
+        "file": "en-dark-data-story-contact.png",
+        "sha256": "2d9e2bebc36b2c304586081a089fb21a0c8b6e6395e8e8d32a6bb0477de6e27f"
+      },
+      {
+        "file": "zh-CN-cream-collage-contact.png",
+        "sha256": "02d0573257791bb18597ebb851b544e14a5e655cb8b3b15a97ce3c10ff82143a"
+      },
+      {
+        "file": "zh-CN-cream-collage-story-contact.png",
+        "sha256": "88ba231fb0e4645b249360736f95adb95bce1a4eb9ad07dec234496c6acabe52"
+      },
+      {
+        "file": "zh-CN-electric-violet-contact.png",
+        "sha256": "ed264a090eb39b30161071e2b215cab21fe179242a6e7ef607f2ecc461e8b478"
+      },
+      {
+        "file": "zh-CN-electric-violet-story-contact.png",
+        "sha256": "b99ef58a3737abc787da43595c7185b3198169d00f4b179b60468c36ac09ed8e"
+      },
+      {
+        "file": "zh-CN-dark-data-contact.png",
+        "sha256": "45d37c41cef6d998d1a7fb38b84cebda36fbb3de98791a60dbef7e7880bb99aa"
+      },
+      {
+        "file": "zh-CN-dark-data-story-contact.png",
+        "sha256": "9e49d55d3e0cfbcc94a64d6ed84473fcdd30e300c81eee14398afb39297b8621"
+      },
+      {
+        "file": "studio-code.png",
+        "sha256": "8091fc8a4dd4183f072dc93d5464d06b1cf74303d56d79bde3f5671ad5ab4dcb"
+      },
+      {
+        "file": "studio-edited-line.png",
+        "sha256": "6809808d723b420a3e2b8b91d4376f299f95fef27da50cb52b6037854fb68459"
+      },
+      {
+        "file": "en-electric-violet-component-heatmap.png",
+        "sha256": "400d93d1755801404390d5f5c5bfa8d4a461d4c02f0564c0d09a3fd5780cf2ee"
+      },
+      {
+        "file": "en-cream-collage-component-relationship.png",
+        "sha256": "44dbf8e936b41e9aa0ec803a63ff9275a271aea5d38b42c2786b277ff2d8c98d"
+      },
+      {
+        "file": "en-cream-collage-component-stacked.png",
+        "sha256": "74c9102d749b62ef2a35002708167783beb0ad79dd52a2e8f12fade26d4100a4"
+      }
+    ],
+    "rawFullDeckScreenshots": [
+      {
+        "file": "dist/visual-components/acceptance/zh-CN-electric-violet-full-deck.png",
+        "sha256": "37e79638f7c6dfe4da872d6259886b316a56d75397d2a04b2549f43502637899"
+      },
+      {
+        "file": "dist/visual-components/acceptance/en-dark-data-full-deck.png",
+        "sha256": "5ee2d99a6afaa006eb6ae7866cd1a2493a36de6fb17cbf671ae7ced62a438aa0"
+      },
+      {
+        "file": "dist/visual-components/acceptance/zh-CN-dark-data-full-deck.png",
+        "sha256": "d7e736327fea6e886ae13317aba231113696d7ac53e66af313ddb40744b1888b"
+      },
+      {
+        "file": "dist/visual-components/acceptance/zh-CN-cream-collage-full-deck.png",
+        "sha256": "c21a102a99b9a7bc1d58d39a5528bf293f2dbfefef0c856fab22af11975cf790"
+      },
+      {
+        "file": "dist/visual-components/acceptance/en-cream-collage-full-deck.png",
+        "sha256": "2598147a3edb7cdaa803ddf69901ee7a7bc3a8ce199051a89358e79f1ae471b0"
+      },
+      {
+        "file": "dist/visual-components/acceptance/en-electric-violet-full-deck.png",
+        "sha256": "50d299f417d2898e3e327ecaf6698369e70a50eb94dbc22d2dced1c646c49272"
+      }
+    ],
+    "result": "Observed clipping, arrow occlusion, zero-label crowding, process candidate height and heatmap sign-palette defects repaired. No unresolved observed clipping or direction defect in representative final captures. Complex graph routing and arbitrary label collisions remain bounded, not certified."
+  },
+  "automatedVerification": {
+    "command": "npm run verify",
+    "log": "docs/evidence/vis-008/verify.txt",
+    "status": "passed",
+    "tests": 263,
+    "failed": 0,
+    "skipped": 0
+  },
+  "applications": {
+    "PowerPoint": "installed; not run; native v3 compiler unsupported",
+    "Keynote": "installed; not run; native v3 compiler unsupported",
+    "Figma": "installed; not run; native v3 compiler unsupported",
+    "AfterEffects": "not present in /Applications; not run"
+  },
+  "runtimeDependenciesAdded": 0,
+  "remoteServicesAdded": 0,
+  "publishedOrPushed": false,
+  "remaining": [
+    "VIS-009 interaction and motion",
+    "Native v3 target compilers/actual target acceptance",
+    "Complex routing and exhaustive label collision coverage",
+    "Other browser engines, screen reader, real IME and 200% zoom",
+    "VIS-001 remote CI and VIS-014 broader release/host gates"
+  ],
+  "sources": [
+    {
+      "file": "public/studio/visual.js",
+      "sha256": "bdacd0e07def841b71fbfb84222bb4f79d51f5eccece0c0bd7b027bf84127cd4"
+    },
+    {
+      "file": "schemas/presentation-v3.schema.json",
+      "sha256": "b87dc9714ef82b6a3dd3063ff6683ba053cfae970ab79c3ff94676dc17b31c1b"
+    },
+    {
+      "file": "schemas/web-scene.schema.json",
+      "sha256": "b7b54d26130c57d3864f9099042dc2334d5ce44099d0e982401fda5aaed4620c"
+    },
+    {
+      "file": "src/components/annotations/identity.mjs",
+      "sha256": "28798b9d3efdfb4d38ac74d2c77b6f56c410d82f019e8fe7064bb7af03a39887"
+    },
+    {
+      "file": "src/components/annotations/model.mjs",
+      "sha256": "deb228a5eab2994f092f5447301e7dc2d4e31b3c3735b1bd2f62ddc51f98c572"
+    },
+    {
+      "file": "src/components/annotations/render.mjs",
+      "sha256": "a4ab102dd87c3df5101d86911329ab61940f976325e6301c339871afd8684c62"
+    },
+    {
+      "file": "src/components/capabilities.mjs",
+      "sha256": "d54e9c92661e02a9d3d49f00778784115658edb80e81272e7390f1c8f4980f59"
+    },
+    {
+      "file": "src/components/charts/model.mjs",
+      "sha256": "75910b918ca353b4b0f25f6af3770424223ecd167c875f8ffcde390ec796a941"
+    },
+    {
+      "file": "src/components/charts/render.mjs",
+      "sha256": "10afcfbfbf27fe77b7b903fb3276959427abcd32b1dcbe5e17437e5c51677fb4"
+    },
+    {
+      "file": "src/components/code/render.mjs",
+      "sha256": "835d70ce980566307cc257ae1a19e698a200469ab52fb1f932999340dd76508d"
+    },
+    {
+      "file": "src/components/diagrams/render.mjs",
+      "sha256": "4fbe028e9d96bade27ae5a8182078e59f2018e79f7de9bd7bc11f122af9520d1"
+    },
+    {
+      "file": "src/components/validate.mjs",
+      "sha256": "6c528565002869e0de8ce8da3efc40ae71e484b729c447917bb8f2279b0c5069"
+    },
+    {
+      "file": "src/core/component-demo.mjs",
+      "sha256": "afebe135a71e86dbb5357256ded5236b3e7cb1453defa0768eb50ba06eccf659"
+    },
+    {
+      "file": "src/design/rhythm.mjs",
+      "sha256": "d4879e7b4596e046da15942d64c978f0cf14e373bf2370676a56bfa6a4bc4978"
+    },
+    {
+      "file": "src/render/web/components/blocks.mjs",
+      "sha256": "a7507b1c0de4527f75fd3a3231a3c2b91f589d00314dc02ce80fcca02f170e6e"
+    },
+    {
+      "file": "src/render/web/components/chart.mjs",
+      "sha256": "5a3198979aa51602e713dc3dc7b4ca7939a8b1a6ac4170afaa0e11c13ff6001c"
+    },
+    {
+      "file": "src/render/web/components/escape.mjs",
+      "sha256": "0880bea6fed9f39f1a73555ee13965dabfa611cb8e197790351795b7c527a928"
+    },
+    {
+      "file": "src/render/web/components/graphics.mjs",
+      "sha256": "8d464a61c1f0ec0a44551cd39005601a31662cddbc393d05fbcda65c3f09e69a"
+    },
+    {
+      "file": "src/render/web/compositions.mjs",
+      "sha256": "d25bd5d12912c664f519dc71ccb47c1e0d2730016d8a59c54e98c03238fa4eed"
+    },
+    {
+      "file": "src/render/web/contrast.mjs",
+      "sha256": "32c800bf821bddc32056b6307cde1132549eba36c75f2a219cdf2d018d3fcd23"
+    },
+    {
+      "file": "src/render/web/document.mjs",
+      "sha256": "c21823aec6640866118055eabacc7f30c3fd2c20431462cacfa4309e7b2f0665"
+    },
+    {
+      "file": "src/render/web/runtime.mjs",
+      "sha256": "fa79032eb1f39059af8c26ddeabd6355a5b1368381e7e71237a9cf900eaaec31"
+    },
+    {
+      "file": "src/render/web/styles.mjs",
+      "sha256": "5a3b1b71c717d1d34286ebf300d6361dc42ce0b847e78a0b6d8b4ae41e931019"
+    },
+    {
+      "file": "tests/browser_components.mjs",
+      "sha256": "4ad7d849d628f97ccb7dcd065d560821fd69470c2ba44c2078832c248bf6281b"
+    },
+    {
+      "file": "tests/components.test.mjs",
+      "sha256": "abf76fe5f21a92ee8c8a6782545334796215aba8c18996ac0bc1d4fb19330ee7"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "9204f21161fd5b5c15c4040bd2414bed55fb4d99",
+  "method": "git archive HEAD into a temporary folder; original exportDeck rendered the frozen fixtures; compare exact HTML bytes",
+  "checks": [
+    {
+      "file": "product-en.html",
+      "byteIdentical": true
+    },
+    {
+      "file": "strategy-zh-CN.html",
+      "byteIdentical": true
+    },
+    {
+      "file": "technical-en.html",
+      "byteIdentical": true
+    }
+  ]
+}

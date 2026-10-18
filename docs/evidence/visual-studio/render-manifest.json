@@ -1,0 +1,33 @@
+{
+  "format": "deckweft-visual-render",
+  "version": 1,
+  "case": "studio",
+  "artifacts": [
+    {
+      "file": "studio.en.html",
+      "locale": "en",
+      "sourceHash": "d69f23587c77cf709d143757e84043164879850391feb1c885aff6a1b6a119d7",
+      "outputHash": "7be89b58339e195a5b700b38d7dea4ba5a1e5032c73501342afbd33626c6f3b6",
+      "renderHash": "9e1d67d48d0fb2936405436c4fbe3cb9aa7901c7728376e2ecbfb61825d184cc",
+      "sceneHashes": [
+        "797e5d2878c657e3887ce0264410f7f1ba689b505f18ec5dac766f5f19b6f115",
+        "6262c552aa72d585db0696e579127275ada334c16cbf805b20a718c32beefd41",
+        "4ef088cc43b422b25ba2bff1eb67bdcd5b51931a2d70951ea92e2b5799322365",
+        "1b062a3419bdd242320e25fab4cbc42b1f05649248901423d89f83aed28ab6c9"
+      ]
+    },
+    {
+      "file": "studio.zh-CN.html",
+      "locale": "zh-CN",
+      "sourceHash": "7fccf528c15e022a857abb3c227520a07e3d0f4266d1ef7f1fedd07c92190d36",
+      "outputHash": "00c9e8257da531ccad99957779680e8db6464fe93ed93cda899795e5a7da66d8",
+      "renderHash": "f6f17f16b8cd821d5dee9819abe386945a76d8aab82609b3df7cfdc5a455fc55",
+      "sceneHashes": [
+        "e148a71a2558c78d6fe8de24a159ba76a14d239c532fbbfbfcecc25729f67ab3",
+        "a6cfeb4e849d9350ca172becc0c3c99ecba2375c270fbecc1d259d45a6729a00",
+        "f8396801c4de34f687358eedba060ed1669e5a4e7e0779a72339d45be90b3525",
+        "1226d712c808f264a97f2e937b364dff96c2aad9723c74dba3a0714ab3efb148"
+      ]
+    }
+  ]
+}

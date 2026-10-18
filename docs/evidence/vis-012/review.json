@@ -1,0 +1,130 @@
+{
+  "task": "VIS-012",
+  "date": "2026-10-18",
+  "implementation": "implemented-local",
+  "acceptance": "partial",
+  "sourceManifest": "source-manifest.json",
+  "contractVersions": {
+    "hostResponse": 1,
+    "capabilityReceipt": 1,
+    "runReceipt": 1
+  },
+  "runtimeDependenciesAdded": 0,
+  "automated": {
+    "command": "npm run verify",
+    "passed": 312,
+    "failed": 0,
+    "skipped": 0,
+    "hostAdapterTests": 22,
+    "legacyHostTestsRetained": 11,
+    "node": "v24.14.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "log": "verify.txt"
+  },
+  "codex": {
+    "cli": "0.160.0",
+    "actualStructuredDraft": true,
+    "actualImageDelivery": true,
+    "actualScopedPatch": true,
+    "scope": "evidence",
+    "sourceAndAssetsExact": true,
+    "otherScenesExact": true,
+    "previewOnly": false,
+    "reviewedExportsFromEarlierRoute": 2,
+    "earlierRevisionWasNoOp": true,
+    "strictCompleteLoop": "passed",
+    "failureCheckpoint": null,
+    "browser": "153.0.8010.12",
+    "viewports": [
+      1440,
+      390
+    ],
+    "externalRequestsObserved": 0,
+    "actualModel": "unknown; not inferred from configured selector",
+    "billingRoute": "unknown; existing host configuration retained",
+    "reviewedDistinctRevisionExports": 2,
+    "strictEvidence": "responsive-closure/report.json"
+  },
+  "claudeCode": {
+    "cli": "2.1.288",
+    "versionHelpOnly": true,
+    "authenticationProbe": false,
+    "loginAttempted": false,
+    "liveModelRun": false,
+    "reason": "User explicitly deferred Claude login; controller/transport tests are synthetic."
+  },
+  "primaryVisualInspection": {
+    "method": "Actual view_image pixels, not file-existence inference",
+    "files": [
+      "capture-3-1440.png",
+      "capture-3-scene-4.png",
+      "capture-4-1440.png",
+      "capture-4-390.png",
+      "capture-4-scene-4.png",
+      "capture-4-scene-6.png",
+      "capture-4-mobile-scroll-end-4.png",
+      "capture-4-mobile-scroll-end-6.png"
+    ],
+    "findings": [
+      "Native desktop chart values and source labels are readable; exact 78/45 endpoints retained.",
+      "Mobile initial and end-scroll captures show all chart periods/workflow steps across offsets; simultaneous visibility and scroll affordance remain weak.",
+      "Process diagram is left-weighted with excessive blank space; strict later host feedback still exhausted composition repair."
+    ],
+    "contactSheetsDownscaled": true,
+    "nativeComponentsAlsoViewed": true,
+    "responsiveClosureFiles": [
+      "responsive-closure/capture-1-scene-4.png",
+      "responsive-closure/capture-2-1440.png",
+      "responsive-closure/capture-2-390.png",
+      "responsive-closure/capture-2-scene-4.png",
+      "responsive-closure/capture-2-scene-6.png",
+      "responsive-closure/capture-2-mobile-scene-4.png",
+      "responsive-closure/capture-2-mobile-scene-6.png",
+      "responsive-closure/zh-CN-390-evidence.png",
+      "responsive-closure/zh-CN-390-process.png"
+    ],
+    "responsiveClosureFindings": [
+      "All six quarters and both exact series are visible together at 390px; shared 18 labels are separated and 78/45 endpoints retained.",
+      "All three workflow nodes and arrowheads are visible together vertically on mobile; desktop geometry restores after resize.",
+      "Before/after desktop page 4 visibly changes from evidence rail to top composition; other scenes retain their authored identity.",
+      "Tall complete stories were downscaled for overview; native component captures were also inspected."
+    ]
+  },
+  "applications": {
+    "powerPoint": "present under /Applications, not opened",
+    "keynote": "present under /Applications, not opened",
+    "figma": "present under /Applications, not opened",
+    "afterEffects": "not found under /Applications; not run",
+    "nativeDesktopHosts": "not tested",
+    "remoteCI": "not run"
+  },
+  "limitations": [
+    "Claude authenticated artifact/image-feedback acceptance remains deferred.",
+    "Earlier reviewed export loop used a no-op patch; final QA harness now requires changed HTML and unchanged non-target scenes.",
+    "Mixed-theme synthetic diagnostics and source-preserving text drafts do not establish VIS-014 coherent-story release quality.",
+    "No native v3 compilers, image-generation backend, Windows child-tree or desktop-plugin activation certification.",
+    "Responsive fitting is bounded to short-label numeric charts and simple adjacent-node chains; dense components retain scrolling.",
+    "Responsive fitting is bounded to short-label numeric charts and simple adjacent-node chains; dense components retain scrolling."
+  ],
+  "next": "Claude remains deferred; native/plugin and VIS-014 release gates remain open. VIS-013 is planned, not authorized by this repair.",
+  "previousCodexStrictFailure": {
+    "previewOnly": false,
+    "strictCompleteLoop": "passed",
+    "failureCheckpoint": null
+  },
+  "responsiveClosure": {
+    "evidence": "responsive-closure/report.json",
+    "sourceManifest": "responsive-closure/source-manifest.json",
+    "responsiveCases": 14,
+    "componentCases": 6,
+    "actualBeforeAfterHtmlDifferent": true,
+    "exactScope": "Page 4 composition only; document/assets/other scenes unchanged",
+    "hostReviewVerdicts": [
+      "pass",
+      "pass"
+    ],
+    "interactionCases": 6,
+    "nativeBackgroundVisibility": "passed with isolated full Chrome for Testing 151; headless shell 153 attempt timed out"
+  }
+}

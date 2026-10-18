@@ -1,0 +1,35 @@
+{
+  "application": "DeckWeft",
+  "version": "0.1.0-alpha.2",
+  "hosts": [
+    {
+      "format": "deckweft-host-capabilities",
+      "version": 1,
+      "host": "codex",
+      "surface": "local-cli",
+      "checkedAt": "2026-10-18T06:19:07.465Z",
+      "workspaceHash": "60d9224927d543ec6d8b39aea102927fad8d5e0ad3688e8001aa893ef0c8b20d",
+      "configurationFingerprint": "eecc8a8f7b42ed68c386a519c3928d44ae2f63d827623ea607160c57a5057b33",
+      "available": true,
+      "cliVersion": "codex-cli 0.160.0",
+      "authentication": {
+        "status": "unknown",
+        "evidence": "not-probed"
+      },
+      "billingRoute": "unknown; existing host configuration is retained",
+      "structuredOutput": "advertised",
+      "imageInput": "advertised-not-delivery-verified",
+      "permissionMode": null,
+      "writableScope": "read-only child; parent applies validated local tools",
+      "renderer": "shared local renderer; actual capture is supplied separately",
+      "domDiagnostics": "requires explicit browser capture callback",
+      "imageBackend": "unknown; no generation request",
+      "timeout": {
+        "supported": true,
+        "maximumMs": 600000
+      },
+      "ready": true,
+      "id": "011145a5360e24d6a614e4667844ca3cb2cf539dcae650a4a27f472a986291c5"
+    }
+  ]
+}

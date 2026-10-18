@@ -1,0 +1,981 @@
+{
+  "browser": "151.0.7922.34",
+  "isolation": "Isolated cached testing binary; ephemeral context; installed apps and personal profiles untouched",
+  "checks": [],
+  "cases": [
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "fit": {
+        "version": 1,
+        "renderHash": "48abcfb0099890db2ad7dd71f873fa438cb3bfe0e322b530a6dad8f07a4c210e",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.36154610145357596,
+              "imageRatio": 0
+            },
+            "components": [],
+            "height": 810,
+            "sourceHash": "7f9f30a449842008b6fd45721bdc350fd4dd460d65ccdfff192aeec744611657",
+            "contrastIssues": [
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "ratio": 1,
+                "required": 3,
+                "text": "12"
+              }
+            ],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "96px / 97.92px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 879.796875
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "20px / 31px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 185.33990478515625
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 203.87391662597656
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "600 22px / 28.6px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 208.99993896484375
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.4210407004405343,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "data-chart",
+                "width": 780,
+                "height": 390,
+                "minTextPixels": 13.65,
+                "scrollWidth": 966,
+                "clientWidth": 966
+              }
+            ],
+            "height": 827.109375,
+            "sourceHash": "ea7a797d4a91ced0e7520e9636cc4a881df95d9b378017fb397c609ec70761d7",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "\"Helvetica Neue\", Arial, sans-serif",
+                "font": "650 64px / 65.28px \"Helvetica Neue\", Arial, sans-serif",
+                "loaded": true,
+                "probeWidth": 600.8959350585938
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "600 22px / 28.6px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 208.99993896484375
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 29.7px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "inside": true
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.3875233182522054,
+              "imageRatio": 0.12382926088223027
+            },
+            "components": [],
+            "height": 892.875,
+            "sourceHash": "e6e1644f4d1229c16368229058bedee5136dd70ca99c1ae90741728fd1c02656",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27.9px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "600 22px / 28.6px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 208.99993896484375
+              },
+              {
+                "regionId": "rdaa1e16c3298f2a7bcce",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              },
+              {
+                "regionId": "ra77440b14eb34bba34e0",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              },
+              {
+                "regionId": "rdaa1e16c3298f2a7bcce",
+                "inside": true
+              },
+              {
+                "regionId": "ra77440b14eb34bba34e0",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "left:middle",
+              "density": 0.26271791378284864,
+              "imageRatio": 0
+            },
+            "components": [],
+            "height": 810,
+            "sourceHash": "031b43cda1f4a69c55509252ec50b1fbc696d2509f06de29abca66d1b945a651",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "\"Helvetica Neue\", Arial, sans-serif",
+                "font": "750 112px / 114.24px \"Helvetica Neue\", Arial, sans-serif",
+                "loaded": true,
+                "probeWidth": 1051.56787109375
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 34.1px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 203.87391662597656
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-line",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.40633110642152487,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-line",
+                "width": 1328,
+                "height": 350,
+                "minTextPixels": 12.25,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 979.640625,
+            "sourceHash": "84eb32a79164b403cb21a926c40882b85841e7689b9cd21330772a0967ca3b84",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r2233bae96c255f123215",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "r17bcc8ca8310a2bc41b5",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "redd2720eaf464e3f3d06",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r2233bae96c255f123215",
+                "inside": true
+              },
+              {
+                "regionId": "r17bcc8ca8310a2bc41b5",
+                "inside": true
+              },
+              {
+                "regionId": "redd2720eaf464e3f3d06",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-area",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.39629987834158337,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-area",
+                "width": 1328,
+                "height": 350,
+                "minTextPixels": 12.25,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 1004.4375,
+            "sourceHash": "b19cb359ff58357c2d33cd1308f1cd81ed824e7930edbf08a35c47ed8dd4236b",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r188455de386a44b2dfb4",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "ra26c82c7453c8c961256",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "rf6c75305541eedf00c1c",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r188455de386a44b2dfb4",
+                "inside": true
+              },
+              {
+                "regionId": "ra26c82c7453c8c961256",
+                "inside": true
+              },
+              {
+                "regionId": "rf6c75305541eedf00c1c",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-ranked-bar",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.40633110642152487,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-ranked-bar",
+                "width": 1328,
+                "height": 350,
+                "minTextPixels": 12.25,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 979.640625,
+            "sourceHash": "d949226cc7a8b96160fe99d34830ce3f70be4396af54ce3db521aaad457edefd",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r15b38ba2a39b46566e2b",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "rf3628d469550dbbdf4e3",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "rc5f817af7f982a63512f",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r15b38ba2a39b46566e2b",
+                "inside": true
+              },
+              {
+                "regionId": "rf3628d469550dbbdf4e3",
+                "inside": true
+              },
+              {
+                "regionId": "rc5f817af7f982a63512f",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-stacked",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.40633110642152487,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-stacked",
+                "width": 1328,
+                "height": 350,
+                "minTextPixels": 12.25,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 979.640625,
+            "sourceHash": "44b844178b43233f27f74310c3ce0522a853eb050fdbf5d1b772e94311f07ee9",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r74eea795a485a35c1556",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "r357162b28f3076cdb721",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "r70d1754e58475d8765bc",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r74eea795a485a35c1556",
+                "inside": true
+              },
+              {
+                "regionId": "r357162b28f3076cdb721",
+                "inside": true
+              },
+              {
+                "regionId": "r70d1754e58475d8765bc",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-scatter",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.40633110642152487,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-scatter",
+                "width": 1328,
+                "height": 350,
+                "minTextPixels": 12.25,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 979.640625,
+            "sourceHash": "07d1ee1a14dbd91d0a0f9d71437cf768c582c2e6c7110b0e4c95b1dbbf44c7f3",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r0eb544eb31943e680ad3",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "r23da9f118ffab9fef705",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "rbe57d02db67debdca242",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r0eb544eb31943e680ad3",
+                "inside": true
+              },
+              {
+                "regionId": "r23da9f118ffab9fef705",
+                "inside": true
+              },
+              {
+                "regionId": "rbe57d02db67debdca242",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-heatmap",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.40633110642152487,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-heatmap",
+                "width": 1328,
+                "height": 350,
+                "minTextPixels": 12.25,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 979.640625,
+            "sourceHash": "f116abd43c10daa56670c2a42f0525f94e0d95466c81d38e198321dac5b5a03c",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r8c98ba1f139db0e5dc88",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "r7afad02f00dd3bc225f2",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "r04222c7156905ed4436a",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r8c98ba1f139db0e5dc88",
+                "inside": true
+              },
+              {
+                "regionId": "r7afad02f00dd3bc225f2",
+                "inside": true
+              },
+              {
+                "regionId": "r04222c7156905ed4436a",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-relationship",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.19655526716319938,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-relationship",
+                "width": 520,
+                "height": 185.890625,
+                "minTextPixels": 10.399475524475525,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 846.53125,
+            "sourceHash": "4ff5ad959706748a48144578460d3bd8489aca5bd877cecdd0e9c6220f14f702",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r1d95f306f859ce4eb0fa",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "rb598c3232a13028947d4",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "rc98149b003b530aba826",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r1d95f306f859ce4eb0fa",
+                "inside": true
+              },
+              {
+                "regionId": "rb598c3232a13028947d4",
+                "inside": true
+              },
+              {
+                "regionId": "rc98149b003b530aba826",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-sequence",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.20385385367060224,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-sequence",
+                "width": 520,
+                "height": 222.296875,
+                "minTextPixels": 10.399853801169591,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 882.9375,
+            "sourceHash": "d877d6a8efc27484ff7bc590f63c576b0173171725a79be12b75f06f80809ed1",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r55bc06a9c9ffc1772177",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "r4403b8828b159d3909fc",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "r3b694bf1c0df4b4faa20",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r55bc06a9c9ffc1772177",
+                "inside": true
+              },
+              {
+                "regionId": "r4403b8828b159d3909fc",
+                "inside": true
+              },
+              {
+                "regionId": "r3b694bf1c0df4b4faa20",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-process",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.19923242795980667,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-process",
+                "width": 520,
+                "height": 198.890625,
+                "minTextPixels": 10.39950980392157,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 859.53125,
+            "sourceHash": "f1cb2157f791652bdc5fe4fa7cd855e6ea7136cb8e587045ea3246254eb7b674",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rdd542a3c805bc1100366",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "rc197aa9b4e2a86dbdaf4",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "r97ba69e0a045faeb38d6",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rdd542a3c805bc1100366",
+                "inside": true
+              },
+              {
+                "regionId": "rc197aa9b4e2a86dbdaf4",
+                "inside": true
+              },
+              {
+                "regionId": "r97ba69e0a045faeb38d6",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-code",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5103209590150909,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-code",
+                "width": 1020,
+                "height": 154.375,
+                "minTextPixels": 16,
+                "scrollWidth": 1016,
+                "clientWidth": 1016
+              }
+            ],
+            "height": 827.3125,
+            "sourceHash": "fb96bb4cb3993bf6d84f7f116efe21e5b1a1ea5689cd4c40e44e1b2e116c3903",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r57ef8121802c91713722",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "r314cc911b5c14a7adef6",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "r08dc2950fa1560280a41",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r57ef8121802c91713722",
+                "inside": true
+              },
+              {
+                "regionId": "r314cc911b5c14a7adef6",
+                "inside": true
+              },
+              {
+                "regionId": "r08dc2950fa1560280a41",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "image-comparison",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.783481591543157,
+              "imageRatio": 0.7029060327440482
+            },
+            "components": [],
+            "height": 880.578125,
+            "sourceHash": "823b8f02f2c3148dc1f57034db69b1ba8bf3a61f3b57998db6efcdcb78613fa0",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "ra81237b73e4acb06fb39",
+                "family": "\"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "font": "48px / 53.76px \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif",
+                "loaded": true,
+                "probeWidth": 439.8984375
+              },
+              {
+                "regionId": "re217caba93bf48c6cc38",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "reb03f43b8dcb7a7517dc",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 111.20391845703125
+              },
+              {
+                "regionId": "ra7af92b03d5b0591540c",
+                "family": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27.9px \"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 166.80589294433594
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "ra81237b73e4acb06fb39",
+                "inside": true
+              },
+              {
+                "regionId": "re217caba93bf48c6cc38",
+                "inside": true
+              },
+              {
+                "regionId": "reb03f43b8dcb7a7517dc",
+                "inside": true
+              },
+              {
+                "regionId": "ra7af92b03d5b0591540c",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": false
+      }
+    }
+  ],
+  "captures": [
+    {
+      "file": "failure.png",
+      "sha256": "e4c9010d10ea866aa9a925ab93978eb32a6b2d2cc018b31132e48182171aec91"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "ok": false,
+  "failure": "AssertionError [ERR_ASSERTION]: [{\"sceneId\":\"collage\",\"visualFeatures\":{\"focus\":\"left:top\",\"density\":0.36154610145357596,\"imageRatio\":0},\"components\":[],\"height\":810,\"sourceHash\":\"7f9f30a449842008b6fd45721bdc350fd4dd460d65ccdfff192aeec744611657\",\"contrastIssues\":[{\"regionId\":\"rc18090e4d52b3ace519c\",\"ratio\":1,\"required\":3,\"text\":\"12\"}],\"clipIssues\":[],\"fonts\":[{\"regionId\":\"rf87b09c0078cfbb8c7da\",\"family\":\"\\\"Iowan Old Style\\\", \\\"Palatino Linotype\\\", Georgia, serif\",\"font\":\"96px / 97.92px \\\"Iowan Old Style\\\", \\\"Palatino Linotype\\\", Georgia, serif\",\"loaded\":true,\"probeWidth\":879.796875},{\"regionId\":\"rb6a583191f39b77c8d55\",\"family\":\"\\\"Avenir Next\\\", \\\"Segoe UI\\\", Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"20px / 31px \\\"Avenir Next\\\", \\\"Segoe UI\\\", Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":185.33990478515625},{\"regionId\":\"rc18090e4d52b3ace519c\",\"family\":\"\\\"Avenir Next\\\", \\\"Segoe UI\\\", Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"22px / 33px \\\"Avenir Next\\\", \\\"Segoe UI\\\", Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":203.87391662597656},{\"regionId\":\"r4c58f6fbaab9acce3e13\",\"family\":\"\\\"Avenir Next\\\", \\\"Segoe UI\\\", Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"600 22px / 28.6px \\\"Avenir Next\\\", \\\"Segoe UI\\\", Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":208.99993896484375},{\"regionId\":\"r61a7455a451db5fe977e\",\"family\":\"\\\"Avenir Next\\\", \\\"Segoe UI\\\", Arial, \\\"PingFang SC\\\", sans-serif\",\"font\":\"12px / 19.2px \\\"Avenir Next\\\", \\\"Segoe UI\\\", Arial, \\\"PingFang SC\\\", sans-serif\",\"loaded\":true,\"probeWidth\":111.20391845703125}],\"overflow\":[],\"text\":[{\"regionId\":\"rf87b09c0078cfbb8c7da\",\"inside\":true},{\"regionId\":\"rb6a583191f39b77c8d55\",\"inside\":true},{\"regionId\":\"rc18090e4d52b3ace519c\",\"inside\":true},{\"regionId\":\"r4c58f6fbaab9acce3e13\",\"inside\":true},{\"regionId\":\"r61a7455a451db5fe977e\",\"inside\":true}]}]\n\nfalse !== true\n\n    at file:///Users/feida/Developer/DeckWeft/tests/browser_interactions.mjs:33:101"
+}

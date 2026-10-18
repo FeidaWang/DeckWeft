@@ -1,0 +1,273 @@
+{
+  "browser": "151.0.7922.34",
+  "isolation": "Cached test binary and ephemeral contexts; no installed app or personal profile",
+  "checks": [
+    "Classic Studio links directly to the live visual editor",
+    "Theme/composition lock persists through save and reload",
+    "Switching theme changes composition while preserving semantic text and the local asset"
+  ],
+  "captures": [
+    {
+      "file": "studio-violet-en.png",
+      "hash": "0200339d048ee5bdaf0194a688f18d89736a8db7eeb349d4d17b401f39d2d488"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "artifacts": [],
+  "ok": false,
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#preview').contentFrame().locator('#evidence summary')\u001b[22m\n\u001b[2m    - locator resolved to <summary>View all data</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - performing click action\u001b[22m\n\u001b[2m      - <div class=\"region\" data-text-role=\"caption\" data-component=\"citation\" id=\"r131e9af00b5a9f606da1\" data-block-id=\"data-source\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - performing click action\u001b[22m\n\u001b[2m      - <div class=\"region\" data-text-role=\"caption\" data-component=\"citation\" id=\"r131e9af00b5a9f606da1\" data-block-id=\"data-source\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - performing click action\u001b[22m\n\u001b[2m       - <div class=\"region\" data-text-role=\"caption\" data-component=\"citation\" id=\"r131e9af00b5a9f606da1\" data-block-id=\"data-source\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /Users/feida/Developer/DeckWeft/tests/browser_visual_studio.mjs:37:320",
+  "lastMessage": "Unsaved changes",
+  "lastFit": {
+    "version": 1,
+    "renderHash": "30c49b0dfe66c7934a5291408bb7b694c310eef459f7b5ad992a92b77bf3ac22",
+    "viewport": {
+      "width": 1440,
+      "height": 942
+    },
+    "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+    "checks": [
+      {
+        "sceneId": "collage",
+        "visualFeatures": {
+          "focus": "left:top",
+          "density": 0.3022810474442847,
+          "imageRatio": 0
+        },
+        "height": 720,
+        "sourceHash": "633e0a105523dd984025c2ee5d2ecc1f3dd04592e4b885dc31acf8325fcd135b",
+        "contrastIssues": [],
+        "clipIssues": [],
+        "fonts": [
+          {
+            "regionId": "rf87b09c0078cfbb8c7da",
+            "family": "Georgia, serif",
+            "font": "500 79.2px / 82.368px Georgia, serif",
+            "loaded": true,
+            "probeWidth": 711.7432250976562
+          },
+          {
+            "regionId": "rb6a583191f39b77c8d55",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 200.1162109375
+          },
+          {
+            "regionId": "rc18090e4d52b3ace519c",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 200.1162109375
+          },
+          {
+            "regionId": "r4c58f6fbaab9acce3e13",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 200.1162109375
+          },
+          {
+            "regionId": "r61a7455a451db5fe977e",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 109.154296875
+          }
+        ],
+        "overflow": [],
+        "text": [
+          {
+            "regionId": "rf87b09c0078cfbb8c7da",
+            "inside": true
+          },
+          {
+            "regionId": "rb6a583191f39b77c8d55",
+            "inside": true
+          },
+          {
+            "regionId": "rc18090e4d52b3ace519c",
+            "inside": true
+          },
+          {
+            "regionId": "r4c58f6fbaab9acce3e13",
+            "inside": true
+          },
+          {
+            "regionId": "r61a7455a451db5fe977e",
+            "inside": true
+          }
+        ]
+      },
+      {
+        "sceneId": "evidence",
+        "visualFeatures": {
+          "focus": "left:top",
+          "density": 0.4541153957576022,
+          "imageRatio": 0
+        },
+        "height": 941.34375,
+        "sourceHash": "336db9a8ceb2086e83b484195d074d4eae1b33ebc44f77858f23d508b0fab423",
+        "contrastIssues": [],
+        "clipIssues": [],
+        "fonts": [
+          {
+            "regionId": "r4dc492a5778917ddda35",
+            "family": "Arial, sans-serif",
+            "font": "500 60px / 63.6px Arial, sans-serif",
+            "loaded": true,
+            "probeWidth": 545.771484375
+          },
+          {
+            "regionId": "r21b7ed492835ccd967d8",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "12px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 109.154296875
+          },
+          {
+            "regionId": "r398248ae205b8cb4d408",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "28px / 33.6px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 254.693359375
+          },
+          {
+            "regionId": "r34bed02a94cce3852840",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "16px / 24px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 145.5390625
+          },
+          {
+            "regionId": "r131e9af00b5a9f606da1",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 109.154296875
+          }
+        ],
+        "overflow": [],
+        "text": [
+          {
+            "regionId": "r4dc492a5778917ddda35",
+            "inside": true
+          },
+          {
+            "regionId": "r398248ae205b8cb4d408",
+            "inside": true
+          },
+          {
+            "regionId": "r34bed02a94cce3852840",
+            "inside": true
+          },
+          {
+            "regionId": "r131e9af00b5a9f606da1",
+            "inside": true
+          }
+        ]
+      },
+      {
+        "sceneId": "violet",
+        "visualFeatures": {
+          "focus": "left:top",
+          "density": 0.5394140509785952,
+          "imageRatio": 0.4288788243539737
+        },
+        "height": 1153.6875,
+        "sourceHash": "258d29aa11fe738f728e9e7b1f1c33942ea10d178480c3a285f846df862e62dc",
+        "contrastIssues": [],
+        "clipIssues": [],
+        "fonts": [
+          {
+            "regionId": "r5758aa6e8107854c0665",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "700 66.24px / 68.8896px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 617.2802734375
+          },
+          {
+            "regionId": "reb9f9109a646af27b012",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 200.1162109375
+          },
+          {
+            "regionId": "rfe988f0bf62b69caa2ba",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "12px / 18px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 109.154296875
+          },
+          {
+            "regionId": "r5194eb0d828a14debd10",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "13px / 19.5px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 118.25048828125
+          }
+        ],
+        "overflow": [],
+        "text": [
+          {
+            "regionId": "r5758aa6e8107854c0665",
+            "inside": true
+          },
+          {
+            "regionId": "reb9f9109a646af27b012",
+            "inside": true
+          },
+          {
+            "regionId": "rfe988f0bf62b69caa2ba",
+            "inside": true
+          },
+          {
+            "regionId": "r5194eb0d828a14debd10",
+            "inside": true
+          }
+        ]
+      },
+      {
+        "sceneId": "chapter",
+        "visualFeatures": {
+          "focus": "left:top",
+          "density": 0.2644120279947917,
+          "imageRatio": 0
+        },
+        "height": 720,
+        "sourceHash": "ac107b72351a22e9fb5ff55919519affb8eaf0af6ebc59f22bb681e8a2b745e8",
+        "contrastIssues": [],
+        "clipIssues": [],
+        "fonts": [
+          {
+            "regionId": "rd49c68fe2c5484139502",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "700 100px / 104px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 931.884765625
+          },
+          {
+            "regionId": "r8312349d1fcfe6f47bdd",
+            "family": "Arial, \"PingFang SC\", sans-serif",
+            "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+            "loaded": true,
+            "probeWidth": 200.1162109375
+          }
+        ],
+        "overflow": [],
+        "text": [
+          {
+            "regionId": "rd49c68fe2c5484139502",
+            "inside": true
+          },
+          {
+            "regionId": "r8312349d1fcfe6f47bdd",
+            "inside": true
+          }
+        ]
+      }
+    ],
+    "ok": true
+  }
+}

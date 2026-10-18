@@ -1,0 +1,3267 @@
+{
+  "browser": "151.0.7922.34",
+  "isolation": "Cached test binary and ephemeral contexts; no installed app or personal profile",
+  "checks": [
+    "Classic Studio links directly to the live visual editor",
+    "Theme/composition lock persists through save and reload",
+    "Switching theme changes composition while preserving semantic text and the local asset",
+    "Changing typed data updates the real plot and exact accessible table",
+    "Invalid JSON stays recoverable across scene navigation and blocks save/export until explicitly repaired or discarded",
+    "Edits made during an actual in-flight save survive and can be saved/reopened",
+    "A second real browser tab gets REVISION_CONFLICT and retains its edits",
+    "Read-only history restores a separate project instead of overwriting the original",
+    "Crop, author profile, UI language and independent output locale persist",
+    "Studio exports the exact current measured artifact with local image bytes embedded",
+    "Studio has no document-wide horizontal overflow at 390/1024/1440 widths",
+    "Actual local PNG upload preserves crop, scene composition, datasets and unrelated author choices",
+    "Studio explicitly migrates a saved legacy deck as a separate visual copy and preserves its original JSON",
+    {
+      "locale": "en",
+      "width": 1440,
+      "fit": {
+        "version": 1,
+        "renderHash": "fc8987659ddbaee8606ba1a2aad172204498c1bef8526d73980d0ac2620fbcca",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.30227290771016674,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "227076b3b17a267d1b139c04998396e0d8e74a49f25a704fc30bc54ac513f4a8",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "Georgia, serif",
+                "font": "500 79.2px / 82.368px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 711.7432250976562
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.4511460008256782,
+              "imageRatio": 0
+            },
+            "height": 924.25,
+            "sourceHash": "916e99342bd87a00fc5fd7f6f62bdb3424bee0476f6d86702d9cafd698cb9ff0",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "Arial, sans-serif",
+                "font": "500 60px / 63.6px Arial, sans-serif",
+                "loaded": true,
+                "probeWidth": 545.771484375
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "28px / 33.6px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 254.693359375
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "16px / 24px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 145.5390625
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.5145757806226747,
+              "imageRatio": 0.4250019740637195
+            },
+            "height": 1119.890625,
+            "sourceHash": "b446d31636ac351254b03200bde47c6eb4305111a29dc5490de604e4c57df4dd",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 66.24px / 68.8896px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 617.2802734375
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "13px / 19.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 118.25048828125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.2735296841325431,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "f948c949b9a2de16dc8a43e0ac703810e3d98acf69b15b81bae6b80474870a12",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 100px / 104px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 931.884765625
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": true
+      },
+      "fonts": [
+        "Georgia, serif",
+        "Arial, \"PingFang SC\", sans-serif",
+        "Arial, sans-serif"
+      ],
+      "platformFonts": [
+        {
+          "fonts": [
+            {
+              "familyName": "Georgia",
+              "postScriptName": "Georgia",
+              "isCustomFont": false,
+              "glyphCount": 24
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 112
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 44
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 26
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 73
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 33
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 1
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 26
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 138
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 67
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "Arial-BoldMT",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 117
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 51
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "Arial-BoldMT",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 1024,
+      "fit": {
+        "version": 1,
+        "renderHash": "fc8987659ddbaee8606ba1a2aad172204498c1bef8526d73980d0ac2620fbcca",
+        "viewport": {
+          "width": 1024,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.2505505546194608,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "227076b3b17a267d1b139c04998396e0d8e74a49f25a704fc30bc54ac513f4a8",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "Georgia, serif",
+                "font": "500 56.32px / 58.5728px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 506.1923828125
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.41559486738909257,
+              "imageRatio": 0
+            },
+            "height": 740.046875,
+            "sourceHash": "916e99342bd87a00fc5fd7f6f62bdb3424bee0476f6d86702d9cafd698cb9ff0",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "Arial, sans-serif",
+                "font": "500 43.008px / 45.5885px Arial, sans-serif",
+                "loaded": true,
+                "probeWidth": 391.13623046875
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "28px / 33.6px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 254.693359375
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "16px / 24px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 145.5390625
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.4973062303195395,
+              "imageRatio": 0.37851199490400034
+            },
+            "height": 826.859375,
+            "sourceHash": "b446d31636ac351254b03200bde47c6eb4305111a29dc5490de604e4c57df4dd",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 47.104px / 48.9882px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 438.91754150390625
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "13px / 19.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 118.25048828125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.2762745341316598,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "f948c949b9a2de16dc8a43e0ac703810e3d98acf69b15b81bae6b80474870a12",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 71.68px / 74.5472px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 667.974853515625
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": true
+      },
+      "fonts": [
+        "Georgia, serif",
+        "Arial, \"PingFang SC\", sans-serif",
+        "Arial, sans-serif"
+      ],
+      "platformFonts": [
+        {
+          "fonts": [
+            {
+              "familyName": "Georgia",
+              "postScriptName": "Georgia",
+              "isCustomFont": false,
+              "glyphCount": 24
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 112
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 44
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 26
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 73
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 33
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 1
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 26
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 138
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 67
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "Arial-BoldMT",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 117
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 51
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "Arial-BoldMT",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "fit": {
+        "version": 1,
+        "renderHash": "fc8987659ddbaee8606ba1a2aad172204498c1bef8526d73980d0ac2620fbcca",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.4529451412408328,
+              "imageRatio": 0
+            },
+            "height": 790.328125,
+            "sourceHash": "227076b3b17a267d1b139c04998396e0d8e74a49f25a704fc30bc54ac513f4a8",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "Georgia, serif",
+                "font": "500 46px / 47.84px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 413.4384765625
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "19px / 28.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 172.82763671875
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "19px / 28.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 172.82763671875
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "19px / 28.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 172.82763671875
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.43663873483260535,
+              "imageRatio": 0
+            },
+            "height": 744.859375,
+            "sourceHash": "916e99342bd87a00fc5fd7f6f62bdb3424bee0476f6d86702d9cafd698cb9ff0",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "Arial, sans-serif",
+                "font": "500 38px / 40.28px Arial, sans-serif",
+                "loaded": true,
+                "probeWidth": 345.6552734375
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "24px / 28.8px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 218.30859375
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "16px / 24px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 145.5390625
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.5789201318036664,
+              "imageRatio": 0.3968061120800539
+            },
+            "height": 973.0625,
+            "sourceHash": "b446d31636ac351254b03200bde47c6eb4305111a29dc5490de604e4c57df4dd",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 42px / 43.68px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 391.3916015625
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "19px / 28.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 172.82763671875
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "13px / 19.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 118.25048828125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.34735519068777193,
+              "imageRatio": 0
+            },
+            "height": 554,
+            "sourceHash": "f948c949b9a2de16dc8a43e0ac703810e3d98acf69b15b81bae6b80474870a12",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 48px / 49.92px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 447.3046875
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "19px / 28.5px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 172.82763671875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": true
+      },
+      "fonts": [
+        "Georgia, serif",
+        "Arial, \"PingFang SC\", sans-serif",
+        "Arial, sans-serif"
+      ],
+      "platformFonts": [
+        {
+          "fonts": [
+            {
+              "familyName": "Georgia",
+              "postScriptName": "Georgia",
+              "isCustomFont": false,
+              "glyphCount": 24
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 112
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 44
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 26
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 73
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 33
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 1
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 26
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 138
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 67
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "Arial-BoldMT",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 117
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 51
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "Arial-BoldMT",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "zh-CN",
+      "width": 1440,
+      "fit": {
+        "version": 1,
+        "renderHash": "d680b4edc4d3dbae462f189fe4bd9cd3c2750ad3ed485a8ee73e5ab54afe1f9f",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.33029859306559556,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "0eee2696ff19b92707f8e9ff91626f784c85ccd83afd25c8b40489ce68ad9ff6",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "\"Songti SC\", SimSun, serif",
+                "font": "500 79.2px / 92.664px \"Songti SC\", SimSun, serif",
+                "loaded": true,
+                "probeWidth": 667.8092041015625
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 19.8px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.44955256765849894,
+              "imageRatio": 0
+            },
+            "height": 952.046875,
+            "sourceHash": "76aebbb298117018a3e14cd5ba3424c6e529e7138c81389f35abb9fce41ee8f2",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "500 60px / 70.2px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 570.5399169921875
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "28px / 46.2px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 263.6758728027344
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "16px / 26.4px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 150.67185974121094
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 19.8px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.514274424631343,
+              "imageRatio": 0.4238665064644676
+            },
+            "height": 1122.890625,
+            "sourceHash": "9cc4f5124a5f6327601c2c51c644c4063c5686967d230612b2ab683ed4c5b81b",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "700 66.24px / 77.5008px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 631.730712890625
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 18px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "13px / 21.45px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 122.42091369628906
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "left:middle",
+              "density": 0.30231775451894005,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "f4ab7c447aee796867119fe9a86a4e2847c29527cb2f6771aa6de7400df7b696",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "700 100px / 117px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 953.6998901367188
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": true
+      },
+      "fonts": [
+        "\"Songti SC\", SimSun, serif",
+        "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "Arial, sans-serif"
+      ],
+      "platformFonts": [
+        {
+          "fonts": [
+            {
+              "familyName": "Songti SC",
+              "postScriptName": "STSongti-SC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 40
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 12
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 32
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Medium",
+              "isCustomFont": false,
+              "glyphCount": 13
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 1
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 8
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 46
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 10
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 39
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 16
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 38
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "zh-CN",
+      "width": 1024,
+      "fit": {
+        "version": 1,
+        "renderHash": "d680b4edc4d3dbae462f189fe4bd9cd3c2750ad3ed485a8ee73e5ab54afe1f9f",
+        "viewport": {
+          "width": 1024,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.2647628419386233,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "0eee2696ff19b92707f8e9ff91626f784c85ccd83afd25c8b40489ce68ad9ff6",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "\"Songti SC\", SimSun, serif",
+                "font": "500 56.32px / 65.8944px \"Songti SC\", SimSun, serif",
+                "loaded": true,
+                "probeWidth": 474.9464416503906
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 19.8px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.4093089469689948,
+              "imageRatio": 0
+            },
+            "height": 764.125,
+            "sourceHash": "76aebbb298117018a3e14cd5ba3424c6e529e7138c81389f35abb9fce41ee8f2",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "500 43.008px / 50.3194px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 408.88690185546875
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "28px / 46.2px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 263.6758728027344
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "16px / 26.4px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 150.67185974121094
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 19.8px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.48616580612728877,
+              "imageRatio": 0.3771436474237878
+            },
+            "height": 829.859375,
+            "sourceHash": "9cc4f5124a5f6327601c2c51c644c4063c5686967d230612b2ab683ed4c5b81b",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "700 47.104px / 55.1117px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 449.1925048828125
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 18px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "13px / 21.45px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 122.42091369628906
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "center:middle",
+              "density": 0.2956955775971404,
+              "imageRatio": 0
+            },
+            "height": 720,
+            "sourceHash": "f4ab7c447aee796867119fe9a86a4e2847c29527cb2f6771aa6de7400df7b696",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "700 71.68px / 83.8656px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 683.6119995117188
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "22px / 36.3px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 207.1739044189453
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": true
+      },
+      "fonts": [
+        "\"Songti SC\", SimSun, serif",
+        "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "Arial, sans-serif"
+      ],
+      "platformFonts": [
+        {
+          "fonts": [
+            {
+              "familyName": "Songti SC",
+              "postScriptName": "STSongti-SC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 40
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 12
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 32
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Medium",
+              "isCustomFont": false,
+              "glyphCount": 13
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 1
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 8
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 46
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 10
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 39
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 16
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 38
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "zh-CN",
+      "width": 390,
+      "fit": {
+        "version": 1,
+        "renderHash": "d680b4edc4d3dbae462f189fe4bd9cd3c2750ad3ed485a8ee73e5ab54afe1f9f",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.4518194300846103,
+              "imageRatio": 0
+            },
+            "height": 757.953125,
+            "sourceHash": "0eee2696ff19b92707f8e9ff91626f784c85ccd83afd25c8b40489ce68ad9ff6",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "\"Songti SC\", SimSun, serif",
+                "font": "500 40px / 46.8px \"Songti SC\", SimSun, serif",
+                "loaded": true,
+                "probeWidth": 337.3199157714844
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "19px / 31.35px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 178.92291259765625
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "19px / 31.35px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 178.92291259765625
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "19px / 31.35px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 178.92291259765625
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 19.8px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.45258023413235643,
+              "imageRatio": 0
+            },
+            "height": 784.8125,
+            "sourceHash": "76aebbb298117018a3e14cd5ba3424c6e529e7138c81389f35abb9fce41ee8f2",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "500 38px / 44.46px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 361.3418884277344
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "24px / 39.6px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 226.0078887939453
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "16px / 26.4px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 150.67185974121094
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 19.8px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.5592970081644271,
+              "imageRatio": 0.40223154886218887
+            },
+            "height": 959.9375,
+            "sourceHash": "9cc4f5124a5f6327601c2c51c644c4063c5686967d230612b2ab683ed4c5b81b",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "700 42px / 49.14px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 400.55389404296875
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "19px / 31.35px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 178.92291259765625
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "12px / 18px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 113.00389099121094
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "13px / 21.45px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 122.42091369628906
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "center:middle",
+              "density": 0.34593230677162456,
+              "imageRatio": 0
+            },
+            "height": 557,
+            "sourceHash": "f4ab7c447aee796867119fe9a86a4e2847c29527cb2f6771aa6de7400df7b696",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "700 48px / 56.16px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 457.77587890625
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "font": "19px / 31.35px \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+                "loaded": true,
+                "probeWidth": 178.92291259765625
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": true
+      },
+      "fonts": [
+        "\"Songti SC\", SimSun, serif",
+        "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "Arial, sans-serif"
+      ],
+      "platformFonts": [
+        {
+          "fonts": [
+            {
+              "familyName": "Songti SC",
+              "postScriptName": "STSongti-SC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 40
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 12
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 32
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Medium",
+              "isCustomFont": false,
+              "glyphCount": 13
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 1
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "Arial",
+              "postScriptName": "ArialMT",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 8
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 46
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 30
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 10
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 39
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 16
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Semibold",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "fonts": [
+            {
+              "familyName": "PingFang SC",
+              "postScriptName": "PingFangSC-Regular",
+              "isCustomFont": false,
+              "glyphCount": 38
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "negative": "Inserted white-on-white heading detected",
+      "issues": [
+        {
+          "regionId": "r5758aa6e8107854c0665",
+          "ratio": 1,
+          "required": 3,
+          "text": "A story worth\ngetting close to."
+        }
+      ]
+    },
+    {
+      "negative": "Inserted clipped heading detected",
+      "issues": [
+        {
+          "regionId": "r5758aa6e8107854c0665",
+          "element": "H2",
+          "text": "A story worth\ngetting close to."
+        }
+      ]
+    },
+    "All four Chinese scenes, cropped image and exact data table remain readable with JavaScript disabled"
+  ],
+  "captures": [
+    {
+      "file": "studio-violet-en.png",
+      "hash": "324efc3915a3fc09da9e20c815cd77f8e70770404c96ef705aa6afbce52752c6"
+    },
+    {
+      "file": "studio-violet-zh-CN.png",
+      "hash": "335fdae976a9268750776e2be39001ce846849e06ea139fb39e224ea84079821"
+    },
+    {
+      "file": "studio-reading-preview.png",
+      "hash": "9d8cccf15ff55a74c08e56ebff2768d249279247b46e101b261df430d505fc8c"
+    },
+    {
+      "file": "studio-ui-390.png",
+      "hash": "e4836f0a2a4363249c9b5fa3f907a4fe8370c56f27f629f8ee8fad429318039b"
+    },
+    {
+      "file": "studio-ui-1024.png",
+      "hash": "704120d06a164fa61904fec50f767f9bcf7af18d5a853aec29f1e19b7d2aa662"
+    },
+    {
+      "file": "studio-ui-1440.png",
+      "hash": "f5f4320ce77c9a94a69d1b7518ff1af4e2b0edea0360c7434a008c942437b5e0"
+    },
+    {
+      "file": "en-1440-collage.png",
+      "hash": "63c1d99eb5732c085e0acca65e8f06f5d00699ac4662f13742ab7411fec2bec0"
+    },
+    {
+      "file": "en-1440-evidence.png",
+      "hash": "2aff503f98e5212feb6d475488944f1d5fe812b41bb97948a36b56c24fb456bc"
+    },
+    {
+      "file": "en-1440-violet.png",
+      "hash": "e5dad8ea50b1bc8a97e83120a1c3db52dc5ae4c3e387ee42186d1e2c56582116"
+    },
+    {
+      "file": "en-1440-chapter.png",
+      "hash": "f09144a26ee535020a6316d50675572cef0d1227a7a0c6e48fb47a3675db046c"
+    },
+    {
+      "file": "en-1024-collage.png",
+      "hash": "d127f55d51eb94616adbfef7857439db37a0178b48a15e1fb9d103d5b7e998a9"
+    },
+    {
+      "file": "en-1024-evidence.png",
+      "hash": "c93dd742ba2fbb8eec3d4bf0a9fae61d16927ef44665f00244288572d0867c7e"
+    },
+    {
+      "file": "en-1024-violet.png",
+      "hash": "ee26ecfc0352208d81f1de7c58aea9766f0d084de76bb6cad296dbc07c8f0c43"
+    },
+    {
+      "file": "en-1024-chapter.png",
+      "hash": "a0c7590e6d9be982cca0db74692f15f6cb149e10ee8135c179a8430e19421ce5"
+    },
+    {
+      "file": "en-390-collage.png",
+      "hash": "a306d7d91a8d3561fa29587011e01eb27a57cf71b4e85ff1802b979a142d46cf"
+    },
+    {
+      "file": "en-390-evidence.png",
+      "hash": "738aef787aa5b4217539d8361b9e40514074038b0d2ad2ef3f5e3c60baab6134"
+    },
+    {
+      "file": "en-390-violet.png",
+      "hash": "3871b6c2106c284d9d962f904d3dac5b59f3b2d5c4a2a5ea7bab6749b5cf81a1"
+    },
+    {
+      "file": "en-390-chapter.png",
+      "hash": "6b3a75ad56a39fa748d8c81586dd5ebc2cf2362c7dabbacce9664681243e19c2"
+    },
+    {
+      "file": "zh-CN-1440-collage.png",
+      "hash": "e5902d91612b782b9cdb454d6967163f2430be27ed0bbc16db936b2603b90fe3"
+    },
+    {
+      "file": "zh-CN-1440-evidence.png",
+      "hash": "47dbd273f1c17ce017660447ea01b14023207cd3b5d9170d67e9001996f8134e"
+    },
+    {
+      "file": "zh-CN-1440-violet.png",
+      "hash": "e4aeb1a5b863b504adffc56000c80b721ca711db40904d44796cf7c171ec05a0"
+    },
+    {
+      "file": "zh-CN-1440-chapter.png",
+      "hash": "0224808eda27a774f744ef4c3f2dfc66619f78e710f5902aac641190c5f60794"
+    },
+    {
+      "file": "zh-CN-1024-collage.png",
+      "hash": "faea80c6ecccf0fa4204e2fc9de8466ffc64f1e91c1a77b17543b6af1f51cc98"
+    },
+    {
+      "file": "zh-CN-1024-evidence.png",
+      "hash": "6a4118b0a7fe50d1abdbc2c842ac77186385844478fdd5ca38b2cdd91924da5b"
+    },
+    {
+      "file": "zh-CN-1024-violet.png",
+      "hash": "399aa86cdfd2853f30ce56ffa39da8f86469c6f93b9d14dc986c9a0528f0e78a"
+    },
+    {
+      "file": "zh-CN-1024-chapter.png",
+      "hash": "efd3ae9f823c07814f0727402135c9ce6edf20ded6112f5dbf91ef5a57fe6df0"
+    },
+    {
+      "file": "zh-CN-390-collage.png",
+      "hash": "28e6d4481b50e477c4f5b2205eb0b91d33d91fc5827d18420cf01cedbcde9301"
+    },
+    {
+      "file": "zh-CN-390-evidence.png",
+      "hash": "a399587ddc8a2f51a499b754fff200e009952a15ca2e5a84510f602cf06873ec"
+    },
+    {
+      "file": "zh-CN-390-violet.png",
+      "hash": "b68afcbd15f69267096fbb5b01b822ae56c9b07e6d70ff6015c726ed58ebe0df"
+    },
+    {
+      "file": "zh-CN-390-chapter.png",
+      "hash": "54b10d47caee13771f73a64d669c3659328e23088dc04bae3ca1bc66e005656d"
+    },
+    {
+      "file": "contact.png",
+      "hash": "fe0005062cac9f2c2abd7cc1c50d932eece0ff1df6b0b1d1d5eca2975ae683ae"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "artifacts": [
+    {
+      "file": "studio-export.html",
+      "hash": "72919548862e6a8f1b0bed2bbc7089e2e7896a39610f4f07b6d9ae4cacbb8c67",
+      "bytes": 3365935
+    },
+    {
+      "file": "demo.en.html",
+      "hash": "835c1233b346af1ed43ca639fa8a6d10f7bfd5e8cfd638f1a7897e3cecb804d2",
+      "renderHash": "fc8987659ddbaee8606ba1a2aad172204498c1bef8526d73980d0ac2620fbcca",
+      "bytes": 3365694
+    },
+    {
+      "file": "demo.zh-CN.html",
+      "hash": "0d0f226efedd9675b39d11bb53c4d0f000d4e9554f5f59b413c7ea97723c5fbb",
+      "renderHash": "d680b4edc4d3dbae462f189fe4bd9cd3c2750ad3ed485a8ee73e5ab54afe1f9f",
+      "bytes": 3365934
+    }
+  ],
+  "ok": true
+}

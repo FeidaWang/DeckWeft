@@ -1,0 +1,5713 @@
+{
+  "ok": true,
+  "browser": "151.0.7922.34",
+  "checks": [
+    "Actual semantic interaction invalidates prior receipt",
+    "Browser detects locked repeated layout",
+    "Both rounds refuse author-locked changes",
+    "Last valid HTML remains byte-identical",
+    "Incomplete source and HTML remain available"
+  ],
+  "failure": {
+    "ok": false,
+    "budget": {
+      "maxRounds": 2,
+      "maxCandidates": 6,
+      "maxSceneChanges": 2,
+      "maxMilliseconds": 60000
+    },
+    "spent": {
+      "rounds": 2,
+      "candidates": 2,
+      "sceneChanges": 0,
+      "milliseconds": 10
+    },
+    "attempts": [
+      {
+        "round": 1,
+        "proposal": {
+          "sceneId": "component-stacked",
+          "composition": "evidence-left"
+        },
+        "status": "rejected",
+        "reason": "Unlock the affected content or scene explicitly before changing it."
+      },
+      {
+        "round": 2,
+        "proposal": {
+          "sceneId": "component-stacked",
+          "composition": "evidence-left"
+        },
+        "status": "rejected",
+        "reason": "Unlock the affected content or scene explicitly before changing it."
+      }
+    ],
+    "project": {
+      "format": "deckweft-visual-project",
+      "version": 1,
+      "id": "visual_94c9d2a0410d40d6",
+      "document": {
+        "format": "deckweft-presentation",
+        "schemaVersion": 3,
+        "id": "visual_94c9d2a0410d40d6",
+        "title": "Explore the evidence. Replay the explanation.",
+        "locale": "en",
+        "blocks": [
+          {
+            "id": "cover-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Make room\nfor bold ideas."
+          },
+          {
+            "id": "cover-body",
+            "type": "paragraph",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Content is the starting point. Composition gives it a voice. Keep the words editable and the choices deliberate."
+          },
+          {
+            "id": "cover-metric",
+            "type": "metric",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "value": 12,
+            "unit": "scenes",
+            "label": "A synthetic gallery brief, ready to explore."
+          },
+          {
+            "id": "cover-note",
+            "type": "callout",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "01 / FROM WORDS TO A WORLD"
+          },
+          {
+            "id": "cover-source",
+            "type": "citation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "sourceId": "synthetic-source",
+            "text": "Fixture content · no product results claimed"
+          },
+          {
+            "id": "data-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Two paths.\nOne visible difference."
+          },
+          {
+            "id": "data-chart",
+            "type": "chart",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "datasetId": "adoption-quarterly"
+          },
+          {
+            "id": "data-callout",
+            "type": "callout",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Keep the evidence in view."
+          },
+          {
+            "id": "data-body",
+            "type": "paragraph",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Compare both series on the same scale. Exact values remain in the table below. These figures are synthetic, not measured product outcomes."
+          },
+          {
+            "id": "data-source",
+            "type": "citation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "sourceId": "synthetic-source",
+            "text": "Synthetic quarterly dataset · units: %"
+          },
+          {
+            "id": "violet-title",
+            "type": "heading",
+            "text": "A story worth\ngetting close to.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "violet-body",
+            "type": "paragraph",
+            "text": "Give the image room. Keep the message clear. A distinct art direction can still leave every word and number editable.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "violet-image",
+            "type": "image",
+            "assetId": "asset_70c32da27c9df448e0749ce3",
+            "alt": "Generated decorative workbench illustration: paper cards and blue thread.",
+            "factual": false,
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "violet-caption",
+            "type": "callout",
+            "text": "Decorative generated artwork / original local asset",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "chapter-title",
+            "type": "heading",
+            "text": "Different form.\nThe same truth.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "chapter-body",
+            "type": "paragraph",
+            "text": "A full-violet chapter creates a deliberate pause. Theme changes preserve content, numeric data, citations and author locks.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "component-line-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Keep the gap visible."
+          },
+          {
+            "id": "component-line",
+            "type": "chart",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "datasetId": "data-line",
+            "chartType": "line",
+            "axis": {
+              "policy": "zero"
+            }
+          },
+          {
+            "id": "component-line-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Synthetic evidence: negative, zero and missing are different.",
+            "target": {
+              "blockId": "component-line",
+              "objectId": "alpha",
+              "seriesId": "local"
+            }
+          },
+          {
+            "id": "component-area-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Time has a zone."
+          },
+          {
+            "id": "component-area",
+            "type": "chart",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "datasetId": "data-area",
+            "chartType": "area",
+            "axis": {
+              "policy": "zero"
+            }
+          },
+          {
+            "id": "component-area-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Synthetic evidence: negative, zero and missing are different.",
+            "target": {
+              "blockId": "component-area",
+              "objectId": "alpha",
+              "seriesId": "local"
+            }
+          },
+          {
+            "id": "component-ranked-bar-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Rank without rewriting."
+          },
+          {
+            "id": "component-ranked-bar",
+            "type": "chart",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "datasetId": "data-ranked-bar",
+            "chartType": "ranked-bar",
+            "axis": {
+              "policy": "zero"
+            }
+          },
+          {
+            "id": "component-ranked-bar-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Synthetic evidence: negative, zero and missing are different.",
+            "target": {
+              "blockId": "component-ranked-bar",
+              "objectId": "alpha",
+              "seriesId": "local"
+            }
+          },
+          {
+            "id": "component-stacked-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Compare signed contributions."
+          },
+          {
+            "id": "component-stacked",
+            "type": "chart",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "datasetId": "data-stacked",
+            "chartType": "stacked",
+            "axis": {
+              "policy": "zero"
+            }
+          },
+          {
+            "id": "component-stacked-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Synthetic evidence: negative, zero and missing are different.",
+            "target": {
+              "blockId": "component-stacked",
+              "objectId": "alpha",
+              "seriesId": "local"
+            }
+          },
+          {
+            "id": "component-scatter-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Every point has two values."
+          },
+          {
+            "id": "component-scatter",
+            "type": "chart",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "datasetId": "data-scatter",
+            "chartType": "scatter",
+            "axis": {
+              "policy": "zero"
+            }
+          },
+          {
+            "id": "component-scatter-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Synthetic evidence: negative, zero and missing are different.",
+            "target": {
+              "blockId": "component-scatter",
+              "objectId": "alpha",
+              "seriesId": "local"
+            }
+          },
+          {
+            "id": "component-heatmap-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "A matrix retains every value."
+          },
+          {
+            "id": "component-heatmap",
+            "type": "chart",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "datasetId": "data-heatmap",
+            "chartType": "heatmap",
+            "axis": {
+              "policy": "zero"
+            }
+          },
+          {
+            "id": "component-heatmap-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Synthetic evidence: negative, zero and missing are different.",
+            "target": {
+              "blockId": "component-heatmap",
+              "objectId": "alpha",
+              "seriesId": "local"
+            }
+          },
+          {
+            "id": "component-relationship-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Only the supplied relationships."
+          },
+          {
+            "id": "component-relationship",
+            "type": "diagram",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "diagramType": "relationship",
+            "nodes": [
+              {
+                "id": "writer",
+                "label": "Writer"
+              },
+              {
+                "id": "reviewer",
+                "label": "Reviewer",
+                "note": "Request changes before saving."
+              },
+              {
+                "id": "archive",
+                "label": "Archive"
+              }
+            ],
+            "edges": [
+              {
+                "id": "submit",
+                "from": "writer",
+                "to": "reviewer",
+                "label": "Submit"
+              },
+              {
+                "id": "revise",
+                "from": "reviewer",
+                "to": "writer",
+                "label": "Revise"
+              },
+              {
+                "id": "save",
+                "from": "reviewer",
+                "to": "archive",
+                "label": "Save"
+              }
+            ]
+          },
+          {
+            "id": "component-relationship-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Review returns to the writer; it is not a linear approval chain.",
+            "target": {
+              "blockId": "component-relationship",
+              "objectId": "revise"
+            }
+          },
+          {
+            "id": "component-sequence-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Read messages in supplied order."
+          },
+          {
+            "id": "component-sequence",
+            "type": "diagram",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "diagramType": "sequence",
+            "nodes": [
+              {
+                "id": "writer",
+                "label": "Writer"
+              },
+              {
+                "id": "reviewer",
+                "label": "Reviewer",
+                "note": "Request changes before saving."
+              },
+              {
+                "id": "archive",
+                "label": "Archive"
+              }
+            ],
+            "edges": [
+              {
+                "id": "submit",
+                "from": "writer",
+                "to": "reviewer",
+                "label": "Submit"
+              },
+              {
+                "id": "revise",
+                "from": "reviewer",
+                "to": "writer",
+                "label": "Revise"
+              },
+              {
+                "id": "save",
+                "from": "reviewer",
+                "to": "archive",
+                "label": "Save"
+              }
+            ]
+          },
+          {
+            "id": "component-sequence-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Review returns to the writer; it is not a linear approval chain.",
+            "target": {
+              "blockId": "component-sequence",
+              "objectId": "revise"
+            }
+          },
+          {
+            "id": "component-process-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Keep the review loop."
+          },
+          {
+            "id": "component-process",
+            "type": "diagram",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "diagramType": "process",
+            "nodes": [
+              {
+                "id": "writer",
+                "label": "Writer"
+              },
+              {
+                "id": "reviewer",
+                "label": "Reviewer",
+                "note": "Request changes before saving."
+              },
+              {
+                "id": "archive",
+                "label": "Archive"
+              }
+            ],
+            "edges": [
+              {
+                "id": "submit",
+                "from": "writer",
+                "to": "reviewer",
+                "label": "Submit"
+              },
+              {
+                "id": "revise",
+                "from": "reviewer",
+                "to": "writer",
+                "label": "Revise"
+              },
+              {
+                "id": "save",
+                "from": "reviewer",
+                "to": "archive",
+                "label": "Save"
+              }
+            ]
+          },
+          {
+            "id": "component-process-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Review returns to the writer; it is not a linear approval chain.",
+            "target": {
+              "blockId": "component-process",
+              "objectId": "revise"
+            }
+          },
+          {
+            "id": "component-code-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "The original code stays intact."
+          },
+          {
+            "id": "component-code",
+            "type": "code",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "language": "javascript",
+            "text": "// Exact source · 精确保留\nexport function delta(before, after) {\n\treturn after - before;  // keep spaces\n}\n",
+            "emphasizedLines": [
+              2,
+              3
+            ],
+            "sourceAnchor": {
+              "sourceId": "synthetic-source",
+              "anchor": "example.mjs#L1-L5"
+            }
+          },
+          {
+            "id": "component-code-note",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Emphasis points to line 3 by block identity.",
+            "target": {
+              "blockId": "component-code",
+              "line": 3
+            }
+          },
+          {
+            "id": "image-note-paper",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Local decorative artwork: inspect the paper area. This is not documentary evidence.",
+            "target": {
+              "blockId": "violet-image"
+            }
+          },
+          {
+            "id": "image-note-source",
+            "type": "annotation",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "The original image, source attribution and author crop remain unchanged.",
+            "target": {
+              "blockId": "violet-image"
+            }
+          },
+          {
+            "id": "comparison-image-title",
+            "type": "heading",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Compare two authored crops."
+          },
+          {
+            "id": "comparison-first",
+            "type": "image",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "assetId": "asset_70c32da27c9df448e0749ce3",
+            "alt": "First crop of the same local decorative illustration"
+          },
+          {
+            "id": "comparison-second",
+            "type": "image",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "assetId": "asset_70c32da27c9df448e0749ce3",
+            "alt": "Second crop of the same local decorative illustration"
+          },
+          {
+            "id": "comparison-context",
+            "type": "paragraph",
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "text": "Two views of one original illustration. No before/after historical claim."
+          }
+        ],
+        "datasets": [
+          {
+            "id": "adoption-quarterly",
+            "unit": "%",
+            "synthetic": true,
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5",
+              "Q6"
+            ],
+            "series": [
+              {
+                "id": "guided",
+                "label": "Guided workflow",
+                "values": [
+                  18,
+                  28,
+                  41,
+                  46,
+                  62,
+                  78
+                ]
+              },
+              {
+                "id": "manual",
+                "label": "Manual workflow",
+                "values": [
+                  18,
+                  22,
+                  26,
+                  33,
+                  39,
+                  45
+                ]
+              }
+            ],
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "data-line",
+            "unit": "hours",
+            "synthetic": true,
+            "categoryIds": [
+              "alpha",
+              "beta",
+              "gamma",
+              "delta"
+            ],
+            "categories": [
+              "Draft",
+              "Review",
+              "Revise",
+              "Deliver"
+            ],
+            "series": [
+              {
+                "id": "local",
+                "label": "Local",
+                "values": [
+                  -3.125,
+                  0,
+                  null,
+                  8.25
+                ]
+              },
+              {
+                "id": "reviewed",
+                "label": "Reviewed",
+                "values": [
+                  2.5,
+                  -1,
+                  4,
+                  6
+                ]
+              }
+            ],
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "data-area",
+            "unit": "hours",
+            "synthetic": true,
+            "categoryIds": [
+              "alpha",
+              "beta",
+              "gamma",
+              "delta"
+            ],
+            "categories": [
+              "2026-10-03T15:00:00Z",
+              "2026-10-03T16:00:00Z",
+              "2026-10-03T17:00:00Z",
+              "2026-10-03T18:00:00Z"
+            ],
+            "series": [
+              {
+                "id": "local",
+                "label": "Local",
+                "values": [
+                  -3.125,
+                  0,
+                  null,
+                  8.25
+                ]
+              },
+              {
+                "id": "reviewed",
+                "label": "Reviewed",
+                "values": [
+                  2.5,
+                  -1,
+                  4,
+                  6
+                ]
+              }
+            ],
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "categoryKind": "datetime",
+            "timeZone": "Australia/Melbourne"
+          },
+          {
+            "id": "data-ranked-bar",
+            "unit": "hours",
+            "synthetic": true,
+            "categoryIds": [
+              "alpha",
+              "beta",
+              "gamma",
+              "delta"
+            ],
+            "categories": [
+              "Draft",
+              "Review",
+              "Revise",
+              "Deliver"
+            ],
+            "series": [
+              {
+                "id": "local",
+                "label": "Local",
+                "values": [
+                  -3.125,
+                  0,
+                  null,
+                  8.25
+                ]
+              }
+            ],
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "data-stacked",
+            "unit": "hours",
+            "synthetic": true,
+            "categoryIds": [
+              "alpha",
+              "beta",
+              "gamma",
+              "delta"
+            ],
+            "categories": [
+              "Draft",
+              "Review",
+              "Revise",
+              "Deliver"
+            ],
+            "series": [
+              {
+                "id": "local",
+                "label": "Local",
+                "values": [
+                  -3.125,
+                  0,
+                  null,
+                  8.25
+                ]
+              },
+              {
+                "id": "reviewed",
+                "label": "Reviewed",
+                "values": [
+                  2.5,
+                  -1,
+                  4,
+                  6
+                ]
+              }
+            ],
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "data-scatter",
+            "unit": "hours",
+            "synthetic": true,
+            "categoryIds": [
+              "alpha",
+              "beta",
+              "gamma",
+              "delta"
+            ],
+            "categories": [
+              "Draft",
+              "Review",
+              "Revise",
+              "Deliver"
+            ],
+            "series": [
+              {
+                "id": "local",
+                "label": "Local",
+                "values": [
+                  -3.125,
+                  0,
+                  null,
+                  8.25
+                ],
+                "xValues": [
+                  1,
+                  3,
+                  5,
+                  8
+                ]
+              },
+              {
+                "id": "reviewed",
+                "label": "Reviewed",
+                "values": [
+                  2.5,
+                  -1,
+                  4,
+                  6
+                ],
+                "xValues": [
+                  2,
+                  4,
+                  6,
+                  9
+                ]
+              }
+            ],
+            "sourceIds": [
+              "synthetic-source"
+            ],
+            "xUnit": "iterations"
+          },
+          {
+            "id": "data-heatmap",
+            "unit": "hours",
+            "synthetic": true,
+            "categoryIds": [
+              "alpha",
+              "beta",
+              "gamma",
+              "delta"
+            ],
+            "categories": [
+              "Draft",
+              "Review",
+              "Revise",
+              "Deliver"
+            ],
+            "series": [
+              {
+                "id": "local",
+                "label": "Local",
+                "values": [
+                  -3.125,
+                  0,
+                  null,
+                  8.25
+                ]
+              },
+              {
+                "id": "reviewed",
+                "label": "Reviewed",
+                "values": [
+                  2.5,
+                  -1,
+                  4,
+                  6
+                ]
+              }
+            ],
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "title": "DeckWeft synthetic fixture",
+            "url": "https://example.org/deckweft/synthetic"
+          }
+        ],
+        "authorOverrides": {
+          "lockedBlockIds": [],
+          "sceneLocks": []
+        },
+        "migration": {},
+        "visualBrief": {
+          "audience": "Design and product teams",
+          "outputLanguage": "en",
+          "profile": {
+            "colorIntensity": "bold",
+            "typographicContrast": "expressive",
+            "density": "compact",
+            "motionIntensity": "subtle",
+            "imageEmphasis": "large"
+          }
+        },
+        "sourceSnapshots": [
+          {
+            "id": "synthetic-v1",
+            "sourceId": "synthetic-source",
+            "version": "fixture-2026-10-18",
+            "hash": "8e266a1c58bed0eae27d5a1231ca201a640f654c4517d27e599aab94f9d9e5d2",
+            "permission": "local-copy",
+            "anchors": [
+              {
+                "blockId": "cover-title",
+                "anchor": "fixture/cover-title"
+              },
+              {
+                "blockId": "cover-body",
+                "anchor": "fixture/cover-body"
+              },
+              {
+                "blockId": "cover-metric",
+                "anchor": "fixture/cover-metric"
+              },
+              {
+                "blockId": "cover-note",
+                "anchor": "fixture/cover-note"
+              },
+              {
+                "blockId": "cover-source",
+                "anchor": "fixture/cover-source"
+              },
+              {
+                "blockId": "data-title",
+                "anchor": "fixture/data-title"
+              },
+              {
+                "blockId": "data-chart",
+                "anchor": "fixture/data-chart"
+              },
+              {
+                "blockId": "data-callout",
+                "anchor": "fixture/data-callout"
+              },
+              {
+                "blockId": "data-body",
+                "anchor": "fixture/data-body"
+              },
+              {
+                "blockId": "data-source",
+                "anchor": "fixture/data-source"
+              },
+              {
+                "blockId": "violet-title",
+                "anchor": "fixture/violet-title"
+              },
+              {
+                "blockId": "violet-body",
+                "anchor": "fixture/violet-body"
+              },
+              {
+                "blockId": "violet-image",
+                "anchor": "fixture/violet-image"
+              },
+              {
+                "blockId": "violet-caption",
+                "anchor": "fixture/violet-caption"
+              },
+              {
+                "blockId": "chapter-title",
+                "anchor": "fixture/chapter-title"
+              },
+              {
+                "blockId": "chapter-body",
+                "anchor": "fixture/chapter-body"
+              }
+            ]
+          }
+        ],
+        "explanations": [
+          {
+            "id": "explanation-relationship-submit",
+            "label": "Submit",
+            "text": "The writer submits to the reviewer.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "explanation-relationship-revise",
+            "label": "Revise",
+            "text": "The reviewer returns the draft to the writer.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "explanation-relationship-save",
+            "label": "Save",
+            "text": "Only the supplied save edge leads to the archive.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "explanation-sequence-submit",
+            "label": "Submit",
+            "text": "The writer submits to the reviewer.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "explanation-sequence-revise",
+            "label": "Revise",
+            "text": "The reviewer returns the draft to the writer.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "explanation-sequence-save",
+            "label": "Save",
+            "text": "Only the supplied save edge leads to the archive.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "explanation-process-submit",
+            "label": "Submit",
+            "text": "The writer submits to the reviewer.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "explanation-process-revise",
+            "label": "Revise",
+            "text": "The reviewer returns the draft to the writer.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "explanation-process-save",
+            "label": "Save",
+            "text": "Only the supplied save edge leads to the archive.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "code-signature",
+            "label": "Input contract",
+            "text": "The original function receives both values.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "code-difference",
+            "label": "Exact difference",
+            "text": "Subtract before from after. The tab and trailing spaces stay in the original source.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          },
+          {
+            "id": "code-source",
+            "label": "Complete source",
+            "text": "Read the unchanged original code and source anchor.",
+            "sourceIds": [
+              "synthetic-source"
+            ]
+          }
+        ]
+      },
+      "plan": {
+        "format": "deckweft-design-plan",
+        "version": 1,
+        "documentId": "visual_94c9d2a0410d40d6",
+        "scenes": [
+          {
+            "id": "collage",
+            "role": "opening",
+            "theme": "cream-collage",
+            "themeVersion": "1.0.0",
+            "composition": "diagonal-cover",
+            "blockIds": [
+              "cover-title",
+              "cover-body",
+              "cover-metric",
+              "cover-note",
+              "cover-source"
+            ],
+            "focalBlockId": "cover-title"
+          },
+          {
+            "id": "evidence",
+            "role": "evidence",
+            "theme": "dark-data",
+            "themeVersion": "1.0.0",
+            "composition": "chart-with-evidence-rail",
+            "blockIds": [
+              "data-title",
+              "data-chart",
+              "data-callout",
+              "data-body",
+              "data-source"
+            ],
+            "focalBlockId": "data-title"
+          },
+          {
+            "id": "violet",
+            "role": "context",
+            "theme": "electric-violet",
+            "themeVersion": "1.0.0",
+            "composition": "image-right",
+            "colorMode": "default",
+            "blockIds": [
+              "violet-title",
+              "violet-body",
+              "violet-image",
+              "violet-caption",
+              "image-note-paper",
+              "image-note-source"
+            ],
+            "focalBlockId": "violet-title",
+            "crops": [
+              {
+                "blockId": "violet-image",
+                "x": 0.34,
+                "y": 0,
+                "width": 0.53,
+                "height": 1
+              }
+            ],
+            "interactions": [
+              {
+                "id": "image-details",
+                "kind": "image-hotspots",
+                "blockId": "violet-image",
+                "hotspots": [
+                  {
+                    "id": "paper",
+                    "x": 0.45,
+                    "y": 0.65,
+                    "annotationId": "image-note-paper"
+                  },
+                  {
+                    "id": "source",
+                    "x": 0.7,
+                    "y": 0.4,
+                    "annotationId": "image-note-source"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              {
+                "id": "paper",
+                "event": "annotation.reveal",
+                "interactionId": "image-details",
+                "hotspotId": "paper",
+                "label": "Inspect the paper area"
+              },
+              {
+                "id": "source",
+                "event": "annotation.reveal",
+                "interactionId": "image-details",
+                "hotspotId": "source",
+                "label": "Inspect original-source context"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "chapter",
+            "role": "closing",
+            "theme": "electric-violet",
+            "themeVersion": "1.0.0",
+            "composition": "violet-chapter",
+            "colorMode": "chapter",
+            "blockIds": [
+              "chapter-title",
+              "chapter-body"
+            ],
+            "focalBlockId": "chapter-title"
+          },
+          {
+            "id": "component-line",
+            "role": "evidence",
+            "theme": "cream-collage",
+            "themeVersion": "1.0.0",
+            "composition": "evidence-top",
+            "blockIds": [
+              "component-line-title",
+              "component-line",
+              "component-line-note"
+            ],
+            "focalBlockId": "component-line-title",
+            "interactions": [
+              {
+                "id": "select-line",
+                "kind": "chart-select",
+                "blockId": "component-line"
+              }
+            ],
+            "cues": [
+              {
+                "id": "focus-line",
+                "event": "data.filter",
+                "interactionId": "select-line",
+                "seriesIds": [
+                  "local"
+                ],
+                "fromId": "beta",
+                "toId": "delta",
+                "label": "Focus on one series and the last three categories"
+              },
+              {
+                "id": "restore-line",
+                "event": "data.filter",
+                "interactionId": "select-line",
+                "seriesIds": [
+                  "local",
+                  "reviewed"
+                ],
+                "fromId": "alpha",
+                "toId": "delta",
+                "label": "Restore the full exact dataset"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-area",
+            "role": "evidence",
+            "theme": "electric-violet",
+            "themeVersion": "1.0.0",
+            "composition": "evidence-top",
+            "blockIds": [
+              "component-area-title",
+              "component-area",
+              "component-area-note"
+            ],
+            "focalBlockId": "component-area-title",
+            "interactions": [
+              {
+                "id": "select-area",
+                "kind": "chart-select",
+                "blockId": "component-area"
+              }
+            ],
+            "cues": [
+              {
+                "id": "focus-area",
+                "event": "data.filter",
+                "interactionId": "select-area",
+                "seriesIds": [
+                  "local"
+                ],
+                "fromId": "beta",
+                "toId": "delta",
+                "label": "Focus on one series and the last three categories"
+              },
+              {
+                "id": "restore-area",
+                "event": "data.filter",
+                "interactionId": "select-area",
+                "seriesIds": [
+                  "local",
+                  "reviewed"
+                ],
+                "fromId": "alpha",
+                "toId": "delta",
+                "label": "Restore the full exact dataset"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-ranked-bar",
+            "role": "evidence",
+            "theme": "dark-data",
+            "themeVersion": "1.0.0",
+            "composition": "evidence-top",
+            "blockIds": [
+              "component-ranked-bar-title",
+              "component-ranked-bar",
+              "component-ranked-bar-note"
+            ],
+            "focalBlockId": "component-ranked-bar-title",
+            "interactions": [
+              {
+                "id": "select-ranked-bar",
+                "kind": "chart-select",
+                "blockId": "component-ranked-bar"
+              }
+            ],
+            "cues": [
+              {
+                "id": "focus-ranked-bar",
+                "event": "data.filter",
+                "interactionId": "select-ranked-bar",
+                "seriesIds": [
+                  "local"
+                ],
+                "fromId": "beta",
+                "toId": "delta",
+                "label": "Focus on one series and the last three categories"
+              },
+              {
+                "id": "restore-ranked-bar",
+                "event": "data.filter",
+                "interactionId": "select-ranked-bar",
+                "seriesIds": [
+                  "local"
+                ],
+                "fromId": "alpha",
+                "toId": "delta",
+                "label": "Restore the full exact dataset"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-stacked",
+            "role": "evidence",
+            "theme": "cream-collage",
+            "themeVersion": "1.0.0",
+            "composition": "evidence-left",
+            "blockIds": [
+              "component-stacked-title",
+              "component-stacked",
+              "component-stacked-note"
+            ],
+            "focalBlockId": "component-stacked-title",
+            "interactions": [
+              {
+                "id": "select-stacked",
+                "kind": "chart-select",
+                "blockId": "component-stacked"
+              }
+            ],
+            "cues": [
+              {
+                "id": "focus-stacked",
+                "event": "data.filter",
+                "interactionId": "select-stacked",
+                "seriesIds": [
+                  "local"
+                ],
+                "fromId": "beta",
+                "toId": "delta",
+                "label": "Focus on one series and the last three categories"
+              },
+              {
+                "id": "restore-stacked",
+                "event": "data.filter",
+                "interactionId": "select-stacked",
+                "seriesIds": [
+                  "local",
+                  "reviewed"
+                ],
+                "fromId": "alpha",
+                "toId": "delta",
+                "label": "Restore the full exact dataset"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-scatter",
+            "role": "evidence",
+            "theme": "electric-violet",
+            "themeVersion": "1.0.0",
+            "composition": "evidence-top",
+            "blockIds": [
+              "component-scatter-title",
+              "component-scatter",
+              "component-scatter-note"
+            ],
+            "focalBlockId": "component-scatter-title",
+            "interactions": [
+              {
+                "id": "select-scatter",
+                "kind": "chart-select",
+                "blockId": "component-scatter"
+              }
+            ],
+            "cues": [
+              {
+                "id": "focus-scatter",
+                "event": "data.filter",
+                "interactionId": "select-scatter",
+                "seriesIds": [
+                  "local"
+                ],
+                "fromId": "beta",
+                "toId": "delta",
+                "label": "Focus on one series and the last three categories"
+              },
+              {
+                "id": "restore-scatter",
+                "event": "data.filter",
+                "interactionId": "select-scatter",
+                "seriesIds": [
+                  "local",
+                  "reviewed"
+                ],
+                "fromId": "alpha",
+                "toId": "delta",
+                "label": "Restore the full exact dataset"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-heatmap",
+            "role": "evidence",
+            "theme": "dark-data",
+            "themeVersion": "1.0.0",
+            "composition": "evidence-top",
+            "blockIds": [
+              "component-heatmap-title",
+              "component-heatmap",
+              "component-heatmap-note"
+            ],
+            "focalBlockId": "component-heatmap-title",
+            "interactions": [
+              {
+                "id": "select-heatmap",
+                "kind": "chart-select",
+                "blockId": "component-heatmap"
+              }
+            ],
+            "cues": [
+              {
+                "id": "focus-heatmap",
+                "event": "data.filter",
+                "interactionId": "select-heatmap",
+                "seriesIds": [
+                  "local"
+                ],
+                "fromId": "beta",
+                "toId": "delta",
+                "label": "Focus on one series and the last three categories"
+              },
+              {
+                "id": "restore-heatmap",
+                "event": "data.filter",
+                "interactionId": "select-heatmap",
+                "seriesIds": [
+                  "local",
+                  "reviewed"
+                ],
+                "fromId": "alpha",
+                "toId": "delta",
+                "label": "Restore the full exact dataset"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-relationship",
+            "role": "process",
+            "theme": "cream-collage",
+            "themeVersion": "1.0.0",
+            "composition": "process-line",
+            "blockIds": [
+              "component-relationship-title",
+              "component-relationship",
+              "component-relationship-note"
+            ],
+            "focalBlockId": "component-relationship-title",
+            "interactions": [
+              {
+                "id": "explain-relationship",
+                "kind": "steps",
+                "blockId": "component-relationship",
+                "steps": [
+                  {
+                    "id": "submit",
+                    "explanationId": "explanation-relationship-submit",
+                    "objectId": "submit"
+                  },
+                  {
+                    "id": "revise",
+                    "explanationId": "explanation-relationship-revise",
+                    "objectId": "revise"
+                  },
+                  {
+                    "id": "save",
+                    "explanationId": "explanation-relationship-save",
+                    "objectId": "save"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              {
+                "id": "revise",
+                "event": "step.next",
+                "interactionId": "explain-relationship",
+                "label": "Explain the return path"
+              },
+              {
+                "id": "save",
+                "event": "step.next",
+                "interactionId": "explain-relationship",
+                "label": "Explain the archive path"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-sequence",
+            "role": "process",
+            "theme": "electric-violet",
+            "themeVersion": "1.0.0",
+            "composition": "process-line",
+            "blockIds": [
+              "component-sequence-title",
+              "component-sequence",
+              "component-sequence-note"
+            ],
+            "focalBlockId": "component-sequence-title",
+            "interactions": [
+              {
+                "id": "explain-sequence",
+                "kind": "steps",
+                "blockId": "component-sequence",
+                "steps": [
+                  {
+                    "id": "submit",
+                    "explanationId": "explanation-sequence-submit",
+                    "objectId": "submit"
+                  },
+                  {
+                    "id": "revise",
+                    "explanationId": "explanation-sequence-revise",
+                    "objectId": "revise"
+                  },
+                  {
+                    "id": "save",
+                    "explanationId": "explanation-sequence-save",
+                    "objectId": "save"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              {
+                "id": "revise",
+                "event": "step.next",
+                "interactionId": "explain-sequence",
+                "label": "Explain the return path"
+              },
+              {
+                "id": "save",
+                "event": "step.next",
+                "interactionId": "explain-sequence",
+                "label": "Explain the archive path"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-process",
+            "role": "process",
+            "theme": "dark-data",
+            "themeVersion": "1.0.0",
+            "composition": "process-line",
+            "blockIds": [
+              "component-process-title",
+              "component-process",
+              "component-process-note"
+            ],
+            "focalBlockId": "component-process-title",
+            "interactions": [
+              {
+                "id": "explain-process",
+                "kind": "steps",
+                "blockId": "component-process",
+                "steps": [
+                  {
+                    "id": "submit",
+                    "explanationId": "explanation-process-submit",
+                    "objectId": "submit"
+                  },
+                  {
+                    "id": "revise",
+                    "explanationId": "explanation-process-revise",
+                    "objectId": "revise"
+                  },
+                  {
+                    "id": "save",
+                    "explanationId": "explanation-process-save",
+                    "objectId": "save"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              {
+                "id": "revise",
+                "event": "step.next",
+                "interactionId": "explain-process",
+                "label": "Explain the return path"
+              },
+              {
+                "id": "save",
+                "event": "step.next",
+                "interactionId": "explain-process",
+                "label": "Explain the archive path"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "component-code",
+            "role": "evidence",
+            "theme": "dark-data",
+            "themeVersion": "1.0.0",
+            "composition": "reading-flow",
+            "blockIds": [
+              "component-code-title",
+              "component-code",
+              "component-code-note"
+            ],
+            "focalBlockId": "component-code-title",
+            "interactions": [
+              {
+                "id": "explain-code",
+                "kind": "steps",
+                "blockId": "component-code",
+                "steps": [
+                  {
+                    "id": "signature",
+                    "explanationId": "code-signature",
+                    "lines": [
+                      2
+                    ]
+                  },
+                  {
+                    "id": "difference",
+                    "explanationId": "code-difference",
+                    "lines": [
+                      3
+                    ]
+                  },
+                  {
+                    "id": "source",
+                    "explanationId": "code-source",
+                    "lines": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5
+                    ]
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              {
+                "id": "difference",
+                "event": "step.next",
+                "interactionId": "explain-code",
+                "label": "Explain the calculation"
+              },
+              {
+                "id": "source",
+                "event": "step.next",
+                "interactionId": "explain-code",
+                "label": "Read the full source"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          },
+          {
+            "id": "image-comparison",
+            "role": "decision",
+            "theme": "electric-violet",
+            "themeVersion": "1.0.0",
+            "composition": "reading-flow",
+            "blockIds": [
+              "comparison-image-title",
+              "comparison-first",
+              "comparison-second",
+              "comparison-context"
+            ],
+            "focalBlockId": "comparison-image-title",
+            "crops": [
+              {
+                "blockId": "comparison-first",
+                "x": 0,
+                "y": 0.15,
+                "width": 0.5,
+                "height": 0.5
+              },
+              {
+                "blockId": "comparison-second",
+                "x": 0.5,
+                "y": 0.15,
+                "width": 0.5,
+                "height": 0.5
+              }
+            ],
+            "interactions": [
+              {
+                "id": "compare-crops",
+                "kind": "image-compare",
+                "blockId": "comparison-first",
+                "otherBlockId": "comparison-second",
+                "initialTab": "both"
+              }
+            ],
+            "cues": [
+              {
+                "id": "first",
+                "event": "tab.select",
+                "interactionId": "compare-crops",
+                "tabId": "first",
+                "label": "Inspect the first crop"
+              },
+              {
+                "id": "second",
+                "event": "tab.select",
+                "interactionId": "compare-crops",
+                "tabId": "second",
+                "label": "Inspect the second crop"
+              },
+              {
+                "id": "both",
+                "event": "tab.select",
+                "interactionId": "compare-crops",
+                "tabId": "both",
+                "label": "Compare both crops"
+              }
+            ],
+            "motion": {
+              "policy": "subtle",
+              "durationMs": 240
+            }
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "asset_70c32da27c9df448e0749ce3",
+          "hash": "70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1",
+          "mime": "image/png",
+          "width": 1536,
+          "height": 1024,
+          "path": "assets/70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1.png",
+          "provenance": "Original host-generated decorative artwork, retained from the MB-11–15 build. Not documentary photography or product evidence.",
+          "license": "Generated artwork; no third-party rights clearance asserted",
+          "allowedUse": "Local DeckWeft demonstration; review rights for your own redistribution",
+          "alt": "Blank paper story cards linked by blue thread on a wooden workbench",
+          "fallback": "A series of paper cards joined by blue thread; decorative artwork."
+        }
+      ],
+      "revision": {
+        "number": 0,
+        "createdAt": "2026-10-18T05:20:52.744Z",
+        "updatedAt": "2026-10-18T05:20:52.744Z"
+      },
+      "extensions": {}
+    },
+    "artifact": "recovery-last-valid.html",
+    "candidate": {
+      "project": {
+        "format": "deckweft-visual-project",
+        "version": 1,
+        "id": "visual_94c9d2a0410d40d6",
+        "document": {
+          "format": "deckweft-presentation",
+          "schemaVersion": 3,
+          "id": "visual_94c9d2a0410d40d6",
+          "title": "Explore the evidence. Replay the explanation.",
+          "locale": "en",
+          "blocks": [
+            {
+              "id": "cover-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Make room\nfor bold ideas."
+            },
+            {
+              "id": "cover-body",
+              "type": "paragraph",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Content is the starting point. Composition gives it a voice. Keep the words editable and the choices deliberate."
+            },
+            {
+              "id": "cover-metric",
+              "type": "metric",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "value": 12,
+              "unit": "scenes",
+              "label": "A synthetic gallery brief, ready to explore."
+            },
+            {
+              "id": "cover-note",
+              "type": "callout",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "01 / FROM WORDS TO A WORLD"
+            },
+            {
+              "id": "cover-source",
+              "type": "citation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "sourceId": "synthetic-source",
+              "text": "Fixture content · no product results claimed"
+            },
+            {
+              "id": "data-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Two paths.\nOne visible difference."
+            },
+            {
+              "id": "data-chart",
+              "type": "chart",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "datasetId": "adoption-quarterly"
+            },
+            {
+              "id": "data-callout",
+              "type": "callout",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Keep the evidence in view."
+            },
+            {
+              "id": "data-body",
+              "type": "paragraph",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Compare both series on the same scale. Exact values remain in the table below. These figures are synthetic, not measured product outcomes."
+            },
+            {
+              "id": "data-source",
+              "type": "citation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "sourceId": "synthetic-source",
+              "text": "Synthetic quarterly dataset · units: %"
+            },
+            {
+              "id": "violet-title",
+              "type": "heading",
+              "text": "A story worth\ngetting close to.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "violet-body",
+              "type": "paragraph",
+              "text": "Give the image room. Keep the message clear. A distinct art direction can still leave every word and number editable.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "violet-image",
+              "type": "image",
+              "assetId": "asset_70c32da27c9df448e0749ce3",
+              "alt": "Generated decorative workbench illustration: paper cards and blue thread.",
+              "factual": false,
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "violet-caption",
+              "type": "callout",
+              "text": "Decorative generated artwork / original local asset",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "chapter-title",
+              "type": "heading",
+              "text": "Different form.\nThe same truth.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "chapter-body",
+              "type": "paragraph",
+              "text": "A full-violet chapter creates a deliberate pause. Theme changes preserve content, numeric data, citations and author locks.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "component-line-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Keep the gap visible."
+            },
+            {
+              "id": "component-line",
+              "type": "chart",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "datasetId": "data-line",
+              "chartType": "line",
+              "axis": {
+                "policy": "zero"
+              }
+            },
+            {
+              "id": "component-line-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Synthetic evidence: negative, zero and missing are different.",
+              "target": {
+                "blockId": "component-line",
+                "objectId": "alpha",
+                "seriesId": "local"
+              }
+            },
+            {
+              "id": "component-area-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Time has a zone."
+            },
+            {
+              "id": "component-area",
+              "type": "chart",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "datasetId": "data-area",
+              "chartType": "area",
+              "axis": {
+                "policy": "zero"
+              }
+            },
+            {
+              "id": "component-area-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Synthetic evidence: negative, zero and missing are different.",
+              "target": {
+                "blockId": "component-area",
+                "objectId": "alpha",
+                "seriesId": "local"
+              }
+            },
+            {
+              "id": "component-ranked-bar-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Rank without rewriting."
+            },
+            {
+              "id": "component-ranked-bar",
+              "type": "chart",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "datasetId": "data-ranked-bar",
+              "chartType": "ranked-bar",
+              "axis": {
+                "policy": "zero"
+              }
+            },
+            {
+              "id": "component-ranked-bar-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Synthetic evidence: negative, zero and missing are different.",
+              "target": {
+                "blockId": "component-ranked-bar",
+                "objectId": "alpha",
+                "seriesId": "local"
+              }
+            },
+            {
+              "id": "component-stacked-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Compare signed contributions."
+            },
+            {
+              "id": "component-stacked",
+              "type": "chart",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "datasetId": "data-stacked",
+              "chartType": "stacked",
+              "axis": {
+                "policy": "zero"
+              }
+            },
+            {
+              "id": "component-stacked-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Synthetic evidence: negative, zero and missing are different.",
+              "target": {
+                "blockId": "component-stacked",
+                "objectId": "alpha",
+                "seriesId": "local"
+              }
+            },
+            {
+              "id": "component-scatter-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Every point has two values."
+            },
+            {
+              "id": "component-scatter",
+              "type": "chart",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "datasetId": "data-scatter",
+              "chartType": "scatter",
+              "axis": {
+                "policy": "zero"
+              }
+            },
+            {
+              "id": "component-scatter-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Synthetic evidence: negative, zero and missing are different.",
+              "target": {
+                "blockId": "component-scatter",
+                "objectId": "alpha",
+                "seriesId": "local"
+              }
+            },
+            {
+              "id": "component-heatmap-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "A matrix retains every value."
+            },
+            {
+              "id": "component-heatmap",
+              "type": "chart",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "datasetId": "data-heatmap",
+              "chartType": "heatmap",
+              "axis": {
+                "policy": "zero"
+              }
+            },
+            {
+              "id": "component-heatmap-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Synthetic evidence: negative, zero and missing are different.",
+              "target": {
+                "blockId": "component-heatmap",
+                "objectId": "alpha",
+                "seriesId": "local"
+              }
+            },
+            {
+              "id": "component-relationship-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Only the supplied relationships."
+            },
+            {
+              "id": "component-relationship",
+              "type": "diagram",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "diagramType": "relationship",
+              "nodes": [
+                {
+                  "id": "writer",
+                  "label": "Writer"
+                },
+                {
+                  "id": "reviewer",
+                  "label": "Reviewer",
+                  "note": "Request changes before saving."
+                },
+                {
+                  "id": "archive",
+                  "label": "Archive"
+                }
+              ],
+              "edges": [
+                {
+                  "id": "submit",
+                  "from": "writer",
+                  "to": "reviewer",
+                  "label": "Submit"
+                },
+                {
+                  "id": "revise",
+                  "from": "reviewer",
+                  "to": "writer",
+                  "label": "Revise"
+                },
+                {
+                  "id": "save",
+                  "from": "reviewer",
+                  "to": "archive",
+                  "label": "Save"
+                }
+              ]
+            },
+            {
+              "id": "component-relationship-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Review returns to the writer; it is not a linear approval chain.",
+              "target": {
+                "blockId": "component-relationship",
+                "objectId": "revise"
+              }
+            },
+            {
+              "id": "component-sequence-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Read messages in supplied order."
+            },
+            {
+              "id": "component-sequence",
+              "type": "diagram",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "diagramType": "sequence",
+              "nodes": [
+                {
+                  "id": "writer",
+                  "label": "Writer"
+                },
+                {
+                  "id": "reviewer",
+                  "label": "Reviewer",
+                  "note": "Request changes before saving."
+                },
+                {
+                  "id": "archive",
+                  "label": "Archive"
+                }
+              ],
+              "edges": [
+                {
+                  "id": "submit",
+                  "from": "writer",
+                  "to": "reviewer",
+                  "label": "Submit"
+                },
+                {
+                  "id": "revise",
+                  "from": "reviewer",
+                  "to": "writer",
+                  "label": "Revise"
+                },
+                {
+                  "id": "save",
+                  "from": "reviewer",
+                  "to": "archive",
+                  "label": "Save"
+                }
+              ]
+            },
+            {
+              "id": "component-sequence-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Review returns to the writer; it is not a linear approval chain.",
+              "target": {
+                "blockId": "component-sequence",
+                "objectId": "revise"
+              }
+            },
+            {
+              "id": "component-process-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Keep the review loop."
+            },
+            {
+              "id": "component-process",
+              "type": "diagram",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "diagramType": "process",
+              "nodes": [
+                {
+                  "id": "writer",
+                  "label": "Writer"
+                },
+                {
+                  "id": "reviewer",
+                  "label": "Reviewer",
+                  "note": "Request changes before saving."
+                },
+                {
+                  "id": "archive",
+                  "label": "Archive"
+                }
+              ],
+              "edges": [
+                {
+                  "id": "submit",
+                  "from": "writer",
+                  "to": "reviewer",
+                  "label": "Submit"
+                },
+                {
+                  "id": "revise",
+                  "from": "reviewer",
+                  "to": "writer",
+                  "label": "Revise"
+                },
+                {
+                  "id": "save",
+                  "from": "reviewer",
+                  "to": "archive",
+                  "label": "Save"
+                }
+              ]
+            },
+            {
+              "id": "component-process-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Review returns to the writer; it is not a linear approval chain.",
+              "target": {
+                "blockId": "component-process",
+                "objectId": "revise"
+              }
+            },
+            {
+              "id": "component-code-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "The original code stays intact."
+            },
+            {
+              "id": "component-code",
+              "type": "code",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "language": "javascript",
+              "text": "// Exact source · 精确保留\nexport function delta(before, after) {\n\treturn after - before;  // keep spaces\n}\n",
+              "emphasizedLines": [
+                2,
+                3
+              ],
+              "sourceAnchor": {
+                "sourceId": "synthetic-source",
+                "anchor": "example.mjs#L1-L5"
+              }
+            },
+            {
+              "id": "component-code-note",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Emphasis points to line 3 by block identity.",
+              "target": {
+                "blockId": "component-code",
+                "line": 3
+              }
+            },
+            {
+              "id": "image-note-paper",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Local decorative artwork: inspect the paper area. This is not documentary evidence.",
+              "target": {
+                "blockId": "violet-image"
+              }
+            },
+            {
+              "id": "image-note-source",
+              "type": "annotation",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "The original image, source attribution and author crop remain unchanged.",
+              "target": {
+                "blockId": "violet-image"
+              }
+            },
+            {
+              "id": "comparison-image-title",
+              "type": "heading",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Compare two authored crops."
+            },
+            {
+              "id": "comparison-first",
+              "type": "image",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "assetId": "asset_70c32da27c9df448e0749ce3",
+              "alt": "First crop of the same local decorative illustration"
+            },
+            {
+              "id": "comparison-second",
+              "type": "image",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "assetId": "asset_70c32da27c9df448e0749ce3",
+              "alt": "Second crop of the same local decorative illustration"
+            },
+            {
+              "id": "comparison-context",
+              "type": "paragraph",
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "text": "Two views of one original illustration. No before/after historical claim."
+            }
+          ],
+          "datasets": [
+            {
+              "id": "adoption-quarterly",
+              "unit": "%",
+              "synthetic": true,
+              "categories": [
+                "Q1",
+                "Q2",
+                "Q3",
+                "Q4",
+                "Q5",
+                "Q6"
+              ],
+              "series": [
+                {
+                  "id": "guided",
+                  "label": "Guided workflow",
+                  "values": [
+                    18,
+                    28,
+                    41,
+                    46,
+                    62,
+                    78
+                  ]
+                },
+                {
+                  "id": "manual",
+                  "label": "Manual workflow",
+                  "values": [
+                    18,
+                    22,
+                    26,
+                    33,
+                    39,
+                    45
+                  ]
+                }
+              ],
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "data-line",
+              "unit": "hours",
+              "synthetic": true,
+              "categoryIds": [
+                "alpha",
+                "beta",
+                "gamma",
+                "delta"
+              ],
+              "categories": [
+                "Draft",
+                "Review",
+                "Revise",
+                "Deliver"
+              ],
+              "series": [
+                {
+                  "id": "local",
+                  "label": "Local",
+                  "values": [
+                    -3.125,
+                    0,
+                    null,
+                    8.25
+                  ]
+                },
+                {
+                  "id": "reviewed",
+                  "label": "Reviewed",
+                  "values": [
+                    2.5,
+                    -1,
+                    4,
+                    6
+                  ]
+                }
+              ],
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "data-area",
+              "unit": "hours",
+              "synthetic": true,
+              "categoryIds": [
+                "alpha",
+                "beta",
+                "gamma",
+                "delta"
+              ],
+              "categories": [
+                "2026-10-03T15:00:00Z",
+                "2026-10-03T16:00:00Z",
+                "2026-10-03T17:00:00Z",
+                "2026-10-03T18:00:00Z"
+              ],
+              "series": [
+                {
+                  "id": "local",
+                  "label": "Local",
+                  "values": [
+                    -3.125,
+                    0,
+                    null,
+                    8.25
+                  ]
+                },
+                {
+                  "id": "reviewed",
+                  "label": "Reviewed",
+                  "values": [
+                    2.5,
+                    -1,
+                    4,
+                    6
+                  ]
+                }
+              ],
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "categoryKind": "datetime",
+              "timeZone": "Australia/Melbourne"
+            },
+            {
+              "id": "data-ranked-bar",
+              "unit": "hours",
+              "synthetic": true,
+              "categoryIds": [
+                "alpha",
+                "beta",
+                "gamma",
+                "delta"
+              ],
+              "categories": [
+                "Draft",
+                "Review",
+                "Revise",
+                "Deliver"
+              ],
+              "series": [
+                {
+                  "id": "local",
+                  "label": "Local",
+                  "values": [
+                    -3.125,
+                    0,
+                    null,
+                    8.25
+                  ]
+                }
+              ],
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "data-stacked",
+              "unit": "hours",
+              "synthetic": true,
+              "categoryIds": [
+                "alpha",
+                "beta",
+                "gamma",
+                "delta"
+              ],
+              "categories": [
+                "Draft",
+                "Review",
+                "Revise",
+                "Deliver"
+              ],
+              "series": [
+                {
+                  "id": "local",
+                  "label": "Local",
+                  "values": [
+                    -3.125,
+                    0,
+                    null,
+                    8.25
+                  ]
+                },
+                {
+                  "id": "reviewed",
+                  "label": "Reviewed",
+                  "values": [
+                    2.5,
+                    -1,
+                    4,
+                    6
+                  ]
+                }
+              ],
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "data-scatter",
+              "unit": "hours",
+              "synthetic": true,
+              "categoryIds": [
+                "alpha",
+                "beta",
+                "gamma",
+                "delta"
+              ],
+              "categories": [
+                "Draft",
+                "Review",
+                "Revise",
+                "Deliver"
+              ],
+              "series": [
+                {
+                  "id": "local",
+                  "label": "Local",
+                  "values": [
+                    -3.125,
+                    0,
+                    null,
+                    8.25
+                  ],
+                  "xValues": [
+                    1,
+                    3,
+                    5,
+                    8
+                  ]
+                },
+                {
+                  "id": "reviewed",
+                  "label": "Reviewed",
+                  "values": [
+                    2.5,
+                    -1,
+                    4,
+                    6
+                  ],
+                  "xValues": [
+                    2,
+                    4,
+                    6,
+                    9
+                  ]
+                }
+              ],
+              "sourceIds": [
+                "synthetic-source"
+              ],
+              "xUnit": "iterations"
+            },
+            {
+              "id": "data-heatmap",
+              "unit": "hours",
+              "synthetic": true,
+              "categoryIds": [
+                "alpha",
+                "beta",
+                "gamma",
+                "delta"
+              ],
+              "categories": [
+                "Draft",
+                "Review",
+                "Revise",
+                "Deliver"
+              ],
+              "series": [
+                {
+                  "id": "local",
+                  "label": "Local",
+                  "values": [
+                    -3.125,
+                    0,
+                    null,
+                    8.25
+                  ]
+                },
+                {
+                  "id": "reviewed",
+                  "label": "Reviewed",
+                  "values": [
+                    2.5,
+                    -1,
+                    4,
+                    6
+                  ]
+                }
+              ],
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "title": "DeckWeft synthetic fixture",
+              "url": "https://example.org/deckweft/synthetic"
+            }
+          ],
+          "authorOverrides": {
+            "lockedBlockIds": [],
+            "sceneLocks": [
+              {
+                "sceneId": "component-line",
+                "fields": [
+                  "composition"
+                ]
+              },
+              {
+                "sceneId": "component-area",
+                "fields": [
+                  "composition"
+                ]
+              },
+              {
+                "sceneId": "component-ranked-bar",
+                "fields": [
+                  "composition"
+                ]
+              },
+              {
+                "sceneId": "component-stacked",
+                "fields": [
+                  "composition"
+                ]
+              },
+              {
+                "sceneId": "component-scatter",
+                "fields": [
+                  "composition"
+                ]
+              },
+              {
+                "sceneId": "component-heatmap",
+                "fields": [
+                  "composition"
+                ]
+              }
+            ]
+          },
+          "migration": {},
+          "visualBrief": {
+            "audience": "Design and product teams",
+            "outputLanguage": "en",
+            "profile": {
+              "colorIntensity": "bold",
+              "typographicContrast": "expressive",
+              "density": "compact",
+              "motionIntensity": "subtle",
+              "imageEmphasis": "large"
+            }
+          },
+          "sourceSnapshots": [
+            {
+              "id": "synthetic-v1",
+              "sourceId": "synthetic-source",
+              "version": "fixture-2026-10-18",
+              "hash": "8e266a1c58bed0eae27d5a1231ca201a640f654c4517d27e599aab94f9d9e5d2",
+              "permission": "local-copy",
+              "anchors": [
+                {
+                  "blockId": "cover-title",
+                  "anchor": "fixture/cover-title"
+                },
+                {
+                  "blockId": "cover-body",
+                  "anchor": "fixture/cover-body"
+                },
+                {
+                  "blockId": "cover-metric",
+                  "anchor": "fixture/cover-metric"
+                },
+                {
+                  "blockId": "cover-note",
+                  "anchor": "fixture/cover-note"
+                },
+                {
+                  "blockId": "cover-source",
+                  "anchor": "fixture/cover-source"
+                },
+                {
+                  "blockId": "data-title",
+                  "anchor": "fixture/data-title"
+                },
+                {
+                  "blockId": "data-chart",
+                  "anchor": "fixture/data-chart"
+                },
+                {
+                  "blockId": "data-callout",
+                  "anchor": "fixture/data-callout"
+                },
+                {
+                  "blockId": "data-body",
+                  "anchor": "fixture/data-body"
+                },
+                {
+                  "blockId": "data-source",
+                  "anchor": "fixture/data-source"
+                },
+                {
+                  "blockId": "violet-title",
+                  "anchor": "fixture/violet-title"
+                },
+                {
+                  "blockId": "violet-body",
+                  "anchor": "fixture/violet-body"
+                },
+                {
+                  "blockId": "violet-image",
+                  "anchor": "fixture/violet-image"
+                },
+                {
+                  "blockId": "violet-caption",
+                  "anchor": "fixture/violet-caption"
+                },
+                {
+                  "blockId": "chapter-title",
+                  "anchor": "fixture/chapter-title"
+                },
+                {
+                  "blockId": "chapter-body",
+                  "anchor": "fixture/chapter-body"
+                }
+              ]
+            }
+          ],
+          "explanations": [
+            {
+              "id": "explanation-relationship-submit",
+              "label": "Submit",
+              "text": "The writer submits to the reviewer.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "explanation-relationship-revise",
+              "label": "Revise",
+              "text": "The reviewer returns the draft to the writer.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "explanation-relationship-save",
+              "label": "Save",
+              "text": "Only the supplied save edge leads to the archive.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "explanation-sequence-submit",
+              "label": "Submit",
+              "text": "The writer submits to the reviewer.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "explanation-sequence-revise",
+              "label": "Revise",
+              "text": "The reviewer returns the draft to the writer.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "explanation-sequence-save",
+              "label": "Save",
+              "text": "Only the supplied save edge leads to the archive.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "explanation-process-submit",
+              "label": "Submit",
+              "text": "The writer submits to the reviewer.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "explanation-process-revise",
+              "label": "Revise",
+              "text": "The reviewer returns the draft to the writer.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "explanation-process-save",
+              "label": "Save",
+              "text": "Only the supplied save edge leads to the archive.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "code-signature",
+              "label": "Input contract",
+              "text": "The original function receives both values.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "code-difference",
+              "label": "Exact difference",
+              "text": "Subtract before from after. The tab and trailing spaces stay in the original source.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            },
+            {
+              "id": "code-source",
+              "label": "Complete source",
+              "text": "Read the unchanged original code and source anchor.",
+              "sourceIds": [
+                "synthetic-source"
+              ]
+            }
+          ]
+        },
+        "plan": {
+          "format": "deckweft-design-plan",
+          "version": 1,
+          "documentId": "visual_94c9d2a0410d40d6",
+          "scenes": [
+            {
+              "id": "collage",
+              "role": "opening",
+              "theme": "cream-collage",
+              "themeVersion": "1.0.0",
+              "composition": "diagonal-cover",
+              "blockIds": [
+                "cover-title",
+                "cover-body",
+                "cover-metric",
+                "cover-note",
+                "cover-source"
+              ],
+              "focalBlockId": "cover-title"
+            },
+            {
+              "id": "evidence",
+              "role": "evidence",
+              "theme": "dark-data",
+              "themeVersion": "1.0.0",
+              "composition": "chart-with-evidence-rail",
+              "blockIds": [
+                "data-title",
+                "data-chart",
+                "data-callout",
+                "data-body",
+                "data-source"
+              ],
+              "focalBlockId": "data-title"
+            },
+            {
+              "id": "violet",
+              "role": "context",
+              "theme": "electric-violet",
+              "themeVersion": "1.0.0",
+              "composition": "image-right",
+              "colorMode": "default",
+              "blockIds": [
+                "violet-title",
+                "violet-body",
+                "violet-image",
+                "violet-caption",
+                "image-note-paper",
+                "image-note-source"
+              ],
+              "focalBlockId": "violet-title",
+              "crops": [
+                {
+                  "blockId": "violet-image",
+                  "x": 0.34,
+                  "y": 0,
+                  "width": 0.53,
+                  "height": 1
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "image-details",
+                  "kind": "image-hotspots",
+                  "blockId": "violet-image",
+                  "hotspots": [
+                    {
+                      "id": "paper",
+                      "x": 0.45,
+                      "y": 0.65,
+                      "annotationId": "image-note-paper"
+                    },
+                    {
+                      "id": "source",
+                      "x": 0.7,
+                      "y": 0.4,
+                      "annotationId": "image-note-source"
+                    }
+                  ]
+                }
+              ],
+              "cues": [
+                {
+                  "id": "paper",
+                  "event": "annotation.reveal",
+                  "interactionId": "image-details",
+                  "hotspotId": "paper",
+                  "label": "Inspect the paper area"
+                },
+                {
+                  "id": "source",
+                  "event": "annotation.reveal",
+                  "interactionId": "image-details",
+                  "hotspotId": "source",
+                  "label": "Inspect original-source context"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "chapter",
+              "role": "closing",
+              "theme": "electric-violet",
+              "themeVersion": "1.0.0",
+              "composition": "violet-chapter",
+              "colorMode": "chapter",
+              "blockIds": [
+                "chapter-title",
+                "chapter-body"
+              ],
+              "focalBlockId": "chapter-title"
+            },
+            {
+              "id": "component-line",
+              "role": "evidence",
+              "theme": "cream-collage",
+              "themeVersion": "1.0.0",
+              "composition": "evidence-top",
+              "blockIds": [
+                "component-line-title",
+                "component-line",
+                "component-line-note"
+              ],
+              "focalBlockId": "component-line-title",
+              "interactions": [
+                {
+                  "id": "select-line",
+                  "kind": "chart-select",
+                  "blockId": "component-line"
+                }
+              ],
+              "cues": [
+                {
+                  "id": "focus-line",
+                  "event": "data.filter",
+                  "interactionId": "select-line",
+                  "seriesIds": [
+                    "local"
+                  ],
+                  "fromId": "beta",
+                  "toId": "delta",
+                  "label": "Focus on one series and the last three categories"
+                },
+                {
+                  "id": "restore-line",
+                  "event": "data.filter",
+                  "interactionId": "select-line",
+                  "seriesIds": [
+                    "local",
+                    "reviewed"
+                  ],
+                  "fromId": "alpha",
+                  "toId": "delta",
+                  "label": "Restore the full exact dataset"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-area",
+              "role": "evidence",
+              "theme": "electric-violet",
+              "themeVersion": "1.0.0",
+              "composition": "evidence-top",
+              "blockIds": [
+                "component-area-title",
+                "component-area",
+                "component-area-note"
+              ],
+              "focalBlockId": "component-area-title",
+              "interactions": [
+                {
+                  "id": "select-area",
+                  "kind": "chart-select",
+                  "blockId": "component-area"
+                }
+              ],
+              "cues": [
+                {
+                  "id": "focus-area",
+                  "event": "data.filter",
+                  "interactionId": "select-area",
+                  "seriesIds": [
+                    "local"
+                  ],
+                  "fromId": "beta",
+                  "toId": "delta",
+                  "label": "Focus on one series and the last three categories"
+                },
+                {
+                  "id": "restore-area",
+                  "event": "data.filter",
+                  "interactionId": "select-area",
+                  "seriesIds": [
+                    "local",
+                    "reviewed"
+                  ],
+                  "fromId": "alpha",
+                  "toId": "delta",
+                  "label": "Restore the full exact dataset"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-ranked-bar",
+              "role": "evidence",
+              "theme": "dark-data",
+              "themeVersion": "1.0.0",
+              "composition": "evidence-top",
+              "blockIds": [
+                "component-ranked-bar-title",
+                "component-ranked-bar",
+                "component-ranked-bar-note"
+              ],
+              "focalBlockId": "component-ranked-bar-title",
+              "interactions": [
+                {
+                  "id": "select-ranked-bar",
+                  "kind": "chart-select",
+                  "blockId": "component-ranked-bar"
+                }
+              ],
+              "cues": [
+                {
+                  "id": "focus-ranked-bar",
+                  "event": "data.filter",
+                  "interactionId": "select-ranked-bar",
+                  "seriesIds": [
+                    "local"
+                  ],
+                  "fromId": "beta",
+                  "toId": "delta",
+                  "label": "Focus on one series and the last three categories"
+                },
+                {
+                  "id": "restore-ranked-bar",
+                  "event": "data.filter",
+                  "interactionId": "select-ranked-bar",
+                  "seriesIds": [
+                    "local"
+                  ],
+                  "fromId": "alpha",
+                  "toId": "delta",
+                  "label": "Restore the full exact dataset"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-stacked",
+              "role": "evidence",
+              "theme": "cream-collage",
+              "themeVersion": "1.0.0",
+              "composition": "evidence-top",
+              "blockIds": [
+                "component-stacked-title",
+                "component-stacked",
+                "component-stacked-note"
+              ],
+              "focalBlockId": "component-stacked-title",
+              "interactions": [
+                {
+                  "id": "select-stacked",
+                  "kind": "chart-select",
+                  "blockId": "component-stacked"
+                }
+              ],
+              "cues": [
+                {
+                  "id": "focus-stacked",
+                  "event": "data.filter",
+                  "interactionId": "select-stacked",
+                  "seriesIds": [
+                    "local"
+                  ],
+                  "fromId": "beta",
+                  "toId": "delta",
+                  "label": "Focus on one series and the last three categories"
+                },
+                {
+                  "id": "restore-stacked",
+                  "event": "data.filter",
+                  "interactionId": "select-stacked",
+                  "seriesIds": [
+                    "local",
+                    "reviewed"
+                  ],
+                  "fromId": "alpha",
+                  "toId": "delta",
+                  "label": "Restore the full exact dataset"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-scatter",
+              "role": "evidence",
+              "theme": "electric-violet",
+              "themeVersion": "1.0.0",
+              "composition": "evidence-top",
+              "blockIds": [
+                "component-scatter-title",
+                "component-scatter",
+                "component-scatter-note"
+              ],
+              "focalBlockId": "component-scatter-title",
+              "interactions": [
+                {
+                  "id": "select-scatter",
+                  "kind": "chart-select",
+                  "blockId": "component-scatter"
+                }
+              ],
+              "cues": [
+                {
+                  "id": "focus-scatter",
+                  "event": "data.filter",
+                  "interactionId": "select-scatter",
+                  "seriesIds": [
+                    "local"
+                  ],
+                  "fromId": "beta",
+                  "toId": "delta",
+                  "label": "Focus on one series and the last three categories"
+                },
+                {
+                  "id": "restore-scatter",
+                  "event": "data.filter",
+                  "interactionId": "select-scatter",
+                  "seriesIds": [
+                    "local",
+                    "reviewed"
+                  ],
+                  "fromId": "alpha",
+                  "toId": "delta",
+                  "label": "Restore the full exact dataset"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-heatmap",
+              "role": "evidence",
+              "theme": "dark-data",
+              "themeVersion": "1.0.0",
+              "composition": "evidence-top",
+              "blockIds": [
+                "component-heatmap-title",
+                "component-heatmap",
+                "component-heatmap-note"
+              ],
+              "focalBlockId": "component-heatmap-title",
+              "interactions": [
+                {
+                  "id": "select-heatmap",
+                  "kind": "chart-select",
+                  "blockId": "component-heatmap"
+                }
+              ],
+              "cues": [
+                {
+                  "id": "focus-heatmap",
+                  "event": "data.filter",
+                  "interactionId": "select-heatmap",
+                  "seriesIds": [
+                    "local"
+                  ],
+                  "fromId": "beta",
+                  "toId": "delta",
+                  "label": "Focus on one series and the last three categories"
+                },
+                {
+                  "id": "restore-heatmap",
+                  "event": "data.filter",
+                  "interactionId": "select-heatmap",
+                  "seriesIds": [
+                    "local",
+                    "reviewed"
+                  ],
+                  "fromId": "alpha",
+                  "toId": "delta",
+                  "label": "Restore the full exact dataset"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-relationship",
+              "role": "process",
+              "theme": "cream-collage",
+              "themeVersion": "1.0.0",
+              "composition": "process-line",
+              "blockIds": [
+                "component-relationship-title",
+                "component-relationship",
+                "component-relationship-note"
+              ],
+              "focalBlockId": "component-relationship-title",
+              "interactions": [
+                {
+                  "id": "explain-relationship",
+                  "kind": "steps",
+                  "blockId": "component-relationship",
+                  "steps": [
+                    {
+                      "id": "submit",
+                      "explanationId": "explanation-relationship-submit",
+                      "objectId": "submit"
+                    },
+                    {
+                      "id": "revise",
+                      "explanationId": "explanation-relationship-revise",
+                      "objectId": "revise"
+                    },
+                    {
+                      "id": "save",
+                      "explanationId": "explanation-relationship-save",
+                      "objectId": "save"
+                    }
+                  ]
+                }
+              ],
+              "cues": [
+                {
+                  "id": "revise",
+                  "event": "step.next",
+                  "interactionId": "explain-relationship",
+                  "label": "Explain the return path"
+                },
+                {
+                  "id": "save",
+                  "event": "step.next",
+                  "interactionId": "explain-relationship",
+                  "label": "Explain the archive path"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-sequence",
+              "role": "process",
+              "theme": "electric-violet",
+              "themeVersion": "1.0.0",
+              "composition": "process-line",
+              "blockIds": [
+                "component-sequence-title",
+                "component-sequence",
+                "component-sequence-note"
+              ],
+              "focalBlockId": "component-sequence-title",
+              "interactions": [
+                {
+                  "id": "explain-sequence",
+                  "kind": "steps",
+                  "blockId": "component-sequence",
+                  "steps": [
+                    {
+                      "id": "submit",
+                      "explanationId": "explanation-sequence-submit",
+                      "objectId": "submit"
+                    },
+                    {
+                      "id": "revise",
+                      "explanationId": "explanation-sequence-revise",
+                      "objectId": "revise"
+                    },
+                    {
+                      "id": "save",
+                      "explanationId": "explanation-sequence-save",
+                      "objectId": "save"
+                    }
+                  ]
+                }
+              ],
+              "cues": [
+                {
+                  "id": "revise",
+                  "event": "step.next",
+                  "interactionId": "explain-sequence",
+                  "label": "Explain the return path"
+                },
+                {
+                  "id": "save",
+                  "event": "step.next",
+                  "interactionId": "explain-sequence",
+                  "label": "Explain the archive path"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-process",
+              "role": "process",
+              "theme": "dark-data",
+              "themeVersion": "1.0.0",
+              "composition": "process-line",
+              "blockIds": [
+                "component-process-title",
+                "component-process",
+                "component-process-note"
+              ],
+              "focalBlockId": "component-process-title",
+              "interactions": [
+                {
+                  "id": "explain-process",
+                  "kind": "steps",
+                  "blockId": "component-process",
+                  "steps": [
+                    {
+                      "id": "submit",
+                      "explanationId": "explanation-process-submit",
+                      "objectId": "submit"
+                    },
+                    {
+                      "id": "revise",
+                      "explanationId": "explanation-process-revise",
+                      "objectId": "revise"
+                    },
+                    {
+                      "id": "save",
+                      "explanationId": "explanation-process-save",
+                      "objectId": "save"
+                    }
+                  ]
+                }
+              ],
+              "cues": [
+                {
+                  "id": "revise",
+                  "event": "step.next",
+                  "interactionId": "explain-process",
+                  "label": "Explain the return path"
+                },
+                {
+                  "id": "save",
+                  "event": "step.next",
+                  "interactionId": "explain-process",
+                  "label": "Explain the archive path"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "component-code",
+              "role": "evidence",
+              "theme": "dark-data",
+              "themeVersion": "1.0.0",
+              "composition": "reading-flow",
+              "blockIds": [
+                "component-code-title",
+                "component-code",
+                "component-code-note"
+              ],
+              "focalBlockId": "component-code-title",
+              "interactions": [
+                {
+                  "id": "explain-code",
+                  "kind": "steps",
+                  "blockId": "component-code",
+                  "steps": [
+                    {
+                      "id": "signature",
+                      "explanationId": "code-signature",
+                      "lines": [
+                        2
+                      ]
+                    },
+                    {
+                      "id": "difference",
+                      "explanationId": "code-difference",
+                      "lines": [
+                        3
+                      ]
+                    },
+                    {
+                      "id": "source",
+                      "explanationId": "code-source",
+                      "lines": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "cues": [
+                {
+                  "id": "difference",
+                  "event": "step.next",
+                  "interactionId": "explain-code",
+                  "label": "Explain the calculation"
+                },
+                {
+                  "id": "source",
+                  "event": "step.next",
+                  "interactionId": "explain-code",
+                  "label": "Read the full source"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            },
+            {
+              "id": "image-comparison",
+              "role": "decision",
+              "theme": "electric-violet",
+              "themeVersion": "1.0.0",
+              "composition": "reading-flow",
+              "blockIds": [
+                "comparison-image-title",
+                "comparison-first",
+                "comparison-second",
+                "comparison-context"
+              ],
+              "focalBlockId": "comparison-image-title",
+              "crops": [
+                {
+                  "blockId": "comparison-first",
+                  "x": 0,
+                  "y": 0.15,
+                  "width": 0.5,
+                  "height": 0.5
+                },
+                {
+                  "blockId": "comparison-second",
+                  "x": 0.5,
+                  "y": 0.15,
+                  "width": 0.5,
+                  "height": 0.5
+                }
+              ],
+              "interactions": [
+                {
+                  "id": "compare-crops",
+                  "kind": "image-compare",
+                  "blockId": "comparison-first",
+                  "otherBlockId": "comparison-second",
+                  "initialTab": "both"
+                }
+              ],
+              "cues": [
+                {
+                  "id": "first",
+                  "event": "tab.select",
+                  "interactionId": "compare-crops",
+                  "tabId": "first",
+                  "label": "Inspect the first crop"
+                },
+                {
+                  "id": "second",
+                  "event": "tab.select",
+                  "interactionId": "compare-crops",
+                  "tabId": "second",
+                  "label": "Inspect the second crop"
+                },
+                {
+                  "id": "both",
+                  "event": "tab.select",
+                  "interactionId": "compare-crops",
+                  "tabId": "both",
+                  "label": "Compare both crops"
+                }
+              ],
+              "motion": {
+                "policy": "subtle",
+                "durationMs": 240
+              }
+            }
+          ]
+        },
+        "assets": [
+          {
+            "id": "asset_70c32da27c9df448e0749ce3",
+            "hash": "70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1",
+            "mime": "image/png",
+            "width": 1536,
+            "height": 1024,
+            "path": "assets/70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1.png",
+            "provenance": "Original host-generated decorative artwork, retained from the MB-11–15 build. Not documentary photography or product evidence.",
+            "license": "Generated artwork; no third-party rights clearance asserted",
+            "allowedUse": "Local DeckWeft demonstration; review rights for your own redistribution",
+            "alt": "Blank paper story cards linked by blue thread on a wooden workbench",
+            "fallback": "A series of paper cards joined by blue thread; decorative artwork."
+          }
+        ],
+        "revision": {
+          "number": 0,
+          "createdAt": "2026-10-18T05:20:52.744Z",
+          "updatedAt": "2026-10-18T05:20:52.744Z"
+        },
+        "extensions": {}
+      },
+      "result": {
+        "ok": false,
+        "issues": [
+          {
+            "id": "347c08484998524e400ed249",
+            "kind": "repeated-composition",
+            "sceneId": "component-stacked",
+            "nodeId": "component-stacked",
+            "blockId": null,
+            "bounds": {
+              "x": 24,
+              "y": 6058.921875,
+              "width": 1392,
+              "height": 850.90625
+            },
+            "severity": "error",
+            "reason": "4 adjacent scenes share evidence-top has-interactions",
+            "suggestion": "Vary only an affected scene composition after measurement."
+          }
+        ],
+        "coverage": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "collage",
+            "nodeId": "rf87b09c0078cfbb8c7da",
+            "blockId": "cover-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "collage",
+            "nodeId": "rb6a583191f39b77c8d55",
+            "blockId": "cover-body",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "collage",
+            "nodeId": "rc18090e4d52b3ace519c",
+            "blockId": "cover-metric",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "collage",
+            "nodeId": "r4c58f6fbaab9acce3e13",
+            "blockId": "cover-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "collage",
+            "nodeId": "r61a7455a451db5fe977e",
+            "blockId": "cover-source",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "evidence",
+            "nodeId": "r4dc492a5778917ddda35",
+            "blockId": "data-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "evidence",
+            "nodeId": "r21b7ed492835ccd967d8",
+            "blockId": "data-chart",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "evidence",
+            "nodeId": "r398248ae205b8cb4d408",
+            "blockId": "data-callout",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "evidence",
+            "nodeId": "r34bed02a94cce3852840",
+            "blockId": "data-body",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "evidence",
+            "nodeId": "r131e9af00b5a9f606da1",
+            "blockId": "data-source",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "violet",
+            "nodeId": "r5758aa6e8107854c0665",
+            "blockId": "violet-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "violet",
+            "nodeId": "reb9f9109a646af27b012",
+            "blockId": "violet-body",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "violet",
+            "nodeId": "rfe988f0bf62b69caa2ba",
+            "blockId": "violet-image",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "violet",
+            "nodeId": "r5194eb0d828a14debd10",
+            "blockId": "violet-caption",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "violet",
+            "nodeId": "rdaa1e16c3298f2a7bcce",
+            "blockId": "image-note-paper",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "violet",
+            "nodeId": "ra77440b14eb34bba34e0",
+            "blockId": "image-note-source",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "chapter",
+            "nodeId": "rd49c68fe2c5484139502",
+            "blockId": "chapter-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "chapter",
+            "nodeId": "r8312349d1fcfe6f47bdd",
+            "blockId": "chapter-body",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-line",
+            "nodeId": "r2233bae96c255f123215",
+            "blockId": "component-line-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-line",
+            "nodeId": "r17bcc8ca8310a2bc41b5",
+            "blockId": "component-line",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-line",
+            "nodeId": "redd2720eaf464e3f3d06",
+            "blockId": "component-line-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-area",
+            "nodeId": "r188455de386a44b2dfb4",
+            "blockId": "component-area-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-area",
+            "nodeId": "ra26c82c7453c8c961256",
+            "blockId": "component-area",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-area",
+            "nodeId": "rf6c75305541eedf00c1c",
+            "blockId": "component-area-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-ranked-bar",
+            "nodeId": "r15b38ba2a39b46566e2b",
+            "blockId": "component-ranked-bar-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-ranked-bar",
+            "nodeId": "rf3628d469550dbbdf4e3",
+            "blockId": "component-ranked-bar",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-ranked-bar",
+            "nodeId": "rc5f817af7f982a63512f",
+            "blockId": "component-ranked-bar-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-stacked",
+            "nodeId": "r74eea795a485a35c1556",
+            "blockId": "component-stacked-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-stacked",
+            "nodeId": "r357162b28f3076cdb721",
+            "blockId": "component-stacked",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-stacked",
+            "nodeId": "r70d1754e58475d8765bc",
+            "blockId": "component-stacked-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-scatter",
+            "nodeId": "r0eb544eb31943e680ad3",
+            "blockId": "component-scatter-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-scatter",
+            "nodeId": "r23da9f118ffab9fef705",
+            "blockId": "component-scatter",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-scatter",
+            "nodeId": "rbe57d02db67debdca242",
+            "blockId": "component-scatter-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-heatmap",
+            "nodeId": "r8c98ba1f139db0e5dc88",
+            "blockId": "component-heatmap-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-heatmap",
+            "nodeId": "r7afad02f00dd3bc225f2",
+            "blockId": "component-heatmap",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-heatmap",
+            "nodeId": "r04222c7156905ed4436a",
+            "blockId": "component-heatmap-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-relationship",
+            "nodeId": "r1d95f306f859ce4eb0fa",
+            "blockId": "component-relationship-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-relationship",
+            "nodeId": "rb598c3232a13028947d4",
+            "blockId": "component-relationship",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-relationship",
+            "nodeId": "rc98149b003b530aba826",
+            "blockId": "component-relationship-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-sequence",
+            "nodeId": "r55bc06a9c9ffc1772177",
+            "blockId": "component-sequence-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-sequence",
+            "nodeId": "r4403b8828b159d3909fc",
+            "blockId": "component-sequence",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-sequence",
+            "nodeId": "r3b694bf1c0df4b4faa20",
+            "blockId": "component-sequence-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-process",
+            "nodeId": "rdd542a3c805bc1100366",
+            "blockId": "component-process-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-process",
+            "nodeId": "rc197aa9b4e2a86dbdaf4",
+            "blockId": "component-process",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-process",
+            "nodeId": "r97ba69e0a045faeb38d6",
+            "blockId": "component-process-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-code",
+            "nodeId": "r57ef8121802c91713722",
+            "blockId": "component-code-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-code",
+            "nodeId": "r314cc911b5c14a7adef6",
+            "blockId": "component-code",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "component-code",
+            "nodeId": "r08dc2950fa1560280a41",
+            "blockId": "component-code-note",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "image-comparison",
+            "nodeId": "ra81237b73e4acb06fb39",
+            "blockId": "comparison-image-title",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "image-comparison",
+            "nodeId": "re217caba93bf48c6cc38",
+            "blockId": "comparison-first",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "image-comparison",
+            "nodeId": "reb03f43b8dcb7a7517dc",
+            "blockId": "comparison-second",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          },
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 1000,
+              "dpr": 1
+            },
+            "sceneId": "image-comparison",
+            "nodeId": "ra7af92b03d5b0591540c",
+            "blockId": "comparison-context",
+            "missing": [],
+            "sources": [
+              {
+                "id": "synthetic-source",
+                "present": true,
+                "rendered": true
+              }
+            ]
+          }
+        ],
+        "traceCount": 0
+      }
+    },
+    "result": {
+      "ok": false,
+      "issues": [
+        {
+          "id": "347c08484998524e400ed249",
+          "kind": "repeated-composition",
+          "sceneId": "component-stacked",
+          "nodeId": "component-stacked",
+          "blockId": null,
+          "bounds": {
+            "x": 24,
+            "y": 6058.921875,
+            "width": 1392,
+            "height": 850.90625
+          },
+          "severity": "error",
+          "reason": "4 adjacent scenes share evidence-top has-interactions",
+          "suggestion": "Vary only an affected scene composition after measurement."
+        }
+      ],
+      "coverage": [
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "collage",
+          "nodeId": "rf87b09c0078cfbb8c7da",
+          "blockId": "cover-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "collage",
+          "nodeId": "rb6a583191f39b77c8d55",
+          "blockId": "cover-body",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "collage",
+          "nodeId": "rc18090e4d52b3ace519c",
+          "blockId": "cover-metric",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "collage",
+          "nodeId": "r4c58f6fbaab9acce3e13",
+          "blockId": "cover-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "collage",
+          "nodeId": "r61a7455a451db5fe977e",
+          "blockId": "cover-source",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "evidence",
+          "nodeId": "r4dc492a5778917ddda35",
+          "blockId": "data-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "evidence",
+          "nodeId": "r21b7ed492835ccd967d8",
+          "blockId": "data-chart",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "evidence",
+          "nodeId": "r398248ae205b8cb4d408",
+          "blockId": "data-callout",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "evidence",
+          "nodeId": "r34bed02a94cce3852840",
+          "blockId": "data-body",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "evidence",
+          "nodeId": "r131e9af00b5a9f606da1",
+          "blockId": "data-source",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "violet",
+          "nodeId": "r5758aa6e8107854c0665",
+          "blockId": "violet-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "violet",
+          "nodeId": "reb9f9109a646af27b012",
+          "blockId": "violet-body",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "violet",
+          "nodeId": "rfe988f0bf62b69caa2ba",
+          "blockId": "violet-image",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "violet",
+          "nodeId": "r5194eb0d828a14debd10",
+          "blockId": "violet-caption",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "violet",
+          "nodeId": "rdaa1e16c3298f2a7bcce",
+          "blockId": "image-note-paper",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "violet",
+          "nodeId": "ra77440b14eb34bba34e0",
+          "blockId": "image-note-source",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "chapter",
+          "nodeId": "rd49c68fe2c5484139502",
+          "blockId": "chapter-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "chapter",
+          "nodeId": "r8312349d1fcfe6f47bdd",
+          "blockId": "chapter-body",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-line",
+          "nodeId": "r2233bae96c255f123215",
+          "blockId": "component-line-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-line",
+          "nodeId": "r17bcc8ca8310a2bc41b5",
+          "blockId": "component-line",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-line",
+          "nodeId": "redd2720eaf464e3f3d06",
+          "blockId": "component-line-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-area",
+          "nodeId": "r188455de386a44b2dfb4",
+          "blockId": "component-area-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-area",
+          "nodeId": "ra26c82c7453c8c961256",
+          "blockId": "component-area",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-area",
+          "nodeId": "rf6c75305541eedf00c1c",
+          "blockId": "component-area-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-ranked-bar",
+          "nodeId": "r15b38ba2a39b46566e2b",
+          "blockId": "component-ranked-bar-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-ranked-bar",
+          "nodeId": "rf3628d469550dbbdf4e3",
+          "blockId": "component-ranked-bar",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-ranked-bar",
+          "nodeId": "rc5f817af7f982a63512f",
+          "blockId": "component-ranked-bar-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-stacked",
+          "nodeId": "r74eea795a485a35c1556",
+          "blockId": "component-stacked-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-stacked",
+          "nodeId": "r357162b28f3076cdb721",
+          "blockId": "component-stacked",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-stacked",
+          "nodeId": "r70d1754e58475d8765bc",
+          "blockId": "component-stacked-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-scatter",
+          "nodeId": "r0eb544eb31943e680ad3",
+          "blockId": "component-scatter-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-scatter",
+          "nodeId": "r23da9f118ffab9fef705",
+          "blockId": "component-scatter",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-scatter",
+          "nodeId": "rbe57d02db67debdca242",
+          "blockId": "component-scatter-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-heatmap",
+          "nodeId": "r8c98ba1f139db0e5dc88",
+          "blockId": "component-heatmap-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-heatmap",
+          "nodeId": "r7afad02f00dd3bc225f2",
+          "blockId": "component-heatmap",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-heatmap",
+          "nodeId": "r04222c7156905ed4436a",
+          "blockId": "component-heatmap-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-relationship",
+          "nodeId": "r1d95f306f859ce4eb0fa",
+          "blockId": "component-relationship-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-relationship",
+          "nodeId": "rb598c3232a13028947d4",
+          "blockId": "component-relationship",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-relationship",
+          "nodeId": "rc98149b003b530aba826",
+          "blockId": "component-relationship-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-sequence",
+          "nodeId": "r55bc06a9c9ffc1772177",
+          "blockId": "component-sequence-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-sequence",
+          "nodeId": "r4403b8828b159d3909fc",
+          "blockId": "component-sequence",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-sequence",
+          "nodeId": "r3b694bf1c0df4b4faa20",
+          "blockId": "component-sequence-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-process",
+          "nodeId": "rdd542a3c805bc1100366",
+          "blockId": "component-process-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-process",
+          "nodeId": "rc197aa9b4e2a86dbdaf4",
+          "blockId": "component-process",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-process",
+          "nodeId": "r97ba69e0a045faeb38d6",
+          "blockId": "component-process-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-code",
+          "nodeId": "r57ef8121802c91713722",
+          "blockId": "component-code-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-code",
+          "nodeId": "r314cc911b5c14a7adef6",
+          "blockId": "component-code",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "component-code",
+          "nodeId": "r08dc2950fa1560280a41",
+          "blockId": "component-code-note",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "image-comparison",
+          "nodeId": "ra81237b73e4acb06fb39",
+          "blockId": "comparison-image-title",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "image-comparison",
+          "nodeId": "re217caba93bf48c6cc38",
+          "blockId": "comparison-first",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "image-comparison",
+          "nodeId": "reb03f43b8dcb7a7517dc",
+          "blockId": "comparison-second",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000,
+            "dpr": 1
+          },
+          "sceneId": "image-comparison",
+          "nodeId": "ra7af92b03d5b0591540c",
+          "blockId": "comparison-context",
+          "missing": [],
+          "sources": [
+            {
+              "id": "synthetic-source",
+              "present": true,
+              "rendered": true
+            }
+          ]
+        }
+      ],
+      "traceCount": 0
+    },
+    "status": "failed-last-valid-retained"
+  },
+  "errors": [],
+  "external": []
+}

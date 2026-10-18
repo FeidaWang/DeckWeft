@@ -1,0 +1,1050 @@
+{
+  "browser": "151.0.7922.34",
+  "isolation": "Isolated cached testing binary; ephemeral context; installed apps and personal profiles untouched",
+  "checks": [],
+  "cases": [
+    {
+      "locale": "en",
+      "theme": "cream-collage",
+      "fit": {
+        "version": 1,
+        "renderHash": "fb16a29cd4ae1cbd2fca5d8c1dc60e295728b7765452f4b84b30679a19ab010f",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "contrastMethod": "DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast",
+        "checks": [
+          {
+            "sceneId": "collage",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.3092267480037754,
+              "imageRatio": 0
+            },
+            "components": [],
+            "height": 720,
+            "sourceHash": "ccf88ebb29db5d61196d32eb0173a5db0906945c596f10bb0d2130450c4c8c7d",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "family": "Georgia, serif",
+                "font": "500 79.2px / 82.368px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 711.7432250976562
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rf87b09c0078cfbb8c7da",
+                "inside": true
+              },
+              {
+                "regionId": "rb6a583191f39b77c8d55",
+                "inside": true
+              },
+              {
+                "regionId": "rc18090e4d52b3ace519c",
+                "inside": true
+              },
+              {
+                "regionId": "r4c58f6fbaab9acce3e13",
+                "inside": true
+              },
+              {
+                "regionId": "r61a7455a451db5fe977e",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "evidence",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.48546207943153824,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "data-chart",
+                "width": 969,
+                "height": 484.5001220703125,
+                "minTextPixels": 16.9575,
+                "scrollWidth": 969,
+                "clientWidth": 969
+              }
+            ],
+            "height": 927.875,
+            "sourceHash": "71732c922977eee985d79961ede49956a78e82e9d4ae981371df29b9eb211526",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "family": "Arial, sans-serif",
+                "font": "500 60px / 63.6px Arial, sans-serif",
+                "loaded": true,
+                "probeWidth": 545.771484375
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "28px / 33.6px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 254.693359375
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "16px / 24px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 145.5390625
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 19.2px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r4dc492a5778917ddda35",
+                "inside": true
+              },
+              {
+                "regionId": "r21b7ed492835ccd967d8",
+                "inside": true
+              },
+              {
+                "regionId": "r398248ae205b8cb4d408",
+                "inside": true
+              },
+              {
+                "regionId": "r34bed02a94cce3852840",
+                "inside": true
+              },
+              {
+                "regionId": "r131e9af00b5a9f606da1",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "violet",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.41253656831010116,
+              "imageRatio": 0.15124733845829827
+            },
+            "components": [],
+            "height": 955.921875,
+            "sourceHash": "59143e2b76aff320f6b4960cdc74a515648e6743af666e093a00e83765c6ccaa",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "20px / 30px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 181.923828125
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "20px / 30px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 181.923828125
+              },
+              {
+                "regionId": "rdaa1e16c3298f2a7bcce",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              },
+              {
+                "regionId": "ra77440b14eb34bba34e0",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r5758aa6e8107854c0665",
+                "inside": true
+              },
+              {
+                "regionId": "reb9f9109a646af27b012",
+                "inside": true
+              },
+              {
+                "regionId": "rfe988f0bf62b69caa2ba",
+                "inside": true
+              },
+              {
+                "regionId": "r5194eb0d828a14debd10",
+                "inside": true
+              },
+              {
+                "regionId": "rdaa1e16c3298f2a7bcce",
+                "inside": true
+              },
+              {
+                "regionId": "ra77440b14eb34bba34e0",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "chapter",
+            "visualFeatures": {
+              "focus": "left:top",
+              "density": 0.2735296841325431,
+              "imageRatio": 0
+            },
+            "components": [],
+            "height": 720,
+            "sourceHash": "5111740344b52402ff34da9640952aa0908f42dd4a74324942591fab8ee31463",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "700 100px / 104px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 931.884765625
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rd49c68fe2c5484139502",
+                "inside": true
+              },
+              {
+                "regionId": "r8312349d1fcfe6f47bdd",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-line",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.4125324199700693,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-line",
+                "width": 1328,
+                "height": 300,
+                "minTextPixels": 10.5,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 937.390625,
+            "sourceHash": "0dd455c629edddd9ab9dedddb946aa6c368a7cfda3e83081c443b9f7c6b0f134",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r2233bae96c255f123215",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r17bcc8ca8310a2bc41b5",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "redd2720eaf464e3f3d06",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r2233bae96c255f123215",
+                "inside": true
+              },
+              {
+                "regionId": "r17bcc8ca8310a2bc41b5",
+                "inside": true
+              },
+              {
+                "regionId": "redd2720eaf464e3f3d06",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-area",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.4125324199700693,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-area",
+                "width": 1328,
+                "height": 300,
+                "minTextPixels": 10.5,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 937.390625,
+            "sourceHash": "1029c3cc4639a699ab55a84ddc699b737e623127b3be8a228fa8eae8979cf543",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r188455de386a44b2dfb4",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "ra26c82c7453c8c961256",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "rf6c75305541eedf00c1c",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r188455de386a44b2dfb4",
+                "inside": true
+              },
+              {
+                "regionId": "ra26c82c7453c8c961256",
+                "inside": true
+              },
+              {
+                "regionId": "rf6c75305541eedf00c1c",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-ranked-bar",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.4125324199700693,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-ranked-bar",
+                "width": 1328,
+                "height": 300,
+                "minTextPixels": 10.5,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 937.390625,
+            "sourceHash": "05bd4625ae4a0a5edc4e8c688f23b5ddb22e37100ed805f85906d8d77d49de95",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r15b38ba2a39b46566e2b",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "rf3628d469550dbbdf4e3",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "rc5f817af7f982a63512f",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r15b38ba2a39b46566e2b",
+                "inside": true
+              },
+              {
+                "regionId": "rf3628d469550dbbdf4e3",
+                "inside": true
+              },
+              {
+                "regionId": "rc5f817af7f982a63512f",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-stacked",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.4125324199700693,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-stacked",
+                "width": 1328,
+                "height": 300,
+                "minTextPixels": 10.5,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 937.390625,
+            "sourceHash": "258473763b46d57abeffb15c0608654dce3b7616d51ddd3178547f185947b226",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r74eea795a485a35c1556",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r357162b28f3076cdb721",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r70d1754e58475d8765bc",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r74eea795a485a35c1556",
+                "inside": true
+              },
+              {
+                "regionId": "r357162b28f3076cdb721",
+                "inside": true
+              },
+              {
+                "regionId": "r70d1754e58475d8765bc",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-scatter",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.4125324199700693,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-scatter",
+                "width": 1328,
+                "height": 300,
+                "minTextPixels": 10.5,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 937.390625,
+            "sourceHash": "7fb5d96b9f8637e068697ce2f9d3031c81284da20018bbc4284402a481e80575",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r0eb544eb31943e680ad3",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r23da9f118ffab9fef705",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "rbe57d02db67debdca242",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r0eb544eb31943e680ad3",
+                "inside": true
+              },
+              {
+                "regionId": "r23da9f118ffab9fef705",
+                "inside": true
+              },
+              {
+                "regionId": "rbe57d02db67debdca242",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-heatmap",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.4125324199700693,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-heatmap",
+                "width": 1328,
+                "height": 300,
+                "minTextPixels": 10.5,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 937.390625,
+            "sourceHash": "565a5fec0d2de52a7e8ca0cc835b40e58d6ea0ddd1644ffb83d5546905218869",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r8c98ba1f139db0e5dc88",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r7afad02f00dd3bc225f2",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 16.8px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r04222c7156905ed4436a",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r8c98ba1f139db0e5dc88",
+                "inside": true
+              },
+              {
+                "regionId": "r7afad02f00dd3bc225f2",
+                "inside": true
+              },
+              {
+                "regionId": "r04222c7156905ed4436a",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-relationship",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.2286893253152673,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-relationship",
+                "width": 620,
+                "height": 275.890625,
+                "minTextPixels": 12.399578651685394,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 976.78125,
+            "sourceHash": "43c55f60409a59334ce38b19a2e3fc041503de040a1140cfaa3c39f12340efb6",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r1d95f306f859ce4eb0fa",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "rb598c3232a13028947d4",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "rc98149b003b530aba826",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r1d95f306f859ce4eb0fa",
+                "inside": true
+              },
+              {
+                "regionId": "rb598c3232a13028947d4",
+                "inside": true
+              },
+              {
+                "regionId": "rc98149b003b530aba826",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-sequence",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.22625647504620386,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-sequence",
+                "width": 620,
+                "height": 265.046875,
+                "minTextPixels": 12.399853801169591,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 965.9375,
+            "sourceHash": "71c16ff40889a6a8b501cece5125a7bba0b35b963286a264f6cdae1d9f1c4b46",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r55bc06a9c9ffc1772177",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "r4403b8828b159d3909fc",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r3b694bf1c0df4b4faa20",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r55bc06a9c9ffc1772177",
+                "inside": true
+              },
+              {
+                "regionId": "r4403b8828b159d3909fc",
+                "inside": true
+              },
+              {
+                "regionId": "r3b694bf1c0df4b4faa20",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-process",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.2286893253152673,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-process",
+                "width": 620,
+                "height": 275.890625,
+                "minTextPixels": 12.399578651685394,
+                "scrollWidth": 1328,
+                "clientWidth": 1328
+              }
+            ],
+            "height": 976.78125,
+            "sourceHash": "c3761cb3909f2b6a0eb323ebb936391fd358de85769b1070aa323c3f30ad872a",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "rdd542a3c805bc1100366",
+                "family": "Georgia, serif",
+                "font": "500 60px / 62.4px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 539.267578125
+              },
+              {
+                "regionId": "rc197aa9b4e2a86dbdaf4",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r97ba69e0a045faeb38d6",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "rdd542a3c805bc1100366",
+                "inside": true
+              },
+              {
+                "regionId": "rc197aa9b4e2a86dbdaf4",
+                "inside": true
+              },
+              {
+                "regionId": "r97ba69e0a045faeb38d6",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "component-code",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.4401982473581354,
+              "imageRatio": 0
+            },
+            "components": [
+              {
+                "blockId": "component-code",
+                "width": 900,
+                "height": 154.375,
+                "minTextPixels": 16,
+                "scrollWidth": 896,
+                "clientWidth": 896
+              }
+            ],
+            "height": 808.078125,
+            "sourceHash": "e9e548c133ea3942f240da21b692727c1026957923bc04228caaa980cf0e2572",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "r57ef8121802c91713722",
+                "family": "Georgia, serif",
+                "font": "500 48px / 49.92px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 431.4140625
+              },
+              {
+                "regionId": "r314cc911b5c14a7adef6",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "r08dc2950fa1560280a41",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "18px / 27px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 163.7314453125
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "r57ef8121802c91713722",
+                "inside": true
+              },
+              {
+                "regionId": "r314cc911b5c14a7adef6",
+                "inside": true
+              },
+              {
+                "regionId": "r08dc2950fa1560280a41",
+                "inside": true
+              }
+            ]
+          },
+          {
+            "sceneId": "image-comparison",
+            "visualFeatures": {
+              "focus": "center:top",
+              "density": 0.6793021530989887,
+              "imageRatio": 0.6075140585018586
+            },
+            "components": [],
+            "height": 792.5625,
+            "sourceHash": "9ff8524b07c38e616ab1925cb4a984b801816292e77e1203170a230f6d1494b3",
+            "contrastIssues": [],
+            "clipIssues": [],
+            "fonts": [
+              {
+                "regionId": "ra81237b73e4acb06fb39",
+                "family": "Georgia, serif",
+                "font": "500 48px / 49.92px Georgia, serif",
+                "loaded": true,
+                "probeWidth": 431.4140625
+              },
+              {
+                "regionId": "re217caba93bf48c6cc38",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "reb03f43b8dcb7a7517dc",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "12px / 18px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 109.154296875
+              },
+              {
+                "regionId": "ra7af92b03d5b0591540c",
+                "family": "Arial, \"PingFang SC\", sans-serif",
+                "font": "22px / 33px Arial, \"PingFang SC\", sans-serif",
+                "loaded": true,
+                "probeWidth": 200.1162109375
+              }
+            ],
+            "overflow": [],
+            "text": [
+              {
+                "regionId": "ra81237b73e4acb06fb39",
+                "inside": true
+              },
+              {
+                "regionId": "re217caba93bf48c6cc38",
+                "inside": true
+              },
+              {
+                "regionId": "reb03f43b8dcb7a7517dc",
+                "inside": true
+              },
+              {
+                "regionId": "ra7af92b03d5b0591540c",
+                "inside": true
+              }
+            ]
+          }
+        ],
+        "ok": true
+      }
+    }
+  ],
+  "captures": [
+    {
+      "file": "en-cream-collage-full-deck.png",
+      "sha256": "985b05cf9bbb252cb09b66a87803bcf9b5d68db1660e55d748ae5d14fa595fae"
+    },
+    {
+      "file": "en-cream-collage-collage.png",
+      "sha256": "32b9b318eae9823631617bb6a1ac5e6a2d5505f4c54110366b00ed991d5a2078"
+    },
+    {
+      "file": "en-cream-collage-evidence.png",
+      "sha256": "eb67e6c97b660c11390f48353ba115dd9888ed7c41291105cf929585fabdf13f"
+    },
+    {
+      "file": "en-cream-collage-violet.png",
+      "sha256": "0c1f194961cbf27b342573e74a20292f9142d79deb20a4ce39858c9192c407fe"
+    },
+    {
+      "file": "en-cream-collage-chapter.png",
+      "sha256": "542a4138916fb1c959bc51ff3772d7d39e3940bfdbd34a6c92172e397edd4292"
+    },
+    {
+      "file": "en-cream-collage-component-line.png",
+      "sha256": "10c49393aa60adb6fe93671ce55cead40a5711b35d113d2b3dfa23a6aa803a64"
+    },
+    {
+      "file": "en-cream-collage-component-area.png",
+      "sha256": "08e7d1bf4b0a84fcec87c15c561045c6170804cf6e39fc6b795ca893c1a4778a"
+    },
+    {
+      "file": "en-cream-collage-component-ranked-bar.png",
+      "sha256": "42a81267c8a5384582c9e6004f68b2eaceac488e88634d596f72b66b78b45fa5"
+    },
+    {
+      "file": "en-cream-collage-component-stacked.png",
+      "sha256": "a7ba35c25d7ffbf52dd27682941111f3338606363bae3bf7139e9b0535de2758"
+    },
+    {
+      "file": "en-cream-collage-component-scatter.png",
+      "sha256": "eb2d0f8e062ebd41a3b1c5213ed59b6dabe2da0678d8495d38a142b5d5766af8"
+    },
+    {
+      "file": "en-cream-collage-component-heatmap.png",
+      "sha256": "7ddf7ebe1bfca151a3c200e1ab70354c3fce3e9be59d69b70177cb80b69ccdd5"
+    },
+    {
+      "file": "en-cream-collage-component-relationship.png",
+      "sha256": "30e6835b5931593aca9fa13c86ac4ea00d13fea03384137e6b7f425c56238d6c"
+    },
+    {
+      "file": "en-cream-collage-component-sequence.png",
+      "sha256": "06d572bbe7a6a801b52451d7a65d78101ced1f0822422e523b1bb1e5686fe3ee"
+    },
+    {
+      "file": "en-cream-collage-component-process.png",
+      "sha256": "9c083ad059b4849988cd9cf0e35553caf25f393343e13c695ba7e1698871cd5d"
+    },
+    {
+      "file": "en-cream-collage-component-code.png",
+      "sha256": "81924c2cbf7d4d421e1c0954345bb42ac578e6077c0710e7d3f72e5d4c51ee0c"
+    },
+    {
+      "file": "en-cream-collage-image-comparison.png",
+      "sha256": "ca84752057ea80dba743a8c696fcbea241144c556ff2404fc99ef4c27a1b461f"
+    },
+    {
+      "file": "en-cream-collage-code-selected.png",
+      "sha256": "19c8e17146beb5c4823c9d6b0280f1816d4f2b1f0911b7dc6d7bdbbcd53350d6"
+    },
+    {
+      "file": "en-cream-collage-comparison.png",
+      "sha256": "6bcc3bdd98781c785d4e788a199697b7e2a63d075f4a0575ef0e5ba3c776bf25"
+    },
+    {
+      "file": "en-cream-collage-hotspot.png",
+      "sha256": "8d04dc69c50fd5bf6aaa21fa01cba284eaf4b58e325f13d39ae4976cfe671627"
+    },
+    {
+      "file": "failure.png",
+      "sha256": "2e19d26295d631d4b3d4eef23c457234e025a755f14d4317497115ad1045f56a"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "ok": false,
+  "failure": "DeckError: No measured candidate fits: violet. Preserve content and repair the layout.\n    at chooseRhythm (file:///Users/feida/Developer/DeckWeft/src/design/rhythm.mjs:46:26)\n    at file:///Users/feida/Developer/DeckWeft/tests/browser_interactions.mjs:51:203"
+}

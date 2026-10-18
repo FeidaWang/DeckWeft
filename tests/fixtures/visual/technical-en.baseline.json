@@ -1,0 +1,67 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 1,
+  "id": "technical-en",
+  "title": "API reference: synchronization",
+  "locale": "en",
+  "aspectRatio": "16:9",
+  "theme": "paper",
+  "brief": {
+    "prompt": "",
+    "audience": "",
+    "outcome": ""
+  },
+  "slides": [
+    {
+      "id": "slide_0",
+      "role": "opening",
+      "content": {
+        "eyebrow": "",
+        "title": "API reference: synchronization",
+        "body": "Synthetic documentation fixture; no network calls.\nGET /v1/projects → 200 JSON\nPOST /v1/projects → 201 JSON\nawait client.save({ expectedRevision: 3 });",
+        "items": [],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_1",
+      "role": "closing",
+      "content": {
+        "eyebrow": "",
+        "title": "Recover from a revision conflict",
+        "body": "",
+        "items": [
+          "Keep the current edits",
+          "Read the latest revision",
+          "Restore as a separate copy"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-18T00:00:00.000Z",
+    "updatedAt": "2026-10-18T00:00:00.000Z"
+  },
+  "extensions": {}
+}

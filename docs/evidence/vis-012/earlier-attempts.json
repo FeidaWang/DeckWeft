@@ -1,0 +1,1552 @@
+[
+  {
+    "case": "supplied workflow text without the promised dataset",
+    "acceptedAsMeaningfulRevision": false,
+    "ok": false,
+    "failure": "ERR_ASSERTION",
+    "checkpointStatus": "repair-exhausted",
+    "spent": {
+      "rounds": 2,
+      "candidates": 2,
+      "sceneChanges": 2,
+      "milliseconds": 1814
+    },
+    "strictVisualReviews": [
+      {
+        "reviewer": "codex local CLI",
+        "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt dcb4d75f-61b5-4788-aed3-cf9762d3b897",
+        "images": [
+          "capture-1-1440.png",
+          "capture-1-390.png",
+          "capture-1-scene-1.png",
+          "capture-1-scene-2.png",
+          "capture-1-scene-3.png",
+          "capture-1-scene-4.png",
+          "capture-1-scene-5.png"
+        ],
+        "judgment": "All seven images were visually inspected. Text has strong contrast, with no visible clipping or overlap. Desktop hierarchy is clear and mobile reflow remains readable, but the deck's mostly empty canvases and repeated compositions weaken story rhythm. Scene 4 is the weakest page: its promised example is absent.\ncapture-1-1440.png: All five scenes are visible without clipping or overlap. Consistent typography and contrast support hierarchy, but large empty lower regions dominate; scenes 2 and 5 repeat nearly identical compositions.\ncapture-1-390.png: All five scenes reflow legibly within the narrow viewport. Titles and paragraphs remain separated without visible clipping. Scene 3 loses its desktop centered emphasis, making the mobile sequence more repetitive.\ncapture-1-scene-1.png: The two-line title and right-hand paragraph form a clear opening hierarchy. The orange divider separates them cleanly; contrast is strong and nothing overlaps. Most of the lower canvas remains unused.\ncapture-1-scene-2.png: The heading, orange rule, and supporting sentence are readable and aligned. Content occupies only the upper portion, leaving the planning step visually underdeveloped.\ncapture-1-scene-3.png: The centered oversized heading supplies the strongest compositional change. Its two-line supporting paragraph is readable without overlap, but no inspection example provides a secondary focal point.\ncapture-1-scene-4.png: Weakest page. The title promises an exact example, while the paragraph reports that no dataset was supplied. No example or chart occupies the otherwise empty canvas. Typography itself is clear and unclipped.\ncapture-1-scene-5.png: The closing heading and sentence are clear, high contrast, and unclipped. Repeating scene 2's heading-rule-paragraph arrangement gives the ending little distinct visual emphasis.",
+        "issues": [
+          {
+            "sceneId": "slide_e01275f9c3914ab6",
+            "nodeId": "b1_body",
+            "bounds": {
+              "x": 48,
+              "y": 246,
+              "width": 555,
+              "height": 25
+            },
+            "severity": "warning",
+            "reason": "The planning step is reduced to one sentence near the top, leaving most of the slide empty and providing little visual progression.",
+            "suggestion": "Arrange the supplied concepts—scene roles, focal points, and candidate compositions—as a simple three-part planning sequence."
+          },
+          {
+            "sceneId": "slide_f654601a6db04f9d",
+            "nodeId": "b3_body",
+            "bounds": {
+              "x": 773,
+              "y": 120,
+              "width": 571,
+              "height": 55
+            },
+            "severity": "error",
+            "reason": "The promised example has no visible example or chart; the missing-data paragraph and largely empty canvas leave the narrative's demonstration step unresolved.",
+            "suggestion": "Reframe this scene as an explicit dataset-selection prerequisite, or populate it with an authorized original dataset before presenting it as an example."
+          },
+          {
+            "sceneId": "slide_edf05d4dcd0a4f5d",
+            "nodeId": "b4_body",
+            "bounds": {
+              "x": 48,
+              "y": 246,
+              "width": 450,
+              "height": 25
+            },
+            "severity": "warning",
+            "reason": "The closing scene repeats scene 2's composition and leaves most of the canvas empty, weakening the final beat.",
+            "suggestion": "Give the supplied export and checkpoint actions a distinct two-step closing composition."
+          }
+        ],
+        "verdict": "fail"
+      },
+      {
+        "reviewer": "codex local CLI",
+        "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt fe8b3e94-a897-446a-ab40-2472c6b87d8b",
+        "images": [
+          "capture-3-1440.png",
+          "capture-3-390.png",
+          "capture-3-scene-1.png",
+          "capture-3-scene-2.png",
+          "capture-3-scene-3.png",
+          "capture-3-scene-4.png",
+          "capture-3-scene-5.png"
+        ],
+        "judgment": "All seven images were visually inspected. Text has strong contrast, clear hierarchy, and no visible clipping or overlap at either viewport. Visual quality is limited by sparse desktop compositions and repetitive story rhythm. Scene 4 is the weakest page: its title promises an example, but the page supplies only a missing-data statement.\ncapture-3-1440.png: All five scenes are visible without clipping or overlap. Cream backgrounds and dark type provide strong contrast. Scenes 2, 4, and 5 repeat the same sparse title-rule-paragraph composition, weakening progression.\ncapture-3-390.png: All five scenes reflow legibly with comfortable margins and no visible horizontal overflow. Scene 1 stacks coherently; scene 3's wrapped heading remains readable. Scenes 2, 4, and 5 retain repetitive hierarchy.\ncapture-3-scene-1.png: Clear two-column opening with a distinct coral divider and readable supporting text. No clipping or overlap; content occupies only the upper portion of the canvas.\ncapture-3-scene-2.png: Strong title and paragraph contrast with clean spacing. The single instruction beneath a full-width rule leaves most of the canvas unused and supplies little visual development.\ncapture-3-scene-3.png: Centered typography provides useful variation with no clipping or overlap. The page discusses inspecting captures but contains no visual example, limiting its explanatory value.\ncapture-3-scene-4.png: Weakest page. The readable title promises an exact example, while the body states that no dataset was supplied. No example or chart appears, and the large empty area emphasizes the missing payoff.\ncapture-3-scene-5.png: Clean, high-contrast closing page without clipping or overlap. It repeats scene 2's composition and ends with a generic instruction rather than a concrete recovery sequence.",
+        "issues": [
+          {
+            "sceneId": "slide_e01275f9c3914ab6",
+            "nodeId": "b1_body",
+            "bounds": {
+              "x": 48,
+              "y": 245,
+              "width": 560,
+              "height": 30
+            },
+            "severity": "warning",
+            "reason": "A single short instruction provides little visual development beneath the large heading, contributing to a sparse and repetitive desktop rhythm.",
+            "suggestion": "Organize the existing concepts into a visible sequence of scene role, focal point, and candidate composition."
+          },
+          {
+            "sceneId": "slide_f1df53338d3c48cb",
+            "nodeId": "b2_body",
+            "bounds": {
+              "x": 460,
+              "y": 266,
+              "width": 475,
+              "height": 56
+            },
+            "severity": "warning",
+            "reason": "The page asks viewers to inspect captures but offers only a missing-capture statement, leaving the instructional point visually unsupported.",
+            "suggestion": "Provide an authorized capture with specific inspection annotations, or frame this page explicitly as a pending review step."
+          },
+          {
+            "sceneId": "slide_f654601a6db04f9d",
+            "nodeId": "b3_title",
+            "bounds": {
+              "x": 48,
+              "y": 116,
+              "width": 580,
+              "height": 66
+            },
+            "severity": "error",
+            "reason": "The title promises an exact supplied example, but the visible body explicitly reports that no dataset or selection was supplied. This page delivers no example and breaks the story's expected payoff.",
+            "suggestion": "Retitle the page to describe the missing input, or supply an explicitly selected dataset and its corresponding example."
+          },
+          {
+            "sceneId": "slide_edf05d4dcd0a4f5d",
+            "nodeId": "b4_body",
+            "bounds": {
+              "x": 48,
+              "y": 245,
+              "width": 460,
+              "height": 30
+            },
+            "severity": "warning",
+            "reason": "The closing instruction repeats the sparse layout of earlier pages and does not explain what a usable recovery path contains.",
+            "suggestion": "Show a concise export, checkpoint, and restore sequence using verified project details."
+          }
+        ],
+        "verdict": "fail"
+      }
+    ],
+    "receipts": [
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "6833d187-4bc8-4988-9199-f3d4d37a5fc9",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "1946b1bf748db82b057196f6c9ca971a515eca80cdaf7a73f285d8ed2150facd",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "abc292f3fc548961dfd2108ccf07a9e06c53ffb490a970b322ccba6eed17a5de",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-5-1440.png",
+            "hash": "3cd76b103ad6be1d0518d372db474fefa55e02fe2566cfe38cb0480c5bfe53fe",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-390.png",
+            "hash": "1dfdc102aa151ca86132b2864d545874293a3c5f16ad6564167f1e2f544bc5fe",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-1.png",
+            "hash": "99d875c59ba71af3ca4d9e18443388fa17efb804d9eb2a69251c27892ba0c2b4",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-2.png",
+            "hash": "75b2040df0644e97ab1ccfd22e957cf994e74f0f71fb2f51f4f3a4f23fc74ee3",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-3.png",
+            "hash": "95389b74c3add01e297793de2bf32ebb8bed2ea61e6b1ab5641ff70b42fb947b",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-4.png",
+            "hash": "03becc3297c95fe3274a241a6c74066e50af64f158f52083a5aa878158da1eb4",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-5.png",
+            "hash": "5378542288a966faf7797de00c5bcae283317384f90b5e34ddafdfd60977e5a2",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 26212,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "3f7edac5865c07b26a4faf848ffb69a1161787c06d1eee4f157829f2d6eb3ec4"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "b4eefe60-284a-4559-b319-3f50728acee3",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "1946b1bf748db82b057196f6c9ca971a515eca80cdaf7a73f285d8ed2150facd",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "d1fc49bfd70e37fce77076c0d4316fe6c633b856288eaa7fbccba3d68b4cfb40",
+        "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+        "images": [],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 6682,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "16fa8641ddcb97de737d770ae6a03143d9ba3d0ae9f047630894a19c1f777fd6"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "dcb4d75f-61b5-4788-aed3-cf9762d3b897",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "1946b1bf748db82b057196f6c9ca971a515eca80cdaf7a73f285d8ed2150facd",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "cc7f048672ae210a2ea78d155460d0eb9fa57e742cf20ebae4d1e186998929df",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-1-1440.png",
+            "hash": "3cd76b103ad6be1d0518d372db474fefa55e02fe2566cfe38cb0480c5bfe53fe",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-390.png",
+            "hash": "1dfdc102aa151ca86132b2864d545874293a3c5f16ad6564167f1e2f544bc5fe",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-1.png",
+            "hash": "99d875c59ba71af3ca4d9e18443388fa17efb804d9eb2a69251c27892ba0c2b4",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-2.png",
+            "hash": "75b2040df0644e97ab1ccfd22e957cf994e74f0f71fb2f51f4f3a4f23fc74ee3",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-3.png",
+            "hash": "95389b74c3add01e297793de2bf32ebb8bed2ea61e6b1ab5641ff70b42fb947b",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-4.png",
+            "hash": "03becc3297c95fe3274a241a6c74066e50af64f158f52083a5aa878158da1eb4",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-5.png",
+            "hash": "5378542288a966faf7797de00c5bcae283317384f90b5e34ddafdfd60977e5a2",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 29216,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "a6c08d11237de8eb4c720fd7044cb22741f5c76c473482e816c81db389f843d6"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "fe8b3e94-a897-446a-ab40-2472c6b87d8b",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "1946b1bf748db82b057196f6c9ca971a515eca80cdaf7a73f285d8ed2150facd",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "7aea88f03e06100e9d70cdf7312769cecc42b7f1f4bc197e4d71d44e01a8b739",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-3-1440.png",
+            "hash": "0af2af47452a5077af1dd49023270355f3a35fa38a4fccfafc7db76237f0f830",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-390.png",
+            "hash": "1283c8037c4525093a74b6ae6f8e3663099e8f39e4918dd54bb1c41feee17e7e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-1.png",
+            "hash": "99d875c59ba71af3ca4d9e18443388fa17efb804d9eb2a69251c27892ba0c2b4",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-2.png",
+            "hash": "75b2040df0644e97ab1ccfd22e957cf994e74f0f71fb2f51f4f3a4f23fc74ee3",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-3.png",
+            "hash": "95389b74c3add01e297793de2bf32ebb8bed2ea61e6b1ab5641ff70b42fb947b",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-4.png",
+            "hash": "3a8a441c3405ad57f2e4fd3834631fd496833c49b4e74c98f7b1473f10145376",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-5.png",
+            "hash": "5378542288a966faf7797de00c5bcae283317384f90b5e34ddafdfd60977e5a2",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 28076,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "c9af5d14c3f8805ba6663ce6b2c56e2aac1d2bdaeead18b268ed33b435815275"
+      }
+    ],
+    "correction": "Retain failure; composition-only repair cannot invent missing explanatory content."
+  },
+  {
+    "case": "complete text-only workshop",
+    "acceptedAsMeaningfulRevision": false,
+    "ok": false,
+    "failure": "ERR_ASSERTION",
+    "checkpointStatus": "quality-failed",
+    "spent": {
+      "rounds": 0,
+      "candidates": 0,
+      "sceneChanges": 0,
+      "milliseconds": 0
+    },
+    "strictVisualReviews": [
+      {
+        "reviewer": "codex local CLI",
+        "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 8e20c0d9-f665-4942-ad17-1b0ba0462150",
+        "images": [
+          "capture-1-1440.png",
+          "capture-1-390.png",
+          "capture-1-scene-1.png",
+          "capture-1-scene-2.png",
+          "capture-1-scene-3.png",
+          "capture-1-scene-4.png",
+          "capture-1-scene-5.png"
+        ],
+        "judgment": "All seven images were visually inspected. Text has strong contrast, clear hierarchy, and no visible clipping or overlap. Mobile reflow remains readable. Visual storytelling is weak: the slides repeat sparse text layouts without showing a shape, crease, or finished model. Scene 2 is the weakest page because it asks viewers to choose a shape without providing an example.\ncapture-1-1440.png: All five scenes are visible with consistent cream backgrounds and readable hierarchy. Alternating column, rule, and centered layouts provide some rhythm, but large empty areas and repeated text-only treatment weaken progression.\ncapture-1-390.png: All five scenes reflow without visible clipping or overlap. Body text wraps comfortably with strong contrast. The centered scene becomes left aligned, reducing layout variation; the sequence remains entirely text based.\ncapture-1-scene-1.png: Scene 1 has a prominent title and clearly separated introduction. No clipping or overlap is visible. The large unused lower area could introduce the paper model and establish the workshop's visual subject.\ncapture-1-scene-2.png: Scene 2 is the weakest page. Its title, accent rule, and sentence are legible, but no shape options or example accompany the instruction to choose a shape. Most of the canvas contributes no instructional information.\ncapture-1-scene-3.png: Scene 3 supplies the strongest typographic change through a larger centered heading. Text is unclipped and well contrasted, but no crease sequence or comparison image supports the folding instruction.\ncapture-1-scene-4.png: Scene 4 repeats scene 1's balanced two-column layout without collisions. The inspection prompt remains abstract because there is no model detail or marked fold to inspect.\ncapture-1-scene-5.png: Scene 5 closes with a clear heading and readable recording prompt. Its layout closely repeats scene 2, and no sample record or completed outcome gives the ending a visual payoff.",
+        "issues": [
+          {
+            "sceneId": "slide_2eab024766544d37",
+            "nodeId": "b1_body",
+            "bounds": {
+              "x": 48,
+              "y": 244,
+              "width": 1296,
+              "height": 428
+            },
+            "severity": "warning",
+            "reason": "The shape-selection instruction has no visible example or choices, leaving the weakest page without a concrete subject.",
+            "suggestion": "Add a labeled example of a simple paper model or a small set of shape options beneath the instruction."
+          },
+          {
+            "sceneId": "slide_e44ec906206f4a9d",
+            "nodeId": "b2_body",
+            "bounds": {
+              "x": 400,
+              "y": 268,
+              "width": 592,
+              "height": 404
+            },
+            "severity": "warning",
+            "reason": "The central folding step contains only a general sentence; viewers cannot see a crease or compare intermediate results.",
+            "suggestion": "Use the lower area for a short numbered folding sequence with crease indicators and an expected result."
+          },
+          {
+            "sceneId": "slide_89de8da838344703",
+            "nodeId": "b3_body",
+            "bounds": {
+              "x": 773,
+              "y": 117,
+              "width": 571,
+              "height": 555
+            },
+            "severity": "warning",
+            "reason": "The inspection stage repeats the opening layout without showing what a correct or unclear fold looks like.",
+            "suggestion": "Show a model detail with a marked inspection point and a concrete observation."
+          },
+          {
+            "sceneId": "slide_eb358219d0a74c61",
+            "nodeId": "b4_body",
+            "bounds": {
+              "x": 48,
+              "y": 244,
+              "width": 1296,
+              "height": 428
+            },
+            "severity": "warning",
+            "reason": "The closing page repeats scene 2's treatment and supplies no visible outcome or record example, weakening the story's resolution.",
+            "suggestion": "Add a compact example record containing the chosen shape, an observation, and a next-workshop improvement."
+          }
+        ],
+        "verdict": "fail"
+      }
+    ],
+    "receipts": [
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "8e20c0d9-f665-4942-ad17-1b0ba0462150",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "7f1e61dbd78ff656433aa8880d8cb4c94d832d0587479258b737734522d98204",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "9bd16a9aff7d49491ce5ca0923518fb7840b8b1379b5cda6131b1d4433b1ea7b",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-1-1440.png",
+            "hash": "b1d753fe49203a239bf1a19620081a11279fe792fb3fb526429588526e779818",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-390.png",
+            "hash": "20af5a80814fd684238d95c016eac8258fd59869966c343d11b7d73b9c66bdf6",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-1.png",
+            "hash": "9ab5b36a681378f3023de485da38576181e99797839628168c128ebf06f5fb8e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-2.png",
+            "hash": "8e5698fa2658af5fdc32948d3949570874581573c6771fa13d11b1b342b57fe4",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-3.png",
+            "hash": "69bbb46c06df4d84e3d0aaeeb97ee6ec03960553b857081059d00a271305b0ef",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-4.png",
+            "hash": "ae8f2593d9cbacf0ec4e266f227f44a6f2ea4a09fef074534add1cc51625552e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-5.png",
+            "hash": "03fe5fe3d27b7d7552eb6a99e97a6d46dc52d09910cc015e4a98866929cfe43f",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 30663,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "28cd5f39a30b06e990759c88a2fe9c23e86c9fcdba1a63fc2e8fc141e549694a"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "f613b426-699a-434c-ad3f-0f70362e3193",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "7f1e61dbd78ff656433aa8880d8cb4c94d832d0587479258b737734522d98204",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "27f74c639a63a0ee8d67a6c00d8086d35b31e51648d127527de10c742e97e5ac",
+        "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+        "images": [],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 5808,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "24a1eb0580195d19dd4385e319b200d0cc7b0aabac79a355a67b9723749478c5"
+      }
+    ],
+    "correction": "Retain failure; composition-only repair cannot invent missing explanatory content."
+  },
+  {
+    "case": "incomplete mobile capture omitted scroll endpoints",
+    "acceptedAsMeaningfulRevision": false,
+    "ok": false,
+    "failure": "ERR_ASSERTION",
+    "checkpointStatus": "repair-exhausted",
+    "spent": {
+      "rounds": 2,
+      "candidates": 2,
+      "sceneChanges": 2,
+      "milliseconds": 2928
+    },
+    "strictVisualReviews": [
+      {
+        "reviewer": "codex local CLI",
+        "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt fbf496e3-3fb9-417c-9070-4a649d30e430",
+        "images": [
+          "capture-1-1440.png",
+          "capture-1-390.png",
+          "capture-1-scene-1.png",
+          "capture-1-scene-2.png",
+          "capture-1-scene-3.png",
+          "capture-1-scene-4.png",
+          "capture-1-scene-5.png",
+          "capture-1-scene-6.png"
+        ],
+        "judgment": "All eight attached images were visually inspected. Desktop typography, contrast and table hierarchy are strong, and theme changes give the story a clear rhythm. Mobile clipping removes chart endpoints and the final process step. The process scene is the weakest page: its small, left-weighted diagram and large empty area weaken the closing emphasis. Hashes below reproduce the supplied metadata.\ncapture-1-1440.png: All six scenes are visible without apparent desktop clipping. Violet, photography, cream and dark data sections create distinct pauses. The closing process diagram has noticeably less visual weight than preceding scenes.\ncapture-1-390.png: Headings, image and table reflow legibly with good contrast. The evidence chart is cut off after Q4, hiding Q5–Q6 and the endpoints. The process diagram clips Compare and omits Review from view.\ncapture-1-scene-1.png: Chapter scene has strong white-on-violet contrast, clear title/body separation and no visible overlap or clipping. Extensive negative space supports the deliberate opening pause.\ncapture-1-scene-2.png: Violet scene balances a large photograph against a clear two-line heading. Body, asset disclosure and image description remain distinct and unclipped.\ncapture-1-scene-3.png: Collage scene establishes a strong metric-to-headline hierarchy. Black text contrasts well with cream; body, note and citation have adequate separation with no visible collisions.\ncapture-1-scene-4.png: Evidence scene shows all six quarters and both contrasting series on desktop. Coincident starting values share a crowded label position. The exact-value table is collapsed, despite body text saying values remain in the table below.\ncapture-1-scene-5.png: Comparison scene has a clear heading, high-contrast table header and aligned values. Row rules, explanatory copy and citation remain readable without clipping or overlap.\ncapture-1-scene-6.png: Process scene shows all three nodes and connected arrows on desktop. The generic relationship label and undersized, left-weighted diagram weaken hierarchy; the large gap before notes makes this the weakest closing page.",
+        "issues": [
+          {
+            "sceneId": "evidence",
+            "nodeId": "data-chart",
+            "bounds": {
+              "x": 10,
+              "y": 1098,
+              "width": 165,
+              "height": 148
+            },
+            "severity": "error",
+            "reason": "In the attached mobile overview, the chart cuts off after Q4. Q5, Q6 and the final values are outside the visible chart area, hiding the main comparison.",
+            "suggestion": "Fit the complete chart to the mobile content width, adapting ticks and labels while retaining all six quarters."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 10,
+              "y": 1788,
+              "width": 165,
+              "height": 104
+            },
+            "severity": "error",
+            "reason": "In the attached mobile overview, Compare and its connectors are clipped at the right edge, and Review is absent from view.",
+            "suggestion": "Use a vertical mobile arrangement or scale the diagram to keep all three nodes and both arrows visible."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 48,
+              "y": 270,
+              "width": 1296,
+              "height": 340
+            },
+            "severity": "warning",
+            "reason": "In the standalone process scene, the diagram occupies only the left portion of a broad area, followed by a large empty gap. The generic relationship label adds little meaning, weakening the closing hierarchy.",
+            "suggestion": "Enlarge or center the diagram, tighten the gap before supporting copy, and replace the generic label with a meaningful caption."
+          },
+          {
+            "sceneId": "evidence",
+            "nodeId": "data-body",
+            "bounds": {
+              "x": 925,
+              "y": 330,
+              "width": 419,
+              "height": 84
+            },
+            "severity": "warning",
+            "reason": "The text promises exact values in a table below, but the screenshot shows only a collapsed View all data disclosure.",
+            "suggestion": "Expand the table for static presentation or explicitly direct readers to open View all data."
+          }
+        ],
+        "verdict": "fail"
+      },
+      {
+        "reviewer": "codex local CLI",
+        "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 5dba26b8-0258-4bac-b4a3-f82fb2e9e007",
+        "images": [
+          "capture-3-1440.png",
+          "capture-3-390.png",
+          "capture-3-scene-1.png",
+          "capture-3-scene-2.png",
+          "capture-3-scene-3.png",
+          "capture-3-scene-4.png",
+          "capture-3-scene-5.png",
+          "capture-3-scene-6.png"
+        ],
+        "judgment": "All eight images were visually inspected. Desktop typography, contrast and spacing are generally strong, with effective changes in visual rhythm. Mobile clips substantive chart and workflow content. The process scene is the weakest page: its diagram lacks visual emphasis on desktop and loses the final step on mobile.\ncapture-3-1440.png: All six scenes are visible without obvious text clipping or overlap. Violet, photography, cream and dark sections establish varied rhythm. The final workflow feels comparatively small and sparse.\ncapture-3-390.png: Chapter, image, metric and comparison content stack legibly with strong contrast. The evidence chart cuts off after Q4, hiding Q5–Q6. The process diagram clips Compare and entirely hides Review; connectors terminate at the visible boundary.\ncapture-3-scene-1.png: Chapter: clear title hierarchy, strong white-on-violet contrast and a clean column divider. Generous empty space supports the intended chapter pause; no visible clipping or overlap.\ncapture-3-scene-2.png: Violet: the large photograph balances the headline and readable body. Caption stays below the image with clear separation. No visible clipping, overlap or contrast failure.\ncapture-3-scene-3.png: Collage: oversized metric and serif headline create distinct focal points. Supporting text and citation remain separated and readable against cream; no visible clipping or overlap.\ncapture-3-scene-4.png: Evidence: both complete six-quarter series, labels and legend are visible on desktop. Bright series contrast well against black; body and citation remain clear. The chart is modest relative to the headline but readable.\ncapture-3-scene-5.png: Comparison: strong headline-to-table hierarchy, aligned columns and comfortable row spacing. Exact percentages and source retention are readable; no visible overlap or clipping.\ncapture-3-scene-6.png: Process: all three steps and connectors are visible on desktop with adequate contrast. This is the weakest standalone composition: small labels, top-aligned box text and substantial unused space weaken the closing workflow's emphasis.",
+        "issues": [
+          {
+            "sceneId": "evidence",
+            "nodeId": "data-chart",
+            "bounds": {
+              "x": 10,
+              "y": 1100,
+              "width": 175,
+              "height": 125
+            },
+            "severity": "error",
+            "reason": "In the supplied mobile overview, the chart is clipped at the right edge after Q4. Q5–Q6 and both series endpoints are unavailable in the visible composition. Bounds refer to the displayed 185 × 2048 image.",
+            "suggestion": "Make the chart responsive so all six quarters and endpoint labels fit within the mobile content width."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 20,
+              "y": 1800,
+              "width": 165,
+              "height": 65
+            },
+            "severity": "error",
+            "reason": "In the supplied mobile overview, Compare is partially clipped and Review is absent. Connector paths run beyond the visible diagram boundary, breaking the three-step story. Bounds refer to the displayed 185 × 2048 image.",
+            "suggestion": "Stack the three steps vertically on narrow screens and reroute connectors so every node and arrow remains visible."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 48,
+              "y": 270,
+              "width": 1296,
+              "height": 345
+            },
+            "severity": "warning",
+            "reason": "The desktop workflow occupies only the left portion of a broad region, with small labels near box tops and a large gap before the supporting text. Its visual weight is weak for the closing scene.",
+            "suggestion": "Center labels within the boxes, enlarge the workflow and tighten the gap to the supporting text."
+          }
+        ],
+        "verdict": "fail"
+      }
+    ],
+    "receipts": [
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "5dba26b8-0258-4bac-b4a3-f82fb2e9e007",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "36584ccb409f714d6eb4c0ec152085fdbb9b12d86f061ea545874f020afd3da5",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "a919fedc954b628ce82c28f9d39fd44b5dbc53a926a80710ac8f68bf5706900a",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-3-1440.png",
+            "hash": "662d59ec3d5d84a31be71381cea2ae241af0858566a831595bf818d7206b1c13",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-390.png",
+            "hash": "360ee6c2ac2cdb4ce4097e40b9407259f955259bb8556028f7c61fb8c0ebda8d",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-1.png",
+            "hash": "d5649a4edc027b29402bf861884edc00052cc0b0c642ffed2fa09f018c15d714",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-2.png",
+            "hash": "0edd90302d4d1f1db555acaed4a55449581b0cac11b03cc0128430d117a6997e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-3.png",
+            "hash": "2ace3fc34b4ee5b5356283237f06fb39ab444fc525c8169dfc03bf573eadd9b5",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-4.png",
+            "hash": "83b64c4f31880eba99c43d06b9bfd2d6adbc000face296bf0b141f4ef1736106",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-5.png",
+            "hash": "0fdd59ee5aabd5c05bbad8d8b6f46aca03474636fe1438cd8c445d8497e70f16",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-6.png",
+            "hash": "2d42096b359c58a41e11085532c0e560f8b1c2c123b83fa071bb3d0c95350f1a",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 35939,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "1d8e31df9d95598c32c01c1bae3b3dc1ed4eed008fb9e8ca8de12229c21138e7"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "d30d361c-2f4c-4ff3-b524-692bce6b0737",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "36584ccb409f714d6eb4c0ec152085fdbb9b12d86f061ea545874f020afd3da5",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "1dcaf25fa5e73d84c840651f4da9737f7de0113187ff3f619b8c6c30f7e75de8",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-5-1440.png",
+            "hash": "90da0e0adf86845f6e51667cc4bc4f60380a902d0c3fb213bcb44d9da0fed2e0",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-390.png",
+            "hash": "360ee6c2ac2cdb4ce4097e40b9407259f955259bb8556028f7c61fb8c0ebda8d",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-1.png",
+            "hash": "d5649a4edc027b29402bf861884edc00052cc0b0c642ffed2fa09f018c15d714",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-2.png",
+            "hash": "0edd90302d4d1f1db555acaed4a55449581b0cac11b03cc0128430d117a6997e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-3.png",
+            "hash": "2ace3fc34b4ee5b5356283237f06fb39ab444fc525c8169dfc03bf573eadd9b5",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-4.png",
+            "hash": "716f04790b27567430efb50ae4ea9a21b57f4e565dc39ac48b130f1c75485bcf",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-5.png",
+            "hash": "724b5b236a4e92809d81bfd2efa421fd2351af02920259b69a86b171fedea962",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-5-scene-6.png",
+            "hash": "3415e9bcaf64095ae579a91152883ad4dab79051d49599310842637d3d37a2d9",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 35109,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "fe26fc240f0f0b0232e5e55bf4a0cc660569464dded8156046e88789e1b01e63"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "e49e4a0e-6124-46e2-88ee-876de48e623d",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "36584ccb409f714d6eb4c0ec152085fdbb9b12d86f061ea545874f020afd3da5",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "27f74c639a63a0ee8d67a6c00d8086d35b31e51648d127527de10c742e97e5ac",
+        "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+        "images": [],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 5538,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "c012667aaa97a9104273aad8a8e9079d06d4c2e938fbbfae38f62004f6e2ae1b"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "fbf496e3-3fb9-417c-9070-4a649d30e430",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "36584ccb409f714d6eb4c0ec152085fdbb9b12d86f061ea545874f020afd3da5",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "b59ccd0e445831f60377e823c185e8568e90bfb4d0ba997f207c4cb3ea3da2c2",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-1-1440.png",
+            "hash": "90da0e0adf86845f6e51667cc4bc4f60380a902d0c3fb213bcb44d9da0fed2e0",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-390.png",
+            "hash": "360ee6c2ac2cdb4ce4097e40b9407259f955259bb8556028f7c61fb8c0ebda8d",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-1.png",
+            "hash": "d5649a4edc027b29402bf861884edc00052cc0b0c642ffed2fa09f018c15d714",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-2.png",
+            "hash": "0edd90302d4d1f1db555acaed4a55449581b0cac11b03cc0128430d117a6997e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-3.png",
+            "hash": "2ace3fc34b4ee5b5356283237f06fb39ab444fc525c8169dfc03bf573eadd9b5",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-4.png",
+            "hash": "716f04790b27567430efb50ae4ea9a21b57f4e565dc39ac48b130f1c75485bcf",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-5.png",
+            "hash": "724b5b236a4e92809d81bfd2efa421fd2351af02920259b69a86b171fedea962",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-6.png",
+            "hash": "3415e9bcaf64095ae579a91152883ad4dab79051d49599310842637d3d37a2d9",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 40330,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "0883e4e66fec777ed87cc3013ef878cae2b4602d318f6cee01abe1b6e2273cfa"
+      }
+    ],
+    "correction": "Capture actual native horizontal-scroll endpoints; do not reclassify clipped screenshots as passing."
+  },
+  {
+    "case": "native endpoint capture and export success, but patch was a no-op",
+    "acceptedAsMeaningfulRevision": false,
+    "ok": true,
+    "failure": null,
+    "checkpointStatus": "exported",
+    "spent": {
+      "rounds": 1,
+      "candidates": 1,
+      "sceneChanges": 1,
+      "milliseconds": 1621
+    },
+    "strictVisualReviews": [
+      {
+        "reviewer": "codex local CLI",
+        "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 09bd416c-335c-487d-adc6-9b83a18bd3f4",
+        "images": [
+          "capture-1-1440.png",
+          "capture-1-390.png",
+          "capture-1-mobile-scroll-end-4.png",
+          "capture-1-mobile-scroll-end-6.png",
+          "capture-1-scene-1.png",
+          "capture-1-scene-2.png",
+          "capture-1-scene-3.png",
+          "capture-1-scene-4.png",
+          "capture-1-scene-5.png",
+          "capture-1-scene-6.png"
+        ],
+        "judgment": "All ten images were visually inspected. Desktop pages have clear hierarchy, strong contrast and a coherent violet–white–cream–black rhythm. Mobile chart and process views obscure essential content at both scroll positions; the process page is the weakest. Desktop chart labels also overlap at Q1.\ncapture-1-1440.png: All six scenes are visible. Theme changes create clear rhythm; headings, image and table have strong hierarchy and contrast. The process scene has comparatively sparse composition.\ncapture-1-390.png: Text and image stack legibly with strong contrast. The evidence chart cuts off Q5–Q6, and the process diagram cuts off Review and its connection. These scenes interrupt otherwise effective mobile reading.\ncapture-1-mobile-scroll-end-4.png: Evidence scene: Q4–Q6 values are clear, but the left chart edge truncates earlier quarters and removes the numeric vertical scale. Legend and explanatory text remain readable.\ncapture-1-mobile-scroll-end-6.png: Process scene: Review is visible, but Draft is absent and Compare's left border and incoming connection are clipped. The complete three-step relationship cannot be read together. Heading and body remain clear.\ncapture-1-scene-1.png: Chapter scene: bright text contrasts strongly against violet; the divider separates title and body cleanly. Generous empty space creates a deliberate opening pause without visible clipping or overlap.\ncapture-1-scene-2.png: Violet scene: large artwork balances the heading and supporting copy. Caption is contained and readable; no visible overlap or clipping. The photographic texture adds useful variation.\ncapture-1-scene-3.png: Collage scene: oversized metric and serif heading establish clear hierarchy against cream. Body and source remain legible with no visible collisions; spacious composition sustains the editorial rhythm.\ncapture-1-scene-4.png: Evidence scene: lime and lavender series stand out against black, with clear legend and supporting copy. Coincident Q1 value labels overlap, weakening exact-value readability.\ncapture-1-scene-5.png: Comparison scene: table headers, columns and rows are cleanly aligned. Strong heading and readable values support quick comparison; no visible clipping or overlap.\ncapture-1-scene-6.png: Process scene: all three nodes and arrowheads are visible on desktop. Title and body have strong contrast, but the large gap below the diagram weakens the closing page's cohesion.",
+        "issues": [
+          {
+            "sceneId": "evidence",
+            "nodeId": "data-chart",
+            "bounds": {
+              "x": 22,
+              "y": 190,
+              "width": 256,
+              "height": 280
+            },
+            "severity": "error",
+            "reason": "In capture-1-mobile-scroll-end-4.png, the chart's left side is clipped, leaving truncated earlier-quarter labels and no numeric vertical scale. The initial mobile view instead hides the final quarters.",
+            "suggestion": "Fit the full plot and axes within the mobile content width, or provide a mobile chart layout that keeps the scale and all quarters readable together."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 22,
+              "y": 240,
+              "width": 322,
+              "height": 112
+            },
+            "severity": "error",
+            "reason": "In capture-1-mobile-scroll-end-6.png, Draft is outside the viewport and Compare and its incoming connector are clipped. The initial mobile view hides Review. Neither view communicates the whole workflow.",
+            "suggestion": "Stack the three nodes vertically on mobile and reroute connectors so every node and relationship fits within the viewport."
+          },
+          {
+            "sceneId": "evidence",
+            "nodeId": "data-chart",
+            "bounds": {
+              "x": 141,
+              "y": 509,
+              "width": 27,
+              "height": 24
+            },
+            "severity": "warning",
+            "reason": "In capture-1-scene-4.png, the two Q1 labels occupy the same position at the shared starting value and overlap.",
+            "suggestion": "Show one shared value label or offset the two labels to separate readable positions."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 48,
+              "y": 477,
+              "width": 768,
+              "height": 148
+            },
+            "severity": "warning",
+            "reason": "In capture-1-scene-6.png, a large empty band separates the diagram from its relationship disclosure and concluding text, weakening the final scene's visual cohesion.",
+            "suggestion": "Reduce the space below the diagram to connect the workflow more closely with its explanation."
+          }
+        ],
+        "verdict": "fail"
+      },
+      {
+        "reviewer": "codex local CLI",
+        "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt ddf8bb93-c38a-48be-9fcc-e9b1235fe610",
+        "images": [
+          "capture-3-1440.png",
+          "capture-3-390.png",
+          "capture-3-mobile-scroll-end-4.png",
+          "capture-3-mobile-scroll-end-6.png",
+          "capture-3-scene-1.png",
+          "capture-3-scene-2.png",
+          "capture-3-scene-3.png",
+          "capture-3-scene-4.png",
+          "capture-3-scene-5.png",
+          "capture-3-scene-6.png"
+        ],
+        "judgment": "All ten images were visually inspected. Desktop text, contrast and hierarchy are clear, with no visible text collisions. Mobile text reflows successfully. Chart and diagram content require horizontal scrolling; the supplied end-position captures show their rightmost content, but scroll discoverability is weak. The process page is the weakest composition because its small diagram and large empty interval interrupt the story rhythm. Pass with warnings.\ncapture-3-1440.png: All six scenes are visible. Violet, white, cream and black backgrounds establish a clear sequence; headings and body text remain separated. The process scene has the weakest rhythm, with substantial empty space beneath its diagram.\ncapture-3-390.png: Chapter, image, metric and comparison content reflow into readable columns without visible text overlap. The evidence chart shows only its earlier quarters, and the process diagram ends inside Compare; neither region has an obvious visible horizontal-scroll cue.\ncapture-3-mobile-scroll-end-4.png: Evidence scene at the horizontal scroll end shows Q4–Q6 and final values 78 and 45 clearly. Earlier chart content and the vertical scale are outside the viewport, with partial labels at the left boundary. Heading, legend, explanation and citation remain readable.\ncapture-3-mobile-scroll-end-6.png: Process scene at the horizontal scroll end exposes Review and its incoming connector. Compare is partially clipped at the left boundary and Draft is outside the viewport. Title, body and source retain clear contrast; the large gap below the diagram weakens continuity.\ncapture-3-scene-1.png: Chapter scene has strong white-on-violet contrast, a clear two-line headline and a clean vertical divider. The generous empty field supports the deliberate opening pause; no visible clipping or overlap.\ncapture-3-scene-2.png: Image scene balances the tall workbench photograph against a prominent headline and readable supporting text. Image description and artwork disclosure are visible. No visible text clipping or collisions.\ncapture-3-scene-3.png: Collage scene clearly separates the large 12-scenes metric from the serif headline and supporting copy. Dark text contrasts well with cream; source is visible and no elements overlap. The lower empty area preserves a calm pace.\ncapture-3-scene-4.png: Evidence scene displays all six quarters, both colored series, numeric labels and legend. Heading and explanatory copy have strong contrast. The shared starting point is visually merged, but subsequent values remain distinct; no material clipping.\ncapture-3-scene-5.png: Comparison scene has a strong serif heading and an orderly three-column table. Both 81.25% values and retained-source entries are legible. Row rules are subtle but visible; no clipping or overlap.\ncapture-3-scene-6.png: Process scene shows all three nodes and both directional connectors without collisions. Its diagram labels are modest relative to the headline, and the large empty interval before the notes and closing copy makes this the weakest page for hierarchy and story rhythm.",
+        "issues": [
+          {
+            "sceneId": "evidence",
+            "nodeId": "data-chart",
+            "bounds": {
+              "x": 22,
+              "y": 208,
+              "width": 346,
+              "height": 265
+            },
+            "severity": "warning",
+            "reason": "In capture-3-mobile-scroll-end-4.png, the horizontal viewport exposes the final quarters while clipping earlier labels and removing the vertical scale from view. Together with the initial mobile capture, this demonstrates access across offsets, but no obvious scroll cue explains how to inspect the whole chart.",
+            "suggestion": "Add a visible horizontal-scroll affordance and keep the value scale available while scrolling, or provide a readable mobile chart layout."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 22,
+              "y": 240,
+              "width": 346,
+              "height": 112
+            },
+            "severity": "warning",
+            "reason": "In capture-3-mobile-scroll-end-6.png, Review is visible while Draft is offscreen and Compare is cut at the left boundary. The initial mobile view cuts the opposite end, so the complete relationship cannot be read at once and horizontal navigation has little visible guidance.",
+            "suggestion": "Stack the three steps vertically on narrow screens or add a clear scroll cue and position indicator."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 48,
+              "y": 329,
+              "width": 768,
+              "height": 320
+            },
+            "severity": "warning",
+            "reason": "In capture-3-scene-6.png, the relatively small diagram is followed by a large empty interval before the relationship disclosure. This separates the workflow from its explanation and weakens the closing page's rhythm.",
+            "suggestion": "Reduce the diagram region's unused height and bring the explanatory material closer to the connectors."
+          }
+        ],
+        "verdict": "pass"
+      },
+      {
+        "reviewer": "codex local CLI",
+        "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt b24c4e29-b9e0-43f3-83fc-59002908a1dd",
+        "images": [
+          "capture-4-1440.png",
+          "capture-4-390.png",
+          "capture-4-mobile-scroll-end-4.png",
+          "capture-4-mobile-scroll-end-6.png",
+          "capture-4-scene-1.png",
+          "capture-4-scene-2.png",
+          "capture-4-scene-3.png",
+          "capture-4-scene-4.png",
+          "capture-4-scene-5.png",
+          "capture-4-scene-6.png"
+        ],
+        "judgment": "All ten images were visually inspected. Desktop scenes have clear hierarchy, strong contrast and no visible text overlap. Mobile text reflows cleanly; paired scroll-end captures show the chart’s final quarters and the diagram’s Review node are reachable. Warnings remain for weak horizontal-scroll discoverability and the process scene’s sparse composition, the weakest page.\ncapture-4-1440.png: All six scenes are visible. Violet, photography, cream and dark data create distinct story beats. Headings, table and citations remain separated; the final process scene has the weakest visual density.\ncapture-4-390.png: Chapter, image, metric and comparison scenes reflow without visible text collisions. Contrast remains strong. The evidence chart and process diagram extend beyond their initial viewports without a clear visible scrolling cue.\ncapture-4-mobile-scroll-end-4.png: Evidence scene: Q4–Q6, endpoint values, legend, body and citation are readable. Earlier chart content is clipped at the left scroll boundary; this capture demonstrates access to the final data points.\ncapture-4-mobile-scroll-end-6.png: Process scene: Review and its incoming connector are visible at the scroll end. Draft is outside the viewport and Compare is partly clipped. Title, supporting text and citation remain readable.\ncapture-4-scene-1.png: Chapter scene: white text contrasts strongly with violet. Large title and divided supporting copy establish clear hierarchy; generous empty space supports the intended pause.\ncapture-4-scene-2.png: Violet scene: large workbench artwork balances the title and body. Image caption is contained and legible; no visible clipping or overlap.\ncapture-4-scene-3.png: Collage scene: oversized metric and serif heading form a strong two-column hierarchy. Body, note and source are clearly separated against the cream background.\ncapture-4-scene-4.png: Evidence scene: all six quarters and both series are visible. Direct labels and bright series colors support comparison on the dark background; title, legend and explanatory text do not collide.\ncapture-4-scene-5.png: Comparison scene: title leads naturally into a readable three-column table. Values align consistently; body and citation fit below without overlap.\ncapture-4-scene-6.png: Process scene: all three nodes and arrowheads are visible with strong contrast. The diagram occupies only the left portion and leaves a large gap before supporting text, weakening the closing rhythm.",
+        "issues": [
+          {
+            "sceneId": "evidence",
+            "nodeId": "data-chart",
+            "bounds": {
+              "x": 22,
+              "y": 206,
+              "width": 346,
+              "height": 272
+            },
+            "severity": "warning",
+            "reason": "In capture-4-mobile-scroll-end-4.png, the chart viewport cuts earlier labels at its left edge. The paired captures establish reachability, but no visible cue explains horizontal scrolling.",
+            "suggestion": "Add a visible horizontal-scroll cue or persistent scrollbar so readers discover all six quarters."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 22,
+              "y": 235,
+              "width": 346,
+              "height": 121
+            },
+            "severity": "warning",
+            "reason": "In capture-4-mobile-scroll-end-6.png, viewing Review removes Draft from view and clips Compare. Without a visible scroll cue, readers may miss part of the workflow.",
+            "suggestion": "Show a horizontal-scroll cue or stack the three nodes vertically on narrow screens."
+          },
+          {
+            "sceneId": "process",
+            "nodeId": "process-diagram",
+            "bounds": {
+              "x": 48,
+              "y": 300,
+              "width": 1296,
+              "height": 320
+            },
+            "severity": "warning",
+            "reason": "In capture-4-scene-6.png, the diagram is concentrated toward the left with substantial unused space to the right and below, making this the weakest closing page.",
+            "suggestion": "Distribute the nodes more evenly across the available width and reduce the gap before the supporting text."
+          }
+        ],
+        "verdict": "pass"
+      }
+    ],
+    "receipts": [
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "09bd416c-335c-487d-adc6-9b83a18bd3f4",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "c6fcce1b62966b394eab9e5de8a8bcba2803dfbc77c669bfe757cf886844e4f6",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "b29e53c43b229982120fd8982068194d38d2a7f1719f75b6e8a145301e8bcf27",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-1-1440.png",
+            "hash": "90da0e0adf86845f6e51667cc4bc4f60380a902d0c3fb213bcb44d9da0fed2e0",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-390.png",
+            "hash": "360ee6c2ac2cdb4ce4097e40b9407259f955259bb8556028f7c61fb8c0ebda8d",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-mobile-scroll-end-4.png",
+            "hash": "cc319c37905f85ed9c27d0bb4aea2ce394733a370929cf34636aa6928fa235e6",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-mobile-scroll-end-6.png",
+            "hash": "3c3d049e7a2985b3edb2be03c0b3b8e4ce4b8d9fa7cd0b3490701326b3efbf19",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-1.png",
+            "hash": "d5649a4edc027b29402bf861884edc00052cc0b0c642ffed2fa09f018c15d714",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-2.png",
+            "hash": "0edd90302d4d1f1db555acaed4a55449581b0cac11b03cc0128430d117a6997e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-3.png",
+            "hash": "2ace3fc34b4ee5b5356283237f06fb39ab444fc525c8169dfc03bf573eadd9b5",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-4.png",
+            "hash": "716f04790b27567430efb50ae4ea9a21b57f4e565dc39ac48b130f1c75485bcf",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-5.png",
+            "hash": "724b5b236a4e92809d81bfd2efa421fd2351af02920259b69a86b171fedea962",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-1-scene-6.png",
+            "hash": "3415e9bcaf64095ae579a91152883ad4dab79051d49599310842637d3d37a2d9",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 30927,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "67d283886c123f61f311f31006a2848c3b08ee0af14e8db3f6de562c35cf80dc"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "b24c4e29-b9e0-43f3-83fc-59002908a1dd",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "c6fcce1b62966b394eab9e5de8a8bcba2803dfbc77c669bfe757cf886844e4f6",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "a6e5b5cb21863a1eb05830f36d1058fe59a6b0dba3d53a4112ccd03dc066a1bd",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-4-1440.png",
+            "hash": "662d59ec3d5d84a31be71381cea2ae241af0858566a831595bf818d7206b1c13",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-390.png",
+            "hash": "360ee6c2ac2cdb4ce4097e40b9407259f955259bb8556028f7c61fb8c0ebda8d",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-mobile-scroll-end-4.png",
+            "hash": "cc319c37905f85ed9c27d0bb4aea2ce394733a370929cf34636aa6928fa235e6",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-mobile-scroll-end-6.png",
+            "hash": "3c3d049e7a2985b3edb2be03c0b3b8e4ce4b8d9fa7cd0b3490701326b3efbf19",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-scene-1.png",
+            "hash": "d5649a4edc027b29402bf861884edc00052cc0b0c642ffed2fa09f018c15d714",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-scene-2.png",
+            "hash": "0edd90302d4d1f1db555acaed4a55449581b0cac11b03cc0128430d117a6997e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-scene-3.png",
+            "hash": "2ace3fc34b4ee5b5356283237f06fb39ab444fc525c8169dfc03bf573eadd9b5",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-scene-4.png",
+            "hash": "83b64c4f31880eba99c43d06b9bfd2d6adbc000face296bf0b141f4ef1736106",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-scene-5.png",
+            "hash": "0fdd59ee5aabd5c05bbad8d8b6f46aca03474636fe1438cd8c445d8497e70f16",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-4-scene-6.png",
+            "hash": "2d42096b359c58a41e11085532c0e560f8b1c2c123b83fa071bb3d0c95350f1a",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 34652,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "9998f5e033d220403e51dbff03131c1dc21a6883195aa60e92f1e41af1f8ce1a"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "ddf8bb93-c38a-48be-9fcc-e9b1235fe610",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "c6fcce1b62966b394eab9e5de8a8bcba2803dfbc77c669bfe757cf886844e4f6",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "b1e5e6e40232a741b696892945dba4e3892469d314f96085eff90376ae3ea560",
+        "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+        "images": [
+          {
+            "file": "capture-3-1440.png",
+            "hash": "662d59ec3d5d84a31be71381cea2ae241af0858566a831595bf818d7206b1c13",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-390.png",
+            "hash": "360ee6c2ac2cdb4ce4097e40b9407259f955259bb8556028f7c61fb8c0ebda8d",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-mobile-scroll-end-4.png",
+            "hash": "cc319c37905f85ed9c27d0bb4aea2ce394733a370929cf34636aa6928fa235e6",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-mobile-scroll-end-6.png",
+            "hash": "3c3d049e7a2985b3edb2be03c0b3b8e4ce4b8d9fa7cd0b3490701326b3efbf19",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-1.png",
+            "hash": "d5649a4edc027b29402bf861884edc00052cc0b0c642ffed2fa09f018c15d714",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-2.png",
+            "hash": "0edd90302d4d1f1db555acaed4a55449581b0cac11b03cc0128430d117a6997e",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-3.png",
+            "hash": "2ace3fc34b4ee5b5356283237f06fb39ab444fc525c8169dfc03bf573eadd9b5",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-4.png",
+            "hash": "83b64c4f31880eba99c43d06b9bfd2d6adbc000face296bf0b141f4ef1736106",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-5.png",
+            "hash": "0fdd59ee5aabd5c05bbad8d8b6f46aca03474636fe1438cd8c445d8497e70f16",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          },
+          {
+            "file": "capture-3-scene-6.png",
+            "hash": "2d42096b359c58a41e11085532c0e560f8b1c2c123b83fa071bb3d0c95350f1a",
+            "mime": "image/png",
+            "delivery": "submitted-to-cli; model finding required"
+          }
+        ],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 38730,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "09d2cdda0b68b98435a1e4c338c5fdff294f1b41898ab440ccdbffd13a015b63"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "e798ef5c-1471-47a6-8b37-a8b1d441c468",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "c6fcce1b62966b394eab9e5de8a8bcba2803dfbc77c669bfe757cf886844e4f6",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "27f74c639a63a0ee8d67a6c00d8086d35b31e51648d127527de10c742e97e5ac",
+        "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+        "images": [],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 6156,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "d16957657738dce9da8d87e6fe9092ea6319df72281e746d3333c1cb79313bae"
+      },
+      {
+        "format": "deckweft-host-run",
+        "version": 1,
+        "requestId": "f9bb6d60-0023-4c64-ba1f-41c6fc7d80b2",
+        "host": "codex",
+        "surface": "local-cli",
+        "capabilityId": "c6fcce1b62966b394eab9e5de8a8bcba2803dfbc77c669bfe757cf886844e4f6",
+        "requestedModel": null,
+        "actualModel": null,
+        "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+        "authentication": "available",
+        "billingRoute": "unknown; existing host configuration is retained",
+        "inputHash": "e8ad318eabdc9befe95fda6ea9b221acb7199ffb7a0e5ed6895e317dee24b78c",
+        "schemaHash": "6c918cb7cfd5981bf157a4e4ac50b81e85c0f04988d790c4d805c4295e0635f6",
+        "images": [],
+        "timeoutMs": 120000,
+        "status": "validated",
+        "error": null,
+        "hostAcceptance": false,
+        "process": {
+          "exitCode": 0,
+          "elapsedMs": 5883,
+          "timedOut": false,
+          "outputLimited": false,
+          "cancelled": false
+        },
+        "events": {
+          "completedTurns": 1
+        },
+        "outputHash": "fef4ad41b3369495c28ef7c4c4cef60cb22b54a4ecd6b7eda99e58f3044a2c82"
+      }
+    ],
+    "correction": "The original harness did not require changed HTML. Final harness selects a different existing variant and asserts changed output plus unchanged non-target scenes."
+  }
+]

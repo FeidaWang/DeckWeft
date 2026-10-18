@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deckweft:visual-project",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "deckweft-visual-project"
+    },
+    "version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+    },
+    "document": {
+      "type": "object"
+    },
+    "plan": {
+      "type": "object"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "mime": {
+            "const": "image/png"
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8192
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8192
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^assets/[a-f0-9]{64}\\.png$"
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "license": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "allowedUse": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "alt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "fallback": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "origin": {
+            "enum": [
+              "original",
+              "generated",
+              "unknown"
+            ]
+          },
+          "original": {
+            "type": "object",
+            "properties": {
+              "hash": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "mime": {
+                "enum": [
+                  "image/png",
+                  "image/jpeg",
+                  "image/webp"
+                ]
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8192
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8192
+              },
+              "orientation": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^asset-originals/[a-f0-9]{64}\\.(png|jpg|webp)$"
+              }
+            },
+            "required": [
+              "hash",
+              "mime",
+              "width",
+              "height",
+              "orientation",
+              "path"
+            ],
+            "additionalProperties": false
+          },
+          "derivatives": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 2,
+            "items": {
+              "type": "object",
+              "properties": {
+                "hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "mime": {
+                  "enum": [
+                    "image/png",
+                    "image/jpeg",
+                    "image/webp"
+                  ]
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8192
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8192
+                },
+                "orientation": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8
+                },
+                "path": {
+                  "type": "string",
+                  "pattern": "^asset-originals/[a-f0-9]{64}\\.(png|jpg|webp)$"
+                },
+                "sourceHash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "method": {
+                  "const": "browser-canvas"
+                },
+                "lossy": {
+                  "const": true
+                }
+              },
+              "required": [
+                "hash",
+                "mime",
+                "width",
+                "height",
+                "orientation",
+                "path",
+                "sourceHash",
+                "method",
+                "lossy"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "hash",
+          "mime",
+          "width",
+          "height",
+          "path",
+          "provenance",
+          "license",
+          "allowedUse",
+          "alt",
+          "fallback"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 200
+    },
+    "revision": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "createdAt": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "updatedAt": {
+          "type": "string",
+          "maxLength": 40
+        }
+      },
+      "required": [
+        "number",
+        "createdAt",
+        "updatedAt"
+      ],
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "id",
+    "document",
+    "plan",
+    "assets",
+    "revision",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

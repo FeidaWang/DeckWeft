@@ -87,6 +87,22 @@
         "DW-410",
         "DW-420"
       ]
+    },
+    {
+      "id": "VIS-A",
+      "name": "Visual-first semantic web foundation",
+      "dependsOn": [],
+      "state": "VIS-002–007 implemented-local; VIS-001 remote CI remains open",
+      "goal": "Establish reproducible visual evidence and a separate semantic DOM/SVG path without changing v1/v2 storage.",
+      "tasks": [
+        "VIS-001",
+        "VIS-002",
+        "VIS-003",
+        "VIS-004",
+        "VIS-005",
+        "VIS-006",
+        "VIS-007"
+      ]
     }
   ],
   "tasks": [
@@ -881,14 +897,447 @@
       "remainingAcceptance": [
         "Actual After Effects execution, cancellation/rollback, fonts, temporal/easing and early/middle/settled preview rendering"
       ]
+    },
+    {
+      "id": "VIS-001",
+      "priority": "P0",
+      "title": "Reproducible baseline and working CI",
+      "state": "partial",
+      "dependsOn": [],
+      "implemented": [
+        "Locked npm ci before verify in CI",
+        "Three frozen legacy decks; isolated browser screenshots and source/font/output fingerprints"
+      ],
+      "remaining": "Remote CI and clean-checkout remote acceptance remain unrun.",
+      "evidence": "docs/evidence/visual-wave-a/review.md",
+      "acceptance": [
+        "Full acceptance remains defined in the supplied visual-first roadmap; this record covers the initial Wave A slice only."
+      ]
+    },
+    {
+      "id": "VIS-002",
+      "priority": "P0",
+      "title": "Semantic document, design plan, and v3 adapter",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-001"
+      ],
+      "implemented": [
+        "Strict semantic blocks, numeric datasets, versioned source snapshots and anchors",
+        "Explicit nonmutating v1/v2 archive migration and validated import-as-copy",
+        "Revisioned v3 Visual Studio storage, immutable history, restore-as-copy and author locks"
+      ],
+      "remaining": "Source adapters and live synchronization are later SRC tasks.",
+      "evidence": "docs/evidence/visual-studio/review.json",
+      "acceptance": [
+        "V1/v2 readers still pass; migration preserves original JSON without mutation.",
+        "Numeric charts, long CJK headings, code and citations round-trip without numeric coercion.",
+        "Studio save/reopen, revision conflicts and restore-as-copy have actual browser evidence."
+      ]
+    },
+    {
+      "id": "VIS-003",
+      "priority": "P0",
+      "title": "Web scene and target capability contracts",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-002"
+      ],
+      "implemented": [
+        "Stable block/data bindings, text roles, groups, reading order and breakpoint variants",
+        "Validated SVG path/transform/clip/gradient and normalized crop contracts",
+        "Target-specific refusal for unsupported native v3 output; valid HTML stays available"
+      ],
+      "remaining": "Native v3 target compilers remain VIS-016 work; interaction/motion vocabulary is implemented locally under VIS-009.",
+      "evidence": "docs/evidence/visual-studio/review.json",
+      "acceptance": [
+        "Collage, cropped local image and chart bindings validate through one closed derived protocol.",
+        "SVG geometry, transforms, clipping, gradients, groups and responsive bindings are bounded data.",
+        "Unsupported native targets fail specifically and do not block valid web output."
+      ]
+    },
+    {
+      "id": "VIS-004",
+      "priority": "P0",
+      "title": "Semantic DOM/SVG renderer and bilingual layout",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-003"
+      ],
+      "implemented": [
+        "Bilingual semantic DOM/SVG renderer integrated into the real Studio editor",
+        "Local image/crop binding, exact numeric tables, no-JS reading and current-artifact export",
+        "Font/image readiness, DOM bounds, actual SVG/text contrast and clipping checks with negative browser cases"
+      ],
+      "remaining": "VIS-006–011 implement local families, components and bounded correction; the full VIS-014 release gallery and host gates remain open.",
+      "evidence": "docs/evidence/visual-studio/review.json",
+      "acceptance": [
+        "Same semantic document supports desktop presentation and 390 px no-JS reading.",
+        "Fonts and images finish before actual DOM bounds/contrast/clipping capture.",
+        "Screenshots, fit and export refer to the current hashed artifact; inserted contrast/clipping failures are detected."
+      ]
+    },
+    {
+      "id": "VIS-005",
+      "priority": "P1",
+      "title": "Theme packs and author profiles",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-002"
+      ],
+      "implemented": [
+        "Packaged versioned Cream Collage, Dark Data and Electric Violet theme grammar",
+        "English/Chinese typography, spacing, image treatment, charts, modes and motion",
+        "Scoped rule resolution and persisted audience, language, profile and scene/content locks"
+      ],
+      "remaining": "Full-story release acceptance and reference-guided personalization remain VIS-014/015 work.",
+      "evidence": "docs/evidence/visual-studio/review.json",
+      "acceptance": [
+        "Three versioned packs change typography, geometry, images and chapter behavior beyond palette alone.",
+        "Author choices and scoped locks survive actual saves, reloads and theme revisions.",
+        "Scoped rules resolve deterministically and fonts have observed local fallbacks."
+      ]
+    },
+    {
+      "id": "VIS-006",
+      "priority": "P1",
+      "title": "Compositions, candidates, and full-deck rhythm",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-004",
+        "VIS-005"
+      ],
+      "acceptance": [
+        "Six initial families each provide three materially different variants.",
+        "Feasible candidates preserve all facts; deck selection considers focal point, density and repetition.",
+        "Geometry and whole-story visual review establish diversity, not IDs alone."
+      ],
+      "evidence": "docs/evidence/vis-006/review.json",
+      "remaining": "VIS-014 wider gallery/story release, other browser engines and native v3 application acceptance remain open."
+    },
+    {
+      "id": "VIS-007",
+      "priority": "P1",
+      "title": "Asset direction, source extraction, and safe cropping",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-004",
+        "VIS-005"
+      ],
+      "acceptance": [
+        "Named image slots represent role, required pixels, focal/protected regions, source/factual status and honest backend capability.",
+        "Original local document images are reused with source revision/hash, license and original bytes preserved; JPEG/WebP have hash-bound native PNG and web derivatives.",
+        "Portrait/wide safe crops retain the protected subject; impossible crops stop or use explicit contain. Replacement retains scene family and unrelated author choices.",
+        "Generated/unknown concepts cannot automatically become factual source evidence; unavailable generation offers a deliberate content-preserving alternative."
+      ],
+      "evidence": "docs/evidence/vis-007/review.json",
+      "remaining": "Extraction is for registered images in saved local v2/v3 documents, not arbitrary PPTX/PDF parsing. Subject regions are author-marked, not detected. V3 generation transport/native export, VIS-014 broader release and other browser engines remain open."
+    },
+    {
+      "id": "VIS-008",
+      "priority": "P1",
+      "title": "Charts, diagrams, code, and annotation components",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-004",
+        "VIS-006"
+      ],
+      "acceptance": [
+        "Six typed exact-data chart variants, explicit units/axes/time zones and null gaps update geometry, labels, legends and accessible tables together.",
+        "Directed relationship, sequence and annotated process diagrams preserve supplied edges; exact code/emphasis/source anchors and stable annotation identities survive edits and reorder.",
+        "All three themes and both languages have actual browser measurements, static accessible representations, component capability receipts, editor/save/history and measured candidate/rhythm evidence."
+      ],
+      "evidence": "docs/evidence/vis-008/review.json",
+      "remaining": "native v3 target compilers, complex graph routing/label collision coverage, other engines/accessibility and broader VIS-014 release/host gates remain open."
+    },
+    {
+      "id": "VIS-009",
+      "priority": "P1",
+      "title": "Semantic motion and real interactive state",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-004",
+        "VIS-006",
+        "VIS-008"
+      ],
+      "acceptance": [
+        "Typed stable-id chart range/series selection, actual image comparison/hotspots and diagram/code explanations change semantic views and accessible content.",
+        "Keyboard, native touch, reduced-motion parity and deterministic cue-boundary replay/seek preserve exact source and immutable author content.",
+        "Finite scene resources are released on scene exit, background visibility and pagehide; source/author locks, candidates, conflicts and history recovery remain covered."
+      ],
+      "evidence": "docs/evidence/vis-009/review.json",
+      "remaining": "Other browser engines, actual screen reader/IME/200% zoom, arbitrary state/label collision coverage and native v3/host release gates remain open."
+    },
+    {
+      "id": "VIS-010",
+      "priority": "P1",
+      "title": "Browser QA and bounded visual correction",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-004",
+        "VIS-009"
+      ],
+      "acceptance": [
+        "Complete-story contact sheets, full-resolution scenes, platform fonts/resources/console diagnostics, text/source coverage and 234 real action traces across six bilingual three-theme stories and three responsive viewports.",
+        "Five deliberately injected fault classes detected; content/layout/state/renderer-bound receipts require actual delivered-image judgments.",
+        "Only affected scene composition changes, with two-round/candidate/scene/time budgets; author locks and a real failed-candidate/last-valid recovery probe remain enforced."
+      ],
+      "evidence": "docs/evidence/vis-010/review.json",
+      "remaining": "Finer visual repetition and chart-label spacing, exhaustive states, other engines/accessibility, native v3 compilers and broader host/release gates remain open. Automatic correction is restricted to composition; other diagnostics require explicit scoped work."
+    },
+    {
+      "id": "VIS-011",
+      "priority": "P1",
+      "title": "Design director and one-task production loop",
+      "state": "implemented-local",
+      "dependsOn": [
+        "VIS-006",
+        "VIS-007",
+        "VIS-008",
+        "VIS-009",
+        "VIS-010"
+      ],
+      "acceptance": [
+        "Shared content/design/assets/preview/inspection/scoped-patch/export tools with task-specific precompile direction and durable recovery.",
+        "Actual local five-page story at 1440/390px, precise page-4 exact-data chart revision, actual image review and final reviewed HTML exports.",
+        "Cumulative default two-round budgets, source/data/citation/identity preservation, author locks, missing data/assets, stale receipts, conflicts and accepted-artifact failure recovery."
+      ],
+      "evidence": "docs/evidence/vis-011/review.json",
+      "remaining": "Offline source inspection does not externally verify claims; deterministic supplied-text planning and narrow chart grammar need authorized host drafting for richer requests. Native v3 exports, VIS-012 authenticated host adapters and VIS-013 workbench remain open."
+    },
+    {
+      "id": "VIS-012",
+      "priority": "P1",
+      "dependsOn": [
+        "VIS-002",
+        "VIS-010",
+        "VIS-011"
+      ],
+      "title": "Codex and Claude Code adapters with capability probes",
+      "state": "partial",
+      "acceptance": [
+        "each real host independently produces validated artifacts and passes image-feedback delivery. An installed skill or successful mock test does not establish host acceptance. Package/install the plugin into a clean test environment and verify that themes, schemas, runtime files, fonts/assets, and scripts are included. No silent fallback from a user's selected host/model or subscription route to a separately charged API.\n"
+      ],
+      "remaining": "Claude authenticated artifact/image-feedback acceptance remains deferred by user. Codex strict image-reviewed before/after HTML export with a distinct page-4-only revision now passes. Native desktop/plugin activation, Windows child-tree/host checks, wider VIS-014 release and remote CI remain open.",
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/vis-012/review.json",
+      "implemented": [
+        "Codex final-file/event separation and Claude structured_output parsing; native image-input transports",
+        "Version/help capability probes, explicit optional auth status, configuration/workspace binding and expiry",
+        "Bounded stdin subprocesses, selected-host/model retention, secret-free hash receipts and no automatic retry/fallback",
+        "Shared v3 CLI draft/patch/review tools in source, standalone runtime and canonical skill; exact source-line protection",
+        "Actual Codex source drafting and captured-image feedback; Claude version/help only, authentication deferred",
+        "Responsive short-label charts and simple-chain diagrams; actual Codex distinct page-4 revision retained through image review and changed HTML export"
+      ]
+    },
+    {
+      "id": "VIS-013",
+      "priority": "P1",
+      "dependsOn": [
+        "VIS-011",
+        "VIS-012"
+      ],
+      "title": "Prompt-first workbench and persistent design choices",
+      "state": "implemented-local",
+      "acceptance": [
+        "normal generation and revision require no manual layout edits; explicit author locks survive theme changes and source updates; references can remain public while private speaker notes stay private. The output website contains audience navigation, not editor chrome.\n"
+      ],
+      "remaining": "Claude login/live acceptance remains deferred. Local supplied-text planning and narrow named-style/chart/composition revisions do not imply arbitrary semantic editing, PDF/Office ingestion or exhaustive interactive capture. VIS-014 broader story/accessibility/engine/native/packaging and remote CI gates remain open.",
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/vis-013/review.json",
+      "implemented": [
+        "Prompt-first modules inside the existing Visual Studio; local prompt/Markdown source or saved-source generation and scoped natural-language revisions through existing task tools",
+        "Typed independent language/tone/style/update preferences and per-scene profile overrides; author image/theme/composition locks retained",
+        "Opt-in dependency-free isolated Chromium capture, current image gallery or actual Codex findings, strict reviewed HTML export and old-route bypass refusal",
+        "Durable operation checkpoints, sequence/project conflicts, cancellation, explicit source synchronization, interrupted-task recovery and byte-exact last accepted HTML"
+      ]
+    },
+    {
+      "id": "VIS-014",
+      "priority": "P1",
+      "dependsOn": [
+        "VIS-005",
+        "VIS-006",
+        "VIS-007",
+        "VIS-008",
+        "VIS-009",
+        "VIS-010",
+        "VIS-011",
+        "VIS-012",
+        "VIS-013"
+      ],
+      "title": "First visual release gate",
+      "state": "planned",
+      "acceptance": [
+        "all three initial themes pass the bilingual 12-page gallery; each theme produces a coherent bilingual 8-page story; at least three interaction types work; both actual hosts finish a prompt-to-artifact task and a scoped revision; the standalone exported package works outside the repository. Compare the same content against VIS-001's baseline. Approve the whole story, including weakest pages, not only selected hero screenshots."
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "VIS-015",
+      "priority": "P2",
+      "dependsOn": [
+        "VIS-014"
+      ],
+      "title": "Additional styles and reference-guided personalization",
+      "state": "planned",
+      "acceptance": [
+        "extend the gallery with two pages per new direction and validate a full story in each. A reference-derived theme changes structure and visual grammar, not just colors. Author feedback can promote a successful design into a reusable profile without importing unrelated reference text or branding.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "VIS-016",
+      "priority": "P2",
+      "dependsOn": [
+        "VIS-003",
+        "VIS-008",
+        "VIS-014"
+      ],
+      "title": "Target-specific editable exports",
+      "state": "planned",
+      "acceptance": [
+        "supported text/data remain editable; unsupported elements have explicit per-element receipts; no whole-slide screenshot is presented as a fully editable export. Validate in the actual target application where that compatibility is claimed. The rich web output remains available even when a different target requires a limited fallback.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "SRC-001",
+      "priority": "P2",
+      "dependsOn": [
+        "VIS-002",
+        "VIS-014"
+      ],
+      "title": "Source snapshots and stable content extraction",
+      "state": "planned",
+      "acceptance": [
+        "rename, move, small edit, and deletion are distinguishable; unchanged logical blocks retain IDs; every published claim/graphic can link to source anchors. Extraction quality is reported before generation. A content hash supplements logical identity rather than replacing it.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "SRC-002",
+      "priority": "P2",
+      "dependsOn": [
+        "SRC-001",
+        "VIS-010",
+        "VIS-012"
+      ],
+      "title": "Durable incremental jobs",
+      "state": "planned",
+      "acceptance": [
+        "restart recovery, duplicate events, partial downloads, retries, expired credentials, stale workers, and out-of-order completion do not corrupt or duplicate publication. History retention and garbage collection are explicit. Locks and unchanged assets remain intact through incremental rebuilds.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "SRC-003",
+      "priority": "P2",
+      "dependsOn": [
+        "SRC-002",
+        "VIS-013"
+      ],
+      "title": "Local hourly publication and version history",
+      "state": "planned",
+      "acceptance": [
+        "editing one source changes only affected scenes plus necessary neighboring context; unchanged scene IDs/assets remain stable; a failed build leaves the last successful website available; rollback restores a known version. An older job cannot overwrite a newer source revision. Public references and private notes remain separate."
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "SRC-004",
+      "priority": "P2",
+      "dependsOn": [
+        "SRC-003"
+      ],
+      "title": "Google Drive adapter",
+      "state": "planned",
+      "acceptance": [
+        "folder rename/move, edited native documents, duplicates, deletion, revoked access, and missed notifications converge to the correct snapshot set. The adapter produces sources; it does not implement a separate design engine.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "SRC-005",
+      "priority": "P2",
+      "dependsOn": [
+        "SRC-003"
+      ],
+      "title": "Notion adapter",
+      "state": "planned",
+      "acceptance": [
+        "nested-block changes and deleted/archived/inaccessible content are reconciled without duplicating pages; linked evidence remains resolvable; webhook support, where used, is paired with reconciliation.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "SRC-006",
+      "priority": "P2",
+      "dependsOn": [
+        "SRC-003"
+      ],
+      "title": "Dropbox adapter",
+      "state": "planned",
+      "acceptance": [
+        "many-file pagination, interrupted cursor handling, identical names in different folders, and revoked access cannot leak one source's content into another. Use the existing incremental compiler and publisher.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "SRC-007",
+      "priority": "P2",
+      "dependsOn": [
+        "SRC-003"
+      ],
+      "title": "OneDrive adapter",
+      "state": "planned",
+      "acceptance": [
+        "personal/business deployment differences are explicitly tested for the supported account type; delta continuation, deletion, moved items, and access changes converge. This is a separate PR/deployment gate from other connectors. Select the first cloud connector based on the first pilot user's actual source system; the four adapters can proceed in parallel after the common contract is stable.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "DOC-001",
+      "priority": "P3",
+      "dependsOn": [
+        "SRC-003",
+        "VIS-008",
+        "VIS-013"
+      ],
+      "title": "Code-aware living documentation",
+      "state": "planned",
+      "acceptance": [
+        "a signature change updates the corresponding API page and affected examples; unrelated pages remain stable; runnable examples are tested in a controlled environment; inferred explanations are labelled; removed symbols do not remain as current API claims. Start with one language rather than promising all-language analysis.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+    },
+    {
+      "id": "EXP-001",
+      "priority": "P3",
+      "dependsOn": [
+        "VIS-009",
+        "VIS-014"
+      ],
+      "title": "Optional spatial and advanced motion components",
+      "state": "planned",
+      "acceptance": [
+        "the effect explains supplied content, loads only for active scenes, supports reduced motion, stays within the selected device budget, and has an explicit export fallback. Core quality does not depend on adding 3D to every presentation.\n"
+      ],
+      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
     }
   ],
   "executionOrder": [
-    "MB-11",
-    "MB-12",
-    "MB-13",
-    "MB-14",
-    "MB-15"
+    "VIS-002",
+    "VIS-003",
+    "VIS-004",
+    "VIS-005",
+    "VIS-006",
+    "VIS-007",
+    "VIS-008",
+    "VIS-009",
+    "VIS-010",
+    "VIS-011",
+    "VIS-012"
   ],
   "previousExecutionOrder": [
     "DW-020",
@@ -897,14 +1346,12 @@
     "DW-110"
   ],
   "currentBuild": {
-    "scope": "MB-11 through MB-15",
-    "evidence": "docs/evidence/mb-11-15/review.json",
+    "scope": "VIS-013 prompt-first Visual Studio workbench",
     "implementation": "implemented-local",
-    "acceptance": "MB-11 and MB-13 local; MB-12 Dot desktop, MB-14 Figma and MB-15 AE acceptance remain partial",
+    "acceptance": "Local real UI generation/capture/review boundary, actual Codex selected-page revision and reviewed changed HTML, source/lock/privacy/recovery checks; Claude deferred",
+    "evidence": "docs/evidence/vis-013/review.json",
     "remainingManualAcceptance": [
-      "Actual two-worker Dot desktop capability/conversation acceptance; current real host evidence is Codex CLI with selected authored snapshots only",
-      "Actual native Figma development-plugin registration with assigned id, editable media/font/source-map import and visual review",
-      "Actual After Effects execution, cancellation/rollback, fonts, temporal/easing and early/middle/settled preview rendering"
+      "Deferred Claude route, wider VIS-014 release stories, accessibility/other engines, native applications and remote CI"
     ]
   },
   "authorizedTaskIds": [
@@ -922,7 +1369,20 @@
     "MB-12",
     "MB-13",
     "MB-14",
-    "MB-15"
+    "MB-15",
+    "VIS-001",
+    "VIS-002",
+    "VIS-003",
+    "VIS-004",
+    "VIS-005",
+    "VIS-006",
+    "VIS-007",
+    "VIS-008",
+    "VIS-009",
+    "VIS-010",
+    "VIS-011",
+    "VIS-012",
+    "VIS-013"
   ],
   "previousBuild": {
     "scope": "MB-06 through MB-10",
@@ -937,6 +1397,94 @@
       "Screen reader",
       "Conferencing share",
       "Extended display"
+    ]
+  },
+  "previousMediaWorkersBuild": {
+    "scope": "MB-11 through MB-15",
+    "evidence": "docs/evidence/mb-11-15/review.json",
+    "implementation": "implemented-local",
+    "acceptance": "MB-11 and MB-13 local; MB-12 Dot desktop, MB-14 Figma and MB-15 AE acceptance remain partial",
+    "remainingManualAcceptance": [
+      "Actual two-worker Dot desktop capability/conversation acceptance; current real host evidence is Codex CLI with selected authored snapshots only",
+      "Actual native Figma development-plugin registration with assigned id, editable media/font/source-map import and visual review",
+      "Actual After Effects execution, cancellation/rollback, fonts, temporal/easing and early/middle/settled preview rendering"
+    ]
+  },
+  "previousCompositionBuild": {
+    "scope": "VIS-006 six families, measured candidates and whole-deck rhythm",
+    "implementation": "implemented-local",
+    "evidence": "docs/evidence/vis-006/review.json",
+    "acceptance": "Six families × three geometries; both languages and all three packs, minimum two feasible candidates per representative scene; direct-loopback editor and legacy regression checks",
+    "remainingManualAcceptance": [
+      "VIS-001 successful remote CI",
+      "Other browser engines, real OS IME, screen reader and 200% zoom",
+      "VIS-014 broader release gallery/story gate and native v3 exports/host acceptance"
+    ]
+  },
+  "previousAssetBuild": {
+    "scope": "VIS-007 local asset direction, source extraction and protected cropping",
+    "implementation": "implemented-local",
+    "evidence": "docs/evidence/vis-007/review.json",
+    "acceptance": "PNG/JPEG/WebP original preservation, native PNG and optional web derivative, named slots, source extraction, protected crops and honest unavailable generation; bilingual three-theme browser review",
+    "remainingManualAcceptance": [
+      "VIS-001 remote CI",
+      "Other browser engines, real OS IME, screen reader and 200% zoom",
+      "VIS-014 broader release, native v3 exports and real host acceptance"
+    ]
+  },
+  "previousComponentBuild": {
+    "scope": "VIS-008 semantic charts, diagrams, exact code and stable annotations",
+    "implementation": "implemented-local",
+    "evidence": "docs/evidence/vis-008/review.json",
+    "acceptance": "Six bilingual three-theme 14-page stories, exact-data mutations, DOM/SVG measurements, static reading, measured candidates/rhythm and local editor/history regression evidence",
+    "remainingManualAcceptance": [
+      "VIS-009 interactive animation",
+      "Native v3 target compilers and real target/host acceptance",
+      "Other browser engines, real screen reader/IME/200% zoom, remote CI and VIS-014 broader release gates"
+    ]
+  },
+  "previousQualityBuild": {
+    "scope": "VIS-010 browser quality, actual image review and bounded correction",
+    "implementation": "implemented-local",
+    "evidence": "docs/evidence/vis-010/review.json",
+    "acceptance": "Six 15-scene stories, three responsive widths, 234 real action traces, 1,872 coverage records, five injected failures, actual image review and author-locked recovery",
+    "remainingManualAcceptance": [
+      "One warning per story: filtered missing label close to zero-axis tick",
+      "Mobile native code/plots/diagrams use horizontal scrollers and source alternatives, not simultaneous full-width display",
+      "Exhaustive states, other engines, screen reader, IME, 200% zoom and host/native export acceptance remain open"
+    ]
+  },
+  "requirementsDocument": "DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md",
+  "nextExecutionOrder": [
+    "VIS-014",
+    "VIS-015",
+    "VIS-016",
+    "SRC-001",
+    "SRC-002",
+    "SRC-003",
+    "SRC-004",
+    "SRC-005",
+    "SRC-006",
+    "SRC-007",
+    "DOC-001",
+    "EXP-001"
+  ],
+  "planningMeaning": "nextExecutionOrder is planning, not authorization. executionOrder retains historical batches; authorizedTaskIds includes the directly requested VIS-013.",
+  "openAcceptanceGates": [
+    "VIS-001 successful remote CI and clean-checkout acceptance",
+    "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",
+    "VIS-014 twelve families, fixed bilingual gallery, coherent stories and standalone packaging",
+    "Other engines, actual screen reader/IME/200% zoom; native v3 applications only when implemented"
+  ],
+  "previousVisualTaskBuild": {
+    "scope": "VIS-011 local design director and one-task production loop",
+    "implementation": "implemented-local",
+    "evidence": "docs/evidence/vis-011/review.json",
+    "acceptance": "Real isolated Chromium complete story, precise page-4 revision, actual pixel review, bounded repair and accepted-artifact recovery; shared bridge/MCP tool scope and conflicts",
+    "remainingManualAcceptance": [
+      "VIS-012 host adapters and VIS-013 workbench remain subsequent scope",
+      "Offline supplied claims remain externally unverified; rich drafting needs the existing authorized host",
+      "Native v3 exports, other engines/accessibility and broader release gates remain open"
     ]
   }
 }

@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-18",
+  "sourceCommit": "9204f21161fd5b5c15c4040bd2414bed55fb4d99",
+  "sourceTreeHash": "d18909780fe41dac1a09b7f497434bd2823a129fe0b7a27d5db9f43ca4772bb6",
+  "branch": "main",
+  "committed": false,
+  "contracts": {
+    "presentation": 3,
+    "designPlan": 1,
+    "webScene": 1,
+    "visualProject": 1,
+    "themePack": "1.0.0",
+    "renderer": "visual-studio.1"
+  },
+  "implementedLocal": [
+    "VIS-002",
+    "VIS-003",
+    "VIS-004",
+    "VIS-005"
+  ],
+  "remoteCI": "not run; VIS-001 remains partial",
+  "themes": [
+    "cream-collage",
+    "dark-data",
+    "electric-violet"
+  ],
+  "automatedTests": {
+    "command": "npm run verify",
+    "passed": 240,
+    "failed": 0,
+    "skipped": 0,
+    "log": "docs/evidence/visual-studio/verify.txt"
+  },
+  "browser": {
+    "version": "151.0.7922.34",
+    "checkEntries": 22,
+    "captures": 31,
+    "widths": [
+      390,
+      1024,
+      1440
+    ],
+    "pageErrors": [],
+    "externalRequests": [],
+    "evidence": "docs/evidence/visual-studio/browser.json"
+  },
+  "visualReview": {
+    "method": "Actual screenshot pixels supplied to the model with view_image; no aesthetic self-score",
+    "inspected": [
+      "Bilingual three-theme contact sheet",
+      "English/Chinese Electric Violet desktop pages",
+      "English/Chinese violet chapter pages",
+      "Chinese mobile image/chapter pages",
+      "Real Studio design/crop/profile views and mobile reflow"
+    ],
+    "repairs": [
+      "Measure visible crop bounds rather than uncropped source extent",
+      "Distinguish visible font overhang from actual clipping",
+      "Disable controls before asynchronous bootstrap and during theme/save requests",
+      "Constrain mobile grid intrinsic width and preserve selected embedded scene on reflow"
+    ],
+    "negativeChecks": [
+      "Inserted white-on-white heading",
+      "Inserted clipped heading"
+    ]
+  },
+  "newRuntimeDependencies": 0,
+  "asset": {
+    "path": "public/assets/visual/workbench.png",
+    "bytes": 2498310,
+    "origin": "Retained original generated artwork from MB-11\u201315; decorative, not documentary photography"
+  },
+  "artifacts": [
+    {
+      "file": "studio-export.html",
+      "hash": "9a9a8735317e269ad2ab2fe1fcd7e75727a2698e91ddde26be238f2a25e2aaf5",
+      "bytes": 3357071
+    },
+    {
+      "file": "demo.en.html",
+      "hash": "80f5a9fc65227e7e6a4b7d2ff546ef3e971cd8bdfebce1836906ade97094cc6c",
+      "renderHash": "7fcdc18d9e7ae7726df96f9799a313c48e24abff794913c17ba13e9f4de221ef",
+      "bytes": 3356830
+    },
+    {
+      "file": "demo.zh-CN.html",
+      "hash": "fe40b19f571e68477016b70af39e1747d9dd19e9806584989d31880e24c7ddd4",
+      "renderHash": "b9eb7e8d7560bf582429b325fc2f4781cac00b0c53fc4eab93c6fe1488f2a398",
+      "bytes": 3357070
+    }
+  ],
+  "remaining": [
+    "VIS-006 candidates and full-story rhythm",
+    "VIS-014 release gallery, coherent stories and real host generation",
+    "V3 native compilers",
+    "Image optimization, JPEG/WebP and automatic subject-safe crop selection",
+    "Remote CI / real IME / screen reader / 200% zoom / other browser engines"
+  ],
+  "applications": {
+    "Microsoft PowerPoint": [
+      "/Applications/Microsoft PowerPoint.app"
+    ],
+    "Keynote": [
+      "/Applications/Keynote.app"
+    ],
+    "Figma": [
+      "/Applications/Figma.app"
+    ],
+    "After Effects": []
+  },
+  "verificationNote": "Initial full verification exposed the historical MB-only capsule expectation; the fixture now explicitly includes authorized VIS-001\u2013005 and excludes planned VIS-006. Final full verification passed 240/240."
+}

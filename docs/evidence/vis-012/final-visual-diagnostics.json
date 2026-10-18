@@ -1,0 +1,1048 @@
+{
+  "status": "repair-exhausted",
+  "spent": {
+    "rounds": 2,
+    "candidates": 2,
+    "sceneChanges": 2,
+    "milliseconds": 3229
+  },
+  "diagnostics": [
+    {
+      "code": "REPAIR_EXHAUSTED",
+      "recovery": "Restore a missing resource or revise the affected unlocked layout. Keep this checkpoint and last valid artifact; start an explicit new task for more rounds."
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "codex local CLI",
+      "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 097128ab-1e76-419d-9e79-dca0bc16eb21",
+      "images": [
+        "capture-1-1440.png",
+        "capture-1-390.png",
+        "capture-1-mobile-scroll-end-4.png",
+        "capture-1-mobile-scroll-end-6.png",
+        "capture-1-scene-1.png",
+        "capture-1-scene-2.png",
+        "capture-1-scene-3.png",
+        "capture-1-scene-4.png",
+        "capture-1-scene-5.png",
+        "capture-1-scene-6.png"
+      ],
+      "judgment": "All ten images were visually inspected. Desktop contrast, typography and theme changes create a clear rhythm, but mobile charts and diagrams conceal essential content. The process scene is the weakest page: its mobile workflow is incomplete in view, and its desktop spacing weakens the closing sequence. No tools or tests were run; application availability was not assessed.\ncapture-1-1440.png: All six scenes are visible. Strong contrast and alternating violet, white, cream and black establish rhythm. The image scene has clear hierarchy; the closing process scene has a conspicuous gap beneath its diagram.\ncapture-1-390.png: Chapter, image, metric and comparison scenes stack legibly without visible text collisions. The evidence chart loses later quarters off the right edge, and the process diagram loses its Review node. These interrupt the mobile story.\ncapture-1-mobile-scroll-end-4.png: The evidence scene at its scrolled end shows Q4–Q6, but clips earlier quarters, values and the vertical scale at the left boundary. Body text and citation remain legible with strong contrast.\ncapture-1-mobile-scroll-end-6.png: The process scene at its scrolled end shows Review and a clipped Compare box; Draft is absent and connectors enter from outside the viewport. The complete workflow cannot be read together.\ncapture-1-scene-1.png: Chapter scene: crisp white-on-violet contrast, strong two-line heading and a clear divider. Generous empty space supports the deliberate pause; no visible clipping or overlap.\ncapture-1-scene-2.png: Violet scene: the workbench image and large headline balance well across two columns. Caption and supporting text remain distinct and readable; no visible overlap or clipping.\ncapture-1-scene-3.png: Collage scene: the oversized 12 and serif heading establish a clear hierarchy. Cream background retains strong contrast; labels and source fit without collisions. The lower whitespace provides a quiet beat.\ncapture-1-scene-4.png: Evidence scene: both series and all six quarters fit on desktop, with readable legend and commentary. The coincident starting values produce a single visible 18 label, obscuring separate series labeling at Q1.\ncapture-1-scene-5.png: Comparison scene: the dark table header, aligned columns and restrained rules make the exact values easy to compare. Heading, body and citation have clear hierarchy with no visible clipping or overlap.\ncapture-1-scene-6.png: Process scene: all three desktop nodes and connectors are visible with good contrast. The large gap between connectors and relationship notes fragments the closing composition and weakens story momentum.",
+      "issues": [
+        {
+          "sceneId": "evidence",
+          "nodeId": "data-chart",
+          "bounds": {
+            "x": 22,
+            "y": 207,
+            "width": 256,
+            "height": 270
+          },
+          "severity": "error",
+          "reason": "In capture-1-mobile-scroll-end-4.png, horizontal scrolling exposes Q4–Q6 while clipping the earlier data and vertical scale. Neither supplied mobile position presents the complete comparison together.",
+          "suggestion": "Provide a responsive chart that fits all six quarters and the scale within the mobile content width, with fewer ticks or selectively positioned labels."
+        },
+        {
+          "sceneId": "process",
+          "nodeId": "process-diagram",
+          "bounds": {
+            "x": 22,
+            "y": 240,
+            "width": 322,
+            "height": 112
+          },
+          "severity": "error",
+          "reason": "In capture-1-mobile-scroll-end-6.png, Draft is outside the viewport, Compare is clipped and connectors originate beyond the left edge. The full three-step relationship is not visible together.",
+          "suggestion": "Stack Draft, Compare and Review vertically on mobile and reroute connectors so every node and edge fits within the viewport."
+        },
+        {
+          "sceneId": "evidence",
+          "nodeId": "data-chart",
+          "bounds": {
+            "x": 140,
+            "y": 512,
+            "width": 30,
+            "height": 37
+          },
+          "severity": "warning",
+          "reason": "In capture-1-scene-4.png, the series coincide at Q1 and only one starting-value label is distinguishable.",
+          "suggestion": "Offset the two starting labels or explicitly mark the shared value as belonging to both series."
+        },
+        {
+          "sceneId": "process",
+          "nodeId": "process-diagram",
+          "bounds": {
+            "x": 48,
+            "y": 328,
+            "width": 768,
+            "height": 316
+          },
+          "severity": "warning",
+          "reason": "In capture-1-scene-6.png, roughly 150 pixels of empty space separate the connector baseline from the relationship disclosure, making the final scene feel disconnected.",
+          "suggestion": "Bring the relationship notes and closing text closer to the diagram to create a more cohesive ending."
+        }
+      ],
+      "verdict": "fail"
+    },
+    {
+      "reviewer": "codex local CLI",
+      "delivery": "Attached actual local images through codex; per-image visual findings in host response; receipt 5150ac0c-e26c-4893-bb02-967117fc8e97",
+      "images": [
+        "capture-3-1440.png",
+        "capture-3-390.png",
+        "capture-3-mobile-scroll-end-4.png",
+        "capture-3-mobile-scroll-end-6.png",
+        "capture-3-scene-1.png",
+        "capture-3-scene-2.png",
+        "capture-3-scene-3.png",
+        "capture-3-scene-4.png",
+        "capture-3-scene-5.png",
+        "capture-3-scene-6.png"
+      ],
+      "judgment": "All ten attached images were visually inspected. Desktop typography, contrast and spacing are generally strong, with useful variation between chapter, image, metric and evidence pages. Mobile charts and diagrams clip essential content. The process page is the weakest: its desktop diagram has limited visual emphasis, and its mobile views never show the complete workflow.\ncapture-3-1440.png: All six scenes are visible. Strong contrast and distinct themes create clear story rhythm. No obvious text overlap; the process scene has a comparatively small diagram and substantial unused space.\ncapture-3-390.png: Chapter, image, metric and comparison scenes stack legibly. Evidence chart ends after Q4, hiding Q5–Q6; process diagram loses the Review node beyond the right edge. Text contrast remains strong.\ncapture-3-mobile-scroll-end-4.png: Evidence scene at the horizontal scroll end shows Q4–Q6, but clips earlier quarters, the vertical scale and partial labels at the left edge. Title, legend, body and citation remain readable without overlap.\ncapture-3-mobile-scroll-end-6.png: Process scene at the horizontal scroll end shows Review and a truncated Compare box; Draft is absent and connectors enter from outside the visible area. Heading and body remain readable.\ncapture-3-scene-1.png: Chapter scene has crisp white-on-violet contrast, a clear headline/body split and no visible clipping or overlap. Expansive negative space provides a deliberate opening pause.\ncapture-3-scene-2.png: Image scene balances a prominent workbench illustration with a strong headline and readable supporting text. Caption fits beneath the image; no visible clipping or overlap.\ncapture-3-scene-3.png: Collage scene gives the metric and serif headline distinct hierarchy. Cream background retains strong text contrast; body, note and citation fit cleanly.\ncapture-3-scene-4.png: Desktop evidence scene shows all six quarters, both series and their labels. Bright series colors contrast well against black; surrounding text remains separated and readable.\ncapture-3-scene-5.png: Comparison scene has a clear headline and aligned three-column table. Header contrast and row separation support scanning; no visible clipping or overlap.\ncapture-3-scene-6.png: Desktop process scene shows all three nodes and connectors without clipping. It is the weakest desktop composition: small diagram labels and a broad empty interval before the supporting text reduce emphasis at the close.",
+      "issues": [
+        {
+          "sceneId": "evidence",
+          "nodeId": "data-chart",
+          "bounds": {
+            "x": 22,
+            "y": 207,
+            "width": 256,
+            "height": 265
+          },
+          "severity": "error",
+          "reason": "In capture-3-mobile-scroll-end-4.png, horizontal overflow clips earlier quarters, scale labels and line values. The initial mobile view instead hides the final quarters, preventing a complete same-scale comparison in either view.",
+          "suggestion": "Make the plot responsive to the mobile content width, retaining all quarters, scale labels and values together."
+        },
+        {
+          "sceneId": "process",
+          "nodeId": "process-diagram",
+          "bounds": {
+            "x": 22,
+            "y": 240,
+            "width": 322,
+            "height": 112
+          },
+          "severity": "error",
+          "reason": "In capture-3-mobile-scroll-end-6.png, Draft is offscreen, Compare is truncated and connectors begin outside the visible region. The initial mobile view hides Review.",
+          "suggestion": "Reflow the workflow vertically on narrow screens so every node and complete connector remains visible."
+        },
+        {
+          "sceneId": "process",
+          "nodeId": "process-diagram",
+          "bounds": {
+            "x": 48,
+            "y": 296,
+            "width": 1296,
+            "height": 327
+          },
+          "severity": "warning",
+          "reason": "In capture-3-scene-6.png, the diagram occupies only part of the available width, with small labels and substantial empty space below. The final scene has weaker visual emphasis than the preceding pages.",
+          "suggestion": "Increase diagram scale and label size, and tighten the gap before the supporting text."
+        }
+      ],
+      "verdict": "fail"
+    }
+  ],
+  "finalChecks": {
+    "ok": false,
+    "issues": [
+      {
+        "sceneId": "evidence",
+        "nodeId": "data-chart",
+        "bounds": {
+          "x": 22,
+          "y": 207,
+          "width": 256,
+          "height": 270
+        },
+        "severity": "error",
+        "reason": "In capture-5-mobile-scroll-end-4.png, the chart's left side is clipped: earlier quarters, scale and partial labels are outside the visible region. The mobile overview clips the opposite end, so the full comparison cannot be read together.",
+        "suggestion": "Fit the complete plot and axes within the mobile content width, adapting tick and value-label placement while preserving a shared scale.",
+        "kind": "visual-review"
+      },
+      {
+        "sceneId": "process",
+        "nodeId": "process-diagram",
+        "bounds": {
+          "x": 22,
+          "y": 240,
+          "width": 322,
+          "height": 112
+        },
+        "severity": "error",
+        "reason": "In capture-5-mobile-scroll-end-6.png, Draft is absent and Compare is partly clipped. The mobile overview instead loses Review. Neither view communicates the complete workflow at once.",
+        "suggestion": "Reflow the three nodes into a mobile vertical sequence with fully visible connectors and arrowheads.",
+        "kind": "visual-review"
+      }
+    ],
+    "coverage": [
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "chapter",
+        "nodeId": "rd49c68fe2c5484139502",
+        "blockId": "chapter-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "chapter",
+        "nodeId": "r8312349d1fcfe6f47bdd",
+        "blockId": "chapter-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "violet",
+        "nodeId": "r5758aa6e8107854c0665",
+        "blockId": "violet-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "violet",
+        "nodeId": "reb9f9109a646af27b012",
+        "blockId": "violet-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "violet",
+        "nodeId": "rfe988f0bf62b69caa2ba",
+        "blockId": "violet-image",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "violet",
+        "nodeId": "r5194eb0d828a14debd10",
+        "blockId": "violet-caption",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "rf87b09c0078cfbb8c7da",
+        "blockId": "cover-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "rb6a583191f39b77c8d55",
+        "blockId": "cover-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "rc18090e4d52b3ace519c",
+        "blockId": "cover-metric",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "r4c58f6fbaab9acce3e13",
+        "blockId": "cover-note",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "r61a7455a451db5fe977e",
+        "blockId": "cover-source",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r4dc492a5778917ddda35",
+        "blockId": "data-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r21b7ed492835ccd967d8",
+        "blockId": "data-chart",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r398248ae205b8cb4d408",
+        "blockId": "data-callout",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r34bed02a94cce3852840",
+        "blockId": "data-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r131e9af00b5a9f606da1",
+        "blockId": "data-source",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "comparison",
+        "nodeId": "r0b879c8eb9d87034e651",
+        "blockId": "comparison-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "comparison",
+        "nodeId": "r0aa26395557f6c7ab324",
+        "blockId": "comparison-table",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "comparison",
+        "nodeId": "r5735aeed16f6a143df33",
+        "blockId": "comparison-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "comparison",
+        "nodeId": "r1fc47dd6b0cf6a45e6ff",
+        "blockId": "comparison-source",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "process",
+        "nodeId": "r7147eb1b82e52d820741",
+        "blockId": "process-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "process",
+        "nodeId": "r92d0000f3e4c2452d18f",
+        "blockId": "process-diagram",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "process",
+        "nodeId": "r82ccc6d200fcbf303232",
+        "blockId": "process-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "process",
+        "nodeId": "r82447fbee64a0c3e4f15",
+        "blockId": "process-source",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "chapter",
+        "nodeId": "rd49c68fe2c5484139502",
+        "blockId": "chapter-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "chapter",
+        "nodeId": "r8312349d1fcfe6f47bdd",
+        "blockId": "chapter-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "violet",
+        "nodeId": "r5758aa6e8107854c0665",
+        "blockId": "violet-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "violet",
+        "nodeId": "reb9f9109a646af27b012",
+        "blockId": "violet-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "violet",
+        "nodeId": "rfe988f0bf62b69caa2ba",
+        "blockId": "violet-image",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "violet",
+        "nodeId": "r5194eb0d828a14debd10",
+        "blockId": "violet-caption",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "rf87b09c0078cfbb8c7da",
+        "blockId": "cover-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "rb6a583191f39b77c8d55",
+        "blockId": "cover-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "rc18090e4d52b3ace519c",
+        "blockId": "cover-metric",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "r4c58f6fbaab9acce3e13",
+        "blockId": "cover-note",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "collage",
+        "nodeId": "r61a7455a451db5fe977e",
+        "blockId": "cover-source",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r4dc492a5778917ddda35",
+        "blockId": "data-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r21b7ed492835ccd967d8",
+        "blockId": "data-chart",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r398248ae205b8cb4d408",
+        "blockId": "data-callout",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r34bed02a94cce3852840",
+        "blockId": "data-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "evidence",
+        "nodeId": "r131e9af00b5a9f606da1",
+        "blockId": "data-source",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "comparison",
+        "nodeId": "r0b879c8eb9d87034e651",
+        "blockId": "comparison-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "comparison",
+        "nodeId": "r0aa26395557f6c7ab324",
+        "blockId": "comparison-table",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "comparison",
+        "nodeId": "r5735aeed16f6a143df33",
+        "blockId": "comparison-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "comparison",
+        "nodeId": "r1fc47dd6b0cf6a45e6ff",
+        "blockId": "comparison-source",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "process",
+        "nodeId": "r7147eb1b82e52d820741",
+        "blockId": "process-title",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "process",
+        "nodeId": "r92d0000f3e4c2452d18f",
+        "blockId": "process-diagram",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "process",
+        "nodeId": "r82ccc6d200fcbf303232",
+        "blockId": "process-body",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 1000,
+          "dpr": 1
+        },
+        "sceneId": "process",
+        "nodeId": "r82447fbee64a0c3e4f15",
+        "blockId": "process-source",
+        "missing": [],
+        "sources": [
+          {
+            "id": "synthetic-source",
+            "present": true,
+            "rendered": true
+          }
+        ]
+      }
+    ],
+    "traceCount": 0
+  }
+}

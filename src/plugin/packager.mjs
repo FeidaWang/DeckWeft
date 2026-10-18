@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { zipFiles } from '../render/zip.mjs';
 import { VERSION } from '../core/model.mjs';
 export const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-export const RUNTIME_PATHS=['package.json','plugin.json','.codex-plugin/plugin.json','.claude-plugin/plugin.json','bin','src','schemas','roadmap.json','AGENTS.md','public','examples','skills','integrations','LICENSE','NOTICE.md'];
+export const RUNTIME_PATHS=['package.json','plugin.json','.codex-plugin/plugin.json','.claude-plugin/plugin.json','bin','src','themes','schemas','roadmap.json','AGENTS.md','public','examples','skills','integrations','LICENSE','NOTICE.md'];
 export async function copyRuntime(destination){
   await mkdir(destination,{recursive:true});
   for(const name of RUNTIME_PATHS){await mkdir(path.dirname(path.join(destination,name)),{recursive:true});await cp(path.join(ROOT,name),path.join(destination,name),{recursive:true,errorOnExist:true,force:false});}

@@ -58,6 +58,7 @@ function undo(redo=false){
   state.dirty=true;state.counter++;renderEditor();schedulePreview();
 }
 function localize(){
+  const workbenchLink=document.querySelector('.visual-studio-link');if(workbenchLink)workbenchLink.textContent=t('Visual Studio · Prompt workbench','Visual Studio · 提示词工作台');
   if(pitchMode)state.locale='en';
   document.documentElement.lang=state.locale;document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;el.textContent=state.locale==='zh-CN'?(zh[key]||en[key]):en[key];});
   $('#uiLanguage').textContent=state.locale==='zh-CN'?'English':'中文';

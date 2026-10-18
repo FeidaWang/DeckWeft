@@ -1,0 +1,16 @@
+
+> deckweft@0.1.0-alpha.2 deck:create
+> node scripts/deck-task.mjs --brief examples/task-brief.en.json --out dist/vis011-parent-probe/deep/task
+
+{"task":"/Users/feida/Developer/DeckWeft/dist/vis011-parent-probe/deep/task/task.json","sequence":4,"status":"preview-ready","diagnostics":[]}
+
+> deckweft@0.1.0-alpha.2 deck:task
+> node scripts/deck-task.mjs --task dist/vis011-parent-probe/deep/task/task.json --tool design.patch --args dist/vis011-parent-probe/revision.json
+
+{"code":"DATA_REQUIRED","message":"No original dataset is bound/selected for this page. Supply exact original data; the source is retained.","recovery":"Reload this checkpoint; preserve original and lastValid. Correct only the diagnosed input or scope and retry."}
+{"task":"/Users/feida/Developer/DeckWeft/dist/vis011-parent-probe/deep/task/task.json","sequence":5,"status":"data-required","diagnostics":[{"code":"DATA_REQUIRED","message":"No original dataset is bound/selected for this page. Supply exact original data; the source is retained.","recovery":"Reload this checkpoint; preserve original and lastValid. Correct only the diagnosed input or scope and retry."}]}
+
+> deckweft@0.1.0-alpha.2 deck:task
+> node scripts/deck-task.mjs --task dist/vis011-parent-probe/deep/task/task.json --tool artifact.export --args dist/vis011-parent-probe/export.json
+
+{"task":"/Users/feida/Developer/DeckWeft/dist/vis011-parent-probe/deep/task/task.json","sequence":6,"status":"data-required","diagnostics":[{"code":"DATA_REQUIRED","message":"No original dataset is bound/selected for this page. Supply exact original data; the source is retained.","recovery":"Reload this checkpoint; preserve original and lastValid. Correct only the diagnosed input or scope and retry."}]}

@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "captures": [
+    "responsive-390-component-code.png",
+    "responsive-390-component-process.png",
+    "responsive-390-component-line.png",
+    "responsive-1024-component-code.png",
+    "responsive-1024-component-process.png",
+    "responsive-1024-component-line.png"
+  ],
+  "checks": [
+    "Keyboard-selected exact code explanation",
+    "Actual process return-path selection",
+    "Series checkbox changes active chart and preserves complete source rows",
+    "Immutable runtime source; no document overflow at 390/1024"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "files": [
+    {
+      "path": "src/render/web/art-direction.mjs",
+      "sha256": "17dd408bfd9beda9a68623d4e28a0661977083916300c61c30c78e9962b06555"
+    },
+    {
+      "path": "src/components/diagrams/render.mjs",
+      "sha256": "ed45df7d56296fc00858394a6a45cbc75aa3c2630065724fcf8b7d8aaecad503"
+    },
+    {
+      "path": "src/scene/web/compile.mjs",
+      "sha256": "af37cdc3bb81f0d669ef724034fe5a1df2c06291c9e29ffe49d76d42dba75b6c"
+    },
+    {
+      "path": "public/studio/interactions.js",
+      "sha256": "0c35edd257d7725947af172c8024a7f1c1b886ff0df467ee6003caca9d678a5b"
+    },
+    {
+      "path": "public/studio/visual.js",
+      "sha256": "762405b55ac85efcd012fc2a189ac75e02b8d88077bcd131d0a2e00546fc597f"
+    },
+    {
+      "path": "public/runtime/charts.js",
+      "sha256": "2d5972cb72f03b4bb952bd8b968aaec07819e55b7588997250580b6bf9b56eaf"
+    },
+    {
+      "path": "public/runtime/components.js",
+      "sha256": "4df226fe21fd62ba2d4c032251e6e0d0c8feca41c9100e70a9f01f5edf9ebe3a"
+    },
+    {
+      "path": "public/runtime/semantic.js",
+      "sha256": "354d4b0ee2711cd7c5a14e88e4089dbdb87a60d890c26247689e24427c932133"
+    },
+    {
+      "path": "public/runtime/resources.js",
+      "sha256": "158efd9fb92a10d179c6c7d46f55e83081c2d010eb17367255351d4e9cd32d2c"
+    },
+    {
+      "path": "tests/browser_interactions.mjs",
+      "sha256": "c862895f89978058cb63e5c780f25b1145835e7f0fd45f0e53a3ee266e10d1cc"
+    },
+    {
+      "path": "tests/browser_interaction_visual_parity.mjs",
+      "sha256": "8607ade82093bceb17e968490d7fbe5173630d1afd5796970e53771c2b9ff828"
+    },
+    {
+      "path": "tests/browser_explanatory_authoring.mjs",
+      "sha256": "262abc8eb15a2d50e7327a61914737411e0a01355fe37b8eef612b8e38a2551c"
+    }
+  ]
+}

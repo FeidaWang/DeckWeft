@@ -1,0 +1,2 @@
+// Capability reporting only. No provider is invoked and no key or network is consulted.
+export function imageCapabilities(){return {automaticRequests:false,providers:[{id:'none',available:true,operation:'reuse-local'},{id:'host-image-tool',available:false,reason:'Visual Studio has no connected image-generation transport. Reuse a local original or choose a text-led composition deliberately.'}],alternatives:['reuse-local','extract-saved-document','statement-banner']};}

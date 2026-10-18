@@ -1,0 +1,188 @@
+[
+  {
+    "receiptId": "3217b40767bd33442c3409230502e4d62049b992f01672c23f9a9e5e56b09d56",
+    "reviewer": "Codex primary agent, actual image-input review, 2026-10-18",
+    "delivery": "Actual PNG pixels were delivered through functions.view_image and image() in this chat. After final recapture, all six full-page PNGs were delivered again. The other 30 required PNGs are byte-identical to the previously delivered, substantively reviewed image inputs; this is reuse of an actual pixel review, not a review inferred from hashes.",
+    "images": [
+      "en-cream-collage-1440-explored.png",
+      "en-cream-collage-component-line-explored.png",
+      "en-cream-collage-image-comparison-explored.png",
+      "en-cream-collage-violet-explored.png",
+      "en-cream-collage-component-code.png",
+      "en-cream-collage-contact.png"
+    ],
+    "judgment": "The complete story and explored full-page flow keep all 15 scenes. The repaired stacked evidence page uses a plot plus side note and breaks the repeated six-chart composition. Cream paper, serif headings and coral/blue data remain readable. Native code, filtered chart, selected second crop and expanded hotspot were inspected: original code, gap marker, image detail, source labels and selection emphasis remain visible. Full-page views were downscaled by the image viewer and were used for order/rhythm; native component captures establish text/detail legibility. This review covers the recorded representative images, not every native scene or possible state. Non-blocking missing-marker spacing remains recorded.",
+    "issues": [
+      {
+        "sceneId": "component-line",
+        "nodeId": "r17bcc8ca8310a2bc41b5",
+        "blockId": "component-line",
+        "bounds": {
+          "x": 56,
+          "y": 3627.109375,
+          "width": 1328,
+          "height": 481
+        },
+        "severity": "warning",
+        "reason": "In the filtered view, the missing-value label sits close to the zero-axis tick. The label still states Missing/缺失 and full original data remains available.",
+        "suggestion": "In a future scoped chart-label adjustment, separate the missing marker from the zero tick without replacing null with zero."
+      }
+    ],
+    "verdict": "pass"
+  },
+  {
+    "receiptId": "4a25f9f37eb9d7444e7eee71e122720634fce2a7e5aa2739d5282d1a06fd4917",
+    "reviewer": "Codex primary agent, actual image-input review, 2026-10-18",
+    "delivery": "Actual PNG pixels were delivered through functions.view_image and image() in this chat. After final recapture, all six full-page PNGs were delivered again. The other 30 required PNGs are byte-identical to the previously delivered, substantively reviewed image inputs; this is reuse of an actual pixel review, not a review inferred from hashes.",
+    "images": [
+      "en-dark-data-1440-explored.png",
+      "en-dark-data-component-line-explored.png",
+      "en-dark-data-image-comparison-explored.png",
+      "en-dark-data-violet-explored.png",
+      "en-dark-data-component-code.png",
+      "en-dark-data-contact.png"
+    ],
+    "judgment": "The complete story and explored full-page flow keep all 15 scenes. The repaired stacked evidence page uses a plot plus side note and breaks the repeated six-chart composition. Dark backgrounds keep light labels, lime/purple series and readable active controls. Native code, filtered chart, selected second crop and expanded hotspot were inspected: original code, gap marker, image detail, source labels and selection emphasis remain visible. Full-page views were downscaled by the image viewer and were used for order/rhythm; native component captures establish text/detail legibility. This review covers the recorded representative images, not every native scene or possible state. Non-blocking missing-marker spacing remains recorded.",
+    "issues": [
+      {
+        "sceneId": "component-line",
+        "nodeId": "r17bcc8ca8310a2bc41b5",
+        "blockId": "component-line",
+        "bounds": {
+          "x": 56,
+          "y": 3627.109375,
+          "width": 1328,
+          "height": 481
+        },
+        "severity": "warning",
+        "reason": "In the filtered view, the missing-value label sits close to the zero-axis tick. The label still states Missing/缺失 and full original data remains available.",
+        "suggestion": "In a future scoped chart-label adjustment, separate the missing marker from the zero tick without replacing null with zero."
+      }
+    ],
+    "verdict": "pass"
+  },
+  {
+    "receiptId": "da8da19215b20c16689d30f8d194ee5633c17b292e64b8942fe2ae456e337c82",
+    "reviewer": "Codex primary agent, actual image-input review, 2026-10-18",
+    "delivery": "Actual PNG pixels were delivered through functions.view_image and image() in this chat. After final recapture, all six full-page PNGs were delivered again. The other 30 required PNGs are byte-identical to the previously delivered, substantively reviewed image inputs; this is reuse of an actual pixel review, not a review inferred from hashes.",
+    "images": [
+      "en-electric-violet-1440-explored.png",
+      "en-electric-violet-component-line-explored.png",
+      "en-electric-violet-image-comparison-explored.png",
+      "en-electric-violet-violet-explored.png",
+      "en-electric-violet-component-code.png",
+      "en-electric-violet-contact.png"
+    ],
+    "judgment": "The complete story and explored full-page flow keep all 15 scenes. The repaired stacked evidence page uses a plot plus side note and breaks the repeated six-chart composition. White evidence surfaces, violet accents and the saturated chapter retain a consistent hierarchy. Native code, filtered chart, selected second crop and expanded hotspot were inspected: original code, gap marker, image detail, source labels and selection emphasis remain visible. Full-page views were downscaled by the image viewer and were used for order/rhythm; native component captures establish text/detail legibility. This review covers the recorded representative images, not every native scene or possible state. Non-blocking missing-marker spacing remains recorded.",
+    "issues": [
+      {
+        "sceneId": "component-line",
+        "nodeId": "r17bcc8ca8310a2bc41b5",
+        "blockId": "component-line",
+        "bounds": {
+          "x": 56,
+          "y": 3627.109375,
+          "width": 1328,
+          "height": 481
+        },
+        "severity": "warning",
+        "reason": "In the filtered view, the missing-value label sits close to the zero-axis tick. The label still states Missing/缺失 and full original data remains available.",
+        "suggestion": "In a future scoped chart-label adjustment, separate the missing marker from the zero tick without replacing null with zero."
+      }
+    ],
+    "verdict": "pass"
+  },
+  {
+    "receiptId": "39b87458608d9e660cb9b2f5445840a30d834da16361ca98dfe912f2d3f1c98f",
+    "reviewer": "Codex primary agent, actual image-input review, 2026-10-18",
+    "delivery": "Actual PNG pixels were delivered through functions.view_image and image() in this chat. After final recapture, all six full-page PNGs were delivered again. The other 30 required PNGs are byte-identical to the previously delivered, substantively reviewed image inputs; this is reuse of an actual pixel review, not a review inferred from hashes.",
+    "images": [
+      "zh-CN-cream-collage-1440-explored.png",
+      "zh-CN-cream-collage-component-line-explored.png",
+      "zh-CN-cream-collage-image-comparison-explored.png",
+      "zh-CN-cream-collage-violet-explored.png",
+      "zh-CN-cream-collage-component-code.png",
+      "zh-CN-cream-collage-contact.png"
+    ],
+    "judgment": "The complete story and explored full-page flow keep all 15 scenes. The repaired stacked evidence page uses a plot plus side note and breaks the repeated six-chart composition. Cream paper, serif headings and coral/blue data remain readable. Native code, filtered chart, selected second crop and expanded hotspot were inspected: original code, gap marker, image detail, source labels and selection emphasis remain visible. Full-page views were downscaled by the image viewer and were used for order/rhythm; native component captures establish text/detail legibility. This review covers the recorded representative images, not every native scene or possible state. Non-blocking missing-marker spacing remains recorded.",
+    "issues": [
+      {
+        "sceneId": "component-line",
+        "nodeId": "r17bcc8ca8310a2bc41b5",
+        "blockId": "component-line",
+        "bounds": {
+          "x": 56,
+          "y": 3669.65625,
+          "width": 1328,
+          "height": 499
+        },
+        "severity": "warning",
+        "reason": "In the filtered view, the missing-value label sits close to the zero-axis tick. The label still states Missing/缺失 and full original data remains available.",
+        "suggestion": "In a future scoped chart-label adjustment, separate the missing marker from the zero tick without replacing null with zero."
+      }
+    ],
+    "verdict": "pass"
+  },
+  {
+    "receiptId": "c68e49f5dedd6859eacae4bdf617abe24261ce08d645ed89e4ae87c85bc67d8e",
+    "reviewer": "Codex primary agent, actual image-input review, 2026-10-18",
+    "delivery": "Actual PNG pixels were delivered through functions.view_image and image() in this chat. After final recapture, all six full-page PNGs were delivered again. The other 30 required PNGs are byte-identical to the previously delivered, substantively reviewed image inputs; this is reuse of an actual pixel review, not a review inferred from hashes.",
+    "images": [
+      "zh-CN-dark-data-1440-explored.png",
+      "zh-CN-dark-data-component-line-explored.png",
+      "zh-CN-dark-data-image-comparison-explored.png",
+      "zh-CN-dark-data-violet-explored.png",
+      "zh-CN-dark-data-component-code.png",
+      "zh-CN-dark-data-contact.png"
+    ],
+    "judgment": "The complete story and explored full-page flow keep all 15 scenes. The repaired stacked evidence page uses a plot plus side note and breaks the repeated six-chart composition. Dark backgrounds keep light labels, lime/purple series and readable active controls. Native code, filtered chart, selected second crop and expanded hotspot were inspected: original code, gap marker, image detail, source labels and selection emphasis remain visible. Full-page views were downscaled by the image viewer and were used for order/rhythm; native component captures establish text/detail legibility. This review covers the recorded representative images, not every native scene or possible state. Non-blocking missing-marker spacing remains recorded.",
+    "issues": [
+      {
+        "sceneId": "component-line",
+        "nodeId": "r17bcc8ca8310a2bc41b5",
+        "blockId": "component-line",
+        "bounds": {
+          "x": 56,
+          "y": 3669.65625,
+          "width": 1328,
+          "height": 499
+        },
+        "severity": "warning",
+        "reason": "In the filtered view, the missing-value label sits close to the zero-axis tick. The label still states Missing/缺失 and full original data remains available.",
+        "suggestion": "In a future scoped chart-label adjustment, separate the missing marker from the zero tick without replacing null with zero."
+      }
+    ],
+    "verdict": "pass"
+  },
+  {
+    "receiptId": "d645b094b84868756d4c9c40f9cfeed1f8c8d7945be11a48f9fcebb231d896c8",
+    "reviewer": "Codex primary agent, actual image-input review, 2026-10-18",
+    "delivery": "Actual PNG pixels were delivered through functions.view_image and image() in this chat. After final recapture, all six full-page PNGs were delivered again. The other 30 required PNGs are byte-identical to the previously delivered, substantively reviewed image inputs; this is reuse of an actual pixel review, not a review inferred from hashes.",
+    "images": [
+      "zh-CN-electric-violet-1440-explored.png",
+      "zh-CN-electric-violet-component-line-explored.png",
+      "zh-CN-electric-violet-image-comparison-explored.png",
+      "zh-CN-electric-violet-violet-explored.png",
+      "zh-CN-electric-violet-component-code.png",
+      "zh-CN-electric-violet-contact.png"
+    ],
+    "judgment": "The complete story and explored full-page flow keep all 15 scenes. The repaired stacked evidence page uses a plot plus side note and breaks the repeated six-chart composition. White evidence surfaces, violet accents and the saturated chapter retain a consistent hierarchy. Native code, filtered chart, selected second crop and expanded hotspot were inspected: original code, gap marker, image detail, source labels and selection emphasis remain visible. Full-page views were downscaled by the image viewer and were used for order/rhythm; native component captures establish text/detail legibility. This review covers the recorded representative images, not every native scene or possible state. Non-blocking missing-marker spacing remains recorded.",
+    "issues": [
+      {
+        "sceneId": "component-line",
+        "nodeId": "r17bcc8ca8310a2bc41b5",
+        "blockId": "component-line",
+        "bounds": {
+          "x": 56,
+          "y": 3669.65625,
+          "width": 1328,
+          "height": 499
+        },
+        "severity": "warning",
+        "reason": "In the filtered view, the missing-value label sits close to the zero-axis tick. The label still states Missing/缺失 and full original data remains available.",
+        "suggestion": "In a future scoped chart-label adjustment, separate the missing marker from the zero tick without replacing null with zero."
+      }
+    ],
+    "verdict": "pass"
+  }
+]

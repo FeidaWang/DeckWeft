@@ -2,6 +2,54 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## VIS-013 — prompt-first workbench, 2026-10-18
+
+VIS-013 is **implemented-local** inside the existing Visual Studio: prompt/source generation, independent languages and typed scoped design choices, actual screenshot/Codex review, distinct selected-page revision and reviewed HTML export. Durable conflicts, locks, private-note boundaries, cancellation, explicit source sync and last-valid recovery remain enforced. Claude stays deferred; broader release acceptance remains VIS-014. [Manual](docs/en/workbench.md) · [Evidence](docs/evidence/vis-013/review.md).
+
+## VIS-012 — coding-host adapters, 2026-10-18
+
+VIS-012 is **implemented locally, partial acceptance**: Codex and Claude Code share strict structured-result parsing, capability probes, bounded stdin processes, image transports, hash-only receipts and the same v3 task tools. Source lines, exact data, scopes, locks and stale sequence checks remain enforced. Real Codex draft/image-feedback and strict, distinct page-4 revision with reviewed before/after HTML exports now pass; Claude only received version/help probes and its login/live task stay deferred. No native desktop or both-host release gate is closed. [Manual](docs/en/hosts.md) · [Failures, actual runs and validation](docs/evidence/vis-012/review.md). VIS-013 is now implemented locally.
+
+## Current requirements reconciliation — 2026-10-18
+
+The [updated visual-first requirements](DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) now distinguish the old committed audit from the current visual implementation. VIS-001 is partial; VIS-002–011 are implemented locally with the evidence below. `roadmap.json` includes every remaining VIS/SRC/DOC/EXP task and its dependencies. Historical batch orders and authorization records are retained; `nextExecutionOrder` is planning only.
+
+VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. Next planned implementation: **VIS-014 visual release gate**. Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep VIS-001 remote CI, actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
+
+[Reconciliation and current validation](docs/evidence/roadmap-reconciliation/review.md) · [Next-task handoff](docs/en/handoff.md).
+
+## VIS-011 — one local task, 2026-10-18
+
+VIS-011 is **implemented-local**: seven shared tools connect task-specific story/design planning, local assets, real browser checks, actual image review, scoped exact-data revisions, cumulative two-round repair and reviewed HTML/recovery exports. Real 1440/390px stories, page-4-only chart revision and failed rerun after accepted export passed. Local protocol/mock evidence stays separate from host acceptance. [Manual](docs/en/task-loop.md) · [Evidence](docs/evidence/vis-011/review.md). Offline claims are not externally verified; richer host drafting, native v3 exports, VIS-012 adapters and VIS-013 workbench remain open.
+
+## VIS-010 — browser quality and bounded correction, 2026-10-18
+
+VIS-010 is **implemented-local**: complete-story sheets/native captures, platform fonts/resource/console diagnostics, exact text/source coverage, 234 real action traces and actual-image reviews share source/layout/state-bound receipts. Six bilingual three-theme stories pass three responsive widths; five injected failures are detected. Each ordinary repair changes one affected scene; a locked two-round failure preserves the last valid HTML and incomplete candidate. [Try it](docs/en/visual-quality.md) · [Visual judgments and evidence](docs/evidence/vis-010/review.md). Fine label spacing, exhaustive states, other engines/accessibility and wider native/host/release gates remain open.
+
+## VIS-009 — semantic motion and real audience state, 2026-10-18
+
+VIS-009 is **implemented-local**: chart range/series selection, actual image comparison/hotspots, diagram/code explanation steps and deterministic finite cue replay/seek now share typed stable identities, semantic explanation content, derived scenes and Visual Studio authoring. Six bilingual three-theme 15-page stories have 270 measured candidates (264 pass; at least two per page), native keyboard/touch/reduced-motion checks, a real background-tab resource probe, and lock/history/editor regressions. [Try it](docs/en/interactions.md) · [Observed failures, screenshots and evidence](docs/evidence/vis-009/review.md). Other engines/accessibility, exhaustive state coverage, native v3 compilers and broader release/host gates remain open.
+
+## VIS-008 — semantic charts, diagrams, code and annotations, 2026-10-18
+
+VIS-008 is **implemented-local**: six exact-data chart variants, directed relationship/sequence/process diagrams, whitespace-preserving code and stable object annotations now share typed content, theme tokens, derived scenes and Visual Studio editing. Six bilingual three-theme stories have real browser measurements, data-mutation/static-reading checks and measured candidates/rhythm; revision conflicts, source/asset/author locks and history stay covered. [Try it](docs/en/components.md) · [Failures, repairs and evidence](docs/evidence/vis-008/review.md). Native v3 compilers and broader release/host/accessibility gates remain open.
+
+## VIS-007 — original sources and protected image slots, 2026-10-18
+
+VIS-007 is **implemented-local** for typed asset direction, local PNG/JPEG/WebP original retention and hash-bound derivatives, explicit saved-document image extraction, named-slot replacement and author-protected crops. Source/rights/locks/original files stay intact. Three-theme bilingual direct-browser work includes actual codec/EXIF/original-download and source-reuse checks. [Try it](docs/en/assets.md) · [Evidence and limits](docs/evidence/vis-007/review.md). V3 generation transport, automatic subject detection, arbitrary PPTX/PDF parsing, native exports and wider release gates remain open.
+
+## VIS-006 — composition candidates and deck rhythm, 2026-10-18
+
+VIS-006 is **implemented-local**: six families each have three distinct geometries and reading paths; Visual Studio compares measured previews, selects individual pages or whole-deck rhythm, and reorders stable scene identities. Three themes and both languages have 108 candidate captures, with at least two feasible choices per representative scene. Facts, exact values, citations, assets, locks, v1/v2 paths, revision conflicts and history recovery remain covered. [Try it](docs/en/visual-studio.md) · [Failures, visual review and evidence](docs/evidence/vis-006/review.md). VIS-001 remote CI and VIS-014 broader release/native/host gates remain open.
+
+## Visual Studio integration — 2026-10-18
+
+VIS-002–005 now have local contract/editor/storage/theme implementation and direct-browser evidence. Visual Studio edits and saves v3 projects in the same loopback application; three executable themes include Electric Violet image and chapter pages. The build retains strict migration, author locks, history, exact-data rendering and current-artifact export. VIS-001 remote CI and the wider release/host/native gates remain open. VIS-006 implementation and evidence are recorded above. [Manual](docs/en/visual-studio.md) · [Review](docs/evidence/visual-studio/review.md).
+
+## Visual-first rebuild — Wave A, 2026-10-18
+
+Historical Wave A snapshot (superseded by the local integration above): VIS-001–005 were **partial**: CI now installs locked tools, three legacy baselines and bilingual collage/chart examples have local evidence, and v1/v2 storage stays unchanged. Remote CI, complete contracts/theme packs, host generation and the release gallery remain open. [Guide](docs/en/visual-first.md) · [Review](docs/evidence/visual-wave-a/review.md).
+
 ## Current local build — MB-11 through MB-15
 
 The user authorized this third batch on 2026-10-18. Local source adds an opt-in host-image journal/cache, two independently scoped workers and isolated code copies, two general Three.js recipes with editable static fallbacks, and media/font/source-map and temporal/rollback importer improvements. [Guide](docs/en/media-workers.md) · [Evidence](docs/evidence/mb-11-15/review.md).

@@ -1,0 +1,71 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 1,
+  "id": "strategy-zh-CN",
+  "title": "深圳前海：从研究到可执行的产品策略",
+  "locale": "zh-CN",
+  "aspectRatio": "16:9",
+  "theme": "paper",
+  "brief": {
+    "prompt": "",
+    "audience": "",
+    "outcome": ""
+  },
+  "slides": [
+    {
+      "id": "slide_0",
+      "role": "opening",
+      "content": {
+        "eyebrow": "",
+        "title": "深圳前海：从研究到可执行的产品策略",
+        "body": "固定的合成研究材料，不代表真实研究结论。",
+        "items": [
+          "保留原始数字与来源",
+          "清楚区分事实、推断与假设",
+          "用中英文混排检验换行能力"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_1",
+      "role": "closing",
+      "content": {
+        "eyebrow": "",
+        "title": "下一阶段的研究计划",
+        "body": "",
+        "items": [
+          "明确问题与受众",
+          "检查证据与反例",
+          "形成可复核的决策"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-18T00:00:00.000Z",
+    "updatedAt": "2026-10-18T00:00:00.000Z"
+  },
+  "extensions": {}
+}

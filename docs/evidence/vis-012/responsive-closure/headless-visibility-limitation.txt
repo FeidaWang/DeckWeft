@@ -1,0 +1,7 @@
+{
+  "ok": false,
+  "cases": 6,
+  "captures": 146,
+  "failure": "Error: Command failed: /Users/feida/.nvm/versions/node/v24.14.0/bin/node /Users/feida/Developer/DeckWeft/tests/browser_native_visibility.mjs --home /private/var/folders/mf/spqyb9593h75f1n4s5br659w0000gn/T/dw-interactions-browser-gjEh5f --project /private/var/folders/mf/spqyb9593h75f1n4s5br659w0000gn/T/dw-interactions-browser-gjEh5f/native-proof-project.json --out /Users/feida/Developer/DeckWeft/dist/visual-interactions/acceptance/native-visibility.json\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\npage.waitForFunction: Timeout 30000ms exceeded.\n    at nativeVisibilityProbe (/Users/feida/Developer/DeckWeft/tests/native_visibility.mjs:16:124)\n    at async file:///Users/feida/Developer/DeckWeft/tests/browser_native_visibility.mjs:6:17 {\n  log: [],\n  name: 'TimeoutError'\n}\n\nNode.js v24.14.0\n\n    at genericNodeError (node:internal/errors:985:15)\n    at wrappedFn (node:internal/errors:539:14)\n    at ChildProcess.exithandler (node:child_process:417:12)\n    at ChildProcess.emit (node:events:508:28)\n    at maybeClose (node:internal/child_process:1100:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:305:5)",
+  "out": "/Users/feida/Developer/DeckWeft/dist/visual-interactions/acceptance"
+}

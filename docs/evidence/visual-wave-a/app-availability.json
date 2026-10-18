@@ -1,0 +1,15 @@
+{
+  "method": "Read-only application path discovery; no application launched or bundle changed",
+  "applications": {
+    "Microsoft PowerPoint": [
+      "/Applications/Microsoft PowerPoint.app"
+    ],
+    "Keynote": [
+      "/Applications/Keynote.app"
+    ],
+    "Figma": [
+      "/Applications/Figma.app"
+    ],
+    "After Effects": []
+  }
+}

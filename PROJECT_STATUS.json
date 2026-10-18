@@ -9,14 +9,14 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
-    "passed": 222,
+    "passed": 334,
     "failed": 0,
     "skipped": 0,
     "environment": {
       "os": "macOS arm64",
       "node": "v24.14.0"
     },
-    "log": "docs/evidence/mb-11-15/verify.txt",
+    "log": "docs/evidence/interaction-visual-regression/verify.txt",
     "finalRun": "passed"
   },
   "browser": {
@@ -32,11 +32,54 @@
     "screenReader": false,
     "zoom200Percent": false,
     "latestReview": {
-      "mode": "direct loopback: provided in-app browser and isolated cached Chrome for Testing",
-      "viewportChecks": 3,
+      "mode": "Actual loopback editor, offline semantic gallery and native background visibility; complete interaction regression",
+      "evidence": "docs/evidence/interaction-visual-regression/gallery.json",
+      "stories": 6,
+      "pagesPerStory": 15,
+      "nativeTouchCases": 6,
+      "nativeBackgroundVisibility": true,
+      "candidatePages": 270,
+      "candidatePagesPassing": 219,
+      "minimumFeasiblePerPage": 2,
+      "captures": 146,
       "pageErrorsObserved": 0,
-      "evidence": "docs/evidence/mb-11-15/browser.json",
-      "actualProjection": false
+      "externalRequestsObserved": 0,
+      "actualProjection": false,
+      "browserVersion": "151.0.7922.34"
+    },
+    "latestQualityReview": {
+      "scope": "VIS-010",
+      "mode": "Actual direct-loopback isolated Chromium; full-resolution capture plus explicit actual-image reviews",
+      "browserVersion": "151.0.7922.34",
+      "evidence": "docs/evidence/vis-010/browser.json",
+      "stories": 6,
+      "pagesPerStory": 15,
+      "viewportWidths": [
+        390,
+        1024,
+        1440
+      ],
+      "realActionTraces": 234,
+      "regionCoverageRecords": 1872,
+      "captures": 132,
+      "qualityGate": "passed with recorded nonblocking warnings",
+      "pageErrorsObserved": 0,
+      "externalRequestsObserved": 0,
+      "studioRegressionChecks": 22,
+      "hostOrNativeCertification": false
+    },
+    "latestPreviewExportParity": {
+      "evidence": "docs/evidence/interaction-visual-regression/parity.json",
+      "pairs": 216,
+      "languages": 2,
+      "themes": 3,
+      "widths": [
+        1440,
+        390
+      ],
+      "actualHTMLBytesEqual": true,
+      "sceneMarkupAndSelectedStateEqual": true,
+      "rasterToleranceDocumented": true
     }
   },
   "pptx": {
@@ -75,8 +118,8 @@
   "notImplemented": [
     "automatic web research",
     "built-in model provider",
-    "image generation",
-    "native charts",
+    "automatic v3 image-generation transport (legacy opt-in local host-image journal exists)",
+    "editable native v3 charts (semantic web charts exist)",
     "arbitrary PPTX import",
     "real-time collaboration",
     "hosted billing",
@@ -84,7 +127,9 @@
     "rendered AE video"
   ],
   "nextTasks": [
-    "MB-08 actual Dot desktop acceptance when available; MB-11\u201315 require new authorization",
+    "VIS-012 Claude live acceptance remains deferred; VIS-014 is next planned",
+    "VIS-014 six additional families, fixed bilingual gallery/stories and standalone package acceptance",
+    "VIS-001 successful remote CI and clean-checkout acceptance",
     "DW-020 Claude authentication (deferred), Codex desktop native activation and remote CI",
     "DW-120 manual device / accessibility / direct-browser checks",
     "DW-130 cross-font / cross-app comparison",
@@ -96,11 +141,12 @@
     "DW-210"
   ],
   "requestedExecutionOrder": [
-    "MB-06",
-    "MB-07",
-    "MB-08",
-    "MB-09",
-    "MB-10"
+    "VIS-002",
+    "VIS-003",
+    "VIS-004",
+    "VIS-005",
+    "VIS-006",
+    "VIS-007"
   ],
   "taskResults": {
     "DW-020": {
@@ -123,6 +169,22 @@
     "DW-110": {
       "status": "partial",
       "scope": "Read-only history and idempotent restore-as-copy implemented. Retention/pruning/archive management not implemented."
+    },
+    "VIS-006": {
+      "status": "implemented-local",
+      "evidence": "docs/evidence/vis-006/review.json",
+      "scope": "Six families, three measured candidates, whole-deck rhythm and stable-identity reorder; no native or host-release certification"
+    },
+    "VIS-007": {
+      "status": "implemented-local",
+      "evidence": "docs/evidence/vis-007/review.json",
+      "scope": "Local originals/derivatives, named slots, source extraction and author-protected crops; no connected v3 image generation/native-host certification"
+    },
+    "VIS-012": {
+      "status": "partial",
+      "implementation": "implemented-local",
+      "evidence": "docs/evidence/vis-012/review.json",
+      "reason": "Codex strict distinct-revision image review and HTML export passed. Claude login/live remains deferred; both-host/native release acceptance remains open."
     }
   },
   "fonts": {
@@ -242,5 +304,268 @@
     "spatial": "Orbit/layers; actual WebGL context loss, static/print fallback and reduced-motion keyboard checks",
     "figma": "Updated importer and local tests; desktop plugin menu remained loading; no assigned identity or actual import obtained",
     "afterEffects": "Updated JSX/local tests; application absent; actual execution/rendering remains open"
+  },
+  "previousMediaWorkersVerification": {
+    "command": "npm run verify",
+    "passed": 222,
+    "failed": 0,
+    "skipped": 0,
+    "environment": {
+      "os": "macOS arm64",
+      "node": "v24.14.0"
+    },
+    "log": "docs/evidence/mb-11-15/verify.txt",
+    "finalRun": "passed"
+  },
+  "visualFirstBuild": {
+    "scope": "Wave A initial slice; VIS-001 through VIS-005 partial",
+    "guide": "docs/en/visual-first.md",
+    "evidence": "docs/evidence/visual-wave-a/review.json",
+    "schemaVersion": 3,
+    "format": "deckweft-presentation",
+    "studioProjectVersions": [
+      1,
+      2
+    ],
+    "themes": [
+      "cream-collage",
+      "dark-data"
+    ],
+    "locales": [
+      "en",
+      "zh-CN"
+    ],
+    "browserWidths": [
+      390,
+      1024,
+      1440
+    ],
+    "newRuntimeDependencies": 0,
+    "remoteCI": "not run",
+    "nativeV3Export": "not implemented",
+    "hostGeneration": "not run"
+  },
+  "previousWaveAVerification": {
+    "command": "npm run verify",
+    "passed": 231,
+    "failed": 0,
+    "skipped": 0,
+    "environment": {
+      "os": "macOS arm64",
+      "node": "v24.14.0"
+    },
+    "log": "docs/evidence/visual-wave-a/verify.txt",
+    "finalRun": "passed"
+  },
+  "visualStudioBuild": {
+    "scope": "VIS-002–005 local implementation",
+    "guide": "docs/en/visual-studio.md",
+    "evidence": "docs/evidence/visual-studio/review.json",
+    "themes": [
+      "cream-collage",
+      "dark-data",
+      "electric-violet"
+    ],
+    "schemaVersions": {
+      "presentation": 3,
+      "designPlan": 1,
+      "webScene": 1,
+      "visualProject": 1,
+      "themePack": "1.0.0"
+    },
+    "editor": "Actual v3 editing, scoped themes, local images, revisioned save/reopen and history restore",
+    "browserWidths": [
+      390,
+      1024,
+      1440
+    ],
+    "newRuntimeDependencies": 0,
+    "remoteCI": "not run",
+    "v3NativeExport": "unsupported; target-specific refusal",
+    "hostGeneration": "not run"
+  },
+  "compositionBuild": {
+    "scope": "VIS-006",
+    "state": "implemented-local",
+    "evidence": "docs/evidence/vis-006/review.json",
+    "runtimeDependenciesAdded": 0,
+    "candidatePages": 108,
+    "minimumFeasiblePerRepresentative": 2,
+    "remaining": [
+      "VIS-001 remote CI",
+      "VIS-014 wider story/gallery and native v3/host acceptance",
+      "Other engines, real IME, screen reader and 200% zoom"
+    ]
+  },
+  "assetBuild": {
+    "scope": "VIS-007",
+    "state": "implemented-local",
+    "evidence": "docs/evidence/vis-007/review.json",
+    "runtimeDependenciesAdded": 0,
+    "browserCropCases": 36,
+    "nativePixelProbes": 3,
+    "remaining": [
+      "External PPTX/PDF source parsing",
+      "Automatic subject detection",
+      "V3 image-generation transport and native exports",
+      "VIS-001 CI / VIS-014 broader release gates"
+    ]
+  },
+  "componentBuild": {
+    "scope": "VIS-008",
+    "state": "implemented-local",
+    "evidence": "docs/evidence/vis-008/review.json",
+    "runtimeDependenciesAdded": 0,
+    "charts": [
+      "line",
+      "area",
+      "ranked-bar",
+      "stacked",
+      "scatter",
+      "heatmap"
+    ],
+    "diagrams": [
+      "relationship",
+      "sequence",
+      "process"
+    ],
+    "code": "Exact source text, whitespace, emphasis and source anchors; raw uniform CRLF preserved, mixed separators use JSON",
+    "annotations": "Stable block/object/category/series identities; code line references explicitly authored",
+    "remaining": [
+      "VIS-009 motion/interaction",
+      "Native v3 target compilers and actual target acceptance",
+      "Complex routing and exhaustive label-collision coverage",
+      "Other engines/accessibility, remote CI and VIS-014 wider release/host gates"
+    ]
+  },
+  "interactionBuild": {
+    "scope": "VIS-009",
+    "state": "implemented-local",
+    "evidence": "docs/evidence/vis-009/review.json",
+    "runtimeDependenciesAdded": 0,
+    "authorContent": "Semantic explanation pool plus stable references in typed scene plans",
+    "viewerState": "Ephemeral pure reducer; deterministic cue-boundary replay/seek; finite scene resource ownership",
+    "remaining": [
+      "Other browser engines, actual screen-reader/IME/200% zoom",
+      "Exhaustive state/complex routing/label-collision coverage",
+      "Native v3 compilers and real target/host acceptance",
+      "VIS-001 remote CI and broader VIS-014 release gates"
+    ]
+  },
+  "qualityBuild": {
+    "scope": "VIS-010",
+    "state": "implemented-local",
+    "evidence": "docs/evidence/vis-010/review.json",
+    "runtimeDependenciesAdded": 0,
+    "qualityGate": "passed representative local cases with recorded nonblocking warnings",
+    "browserStories": 6,
+    "realActionTraces": 234,
+    "repairBudget": {
+      "maxRounds": 2,
+      "maxCandidates": 6,
+      "maxSceneChanges": 2,
+      "maxMilliseconds": 60000
+    },
+    "remaining": [
+      "One warning per story: filtered missing label close to zero-axis tick",
+      "Mobile native code/plots/diagrams use horizontal scrollers and source alternatives, not simultaneous full-width display",
+      "Exhaustive states, other engines, screen reader, IME, 200% zoom and host/native export acceptance remain open"
+    ]
+  },
+  "visualTaskLoop": {
+    "scope": "VIS-011",
+    "implementation": "implemented-local",
+    "evidence": "docs/evidence/vis-011/review.json",
+    "browser": "153.0.8010.12",
+    "actualImagePathsViewed": 13,
+    "reviewedHtmlExports": 3,
+    "defaultRepairBudget": {
+      "rounds": 2,
+      "candidates": 6,
+      "sceneChanges": 2,
+      "milliseconds": 60000
+    },
+    "hostAcceptance": "not-run; VIS-012 remains subsequent scope",
+    "workbench": "VIS-013 implemented-local; see workbench evidence",
+    "remaining": [
+      "Offline content/source inspection is not external fact verification",
+      "Native v3 exports and wider engine/accessibility/release gates remain open"
+    ]
+  },
+  "requestedExecutionOrderMeaning": "Historical recorded request, retained without expanding authorization; use plannedExecutionOrder for the next proposed work.",
+  "plannedExecutionOrder": [
+    "VIS-012",
+    "VIS-013",
+    "VIS-014",
+    "VIS-015",
+    "VIS-016",
+    "SRC-001",
+    "SRC-002",
+    "SRC-003",
+    "SRC-004",
+    "SRC-005",
+    "SRC-006",
+    "SRC-007",
+    "DOC-001",
+    "EXP-001"
+  ],
+  "requirementsDocument": "DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md",
+  "hostAdapters": {
+    "scope": "VIS-012",
+    "implementation": "implemented-local",
+    "acceptance": "partial",
+    "evidence": "docs/evidence/vis-012/review.json",
+    "guide": "docs/en/hosts.md",
+    "runtimeDependenciesAdded": 0,
+    "schemaVersion": 1,
+    "codex": "Actual source-preserving draft, required image findings, distinct page-4-only revision and two reviewed HTML exports passed; semantic document/assets/non-target scenes retained",
+    "claudeCode": "Version/help preflight and synthetic controller tests only; authentication and live runs deferred by user",
+    "nativeDesktop": "not tested",
+    "billingRoute": "unknown; existing host configuration retained",
+    "remaining": [
+      "Claude actual authenticated structured artifacts and image feedback",
+      "Native plugin/desktop discovery, Windows host/child-tree, wider VIS-014 release and remote CI"
+    ],
+    "strictVisualLoopEvidence": "docs/evidence/vis-012/responsive-closure/report.json",
+    "responsiveRegression": "docs/evidence/vis-012/responsive-closure/responsive-browser.json"
+  },
+  "previousVisualTaskVerification": {
+    "command": "npm run verify",
+    "passed": 290,
+    "failed": 0,
+    "skipped": 0,
+    "environment": {
+      "os": "macOS arm64",
+      "node": "v24.14.0"
+    },
+    "log": "docs/evidence/vis-011/verify.txt",
+    "finalRun": "passed"
+  },
+  "workbench": {
+    "scope": "VIS-013",
+    "implementation": "implemented-local",
+    "evidence": "docs/evidence/vis-013/review.json",
+    "guide": "docs/en/workbench.md",
+    "runtimeDependenciesAdded": 0,
+    "actualCodexScopedRevision": "passed; selected page changes, document/assets/other scenes retained, fresh image findings and changed reviewed HTML",
+    "claude": "login/live deferred",
+    "capture": "Opt-in isolated browser outside Applications; temporary profile; actual local PNG bytes via Node built-in WebSocket",
+    "recovery": "Sequence/project conflicts, cancellation, explicit saved-source sync, author-lock failure and byte-exact last accepted HTML",
+    "limits": [
+      "Local grammar is bounded; no arbitrary semantic editing or PDF/Office ingestion",
+      "Interactive artifacts without real action traces block acceptance",
+      "Wider VIS-014 release/accessibility/engine/native gates remain open"
+    ]
+  },
+  "explanatoryInteractions": {
+    "status": "implemented-local",
+    "existingWork": true,
+    "sourceValuesPreserved": true,
+    "savedChartStepOpening": true,
+    "runtimeDependenciesAdded": 0,
+    "coverMetricSurface": "Explicit contrasting source-preserving DOM surface",
+    "responsiveDiagramEdges": "Separate label rows and tracks for repeated/reverse adjacent edges",
+    "evidence": "docs/evidence/interaction-visual-regression/review.md",
+    "nativeApplicationsTested": false
   }
 }

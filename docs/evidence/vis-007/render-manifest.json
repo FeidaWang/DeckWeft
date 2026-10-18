@@ -1,0 +1,26 @@
+{
+  "format": "deckweft-asset-demo",
+  "version": 1,
+  "artifacts": [
+    {
+      "locale": "en",
+      "file": "assets.en.html",
+      "renderHash": "ed96ebaf9e78d1b3031f4fdf1ba817bfd4d52557390e4f703cb718ba7cc02935",
+      "sha256": "5822416c83894f51081cc4ba84567db81745bb2b6295630a5adab9e0cca5d52e",
+      "bytes": 51755,
+      "nativeBytes": 33292,
+      "webBytes": 10458,
+      "originalHash": "32fcc94f4bf141f31468fdaca27ad6d619c04619a7a454d1ffeb6fd224a8f933"
+    },
+    {
+      "locale": "zh-CN",
+      "file": "assets.zh-CN.html",
+      "renderHash": "7ae042c7e5f1b36be573136c8e2b9ab0b6311265adc112c05d54e2a3e290a2f5",
+      "sha256": "5f0e94b997dfcd693d689a30ec488e277f82f69230d092a7010be36f7e7879b3",
+      "bytes": 52025,
+      "nativeBytes": 33292,
+      "webBytes": 10458,
+      "originalHash": "32fcc94f4bf141f31468fdaca27ad6d619c04619a7a454d1ffeb6fd224a8f933"
+    }
+  ]
+}

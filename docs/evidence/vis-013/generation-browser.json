@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "home": "/Users/feida/Developer/DeckWeft/dist/vis013-generation-final/library",
+  "id": "66389c0c-1821-4f8b-98a1-98958be4f207",
+  "captures": [
+    {
+      "file": "capture-1792319145555-1440.png",
+      "sha256": "4f2acf8c97c414c04926841f0381cde45f7521d7a56e773df295803e4da067ac",
+      "reviewRequired": true
+    },
+    {
+      "file": "capture-1792319145555-390.png",
+      "sha256": "e0b23aa9177f1abbb20562af5dd49d806c6b55b780204e289abe4a6309b2f908",
+      "reviewRequired": true
+    }
+  ],
+  "sourceLinesExact": true,
+  "manualLayoutEdits": 0,
+  "audienceNavigation": true,
+  "noEditorChrome": true,
+  "unreviewedExportBlocked": true,
+  "errors": []
+}

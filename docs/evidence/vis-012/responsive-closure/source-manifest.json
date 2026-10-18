@@ -1,0 +1,8 @@
+{
+  "src/components/charts/render.mjs": "d18fb49cd43003c0a4526821d237d760703ef44b5c8dc1704a1f88af9c71b17b",
+  "src/components/diagrams/render.mjs": "3472ddd9aa425bdd5987ac4deb20049957c55cafec07ff1bcf5715c7e696fad5",
+  "src/render/web/styles.mjs": "f521a72780746c463cc931bca356212a4253fe742375aaa7e1500ce81b2b8a7d",
+  "src/render/web/runtime.mjs": "7332ca5afc5e4d1a2afa06cdce38276309b71d1eef9c28b63118a3cca3789e16",
+  "scripts/host-visual-acceptance.mjs": "d56566d0a6e8224c988a152ef026071940848738de858eba60b138ab49db49a1",
+  "tests/browser_responsive_components.mjs": "753f0d771ce6531d7a8e80c3649784f3457fcab298aef40a2c4bada34ec1ae10"
+}

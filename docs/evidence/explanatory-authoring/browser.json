@@ -1,0 +1,18 @@
+{
+  "checks": [
+    {
+      "locale": "en",
+      "sourceId": "visual_25014aebd73a4135",
+      "verified": "Existing-page authoring, exact values, saved opening, source-bound explanation, reload, measured HTML download and interactive offline export at 1440/390px"
+    },
+    {
+      "locale": "zh-CN",
+      "sourceId": "visual_6b757e09f7544425",
+      "verified": "Existing-page authoring, exact values, saved opening, source-bound explanation, reload, measured HTML download and interactive offline export at 1440/390px"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "browser": "151.0.7922.34",
+  "ok": true
+}

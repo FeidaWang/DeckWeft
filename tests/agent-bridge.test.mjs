@@ -89,7 +89,7 @@ test('actual MCP subprocess claims an opt-in HTTP job and returns a reviewable c
  lines.on('line',line=>{const response=JSON.parse(line);pending.get(response.id)?.(response);pending.delete(response.id);});
  const rpc=(method,params)=>new Promise((resolve,reject)=>{const id=++nextId,timer=setTimeout(()=>{pending.delete(id);reject(Error('MCP response timeout'));},5000);pending.set(id,r=>{clearTimeout(timer);resolve(r)});child.stdin.write(JSON.stringify({jsonrpc:'2.0',id,method,params})+'\n');});
  assert.equal((await rpc('initialize',{protocolVersion:'2025-06-18'})).result.protocolVersion,'2025-06-18');
- assert.equal((await rpc('tools/list',{})).result.tools.length,6);
+ assert.equal((await rpc('tools/list',{})).result.tools.length,7);
  const tool=async(name,args={})=>(await rpc('tools/call',{name,arguments:args})).result;
  assert.equal((await tool('deckweft_connect',{name:'Test agent',model:'Test model'})).isError,undefined);
  assert.equal((await(await call('/api/agent/status')).json()).agent.reportedModel,'Test model');

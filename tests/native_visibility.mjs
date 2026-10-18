@@ -1,0 +1,21 @@
+// QA only: native visibility without Playwright's default focus/media overrides.
+import assert from 'node:assert/strict';
+import {spawn} from 'node:child_process';
+import {mkdtemp,readFile,realpath,rm} from 'node:fs/promises';
+import path from 'node:path';import os from 'node:os';
+export async function nativeVisibilityProbe({chromium,executablePath,origin,project}){
+ const binary=await realpath(executablePath);if(/[\\/]Applications[\\/]/i.test(binary)||/[\\/]Applications[\\/]/i.test(executablePath))throw Error('Use an isolated testing browser outside Applications.');
+ // A genuine same-origin artifact response; no content routing/interception in this native context.
+ const session=await(await fetch(origin+'/api/session')).json();const response=await fetch(origin+'/api/visual/preview',{method:'POST',headers:{Authorization:'Bearer '+session.token,Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({project})});assert.equal(response.status,200);const artifact=await response.json();
+ const profile=await realpath(await mkdtemp(path.join(os.tmpdir(),'dw-native-motion-'))),child=spawn(binary,['--user-data-dir='+profile,'--remote-debugging-port=0','--remote-debugging-address=127.0.0.1','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-sync','about:blank'],{stdio:'ignore'});let browser,launchError;child.on('error',e=>launchError=e);
+ try{
+  let port;for(let i=0;i<100;i++){if(launchError)throw launchError;try{port=(await readFile(path.join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0];break;}catch{await new Promise(r=>setTimeout(r,100));}}if(!/^\d+$/.test(port||''))throw Error('Native testing browser did not start.');
+  browser=await chromium.connectOverCDP('http://127.0.0.1:'+port,{noDefaults:true});const context=browser.contexts()[0],page=context.pages()[0]||await context.newPage(),errors=[],externalRequests=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(!r.url().startsWith(origin+'/')&&!r.url().startsWith('data:'))externalRequests.push(r.url());});
+  await page.bringToFront();await page.goto(origin+artifact.artifactUrl+'#scene=component-code',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>document.body.dataset.ready==='true',{},{polling:100});await page.bringToFront();assert.equal(await page.evaluate(()=>document.hidden),false);
+  await page.locator('#component-code .semantic-timeline button').first().click();await page.evaluate(()=>{window.__backgroundReleased=0;window.deckweftInteractions.registerResource('component-code',()=>window.__backgroundReleased++);});
+  const background=await context.newPage();await background.goto('about:blank');await background.bringToFront();await page.waitForFunction(()=>document.hidden&&window.deckweftInteractions.snapshot().find(s=>s.sceneId==='component-code').resources.timers===0,{},{polling:100});
+  const hidden=await page.evaluate(()=>({hidden:document.hidden,released:window.__backgroundReleased,state:window.deckweftInteractions.snapshot().find(s=>s.sceneId==='component-code')}));assert.equal(hidden.hidden,true);assert.equal(hidden.released,1);assert.deepEqual(hidden.state.resources,{animations:0,timers:0,registered:0});
+  await page.bringToFront();await page.waitForFunction(()=>!document.hidden&&window.deckweftInteractions.snapshot().find(s=>s.sceneId==='component-code').active,{},{polling:100});const resumed=await page.evaluate(()=>window.deckweftInteractions.snapshot().find(s=>s.sceneId==='component-code'));assert.deepEqual(resumed.state,hidden.state.state);assert.equal(resumed.playing,false);assert.deepEqual(errors,[]);assert.deepEqual(externalRequests,[]);
+  return {ok:true,method:'Actual loopback preview and native foreground/background tabs; isolated profile; noDefaults CDP; no request routing or synthetic visibility event',hidden,resumed,errors,externalRequests};
+ }finally{child.kill('SIGTERM');await Promise.race([new Promise(r=>child.exitCode!==null||child.signalCode!==null?r():child.once('exit',r)),new Promise(r=>setTimeout(r,3000))]);if(child.exitCode===null&&child.signalCode===null)child.kill('SIGKILL');await browser?.close().catch(()=>{});await rm(profile,{recursive:true,force:true,maxRetries:3,retryDelay:100});}
+}

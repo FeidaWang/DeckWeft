@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deckweft:theme-pack",
+  "type": "object",
+  "properties": {
+    "id": {
+      "enum": [
+        "cream-collage",
+        "dark-data",
+        "electric-violet"
+      ]
+    },
+    "version": {
+      "const": "1.0.0"
+    },
+    "attribution": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "palette": {
+      "type": "object",
+      "properties": {
+        "paper": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "ink": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "secondary": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        }
+      },
+      "required": [
+        "paper",
+        "ink",
+        "accent",
+        "secondary"
+      ],
+      "additionalProperties": false
+    },
+    "typography": {
+      "type": "object",
+      "properties": {
+        "displayEn": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "displayZh": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "bodyEn": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "bodyZh": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "code": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "displayScale": {
+          "type": "number",
+          "minimum": 0.7,
+          "maximum": 1.4
+        }
+      },
+      "required": [
+        "displayEn",
+        "displayZh",
+        "bodyEn",
+        "bodyZh",
+        "code",
+        "displayScale"
+      ],
+      "additionalProperties": false
+    },
+    "spacing": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "number",
+          "minimum": 24,
+          "maximum": 80
+        },
+        "gap": {
+          "type": "number",
+          "minimum": 12,
+          "maximum": 60
+        }
+      },
+      "required": [
+        "page",
+        "gap"
+      ],
+      "additionalProperties": false
+    },
+    "imageGrammar": {
+      "type": "object",
+      "properties": {
+        "split": {
+          "type": "number",
+          "minimum": 0.3,
+          "maximum": 0.7
+        },
+        "treatment": {
+          "enum": [
+            "hard-edge",
+            "full-height",
+            "evidence"
+          ]
+        },
+        "caption": {
+          "enum": [
+            "visible"
+          ]
+        }
+      },
+      "required": [
+        "split",
+        "treatment",
+        "caption"
+      ],
+      "additionalProperties": false
+    },
+    "chartColors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^#[a-fA-F0-9]{6}$"
+      },
+      "minItems": 2,
+      "maxItems": 8
+    },
+    "compositions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "diagonal-cover",
+          "chart-with-evidence-rail",
+          "reading-flow",
+          "photo-split",
+          "violet-chapter",
+          "statement-split",
+          "statement-banner",
+          "statement-center",
+          "image-left",
+          "image-strip",
+          "image-right",
+          "metric-left",
+          "metric-band",
+          "metric-right",
+          "evidence-left",
+          "evidence-top",
+          "evidence-right",
+          "comparison-matrix",
+          "comparison-rail",
+          "comparison-stack",
+          "process-line",
+          "process-rail",
+          "process-stair"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 23,
+      "uniqueItems": true
+    },
+    "density": {
+      "enum": [
+        "comfortable",
+        "compact"
+      ]
+    },
+    "motion": {
+      "type": "object",
+      "properties": {
+        "durationMs": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 600
+        },
+        "effect": {
+          "enum": [
+            "none",
+            "fade"
+          ]
+        }
+      },
+      "required": [
+        "durationMs",
+        "effect"
+      ],
+      "additionalProperties": false
+    },
+    "modes": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "enum": [
+            "light",
+            "dark",
+            "violet"
+          ]
+        },
+        "chapter": {
+          "enum": [
+            "light",
+            "dark",
+            "violet"
+          ]
+        }
+      },
+      "required": [
+        "default",
+        "chapter"
+      ],
+      "additionalProperties": false
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sceneRole": {
+            "enum": [
+              "any",
+              "opening",
+              "evidence"
+            ]
+          },
+          "mode": {
+            "enum": [
+              "any",
+              "default",
+              "chapter"
+            ]
+          },
+          "property": {
+            "enum": [
+              "composition",
+              "contrast"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "severity": {
+            "enum": [
+              "prefer",
+              "require"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "sceneRole",
+          "mode",
+          "property",
+          "value",
+          "severity",
+          "rationale"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 20
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "attribution",
+    "palette",
+    "typography",
+    "spacing",
+    "imageGrammar",
+    "chartColors",
+    "compositions",
+    "density",
+    "motion",
+    "modes",
+    "rules"
+  ],
+  "additionalProperties": false
+}

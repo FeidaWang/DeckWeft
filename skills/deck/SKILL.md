@@ -54,3 +54,29 @@ A plain CLI export is still offline-estimate: do not label it browser-measured.
 Do not replace lost-font warnings with embedded font binaries. Existing project schema
 1 remains supported. The Studio can inspect saved versions and restore a new copy
 without replacing the current draft; there is no auto-prune or cloud recovery.
+
+## V3 visual tasks and coding-host adapters
+
+The runtime also ships semantic task tools, themes and host adapters. Run
+`node ../../runtime/bin/deckweft.mjs visual-task --help` for the interface shared
+with the source checkout. Legacy native exports stay separate from v3 HTML/JSON.
+
+When already running as the authoring host, use shared local tools directly;
+do not recursively launch another host just to use this skill. The seven tools are
+content.inspect, design.propose, assets.resolve, render.preview, render.inspect,
+design.patch and artifact.export. Native manifests remain thin wrappers.
+
+For a separately requested external host route, doctor --host codex --json or
+--host claude-code --json probes version/help only. Authentication remains unknown
+unless --probe-auth is explicitly used. Never retry deferred Claude sign-in.
+Live visual-task calls require the selected --host and --live, retain existing
+configuration/model by default, and never fall back to another API/provider.
+Codex final schema JSON is separate from event JSONL; Claude results come only
+from structured_output. Installed manifests and mocks do not certify actual runs.
+
+A host draft with sourceText must retain every original nonempty line. A host
+revision cannot unlock content or expand the scene grant. Actual image feedback
+requires every current capture's pixels and hash-matching findings; a PNG path is
+not a review. Keep failed candidates/checkpoints and the last valid artifact.
+Do not declare final HTML accepted until the shared current quality receipt passes.
+Host adapters add no image backend, browser, fonts or native v3 exporter.

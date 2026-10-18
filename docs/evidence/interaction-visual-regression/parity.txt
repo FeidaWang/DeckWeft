@@ -1,0 +1,11 @@
+en-cream-collage passed
+en-electric-violet passed
+en-dark-data passed
+zh-CN-cream-collage passed
+zh-CN-electric-violet passed
+zh-CN-dark-data passed
+{
+  "ok": true,
+  "cases": 6,
+  "comparisons": 216
+}
