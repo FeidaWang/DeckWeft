@@ -228,6 +228,8 @@ All three themes already carry `chartColors`. No handoff chart changes values to
 
 ## 7. Open decisions
 
+**Decided by the user on 2026-10-19 at the start of S6:** decision 1 is option C. Decision 2 was not needed for VIS-014 and stays open for S8. See [§13](#13-s6-decisions-2026-10-19).
+
 Both decisions belong to the user. Either answer can change VIS-014 or VIS-015 acceptance text in `roadmap.json`, which this step must not edit.
 
 ### Decision 1 — which 12-page gallery is frozen
@@ -460,5 +462,17 @@ F02 → `exists` / LocalVerified. F10 → LocalVerified (still `partial`: no typ
 | Before/after slider (M08), quote carousel (M06) | S5 |
 | C12 line-end CJK punctuation measured as overflow; C13 header font; CJK heading breaks inside phrases; theme packs declaring the S1 token roles | S8 |
 | Studio control for splitting small multiples; typed quote speaker fields | S9 / S1 field list |
-| ProductStage, case-study, Table / Reference | VIS-014 decision |
+| ProductStage, case-study, Table / Reference | VIS-014 decision — not added ([§13](#13-s6-decisions-2026-10-19)) |
+
+## 13. S6 decisions, 2026-10-19
+
+The user decided these at the start of S6 (VIS-014). They are recorded here so S7–S10 do not reopen them silently.
+
+| Topic | Decision | Consequence |
+|---|---|---|
+| Integration of S3, S4, S5 | Merge the three sibling branches into the S6 branch (S3 → S4 → S5). `main` is not changed and nothing is pushed. | One re-recording of [render-baseline.json](../../tests/fixtures/visual/render-baseline.json) after the merge, in its own commit, with `PLAYER_VERSION` → `semantic-player.3` and `WEB_RENDERER_VERSION` → `visual-art-direction.5`. |
+| Decision 1 — frozen gallery | **Option C.** The requirements §9 gallery (four pages per theme, English and Simplified Chinese) is the frozen VIS-014 gallery. The page-42 storyboard stays a later P1 exit check (S8). | No change to VIS-014's acceptance text. Page 7 (annotated case / image story) uses the `image` family with image hotspots; no `case-study` family is added. ProductStage and Table / Reference are not added in VIS-014 either. |
+| C1 — chart focus (S4 `focus` vs S5 `data.focus`) | **Layered rule.** The declared block `focus` is the author's default emphasis and the no-JavaScript drawing. A reader's `data.focus` (one series) overrides it while set; clearing returns to the declared focus (**Author's focus**). A static state that freezes `data.focus` wins. Single-series charts show no series controls and refuse a series focus. | [charts.js](../../public/runtime/charts.js) `focusedChart` draws both the player and static output; the reducer refuses a single-series focus. [Tests](../../tests/layered-focus.test.mjs). Kinds that draw a declared series focus draw the reader's focus the same way; area, stacked and scatter keep S5's colour mixing. |
+| Claude host | Stays **deferred**. Only Codex runs a real prompt-to-artifact task and scoped revision. | VIS-014 needs both hosts, so the most its evidence can support is `partial`. |
+| Decision 2 — T01–T03 | Not asked; not needed for VIS-014. | Open for S8. |
 

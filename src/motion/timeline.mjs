@@ -29,6 +29,7 @@ export function reduceInteractionState(specs,state,event){
  }else if(event.event==='data.focus'&&spec.kind==='chart-select'){
   const seriesId=event.seriesId??null;
   if(seriesId!==null&&spec.chartType==='heatmap')throw Error('Series focus is not drawn on heatmaps; show or hide rows instead.');
+  if(seriesId!==null&&spec.seriesIds.length<2)throw Error('A single-series chart cannot focus a series; declare a category focus on the chart instead.');
   if(seriesId!==null&&!old.seriesIds.includes(seriesId))throw Error('Show a series before focusing it; focus never reveals a hidden series.');
   next.focusSeriesId=seriesId;next.caption=captionSubject(spec,next);
  }else if(event.event==='tab.select'&&spec.kind==='image-compare'){

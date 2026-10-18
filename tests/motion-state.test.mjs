@@ -66,10 +66,10 @@ test('S5 data.focus cues and an authored opening focus are validated by schema a
 test('S5 focus and hide are drawn differently, and static output freezes the author focus',async()=>{
  const {p,resources}=await demo(),block=p.document.blocks.find(b=>b.id==='component-line'),d=p.document.datasets.find(v=>v.id===block.datasetId),scene=sceneOf(p,'component-line');
  const theme=resolveTheme(scene.theme,scene.themeVersion,'en',{profile:p.document.visualBrief.profile}),specs=compileCues(p.document,scene).interactions,state=initialInteractionState(specs)[0],keyState={id:'k',label:'Key'};
- const focus={...state,focusSeriesId:'reviewed'},hide={...state,seriesIds:['reviewed']},legend=m=>[...m.matchAll(/<li><svg class="legend-key"[^>]*><path d="[^"]*" stroke="([^"]+)"[\s\S]*?<\/svg>([^<]+)<\/li>/g)].map(x=>[x[2],x[1]]);
+ const focus={...state,focusSeriesId:'reviewed'},hide={...state,seriesIds:['reviewed']},legend=m=>[...m.matchAll(/<li(?: data-muted="true")?><svg class="legend-key"[^>]*><path d="[^"]*" stroke="([^"]+)"[\s\S]*?<\/svg>([^<]+)<\/li>/g)].map(x=>[x[2],x[1]]);
  const focused=staticChartHTML(block,p.document,theme,{sceneId:scene.id,state:focus,keyState}),filtered=staticChartHTML(block,p.document,theme,{sceneId:scene.id,state:hide,keyState});
- // Focus keeps both series (legend, marks and values); the other series is mixed toward the paper but keeps its hue and at least 3:1.
- assert.deepEqual(legend(focused).map(([l])=>l),['Local','Reviewed']);assert.equal(legend(focused)[1][1],theme.chart[1]);assert.notEqual(legend(focused)[0][1],theme.chart[0]);assert.ok(ratio(legend(focused)[0][1],theme.paper)>=3);
+ // Focus keeps both series (legend, marks and values). A line draws the reader's focus as a declared series focus (layered rule): the legend names the focus, the other series is lighter and keeps its colour.
+ assert.deepEqual(legend(focused).map(([l])=>l),['Local','Reviewed · Focus']);assert.deepEqual(legend(focused).map(([,c])=>c),theme.chart.slice(0,2));assert.match(focused,/<li data-muted="true"><svg class="legend-key"[^>]*>[\s\S]*?<\/svg>Local<\/li>/);
  assert.equal((focused.match(/data-series-id="local"/g)||[]).length,4);assert.match(focused,/Static view · Key: [^<]*\. Focus: Reviewed\. Complete data below\./);
  // A missing value is named without a unit (the S2 statement said "Missing hours").
  const nullAt=d.series[0].values.indexOf(null);assert.ok(nullAt>=0);assert.ok(focused.includes(`${d.categories[nullAt]} (Local Missing; `));assert.equal(focused.includes('Missing\u00a0'),false);assert.equal((focused.match(/data-excluded-anchor/g)||[]).length,0);
@@ -82,7 +82,7 @@ test('S5 focus and hide are drawn differently, and static output freezes the aut
  const q=structuredClone(p),s=sceneOf(q,'component-line');s.cues.splice(1,1,{id:'focus-reviewed',event:'data.focus',interactionId:'select-line',seriesId:'reviewed',label:'Focus on Reviewed'});s.cues.splice(0,1);
  s.keyStates=[{id:'opening',position:0},{id:'focus',position:1,label:'Reviewed in focus'}];s.staticState={keyStateId:'focus'};assertVisualProject(q);
  assert.equal(staticInteractionState(q.document,s)[0].focusSeriesId,'reviewed');const out=html(q,resources),markup=section(out.body,'component-line');
- assert.match(markup,/<p class="component-note static-state-note" data-static-state="focus">Static view · Reviewed in focus: [^<]*\. Focus: Reviewed\. Complete data below\.<\/p>/);assert.deepEqual(legend(markup.slice(0,markup.indexOf('<details>'))).map(([l])=>l),['Local','Reviewed']);
+ assert.match(markup,/<p class="component-note static-state-note" data-static-state="focus">Static view · Reviewed in focus: [^<]*\. Focus: Reviewed\. Complete data below\.<\/p>/);assert.deepEqual(legend(markup.slice(0,markup.indexOf('<details>'))).map(([l])=>l),['Local','Reviewed · Focus']);
  assert.deepEqual(presentationCapabilities('html',q.document,resources,q.plan).issues,[]);
 });
 

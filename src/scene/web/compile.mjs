@@ -4,7 +4,7 @@ import { assertDesignPlan } from '../../design/plan.mjs';
 import {sceneDirection} from '../../design/art-direction.mjs';
 import { assertWebScene } from './validate.mjs';
 // .4 (S4): chart() and its CSS draw new kinds, rows and declarations; every chart's drawing changed, so scene source hashes must not claim the .3 renderer.
-export const WEB_RENDERER_VERSION = 'visual-art-direction.4';
+export const WEB_RENDERER_VERSION = 'visual-art-direction.5';
 export const contentHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function compileWebScenes(document,plan){
  assertDesignPlan(document,plan);

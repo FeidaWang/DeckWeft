@@ -4,7 +4,7 @@ import {chartStatement} from '../../components/charts/statement.mjs';
 import {objectAnchor} from '../../components/annotations/identity.mjs';
 import {selectedDataset} from '../../motion/timeline.mjs';
 import {hotspotPositions} from '../../motion/web.mjs';
-import {focusTheme} from '../../../public/runtime/charts.js';
+import {focusedChart} from '../../../public/runtime/charts.js';
 // Static markup for readers without JavaScript. Only scenes that declare a static state get it, so every other export keeps its
 // exact markup. The player removes [data-static-only] elements and unwraps details[data-static-wrapper] before it mounts, then draws
 // the same state itself; the .static-state-note statement stays and is shown only while the scene is at its static state.
@@ -14,8 +14,8 @@ const statement=(locale,keyState,text)=>`<p class="component-note static-state-n
 /** The frozen chart selection: a text statement of every shown value (with the filter, sort and focus stated separately), the selected marks, and the complete unfiltered table. The statement sits outside the figure so the player keeps it while the static state is shown. */
 export function staticChartHTML(block,document,theme,{sceneId,state,keyState}){
  const d=document.datasets.find(v=>v.id===block.datasetId),zh=document.locale==='zh-CN',shown=selectedDataset(d,state);
- // A focus mixes every other shown series toward the paper; it hides nothing, so the legend and the marks keep every shown series.
- const frozen=chart(block,{locale:document.locale,datasets:[shown]},focusTheme(theme,d,state),{sceneId,paletteIds:d.series.map(s=>s.id)}),full=chart(block,document,theme,{sceneId});
+ // A frozen reader focus wins over the declared focus (layered rule); it hides nothing, so the legend and the marks keep every shown series.
+ const drawn=focusedChart(block,theme,d,state),frozen=chart(drawn.block,{locale:document.locale,datasets:[shown]},drawn.theme,{sceneId,paletteIds:d.series.map(s=>s.id)}),full=chart(block,document,theme,{sceneId});
  const note=`<p class="component-note static-state-note" data-static-state="${x(keyState.id)}">${x(chartStatement(block,d,shown,keyState,document.locale,d.series.find(s=>s.id===state.focusSeriesId)))}</p>`;
  // Marks outside the frozen selection keep their anchors in the complete table, as the interactive view does.
  const start=full.indexOf('<details>'),bodyStart=full.indexOf('<tbody>',start)+7,bodyEnd=full.indexOf('</tbody>',bodyStart),cells=block.chartType==='scatter'?2:1;
