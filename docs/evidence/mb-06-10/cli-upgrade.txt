@@ -1,0 +1,21 @@
+Wrote /Users/feida/Developer/DeckWeft/dist/mb-06-10/cli-upgrade-test.deck.json
+{
+  "ok": true,
+  "errors": 0,
+  "warnings": 1,
+  "issues": [
+    {
+      "code": "SOURCE_NEEDED",
+      "severity": "warning",
+      "slideId": "slide_welcome_en_3",
+      "message": "These numbers have no linked source. Add one, or label them as your own example in the notes."
+    }
+  ],
+  "checks": {
+    "primaryTextContrast": 13.34,
+    "layoutScoring": "deterministic heuristic",
+    "textMeasurement": "offline estimate"
+  },
+  "notice": "Layout fit is not a fact check. Fonts may wrap differently in PowerPoint, Figma, and After Effects."
+}
+

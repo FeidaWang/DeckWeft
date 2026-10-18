@@ -1,0 +1,85 @@
+{
+  "final": {
+    "presenter": {
+      "appearance": "dark",
+      "clock": "0:00 / 1:04",
+      "connection": "观众已连接 · 仅公开画面",
+      "motion": "full"
+    },
+    "audience": {
+      "editorInputs": 0,
+      "page": "1 / 4 · 仅观众画面",
+      "privateScriptPresent": false,
+      "viewport": [
+        473,
+        853
+      ]
+    },
+    "presenterErrors": [],
+    "audienceErrors": []
+  },
+  "autoFollow": {
+    "before": {
+      "clock": "0:00 / 1:17",
+      "follow": "true",
+      "scroll": 0
+    },
+    "after": {
+      "clock": "0:46 / 1:17",
+      "follow": "true",
+      "highlight": "语速只是估算，并非语音识别。",
+      "play": "暂停提词",
+      "scroll": 733
+    }
+  },
+  "reducedMotion": {
+    "before": {
+      "clock": "0:14 / 1:21",
+      "policy": "reduced",
+      "scroll": 0
+    },
+    "after": {
+      "clock": "0:25 / 1:21",
+      "scroll": 0
+    }
+  },
+  "rendererStopped": {
+    "frames": "3039",
+    "policy": "off",
+    "reduced": "true"
+  },
+  "pauseHeld": "0:14 / 1:21",
+  "viewports": [
+    [
+      1280,
+      800
+    ],
+    [
+      768,
+      900
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      740
+    ]
+  ],
+  "layoutTray": {
+    "before": {
+      "stageHeight": 415,
+      "canvasWidth": 673.7734375
+    },
+    "after": {
+      "stageHeight": 567,
+      "canvasWidth": 700
+    }
+  },
+  "paceChange": {
+    "before": "0:00 / 1:17",
+    "after": "0:00 / 1:04"
+  },
+  "rejectedCapture": "An audience capture during viewport override was cropped; replaced after reset with a complete natural-viewport browser screenshot."
+}

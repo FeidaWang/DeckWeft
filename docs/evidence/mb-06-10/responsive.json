@@ -1,0 +1,20 @@
+{
+  "tab": "Chinese mixed-text Studio",
+  "checks": [
+    {
+      "overflow": false,
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "overflow": false,
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "overflow": false,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  ]
+}

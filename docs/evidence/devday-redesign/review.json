@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-17",
+  "scope": "DevDay UI, English presentation, geometric Dots, offline playback and editable exports",
+  "automated": {
+    "command": "npm run verify",
+    "passedTests": 176,
+    "failedTests": 0,
+    "log": "verify.txt"
+  },
+  "presentation": {
+    "slides": 14,
+    "spokenWords": 644,
+    "wpm": 140,
+    "estimatedSpeechSeconds": 276,
+    "scheduledSeconds": 300
+  },
+  "browser": {
+    "surface": "provided in-app browser",
+    "navigation": "direct loopback",
+    "slidesVisuallyInspected": 14,
+    "viewportEvidence": "responsive.json",
+    "geometryEvidence": "three-rendering.json",
+    "characterTextures": 0,
+    "characterDownloads": 5,
+    "consoleErrorsObserved": 0,
+    "realOSIME": false,
+    "screenReader": false,
+    "zoom200Percent": false,
+    "currentStyleOpenedInStudio": true,
+    "currentStyleBrowserMeasuredPptxDownloaded": true
+  },
+  "powerPoint": {
+    "opened": true,
+    "repairRequired": false,
+    "scope": "14-slide sorter, cover and full-resolution workbench screenshot",
+    "nativeTextShapes": 112,
+    "individualPictures": 25,
+    "mediaFiles": 8,
+    "sha256": "85b41517b7f47da324a6ec19ef27cd4686ce06707e0b2d1aa8e24f2daaa4c4e5",
+    "exactInspectedBytes": true,
+    "screenshot": "powerpoint-workbench-fixed.png",
+    "inspectedPackage": "dist/devday-qa/cosmic-media-fixed.pptx"
+  },
+  "three": {
+    "version": "0.186.1",
+    "license": "MIT",
+    "linkedBytes": 2117387,
+    "gzipBytes": 418167,
+    "offline": true,
+    "usesCharacterTextures": false
+  },
+  "agentBridge": {
+    "enabled": true,
+    "connected": false,
+    "jobs": 0,
+    "actualDotAcceptance": false,
+    "actualAstraAcceptance": false,
+    "blocker": "No Dot browser surface. Current computer-use tools prohibit controlling ChatGPT itself. A real host must connect using the prepared task."
+  },
+  "applications": {
+    "powerPoint": "opened and inspected",
+    "keynote": "installed; not tested",
+    "afterEffects": "not installed",
+    "figmaImporter": "media style intentionally unsupported"
+  },
+  "fixedDefects": [
+    "Shared notes/slide theme prompted PowerPoint repair",
+    "JPEG screenshot bytes under .png filename produced invalid native image proportions",
+    "Cropped Dot edges replaced by geometry",
+    "Blue process numbers lacked contrast",
+    "Dense star background competed with collaboration text"
+  ],
+  "styleReview": "../../../design-qa.md"
+}

@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "scope": "independent package/parser inspection, not Microsoft PowerPoint UI validation",
+  "files": [
+    {
+      "file": "welcome.pptx",
+      "slides": 6,
+      "nativeTextShapes": 41,
+      "pictureShapes": 0,
+      "zipCRC": "passed",
+      "xmlParsing": "passed",
+      "relationshipTargets": "passed"
+    },
+    {
+      "file": "welcome.zh-CN.pptx",
+      "slides": 6,
+      "nativeTextShapes": 41,
+      "pictureShapes": 0,
+      "zipCRC": "passed",
+      "xmlParsing": "passed",
+      "relationshipTargets": "passed"
+    }
+  ]
+}

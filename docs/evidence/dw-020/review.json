@@ -1,0 +1,127 @@
+{
+  "format": "deckweft-host-manual-review",
+  "reviewDate": "2026-10-17",
+  "platform": "macOS arm64",
+  "task": "DW-020",
+  "releaseGatePassed": false,
+  "preflight": "2026-10-17-preflight-cli/report.json",
+  "codex": {
+    "version": "codex-cli 0.160.0",
+    "authentication": "existing authenticated host session; no credentials copied",
+    "route": "standalone project skill",
+    "status": "reviewed CLI acceptance passed",
+    "report": "2026-10-17-codex-discovery/report.json",
+    "traceReview": {
+      "skillRead": "item_2: cat .agents/skills/deckweft/SKILL.md",
+      "formatGuideRead": "item_3: installed runtime format guide",
+      "bundledCLI": "item_5 doctor; item_6 new; item_9 check; item_10 layouts; item_11 HTML export; item_12 PPTX export",
+      "successfulCLICommands": true,
+      "artifactVerification": "JSON schema, exactly three English slides and nonce; independently rerun bundled check and byte comparison of both exports",
+      "bundleUnchanged": true,
+      "permissionBypassFlags": false,
+      "note": "Initial attempt was directed to a bundled source skill path, so only the revised attempt demonstrates the installed project skill route."
+    }
+  },
+  "claude": {
+    "version": "2.1.288 (Claude Code)",
+    "validator": "passed with author-metadata warning",
+    "authenticationExitCode": 1,
+    "authenticatedTask": "not run",
+    "status": "blocked: not signed in; user explicitly deferred sign-in",
+    "report": "2026-10-17-live-initial/report.json",
+    "currentNormalPermissionMode": "manual (from installed --help; compatibility fix unit-tested, live Claude task untested)"
+  },
+  "renderer": {
+    "application": "LibreOfficeDev",
+    "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "route": "local headless PPTX to PDF; Poppler 26.05.0 to PNG at 1400px",
+    "measurement": "CLI offline estimate; renderer/font substitution applies",
+    "microsoftPowerPoint": "installed, not opened or inspected",
+    "keynote": "installed, not opened or inspected"
+  },
+  "browser": {
+    "status": "not visually verified",
+    "reason": "Initial host run was refused file:// navigation by browser security policy; no bypass was attempted. Revised task excludes browser access. Local PPTX rendering is a separate document inspection, not browser acceptance."
+  },
+  "nativeCodexDesktop": "not tested; separate activation and invocation still required",
+  "remoteCI": "not run: source ZIP checkout has no Git repository/remote; publication was not requested",
+  "runs": [
+    {
+      "attempt": "2026-10-17-live-initial",
+      "slides": 3,
+      "nativeTextShapes": 23,
+      "pictureShapes": 0,
+      "zipCRC": "passed",
+      "xmlParsing": "passed",
+      "relationshipTargets": "passed",
+      "sourceTextPreserved": "passed",
+      "visuallyInspectedSlides": [
+        1,
+        2,
+        3
+      ],
+      "visualResult": "No clipped text, overlapping objects, missing text or blank slides observed at the rendered size.",
+      "images": [
+        {
+          "file": "2026-10-17-live-initial/slide-1.png",
+          "sha256": "68e0dd047841190bac1dc7933307dc78fcd4ce3ffa068725688da084e248b9ed"
+        },
+        {
+          "file": "2026-10-17-live-initial/slide-2.png",
+          "sha256": "0e9f0deab5eaf3a88c097269463acb1c75a9566d52d4939d84d1274c2b36ca14"
+        },
+        {
+          "file": "2026-10-17-live-initial/slide-3.png",
+          "sha256": "349d6867972d8811b4bb0c5de49e728ed747b202182b146d2390e1d07c150c63"
+        }
+      ]
+    },
+    {
+      "attempt": "2026-10-17-codex-discovery",
+      "slides": 3,
+      "nativeTextShapes": 24,
+      "pictureShapes": 0,
+      "zipCRC": "passed",
+      "xmlParsing": "passed",
+      "relationshipTargets": "passed",
+      "sourceTextPreserved": "passed",
+      "visuallyInspectedSlides": [
+        1,
+        2,
+        3
+      ],
+      "visualResult": "No clipped text, overlapping objects, missing text or blank slides observed at the rendered size.",
+      "images": [
+        {
+          "file": "2026-10-17-codex-discovery/slide-1.png",
+          "sha256": "0c0bd4735aad858d57b323c29c639f1412b337433b84ce0759264a5a53ab9e69"
+        },
+        {
+          "file": "2026-10-17-codex-discovery/slide-2.png",
+          "sha256": "059b5cc5fb1ff1830d9e5d788bf64f19631e1860bf3978a6e7784561969a1d51"
+        },
+        {
+          "file": "2026-10-17-codex-discovery/slide-3.png",
+          "sha256": "db7d252f0790625eb8e88c74d3d93b71ec5714f69b97babb974ffc81c20f47c2"
+        }
+      ]
+    }
+  ],
+  "remaining": [
+    "Authenticated Claude native-plugin task and trace/slide review (deferred by user)",
+    "Codex desktop native-plugin activation and real invocation, fresh/open session checks",
+    "Remote CI run URL/ID before publication",
+    "Browser HTML visual review remains unverified"
+  ],
+  "privacyReview": "Initial report omits two unrelated UI inventory responses containing personal metadata; command trace, hashes, policy refusal and artifact evidence retained.",
+  "automatedVerification": {
+    "command": "npm run verify",
+    "testsPassed": 149,
+    "testsFailed": 0,
+    "testsSkipped": 0,
+    "sourceCheck": "passed",
+    "build": "passed; byte-stability and isolation tests included",
+    "demo": "English and Simplified Chinese exports passed",
+    "log": "verify.txt"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-18",
+  "host": "codex-cli 0.160.0",
+  "kind": "actual concurrent Codex CLI turns, not Dot desktop",
+  "concurrency": 2,
+  "overlapMs": 12547,
+  "records": [
+    {
+      "validationError": null,
+      "worker": "alpha",
+      "jobId": "7baab3bda0664dbab84f82b0f5cc3d07",
+      "workerId": "10d09170a79ac22ae5b9c1a264d8227e7efdaeef4580bfea02a576224a24d7d5",
+      "capsuleHash": "80c48d16643d8177a341c69a9671c744b51b188caa1c4d7fe801d446d4948422",
+      "selectedSnapshotId": "authored-alpha",
+      "exit": 0,
+      "ungrantedToolEvents": 0,
+      "latencyMs": 12550,
+      "usage": {
+        "input_tokens": 22339,
+        "cached_input_tokens": 12288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 577,
+        "reasoning_output_tokens": 0
+      },
+      "status": "applied",
+      "model": {
+        "requested": "gpt-6-astra",
+        "effort": "medium",
+        "reported": "CLI runner flags",
+        "apiConfirmed": null
+      },
+      "costUSD": null
+    },
+    {
+      "validationError": null,
+      "worker": "beta",
+      "jobId": "896a45d963ef450da840a6cf21aafac5",
+      "workerId": "e96cb844447ca333b9195d46199ef95e64da4c35b8db8ab8255e24f758e4819b",
+      "capsuleHash": "ddac592fb083b1073d28e012ca1e9ae33302992a5ea3e3177fa8fd344e24d79d",
+      "selectedSnapshotId": "authored-beta",
+      "exit": 0,
+      "ungrantedToolEvents": 0,
+      "latencyMs": 16264,
+      "usage": {
+        "input_tokens": 22330,
+        "cached_input_tokens": 12288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 682,
+        "reasoning_output_tokens": 0
+      },
+      "status": "applied",
+      "model": {
+        "requested": "gpt-6-astra",
+        "effort": "medium",
+        "reported": "CLI runner flags",
+        "apiConfirmed": null
+      },
+      "costUSD": null
+    }
+  ],
+  "conversationAccess": "Explicit authored text snapshots only; no existing chats read or new desktop chats created",
+  "integration": "One local bridge transaction writer; separate project ids; source untouched"
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+.deckweft/
+.agents/skills/deckweft/
+.claude/skills/deckweft/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+integrations/figma/manifest.json

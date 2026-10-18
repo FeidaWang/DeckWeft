@@ -1,0 +1,3 @@
+import {DeckError} from '../core/errors.mjs';
+export const EFFORT_POLICY={version:2,evaluated:'2026-10-17',corpusHash:'c75b26c35dd65a7647beb7e30af54169795180993f9ede52f769f828858d464e',evidence:'docs/evidence/mb-06-10/astra/results.json',model:'gpt-6-astra',planning:'medium',complexRepair:'high',complexRepairEvidence:'not evaluated by this bounded pilot',status:'bounded-pilot-medium-default',dollarCost:'unknown'};
+export function authorizeEscalation(current,next,ceiling){const order=['medium','high'];if(!order.includes(current)||!order.includes(next)||order.indexOf(next)>order.indexOf(ceiling))throw new DeckError('EFFORT_CEILING','Create a revised grant before raising the reasoning effort ceiling.',409);return next;}

@@ -1,0 +1,80 @@
+{
+  "format": "deckweft-host-evidence",
+  "version": 1,
+  "projectVersion": "0.1.0-alpha.2",
+  "recordedAt": "2026-10-15T23:08:52.555Z",
+  "platform": "linux",
+  "arch": "x64",
+  "node": "v22.16.0",
+  "mode": "preflight",
+  "nativeDesktop": "not tested",
+  "remoteCI": "not run",
+  "bundleSha256": "9d798cea6f7c93b77e5bccf11e25dd704bd83925e9a482d9809b073e2a422a8b",
+  "bundleRuntime": {
+    "passed": true,
+    "probe": {
+      "command": "/opt/nvm/versions/node/v22.16.0/bin/node",
+      "args": [
+        "<local-path>/bundle/deckweft-plugin/runtime/bin/deckweft.mjs",
+        "check",
+        "<local-path>/bundle/deckweft-plugin/runtime/examples/welcome.deck.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMs": 346,
+      "timedOut": false,
+      "outputLimited": false,
+      "stdout": "{\n  \"ok\": true,\n  \"errors\": 0,\n  \"warnings\": 1,\n  \"issues\": [\n    {\n      \"code\": \"SOURCE_NEEDED\",\n      \"severity\": \"warning\",\n      \"slideId\": \"slide_welcome_en_3\",\n      \"message\": \"These numbers have no linked source. Add one, or label them as your own example in the notes.\"\n    }\n  ],\n  \"checks\": {\n    \"primaryTextContrast\": 13.34,\n    \"layoutScoring\": \"deterministic heuristic\",\n    \"textMeasurement\": \"offline estimate\"\n  },\n  \"notice\": \"Layout fit is not a fact check. Fonts may wrap differently in PowerPoint, Figma, and After Effects.\"\n}\n\n",
+      "stderr": ""
+    }
+  },
+  "hosts": {
+    "codex": {
+      "available": false,
+      "version": null,
+      "probes": [
+        {
+          "command": "codex",
+          "args": [
+            "--version"
+          ],
+          "exitCode": null,
+          "error": "ENOENT",
+          "elapsedMs": 1,
+          "timedOut": false,
+          "outputLimited": false,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "validator": "not run",
+      "authenticatedTask": "not run",
+      "gate": "blocked",
+      "reason": "HOST_EXECUTABLE_UNAVAILABLE"
+    },
+    "claude": {
+      "available": false,
+      "version": null,
+      "probes": [
+        {
+          "command": "claude",
+          "args": [
+            "--version"
+          ],
+          "exitCode": null,
+          "error": "ENOENT",
+          "elapsedMs": 1,
+          "timedOut": false,
+          "outputLimited": false,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "validator": "not run",
+      "authenticatedTask": "not run",
+      "gate": "blocked",
+      "reason": "HOST_EXECUTABLE_UNAVAILABLE"
+    }
+  },
+  "policy": "No permission bypass, secret copying, host auto-install, automatic marketplace registration, or global host configuration edits. Live mode uses your existing host authentication; it may use your plan/API allowance."
+}

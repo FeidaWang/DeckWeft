@@ -1,0 +1,37 @@
+{
+  "name": "deckweft",
+  "version": "0.1.0-alpha.2",
+  "description": "Local-first slide studio with explainable layouts, editable exports, and portable agent skills.",
+  "type": "module",
+  "license": "MIT",
+  "author": "DeckWeft contributors",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "bin": {
+    "deckweft": "bin/deckweft.mjs"
+  },
+  "scripts": {
+    "start": "node bin/deckweft.mjs studio --open",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "demo": "node scripts/demo.mjs",
+    "types": "node scripts/types.mjs",
+    "verify": "npm run types && npm test && npm run check && npm run build && npm run demo",
+    "doctor": "node bin/deckweft.mjs doctor"
+  },
+  "keywords": [
+    "slides",
+    "presentation",
+    "local-first",
+    "agent-skills",
+    "codex",
+    "claude-code",
+    "pptx"
+  ],
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

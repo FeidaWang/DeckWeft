@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-18",
+  "scope": [
+    "MB-11",
+    "MB-12",
+    "MB-13",
+    "MB-14",
+    "MB-15"
+  ],
+  "workspace": "/Users/feida/Developer/DeckWeft",
+  "gitMetadata": false,
+  "branch": null,
+  "implementation": "local source",
+  "automatedVerification": {
+    "state": "passed",
+    "command": "npm run verify",
+    "testsPassed": 222,
+    "testsFailed": 0,
+    "newRuntimeDependencies": 0,
+    "log": "docs/evidence/mb-11-15/verify.txt",
+    "skipped": 0,
+    "typeGate": "Schema-derived v1/v2 declarations, negative fixtures and emitted runtime smoke passed",
+    "sourceChecks": "451 files: syntax, links, schemas, examples, dependency ordering, identity/version and font exclusions",
+    "packaging": "Reproducible copied runtime/archive and isolated subprocess checks passed",
+    "demos": "English/Chinese, presenter/audience, DevDay and four-slide media demo built"
+  },
+  "browser": {
+    "mode": "direct loopback with provided browser plus isolated cached Chrome for Testing",
+    "version": "151.0.7922.34",
+    "viewportWidths": [
+      390,
+      1024,
+      1440
+    ],
+    "pageErrors": 0,
+    "scenesVisuallyInspected": 4,
+    "actualWorkerOutputsVisuallyInspected": 2,
+    "actualContextLoss": true,
+    "reducedMotionAndKeyboard": true,
+    "staticPrintFallback": true,
+    "localImageSaveReopen": true,
+    "evidence": "docs/evidence/mb-11-15/browser.json"
+  },
+  "image": {
+    "actualBuiltInToolCalls": 1,
+    "prompt": "docs/evidence/mb-11-15/image-prompt.txt",
+    "sourceArtifact": "docs/evidence/mb-11-15/workbench-generated.png",
+    "hash": "70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1",
+    "journalLimit": "Actual tool call preceded the new journal integration. The original returned PNG was supplied to later local request tests; journal dispatch/cancel of the earlier host call is not claimed.",
+    "providerAPIUsed": false,
+    "costUSD": null
+  },
+  "workers": {
+    "host": "Codex CLI 0.160.0; not Dot desktop",
+    "initialAttempt": "Validation failed on a returned source URL; original response/usage unavailable, no invalid result applied",
+    "initialEvidence": "docs/evidence/mb-11-15/worker-first-run.json",
+    "secondPairPassed": 2,
+    "concurrency": 2,
+    "overlapMs": 12547,
+    "snapshotScope": "Explicit authored alpha/beta snapshots only, no live chat read/create/send",
+    "integration": "One bridge transaction writer; separate projects; source untouched",
+    "evidence": "docs/evidence/mb-11-15/worker-review.json",
+    "apiConfirmedModel": null,
+    "costUSD": null
+  },
+  "pptx": {
+    "slides": 4,
+    "nativeTextShapes": 23,
+    "pictures": 1,
+    "embeddedPNGHashMatchesProject": true,
+    "sourceTextPreserved": true,
+    "evidence": "docs/evidence/mb-11-15/pptx-inspection.json",
+    "powerPoint": "Installed; not opened for this batch",
+    "keynote": "Installed; not opened for this batch"
+  },
+  "applications": {
+    "figma": "Desktop launched and existing DeckWeft file opened; Plugins menu remained Loading; app screenshots unavailable; no assigned plugin identity or actual native importer run obtained",
+    "afterEffects": "Absent from /Applications; native import, cancellation/rollback and preview rendering not run",
+    "dotDesktop": "Not available through the provided host/browser surfaces; no two-Dot acceptance claimed"
+  },
+  "taskStates": {
+    "MB-11": "implemented-local",
+    "MB-12": "partial; CLI pair passed, Dot desktop remains",
+    "MB-13": "implemented-local",
+    "MB-14": "partial; source/mock checks only, native app gate open",
+    "MB-15": "partial; source/mock checks only, actual AE gate open"
+  },
+  "boundaries": {
+    "installedBrowsersModified": false,
+    "personalProfilesUsed": false,
+    "runtimeDependenciesAdded": 0,
+    "published": false,
+    "providerKeysRead": false,
+    "deferredClaudeSignInRetried": false,
+    "olderHostAccessibilityProjectionGatesClosed": false
+  }
+}

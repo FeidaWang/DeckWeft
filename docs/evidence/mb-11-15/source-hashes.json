@@ -1,0 +1,9 @@
+{
+  "roadmap.json": "f0990d1ddd9930e7d5b00dd0f37e9403a4befa62537208d20466e210e1e860e3",
+  "src/assets/generation.mjs": "b78fbb66fa6297aff9023b6bf93cdd7d3bdf94793f7427533314da04bc39f791",
+  "src/orchestration/isolation.mjs": "acf72e0701164d524abb191e24fa19cc0caf5c6fb254986c04c3ea49d857d437",
+  "src/services/agent-bridge.mjs": "4dd9499fa09bdb06f1fd914af96ae7f29511820514573b6f7f35db6a1ef41d1e",
+  "public/three-scene.js": "98a6518db6c75da8fbd58d6c5b6e9d10d78e1c811481d05de2ce6b7e77f4eac9",
+  "integrations/figma/code.js": "aa93d64c5133a14f63e0a6570071c7a605c0f7a96664953f3f0277e03f12b82d",
+  "integrations/after-effects/DeckWeft-Import.jsx": "b4c76526071bdc7bd8cf72168823a96cba7821e7a08d5311380e232a73369f1a"
+}

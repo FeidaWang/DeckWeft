@@ -1,0 +1,2015 @@
+{
+  "date": "2026-10-17",
+  "corpusHash": "c75b26c35dd65a7647beb7e30af54169795180993f9ede52f769f828858d464e",
+  "promptHash": "2f8bc7876188c7cd0a3906bf8a59a12cd1b19e9f6003461b2b7cdeac87f1262f",
+  "policyVersion": 1,
+  "repeats": 2,
+  "modelVerification": "Requested through actual CLI; no independent server model/effort attestation.",
+  "humanAcceptance": "Not a blinded human study; semantic checks and visual review are separate.",
+  "records": [
+    {
+      "label": "medium-1",
+      "effort": "medium",
+      "repeat": 1,
+      "requested": {
+        "model": "gpt-6-astra",
+        "effort": "medium"
+      },
+      "host": {
+        "kind": "Codex CLI",
+        "version": "0.160.0",
+        "selection": "CLI flags accepted",
+        "reportedModel": null,
+        "apiConfirmed": null
+      },
+      "exit": 0,
+      "latencyMs": 30004,
+      "usage": {
+        "input_tokens": 16598,
+        "cached_input_tokens": 12288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 971,
+        "reasoning_output_tokens": 49
+      },
+      "costUSD": null,
+      "costReason": "Host run exposes token usage, not a bill or confirmed API price.",
+      "repairs": 0,
+      "toolCount": 0,
+      "parseError": null,
+      "outputHash": "48a63c55fbfbec6ec66582f098aba6c8e122fe644c2e0874dd37d04c9029be94",
+      "checks": [
+        {
+          "taskId": "english-pitch",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_english-pitch_v2",
+            "title": "Build your presentation offline",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_404ba35f47bd400b",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Build your presentation offline",
+                  "body": "A presentation editor for developers that keeps text editable and saves local copies.",
+                  "items": [
+                    "Keep slide text editable as your ideas change.",
+                    "Save local copies for review and reuse."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Develop your presentation offline, revise the text directly, and save local copies as your work evolves.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Build your presentation offline",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "cover",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:02:31.039Z",
+              "updatedAt": "2026-10-17T08:02:31.039Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_english-pitch",
+                "sourceHash": "28c87171f1096caf0056c379442a7a612bb685afe93f7ba662fadcb815c2a116"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Build your presentation offline",
+              "inputHash": "28c87171f1096caf0056c379442a7a612bb685afe93f7ba662fadcb815c2a116",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "chinese-mixed",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_chinese-mixed_v2",
+            "title": "本地优先，分三步完成演示",
+            "locale": "zh-CN",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_679ee0e0fdc941e7",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "本地优先，分三步完成演示",
+                  "body": "在本地整理内容、检查版式并导出副本，让修改和交付清晰可控。",
+                  "items": [
+                    "整理大纲：用 JSON 组织标题与要点。",
+                    "检查排版：在本地 HTML 中预览并调整。",
+                    "导出副本：保存可编辑的 PowerPoint。"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "先用 JSON 整理大纲，再通过本地 HTML 检查排版，最后导出 PowerPoint 副本。整个流程围绕本地文件展开，便于继续修改和保留版本。",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "本地优先，分三步完成演示",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "process",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:02:31.071Z",
+              "updatedAt": "2026-10-17T08:02:31.071Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_chinese-mixed",
+                "sourceHash": "585200ae9f7eaa797e7d46372e1c5b3b719cf7662540321562a075e1423957dc"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "本地优先，分三步完成演示",
+              "inputHash": "585200ae9f7eaa797e7d46372e1c5b3b719cf7662540321562a075e1423957dc",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "evidence",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_evidence_v2",
+            "title": "QA sample: first-check outcomes",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_3e700c8b92334bc4",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "QA sample: first-check outcomes",
+                  "body": "In the supplied QA sample, 8 of 10 decks passed first check; 2 needed shorter titles.",
+                  "items": [
+                    "8 of 10 sample decks passed first check.",
+                    "2 sample decks needed shorter titles."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The supplied internal QA log records 8 of 10 sample decks passing first check, while 2 needed shorter titles. The sample is limited; these outcomes are not a population estimate.",
+                "sourceIds": [
+                  "qa-log"
+                ],
+                "intent": {
+                  "claim": "QA sample: first-check outcomes",
+                  "audience": "",
+                  "evidence": [
+                    {
+                      "sourceId": "qa-log",
+                      "support": "In the supplied QA sample, 8 of 10 decks passed first check; 2 needed shorter titles."
+                    }
+                  ],
+                  "visualFamily": "metric",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [
+              {
+                "id": "qa-log",
+                "title": "Supplied QA sample",
+                "url": "https://example.com/qa-log"
+              }
+            ],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:02:31.089Z",
+              "updatedAt": "2026-10-17T08:02:31.089Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_evidence",
+                "sourceHash": "7b78bce34e346e86194c0be135b196e19892aa76fd26c75a6726c30d4373f134"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "QA sample: first-check outcomes",
+              "inputHash": "7b78bce34e346e86194c0be135b196e19892aa76fd26c75a6726c30d4373f134",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "image-dependent",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_image-dependent_v2",
+            "title": "A local star, an editable caption",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_8c1fcdb612444065",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "A local star, an editable caption",
+                  "body": "Pair an original local abstract star illustration with the caption: “Ideas take shape.”",
+                  "items": [
+                    "Place the local star illustration beside the caption.",
+                    "Keep the caption and supporting text editable."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Use an existing original local illustration; this plan requires no image generation or network access. The star is decoration, not scientific evidence. If the image is unavailable, display its text description alongside the caption.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "A local star, an editable caption",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "image-caption",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:02:31.104Z",
+              "updatedAt": "2026-10-17T08:02:31.104Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_image-dependent",
+                "sourceHash": "955411a0beb52dde947467500965648fe043c4ebf862abddf50225dc6ba29d43"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "A local star, an editable caption",
+              "inputHash": "955411a0beb52dde947467500965648fe043c4ebf862abddf50225dc6ba29d43",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "interaction",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_interaction_v2",
+            "title": "Choose your presentation route",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_e2fb6ceb01864587",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Choose your presentation route",
+                  "body": "Explore locally in HTML or use a static, editable PowerPoint. Keep every word editable in either route.",
+                  "items": [
+                    "Local HTML: explore content through tabs.",
+                    "PowerPoint: review static slides and edit their text."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Select a tab to compare the two routes. Local HTML supports exploration; PowerPoint presents static, editable slides. Keep labels, descriptions, and all other words as editable text. For a static fallback, display both choices side by side.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Choose your presentation route",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "comparison",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "tabs",
+                    "initial": 0,
+                    "labels": [
+                      "Local HTML",
+                      "PowerPoint"
+                    ]
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:02:31.121Z",
+              "updatedAt": "2026-10-17T08:02:31.121Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_interaction",
+                "sourceHash": "626e9664615587fd77994b869f4efbefba30cb1163e3d11d3988c03db6f5dc51"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Choose your presentation route",
+              "inputHash": "626e9664615587fd77994b869f4efbefba30cb1163e3d11d3988c03db6f5dc51",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "code-change",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_code-change_v2",
+            "title": "Clamp the next index to valid bounds",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_ef4cddefede9418b",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Clamp the next index to valid bounds",
+                  "body": "Handle an empty range, advance the index, and clamp the result to 0..count-1.",
+                  "items": [
+                    "Return 0 when count is zero or negative.",
+                    "Advance the supplied index by one.",
+                    "Clamp between 0 and the last valid index."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The original function allowed count, which lies beyond the last valid index. Return 0 for count<=0, then clamp index+1 between 0 and count-1. For a positive integer count, -1 becomes 0, 0 advances when possible, and the last index stays unchanged.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Clamp the next index to valid bounds",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "process",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:02:31.135Z",
+              "updatedAt": "2026-10-17T08:02:31.135Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_code-change",
+                "sourceHash": "121a6770f602594b791d0343893ea5023cb21c24912ab4dbcacb0d0c2c5a48ee"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Clamp the next index to valid bounds",
+              "inputHash": "121a6770f602594b791d0343893ea5023cb21c24912ab4dbcacb0d0c2c5a48ee",
+              "reviewed": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "high-1",
+      "effort": "high",
+      "repeat": 1,
+      "requested": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "host": {
+        "kind": "Codex CLI",
+        "version": "0.160.0",
+        "selection": "CLI flags accepted",
+        "reportedModel": null,
+        "apiConfirmed": null
+      },
+      "exit": 0,
+      "latencyMs": 35697,
+      "usage": {
+        "input_tokens": 16598,
+        "cached_input_tokens": 12288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1368,
+        "reasoning_output_tokens": 105
+      },
+      "costUSD": null,
+      "costReason": "Host run exposes token usage, not a bill or confirmed API price.",
+      "repairs": 0,
+      "toolCount": 0,
+      "parseError": null,
+      "outputHash": "b9d29dc10615e949e096455d8a7c107a891fdf5f00a192d87ad31c74e0f3d3b7",
+      "checks": [
+        {
+          "taskId": "english-pitch",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_english-pitch_v2",
+            "title": "Your slides. Your files. Your workflow.",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_37a2776ba317463c",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Your slides. Your files. Your workflow.",
+                  "body": "An offline presentation editor for developers, with editable text and local copies.",
+                  "items": [
+                    "Keep slide text editable.",
+                    "Save local copies as your work evolves."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Build presentations in an offline workflow that keeps text editable and saves local copies. Keep refining the words and retain files you can return to.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Your slides. Your files. Your workflow.",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "cover",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:06.849Z",
+              "updatedAt": "2026-10-17T08:03:06.849Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_english-pitch",
+                "sourceHash": "4dca316dda04c100665714cf3c15d4d36bc98269eb2589909fba24130eb1bffe"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Your slides. Your files. Your workflow.",
+              "inputHash": "4dca316dda04c100665714cf3c15d4d36bc98269eb2589909fba24130eb1bffe",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "chinese-mixed",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_chinese-mixed_v2",
+            "title": "本地优先：从大纲到导出",
+            "locale": "zh-CN",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_e1dcdfbddf41470d",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "本地优先：从大纲到导出",
+                  "body": "在本地整理内容、检查排版，再导出副本；用 JSON 管理结构，用 HTML 预览，用 PowerPoint 继续编辑。",
+                  "items": [
+                    "整理大纲：用 JSON 组织标题与要点。",
+                    "检查排版：用 HTML 预览文字和布局。",
+                    "导出副本：保存可继续编辑的 PowerPoint 文件。"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "先在本地整理大纲，用 JSON 明确内容结构。接着通过 HTML 预览检查标题、正文和布局。最后导出 PowerPoint 副本，方便后续编辑，并保留本地源文件。",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "本地优先：从大纲到导出",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "process",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:06.865Z",
+              "updatedAt": "2026-10-17T08:03:06.865Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_chinese-mixed",
+                "sourceHash": "08110e75c10655d438f8c1e841c72309a7c9754a25bfb6344685892065eb1e8d"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "本地优先：从大纲到导出",
+              "inputHash": "08110e75c10655d438f8c1e841c72309a7c9754a25bfb6344685892065eb1e8d",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "evidence",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_evidence_v2",
+            "title": "QA sample: first-check outcomes",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_734d086fdd354005",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "QA sample: first-check outcomes",
+                  "body": "8 of 10 sample decks passed first check; 2 needed shorter titles.",
+                  "items": [
+                    "8 of 10 sample decks passed first check.",
+                    "2 sample decks needed shorter titles."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The supplied internal QA log reports that 8 of 10 sample decks passed first check, while 2 needed shorter titles. The sample is limited. These outcomes describe the reviewed decks and are not a population estimate.",
+                "sourceIds": [
+                  "qa-log"
+                ],
+                "intent": {
+                  "claim": "QA sample: first-check outcomes",
+                  "audience": "",
+                  "evidence": [
+                    {
+                      "sourceId": "qa-log",
+                      "support": "8 of 10 sample decks passed first check; 2 needed shorter titles."
+                    }
+                  ],
+                  "visualFamily": "metric",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [
+              {
+                "id": "qa-log",
+                "title": "Supplied QA sample",
+                "url": "https://example.com/qa-log"
+              }
+            ],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:06.882Z",
+              "updatedAt": "2026-10-17T08:03:06.882Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_evidence",
+                "sourceHash": "b13303784766a796d418e0a0cbc63695be540ad5ed6207ae8d3f508dfbbfe009"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "QA sample: first-check outcomes",
+              "inputHash": "b13303784766a796d418e0a0cbc63695be540ad5ed6207ae8d3f508dfbbfe009",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "image-dependent",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_image-dependent_v2",
+            "title": "A star, expressed in shapes",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_6a99642d674f46b5",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "A star, expressed in shapes",
+                  "body": "Plan: pair an original local abstract star illustration with the caption “A bright idea takes shape.”",
+                  "items": [
+                    "Place the local star illustration beside an editable caption.",
+                    "Use overlapping angular shapes as decorative accents."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Use an original illustration stored locally: an abstract star formed from overlapping angular shapes. It provides decoration, not scientific evidence. Keep the caption editable. If the image is unavailable, show the offline text fallback. This plan does not generate an image.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "A star, expressed in shapes",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "image-caption",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:06.895Z",
+              "updatedAt": "2026-10-17T08:03:06.895Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_image-dependent",
+                "sourceHash": "a52c59679bc2a59c4388afc077d2662521e265f9b893f035ae00b77ffd2be190"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "A star, expressed in shapes",
+              "inputHash": "a52c59679bc2a59c4388afc077d2662521e265f9b893f035ae00b77ffd2be190",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "interaction",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_interaction_v2",
+            "title": "Choose a presentation route",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_6c21e180e8604abb",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Choose a presentation route",
+                  "body": "Explore locally in HTML or use a static, editable PowerPoint. Keep all labels, captions, and content editable.",
+                  "items": [
+                    "Local HTML: explore content through tabs.",
+                    "Editable PowerPoint: present content on static slides."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The first tab describes local HTML exploration. The second describes static, editable PowerPoint. Keep every word as editable text. For a static fallback, display both choices side by side with their labels and descriptions visible.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Choose a presentation route",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "comparison",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "tabs",
+                    "initial": 0,
+                    "labels": [
+                      "Local HTML",
+                      "Editable PowerPoint"
+                    ]
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:06.913Z",
+              "updatedAt": "2026-10-17T08:03:06.913Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_interaction",
+                "sourceHash": "a1c6cb8b3fe3ffea66b0e7f3114bc0bb760d8e7a68eb2083b968903142d9b563"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Choose a presentation route",
+              "inputHash": "a1c6cb8b3fe3ffea66b0e7f3114bc0bb760d8e7a68eb2083b968903142d9b563",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "code-change",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_code-change_v2",
+            "title": "Advance the index within valid bounds",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_b8dbe0b2370647e7",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Advance the index within valid bounds",
+                  "body": "Return 0 for count<=0; otherwise advance once and clamp the result to 0..count-1.",
+                  "items": [
+                    "Guard count<=0 by returning 0.",
+                    "Advance the supplied index by one.",
+                    "Clamp between 0 and count-1."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The original function can return count, which is outside the valid index range. Guard nonpositive counts, then clamp index+1 between 0 and count-1. For a positive integer count, -1 advances to 0, 0 advances to 1 when available, and the last index stays at the last index.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Advance the index within valid bounds",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "process",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:06.925Z",
+              "updatedAt": "2026-10-17T08:03:06.925Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_code-change",
+                "sourceHash": "2dfb96fe5f1948e648e65d7d591039d8017bf268b17769bb6c600061321d3903"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Advance the index within valid bounds",
+              "inputHash": "2dfb96fe5f1948e648e65d7d591039d8017bf268b17769bb6c600061321d3903",
+              "reviewed": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "high-2",
+      "effort": "high",
+      "repeat": 2,
+      "requested": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "host": {
+        "kind": "Codex CLI",
+        "version": "0.160.0",
+        "selection": "CLI flags accepted",
+        "reportedModel": null,
+        "apiConfirmed": null
+      },
+      "exit": 0,
+      "latencyMs": 37437,
+      "usage": {
+        "input_tokens": 16598,
+        "cached_input_tokens": 12288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1402,
+        "reasoning_output_tokens": 170
+      },
+      "costUSD": null,
+      "costReason": "Host run exposes token usage, not a bill or confirmed API price.",
+      "repairs": 0,
+      "toolCount": 0,
+      "parseError": null,
+      "outputHash": "3a5a79f09dbd141c1c9555e11fa3eab66725cd0121b3a9a0d80a97ceeee6c23b",
+      "checks": [
+        {
+          "taskId": "english-pitch",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_english-pitch_v2",
+            "title": "Your slides. Your files. Offline.",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_f222590090064f96",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Your slides. Your files. Offline.",
+                  "body": "An offline presentation editor for developers, with editable text and local copies.",
+                  "items": [
+                    "Keep slide text editable as ideas evolve",
+                    "Save local copies alongside your project"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Build presentations with control over your words and files. Work offline, revise editable text, and save local copies alongside the rest of your project.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Your slides. Your files. Offline.",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "cover",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:44.378Z",
+              "updatedAt": "2026-10-17T08:03:44.378Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_english-pitch",
+                "sourceHash": "caa5bdf68f7face190b2e8ea672629d28bd2fb02704726a7ccc6d352a43f453c"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Your slides. Your files. Offline.",
+              "inputHash": "caa5bdf68f7face190b2e8ea672629d28bd2fb02704726a7ccc6d352a43f453c",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "chinese-mixed",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_chinese-mixed_v2",
+            "title": "本地优先，从大纲到副本",
+            "locale": "zh-CN",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_5b461224934c45de",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "本地优先，从大纲到副本",
+                  "body": "在本地整理内容、检查版面，再导出可保留的副本。",
+                  "items": [
+                    "整理大纲：用 JSON 保存内容结构",
+                    "检查排版：在 HTML 中预览并调整",
+                    "导出副本：保存可编辑的 PowerPoint"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "先在本地用 JSON 整理大纲，再通过 HTML 预览检查排版，最后导出可编辑的 PowerPoint 副本。内容和文件保留在本地，方便后续修改与管理。",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "本地优先，从大纲到副本",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "process",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:44.399Z",
+              "updatedAt": "2026-10-17T08:03:44.399Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_chinese-mixed",
+                "sourceHash": "73348c2f4b893278be4f986fdd89324d63a2aaa4dadc4645c2fe0a29cb1a182c"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "本地优先，从大纲到副本",
+              "inputHash": "73348c2f4b893278be4f986fdd89324d63a2aaa4dadc4645c2fe0a29cb1a182c",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "evidence",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_evidence_v2",
+            "title": "QA sample: first-check outcomes",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_38a8d4cf41104b56",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "QA sample: first-check outcomes",
+                  "body": "The supplied QA log records 8 of 10 passing first check; 2 needed shorter titles. The sample is limited.",
+                  "items": [
+                    "8 of 10 sample decks passed first check",
+                    "2 sample decks needed shorter titles"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The supplied internal QA log, qa-log, reports that 8 of 10 sample decks passed first check, while 2 needed shorter titles. The sample is limited; these outcomes describe the reviewed decks and are not a population estimate.",
+                "sourceIds": [
+                  "qa-log"
+                ],
+                "intent": {
+                  "claim": "QA sample: first-check outcomes",
+                  "audience": "",
+                  "evidence": [
+                    {
+                      "sourceId": "qa-log",
+                      "support": "The supplied QA log records 8 of 10 passing first check; 2 needed shorter titles. The sample is limited."
+                    }
+                  ],
+                  "visualFamily": "metric",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [
+              {
+                "id": "qa-log",
+                "title": "Supplied QA sample",
+                "url": "https://example.com/qa-log"
+              }
+            ],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:44.418Z",
+              "updatedAt": "2026-10-17T08:03:44.418Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_evidence",
+                "sourceHash": "c908e85384673698b9c6d339480d08b9f545702d2abf53e63d35865f95e0beca"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "QA sample: first-check outcomes",
+              "inputHash": "c908e85384673698b9c6d339480d08b9f545702d2abf53e63d35865f95e0beca",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "image-dependent",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_image-dependent_v2",
+            "title": "A star, imagined locally",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_2fc0aff7f8ec49dd",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "A star, imagined locally",
+                  "body": "Pair an original local abstract star illustration with the editable caption: “Room for another idea.”",
+                  "items": [
+                    "Place the local star illustration beside the caption",
+                    "Use abstract shapes as decoration, not scientific evidence"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Use an original abstract star illustration stored locally. The planned image has layered angular rays around a bright center. It provides decoration, not scientific evidence. Keep the caption editable. If the image is unavailable, display the offline text fallback.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "A star, imagined locally",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "image-caption",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:44.433Z",
+              "updatedAt": "2026-10-17T08:03:44.433Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_image-dependent",
+                "sourceHash": "ebeb32fdb0d116489d4348e7f59c25321625bc194f1d71c5b2933f372333c4f2"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "A star, imagined locally",
+              "inputHash": "ebeb32fdb0d116489d4348e7f59c25321625bc194f1d71c5b2933f372333c4f2",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "interaction",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_interaction_v2",
+            "title": "Choose your presentation route",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_d76078c12a4c4530",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Choose your presentation route",
+                  "body": "Explore locally in HTML or present a static, editable PowerPoint. Keep all text editable in either route.",
+                  "items": [
+                    "Local HTML: explore content through tabs",
+                    "Editable PowerPoint: present a static slide sequence"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Use the tabs to compare local HTML exploration with static, editable PowerPoint. Keep labels, descriptions, and slide text editable. For the static fallback, show both choices side by side with their labels and descriptions visible.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Choose your presentation route",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "comparison",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "tabs",
+                    "initial": 0,
+                    "labels": [
+                      "Local HTML",
+                      "Editable PowerPoint"
+                    ]
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:44.451Z",
+              "updatedAt": "2026-10-17T08:03:44.451Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_interaction",
+                "sourceHash": "fda3d44e4faf280091ca6c2dccf77c93d9d0092cac9ec0e1ef21ba7091fd68ec"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Choose your presentation route",
+              "inputHash": "fda3d44e4faf280091ca6c2dccf77c93d9d0092cac9ec0e1ef21ba7091fd68ec",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "code-change",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_code-change_v2",
+            "title": "Advance the index within valid bounds",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_efc497aa81af4457",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Advance the index within valid bounds",
+                  "body": "Handle empty counts, advance once, then clamp the result to the valid index range.",
+                  "items": [
+                    "Return 0 when count is zero or negative",
+                    "Advance the supplied index by one",
+                    "Clamp the result between 0 and count − 1"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The original function could return count, which is outside the valid index range. Return 0 for count <= 0; otherwise advance and clamp to 0 through count − 1. With a positive count, −1 advances to 0, 0 advances to 1 when available, and the last index stays unchanged.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Advance the index within valid bounds",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "process",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:03:44.465Z",
+              "updatedAt": "2026-10-17T08:03:44.465Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_code-change",
+                "sourceHash": "ab0430eae08cd2ca3085539a7a4464bf62ac32253c6d197eee9c2fa6d25ac497"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Advance the index within valid bounds",
+              "inputHash": "ab0430eae08cd2ca3085539a7a4464bf62ac32253c6d197eee9c2fa6d25ac497",
+              "reviewed": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "medium-2",
+      "effort": "medium",
+      "repeat": 2,
+      "requested": {
+        "model": "gpt-6-astra",
+        "effort": "medium"
+      },
+      "host": {
+        "kind": "Codex CLI",
+        "version": "0.160.0",
+        "selection": "CLI flags accepted",
+        "reportedModel": null,
+        "apiConfirmed": null
+      },
+      "exit": 0,
+      "latencyMs": 32538,
+      "usage": {
+        "input_tokens": 16598,
+        "cached_input_tokens": 12288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 971,
+        "reasoning_output_tokens": 57
+      },
+      "costUSD": null,
+      "costReason": "Host run exposes token usage, not a bill or confirmed API price.",
+      "repairs": 0,
+      "toolCount": 0,
+      "parseError": null,
+      "outputHash": "6913ace8a912436e3283ae45e19241f13ef6dbead8664776cb48f5c30b992d91",
+      "checks": [
+        {
+          "taskId": "english-pitch",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_english-pitch_v2",
+            "title": "Build your deck. Keep it local.",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_b1c96dff9151411f",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Build your deck. Keep it local.",
+                  "body": "An offline presentation editor for developers, with editable text and local copies.",
+                  "items": [
+                    "Keep slide text editable as your ideas change.",
+                    "Save local copies for review and reuse."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Build presentations offline while keeping control of the content. Edit the text as your ideas develop, then save local copies you can review and reuse.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Build your deck. Keep it local.",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "cover",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:04:17.022Z",
+              "updatedAt": "2026-10-17T08:04:17.022Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_english-pitch",
+                "sourceHash": "a4c6a537de485baeff8a6b8c40fb704208c48569f14d4d440e16e664af9951a8"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Build your deck. Keep it local.",
+              "inputHash": "a4c6a537de485baeff8a6b8c40fb704208c48569f14d4d440e16e664af9951a8",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "chinese-mixed",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_chinese-mixed_v2",
+            "title": "本地优先，从大纲到副本",
+            "locale": "zh-CN",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_1ff96697ab744384",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "本地优先，从大纲到副本",
+                  "body": "在本地整理内容、检查版式并导出，让文字保持可编辑。",
+                  "items": [
+                    "整理大纲：用 JSON 组织内容。",
+                    "检查排版：在本地 HTML 中预览。",
+                    "导出副本：保存可编辑的 PowerPoint。"
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "先用 JSON 整理大纲，再在本地 HTML 中检查排版，最后导出可编辑的 PowerPoint 副本。整个流程围绕本地文件展开，方便继续修改和保存。",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "本地优先，从大纲到副本",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "process",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:04:17.040Z",
+              "updatedAt": "2026-10-17T08:04:17.040Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_chinese-mixed",
+                "sourceHash": "e0b8a4fd00afc9d92a82a0ff3ec9a047366afa38ab4fe2ec22da4f8b933515af"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "本地优先，从大纲到副本",
+              "inputHash": "e0b8a4fd00afc9d92a82a0ff3ec9a047366afa38ab4fe2ec22da4f8b933515af",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "evidence",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_evidence_v2",
+            "title": "First-check outcomes in the QA sample",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_ebe26f9f377642b1",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "First-check outcomes in the QA sample",
+                  "body": "8 of 10 sample decks passed first check; 2 needed shorter titles.",
+                  "items": [
+                    "8 of 10 sample decks passed first check.",
+                    "2 sample decks needed shorter titles."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The supplied QA log records 8 of 10 sample decks passing first check, while 2 needed shorter titles. The sample is limited; these outcomes are not a population estimate.",
+                "sourceIds": [
+                  "qa-log"
+                ],
+                "intent": {
+                  "claim": "First-check outcomes in the QA sample",
+                  "audience": "",
+                  "evidence": [
+                    {
+                      "sourceId": "qa-log",
+                      "support": "8 of 10 sample decks passed first check; 2 needed shorter titles."
+                    }
+                  ],
+                  "visualFamily": "metric",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [
+              {
+                "id": "qa-log",
+                "title": "Supplied QA sample",
+                "url": "https://example.com/qa-log"
+              }
+            ],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:04:17.057Z",
+              "updatedAt": "2026-10-17T08:04:17.057Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_evidence",
+                "sourceHash": "c9e38ba4376b72121ac01a06dfca5e3f4b33081c7e0dc221d8aceb958c48557c"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "First-check outcomes in the QA sample",
+              "inputHash": "c9e38ba4376b72121ac01a06dfca5e3f4b33081c7e0dc221d8aceb958c48557c",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "image-dependent",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_image-dependent_v2",
+            "title": "A local star, an editable caption",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_25994c63353b4a70",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "A local star, an editable caption",
+                  "body": "Plan an original abstract star illustration stored locally, paired with an editable caption.",
+                  "items": [
+                    "Place the local star illustration beside the caption.",
+                    "Caption: A small spark for your next idea."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Use an original local illustration of a star formed from overlapping angular shapes. It provides decoration, not scientific evidence. Keep the caption editable. If the image is unavailable, show the text fallback. No image is generated or fetched for this plan.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "A local star, an editable caption",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "image-caption",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:04:17.071Z",
+              "updatedAt": "2026-10-17T08:04:17.071Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_image-dependent",
+                "sourceHash": "3831e930bbfa7ba030d736361853c32ba53951c0fc8d1650bf537f1430e0cecd"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "A local star, an editable caption",
+              "inputHash": "3831e930bbfa7ba030d736361853c32ba53951c0fc8d1650bf537f1430e0cecd",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "interaction",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_interaction_v2",
+            "title": "Choose your presentation route",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_a18c0bbe93bd4773",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Choose your presentation route",
+                  "body": "Explore locally in HTML or use a static, editable PowerPoint. Keep all labels and content editable.",
+                  "items": [
+                    "Local HTML: explore content through tabs.",
+                    "Editable PowerPoint: present content as static slides."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "Use the two tabs to compare the routes. Local HTML supports exploration, while editable PowerPoint provides a static presentation. Keep every word as editable text, including tab labels. The static fallback shows both choices together with their labels.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Choose your presentation route",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "comparison",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "tabs",
+                    "initial": 0,
+                    "labels": [
+                      "Local HTML",
+                      "Editable PowerPoint"
+                    ]
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:04:17.089Z",
+              "updatedAt": "2026-10-17T08:04:17.089Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_interaction",
+                "sourceHash": "4c2e4f5e488852213c28f913c74e8c6e58c345b09186eb76f7a80fe46af84451"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Choose your presentation route",
+              "inputHash": "4c2e4f5e488852213c28f913c74e8c6e58c345b09186eb76f7a80fe46af84451",
+              "reviewed": false
+            }
+          }
+        },
+        {
+          "taskId": "code-change",
+          "accepted": true,
+          "issues": [],
+          "project": {
+            "format": "deckweft",
+            "schemaVersion": 2,
+            "id": "eval_code-change_v2",
+            "title": "Clamp the next index to valid bounds",
+            "locale": "en",
+            "aspectRatio": "16:9",
+            "theme": "paper",
+            "brief": {
+              "prompt": "",
+              "audience": "",
+              "outcome": ""
+            },
+            "slides": [
+              {
+                "id": "slide_2b6d318ff7a34dc2",
+                "role": "context",
+                "content": {
+                  "eyebrow": "",
+                  "title": "Clamp the next index to valid bounds",
+                  "body": "Handle empty counts first, then advance and clamp the result to 0..count-1.",
+                  "items": [
+                    "Return 0 when count is zero or negative.",
+                    "Advance the index by one.",
+                    "Clamp between 0 and count-1."
+                  ],
+                  "metrics": []
+                },
+                "design": {
+                  "layout": "auto"
+                },
+                "motion": {
+                  "preset": "none",
+                  "duration": 6
+                },
+                "notes": "The original upper bound allowed count, which is outside the valid index range. Return 0 for count<=0; otherwise clamp index+1 between 0 and count-1. For positive integer counts, -1 advances to 0, 0 advances when another index exists, and the last index stays in place.",
+                "sourceIds": [],
+                "intent": {
+                  "claim": "Clamp the next index to valid bounds",
+                  "audience": "",
+                  "evidence": [],
+                  "visualFamily": "process",
+                  "assetIds": [],
+                  "interaction": {
+                    "kind": "none",
+                    "initial": 0,
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "sources": [],
+            "revision": {
+              "number": 0,
+              "createdAt": "2026-10-17T08:04:17.101Z",
+              "updatedAt": "2026-10-17T08:04:17.101Z"
+            },
+            "extensions": {
+              "deckweftMigration": {
+                "fromVersion": 1,
+                "sourceId": "eval_code-change",
+                "sourceHash": "af4026d44fe6fbdeb02d78d578c4d29cdb869d2a53610fdcdf776c4809a59c87"
+              }
+            },
+            "assets": [],
+            "planning": {
+              "brief": "Clamp the next index to valid bounds",
+              "inputHash": "af4026d44fe6fbdeb02d78d578c4d29cdb869d2a53610fdcdf776c4809a59c87",
+              "reviewed": false
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

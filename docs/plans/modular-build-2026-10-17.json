@@ -1,0 +1,606 @@
+{
+  "format": "deckweft-modular-build-proposal",
+  "formatVersion": 1,
+  "date": "2026-10-17",
+  "project": "DeckWeft",
+  "state": "second-batch-implemented-locally-dot-gate-open",
+  "adopted": true,
+  "executionAuthorized": true,
+  "scope": "The user authorized MB-01\u201305 earlier and MB-06\u201310 in the current batch. MB-11\u201315 remain proposed and outside this authorization. Actual Dot desktop acceptance remains an explicit MB-08 gate.",
+  "currentRoadmap": "roadmap.json",
+  "documents": {
+    "en": "docs/en/modular-build-roadmap.md",
+    "zh-CN": "docs/zh-CN/modular-build-roadmap.md",
+    "inspection": "docs/evidence/roadmap-2026-10-17/review.md"
+  },
+  "estimateBasis": "Unmeasured initial engineering person-day ranges for one experienced maintainer, including local checks; excludes external waits and real-host/application availability. Not agent ETA.",
+  "planningAllowancePercent": [
+    20,
+    30
+  ],
+  "firstMilestone": [
+    "MB-01",
+    "MB-02",
+    "MB-03",
+    "MB-04",
+    "MB-05"
+  ],
+  "preservedGates": [
+    "Existing roadmap states remain unchanged, including blocked DW-020 and deferred Claude sign-in.",
+    "Real Dot/Astra capability, model and effort acceptance is separate from fixture transport tests.",
+    "DW-140 cross-application fidelity remains necessary for new export nodes.",
+    "No public bind, hidden network request, credential disclosure, publishing or installed-browser modification."
+  ],
+  "proposedDependencyChanges": [
+    "Split DW-320 local assets/providers from optional DW-300/DW-310 application bridges.",
+    "Bring the minimal internal recipe contract from DW-400 forward; defer community execution and hosting."
+  ],
+  "effortPolicyCandidate": {
+    "model": "gpt-6-astra",
+    "initialPlanningCandidate": "medium",
+    "complexRepairCandidate": "high",
+    "otherCandidatesRequireEvidence": [
+      "low",
+      "xhigh",
+      "max"
+    ],
+    "allowedEfforts": "Negotiate with actual host; do not hardcode the API list as a desktop capability.",
+    "verifiedSweetSpot": false,
+    "selection": "Record requested, reported and confirmed model/effort separately; block if required selection is unsupported.",
+    "cost": "Use dated actual usage/prices where available; otherwise mark cost unknown.",
+    "evaluation": "MB-10"
+  },
+  "tasks": [
+    {
+      "id": "MB-01",
+      "priority": "P0",
+      "state": "implemented-local",
+      "title": "Typed contracts and reproducible build pilot",
+      "dependsOn": [],
+      "existingTasks": [
+        "DW-010",
+        "DW-020"
+      ],
+      "estimatedPersonDays": [
+        2,
+        4
+      ],
+      "proposedModules": [
+        "src/contracts",
+        "tsconfig.node.json",
+        "tsconfig.browser.json",
+        "dist/runtime"
+      ],
+      "reuse": [
+        "schemas/project.schema.json",
+        "src/core/validate.mjs",
+        "src/plugin/packager.mjs"
+      ],
+      "acceptance": [
+        "Scoped strict type gate checks schema-aligned declarations and unknown input boundaries.",
+        "Emitted runtime, offline CLI, copied plugin bundle and reproducible output pass.",
+        "Document developer build cost and preserve current launcher until source-only distribution tradeoffs are resolved."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-01-05/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-02",
+      "priority": "P0",
+      "state": "partial",
+      "title": "Semantic action hierarchy and compact controls",
+      "dependsOn": [
+        "MB-01"
+      ],
+      "existingTasks": [
+        "DW-120"
+      ],
+      "estimatedPersonDays": [
+        2,
+        3
+      ],
+      "proposedModules": [
+        "ui/workspace/actions",
+        "ui/workspace/tokens"
+      ],
+      "reuse": [
+        "public/interaction.js",
+        "public/studio-tools.js",
+        "public/styles.css"
+      ],
+      "acceptance": [
+        "Actions have consistent labels, icons, color roles, shape and focus states.",
+        "Keyboard, hit areas, narrow windows and 200% zoom are checked; color is not the only cue.",
+        "Measure task steps and usable canvas area before and after; no invented savings."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-01-05/review.json",
+      "remainingAcceptance": [
+        "Real screen reader",
+        "200% browser zoom"
+      ]
+    },
+    {
+      "id": "MB-03",
+      "priority": "P0",
+      "state": "implemented-local",
+      "title": "Editor appearance and shared accessibility preferences",
+      "dependsOn": [
+        "MB-02"
+      ],
+      "existingTasks": [
+        "DW-120"
+      ],
+      "estimatedPersonDays": [
+        2,
+        3
+      ],
+      "proposedModules": [
+        "ui/settings/preferences",
+        "src/presentation/playback-policy"
+      ],
+      "reuse": [
+        "public/styles.css",
+        "public/three-dots.js",
+        "src/render/player.mjs"
+      ],
+      "acceptance": [
+        "Light, dark and live system editor appearance are separate from deck theme.",
+        "One quick reduce-motion control governs CSS, Web Animations, Three.js, replay and scrolling.",
+        "Off cancels active animation loops and leaves usable static interaction; preferences stay outside project content."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-01-05/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-04",
+      "priority": "P0",
+      "state": "partial",
+      "title": "Separate audience projection and presenter session",
+      "dependsOn": [
+        "MB-01"
+      ],
+      "existingTasks": [
+        "DW-120",
+        "DW-140"
+      ],
+      "estimatedPersonDays": [
+        3,
+        5
+      ],
+      "proposedModules": [
+        "src/presentation/session",
+        "src/presentation/audience-projection",
+        "ui/audience",
+        "ui/presenter"
+      ],
+      "reuse": [
+        "src/services/server.mjs",
+        "src/render/html.mjs",
+        "src/render/player.mjs"
+      ],
+      "acceptance": [
+        "Audience document and audience exports omit private notes, project payloads and editor credentials.",
+        "Separate restricted loopback origin exposes no editor session/project endpoints; read-only capability and bounded origin-checked messages carry the filtered projection.",
+        "Real window sharing/extended display, refresh, popup failure, disconnect and close recovery are recorded."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-01-05/review.json",
+      "remainingAcceptance": [
+        "Actual conferencing-share and extended-display acceptance"
+      ]
+    },
+    {
+      "id": "MB-05",
+      "priority": "P0",
+      "state": "implemented-local",
+      "title": "Resizable slide-following teleprompter",
+      "dependsOn": [
+        "MB-03",
+        "MB-04"
+      ],
+      "existingTasks": [
+        "DW-120"
+      ],
+      "estimatedPersonDays": [
+        3,
+        5
+      ],
+      "proposedModules": [
+        "src/presentation/speech-timing",
+        "ui/presenter/teleprompter"
+      ],
+      "reuse": [
+        "src/core/speech.mjs",
+        "public/studio-tools.js"
+      ],
+      "acceptance": [
+        "Current slide automatically selects its script; sidebar resizes/docks and retains text anchor.",
+        "English, Chinese and mixed-text pace plus pauses are calibrated separately from motion.duration.",
+        "Start, pause, manual scroll, resume and reduced-motion manual paging work; no microphone required."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-01-05/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-06",
+      "priority": "P1",
+      "state": "implemented-local",
+      "title": "Storyboard, asset registry and derived scene contracts",
+      "dependsOn": [
+        "MB-01"
+      ],
+      "existingTasks": [
+        "DW-150",
+        "DW-200",
+        "DW-320"
+      ],
+      "estimatedPersonDays": [
+        4,
+        6
+      ],
+      "proposedModules": [
+        "src/planning/storyboard",
+        "src/contracts/assets",
+        "src/assets/registry"
+      ],
+      "reuse": [
+        "src/core/model.mjs",
+        "src/layout/scene.mjs",
+        "src/render/assets.mjs"
+      ],
+      "acceptance": [
+        "Brief produces reviewable per-slide intent, evidence and speaker-script proposals.",
+        "Assets have local hashes, rights/provenance, dimensions, alt text and fallbacks; binaries are outside project JSON.",
+        "Schema and validator evolve together with copy-preserving explicit migration; free-form extensions do not bypass validation."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-06-10/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-07",
+      "priority": "P1",
+      "state": "implemented-local",
+      "title": "Semantic templates, constrained SVG and interaction recipes",
+      "dependsOn": [
+        "MB-03",
+        "MB-06"
+      ],
+      "existingTasks": [
+        "DW-130",
+        "DW-140",
+        "DW-150",
+        "DW-400"
+      ],
+      "estimatedPersonDays": [
+        4,
+        6
+      ],
+      "proposedModules": [
+        "src/planning/visual-intent",
+        "src/layout/recipes",
+        "src/contracts/interaction"
+      ],
+      "reuse": [
+        "src/layout/engine.mjs",
+        "src/render/svg.mjs",
+        "src/render/pptx.mjs"
+      ],
+      "acceptance": [
+        "Comparison, process, timeline, metric, image-caption and cover recipes respond to semantic content.",
+        "Measured text and shared derived scenes drive every exporter, with editable native output.",
+        "Interactions are allowlisted state machines; keyboard/text alternatives and declared static fallbacks exist."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-06-10/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-08",
+      "priority": "P1",
+      "state": "partial",
+      "title": "Single Dot capability handshake and scoped execution grants",
+      "dependsOn": [
+        "MB-01"
+      ],
+      "existingTasks": [
+        "DW-020",
+        "DW-210"
+      ],
+      "estimatedPersonDays": [
+        4,
+        6
+      ],
+      "proposedModules": [
+        "src/orchestration/grants",
+        "src/orchestration/execution-capsule",
+        "src/adapters/hosts"
+      ],
+      "reuse": [
+        "src/services/agent-bridge.mjs",
+        "src/adapters/agent-mcp.mjs",
+        "bin/deckweft-worker.mjs"
+      ],
+      "acceptance": [
+        "A real authorized host negotiates supported conversation/model/effort/cancel/usage operations.",
+        "Selected adopted roadmap hashes, source baselines, AGENTS rules and acceptance commands are pinned per job.",
+        "Deck-generation and code-change have separate scopes; revocation and unsupported required-model paths fail explicitly."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-06-10/review.json",
+      "remainingAcceptance": [
+        "Actual Dot desktop capability handshake, model/effort and task acceptance"
+      ]
+    },
+    {
+      "id": "MB-09",
+      "priority": "P1",
+      "state": "implemented-local",
+      "title": "Durable jobs, checkpoints and honest progress timeline",
+      "dependsOn": [
+        "MB-08"
+      ],
+      "existingTasks": [
+        "DW-210"
+      ],
+      "estimatedPersonDays": [
+        4,
+        6
+      ],
+      "proposedModules": [
+        "src/orchestration/jobs",
+        "src/orchestration/events",
+        "src/orchestration/progress",
+        "ui/jobs"
+      ],
+      "reuse": [
+        "src/services/agent-bridge.mjs",
+        "public/agent-bridge.js"
+      ],
+      "acceptance": [
+        "Bounded monotonic events survive reconnect/restart, leases, retry and cancellation without duplicate application.",
+        "Validated artifacts and real units drive progress; opaque inference is indeterminate.",
+        "ETA uses comparable runs and critical path with ranges/confidence, or states insufficient history; review and blocked states are distinct."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-06-10/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-10",
+      "priority": "P1",
+      "state": "implemented-local",
+      "title": "Evaluate Astra effort and version the routing policy",
+      "dependsOn": [
+        "MB-06",
+        "MB-07",
+        "MB-09"
+      ],
+      "existingTasks": [
+        "DW-200",
+        "DW-210",
+        "DW-220"
+      ],
+      "estimatedPersonDays": [
+        2,
+        4
+      ],
+      "proposedModules": [
+        "src/orchestration/effort-policy",
+        "tests/evals"
+      ],
+      "reuse": [
+        "tests/core.test.mjs",
+        "tests/agent-bridge.test.mjs"
+      ],
+      "acceptance": [
+        "Compare medium/high on repeated representative English, Chinese, evidence, visual, interaction and code-change tasks.",
+        "Record acceptance quality, first-pass validity, repairs, latency and actual reported usage; mark unavailable cost unknown.",
+        "Store date/corpus/host/model/policy evidence; escalation honors the grant ceiling and no best-effort claim is made without results."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-06-10/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-11",
+      "priority": "P1",
+      "state": "implemented-local",
+      "title": "Opt-in image generation and local asset reuse",
+      "dependsOn": [
+        "MB-06",
+        "MB-07",
+        "MB-09",
+        "MB-10"
+      ],
+      "existingTasks": [
+        "DW-220",
+        "DW-320"
+      ],
+      "estimatedPersonDays": [
+        3,
+        6
+      ],
+      "proposedModules": [
+        "src/adapters/media",
+        "src/assets/cache",
+        "ui/workspace/asset-review"
+      ],
+      "reuse": [
+        "src/render/assets.mjs",
+        "src/services/store.mjs"
+      ],
+      "acceptance": [
+        "Only opted-in tools/providers receive approved data and chargeable requests; credentials stay outside projects/logs.",
+        "Relevant assets retain rights/alt text/content hash and are individually replaceable; offline reopen/export succeeds.",
+        "Bounded retries, cancellation and provider idempotency/recovery avoid blind duplicated paid work."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-11-15/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-12",
+      "priority": "P2",
+      "state": "partial",
+      "title": "Multiple workers and selected conversations",
+      "dependsOn": [
+        "MB-09",
+        "MB-10",
+        "MB-11"
+      ],
+      "existingTasks": [
+        "DW-210"
+      ],
+      "estimatedPersonDays": [
+        5,
+        8
+      ],
+      "proposedModules": [
+        "src/orchestration/scheduler",
+        "src/orchestration/integration",
+        "ui/jobs/workers"
+      ],
+      "reuse": [
+        "src/services/agent-bridge.mjs",
+        "src/services/store.mjs"
+      ],
+      "acceptance": [
+        "Two authorized workers process independent artifacts with scoped chat inputs and no permission inheritance.",
+        "One integrator checks revision/input hashes; coding workers use worktrees or isolated copies and stale patches conflict.",
+        "Revocation, crashes, lease theft, delayed completion and duplicate events do not cross scopes or duplicate outputs."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-11-15/review.json",
+      "remainingAcceptance": [
+        "Actual two-worker Dot desktop capability/conversation acceptance; current real host evidence is Codex CLI with selected authored snapshots only"
+      ]
+    },
+    {
+      "id": "MB-13",
+      "priority": "P2",
+      "state": "implemented-local",
+      "title": "General Three.js scene adapter",
+      "dependsOn": [
+        "MB-03",
+        "MB-07"
+      ],
+      "existingTasks": [
+        "DW-140",
+        "DW-320"
+      ],
+      "estimatedPersonDays": [
+        3,
+        5
+      ],
+      "proposedModules": [
+        "src/render/three-scene",
+        "src/contracts/render-capabilities"
+      ],
+      "reuse": [
+        "public/three-dots.js",
+        "src/render/three-bundle.mjs"
+      ],
+      "acceptance": [
+        "Approved scene recipes load locally only when needed with measured packaging/resource costs.",
+        "Context loss, static fallback, keyboard controls and reduced/off policies work.",
+        "Export declares static versus native behavior; editable text is not flattened with the 3D asset."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-11-15/review.json",
+      "remainingAcceptance": []
+    },
+    {
+      "id": "MB-14",
+      "priority": "P3",
+      "state": "partial",
+      "title": "Figma editable importer acceptance",
+      "dependsOn": [
+        "MB-07",
+        "MB-11"
+      ],
+      "existingTasks": [
+        "DW-300"
+      ],
+      "estimatedPersonDays": [
+        3,
+        5
+      ],
+      "proposedModules": [
+        "integrations/figma",
+        "src/adapters/handoff"
+      ],
+      "reuse": [
+        "integrations/figma/code.js",
+        "src/adapters/handoff.mjs"
+      ],
+      "acceptance": [
+        "Actual Figma importer runs with a real assigned identity.",
+        "Native text/shapes/media, fonts, node mapping and component/fixed-layout decisions are inspected.",
+        "Record actual environment and screenshots; exported JSON alone is not acceptance."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-11-15/review.json",
+      "remainingAcceptance": [
+        "Actual native Figma development-plugin registration with assigned id, editable media/font/source-map import and visual review"
+      ]
+    },
+    {
+      "id": "MB-15",
+      "priority": "P3",
+      "state": "partial",
+      "title": "After Effects temporal importer acceptance",
+      "dependsOn": [
+        "MB-07",
+        "MB-13"
+      ],
+      "existingTasks": [
+        "DW-310"
+      ],
+      "estimatedPersonDays": [
+        4,
+        7
+      ],
+      "proposedModules": [
+        "integrations/after-effects",
+        "src/adapters/handoff"
+      ],
+      "reuse": [
+        "integrations/after-effects/DeckWeft-Import.jsx",
+        "src/adapters/handoff.mjs"
+      ],
+      "acceptance": [
+        "Actual AE imports native layers with explicit temporal mapping and easing.",
+        "Strict parsing, cancel and rollback preserve existing projects.",
+        "Render and inspect real early/middle/settled preview frames; keep unsupported behavior explicit."
+      ],
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/mb-11-15/review.json",
+      "remainingAcceptance": [
+        "Actual After Effects execution, cancellation/rollback, fonts, temporal/easing and early/middle/settled preview rendering"
+      ]
+    }
+  ],
+  "authorizedTaskIds": [
+    "MB-01",
+    "MB-02",
+    "MB-03",
+    "MB-04",
+    "MB-05",
+    "MB-06",
+    "MB-07",
+    "MB-08",
+    "MB-09",
+    "MB-10",
+    "MB-11",
+    "MB-12",
+    "MB-13",
+    "MB-14",
+    "MB-15"
+  ],
+  "latestAdoption": "2026-10-18: user authorized MB-11 through MB-15"
+}

@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deckweft:project:1",
+  "title": "DeckWeft project",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "deckweft"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "locale": {
+      "enum": [
+        "en",
+        "zh-CN"
+      ]
+    },
+    "aspectRatio": {
+      "enum": [
+        "16:9",
+        "4:3",
+        "1:1",
+        "9:16"
+      ]
+    },
+    "theme": {
+      "enum": [
+        "paper",
+        "midnight",
+        "ocean",
+        "signal"
+      ]
+    },
+    "brief": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 12000
+        },
+        "audience": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "prompt",
+        "audience",
+        "outcome"
+      ],
+      "additionalProperties": false
+    },
+    "slides": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/slide"
+      },
+      "minItems": 1,
+      "maxItems": 100
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 300
+    },
+    "revision": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "updatedAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      },
+      "required": [
+        "number",
+        "createdAt",
+        "updatedAt"
+      ],
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "format",
+    "schemaVersion",
+    "id",
+    "title",
+    "locale",
+    "aspectRatio",
+    "theme",
+    "brief",
+    "slides",
+    "sources",
+    "revision",
+    "extensions"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "slide": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+        },
+        "role": {
+          "enum": [
+            "opening",
+            "context",
+            "evidence",
+            "process",
+            "decision",
+            "closing"
+          ]
+        },
+        "content": {
+          "type": "object",
+          "properties": {
+            "eyebrow": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 100
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "body": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 8000
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "minItems": 0,
+              "maxItems": 24
+            },
+            "metrics": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  }
+                },
+                "required": [
+                  "label",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 12
+            }
+          },
+          "required": [
+            "eyebrow",
+            "title",
+            "body",
+            "items",
+            "metrics"
+          ],
+          "additionalProperties": false
+        },
+        "design": {
+          "type": "object",
+          "properties": {
+            "layout": {
+              "enum": [
+                "auto",
+                "editorial",
+                "spotlight",
+                "grid",
+                "timeline"
+              ]
+            }
+          },
+          "required": [
+            "layout"
+          ],
+          "additionalProperties": false
+        },
+        "motion": {
+          "type": "object",
+          "properties": {
+            "preset": {
+              "enum": [
+                "none",
+                "fade",
+                "rise"
+              ]
+            },
+            "duration": {
+              "type": "number",
+              "minimum": 2,
+              "maximum": 60
+            }
+          },
+          "required": [
+            "preset",
+            "duration"
+          ],
+          "additionalProperties": false
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 20000
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "minItems": 0,
+          "maxItems": 100,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "role",
+        "content",
+        "design",
+        "motion",
+        "notes",
+        "sourceIds"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

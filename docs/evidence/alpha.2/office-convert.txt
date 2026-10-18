@@ -1,0 +1,3 @@
+convert /mnt/data/deckweft-next/DeckWeft/dist/demo/welcome.pptx as a Impress document -> /mnt/data/deckweft-qa/evidence/office-final/welcome.pdf using filter : impress_pdf_Export
+convert /mnt/data/deckweft-next/DeckWeft/dist/demo/welcome.zh-CN.pptx as a Impress document -> /mnt/data/deckweft-qa/evidence/office-final/welcome.zh-CN.pdf using filter : impress_pdf_Export
+convert /mnt/data/deckweft-qa/evidence/studio/browser-measured.pptx as a Impress document -> /mnt/data/deckweft-qa/evidence/office-final/browser-measured.pdf using filter : impress_pdf_Export

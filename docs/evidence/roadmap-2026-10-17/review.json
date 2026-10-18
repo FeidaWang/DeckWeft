@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-17",
+  "scope": "Roadmap proposal and current UI inspection; no runtime implementation or live agent delegation",
+  "nodeVersion": "v24.14.0",
+  "gitMetadataAvailable": false,
+  "sourceHashes": {
+    "package.json": "c135f310ed2655111cc38ee17d704aca7a6a6e4c7c4a3ccf7aedbda4a38ec41c",
+    "roadmap.json": "710d1f0f96456c6aeb32760b805ac7a81ae4d2795b127b900e9878093925ac89",
+    "schemas/project.schema.json": "7d9b7c1637f77806b658bc4bd98df2fc1613d882c492c284de4378e6f3aa0c91",
+    "src/core/speech.mjs": "3ba28500ae9f24dbdb12e0e232dcd2a098b2900f4bd1957217da421b593e7fd7",
+    "src/services/agent-bridge.mjs": "ebef9070b8a7f8714ba10b8513fd9ec8473f37976d1471b2751c49a43a8cd4d9",
+    "src/render/html.mjs": "dca0ad5adf40d89e097b33ddac88ea25aa6f44a004e8ce0cfa0bf94fd0c7f35c",
+    "src/render/player.mjs": "e551aec36d795e8272109d844d7cd8a24cccf84f794736c6564b38c1b48426d4",
+    "public/app.js": "2ab2df00852a4ed4a093a15533b454b932211763c49bb952fa95c06a412f92a1",
+    "public/styles.css": "50a216644d78c8117273a454abe564566c3a03118413b28876a728ea28de89b4",
+    "public/studio-tools.js": "bf38d03e61f7f48c08331c66928cbaca1b0b9d26329df86c35c811c538b7054b",
+    "public/agent-bridge.js": "170fcbfe8ab2bd31aed06f15494a19259dffd7061e4c6648f2877ef90e2fa3bd"
+  },
+  "proposalHash": "433d49f5b9f623b1dce9d495ab56f956ff887241b5e6cb84d0d5665c8c5f9fd5",
+  "screenshots": {
+    "browser": "provided in-app browser",
+    "viewport": [
+      1280,
+      720
+    ],
+    "capturedThisRun": true,
+    "savedFilesReopenedAndVisuallyInspected": true,
+    "hashes": {
+      "01-workbench.png": "1c12da57745da8e6e15c6ecf2d0d7bf3c5bbccbc2e6d61f06bebf43e6c67dbed",
+      "02-present.png": "9825c7c68d43e2f4257d901615cf29f19d0474a6faf0ac103c6afe1131759b77",
+      "03-rehearsal.png": "4f25504f3d42ca62c884983dde0da9a1c72ee1f1f9b9f5ac01040ddb4091d179",
+      "04-design.png": "b64eb1e6451396393766dca0eec86639b21831197da7d09af343ad88caa74723",
+      "05-agent.png": "82a8fbb8ed63e2e136626ee473da7c57be6abd2a21856935a9eb6d1847c08e74"
+    }
+  },
+  "proposalChecks": {
+    "taskCount": 15,
+    "uniqueIds": true,
+    "dependencyReferences": true,
+    "acyclic": true,
+    "reusedFilesExist": true,
+    "documentTaskIdsAndEstimatesAgree": true,
+    "estimatedPersonDays": [
+      48,
+      79
+    ],
+    "firstMilestonePersonDays": [
+      12,
+      20
+    ]
+  },
+  "baselineVerification": {
+    "command": "npm run verify",
+    "exitCode": 0,
+    "testsPassed": 176
+  },
+  "finalVerification": {
+    "status": "passed",
+    "command": "npm run verify",
+    "exitCode": 0,
+    "testsPassed": 176,
+    "testsFailed": 0,
+    "sourceChecks": true,
+    "pluginBuild": true,
+    "bilingualDemoGeneration": true,
+    "log": "verify.txt",
+    "logSha256": "f27065b7cbacb7a067af5535701d745e1964cf3f6bb3276d508a6b83a0e2a8aa"
+  },
+  "notTested": [
+    "actual Dot/Astra host connection and effort selection",
+    "image generation provider",
+    "Figma importer",
+    "After Effects execution",
+    "PowerPoint/Keynote output for this documentation-only task",
+    "real second-display or conference sharing",
+    "screen reader",
+    "200% zoom",
+    "real OS IME",
+    "other browser engines"
+  ],
+  "applications": {
+    "installedButNotOpened": [
+      "Microsoft PowerPoint",
+      "Keynote",
+      "Figma"
+    ],
+    "notFoundInCheckedApplicationLocations": [
+      "After Effects"
+    ]
+  },
+  "preserved": {
+    "existingRoadmapStates": true,
+    "installedBrowserBundles": true,
+    "personalBrowserProfiles": true,
+    "noDependenciesAdded": true,
+    "noPublishing": true,
+    "noRemoteDeckUpload": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "deckweft",
+  "version": "0.1.0-alpha.2",
+  "description": "Create local presentations with four explainable layouts and editable exports.",
+  "skills": "./skills/",
+  "interface": { "displayName": "DeckWeft", "shortDescription": "Turn an outline into an editable presentation." }
+}

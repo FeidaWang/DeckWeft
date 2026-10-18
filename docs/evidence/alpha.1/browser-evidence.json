@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "mode": "offline HTML fixture + intercepted assets + live loopback API bridge",
+  "directLocalhostNavigation": "blocked by managed browser policy; not bypassed or modified",
+  "fixtureUUID": "browser getRandomValues polyfill because about:blank is not a secure context",
+  "productionCSPBrowserEnforcement": "not tested by this harness; headers are checked by Node integration tests",
+  "browser": "144.0.7559.96",
+  "checks": [
+    "six-slide library and four actual SVG choices",
+    "content change propagates to the shared scene",
+    "deck undo restores content",
+    "explicit layout selection persists in preview",
+    "theme and aspect-ratio switching update real geometry",
+    "duplicate / delete updates slide identity and count",
+    "add source and link to the current slide",
+    "explicit save reaches the live revisioned API",
+    "PowerPoint download returns a real ZIP package",
+    "present mode, arrow navigation, escape exit",
+    "outline creation saves and opens a distinct project",
+    "Chinese JSON import, content preservation, and separate UI language",
+    "four viewport sizes without page-level horizontal overflow; drawer escape"
+  ],
+  "pageErrors": []
+}

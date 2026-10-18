@@ -1,0 +1,15 @@
+{
+  "threeUncompressedBytes": 2117387,
+  "threeGzipBytes": 418167,
+  "spatialAdapterBytes": 5290,
+  "spatialAdapterGzipBytes": 2121,
+  "maxMeshes": 6,
+  "sharedGeometriesPerView": 1,
+  "sharedMaterialsPerView": 1,
+  "textures": 0,
+  "maxCanvasPixels": 630000,
+  "devicePixelRatio": 1,
+  "newRuntimeDependencies": 0,
+  "license": "Existing pinned Three.js MIT; no new renderer package",
+  "offline": "HTML bundles renderer only when a scene requires it; Studio lazily loads local scripts; static export has no renderer code"
+}

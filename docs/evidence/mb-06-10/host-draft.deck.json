@@ -1,0 +1,114 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 2,
+  "id": "deck_dot_990e1fcfe54140398e6a94b3287ae19a",
+  "title": "Build offline, choose your presentation route",
+  "locale": "en",
+  "aspectRatio": "16:9",
+  "theme": "signal",
+  "brief": {
+    "prompt": "Draft exactly two English slides: a restrained opening and a comparison of offline HTML exploration with editable PowerPoint. Keep the provided capabilities accurate. Preserve notes, source attribution and every required schema field. Use native editable text. Give comparison two short items with matching tabs. The result is a separate proposed project.",
+    "audience": "Developers",
+    "outcome": "Compare offline HTML exploration with static, editable PowerPoint and choose a presentation route."
+  },
+  "slides": [
+    {
+      "id": "mb_demo_english-pitch",
+      "role": "opening",
+      "content": {
+        "eyebrow": "",
+        "title": "Build your presentation offline",
+        "body": "A presentation editor for developers, with editable text and local copies.",
+        "items": [
+          "Revise slide text as your ideas change.",
+          "Save local copies for review and reuse."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "editorial"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Develop your presentation offline, revise the text directly, and save local copies as your work evolves.",
+      "sourceIds": [],
+      "intent": {
+        "claim": "Build presentations offline with editable text and local copies.",
+        "audience": "Developers",
+        "evidence": [],
+        "visualFamily": "cover",
+        "assetIds": [],
+        "interaction": {
+          "kind": "none",
+          "initial": 0,
+          "labels": []
+        }
+      }
+    },
+    {
+      "id": "mb_demo_interaction",
+      "role": "context",
+      "content": {
+        "eyebrow": "",
+        "title": "Choose your presentation route",
+        "body": "Explore offline in HTML or review static slides in PowerPoint. Text stays editable in either route.",
+        "items": [
+          "Local HTML: explore offline through tabs.",
+          "PowerPoint: review static slides and edit text."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "grid"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Select a tab to compare the two routes. Local HTML supports exploration; PowerPoint presents static, editable slides. Keep labels, descriptions, and all other words as editable text. For a static fallback, display both choices side by side.\n\nProvide keyboard access to both tabs and retain both choice descriptions as a text alternative.",
+      "sourceIds": [],
+      "intent": {
+        "claim": "Local HTML supports offline tab exploration; PowerPoint supports static slides with editable text.",
+        "audience": "Developers",
+        "evidence": [],
+        "visualFamily": "comparison",
+        "assetIds": [],
+        "interaction": {
+          "kind": "tabs",
+          "initial": 0,
+          "labels": [
+            "Local HTML",
+            "PowerPoint"
+          ]
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "qa-log",
+      "title": "Supplied fictional QA sample (8 of 10; not product research)",
+      "url": "https://example.com/qa-log"
+    }
+  ],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-17T00:00:00.000Z",
+    "updatedAt": "2026-10-17T00:00:00.000Z"
+  },
+  "extensions": {
+    "deckweftMigration": {
+      "fromVersion": 1,
+      "sourceId": "mb_planning_demo",
+      "sourceHash": "cd51539a950dc3b5ab87396aa7120a02fbeee1c3156e3ed9f854251b9e6316fb"
+    }
+  },
+  "assets": [],
+  "planning": {
+    "brief": "Separate two-slide proposal for developers. Open with a restrained statement of offline authoring, editable text and local copies. Follow with a comparison of offline HTML tab exploration and static, editable PowerPoint. Match the two comparison items to the Local HTML and PowerPoint tabs. Preserve the original speaker notes, adding keyboard and text alternatives to the comparison. Use native editable text throughout and show both choices side by side in the static fallback. Retain the supplied fictional QA source without using it as evidence for product capabilities. Capabilities are carried forward from the supplied project; no independent verification, export testing or visual inspection was performed.",
+    "inputHash": "9f5819db36da819ccd0e4440b8462933a8935032ea85eebbc659c565d31259bb",
+    "reviewed": false
+  }
+}

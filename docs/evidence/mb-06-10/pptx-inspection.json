@@ -1,0 +1,54 @@
+{
+  "file": "dist/mb-06-10/demo/final-measured.pptx",
+  "sha256": "d764add31d9faee3c8310df846ca504fcd486e832449addcc4cff66331500d0e",
+  "slides": [
+    {
+      "part": "ppt/slides/slide1.xml",
+      "nativeTextShapes": 5,
+      "pictures": 0,
+      "textRuns": 7
+    },
+    {
+      "part": "ppt/slides/slide2.xml",
+      "nativeTextShapes": 7,
+      "pictures": 0,
+      "textRuns": 10
+    },
+    {
+      "part": "ppt/slides/slide3.xml",
+      "nativeTextShapes": 10,
+      "pictures": 0,
+      "textRuns": 13
+    },
+    {
+      "part": "ppt/slides/slide4.xml",
+      "nativeTextShapes": 11,
+      "pictures": 0,
+      "textRuns": 11
+    },
+    {
+      "part": "ppt/slides/slide5.xml",
+      "nativeTextShapes": 6,
+      "pictures": 0,
+      "textRuns": 8
+    },
+    {
+      "part": "ppt/slides/slide6.xml",
+      "nativeTextShapes": 5,
+      "pictures": 1,
+      "textRuns": 8
+    },
+    {
+      "part": "ppt/slides/slide7.xml",
+      "nativeTextShapes": 5,
+      "pictures": 0,
+      "textRuns": 9
+    }
+  ],
+  "nativeTextShapes": 49,
+  "pictures": 1,
+  "crc": "passed",
+  "xml": "passed",
+  "relationships": "passed",
+  "privateNotesOmitted": true
+}

@@ -1,0 +1,533 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deckweft:project:2",
+  "title": "DeckWeft project",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "deckweft"
+    },
+    "schemaVersion": {
+      "const": 2
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "locale": {
+      "enum": [
+        "en",
+        "zh-CN"
+      ]
+    },
+    "aspectRatio": {
+      "enum": [
+        "16:9",
+        "4:3",
+        "1:1",
+        "9:16"
+      ]
+    },
+    "theme": {
+      "enum": [
+        "paper",
+        "midnight",
+        "ocean",
+        "signal"
+      ]
+    },
+    "brief": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 12000
+        },
+        "audience": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "prompt",
+        "audience",
+        "outcome"
+      ],
+      "additionalProperties": false
+    },
+    "slides": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/slide"
+      },
+      "minItems": 1,
+      "maxItems": 100
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 300
+    },
+    "revision": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "updatedAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      },
+      "required": [
+        "number",
+        "createdAt",
+        "updatedAt"
+      ],
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/asset"
+      },
+      "minItems": 0,
+      "maxItems": 200
+    },
+    "planning": {
+      "type": "object",
+      "properties": {
+        "brief": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12000
+        },
+        "inputHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reviewed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "brief",
+        "inputHash",
+        "reviewed"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "schemaVersion",
+    "id",
+    "title",
+    "locale",
+    "aspectRatio",
+    "theme",
+    "brief",
+    "slides",
+    "sources",
+    "revision",
+    "extensions",
+    "assets",
+    "planning"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "slide": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+        },
+        "role": {
+          "enum": [
+            "opening",
+            "context",
+            "evidence",
+            "process",
+            "decision",
+            "closing"
+          ]
+        },
+        "content": {
+          "type": "object",
+          "properties": {
+            "eyebrow": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 100
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "body": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 8000
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "minItems": 0,
+              "maxItems": 24
+            },
+            "metrics": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  }
+                },
+                "required": [
+                  "label",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 12
+            }
+          },
+          "required": [
+            "eyebrow",
+            "title",
+            "body",
+            "items",
+            "metrics"
+          ],
+          "additionalProperties": false
+        },
+        "design": {
+          "type": "object",
+          "properties": {
+            "layout": {
+              "enum": [
+                "auto",
+                "editorial",
+                "spotlight",
+                "grid",
+                "timeline"
+              ]
+            }
+          },
+          "required": [
+            "layout"
+          ],
+          "additionalProperties": false
+        },
+        "motion": {
+          "type": "object",
+          "properties": {
+            "preset": {
+              "enum": [
+                "none",
+                "fade",
+                "rise"
+              ]
+            },
+            "duration": {
+              "type": "number",
+              "minimum": 2,
+              "maximum": 60
+            }
+          },
+          "required": [
+            "preset",
+            "duration"
+          ],
+          "additionalProperties": false
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 20000
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "minItems": 0,
+          "maxItems": 100,
+          "uniqueItems": true
+        },
+        "intent": {
+          "$ref": "#/$defs/intent"
+        }
+      },
+      "required": [
+        "id",
+        "role",
+        "content",
+        "design",
+        "motion",
+        "notes",
+        "sourceIds",
+        "intent"
+      ],
+      "additionalProperties": false
+    },
+    "interaction": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "none",
+            "steps",
+            "tabs"
+          ]
+        },
+        "initial": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "minItems": 0,
+          "maxItems": 24
+        }
+      },
+      "required": [
+        "kind",
+        "initial",
+        "labels"
+      ],
+      "additionalProperties": false
+    },
+    "intent": {
+      "type": "object",
+      "properties": {
+        "claim": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "audience": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "support": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              }
+            },
+            "required": [
+              "sourceId",
+              "support"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "visualFamily": {
+          "enum": [
+            "cover",
+            "comparison",
+            "process",
+            "timeline",
+            "metric",
+            "image-caption"
+          ]
+        },
+        "assetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "minItems": 0,
+          "maxItems": 24
+        },
+        "interaction": {
+          "$ref": "#/$defs/interaction"
+        },
+        "spatialRecipe": {
+          "type": "string",
+          "enum": [
+            "none",
+            "orbit",
+            "layers"
+          ]
+        }
+      },
+      "required": [
+        "claim",
+        "audience",
+        "evidence",
+        "visualFamily",
+        "assetIds",
+        "interaction"
+      ],
+      "additionalProperties": false
+    },
+    "asset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+        },
+        "hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "mime": {
+          "const": "image/png"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^assets/[a-f0-9]{64}\\.png$"
+        },
+        "provenance": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "allowedUse": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "alt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "fallback": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "id",
+        "hash",
+        "mime",
+        "width",
+        "height",
+        "path",
+        "provenance",
+        "license",
+        "allowedUse",
+        "alt",
+        "fallback"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

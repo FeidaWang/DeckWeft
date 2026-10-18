@@ -1,0 +1,68 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 2,
+  "id": "deck_dot_7baab3bda0664dbab84f82b0f5cc3d07",
+  "title": "Review the brief first",
+  "locale": "en",
+  "aspectRatio": "16:9",
+  "theme": "signal",
+  "brief": {
+    "prompt": "Exactly one restrained English cover slide about reviewing a brief before arranging editable content.",
+    "audience": "",
+    "outcome": "Review the brief before arranging content, preserving native editable text."
+  },
+  "slides": [
+    {
+      "id": "slide_alpha",
+      "role": "opening",
+      "content": {
+        "eyebrow": "",
+        "title": "Review the brief first",
+        "body": "Then arrange the story. Keep the text editable.",
+        "items": [],
+        "metrics": []
+      },
+      "design": {
+        "layout": "editorial"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Review the brief before arranging the content. Preserve native editable text throughout.",
+      "sourceIds": [],
+      "intent": {
+        "claim": "Review the brief before arranging editable content.",
+        "audience": "",
+        "evidence": [],
+        "visualFamily": "cover",
+        "assetIds": [],
+        "interaction": {
+          "kind": "none",
+          "initial": 0,
+          "labels": []
+        },
+        "spatialRecipe": "none"
+      }
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-18T00:49:20.634Z",
+    "updatedAt": "2026-10-18T00:49:20.634Z"
+  },
+  "extensions": {
+    "deckweftMigration": {
+      "fromVersion": 1,
+      "sourceId": "worker_alpha",
+      "sourceHash": "5825828234395c8907f14a436a5b8986ee2239fd99d235c581276aaff5482155"
+    }
+  },
+  "assets": [],
+  "planning": {
+    "brief": "One restrained English cover: review the brief before arranging the story; preserve native editable text.",
+    "inputHash": "7d0ae913a4ba0464b4654899b3e2a3cdbecd8e717b353113b67761cb85060ae1",
+    "reviewed": true
+  }
+}

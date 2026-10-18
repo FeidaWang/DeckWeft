@@ -1,0 +1,11 @@
+DeckWeft demonstration artwork
+
+cosmos.png: original AI-generated backdrop, created for this project. Generation provenance is stored beside it. Inspired by the spacious interactive star-field direction in the user-specified Astra launch page; no site code, logo or star-field media was copied.
+
+dot-*.png: isolated character crops from participant-supplied DevDay event artwork, previously exported from the project's Figma design. The user supplied the matching event reference again for this revision. Original ownership is retained. The DeckWeft software licence does not relicense these third-party characters or imply organiser endorsement.
+
+studio.png and mobile.png: actual DeckWeft browser captures from this revision. No external user data or account information appears in them.
+
+No fonts are embedded. The project has no remote image request or CDN dependency.
+
+mesh/dot-*.png: actual transparent renders downloaded from DeckWeft's Three.js geometry viewer. Bodies, bevels and facial marks are reconstructed geometric interpretations of the participant-supplied reference, not official OpenAI 3D models. Live HTML and Studio use the geometry itself with zero character textures. PPTX and WebGL fallback use these separate renders, while all slide text remains native and editable.

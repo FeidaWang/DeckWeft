@@ -1,0 +1,13 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {EditHistory,keyboardAction,validSlideAction} from '../public/interaction.js';
+const p=(title='one',revision=1)=>({title,revision:{number:revision}});
+test('DW-120: typing bursts coalesce but different fields and elapsed pauses do not',()=>{
+ let clock=0;const h=new EditHistory(50,()=>clock);h.capture(p(), 'a','title');clock=100;h.capture(p('two'),'a','title');assert.equal(h.past.length,1);
+ clock=1050;h.capture(p('three'),'a','title');assert.equal(h.past.length,2);h.capture(p('three'),'a','body');assert.equal(h.past.length,3);
+});
+test('DW-120: undo/redo restore selection but preserve the latest saved revision',()=>{const h=new EditHistory();h.capture(p(),'old');const undo=h.step(p('new',8),'new');assert.equal(undo.project.title,'one');assert.equal(undo.active,'old');assert.equal(undo.project.revision.number,8);const redo=h.step(undo.project,undo.active,true);assert.equal(redo.project.title,'new');assert.equal(redo.project.revision.number,8);});
+test('DW-120: branching edits discard redo and bound memory',()=>{const h=new EditHistory(2);for(let i=0;i<4;i++)h.capture(p(String(i)),'s');assert.equal(h.past.length,2);h.step(p(),'s');assert.equal(h.future.length,1);h.capture(p(),'s');assert.equal(h.future.length,0);});
+for(const opts of [{composing:true},{modal:true}])test(`DW-120: input context suppresses application hotkeys ${JSON.stringify(opts)}`,()=>{for(const key of ['1','2','s','z'])assert.equal(keyboardAction({key,ctrlKey:key==='s'||key==='z'},opts),null);});
+test('DW-120: IME 229, repeat, modifier keys, and native text undo do not trigger deck changes',()=>{for(const event of [{key:'1',isComposing:true},{key:'1',keyCode:229},{key:'1',repeat:true},{key:'1',altKey:true}])assert.equal(keyboardAction(event),null);assert.equal(keyboardAction({key:'z',ctrlKey:true},{editing:true}),null);assert.equal(keyboardAction({key:'1'},{editing:true}),null);});
+test('DW-120: normal save, layout and presentation keys are intentional',()=>{assert.equal(keyboardAction({key:'s',metaKey:true},{editing:true}),'save');assert.equal(keyboardAction({key:'2'}),'layout-2');assert.equal(keyboardAction({key:'End'},{presenting:true}),'last');assert.equal(keyboardAction({key:'Escape'}),'escape');assert.equal(keyboardAction({key:'Escape'},{modal:true}),null);});
+test('DW-120: boundary actions never dirty a deck',()=>{assert.equal(validSlideAction('up',0,4),false);assert.equal(validSlideAction('down',3,4),false);assert.equal(validSlideAction('delete',0,1),false);assert.equal(validSlideAction('duplicate',0,100),false);assert.equal(validSlideAction('add',0,99),true);});

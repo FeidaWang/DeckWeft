@@ -1,0 +1,5 @@
+Built-in image tool; one actual call on 2026-10-18; no CLI/API fallback, no key provisioning, no retries.
+
+Use case: illustration-story. Asset type: individual illustration for DeckWeft's local-first presentation workflow demonstration, not a full slide. Create a polished editorial still life of blank paper story cards arranged on a wooden workbench beside a small spool of blue thread, suggesting ideas being carefully woven into a presentation. Warm natural lighting, restrained cream and blue palette, tactile paper texture. Landscape composition. No text, no letters, no logos, no watermarks, no screenshots, no people. This is decorative fictional artwork, not evidence or data.
+
+The live tool call preceded the new journal integration checks. The returned original PNG is used for subsequent local journal/import/offline-reopen verification; the journal is not claimed to have dispatched or cancelled that earlier host call.

@@ -1,0 +1,19 @@
+{
+  "browser": "151.0.7922.34",
+  "isolation": "Cached Chrome for Testing with ephemeral context; no installed application or personal profile",
+  "checks": [
+    "Actual WebGL orbit renders with separate native SVG text",
+    "Reduced motion stops loop; Enter on rotation still draws",
+    "Actual WebGL context loss restores static editable scene fallback",
+    "Layers and mixed Chinese scene render",
+    "Print exposes native static shapes and hides canvas/controls",
+    "HTML widths 390, 1024 and 1440 have no horizontal document overflow",
+    "Standalone HTML makes no remote requests",
+    "Studio lazily loads local 3D adapter after selecting a recipe",
+    "Saved spatial recipe reopens offline from local storage",
+    "Browser-measured PPTX export succeeds with static 3D fallback",
+    "UI prompt consent, one journal dispatch, original generated PNG completion, attachment, save/reload and four measured media exports",
+    "Actual worker alpha/beta outputs opened for visual review"
+  ],
+  "errors": []
+}

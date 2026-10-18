@@ -1,0 +1,9 @@
+
+> deckweft@0.1.0-alpha.2 build
+> node scripts/build.mjs
+
+{
+  "directory": "/Users/feida/Developer/DeckWeft/dist/deckweft-plugin",
+  "archive": "/Users/feida/Developer/DeckWeft/dist/deckweft-plugin-0.1.0-alpha.2.zip",
+  "version": "0.1.0-alpha.2"
+}

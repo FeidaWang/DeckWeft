@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-17",
+  "scope": "Optional local agent bridge, English pitch mode, Signal theme and authored Three.js stage example",
+  "automated": {
+    "command": "npm run verify",
+    "passed": 165,
+    "failed": 0,
+    "skipped": 0,
+    "log": "verify.txt"
+  },
+  "agentBridge": {
+    "transports": [
+      "stdio MCP",
+      "connected-computer CLI"
+    ],
+    "actualDotHostAcceptance": false,
+    "browserWorkflow": "Enable, explicit consent, queue, fixture-worker completion, review and save as new copy passed. Source retained.",
+    "observedAndFixed": "Ordinary heartbeat/status lock contention now waits up to two seconds without removing locks.",
+    "modelSelection": "Preference only. Host-reported metadata. No API or account inference.",
+    "localBridgeTests": 12,
+    "actualSubprocessTransports": [
+      "stdio MCP",
+      "connected-computer CLI"
+    ]
+  },
+  "browser": {
+    "mode": "Direct loopback in the provided browser",
+    "englishVisibleContent": true,
+    "headlineEdit": true,
+    "evidenceGridSwitch": true,
+    "save": true,
+    "measuredPptxExport": true,
+    "humanTimedRehearsal": false,
+    "sourceResetForRehearsal": true,
+    "htmlTextOverflow": 0,
+    "threeReducedMotion": true,
+    "actualGenerationReviewAsCopy": true
+  },
+  "design": {
+    "authoredSlides": 8,
+    "nativePptxTextShapes": 47,
+    "nativePptxImages": 6,
+    "allAuthoredPagesVisuallyInspected": true,
+    "figma": "Eight actual editable frames, source-image character crops, native text/Dot keyframes. No text-fit issues found. Private file link retained only in the chat.",
+    "figmaMotion": "Four-second MP4 exported; early, middle and settled frames inspected.",
+    "afterEffects": "App unavailable. JSX generated; actual execution not verified.",
+    "three": "Three.js 0.186.1, MIT, local inline renderer. Actual WebGL, paper stacks, Dot click interaction and reduced-motion fallback exercised.",
+    "threeObservedSample": {
+      "drawCalls": 20,
+      "frameMs": 8.1,
+      "limit": "A single observed animation-frame sample, not an FPS benchmark or all-device guarantee."
+    },
+    "libreOffice": "Both the eight-slide authored deck and three-slide core demo rendered. All eight pages reviewed in the authoring renderer; Office overview and representative cover/closing pages inspected."
+  },
+  "limits": [
+    "No real Dot model generation or host acceptance passed.",
+    "PowerPoint and Keynote were not tested for this revision.",
+    "Core Figma/AE importers remain unverified. The authored design example does not close their release gates.",
+    "Three.js motion is delivered in HTML. PPTX stays a static editable fallback.",
+    "No measured Astra compatibility or quality gain. No award guarantee."
+  ],
+  "dependency": {
+    "version": "0.186.1",
+    "license": "MIT",
+    "bundleBytes": 550758,
+    "gzipBytes": 140489,
+    "sha256": "af5346d0fa77b29f15c4bb072330b6f911518fc1253cc0603e464c04f60c0aff",
+    "benefit": "Perspective slide stacks and raycast Dot interaction. Editable slide text remains native.",
+    "offline": "Inlined in the HTML. No CDN or external requests. Static 2D fallback and reduced motion.",
+    "buildTool": "esbuild 0.28.2, MIT, build-time only and not shipped"
+  },
+  "delivery": {
+    "archiveSha256": "a1371f1c92522de6ad7567ca9e16a6ffb2a7f82b10c9da9851a8ee8c495d85a5",
+    "htmlSha256": "eec876d20402eba98bfb90d9fe6c6465bcf3eb67b23f34aaa717a5efd2ee22e1",
+    "files": 23,
+    "fullscreen": "Observed: rehearsal controls hide; Escape returns.",
+    "htmlTextOverflow": 0
+  }
+}

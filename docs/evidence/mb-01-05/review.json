@@ -1,0 +1,256 @@
+{
+  "date": "2026-10-17",
+  "scope": "MB-01 through MB-05 local functionality",
+  "verification": {
+    "status": "passed",
+    "command": "npm run verify",
+    "exitCode": 0,
+    "tests": 187,
+    "failed": 0,
+    "skipped": 0,
+    "sourceCheck": true,
+    "pluginBuild": true,
+    "demos": [
+      "en",
+      "zh-CN"
+    ],
+    "log": "verify.txt",
+    "sha256": "180a3abb4a15fdc778ed7d357352e4f797545c169a48a26218dc7ff0851e3951"
+  },
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "node": "v24.14.0",
+    "browser": "provided in-app browser",
+    "temporaryLibrary": true
+  },
+  "types": {
+    "compilerVersion": "Version 5.9.3",
+    "elapsedMs": 693,
+    "schemaBytes": 1025,
+    "emittedSmoke": true,
+    "negativeContractFixtures": 7,
+    "compiler": {
+      "name": "typescript",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "archiveBytes": 4377468,
+      "unpackedBytes": 23625066,
+      "developmentOnly": true,
+      "shippedCompilerBytes": 0
+    },
+    "scope": [
+      "schema-derived Project declarations",
+      "public/session/job/scene contracts",
+      "speech",
+      "preferences",
+      "clock",
+      "browser action registry"
+    ],
+    "wholeRepositoryMigrated": false
+  },
+  "browser": {
+    "final": {
+      "presenter": {
+        "appearance": "dark",
+        "clock": "0:00 / 1:04",
+        "connection": "观众已连接 · 仅公开画面",
+        "motion": "full"
+      },
+      "audience": {
+        "editorInputs": 0,
+        "page": "1 / 4 · 仅观众画面",
+        "privateScriptPresent": false,
+        "viewport": [
+          473,
+          853
+        ]
+      },
+      "presenterErrors": [],
+      "audienceErrors": []
+    },
+    "autoFollow": {
+      "before": {
+        "clock": "0:00 / 1:17",
+        "follow": "true",
+        "scroll": 0
+      },
+      "after": {
+        "clock": "0:46 / 1:17",
+        "follow": "true",
+        "highlight": "语速只是估算，并非语音识别。",
+        "play": "暂停提词",
+        "scroll": 733
+      }
+    },
+    "reducedMotion": {
+      "before": {
+        "clock": "0:14 / 1:21",
+        "policy": "reduced",
+        "scroll": 0
+      },
+      "after": {
+        "clock": "0:25 / 1:21",
+        "scroll": 0
+      }
+    },
+    "rendererStopped": {
+      "frames": "3039",
+      "policy": "off",
+      "reduced": "true"
+    },
+    "pauseHeld": "0:14 / 1:21",
+    "viewports": [
+      [
+        1280,
+        800
+      ],
+      [
+        768,
+        900
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "layoutTray": {
+      "before": {
+        "stageHeight": 415,
+        "canvasWidth": 673.7734375
+      },
+      "after": {
+        "stageHeight": 567,
+        "canvasWidth": 700
+      }
+    },
+    "paceChange": {
+      "before": "0:00 / 1:17",
+      "after": "0:00 / 1:04"
+    },
+    "rejectedCapture": "An audience capture during viewport override was cropped; replaced after reset with a complete natural-viewport browser screenshot.",
+    "allAcceptedScreenshotsReopened": true,
+    "realScreenReader": false,
+    "browserZoom200": false,
+    "realConferencingShare": false,
+    "extendedDisplay": false,
+    "otherEngines": false,
+    "osPreferenceChangeManual": false,
+    "osPrecedenceUnitTest": true
+  },
+  "screenshots": [
+    {
+      "file": "01-workspace-dark.png",
+      "sha256": "9cb4717eecf363d8f39c9a5ea7796e973fc22a905bc11831e2c529f8239c3e04",
+      "dimensions": null,
+      "visuallyInspected": true
+    },
+    {
+      "file": "02-presenter-zh.png",
+      "sha256": "1e8e4672770c22ce668b2aa5c593ad99cc7992c78eb9ae378af5d72564af928a",
+      "dimensions": null,
+      "visuallyInspected": true
+    },
+    {
+      "file": "03-audience.png",
+      "sha256": "7a87a5e043f944bd9cc078b0b42fc2861c5619eaf1322dced4878bffc0c67a3e",
+      "dimensions": null,
+      "visuallyInspected": true
+    },
+    {
+      "file": "04-settings.png",
+      "sha256": "8e576b69536ad63bc3abf1cd3304e7f5c8e559f1121c4be2a3511fe730422110",
+      "dimensions": null,
+      "visuallyInspected": true
+    },
+    {
+      "file": "05-presenter-en.png",
+      "sha256": "b76f9e517fbd33e7bd20edeed5c2020064e764b4b5b27ebe459a938c6151cac2",
+      "dimensions": null,
+      "visuallyInspected": true
+    },
+    {
+      "file": "06-presenter-mobile.png",
+      "sha256": "31a89c8ba80a9c366e8351af4dcc875b3e22450346cbf425b62747ce9c989acb",
+      "dimensions": null,
+      "visuallyInspected": true
+    },
+    {
+      "file": "07-ended.png",
+      "sha256": "7bd76bcac0517919c910a6d2702d87bc40598409327736d1ea367c1227d2b6c3",
+      "dimensions": null,
+      "visuallyInspected": true
+    },
+    {
+      "file": "08-workspace-light.png",
+      "sha256": "ce193256b0ae16bea1a3014d916ed479b55cfc16daf73921249942a5d415f8e2",
+      "dimensions": null,
+      "visuallyInspected": true
+    }
+  ],
+  "sourceHashes": {
+    "package.json": "278397f5d88747e16ebfff04fd4a16d6d6f60a42285ccad5cc34f65d0d4c44d6",
+    "package-lock.json": "cf969c02173286edeac5ee9cc0e4c885f8b1f5ac11fa5c979e258b43bb4a856a",
+    "tsconfig.json": "2ef53b4389d32076be1d5a89608de453de67866b1a136ca8a9c8d65a21abe12b",
+    "tsconfig.browser.json": "dd7193e6ee24736c173ef718627d3ee35a2d5058191ca9a4d39459cb43166c69",
+    "schemas/project.schema.json": "7d9b7c1637f77806b658bc4bd98df2fc1613d882c492c284de4378e6f3aa0c91",
+    "src/contracts/presentation.mts": "1009668d579e713ff3aa08a31c5fa968c7ee20d5230950818cc25bf24fea1a14",
+    "src/core/preferences.mjs": "395174b6860c5da3b577e6e299788e81f9793cda0b763679633f2e2f92b30ccd",
+    "src/core/speech.mjs": "1a554d3357ace94edc25756d6d7fe42c5bd4dd02114a4f163bc21f29ac8f993d",
+    "src/presentation/clock.mjs": "4a0b3c8c8c10316ec66e26abd529d7a91042ab9cb08da4ee42eff8b53b31be84",
+    "src/presentation/sessions.mjs": "00fe7a5655ce81848476ebf49240d7748a4ffdebe4c51743e2d8e2e4c9fa2deb",
+    "src/services/server.mjs": "11a66c95b6251ac890f782af92d5f045606dfc86038ceb08fc0ddaa6d0444136",
+    "src/render/export.mjs": "de9b45db9b2c3240fdf3a7eb10ea2143ee53656daa7235c45d9eda56006cda6b",
+    "src/render/html.mjs": "f2c2e4f454675f8299a76062aaedb2b967c2600c993051e3d88b7b5e5299e7e9",
+    "src/render/player.mjs": "8a785c5f8a9c3c65fe5cc76cefd4a7e2881b3cd14216036348263be57e2d2cc2",
+    "src/render/pptx.mjs": "2b04ffd8d3342d637593106796f84554c3624645f91435c29ef8ebdf947a37da",
+    "public/actions.js": "7f1f299b4c472c9fc13ae229797a042313df9c5faea74e2525515de320a4151f",
+    "public/preferences.js": "3aafb195f241c8e1714c58b278dd7cfec66a902820cb8a6f00e30bbd59e8f490",
+    "public/presenter.js": "71cf34d05b7b964a658c926fd23ac904e41615d1414e05c9ff3eb51db6e3359a",
+    "public/audience.js": "b93f0e8a1654ce3fcdff074ea329b168e71b35855c98a1a0a6939c6e14d423ea",
+    "public/audience.html": "35b796c83d478f91aba24bbe9877c6b83c92ca120d5d9c92057fd5d68ee8aca7",
+    "public/audience.css": "6ed99934b451093e07438d3186f54bfbdf0051b300aac5dcca77283ec6c98224",
+    "public/workspace.css": "ff756e57b4a142e086380c4acae329d19475957e2fc2cac7e2b9973b30c5a0cf",
+    "public/app.js": "55eafa8129f58d2f5a5611de0431fce4c19e2f9cdb60e959663b3dbc2e1208c5",
+    "public/index.html": "1a4fa58046a27fd9082576c8f0b99a0176004e4e3184af0043d698b085e42b95",
+    "public/studio-tools.js": "410bf2c78ab49a22bb7ad4d274bbc19085ce0e7bf7415c5484b0d9170b296fb1",
+    "scripts/types.mjs": "c93bbe8edd35b09813039ec0d3f0dccba067700c100811164dee405526759150",
+    "scripts/presenter-demo.mjs": "b9d1291d49acaaadfefbded52f5e9049c68cb076af89592f7d398147c76304c6",
+    "src/plugin/packager.mjs": "60c15123d914c6acb2ebb1bf80736a05d915192df599af0c74ac5a3f954608ae",
+    "LICENSE": "ad8a028292fda7e019f061107092b84c85dcc0351f47e7fb2370114bbc8fe5c5",
+    "NOTICE.md": "c10a28248cb8724bc22f2ecfcf3c610bac34cf253965cd88b5ef1539683e32b4"
+  },
+  "roadmapChecks": {
+    "references": true,
+    "acyclic": true,
+    "existingDwgatesPreserved": true
+  },
+  "applicationAcceptance": {
+    "powerPoint": "not run for this batch",
+    "keynote": "not run for this batch",
+    "figma": "not run for this batch",
+    "afterEffects": "not found in checked application locations; not run",
+    "dotAstra": "not run"
+  },
+  "runtime": {
+    "noExternalDependencies": true,
+    "loopbackOnly": true,
+    "separateAudienceOrigin": true,
+    "copiedWithoutCompilerTest": true,
+    "reproducibleBundleTest": true,
+    "visualExportsOmitPrivateNotesByDefault": true,
+    "projectJsonIntentionallyComplete": true
+  },
+  "preserved": {
+    "installedBrowserBundles": true,
+    "personalBrowserProfiles": true,
+    "licenseAndNotices": true,
+    "noProviderConnection": true,
+    "noProjectUpload": true,
+    "noPublishing": true
+  }
+}

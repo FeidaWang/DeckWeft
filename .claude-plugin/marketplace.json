@@ -1,0 +1,5 @@
+{
+  "name": "deckweft-local",
+  "owner": { "name": "DeckWeft contributors" },
+  "plugins": [{ "name": "deckweft", "source": "./dist/deckweft-plugin", "description": "Local-first slide studio", "version": "0.1.0-alpha.2" }]
+}

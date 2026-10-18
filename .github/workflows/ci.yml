@@ -1,0 +1,30 @@
+name: Verify DeckWeft
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - run: npm run verify
+      - uses: actions/upload-artifact@v7
+        with:
+          name: deckweft-${{ matrix.os }}
+          if-no-files-found: error
+          path: |
+            dist/deckweft-plugin-*.zip
+            dist/demo/*

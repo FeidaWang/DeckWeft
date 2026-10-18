@@ -1,0 +1,94 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 1,
+  "id": "deck_a378416386dd40c9",
+  "title": "Cloudfold Club — d88de8e48d39",
+  "locale": "en",
+  "aspectRatio": "16:9",
+  "theme": "paper",
+  "brief": {
+    "prompt": "",
+    "audience": "",
+    "outcome": ""
+  },
+  "slides": [
+    {
+      "id": "slide_7fe8b41b5ab6492a",
+      "role": "opening",
+      "content": {
+        "eyebrow": "",
+        "title": "Cloudfold Club — d88de8e48d39",
+        "body": "A fictional paper-airplane club for curious makers.",
+        "items": [
+          "Fold with imagination.",
+          "Fly with friends."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_7773219af6324e30",
+      "role": "context",
+      "content": {
+        "eyebrow": "",
+        "title": "Every fold starts a story",
+        "body": "Our imaginary workshop welcomes playful experiments.",
+        "items": [
+          "Sketch a wing idea.",
+          "Give your plane a name.",
+          "Share what you would change."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_fee04813dd214185",
+      "role": "closing",
+      "content": {
+        "eyebrow": "",
+        "title": "Make room for the next flight",
+        "body": "Join our fictional club's next creative session.",
+        "items": [
+          "Bring a sheet of paper.",
+          "Help a fellow folder.",
+          "Leave with a new idea."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "",
+      "sourceIds": []
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-16T22:23:43.545Z",
+    "updatedAt": "2026-10-16T22:23:43.545Z"
+  },
+  "extensions": {}
+}

@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-17",
+  "scope": [
+    "MB-06",
+    "MB-07",
+    "MB-08",
+    "MB-09",
+    "MB-10"
+  ],
+  "workspace": "/Users/feida/Developer/DeckWeft",
+  "gitMetadata": false,
+  "implementation": "local",
+  "automatedVerification": {
+    "state": "passed",
+    "command": "npm run verify",
+    "testsPassed": 207,
+    "testsFailed": 0,
+    "skipped": 0,
+    "typeGate": "schema-derived v1/v2 declarations, negative fixtures, emitted runtime smoke",
+    "sourceCheck": "syntax, links, schemas, examples, task dependencies and licensing exclusions",
+    "build": "reproducible copied plugin runtime and isolated subprocess checks",
+    "demos": "English/Chinese, DevDay and private/public presenter examples",
+    "log": "docs/evidence/mb-06-10/verify.txt"
+  },
+  "browser": {
+    "mode": "direct loopback with provided in-app browser",
+    "scenesMeasuredAndVisuallyInspected": 8,
+    "englishDemoSlides": 7,
+    "chineseMixedSlides": 1,
+    "viewportWidths": [
+      390,
+      1024,
+      1440
+    ],
+    "horizontalOverflow": false,
+    "uncaughtErrorsObserved": 0,
+    "flows": [
+      "review/edit storyboard and save v2 copy",
+      "restore latest real host job",
+      "review actual request and durable timeline",
+      "apply generated copy preserving source",
+      "download browser-measured PPTX and HTML",
+      "mouse and arrow-key exploration",
+      "missing session token recovery by reload"
+    ]
+  },
+  "office": {
+    "powerPoint": "Final seven-slide file opened without repair; cover/comparison/image pages and seven-page sorter visually inspected. Scene corner radius corrected in source and rechecked.",
+    "packageInspection": "docs/evidence/mb-06-10/pptx-inspection.json",
+    "keynote": "Installed; not run in this batch",
+    "figma": "Installed; not run in this batch",
+    "afterEffects": "Absent from /Applications"
+  },
+  "host": {
+    "actualCLI": "docs/evidence/mb-06-10/host-review.json",
+    "dotDesktop": "Not available in provided browser inventory; MB-08 remains partial",
+    "apiConfirmedModel": null,
+    "costUSD": null
+  },
+  "evaluation": {
+    "evidence": "docs/evidence/mb-06-10/astra/results.json",
+    "actualHostTurns": 4,
+    "tasksPerTurn": 6,
+    "taskResults": 24,
+    "repeatsPerEffort": 2,
+    "medium": {
+      "passed": 12,
+      "total": 12,
+      "meanBatchWallSeconds": 31.271,
+      "meanReportedOutputTokens": 971,
+      "repairs": 0
+    },
+    "high": {
+      "passed": 12,
+      "total": 12,
+      "meanBatchWallSeconds": 36.567,
+      "meanReportedOutputTokens": 1385,
+      "repairs": 0
+    },
+    "costUSD": null,
+    "humanAcceptanceSeconds": null,
+    "review": "Agent read of all outputs; no blinded human study",
+    "limits": [
+      "Batched short tasks, not independent per-task timing trials",
+      "CLI settings accepted; no independent server attestation",
+      "Latency includes startup/network/response time",
+      "Output formatting contributes to token differences",
+      "Complex synthesis, repository-scale repair and generated-media workflow unmeasured"
+    ]
+  },
+  "preservedBoundaries": [
+    "Installed browsers and personal profiles unmodified",
+    "No new runtime dependency, provider, telemetry, remote upload or publication",
+    "Explicit v1 copy migration; current invalid input refused",
+    "No whole-slide raster fallback",
+    "DW-020 and prior manual/application gates remain open"
+  ],
+  "taskStates": {
+    "MB-06": "implemented-local",
+    "MB-07": "implemented-local",
+    "MB-08": "partial",
+    "MB-09": "implemented-local",
+    "MB-10": "implemented-local"
+  },
+  "artifactReproducibility": "docs/evidence/mb-06-10/reproducibility.json",
+  "sourceHashes": {
+    "LICENSE": "ad8a028292fda7e019f061107092b84c85dcc0351f47e7fb2370114bbc8fe5c5",
+    "NOTICE.md": "c10a28248cb8724bc22f2ecfcf3c610bac34cf253965cd88b5ef1539683e32b4",
+    "public/actions.js": "08a28f4d825d3572b14f18bc896e8ffa00cdd98d2550bb83ad375be569e69c36",
+    "public/agent-bridge.js": "f0950c96bbef9c9903a5c432ac6d8bcaabcd02525493ab937c86a979e3258b6d",
+    "public/app.js": "9bcfe39fef2a22fd7a0cd7b88461da0b407edebc0bfd36bb4ed89b1a5cd77a54",
+    "public/audience.js": "b93f0e8a1654ce3fcdff074ea329b168e71b35855c98a1a0a6939c6e14d423ea",
+    "public/history.js": "187789f786f95458a89e2b48924535f66b1d09f86bbe2f25f99ab95e80436421",
+    "public/index.html": "2dad29bbd1d5cdaa94944989eda860676f7a1f06a823140392fc12e3931ea938",
+    "public/interaction.js": "9da3e7dacaa30bcbdf111bfe3ad0ff2a4c3a5fecec62eb8c4596eafeb2fe0f39",
+    "public/pitch-mode.js": "d61569a2cba51b606add37148b45102be9be45a311361735a3bffb36f70cfda2",
+    "public/preferences.js": "3aafb195f241c8e1714c58b278dd7cfec66a902820cb8a6f00e30bbd59e8f490",
+    "public/presenter.js": "71cf34d05b7b964a658c926fd23ac904e41615d1414e05c9ff3eb51db6e3359a",
+    "public/storyboard.js": "88267ec2db62e38c73ad2365604ed035de6ffa9339893262723e89d51991252d",
+    "public/studio-tools.js": "410bf2c78ab49a22bb7ad4d274bbc19085ce0e7bf7415c5484b0d9170b296fb1",
+    "public/text-measurer.js": "ea7837cc5030291672fb25c443f2043d12c3443fa54d33e460f416ca049222a9",
+    "public/three-dots.js": "2bf07bdedba163d83d53025a93d00048dd114bcf1261b9334849164d35927f5a",
+    "public/workspace.css": "ecafdfc347008fcc7f7a39cc6bf4fa1141af96f0737177d9a34f6c0584bcc20a",
+    "roadmap.json": "ef5f1212fcca5d53aa847cb97fae8adebec93b93262271eccd9c38b34cc003e0",
+    "schemas/project-v1.schema.json": "7d9b7c1637f77806b658bc4bd98df2fc1613d882c492c284de4378e6f3aa0c91",
+    "schemas/project.schema.json": "9bef2cb5dacd8c8f6ac141a97f69a0f4c9bbfc47db2e72a6a1ec3a4b0f807001",
+    "src/adapters/agent-mcp.mjs": "b0bc2b211f589f439bd239f1da6f9987c127adb1f016d5d1d71689859ad187ab",
+    "src/adapters/handoff.mjs": "e84d11e19dbd6a414679432ef983c3360659b369edc3614bc828cb5c0b72395f",
+    "src/assets/registry.mjs": "4e64efce98e9f10fd076d7dc883f04a61f1239d578c7d9932f74ba955e8036c6",
+    "src/cli.mjs": "0e2f29a54ec08b8657934b31de9a87ebf5ae9ab699f024ab32f83060f131805f",
+    "src/core/errors.mjs": "f8841055934ba14316c67b16c64ec2b5316885c15768748421ce35702deb25f6",
+    "src/core/migrate.mjs": "8514e6c775d1225f239c7edc9480dfe2da0678eb8248349f3196a085ad947a3c",
+    "src/core/model.mjs": "e9a3e68071ec9b2e2d76358bb9bb895be5513a9c2ca36b0399029bdcdaedc925",
+    "src/core/preferences.mjs": "395174b6860c5da3b577e6e299788e81f9793cda0b763679633f2e2f92b30ccd",
+    "src/core/presentation.mjs": "ac61a77ce1362e4df46c80cd91f9e2710d2fc430d0cdfe365afaadf8092563c8",
+    "src/core/speech.mjs": "1a554d3357ace94edc25756d6d7fe42c5bd4dd02114a4f163bc21f29ac8f993d",
+    "src/core/validate.mjs": "fe7bc69b17c1952ae2de89eb7b9572b1d216d95b9f83a1487d1361996119a693",
+    "src/layout/engine.mjs": "1535990e11361d0ff3f60903f19e9ca162a9fe34b59fef2d176c98e8cfdcb4ec",
+    "src/layout/recipes.mjs": "f666a3b47995b3dbecbf2f6ecf7f4c32a6dc368f1f2edb855cd824def1d15657",
+    "src/layout/scene.mjs": "cf2a52f1319932907559f62ed436b3a830a8e2ae6bb4f2562ef739aa9a80e50f",
+    "src/layout/showcase.mjs": "c1e2d59d8bb4cef0c34fe217dc4e17fc95843b74fa2a011238827b1e62520b78",
+    "src/layout/text.mjs": "9ed9253c12bb366340260894e0bfbbc0798167eed79b191964bf1fc53c7363a7",
+    "src/orchestration/effort-policy.mjs": "b2eeb2b05cfb7b5278c418ed86bd3826c92feb3426cc2e8043c9ac36dbad7070",
+    "src/orchestration/execution-capsule.mjs": "af5ccd7943b6a874eda4839f3fed9386faa4efe724c0403b5de91e9340aef0b3",
+    "src/orchestration/grants.mjs": "b1d45e2a0eedc0154b706151ee6eb5605d5e1a9ea83e3f0d6b3359d31a59aeff",
+    "src/orchestration/progress.mjs": "6b232bcb9d61898d48546ac971be857d67605d1722904dc55836aff30c17e73e",
+    "src/planning/storyboard.mjs": "9a1e1b2ea915f8350e7061e93a2928e229fb5a7cd8b1fb3d9fe10a00752655e2",
+    "src/plugin/installer.mjs": "81327f16a9638d4c7f819f39889e8feef2843bc5eaca33293932aceae085f11a",
+    "src/plugin/packager.mjs": "6c7c39abfeef533c12174d49a1e3b46b3deddfc53df73aa7d00e16e47f45ca10",
+    "src/presentation/clock.mjs": "4a0b3c8c8c10316ec66e26abd529d7a91042ab9cb08da4ee42eff8b53b31be84",
+    "src/presentation/sessions.mjs": "00fe7a5655ce81848476ebf49240d7748a4ffdebe4c51743e2d8e2e4c9fa2deb",
+    "src/qa/hosts.mjs": "6cc3dfaa9656c66979fb305d7872b626711aaf78e7b706c41c73c3c027c61609",
+    "src/render/assets.mjs": "c8f5f6f54b961c6317ac5bdff30041f671b9cb1d459c0580be99fbd38cdc2190",
+    "src/render/export.mjs": "018ec186f1600edd3739928957eb1cbe03ff914d2c697eea1469ad742e1c8a94",
+    "src/render/html.mjs": "1839aeedc5b5a838e745adf24ac562656be72134fbcd877238448c118f8c5043",
+    "src/render/player.mjs": "ce1846bf3763714fa41b53a5db48d614c010201f7df2b5ac4004f7c3d63d2ea3",
+    "src/render/pptx.mjs": "f230b12c9d12fd6834096bc3d6b8fe7ca1b1686cd8fc12e3cb5f11e670195170",
+    "src/render/svg.mjs": "628bf70a96e4c5bf99b1e591959d6e3a34dd73142e29090c765644d2114986ae",
+    "src/render/three-bundle.mjs": "de45430e339895a75b7081efee8b8a2e1b2f58fed0698edac07f5d06c83ea299",
+    "src/render/zip.mjs": "6cafdf8947fc3245a3aa6e2585aed7c3c0992120d4632bf372a8b347c9677870",
+    "src/services/agent-bridge.mjs": "e2559b476c368cbee65370df30edf3a1fb13f7a8db508b2b3c9c213e04d7e8be",
+    "src/services/io.mjs": "4c399d82c7539f5095dc393b9bd0dd72dd0e93a689792a833192d3eec276a3ab",
+    "src/services/measurements.mjs": "fac7656244406ee794a6e02f3c2d31905c8bdf63f626a0df6788962f9da5cf56",
+    "src/services/server.mjs": "e8b97eeed3e005db80c54284d20346ff4dde127501b321e40ac00bf3f8596ca2",
+    "src/services/store.mjs": "03cac681344dd37dcb2d3827a5b06993881185666f2b002e07eeeb312b680057"
+  },
+  "artifacts": {
+    "html": "dist/mb-06-10/demo/browser-measured.html",
+    "pptx": "dist/mb-06-10/demo/final-measured.pptx",
+    "project": "dist/mb-06-10/demo/planning.deck.json"
+  }
+}

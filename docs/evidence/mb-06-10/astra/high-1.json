@@ -1,0 +1,131 @@
+{
+  "results": [
+    {
+      "id": "english-pitch",
+      "title": "Your slides. Your files. Your workflow.",
+      "body": "An offline presentation editor for developers, with editable text and local copies.",
+      "items": [
+        "Keep slide text editable.",
+        "Save local copies as your work evolves."
+      ],
+      "notes": "Build presentations in an offline workflow that keeps text editable and saves local copies. Keep refining the words and retain files you can return to.",
+      "evidence": [],
+      "family": "cover",
+      "interaction": {
+        "kind": "none",
+        "initial": 0,
+        "labels": []
+      },
+      "alt": "",
+      "fallback": "",
+      "code": ""
+    },
+    {
+      "id": "chinese-mixed",
+      "title": "本地优先：从大纲到导出",
+      "body": "在本地整理内容、检查排版，再导出副本；用 JSON 管理结构，用 HTML 预览，用 PowerPoint 继续编辑。",
+      "items": [
+        "整理大纲：用 JSON 组织标题与要点。",
+        "检查排版：用 HTML 预览文字和布局。",
+        "导出副本：保存可继续编辑的 PowerPoint 文件。"
+      ],
+      "notes": "先在本地整理大纲，用 JSON 明确内容结构。接着通过 HTML 预览检查标题、正文和布局。最后导出 PowerPoint 副本，方便后续编辑，并保留本地源文件。",
+      "evidence": [],
+      "family": "process",
+      "interaction": {
+        "kind": "none",
+        "initial": 0,
+        "labels": []
+      },
+      "alt": "",
+      "fallback": "",
+      "code": ""
+    },
+    {
+      "id": "evidence",
+      "title": "QA sample: first-check outcomes",
+      "body": "8 of 10 sample decks passed first check; 2 needed shorter titles.",
+      "items": [
+        "8 of 10 sample decks passed first check.",
+        "2 sample decks needed shorter titles."
+      ],
+      "notes": "The supplied internal QA log reports that 8 of 10 sample decks passed first check, while 2 needed shorter titles. The sample is limited. These outcomes describe the reviewed decks and are not a population estimate.",
+      "evidence": [
+        "qa-log"
+      ],
+      "family": "metric",
+      "interaction": {
+        "kind": "none",
+        "initial": 0,
+        "labels": []
+      },
+      "alt": "",
+      "fallback": "",
+      "code": ""
+    },
+    {
+      "id": "image-dependent",
+      "title": "A star, expressed in shapes",
+      "body": "Plan: pair an original local abstract star illustration with the caption “A bright idea takes shape.”",
+      "items": [
+        "Place the local star illustration beside an editable caption.",
+        "Use overlapping angular shapes as decorative accents."
+      ],
+      "notes": "Use an original illustration stored locally: an abstract star formed from overlapping angular shapes. It provides decoration, not scientific evidence. Keep the caption editable. If the image is unavailable, show the offline text fallback. This plan does not generate an image.",
+      "evidence": [],
+      "family": "image-caption",
+      "interaction": {
+        "kind": "none",
+        "initial": 0,
+        "labels": []
+      },
+      "alt": "Decorative abstract star formed from overlapping angular shapes.",
+      "fallback": "Abstract star illustration: overlapping angular shapes. Caption: A bright idea takes shape.",
+      "code": ""
+    },
+    {
+      "id": "interaction",
+      "title": "Choose a presentation route",
+      "body": "Explore locally in HTML or use a static, editable PowerPoint. Keep all labels, captions, and content editable.",
+      "items": [
+        "Local HTML: explore content through tabs.",
+        "Editable PowerPoint: present content on static slides."
+      ],
+      "notes": "The first tab describes local HTML exploration. The second describes static, editable PowerPoint. Keep every word as editable text. For a static fallback, display both choices side by side with their labels and descriptions visible.",
+      "evidence": [],
+      "family": "comparison",
+      "interaction": {
+        "kind": "tabs",
+        "initial": 0,
+        "labels": [
+          "Local HTML",
+          "Editable PowerPoint"
+        ]
+      },
+      "alt": "",
+      "fallback": "Display both choices side by side as editable text, including both tab labels and descriptions.",
+      "code": ""
+    },
+    {
+      "id": "code-change",
+      "title": "Advance the index within valid bounds",
+      "body": "Return 0 for count<=0; otherwise advance once and clamp the result to 0..count-1.",
+      "items": [
+        "Guard count<=0 by returning 0.",
+        "Advance the supplied index by one.",
+        "Clamp between 0 and count-1."
+      ],
+      "notes": "The original function can return count, which is outside the valid index range. Guard nonpositive counts, then clamp index+1 between 0 and count-1. For a positive integer count, -1 advances to 0, 0 advances to 1 when available, and the last index stays at the last index.",
+      "evidence": [],
+      "family": "process",
+      "interaction": {
+        "kind": "none",
+        "initial": 0,
+        "labels": []
+      },
+      "alt": "",
+      "fallback": "",
+      "code": "function nextIndex(index, count) {\n  if (count <= 0) return 0;\n  return Math.max(0, Math.min(count - 1, index + 1));\n}"
+    }
+  ]
+}

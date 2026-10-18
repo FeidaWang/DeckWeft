@@ -1,0 +1,246 @@
+{
+  "project": "DeckWeft",
+  "version": "0.1.0-alpha.2",
+  "status": "local-alpha-host-release-gate-blocked",
+  "preparedDate": "2026-10-18",
+  "sourceLanguage": "en",
+  "secondaryLanguage": "zh-CN",
+  "roadmap": "roadmap.json",
+  "verification": "docs/en/verification.md",
+  "automatedTests": {
+    "command": "npm run verify",
+    "passed": 222,
+    "failed": 0,
+    "skipped": 0,
+    "environment": {
+      "os": "macOS arm64",
+      "node": "v24.14.0"
+    },
+    "log": "docs/evidence/mb-11-15/verify.txt",
+    "finalRun": "passed"
+  },
+  "browser": {
+    "checksPassed": 22,
+    "pageErrors": 0,
+    "mode": "offline fixture with live local API bridge",
+    "evidence": "docs/browser-evidence.json",
+    "directNavigation": "not verified; managed browser blocked it",
+    "productionCSPEnforcement": "not verified by browser harness",
+    "browserVersion": "144.0.7559.96",
+    "viewportChecks": 6,
+    "realOSIME": false,
+    "screenReader": false,
+    "zoom200Percent": false,
+    "latestReview": {
+      "mode": "direct loopback: provided in-app browser and isolated cached Chrome for Testing",
+      "viewportChecks": 3,
+      "pageErrorsObserved": 0,
+      "evidence": "docs/evidence/mb-11-15/browser.json",
+      "actualProjection": false
+    }
+  },
+  "pptx": {
+    "editions": [
+      "en",
+      "zh-CN"
+    ],
+    "slidesPerEdition": 6,
+    "nativeTextShapesPerEdition": 41,
+    "parserInspection": "passed",
+    "libreOfficeRender": "18 pages rendered and visually inspected: English CLI, Chinese CLI, browser-measured English",
+    "microsoftPowerPointApplication": "DevDay final 14-slide media deck opened and visually inspected; original edition checks retain their recorded scope",
+    "evidence": "docs/pptx-evidence.json",
+    "browserMeasuredSlides": 6,
+    "officeEvidence": "docs/office-evidence.json"
+  },
+  "nativePlugin": {
+    "bundle": "dist/deckweft-plugin-0.1.0-alpha.2.zip",
+    "runtimeIsolation": "passed",
+    "codexAuthenticatedLoading": "Prior recorded CLI task passed. Not rerun for the new bridge/theme bundle.",
+    "claudeCodeAuthenticatedLoading": "blocked: not signed in; user deferred sign-in",
+    "hostEvidence": "docs/evidence/dw-020/review.json",
+    "releaseGatePassed": false,
+    "previousCodexAuthenticatedLoading": "passed: reviewed CLI standalone project skill, not desktop native activation"
+  },
+  "designApps": {
+    "figma": "Core importer not verified. Separate authored stage example: eight frames and native motion executed through the Figma tool; closing video inspected.",
+    "afterEffects": "handoff generation, parser/static/cancel tests only; real app not run"
+  },
+  "publication": {
+    "github": "not published",
+    "remoteCI": "configured, not run",
+    "npm": "private:true prevents accidental publishing",
+    "nameReservation": "not claimed"
+  },
+  "notImplemented": [
+    "automatic web research",
+    "built-in model provider",
+    "image generation",
+    "native charts",
+    "arbitrary PPTX import",
+    "real-time collaboration",
+    "hosted billing",
+    "Figma bidirectional sync",
+    "rendered AE video"
+  ],
+  "nextTasks": [
+    "MB-08 actual Dot desktop acceptance when available; MB-11\u201315 require new authorization",
+    "DW-020 Claude authentication (deferred), Codex desktop native activation and remote CI",
+    "DW-120 manual device / accessibility / direct-browser checks",
+    "DW-130 cross-font / cross-app comparison",
+    "DW-110 retention preview and project archive",
+    "DW-140",
+    "DW-300",
+    "DW-310",
+    "DW-200",
+    "DW-210"
+  ],
+  "requestedExecutionOrder": [
+    "MB-06",
+    "MB-07",
+    "MB-08",
+    "MB-09",
+    "MB-10"
+  ],
+  "taskResults": {
+    "DW-020": {
+      "status": "blocked",
+      "reason": "Claude is not authenticated and user deferred sign-in; Codex native desktop activation and remote CI not tested.",
+      "evidence": "docs/evidence/dw-020/review.json",
+      "codexCLI": "Prior recorded authenticated task passed; latest bridge/theme bundle not rerun.",
+      "nativeDesktop": "not tested",
+      "remoteCI": "not run",
+      "claude": "validator passed; authenticated task deferred by user"
+    },
+    "DW-130": {
+      "status": "implemented-local",
+      "scope": "Browser whole-run metrics and shared preview/export; CLI explicitly estimated; cross-app font QA remains."
+    },
+    "DW-120": {
+      "status": "partial",
+      "scope": "Local IME guards, focus, undo, async save/preview and draft protections implemented. Real IME, direct browser/CSP, zoom, screen reader and other engines remain."
+    },
+    "DW-110": {
+      "status": "partial",
+      "scope": "Read-only history and idempotent restore-as-copy implemented. Retention/pruning/archive management not implemented."
+    }
+  },
+  "fonts": {
+    "measurement": "browser-canvas",
+    "isolatedCases": 28,
+    "isolatedLayoutCandidates": 112,
+    "isolatedTextBoxes": 448,
+    "fitsDifferentFromEstimate": 121,
+    "fullSampleDecks": 2,
+    "fullSampleSlides": 12,
+    "additionalCandidateTextBoxes": 304,
+    "selectedSampleTextNodesInspected": 82,
+    "cli": "offline-estimate",
+    "fontsEmbedded": false,
+    "evidence": "docs/font-evidence.json"
+  },
+  "historicalAlpha2AutomatedTests": {
+    "command": "npm run verify",
+    "passed": 142,
+    "failed": 0,
+    "skipped": 0,
+    "environment": {
+      "os": "Linux",
+      "node": "v22.16.0"
+    },
+    "log": "docs/test-results.txt"
+  },
+  "previousMacAutomatedTests": {
+    "command": "npm run verify",
+    "passed": 149,
+    "failed": 0,
+    "skipped": 0,
+    "environment": {
+      "os": "macOS arm64",
+      "node": "v24.14.0"
+    },
+    "log": "docs/evidence/dw-020/verify.txt"
+  },
+  "stageAndBridge": {
+    "evidence": "docs/evidence/dot-stage/review.json",
+    "optionalLocalAgentBridge": "implemented and tested locally; actual Dot host acceptance pending",
+    "englishPitchMode": "direct-loopback view exercised; Chinese originals preserved",
+    "signalTheme": "implemented locally",
+    "threeStage": "optional standalone HTML example with bundled MIT Three.js 0.186.1; editable PPTX fallback remains static"
+  },
+  "devdayRevision": {
+    "evidence": "docs/evidence/devday-redesign/review.json",
+    "slides": 14,
+    "spokenWords": 644,
+    "minutes": 5,
+    "threeGeometry": "actual browser rendering; no character textures",
+    "dotHost": "pending real connection",
+    "powerPoint": "14-slide final package opened without repair; screenshot encoding corrected"
+  },
+  "previousAutomatedTests": {
+    "command": "npm run verify",
+    "passed": 176,
+    "failed": 0,
+    "skipped": 0,
+    "environment": {
+      "os": "macOS arm64",
+      "node": "v24.14.0"
+    },
+    "log": "docs/evidence/devday-redesign/verify.txt"
+  },
+  "presenterBuild": {
+    "scope": "MB-01 through MB-05",
+    "implementation": "implemented-local",
+    "evidence": "docs/evidence/mb-01-05/review.json",
+    "guide": "docs/en/presenting.md",
+    "typePilot": true,
+    "wholeRepositoryTypeScript": false,
+    "remainingAcceptance": [
+      "200% browser zoom",
+      "Screen reader",
+      "Real conferencing share",
+      "Extended display"
+    ]
+  },
+  "previousLocalVerification": {
+    "command": "npm run verify",
+    "passed": 187,
+    "failed": 0,
+    "skipped": 0,
+    "environment": {
+      "os": "macOS arm64",
+      "node": "v24.14.0"
+    },
+    "log": "docs/evidence/mb-01-05/verify.txt"
+  },
+  "planningBuild": {
+    "scope": "MB-06 through MB-10",
+    "implementation": "implemented-local",
+    "dotAcceptance": "partial; actual host unavailable",
+    "evidence": "docs/evidence/mb-06-10/review.json",
+    "guide": "docs/en/planning.md",
+    "schemaVersions": [
+      1,
+      2
+    ],
+    "newRuntimeDependencies": 0,
+    "actualEffortPilot": "Four CLI turns, 24 results, all current automatic gates passed; dollar cost and API-confirmed model unknown",
+    "nativeOutput": {
+      "slides": 7,
+      "nativeTextShapes": 49,
+      "pictures": 1,
+      "powerPoint": "Opened without repair; final visual review passed within recorded scope"
+    }
+  },
+  "mediaWorkersBuild": {
+    "scope": "MB-11 through MB-15",
+    "evidence": "docs/evidence/mb-11-15/review.json",
+    "guide": "docs/en/media-workers.md",
+    "newRuntimeDependencies": 0,
+    "image": "One actual built-in host-tool artwork; durable local journal integration; no automatic provider calls or retries",
+    "workers": "Two actual concurrent Codex CLI tasks passed and integrated as separate projects after an initial invalid-result attempt; Dot desktop remains partial",
+    "spatial": "Orbit/layers; actual WebGL context loss, static/print fallback and reduced-motion keyboard checks",
+    "figma": "Updated importer and local tests; desktop plugin menu remained loading; no assigned identity or actual import obtained",
+    "afterEffects": "Updated JSX/local tests; application absent; actual execution/rendering remains open"
+  }
+}

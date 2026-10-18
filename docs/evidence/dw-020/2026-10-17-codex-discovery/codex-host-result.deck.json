@@ -1,0 +1,95 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 1,
+  "id": "deck_73a6ecfb9f684766",
+  "title": "Cloudfold Club — 2fc5f286b9ba",
+  "locale": "en",
+  "aspectRatio": "16:9",
+  "theme": "paper",
+  "brief": {
+    "prompt": "Exactly three short English slides about a fictional paper-airplane club.",
+    "audience": "Imaginary prospective club members",
+    "outcome": "Introduce Cloudfold Club and invite playful participation."
+  },
+  "slides": [
+    {
+      "id": "slide_8180f6469c38499d",
+      "role": "opening",
+      "content": {
+        "eyebrow": "",
+        "title": "Cloudfold Club — 2fc5f286b9ba",
+        "body": "A fictional paper-airplane club for curious makers.",
+        "items": [
+          "Fold a fresh idea.",
+          "Give it a gentle launch.",
+          "Share what surprised you."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Cloudfold Club and its activities are fictional. No external facts, metrics, or sources are used.",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_02f3737b1cb94882",
+      "role": "context",
+      "content": {
+        "eyebrow": "",
+        "title": "Fold, fly, try again",
+        "body": "Every meeting is a small creative adventure.",
+        "items": [
+          "Sketch a playful wing shape.",
+          "Fold and launch in our imaginary hangar.",
+          "Adjust a crease and try again."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Cloudfold Club and its activities are fictional. No external facts, metrics, or sources are used.",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_9a82951594d748e7",
+      "role": "closing",
+      "content": {
+        "eyebrow": "",
+        "title": "Bring your imagination",
+        "body": "Our next fictional gathering begins with a blank sheet.",
+        "items": [
+          "Invent a name for your plane.",
+          "Help a fellow folder.",
+          "Celebrate a curious flight."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Cloudfold Club and its activities are fictional. No external facts, metrics, or sources are used.",
+      "sourceIds": []
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-16T22:26:06.109Z",
+    "updatedAt": "2026-10-16T22:26:06.109Z"
+  },
+  "extensions": {}
+}

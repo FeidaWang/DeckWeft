@@ -1,0 +1,74 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 2,
+  "id": "deck_dot_896a45d963ef450da840a6cf21aafac5",
+  "title": "Explore in HTML. Edit in PowerPoint.",
+  "locale": "en",
+  "aspectRatio": "16:9",
+  "theme": "signal",
+  "brief": {
+    "prompt": "Exactly one English comparison slide: offline HTML exploration versus static editable PowerPoint. Two short items and matching tab labels.",
+    "audience": "",
+    "outcome": "Distinguish offline HTML exploration from static, editable PowerPoint delivery."
+  },
+  "slides": [
+    {
+      "id": "slide_beta",
+      "role": "context",
+      "content": {
+        "eyebrow": "Local presentation",
+        "title": "Explore in HTML. Edit in PowerPoint.",
+        "body": "",
+        "items": [
+          "Offline HTML: explore choices.",
+          "Editable PowerPoint: static native text and shapes."
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "grid"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Authored input: selected snapshot BETA (authored-beta). HTML explores choices; PPTX keeps static native text and shapes. Use the two tabs to explore the comparison in offline HTML. The static PowerPoint fallback presents both items as native editable text and shapes.",
+      "sourceIds": [],
+      "intent": {
+        "claim": "Offline HTML supports exploring choices; PowerPoint preserves a static comparison in editable native text and shapes.",
+        "audience": "",
+        "evidence": [],
+        "visualFamily": "comparison",
+        "assetIds": [],
+        "interaction": {
+          "kind": "tabs",
+          "initial": 0,
+          "labels": [
+            "Offline HTML",
+            "Editable PowerPoint"
+          ]
+        },
+        "spatialRecipe": "none"
+      }
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-18T00:49:20.657Z",
+    "updatedAt": "2026-10-18T00:49:20.657Z"
+  },
+  "extensions": {
+    "deckweftMigration": {
+      "fromVersion": 1,
+      "sourceId": "worker_beta",
+      "sourceHash": "eaf0a2901913402f38913b19eba526f93e71728e5286b8c13351db68431ede5a"
+    }
+  },
+  "assets": [],
+  "planning": {
+    "brief": "Create one English comparison slide with two short items and matching tabs: offline HTML for exploring choices; static PowerPoint with native editable text and shapes. Show both items in the static fallback.",
+    "inputHash": "af3bf047d710cb3fb62d122dad092149f411df762510dc1acabdfc36c02af240",
+    "reviewed": true
+  }
+}

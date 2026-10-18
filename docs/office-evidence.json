@@ -1,0 +1,29 @@
+{
+  "renderer": "LibreOffice (headless)",
+  "status": "rendered; contact sheets visually reviewed",
+  "pages": 18,
+  "scope": "not Microsoft PowerPoint or Keynote acceptance; intermediate PDFs not distributed",
+  "files": [
+    {
+      "file": "browser-measured.pdf",
+      "pages": 6,
+      "nonemptyTextPages": 6,
+      "pdfSha256": "2ae6e74fc794550e71270747cb880fd8754054ee87cf9cabdcbd4043c0ec8efa",
+      "contactSheet": "docs/assets/browser-measured-contact.png"
+    },
+    {
+      "file": "welcome.pdf",
+      "pages": 6,
+      "nonemptyTextPages": 6,
+      "pdfSha256": "0d5e1fc17c4aa237673e512d0b475269e6e31951bf6df44f25730c7eec6f4070",
+      "contactSheet": "docs/assets/welcome-contact.png"
+    },
+    {
+      "file": "welcome.zh-CN.pdf",
+      "pages": 6,
+      "nonemptyTextPages": 6,
+      "pdfSha256": "5ad49a0454ecfeffb82158d1b9221e5d53f2a6a7f2539f38dee35354689377de",
+      "contactSheet": "docs/assets/welcome.zh-CN-contact.png"
+    }
+  ]
+}

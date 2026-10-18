@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-17",
+  "kind": "actual Codex CLI through local queue; not Dot desktop",
+  "jobId": "990e1fcfe54140398e6a94b3287ae19a",
+  "exit": 0,
+  "requested": {
+    "model": "gpt-6-astra",
+    "effort": "medium"
+  },
+  "reported": {
+    "model": "gpt-6-astra",
+    "effort": "medium",
+    "source": "CLI runner configuration"
+  },
+  "apiConfirmed": null,
+  "usage": {
+    "input_tokens": 25619,
+    "cached_input_tokens": 12288,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1124,
+    "reasoning_output_tokens": 0
+  },
+  "costUSD": null,
+  "latencyMs": 30597,
+  "ungrantedToolEvents": 0,
+  "capsuleHash": "c6b1fe51c88b747a1f7c4aeb35fee61903997bf72d2841d101d97b7deb817b94",
+  "grantId": "0dbea0ee69a0479c86483af9ca023fb7",
+  "resultProjectId": "deck_dot_990e1fcfe54140398e6a94b3287ae19a",
+  "status": "needs-review"
+}

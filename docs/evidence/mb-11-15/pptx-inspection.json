@@ -1,0 +1,33 @@
+{
+  "kind": "independent PPTX ZIP/XML/relationship/editability check, not real application acceptance",
+  "slides": [
+    {
+      "slide": "ppt/slides/slide1.xml",
+      "textShapes": 5,
+      "pictures": 1
+    },
+    {
+      "slide": "ppt/slides/slide2.xml",
+      "textShapes": 6,
+      "pictures": 0
+    },
+    {
+      "slide": "ppt/slides/slide3.xml",
+      "textShapes": 6,
+      "pictures": 0
+    },
+    {
+      "slide": "ppt/slides/slide4.xml",
+      "textShapes": 6,
+      "pictures": 0
+    }
+  ],
+  "totalTextShapes": 23,
+  "totalPictures": 1,
+  "embeddedPNGHashMatchesProject": true,
+  "CRC": "passed",
+  "allXML": "parsed",
+  "internalRelationships": "resolved",
+  "sourceTitlesBodyItems": "preserved",
+  "privateNotes": "absent from slides"
+}

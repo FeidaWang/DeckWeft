@@ -1,0 +1,14 @@
+{
+  "browser": "151.0.7922.34",
+  "mode": "direct loopback",
+  "actualHostImage": "Earlier actual tool output supplied to the newly dispatched local journal request; no new tool call or provider dispatch claim",
+  "checks": [
+    "UI explicit consent and prompt review",
+    "Exactly one journal dispatch; host task copied",
+    "Returned original PNG registered and attached",
+    "Image replaces active spatial recipe without flattening text",
+    "Save and reload preserve local media",
+    "Browser-measured HTML/PPTX/Figma/motion exports enabled and downloaded"
+  ],
+  "errors": []
+}

@@ -1,0 +1,165 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 1,
+  "id": "deck_welcome_zh",
+  "title": "给好故事留一点空间",
+  "locale": "zh-CN",
+  "aspectRatio": "16:9",
+  "theme": "paper",
+  "brief": {
+    "prompt": "",
+    "audience": "",
+    "outcome": ""
+  },
+  "slides": [
+    {
+      "id": "slide_welcome_zh_1",
+      "role": "opening",
+      "content": {
+        "eyebrow": "让表达更清晰",
+        "title": "好想法，\n值得留一点空间。",
+        "body": "在本地把一份粗略大纲，整理成别人听得懂的故事。",
+        "items": [],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "演示用示例文字，不是外部研究结论。",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_zh_2",
+      "role": "context",
+      "content": {
+        "eyebrow": "设计原则",
+        "title": "修改文字，\n不打乱结构。",
+        "body": "内容和布局分开保存。改动其中一层，不必重新制作整份文稿。",
+        "items": [
+          "先写清楚核心信息",
+          "再选择合适的排版",
+          "保留可编辑的文字"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "演示用示例文字，不是外部研究结论。",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_zh_3",
+      "role": "evidence",
+      "content": {
+        "eyebrow": "小而实用的积木",
+        "title": "少一点配置，\n多一点清晰。",
+        "body": "以下是这个测试版的功能数量，不是性能承诺。",
+        "items": [],
+        "metrics": [
+          {
+            "value": "4",
+            "label": "种排版方向"
+          },
+          {
+            "value": "4",
+            "label": "种页面比例"
+          },
+          {
+            "value": "0",
+            "label": "个必需 API 密钥"
+          }
+        ]
+      },
+      "design": {
+        "layout": "grid"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "演示用示例文字，不是外部研究结论。",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_zh_4",
+      "role": "process",
+      "content": {
+        "eyebrow": "从大纲到文稿",
+        "title": "四个小步骤，\n完成一次清晰表达。",
+        "body": "一步一步来，每一步都能看见结果。",
+        "items": [
+          "写一份简短大纲",
+          "比较四种排版",
+          "修复标记的问题",
+          "导出并检查最终文件"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "timeline"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "演示用示例文字，不是外部研究结论。",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_zh_5",
+      "role": "decision",
+      "content": {
+        "eyebrow": "下一步",
+        "title": "让一个想法，\n真正被记住。",
+        "body": "先明确你希望听众做出什么决定，再把支持它的证据放在旁边。",
+        "items": [],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "演示用示例文字，不是外部研究结论。",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_zh_6",
+      "role": "closing",
+      "content": {
+        "eyebrow": "DECKWEFT",
+        "title": "清晰的故事，\n准备好分享。",
+        "body": "文稿留在你的电脑。准备好以后，再带到你喜欢的演示软件里。",
+        "items": [],
+        "metrics": []
+      },
+      "design": {
+        "layout": "spotlight"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "演示用示例文字，不是外部研究结论。",
+      "sourceIds": []
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-16T00:00:00.000Z",
+    "updatedAt": "2026-10-16T00:00:00.000Z"
+  },
+  "extensions": {}
+}

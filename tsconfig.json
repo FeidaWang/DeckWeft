@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "NodeNext", "moduleResolution": "NodeNext",
+    "strict": true, "noUncheckedIndexedAccess": true, "exactOptionalPropertyTypes": true,
+    "allowJs": true, "checkJs": true, "declaration": true, "sourceMap": true,
+    "rootDir": ".", "outDir": "dist/runtime", "skipLibCheck": false,
+    "lib": ["ES2022", "DOM"], "types": [], "noEmitOnError": true
+  },
+  "include": ["src/contracts/*.mts", "src/core/speech.mjs", "src/core/preferences.mjs", "src/presentation/clock.mjs", "type-tests/*.mts"]
+}

@@ -1,0 +1,11 @@
+{
+ "version": 1,
+ "tasks": [
+  {"id":"english-pitch","locale":"en","task":"Pitch an offline presentation editor to developers. It keeps text editable and saves local copies. Produce one concise opening slide. Do not invent adoption or speed claims.","family":"cover"},
+  {"id":"chinese-mixed","locale":"zh-CN","task":"用简体中文解释本地优先的工作流，保留 JSON、HTML、PowerPoint 产品名。给出三个简短步骤：整理大纲、检查排版、导出副本。","family":"process"},
+  {"id":"evidence","locale":"en","task":"A supplied internal QA log says 8 of 10 sample decks passed first check; 2 needed shorter titles. This is a sample, not a population estimate. Compare the outcomes, cite only source qa-log, and mention that limitation in the script.","family":"metric","source":{"id":"qa-log","title":"Supplied QA sample","url":"https://example.com/qa-log"}},
+  {"id":"image-dependent","locale":"en","task":"Plan an image-caption slide showing an original local abstract star illustration. No image generation or network. Describe useful alt text and an offline text fallback. The image is decoration, not scientific evidence.","family":"image-caption"},
+  {"id":"interaction","locale":"en","task":"Compare two routes: local HTML exploration and static editable PowerPoint. Make two concise items and two matching tab labels. Explain a static fallback that displays both choices. Keep every word editable.","family":"comparison"},
+  {"id":"code-change","locale":"en","task":"Repair this pure JavaScript function: function nextIndex(index,count){ return Math.min(count,index+1); }. Return a function named nextIndex that clamps to 0..count-1, returns 0 for count<=0, and works for -1, 0 and the last index. No imports, eval, network or tools. Explain the repair as a process slide with three items.","family":"process"}
+ ]
+}

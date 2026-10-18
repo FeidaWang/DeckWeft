@@ -1,0 +1,30 @@
+{
+  "mode": "fixture",
+  "browser": "144.0.7559.96",
+  "cases": 28,
+  "layoutCandidates": 112,
+  "actualCanvas": true,
+  "realOSIME": false,
+  "directCSP": false,
+  "checkedBoxes": 448,
+  "changedFits": 121,
+  "sampleDecks": [
+    {
+      "locale": "en",
+      "slides": 6,
+      "requests": 152,
+      "layoutCandidates": 24,
+      "inspectedTextNodes": 41,
+      "exportBlocked": false
+    },
+    {
+      "locale": "zh-CN",
+      "slides": 6,
+      "requests": 152,
+      "layoutCandidates": 24,
+      "inspectedTextNodes": 41,
+      "exportBlocked": false
+    }
+  ],
+  "pageErrors": []
+}

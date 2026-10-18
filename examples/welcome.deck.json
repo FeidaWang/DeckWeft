@@ -1,0 +1,165 @@
+{
+  "format": "deckweft",
+  "schemaVersion": 1,
+  "id": "deck_welcome",
+  "title": "Room for a better story",
+  "locale": "en",
+  "aspectRatio": "16:9",
+  "theme": "paper",
+  "brief": {
+    "prompt": "",
+    "audience": "",
+    "outcome": ""
+  },
+  "slides": [
+    {
+      "id": "slide_welcome_en_1",
+      "role": "opening",
+      "content": {
+        "eyebrow": "A CLEARER WAY TO PRESENT",
+        "title": "Good ideas deserve\nroom to breathe.",
+        "body": "A local-first studio for turning a rough outline into a story people can follow.",
+        "items": [],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Example copy, written for this demonstration. Not external research.",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_en_2",
+      "role": "context",
+      "content": {
+        "eyebrow": "THE PRINCIPLE",
+        "title": "Change the words.\nKeep the structure.",
+        "body": "Your content and its layout live in separate places. Change one without losing the other.",
+        "items": [
+          "Write the message first",
+          "Choose a layout with intention",
+          "Keep every word editable"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Example copy, written for this demonstration. Not external research.",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_en_3",
+      "role": "evidence",
+      "content": {
+        "eyebrow": "SMALL, USEFUL BUILDING BLOCKS",
+        "title": "Less setup.\nMore clarity.",
+        "body": "These are features in this alpha, not performance claims.",
+        "items": [],
+        "metrics": [
+          {
+            "value": "4",
+            "label": "layout directions"
+          },
+          {
+            "value": "4",
+            "label": "aspect ratios"
+          },
+          {
+            "value": "0",
+            "label": "required API keys"
+          }
+        ]
+      },
+      "design": {
+        "layout": "grid"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Example copy, written for this demonstration. Not external research.",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_en_4",
+      "role": "process",
+      "content": {
+        "eyebrow": "FROM OUTLINE TO PRESENTATION",
+        "title": "A simple path\nto a better deck.",
+        "body": "Move through four small steps.",
+        "items": [
+          "Write a short outline",
+          "Compare four compositions",
+          "Fix the marked issues",
+          "Export and check the final file"
+        ],
+        "metrics": []
+      },
+      "design": {
+        "layout": "timeline"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Example copy, written for this demonstration. Not external research.",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_en_5",
+      "role": "decision",
+      "content": {
+        "eyebrow": "YOUR NEXT STEP",
+        "title": "Make one idea\neasy to remember.",
+        "body": "Start with the decision you want the audience to make. Keep the supporting evidence close.",
+        "items": [],
+        "metrics": []
+      },
+      "design": {
+        "layout": "auto"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Example copy, written for this demonstration. Not external research.",
+      "sourceIds": []
+    },
+    {
+      "id": "slide_welcome_en_6",
+      "role": "closing",
+      "content": {
+        "eyebrow": "DECKWEFT",
+        "title": "A clearer story,\nready to share.",
+        "body": "Your deck stays on your computer. Bring it to your favourite presentation app when it is ready.",
+        "items": [],
+        "metrics": []
+      },
+      "design": {
+        "layout": "spotlight"
+      },
+      "motion": {
+        "preset": "none",
+        "duration": 6
+      },
+      "notes": "Example copy, written for this demonstration. Not external research.",
+      "sourceIds": []
+    }
+  ],
+  "sources": [],
+  "revision": {
+    "number": 0,
+    "createdAt": "2026-10-16T00:00:00.000Z",
+    "updatedAt": "2026-10-16T00:00:00.000Z"
+  },
+  "extensions": {}
+}

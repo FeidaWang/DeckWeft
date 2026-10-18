@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-18",
+  "kind": "actual initial concurrent Codex CLI acceptance attempt",
+  "outcome": "validation-failed",
+  "code": "INVALID_PROJECT",
+  "details": [{"path":"$.sources[0].url","message":"Use an HTTP(S) URL without embedded passwords."}],
+  "integration": "No invalid result was applied",
+  "limitation": "The initial runner stopped before preserving response/usage; those values are unknown. This failure is retained and is not counted as a passing first attempt.",
+  "followUp": "The runner now preserves authored responses and records validation failures. A separate second pair explicitly required empty source/evidence arrays because the authored inputs supplied no sources. No output was coerced or silently repaired."
+}

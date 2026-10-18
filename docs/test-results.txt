@@ -1,0 +1,889 @@
+
+> deckweft@0.1.0-alpha.2 verify
+> npm test && npm run check && npm run build && npm run demo
+
+
+> deckweft@0.1.0-alpha.2 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: AE parser reads valid Unicode JSON and escaped characters
+ok 1 - AE parser reads valid Unicode JSON and escaped characters
+  ---
+  duration_ms: 2.199734
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: {"x":1,}
+ok 2 - AE parser rejects non-data input: {"x":1,}
+  ---
+  duration_ms: 1.245262
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: [1,]
+ok 3 - AE parser rejects non-data input: [1,]
+  ---
+  duration_ms: 1.250098
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: {"__proto__":{}}
+ok 4 - AE parser rejects non-data input: {"__proto__":{}}
+  ---
+  duration_ms: 0.921182
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: {"constructor":{}}
+ok 5 - AE parser rejects non-data input: {"constructor":{}}
+  ---
+  duration_ms: 1.622521
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: {"a":function(){}}
+ok 6 - AE parser rejects non-data input: {"a":function(){}}
+  ---
+  duration_ms: 1.02637
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: true;alert(1)
+ok 7 - AE parser rejects non-data input: true;alert(1)
+  ---
+  duration_ms: 1.578966
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: 1e999
+ok 8 - AE parser rejects non-data input: 1e999
+  ---
+  duration_ms: 1.200804
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: [
+ok 9 - AE parser rejects non-data input: [
+  ---
+  duration_ms: 1.220154
+  type: 'test'
+  ...
+# Subtest: AE cancellation starts no undo group and does not access a project
+ok 10 - AE cancellation starts no undo group and does not access a project
+  ---
+  duration_ms: 1.099451
+  type: 'test'
+  ...
+# Subtest: Figma manifest template requests no network and invents no plugin id
+ok 11 - Figma manifest template requests no network and invents no plugin id
+  ---
+  duration_ms: 9.825084
+  type: 'test'
+  ...
+# Subtest: Figma mock imports editable layers rather than raster slide fills
+ok 12 - Figma mock imports editable layers rather than raster slide fills
+  ---
+  duration_ms: 26.114645
+  type: 'test'
+  ...
+# Subtest: a new project satisfies the closed schema
+ok 13 - a new project satisfies the closed schema
+  ---
+  duration_ms: 3.833101
+  type: 'test'
+  ...
+# Subtest: markdown preserves title, body, points, and slide boundaries
+ok 14 - markdown preserves title, body, points, and slide boundaries
+  ---
+  duration_ms: 0.94616
+  type: 'test'
+  ...
+# Subtest: empty and excessive outlines are rejected
+ok 15 - empty and excessive outlines are rejected
+  ---
+  duration_ms: 0.31078
+  type: 'test'
+  ...
+# Subtest: validation rejects required fields without silently repairing it
+ok 16 - validation rejects required fields without silently repairing it
+  ---
+  duration_ms: 0.512394
+  type: 'test'
+  ...
+# Subtest: validation rejects unknown fields without silently repairing it
+ok 17 - validation rejects unknown fields without silently repairing it
+  ---
+  duration_ms: 0.211789
+  type: 'test'
+  ...
+# Subtest: validation rejects unknown versions without silently repairing it
+ok 18 - validation rejects unknown versions without silently repairing it
+  ---
+  duration_ms: 0.19863
+  type: 'test'
+  ...
+# Subtest: validation rejects unsupported locale without silently repairing it
+ok 19 - validation rejects unsupported locale without silently repairing it
+  ---
+  duration_ms: 0.238981
+  type: 'test'
+  ...
+# Subtest: validation rejects unsafe ids without silently repairing it
+ok 20 - validation rejects unsafe ids without silently repairing it
+  ---
+  duration_ms: 0.167082
+  type: 'test'
+  ...
+# Subtest: validation rejects duplicate slides without silently repairing it
+ok 21 - validation rejects duplicate slides without silently repairing it
+  ---
+  duration_ms: 0.501047
+  type: 'test'
+  ...
+# Subtest: validation rejects missing source target without silently repairing it
+ok 22 - validation rejects missing source target without silently repairing it
+  ---
+  duration_ms: 0.489069
+  type: 'test'
+  ...
+# Subtest: validation rejects nonfinite numeric input without silently repairing it
+ok 23 - validation rejects nonfinite numeric input without silently repairing it
+  ---
+  duration_ms: 0.352633
+  type: 'test'
+  ...
+# Subtest: validation rejects negative revision without silently repairing it
+ok 24 - validation rejects negative revision without silently repairing it
+  ---
+  duration_ms: 0.764655
+  type: 'test'
+  ...
+# Subtest: validation rejects empty slide array without silently repairing it
+ok 25 - validation rejects empty slide array without silently repairing it
+  ---
+  duration_ms: 0.13942
+  type: 'test'
+  ...
+# Subtest: validation rejects control characters without silently repairing it
+ok 26 - validation rejects control characters without silently repairing it
+  ---
+  duration_ms: 0.219412
+  type: 'test'
+  ...
+# Subtest: validation rejects invalid Unicode without silently repairing it
+ok 27 - validation rejects invalid Unicode without silently repairing it
+  ---
+  duration_ms: 0.200263
+  type: 'test'
+  ...
+# Subtest: validation rejects reserved keys without silently repairing it
+ok 28 - validation rejects reserved keys without silently repairing it
+  ---
+  duration_ms: 0.240132
+  type: 'test'
+  ...
+# Subtest: valid Unicode, emoji, and arbitrary safe extension metadata survive
+ok 29 - valid Unicode, emoji, and arbitrary safe extension metadata survive
+  ---
+  duration_ms: 0.209186
+  type: 'test'
+  ...
+# Subtest: unsafe source protocol or credentials rejected: javascript:alert(1)
+ok 30 - unsafe source protocol or credentials rejected: javascript:alert(1)
+  ---
+  duration_ms: 0.222005
+  type: 'test'
+  ...
+# Subtest: unsafe source protocol or credentials rejected: file:///etc/passwd
+ok 31 - unsafe source protocol or credentials rejected: file:///etc/passwd
+  ---
+  duration_ms: 0.108544
+  type: 'test'
+  ...
+# Subtest: unsafe source protocol or credentials rejected: https://user:password@example.com
+ok 32 - unsafe source protocol or credentials rejected: https://user:password@example.com
+  ---
+  duration_ms: 0.104819
+  type: 'test'
+  ...
+# Subtest: HTTP source references are validated but not marked verified
+ok 33 - HTTP source references are validated but not marked verified
+  ---
+  duration_ms: 0.139621
+  type: 'test'
+  ...
+# Subtest: duplicate / reorder / remove actions are immutable and preserve unique ids
+ok 34 - duplicate / reorder / remove actions are immutable and preserve unique ids
+  ---
+  duration_ms: 0.387976
+  type: 'test'
+  ...
+# Subtest: last slide deletion and invalid move fail
+ok 35 - last slide deletion and invalid move fail
+  ---
+  duration_ms: 0.237439
+  type: 'test'
+  ...
+# Subtest: legacy import retains original data and explains lossy rendering
+ok 36 - legacy import retains original data and explains lossy rendering
+  ---
+  duration_ms: 0.810814
+  type: 'test'
+  ...
+# Subtest: legacy unsafe and duplicate ids are regenerated
+ok 37 - legacy unsafe and duplicate ids are regenerated
+  ---
+  duration_ms: 0.370129
+  type: 'test'
+  ...
+# Subtest: unsupported import and broken current schema are rejected
+ok 38 - unsupported import and broken current schema are rejected
+  ---
+  duration_ms: 0.109015
+  type: 'test'
+  ...
+# Subtest: DW-110: history is newest-first and stable cursor paging excludes live revision
+ok 39 - DW-110: history is newest-first and stable cursor paging excludes live revision
+  ---
+  duration_ms: 112.347994
+  type: 'test'
+  ...
+# Subtest: DW-110: first save has no earlier versions
+ok 40 - DW-110: first save has no earlier versions
+  ---
+  duration_ms: 4.086974
+  type: 'test'
+  ...
+# Subtest: DW-110: restore makes revision-one copy with lineage, preserves source bytes
+ok 41 - DW-110: restore makes revision-one copy with lineage, preserves source bytes
+  ---
+  duration_ms: 19.932215
+  type: 'test'
+  ...
+# Subtest: DW-110: a retried request reuses its copy; changed options conflict
+ok 42 - DW-110: a retried request reuses its copy; changed options conflict
+  ---
+  duration_ms: 22.563069
+  type: 'test'
+  ...
+# Subtest: DW-110: snapshot hash pins what was inspected before restoring
+ok 43 - DW-110: snapshot hash pins what was inspected before restoring
+  ---
+  duration_ms: 10.947569
+  type: 'test'
+  ...
+# Subtest: DW-110: invalid or mismatched snapshot is visible but not silently repaired
+ok 44 - DW-110: invalid or mismatched snapshot is visible but not silently repaired
+  ---
+  duration_ms: 13.483251
+  type: 'test'
+  ...
+# Subtest: DW-110: invalid cursors and revisions never turn into file paths
+ok 45 - DW-110: invalid cursors and revisions never turn into file paths
+  ---
+  duration_ms: 10.459242
+  type: 'test'
+  ...
+# Subtest: DW-110: symlink snapshots are refused rather than dereferenced
+ok 46 - DW-110: symlink snapshots are refused rather than dereferenced
+  ---
+  duration_ms: 9.735489
+  type: 'test'
+  ...
+# Subtest: DW-110: divergent pre-existing snapshot blocks save without overwriting either file
+ok 47 - DW-110: divergent pre-existing snapshot blocks save without overwriting either file
+  ---
+  duration_ms: 15.535352
+  type: 'test'
+  ...
+# Subtest: DW-110: identical interrupted-save snapshot can be safely reused
+ok 48 - DW-110: identical interrupted-save snapshot can be safely reused
+  ---
+  duration_ms: 8.947768
+  type: 'test'
+  ...
+# Subtest: DW-110: filename mismatch and exhausted revision counter are rejected
+ok 49 - DW-110: filename mismatch and exhausted revision counter are rejected
+  ---
+  duration_ms: 6.658249
+  type: 'test'
+  ...
+# Subtest: DW-020: evidence redacts known tokens, email and supplied local paths
+ok 50 - DW-020: evidence redacts known tokens, email and supplied local paths
+  ---
+  duration_ms: 1.133092
+  type: 'test'
+  ...
+# Subtest: DW-020: a truly absent executable is blocked, never a simulated host pass
+ok 51 - DW-020: a truly absent executable is blocked, never a simulated host pass
+  ---
+  duration_ms: 3.808895
+  type: 'test'
+  ...
+# Subtest: DW-020: subprocess probes capture a real executable version, not generated evidence
+ok 52 - DW-020: subprocess probes capture a real executable version, not generated evidence
+  ---
+  duration_ms: 7.395913
+  type: 'test'
+  ...
+# Subtest: DW-020: a hanging subprocess is terminated with a timeout flag
+ok 53 - DW-020: a hanging subprocess is terminated with a timeout flag
+  ---
+  duration_ms: 84.127522
+  type: 'test'
+  ...
+# Subtest: DW-120: typing bursts coalesce but different fields and elapsed pauses do not
+ok 54 - DW-120: typing bursts coalesce but different fields and elapsed pauses do not
+  ---
+  duration_ms: 0.813058
+  type: 'test'
+  ...
+# Subtest: DW-120: undo/redo restore selection but preserve the latest saved revision
+ok 55 - DW-120: undo/redo restore selection but preserve the latest saved revision
+  ---
+  duration_ms: 1.362288
+  type: 'test'
+  ...
+# Subtest: DW-120: branching edits discard redo and bound memory
+ok 56 - DW-120: branching edits discard redo and bound memory
+  ---
+  duration_ms: 0.166501
+  type: 'test'
+  ...
+# Subtest: DW-120: input context suppresses application hotkeys {"composing":true}
+ok 57 - DW-120: input context suppresses application hotkeys {"composing":true}
+  ---
+  duration_ms: 0.212761
+  type: 'test'
+  ...
+# Subtest: DW-120: input context suppresses application hotkeys {"modal":true}
+ok 58 - DW-120: input context suppresses application hotkeys {"modal":true}
+  ---
+  duration_ms: 0.076496
+  type: 'test'
+  ...
+# Subtest: DW-120: IME 229, repeat, modifier keys, and native text undo do not trigger deck changes
+ok 59 - DW-120: IME 229, repeat, modifier keys, and native text undo do not trigger deck changes
+  ---
+  duration_ms: 0.169115
+  type: 'test'
+  ...
+# Subtest: DW-120: normal save, layout and presentation keys are intentional
+ok 60 - DW-120: normal save, layout and presentation keys are intentional
+  ---
+  duration_ms: 0.261265
+  type: 'test'
+  ...
+# Subtest: DW-120: boundary actions never dirty a deck
+ok 61 - DW-120: boundary actions never dirty a deck
+  ---
+  duration_ms: 0.208585
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 1
+ok 62 - DW-130: lossless grapheme-safe wrapping fixture 1
+  ---
+  duration_ms: 14.536538
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 2
+ok 63 - DW-130: lossless grapheme-safe wrapping fixture 2
+  ---
+  duration_ms: 4.19981
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 3
+ok 64 - DW-130: lossless grapheme-safe wrapping fixture 3
+  ---
+  duration_ms: 2.876205
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 4
+ok 65 - DW-130: lossless grapheme-safe wrapping fixture 4
+  ---
+  duration_ms: 1.558058
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 5
+ok 66 - DW-130: lossless grapheme-safe wrapping fixture 5
+  ---
+  duration_ms: 1.743654
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 6
+ok 67 - DW-130: lossless grapheme-safe wrapping fixture 6
+  ---
+  duration_ms: 3.327137
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 7
+ok 68 - DW-130: lossless grapheme-safe wrapping fixture 7
+  ---
+  duration_ms: 25.402854
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 8
+ok 69 - DW-130: lossless grapheme-safe wrapping fixture 8
+  ---
+  duration_ms: 1.395779
+  type: 'test'
+  ...
+# Subtest: DW-130: lossless grapheme-safe wrapping fixture 9
+ok 70 - DW-130: lossless grapheme-safe wrapping fixture 9
+  ---
+  duration_ms: 0.325642
+  type: 'test'
+  ...
+# Subtest: DW-130: oversized content never shrinks below floor or deletes source
+ok 71 - DW-130: oversized content never shrinks below floor or deletes source
+  ---
+  duration_ms: 338.60819
+  type: 'test'
+  ...
+# Subtest: DW-130: fingerprint is deterministic and ignores saved revision only
+ok 72 - DW-130: fingerprint is deterministic and ignores saved revision only
+  ---
+  duration_ms: 1.317881
+  type: 'test'
+  ...
+# Subtest: DW-130: plans cover all directions; validated fits replay into the same export scene
+ok 73 - DW-130: plans cover all directions; validated fits replay into the same export scene
+  ---
+  duration_ms: 23.417099
+  type: 'test'
+  ...
+# Subtest: DW-130: stale project changes cannot reuse an export ticket; save-only change can
+ok 74 - DW-130: stale project changes cannot reuse an export ticket; save-only change can
+  ---
+  duration_ms: 13.882914
+  type: 'test'
+  ...
+# Subtest: DW-130: expired/consumed plans and expired render tickets fail closed
+ok 75 - DW-130: expired/consumed plans and expired render tickets fail closed
+  ---
+  duration_ms: 33.006436
+  type: 'test'
+  ...
+# Subtest: DW-130: bounded plan cache evicts oldest, and missing boxes are rejected
+ok 76 - DW-130: bounded plan cache evicts oldest, and missing boxes are rejected
+  ---
+  duration_ms: 36.340854
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement wrongId
+ok 77 - DW-130: rejects malformed measurement wrongId
+  ---
+  duration_ms: 0.902814
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement droppedText
+ok 78 - DW-130: rejects malformed measurement droppedText
+  ---
+  duration_ms: 0.824285
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement splitEmoji
+ok 79 - DW-130: rejects malformed measurement splitEmoji
+  ---
+  duration_ms: 0.898748
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement wrongFamily
+ok 80 - DW-130: rejects malformed measurement wrongFamily
+  ---
+  duration_ms: 6.589446
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement smallFont
+ok 81 - DW-130: rejects malformed measurement smallFont
+  ---
+  duration_ms: 0.638865
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement nanWidth
+ok 82 - DW-130: rejects malformed measurement nanWidth
+  ---
+  duration_ms: 1.024387
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement zeroWidth
+ok 83 - DW-130: rejects malformed measurement zeroWidth
+  ---
+  duration_ms: 0.527828
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement negativeAscent
+ok 84 - DW-130: rejects malformed measurement negativeAscent
+  ---
+  duration_ms: 0.667759
+  type: 'test'
+  ...
+# Subtest: DW-130: rejects malformed measurement duplicateRange
+ok 85 - DW-130: rejects malformed measurement duplicateRange
+  ---
+  duration_ms: 0.776182
+  type: 'test'
+  ...
+# Subtest: dry run has no install side effects and names the two skill locations
+ok 86 - dry run has no install side effects and names the two skill locations
+  ---
+  duration_ms: 21.35248
+  type: 'test'
+  ...
+# Subtest: invalid scope and target are rejected
+ok 87 - invalid scope and target are rejected
+  ---
+  duration_ms: 0.323269
+  type: 'test'
+  ...
+# Subtest: skill install is self-contained and uninstalls unchanged owned files
+ok 88 - skill install is self-contained and uninstalls unchanged owned files
+  ---
+  duration_ms: 343.273512
+  type: 'test'
+  ...
+# Subtest: update requires explicit replace and retains backup
+ok 89 - update requires explicit replace and retains backup
+  ---
+  duration_ms: 118.366525
+  type: 'test'
+  ...
+# Subtest: modified installations are not deleted
+ok 90 - modified installations are not deleted
+  ---
+  duration_ms: 57.130814
+  type: 'test'
+  ...
+# Subtest: all targets are preflighted before any existing target is changed
+ok 91 - all targets are preflighted before any existing target is changed
+  ---
+  duration_ms: 2.659788
+  type: 'test'
+  ...
+# Subtest: symlinked installation paths fail safely
+ok 92 - symlinked installation paths fail safely
+  ---
+  duration_ms: 1.565975
+  type: 'test'
+  ...
+# Subtest: generated bundle executes after an isolated copy without source paths
+ok 93 - generated bundle executes after an isolated copy without source paths
+  ---
+  duration_ms: 446.618104
+  type: 'test'
+  ...
+# Subtest: build refuses an unowned output directory rather than merging into it
+ok 94 - build refuses an unowned output directory rather than merging into it
+  ---
+  duration_ms: 3.743997
+  type: 'test'
+  ...
+# Subtest: build output is byte-stable for unchanged source
+ok 95 - build output is byte-stable for unchanged source
+  ---
+  duration_ms: 111.54628
+  type: 'test'
+  ...
+# Subtest: CLI supports explicit output and refuses accidental overwrite
+ok 96 - CLI supports explicit output and refuses accidental overwrite
+  ---
+  duration_ms: 273.366524
+  type: 'test'
+  ...
+# Subtest: four ranked choices have distinct geometry and stable scores
+ok 97 - four ranked choices have distinct geometry and stable scores
+  ---
+  duration_ms: 59.240232
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 16:9 / paper
+ok 98 - shared scene fits a short deck: 16:9 / paper
+  ---
+  duration_ms: 17.289571
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 16:9 / midnight
+ok 99 - shared scene fits a short deck: 16:9 / midnight
+  ---
+  duration_ms: 17.001496
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 16:9 / ocean
+ok 100 - shared scene fits a short deck: 16:9 / ocean
+  ---
+  duration_ms: 17.43438
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 4:3 / paper
+ok 101 - shared scene fits a short deck: 4:3 / paper
+  ---
+  duration_ms: 16.282249
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 4:3 / midnight
+ok 102 - shared scene fits a short deck: 4:3 / midnight
+  ---
+  duration_ms: 17.899974
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 4:3 / ocean
+ok 103 - shared scene fits a short deck: 4:3 / ocean
+  ---
+  duration_ms: 16.62636
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 1:1 / paper
+ok 104 - shared scene fits a short deck: 1:1 / paper
+  ---
+  duration_ms: 29.976438
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 1:1 / midnight
+ok 105 - shared scene fits a short deck: 1:1 / midnight
+  ---
+  duration_ms: 28.003298
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 1:1 / ocean
+ok 106 - shared scene fits a short deck: 1:1 / ocean
+  ---
+  duration_ms: 31.843851
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 9:16 / paper
+ok 107 - shared scene fits a short deck: 9:16 / paper
+  ---
+  duration_ms: 25.359684
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 9:16 / midnight
+ok 108 - shared scene fits a short deck: 9:16 / midnight
+  ---
+  duration_ms: 16.533499
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 9:16 / ocean
+ok 109 - shared scene fits a short deck: 9:16 / ocean
+  ---
+  duration_ms: 24.113141
+  type: 'test'
+  ...
+# Subtest: editorial retains all semantic content
+ok 110 - editorial retains all semantic content
+  ---
+  duration_ms: 5.059665
+  type: 'test'
+  ...
+# Subtest: spotlight retains all semantic content
+ok 111 - spotlight retains all semantic content
+  ---
+  duration_ms: 2.636834
+  type: 'test'
+  ...
+# Subtest: grid retains all semantic content
+ok 112 - grid retains all semantic content
+  ---
+  duration_ms: 7.044492
+  type: 'test'
+  ...
+# Subtest: timeline retains all semantic content
+ok 113 - timeline retains all semantic content
+  ---
+  duration_ms: 4.262891
+  type: 'test'
+  ...
+# Subtest: dense text is a blocker, never a silently truncated export
+ok 114 - dense text is a blocker, never a silently truncated export
+  ---
+  duration_ms: 2184.409795
+  type: 'test'
+  ...
+# Subtest: all renderers share selected geometry and notes
+ok 115 - all renderers share selected geometry and notes
+  ---
+  duration_ms: 29.981005
+  type: 'test'
+  ...
+# Subtest: SVG escapes markup instead of executing it
+ok 116 - SVG escapes markup instead of executing it
+  ---
+  duration_ms: 13.521278
+  type: 'test'
+  ...
+# Subtest: HTML contains offline slides, notes, and sources
+ok 117 - HTML contains offline slides, notes, and sources
+  ---
+  duration_ms: 15.832399
+  type: 'test'
+  ...
+# Subtest: invalid format and selected SVG page fail clearly
+ok 118 - invalid format and selected SVG page fail clearly
+  ---
+  duration_ms: 33.057634
+  type: 'test'
+  ...
+# Subtest: ZIP CRC, UTF-8 paths, and deterministic output round-trip
+ok 119 - ZIP CRC, UTF-8 paths, and deterministic output round-trip
+  ---
+  duration_ms: 1.460507
+  type: 'test'
+  ...
+# Subtest: ZIP writer rejects traversal and duplicate paths
+ok 120 - ZIP writer rejects traversal and duplicate paths
+  ---
+  duration_ms: 0.305381
+  type: 'test'
+  ...
+# Subtest: PPTX is a ZIP of native shapes, text, theme, notes, and relationships
+ok 121 - PPTX is a ZIP of native shapes, text, theme, notes, and relationships
+  ---
+  duration_ms: 32.172487
+  type: 'test'
+  ...
+# Subtest: contrast math has expected endpoints
+ok 122 - contrast math has expected endpoints
+  ---
+  duration_ms: 0.104628
+  type: 'test'
+  ...
+# Subtest: metric cards reserve label height for the bundled CJK example without overlap
+ok 123 - metric cards reserve label height for the bundled CJK example without overlap
+  ---
+  duration_ms: 45.737921
+  type: 'test'
+  ...
+# Subtest: loopback session, headers, and static allowlist
+ok 124 - loopback session, headers, and static allowlist
+  ---
+  duration_ms: 39.812133
+  type: 'test'
+  ...
+# Subtest: API requires a token except safe health/session bootstrap
+ok 125 - API requires a token except safe health/session bootstrap
+  ---
+  duration_ms: 13.634258
+  type: 'test'
+  ...
+# Subtest: cross-site, malformed origin, and forged Host requests fail
+ok 126 - cross-site, malformed origin, and forged Host requests fail
+  ---
+  duration_ms: 12.902924
+  type: 'test'
+  ...
+# Subtest: invalid JSON, non-object input, and content type have specific errors
+ok 127 - invalid JSON, non-object input, and content type have specific errors
+  ---
+  duration_ms: 19.654965
+  type: 'test'
+  ...
+# Subtest: create / reopen / stale save / export API works end to end
+ok 128 - create / reopen / stale save / export API works end to end
+  ---
+  duration_ms: 68.452308
+  type: 'test'
+  ...
+# Subtest: preview gives four layouts and imports create a distinct id
+ok 129 - preview gives four layouts and imports create a distinct id
+  ---
+  duration_ms: 33.881489
+  type: 'test'
+  ...
+# Subtest: oversized JSON is rejected with an explicit 413 response
+ok 130 - oversized JSON is rejected with an explicit 413 response
+  ---
+  duration_ms: 14.654601
+  type: 'test'
+  ...
+# Subtest: DW-130: measurement API binds export to the exact measured content
+ok 131 - DW-130: measurement API binds export to the exact measured content
+  ---
+  duration_ms: 30.668655
+  type: 'test'
+  ...
+# Subtest: DW-110: history HTTP read, pagination, restore and forbidden overwrite
+ok 132 - DW-110: history HTTP read, pagination, restore and forbidden overwrite
+  ---
+  duration_ms: 37.696292
+  type: 'test'
+  ...
+# Subtest: DW-130: shared text and interaction modules are the only added static routes
+ok 133 - DW-130: shared text and interaction modules are the only added static routes
+  ---
+  duration_ms: 6.037922
+  type: 'test'
+  ...
+# Subtest: create, save, reopen, and history use durable revisioned files
+ok 134 - create, save, reopen, and history use durable revisioned files
+  ---
+  duration_ms: 19.525549
+  type: 'test'
+  ...
+# Subtest: create does not overwrite an existing id
+ok 135 - create does not overwrite an existing id
+  ---
+  duration_ms: 5.946464
+  type: 'test'
+  ...
+# Subtest: stale or missing revisions do not overwrite newer data
+ok 136 - stale or missing revisions do not overwrite newer data
+  ---
+  duration_ms: 12.565784
+  type: 'test'
+  ...
+# Subtest: two project ids remain independent
+ok 137 - two project ids remain independent
+  ---
+  duration_ms: 18.224674
+  type: 'test'
+  ...
+# Subtest: only one concurrent save for a revision wins
+ok 138 - only one concurrent save for a revision wins
+  ---
+  duration_ms: 6.664669
+  type: 'test'
+  ...
+# Subtest: unsafe ids and symlink destinations are rejected
+ok 139 - unsafe ids and symlink destinations are rejected
+  ---
+  duration_ms: 2.225903
+  type: 'test'
+  ...
+# Subtest: corrupt files remain visible in the library
+ok 140 - corrupt files remain visible in the library
+  ---
+  duration_ms: 2.454058
+  type: 'test'
+  ...
+# Subtest: stale lock does not get deleted automatically
+ok 141 - stale lock does not get deleted automatically
+  ---
+  duration_ms: 7.629327
+  type: 'test'
+  ...
+# Subtest: failed validation creates no lock and successful writes leave no temp
+ok 142 - failed validation creates no lock and successful writes leave no temp
+  ---
+  duration_ms: 3.476983
+  type: 'test'
+  ...
+1..142
+# tests 142
+# suites 0
+# pass 142
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3072.043377
+
+> deckweft@0.1.0-alpha.2 check
+> node scripts/check.mjs
+
+Checked 138 source files: syntax, relative document links, schema subset, examples, task dependencies, version identity, and font exclusions.
+
+> deckweft@0.1.0-alpha.2 build
+> node scripts/build.mjs
+
+{
+  "directory": "/mnt/data/deckweft-next/DeckWeft/dist/deckweft-plugin",
+  "archive": "/mnt/data/deckweft-next/DeckWeft/dist/deckweft-plugin-0.1.0-alpha.2.zip",
+  "version": "0.1.0-alpha.2"
+}
+
+> deckweft@0.1.0-alpha.2 demo
+> node scripts/demo.mjs
+
+Created English and Simplified Chinese demo exports in dist/demo.

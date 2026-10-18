@@ -1,0 +1,5 @@
+
+> deckweft@0.1.0-alpha.2 check
+> node scripts/check.mjs
+
+Checked 417 source files: syntax, relative document links, schema subset, examples, task dependencies, version identity, and font exclusions.

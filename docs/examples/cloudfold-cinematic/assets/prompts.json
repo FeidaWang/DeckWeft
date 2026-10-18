@@ -1,0 +1,18 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-10-17",
+  "illustrations": [
+    {
+      "key": "hero",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed background illustration for a premium 16:9 presentation about a FICTIONAL creative paper-airplane club named Cloudfold Club. Landscape 16:9. Sculptural tactile paper art, sophisticated art-directed 3D editorial illustration. Scene is a deep ink navy and petrol blue studio sky. In the RIGHT HALF, one magnificent ivory origami airplane with a coral-orange folded underside arcs upward through three large sculptural ivory paper cloud forms, delicate peach highlights and warm cinematic shadows. A few small delicate coral paper confetti shapes near the far right. Dynamic diagonal flight toward upper right, exquisite folds, real paper grain and dimensional depth. Composition must keep LEFT 52 PERCENT almost empty solid deep navy (#142c34) for large native slide typography; no plane or clouds in left half. Bottom left is also empty deep navy. Beautiful enough for a high-end design conference keynote. No text, lettering, logos, numbers, watermarks, UI, borders or flat icon graphics. Entire composition is the illustration only; no slide text."
+    },
+    {
+      "key": "process",
+      "prompt": "Use case: stylized-concept. Asset type: wide panoramic illustration strip for a premium presentation about a fictional paper-airplane club. Aspect ratio 3:1 panoramic. Sophisticated tactile 3D paper sculpture on a clean warm ivory backdrop (#f6f0e6), warm studio shadows, meticulous paper grain. Three equally spaced separate paper objects at the same scale: LEFT a soft coral-orange square sheet with a subtle initial diagonal crease, CENTER an ivory partially folded paper aircraft with orange inner flaps (recognizably midway through making a paper plane), RIGHT a complete elegant coral-orange and ivory paper airplane tilted upward. Visual transformation from a flat sheet to a flying object, each object floating over the same warm ivory ground. Generous space between objects, no panels. Keep the three objects entirely inside frame with clean margins at sides. Refined product-like editorial lighting. This should look like a curated art installation about folding, not an instruction diagram. No hands, text, labels, arrows, lines, numbers, UI, borders, logos or watermarks. Cohesive with sculptural origami art on navy and coral slide backgrounds."
+    },
+    {
+      "key": "closing",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed background illustration for the closing slide of a premium fictional paper-airplane club presentation. Landscape 16:9. Sophisticated sculptural 3D tactile paper art with visible delicate paper grain. Background is rich warm burnt coral-orange (#e87856) with subtle studio tonal depth. Composition RIGHT HALF ONLY: a playful large warm ivory spiral ribbon of folded paper forms a sweeping open loop like a theatrical portal, with two ivory and muted-petrol origami paper airplanes flying through it toward upper right. Big sculptural folds, intriguing layered depth and warm soft shadows; a small sculptural ivory paper cloud sits at lower right. Striking gallery quality editorial art, optimistic and inviting. Keep LEFT 55 PERCENT a very clean uninterrupted coral field suitable for dark navy large native typography, leave bottom left empty too. All illustration must remain on right half. No text, letters, symbols, logos, numbers, watermark, UI, border, labels or flattened slide design."
+    }
+  ]
+}

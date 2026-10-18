@@ -1,0 +1,587 @@
+DeckWeft 0.1.0-alpha.1 | Linux | Node 22.16.0
+Command: npm run verify
+Local run only; see verification.md for scope.
+
+
+> deckweft@0.1.0-alpha.1 verify
+> npm test && npm run check && npm run build && npm run demo
+
+
+> deckweft@0.1.0-alpha.1 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: AE parser reads valid Unicode JSON and escaped characters
+ok 1 - AE parser reads valid Unicode JSON and escaped characters
+  ---
+  duration_ms: 3.061508
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: {"x":1,}
+ok 2 - AE parser rejects non-data input: {"x":1,}
+  ---
+  duration_ms: 1.722839
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: [1,]
+ok 3 - AE parser rejects non-data input: [1,]
+  ---
+  duration_ms: 1.163538
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: {"__proto__":{}}
+ok 4 - AE parser rejects non-data input: {"__proto__":{}}
+  ---
+  duration_ms: 1.194465
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: {"constructor":{}}
+ok 5 - AE parser rejects non-data input: {"constructor":{}}
+  ---
+  duration_ms: 1.874124
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: {"a":function(){}}
+ok 6 - AE parser rejects non-data input: {"a":function(){}}
+  ---
+  duration_ms: 1.574509
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: true;alert(1)
+ok 7 - AE parser rejects non-data input: true;alert(1)
+  ---
+  duration_ms: 1.286081
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: 1e999
+ok 8 - AE parser rejects non-data input: 1e999
+  ---
+  duration_ms: 1.128876
+  type: 'test'
+  ...
+# Subtest: AE parser rejects non-data input: [
+ok 9 - AE parser rejects non-data input: [
+  ---
+  duration_ms: 1.462482
+  type: 'test'
+  ...
+# Subtest: AE cancellation starts no undo group and does not access a project
+ok 10 - AE cancellation starts no undo group and does not access a project
+  ---
+  duration_ms: 1.530323
+  type: 'test'
+  ...
+# Subtest: Figma manifest template requests no network and invents no plugin id
+ok 11 - Figma manifest template requests no network and invents no plugin id
+  ---
+  duration_ms: 10.969674
+  type: 'test'
+  ...
+# Subtest: Figma mock imports editable layers rather than raster slide fills
+ok 12 - Figma mock imports editable layers rather than raster slide fills
+  ---
+  duration_ms: 7.967244
+  type: 'test'
+  ...
+# Subtest: a new project satisfies the closed schema
+ok 13 - a new project satisfies the closed schema
+  ---
+  duration_ms: 3.19088
+  type: 'test'
+  ...
+# Subtest: markdown preserves title, body, points, and slide boundaries
+ok 14 - markdown preserves title, body, points, and slide boundaries
+  ---
+  duration_ms: 1.005424
+  type: 'test'
+  ...
+# Subtest: empty and excessive outlines are rejected
+ok 15 - empty and excessive outlines are rejected
+  ---
+  duration_ms: 0.374977
+  type: 'test'
+  ...
+# Subtest: validation rejects required fields without silently repairing it
+ok 16 - validation rejects required fields without silently repairing it
+  ---
+  duration_ms: 1.032764
+  type: 'test'
+  ...
+# Subtest: validation rejects unknown fields without silently repairing it
+ok 17 - validation rejects unknown fields without silently repairing it
+  ---
+  duration_ms: 0.516848
+  type: 'test'
+  ...
+# Subtest: validation rejects unknown versions without silently repairing it
+ok 18 - validation rejects unknown versions without silently repairing it
+  ---
+  duration_ms: 0.298834
+  type: 'test'
+  ...
+# Subtest: validation rejects unsupported locale without silently repairing it
+ok 19 - validation rejects unsupported locale without silently repairing it
+  ---
+  duration_ms: 0.574603
+  type: 'test'
+  ...
+# Subtest: validation rejects unsafe ids without silently repairing it
+ok 20 - validation rejects unsafe ids without silently repairing it
+  ---
+  duration_ms: 0.365252
+  type: 'test'
+  ...
+# Subtest: validation rejects duplicate slides without silently repairing it
+ok 21 - validation rejects duplicate slides without silently repairing it
+  ---
+  duration_ms: 0.958479
+  type: 'test'
+  ...
+# Subtest: validation rejects missing source target without silently repairing it
+ok 22 - validation rejects missing source target without silently repairing it
+  ---
+  duration_ms: 0.911064
+  type: 'test'
+  ...
+# Subtest: validation rejects nonfinite numeric input without silently repairing it
+ok 23 - validation rejects nonfinite numeric input without silently repairing it
+  ---
+  duration_ms: 0.812317
+  type: 'test'
+  ...
+# Subtest: validation rejects negative revision without silently repairing it
+ok 24 - validation rejects negative revision without silently repairing it
+  ---
+  duration_ms: 0.180488
+  type: 'test'
+  ...
+# Subtest: validation rejects empty slide array without silently repairing it
+ok 25 - validation rejects empty slide array without silently repairing it
+  ---
+  duration_ms: 0.123713
+  type: 'test'
+  ...
+# Subtest: validation rejects control characters without silently repairing it
+ok 26 - validation rejects control characters without silently repairing it
+  ---
+  duration_ms: 0.226636
+  type: 'test'
+  ...
+# Subtest: validation rejects invalid Unicode without silently repairing it
+ok 27 - validation rejects invalid Unicode without silently repairing it
+  ---
+  duration_ms: 0.256681
+  type: 'test'
+  ...
+# Subtest: validation rejects reserved keys without silently repairing it
+ok 28 - validation rejects reserved keys without silently repairing it
+  ---
+  duration_ms: 1.048968
+  type: 'test'
+  ...
+# Subtest: valid Unicode, emoji, and arbitrary safe extension metadata survive
+ok 29 - valid Unicode, emoji, and arbitrary safe extension metadata survive
+  ---
+  duration_ms: 0.15474
+  type: 'test'
+  ...
+# Subtest: unsafe source protocol or credentials rejected: javascript:alert(1)
+ok 30 - unsafe source protocol or credentials rejected: javascript:alert(1)
+  ---
+  duration_ms: 0.278353
+  type: 'test'
+  ...
+# Subtest: unsafe source protocol or credentials rejected: file:///etc/passwd
+ok 31 - unsafe source protocol or credentials rejected: file:///etc/passwd
+  ---
+  duration_ms: 0.500238
+  type: 'test'
+  ...
+# Subtest: unsafe source protocol or credentials rejected: https://user:password@example.com
+ok 32 - unsafe source protocol or credentials rejected: https://user:password@example.com
+  ---
+  duration_ms: 0.201519
+  type: 'test'
+  ...
+# Subtest: HTTP source references are validated but not marked verified
+ok 33 - HTTP source references are validated but not marked verified
+  ---
+  duration_ms: 0.207918
+  type: 'test'
+  ...
+# Subtest: duplicate / reorder / remove actions are immutable and preserve unique ids
+ok 34 - duplicate / reorder / remove actions are immutable and preserve unique ids
+  ---
+  duration_ms: 0.39022
+  type: 'test'
+  ...
+# Subtest: last slide deletion and invalid move fail
+ok 35 - last slide deletion and invalid move fail
+  ---
+  duration_ms: 0.232815
+  type: 'test'
+  ...
+# Subtest: legacy import retains original data and explains lossy rendering
+ok 36 - legacy import retains original data and explains lossy rendering
+  ---
+  duration_ms: 0.775091
+  type: 'test'
+  ...
+# Subtest: legacy unsafe and duplicate ids are regenerated
+ok 37 - legacy unsafe and duplicate ids are regenerated
+  ---
+  duration_ms: 0.308488
+  type: 'test'
+  ...
+# Subtest: unsupported import and broken current schema are rejected
+ok 38 - unsupported import and broken current schema are rejected
+  ---
+  duration_ms: 0.117565
+  type: 'test'
+  ...
+# Subtest: dry run has no install side effects and names the two skill locations
+ok 39 - dry run has no install side effects and names the two skill locations
+  ---
+  duration_ms: 10.366678
+  type: 'test'
+  ...
+# Subtest: invalid scope and target are rejected
+ok 40 - invalid scope and target are rejected
+  ---
+  duration_ms: 0.446984
+  type: 'test'
+  ...
+# Subtest: skill install is self-contained and uninstalls unchanged owned files
+ok 41 - skill install is self-contained and uninstalls unchanged owned files
+  ---
+  duration_ms: 350.468639
+  type: 'test'
+  ...
+# Subtest: update requires explicit replace and retains backup
+ok 42 - update requires explicit replace and retains backup
+  ---
+  duration_ms: 114.094814
+  type: 'test'
+  ...
+# Subtest: modified installations are not deleted
+ok 43 - modified installations are not deleted
+  ---
+  duration_ms: 58.825438
+  type: 'test'
+  ...
+# Subtest: all targets are preflighted before any existing target is changed
+ok 44 - all targets are preflighted before any existing target is changed
+  ---
+  duration_ms: 4.212728
+  type: 'test'
+  ...
+# Subtest: symlinked installation paths fail safely
+ok 45 - symlinked installation paths fail safely
+  ---
+  duration_ms: 1.621248
+  type: 'test'
+  ...
+# Subtest: generated bundle executes after an isolated copy without source paths
+ok 46 - generated bundle executes after an isolated copy without source paths
+  ---
+  duration_ms: 194.433668
+  type: 'test'
+  ...
+# Subtest: build refuses an unowned output directory rather than merging into it
+ok 47 - build refuses an unowned output directory rather than merging into it
+  ---
+  duration_ms: 2.385974
+  type: 'test'
+  ...
+# Subtest: build output is byte-stable for unchanged source
+ok 48 - build output is byte-stable for unchanged source
+  ---
+  duration_ms: 104.564488
+  type: 'test'
+  ...
+# Subtest: CLI supports explicit output and refuses accidental overwrite
+ok 49 - CLI supports explicit output and refuses accidental overwrite
+  ---
+  duration_ms: 244.061775
+  type: 'test'
+  ...
+# Subtest: four ranked choices have distinct geometry and stable scores
+ok 50 - four ranked choices have distinct geometry and stable scores
+  ---
+  duration_ms: 11.169751
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 16:9 / paper
+ok 51 - shared scene fits a short deck: 16:9 / paper
+  ---
+  duration_ms: 2.794941
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 16:9 / midnight
+ok 52 - shared scene fits a short deck: 16:9 / midnight
+  ---
+  duration_ms: 1.311659
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 16:9 / ocean
+ok 53 - shared scene fits a short deck: 16:9 / ocean
+  ---
+  duration_ms: 1.432588
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 4:3 / paper
+ok 54 - shared scene fits a short deck: 4:3 / paper
+  ---
+  duration_ms: 0.930532
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 4:3 / midnight
+ok 55 - shared scene fits a short deck: 4:3 / midnight
+  ---
+  duration_ms: 0.984132
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 4:3 / ocean
+ok 56 - shared scene fits a short deck: 4:3 / ocean
+  ---
+  duration_ms: 1.356414
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 1:1 / paper
+ok 57 - shared scene fits a short deck: 1:1 / paper
+  ---
+  duration_ms: 0.772297
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 1:1 / midnight
+ok 58 - shared scene fits a short deck: 1:1 / midnight
+  ---
+  duration_ms: 0.977291
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 1:1 / ocean
+ok 59 - shared scene fits a short deck: 1:1 / ocean
+  ---
+  duration_ms: 1.421932
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 9:16 / paper
+ok 60 - shared scene fits a short deck: 9:16 / paper
+  ---
+  duration_ms: 0.767379
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 9:16 / midnight
+ok 61 - shared scene fits a short deck: 9:16 / midnight
+  ---
+  duration_ms: 0.818125
+  type: 'test'
+  ...
+# Subtest: shared scene fits a short deck: 9:16 / ocean
+ok 62 - shared scene fits a short deck: 9:16 / ocean
+  ---
+  duration_ms: 0.579461
+  type: 'test'
+  ...
+# Subtest: editorial retains all semantic content
+ok 63 - editorial retains all semantic content
+  ---
+  duration_ms: 0.298293
+  type: 'test'
+  ...
+# Subtest: spotlight retains all semantic content
+ok 64 - spotlight retains all semantic content
+  ---
+  duration_ms: 0.279285
+  type: 'test'
+  ...
+# Subtest: grid retains all semantic content
+ok 65 - grid retains all semantic content
+  ---
+  duration_ms: 0.526281
+  type: 'test'
+  ...
+# Subtest: timeline retains all semantic content
+ok 66 - timeline retains all semantic content
+  ---
+  duration_ms: 0.212405
+  type: 'test'
+  ...
+# Subtest: dense text is a blocker, never a silently truncated export
+ok 67 - dense text is a blocker, never a silently truncated export
+  ---
+  duration_ms: 814.319229
+  type: 'test'
+  ...
+# Subtest: all renderers share selected geometry and notes
+ok 68 - all renderers share selected geometry and notes
+  ---
+  duration_ms: 2.138727
+  type: 'test'
+  ...
+# Subtest: SVG escapes markup instead of executing it
+ok 69 - SVG escapes markup instead of executing it
+  ---
+  duration_ms: 1.169767
+  type: 'test'
+  ...
+# Subtest: HTML contains offline slides, notes, and sources
+ok 70 - HTML contains offline slides, notes, and sources
+  ---
+  duration_ms: 1.438707
+  type: 'test'
+  ...
+# Subtest: invalid format and selected SVG page fail clearly
+ok 71 - invalid format and selected SVG page fail clearly
+  ---
+  duration_ms: 1.633707
+  type: 'test'
+  ...
+# Subtest: ZIP CRC, UTF-8 paths, and deterministic output round-trip
+ok 72 - ZIP CRC, UTF-8 paths, and deterministic output round-trip
+  ---
+  duration_ms: 1.816077
+  type: 'test'
+  ...
+# Subtest: ZIP writer rejects traversal and duplicate paths
+ok 73 - ZIP writer rejects traversal and duplicate paths
+  ---
+  duration_ms: 0.330872
+  type: 'test'
+  ...
+# Subtest: PPTX is a ZIP of native shapes, text, theme, notes, and relationships
+ok 74 - PPTX is a ZIP of native shapes, text, theme, notes, and relationships
+  ---
+  duration_ms: 6.541837
+  type: 'test'
+  ...
+# Subtest: contrast math has expected endpoints
+ok 75 - contrast math has expected endpoints
+  ---
+  duration_ms: 0.132777
+  type: 'test'
+  ...
+# Subtest: loopback session, headers, and static allowlist
+ok 76 - loopback session, headers, and static allowlist
+  ---
+  duration_ms: 48.630044
+  type: 'test'
+  ...
+# Subtest: API requires a token except safe health/session bootstrap
+ok 77 - API requires a token except safe health/session bootstrap
+  ---
+  duration_ms: 19.418755
+  type: 'test'
+  ...
+# Subtest: cross-site, malformed origin, and forged Host requests fail
+ok 78 - cross-site, malformed origin, and forged Host requests fail
+  ---
+  duration_ms: 14.19795
+  type: 'test'
+  ...
+# Subtest: invalid JSON, non-object input, and content type have specific errors
+ok 79 - invalid JSON, non-object input, and content type have specific errors
+  ---
+  duration_ms: 23.154102
+  type: 'test'
+  ...
+# Subtest: create / reopen / stale save / export API works end to end
+ok 80 - create / reopen / stale save / export API works end to end
+  ---
+  duration_ms: 48.071795
+  type: 'test'
+  ...
+# Subtest: preview gives four layouts and imports create a distinct id
+ok 81 - preview gives four layouts and imports create a distinct id
+  ---
+  duration_ms: 20.434923
+  type: 'test'
+  ...
+# Subtest: oversized JSON is rejected with an explicit 413 response
+ok 82 - oversized JSON is rejected with an explicit 413 response
+  ---
+  duration_ms: 19.678751
+  type: 'test'
+  ...
+# Subtest: create, save, reopen, and history use durable revisioned files
+ok 83 - create, save, reopen, and history use durable revisioned files
+  ---
+  duration_ms: 24.726999
+  type: 'test'
+  ...
+# Subtest: create does not overwrite an existing id
+ok 84 - create does not overwrite an existing id
+  ---
+  duration_ms: 11.022813
+  type: 'test'
+  ...
+# Subtest: stale or missing revisions do not overwrite newer data
+ok 85 - stale or missing revisions do not overwrite newer data
+  ---
+  duration_ms: 18.903454
+  type: 'test'
+  ...
+# Subtest: two project ids remain independent
+ok 86 - two project ids remain independent
+  ---
+  duration_ms: 21.50636
+  type: 'test'
+  ...
+# Subtest: only one concurrent save for a revision wins
+ok 87 - only one concurrent save for a revision wins
+  ---
+  duration_ms: 11.542876
+  type: 'test'
+  ...
+# Subtest: unsafe ids and symlink destinations are rejected
+ok 88 - unsafe ids and symlink destinations are rejected
+  ---
+  duration_ms: 4.078283
+  type: 'test'
+  ...
+# Subtest: corrupt files remain visible in the library
+ok 89 - corrupt files remain visible in the library
+  ---
+  duration_ms: 3.127866
+  type: 'test'
+  ...
+# Subtest: stale lock does not get deleted automatically
+ok 90 - stale lock does not get deleted automatically
+  ---
+  duration_ms: 9.092055
+  type: 'test'
+  ...
+# Subtest: failed validation creates no lock and successful writes leave no temp
+ok 91 - failed validation creates no lock and successful writes leave no temp
+  ---
+  duration_ms: 4.752209
+  type: 'test'
+  ...
+1..91
+# tests 91
+# suites 0
+# pass 91
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1173.903342
+
+> deckweft@0.1.0-alpha.1 check
+> node scripts/check.mjs
+
+Checked 99 source files: syntax, relative document links, schema subset, examples, task dependencies, version identity, and font exclusions.
+
+> deckweft@0.1.0-alpha.1 build
+> node scripts/build.mjs
+
+{
+  "directory": "<source-root>/dist/deckweft-plugin",
+  "archive": "<source-root>/dist/deckweft-plugin-0.1.0-alpha.1.zip",
+  "version": "0.1.0-alpha.1"
+}
+
+> deckweft@0.1.0-alpha.1 demo
+> node scripts/demo.mjs
+
+Created English and Simplified Chinese demo exports in dist/demo.
