@@ -1,0 +1,825 @@
+{
+ "format": "deckweft-baseline-rerecording",
+ "recordedAt": "2026-10-19",
+ "from": {
+  "commit": "232060e",
+  "baselineSourceCommit": "058b939"
+ },
+ "to": {
+  "commit": "630e6eb (S3)"
+ },
+ "renderer": [
+  "visual-art-direction.3",
+  "visual-art-direction.3"
+ ],
+ "method": [
+  "tests/render-baseline.mjs renderBaseline({root}) was run against a clean checkout of 232060e and against the S3 tree. At 232060e it reproduces all 24 committed hashes, so the refactored function measures the same thing.",
+  "content hashes contentView(): the HTML with its stylesheet, render hash and scene source hashes removed and embedded composition lists emptied; for themes, the resolved theme without its composition list. Text, numeric values, element ids, block ids, links, the CSP and scripts remain in the content view.",
+  "The checks per entry were made separately on the same two renders: visible text runs, element ids, block ids, links and scripts."
+ ],
+ "summary": {
+  "entries": 24,
+  "bytesChanged": 22,
+  "bytesUnchanged": [
+   "wave-a.en.json",
+   "wave-a.zh-CN.json"
+  ],
+  "contentEqual": 24,
+  "added": [
+   "families.en.html",
+   "families.zh-CN.html"
+  ]
+ },
+ "entries": [
+  {
+   "entry": "wave-a.en.html",
+   "before": "8835dde10e57ca02e3a5d99f7bf1fcff09bbc53db96e5630c3376727f65b6014",
+   "after": "577873936ae442f75396b2a5f93f39c2dda9c350705048961fd5050c9bf66a1c",
+   "bytesChanged": true,
+   "contentBefore": "1dc883a90fddb893c56cc26cee0f6f3626f1a278034a3d82c227fcba24c8db4d",
+   "contentAfter": "1dc883a90fddb893c56cc26cee0f6f3626f1a278034a3d82c227fcba24c8db4d",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     86,
+     86
+    ],
+    "textEqual": true,
+    "elementIds": [
+     29,
+     29
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": true,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows."
+  },
+  {
+   "entry": "wave-a.en.json",
+   "before": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
+   "after": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
+   "bytesChanged": false,
+   "contentBefore": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
+   "contentAfter": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
+   "contentEqual": true,
+   "why": "Unchanged: JSON export carries the semantic document only."
+  },
+  {
+   "entry": "wave-a.zh-CN.html",
+   "before": "7c120750f60ec861d9bb70b13e458b5f30e3bedae2c61a3988b88f12202e6d3c",
+   "after": "c4b4796b5ecd80c922f3c5c8886ac2fc30bd344753ec2bb74cfec13a0febdd73",
+   "bytesChanged": true,
+   "contentBefore": "663fbf09ff82e16ec2405cca717c8496805eb2cf0529b97e9d153e75da96ee50",
+   "contentAfter": "663fbf09ff82e16ec2405cca717c8496805eb2cf0529b97e9d153e75da96ee50",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     86,
+     86
+    ],
+    "textEqual": true,
+    "elementIds": [
+     29,
+     29
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": true,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows."
+  },
+  {
+   "entry": "wave-a.zh-CN.json",
+   "before": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
+   "after": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
+   "bytesChanged": false,
+   "contentBefore": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
+   "contentAfter": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
+   "contentEqual": true,
+   "why": "Unchanged: JSON export carries the semantic document only."
+  },
+  {
+   "entry": "visual-demo.en.html",
+   "before": "33cbd94076c42f80feabc6afd23559204f09e61283d51cacaf238b3f358961d5",
+   "after": "bee41a52dd2b702852f7403d5d57769d9a86e53a25fc9b5e2a0dd4ffb0940754",
+   "bytesChanged": true,
+   "contentBefore": "09fd2f0d664abfd23c5e35f635d497337a56cffa777fbc02aed30a33ade7eb1b",
+   "contentAfter": "09fd2f0d664abfd23c5e35f635d497337a56cffa777fbc02aed30a33ade7eb1b",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     96,
+     96
+    ],
+    "textEqual": true,
+    "elementIds": [
+     37,
+     37
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": true,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows."
+  },
+  {
+   "entry": "visual-demo.zh-CN.html",
+   "before": "0b5e4ffd0187c1bf1ea8d7882fdcb069ce8d42cc919e7d4068c28576c15627b9",
+   "after": "4fbbb9473c3c3bddae35429fffaea277b8039eeca40c1302a3ac48fe4cabf5fe",
+   "bytesChanged": true,
+   "contentBefore": "d117a8dea81daa08ab4e0c1decb216c788a087bf5337cd6508295556ab154618",
+   "contentAfter": "d117a8dea81daa08ab4e0c1decb216c788a087bf5337cd6508295556ab154618",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     96,
+     96
+    ],
+    "textEqual": true,
+    "elementIds": [
+     37,
+     37
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": true,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows."
+  },
+  {
+   "entry": "component-demo.en.html",
+   "before": "952fa76784a4548c3cc1bc7ad12ed26ea7437f39e3e685545b21d181e45f752a",
+   "after": "7a6eec7c3529859214cd152bb3d64a84c559c21dacf271c025b7db95ddaa0ecd",
+   "bytesChanged": true,
+   "contentBefore": "477eee28e280174b7b67f8800b74b9155f5bae9ba12424bf909c9bf0968e7dbd",
+   "contentAfter": "477eee28e280174b7b67f8800b74b9155f5bae9ba12424bf909c9bf0968e7dbd",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     520,
+     520
+    ],
+    "textEqual": true,
+    "elementIds": [
+     171,
+     171
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": true,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows."
+  },
+  {
+   "entry": "component-demo.zh-CN.html",
+   "before": "7909e2f4228a2ae6adaa1052ff19dc97d66e83831e7f0362bf58c3d79ed7f7f3",
+   "after": "612d37d89121586a6e9f14e0e842371d42bd007f789202cd3c4688cf480fb9c9",
+   "bytesChanged": true,
+   "contentBefore": "55e312b6bda55d764ad90e5ee66f2d4b58e7f812662fde2e387c15d684ae1a78",
+   "contentAfter": "55e312b6bda55d764ad90e5ee66f2d4b58e7f812662fde2e387c15d684ae1a78",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     520,
+     520
+    ],
+    "textEqual": true,
+    "elementIds": [
+     171,
+     171
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": true,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows."
+  },
+  {
+   "entry": "interaction-demo.en.html",
+   "before": "dab1f376255ccb37fd8ce13f4d1db836f5d16e567c924c409c14102f4d868386",
+   "after": "37ae282652dfa0a65eba1c11f4d7e4a1bef667d976b66d313d6526ee8b7ff7e3",
+   "bytesChanged": true,
+   "contentBefore": "3d45916a8716c5e5d55222c2c1b1714a04a9422c8b26209ede51b04c15400831",
+   "contentAfter": "3d45916a8716c5e5d55222c2c1b1714a04a9422c8b26209ede51b04c15400831",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     591,
+     591
+    ],
+    "textEqual": true,
+    "elementIds": [
+     178,
+     178
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": false,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows. The runtime data also embeds the resolved theme for chart selection, so its composition list grew; nothing else in the scripts changed."
+  },
+  {
+   "entry": "interaction-demo.zh-CN.html",
+   "before": "310a57f0aa32ad3ff4610e0e92cc4e763147580baea3bfa2f8c15f997c94fdeb",
+   "after": "fdaa248477a2a632d3106f08d92fd149cd517ffe90d4e62a6936ac99e76c4904",
+   "bytesChanged": true,
+   "contentBefore": "607d84d9d5b5069b8c866da523949f6ffe4179c6d376038847c4f66640967c51",
+   "contentAfter": "607d84d9d5b5069b8c866da523949f6ffe4179c6d376038847c4f66640967c51",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     591,
+     591
+    ],
+    "textEqual": true,
+    "elementIds": [
+     178,
+     178
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": false,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows. The runtime data also embeds the resolved theme for chart selection, so its composition list grew; nothing else in the scripts changed."
+  },
+  {
+   "entry": "composition-demo.en.html",
+   "before": "6d751d7dbaa9ea0a94ab5bee4faddd4fe0567cae832cf79f440de4f5cbe4f10a",
+   "after": "a1bc104254718a9107a893246c46603bd2ec7886fb14a2000369a919b47eb56f",
+   "bytesChanged": true,
+   "contentBefore": "4e61f82381d16b4411e33421644f945095fee79c71e6e028b712587799c593e8",
+   "contentAfter": "4e61f82381d16b4411e33421644f945095fee79c71e6e028b712587799c593e8",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     131,
+     131
+    ],
+    "textEqual": true,
+    "elementIds": [
+     51,
+     51
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": true,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows."
+  },
+  {
+   "entry": "composition-demo.zh-CN.html",
+   "before": "2c8a56945905758e3987c5b1f0c292dee0d6bfb020131a92b36cb1444ccce93d",
+   "after": "9944eb4589d408f6c6c63d383a3c7f9ea84fc23270c29ef20b5791b799269bd4",
+   "bytesChanged": true,
+   "contentBefore": "9d48ab9bc4bd6bef2ae571825b4ad6917d04c0497503db0c844af5c939aeff18",
+   "contentAfter": "9d48ab9bc4bd6bef2ae571825b4ad6917d04c0497503db0c844af5c939aeff18",
+   "contentEqual": true,
+   "checks": {
+    "textRuns": [
+     131,
+     131
+    ],
+    "textEqual": true,
+    "elementIds": [
+     51,
+     51
+    ],
+    "idsEqual": true,
+    "blockIdsEqual": true,
+    "linksEqual": true,
+    "scriptsEqual": true,
+    "scriptsEqualWithCompositionListsEmptied": true,
+    "stylesheetBytes": [
+     31050,
+     46480
+    ]
+   },
+   "why": "The embedded stylesheet gained the S3 composition and art-direction rules (31,050 → 46,480 bytes). Scene source hashes change because the resolved theme now lists the 18 new compositions; the render hash follows."
+  },
+  {
+   "entry": "theme.cream-collage.en.default",
+   "before": "a83209bf2c8ab789f70edb4707b59cc4774aa8f9403a5390c52e43945ba91cbb",
+   "after": "9119946a0327ef9ab8d9f038b1861fd655182bc4e5d4f50dc0eb7c2b0dd8eac2",
+   "bytesChanged": true,
+   "contentBefore": "1d132106a229bee6672b181b9fe997cbb5aec6dd00b3e38de1efe9ed6f65f275",
+   "contentAfter": "1d132106a229bee6672b181b9fe997cbb5aec6dd00b3e38de1efe9ed6f65f275",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     20,
+     38
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.cream-collage.en.chapter",
+   "before": "288ff3c0ec800d09d9b859f5fd8a2dc665e9847bff69710c0d276679217adfeb",
+   "after": "f679f6529f3a56a4037c56cb1e2791c7ca454286bc50c7cae267e717f340bc55",
+   "bytesChanged": true,
+   "contentBefore": "dac79c29bac8825222ea3140915cf15d3cf899d432f94e1bbb98c5eb9503eec7",
+   "contentAfter": "dac79c29bac8825222ea3140915cf15d3cf899d432f94e1bbb98c5eb9503eec7",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     20,
+     38
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.cream-collage.zh-CN.default",
+   "before": "359c0520c01e837ba1b447bd8da43e1c3f7b708f7d470d525c0b79c7950436d3",
+   "after": "a755df2ea82c3db818122115ef5cf7e7b488f8947aa7951a495311b549dc231f",
+   "bytesChanged": true,
+   "contentBefore": "b0568a30a51cdf623b18bda3bfa3bc753e21f21ebff00f0145c71b6f1d87be81",
+   "contentAfter": "b0568a30a51cdf623b18bda3bfa3bc753e21f21ebff00f0145c71b6f1d87be81",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     20,
+     38
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.cream-collage.zh-CN.chapter",
+   "before": "0d6d9430dbe0dae144930e7d9798e611e9b08591bf60fe813e241f8f9b25ea1c",
+   "after": "5e0480b464d96c9b0903e8af800755a1dce5aecf54df42b5e160f01b6ab2f0e3",
+   "bytesChanged": true,
+   "contentBefore": "894de75f5736339a2923c653c5669f47df756f5a4b8fc4b3fece51a5ff15a6e3",
+   "contentAfter": "894de75f5736339a2923c653c5669f47df756f5a4b8fc4b3fece51a5ff15a6e3",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     20,
+     38
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.dark-data.en.default",
+   "before": "d164519a5456ffe1a877f0ad537d15b1fd9596422fb850aad18ff468220ba990",
+   "after": "46387973e67f7ce6b411a544d8a6fea1db1bc2164b972ae4bfc1342d6d6a1f41",
+   "bytesChanged": true,
+   "contentBefore": "180229a79f801cef3e9d420e9818bf8f070c6cea753d0094ae43793fc6f0884b",
+   "contentAfter": "180229a79f801cef3e9d420e9818bf8f070c6cea753d0094ae43793fc6f0884b",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     20,
+     38
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.dark-data.en.chapter",
+   "before": "b7873e7d8f20597759978ce78e390c58db2e3f35593be7db5cce7c5cf580c406",
+   "after": "75d768fbefa21fe808fcf72bae0ce75066a809558bba50a53391438fffacf1c2",
+   "bytesChanged": true,
+   "contentBefore": "9438bcf2669c584bf2debd6880c53de2377f9ef2649397708396454bec8ab891",
+   "contentAfter": "9438bcf2669c584bf2debd6880c53de2377f9ef2649397708396454bec8ab891",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     20,
+     38
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.dark-data.zh-CN.default",
+   "before": "ca91f0f69494e02c1bd2302038125249de83ff1be960a8f64755c5432e173089",
+   "after": "54f42aac8c57c185a4bb5296aa7aa088890972f492cc4b49375b3b594fc9741d",
+   "bytesChanged": true,
+   "contentBefore": "6f417152b09fb880f1464b9deb17730f5c744a848964d8e267af2d0c3c811d55",
+   "contentAfter": "6f417152b09fb880f1464b9deb17730f5c744a848964d8e267af2d0c3c811d55",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     20,
+     38
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.dark-data.zh-CN.chapter",
+   "before": "73486f827acd8336e4ace00f8f69353b4912107ef61459f5f5d97c0fe7e5620e",
+   "after": "863715b8839fe107749bda907a44bd0349b9196431851abc4c4ec36d99d9f9ca",
+   "bytesChanged": true,
+   "contentBefore": "649e4e39c03615a6cce0947f41bd183f1234dc8b14eaf46dd6f3032fcf42d46f",
+   "contentAfter": "649e4e39c03615a6cce0947f41bd183f1234dc8b14eaf46dd6f3032fcf42d46f",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     20,
+     38
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.electric-violet.en.default",
+   "before": "d1bb45362d5f57c423b5c7a23357e1b10171e93746c6e6fd55aec876bd1d4f54",
+   "after": "e93837fde455822833454c9c867366d6a430c9a613f73fa7e217ac17eb3c7eb3",
+   "bytesChanged": true,
+   "contentBefore": "4de540ceb430726235341a63d5921bed5caeaa76276f54e7c658f10998d5c09e",
+   "contentAfter": "4de540ceb430726235341a63d5921bed5caeaa76276f54e7c658f10998d5c09e",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     21,
+     39
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.electric-violet.en.chapter",
+   "before": "5eccd182e129d47d3b6ee09715205a0f19b39cc776eb28ada488a1b6bfdc98a7",
+   "after": "c90f64ec068309e2a848266319dc5be607bfaf6e3037dca9ebd33c2e20f79cff",
+   "bytesChanged": true,
+   "contentBefore": "645a7ac064ac04d1a76622699405722834c89ff07600582cb0ff3f7168eecb91",
+   "contentAfter": "645a7ac064ac04d1a76622699405722834c89ff07600582cb0ff3f7168eecb91",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     21,
+     39
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.electric-violet.zh-CN.default",
+   "before": "e25b2aeb801aca4fe708394e96dbbe9c4dfcf5e9bdbcf582009766df37b6a542",
+   "after": "de55db8556d81691cbcd30d45b6b0d2be3585572c05c32379227bc79b388d7c9",
+   "bytesChanged": true,
+   "contentBefore": "7519883e2fe0861e60f0871098a133e0c98a84fd190e9dfda954f47906ac98ab",
+   "contentAfter": "7519883e2fe0861e60f0871098a133e0c98a84fd190e9dfda954f47906ac98ab",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     21,
+     39
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  },
+  {
+   "entry": "theme.electric-violet.zh-CN.chapter",
+   "before": "421d32e34e9b6e2868fa406b99478935847885fe02272e3640bc3cdf41ebd72e",
+   "after": "8360252103efec27672abf34b2820e131f2ae2277869a33c82381b634ebf6c88",
+   "bytesChanged": true,
+   "contentBefore": "305bfbd7e151aa4880355b98dc412d0630e54d99488b0716e3bef224bcf285d8",
+   "contentAfter": "305bfbd7e151aa4880355b98dc412d0630e54d99488b0716e3bef224bcf285d8",
+   "contentEqual": true,
+   "checks": {
+    "themeEqualWithoutCompositions": true,
+    "compositions": [
+     21,
+     39
+    ],
+    "existingOrderKept": true,
+    "appended": [
+     "chapter-low",
+     "chapter-index",
+     "chapter-margin",
+     "before-after-split",
+     "before-after-rail",
+     "before-after-triptych",
+     "system-map-wide",
+     "system-map-rail",
+     "system-map-key",
+     "small-multiples-row",
+     "small-multiples-lead",
+     "small-multiples-center",
+     "quote-center",
+     "quote-split",
+     "quote-band",
+     "closing-split",
+     "closing-steps",
+     "closing-focus"
+    ]
+   },
+   "why": "resolveTheme() returns the pack composition list, which gained the 18 S3 ids after the existing ones. Every other resolved value is unchanged."
+  }
+ ],
+ "added": [
+  {
+   "entry": "families.en.html",
+   "after": "bd22fff34aaadc88ac277541d27f67a15bca103f339057932b26d69f37345704",
+   "content": "380ae056f98cf9c6c49bb39396bd6315ebd1b23b7f66324d47795c1a6ff1d3b2",
+   "why": "New: the S3 six-family sample, so later changes to the new families are caught too."
+  },
+  {
+   "entry": "families.zh-CN.html",
+   "after": "3f8bd3d9844aaf4651c4275f5174b03de6995786b59d46f58c0f6b02e832cc59",
+   "content": "e51a43eddd791102bf707bbace6b033178090cbabb87a6aa3adecbcf2b920c1c",
+   "why": "New: the S3 six-family sample, so later changes to the new families are caught too."
+  }
+ ]
+}

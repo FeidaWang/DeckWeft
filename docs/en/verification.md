@@ -4,6 +4,26 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## S3 composition families — 2026-10-19
+
+Six families were added to the six from VIS-006: chapter, before / after, system map, small multiples, quotation, and conclusion / next step. Each has three geometries, a required block, focus and density metadata, and 1440 / 1024 / 390 px column rules; all are in the schemas and the three theme packs. Table / Reference was left out because the comparison family already owns tables. The new families are chosen explicitly, never inferred.
+
+Rhythm selection now follows the handoff rules: no third identical composition in a row (sequences and comparisons excepted), no three heading-plus-cards pages, and advice when a 10–15 page deck uses fewer than four families. Author locks win and are reported. C9 is fixed: a theme round trip returns the original plan and render hash.
+
+Results:
+
+- `npm run verify` passed **376 tests** (375 pass, 1 environment-gated skip), plus types, source and link checks, packaging and demos.
+- `tests/browser_families.mjs`, in isolated Chrome for Testing 151 with temporary profiles: 108 of 108 new candidates fit at 1440 px; 324 checks at 1440 / 1024 / 390 px matched each variant's columns; 54 baseline-label checks passed; 0 page errors and 0 external requests.
+- A four-panel page failed all three geometries and was refused; after `splitSmallMultiples` both pages passed.
+- The existing 108-candidate `tests/browser_compositions.mjs` and the S2 `tests/browser_evidence_scene.mjs` still pass.
+- All six 1440 px contact sheets were viewed, plus 390 px sheets, selected decks and the Studio captures.
+
+`render-baseline.json` was re-recorded deliberately in a separate commit. 22 byte hashes changed (stylesheet and theme composition lists), the two JSON exports are unchanged, and every content hash (text, values, ids, links, scripts) equals `232060e`.
+
+PowerPoint, Keynote and Figma were installed but not run (no v3 compiler). LibreOffice, After Effects and Firefox were not found.
+
+[Evidence](../evidence/s3-composition-families/review.md) · [Byte identity](../evidence/s3-composition-families/byte-identity.json) · [Manual](visual-studio.md#six-more-composition-families-s3).
+
 ## S2 design-handoff vertical sample — 2026-10-19
 
 One illustrative evidence scene (claim, ranked bar, source, focus) ran through Studio import, two theme packs, font measurement, mouse and keyboard focus, pause/seek, the new static-state choice, the existing measured-export gate and the exported views, in English and Simplified Chinese. Static output now applies a declared `staticState` to chart selections, and `reducedMotion: "static"` shows it instead of playing cues; existing output stays byte-identical. `npm run verify` passed **362 tests** (361 pass, 1 environment-gated skip), plus types, source/link checks, packaging and demos. `tests/browser_evidence_scene.mjs` passed in isolated Chrome for Testing 151 with temporary profiles; all 20 captures at 1440 and 390 px were viewed. Keyboard focus never changed the page and rapid navigation left 0 pending timers. PowerPoint, Keynote and Figma were installed but not run (no v3 compiler); After Effects and LibreOffice were not found. Twenty conflicts are listed with reproductions. [Evidence](../evidence/s2-vertical-sample/review.md) · [Conflict list](../plans/design-handoff-vertical-sample.md).

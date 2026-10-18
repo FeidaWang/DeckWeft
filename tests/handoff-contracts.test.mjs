@@ -29,6 +29,8 @@ const sceneOf=p=>p.scenes.find(s=>s.id==='evidence');
 test('S1 legacy v3 fixtures load unchanged and existing HTML, JSON and theme output stay byte-identical',async()=>{
  const baseline=await read('render-baseline.json'),current=await renderBaseline();
  assert.equal(current.renderer,baseline.renderer);
+ // Content first: text, values, ids, links and scripts. A byte-only difference after this point is a stylesheet or theme-list change to record deliberately.
+ assert.deepEqual(current.content,baseline.content);
  assert.deepEqual(current.entries,baseline.entries);
  for(const locale of ['en','zh-CN']){
   const raw=await readFile(new URL(`fixtures/visual/wave-a.${locale}.json`,import.meta.url),'utf8'),{document,plan}=JSON.parse(raw);

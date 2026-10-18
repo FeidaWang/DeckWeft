@@ -118,6 +118,30 @@ The other 390 px sheets, decks and per-scene captures are in `dist/visual-famili
 
 Full-page Studio captures show the sticky editor toolbar partway down the image. This is how full-page screenshots draw a fixed header, not a layout fault.
 
+## Byte identity
+
+Composition CSS and theme pack lists reach every export and `resolveTheme()`, so [render-baseline.json](../../../tests/fixtures/visual/render-baseline.json) was re-recorded in a separate final commit. [Per-entry proof](byte-identity.json).
+
+| Entries | Bytes | Why |
+|---|---|---|
+| 10 HTML exports: wave-a, visual, component, interaction and composition demos, ×2 languages | changed | The stylesheet grew from 31,050 to 46,480 bytes. Scene source hashes and the render hash follow, because the resolved theme lists 18 more compositions. The interaction demos also embed that theme in their chart-selection runtime data. |
+| 12 resolved themes (3 packs × 2 languages × 2 colour modes) | changed | The composition list gained the 18 S3 ids after the existing ones, in the same order. |
+| 2 JSON exports | unchanged | They carry the semantic document only. |
+| 2 six-family sample exports | new | Covers the new families from now on. |
+
+How the proof was made:
+
+- `renderBaseline({root})` (now in [render-baseline.mjs](../../../tests/render-baseline.mjs)) was run on a clean checkout of `232060e`. It reproduces all 24 committed hashes there, so it measures the same thing as before.
+- The same function was run on the S3 tree.
+- Every content hash is equal. The content view keeps text, values, element ids, block ids, links, the CSP and scripts, with only the stylesheet, the hashes and the embedded composition lists removed.
+- Separate checks on the same renders:
+  - visible text runs equal (86 / 96 / 520 / 591 / 131 per language);
+  - element ids, block ids and links equal;
+  - scripts byte-equal, except the interaction demos, which are equal once their composition lists are emptied;
+  - every resolved theme value other than the composition list equal.
+
+The baseline test now compares content hashes before byte hashes, so a later failure says whether facts or only styling changed.
+
 ## Listed, not fixed
 
 | Item | Seen in | Owner |
@@ -128,8 +152,23 @@ Full-page Studio captures show the sticky editor toolbar partway down the image.
 | Branching relationship diagrams have no narrow drawing; at 390 px the map scrolls inside its scroller. | 390 px sheets | S4 |
 | Chart panels are drawn on an 800-unit canvas, so only two fit a 1440 px page; at 390 px the Chinese unit label touches the top tick (“小时40”). | small-multiples captures | S4 |
 | The wide system map is capped at 560 px by the 900 px budget and looks small on the page. | contact sheets | S4 (map drawing) |
+| A before/after page with an `image-compare` control passes the contract (baseline-first pairing, never opening on the changed image) but was not measured in the browser. With JavaScript the runtime moves both images into a tab panel, so the family geometry does not apply there. | unit test only | S5 |
 | No Studio control for `splitSmallMultiples`; the quote block has no typed speaker or organisation fields; no before/after slider. | — | S9; S1 field list; S5 (M08) |
 | Theme packs still do not declare the S1 token roles (`numeric`, `reference`, `missing`, spacing, motion). | — | S8 |
+
+## Commands
+
+```bash
+git merge --ff-only 232060e                      # start from S2
+npm test                                         # before any change: 362 tests, 361 pass, 1 skipped
+CHROMIUM_PATH=<isolated Chrome for Testing> PLAYWRIGHT_MODULE=<playwright/index.mjs> node tests/browser_compositions.mjs   # before and after S3: ok, 18 decks, 135 captures
+node --test tests/composition-families.test.mjs  # 14 pass
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=… node tests/browser_families.mjs        # ok: 108/108, 324 width checks, 54 label checks
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=… node tests/browser_evidence_scene.mjs  # ok (S2 suite)
+npm run verify                                   # 376 tests, 375 pass, 0 fail, 1 environment-gated skip; types, check (1,137 files), build, demos
+```
+
+At the first S3 commit `npm test` reports one failure by design: the byte-identity test, which the final commit re-records.
 
 ## Applications
 

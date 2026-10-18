@@ -4,6 +4,26 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S3 构图类型 — 2026-10-19
+
+在 VIS-006 的六类之外新增六类：章节、前后对比、系统关系图、小倍数图、引语、结论与下一步。每类有三种结构、一种必需内容块、焦点与密度元数据，以及 1440 / 1024 / 390px 的分栏规则；三个 schema 与三套主题包均已列出。表格／参考类未加入，因为比较类已覆盖表格。新增类别只能由作者明确选择，不会自动推断。
+
+整稿节奏选择现在遵循交接包规则：同一构图不连续出现第三次（顺序内容与比较内容除外），不出现连续三页“标题加卡片”，10–15 页文稿少于四种类别时给出建议。作者锁定优先，并在报告中列出。C9 已修复：切换主题再切回，方案与渲染哈希都与原来相同。
+
+结果：
+
+- `npm run verify` 通过 **376 项测试**（375 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。
+- `tests/browser_families.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中运行：108 个新候选全部在 1440px 下通过；1440 / 1024 / 390px 的 324 项检查均符合各结构的分栏规则；54 项基线标签检查通过；页面错误与外部请求均为 0。
+- 四个面板的页面在三种结构下都未通过，因此被拒绝；用 `splitSmallMultiples` 拆分后，两页均通过。
+- 现有 108 个候选的 `tests/browser_compositions.mjs` 与 S2 的 `tests/browser_evidence_scene.mjs` 仍然通过。
+- 已查看全部六张 1440px 对照表，以及 390px 对照表、整稿截图和 Studio 截图。
+
+`render-baseline.json` 已在单独的提交中有意重新记录：22 个字节哈希改变（样式表与主题构图列表），两个 JSON 导出不变，所有内容哈希（文字、数值、标识、链接、脚本）与 `232060e` 一致。
+
+PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 LibreOffice、After Effects 与 Firefox。
+
+[证据](../evidence/s3-composition-families/review.md) · [逐字节对照](../evidence/s3-composition-families/byte-identity.json) · [说明](visual-studio.md#新增六类构图s3)。
+
 ## S2 设计交接垂直样本 — 2026-10-19
 
 一页示意证据页（结论、排序条形图、来源、焦点）以中英文完整走过 Studio 导入、两套主题包、字体测量、鼠标与键盘焦点、暂停与定位、新增的静态状态选择、现有的测量后导出审查门，以及导出文件的各个视图。静态输出现在会把已声明的 `staticState` 应用到图表选择；`reducedMotion: "static"` 时显示该状态而不播放提示；现有输出保持逐字节一致。`npm run verify` 通过 **362 项测试**（361 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。`tests/browser_evidence_scene.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过；已查看 1440 与 390px 的全部 20 张截图。键盘焦点从未翻页，快速翻页后待执行计时器为 0。PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 After Effects 与 LibreOffice。20 项冲突附复现步骤列出。[证据](../evidence/s2-vertical-sample/review.md) · [冲突清单](../plans/design-handoff-vertical-sample.md)。
