@@ -8,7 +8,7 @@ S11 checks the stack without publishing it. It changed no runtime code, schema o
 
 - **Clean archive.** `d584d76` passes `npm run verify` from an empty directory: 475 tests, 471 pass, 4 gated skips.
 - **Browser gates.** All 18 runners reproduce the recorded numbers in isolated Chrome for Testing 151, two after a fix or rerun. [Evidence](docs/evidence/s11-merge-readiness/review.md).
-- **Plan.** The [merge plan](docs/plans/design-handoff-merge-to-main.md) has corrected figures and a Readiness section. `origin/main` is unmoved; the backup tag is local. Nothing is merged or pushed.
+- **Plan.** The [merge plan](docs/plans/design-handoff-merge-to-main.md) has corrected figures and a Readiness section. It was carried out the same day: merged into `main` by pull request #2 (`20457eb`); the backup tag is local only.
 
 [Alignment §20](docs/plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)
 
@@ -21,7 +21,7 @@ S10 makes the design registers maintainable. It is documentation and register wo
 - **Full verification, recorded not done.** OpenAI's 1,390 zh-Hans-CN paths still need a template grouping and 8 cells per template (desktop and mobile × initial, interaction, reduced motion, static). Anthropic has no verifiable URL list.
 - **EXP-001.** The P3 deferrals are `notes` on the task, which stays `planned`: no full-screen persistent particles, no multi-layer blur, no 3D without a static final state, no mouse-only openings, no meaningless number rolling before P1 acceptance. A budget needs a reference device, browser version, resolution, DPR and power mode first.
 - **Sample.** Three reference pages were opened once in the built-in browser ([evidence](docs/evidence/s10-pattern-maintenance/review.md)).
-- **Plan.** [Merging S1–S10 into `main`](docs/plans/design-handoff-merge-to-main.md): a plan only. Nothing is merged or pushed.
+- **Plan.** [Merging S1–S10 into `main`](docs/plans/design-handoff-merge-to-main.md): written as a plan; carried out in S11 (merged by pull request #2).
 
 [Alignment §19](docs/plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19).
 

@@ -12,7 +12,7 @@ Results:
 
 - A clean `git archive` of `d584d76`, then `npm ci` and `npm run verify` outside the repository: **475 tests** (471 pass, 4 skips: the register test needing `DECKWEFT_HANDOFF_DIR` and the three Studio export tests needing `CHROMIUM_PATH`). Node 24.14.0.
 - The release gate and 17 browser runners (S2 to S9b) in isolated Chrome for Testing 151.0.7922.34 with Playwright 1.61.1: the recorded numbers reproduce. `browser_families` and `browser_compositions` first failed on a stale `.candidate-panel` test selector (S9a added a second panel with that class) and pass after a three-line test fix; the parity and author-controls runners each failed once and passed on rerun, cause not found. Release-gate cases are 11 of 11 (S6 recorded 10 of 11; S8 had fixed it).
-- `origin/main` fetched: unmoved at `058b939`. Local tag `backup/main-before-design-handoff` created there. Nothing pushed.
+- `origin/main` fetched: unmoved at `058b939`. Local tag `backup/main-before-design-handoff` created there. Nothing was pushed at that point. Afterwards the branch was pushed, the Windows job failed once in the atomic-write concurrency test and was fixed (`0ade8dc`), and the stack was merged into `main` (`20457eb`) with Ubuntu, macOS and Windows green on the push, the pull request and `main`.
 - Not run: PowerPoint, Keynote, Figma, Firefox, WebKit, Node 22, remote CI, Claude.
 
 ## S10 — pattern library maintenance (DWD-310)

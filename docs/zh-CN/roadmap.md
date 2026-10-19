@@ -8,7 +8,7 @@ S11 只检查、不发布。没有改动运行时代码、schema 或任务状态
 
 - **干净归档。** `d584d76` 在空目录中通过 `npm run verify`：475 个测试，471 通过，4 个受限跳过。
 - **浏览器门禁。** 18 个脚本在隔离的 Chrome for Testing 151 中都复现了记录的数字，其中两个经修复或重跑。[证据（英文）](../evidence/s11-merge-readiness/review.md)。
-- **计划。** [合并计划](../plans/design-handoff-merge-to-main.md)更正了数字并加入“就绪情况”。`origin/main` 未变；备份标签仅在本地。没有合并，也没有推送。
+- **计划。** [合并计划](../plans/design-handoff-merge-to-main.md)更正了数字并加入“就绪情况”。该计划当天已执行：通过拉取请求 #2 合并进 `main`（`20457eb`）；备份标签仅在本地。
 
 [对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)
 
@@ -21,7 +21,7 @@ S10 让设计登记表可维护。它只涉及文档与登记表：没有改动�
 - **全站逐页核验：只记录，未做。** OpenAI 的 1,390 条 zh-Hans-CN 路径还需要模板归并，并按每个模板 8 格（桌面与移动 × 初始、交互、减少动态效果、静态）核验。Anthropic 没有可核对的 URL 清单。
 - **EXP-001。** P3 延后项写在该任务的 `notes` 中，任务仍为 `planned`：不做全屏长期粒子、不做多层模糊、没有静态定稿就不做 3D、不做只能用鼠标理解的开屏、P1 验收前不做无语义的数字翻滚。预算要先有参考设备、浏览器版本、分辨率、DPR 和电源模式。
 - **抽样。** 在内置浏览器中各打开一次三个参考页面（[证据（英文）](../evidence/s10-pattern-maintenance/review.md)）。
-- **计划。** [把 S1–S10 合并回 `main`（英文）](../plans/design-handoff-merge-to-main.md)：只是计划，没有合并，也没有推送。
+- **计划。** [把 S1–S10 合并回 `main`（英文）](../plans/design-handoff-merge-to-main.md)：写下时只是计划，已在 S11 执行（拉取请求 #2 合并）。
 
 [对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19)。
 
