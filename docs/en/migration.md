@@ -2,7 +2,7 @@
 
 [中文](../zh-CN/migration.md) · [Home](../../README.md)
 
-The predecessor names were Open Deck Skill and Open Deck Astra. DeckWeft is a new identity, not a global search-and-replace that changes copyright notices or pretends every old format is supported.
+The legacy formats come from Open Deck Skill and Open Deck Astra. DeckWeft can import some of those old project files; it does not pretend every old format is supported.
 
 ## Import a legacy schema 2 project
 
