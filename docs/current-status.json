@@ -6,9 +6,9 @@
   "browserVersion": "149.0.7827.55",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "c09b795d3275bdaeb8083a156866b5c35f360ff9",
-    "worktreeClean": false,
-    "log": "docs/evidence/astra-second-verification/verify.txt",
+    "commit": "27bf9480c61142fd0b364873a6ab4fd54c12a77f",
+    "worktreeClean": true,
+    "log": "docs/evidence/astra-second-verification/verify-27bf948.txt",
     "total": 491,
     "passed": 487,
     "failed": 0,

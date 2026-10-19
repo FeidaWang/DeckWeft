@@ -8,8 +8,8 @@
 |---|---|
 | 分支 | `claude/astra-feedback-solutions-725dfb`（基于 `main` 的 `9771bf4`，未推送） |
 | 工作区 | `.claude/worktrees/astra-feedback-solutions-725dfb` |
-| 提交状态 | 前六轮按六个提交落在本分支（方案文档、验收契约 F2/F3/F5、F1、F7 与 §5、F6、F4 与 §4 文案；见 `git log main..`），**未推送**；中间提交没有单独跑 `verify`。**第七轮（F4 生成脚本）未提交**：`scripts/status-summary.mjs`、`tests/status-summary.test.mjs`、`docs/current-status.json`、`docs/evidence/astra-second-verification/verify.txt` 为新文件，`PROJECT_STATUS.json`、`package.json`、`scripts/check.mjs`、`tests/handoff-contracts.test.mjs` 与两份方案文档有改动 |
-| `npm run verify` | 通过：491 项测试，487 通过，0 失败，4 环境门控跳过；源码检查 1549 文件（含当前状态一致性）。日志 `docs/evidence/astra-second-verification/verify.txt`，`docs/current-status.json` 记录 commit `c09b795`、`worktreeClean: false` |
+| 提交状态 | 七轮全部提交在本分支（见 `git log main..`），**未推送**：前六轮六个提交；第七轮 `bf042bf`（F4 生成脚本）、`27bf948`（记录时忽略正在记录的日志）以及一个状态记录提交。中间提交没有单独跑 `verify` |
+| `npm run verify` | 在干净的 `27bf948` 上通过：491 项测试，487 通过，0 失败，4 环境门控跳过。日志 `docs/evidence/astra-second-verification/verify-27bf948.txt`；`docs/current-status.json` 与 `PROJECT_STATUS.json` 记录 commit `27bf948`、`worktreeClean: true`。之前未提交树上的 `c09b795` 记录移入 `history[]`，日志 `verify.txt` 保留 |
 | 浏览器门控 | 隔离 Chrome for Testing 149.0.7827.55 + Playwright 1.61.1：`browser_session_reconnect.mjs`（6 项，连续三次）、`browser_visual_studio.mjs`（22 项）、`browser_author_controls.mjs`、`browser_workbench.mjs`、`browser_visual_task.mjs` 通过；`tests/studio-export.test.mjs` 4/4 |
 | 未能运行 | `tests/browser_acceptance.py`、`tests/browser_smoke.py`：本机 Python 没有 `playwright` 模块。第五轮改过 `browser_acceptance.py` 的 409 步骤，未经运行验证 |
 | 真实宿主 | 没有调用；Claude 登录仍 deferred |
@@ -30,12 +30,14 @@ export PLAYWRIGHT_MODULE=/Users/feida/.npm/_npx/e41f203b7505f1fb/node_modules/pl
 **更新当前状态。** `npm run check` 现在会比较 `docs/current-status.json`、它记录的 verify 日志、源码树与 `PROJECT_STATUS.json`。改动 `PLAYER_VERSION`、渲染器版本、`package.json` 版本或 `roadmap.json` 的 open gates 后，或要换成新的测试数时，按下面三步重新记录，然后把打印出的字段抄进 `PROJECT_STATUS.json`（旧的 `automatedTests` 移进 `history[]`）：
 
 ```bash
-npm run verify > docs/evidence/astra-second-verification/verify.txt 2>&1
+npm run verify > docs/evidence/astra-second-verification/verify-NEW.txt 2>&1
 ```
 
 ```bash
-npm run status:record -- docs/evidence/astra-second-verification/verify.txt --browser 149.0.7827.55
+npm run status:record -- docs/evidence/astra-second-verification/verify-NEW.txt --browser 149.0.7827.55
 ```
+
+日志一定要写到**新文件**：`tests/status-summary.test.mjs` 会读取当前记录的日志，覆盖它会让正在运行的 verify 失败（第七轮踩过）。在干净树上运行时，`--record` 只把正在记录的日志当作运行产物，记录 `worktreeClean: true`。
 
 ```bash
 npm run status:check
@@ -65,7 +67,7 @@ npm run status:check
 |---|---|---|
 | F1 剩余 | Studio 导出对话框的 paginate 选项与黄色状态、作者显式接受（`typography.acceptedBy`）、`export:targets` 的 `--paginate` 开关、续页上的页码 chrome、18 个 deck 的失败清单、用户在 PowerPoint/Keynote 中打开冻结包 | §2 F1、§3.2、§9 第三轮 |
 | F3 剩余 | Studio 大纲里的"宿主新增"标记与导出报告显示 | §2 F3 |
-| F4 剩余 | 提交后在干净树上重跑 verify 并重新记录（现记录为 `c09b795`、`worktreeClean: false`）；浏览器版本只是声明，未从二进制探测；`PROJECT_STATUS.json` 的其他历史块（如 `browser.browserVersion` 144、各 `previous*`）和 README/handoff 正文里的测试数不在比较范围内 | §2 F4、§9 第七轮 |
+| F4 剩余 | 浏览器版本只是声明，未从二进制探测；`PROJECT_STATUS.json` 的其他历史块（如 `browser.browserVersion` 144、各 `previous*`）和 README/handoff 正文里的测试数不在比较范围内 | §2 F4、§9 第七轮 |
 | F5 剩余 | 在线三组对照脚本与通过标准（需用户授权真实宿主）；Studio 与导出报告显示 attestation；Claude 形状的 fake 读像素测试；Studio 评审表单提交 `attestation: 'author'` 的浏览器验证；`.deckweft-pixel-control/` 的清理与 `.gitignore`（第六轮已修：`control.json` 宿主运行后才写入、工具参数不能自报宿主等级） | §2 F5、§9 第四、六轮 |
 | F6 剩余 | 在装有 Python Playwright 的环境跑 `browser_acceptance.py` 与 `browser_smoke.py`；视觉版重启后旧测量票据被拒时顶部出现一次"Refresh the measured visual preview."（下一次预览后恢复，未改）；视觉版对话框主按钮没有强调色；`docs/en/verification.md` 的 runner 清单未加入新 runner | §9 第五轮 |
 | F7 剩余 | Windows CI 的进程树测试（`tests/process-tree.test.mjs`） | §2 F7 |
@@ -77,13 +79,12 @@ npm run status:check
 
 ## 下一个会话怎么开
 
-**推荐顺序。** 先评审并提交第七轮（F4 生成脚本），提交后按上面三步在干净树上重新记录当前状态，单独再提交一次。然后 F1 的 Studio 拆页选项与作者接受 → F3/F5 的 Studio 显示 → §5 剩余 → 英文版文档。需要你授权或你本人操作的项（F5 在线对照、PowerPoint/Keynote 打开、Windows 实机、30 分钟实测）放在最后。一次会话只做一项，避免一个分支同时改 schema 和 UI。
+**推荐顺序。** 七轮已提交，当前状态记录在干净树上。下一个是 F1 的 Studio 拆页选项与作者接受 → F3/F5 的 Studio 显示 → §5 剩余 → 英文版文档。需要你授权或你本人操作的项（F5 在线对照、PowerPoint/Keynote 打开、Windows 实机、30 分钟实测）放在最后。一次会话只做一项，避免一个分支同时改 schema 和 UI。
 
 **推荐模型与 effort。**
 
 | 任务 | 模型 | effort | 理由 |
 |---|---|---|---|
-| 提交第七轮并在干净树上重新记录状态 | Claude Opus 5.5 | low | 机械步骤：提交、跑 verify、`status:record`、抄字段、再提交 |
 | **F1 的 Studio 拆页选项与作者接受（推荐的下一个实现项）** | Claude Fable 5.1 | high | 改导出对话框、导出报告和 `export:targets`，牵动多个浏览器 runner，需要全局一致 |
 | Studio 显示 attestation 与宿主新增行（F3/F5） | Claude Fable 5.1 | high | 同上，UI 与报告一起改 |
 | F7 Windows 进程树测试、§5 剩余 | Claude Opus 5.5 | medium | 机械实现为主 |

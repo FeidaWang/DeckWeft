@@ -11,9 +11,9 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "c09b795d3275bdaeb8083a156866b5c35f360ff9",
-    "worktreeClean": false,
-    "log": "docs/evidence/astra-second-verification/verify.txt",
+    "commit": "27bf9480c61142fd0b364873a6ab4fd54c12a77f",
+    "worktreeClean": true,
+    "log": "docs/evidence/astra-second-verification/verify-27bf948.txt",
     "total": 491,
     "passed": 487,
     "failed": 0,
@@ -31,6 +31,18 @@
   "history": [
     {
       "record": "automatedTests",
+      "commit": "c09b795d3275bdaeb8083a156866b5c35f360ff9",
+      "date": "2026-10-19",
+      "total": 491,
+      "passed": 487,
+      "failed": 0,
+      "skipped": 4,
+      "log": "docs/evidence/astra-second-verification/verify.txt",
+      "note": "Run on c09b795 plus the then-uncommitted F4 changes (worktreeClean false).",
+      "supersededBy": "automatedTests"
+    },
+    {
+      "record": "automatedTests",
       "commit": "b86ec181769157e78c1eba0bad7d7671331a0676",
       "date": "2026-10-19",
       "total": 475,
@@ -38,7 +50,7 @@
       "failed": 0,
       "skipped": 4,
       "log": "docs/evidence/s11-merge-readiness/review.md",
-      "supersededBy": "automatedTests"
+      "supersededBy": "c09b795d3275bdaeb8083a156866b5c35f360ff9"
     },
     {
       "record": "historicalPublicationAutomatedTests",
