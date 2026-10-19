@@ -3,10 +3,11 @@ import { createHash } from 'node:crypto';
 import { assertDesignPlan } from '../../design/plan.mjs';
 import {sceneDirection} from '../../design/art-direction.mjs';
 import { assertWebScene } from './validate.mjs';
+// .10 (S8, decision 2 = Merge): the three S8 packs are renamed, so their stylesheet selectors changed.
 // .9 (S8): the S8 theme stylesheet has no text-transform at all after the export run showed transformed PDF text (.8 missed one table header).
 // .7 (S8): three theme packs, token-role custom properties, zh-CN phrase breaks and full-width punctuation advances, reference and missing marks; every HTML stylesheet changed.
 // .4 (S4): chart() and its CSS draw new kinds, rows and declarations; every chart's drawing changed, so scene source hashes must not claim the .3 renderer.
-export const WEB_RENDERER_VERSION = 'visual-art-direction.9';
+export const WEB_RENDERER_VERSION = 'visual-art-direction.10';
 export const contentHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function compileWebScenes(document,plan){
  assertDesignPlan(document,plan);
