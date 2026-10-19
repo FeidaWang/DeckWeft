@@ -38,7 +38,41 @@
         "docs/evidence/vis-006/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "statement-split, image-right and the Cream Collage diagonal-cover give an asymmetric thesis/support hero."
+      "repositoryNote": "statement-split, image-right and the Cream Collage diagonal-cover give an asymmetric thesis/support hero.",
+      "patternId": "F01",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/",
+        "https://openai.com/zh-Hans-CN/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：主张、解释、媒体在首页承担不同面积与阅读层级。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [
+          "ANT-01",
+          "OAI-S01"
+        ],
+        "evidence": [
+          "docs/evidence/vis-006/review.md",
+          "docs/evidence/s10-pattern-maintenance/browser-sample.json"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F02",
@@ -68,7 +102,38 @@
         "docs/evidence/s3-composition-families/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "S3 chapter family (chapter-low, chapter-index, chapter-margin) in all three themes, text only, one large heading; violet-chapter stays Electric Violet's own colour page."
+      "repositoryNote": "S3 chapter family (chapter-low, chapter-index, chapter-margin) in all three themes, text only, one large heading; violet-chapter stays Electric Violet's own colour page.",
+      "patternId": "F02",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：发布页将超大标题与独立主视觉结合，正文另有阅读区域。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/visual-studio/review.md",
+          "docs/evidence/s3-composition-families/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F03",
@@ -97,7 +162,37 @@
         "docs/evidence/interaction-visual-regression/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Bounded reading widths with evidence-top full-width plots; text and evidence use different widths."
+      "repositoryNote": "Bounded reading widths with evidence-top full-width plots; text and evidence use different widths.",
+      "patternId": "F03",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：正文段落和大型图表 / 交互舞台使用不同宽度。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md",
+          "docs/evidence/interaction-visual-regression/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F04",
@@ -126,7 +221,38 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Previous/next and a page counter exist; no chapter table of contents or section progress marker."
+      "repositoryNote": "Previous/next and a page counter exist; no chapter table of contents or section progress marker.",
+      "patternId": "F04",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/transparency",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "observed"
+      ],
+      "observedBehavior": "V + D：发布页和报告以章节锚点组织长内容；实测部分页面可见侧边目录。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F05",
@@ -161,7 +287,40 @@
         "docs/evidence/s2-vertical-sample/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Heading, chart, notes and citation blocks share one scene. S1 (2026-10-19) added the typed scene takeaway (design-plan scene.takeaway → a block id) and chart question/takeaway fields; a typed method note is still a paragraph block. S2 (2026-10-19) checked the four layers in an illustrative bilingual evidence scene at 1440/390 px with and without JavaScript: title, takeaway block, chart with visible labels and legend, chart caption, authored caption and source are visible text. Chart question/takeaway and dataset definition/sample/dates are declared but not drawn (conflict C10); at 390 px ranked-bar values sit in a horizontal scroller (C2)."
+      "repositoryNote": "Heading, chart, notes and citation blocks share one scene. S1 (2026-10-19) added the typed scene takeaway (design-plan scene.takeaway → a block id) and chart question/takeaway fields; a typed method note is still a paragraph block. S2 (2026-10-19) checked the four layers in an illustrative bilingual evidence scene at 1440/390 px with and without JavaScript: title, takeaway block, chart with visible labels and legend, chart caption, authored caption and source are visible text. Chart question/takeaway and dataset definition/sample/dates are declared but not drawn (conflict C10); at 390 px ranked-bar values sit in a horizontal scroller (C2).",
+      "patternId": "F05",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/project-swap",
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+        "https://openai.com/zh-Hans-CN/signals/data/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md",
+          "docs/evidence/s2-vertical-sample/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F06",
@@ -190,7 +349,39 @@
         "docs/evidence/vis-006/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "comparison-matrix, comparison-rail and comparison-stack align a table on shared dimensions."
+      "repositoryNote": "comparison-matrix, comparison-rail and comparison-stack align a table on shared dimensions.",
+      "patternId": "F06",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/",
+        "https://openai.com/zh-Hans-CN/api/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V + S：基准矩阵和三方产品比较按同一维度对齐。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F07",
@@ -215,7 +406,38 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No catalog/search/sort or media-density toggle inside slides; the Studio library is a project list, not this pattern."
+      "repositoryNote": "No catalog/search/sort or media-density toggle inside slides; the Studio library is a project list, not this pattern.",
+      "patternId": "F07",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research",
+        "https://www.anthropic.com/news",
+        "https://openai.com/zh-Hans-CN/stories/",
+        "https://openai.com/zh-Hans-CN/research/index/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F08",
@@ -243,7 +465,38 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No-JavaScript reading view and expandable explanations/data tables exist; no method-appendix composition."
+      "repositoryNote": "No-JavaScript reading view and expandable explanations/data tables exist; no method-appendix composition.",
+      "patternId": "F08",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/constitution",
+        "https://www.anthropic.com/transparency",
+        "https://openai.com/zh-Hans-CN/trust-and-transparency/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F09",
@@ -271,7 +524,36 @@
         "docs/evidence/vis-007/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Image family, author-protected crops and photo-split; subject detection is not implemented."
+      "repositoryNote": "Image family, author-protected crops and photo-split; subject detection is not implemented.",
+      "patternId": "F09",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/company",
+        "https://www.anthropic.com/careers"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-007/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F10",
@@ -300,7 +582,37 @@
         "docs/evidence/s3-composition-families/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "S3 quote family separates the verbatim quote block, its attributing citation (directly under it) and paraphrase paragraphs in three geometries; speaker and organisation are citation text, not typed fields."
+      "repositoryNote": "S3 quote family separates the verbatim quote block, its attributing citation (directly under it) and paraphrase paragraphs in three geometries; speaker and organisation are citation text, not typed fields.",
+      "patternId": "F10",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://openai.com/business/solutions/design/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/s3-composition-families/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F11",
@@ -332,7 +644,41 @@
         "docs/evidence/vis-008/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Process family and sequence/process diagrams exist; no dated milestone timeline in v3 (legacy MB-07 timeline recipe only)."
+      "repositoryNote": "Process family and sequence/process diagrams exist; no dated milestone timeline in v3 (legacy MB-07 timeline recipe only).",
+      "patternId": "F11",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/company",
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://openai.com/zh-Hans-CN/safety/",
+        "https://openai.com/zh-Hans-CN/live/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md",
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "F12",
@@ -363,7 +709,41 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Image stage with comparison/hotspot controls exists; v3 has no video or screen-recording block or player."
+      "repositoryNote": "Image stage with comparison/hotspot controls exists; v3 has no video or screen-recording block or player.",
+      "patternId": "F12",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://openai.com/index/gpt-6-for-everyone/",
+        "https://openai.com/zh-Hans-CN/live/",
+        "https://openai.com/index/introducing-chatgpt-images-2-5/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V + D + S：视频、演示样例与图像序列承担产品说明，部分可见播放控制。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M01",
@@ -386,7 +766,35 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No intro sequence; v3 deliberately has no unsolicited autoplay."
+      "repositoryNote": "No intro sequence; v3 deliberately has no unsolicited autoplay.",
+      "patternId": "M01",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-sonnet-5-5"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "observed"
+      ],
+      "observedBehavior": "V + D：Haiku 可见开场艺术与滚动入口；Skip 控件存在，但本次未完成按钮本身的成功操作。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M02",
@@ -413,7 +821,36 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "role=status announcements exist; no copy-to-clipboard or checklist micro-feedback component."
+      "repositoryNote": "role=status announcements exist; no copy-to-clipboard or checklist micro-feedback component.",
+      "patternId": "M02",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Implemented",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M03",
@@ -435,7 +872,34 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No hover transforms on media cards."
+      "repositoryNote": "No hover transforms on media cards.",
+      "patternId": "M03",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/",
+        "https://openai.com/zh-Hans-CN/open-models/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M04",
@@ -465,7 +929,38 @@
         "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Page position changes with previous/next; no chapter-level reading state. S2 (2026-10-19) vertical sample: keyboard and pointer focus changes in a chart never change the page (1 / 2 stays), and six rapid Next/Previous pairs leave 0 pending page timers, scene timers and animations; a focused SVG chart mark still let ArrowRight change the page (conflict C14). S5 (2026-10-19) fixed C14: page keys never apply while a control, link, slider, tab or focusable chart mark has focus; keyboard traces at 1440/390 px in both languages changed no page, and fast paging leaves 0 timers, animations and registered resources. Chapter-level reading state remains missing."
+      "repositoryNote": "Page position changes with previous/next; no chapter-level reading state. S2 (2026-10-19) vertical sample: keyboard and pointer focus changes in a chart never change the page (1 / 2 stays), and six rapid Next/Previous pairs leave 0 pending page timers, scene timers and animations; a focused SVG chart mark still let ArrowRight change the page (conflict C14). S5 (2026-10-19) fixed C14: page keys never apply while a control, link, slider, tab or focusable chart mark has focus; keyboard traces at 1440/390 px in both languages changed no page, and fast paging leaves 0 timers, animations and registered resources. Chapter-level reading state remains missing.",
+      "patternId": "M04",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：长页能保持章节线索；精确吸附、平滑曲线和时长未测。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s2-vertical-sample/review.md",
+          "docs/evidence/s5-motion-state/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M05",
@@ -497,7 +992,41 @@
         "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Image-compare tabs and chart series selection exist; no generic tab stage switching between charts or samples. S5 (2026-10-19): a static state can freeze a comparison tab; output without JavaScript shows the chosen image and keeps the other in a closed original-image disclosure."
+      "repositoryNote": "Image-compare tabs and chart series selection exist; no generic tab stage switching between charts or samples. S5 (2026-10-19): a static state can freeze a comparison tab; output without JavaScript shows the chosen image and keeps the other in a closed original-image disclosure.",
+      "patternId": "M05",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V（Haiku）+ S / D：控件切换展示的基准或样例。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s5-motion-state/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M06",
@@ -521,7 +1050,36 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No quote or gallery carousel."
+      "repositoryNote": "No quote or gallery carousel.",
+      "patternId": "M06",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/brand/",
+        "https://openai.com/index/introducing-gpt-live/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M07",
@@ -550,7 +1108,38 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Comparison family plus image-compare tabs; no paired task/solution layer component."
+      "repositoryNote": "Comparison family plus image-compare tabs; no paired task/solution layer component.",
+      "patternId": "M07",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://openai.com/business/solutions/design/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M08",
@@ -577,7 +1166,36 @@
         "docs/evidence/interaction-visual-regression/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "image-compare offers first/second/both tabs; no 0–100 slider or revision sequence."
+      "repositoryNote": "image-compare offers first/second/both tabs; no 0–100 slider or revision sequence.",
+      "patternId": "M08",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-chatgpt-images-2-5/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/interaction-visual-regression/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M09",
@@ -607,7 +1225,37 @@
         "docs/evidence/s9b-blueprint-a/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "S9b blueprint A: Explain (question, answer, object name) → Diagram (whole object, numbered parts) → Explore (one part against the whole) on one page; Next/Previous reach every stage, reduced motion switches directly, the static state is an author-chosen complete explanation. Stays partial: no scroll advancement (v3 has no scroll trigger) and the middle stage is a code-drawn diagram, not an image."
+      "repositoryNote": "S9b blueprint A: Explain (question, answer, object name) → Diagram (whole object, numbered parts) → Explore (one part against the whole) on one page; Next/Previous reach every stage, reduced motion switches directly, the static state is an author-chosen complete explanation. Stays partial: no scroll advancement (v3 has no scroll trigger) and the middle stage is a code-drawn diagram, not an image.",
+      "patternId": "M09",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V + S：滚动故事包含 text、images 和 Intelligent UI 阶段；核心状态切换已观察。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s9b-blueprint-a/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M10",
@@ -636,7 +1284,36 @@
         "docs/evidence/s9b-blueprint-a/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "image-hotspots bind stable annotations to image regions with annotation.reveal. S9b adds SVG part selection on a diagram: stable part ids, labelled focusable parts (click, buttons, arrow keys; no hover-only entry), the other parts stay drawn, and every part's explanation is exported as text. Part groups are not implemented."
+      "repositoryNote": "image-hotspots bind stable annotations to image regions with annotation.reveal. S9b adds SVG part selection on a diagram: stable part ids, labelled focusable parts (click, buttons, arrow keys; no hover-only entry), the other parts stay drawn, and every part's explanation is exported as text. Part groups are not implemented.",
+      "patternId": "M10",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：自行车部件可选，Wheels 选择与范围值 0 的状态已核验。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s9b-blueprint-a/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M11",
@@ -659,7 +1336,35 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No parameter inputs or computed results."
+      "repositoryNote": "No parameter inputs or computed results.",
+      "patternId": "M11",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/",
+        "https://www.anthropic.com/institute/econ-scenarios"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M12",
@@ -682,7 +1387,35 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No object-to-population scale transition."
+      "repositoryNote": "No object-to-population scale transition.",
+      "patternId": "M12",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/institute/econ-scenarios",
+        "https://www.anthropic.com/research/ai-expectations-gap"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "observed"
+      ],
+      "observedBehavior": "D，开屏 V：叙事意图从任务 / 职业推进到总体经济；完整变换未实测。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M13",
@@ -718,7 +1451,45 @@
         "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "chart-select provides series focus and category range; S1 added the static chart sort declaration and the named staticState over the authored opening. Interactive sort is missing (ranked-bar sort is static). S2 (2026-10-19) applies the author's static state in web output: the no-JS view draws the frozen chart selection with a text line of every shown value and the full table, and reading/presentation views start at that cue boundary; reduced motion can fall back to it. On a single-series ranked bar the legend focus is degenerate (conflict C1) and the range filter uses author order, not rank (C3). S5 (2026-10-19) separates focus from hiding: data.focus / initialFocusSeriesId emphasise one shown series and keep the others as muted context; data.filter hides whole series; hiding the focused series ends the focus. The chart state keeps dataset, metric, shown series, focus, range, sort, scale and caption subject as separate fields, and static output freezes the author focus. Interactive sort is still missing; a ranked-bar category focus is still undecided (C1)."
+      "repositoryNote": "chart-select provides series focus and category range; S1 added the static chart sort declaration and the named staticState over the authored opening. Interactive sort is missing (ranked-bar sort is static). S2 (2026-10-19) applies the author's static state in web output: the no-JS view draws the frozen chart selection with a text line of every shown value and the full table, and reading/presentation views start at that cue boundary; reduced motion can fall back to it. On a single-series ranked bar the legend focus is degenerate (conflict C1) and the range filter uses author order, not rank (C3). S5 (2026-10-19) separates focus from hiding: data.focus / initialFocusSeriesId emphasise one shown series and keep the others as muted context; data.filter hides whole series; hiding the focused series ends the focus. The chart state keeps dataset, metric, shown series, focus, range, sort, scale and caption subject as separate fields, and static output freezes the author focus. Interactive sort is still missing; a ranked-bar category focus is still undecided (C1).",
+      "patternId": "M13",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/zh-Hans-CN/signals/data/",
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V：Haiku 选择单个系列后聚焦；Enterprise 表头选择 Codex 后真实重排；其余筛选为 S。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [
+          "OAI-S20"
+        ],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/explanatory-authoring/review.md",
+          "docs/evidence/s2-vertical-sample/review.md",
+          "docs/evidence/s5-motion-state/review.md",
+          "docs/evidence/s10-pattern-maintenance/browser-sample.json"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M14",
@@ -740,7 +1511,35 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No parameter that switches the chart dimension."
+      "repositoryNote": "No parameter that switches the chart dimension.",
+      "patternId": "M14",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/",
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M15",
@@ -769,7 +1568,39 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "steps target stable diagram node/edge ids; stroke-drawing animation is not used."
+      "repositoryNote": "steps target stable diagram node/edge ids; stroke-drawing animation is not used.",
+      "patternId": "M15",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://www.anthropic.com/research/tracing-thoughts-language-model",
+        "https://openai.com/zh-Hans-CN/safety/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M16",
@@ -790,7 +1621,33 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "v3 has no audio/media clock."
+      "repositoryNote": "v3 has no audio/media clock.",
+      "patternId": "M16",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-gpt-live/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M17",
@@ -811,7 +1668,33 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No pointer-reactive image fragments."
+      "repositoryNote": "No pointer-reactive image fragments.",
+      "patternId": "M17",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-chatgpt-images-2-5/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M18",
@@ -842,7 +1725,40 @@
         "docs/evidence/mb-11-15/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Legacy v1/v2 Three.js orbit/layer recipes with static fallbacks; nothing in v3 (EXP-001 planned)."
+      "repositoryNote": "Legacy v1/v2 Three.js orbit/layer recipes with static fallbacks; nothing in v3 (EXP-001 planned).",
+      "patternId": "M18",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/",
+        "https://openai.com/index/introducing-gpt-live/",
+        "https://www.anthropic.com/institute/econ-scenarios"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V：Sol 与经济情景开屏外观。S：Sol 的 Canvas、Astra 的拖动与回退、GPT-Live 的 Shader / GPU 等级分别有源码声明。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/mb-11-15/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M19",
@@ -874,7 +1790,41 @@
         "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cue replay of data.filter gives series reveal; annotation.reveal is limited to image hotspots, not chart annotations. S5 (2026-10-19): SeriesReveal animates the marks of each newly shown series one after another while axes, units and baseline stay still; the static state shows the complete frozen graphic. Chart annotation reveal is still missing."
+      "repositoryNote": "Cue replay of data.filter gives series reveal; annotation.reveal is limited to image hotspots, not chart annotations. S5 (2026-10-19): SeriesReveal animates the marks of each newly shown series one after another while axes, units and baseline stay still; the static state shows the complete frozen graphic. Chart annotation reveal is still missing.",
+      "patternId": "M19",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "proposal",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s5-motion-state/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "M20",
@@ -906,7 +1856,39 @@
         "docs/evidence/s5-motion-state/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Finite fade/small translate up to 400 ms. S5 (2026-10-19) names six primitives on the existing cue events — FadeIn, SlideSmall, Crossfade (panel fades into its new layout; no shared-element morph), RevealMask (clip-path from the reading edge), SeriesReveal (per-series stagger) and AnnotationReveal — each with a declared reduced-motion result (content visible, target layout, full graphic); all six observed with their registry keyframes in the browser. ImagePan is not added; the 400 ms cap stays."
+      "repositoryNote": "Finite fade/small translate up to 400 ms. S5 (2026-10-19) names six primitives on the existing cue events — FadeIn, SlideSmall, Crossfade (panel fades into its new layout; no shared-element morph), RevealMask (clip-path from the reading edge), SeriesReveal (per-series stagger) and AnnotationReveal — each with a declared reduced-motion result (content visible, target layout, full graphic); all six observed with their registry keyframes in the browser. ImagePan is not added; the 400 ms cap stays.",
+      "patternId": "M20",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/",
+        "https://openai.com/zh-Hans-CN/open-models/",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "proposal",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s5-motion-state/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C01",
@@ -950,7 +1932,39 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "ranked-bar is a single-series, value-sorted, direct-labelled bar. S1 added the per-chart sort declaration (author | value-desc | value-asc) in the contract; author order is still not drawn and is refused for HTML until S4.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C01",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/",
+        "https://www.anthropic.com/news/claude-3-7-sonnet"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C02",
@@ -980,7 +1994,33 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "No multi-series grouped bars; would extend ranked-bar geometry with grouping and author order.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C02",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C05",
@@ -1024,7 +2064,38 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "table block in comparison family; no per-cell qualifiers. S1 added dataset-level missing-value reasons (dataset.missing) in the contract; the table block itself has no qualifiers yet. Table block, not a chart variant.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C05",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://www.anthropic.com/transparency"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "observed"
+      ],
+      "observedBehavior": "主代理确认 Haiku 基准表与图表 tab；未对全部发布页表格做交互验收。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C03",
@@ -1067,7 +2138,39 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "stacked variant with positive/negative stacking and null gaps.",
-      "chartClass": "existing"
+      "chartClass": "existing",
+      "patternId": "C03",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/data/",
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/",
+        "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C04",
@@ -1108,7 +2211,39 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "heatmap gives a value matrix; no rank semantics, change markers or interactive sort.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C04",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "主代理仅实测按 Codex 列对行业排名排序。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [
+          "OAI-S20"
+        ],
+        "evidence": [
+          "docs/evidence/vis-008/review.md",
+          "docs/evidence/s10-pattern-maintenance/browser-sample.json"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C08",
@@ -1149,7 +2284,36 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "metric block with metric-left/band/right compositions. Metric block, not a chart variant; no reporting-period field.",
-      "chartClass": "existing"
+      "chartClass": "existing",
+      "patternId": "C08",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/trust-and-transparency/",
+        "https://openai.com/zh-Hans-CN/api/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C06",
@@ -1200,7 +2364,41 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "scatter exists; connected ordering is missing. S1 added the per-chart axis.scale / xAxis.scale (linear | log) declaration; log axes are validated but refused for HTML until S4 draws them.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C06",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "主代理确认 GDPval 图的对数横轴和图例单系列聚焦。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C07",
@@ -1243,7 +2441,38 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "scatter variant with explicit xUnit; fit/reference lines are not drawn.",
-      "chartClass": "existing"
+      "chartClass": "existing",
+      "patternId": "C07",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/project-swap",
+        "https://www.anthropic.com/research/persona-vectors",
+        "https://www.anthropic.com/research/economic-index-geography",
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C09",
@@ -1282,7 +2511,35 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "S1 (2026-10-19) added the interval contract: series.interval {type ci|sd|iqr|range, level, method, lower, upper} with one type per dataset and bounds that enclose each value. No dot-interval renderer exists; HTML export refuses declared intervals until S4.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C09",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/project-swap",
+        "https://www.anthropic.com/research/ai-expectations-gap",
+        "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Implemented",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C10",
@@ -1318,7 +2575,34 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "No distribution summary contract.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C10",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/economic-index-june-2026-report",
+        "https://www.anthropic.com/research/ai-expectations-gap"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C11",
@@ -1348,7 +2632,33 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "No area-encoded bubble layout.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C11",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/clio"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C12",
@@ -1386,7 +2696,37 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "No geographic shapes.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C12",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/data/",
+        "https://www.anthropic.com/research/anthropic-economic-index-september-2025-report",
+        "https://www.anthropic.com/research/economic-index-geography"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C13",
@@ -1435,7 +2775,40 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "line with datetime categories and time zones; labels every point, no end-label strategy or muted background series.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C13",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/data/",
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/",
+        "https://www.anthropic.com/engineering/redesigning-source-control",
+        "https://www.anthropic.com/research/economic-index-june-2026-report"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C14",
@@ -1471,7 +2844,35 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "area variant exists. S1 added dataset.events (temporal | attributed, sourced) in the contract; events are not drawn on a chart axis and are refused for HTML until S4.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C14",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C16",
@@ -1501,7 +2902,33 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "No cumulative-share/Lorenz semantics with equality reference.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C16",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C15",
@@ -1531,7 +2958,33 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "No waterfall decomposition.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C15",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/project-swap"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C17",
@@ -1575,7 +3028,40 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "S3 small-multiples layout: equal panels on a declared shared scale (same chart type, unit, fixed value axis and categories) and a layout-only split into continuation pages. Drawing panels at panel size, so more than two fit a 1440 px page, is S4.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C17",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://www.anthropic.com/research/ai-expectations-gap",
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+        "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/s3-composition-families/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C18",
@@ -1616,7 +3102,36 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "relationship diagram with directed supplied edges; bounded routing, no layered path layout. Diagram block, not a chart variant.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C18",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/tracing-thoughts-language-model",
+        "https://www.anthropic.com/research/clio"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C19",
@@ -1658,7 +3173,38 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "process/sequence diagrams draw supplied edges, including back edges. Diagram block, not a chart variant.",
-      "chartClass": "existing"
+      "chartClass": "existing",
+      "patternId": "C19",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://openai.com/zh-Hans-CN/safety/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C20",
@@ -1699,7 +3245,36 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "image-hotspots with stable annotations. Image component, not a chart variant.",
-      "chartClass": "existing"
+      "chartClass": "existing",
+      "patternId": "C20",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "主代理实测选择 Wheels 并对范围控件按 Home，看到值 0 与部件重点变化。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C21",
@@ -1729,7 +3304,33 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "No narration/caption timeline.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C21",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-gpt-live/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C22",
@@ -1766,7 +3367,36 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "image-compare tabs (VIS-009); S3 before-after family shows both states in equal frames with permanent Before · baseline / After labels and refuses unequal aspect ratios; no slider.",
-      "chartClass": "existing"
+      "chartClass": "existing",
+      "patternId": "C22",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-chatgpt-images-2-5/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s3-composition-families/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C23",
@@ -1807,7 +3437,36 @@
       ],
       "checkedAt": "2026-10-19",
       "repositoryNote": "sequence/process diagrams; no dated milestone axis in v3.",
-      "chartClass": "extension"
+      "chartClass": "extension",
+      "patternId": "C23",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/news/claude-3-7-sonnet",
+        "https://www.anthropic.com/news/claude-for-financial-services"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
     },
     {
       "id": "C24",
@@ -1837,7 +3496,33 @@
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
       "repositoryNote": "No weighted term layout.",
-      "chartClass": "new"
+      "chartClass": "new",
+      "patternId": "C24",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
     }
   ],
   "import": {
@@ -1853,8 +3538,24 @@
       "verifiedBy": "repository evidence paths; empty unless repositoryState is LocalVerified or stronger",
       "checkedAt": "date of this repository check",
       "repositoryNote": "what exists and what is missing",
-      "chartClass": "C records only: existing | extension | new, against src/components/charts/model.mjs and the v3 block types"
+      "chartClass": "C records only: existing | extension | new, against src/components/charts/model.mjs and the v3 block types",
+      "patternId": "S10 maintenance: equals id; the stable reference decks and docs use",
+      "version": "S10 maintenance: semantic version of the pattern record; every record starts at 1.0.0 (user answer 2)",
+      "sourceUrl": "S10 maintenance: the url of each id in source_ids, in the same order (derived from source-register.json)",
+      "locale": "S10 maintenance: sorted unique language of those sources",
+      "sourceCheckedAt": "S10 maintenance: the handoff reading date when the evidence has a V, S or D mark; null for proposal-only. Not checkedAt, which is the repository check date",
+      "evidenceType": "S10 maintenance: evidenceMarks spelled out: observed (V), source (S), text (D), proposal (P)",
+      "observedBehavior": "S10 maintenance: only when referenceVerified; F/M copy the untouched evidence text (it may also carry S/D claims, see evidenceType), C copy the live-level details",
+      "dataRequirements": "S10 maintenance: null until a pattern-level source states the content inputs",
+      "interactionState": "S10 maintenance: null until a browser check records the states per the pattern register manual",
+      "staticFallback": "S10 maintenance: null; the handoff wording stays in acceptance_and_static",
+      "outputTier": "S10 maintenance: null; output levels are declared per component in src/targets/capabilities.mjs, not per pattern",
+      "accessibility": "S10 maintenance: null until a pattern-level accessibility finding is recorded",
+      "assetStatus": "S10 maintenance: no-reference-assets-bundled for every record (handoff README; AGENTS.md)",
+      "verification": "S10 maintenance: {reference: observed | source-or-text-only | proposal-only, deckweft: repositoryState, browserSampleSources: ids of sampled sources, evidence: verifiedBy plus the browser-sample file when sampled}",
+      "deprecatedBy": "S10 maintenance: null, or the id of the pattern that replaces this one"
     },
-    "originalFieldsUnchanged": true
+    "originalFieldsUnchanged": true,
+    "maintenanceUpdatedAt": "2026-10-19"
   }
 }

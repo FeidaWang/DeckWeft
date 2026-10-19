@@ -111,7 +111,18 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": {
+        "date": "2026-10-19",
+        "evidence": "docs/evidence/s10-pattern-maintenance/browser-sample.json",
+        "states": [
+          "desktop1440-initial",
+          "mobile390-initial"
+        ]
+      }
     },
     {
       "ID": "ANT-02",
@@ -128,7 +139,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-03",
@@ -143,7 +158,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://www.anthropic.com/engineering",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-04",
@@ -158,7 +177,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://www.anthropic.com/economic-index",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-05",
@@ -188,7 +211,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/claude-haiku-5-5",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-06",
@@ -209,7 +236,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/claude-sonnet-5-5",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-07",
@@ -228,7 +259,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/institute/econ-scenarios",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-08",
@@ -248,7 +283,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/ai-expectations-gap",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-09",
@@ -268,7 +307,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/project-swap",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-10",
@@ -285,7 +328,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/engineering/redesigning-source-control",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-11",
@@ -304,7 +351,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/transparency",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-12",
@@ -319,7 +370,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://www.anthropic.com/responsible-scaling-policy",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-13",
@@ -336,7 +391,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/news",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-14",
@@ -355,7 +414,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/claude-opus-5-5",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-15",
@@ -373,7 +436,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/tracing-thoughts-language-model",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-16",
@@ -390,7 +457,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/persona-vectors",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-17",
@@ -408,7 +479,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/clio",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-18",
@@ -426,7 +501,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/economic-index-geography",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-19",
@@ -443,7 +522,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/anthropic-economic-index-september-2025-report",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-20",
@@ -464,7 +547,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-21",
@@ -482,7 +569,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-22",
@@ -500,7 +591,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/company",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-23",
@@ -517,7 +612,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/careers",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-24",
@@ -532,7 +631,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://www.anthropic.com/policy",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-25",
@@ -547,7 +650,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://www.anthropic.com/events",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-26",
@@ -564,7 +671,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/constitution",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-27",
@@ -579,7 +690,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://www.anthropic.com/glasswing",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-28",
@@ -598,7 +713,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-29",
@@ -616,7 +735,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-30",
@@ -633,7 +756,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/news/claude-for-financial-services",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-31",
@@ -653,7 +780,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "ANT-32",
@@ -668,7 +799,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S01",
@@ -687,7 +822,18 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": {
+        "date": "2026-10-19",
+        "evidence": "docs/evidence/s10-pattern-maintenance/browser-sample.json",
+        "states": [
+          "desktop1440-initial",
+          "mobile390-initial"
+        ]
+      }
     },
     {
       "ID": "OAI-S02",
@@ -716,7 +862,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/index/gpt-6-for-everyone/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S03",
@@ -731,7 +881,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/index/introducing-dots/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S04",
@@ -754,7 +908,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S05",
@@ -776,7 +934,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S06",
@@ -794,7 +956,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/api/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S07",
@@ -809,7 +975,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/business/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S08",
@@ -824,7 +994,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/solutions/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S09",
@@ -842,7 +1016,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/open-models/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S10",
@@ -859,7 +1037,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/brand/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S11",
@@ -874,7 +1056,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/introducing-gpt-5/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S12",
@@ -889,7 +1075,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/introducing-gpt-4-5/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S13",
@@ -904,7 +1094,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/research/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S14",
@@ -919,7 +1113,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/signals/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S15",
@@ -938,7 +1136,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/safety/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S16",
@@ -956,7 +1158,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/trust-and-transparency/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S17",
@@ -973,7 +1179,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/stories/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S18",
@@ -990,7 +1200,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/research/index/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S19",
@@ -1011,7 +1225,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/signals/data/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S20",
@@ -1034,7 +1252,19 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/signals/enterprise-data/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": {
+        "date": "2026-10-19",
+        "evidence": "docs/evidence/s10-pattern-maintenance/browser-sample.json",
+        "states": [
+          "desktop1440-initial",
+          "mobile390-initial",
+          "desktop1440-interaction-sort"
+        ]
+      }
     },
     {
       "ID": "OAI-S21",
@@ -1049,7 +1279,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/index/how-the-world-is-putting-chatgpt-to-work/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S22",
@@ -1064,7 +1298,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/academy/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S23",
@@ -1082,7 +1320,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/live/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S24",
@@ -1097,7 +1339,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/about/",
+      "locale": "zh-Hans-CN",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S25",
@@ -1115,7 +1361,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/business/solutions/design/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S26",
@@ -1130,7 +1380,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/solutions/use-case/data-analysis/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S27",
@@ -1150,7 +1404,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S28",
@@ -1170,7 +1428,11 @@
       ],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page."
+      "repositoryNote": "Cited by handoff patterns; the repository has not re-opened this page.",
+      "sourceUrl": "https://openai.com/index/introducing-gpt-live/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S29",
@@ -1185,7 +1447,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/index/gpt-5-coding-design/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "OAI-S30",
@@ -1200,7 +1466,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://openai.com/index/accelerating-antibiotic-discovery/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     }
   ],
   "supplements": [
@@ -1218,7 +1488,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not cited by any pattern record."
+      "repositoryNote": "Not cited by any pattern record.",
+      "sourceUrl": "https://www.anthropic.com/customers",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     }
   ],
   "technical_sources": [
@@ -1242,7 +1516,11 @@
         "docs/evidence/vis-010/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Captures run after font and image readiness."
+      "repositoryNote": "Captures run after font and image readiness.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/CSS_Font_Loading_API",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-02",
@@ -1258,7 +1536,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No ResizeObserver-driven reflow; responsive checks use fixed widths."
+      "repositoryNote": "No ResizeObserver-driven reflow; responsive checks use fixed widths.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-03",
@@ -1279,7 +1561,11 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Finite scene animations; cue state is reducer-driven, not Animation.currentTime."
+      "repositoryNote": "Finite scene animations; cue state is reducer-driven, not Animation.currentTime.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-04",
@@ -1295,7 +1581,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Seek uses cue boundaries, not animation time."
+      "repositoryNote": "Seek uses cue boundaries, not animation time.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Animation/currentTime",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-05",
@@ -1311,7 +1601,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No scroll-driven animation."
+      "repositoryNote": "No scroll-driven animation.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-06",
@@ -1332,7 +1626,11 @@
         "docs/evidence/vis-008/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Charts carry title/desc and a full data table; screen-reader acceptance remains open."
+      "repositoryNote": "Charts carry title/desc and a full data table; screen-reader acceptance remains open.",
+      "sourceUrl": "https://www.w3.org/WAI/tutorials/images/complex/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-07",
@@ -1353,7 +1651,11 @@
         "docs/evidence/visual-studio/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Contrast checks on rendered text; manual accessibility audit remains open."
+      "repositoryNote": "Contrast checks on rendered text; manual accessibility audit remains open.",
+      "sourceUrl": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-08",
@@ -1369,7 +1671,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Non-text contrast is not checked separately."
+      "repositoryNote": "Non-text contrast is not checked separately.",
+      "sourceUrl": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-09",
@@ -1391,7 +1697,11 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Operating-system reduced motion always wins."
+      "repositoryNote": "Operating-system reduced motion always wins.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-10",
@@ -1407,7 +1717,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not used."
+      "repositoryNote": "Not used.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-11",
@@ -1427,7 +1741,11 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No autoplay over five seconds; cue playback has pause."
+      "repositoryNote": "No autoplay over five seconds; cue playback has pause.",
+      "sourceUrl": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-12",
@@ -1447,7 +1765,11 @@
         "docs/evidence/vis-010/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "390px reading view checked; full editor reflow at 200% zoom remains open (DW-120)."
+      "repositoryNote": "390px reading view checked; full editor reflow at 200% zoom remains open (DW-120).",
+      "sourceUrl": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-13",
@@ -1463,7 +1785,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Not used."
+      "repositoryNote": "Not used.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-14",
@@ -1479,7 +1805,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No font binaries are shipped (AGENTS.md); licence review required before any adoption."
+      "repositoryNote": "No font binaries are shipped (AGENTS.md); licence review required before any adoption.",
+      "sourceUrl": "https://github.com/adobe-fonts/source-serif",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-15",
@@ -1495,7 +1825,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No font binaries are shipped (AGENTS.md); licence review required before any adoption."
+      "repositoryNote": "No font binaries are shipped (AGENTS.md); licence review required before any adoption.",
+      "sourceUrl": "https://github.com/IBM/plex",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-16",
@@ -1511,7 +1845,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No font binaries are shipped (AGENTS.md); licence review required before any adoption."
+      "repositoryNote": "No font binaries are shipped (AGENTS.md); licence review required before any adoption.",
+      "sourceUrl": "https://github.com/notofonts/noto-cjk",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-17",
@@ -1527,7 +1865,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "AAA target only; not claimed."
+      "repositoryNote": "AAA target only; not claimed.",
+      "sourceUrl": "https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-18",
@@ -1548,7 +1890,11 @@
         "docs/evidence/vis-009/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "Background-tab probe released scene resources."
+      "repositoryNote": "Background-tab probe released scene resources.",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     },
     {
       "ID": "TECH-19",
@@ -1563,7 +1909,11 @@
       "implementedBy": [],
       "verifiedBy": [],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "No Vega-Lite dependency; charts are typed DeckWeft components."
+      "repositoryNote": "No Vega-Lite dependency; charts are typed DeckWeft components.",
+      "sourceUrl": "https://vega.github.io/vega-lite/docs/",
+      "locale": "en",
+      "sourceCheckedAt": "2026-10-18",
+      "browserSample": null
     }
   ],
   "legacy_technical_id_map": {
@@ -1596,8 +1946,13 @@
       "implementedBy": "pattern ids citing a content source, or task ids/modules relying on a technical source",
       "verifiedBy": "repository evidence paths; always empty for content sources",
       "checkedAt": "date of this repository check",
-      "repositoryNote": "short reason"
+      "repositoryNote": "short reason",
+      "sourceUrl": "S10 maintenance: copy of the original url field (the page this record traces to); a test keeps both equal",
+      "locale": "S10 maintenance: copy of the original language field; a test keeps both equal",
+      "sourceCheckedAt": "S10 maintenance: date the handoff read the page (the register as_of date). Not the repository check date, which stays in checkedAt",
+      "browserSample": "S10 maintenance: null, or {date, evidence, states} for a page opened in the built-in browser; evidence is an existing docs/ file"
     },
-    "originalFieldsUnchanged": true
+    "originalFieldsUnchanged": true,
+    "maintenanceUpdatedAt": "2026-10-19"
   }
 }
