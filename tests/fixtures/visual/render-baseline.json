@@ -1,25 +1,25 @@
 {
   "format": "deckweft-render-baseline",
-  "renderer": "visual-art-direction.10",
+  "renderer": "visual-art-direction.11",
   "player": {
     "version": "semantic-player.5",
     "sha256": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df"
   },
   "entries": {
-    "wave-a.en.html": "acc37ffbd7a8bdbcc2512c017f0a0951d4fd892e3e72781abb030f8cc97dcf99",
+    "wave-a.en.html": "3390dbccd67b17e161161131cc4a715bc1bb5fb807303c7c0ba155b715ec6c33",
     "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-    "wave-a.zh-CN.html": "6b55a25236b018b54fd3f4a68dceccb142ba091f13631f5eb13565d408a8f783",
+    "wave-a.zh-CN.html": "a4972471a69bbe8574aa7c13b5e25bd4e5ae56f81076d5f87594a9ff7a6c0a22",
     "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-    "visual-demo.en.html": "5a781fd138f5f06235b60f27a1c5772e262dfa25bdb7b0e2a4a8fb005b2e0a81",
-    "visual-demo.zh-CN.html": "0eeb2e32586b3903e0fd489e64b4348b8652f1708e64c7b1425f40ca26af5605",
-    "component-demo.en.html": "83a2c65a8b2d1d5ce7fbcb14aecc65195a73cb348ace87490dbb893cfdae4054",
-    "component-demo.zh-CN.html": "9634a6216e9590f34abc4a10b502d5ed7a48e92c318d97f2ccacbb8a3a8841f4",
-    "interaction-demo.en.html": "6332a962e0f9934f79ff08cec3fb4b424596f48e68e1bb2d83dd75a124e64aa1",
-    "interaction-demo.zh-CN.html": "5d62e016acd2ddaaa3832e4af787dfe7a8cea2a7cc5ad6f940106342289ef230",
-    "composition-demo.en.html": "f6a5e3ba337acaf6b5363cfe9e792f06e002d98c01e95827ee2cf05129d96675",
-    "composition-demo.zh-CN.html": "933d6e8378314dd623a19c01b2eaaafe173cfa7ff63e925f91c5d0db88be086d",
-    "families.en.html": "72496a4cf392f64f59d9bd9bc3dc42d017327cdda4f32498bcc9a037961edf68",
-    "families.zh-CN.html": "c3987d0efa0bb1f0cde0980b7a571e130e464307ed690cc1ab25fb0cda5d9eb0",
+    "visual-demo.en.html": "63b7992ce676a78aa93f260bd5bfc077a625c316781022b36be393007564ee7a",
+    "visual-demo.zh-CN.html": "12dbc6d383be9aca0d9e7ae9efad4a6542334758710b6513e9007bee5a89ca59",
+    "component-demo.en.html": "ed356f0f7c660031d1ca3254f42d67dd119e08e6e601311abf03d80893604341",
+    "component-demo.zh-CN.html": "73af835af7f52343bf82c332bcac19fce0bb59e9a4d3bb8c589865706883b507",
+    "interaction-demo.en.html": "b85e4918719023c093137ab995230db9bd180673278b53abc50a2d5fb6ca0a34",
+    "interaction-demo.zh-CN.html": "e606a2efe23cebfc741548fcaa7b21a4ab744cfa4dd0e52ca086ab93a9ac469a",
+    "composition-demo.en.html": "368275ae8f02a98d368bce3aa5e8f2191e69fabf85e0af646208d54990bf28f8",
+    "composition-demo.zh-CN.html": "bb11a160ce2293843e8926193c2a500d57a62407067b2493857a014afcd02dcc",
+    "families.en.html": "115d70ee0a52262a9c2f9d8b214cb57acf4781fc479882a77952e008a684d248",
+    "families.zh-CN.html": "8194b26a07ce063457878a0b696b2cc45808b3cae1a932e4b2d262be7b5a2d7e",
     "theme.cream-collage.en.default": "13606af1e69412b1ef7d8ccb28bc9f8fbf589428cc4230677a94e016048c726a",
     "theme.cream-collage.en.chapter": "c0dcfae4070a42477f4f6b846457501a8f3e3bc3ca1ebe85593c2165e3da9eb9",
     "theme.cream-collage.zh-CN.default": "c075e9c42a4d69de323645e3242773c5eea44d667f7c91403ae3eb27630ba029",
@@ -87,76 +87,76 @@
   },
   "parts": {
     "wave-a.en.html": {
-      "markup": "f219b9b01efcb5a225bc542521bff2bf3eda5b320bcc8e7883eca87036c76f8e",
+      "markup": "87f3cfacea593ee5c07bb05f913498f275fb89dd217c6ec8ba34375747c4543f",
       "data": "d7eb21c3534ab6b6c3b36a15ed5fb7bedaafbd7a5ef2fc55f22c5fd8079a15d1",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "wave-a.zh-CN.html": {
-      "markup": "6af1fa634b47428197cbca687a6f33927f4d65c4d9f2a8fdf30c1f652c08abb8",
+      "markup": "19184928130580b37eb79239080ff62005ff92384efd0f68317a1d63dea332d2",
       "data": "dab714546da7d1751dec11d409d830e9cec6918992955dd30f36e1fec30f744c",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "visual-demo.en.html": {
-      "markup": "5ef28cd043cd372ca1923a869493257d868e4ff1c0ce6b5fe41e9b59ee28e357",
+      "markup": "ea25e226c8ed4fc9f888d921234bd28f93bef3fcc5f34b0ba9b1b990006094d4",
       "data": "122f6b169c70c1bef4ac5db0c905badbee58ac90bbb1823ccc2cdc8ddadd6419",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "visual-demo.zh-CN.html": {
-      "markup": "e0817a2051549cf1151e90f87e76443529218921f9e903655a0d92e8da07a8b2",
+      "markup": "d88b942b5380acc0c54dfb59e67ec51466a82be5934b2d797b7401ea6ca92a90",
       "data": "e0aac96b2ac915e40dfe5371f322207b1a020b819b2a9782ad3bc063534d8245",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "component-demo.en.html": {
-      "markup": "c54503de8a238e76d71a8311ce202bcb02694311939ccc69716cf7be6477549b",
+      "markup": "43b5182a58c741d64d6e79fedcbb9adf580879d4f99a4fc1e439a0d14a9e6713",
       "data": "b5eb69de63f6d31aea9f858c9dcae492d596cb701fc74d79415fbd3e69894394",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "component-demo.zh-CN.html": {
-      "markup": "15fcd0a80a7b61dd426dd35682f8a5eb22d764f07b5011a905784ac13049394e",
+      "markup": "af63ab73ef3bd50647243b7ca709683738c8f180ca8a17b0207e6594beee3077",
       "data": "f58aff60f9d494fda9a6bb8e04e77ec6b4d4b03bdf63998b39b61e9348b8559f",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "interaction-demo.en.html": {
-      "markup": "afa4785cbb9f0f314d4ab5579783b123e058c060be5b8e2ffc72529bdc6224fc",
+      "markup": "f41fc9a67a2ffd931c83e87d2b9d28515e65a0dd5c6a7d0ba5f182b1e9ff6611",
       "data": "78fda1fc13a296c0d608f850c15d465f18e540a1a6c7a1c495b1923184340c6e",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "interaction-demo.zh-CN.html": {
-      "markup": "5ab60ae2714489249231fd204cefa452a15d70c94be72a46e30f654adf50e951",
+      "markup": "edc7f633c0e32c401e7b43061c3c3eb3a4ea3c3c17cc991afdf5054725628e0d",
       "data": "f99731756ea6241df62abddaa657ced61ce4246320dd53d3f620421a9eb0aca5",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "composition-demo.en.html": {
-      "markup": "52a671711b10f982c154671fda49ed8d0b1f55791277cab2759c24052dbb8d67",
+      "markup": "d8deab19b4b25e95fcd8f0e68b936901c8d5115f669bd31ec1c04513d22324eb",
       "data": "6c24595ade3cdfd1863cba36e3954dce883547de82ef9a347b2efea7ade84abb",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "composition-demo.zh-CN.html": {
-      "markup": "670c2bf1b25b0c8b1dbe226ea0390d3c37330651475c7a0660530925ec8f36ea",
+      "markup": "fb36814b3ffac95f5927f4142ae4f085cb4d24a47cfd40f9a6c1dd24c7b2ec51",
       "data": "fb9bbee5d53414b80a40d06e289b3200f0b91927aec5ae1c192beced41a4e703",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "families.en.html": {
-      "markup": "2cd4042e8a72c35f244d7a709b69283ff8e3157a7cfaee061a0ba8a5f84fc07b",
+      "markup": "54aeea00450c2ad4a8fb51450c0fcae6266729d84c7a57f1ffd10ced3419db26",
       "data": "2aeb9171e8b3f3536b3e80dd5a9d28e38007376ac38fddfbb3772b81bee01ad9",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     },
     "families.zh-CN.html": {
-      "markup": "ac11ad758304005c225dae9c6ef63cc623924aef0985bc9414d1544716cbd5b9",
+      "markup": "a2259e1452dc94a17b64dfdb645aa6c0cca85f6d5b565f46156e38dec13d7a2f",
       "data": "ab9a5a3d6161d498b1b0cd22ec33aec3656c610e0c68e56db015c51d86a88063",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "34211a0219600518160e9492d5f8afe1a789e7cf35a83f8fb3a9116ae4e67ef3"
+      "style": "418b2f3023ea48a648321505572507a2f9030cb56face67ed348bd4c29c952ac"
     }
   },
   "playerHistory": [
@@ -182,6 +182,6 @@
     }
   ],
   "recordedAt": "2026-10-19",
-  "sourceCommit": "3d1fbf1",
-  "note": "S8: renderer visual-art-direction.10 (the three S8 packs renamed to the planned VIS-015 ids, decision 2 = Merge) and player semantic-player.5; per-entry diff against a8c0404 shows no visible word or value changed"
+  "sourceCommit": "97a8012",
+  "note": "S9a: renderer visual-art-direction.11 (page disclosure stylesheet rule for Reduce text); player semantic-player.5 unchanged; per-entry diff against 4f26b33 shows no visible word or value changed"
 }
