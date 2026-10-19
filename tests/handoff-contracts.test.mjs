@@ -223,3 +223,12 @@ test('S1 lock categories map onto existing block, dataset, source and scene lock
  assertVisualLocks(project,changed(n=>n.document.blocks.find(b=>b.id==='data-body').text='Unlocked paragraph edit'));
  assertVisualLocks(project,changed(n=>sceneOf(n.plan).keyStates.push({id:'extra',position:2})));
 });
+
+test('F4: every semantic-player version named in the English and Chinese handoff equals PLAYER_VERSION',async()=>{
+ const {PLAYER_VERSION}=await import('../src/render/web/runtime.mjs');
+ for(const file of ['docs/en/handoff.md','docs/zh-CN/handoff.md']){
+  const named=[...(await readFile(new URL('../'+file,import.meta.url),'utf8')).matchAll(/semantic-player\.\d+/g)].map(m=>m[0]);
+  assert.ok(named.length,file+' names the current player version');
+  assert.deepEqual([...new Set(named)],[PLAYER_VERSION],file);
+ }
+});

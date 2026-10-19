@@ -309,3 +309,13 @@
 - **文案**：中英 `hosts.md` 说明四种等级、`control.json` 的写入时机与工具路径规则；中英 `task-loop.md` 说明 `attestation: "author"`；中文 `handoff.md` 的"四项结果"补上第五项；中文 `manual.md` 补上宿主联网一句。
 - **证据**：`npm run verify` 485 / 481 / 0 / 4，源码检查 1545 文件；隔离 Chrome for Testing 149 下 `tests/browser_workbench.mjs` 与 `tests/browser_visual_task.mjs` 退出 0。
 - **未做**：`browser_workbench.mjs` 停在"需要人工看图后提供 --review 文件"，没有走到 Studio 评审表单提交，表单里新增的 `attestation` 未经浏览器运行验证；Studio 与导出报告仍不显示 attestation；`.deckweft-pixel-control/` 目录不会自动清理，也没有加入 `.gitignore`。
+
+### 2026-10-19 第七轮：F4 状态生成脚本（本地未提交）
+
+- **新文件 `scripts/status-summary.mjs`**：`docs/current-status.json` 分两类字段。**实时字段**每次检查都从源码树读（以文本读取，不执行代码）：`package.json` 版本、`PLAYER_VERSION`、`WEB_RENDERER_VERSION`、`roadmap.json` 的 `openAcceptanceGates`。**记录字段**在记录时固定：verify 日志的 total/passed/failed/skipped、记录时的 commit 与 `worktreeClean`、声明的隔离浏览器版本。一个文件无法写进包含它自己的 commit，所以 commit 是这次运行开始时的提交。`parseVerifyLog` 只接受完整的 verify 日志：五个阶段（types、test、check、build、demo）都出现、恰好一份测试汇总、0 失败、计数相加等于总数。
+- **用法**：`npm run verify > docs/evidence/<名>/verify.txt 2>&1`，然后 `npm run status:record -- docs/evidence/<名>/verify.txt --browser <版本>`，再把打印出的字段抄进 `PROJECT_STATUS.json`；`npm run status:check` 单独检查。
+- **`npm run check`**（`scripts/check.mjs`）调用 `checkStatus`：生成文件与源码树不一致（过期）、与自己的日志不一致、或与 `PROJECT_STATUS.json` 的同名字段（`version`、`playerVersion`、`rendererVersion`、`openAcceptanceGates`、`automatedTests.{command,commit,worktreeClean,log,total,passed,failed,skipped,browserVersion}`）不一致时，逐字段报错。检查本身不调用 git。
+- **`PROJECT_STATUS.json`**：新增顶层 `playerVersion`、`rendererVersion`、`openAcceptanceGates` 与 `history[]`（`record`、`commit`、`date`、计数、`log`、`supersededBy`）；b86ec18 的 475/471/0/4 与 5427aa9 的 338 进入 `history`，`historicalPublicationAutomatedTests` 原记录保留；`automatedTests` 改为本轮记录的运行。
+- **测试（先写，运行时因模块不存在而失败）**：`tests/status-summary.test.mjs` 五条（日志解析的五种拒绝、实时字段来自源码树、逐字段命名的不一致、仓库自洽与 history 形状、缺少生成文件时报错）；`tests/handoff-contracts.test.mjs` 新增一条：中英 `handoff.md` 里出现的 `semantic-player.N` 全部等于 `PLAYER_VERSION`。
+- **证据**：`npm run verify` 491 / 487 / 0 / 4，源码检查 1549 文件（含 current status），日志在 `docs/evidence/astra-second-verification/verify.txt`；`docs/current-status.json` 记录 commit `c09b795`、`worktreeClean: false`（运行时 F4 改动尚未提交）。引导过程：第一次 verify 要求状态已经一致，所以先用本会话上一次完整通过的运行（485/481/0/4）临时记录一次，再跑上面的 verify 并改为记录它，临时日志已删除。
+- **未做或限制**：提交后 commit 字段仍是 `c09b795`（`worktreeClean: false`）；要得到干净树上的记录，需要提交后再跑一次 verify 并重新记录。浏览器版本是声明的，没有从二进制探测。`PROJECT_STATUS.json` 里其他历史块（`browser.browserVersion` 144、各种 `previous*`）以及 README/handoff 正文里的测试数不在比较范围内；handoff 只检查 player 版本。verify 日志里含本机绝对路径（与已有 evidence 日志一致）。

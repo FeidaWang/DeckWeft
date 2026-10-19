@@ -4,6 +4,7 @@ import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {VERSION} from '../src/core/model.mjs';
 import {assertProject} from '../src/core/validate.mjs';
+import {checkStatus} from './status-summary.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),failures=[];
 async function all(dir,prefix=''){let result=[];for(const d of await readdir(dir,{withFileTypes:true})){if(['.git','dist','node_modules'].includes(d.name))continue;const rel=prefix?`${prefix}/${d.name}`:d.name;if(d.isDirectory())result.push(...await all(path.join(dir,d.name),rel));else result.push(rel);}return result;}
 const files=await all(root);
@@ -33,4 +34,6 @@ const active=['README.md','README.zh-CN.md','package.json','public/index.html','
 // The opt-in bridge names an explicitly requested current model. Keep the legacy
 // identity check everywhere else, including any other standalone Astra branding.
 for(const file of active)if(/open[- ]deck|astra|kimi/i.test((await readFile(path.join(root,file),'utf8')).replaceAll('GPT-6 Astra','').replaceAll('gpt-6-astra','').replaceAll('astra-evaluation.md','')))failures.push(`${file}: legacy branding on an active surface.`);
-if(failures.length){console.error(failures.join('\n'));process.exitCode=1;}else console.log(`Checked ${files.length} source files: syntax, relative document links, schema subset, examples, task dependencies, version identity, and font exclusions.`);
+// F4: docs/current-status.json, its recorded verify log, the tree and PROJECT_STATUS.json must agree.
+failures.push(...await checkStatus(root));
+if(failures.length){console.error(failures.join('\n'));process.exitCode=1;}else console.log(`Checked ${files.length} source files: syntax, relative document links, schema subset, examples, task dependencies, version identity, font exclusions, and current status.`);

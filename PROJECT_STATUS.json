@@ -1,6 +1,8 @@
 {
   "project": "DeckWeft",
   "version": "0.1.0-alpha.2",
+  "playerVersion": "semantic-player.6",
+  "rendererVersion": "visual-art-direction.12",
   "status": "local-alpha-host-release-gate-blocked",
   "preparedDate": "2026-10-18",
   "sourceLanguage": "en",
@@ -9,9 +11,11 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "b86ec181769157e78c1eba0bad7d7671331a0676",
-    "total": 475,
-    "passed": 471,
+    "commit": "c09b795d3275bdaeb8083a156866b5c35f360ff9",
+    "worktreeClean": false,
+    "log": "docs/evidence/astra-second-verification/verify.txt",
+    "total": 491,
+    "passed": 487,
     "failed": 0,
     "skipped": 4,
     "skippedReason": "environment- or browser-gated (CHROMIUM_PATH, DECKWEFT_HANDOFF_DIR)",
@@ -19,10 +23,34 @@
       "os": "macOS arm64",
       "node": "v24.14.0"
     },
-    "log": "docs/evidence/s11-merge-readiness/review.md",
+    "browserVersion": "149.0.7827.55",
     "finalRun": "passed",
-    "supersedes": "historicalPublicationAutomatedTests"
+    "recordedBy": "scripts/status-summary.mjs --record; npm run check compares these fields with docs/current-status.json",
+    "supersedes": "history[0]"
   },
+  "history": [
+    {
+      "record": "automatedTests",
+      "commit": "b86ec181769157e78c1eba0bad7d7671331a0676",
+      "date": "2026-10-19",
+      "total": 475,
+      "passed": 471,
+      "failed": 0,
+      "skipped": 4,
+      "log": "docs/evidence/s11-merge-readiness/review.md",
+      "supersededBy": "automatedTests"
+    },
+    {
+      "record": "historicalPublicationAutomatedTests",
+      "commit": "5427aa9b10e07aea5ea0734562be6d01d4a1a92e",
+      "date": "2026-10-18",
+      "passed": 338,
+      "failed": 0,
+      "skipped": 0,
+      "log": "docs/evidence/interaction-visual-regression/verify.txt",
+      "supersededBy": "b86ec181769157e78c1eba0bad7d7671331a0676"
+    }
+  ],
   "historicalPublicationAutomatedTests": {
     "command": "npm run verify",
     "commit": "5427aa9b10e07aea5ea0734562be6d01d4a1a92e",
@@ -587,5 +615,13 @@
     "evidence": "docs/evidence/interaction-visual-regression/review.md",
     "nativeApplicationsTested": false,
     "windowsPersistence": "Bounded atomic rename retry (50 attempts / 5 seconds), staggered against periodic readers; old destination is never deleted"
-  }
+  },
+  "openAcceptanceGates": [
+    "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",
+    "VIS-014 partial: Claude host deferred, 390 px heatmap scroll, payload budget, author calibration of the scored review (missing-glyph detection and CJK heading breaks closed in S8)",
+    "Actual screen reader/IME/200% zoom and projection; PowerPoint and Keynote runs of the S7 v3 packages (VIS-016) by the user (Chromium, Firefox and WebKit standalone loads recorded for VIS-014)",
+    "VIS-016 partial: PowerPoint/Keynote not run, Chinese PDF search (CJK radical code points), PDF figure wrappers without alt, small text on tall scenes",
+    "VIS-015 partial: reusable profiles were built in S9a (save/apply); automatic promotion from author feedback is not; 102 of 228 pages over the 900 px candidate budget; PowerPoint/Keynote runs of the S8 packages by the user; zh-CN word boundaries depend on the ICU version",
+    "S9b blueprint A: Firefox/WebKit traces not run; the Explain stage leaves most of the page empty (recorded weakest page)"
+  ]
 }
