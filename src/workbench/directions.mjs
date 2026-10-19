@@ -1,7 +1,7 @@
 import {assertVisualProject,assertVisualLocks} from '../core/visual-project.mjs';
 import {DeckError} from '../core/errors.mjs';
 import {contentHash} from '../scene/web/compile.mjs';
-import {inferFamily} from '../design/compositions.mjs';
+import {inferFamily,compositions,families} from '../design/compositions.mjs';
 import {visibleBlockIds} from '../design/plan.mjs';
 import {themePacks,resolveTheme,DEFAULT_PROFILE} from '../design/theme-registry.mjs';
 import {applySceneTheme} from '../design/profile.mjs';
@@ -60,6 +60,13 @@ export function applyDirection(project,answers,index){
   const scene=next.plan.scenes.find(v=>v.id===s.id),kind=pageKind(next.document,next.plan,scene),family=inferFamily(next.document,{...scene,blockIds:visibleBlockIds(scene)});
   for(const c of [g.own[d.theme]?.[kind],g.family[family]].filter(Boolean)){const copy=structuredClone(next);copy.plan.scenes.find(v=>v.id===s.id).composition=c;try{assertVisualProject(copy);next=copy;break;}catch{}}
  }
+ // Rhythm: never a third identical composition in a row (handoff page 32). The next variant of the same family, in the
+ // direction's own order, replaces it; author-locked pages keep theirs and sequences of one comparison family are allowed.
+ const locked=id=>(base.document.authorOverrides.sceneLocks?.find(l=>l.sceneId===id)?.fields||[]).includes('composition');
+ for(let i=2;i<next.plan.scenes.length;i++){const [p2,p1,s]=next.plan.scenes.slice(i-2,i+1),family=compositions.find(c=>c.id===s.composition)?.family;
+  if(!family||families[family].parallel||locked(s.id)||s.composition!==p1.composition||s.composition!==p2.composition)continue;
+  const variants=families[family].variants.map(v=>v[0]),start=Math.max(0,variants.indexOf(g.family[family]));
+  for(const c of [...variants.slice(start+1),...variants.slice(0,start+1)].filter(c=>c!==s.composition)){const copy=structuredClone(next);copy.plan.scenes[i].composition=c;try{assertVisualProject(copy);next=copy;break;}catch{}}}
  const detail=a.detail==='detailed'?{density:'compact',typographicContrast:'balanced'}:{density:'comfortable'};
  next.document.visualBrief={audience:a.audience,outputLanguage:next.document.locale,profile:{...DEFAULT_PROFILE,...g.profile,...detail,motionIntensity:a.motion}};
  next.extensions.deckweftDirection={version:1,group:d.group,theme:d.theme,style:a.style,detail:a.detail,motion:a.motion,output:a.output};

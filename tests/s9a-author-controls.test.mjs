@@ -90,14 +90,16 @@ test('S9a scope: four levels resolve to pages and objects and the statement name
 
 test('S9a author actions: each states its effect first, changes nothing until applied, keeps facts and honours locks',async t=>{
  const {project}=await demo(t),frozen=JSON.stringify(project),facts=factsHash(project.document);
- for(const [action,level,id,options] of [['more-editorial','deck'],['chart-space','object','data-chart'],['keep-layout','page','collage'],['reduce-text','object','chapter-body'],['start-chapter','page','comparison'],['lock','object','data-chart',{kind:'data'}]]){
+ const atlas=applySceneTheme(project,'evidence','fresh-report');assert.match(planAuthorAction(atlas,{action:'chart-space',level:'object',id:'data-chart'}).effects[0].en,/figure layout draws the plot largest/);
+ assert.equal(planAuthorAction(project,{action:'chart-space',level:'page',id:'evidence'}).changed,false,'a synthetic-data caveat stays beside the chart');
+ for(const [action,level,id,options] of [['more-editorial','deck'],['keep-layout','page','collage'],['reduce-text','object','chapter-body'],['start-chapter','page','comparison'],['lock','object','data-chart',{kind:'data'}]]){
   const plan=planAuthorAction(project,{action,level,id,options});
   assert.equal(JSON.stringify(project),frozen,action+' leaves its input unchanged');assert.ok(plan.changed&&plan.effects.length,action+' states an effect');assert.ok(plan.scopeStatement.en&&plan.scopeStatement.zh);
   assert.equal(factsHash(plan.project.document),facts,action+' keeps facts');assertVisualLocks(project,plan.project);
  }
  // Locks win and are reported.
  const locked=structuredClone(project);locked.document.authorOverrides.sceneLocks=[{sceneId:'evidence',fields:['composition']}];
- const kept=planAuthorAction(locked,{action:'chart-space',level:'object',id:'data-chart'});assert.equal(kept.changed,false);assert.match(kept.kept[0].en,/composition locked/);
+ const lockedAtlas=applySceneTheme(locked,'evidence','fresh-report'),kept=planAuthorAction(lockedAtlas,{action:'chart-space',level:'object',id:'data-chart'});assert.equal(kept.changed,false);assert.match(kept.kept[0].en,/composition locked/);
  rejects(()=>planAuthorAction(project,{action:'replace-visual',level:'page',id:'violet'}),'TOOL_SCOPE');
  assert.deepEqual(Object.keys(AUTHOR_ACTIONS).slice(0,6),['more-editorial','chart-space','quieter','keep-layout','replace-visual','reduce-text']);
 });

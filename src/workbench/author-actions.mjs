@@ -33,7 +33,11 @@ const PROFILE_WORDS={colorIntensity:['colour intensity','色彩强度'],typograp
 /** Editorial grammar: asymmetric reading paths with the claim first and generous margins (handoff F01/F03), per family. */
 const EDITORIAL={statement:'statement-split',image:'image-left',metric:'metric-left',evidence:'evidence-right',comparison:'comparison-rail',process:'process-rail',chapter:'chapter-low',closing:'closing-split',quote:'quote-split','before-after':'before-after-rail','system-map':'system-map-rail','small-multiples':'small-multiples-lead'};
 const FIELDNOTES={opening:'fieldnotes-cover',chart:'fieldnotes-figure',text:'fieldnotes-thesis',closing:'fieldnotes-closing'};
-const QUALIFIER=/\b(only|except|unless|assum\w*|estimat\w*|approximately|at least|at most|up to|excluding|limited to)\b|仅|除外|除非|假设|估计|约|至少|至多|不包括|仅限/i,NUMBER=/\d[\d.,]*\s*(%|％|[A-Za-z]{1,6}\b|[一-鿿])/;
+/** The single-chart layout that draws the plot largest in each theme, measured at 1440 px in isolated Chromium (S9a evidence,
+ * chart-space-measurements.json): the full-width evidence-top caps the plot height (700 × 350 px), the side layouts draw it at
+ * 780 × 390, atlas-figure at 865 × 433 and fieldnotes-figure at 834 × 417; stage-figure (774 × 387) is not larger than a side layout. */
+const LARGEST_PLOT={'fresh-report':'atlas-figure','silver-gray-editorial':'fieldnotes-figure'},SIDE=['evidence-left','evidence-right','chart-with-evidence-rail'];
+const QUALIFIER=/\b(only|except|unless|assum\w*|estimat\w*|approximately|at least|at most|up to|excluding|limited to|synthetic|illustrative|hypothetical|preliminary|caveat\w*|not (?:yet )?(?:measured|verified|tested|run|reviewed))\b|仅|除外|除非|假设|估计|约|至少|至多|不包括|仅限|合成|示意|虚构|初步|未(?:经)?(?:测量|验证|测试|运行|审阅)/i,NUMBER=/\d[\d.,]*\s*(%|％|[A-Za-z]{1,6}\b|[一-鿿])/;
 const sceneOf=(p,id)=>p.plan.scenes.find(s=>s.id===id),pageOf=(p,id)=>p.plan.scenes.findIndex(s=>s.id===id)+1,blockOf=(p,id)=>p.document.blocks.find(b=>b.id===id);
 const sceneLock=(p,id)=>p.document.authorOverrides.sceneLocks?.find(l=>l.sceneId===id)?.fields||[];
 const excerpt=b=>{const t=(b.type==='list'?b.items.join(' · '):b.text).replace(/\s+/g,' ');return [...t].length>48?[...t].slice(0,47).join('')+'…':t;};
@@ -113,8 +117,11 @@ const ACT={
     if(family!=='small-multiples'&&!setComposition(c,id,'small-multiples-row',['shared-scale panels','共享尺度面板']))continue;
     try{const before=c.p.plan.scenes.length;c.p=splitSmallMultiples(c.p,id,2);c.effect(id,`splits ${charts.length} panels over ${c.p.plan.scenes.length-before+1} pages of two, on one stated scale; the heading and sources repeat on each page.`,`将 ${charts.length} 个面板拆为 ${c.p.plan.scenes.length-before+1} 页、每页两个，同一尺度；标题与来源在每页重复。`);}catch(e){c.keep(id,`panels stay: ${e.message}`,`面板保持不变：${e.message}`);}
     continue;}
-   if(charts.length===1&&s.composition!=='evidence-top'&&setComposition(c,id,'evidence-top',['the chart takes the full width','图表占满通栏']))continue;
-   if(charts.length===1&&s.composition==='evidence-top'){if(!disclose(c,id,movable(c.p,s)))c.keep(id,'the chart already has the full width and no supporting text can move.','图表已占满通栏，也没有可移走的辅助文字。');continue;}
+   if(charts.length===1){
+    const target=LARGEST_PLOT[s.theme]||(SIDE.includes(s.composition)?s.composition:'evidence-left');
+    if(target!==s.composition&&setComposition(c,id,target,LARGEST_PLOT[s.theme]?['this theme’s figure layout draws the plot largest at 1440 px','此主题的图形版式在 1440 px 下绘制的图表最大']:['a side layout draws the plot larger than the full-width layout, which caps its height','侧栏版式绘制的图表比限高的通栏版式更大']))continue;
+    // The chart already has its largest layout: give it the page by moving supporting text behind the disclosure.
+    if(!disclose(c,id,movable(c.p,s)))c.keep(id,'the chart already has this theme’s largest layout and no supporting text can move.','图表已采用此主题中最大的版式，也没有可移走的辅助文字。');continue;}
    if(charts.length===2)c.keep(id,'two panels already share the full width at 1440 px.','两个面板已在 1440 px 下平分通栏。');
   }
  },

@@ -177,7 +177,7 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
     nodeShapes.set(node.id,{id:sid,box:sh.box,preset});
    }
    const glue=p=>{for(const n of nodeShapes.values()){const b=n.box;if(n.preset==='ellipse'||p[0]<b.x-10||p[0]>b.x+b.width+10||p[1]<b.y-10||p[1]>b.y+b.height+10)continue;const sites=[[b.x+b.width/2,b.y],[b.x,b.y+b.height/2],[b.x+b.width/2,b.y+b.height],[b.x+b.width,b.y+b.height/2]],d=sites.map(q=>Math.hypot(q[0]-p[0],q[1]-p[1]));return {id:n.id,idx:d.indexOf(Math.min(...d))};}return null;};
-   for(const edge of dg.edges){const l=edge.line;if(!l.from||!l.to)continue;const name=`${block.id}/edge-${edge.id}`;
+   for(const [k,edge] of dg.edges.entries()){const l=edge.line;if(!l.from||!l.to)continue;const name=`${block.id}/edge-${edge.id??'#'+(k+1)}`;
     push(connector({id:nextId,name,f,from:l.from,to:l.to,stroke:l.stroke?.gradient?null:flatAt(l.stroke,l.box),strokeWidth:l.strokeWidth,dash:l.dash,tail:l.markerEnd,head:l.markerStart,start:glue(l.from),end:glue(l.to)}),{shapeId:id(),name,blockId:block.id,kind:'connector',box:l.box});
     for(const tx of edge.texts){const p={box:tx.box,content:tx.box,style:{...tx.style,fontSize:tx.style.fontSize*s,align:'center'},runs:[{text:tx.lines.map(x=>x.text).join('\n'),style:{...tx.style,fontSize:tx.style.fontSize*s}}],lines:tx.lines.length};textBoxes([p],{blockId:block.id,prefix:block.id});}
    }

@@ -220,9 +220,10 @@ export async function createVisualService({home,legacyStore,body,send,browserPat
     if(!['html','pptx','pdf'].includes(data.format))throw new DeckError('TARGET_CAPABILITY','Visual Studio exports HTML, PowerPoint, PDF and complete JSON.',422);
     // S9a: PowerPoint and PDF go through the S7 export order with the isolated capture browser; without one they are refused by name.
     if(data.format!=='html'&&!browserPath)throw new DeckError('TARGET_BROWSER_REQUIRED','PowerPoint and PDF need the isolated measuring browser: start the studio with --capture-browser /absolute/isolated/chromium.',422);
+    // A page that asks for evidence is refused first: no review can make an unsupported claim final.
+    assertEvidenceSupplied(project.plan);
     const saved=await store.get(project.id).catch(e=>{if(e.code==='NOT_FOUND')return null;throw e;});
     if(project.extensions.deckweftWorkbench||saved?.extensions.deckweftWorkbench){if(data.format==='html'||!await reviewed(project))throw new DeckError('WORKBENCH_REVIEW_REQUIRED','Export this task from its image-reviewed workbench.',409);}
-    assertEvidenceSupplied(project.plan);
     if(data.format!=='html'){
      if(!project.extensions.deckweftWorkbench){const a=entry(data.ticket);if(!a.fit||a.inputHash!==contentHash(project))throw new DeckError('STALE_VISUAL_RENDER','Wait for a measured preview of these exact edits before exporting.',409);}
      const file=await studioTargetExport({browserPath,project,resources:await visualAssetResources(project,store.home),format:data.format}),levels=Object.entries(file.report.levels.reduce((m,c)=>{const l=c[data.format]?.level;if(l)m[l]=(m[l]||0)+1;return m;},{})).map(([k,v])=>k+'='+v).join(',');

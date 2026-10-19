@@ -120,7 +120,8 @@ export function measureExportLayout(){
  function diagram(svg,stop){
   const groups=[...svg.querySelectorAll('g[data-object-id]')].filter(visible);
   return {box:box(svg),scale:svg.getScreenCTM()?.a||1,nodes:groups.filter(g=>g.querySelector(':scope>rect,:scope>circle,:scope>ellipse')).map(g=>({id:g.dataset.objectId,shape:svgShape(g.querySelector(':scope>rect,:scope>circle,:scope>ellipse')),texts:[...g.querySelectorAll(':scope>text')].map(t=>svgText(t,stop))})),
-   edges:groups.filter(g=>!g.querySelector(':scope>rect,:scope>circle,:scope>ellipse')&&g.querySelector('path,line,polyline')).map(g=>({id:g.dataset.objectId,line:svgShape(g.querySelector('path,line,polyline')),texts:[...g.querySelectorAll('text')].map(t=>svgText(t,stop))}))};
+   // Edges without an author id are drawn as plain groups around a marker-ended path; they are measured too (S9a found 0 of 2).
+   edges:[...groups.filter(g=>!g.querySelector(':scope>rect,:scope>circle,:scope>ellipse')&&g.querySelector('path,line,polyline')),...[...svg.querySelectorAll('g:not([data-object-id])')].filter(g=>visible(g)&&g.querySelector(':scope>path[marker-end]')&&!g.querySelector(':scope>rect,:scope>circle,:scope>ellipse'))].map(g=>({id:g.dataset.objectId||null,line:svgShape(g.querySelector('path,line,polyline')),texts:[...g.querySelectorAll('text')].map(t=>svgText(t,stop))}))};
  }
  function image(fig){
   const img=fig.querySelector('img');if(!img||!visible(img))return null;const s=getComputedStyle(img),b=box(img),win=box(img.closest('.image-crop')||img),iw=img.naturalWidth,ih=img.naturalHeight;
