@@ -84,6 +84,7 @@ export const artDirectionCSS = `
 .web-scene .metric strong{font-family:var(--numeric,var(--body));font-size:clamp(112px,16vw,230px);font-weight:650;letter-spacing:-.075em;line-height:.88;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:normal;word-break:keep-all}
 .web-scene .metric strong small{font-size:.17em;line-height:1.3;letter-spacing:.03em;margin-top:24px}
 .web-scene .metric span{font-size:18px;line-height:1.5;margin-top:22px;max-width:24ch}
+.web-scene:lang(zh-CN){text-spacing-trim:space-all}
 .web-scene:lang(zh-CN) :is(h2,.region[data-component=callout] p,.metric span){word-break:keep-all;line-break:strict}
 .web-scene[data-theme=cream-collage] .metric strong{color:var(--secondary)}
 /* S1 token roles consumed here (S8): numeric type role, reference and missing colours. Undeclared packs inherit the previous values. */

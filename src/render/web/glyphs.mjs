@@ -13,8 +13,8 @@ export function scanMissingGlyphs(root){
  const canvas=document.createElement('canvas');canvas.width=canvas.height=48;const ctx=canvas.getContext('2d',{willReadFrequently:true});
  if(!ctx)return [];
  const key=(font,text)=>{ctx.clearRect(0,0,48,48);ctx.font=font;ctx.textBaseline='middle';ctx.fillStyle='#000';ctx.fillText(text,6,24);const d=ctx.getImageData(0,0,48,48).data;let h=0;for(let i=3;i<d.length;i+=4)h=(h*31+d[i])>>>0;return h+':'+Math.round(ctx.measureText(text).width*100);};
- const references=new Map(),reference=font=>{if(!references.has(font))references.set(font,key(font,'͸'));return references.get(font);};
- const skip=/^(?:\s|\p{Cf}|\p{Mn}|\p{Me}|　)+$/u;
+ const references=new Map(),reference=font=>{if(!references.has(font))references.set(font,key(font,'\u0378'));return references.get(font);};
+ const skip=/^(?:\s|\p{Cf}|\p{Mn}|\p{Me}|\u3000)+$/u;
  const pieces=text=>typeof Intl!=='undefined'&&Intl.Segmenter?[...new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(text)].map(s=>s.segment):Array.from(text);
  const out=[];
  for(const region of root.querySelectorAll('.region')){

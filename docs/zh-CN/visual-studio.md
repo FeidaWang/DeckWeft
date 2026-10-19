@@ -148,4 +148,42 @@ S3 在上述六类之外再增加六类，每页可选的构图类别共十二�
 
 [S3 测量候选、对照表、失败与未决问题](../evidence/s3-composition-families/review.md)。
 
+## 再增三套主题：Editorial Fieldnotes、Research Atlas、Luminous Stage（S8，VIS-015）
+
+S8 把设计交接文档的三个首发艺术方向做成主题包（[决定 2，对齐文档 §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)）。VIS-014 的三套主题保持不变。状态见 [VIS-015 证据](../evidence/vis-015/review.md)；路线图条目说明已支持的范围。
+
+| 主题 | 方向 | 字体角色（平台字体，不打包任何字体文件） | 自有构图 |
+|---|---|---|---|
+| `editorial-fieldnotes`（T01） | 纸色 `#F3F0E8`、墨色 `#24241F`、陶色 `#A8503A`、石板蓝数字。主栏加旁注，细分隔线，充分留白。 | 展示字体 Charter（中文：宋体 Songti SC），正文 Gill Sans（中文：苹方 PingFang SC），数字 Charter | `fieldnotes-cover`、`fieldnotes-thesis`（双栏论点加旁注）、`fieldnotes-figure`（窄阅读栏、宽图形）、`fieldnotes-method`（方法正文加旁注）、`fieldnotes-closing` |
+| `research-atlas`（T02） | 底色 `#FAFAF7`、墨色 `#15211B`、深绿 `#286448`、钴蓝 `#345BC5`。共用网格、编号章节，图形占主要面积。 | 展示与正文 Avenir Next（中文：苹方），数字 Menlo（等宽对齐） | `atlas-cover`（引题、标题、目录）、`atlas-section`（章节编号）、`atlas-figure`（单图结论）、`atlas-panels`（二至四个共用标尺的图表面板）、`atlas-appendix`（表格、限制、来源）、`atlas-closing` |
+| `luminous-stage`（T03） | 底色 `#0C1017`、文字 `#F2F3EE`、冰蓝 `#A8D2EA`。深色舞台、单个大物件，正文留在平静区域。仅静态主视觉：没有 Shader，也没有 WebGL。 | 展示字体 Futura（中文：苹方），正文 Helvetica Neue，数字 Futura | `stage-hero`（物件在右；没有图片时画一个圆形物件）、`stage-chapter`、`stage-figure`（图表置于面板）、`stage-metric`、`stage-closing` |
+
+每个主题包同时列出十二个共用构图族。交接文档的色号只是起点：每个前景色都按实际使用的字号在自己的底色上测量，测得的比值记录在证据中。
+
+1. 选中一页，打开 **设计 → 当前页主题**，选择三套之一。页面保留所有内容块，并按内容取该主题的自有构图：有图表的页得到 `…-figure`，舞台主题上有数值的页得到 `stage-metric`，纯文字页得到该主题的封面。
+2. 像以前一样在 **构图类别** 中选择主题的其他构图。主题专属构图拒绝其他主题，并说明缺少的内容块（例如 *atlas-panels needs at least 2 chart panels*）；不会替你删除任何内容。
+3. 像以前一样比较三种构图并应用节奏。节奏只在共用构图族内改变几何；主题专属构图保留到你更换为止。
+4. 导出。同一主题包到达 HTML、PowerPoint 和 PDF（`npm run export:targets -- --s8` 运行 S8 文稿）。
+
+配对：一份演示可以用 Editorial Fieldnotes 讲叙事，用 Research Atlas 承载证据章节。两者共享字号档位、引用角色和稳定的图表颜色顺序，因此图例的含义不会随章节漂移。
+
+### 渲染器现在消费的 Token 角色
+
+三套主题包声明了 S1 的 Token 角色，页面以自定义属性接收：`--numeric`（数值、图表读数、坐标刻度、表格数字）、`--reference` 与 `--missing`（参考线、缺失值标签与注释）、`--caption-gap`、`--section-gap`、`--safe-area`，以及 `--motion-distance`、`--motion-easing`、`--motion-delay`。未声明这些角色的主题包（例如 VIS-014 的三套）渲染结果与以前完全相同，因为每个消费处的回退值就是原来的字面值。动作的 `fallback`（`instant` 或 `static`）是页面自身未声明时的低动作结果。
+
+### 中文标题在词之间换行（C12）
+
+在 zh-CN 文档中，标题、提示语和数值标签在词典分词边界处带有 `<wbr>`，并使用 `word-break: keep-all`，因此行尾落在词与词之间（三十六种 · 几何 · 结构），而不是词内。汉字数字与量词保持在一起。`<wbr>` 没有文本内容，复制的文字、覆盖检查和所有导出器看到的仍是作者原文。页面的 `overflow-wrap: anywhere` 仍是比栏宽更长的词的最后手段。分词边界来自平台 ICU 词典（`Intl.Segmenter`）；证据记录了 ICU 版本。
+
+### 缺字形会被检测（C13）
+
+适配审计把页面上每个不同的字符用其计算字体画到画布上，并与同一字体的 `.notdef` 方框（未分配码位 U+0378）比较。相同即为缺字形：适配失败，Studio 门返回 `VISUAL_FIT`，构图候选报告 *Missing glyph*，质量流水线记录 `glyph` 问题，导出就绪阶段以 `FONT_GLYPH_MISSING` 拒绝。请修改文字或主题字体，绝不导出一个方框。DevTools 平台字体探针作为第二信号保留，用于引擎报告末位备用字体的情况。
+
+### 出问题时
+
+- *`atlas-panels` needs at least 2 chart panels* 或 *Declare the shared scale*：给每个面板相同的图表类型、单位、类别和固定坐标轴。
+- *`stage-hero` … belongs to the luminous-stage theme*：换主题时保留了另一个主题的专属构图；请选择新主题的构图。
+- 看起来正常的页面报告 *Missing glyph*：该字符在所选字体族中被画成方框；查看适配报告中的 `glyphs` 列表确认字符和字体。
+- 中文标题仍在词内断开：该词在此字号下比栏宽还长，触发了最后手段。缩短栏内文字、换一种构图，或加入作者换行。
+
 原件保留、具名槽和受保护裁切请见[素材说明](assets.md)。运行 `npm run studio:assets` 打开中英文实验样例。

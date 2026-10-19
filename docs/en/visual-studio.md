@@ -148,4 +148,42 @@ Changing a page's theme now changes only its theme and, when needed, its composi
 
 [S3 measured candidates, contact sheets, failures and open issues](../evidence/s3-composition-families/review.md).
 
+## Three more themes: Editorial Fieldnotes, Research Atlas, Luminous Stage (S8, VIS-015)
+
+S8 adds the design handoff's three first-wave art directions as theme packs ([decision 2, alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)). The three VIS-014 themes are unchanged. State: see the [VIS-015 evidence](../evidence/vis-015/review.md); the roadmap entry says what is supported.
+
+| Theme | Direction | Type roles (platform fonts, nothing bundled) | Own compositions |
+|---|---|---|---|
+| `editorial-fieldnotes` (T01) | Paper `#F3F0E8`, ink `#24241F`, terracotta `#A8503A`, slate numbers. Main column, margin notes, hairlines, generous space. | Display Charter (zh: Songti SC), body Gill Sans (zh: PingFang SC), numerals Charter | `fieldnotes-cover`, `fieldnotes-thesis` (two-column thesis with margin notes), `fieldnotes-figure` (narrow reading column, wide figure), `fieldnotes-method` (method text with a margin note), `fieldnotes-closing` |
+| `research-atlas` (T02) | Paper `#FAFAF7`, ink `#15211B`, green `#286448`, cobalt `#345BC5`. Shared grid, numbered sections, figures take the main area. | Display and body Avenir Next (zh: PingFang SC), numerals Menlo (tabular) | `atlas-cover` (kicker, headline, contents index), `atlas-section` (section number), `atlas-figure` (single-chart conclusion), `atlas-panels` (two to four chart panels on one declared scale), `atlas-appendix` (table, limits, sources), `atlas-closing` |
+| `luminous-stage` (T03) | Surface `#0C1017`, text `#F2F3EE`, ice blue `#A8D2EA`. Dark stage, one large object, body text in the calm area. Static hero only: no shader, no WebGL. | Display Futura (zh: PingFang SC), body Helvetica Neue, numerals Futura | `stage-hero` (object right; without an image a drawn orb), `stage-chapter`, `stage-figure` (chart on a panel), `stage-metric`, `stage-closing` |
+
+Every pack also lists the twelve shared families. The handoff's hex values were starting points: each foreground is measured against its own surface at the sizes it is used, and the measured ratios are in the evidence.
+
+1. Select a page, open **Design → Scene theme** and choose one of the three. Expect the page to keep every block and to take the theme's own composition by content: a chart gets `…-figure`, a metric gets `stage-metric` on the stage, a text page gets the theme's cover.
+2. Choose the theme's other compositions from **Composition family** as before. A theme-only composition refuses another theme and names the block it needs (for example *atlas-panels needs at least 2 chart panels*); nothing is removed for you.
+3. Compare three compositions and apply rhythm as before. Rhythm varies geometry within the shared families; a theme-only composition stays until you change it.
+4. Export. The same packs reach HTML, PowerPoint and PDF (`npm run export:targets -- --s8` runs the S8 decks).
+
+Pairing: a deck may use Editorial Fieldnotes for the narrative and Research Atlas for the evidence chapters. Both share the type scale tiers, the citation role and the stable chart colour order, so a legend keeps its meaning across chapters.
+
+### Token roles the renderer now consumes
+
+The three packs declare the S1 token roles, and the page receives them as custom properties: `--numeric` (metric numbers, chart values, axis ticks, table numbers), `--reference` and `--missing` (reference lines, missing-value labels and notes), `--caption-gap`, `--section-gap`, `--safe-area`, and `--motion-distance`, `--motion-easing`, `--motion-delay`. A pack that declares none of them, like the three VIS-014 packs, renders exactly as before, because every consumer falls back to the previous literal value. The motion `fallback` (`instant` or `static`) is the reduced-motion result of a page that declared none itself.
+
+### Chinese headings break between words (C12)
+
+In a zh-CN document, headings, callouts and metric labels carry `<wbr>` at dictionary word boundaries and `word-break: keep-all`, so a line ends between words (三十六种 · 几何 · 结构) instead of inside one. Han numerals stay with their measure word. `<wbr>` has no text, so copied text, the coverage check and every exporter see the authored string. The scene's `overflow-wrap: anywhere` remains the last resort for a word longer than its column. Word boundaries come from the platform's ICU dictionary (`Intl.Segmenter`); the evidence records the ICU version.
+
+### Missing glyphs are detected (C13)
+
+The fit audit draws every distinct character of a page in its computed font on a canvas and compares it with the same font's `.notdef` box (the unassigned code point U+0378). A match is a missing glyph: the fit fails, the Studio gate answers `VISUAL_FIT`, a composition candidate reports *Missing glyph*, the quality pipeline files a `glyph` issue, and the export readiness stage refuses with `FONT_GLYPH_MISSING`. Change the text or the theme font; never export a box. The DevTools platform-font probe stays as a second signal where an engine reports a last-resort font.
+
+### If something goes wrong
+
+- *`atlas-panels` needs at least 2 chart panels* or *Declare the shared scale*: give every panel the same chart type, unit, categories and a fixed axis.
+- *`stage-hero` … belongs to the luminous-stage theme*: a theme-only composition was kept while the theme changed; choose the new theme's composition.
+- *Missing glyph* on a page that looks fine: the character is drawn as a box in the chosen font family; check the fit report's `glyphs` list for the character and the font.
+- A Chinese heading still breaks inside a word: the word is longer than its column at this tier, so the last-resort break applied. Shorten the column text, choose another composition, or add an authored line break.
+
 For source preservation, named slots and protected crops, follow the [asset manual](assets.md). Run `npm run studio:assets` for the bilingual lab.

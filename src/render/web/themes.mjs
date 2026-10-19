@@ -176,12 +176,16 @@ export const themeCSS=`
 .web-scene${T03} .image-crop{background:#1A2230}
 .web-scene${T03} .web-image figcaption{opacity:.85}
 .web-scene${T03} .decor path{opacity:.85}
-.web-scene.stage-hero .regions{grid-template-columns:minmax(0,1fr) minmax(0,var(--image-split));column-gap:var(--gap);align-content:center;align-items:center;min-height:620px;row-gap:20px}
+.web-scene.stage-hero .regions{grid-template-columns:minmax(0,calc(100% - var(--image-split) - var(--gap))) minmax(0,var(--image-split));column-gap:var(--gap);align-content:center;align-items:center;min-height:620px;row-gap:20px}
+.web-scene.stage-hero:not(:has(.region[data-component=image])) .regions{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.web-scene.stage-hero:has(.region[data-component=image]) h2{font-size:min(var(--headline),80px);max-width:12ch}
 .web-scene.stage-hero [data-component=callout]{grid-column:1;grid-row:1;align-self:end}
 .web-scene.stage-hero [data-component=callout] p{font:500 12px/1.4 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);max-width:none}
 .web-scene.stage-hero [data-component=heading]{grid-column:1;grid-row:2}
 .web-scene.stage-hero h2{max-width:10ch;margin:0}
 .web-scene.stage-hero .region:is([data-component=paragraph],[data-component=list],[data-component=quote]){grid-column:1}
+.web-scene.stage-hero [data-component=paragraph]{grid-row:3}
+.web-scene.stage-hero .region:is([data-component=list],[data-component=quote]){grid-row:4}
 .web-scene.stage-hero .region[data-component=paragraph] p{font-size:var(--lead-size);max-width:30ch;margin:0}
 .web-scene.stage-hero .region:is([data-component=image],[data-component=metric],[data-component=chart],[data-component=diagram]){grid-column:2;grid-row:1 / span 4;align-self:center}
 .web-scene.stage-hero .web-image{width:100%;max-width:none;margin:0}
@@ -204,12 +208,12 @@ export const themeCSS=`
 .web-scene.stage-figure .region[data-component=paragraph] p{font-size:17px;max-width:34ch}
 .web-scene.stage-figure .region[data-component=callout] p{font-size:var(--lead-size);line-height:1.3;border-top:2px solid var(--accent);padding-top:12px;max-width:30ch}
 .web-scene.stage-figure .chart svg{max-height:420px}
-.web-scene.stage-metric .regions{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:var(--gap);align-content:center;align-items:center;row-gap:18px}
+.web-scene.stage-metric .regions{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);column-gap:var(--gap);align-content:center;align-items:center;row-gap:18px}
 .web-scene.stage-metric [data-component=metric]{grid-column:1;grid-row:1 / span 4;align-self:center}
 .web-scene.stage-metric .metric strong{font-size:clamp(140px,19vw,280px);line-height:.85}
 .web-scene.stage-metric .metric span{font-size:18px;max-width:26ch}
 .web-scene.stage-metric .region:not([data-component=metric]):not([data-component=citation]){grid-column:2}
-.web-scene.stage-metric h2{max-width:12ch;font-size:min(var(--headline),72px)}
+.web-scene.stage-metric h2{max-width:none;font-size:min(var(--headline),72px)}
 .web-scene.stage-metric .region[data-component=paragraph] p{font-size:18px;max-width:34ch}
 .web-scene.stage-closing .regions{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:var(--gap);align-content:center;row-gap:20px}
 .web-scene.stage-closing [data-component=heading]{grid-column:1;grid-row:1}

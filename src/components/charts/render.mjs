@@ -83,7 +83,7 @@ export function svgPlot({block,d,f,t,color,anchor,ident,caption}){
  return `<div class="chart-plot"><svg ${compact?'data-compact-chart="true"':''} role="img" aria-label="${x(caption)}" viewBox="0 0 ${W} ${H}"><title>${x(d.series.map(s=>s.label).join(' / '))}</title><desc>${x(t.explanation)}</desc>${axes}${d.categoryIds?.map((id,i)=>`<g id="${anchor(id)}" transform="translate(${at(i)} ${B})"><title>${x(d.categories[i])}</title></g>`).join('')||''}${marks}${txt(L,385,kind==='scatter'?d.xUnit:d.timeZone||'')}${txt(12,38,d.unit)}</svg></div>`;
 }
 /** Ranked, direct-labelled, grouped and dot-interval charts as HTML rows: real text that wraps, percentage marks that reflow, value labels at the mark end and never inside a scroller. */
-export function rowPlot({d,f,t,color,anchor,ident,caption}){
+export function rowPlot({d,f,t,theme,color,anchor,ident,caption}){
  const m=f.model,kind=m.kind,[low,high]=m.domain,log=m.scale.y==='log',share=v=>Math.max(0,Math.min(1,chartShare(v,m.domain,m.scale.y))),pct=v=>Number((v*100).toFixed(3))+'%',multi=d.series.length>1;
  const zero=log?null:share(Math.max(low,Math.min(high,0))),width=s=>[...String(s)].reduce((w,c)=>w+(/[⺀-鿿＀-￯]/.test(c)?2:1),0);
  const label=(j,i)=>kind==='dot-interval'&&d.series[j].values[i]!==null?`${f.cell(j,i)} [${f.intervalText(j,i)}]`:f.cell(j,i);
@@ -104,7 +104,7 @@ export function rowPlot({d,f,t,color,anchor,ident,caption}){
  const refs=i=>f.events.filter(e=>e.i===i).map(e=>` <span class="chart-event-ref">${e.n}</span>`).join('');
  const ticks=log?chartTicks(m.domain,'log'):[low,...(low<0&&high>0?[0]:[]),high],track=`<span class="chart-axis-track">${ticks.map(v=>{const s=share(v);return `<span style="left:${Number((s*100).toFixed(3))}%${s===0?'':s===1?';transform:translateX(-100%)':';transform:translateX(-50%)'}">${x(String(Number(v.toPrecision(5))))}</span>`;}).join('')}</span>`;
  const rows=m.order.map(i=>`<li class="chart-row"${d.categoryIds?` id="${anchor(f.ids[i])}"`:''} data-category-id="${x(f.ids[i])}"${focused(i)===null?'':` data-focus="${focused(i)}"`}><span class="chart-row-label"><span data-conclusion-label="true">${x(f.display(i))}</span>${refs(i)}</span><span class="chart-row-marks">${multi?d.series.map((s,j)=>`<span class="chart-line"${f.focus.series&&!f.focus.series.has(s.id)?' data-muted="true"':''}><span class="chart-series-name" data-conclusion-label="true">${x(s.label)}</span>${mark(i,j)}</span>`).join(''):mark(i,0)}</span></li>`).join('');
- return `<ol class="chart-rows" data-kind="${kind}" aria-label="${x(caption)}" style="--value-space:${space}ch;--label-width:${labelWidth}ch;--series-width:${seriesWidth}ch">${rows}<li class="chart-axis" aria-hidden="true"><span></span>${multi?`<span class="chart-line"><span></span>${track}</span>`:track}</li></ol>`;
+ return `<ol class="chart-rows" data-kind="${kind}" aria-label="${x(caption)}" style="--value-space:${theme.tokens?.declared?.typography?Math.ceil(space*1.3):space}ch;--label-width:${labelWidth}ch;--series-width:${seriesWidth}ch">${rows}<li class="chart-axis" aria-hidden="true"><span></span>${multi?`<span class="chart-line"><span></span>${track}</span>`:track}</li></ol>`;
 }
 /** A line trend labelled at its ends: no per-point labels, series names and last values beside the lines, muted background series under a series focus. */
 export function trendPlot({block,d,f,t,color,anchor,ident,caption}){
