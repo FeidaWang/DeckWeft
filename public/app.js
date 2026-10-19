@@ -7,6 +7,7 @@ import {mountPreferences,getPreferences} from './preferences.js';
 import {applyActions} from './actions.js';
 import {mountPresenter} from './presenter.js';
 import {sessionRecovery,askSaveCopy} from './session.js';
+import {historyCapacityNote} from './history-capacity.js';
 applyPitchMode(document);
 const $=selector=>document.querySelector(selector);
 const en=Object.fromEntries([...document.querySelectorAll('[data-i18n]')].map(el=>[el.dataset.i18n,el.textContent]));
@@ -28,7 +29,7 @@ async function api(url,data,method='POST',signal,retry=true){
 }
 async function json(url,data,method='POST',signal){return(await api(url,data,method,signal)).json();}
 function toast(message){clearTimeout(toastTimer);$('#toastRegion').textContent=message;$('#toastRegion').classList.add('visible');toastTimer=setTimeout(()=>{$('#toastRegion').textContent='';$('#toastRegion').classList.remove('visible');},6500);}
-function notice(message){$('#issueBanner').hidden=!message;$('#issueBanner').textContent=message||'';}
+function notice(message,tone){$('#issueBanner').hidden=!message;$('#issueBanner').textContent=message||'';$('#issueBanner').classList.toggle('warning',tone==='warning');}
 function onError(error){if(error.name==='AbortError')return;notice(error.message||String(error));toast(error.message||String(error));}
 function slide(){return state.project?.slides.find(s=>s.id===state.active);}
 function ready(){return !!state.project&&!state.operation;}
@@ -156,9 +157,10 @@ async function saveCopy(){
 async function save(){
   if(!state.project||state.saving||state.composing)return false;if(!state.dirty)return true;
   reconnect.offerAgain();state.saving=true;edits.endGroup();updateStatus();const snapshot=structuredClone(state.project),counter=state.counter;
-  try{const {project}=await json(`/api/projects/${snapshot.id}`,{project:snapshot,expectedRevision:snapshot.revision.number},'PUT');
+  try{const {project,historyUsage}=await json(`/api/projects/${snapshot.id}`,{project:snapshot,expectedRevision:snapshot.revision.number},'PUT');
     if(state.project.id===snapshot.id){state.project.revision=project.revision;if(counter===state.counter)state.dirty=false;}
-    await library();notice('');return !state.dirty;
+    // From 80% of the suggested history size the banner explains cleanup; nothing is deleted.
+    await library();notice(historyCapacityNote(historyUsage,t),'warning');return !state.dirty;
   }catch(error){if(error.code==='REVISION_CONFLICT'){try{if(await saveCopy())return true;}catch(copyError){onError(copyError);return false;}}if(error.code==='REVISION_CONFLICT')notice(t('Another window saved first. Your edits are still here. Export Project JSON to keep a draft, then reopen or import it as a new copy.','另一窗口先保存了。你的修改仍在这里。先导出项目 JSON 保留草稿，再重新打开或导入为新副本。'));else onError(error);return false;
   }finally{state.saving=false;updateStatus();}
 }

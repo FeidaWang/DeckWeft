@@ -1,10 +1,12 @@
+import {historyCapacityNote} from './history-capacity.js';
 /** Version inspection never changes the active project. Restoration creates a new id. */
 export function mountHistory(app){
   const {state,$,t,x,json,dialogs,toast,onError,measurePreview,library,switchProject}=app;
-  let projectId,selected,selectedPage=0,render,rows=[],nextBefore=null,epoch=0,loading=false,restoring=false,requestId=null,restoredId=null,controller;
+  let projectId,selected,selectedPage=0,render,rows=[],nextBefore=null,epoch=0,loading=false,restoring=false,requestId=null,restoredId=null,controller,usage;
   const dialog=$('#historyDialog');
   const error=message=>{$('#historyError').textContent=message||'';};
   function status(message){$('#historyStatus').textContent=message;}
+  function capacity(){const note=historyCapacityNote(usage,t);$('#historyCapacity').textContent=note;$('#historyCapacity').hidden=!note;}
   function sync(){
     $('#restoreSnapshot').disabled=!selected||loading||restoring||selected.unreadable;
     $('#historyOlder').disabled=loading||restoring||!nextBefore;$('#historyOlder').hidden=!nextBefore;
@@ -30,7 +32,7 @@ export function mountHistory(app){
     try{
       const data=await json(`/api/projects/${projectId}/history?limit=10${append&&nextBefore?'&before='+nextBefore:''}`,undefined,'GET');
       if(thisEpoch!==epoch||!dialog.open)return;
-      rows=append?[...rows,...data.snapshots]:data.snapshots;nextBefore=data.nextBefore;paintRows();status(rows.length?t(`${rows.length} earlier versions loaded. Latest saved revision: ${data.currentRevision}.`, `已载入 ${rows.length} 个历史版本。最新保存版本为 ${data.currentRevision}。`):t('No older versions yet. Edit and save once to keep the previous version here.','还没有历史版本。编辑并保存一次后，上一版会出现在这里。'));
+      rows=append?[...rows,...data.snapshots]:data.snapshots;nextBefore=data.nextBefore;usage=data.usage;capacity();paintRows();status(rows.length?t(`${rows.length} earlier versions loaded. Latest saved revision: ${data.currentRevision}.`, `已载入 ${rows.length} 个历史版本。最新保存版本为 ${data.currentRevision}。`):t('No older versions yet. Edit and save once to keep the previous version here.','还没有历史版本。编辑并保存一次后，上一版会出现在这里。'));
     }catch(e){if(thisEpoch===epoch)error(e.message);}finally{if(thisEpoch===epoch){loading=false;sync();}}
   }
   async function choose(revision){
@@ -44,7 +46,7 @@ export function mountHistory(app){
     finally{if(thisEpoch===epoch){loading=false;sync();}}
   }
   async function open(){
-    if(!state.project||state.saving||restoring)return;dialogs.closeDrawer();projectId=state.project.id;selected=null;render=null;rows=[];nextBefore=null;restoredId=null;requestId=null;loading=false;
+    if(!state.project||state.saving||restoring)return;dialogs.closeDrawer();projectId=state.project.id;selected=null;render=null;rows=[];usage=null;capacity();nextBefore=null;restoredId=null;requestId=null;loading=false;
     $('#historyList').replaceChildren();$('#historyCanvas').textContent=t('Choose a version on the left.','请在左侧选择一个版本。');$('#historyMeta').textContent='';$('#historySourceHash').textContent='';$('#historyPageCount').textContent='';$('#historyMeasureNote').textContent='';
     $('#historyDirty').hidden=!state.dirty;$('#historyDirty').textContent=t('Your current edits are not saved. Browsing is safe; a restored copy will not replace these edits.','当前修改尚未保存。浏览历史不会影响它们，恢复副本也不会覆盖当前修改。');
     dialogs.open(dialog,$('#openHistory'));sync();await loadPage();
@@ -64,5 +66,5 @@ export function mountHistory(app){
   $('#historyOpenCopy').onclick=async()=>{if(!restoredId)return;const id=restoredId;dialog.close();await switchProject(id);};
   dialog.addEventListener('cancel',e=>{if(restoring)e.preventDefault();});
   dialog.addEventListener('close',()=>{controller?.abort();epoch++;loading=false;});
-  window.addEventListener('deckweft:locale',()=>{if(dialog.open){paintRows();paintPreview();}});
+  window.addEventListener('deckweft:locale',()=>{if(dialog.open){capacity();paintRows();paintPreview();}});
 }

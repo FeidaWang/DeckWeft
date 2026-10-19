@@ -5,7 +5,7 @@ html[data-appearance=dark] :is(.topbar,.tool-rail,.canvas-toolbar,.canvas-column
 html[data-appearance=dark] :is(button,input,select,textarea,.theme-options button,.candidate,.revision-row){background:var(--white);color:var(--ink);border-color:var(--line)}
 html[data-appearance=dark] :is(button:hover,.candidate.selected,.thumbnail.active,.revision-row.selected){background:var(--accent-soft);border-color:var(--accent)}
 html[data-appearance=dark] :is(#agentStatus,.agent-consent,.tour-preview,.dots-lab,#agentDialog pre){background:var(--canvas);color:var(--ink)}
-html[data-appearance=dark] .issue-banner{background:var(--danger-soft)}
+html[data-appearance=dark] .issue-banner{background:var(--danger-soft)}html[data-appearance=dark] .issue-banner.warning{background:#3a2e1a;color:#f1d3a1}
 html[data-appearance=dark] .primary{background:#2466c4;color:#fff;border-color:#2466c4}
 html[data-appearance=dark] :is(.section-label p,.hint,.save-state,.scoring-note,.quality-item.warning){color:var(--muted)}
 button[data-action-role=generate],.tool-rail #openAgent{background:var(--generate-soft);color:var(--generate);border:1px solid var(--generate)}

@@ -320,3 +320,15 @@
 - **证据**：`npm run verify` 491 / 487 / 0 / 4，源码检查 1549 文件（含 current status），日志在 `docs/evidence/astra-second-verification/verify.txt`；`docs/current-status.json` 记录 commit `c09b795`、`worktreeClean: false`（运行时 F4 改动尚未提交）。引导过程：第一次 verify 要求状态已经一致，所以先用本会话上一次完整通过的运行（485/481/0/4）临时记录一次，再跑上面的 verify 并改为记录它，临时日志已删除。
 - **未做或限制**：提交后 commit 字段仍是 `c09b795`（`worktreeClean: false`）；要得到干净树上的记录，需要提交后再跑一次 verify 并重新记录。浏览器版本是声明的，没有从二进制探测。`PROJECT_STATUS.json` 里其他历史块（`browser.browserVersion` 144、各种 `previous*`）以及 README/handoff 正文里的测试数不在比较范围内；handoff 只检查 player 版本。verify 日志里含本机绝对路径（与已有 evidence 日志一致）。
 - **第七轮补记（提交后）**：第七轮提交为 `bf042bf`。在干净树上重跑 verify 时把日志写回了当前记录的 `verify.txt`，状态测试读到写了一半的日志而失败；已还原，改为写新文件。`--record` 原先把正在记录的未跟踪日志也算作改动，`27bf948` 修正为忽略它。在干净的 `27bf948` 上 verify 491 / 487 / 0 / 4，记录为 `worktreeClean: true`（日志 `verify-27bf948.txt`）；`c09b795` 的记录移入 `history[]`。
+
+### 2026-10-19 第八轮：§5 历史容量提示（已提交，未推送）
+
+工作区为 `.claude/worktrees/astra-history-capacity-hints-0772e1`，分支 `claude/astra-history-capacity-hints-0772e1`。该 worktree 建在 `main` 上，开工前快进到 `31968f8`（本分支此前的七轮提交，未改写）；本轮改动已提交到该分支，未推送。
+
+- **存储**：`src/services/store.mjs` 新增 `HISTORY_LIMITS`（每份文稿 500 个快照或 200 MB）与 `historyUsage(id)`，返回 `{snapshots, bytes, limits, level, directory}`；只计编号 `.json` 普通文件，跳过符号链接与其他文件；任一项达到上限的 80% 为 `near`，达到上限为 `over`。`ProjectStore`/`VisualProjectStore` 构造参数 `historyLimits`（正整数，否则 `HISTORY_LIMITS` 错误），经 `startStudio`、`createVisualService` 传入；未加环境变量。`historyPage` 多出 `usage`；经典版与视觉版的 `PUT` 保存响应多出 `historyUsage`。不删除、不移动任何快照。
+- **界面**：新文件 `public/history-capacity.js`（`historyCapacityNote`，中英文案：数量、大小、建议上限、"不会自动删除"、先恢复为新副本再把较早编号文件移出所给文件夹），`server.mjs` 以 `/history-capacity.js` 提供。经典版保存后在顶部横幅显示（新增琥珀色 `.issue-banner.warning`，深色模式另有一条），历史对话框 `#historyCapacity`；视觉版保存消息后接提示，历史对话框 `#historyCapacity`（`.history-capacity`）。低于 80% 时不显示。
+- **文档**：中英 `manual.md` 的历史段改为"不会自动清理"，写明提示出现的条件、预期结果、三步清理与移回恢复。
+- **测试（先写，实现前失败）**：新 `tests/history-capacity.test.mjs` 7 条（默认上限、按数量 80%/100%、按字节单独触发、无快照与非快照文件不计、非法上限、两种 Studio 的保存与历史响应、中英提示文案与 KB 显示）；新浏览器 runner `tests/browser_history_capacity.mjs`（小上限 5：3 个快照无提示、4 个出现提示、6 个"已超过"且 6 个文件都在，经典版与视觉版各 3 项）。
+- **运行结果**：`npm run verify` 498 项，494 通过，0 失败，4 环境门控跳过；`npm run check` 通过，未重新记录当前状态（`docs/current-status.json` 仍记录 `27bf948` 的 491 项）。隔离 Chrome for Testing 149.0.7827.55 + Playwright 1.61.1：`browser_history_capacity.mjs`（6 项）、`browser_session_reconnect.mjs`（6 项）、`browser_visual_studio.mjs` 通过；`browser_author_controls.mjs` 第一次在 1024 px 的 `#actionLevel` 选择超时失败，随后在本分支连续两次通过，在 `31968f8` 上一次通过，判为时序偶发，未改。
+- **看过的图**：`dist/history-capacity/` 的 `classic-save-near.png`、`classic-history-near.png`、`visual-save-near.png`、`visual-history-over.png`（agent 图像审阅）；据此把小体积改为 KB 显示、经典版横幅从红色改为琥珀色。
+- **未做**：方案原文的"导出历史为 zip 并清空"按钮（本轮按要求只提示并说明清理方法）；整个文稿库（跨文稿）的总量提示；上限的用户配置；`docs/en/verification.md` 的 runner 清单；Python runner 未运行（本机无 `playwright` 模块）。没有调用真实宿主，没有打开 `/Applications` 里的应用。
