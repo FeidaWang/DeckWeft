@@ -3,7 +3,7 @@
  "status": "pass",
  "failures": [],
  "missingText": [],
- "chartsChecked": 6,
+ "chartsChecked": 4,
  "slides": [
   {
    "slide": "ppt/slides/slide1.xml",
@@ -28,8 +28,8 @@
   {
    "slide": "ppt/slides/slide3.xml",
    "textShapes": 8,
-   "pictures": 0,
-   "charts": 1,
+   "pictures": 1,
+   "charts": 0,
    "tables": 0,
    "connectors": 2,
    "timing": false,
@@ -38,8 +38,8 @@
   {
    "slide": "ppt/slides/slide4.xml",
    "textShapes": 13,
-   "pictures": 0,
-   "charts": 1,
+   "pictures": 1,
+   "charts": 0,
    "tables": 0,
    "connectors": 2,
    "timing": false,

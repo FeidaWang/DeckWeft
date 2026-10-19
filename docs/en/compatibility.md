@@ -61,7 +61,7 @@ L1: native editable text, shapes, tables and supported charts (in PDF: real, sea
 | diagram | L1 | L2 | L1 shapes, glued connectors and text |
 | chart: line, area, ranked bar, grouped bar, stacked, scatter | L1 | L2 | L1 native chart with the data embedded |
 | chart: heatmap, benchmark table | L1 | L2 | L1 native table |
-| chart: dot-interval, small multiples, any interval bounds or log axis | L1 | L2 | L3 image of the chart, summary in alt text and notes |
+| chart: dot-interval, small multiples, or any chart with interval bounds, a log axis or a missing value | L1 | L2 | L3 image of the chart, summary in alt text and notes |
 
 ### What PowerPoint does not receive, and how it is delivered
 
@@ -72,7 +72,6 @@ Each case is a receipt in `report.json`, per element:
 - Balanced headings. The browser's line breaks are written as line breaks.
 - Chart details:
   - event marks
-  - the in-plot "missing" label
   - qualifier superscripts
   - axis break marks
 
@@ -96,7 +95,8 @@ Eight VIS-014 decks plus the S4 chart-kinds sample. [Evidence](../evidence/vis-0
 - **Open the files.** No repair prompt in PowerPoint, no import warning in Keynote, every slide present.
 - **Edit Data on each native chart.** The workbook opens and holds the values.
 - **Focus colours.** On ranked and grouped bars the focused bar is solid and the others pale. Quick Look draws every bar solid.
-- **Line-chart details.** Markers, dashes, value labels, end labels, first/last time labels, axis steps and gaps at missing values. Quick Look ignores these and shifts points across a gap.
+- **Native chart details.** Markers, dashes, value labels, end labels, first/last time labels and axis steps. Quick Look ignores these.
+- **Missing values, log axes and intervals.** These charts are images in this release because Quick Look drew them wrongly: values moved to the wrong category, `#N/A` drawn as zero, a linear axis. Native versions need PowerPoint and Keynote checks first.
 - **Text.** Wrapping and negative letter-spacing. The fonts in `report.json` are installed (they are not embedded).
 - **Free-form shapes.** Decorative shapes keep their colour; Quick Look draws them lighter.
 - **Accessibility.** Run the Accessibility Checker and a screen reader.

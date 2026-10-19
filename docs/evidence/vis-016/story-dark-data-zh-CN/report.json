@@ -981,7 +981,7 @@
   "pdfPages": 16,
   "sha256": {
    "pptx": "241d83c1d9ded44aad14d607228fd78968cd7187d5fc8475646cb7253c653c59",
-   "pdf": "d8c0d4bbbb680f81110880f03a961de08bda000fa5d6e0146fe2b2b27879ad14"
+   "pdf": "2a451da49f20b25024fa233c888e4226543f11c6738801330076e0835fb07bdf"
   }
  },
  "applications": {
@@ -1019,13 +1019,13 @@
   },
   {
    "id": "chart-details",
-   "check": "Line charts: markers, dashes, value labels, end labels, first/last time labels and the value-axis steps.",
+   "check": "Native charts: markers, dashes, value labels, end labels, first/last time labels and the value-axis steps.",
    "quickLook": "Quick Look ignores markers, dashes, data labels, label skipping and the axis step."
   },
   {
    "id": "gaps",
-   "check": "Missing values are gaps and later points stay at their own times.",
-   "quickLook": "Quick Look draws the next value at the missing position (points shift left)."
+   "check": "Charts with a missing value are images (L3) in this release. Before compiling them natively: in PowerPoint and Keynote a missing value must stay a gap on its own category, never zero, and later values must keep their categories.",
+   "quickLook": "Quick Look moves later values onto earlier categories when a point is omitted, and draws #N/A as zero."
   },
   {
    "id": "text-fit",

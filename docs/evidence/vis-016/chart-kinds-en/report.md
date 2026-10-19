@@ -1,6 +1,6 @@
 # Export report · chart-kinds-en
 
-Chart kinds that keep their facts — S4 synthetic sample (en) · 12 slides · 6 native charts · 5 pictures · PDF 24 pages
+Chart kinds that keep their facts — S4 synthetic sample (en) · 12 slides · 4 native charts · 7 pictures · PDF 24 pages
 
 | Result | Status |
 |---|---|
@@ -12,9 +12,9 @@ Chart kinds that keep their facts — S4 synthetic sample (en) · 12 slides · 6
 
 | Level | Web | PDF | PowerPoint |
 |---|---|---|---|
-| L1 | 36 | 24 | 31 |
+| L1 | 36 | 24 | 29 |
 | L2 | 0 | 12 | 0 |
-| L3 | 0 | 0 | 5 |
+| L3 | 0 | 0 | 7 |
 
 ## Receipts
 
@@ -36,10 +36,8 @@ Chart kinds that keep their facts — S4 synthetic sample (en) · 12 slides · 6
   - area-truncated “View all data” disclosure: Its content is in the slide notes.
 - `PPTX_INTERACTION_STATIC` × 1: Slides are not interactive in this compiler. The selected result, with the filter, sort and focus written out in the static-state note.
 - `PPTX_MOTION_NOT_COMPILED` × 1: No animation, transition or timing is compiled. The slide shows the static state.
-- `PPTX_CHART_BREAK_MARK` × 2: A native value axis starts at the truncated minimum but has no break symbol. The truncation note stays as visible text under the chart.
-- `PPTX_CHART_MISSING_LABEL` × 2: The gap is kept, but the in-plot “missing” label is not drawn. The missing reason is in the visible chart notes and the embedded data leaves the cell empty.
-- `PPTX_CHART_QUALIFIER_MARK` × 1: Native data labels do not carry the superscript qualifier number. The qualifier is listed in the visible chart notes.
-- `PPTX_CHART_IMAGE` × 5: PowerPoint has no dot-and-interval chart; error bars are not compiled. A high-resolution image of this chart only, with its question, caption, takeaway and source as native text; alt text and the slide notes carry every value.
+- `PPTX_CHART_IMAGE` × 7: A missing value is drawn on the wrong category, or as zero, by at least one importer (Quick Look); the chart stays an image until PowerPoint and Keynote are checked. A high-resolution image of this chart only, with its question, caption, takeaway and source as native text; alt text and the slide notes carry every value.
+- `PPTX_CHART_BREAK_MARK` × 1: A native value axis starts at the truncated minimum but has no break symbol. The truncation note stays as visible text under the chart.
 
 ## Fonts referenced, not embedded
 

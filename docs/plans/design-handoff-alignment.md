@@ -501,7 +501,7 @@ State: **partial** (roadmap) / LocalVerified for the package and text checks. Po
 
 | Kickoff step | Result |
 |---|---|
-| 1. Levels per component and format | `COMPONENT_LEVELS` and `outputLevel()` in [capabilities.mjs](../../src/targets/capabilities.mjs). Web is L1 throughout. In PDF, text, tables and images are L1; charts and diagrams are L2. In PowerPoint, everything is L1 except charts with no native form, interval bounds or a log axis, which are L3. Every export report lists them per block. |
+| 1. Levels per component and format | `COMPONENT_LEVELS` and `outputLevel()` in [capabilities.mjs](../../src/targets/capabilities.mjs). Web is L1 throughout. In PDF, text, tables and images are L1; charts and diagrams are L2. In PowerPoint, everything is L1 except charts with no native form, interval bounds, a log axis or a missing value, which are L3. Every export report lists them per block. |
 | 2. Export order in code | [export-order.mjs](../../src/targets/export-order.mjs): ready → static-state → freeze → stop-motion → reveal → render → check. `EXPORT_ORDER` refuses a stage out of order. Stage 1 refuses a stale or unmeasured layout, fonts not loaded, a last-resort glyph (`FONT_GLYPH_MISSING`) or an image not decoded. |
 | 3. Static delivery rules | [static-delivery.mjs](../../src/targets/static-delivery.mjs). Staged reveals export the final state or the static state. Hover facts are visible annotations. Filters export the selected result with a written statement. Legends keep series identity. Comparisons keep both states. Scroll stories, media scenes and shared-element transitions do not exist in the v3 schema; each is recorded as absent. |
 | 4. VIS-016 compiler | [compile.mjs](../../src/targets/pptx/compile.mjs), [fallbacks.mjs](../../src/targets/pptx/fallbacks.mjs), [audit.mjs](../../src/targets/pptx/audit.mjs) and [compatibility-report.mjs](../../src/targets/pptx/compatibility-report.mjs), plus [the PDF print job](../../src/targets/pdf/print.mjs). Charts that stay editable embed their data in a workbook. An L3 chart is an image of that chart only, with its summary in alt text and notes. |
@@ -512,7 +512,7 @@ State: **partial** (roadmap) / LocalVerified for the package and text checks. Po
 - **Geometry comes from a browser measurement of the static web scene.** Each scene is scaled whole into 16:9, never re-laid out.
 - **Balanced headings get the browser's line breaks** as written breaks, with a receipt.
 - **Translucent paint is blended.** Horizontal bars store rows bottom-to-top. Both choices survive renderers that ignore transparency or a reversed axis.
-- **Log-axis charts are L3** until an application run confirms native log axes.
+- **Log-axis charts and charts with a missing value are L3** until an application run confirms native log axes and gaps. Quick Look drew both wrongly.
 - **The PDF prints with screen styles.** Closed disclosures keep only their summary; their content goes to the notes pages.
 - **The embedded web player and renderer are unchanged**, so no version bump or baseline re-recording.
 

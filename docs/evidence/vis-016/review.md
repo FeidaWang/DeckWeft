@@ -36,21 +36,21 @@ Every export made 0 external requests.
 
 ## Input corpus
 
-The frozen VIS-014 gallery and the three 8-page stories, in English and Simplified Chinese (`tests/release-gate.mjs`). The S4 chart-kinds sample (`tests/chart-kinds.mjs`) is added only because it is the one deck that exercises the L3 fallbacks: dot-interval, small multiples, intervals and a log axis.
+The frozen VIS-014 gallery and the three 8-page stories, in English and Simplified Chinese (`tests/release-gate.mjs`). The S4 chart-kinds sample (`tests/chart-kinds.mjs`) is added only because it is the one deck that exercises the L3 fallbacks: dot-interval, small multiples, intervals, a log axis and missing values.
 
 ## Results per deck
 
 | Deck | Slides | Native charts | Pictures | PowerPoint levels L1/L2/L3 | PDF L1/L2/L3 | Editability | Scene check | PDF search | Accessibility | Fidelity (Quick Look) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| [gallery-en](gallery-en/report.md) | 12 | 4 | 3 | 54/0/0 | 47/7/0 | pass | pass | pass | partial | partial |
-| [gallery-zh-CN](gallery-zh-CN/report.md) | 12 | 4 | 3 | 54/0/0 | 47/7/0 | pass | pass | partial | partial | partial |
+| [gallery-en](gallery-en/report.md) | 12 | 3 | 3 + 1 L3 chart | 53/0/1 | 47/7/0 | pass | pass | pass | partial | partial |
+| [gallery-zh-CN](gallery-zh-CN/report.md) | 12 | 3 | 3 + 1 L3 chart | 53/0/1 | 47/7/0 | pass | pass | partial | partial | partial |
 | [story-cream-collage-en](story-cream-collage-en/report.md) | 8 | 1 | 2 | 36/0/0 | 34/2/0 | pass | pass | pass | partial | partial |
 | [story-cream-collage-zh-CN](story-cream-collage-zh-CN/report.md) | 8 | 1 | 2 | 36/0/0 | 34/2/0 | pass | pass | partial | partial | partial |
 | [story-dark-data-en](story-dark-data-en/report.md) | 8 | 1 | 2 | 36/0/0 | 34/2/0 | pass | pass | pass | partial | partial |
 | [story-dark-data-zh-CN](story-dark-data-zh-CN/report.md) | 8 | 1 | 2 | 36/0/0 | 34/2/0 | pass | pass | partial | partial | partial |
 | [story-electric-violet-en](story-electric-violet-en/report.md) | 8 | 1 | 2 | 36/0/0 | 34/2/0 | pass | pass | pass | partial | partial |
 | [story-electric-violet-zh-CN](story-electric-violet-zh-CN/report.md) | 8 | 1 | 2 | 36/0/0 | 34/2/0 | pass | pass | partial | partial | partial |
-| [chart-kinds-en](chart-kinds-en/report.md) (supplementary) | 12 | 6 | 5 (L3 charts) | 31/0/5 | 24/12/0 | pass | pass | pass | partial | partial |
+| [chart-kinds-en](chart-kinds-en/report.md) (supplementary) | 12 | 4 | 7 L3 charts | 29/0/7 | 24/12/0 | pass | pass | pass | partial | partial |
 
 The four results:
 
@@ -72,13 +72,11 @@ The four results:
 | `PPTX_DISCLOSURE` | 61 | "View all data", "Relationships and node notes", transcripts, a hidden comparison image | Content in the slide notes |
 | `PPTX_INTERACTION_STATIC` | 25 | chart-select, steps, image-compare, image-hotspots | Static state; the delivery statement per interaction |
 | `PPTX_MOTION_NOT_COMPILED` | 23 | Scenes with cues or motion | Static state, no timing |
-| `PPTX_CHART_IMAGE` | 5 | dot-interval ×2, small multiples, interval line, log-axis line | L3 image of the chart; summary in alt text and notes |
-| `PPTX_CHART_MISSING_LABEL` | 4 | In-plot "missing" labels | Gap kept; reason in the visible notes |
-| `PPTX_CHART_BREAK_MARK` | 2 | Truncated-axis break symbol | Truncation note stays visible |
+| `PPTX_CHART_IMAGE` | 9 | Charts with a missing value: the gallery trend in both languages, plus a ranked bar and a grouped bar. Also dot-interval ×2, small multiples, an interval line and a log-axis line | L3 image of the chart; summary in alt text and notes |
+| `PPTX_CHART_BREAK_MARK` | 1 | Truncated-axis break symbol | Truncation note stays visible |
 | `PPTX_CHART_LEGEND` | 2 | Series named inside the web plot | Native chart legend |
 | `PPTX_TABLE_AS_CARDS` | 2 | A comparison table drawn as cards (Electric Violet) | Native text cards with column labels; not a PowerPoint table |
 | `PPTX_CHART_EVENT_MARK` | 1 | Event marker | Listed in the visible notes |
-| `PPTX_CHART_QUALIFIER_MARK` | 1 | Qualifier superscript | Listed in the visible notes |
 
 ## Found while running the corpus, fixed in S7
 
@@ -95,6 +93,23 @@ Each item was found by running the corpus and viewing the renders. Each fix is i
 | 7 | PDF pages lost their lower content | Chromium expands closed `<details>` when printing, and print media drops the scenes' minimum height | Closed disclosures keep only their summary (content goes to the notes pages); printing uses screen styles. Every printed scene's size is checked against the measurement. |
 | 8 | A card-layout table overflowed the slide | It was compiled as a grid | Card tables are text and boxes (receipt) |
 | 9 | Log-axis chart drawn on a linear axis by Quick Look | It ignores `logBase` | Log-axis charts are L3 until PowerPoint and Keynote are checked (receipt) |
+| 10 | After a missing value, Quick Look drew every later bar or point on the previous category | It ignores cache point indexes. Writing the gap as `#N/A` instead made it draw a zero | Charts with a missing value are L3 until PowerPoint and Keynote are checked (receipt). The gallery trend is now an image |
+| 11 | A truncated-axis bar chart compiled in the text colour | The measure read the axis-break stroke as the bar | Marks take their paint from the filled data graphic |
+
+## Independent code review, fixed in S7
+
+A separate review of the S7 modules found the following; each fix has a test in `tests/export-targets.test.mjs`:
+
+- A gradient stroke could write an invalid colour. `solid()` now accepts only six hex digits, and a gradient needs two stops.
+- Rows under a row span lacked cells. Every table row now covers the grid, with `rowSpan`/`vMerge`/`hMerge`.
+- An unsupported region path was dropped without a receipt (`PPTX_SHAPE_PATH`).
+- The ZIP reader trusted declared sizes. It now bounds inflation and checks CRC, local headers and duplicate names.
+- Links and entities were looked up on plain objects (`constructor`, `__proto__`).
+- Nested disclosures were matched wrongly in print; a balanced scan replaces the regex.
+- List numbering is now the list's own style, with a valid start.
+- The workbook check compared values as a set. It now compares each cached point with the cell its formula names.
+- Measured boxes and colours are validated before they reach XML or CSS.
+- An export whose own check fails is refused (`EXPORT_CHECK_FAILED`); the evidence run keeps such files on purpose.
 
 ## Viewed
 
@@ -102,7 +117,7 @@ Each item was found by running the corpus and viewing the renders. Each fix is i
 - Single Quick Look slide renders for the cover, trend, ranked, heatmap and diagram pages.
 - PDF page renders for the pages that lost content before fix 7.
 
-**Weakest output.** Native line and area charts in Quick Look: the gallery trend (page 9), the pipeline line (page 12) and the chart-kinds area chart (page 12). Quick Look drops markers, dashes, tick and value labels and shifts points at a gap; PowerPoint must be checked. Second: tall scenes fitted into 16:9 make the smallest text 4.6–6.4 pt (citations and page chrome).
+**Weakest output.** Native line and area charts in Quick Look: the gallery pipeline line (page 12) and the chart-kinds area chart (page 12). Quick Look drops markers, dashes, tick and value labels and shifts points at a gap; PowerPoint must be checked. Second: tall scenes fitted into 16:9 make the smallest text 4.6–6.4 pt (citations and page chrome).
 
 ## Open — recorded, not fixed
 
@@ -112,7 +127,7 @@ Each item was found by running the corpus and viewing the renders. Each fix is i
 | Chinese PDF search | Radical code points in Chromium's Unicode maps (above). A post-print rewrite of the ToUnicode maps, or another PDF writer, is needed | Follow-up |
 | PDF figure wrappers without `/Alt` | Chromium's tagging of HTML `<figure>`. Changing the web markup changes embedded bytes (player bump and re-recorded baseline) | Follow-up |
 | Small text on tall scenes | One uniform scale fits a scene of up to 1189 px height into 16:9. A 16:9 measurement pass, or splitting tall scenes into stepped pages, is not built | Follow-up |
-| Intervals and log axes in PowerPoint | Delivered at L3. Native error bars and log axes need application checks first | After the user's check |
+| Intervals, log axes and missing values in PowerPoint | Delivered at L3. Native error bars, log axes and gaps need application checks first | After the user's check |
 | Studio | The Visual Studio export menu still offers HTML and JSON; PowerPoint and PDF run through `npm run export:targets` or the API | S9 / Studio |
 | Fonts | Referenced by name, never embedded. A machine without them substitutes another face | By design |
 

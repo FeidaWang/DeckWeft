@@ -10,12 +10,12 @@ State **partial**. [Evidence](../evidence/vis-016/review.md) · [Manual](compati
 
 Results:
 
-- `npm run verify` passed **420 tests** (419 pass, 1 environment-gated skip), plus types, source and link checks over 1,334 files, packaging and demos.
-  - The 10 new tests are in `tests/export-targets.test.mjs`. They cover levels, the export order, the ready stage's refusals, static delivery, the PowerPoint compile, L3 fallbacks, tampering caught by reading the bytes back, the PDF print job and checks, the report, and the compiler helpers.
+- `npm run verify` passed **421 tests** (420 pass, 1 environment-gated skip), plus types, source and link checks over 1,334 files, packaging and demos.
+  - The 11 new tests are in `tests/export-targets.test.mjs`. They cover levels, the export order, the ready stage's refusals, static delivery, the PowerPoint compile, L3 fallbacks, tampering caught by reading the bytes back, the PDF print job and checks, the report, the compiler helpers, and the fixes from an independent code review.
   - Three earlier tests now assert the declared levels instead of the S2 refusal.
   - The render baseline is unchanged.
 - `npm run export:targets` ran the nine decks (the frozen VIS-014 corpus plus the S4 chart-kinds sample). It used isolated Chrome for Testing 151 with page scripts disabled, made 0 external requests, and finished in about 50 s.
-- PowerPoint editability and the page check against the derived scene: pass on 9 of 9.
+- PowerPoint editability and the page check against the derived scene: pass on 9 of 9. Charts with a missing value, a log axis or intervals are L3 images: 9 charts in all.
 - The standard-library check `tests/inspect_v3_pptx.py` passed on 9 of 9; every embedded workbook equals its chart cache.
 - PDF searchability (pypdf 6.16.2): pass on 5 English decks, partial on 4 Chinese decks. Chromium stores 页 门 长 见 母 as CJK radical code points. Every printed scene matched its measured size.
 - Accessibility: the PowerPoint package checks pass. The PDF is partial (Chromium figure wrappers without `/Alt`).

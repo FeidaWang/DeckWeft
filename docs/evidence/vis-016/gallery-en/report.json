@@ -324,8 +324,8 @@
    "component": "line",
    "web": "L1",
    "pdf": "L2",
-   "pptx": "L1",
-   "pptxRepresentation": "native line chart with embedded data"
+   "pptx": "L3",
+   "pptxRepresentation": "high-resolution image of this chart plus a semantic summary (alt text and notes)"
   },
   {
    "blockId": "trend-rail",
@@ -460,9 +460,9 @@
    "L3": 0
   },
   "pptx": {
-   "L1": 54,
+   "L1": 53,
    "L2": 0,
-   "L3": 0
+   "L3": 1
   }
  },
  "exportOrder": {
@@ -502,10 +502,10 @@
    },
    {
     "stage": "render",
-    "bytes": 4977782,
+    "bytes": 5028243,
     "slides": 12,
-    "charts": 4,
-    "media": 3,
+    "charts": 3,
+    "media": 4,
     "receipts": 27
    },
    {
@@ -745,15 +745,15 @@
    ]
   },
   {
-   "code": "PPTX_CHART_MISSING_LABEL",
+   "code": "PPTX_CHART_IMAGE",
    "count": 1,
-   "reason": "The gap is kept, but the in-plot “missing” label is not drawn.",
-   "delivered": "The missing reason is in the visible chart notes and the embedded data leaves the cell empty.",
+   "reason": "A missing value is drawn on the wrong category, or as zero, by at least one importer (Quick Look); the chart stays an image until PowerPoint and Keynote are checked.",
+   "delivered": "A high-resolution image of this chart only, with its question, caption, takeaway and source as native text; alt text and the slide notes carry every value.",
    "elements": [
     {
      "sceneId": "dd-trend",
      "blockId": "trend-chart",
-     "element": "missing value · 390 px · Oct 19, 11:00 AM"
+     "element": "whole chart"
     }
    ]
   }
@@ -765,17 +765,17 @@
     "status": "pass",
     "failures": [],
     "counts": {
-     "text": 120,
+     "text": 119,
      "title": 12,
      "table": 1,
-     "chart": 4,
+     "chart": 3,
      "connector": 36,
      "shape": 27,
-     "picture": 3,
-     "l3Picture": 0,
+     "picture": 4,
+     "l3Picture": 1,
      "decorative": 63,
      "receipts": 27,
-     "charts": 4
+     "charts": 3
     },
     "notes": [
      "Smallest text is 4.61 pt after fitting the scene to the slide."
@@ -785,7 +785,7 @@
     "status": "pass",
     "failures": [],
     "missingText": [],
-    "chartsChecked": 4
+    "chartsChecked": 3
    },
    "sceneCheck": {
     "status": "pass",
@@ -1031,8 +1031,8 @@
     {
      "sceneId": "dd-trend",
      "pptx": {
-      "meanAbsDiff": 4.8,
-      "changedShare": 0.027
+      "meanAbsDiff": 3.2,
+      "changedShare": 0.016
      },
      "pdf": {
       "meanAbsDiff": 2.3,
@@ -1282,14 +1282,14 @@
   "note": "Fonts are referenced by name, never embedded or redistributed. A machine without them substitutes another face."
  },
  "files": {
-  "pptxBytes": 4977782,
+  "pptxBytes": 5028243,
   "slides": 12,
-  "charts": 4,
-  "pictures": 3,
+  "charts": 3,
+  "pictures": 4,
   "pdfPages": 25,
   "sha256": {
-   "pptx": "e3f83c6f0021c3498f76226e1e7fe99f93185a134640aeed6b98b95ec0bd72a8",
-   "pdf": "d351cd02f770561214e58267c144bfea0177072b62f106e39638688437dc9c4d"
+   "pptx": "85dd33b7520c2a31ed43b8ba305f3c37f6d81f430a4da9e2c17b73e2eb4233ed",
+   "pdf": "5f60c2acef39316183bd4f93f1fac3227154f6c9a7f4bdc1cd3a52ba3d15f8dd"
   }
  },
  "applications": {
@@ -1327,13 +1327,13 @@
   },
   {
    "id": "chart-details",
-   "check": "Line charts: markers, dashes, value labels, end labels, first/last time labels and the value-axis steps.",
+   "check": "Native charts: markers, dashes, value labels, end labels, first/last time labels and the value-axis steps.",
    "quickLook": "Quick Look ignores markers, dashes, data labels, label skipping and the axis step."
   },
   {
    "id": "gaps",
-   "check": "Missing values are gaps and later points stay at their own times.",
-   "quickLook": "Quick Look draws the next value at the missing position (points shift left)."
+   "check": "Charts with a missing value are images (L3) in this release. Before compiling them natively: in PowerPoint and Keynote a missing value must stay a gap on its own category, never zero, and later values must keep their categories.",
+   "quickLook": "Quick Look moves later values onto earlier categories when a point is omitted, and draws #N/A as zero."
   },
   {
    "id": "text-fit",

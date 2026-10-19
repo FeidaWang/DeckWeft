@@ -3,7 +3,7 @@
  "status": "pass",
  "failures": [],
  "missingText": [],
- "chartsChecked": 4,
+ "chartsChecked": 3,
  "slides": [
   {
    "slide": "ppt/slides/slide1.xml",
@@ -87,9 +87,9 @@
   },
   {
    "slide": "ppt/slides/slide9.xml",
-   "textShapes": 15,
-   "pictures": 0,
-   "charts": 1,
+   "textShapes": 14,
+   "pictures": 1,
+   "charts": 0,
    "tables": 0,
    "connectors": 2,
    "timing": false,

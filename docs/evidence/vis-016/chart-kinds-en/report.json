@@ -76,8 +76,8 @@
    "component": "ranked-bar",
    "web": "L1",
    "pdf": "L2",
-   "pptx": "L1",
-   "pptxRepresentation": "native bar chart with embedded data, drawn in the declared sort order"
+   "pptx": "L3",
+   "pptxRepresentation": "high-resolution image of this chart plus a semantic summary (alt text and notes)"
   },
   {
    "blockId": "ranked-truncated-source",
@@ -100,8 +100,8 @@
    "component": "grouped-bar",
    "web": "L1",
    "pdf": "L2",
-   "pptx": "L1",
-   "pptxRepresentation": "native clustered bar chart with embedded data"
+   "pptx": "L3",
+   "pptxRepresentation": "high-resolution image of this chart plus a semantic summary (alt text and notes)"
   },
   {
    "blockId": "grouped-source",
@@ -316,9 +316,9 @@
    "L3": 0
   },
   "pptx": {
-   "L1": 31,
+   "L1": 29,
    "L2": 0,
-   "L3": 5
+   "L3": 7
   }
  },
  "exportOrder": {
@@ -365,11 +365,11 @@
    },
    {
     "stage": "render",
-    "bytes": 295540,
+    "bytes": 369122,
     "slides": 12,
-    "charts": 6,
-    "media": 5,
-    "receipts": 36
+    "charts": 4,
+    "media": 7,
+    "receipts": 34
    },
    {
     "stage": "check",
@@ -616,60 +616,21 @@
    ]
   },
   {
-   "code": "PPTX_CHART_BREAK_MARK",
-   "count": 2,
-   "reason": "A native value axis starts at the truncated minimum but has no break symbol.",
-   "delivered": "The truncation note stays as visible text under the chart.",
-   "elements": [
-    {
-     "sceneId": "ranked-truncated",
-     "blockId": "ranked-truncated-chart",
-     "element": "axis break mark"
-    },
-    {
-     "sceneId": "area-truncated",
-     "blockId": "area-truncated-chart",
-     "element": "axis break mark"
-    }
-   ]
-  },
-  {
-   "code": "PPTX_CHART_MISSING_LABEL",
-   "count": 2,
-   "reason": "The gap is kept, but the in-plot “missing” label is not drawn.",
-   "delivered": "The missing reason is in the visible chart notes and the embedded data leaves the cell empty.",
-   "elements": [
-    {
-     "sceneId": "ranked-truncated",
-     "blockId": "ranked-truncated-chart",
-     "element": "missing value · Accessibility audit score · Captions"
-    },
-    {
-     "sceneId": "grouped",
-     "blockId": "grouped-chart",
-     "element": "missing value · 2026 · Research readout"
-    }
-   ]
-  },
-  {
-   "code": "PPTX_CHART_QUALIFIER_MARK",
-   "count": 1,
-   "reason": "Native data labels do not carry the superscript qualifier number.",
-   "delivered": "The qualifier is listed in the visible chart notes.",
-   "elements": [
-    {
-     "sceneId": "grouped",
-     "blockId": "grouped-chart",
-     "element": "qualifier mark · 2026 · Board memo"
-    }
-   ]
-  },
-  {
    "code": "PPTX_CHART_IMAGE",
-   "count": 5,
-   "reason": "PowerPoint has no dot-and-interval chart; error bars are not compiled.",
+   "count": 7,
+   "reason": "A missing value is drawn on the wrong category, or as zero, by at least one importer (Quick Look); the chart stays an image until PowerPoint and Keynote are checked.",
    "delivered": "A high-resolution image of this chart only, with its question, caption, takeaway and source as native text; alt text and the slide notes carry every value.",
    "elements": [
+    {
+     "sceneId": "ranked-truncated",
+     "blockId": "ranked-truncated-chart",
+     "element": "whole chart"
+    },
+    {
+     "sceneId": "grouped",
+     "blockId": "grouped-chart",
+     "element": "whole chart"
+    },
     {
      "sceneId": "dot-interval",
      "blockId": "dot-interval-chart",
@@ -696,6 +657,19 @@
      "element": "whole chart"
     }
    ]
+  },
+  {
+   "code": "PPTX_CHART_BREAK_MARK",
+   "count": 1,
+   "reason": "A native value axis starts at the truncated minimum but has no break symbol.",
+   "delivered": "The truncation note stays as visible text under the chart.",
+   "elements": [
+    {
+     "sceneId": "area-truncated",
+     "blockId": "area-truncated-chart",
+     "element": "axis break mark"
+    }
+   ]
   }
  ],
  "results": {
@@ -708,14 +682,14 @@
      "text": 114,
      "title": 12,
      "table": 1,
-     "chart": 6,
+     "chart": 4,
      "connector": 24,
      "shape": 32,
-     "picture": 5,
-     "l3Picture": 5,
+     "picture": 7,
+     "l3Picture": 7,
      "decorative": 48,
-     "receipts": 36,
-     "charts": 6
+     "receipts": 34,
+     "charts": 4
     },
     "notes": [
      "Smallest text is 6.29 pt after fitting the scene to the slide."
@@ -725,7 +699,7 @@
     "status": "pass",
     "failures": [],
     "missingText": [],
-    "chartsChecked": 6
+    "chartsChecked": 4
    },
    "sceneCheck": {
     "status": "pass",
@@ -905,8 +879,8 @@
     {
      "sceneId": "ranked-truncated",
      "pptx": {
-      "meanAbsDiff": 10,
-      "changedShare": 0.056
+      "meanAbsDiff": 3.6,
+      "changedShare": 0.018
      },
      "pdf": {
       "meanAbsDiff": 2.7,
@@ -916,8 +890,8 @@
     {
      "sceneId": "grouped",
      "pptx": {
-      "meanAbsDiff": 15.5,
-      "changedShare": 0.105
+      "meanAbsDiff": 5.1,
+      "changedShare": 0.039
      },
      "pdf": {
       "meanAbsDiff": 4.4,
@@ -1208,14 +1182,14 @@
   "note": "Fonts are referenced by name, never embedded or redistributed. A machine without them substitutes another face."
  },
  "files": {
-  "pptxBytes": 295540,
+  "pptxBytes": 369122,
   "slides": 12,
-  "charts": 6,
-  "pictures": 5,
+  "charts": 4,
+  "pictures": 7,
   "pdfPages": 24,
   "sha256": {
-   "pptx": "518b293da44e054d3420d0be92e34cabad046db564fb2227fe7ccb2547432af7",
-   "pdf": "5931818b7f77cc16ad464e5b55805b7d0b38ac4b75e1e982da7411650b542d8c"
+   "pptx": "7a3f5f54694eb1e50920ac97e7676c0b56879add5036f49286183da05ef39429",
+   "pdf": "91653b7499ea3250b5ecbeb5ac2dcba67683b74137beba15c661a0a6bfea0178"
   }
  },
  "applications": {
@@ -1253,13 +1227,13 @@
   },
   {
    "id": "chart-details",
-   "check": "Line charts: markers, dashes, value labels, end labels, first/last time labels and the value-axis steps.",
+   "check": "Native charts: markers, dashes, value labels, end labels, first/last time labels and the value-axis steps.",
    "quickLook": "Quick Look ignores markers, dashes, data labels, label skipping and the axis step."
   },
   {
    "id": "gaps",
-   "check": "Missing values are gaps and later points stay at their own times.",
-   "quickLook": "Quick Look draws the next value at the missing position (points shift left)."
+   "check": "Charts with a missing value are images (L3) in this release. Before compiling them natively: in PowerPoint and Keynote a missing value must stay a gap on its own category, never zero, and later values must keep their categories.",
+   "quickLook": "Quick Look moves later values onto earlier categories when a point is omitted, and draws #N/A as zero."
   },
   {
    "id": "text-fit",

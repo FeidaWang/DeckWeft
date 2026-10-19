@@ -1,6 +1,6 @@
 # Export report · gallery-zh-CN
 
-VIS-014 发布画廊——十二张冻结页面 (zh-CN) · 12 slides · 4 native charts · 3 pictures · PDF 25 pages
+VIS-014 发布画廊——十二张冻结页面 (zh-CN) · 12 slides · 3 native charts · 4 pictures · PDF 25 pages
 
 | Result | Status |
 |---|---|
@@ -12,9 +12,9 @@ VIS-014 发布画廊——十二张冻结页面 (zh-CN) · 12 slides · 4 native
 
 | Level | Web | PDF | PowerPoint |
 |---|---|---|---|
-| L1 | 54 | 47 | 54 |
+| L1 | 54 | 47 | 53 |
 | L2 | 0 | 7 | 0 |
-| L3 | 0 | 0 | 0 |
+| L3 | 0 | 0 | 1 |
 
 ## Receipts
 
@@ -35,7 +35,7 @@ VIS-014 发布画廊——十二张冻结页面 (zh-CN) · 12 slides · 4 native
   - dd-explain chart-select interaction pipeline-data: The complete authored data (no static state is declared).
 - `PPTX_MOTION_NOT_COMPILED` × 2: No animation, transition or timing is compiled. The slide shows the static state.
 - `PPTX_CHART_LEGEND` × 1: Native bars carry no per-bar series name. The native chart legend names every series.
-- `PPTX_CHART_MISSING_LABEL` × 1: The gap is kept, but the in-plot “missing” label is not drawn. The missing reason is in the visible chart notes and the embedded data leaves the cell empty.
+- `PPTX_CHART_IMAGE` × 1: A missing value is drawn on the wrong category, or as zero, by at least one importer (Quick Look); the chart stays an image until PowerPoint and Keynote are checked. A high-resolution image of this chart only, with its question, caption, takeaway and source as native text; alt text and the slide notes carry every value.
 
 ## Fonts referenced, not embedded
 

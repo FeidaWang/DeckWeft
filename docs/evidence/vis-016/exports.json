@@ -38,9 +38,9 @@
    "visualFidelity": "partial",
    "receipts": 27,
    "levels": {
-    "L1": 54,
+    "L1": 53,
     "L2": 0,
-    "L3": 0
+    "L3": 1
    },
    "external": []
   },
@@ -98,9 +98,9 @@
    "visualFidelity": "partial",
    "receipts": 26,
    "levels": {
-    "L1": 54,
+    "L1": 53,
     "L2": 0,
-    "L3": 0
+    "L3": 1
    },
    "external": []
   },
@@ -156,11 +156,11 @@
    "pdfSearchability": "pass",
    "accessibility": "partial",
    "visualFidelity": "partial",
-   "receipts": 36,
+   "receipts": 34,
    "levels": {
-    "L1": 31,
+    "L1": 29,
     "L2": 0,
-    "L3": 5
+    "L3": 7
    },
    "external": []
   }
