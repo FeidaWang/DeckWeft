@@ -1,4 +1,5 @@
 import {DeckError} from '../core/errors.mjs';
+import {visibleBlockIds} from '../design/plan.mjs';
 /**
  * Export geometry (S7). Native targets place semantic content where the derived scene was actually drawn: the static HTML
  * export, opened with page scripts disabled at 1440 px after fonts and images are ready. Text comes from the rendered
@@ -145,7 +146,7 @@ export function measureExportLayout(){
   });
   return {sceneId:scene.id,bounds:box(scene),background:color(s.backgroundColor),backgroundImage:s.backgroundImage==='none'?null:s.backgroundImage.slice(0,120),decor,
    chrome:{texts:[...(folio?texts(folio,{stop:scene}):[]),...own.flatMap(n=>texts(n,{stop:scene}))],boxes:[...(Object.values(sceneBorders).some(Boolean)?[{tag:'section',box:box(scene),fill:null,borders:sceneBorders,radius:0,backgroundImage:null}]:[]),...(folio?boxes(folio,()=>false,scene):[]),...own.flatMap(n=>boxes(n,()=>false,scene))]},regions,
-   disclosures:[...scene.querySelectorAll(':scope>details:not([open])>summary')].filter(visible).map(n=>n.textContent.trim())};
+   disclosures:[...scene.querySelectorAll(':scope>details:not([open]):not([data-disclosure])>summary')].filter(visible).map(n=>n.textContent.trim())};
  });
  const images=[...document.images].map(i=>({ready:i.complete&&i.naturalWidth>0,measureId:i.dataset.dwMeasure||null}));
  return {format:'deckweft-export-layout',version:1,renderHash:document.body.dataset.renderHash,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},
@@ -162,7 +163,7 @@ export function assertExportLayout(layout,{renderHash,plan}){
   if(!layout.pseudo?.stable)add('EXPORT_LAYOUT_REFLOW','Copying pseudo-element content changed a scene height; the measurement does not match the page.');
   if(layout.pseudo?.unresolved)add('EXPORT_LAYOUT_PSEUDO',`${layout.pseudo.unresolved} pseudo-element content value(s) could not be resolved to text (counters).`);
   const ids=plan.scenes.map(s=>s.id);if(JSON.stringify(layout.scenes.map(s=>s.sceneId))!==JSON.stringify(ids))add('EXPORT_LAYOUT_SCENES','The measured scenes do not match the plan.');
-  for(const scene of plan.scenes){const m=layout.scenes.find(s=>s.sceneId===scene.id);if(!m)continue;for(const id of scene.blockIds)if(!m.regions.some(r=>r.blockId===id))add('EXPORT_LAYOUT_REGION',`Block ${id} was not measured in scene ${scene.id}.`,{sceneId:scene.id,blockId:id});}
+  for(const scene of plan.scenes){const m=layout.scenes.find(s=>s.sceneId===scene.id);if(!m)continue;for(const id of visibleBlockIds(scene))if(!m.regions.some(r=>r.blockId===id))add('EXPORT_LAYOUT_REGION',`Block ${id} was not measured in scene ${scene.id}.`,{sceneId:scene.id,blockId:id});}
   // Measured values reach XML and CSS: boxes must be finite numbers and colours six hex digits.
   const bad=[];(function walk(v,path){if(bad.length>4||v===null||typeof v!=='object')return;
    if(['box','bounds','content'].some(k=>path.endsWith('.'+k))&&!['x','y','width','height'].every(k=>Number.isFinite(v[k])))bad.push(path);

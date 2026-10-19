@@ -7,6 +7,7 @@ import {executeVisualTool,runVisualTask} from '../agent/tools.mjs';
 import {draftWithHost,patchWithHost,reviewWithHost} from '../hosts/tasks.mjs';
 import {contentHash} from '../scene/web/compile.mjs';
 import {preferences,applyChoices} from './preferences.mjs';
+import {applyDirection,entryAnswers} from './directions.mjs';
 import {localCapture} from './capture.mjs';
 import {hostImages} from '../hosts/run-receipt.mjs';
 import {DeckError} from '../core/errors.mjs';
@@ -20,11 +21,13 @@ export class WorkbenchService {
  summary(r){const t=r.task;return {id:r.id,running:r.running,sequence:r.sequence,status:r.status,error:r.error||null,preferences:r.preferences,request:r.request,taskStatus:t?.status,project:t?.project||null,diagnostics:t?.diagnostics||[],events:t?.events||[],repairSpent:t?.repairSpent,receipt:t?.receipt?{id:t.receipt.id,status:t.receipt.status,checks:t.receipt.checks,review:t.receipt.review,captures:t.receipt.captures}:null,hasLastValid:!!t?.lastValid,preview:!!r.html,canExport:r.status==='exported'&&t?.receipt?.status==='passed'&&t.status==='exported'&&!r.running,captureAvailable:!!this.capture};}
  async get(id){return this.summary(await this.read(id));}
  async create(data){
-  const profile=preferences(data.preferences),request=text(data.request);if(data.sourceText!==undefined)text(data.sourceText);if(data.host&&!['local','codex'].includes(data.host))fail('WORKBENCH_HOST','Choose local or explicitly opt-in Codex; Claude is deferred.',422);
+  const profile=preferences(data.preferences),request=text(data.request);
+  // S9a: a direction chosen from the three previews is re-applied here deterministically, so the deck is what the preview showed.
+  const direction=data.direction===undefined?null:{answers:entryAnswers(data.direction.answers),index:[0,1,2].includes(data.direction.index)?data.direction.index:fail('WORKBENCH_DIRECTION','Choose direction 1, 2 or 3.',422)};if(data.sourceText!==undefined)text(data.sourceText);if(data.host&&!['local','codex'].includes(data.host))fail('WORKBENCH_HOST','Choose local or explicitly opt-in Codex; Claude is deferred.',422);
   if(data.host==='codex'&&data.live!==true)fail('HOST_LIVE_OPT_IN_REQUIRED','Explicitly allow this Codex operation.');
   const id=randomUUID(),dir=this.directory(id);await rejectSymlinks(dir);await mkdir(dir,{recursive:true,mode:0o700});
   let project;if(data.projectId){project=await this.store.get(data.projectId);if(project.revision.number!==data.expectedRevision)fail('REVISION_CONFLICT','Save and reload the selected source.');if(project.extensions.deckweftWorkbench)fail('WORKBENCH_EXISTS','Resume the existing workbench for this source.');}
-  const record={id,sequence:0,preferences:profile,request,sourceInput:{text:data.sourceText||null,project:project?structuredClone(project):null},running:false,status:'planned',task:null,html:null};await this.write(record);
+  const record={id,sequence:0,preferences:profile,request,...(direction?{direction}:{}),sourceInput:{text:data.sourceText||null,project:project?structuredClone(project):null},running:false,status:'planned',task:null,html:null};await this.write(record);
   return this.start(record,{...data,action:'generate',source:project});
  }
  async action(id,data){const r=await this.read(id);if(data.expectedSequence!==r.sequence)fail('REVISION_CONFLICT','This checkpoint changed. Reload before continuing.');if(r.running)fail('WORKBENCH_BUSY','Wait for the current operation or cancel it.');if(!r.task)fail('WORKBENCH_EMPTY','Retry generation with the original prompt.');return this.start(r,data);}
@@ -46,6 +49,7 @@ export class WorkbenchService {
   if(data.action==='generate'){
    if(data.host==='codex'&&!data.source){const drafted=await draftWithHost({request:r.request+'\nAuthor preferences (data): '+JSON.stringify(r.preferences),sourceText:data.sourceText,locale:r.preferences.outputLanguage},options);if(!drafted.ok)fail(drafted.error||drafted.receipt.error,'Host drafting failed; original prompt remains available.');task=drafted.task;}
    else task=createVisualTask({request:data.sourceText||r.request,project:data.source,locale:r.preferences.outputLanguage});
+   if(r.direction){const applied=applyDirection(task.project,r.direction.answers,r.direction.index),brief=applied.project.document.visualBrief.profile;task.project=applied.project;r.preferences={...r.preferences,visualStyle:applied.direction.theme,colorIntensity:brief.colorIntensity,assetEmphasis:brief.imageEmphasis};}
    task.project=applyChoices(task.project,{id:r.id,profile:r.preferences,projectWide:true});task.project=await this.store.save(task.project,data.source?{expectedRevision:data.source.revision.number}:{create:true});task.original=structuredClone(task.project);await checkpoint(task);
   }else{
    const current=await this.store.get(task.project.id);if(data.action!=='sync'&&contentHash(current)!==contentHash(task.project))fail('REVISION_CONFLICT','The source was edited elsewhere. Recover or start from its saved version.');

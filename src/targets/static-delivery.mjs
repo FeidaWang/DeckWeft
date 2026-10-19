@@ -82,6 +82,7 @@ export function revealRequired(document,plan,frozen){
    if(b.type==='diagram')notes.push({blockId:id,kind:'relationships',title:zh?'关系与节点说明':'Relationships and node notes',lines:[...b.nodes.map(n=>n.label.replace(/\n/g,' ')+(n.note?(zh?'：':': ')+n.note:'')),...b.edges.map(e=>`${b.nodes.find(n=>n.id===e.from).label.replace(/\n/g,' ')} → ${b.nodes.find(n=>n.id===e.to).label.replace(/\n/g,' ')}${e.label?' · '+e.label:''}`)]});
   }
   const steps=(scene.interactions||[]).filter(s=>s.kind==='steps').flatMap(s=>s.steps.map(step=>{const e=document.explanations.find(e=>e.id===step.explanationId);return `${e.label}${zh?'——':' — '}${e.text}`;}));
+  if(scene.disclosure)notes.push({kind:'disclosure',title:zh?'更多细节（网页中折叠）':'More detail (closed on the web page)',lines:scene.blockIds.filter(id=>scene.disclosure.blockIds.includes(id)).map(id=>blocks.get(id)).flatMap(b=>b.type==='list'?b.items:b.text.split('\n'))});
   if(steps.length)notes.push({kind:'explanations',title:zh?'全部讲解（按提示顺序）':'All authored explanations, in cue order',lines:steps});
   for(const it of frozen[i].interactions)if(it.kind==='image-compare'&&it.state&&it.state.tabId!=='both'){const hidden=blocks.get(it.state.tabId==='first'?(scene.interactions.find(s=>s.id===it.id).otherBlockId):it.blockId);notes.push({blockId:hidden.id,kind:'hidden-image',title:zh?'未在页面上的原始图片':'Original image not on the page',lines:[hidden.alt]});}
   const sources=[...sourceIds].map(id=>document.sources.find(s=>s.id===id)).filter(Boolean).map(s=>({id:s.id,title:s.title,url:s.url}));

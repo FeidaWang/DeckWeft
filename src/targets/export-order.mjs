@@ -11,6 +11,7 @@
 import {DeckError} from '../core/errors.mjs';
 import {presentationCapabilities,documentLevels} from './capabilities.mjs';
 import {assertExportLayout} from './layout.mjs';
+import {assertEvidenceSupplied} from '../design/scene-semantics.mjs';
 import {staticStates,freezeViews,stopMotion,revealRequired} from './static-delivery.mjs';
 import {compileWebScenes} from '../scene/web/compile.mjs';
 import {compilePPTX} from './pptx/compile.mjs';
@@ -33,6 +34,7 @@ export function exportRun(target){
 
 /** Stage 1. Fonts and images are confirmed by the browser measurement of this render; assets by their hashes. */
 export function readiness(document,plan,target,{resources={},layout,html}){
+ assertEvidenceSupplied(plan);
  const issues=presentationCapabilities(target,document,resources,plan).issues;
  if(issues.length)throw new DeckError('TARGET_CAPABILITY','This target cannot represent the requested presentation yet.',422,issues);
  if(!layout)throw new DeckError('EXPORT_LAYOUT_REQUIRED','Measure the static export in a browser after fonts and images are ready (scripts/export-targets.mjs), then export again.',422,[{target}]);

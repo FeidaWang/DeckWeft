@@ -1,0 +1,314 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deckweft:design-profile",
+  "description": "S9a reusable design profile, promoted from an accepted design. It stores the theme, the profile choices, the composition chosen for each kind of page, and the type and motion tokens that were drawn. It has no field for document text, data, sources, images, asset references or branding, so none can be carried into another deck.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "deckweft-design-profile"
+    },
+    "version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "enum": [
+            "cream-collage",
+            "dark-data",
+            "electric-violet",
+            "silver-gray-editorial",
+            "fresh-report",
+            "orange-launch"
+          ]
+        },
+        "version": {
+          "const": "1.0.0"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "colorIntensity": {
+          "enum": [
+            "restrained",
+            "bold"
+          ]
+        },
+        "typographicContrast": {
+          "enum": [
+            "balanced",
+            "expressive"
+          ]
+        },
+        "density": {
+          "enum": [
+            "comfortable",
+            "compact"
+          ]
+        },
+        "motionIntensity": {
+          "enum": [
+            "off",
+            "subtle"
+          ]
+        },
+        "imageEmphasis": {
+          "enum": [
+            "balanced",
+            "large"
+          ]
+        }
+      },
+      "required": [
+        "colorIntensity",
+        "typographicContrast",
+        "density",
+        "motionIntensity",
+        "imageEmphasis"
+      ],
+      "additionalProperties": false
+    },
+    "compositions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "enum": [
+              "opening",
+              "closing",
+              "chart",
+              "table",
+              "image",
+              "metric",
+              "diagram",
+              "quote",
+              "list",
+              "text"
+            ]
+          },
+          "composition": {
+            "enum": [
+              "diagonal-cover",
+              "chart-with-evidence-rail",
+              "reading-flow",
+              "photo-split",
+              "violet-chapter",
+              "fieldnotes-cover",
+              "fieldnotes-thesis",
+              "fieldnotes-figure",
+              "fieldnotes-method",
+              "fieldnotes-closing",
+              "atlas-cover",
+              "atlas-section",
+              "atlas-figure",
+              "atlas-panels",
+              "atlas-appendix",
+              "atlas-closing",
+              "stage-hero",
+              "stage-chapter",
+              "stage-figure",
+              "stage-metric",
+              "stage-closing",
+              "statement-split",
+              "statement-banner",
+              "statement-center",
+              "image-left",
+              "image-strip",
+              "image-right",
+              "metric-left",
+              "metric-band",
+              "metric-right",
+              "evidence-left",
+              "evidence-top",
+              "evidence-right",
+              "comparison-matrix",
+              "comparison-rail",
+              "comparison-stack",
+              "process-line",
+              "process-rail",
+              "process-stair",
+              "chapter-low",
+              "chapter-index",
+              "chapter-margin",
+              "before-after-split",
+              "before-after-rail",
+              "before-after-triptych",
+              "system-map-wide",
+              "system-map-rail",
+              "system-map-key",
+              "small-multiples-row",
+              "small-multiples-lead",
+              "small-multiples-center",
+              "quote-center",
+              "quote-split",
+              "quote-band",
+              "closing-split",
+              "closing-steps",
+              "closing-focus"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "composition"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 10
+    },
+    "type": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "$ref": "#/$defs/fontRoles"
+        },
+        "zh-CN": {
+          "$ref": "#/$defs/fontRoles"
+        },
+        "displayScale": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "en",
+        "zh-CN",
+        "displayScale"
+      ],
+      "additionalProperties": false
+    },
+    "motion": {
+      "type": "object",
+      "properties": {
+        "durationMs": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 600
+        },
+        "effect": {
+          "enum": [
+            "none",
+            "fade"
+          ]
+        },
+        "distance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 80
+        },
+        "easing": {
+          "enum": [
+            "linear",
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out"
+          ]
+        },
+        "delay": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 600
+        },
+        "fallback": {
+          "enum": [
+            "instant",
+            "static"
+          ]
+        }
+      },
+      "required": [
+        "durationMs",
+        "effect",
+        "distance",
+        "easing",
+        "delay",
+        "fallback"
+      ],
+      "additionalProperties": false
+    },
+    "acceptance": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "workbench-review",
+            "author"
+          ]
+        },
+        "receiptId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_:.-]{0,127}$"
+        },
+        "acceptedAt": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 40
+        }
+      },
+      "required": [
+        "kind",
+        "acceptedAt"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "id",
+    "name",
+    "theme",
+    "profile",
+    "compositions",
+    "type",
+    "motion",
+    "acceptance"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "fontRoles": {
+      "type": "object",
+      "properties": {
+        "display": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9 ,\"._-]{1,300}$"
+        },
+        "body": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9 ,\"._-]{1,300}$"
+        },
+        "numeric": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9 ,\"._-]{1,300}$"
+        }
+      },
+      "required": [
+        "display",
+        "body",
+        "numeric"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

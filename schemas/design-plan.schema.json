@@ -1013,6 +1013,26 @@
               "keyStateId"
             ],
             "additionalProperties": false
+          },
+          "disclosure": {
+            "type": "object",
+            "description": "S9a: supporting paragraph, list or callout blocks of this scene shown behind one closed disclosure. They stay in the document and in every output (web disclosure, PowerPoint notes, PDF appendix).",
+            "properties": {
+              "blockIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "minItems": 1,
+                "maxItems": 50,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "blockIds"
+            ],
+            "additionalProperties": false
           }
         },
         "required": [
@@ -1028,6 +1048,73 @@
       },
       "minItems": 1,
       "maxItems": 100
+    },
+    "chapters": {
+      "type": "array",
+      "description": "S9a: optional chapters. A chapter starts at one scene and runs, in plan order, to the scene before the next chapter start; scenes before the first start belong to no chapter. A chapter profile applies to member scenes without a profile of their own (page beats chapter beats deck).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "startSceneId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "profile": {
+            "type": "object",
+            "properties": {
+              "colorIntensity": {
+                "enum": [
+                  "restrained",
+                  "bold"
+                ]
+              },
+              "typographicContrast": {
+                "enum": [
+                  "balanced",
+                  "expressive"
+                ]
+              },
+              "density": {
+                "enum": [
+                  "comfortable",
+                  "compact"
+                ]
+              },
+              "motionIntensity": {
+                "enum": [
+                  "off",
+                  "subtle"
+                ]
+              },
+              "imageEmphasis": {
+                "enum": [
+                  "balanced",
+                  "large"
+                ]
+              }
+            },
+            "required": [
+              "colorIntensity",
+              "typographicContrast",
+              "density",
+              "motionIntensity",
+              "imageEmphasis"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "startSceneId"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 50
     }
   },
   "required": [

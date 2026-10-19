@@ -91,7 +91,7 @@ export function splitSmallMultiples(project,sceneId,perPage=families['small-mult
  const owner=b=>b.type==='chart'?groups.findIndex(g=>g.includes(b.id)):b.type==='annotation'?groups.findIndex(g=>g.includes(b.target.blockId)):0;
  const ids=new Set(scenes.map(s=>s.id)),pageId=k=>{if(!k)return sceneId;let n=k+1,id;do id=`${sceneId}-${n++}`.slice(0,64);while(ids.has(id));ids.add(id);return id;};
  const split=groups.map((_,k)=>{const blockIds=blocks.filter(b=>shared.has(b.id)||owner(b)===k).map(b=>b.id),page={...structuredClone(scene),id:pageId(k),blockIds,focalBlockId:blockIds.includes(scene.focalBlockId)?scene.focalBlockId:blocks.find(b=>b.type==='heading').id};
-  if(page.takeaway&&!blockIds.includes(page.takeaway.blockId))delete page.takeaway;for(const key of ['crops','imageSlots'])if(page[key])page[key]=page[key].filter(v=>blockIds.includes(v.blockId));return page;});
+  if(page.takeaway&&!blockIds.includes(page.takeaway.blockId))delete page.takeaway;for(const key of ['crops','imageSlots'])if(page[key])page[key]=page[key].filter(v=>blockIds.includes(v.blockId));if(page.disclosure){page.disclosure={blockIds:page.disclosure.blockIds.filter(id=>blockIds.includes(id))};if(!page.disclosure.blockIds.length)delete page.disclosure;}return page;});
  scenes.splice(index,1,...split);assertVisualLocks(project,copy);
  if(JSON.stringify(copy.document)!==JSON.stringify(project.document))fail('Splitting pages never changes the semantic document.');
  return assertVisualProject(copy);

@@ -125,7 +125,8 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
   for(const blockId of sp.blockIds){
    const block=blocks.get(blockId),own=slide.shapes.filter(s=>owner(s)===blockId),level=levels.find(l=>l.blockId===blockId)?.pptx.level;
    const hidden=receipts.some(r=>r.sceneId===sp.id&&r.blockId===blockId&&r.code==='PPTX_DISCLOSURE')&&block.type==='image';
-   if(!own.length&&!hidden){fail(scene,'block present',{sceneId:sp.id,blockId});continue;}
+   const disclosed=!!sp.disclosure?.blockIds.includes(blockId)&&receipts.some(r=>r.sceneId===sp.id&&r.blockId===blockId&&r.code==='PPTX_DISCLOSURE');
+   if(!own.length&&!hidden&&!disclosed){fail(scene,'block present',{sceneId:sp.id,blockId});continue;}
    // Text coverage: slide text, table cells, chart caches, alt text and the notes all count; nothing may be lost.
    const chartText=own.filter(s=>s.chart).flatMap(s=>{const c=pkg.charts[s.chart];return c?c.series.flatMap(x=>[x.name,...x.categories.map(p=>p.value),...x.values.map(p=>p.value)]):[];});
    const pool=norm([...own.map(s=>s.text+' '+s.descr),...chartText,slide.notes].join(' '));
@@ -141,7 +142,7 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
       const misaligned=c.series.flatMap(x=>[...x.values,...x.categories]).filter(p=>!p.ref||String(cell.get(p.ref))!==String(p.value)&&Number(cell.get(p.ref))!==Number(p.value));
       if(misaligned.length)fail(edit,'workbook equals chart cache',{sceneId:sp.id,blockId,cells:misaligned.slice(0,5).map(p=>p.ref)});
       const values=new Set(d.series.flatMap(s=>s.values.filter(v=>v!==null)));if(cache.some(v=>!values.has(v)))fail(edit,'chart values come from the dataset',{sceneId:sp.id,blockId});}}}
-   if(['heading','paragraph','quote','callout','list','metric','citation','annotation','code'].includes(block.type)&&!own.some(s=>s.kind==='text'||s.title))fail(edit,'native text',{sceneId:sp.id,blockId});
+   if(['heading','paragraph','quote','callout','list','metric','citation','annotation','code'].includes(block.type)&&!disclosed&&!own.some(s=>s.kind==='text'||s.title))fail(edit,'native text',{sceneId:sp.id,blockId});
    if(block.type==='table'&&!own.some(s=>s.kind==='table')&&!receipts.some(r=>r.sceneId===sp.id&&r.blockId===blockId&&r.code==='PPTX_TABLE_AS_CARDS'))fail(edit,'native table',{sceneId:sp.id,blockId});
    if(block.type==='diagram'){const nodes=own.filter(s=>s.kind==='text'||s.kind==='shape').length,edges=own.filter(s=>s.kind==='connector').length;if(nodes<block.nodes.length||edges<block.edges.length)fail(edit,'diagram shapes and connectors',{sceneId:sp.id,blockId,nodes,edges});}
   }

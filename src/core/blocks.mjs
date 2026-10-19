@@ -33,6 +33,9 @@ export function assertPresentation(document) {
     }
   });
   if (document.authorOverrides.lockedBlockIds.some(id => !blocks.has(id))) fail('A locked block is missing.');
+  // S9a separate locks name existing datasets and sources; the mode is only ever entered by separateLocks().
+  if ((document.authorOverrides.lockedDatasetIds||[]).some(id => !document.datasets.some(d => d.id === id))) fail('A locked dataset is missing.');
+  if ((document.authorOverrides.lockedSourceIds||[]).some(id => !document.sources.some(s => s.id === id))) fail('A locked source is missing.');
   if(document.visualBrief && document.visualBrief.outputLanguage!==document.locale) fail('Visual brief output language must match the document locale; interface language is independent.');
   const snapshots=document.sourceSnapshots||[];
   if(new Set(snapshots.map(s=>s.id)).size!==snapshots.length)fail('Use unique source snapshot ids.');

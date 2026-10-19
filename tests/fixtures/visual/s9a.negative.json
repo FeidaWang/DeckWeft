@@ -1,0 +1,15 @@
+{
+  "negativeFixture": "S9a contract additions that must be refused. Each case sets one path on a planned five-page text deck (createVisualTask of the S9a test text); assertVisualProject must reject it.",
+  "cases": [
+    {"why": "A chapter starts on a page that does not exist.", "set": {"plan.chapters": [{"id": "ch-a", "startSceneId": "missing-page"}]}},
+    {"why": "Two chapters start on the same page.", "set": {"plan.chapters": [{"id": "ch-a", "startSceneId": "@0"}, {"id": "ch-b", "startSceneId": "@0"}]}},
+    {"why": "Chapter ids are unique.", "set": {"plan.chapters": [{"id": "ch-a", "startSceneId": "@0"}, {"id": "ch-a", "startSceneId": "@1"}]}},
+    {"why": "A chapter profile is complete (all five choices) or absent.", "set": {"plan.chapters": [{"id": "ch-a", "startSceneId": "@0", "profile": {"density": "compact"}}]}},
+    {"why": "A page disclosure holds blocks of its own page only.", "set": {"plan.scenes.0.disclosure": {"blockIds": ["@block:1"]}}},
+    {"why": "The focal block never moves behind a disclosure.", "set": {"plan.scenes.0.disclosure": {"blockIds": ["@focal:0"]}}},
+    {"why": "A disclosure is not empty.", "set": {"plan.scenes.0.disclosure": {"blockIds": []}}},
+    {"why": "Lock mode is combined or separate.", "set": {"document.authorOverrides.lockMode": "loose"}},
+    {"why": "A data lock names an existing dataset.", "set": {"document.authorOverrides.lockedDatasetIds": ["no-such-dataset"]}},
+    {"why": "A source lock names an existing source.", "set": {"document.authorOverrides.lockedSourceIds": ["no-such-source"]}}
+  ]
+}

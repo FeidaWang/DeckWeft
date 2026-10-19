@@ -8,12 +8,14 @@ import schema from '../../schemas/theme-pack.schema.json' with { type: 'json' };
 import { validateSchema } from '../core/schema.mjs';
 import { resolveScopedRules } from './rules.mjs';
 import { DeckError } from '../core/errors.mjs';
+import { chapterOf } from './chapters.mjs';
 export const DEFAULT_PROFILE={colorIntensity:'bold',typographicContrast:'expressive',density:'comfortable',motionIntensity:'off',imageEmphasis:'large'};
 // S8 (alignment §16): the three handoff art directions join the three VIS-014 themes; the first three are never changed.
 const packs=[cream,dark,violet,fieldnotes,atlas,stage];
 for(const p of packs)if(!validateSchema(p,schema).ok)throw Error('Invalid packaged theme: '+p.id);
 export const themePacks=()=>structuredClone(packs);
-export const effectiveProfile=(document,scene)=>({...DEFAULT_PROFILE,...document.visualBrief?.profile,...scene.profile});
+/** Most specific wins: page profile, then its chapter's profile (S9a, needs the plan), then the deck profile, then the defaults. */
+export const effectiveProfile=(document,scene,plan)=>({...DEFAULT_PROFILE,...document.visualBrief?.profile,...(plan?chapterOf(plan,scene.id)?.profile:undefined),...scene.profile});
 export function resolveTheme(id,version,locale,{profile=DEFAULT_PROFILE,colorMode='default',role='context'}={}) {
  const pack=packs.find(p=>p.id===id);
  if(!pack||version!==pack.version||!['en','zh-CN'].includes(locale))throw new DeckError('THEME_VERSION','Choose an available versioned theme and locale.');

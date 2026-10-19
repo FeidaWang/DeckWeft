@@ -1,5 +1,6 @@
 import {effectiveProfile,resolveTheme} from './theme-registry.mjs';
 import {compositions} from './compositions.mjs';
+import {visibleBlockIds} from './plan.mjs';
 
 /** S8 theme type roles (alignment §16). Fieldnotes: light serif, generous measure. Atlas: demi-bold, tight, narrow measure beside figures. Stage: medium geometric, open leading. */
 const S8_TYPE={
@@ -9,7 +10,7 @@ const S8_TYPE={
 };
 /** Rendering direction, not a rewrite of the saved document or the author's plan. */
 export function sceneDirection(document,plan,index){
- const scene=plan.scenes[index],profile=effectiveProfile(document,scene),blocks=scene.blockIds.map(id=>document.blocks.find(b=>b.id===id));
+ const scene=plan.scenes[index],profile=effectiveProfile(document,scene,plan),blocks=visibleBlockIds(scene).map(id=>document.blocks.find(b=>b.id===id));
  const has=type=>blocks.some(b=>b.type===type),heading=blocks.find(b=>b.id===scene.focalBlockId&&b.type==='heading')||blocks.find(b=>b.type==='heading');
  const beat=index===0?'opening':index===plan.scenes.length-1?'closing':has('chart')?'evidence':has('table')?'comparison':has('image')?'image':has('metric')?'metric':scene.role;
  const visual=has('chart')||has('table')||has('diagram')||has('code'),sparse=!visual&&blocks.length<=6;

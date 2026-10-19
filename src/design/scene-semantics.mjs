@@ -23,5 +23,12 @@ export function assertSceneSemantics(document,scene){
  if(scene.motion?.reducedMotion==='static'&&!scene.staticState)fail('A static reduced-motion fallback needs a named static state.');
  return scene;
 }
+/** S9a: a page marked evidence-required is a request for material, not a finished claim. Final exports refuse it until the author
+ * supplies the evidence and marks the page sourced, or marks it illustrative. Previews still render it. */
+export function assertEvidenceSupplied(plan){
+ const open=plan.scenes.filter(s=>s.contentStatus==='evidence-required').map(s=>s.id);
+ if(open.length)throw new DeckError('EVIDENCE_REQUIRED','Supply the evidence these pages ask for, or mark them illustrative, before a final export.',409,open.map(sceneId=>({sceneId})));
+ return plan;
+}
 /** Position of the named static state: 0 (the authored opening) unless the author chose a later cue boundary. */
 export const staticStatePosition=scene=>scene.staticState?scene.keyStates.find(k=>k.id===scene.staticState.keyStateId).position:0;

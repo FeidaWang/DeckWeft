@@ -208,6 +208,8 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
    for(const s of region.disclosures)receipts.push({code:'PPTX_DISCLOSURE',target:'pptx',sceneId:scene.id,blockId,element:`“${s}” disclosure`,reason:'A slide has no disclosure control.',delivered:'Its content is in the slide notes.'});
   }
   for(const s of m.disclosures)receipts.push({code:'PPTX_DISCLOSURE',target:'pptx',sceneId:scene.id,element:`“${s}” disclosure`,reason:'A slide has no disclosure control.',delivered:'The explanations are in the slide notes in cue order.'});
+  // S9a: text the author moved behind the page disclosure (Reduce text) is never dropped: it is in the notes, block by block.
+  for(const blockId of scene.blockIds.filter(id=>scene.disclosure?.blockIds.includes(id)))receipts.push({code:'PPTX_DISCLOSURE',target:'pptx',sceneId:scene.id,blockId,element:`${blockId} in the page disclosure`,reason:'A slide has no disclosure control.',delivered:'Its text is in the slide notes.'});
   for(const it of delivery.frozen[index].interactions)receipts.push({code:'PPTX_INTERACTION_STATIC',target:'pptx',sceneId:scene.id,blockId:it.blockId,element:`${it.kind} interaction ${it.id}`,reason:'Slides are not interactive in this compiler.',delivered:it.delivery});
   const mo=delivery.motion[index];if(mo.cuesNotPlayed||mo.policy!=='none')receipts.push({code:'PPTX_MOTION_NOT_COMPILED',target:'pptx',sceneId:scene.id,element:`motion (${mo.policy}, ${mo.cuesNotPlayed} cue${mo.cuesNotPlayed===1?'':'s'})`,reason:'No animation, transition or timing is compiled.',delivered:'The slide shows the static state.'});
   receipts.push(...layoutReceipts(m,id=>blocks.get(id)));

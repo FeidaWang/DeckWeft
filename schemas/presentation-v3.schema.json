@@ -519,6 +519,35 @@
           },
           "minItems": 0,
           "maxItems": 100
+        },
+        "lockMode": {
+          "description": "S9a. Absent or combined: a locked chart block also locks its dataset and linked sources (the S1 mapping). separate: lockedBlockIds lock the object as written; data and sources are locked only by lockedDatasetIds and lockedSourceIds. Entered by the explicit migration separateLocks(), which copies every implied lock so nothing is released.",
+          "enum": [
+            "combined",
+            "separate"
+          ]
+        },
+        "lockedDatasetIds": {
+          "description": "S9a data locks: the dataset (values, units, definitions, missing reasons, events, intervals) cannot change.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "minItems": 0,
+          "maxItems": 300,
+          "uniqueItems": true
+        },
+        "lockedSourceIds": {
+          "description": "S9a source locks: the source record (title, url) cannot change.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "minItems": 0,
+          "maxItems": 300,
+          "uniqueItems": true
         }
       },
       "required": [
