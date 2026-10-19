@@ -28,7 +28,7 @@ for(const file of ['preferences.js','actions.js','presenter.js','storyboard.js',
 staticFiles['/workspace.css']=['workspace.css','text/css; charset=utf-8'];
 staticFiles['/shared/preferences.mjs']=['../src/core/preferences.mjs','text/javascript; charset=utf-8'];
 staticFiles['/shared/clock.mjs']=['../src/presentation/clock.mjs','text/javascript; charset=utf-8'];
-for(const file of ['visual.js','visual.css','interactions.js','assets.js','workbench.js','prompt.js','profile.js','revisions.js','author.js'])staticFiles['/studio/'+file]=['studio/'+file,file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8'];
+for(const file of ['visual.js','visual.css','interactions.js','assets.js','workbench.js','prompt.js','profile.js','revisions.js','author.js','evidence.js'])staticFiles['/studio/'+file]=['studio/'+file,file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8'];
 staticFiles['/visual']=['studio/visual.html','text/html; charset=utf-8'];
 const secureHeaders={
   'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',

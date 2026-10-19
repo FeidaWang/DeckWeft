@@ -52,13 +52,14 @@ export async function createVisualService({home,legacyStore,body,send,browserPat
    const route=url.pathname.slice('/api/visual/'.length),method=req.method;
    if(route==='workbench'&&method==='POST'){send(res,202,await workbench.create(await body(req)));return true;}
    if(route==='workbench-capabilities'&&method==='GET'){send(res,200,{captureAvailable:!!workbench.capture,hosts:['local','codex'],claude:'deferred',policy:'Existing host configuration only; opt-in operation and screenshots. No login or API fallback.'});return true;}
-   const w=route.match(/^workbench\/([a-f0-9-]{36})(?:\/(action|cancel|recover|export|checkpoint|image))?$/);
+   const w=route.match(/^workbench\/([a-f0-9-]{36})(?:\/(action|cancel|recover|export|checkpoint|image|report))?$/);
    if(w){const [,id,action]=w;
     if(!action&&method==='GET')send(res,200,await workbench.get(id));
     else if(action==='action'&&method==='POST')send(res,202,await workbench.action(id,await body(req)));
     else if(action==='cancel'&&method==='POST'){await body(req);send(res,200,await workbench.cancel(id));}
     else if(action==='recover'&&method==='POST'){await body(req);send(res,200,await workbench.recover(id));}
     else if(action==='checkpoint'&&method==='GET'){send(res,200,await workbench.read(id));}
+    else if(action==='report'&&method==='GET'){const md=url.searchParams.get('format')==='md',report=await workbench.report(id,md);if(md){res.writeHead(200,{'Content-Type':'text/markdown; charset=utf-8','Content-Disposition':'attachment; filename="report.md"'});res.end(report);}else send(res,200,report);}
     else if(action==='image'&&method==='POST'){const data=await body(req),r=await workbench.read(id);if(!r.task?.receipt?.captures.some(c=>c.file===data.file))throw new DeckError('WORKBENCH_IMAGE','Choose a current receipt image.',404);const file=path.join(workbench.directory(id),data.file);await rejectSymlinks(file);res.writeHead(200,{'Content-Type':'image/png'});res.end(await readFile(file));}
     else if(action==='export'&&method==='POST'){const data=await body(req),out=await workbench.export(id,data.lastValid===true);res.writeHead(200,{'Content-Type':out.mime,'Content-Disposition':'attachment; filename="deckweft-reviewed.html"'});res.end(out.body);}
     else throw new DeckError('METHOD_NOT_ALLOWED','Choose a documented workbench operation.',405);return true;
@@ -227,7 +228,8 @@ export async function createVisualService({home,legacyStore,body,send,browserPat
     if(data.format!=='html'){
      if(!project.extensions.deckweftWorkbench){const a=entry(data.ticket);if(!a.fit||a.inputHash!==contentHash(project))throw new DeckError('STALE_VISUAL_RENDER','Wait for a measured preview of these exact edits before exporting.',409);}
      // F1: the author's acceptance of text below the minimum is a plain `true` from the dialog; the server records who and when.
-     const file=await studioTargetExport({browserPath,project,resources:await visualAssetResources(project,store.home),format:data.format,paginate:data.paginate==='none'?'none':'auto',acceptTypography:data.acceptTypography===true?{by:'author',at:new Date().toISOString()}:null}),levels=Object.entries(file.report.levels.reduce((m,c)=>{const l=c[data.format]?.level;if(l)m[l]=(m[l]||0)+1;return m;},{})).map(([k,v])=>k+'='+v).join(',');
+     const task=project.extensions.deckweftWorkbench?(await workbench.read(project.extensions.deckweftWorkbench.id)).task:null;
+     const file=await studioTargetExport({browserPath,project,task,resources:await visualAssetResources(project,store.home),format:data.format,paginate:data.paginate==='none'?'none':'auto',acceptTypography:data.acceptTypography===true?{by:'author',at:new Date().toISOString()}:null}),levels=Object.entries(file.report.levels.reduce((m,c)=>{const l=c[data.format]?.level;if(l)m[l]=(m[l]||0)+1;return m;},{})).map(([k,v])=>k+'='+v).join(',');
      const typography=file.report.check.typography;
      res.writeHead(200,{'Content-Type':file.mime,'Content-Disposition':`attachment; filename="deckweft-visual.${file.extension}"`,'X-DeckWeft-Export-Order':file.report.order.map(o=>o.stage).join(','),'X-DeckWeft-Levels':levels,'X-DeckWeft-Receipts':String(file.report.receipts.length),...(typography?{'X-DeckWeft-Typography':JSON.stringify({status:typography.status,failures:typography.failures.length,acceptedBy:typography.acceptedBy||null,acceptedAt:typography.acceptedAt||null,pagination:file.report.pagination.length})}:{})});res.end(file.body);return true;
     }

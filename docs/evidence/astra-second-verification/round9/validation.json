@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-20",
+  "baseCommit": "1208210",
+  "worktreeClean": false,
+  "browser": "149.0.7827.55",
+  "playwright": "1.61.1",
+  "liveHost": false,
+  "evidenceKind": "offline Studio display and form transport fixtures; not host or human visual acceptance",
+  "workbench": {
+    "addedLines": 4,
+    "attestations": 4,
+    "authorForm": "author + fail; not actual visual acceptance"
+  },
+  "pageErrors": 0,
+  "observedExternalPageRequests": 0,
+  "passedRunners": [
+    "browser_workbench.mjs",
+    "browser_visual_task.mjs",
+    "browser_visual_studio.mjs (22 checks)",
+    "browser_prompt_generation.mjs",
+    "browser_blueprint_studio.mjs (12 steps)",
+    "studio-export.test.mjs (5/5)",
+    "browser_author_controls.mjs (final isolated run, 30 steps)"
+  ],
+  "authorControls": {
+    "final": "passed at 1440/1024/390, 30 steps, one expected locked-theme HTTP 409 console error, zero observed external page requests",
+    "earlier": "initial and requested rerun both timed out at #actionLevel visibility at 1024 px",
+    "comparison": "unchanged git archive 1208210 passed at 1024 alone and at all widths; current tree also passed at 1024 alone; trigger remains unconfirmed"
+  },
+  "verify": {
+    "command": "npm run verify",
+    "total": 499,
+    "passed": 494,
+    "failed": 0,
+    "skipped": 5,
+    "sourceFilesChecked": 1568,
+    "log": "../verify-round9-final.txt"
+  }
+}

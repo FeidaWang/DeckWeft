@@ -1,5 +1,5 @@
 import {revealStudio} from './studio-controls.mjs';
-// Real UI + dependency-free capture + optional actual Codex acceptance. No host mocks.
+// Real UI + dependency-free capture; offline evidence fixtures are display/transport checks only.
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import {mkdir,readFile,writeFile,realpath} from 'node:fs/promises';
@@ -28,7 +28,43 @@ try{
  }
  let project=(await store.get(source.id)),id=project.extensions.deckweftWorkbench.id,r=await(await api('workbench/'+id,undefined,'GET')).json();await writeFile(path.join(out,'before.json'),JSON.stringify(r,null,2));assert.equal(r.receipt.checks.ok,true,JSON.stringify(r.receipt.checks.issues));assert.deepEqual(r.project.document.authorOverrides,source.document.authorOverrides);assert.equal(r.project.document.blocks.find(b=>b.id==='violet-image').assetId,source.document.blocks.find(b=>b.id==='violet-image').assetId);
  const stripped=structuredClone(r.project);delete stripped.extensions.deckweftWorkbench;const bypass=await fetch(app.url+'/api/visual/export',{method:'POST',headers,body:JSON.stringify({project:stripped,format:'html'})});assert.equal(bypass.status,409);
- if(!a.live&&!a.review){assert.equal(r.status,'actual-image-review');report.required='Actual primary image inspection followed by --review file';report.receiptId=r.receipt.id;report.captures=r.receipt.captures;report.id=id;await writeFile(path.join(out,'pending.json'),JSON.stringify(report,null,2));}
+ if(!a.live&&!a.review){
+  assert.equal(r.status,'actual-image-review');
+  // F3: a labelled offline checkpoint fixture, including a heading, duplicate and HTML-shaped data.
+  const file=path.join(store.home,'workbench',id,'checkpoint.json'),fixture=JSON.parse(await readFile(file,'utf8')),sceneId=r.project.plan.scenes[0].id;
+  const lines=[r.project.document.blocks.find(b=>b.id===r.project.plan.scenes[0].focalBlockId).text,'<img src=x onerror="throw Error(123)">','Repeated added line','Repeated added line'];
+  fixture.task.hostDraft={hostAuthoredLines:4,hostAuthored:lines.map(text=>({page:0,text}))};await writeFile(file,JSON.stringify(fixture));
+  await page.reload();await page.waitForFunction(()=>document.querySelector('[data-host-authored-count="4"]'));
+  assert.match(await page.locator('[data-scene="'+sceneId+'"] .host-authored-badge').textContent(),/Host added.*4/);
+  assert.match(await page.locator('[data-scene="'+sceneId+'"]').getAttribute('aria-label'),/Host added.*4.*unverified/);
+  await page.locator('[data-scene="'+sceneId+'"]').click();await revealStudio(page,'edit');await page.locator('#contentTab').click();
+  await page.waitForFunction(()=>document.querySelector('#fit').textContent.startsWith('✓'));assert.deepEqual(await page.locator('#hostAuthoredLines [data-host-authored-line]').allTextContents(),lines);assert.equal(await page.locator('#hostAuthoredLines img').count(),0);
+  await page.screenshot({path:path.join(out,'host-added-en.png'),fullPage:true});
+  // F5: four explicit UI-only fixtures. Never write host attestation into an accepted task.
+  const route=app.url+'/api/visual/workbench/'+id;
+  for(const attestation of ['author','host-metadata-only','host-pixel-control','unattested']){
+   await page.route(route,async route=>{const response=await route.fetch(),data=await response.json();data.evidence.review={attestation,verdict:'fail',controls:{hits:attestation==='host-pixel-control'?2:0,total:2}};await route.fulfill({response,json:data});});
+   await page.reload();await page.waitForFunction(a=>document.querySelector('#workbenchEvidence')?.textContent.includes(a),attestation);
+   assert.match(await page.locator('#workbenchEvidence').textContent(),new RegExp((attestation==='host-pixel-control'?'2':'0')+'/2'));
+   await page.locator('#workbenchEvidence').screenshot({path:path.join(out,'attestation-'+attestation+'.png')});
+   await page.unroute(route);
+  }
+  await page.reload();await page.waitForFunction(n=>document.querySelectorAll('#workbenchImages img').length===n,r.receipt.captures.length);
+  assert.match(await page.locator('#workbenchEvidence').textContent(),/unattested/);assert.match(await page.locator('#workbenchEvidence').textContent(),/not run/);
+  // The real author form submits an explicit *failing* test judgment: this is transport evidence, not visual acceptance.
+  await revealStudio(page,'review');await page.locator('#workbenchReview summary').click();await page.locator('#workbenchJudgment').fill('Automated author-form transport fixture; no human visual acceptance.');await page.locator('#workbenchVerdict').selectOption('fail');await page.locator('#workbenchAttest').check();
+  const submitted=page.waitForRequest(q=>q.url().endsWith('/workbench/'+id+'/action')&&q.method()==='POST');await page.locator('#workbenchHumanReview').click();assert.equal((await submitted).postDataJSON().review.attestation,'author');
+  await page.waitForFunction(()=>document.querySelector('#workbenchProgress').dataset.status==='review-required');
+  r=await(await api('workbench/'+id,undefined,'GET')).json();assert.equal(r.receipt.review.attestation,'author');assert.equal(r.canExport,false);assert.match(await page.locator('#workbenchEvidence').textContent(),/author/);
+  await page.locator('#workbenchEvidence').screenshot({path:path.join(out,'author-form-result.png')});
+  await page.waitForFunction(()=>document.querySelector('#fit').textContent.startsWith('✓')&&!document.querySelector('#workbenchReport').disabled);
+  // Keyboard activation also checks this action after scrolling the long image gallery.
+  const [response,md]=await Promise.all([page.waitForResponse(q=>q.url().endsWith('/workbench/'+id+'/report?format=md')),page.waitForEvent('download'),page.locator('#workbenchReport').press('Enter')]);assert.equal(response.status(),200);assert.equal(md.suggestedFilename(),'report.md');await md.saveAs(path.join(out,'report.md'));
+  const markdown=await readFile(path.join(out,'report.md'),'utf8');assert.match(markdown,/Host-added lines \| 4/);assert.match(markdown,/author/);assert.match(markdown,/fail/);assert.match(markdown,/not run/);assert.ok(markdown.includes(sceneId));
+  const jsonReport=await(await api('workbench/'+id+'/report',undefined,'GET')).json();assert.equal(jsonReport.evidence.hostAuthored.total,4);assert.equal(jsonReport.evidence.review.attestation,'author');await writeFile(path.join(out,'evidence-report.json'),JSON.stringify(jsonReport,null,2));
+  report.displayFixtures={addedLines:4,attestations:4,authorForm:'author + fail; not actual visual acceptance'};
+  report.required='Actual primary image inspection followed by --review file';report.receiptId=r.receipt.id;report.captures=r.receipt.captures;report.id=id;await writeFile(path.join(out,'pending.json'),JSON.stringify(report,null,2));
+ }
  else{
   assert.equal(r.canExport,true);const initialHTML=await(await api('workbench/'+id+'/export',{})).text();await writeFile(path.join(out,'before.html'),initialHTML);assert.ok(!initialHTML.includes('PRIVATE-NOTES-VIS013'));assert.ok(!initialHTML.includes('promptWorkbench'));assert.ok(initialHTML.includes('id="present"'));
   if(a.live){const previous=structuredClone(r.project),target=previous.plan.scenes[3].composition==='evidence-top'?'evidence-right':'evidence-top';await page.locator('[data-scene="evidence"]').click();await revealStudio(page,'revision');await page.locator('#workbenchRevision').fill('Make page 4 use '+target+'. Preserve every word, number, source, color and other page.');await revealStudio(page,'revision');await page.locator('#workbenchRevise').click();await page.waitForFunction(()=>document.querySelector('#workbenchProgress').dataset.status==='running');await page.waitForFunction(()=>['exported','blocked','quality-repair'].includes(document.querySelector('#workbenchProgress').dataset.status),{},{timeout:300000});r=await(await api('workbench/'+id,undefined,'GET')).json();assert.equal(r.canExport,true,JSON.stringify(r));assert.equal(r.project.plan.scenes[3].composition,target);assert.deepEqual(r.project.document,previous.document);assert.deepEqual(r.project.assets,previous.assets);for(const [i,s]of previous.plan.scenes.entries())if(i!==3)assert.deepEqual(r.project.plan.scenes[i],s);}
@@ -39,6 +75,7 @@ try{
  for(const [width,height]of [[1600,1100],[390,844]]){await page.setViewportSize({width,height});await page.waitForFunction(()=>document.querySelector('#fit').textContent.startsWith('✓'),{},{timeout:20000});await page.screenshot({path:path.join(out,'workbench-'+width+'.png'),fullPage:true});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);}
  await revealStudio(page,'create');if(!await page.locator('#workbench-uiLanguage').isVisible())await page.locator('#workbenchPreferences summary').click();
  await page.locator('#workbench-uiLanguage').selectOption('zh-CN');await page.screenshot({path:path.join(out,'workbench-zh.png'),fullPage:true});assert.equal(await page.locator('#workbenchGenerate').textContent(),a.live?'根据需求起草':'排版所提供的原文');assert.equal(await page.locator('#workbench-promptLanguage').inputValue(),'zh-CN');assert.equal(await page.locator('#workbench-outputLanguage').inputValue(),'en');
+ if(!a.live&&!a.review){assert.match(await page.locator('.host-authored-badge').textContent(),/宿主新增.*4/);await revealStudio(page,'edit');await page.locator('#contentTab').click();assert.equal(await page.locator('#hostAuthoredLines [data-host-authored-line]').count(),4);await page.screenshot({path:path.join(out,'host-added-zh-mobile.png'),fullPage:true});await page.locator('#hostAuthoredLines').screenshot({path:path.join(out,'host-added-zh-panel.png')});await page.locator('#workbenchEvidence').screenshot({path:path.join(out,'author-form-result-zh.png')});}
  report.id=id;report.home=home;report.checkpoint=path.join(store.home,'workbench',id,'checkpoint.json');report.ok=true;assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
 }catch(e){report.failure=e.stack;process.exitCode=1;await page.screenshot({path:path.join(out,'failure.png'),fullPage:true}).catch(()=>{});}
 finally{await browser.close();await app.close();await writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({ok:report.ok,required:report.required,failure:report.failure,out}));}

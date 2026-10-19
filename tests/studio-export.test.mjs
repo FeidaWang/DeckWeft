@@ -36,7 +36,9 @@ const browserPath=process.env.CHROMIUM_PATH,skip=!browserPath&&'CHROMIUM_PATH is
 test('Studio export compiles PowerPoint and PDF through the export order in the isolated browser',{skip},async()=>{
  const {p,resources}=await demo(),before=await profiles();
  for(const format of ['pptx','pdf']){
-  const r=await studioTargetExport({browserPath,project:p,resources,format});
+  const task={project:p,original:p,hostDraft:{hostAuthoredLines:1,hostAuthored:[{page:0,text:'Offline report fixture'}]},receipt:{review:{attestation:'host-metadata-only',verdict:'pass',controls:{summary:{hits:0,total:2}}}}};
+  const r=await studioTargetExport({browserPath,project:p,resources,format,task});
+  assert.equal(r.report.evidence.hostAuthored.total,1);assert.equal(r.report.evidence.hostAuthored.pages[0].sceneId,p.plan.scenes[0].id);assert.deepEqual(r.report.evidence.review,{attestation:'host-metadata-only',verdict:'pass',controls:{hits:0,total:2}});
   assert.equal(r.extension,format);assert.deepEqual(r.report.order.map(o=>o.stage),EXPORT_ORDER);assert.deepEqual(JSON.parse(JSON.stringify(r.report)),r.report);
   assert.equal(r.report.order[0].images,1);assert.ok(r.report.order[0].fonts.length);
   for(const scene of p.plan.scenes)for(const id of scene.blockIds)assert.match(r.report.levels.find(l=>l.blockId===id)?.[format]?.level||'',/^L[123]$/,`${scene.id}/${id}`);

@@ -1,3 +1,4 @@
+import {renderEvidence} from './evidence.js';
 // S9a author controls: the six-question entry and three directions, planned author actions, page planning from the argument,
 // design profiles, and the PowerPoint / PDF / JSON export buttons. Every change is planned on the server, stated here, and
 // applied through the Studio's single edit path, so Undo, Save, conflicts and History work unchanged.
@@ -100,7 +101,7 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
  function typographyList(failures){const ul=$('#exportTypography'),shown=failures.slice(0,40);
   ul.innerHTML=shown.map(f=>`<li>${x(t(`Page ${f.sceneId} · ${f.role in roleWord?roleWord[f.role][0]:f.role}: ${f.actualPt} pt, needs ${f.requiredPt} pt (${f.name})`,`第 ${f.sceneId} 页 · ${f.role in roleWord?roleWord[f.role][1]:f.role}：${f.actualPt} pt，需要 ${f.requiredPt} pt（${f.name}）`))}</li>`).join('')+(failures.length>shown.length?`<li>${x(t(`… and ${failures.length-shown.length} more`,`…还有 ${failures.length-shown.length} 处`))}</li>`:'');
   ul.hidden=!failures.length;}
- function openExport(format){exportFormat=format;$('#exportTitle').textContent=format==='pptx'?t('Export PowerPoint','导出 PowerPoint'):t('Export PDF','导出 PDF');$('#exportPaginateField').hidden=format!=='pptx';exportStatus('idle','');typographyList([]);$('#exportAcceptField').hidden=true;$('#exportAccept').checked=false;$('#exportRun').disabled=false;$('#exportDialog').showModal();}
+ function openExport(format){renderEvidence($('#exportEvidence'),state.taskEvidence,t);exportFormat=format;$('#exportTitle').textContent=format==='pptx'?t('Export PowerPoint','导出 PowerPoint'):t('Export PDF','导出 PDF');$('#exportPaginateField').hidden=format!=='pptx';exportStatus('idle','');typographyList([]);$('#exportAcceptField').hidden=true;$('#exportAccept').checked=false;$('#exportRun').disabled=false;$('#exportDialog').showModal();}
  async function runExport(){
   const format=exportFormat,paginate=$('#exportPaginate').value,accept=!$('#exportAcceptField').hidden&&$('#exportAccept').checked,name=format==='pptx'?'PowerPoint':'PDF';
   $('#exportRun').disabled=true;exportStatus('running',t('Measuring the static scene and compiling through the export order…','正在测量静态场景并按导出顺序编译…'));

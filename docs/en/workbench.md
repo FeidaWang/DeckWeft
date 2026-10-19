@@ -85,6 +85,10 @@ The executable is never discovered from a personal browser/profile, patched or r
 3. In local mode, open **Inspect actual images / author review**. Open every native image link, inspect the whole story and components, enter visible findings including the weakest page, choose pass/fail and explicitly attest inspection. Loaded files alone do not attest that you viewed them. Machine fit never supplies an automatic author judgment.
 4. **Export reviewed HTML** becomes available only for the current passing receipt. Changed source, renderer, screenshots, failed review or a newer project revision blocks it. The older measured-preview export route cannot bypass workbench review, even if the client removes its metadata.
 
+The workbench result and PowerPoint/PDF export dialog show the review attestation (`author`, `host-metadata-only`, `host-pixel-control` or `unattested`), verdict and pixel-control hits/total. “Not run” means no control record exists; it is different from zero hits. Submitting the author form records `author`. An attestation describes the evidence, not the accuracy of the judgment.
+
+For a host draft, the page list marks **Host added · unverified** with its line count. Open **Edit page → Content** to read each added line. Check those claims against your sources before approving the work. Choose **Review and export → Evidence report (.md)** to download `report.md`. The task's export report and `report.md` list the total and page locations; older count-only checkpoints say when locations are unavailable. These markers stay attached to page IDs when pages move. A project JSON alone does not contain the separate task evidence.
+
 ## Resume and recover
 
 1. Reopen the saved visual project and choose **Use / resume selected deck**, or **Resume last task** in the same browser session. Task checkpoints and preferences are stored separately from audience HTML in the local visual library.

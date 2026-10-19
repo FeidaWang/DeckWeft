@@ -4,6 +4,7 @@
  * fidelity. Application compatibility is stated only from runs in that application; everything else is listed as a check
  * still to do on the user's machine.
  */
+import {taskEvidence,evidenceMarkdown} from '../../quality/task-evidence.mjs';
 /** Checks only PowerPoint or Keynote can answer, with what Quick Look showed for each. */
 export const APPLICATION_CHECKS=[
  {id:'open',check:'Open every .pptx in PowerPoint and in Keynote: no repair prompt, no import warning, every slide present.',quickLook:'Quick Look rendered every slide; it is not PowerPoint or Keynote.'},
@@ -19,7 +20,7 @@ export const APPLICATION_CHECKS=[
 ];
 const group=receipts=>{const by={};for(const r of receipts){(by[r.code]||=[]).push(r);}return Object.entries(by).map(([code,items])=>{const same=items.every(r=>r.delivered===items[0].delivered);return {code,count:items.length,reason:items[0].reason,delivered:same?items[0].delivered:null,elements:items.map(r=>({sceneId:r.sceneId||null,blockId:r.blockId||null,element:r.element,...(same?{}:{delivered:r.delivered})}))};});};
 
-export function exportReport({deck,document,plan,pptx,pdf,fidelity,environment,applications}){
+export function exportReport({deck,document,plan,pptx,pdf,fidelity,environment,applications,task}){
  const run=pptx.run,audit=run.check,receipts=run.output.receipts,levels=run.levels;
  const fonts=[...new Set([...(run.ready.fonts||[]),...(pdf.run?.ready.fonts||[])])].sort();
  const results={
@@ -35,6 +36,7 @@ export function exportReport({deck,document,plan,pptx,pdf,fidelity,environment,a
   exportOrder:{pptx:run.order,pdf:pdf.run?.order||null},
   receipts:group(receipts),
   results,
+  evidence:taskEvidence(task,{document,plan}),
   pagination:run.output.pagination||[],
   delivery:run.delivery.frozen.map((s,i)=>({sceneId:s.sceneId,staticState:run.delivery.states[i].keyStateId,interactions:s.interactions.map(v=>({id:v.id,kind:v.kind,rule:v.rule,delivered:v.delivery})),motion:run.delivery.motion[i]})),
   fonts:{used:fonts,embedded:false,note:'Fonts are referenced by name, never embedded or redistributed. A machine without them substitutes another face.'},
@@ -53,6 +55,7 @@ export function reportMarkdown(r){
   '| Result | Status |','|---|---|',row('PowerPoint editability',r.results.pptxEditability.status),row('Page check against the derived scene',r.results.pptxEditability.sceneCheck.status),row('PDF searchability',r.results.pdfSearchability.status),row('Accessibility (package checks)',r.results.accessibility.status),row('Typography (presentable text size by role)',typographyStatus(r.results.typography)),row('Visual fidelity',r.results.visualFidelity.status),'',
   '| Level | Web | PDF | PowerPoint |','|---|---|---|---|',...['L1','L2','L3'].map(k=>`| ${k} | ${r.levelCounts.web[k]} | ${r.levelCounts.pdf[k]} | ${r.levelCounts.pptx[k]} |`),'',
   '## Receipts','',...(r.receipts.length?r.receipts.flatMap(g=>g.delivered?[`- \`${g.code}\` × ${g.count}: ${g.reason} ${g.delivered}`]:[`- \`${g.code}\` × ${g.count}: ${g.reason}`,...g.elements.map(e=>`  - ${e.sceneId||''} ${e.element}: ${e.delivered}`)]):['None.']),'',
+  evidenceMarkdown(r.evidence||taskEvidence(null)),
   '## Fonts referenced, not embedded','',r.fonts.used.join(', ')||'None measured.','',
   '## Applications','',...Object.entries(r.applications).map(([k,v])=>`- ${k}: ${v.state}${v.detail?` — ${v.detail}`:''}`),''].join('\n');
 }
