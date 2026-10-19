@@ -6,13 +6,13 @@
   "browserVersion": "149.0.7827.55",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "27bf9480c61142fd0b364873a6ab4fd54c12a77f",
+    "commit": "7fe6106f14856391a35a0f96dceaffd0e645b0f5",
     "worktreeClean": true,
-    "log": "docs/evidence/astra-second-verification/verify-27bf948.txt",
-    "total": 491,
-    "passed": 487,
+    "log": "docs/evidence/astra-second-verification/verify-7fe6106.txt",
+    "total": 495,
+    "passed": 490,
     "failed": 0,
-    "skipped": 4
+    "skipped": 5
   },
   "openAcceptanceGates": [
     "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",

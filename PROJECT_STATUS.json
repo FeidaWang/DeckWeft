@@ -11,14 +11,14 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "27bf9480c61142fd0b364873a6ab4fd54c12a77f",
+    "commit": "7fe6106f14856391a35a0f96dceaffd0e645b0f5",
     "worktreeClean": true,
-    "log": "docs/evidence/astra-second-verification/verify-27bf948.txt",
-    "total": 491,
-    "passed": 487,
+    "log": "docs/evidence/astra-second-verification/verify-7fe6106.txt",
+    "total": 495,
+    "passed": 490,
     "failed": 0,
-    "skipped": 4,
-    "skippedReason": "environment- or browser-gated (CHROMIUM_PATH, DECKWEFT_HANDOFF_DIR)",
+    "skipped": 5,
+    "skippedReason": "environment- or browser-gated (CHROMIUM_PATH, DECKWEFT_HANDOFF_DIR); the fifth skip is the F1 Studio export acceptance test",
     "environment": {
       "os": "macOS arm64",
       "node": "v24.14.0"
@@ -31,6 +31,18 @@
   "history": [
     {
       "record": "automatedTests",
+      "commit": "27bf9480c61142fd0b364873a6ab4fd54c12a77f",
+      "date": "2026-10-19",
+      "total": 491,
+      "passed": 487,
+      "failed": 0,
+      "skipped": 4,
+      "log": "docs/evidence/astra-second-verification/verify-27bf948.txt",
+      "note": "Clean-tree run on 27bf948 (round 7).",
+      "supersededBy": "automatedTests"
+    },
+    {
+      "record": "automatedTests",
       "commit": "c09b795d3275bdaeb8083a156866b5c35f360ff9",
       "date": "2026-10-19",
       "total": 491,
@@ -39,7 +51,7 @@
       "skipped": 4,
       "log": "docs/evidence/astra-second-verification/verify.txt",
       "note": "Run on c09b795 plus the then-uncommitted F4 changes (worktreeClean false).",
-      "supersededBy": "automatedTests"
+      "supersededBy": "27bf9480c61142fd0b364873a6ab4fd54c12a77f"
     },
     {
       "record": "automatedTests",
