@@ -10,6 +10,7 @@ const STAGE=':is(.stage-hero,.stage-chapter,.stage-figure,.stage-metric,.stage-c
 const OWN=':is(.fieldnotes-cover,.fieldnotes-thesis,.fieldnotes-figure,.fieldnotes-method,.fieldnotes-closing,.atlas-cover,.atlas-section,.atlas-figure,.atlas-panels,.atlas-appendix,.atlas-closing,.stage-hero,.stage-chapter,.stage-figure,.stage-metric,.stage-closing)';
 export const themeCSS=`
 /* ---- shared by the sixteen S8 compositions ---- */
+/* No text-transform anywhere: exported text must keep the authored case (PDF searchability, PowerPoint text). Kickers use size and letter-spacing only. */
 .web-scene${OWN} .regions{display:grid;align-items:start}
 .web-scene${OWN} .regions>.region[data-component=citation]{grid-column:1 / -1}
 .web-scene${OWN} h2{max-width:100%}
@@ -21,7 +22,7 @@ export const themeCSS=`
 .web-scene${T01} .region[data-component=callout] p{font:italic 400 var(--lead-size)/1.4 var(--display);color:var(--ink);letter-spacing:0;border-top:1px solid var(--accent);padding-top:12px;max-width:30ch}
 .web-scene${T01} .region[data-component=list] ul{line-height:1.55}
 .web-scene${T01} .metric strong{font-weight:400;letter-spacing:-.04em;color:var(--secondary)}
-.web-scene${T01} .metric strong small{font-family:var(--body);letter-spacing:.08em;text-transform:uppercase;font-size:.14em}
+.web-scene${T01} .metric strong small{font-family:var(--body);letter-spacing:.08em;font-size:.14em}
 .web-scene${T01} blockquote{font-style:italic;border-left-color:var(--accent)}
 .web-scene${T01} .chart svg{font-size:13px}
 .web-scene${T01} th{background:transparent;color:var(--ink);border-bottom:2px solid var(--ink);font:600 12px/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase}
@@ -30,7 +31,7 @@ export const themeCSS=`
 .web-scene${T01} .semantic-annotation,.web-scene${T01} .step-explanation,.web-scene${T01} .hotspot-explanation{background:#24241F0A}
 .web-scene.fieldnotes-cover .regions{grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr);column-gap:64px;align-content:end;min-height:560px;row-gap:20px}
 .web-scene.fieldnotes-cover [data-component=callout]{grid-column:1;grid-row:1;align-self:end}
-.web-scene.fieldnotes-cover [data-component=callout] p{font:600 12px/1.4 var(--body);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border:0;padding:0;max-width:none}
+.web-scene.fieldnotes-cover [data-component=callout] p{font:600 12px/1.4 var(--body);font-style:normal;letter-spacing:.16em;color:var(--accent);border:0;padding:0;max-width:none}
 .web-scene.fieldnotes-cover [data-component=heading]{grid-column:1;grid-row:2}
 .web-scene.fieldnotes-cover h2{max-width:15ch;margin:0}
 .web-scene.fieldnotes-cover [data-component=paragraph]{grid-column:2;grid-row:2;align-self:end}
@@ -73,14 +74,14 @@ export const themeCSS=`
 .web-scene.fieldnotes-closing .region[data-component=callout]{grid-column:2}
 
 /* ---- T02 Research Atlas: shared grid, numbered rails, tabular numerals, figure-first ---- */
-.web-scene${T02} .folio{font:600 11px/1.4 var(--numeric,var(--body));letter-spacing:.08em;text-transform:none;border-bottom:1px solid var(--ink)}
+.web-scene${T02} .folio{font:600 11px/1.4 var(--numeric,var(--body));letter-spacing:.08em;border-bottom:1px solid var(--ink)}
 .web-scene${T02} h2{letter-spacing:var(--headline-tracking)}
 .web-scene${T02} .region[data-component=paragraph] p{line-height:1.5}
 .web-scene${T02} .region[data-component=callout] p{font:600 var(--lead-size)/1.3 var(--body);letter-spacing:-.01em;color:var(--accent);border-left:3px solid var(--secondary);padding-left:14px;max-width:34ch}
 .web-scene${T02} .metric strong{font-weight:600;letter-spacing:-.05em;color:var(--accent)}
 .web-scene${T02} .metric strong small{font-family:var(--body);font-size:.16em;letter-spacing:.02em}
 .web-scene${T02} blockquote{border-left-color:var(--secondary)}
-.web-scene${T02} th{background:transparent;color:var(--ink);border-bottom:2px solid var(--ink);font:600 12px/1.4 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:10px 12px}
+.web-scene${T02} th{background:transparent;color:var(--ink);border-bottom:2px solid var(--ink);font:600 12px/1.4 var(--body);letter-spacing:.06em;padding:10px 12px}
 .web-scene${T02} td{border-bottom:1px solid var(--reference,currentColor);font-variant-numeric:tabular-nums;padding:12px}
 .web-scene${T02}.comparison-matrix th{background:transparent;color:var(--ink);padding:12px 14px}
 .web-scene${T02}.comparison-matrix td{font-size:20px;padding:16px 14px}
@@ -180,7 +181,7 @@ export const themeCSS=`
 .web-scene.stage-hero:not(:has(.region[data-component=image])) .regions{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
 .web-scene.stage-hero:has(.region[data-component=image]) h2{font-size:min(var(--headline),80px);max-width:12ch}
 .web-scene.stage-hero [data-component=callout]{grid-column:1;grid-row:1;align-self:end}
-.web-scene.stage-hero [data-component=callout] p{font:500 12px/1.4 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);max-width:none}
+.web-scene.stage-hero [data-component=callout] p{font:500 12px/1.4 var(--body);letter-spacing:.18em;color:var(--accent);max-width:none}
 .web-scene.stage-hero [data-component=heading]{grid-column:1;grid-row:2}
 .web-scene.stage-hero h2{max-width:10ch;margin:0}
 .web-scene.stage-hero .region:is([data-component=paragraph],[data-component=list],[data-component=quote]){grid-column:1}
@@ -193,7 +194,7 @@ export const themeCSS=`
 .web-scene.stage-hero .metric strong{font-size:clamp(140px,18vw,260px)}
 .web-scene.stage-chapter .regions{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:24px;max-width:1100px;width:100%;margin:0 auto;min-height:560px}
 .web-scene.stage-chapter .region{max-width:100%}
-.web-scene.stage-chapter [data-component=callout] p{font:500 12px/1.4 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);max-width:none}
+.web-scene.stage-chapter [data-component=callout] p{font:500 12px/1.4 var(--body);letter-spacing:.18em;color:var(--accent);max-width:none}
 .web-scene.stage-chapter h2{border-top:2px solid var(--accent);padding-top:28px;max-width:14ch;margin:0}
 .web-scene.stage-chapter .region[data-component=paragraph] p{font-size:var(--lead-size);max-width:34ch;margin:0}
 .web-scene.stage-chapter .region[data-component=list] ul{font-size:18px;list-style:none;padding:0;display:flex;gap:40px;flex-wrap:wrap}
