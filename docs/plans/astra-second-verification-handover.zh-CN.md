@@ -8,8 +8,8 @@
 |---|---|
 | 分支 | 第八轮在 `claude/schema-2-f1-export-dialog-ui-7bd6fe`（从七轮分支 `claude/astra-feedback-solutions-725dfb` 的 `31968f8` 快进而来；七轮分支基于 `main` 的 `9771bf4`），均未推送 |
 | 工作区 | `.claude/worktrees/schema-2-f1-export-dialog-ui-7bd6fe`（七轮：`.claude/worktrees/astra-feedback-solutions-725dfb`） |
-| 提交状态 | 七轮全部提交在七轮分支（见 `git log main..`），**未推送**：前六轮六个提交；第七轮 `bf042bf`（F4 生成脚本）、`27bf948`（记录时忽略正在记录的日志）、`31968f8`（状态记录）。**第八轮（F1 的 Studio 拆页选项与作者接受）在第八轮分支的工作树上，尚未提交**：20 个文件改动加新文件 `tests/export-targets-cli.test.mjs`，等用户说提交 |
-| `npm run verify` | 第八轮未提交树上通过：495 项测试，490 通过，0 失败，5 环境门控跳过；源码检查 1551 文件；`npm run check` 未因状态过期失败，所以没有重新记录。上一次记录：在干净的 `27bf948` 上通过：491 项测试，487 通过，0 失败，4 环境门控跳过。日志 `docs/evidence/astra-second-verification/verify-27bf948.txt`；`docs/current-status.json` 与 `PROJECT_STATUS.json` 记录 commit `27bf948`、`worktreeClean: true`。之前未提交树上的 `c09b795` 记录移入 `history[]`，日志 `verify.txt` 保留 |
+| 提交状态 | 七轮全部提交在七轮分支（见 `git log main..`），**未推送**：前六轮六个提交；第七轮 `bf042bf`（F4 生成脚本）、`27bf948`（记录时忽略正在记录的日志）、`31968f8`（状态记录）。第八轮（F1 的 Studio 拆页选项与作者接受）已提交在第八轮分支：`7fe6106`（23 个文件）、`fb4c316`（状态记录），**未推送** |
+| `npm run verify` | 在干净的 `7fe6106` 上通过：495 项测试，490 通过，0 失败，5 环境门控跳过（第五项是 F1 的 Studio 导出接受测试，需要 `CHROMIUM_PATH`）；源码检查 1551 文件。日志 `docs/evidence/astra-second-verification/verify-7fe6106.txt`；`docs/current-status.json` 与 `PROJECT_STATUS.json` 记录 commit `7fe6106`、`worktreeClean: true`；`27bf948` 的记录移入 `history[]`。日志 `docs/evidence/astra-second-verification/verify-27bf948.txt`；`docs/current-status.json` 与 `PROJECT_STATUS.json` 记录 commit `27bf948`、`worktreeClean: true`。之前未提交树上的 `c09b795` 记录移入 `history[]`，日志 `verify.txt` 保留 |
 | 浏览器门控 | 第八轮，隔离 Chrome for Testing 149.0.7827.55 + Playwright 1.61.1：`tests/studio-export.test.mjs` 5/5（单独运行）、`browser_blueprint_studio.mjs`（12 步，0 错误）、`browser_author_controls.mjs`（30 步，首次即过，1 个已记录的 409 控制台错误）；`export:targets --s9 --decks blueprint-silver-gray-editorial-en` 以 `--paginate none` 与 auto 各一次。七轮：`browser_session_reconnect.mjs`（6 项，连续三次）、`browser_visual_studio.mjs`（22 项）、`browser_workbench.mjs`、`browser_visual_task.mjs` 通过。本轮没有重跑 session_reconnect / visual_studio / workbench / visual_task |
 | 未能运行 | `tests/browser_acceptance.py`、`tests/browser_smoke.py`：本机 Python 没有 `playwright` 模块。第五轮改过 `browser_acceptance.py` 的 409 步骤，未经运行验证 |
 | 真实宿主 | 没有调用；Claude 登录仍 deferred |
@@ -80,19 +80,29 @@ npm run status:check
 
 ## 下一个会话怎么开
 
-**推荐顺序。** 第八轮（F1 的 Studio 拆页选项与作者接受）已做完但**未提交**；先由用户决定提交，提交后在干净树上按上面三步重新记录状态（测试数 495 / 490 / 0 / 5）。注意另一条分支 `claude/astra-verification-s2-f1-ui-4819bf`（`5249740`）里有另一个会话对同一项（并含 F3、F5 显示）的实现，第八轮没有读取或合并它，两者只能留一个。之后是 F3/F5 的 Studio 显示 → 独立检查器认识拆页 → §5 剩余 → 英文版文档。需要你授权或你本人操作的项（F5 在线对照、PowerPoint/Keynote 打开、Windows 实机、30 分钟实测）放在最后。一次会话只做一项，避免一个分支同时改 schema 和 UI。
+**推荐顺序。** 第八轮已提交并在干净树上记录了状态。注意另一条分支 `claude/astra-verification-s2-f1-ui-4819bf`（`5249740`）里有另一个会话对同一项（并含 F3、F5 显示）的实现，第八轮没有读取或合并它，两者只能留一个。之后是 F3/F5 的 Studio 显示 → 独立检查器认识拆页 → §5 剩余 → 英文版文档。需要你授权或你本人操作的项（F5 在线对照、PowerPoint/Keynote 打开、Windows 实机、30 分钟实测）放在最后。一次会话只做一项，避免一个分支同时改 schema 和 UI。
 
 **推荐模型与 effort。**
 
 | 任务 | 模型 | effort | 理由 |
 |---|---|---|---|
 | ~~F1 的 Studio 拆页选项与作者接受~~（第八轮已做，未提交） | Claude Fable 5.1 | high | 改导出对话框、导出报告和 `export:targets`，牵动多个浏览器 runner，需要全局一致 |
-| 独立检查器 `inspect_v3_pptx.py` 认识拆页，再出 18 个 deck 的失败清单 | Claude Opus 5.5 | medium | 按报告的 `pagination` 把多张幻灯片归到同一场景，机械实现 |
+| 独立检查器 `inspect_v3_pptx.py` 认识拆页，再出 18 个 deck 的失败清单 | Claude Opus 5.5 | medium | 按报告的 `pagination` 把多张幻灯片归到同一场景，机械实现；同时修 `export:targets` 的 `--no-quicklook`（`parseArgs` 加 `allowNegative`） |
 | Studio 显示 attestation 与宿主新增行（F3/F5） | Claude Fable 5.1 | high | 同上，UI 与报告一起改 |
 | F7 Windows 进程树测试、§5 剩余 | Claude Opus 5.5 | medium | 机械实现为主 |
 | 文案同步、英文版、`verification.md` runner 清单 | Claude Sonnet 5.5 | medium | 低风险 |
 
-**提示词：F1 的 Studio 拆页选项与作者接受（第八轮已按此做完；换第二段可复用）。**
+**提示词：F3/F5 的 Studio 显示（推荐的下一个实现项，可直接粘贴）。** 推荐 Claude Fable 5.1，effort high：UI 与导出报告一起改，牵动大纲、工作台评审表单和浏览器 runner。
+
+```text
+请先读 docs/plans/astra-second-verification-handover.zh-CN.md、docs/plans/astra-second-verification-response.zh-CN.md（含 §9 实施记录，到第八轮）和 AGENTS.md。工作区是分支 claude/schema-2-f1-export-dialog-ui-7bd6fe 的 worktree（.claude/worktrees/schema-2-f1-export-dialog-ui-7bd6fe，tip fb4c316）；若会话启动在别的 worktree 或 main，先用 git merge-base --is-ancestor fb4c316 HEAD 确认，不在就快进到 fb4c316。前面的提交未推送，不要改写它们。
+
+本次只做方案 §2 F3 与 F5 的 Studio 显示部分：(1) Studio 大纲（页面列表与内容面板）里标出宿主新增的行（task.hostDraft.hostAuthored / hostAuthoredLines），导出报告与 report.md 显示新增行数与所在页；(2) Studio 工作台评审结果与导出报告显示 review.attestation（author / host-metadata-only / host-pixel-control / unattested）与 controls 的命中数，作者评审表单提交 attestation: 'author' 的路径要有浏览器验证。不改 schema、阈值或渲染器版本。先写测试（单测与受影响的浏览器 runner：browser_workbench.mjs、browser_visual_task.mjs，以及任何读大纲的 runner），再实现。完成后跑 npm run verify，并用 CHROMIUM_PATH 与 PLAYWRIGHT_MODULE（见交接文档）跑受影响的浏览器 runner；browser_author_controls.mjs 偶尔在 #actionLevel 超时，失败先重跑一次再判断。若 npm run check 因当前状态过期而失败，按交接文档的三步重新记录。
+
+约束：不调用真实宿主、不登录、不推送、不加依赖、不打开 /Applications 里的应用；只在我说提交时提交。结束时按 AGENTS.md 列出跑过的测试、看过的图、没打开的应用，把做了什么和没做什么追加到方案 §9（第九轮），并更新本交接文档。
+```
+
+**提示词：F1 的 Studio 拆页选项与作者接受（第八轮已按此做完，留作模板）。**
 
 ```text
 请先读 docs/plans/astra-second-verification-handover.zh-CN.md、docs/plans/astra-second-verification-response.zh-CN.md（含 §9 实施记录）和 AGENTS.md。工作区是分支 claude/astra-feedback-solutions-725dfb 的 worktree，前面的提交未推送，不要改写它们。
