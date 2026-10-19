@@ -53,7 +53,7 @@ def main():
     # A second actual page opens the same saved revision.
     p2=h['context'].new_page();h['setup'](p2);ready(p2)
     change(p,'First window saved');p.locator('#save').click();saved(p)
-    change(p2,'Second window keeps this draft');p2.locator('#save').click();p2.wait_for_function("document.querySelector('#issueBanner').textContent.includes('Another window')")
+    change(p2,'Second window keeps this draft');p2.locator('#save').click();p2.locator('#conflictDialog [data-session="cancel"]').click();p2.wait_for_function("document.querySelector('#issueBanner').textContent.includes('Another window')")
     assert p2.locator('#slideTitle').input_value()=='Second window keeps this draft';assert p2.locator('#saveState').inner_text().startswith('Unsaved');p2.close()
     record('two windows: stale save is rejected and the losing draft stays intact')
     # Deliberate invalid field: JSON backup remains possible.

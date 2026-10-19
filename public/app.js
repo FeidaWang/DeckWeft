@@ -6,6 +6,7 @@ import {mountAgentBridge} from './agent-bridge.js';
 import {mountPreferences,getPreferences} from './preferences.js';
 import {applyActions} from './actions.js';
 import {mountPresenter} from './presenter.js';
+import {sessionRecovery,askSaveCopy} from './session.js';
 applyPitchMode(document);
 const $=selector=>document.querySelector(selector);
 const en=Object.fromEntries([...document.querySelectorAll('[data-i18n]')].map(el=>[el.dataset.i18n,el.textContent]));
@@ -18,8 +19,11 @@ const edits=new EditHistory(),dialogs=new DialogManager(document),textMeasurer=n
 let previewTimer,previewTicket=0,previewAbort,toastTimer,presenter;
 const t=(english,chinese)=>state.locale==='zh-CN'?chinese:english;
 const x=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-async function api(url,data,method='POST',signal){
+const reconnect=sessionRecovery({t,setToken:token=>{state.token=token;}});
+// A 401 is answered before the request is handled, so one retry after reconnecting cannot repeat a change.
+async function api(url,data,method='POST',signal,retry=true){
   const response=await fetch(url,{method,signal,headers:{Authorization:`Bearer ${state.token}`,...(data===undefined?{}:{'Content-Type':'application/json'})},...(data===undefined?{}:{body:JSON.stringify(data)})});
+  if(response.status===401&&retry){await reconnect();return api(url,data,method,signal,false);}
   if(!response.ok){let value;try{value=await response.json();}catch{value={error:{message:`HTTP ${response.status}`}};}const error=new Error(value.error.message);Object.assign(error,value.error);throw error;}return response;
 }
 async function json(url,data,method='POST',signal){return(await api(url,data,method,signal)).json();}
@@ -142,13 +146,20 @@ document.addEventListener('compositionstart',()=>{if(!state.composing){state.com
 document.addEventListener('compositionend',()=>{if(state.composing){state.composing=false;edits.endGroup();schedulePreview();}});
 document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cancel',event=>{if(state.composing)event.preventDefault();}));
 new ResizeObserver(sizeCanvas).observe($('#stage'));window.addEventListener('resize',()=>dialogs.resize(innerWidth));
+// After a 409 the author may keep the draft as a new deck through the import-as-copy route; the newer revision stays untouched.
+async function saveCopy(){
+  if(!await askSaveCopy(t))return false;
+  const draft=structuredClone(state.project),active=state.active;
+  const imported=await json('/api/import',{project:draft}),saved=await json('/api/projects',{project:imported.project});
+  activate(saved.project);selectSlide(active);await library();toast(t('Saved as a separate copy. The newer version was not changed.','已另存为独立副本，较新版本未改动。'));return true;
+}
 async function save(){
   if(!state.project||state.saving||state.composing)return false;if(!state.dirty)return true;
-  state.saving=true;edits.endGroup();updateStatus();const snapshot=structuredClone(state.project),counter=state.counter;
+  reconnect.offerAgain();state.saving=true;edits.endGroup();updateStatus();const snapshot=structuredClone(state.project),counter=state.counter;
   try{const {project}=await json(`/api/projects/${snapshot.id}`,{project:snapshot,expectedRevision:snapshot.revision.number},'PUT');
     if(state.project.id===snapshot.id){state.project.revision=project.revision;if(counter===state.counter)state.dirty=false;}
     await library();notice('');return !state.dirty;
-  }catch(error){if(error.code==='REVISION_CONFLICT')notice(t('Another window saved first. Your edits are still here. Export Project JSON to keep a draft, then reopen or import it as a new copy.','另一窗口先保存了。你的修改仍在这里。先导出项目 JSON 保留草稿，再重新打开或导入为新副本。'));else onError(error);return false;
+  }catch(error){if(error.code==='REVISION_CONFLICT'){try{if(await saveCopy())return true;}catch(copyError){onError(copyError);return false;}}if(error.code==='REVISION_CONFLICT')notice(t('Another window saved first. Your edits are still here. Export Project JSON to keep a draft, then reopen or import it as a new copy.','另一窗口先保存了。你的修改仍在这里。先导出项目 JSON 保留草稿，再重新打开或导入为新副本。'));else onError(error);return false;
   }finally{state.saving=false;updateStatus();}
 }
 function download(blob,name){const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);}

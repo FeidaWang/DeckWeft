@@ -52,7 +52,9 @@ The smallest supported audience text is a design constraint, not a guarantee of 
 
 Use Undo / Redo for local edits. While typing in a field, normal text undo belongs to that field. Outside a field, `⌘Z` / `Ctrl+Z` uses deck history. Local undo history is not retained after closing the page.
 
-If another window saved first, DeckWeft refuses to overwrite it. Your edits remain in the current window. Export **Project JSON** to keep them, reopen the latest deck, and decide which changes to reapply. You can also import the backup as a separate new project. Automatic merging is not implemented.
+If another window saved first, DeckWeft refuses to overwrite it. Your edits remain in the current window, and a dialog offers **Save as a separate copy**. Expected result: a new deck holds your edits and opens in this window; the newer version is unchanged. Choose **Keep editing** instead to export **Project JSON**, reopen the latest deck, and decide which changes to reapply. Automatic merging is not implemented.
+
+If the local studio restarted while the page stayed open, the next save (or preview) shows **The local studio restarted.** Choose **Reconnect and keep edits**. Expected result: the page does not reload, your edits stay, and the save continues with the same overwrite check as above. **Not now** keeps the edits unsaved; choose Save again to reconnect.
 
 ### Find an earlier version, like looking through a photo album
 

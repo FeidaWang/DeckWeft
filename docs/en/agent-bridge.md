@@ -59,7 +59,7 @@ Progress uses a fixed three-task DAG: planning 30, draft 45 and validation 25 un
 - Heartbeats last 90 seconds; a claimed lease lasts at most ten minutes and never outlives its grant. A long owned turn can complete within its lease without a fresh heartbeat. Expiry never silently retries model work.
 - Queue state is bounded to 20 jobs, 200 retained events per job and 8 MB. It never silently prunes jobs. Use a separate library when full. Old queue v1 is preserved before migration; old in-flight jobs are cancelled and need new scoped consent.
 - Queue/application/cancellation share an exclusive lock. A stale lock is not automatically deleted. Stop related processes, preserve the files and inspect the lock before manual recovery.
-- A server restart invalidates old browser session tokens. Reload the Studio; preserve unsaved work before restarting during development.
+- A server restart invalidates old browser session tokens. Both Studio pages answer the resulting 401 with a **Reconnect and keep edits** dialog: it fetches the new token without reloading, keeps the draft in memory, and retries the request once. The save still sends its expected revision, so a newer saved version leads to **Save as a separate copy**, never an overwrite. Server-side tickets from before the restart (for example a pending measurement) are not restored; the next preview issues new ones.
 
 ## Separate code proposals
 
