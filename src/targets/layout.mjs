@@ -106,7 +106,9 @@ export function measureExportLayout(){
   return {box:box(c),header:c.tagName==='TH',colspan:c.colSpan,rowspan:c.rowSpan,fill:color(s.backgroundColor),borders:{top:side('Top'),right:side('Right'),bottom:side('Bottom'),left:side('Left')},padding:[px(s.paddingTop),px(s.paddingRight),px(s.paddingBottom),px(s.paddingLeft)],valign:s.verticalAlign,texts:texts(c,{stop})};})})),caption:t.caption&&visible(t.caption)?texts(t.caption,{stop}):[]};}
  function plotOf(fig){return [...fig.children].find(n=>visible(n)&&!n.matches('figcaption,.legend,.chart-notes,p,details,.component-note,.static-state-note'))||null;}
  function chartPlot(plot,stop){
-  const marks=[...plot.querySelectorAll('[data-series-id]')].filter(visible).map(m=>{const shape=m.matches('rect,circle,ellipse,path,line,polyline')?m:m.querySelector('rect,circle,ellipse,path,polyline')||m.querySelector('line')||(m.closest('svg')?null:m),s=shape&&getComputedStyle(shape);
+  // A mark's paint is its data graphic: a filled shape before any unfilled stroke (axis breaks and reference lines are drawn in the text colour).
+  const graphic=m=>{if(m.matches('rect,circle,ellipse,path,line,polyline'))return m;const all=[...m.querySelectorAll('rect,circle,ellipse,path,polyline,line')],filled=all.filter(e=>getComputedStyle(e).fill!=='none'&&e.tagName!=='line');return filled.find(e=>['rect','circle','ellipse'].includes(e.tagName))||filled[0]||all.find(e=>e.tagName!=='line'&&getComputedStyle(e).stroke!==getComputedStyle(m).color)||all[0]||(m.closest('svg')?null:m);};
+  const marks=[...plot.querySelectorAll('[data-series-id]')].filter(visible).map(m=>{const shape=graphic(m),s=shape&&getComputedStyle(shape);
    const fill=shape?(shape.closest('svg')?paint(shape,'fill'):color(s.backgroundColor)):null,stroke=shape&&shape.closest('svg')?paint(shape,'stroke'):null;
    return {seriesId:m.dataset.seriesId,objectId:m.dataset.objectId||null,focus:m.closest('[data-focus]')?.dataset.focus??null,tag:shape?.tagName.toLowerCase()||null,fill,stroke,strokeWidth:shape&&shape.closest('svg')?px(s.strokeWidth)*(shape.getScreenCTM()?.a||1):0,dash:s&&s.strokeDasharray!=='none'?s.strokeDasharray:null,box:box(m)};});
   const label=plot.querySelector('svg text, .chart-row-label, td, th'),frame=plot.matches('svg[viewBox]')?plot:plot.querySelector(':scope>svg[viewBox]'),tbl=plot.matches('table')?plot:plot.querySelector('table');
@@ -161,6 +163,12 @@ export function assertExportLayout(layout,{renderHash,plan}){
   if(layout.pseudo?.unresolved)add('EXPORT_LAYOUT_PSEUDO',`${layout.pseudo.unresolved} pseudo-element content value(s) could not be resolved to text (counters).`);
   const ids=plan.scenes.map(s=>s.id);if(JSON.stringify(layout.scenes.map(s=>s.sceneId))!==JSON.stringify(ids))add('EXPORT_LAYOUT_SCENES','The measured scenes do not match the plan.');
   for(const scene of plan.scenes){const m=layout.scenes.find(s=>s.sceneId===scene.id);if(!m)continue;for(const id of scene.blockIds)if(!m.regions.some(r=>r.blockId===id))add('EXPORT_LAYOUT_REGION',`Block ${id} was not measured in scene ${scene.id}.`,{sceneId:scene.id,blockId:id});}
+  // Measured values reach XML and CSS: boxes must be finite numbers and colours six hex digits.
+  const bad=[];(function walk(v,path){if(bad.length>4||v===null||typeof v!=='object')return;
+   if(['box','bounds','content'].some(k=>path.endsWith('.'+k))&&!['x','y','width','height'].every(k=>Number.isFinite(v[k])))bad.push(path);
+   if('hex' in v&&!/^[0-9A-F]{6}$/i.test(String(v.hex)))bad.push(path);
+   for(const [k,c]of Object.entries(v))if(k!=='platformFonts')walk(c,path+'.'+k);})(layout.scenes,'scenes');
+  if(bad.length)add('EXPORT_LAYOUT_VALUES','Measured boxes must be finite numbers and colours six hex digits.',{paths:bad});
  }
  if(issues.length)throw new DeckError('EXPORT_LAYOUT_INVALID','The measured export layout cannot be used.',422,issues);
  return layout;

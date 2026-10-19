@@ -52,7 +52,7 @@ export function readiness(document,plan,target,{resources={},layout,html}){
  * Runs every stage for one paged target. `html` is the static web export (exportPresentation with format html), `layout` its
  * browser measurement (measureExportLayout plus CDP platform fonts), `rasters` element captures for L3 fallbacks.
  */
-export function runExport(document,plan,target,{resources={},layout,rasters={},html}){
+export function runExport(document,plan,target,{resources={},layout,rasters={},html,allowFailedCheck=false}){
  if(!PAGED_TARGETS.includes(target))throw new DeckError('EXPORT_FORMAT','The export order applies to pptx and pdf.',400);
  const run=exportRun(target);
  const ready=run.stage('ready',()=>{const r=readiness(document,plan,target,{resources,layout,html});return {value:r,summary:{assets:r.assets.length,fonts:r.fonts,images:r.images}};});
@@ -70,6 +70,9 @@ export function runExport(document,plan,target,{resources={},layout,rasters={},h
   if(target==='pptx'){const a=auditPPTX({bytes:output.bytes,document,plan,scenes,compiled:output,levels});return {value:a,summary:{editability:a.editability.status,sceneCheck:a.sceneCheck.status,accessibility:a.accessibility.status}};}
   const c=checkPrintJob(output,{document,plan});return {value:c,summary:{status:c.status}};
  });
+ // A failed check refuses the file unless the caller records failures on purpose (the evidence run does).
+ const failed=target==='pptx'?['editability','sceneCheck','accessibility'].filter(k=>check[k].status==='fail'):check.status==='fail'?['print']:[];
+ if(failed.length&&!allowFailedCheck)throw new DeckError('EXPORT_CHECK_FAILED','The exported file failed its own check; see the details.',422,failed.map(k=>({check:k,failures:target==='pptx'?check[k].failures:check.failures})));
  const body=target==='pptx'?output.bytes:output.html;
  return {target,ready,delivery,levels,output,check,order:run.receipts,
   file:target==='pptx'?{body,mime:'application/vnd.openxmlformats-officedocument.presentationml.presentation',extension:'pptx'}:{body,mime:'text/html; charset=utf-8',extension:'print.html',print:output.page}};

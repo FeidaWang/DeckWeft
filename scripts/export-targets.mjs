@@ -103,7 +103,8 @@ for(const d of DECKS){
    if(r.image&&!['image/png','image/jpeg'].includes(resources[p.document.blocks.find(b=>b.id===r.blockId)?.assetId]?.mime))rasters[`${s.sceneId}/${r.blockId}/image`]=await m.page.locator(`[data-dw-measure="${r.image.measureId}"]`).screenshot({animations:'disabled'});}}
  await writeFile(path.join(dir,'layout.json'),JSON.stringify(layout));await m.context.close();
  // Compile both paged targets through the export order.
- const pptx=exportDeck(p.document,'pptx',{...opts,layout,rasters}),pdfJob=exportDeck(p.document,'pdf',{...opts,layout,rasters});
+ // Failures are recorded, not hidden: the evidence run keeps a failing file and its report.
+ const pptx=exportDeck(p.document,'pptx',{...opts,layout,rasters,allowFailedCheck:true}),pdfJob=exportDeck(p.document,'pdf',{...opts,layout,rasters,allowFailedCheck:true});
  const pptxFile=path.join(dir,d.name+'.pptx'),printFile=path.join(dir,'print.html'),pdfFile=path.join(dir,d.name+'.pdf');
  await writeFile(pptxFile,pptx.body);await writeFile(printFile,pdfJob.body);
  // Screen styles keep the measured layout (print media drops the scenes' minimum height); every printed scene is checked against it.

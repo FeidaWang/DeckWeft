@@ -5,26 +5,34 @@
  */
 import {inflateRawSync} from 'node:zlib';
 import {SLIDE} from './ooxml.mjs';
+import {crc32} from '../../render/zip.mjs';
 
-/** Reads a ZIP32 archive written by this repository's zip writer (stored or deflated entries). Not a general extractor. */
-export function readZip(bytes,{maxEntries=20000,maxBytes=1024*1024*1024}={}){
+/**
+ * Reads a ZIP32 archive written by this repository's zip writer (stored or deflated entries). Not a general extractor: it
+ * bounds the inflated size per entry and in total, checks local headers, lengths and CRC-32, and refuses duplicate names.
+ */
+export function readZip(bytes,{maxEntries=20000,maxBytes=256*1024*1024}={}){
  const buf=Buffer.from(bytes),files=new Map();let end=-1;
  for(let i=buf.length-22;i>=Math.max(0,buf.length-65557);i--)if(buf.readUInt32LE(i)===0x06054b50){end=i;break;}
  if(end<0)throw new Error('Not a ZIP archive.');
  const count=buf.readUInt16LE(end+10);let at=buf.readUInt32LE(end+16),total=0;if(count>maxEntries)throw new Error('Too many archive entries.');
+ const inside=(o,n)=>{if(o<0||o+n>buf.length)throw new Error('Archive entry outside the file.');};
  for(let n=0;n<count;n++){
-  if(buf.readUInt32LE(at)!==0x02014b50)throw new Error('Corrupt central directory.');
-  const method=buf.readUInt16LE(at+10),size=buf.readUInt32LE(at+20),raw=buf.readUInt32LE(at+24),nameLength=buf.readUInt16LE(at+28),extra=buf.readUInt16LE(at+30),comment=buf.readUInt16LE(at+32),offset=buf.readUInt32LE(at+42),name=buf.toString('utf8',at+46,at+46+nameLength);
-  const local=offset+30+buf.readUInt16LE(offset+26)+buf.readUInt16LE(offset+28),data=buf.subarray(local,local+size);
-  total+=raw;if(total>maxBytes)throw new Error('Archive expands beyond the limit.');
-  files.set(name,method===0?Buffer.from(data):method===8?inflateRawSync(data):(()=>{throw new Error('Unsupported compression.');})());
-  at+=46+nameLength+extra+comment;
+  inside(at,46);if(buf.readUInt32LE(at)!==0x02014b50)throw new Error('Corrupt central directory.');
+  const method=buf.readUInt16LE(at+10),crc=buf.readUInt32LE(at+16),size=buf.readUInt32LE(at+20),raw=buf.readUInt32LE(at+24),nameLength=buf.readUInt16LE(at+28),extra=buf.readUInt16LE(at+30),comment=buf.readUInt16LE(at+32),offset=buf.readUInt32LE(at+42);
+  inside(at+46,nameLength);const name=buf.toString('utf8',at+46,at+46+nameLength);if(files.has(name))throw new Error('Duplicate archive entry '+name);
+  inside(offset,30);if(buf.readUInt32LE(offset)!==0x04034b50)throw new Error('Corrupt local header for '+name);
+  const local=offset+30+buf.readUInt16LE(offset+26)+buf.readUInt16LE(offset+28);inside(local,size);const data=buf.subarray(local,local+size);
+  if(raw>maxBytes-total)throw new Error('Archive expands beyond the limit.');
+  const body=method===0?Buffer.from(data):method===8?inflateRawSync(data,{maxOutputLength:Math.max(1,raw)}):(()=>{throw new Error('Unsupported compression.');})();
+  if(body.length!==raw||crc32(body)!==crc)throw new Error('Length or CRC mismatch for '+name);
+  total+=raw;files.set(name,body);at+=46+nameLength+extra+comment;
  }
  return files;
 }
 
 const ENT={amp:'&',lt:'<',gt:'>',quot:'"',apos:"'"};
-const decode=s=>s.replace(/&(#x[0-9a-f]+|#\d+|\w+);/gi,(m,e)=>e[0]==='#'?String.fromCodePoint(e[1]==='x'||e[1]==='X'?parseInt(e.slice(2),16):+e.slice(1)):ENT[e]??m);
+const decode=s=>s.replace(/&(#x[0-9a-f]+|#\d+|\w+);/gi,(m,e)=>{if(e[0]==='#')return String.fromCodePoint(e[1]==='x'||e[1]==='X'?parseInt(e.slice(2),16):+e.slice(1));if(!Object.hasOwn(ENT,e))throw new Error('Unknown XML entity &'+e+';');return ENT[e];});
 /** A strict, small XML reader: elements, attributes and text. Throws on mismatched or unclosed tags. */
 export function parseXML(text){
  const root={name:'#document',attrs:{},children:[],text:''},stack=[root],re=/<!--[\s\S]*?-->|<\?[\s\S]*?\?>|<!\[CDATA\[([\s\S]*?)\]\]>|<\/([\w:.-]+)\s*>|<([\w:.-]+)((?:\s+[\w:.-]+\s*=\s*(?:"[^"]*"|'[^']*'))*)\s*(\/?)>|([^<]+)/g;let m,last=0;
@@ -87,7 +95,8 @@ export function inspectPackage(bytes){
  for(const [name,tree]of Object.entries(xml))if(/^ppt\/charts\/chart\d+\.xml$/.test(name)){
   const ext=first(tree,'c:externalData')?.attrs['r:id'],target=(rels[name]||[]).find(r=>r.id===ext)?.target;let workbook=null;
   if(target&&files.has(target)){try{const wb=readZip(files.get(target)),sheet=parseXML(wb.get('xl/worksheets/sheet1.xml').toString('utf8'));workbook=all(sheet,'c').map(c=>({ref:c.attrs.r,value:c.attrs.t==='inlineStr'?all(c,'t').map(t=>t.text).join(''):first(c,'v')?.text??''}));}catch(e){errors.push({part:target,message:'Embedded workbook: '+e.message});}}
-  const series=all(tree,'c:ser').map(s=>({name:all(first(s,'c:tx')||{children:[]},'c:v').map(v=>v.text).join(''),categories:all(first(s,'c:cat')||first(s,'c:xVal')||{children:[]},'c:pt').map(p=>({idx:+p.attrs.idx,value:first(p,'c:v')?.text})),values:all(first(s,'c:val')||first(s,'c:yVal')||{children:[]},'c:pt').map(p=>({idx:+p.attrs.idx,value:first(p,'c:v')?.text})),refs:all(s,'c:f').map(f=>f.text)}));
+  const cells=(el)=>{if(!el)return [];const ref=first(el,'c:f')?.text.match(/^Sheet1!\$([A-Z]+)\$(\d+):\$[A-Z]+\$(\d+)$/);return all(el,'c:pt').map(p=>({idx:+p.attrs.idx,value:first(p,'c:v')?.text,ref:ref?ref[1]+(+ref[2]+ +p.attrs.idx):null}));};
+  const series=all(tree,'c:ser').map(s=>({name:all(first(s,'c:tx')||{children:[]},'c:v').map(v=>v.text).join(''),categories:cells(first(s,'c:cat')||first(s,'c:xVal')),values:cells(first(s,'c:val')||first(s,'c:yVal'))}));
   charts[name]={workbookPart:target||null,workbook,series,kind:['c:lineChart','c:barChart','c:areaChart','c:scatterChart'].find(k=>first(tree,k))?.slice(2)||null};
  }
  return {parts:[...files.keys()],errors,slides,charts,rels};
@@ -128,8 +137,9 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
    if(level==='L3'&&!receipts.some(r=>r.blockId===blockId&&r.code==='PPTX_CHART_IMAGE'))fail(edit,'L3 has a receipt',{sceneId:sp.id,blockId});
    if(block.type==='chart'&&level==='L1'){const frame=own.find(s=>s.kind==='chart'||s.kind==='table');if(!frame)fail(edit,'native chart',{sceneId:sp.id,blockId});
     else if(frame.kind==='chart'){const c=pkg.charts[frame.chart];if(!c?.workbook)fail(edit,'embedded chart data',{sceneId:sp.id,blockId});
-     else{const d=document.datasets.find(d=>d.id===block.datasetId),cache=c.series.flatMap(x=>x.values.map(p=>Number(p.value))),book=c.workbook.filter(w=>/^[B-Z]\d+$/.test(w.ref)&&!/^[B-Z]1$/.test(w.ref)).map(w=>Number(w.value));
-      if(cache.some(v=>!book.includes(v)))fail(edit,'workbook equals chart cache',{sceneId:sp.id,blockId});
+     else{const d=document.datasets.find(d=>d.id===block.datasetId),cache=c.series.flatMap(x=>x.values.map(p=>Number(p.value))),cell=new Map(c.workbook.map(w=>[w.ref,w.value]));
+      const misaligned=c.series.flatMap(x=>[...x.values,...x.categories]).filter(p=>!p.ref||String(cell.get(p.ref))!==String(p.value)&&Number(cell.get(p.ref))!==Number(p.value));
+      if(misaligned.length)fail(edit,'workbook equals chart cache',{sceneId:sp.id,blockId,cells:misaligned.slice(0,5).map(p=>p.ref)});
       const values=new Set(d.series.flatMap(s=>s.values.filter(v=>v!==null)));if(cache.some(v=>!values.has(v)))fail(edit,'chart values come from the dataset',{sceneId:sp.id,blockId});}}}
    if(['heading','paragraph','quote','callout','list','metric','citation','annotation','code'].includes(block.type)&&!own.some(s=>s.kind==='text'||s.title))fail(edit,'native text',{sceneId:sp.id,blockId});
    if(block.type==='table'&&!own.some(s=>s.kind==='table')&&!receipts.some(r=>r.sceneId===sp.id&&r.blockId===blockId&&r.code==='PPTX_TABLE_AS_CARDS'))fail(edit,'native table',{sceneId:sp.id,blockId});

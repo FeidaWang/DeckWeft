@@ -18,7 +18,7 @@ import { staticChartHTML,staticStepsHTML,staticCompareHTML,staticHotspotsHTML } 
 import { staticInteractionState } from '../../motion/cues.mjs';
 const effectiveDensity=(document,scene)=>scene.profile?.density||document.visualBrief?.profile?.density||'comfortable';
 const sha = text => createHash('sha256').update(text).digest('base64');
-export function exportPresentation(document, format, {plan,experimentalWeb=false,assetResources={},preview=false,layout,rasters={}}={}) {
+export function exportPresentation(document, format, {plan,experimentalWeb=false,assetResources={},preview=false,layout,rasters={},allowFailedCheck=false}={}) {
   if (!experimentalWeb) throw new DeckError('EXPERIMENTAL_WEB_REQUIRED','Explicitly enable experimentalWeb for the version 3 presentation path.');
   assertPresentation(document);
   assertPresentationTarget(format,document,assetResources,plan);
@@ -26,7 +26,7 @@ export function exportPresentation(document, format, {plan,experimentalWeb=false
   // Paged targets compile from the static web scene through the export order (S7); the rich web output stays as it is.
   if (format === 'pptx' || format === 'pdf') {
     const html=exportPresentation(document,'html',{plan,experimentalWeb,assetResources});
-    const run=runExport(document,plan,format,{resources:assetResources,layout,rasters,html});
+    const run=runExport(document,plan,format,{resources:assetResources,layout,rasters,html,allowFailedCheck});
     return {...run.file,report:{order:run.order,levels:run.levels,delivery:run.delivery,check:run.check,receipts:run.output.receipts||[]},run};
   }
   const scenes = compileWebScenes(document,plan), zh=document.locale==='zh-CN';

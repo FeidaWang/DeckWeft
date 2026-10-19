@@ -13,7 +13,9 @@ export function sceneFrame(bounds){
  return {scale:s,ratio:s/9525,x:v=>Math.round(ox+(v-bounds.x)*s),y:v=>Math.round(oy+(v-bounds.y)*s),len:v=>Math.max(0,Math.round(v*s)),pt:v=>v*s/EMU_PER_PT};
 }
 export const xfrm=(f,b,{tag='a:xfrm',flipH=false,flipV=false}={})=>`<${tag}${flipH?' flipH="1"':''}${flipV?' flipV="1"':''}><a:off x="${f.x(b.x)}" y="${f.y(b.y)}"/><a:ext cx="${Math.max(1,f.len(b.width))}" cy="${Math.max(1,f.len(b.height))}"/></${tag}>`;
-export const solid=c=>c?`<a:solidFill><a:srgbClr val="${c.hex}">${c.alpha<1?`<a:alpha val="${Math.round(c.alpha*100000)}"/>`:''}</a:srgbClr></a:solidFill>`:'<a:noFill/>';
+const HEX=/^[0-9A-Fa-f]{6}$/;
+/** A solid fill, or no fill. Anything but six hex digits (a gradient, an unparsed value) is no fill, never an invalid colour. */
+export const solid=c=>c&&HEX.test(c.hex||'')?`<a:solidFill><a:srgbClr val="${c.hex}">${c.alpha<1?`<a:alpha val="${Math.round(c.alpha*100000)}"/>`:''}</a:srgbClr></a:solidFill>`:'<a:noFill/>';
 const DASH={dashed:'dash',dotted:'sysDot',solid:'solid'};
 /** SVG dash arrays map to the nearest preset dash. */
 export const presetDash=v=>{if(!v||v==='none'||v==='solid')return 'solid';if(DASH[v])return DASH[v];const n=String(v).split(/[\s,]+/).map(parseFloat).filter(Number.isFinite);if(n.length>=4)return 'dashDot';if(n[0]<=n[1]&&n[0]<=3)return 'sysDot';return 'dash';};
@@ -40,9 +42,10 @@ export function runProps(style,{f,lang,platform,link}){
 /** One paragraph of runs; newlines inside a run become line breaks. */
 export function paragraph(runs,{f,lang,fonts,links={},align='l',lineHeight=null,spaceBefore=0,bullet=null}){
  const first=runs[0]?.style,ln=lineHeight?`<a:lnSpc><a:spcPts val="${Math.max(0,Math.round(f.pt(lineHeight)*100))}"/></a:lnSpc>`:'',bef=`<a:spcBef><a:spcPts val="${Math.max(0,Math.round(f.pt(spaceBefore)*100))}"/></a:spcBef><a:spcAft><a:spcPts val="0"/></a:spcAft>`;
- const bu=bullet?(bullet.ordered?`<a:buFontTx/><a:buAutoNum type="${bullet.type==='decimal-leading-zero'?'arabicPeriod':'arabicPeriod'}" startAt="${bullet.index}"/>`:`<a:buFont typeface="Arial"/><a:buChar char="${bullet.type==='circle'?'◦':bullet.type==='square'?'▪':'•'}"/>`):'<a:buNone/>';
+ const NUM={'lower-alpha':'alphaLcPeriod','lower-latin':'alphaLcPeriod','upper-alpha':'alphaUcPeriod','upper-latin':'alphaUcPeriod','lower-roman':'romanLcPeriod','upper-roman':'romanUcPeriod'};
+ const bu=bullet?(bullet.ordered?`<a:buFontTx/><a:buAutoNum type="${NUM[bullet.type]||'arabicPeriod'}" startAt="${Math.min(32767,Math.max(1,Math.round(bullet.index)||1))}"/>`:`<a:buFont typeface="Arial"/><a:buChar char="${bullet.type==='circle'?'◦':bullet.type==='square'?'▪':'•'}"/>`):'<a:buNone/>';
  const indent=bullet?` marL="${bullet.indent}" indent="-${bullet.indent}"`:' marL="0" indent="0"';
- const body=runs.flatMap(r=>{const props=runProps(r.style,{f,lang,platform:fonts(r.style),link:r.href?links[r.href]:null});return r.text.split('\n').flatMap((t,i)=>[...(i?[`<a:br>${props}</a:br>`]:[]),...(t?[`<a:r>${props}<a:t>${esc(t)}</a:t></a:r>`]:[])]);}).join('');
+ const body=runs.flatMap(r=>{const props=runProps(r.style,{f,lang,platform:fonts(r.style),link:r.href&&Object.hasOwn(links,r.href)?links[r.href]:null});return r.text.split('\n').flatMap((t,i)=>[...(i?[`<a:br>${props}</a:br>`]:[]),...(t?[`<a:r>${props}<a:t>${esc(t)}</a:t></a:r>`]:[])]);}).join('');
  return `<a:p><a:pPr${indent} algn="${align}">${ln}${bef}${bu}</a:pPr>${body}${first?`<a:endParaRPr lang="${lang}" sz="${Math.min(400000,Math.max(100,Math.round(f.pt(first.fontSize)*100)))}" dirty="0"/>`:`<a:endParaRPr lang="${lang}" dirty="0"/>`}</a:p>`;
 }
 export const textBody=(paragraphs,{anchor='t',tag='p:txBody',wrap=true}={})=>`<${tag}><a:bodyPr wrap="${wrap?'square':'none'}" lIns="0" tIns="0" rIns="0" bIns="0" anchor="${anchor}" rtlCol="0"><a:noAutofit/></a:bodyPr><a:lstStyle/>${paragraphs.join('')||'<a:p><a:endParaRPr dirty="0"/></a:p>'}</${tag}>`;
@@ -70,7 +73,8 @@ export function pathShape({id,name,f,commands,fill=null,stroke=null,strokeWidth=
 /** Linear gradient: page-space start and end points give the angle. */
 export function gradFill({stops,from,to,alpha=1}){
  const ang=((Math.atan2(to[1]-from[1],to[0]-from[0])*180/Math.PI)+360)%360;
- return `<a:gradFill rotWithShape="1"><a:gsLst>${stops.filter(s=>s.color).map(s=>`<a:gs pos="${Math.round(Math.max(0,Math.min(1,s.offset))*100000)}"><a:srgbClr val="${s.color.hex}">${s.color.alpha*alpha<1?`<a:alpha val="${Math.round(s.color.alpha*alpha*100000)}"/>`:''}</a:srgbClr></a:gs>`).join('')}</a:gsLst><a:lin ang="${Math.round(ang*60000)}" scaled="0"/></a:gradFill>`;
+ const usable=stops.filter(s=>s.color&&HEX.test(s.color.hex||''));if(usable.length<2)return solid(usable[0]?.color?{...usable[0].color,alpha:usable[0].color.alpha*alpha}:null);
+ return `<a:gradFill rotWithShape="1"><a:gsLst>${usable.map(s=>`<a:gs pos="${Math.round(Math.max(0,Math.min(1,s.offset))*100000)}"><a:srgbClr val="${s.color.hex}">${s.color.alpha*alpha<1?`<a:alpha val="${Math.round(s.color.alpha*alpha*100000)}"/>`:''}</a:srgbClr></a:gs>`).join('')}</a:gsLst><a:lin ang="${Math.round(ang*60000)}" scaled="0"/></a:gradFill>`;
 }
 export function picture({id,name,f,box,rel,descr,source}){
  const src=source?`<a:srcRect l="${Math.round(source.left*100000)}" t="${Math.round(source.top*100000)}" r="${Math.round(source.right*100000)}" b="${Math.round(source.bottom*100000)}"/>`:'';
@@ -89,7 +93,8 @@ export const chartFrame=(o)=>graphicFrame({...o,uri:NS.c,data:`<c:chart xmlns:c=
 /** A native table. `rows` hold cells with paragraphs, fill, borders and padding in page pixels. */
 export function tableFrame({id,name,f,box,descr,columns,rows,firstRow=true}){
  const edge=(tag,b)=>b?`<a:${tag} w="${Math.max(3175,f.len(b.width))}">${solid(b.color)}</a:${tag}>`:`<a:${tag} w="0"><a:noFill/></a:${tag}>`;
- const cell=c=>c.merged?`<a:tc hMerge="1"><a:txBody><a:bodyPr/><a:lstStyle/><a:p><a:endParaRPr dirty="0"/></a:p></a:txBody><a:tcPr/></a:tc>`:`<a:tc${c.span>1?` gridSpan="${c.span}"`:''}>${textBody(c.paragraphs,{tag:'a:txBody'}).replace('<a:bodyPr wrap="square" lIns="0" tIns="0" rIns="0" bIns="0" anchor="t" rtlCol="0"><a:noAutofit/></a:bodyPr>','<a:bodyPr/>')}<a:tcPr marL="${f.len(c.padding[3])}" marR="${f.len(c.padding[1])}" marT="${f.len(c.padding[0])}" marB="${f.len(c.padding[2])}" anchor="${c.anchor||'t'}">${edge('lnL',c.borders.left)}${edge('lnR',c.borders.right)}${edge('lnT',c.borders.top)}${edge('lnB',c.borders.bottom)}${c.fill?solid(c.fill):'<a:noFill/>'}</a:tcPr></a:tc>`;
+ const blank=attrs=>`<a:tc${attrs}><a:txBody><a:bodyPr/><a:lstStyle/><a:p><a:endParaRPr dirty="0"/></a:p></a:txBody><a:tcPr/></a:tc>`;
+ const cell=c=>c.vmerge?blank(` vMerge="1"${c.hmerge?' hMerge="1"':''}`):c.merged?`<a:tc hMerge="1"><a:txBody><a:bodyPr/><a:lstStyle/><a:p><a:endParaRPr dirty="0"/></a:p></a:txBody><a:tcPr/></a:tc>`:`<a:tc${c.span>1?` gridSpan="${c.span}"`:''}${c.rowSpan>1?` rowSpan="${c.rowSpan}"`:''}>${textBody(c.paragraphs,{tag:'a:txBody'}).replace('<a:bodyPr wrap="square" lIns="0" tIns="0" rIns="0" bIns="0" anchor="t" rtlCol="0"><a:noAutofit/></a:bodyPr>','<a:bodyPr/>')}<a:tcPr marL="${f.len(c.padding[3])}" marR="${f.len(c.padding[1])}" marT="${f.len(c.padding[0])}" marB="${f.len(c.padding[2])}" anchor="${c.anchor||'t'}">${edge('lnL',c.borders.left)}${edge('lnR',c.borders.right)}${edge('lnT',c.borders.top)}${edge('lnB',c.borders.bottom)}${c.fill?solid(c.fill):'<a:noFill/>'}</a:tcPr></a:tc>`;
  const tbl=`<a:tbl><a:tblPr firstRow="${firstRow?1:0}" bandRow="0"/><a:tblGrid>${columns.map(w=>`<a:gridCol w="${Math.max(1,f.len(w))}"/>`).join('')}</a:tblGrid>${rows.map(r=>`<a:tr h="${Math.max(1,f.len(r.height))}">${r.cells.map(cell).join('')}</a:tr>`).join('')}</a:tbl>`;
  return graphicFrame({id,name,f,box,descr,uri:'http://schemas.openxmlformats.org/drawingml/2006/table',data:tbl});
 }

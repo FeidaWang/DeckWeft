@@ -13,7 +13,17 @@ const PRINT_CSS=`@page{size:${PDF_PAGE.width}px ${PDF_PAGE.height}px;margin:0}ht
  * Chromium expands closed disclosures when printing, which would grow a scene beyond its measured height. A closed disclosure
  * keeps only its summary line, as the static page shows it; its content is printed on the scene's notes page instead.
  */
-export const closedDisclosures=markup=>markup.replace(/<details(\s[^>]*)?>(\s*<summary[\s\S]*?<\/summary>)[\s\S]*?<\/details>/g,(all,attrs='',summary)=>/\sopen(\s|=|$)/.test(attrs)?all:`<details${attrs}>${summary}</details>`);
+export function closedDisclosures(markup){
+ // A balanced scan: nested disclosures are matched to their own closing tag; an open one keeps its content, which is scanned too.
+ const tag=/<details(\s[^>]*)?>|<\/details>/g,stack=[],cuts=[];let m;
+ while((m=tag.exec(markup))){
+  if(m[0][1]!=='/'){const attrs=m[1]||'',open=/\sopen(\s|=|$)/.test(attrs),summary=open?null:markup.slice(tag.lastIndex).match(/^\s*<summary[\s\S]*?<\/summary>/);stack.push({start:m.index,inner:tag.lastIndex,open,attrs,summary:summary?.[0]||''});continue;}
+  const d=stack.pop();if(!d)continue;
+  if(!d.open&&!stack.some(o=>!o.open))cuts.push({from:d.start,to:tag.lastIndex,text:`<details${d.attrs}>${d.summary}</details>`});
+ }
+ let out='',at=0;for(const c of cuts.sort((a,b)=>a.from-b.from)){out+=markup.slice(at,c.from)+c.text;at=c.to;}
+ return out+markup.slice(at);
+}
 /** Pages, scales and the print document. `html` is the static web export; `layout` its measurement. */
 export function pdfPrintJob({document,plan,html,layout,delivery}){
  const zh=document.locale==='zh-CN',css=html.body.slice(html.body.indexOf('<style>')+7,html.body.indexOf('</style>'));

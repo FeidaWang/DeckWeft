@@ -42,7 +42,7 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
  const platform=layout.platformFonts||{},fontsOf=style=>platform[style?.measureId]||null;
  const receipts=[],media=new Map(),charts=[],slides=[],records=[],seriesColors=[];
  plan.scenes.forEach((scene,index)=>{
-  const m=layout.scenes.find(s=>s.sceneId===scene.id),derived=scenes[index],f=sceneFrame(m.bounds),shapes=[],rels=[],links={},notes=[],elements=[];
+  const m=layout.scenes.find(s=>s.sceneId===scene.id),derived=scenes[index],f=sceneFrame(m.bounds),shapes=[],rels=[],links=Object.create(null),notes=[],elements=[];
   let nextId=2,relId=3;const id=()=>nextId++,rel=(type,target,external)=>{const r='rId'+(relId++);rels.push([r,type,target,external]);return r;};
   const record=(e)=>{elements.push(e);return e;};
   const push=(xml,e)=>{if(!xml)return;shapes.push(xml);record(e);};
@@ -88,17 +88,24 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
   }
   function svgShapes(list,{blockId,prefix,decorative=false}){
    for(const s of list){const name=`${prefix}/mark-${elements.length+1}`;
-    if(s.kind==='line'){push(connector({id:nextId,name,f,from:s.from,to:s.to,stroke:flatAt(s.stroke,s.box),strokeWidth:s.strokeWidth,dash:s.dash}),{shapeId:id(),name,blockId,kind:'connector',box:s.box,decorative});continue;}
+    if(s.kind==='line'){push(connector({id:nextId,name,f,from:s.from,to:s.to,stroke:s.stroke?.gradient?null:flatAt(s.stroke,s.box),strokeWidth:s.strokeWidth,dash:s.dash}),{shapeId:id(),name,blockId,kind:'connector',box:s.box,decorative});continue;}
     if(['rect','circle','ellipse'].includes(s.kind)){push(presetShape({id:nextId,name,f,box:s.box,preset:s.kind==='rect'?(s.radius>0?'roundRect':'rect'):'ellipse',fill:s.fill?.gradient?null:flatAt(s.fill,s.box),stroke:s.stroke?.gradient?null:flatAt(s.stroke,s.box),strokeWidth:s.strokeWidth,dash:s.dash,radius:s.radius||0,decorative}),{shapeId:id(),name,blockId,kind:'shape',box:s.box,decorative});continue;}
-    if(s.commands&&!s.unsupported)push(pathShape({id:nextId,name,f,commands:s.commands,fill:s.fill?.gradient?null:s.fill,gradient:s.fill?.gradient?{...s.fill.gradient,alpha:s.fill.alpha}:null,stroke:s.stroke?.gradient?null:s.stroke,strokeWidth:s.strokeWidth,dash:s.dash,decorative}),{shapeId:id(),name,blockId,kind:'shape',box:s.box,decorative});
+    if(s.commands&&s.unsupported){receipts.push({code:'PPTX_SHAPE_PATH',target:'pptx',sceneId:scene.id,blockId,element:`${s.kind} in ${blockId}`,reason:'The path uses arcs or smooth-curve shorthand that is not compiled.',delivered:'The shape is omitted; its meaning is carried by the text beside it.'});continue;}
+    if(s.commands)push(pathShape({id:nextId,name,f,commands:s.commands,fill:s.fill?.gradient?null:s.fill,gradient:s.fill?.gradient?{...s.fill.gradient,alpha:s.fill.alpha}:null,stroke:s.stroke?.gradient?null:s.stroke,strokeWidth:s.strokeWidth,dash:s.dash,decorative}),{shapeId:id(),name,blockId,kind:'shape',box:s.box,decorative});
    }
   }
   function mediaRel(bytes,ext){const h=sha(bytes);if(!media.has(h))media.set(h,{path:`ppt/media/image${media.size+1}.${ext}`,bytes});return rel('image','../media/'+media.get(h).path.split('/').pop());}
   function table(tbl,{blockId,descr,prefix}){
-   const width=r=>r.cells.reduce((n,c)=>n+c.colspan,0),cols=Math.max(...tbl.rows.map(width)),full=tbl.rows.find(r=>r.cells.length===cols);
-   const columns=full?full.cells.map(c=>c.box.width):Array(cols).fill(tbl.box.width/cols);
-   for(const r of tbl.rows)for(const c of r.cells)if(c.rowspan>1)receipts.push({code:'PPTX_TABLE_ROWSPAN',target:'pptx',sceneId:scene.id,blockId,element:'merged rows',reason:'Row spans are not compiled.',delivered:'Each row keeps its own cells.'});
-   const rows=tbl.rows.map(r=>({height:r.box.height,cells:r.cells.flatMap(c=>{for(const p of c.texts)for(const run of p.runs)if(run.href)link(run.href);return [{paragraphs:c.texts.map(p=>paragraph(opaqueRuns(p.runs,c.box),{f,lang,fonts:fontsOf,links,align:ALIGN[p.style.align]||'l',lineHeight:p.style.lineHeight||p.style.fontSize*1.2})),fill:flatAt(c.fill,c.box),borders:c.borders,padding:c.padding,anchor:{middle:'ctr',bottom:'b'}[c.valign]||'t',span:c.colspan},...Array(Math.max(0,c.colspan-1)).fill({merged:true})];})}));
+   // Every row covers the whole grid: column spans continue with hMerge, row spans with vMerge, short rows are padded.
+   const occupied=tbl.rows.map(()=>[]),rows=tbl.rows.map((r,i)=>{const out=[];let col=0;const take=()=>{while(occupied[i][col]){out.push(occupied[i][col]);col++;}};
+    for(const c of r.cells){take();for(const p of c.texts)for(const run of p.runs)if(run.href)link(run.href);
+     out.push({paragraphs:c.texts.map(p=>paragraph(opaqueRuns(p.runs,c.box),{f,lang,fonts:fontsOf,links,align:ALIGN[p.style.align]||'l',lineHeight:p.style.lineHeight||p.style.fontSize*1.2})),fill:flatAt(c.fill,c.box),borders:c.borders,padding:c.padding,anchor:{middle:'ctr',bottom:'b'}[c.valign]||'t',span:c.colspan,rowSpan:c.rowspan});
+     for(let k=1;k<c.colspan;k++)out.push({merged:true});
+     for(let d=1;d<c.rowspan&&i+d<tbl.rows.length;d++)for(let k=0;k<c.colspan;k++)occupied[i+d][col+k]={vmerge:true,hmerge:k>0};
+     col+=c.colspan;}
+    take();return {height:r.box.height,cells:out};});
+   const cols=Math.max(...rows.map(r=>r.cells.length));for(const r of rows)while(r.cells.length<cols)r.cells.push({paragraphs:[],fill:null,borders:{},padding:[0,0,0,0],anchor:'t',span:1});
+   const full=tbl.rows.find(r=>r.cells.length===cols&&r.cells.every(c=>c.colspan===1&&c.rowspan===1)),columns=full?full.cells.map(c=>c.box.width):Array(cols).fill(tbl.box.width/cols);
    const box={...tbl.box,height:tbl.rows.reduce((h,r)=>h+r.box.height,0)},name=`${prefix}/table`;
    push(tableFrame({id:nextId,name,f,box,descr,columns,rows}),{shapeId:id(),name,blockId,kind:'table',level:'L1',box,text:tbl.rows.flatMap(r=>r.cells.flatMap(c=>c.texts.map(p=>p.runs.map(x=>x.text).join('')))).join('\n')});
    if(tbl.caption?.length)textBoxes(tbl.caption,{blockId,prefix});
@@ -134,7 +141,7 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
    }
    const kind=facts.kind,rows=plot.tag==='ol',[lo,hi]=facts.model.domain,muted=s=>!!facts.focus.series&&!facts.focus.series.has(s.id);
    const series=fz.view.series.map((s,j)=>{
-    const own=plot.marks.filter(k=>k.seriesId===s.id),base=own.find(k=>k.focus!=='false')||own[0]||{},paint=base.fill||base.stroke||{hex:'5114F6',alpha:1};
+    const own=plot.marks.filter(k=>k.seriesId===s.id&&(k.fill&&!k.fill.gradient||k.stroke&&!k.stroke.gradient)),base=own.find(k=>k.focus!=='false')||own[0]||{},paint=base.fill||base.stroke||{hex:'5114F6',alpha:1};
     if(!seriesColors.some(c=>c===paint.hex))seriesColors.push(paint.hex);
     const shape=(j+Math.floor(j/4))%4,points=[];
     if(['ranked-bar','grouped-bar','stacked'].includes(kind))order.forEach((i,k)=>{const mk=mark(s.id,ids[i]);if(mk&&mk.fill&&(mk.fill.hex!==base.fill?.hex||mk.fill.alpha!==base.fill?.alpha||(mk.stroke?.hex||null)!==(base.stroke?.hex||null)))points.push({idx:k,fill:flatAt(mk.fill,mk.box),stroke:flatAt(mk.stroke,mk.box),strokeWidth:f.len(mk.strokeWidth)});});
@@ -171,7 +178,7 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
    }
    const glue=p=>{for(const n of nodeShapes.values()){const b=n.box;if(n.preset==='ellipse'||p[0]<b.x-10||p[0]>b.x+b.width+10||p[1]<b.y-10||p[1]>b.y+b.height+10)continue;const sites=[[b.x+b.width/2,b.y],[b.x,b.y+b.height/2],[b.x+b.width/2,b.y+b.height],[b.x+b.width,b.y+b.height/2]],d=sites.map(q=>Math.hypot(q[0]-p[0],q[1]-p[1]));return {id:n.id,idx:d.indexOf(Math.min(...d))};}return null;};
    for(const edge of dg.edges){const l=edge.line;if(!l.from||!l.to)continue;const name=`${block.id}/edge-${edge.id}`;
-    push(connector({id:nextId,name,f,from:l.from,to:l.to,stroke:l.stroke,strokeWidth:l.strokeWidth,dash:l.dash,tail:l.markerEnd,head:l.markerStart,start:glue(l.from),end:glue(l.to)}),{shapeId:id(),name,blockId:block.id,kind:'connector',box:l.box});
+    push(connector({id:nextId,name,f,from:l.from,to:l.to,stroke:l.stroke?.gradient?null:flatAt(l.stroke,l.box),strokeWidth:l.strokeWidth,dash:l.dash,tail:l.markerEnd,head:l.markerStart,start:glue(l.from),end:glue(l.to)}),{shapeId:id(),name,blockId:block.id,kind:'connector',box:l.box});
     for(const tx of edge.texts){const p={box:tx.box,content:tx.box,style:{...tx.style,fontSize:tx.style.fontSize*s,align:'center'},runs:[{text:tx.lines.map(x=>x.text).join('\n'),style:{...tx.style,fontSize:tx.style.fontSize*s}}],lines:tx.lines.length};textBoxes([p],{blockId:block.id,prefix:block.id});}
    }
   }

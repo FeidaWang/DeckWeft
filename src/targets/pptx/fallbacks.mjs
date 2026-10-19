@@ -35,6 +35,8 @@ export function pptxChartPlan(block,dataset,view=dataset,locale='en'){
  if(!fallback&&dataset.series.some(s=>s.interval))fallback='Interval bounds would need error bars, which are not compiled; uncertainty is never dropped.';
  if(!fallback&&!evenlySpaced(dataset)&&native.part!=='table')fallback='Unevenly spaced times would be drawn evenly on a native category axis.';
  // A native log axis exists, but an importer that ignores it (Quick Look does) draws the values on a linear axis: a misreading. Kept as an image until PowerPoint and Keynote are checked.
+ // Missing values: a native chart caches a gap by its point index, and an importer that ignores the index (Quick Look) moves later values onto earlier categories, or draws #N/A as zero. Kept as an image until PowerPoint and Keynote are checked.
+ if(!fallback&&native.part!=='table'&&dataset.series.some(s=>s.values.some(v=>v===null)))fallback='A missing value is drawn on the wrong category, or as zero, by at least one importer (Quick Look); the chart stays an image until PowerPoint and Keynote are checked.';
  if(!fallback&&(block.axis?.scale==='log'||block.xAxis?.scale==='log'))fallback='A native logarithmic axis is drawn linear by at least one importer (Quick Look); the chart stays an image until PowerPoint and Keynote are checked.';
  if(fallback){
   add('PPTX_CHART_IMAGE','whole chart',fallback,'A high-resolution image of this chart only, with its question, caption, takeaway and source as native text; alt text and the slide notes carry every value.');
@@ -44,7 +46,6 @@ export function pptxChartPlan(block,dataset,view=dataset,locale='en'){
  if(native.part!=='table'){
   if(block.truncation)add('PPTX_CHART_BREAK_MARK','axis break mark','A native value axis starts at the truncated minimum but has no break symbol.','The truncation note stays as visible text under the chart.');
   for(const e of f.events)add('PPTX_CHART_EVENT_MARK',`event ${e.n} mark`,'Native charts have no event marker on the category axis.','The event is listed in the visible chart notes.',{objectId:e.id});
-  for(const m of f.missing)add('PPTX_CHART_MISSING_LABEL',`missing value · ${view.series[m.j].label} · ${f.display(m.i)}`,'The gap is kept, but the in-plot “missing” label is not drawn.','The missing reason is in the visible chart notes and the embedded data leaves the cell empty.',{objectId:m.categoryId,seriesId:m.seriesId});
   for(const q of f.qualifiers)add('PPTX_CHART_QUALIFIER_MARK',`qualifier mark · ${view.series[q.j].label} · ${f.display(q.i)}`,'Native data labels do not carry the superscript qualifier number.','The qualifier is listed in the visible chart notes.',{objectId:q.categoryId,seriesId:q.seriesId});
   if(kind==='scatter')add('PPTX_CHART_POINT_LABELS','point name labels','Native scatter labels are not compiled with category names.','Each point name and value is in the slide notes and the embedded data.');
  }
