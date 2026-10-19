@@ -4,6 +4,24 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S9a 作者控制 — 2026-10-19
+
+状态：S9a 范围为 **LocalVerified**。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。[证据（英文）](../evidence/s9a-author-controls/review.md) · [对齐计划 §17（英文）](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19) · [工作台](workbench.md#六个问题与三个方向s9a) · [Visual Studio](visual-studio.md#作者控制章节与分项锁定s9a)。
+
+结果：
+
+- `npm run verify` 通过 **459 项测试**（455 项通过，4 项跳过：原有的环境门控测试与 3 项需要浏览器的 Studio 导出测试），以及类型、1,497 个文件的源码与链接检查、打包和演示。
+  - 新增：`tests/s9a-author-controls.test.mjs`（12 项）、`tests/argument-units.test.mjs`（11 项）、`tests/studio-export.test.mjs`（4 项）。
+  - 设置 `CHROMIUM_PATH` 后，`tests/studio-export.test.mjs` 4 项全部通过；在 3 份文稿上，其 PowerPoint 字节与 `scripts/export-targets.mjs` 的 Playwright 路径完全一致。
+- 渲染基线为渲染器 `visual-art-direction.11`（页面折叠内容的样式规则）重新记录一次，单独提交。与 `4f26b33` 的逐项对比显示没有任何可见文字、数值、表格、锚点或标题变化；播放器不变。
+- `tests/browser_author_controls.mjs`（隔离的 Chrome for Testing 151、Playwright 1.61.1）：在 1440、1024、390 px 下完成 28 个界面步骤，0 个页面错误，0 个外部请求。唯一的控制台错误是锁定版式后更换主题被拒绝时预期的 HTTP 409。
+- `node scripts/s9a-directions.mjs --exports`：
+  - 24 份方向文稿（每套主题分别作为首选方向 × 原文与六类构图 × 英文与中文）在三种宽度下无排版、渲染或字形问题，各主题间事实一致。
+  - Studio 的 PowerPoint 与 PDF 导出 48/48 通过导出顺序的检查。
+  - 1440 px 下 132 页中有 11 页超过 900 px 候选预算（已记录）。
+- 已查看：全部四张对照表、三种宽度下的方向卡片，以及证据中列出的计划与编辑结果；最弱页面已在证据中注明。
+- PowerPoint、Keynote 与 Figma 已安装但未运行；LibreOffice 与 After Effects 未安装；Claude 仍延后。
+
 ## S8 T01–T03 主题包与 VIS-015 — 2026-10-19
 
 状态 **partial**。[证据（英文）](../evidence/vis-015/review.md) · [手册](visual-studio.md#再增三套主题silver-gray-editorialfresh-reportorange-launchs8vis-015) · [对齐文档 §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)。

@@ -25,7 +25,7 @@
 执行 `npm run deck:create -- --brief examples/task-brief.zh-CN.json --out dist/my-task`，生成保留源内容的本地任务检查点和预览。共享工具连接规划、精确数据修订、真实浏览器检查、实际图像审阅、有界修复与已审阅 HTML 导出。[任务说明](docs/zh-CN/task-loop.md) · [VIS-011 证据](docs/evidence/vis-011/review.md)。VIS-012 宿主适配已有本地实现，Claude 验收暂缓；VIS-013 工作台已有本地实现。
 
 
-当前需求已按实际代码校准：VIS-002～011 为本地实现，VIS-012 宿主适配已有本地实现及暂缓的 Claude 验收，VIS-013 工作台已有本地实现，VIS-014 发布验收仍为后续计划。完整样例库、真实宿主和 v3 原生导出仍有待验证或开发；详见[路线图](docs/zh-CN/roadmap.md)。
+当前需求已按实际代码校准：VIS-002～011 为本地实现，VIS-012 宿主适配已有本地实现及暂缓的 Claude 验收，VIS-013 工作台已有本地实现，VIS-014 发布验收仍为后续计划。S9a 起，创作栏只问六个问题，并在生成整套演示前显示同一内容的三个已测量方向。“编辑页面 → 作者控制”在应用前说明每项修改，可以撤销。另有章节、分项的文字/数据/来源/构图锁定、提问而非填充的页数规划、可复用设计配置，以及 Studio 中的 PowerPoint/PDF 导出（[作者控制](docs/zh-CN/visual-studio.md#作者控制章节与分项锁定s9a) · [S9a 证据（英文）](docs/evidence/s9a-author-controls/review.md)）。完整样例库、真实宿主和 v3 原生导出仍有待验证或开发；详见[路线图](docs/zh-CN/roadmap.md)。
 
 本地宿主适配已支持显式启用的结构化起草、局部修订及实际截图反馈，复用共享任务工具。Claude 真实验收继续暂缓，VIS-012 保持 partial。[宿主手册](docs/zh-CN/hosts.md) · [证据](docs/evidence/vis-012/review.md)。
 

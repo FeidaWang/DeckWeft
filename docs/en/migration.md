@@ -55,3 +55,32 @@ S5 (2026-10-19) added two optional plan fields: `initialFocusSeriesId` on a char
 3. Exports made before S5 keep their embedded player. Re-export to get the S5 player (key guard, focus, static-state measurement).
 
 Recovery: a plan whose `data.focus` cue or `initialFocusSeriesId` names a series that is hidden at that point is refused (`INVALID_INTERACTION … Show a series before focusing it`); show the series first or change the focus. `STATIC_STATE_UNIMPLEMENTED` no longer exists.
+
+## Chapters, page disclosure and separate locks (S9a)
+
+S9a (2026-10-19) added optional fields. There is no new `schemaVersion`: every existing document and plan loads and exports as before (the render baseline shows no visible word or value changed).
+
+| Field | Where | Meaning |
+|---|---|---|
+| `chapters[] {id, startSceneId, profile?}` | design plan | A chapter runs from its start page to the page before the next start. Its profile applies to member pages without their own profile. |
+| `disclosure {blockIds}` | design-plan scene | Supporting paragraph, list or callout blocks of that page, shown behind one closed **More detail** control. |
+| `lockMode`, `lockedDatasetIds`, `lockedSourceIds` | `authorOverrides` | Separate data and source locks. |
+| `schemas/design-profile.schema.json` | new contract | A reusable design profile. It has no field for text, data, sources, images or branding. |
+
+Only the locks need a migration, and only when you want them separate:
+
+```js
+import {separateLocks} from './src/core/adapters/locks.mjs';
+const next=separateLocks(project);
+```
+
+Expected result: a validated copy with `lockMode: "separate"`. Every dataset and source that a locked object implied (a chart's dataset, the block's sources and those of its step explanations) is now in `lockedDatasetIds` / `lockedSourceIds`. The input is not modified, and running it twice returns the same copy. In the Studio, the first **Data** or **Sources** lock runs it and says so.
+
+Recovery:
+
+- `AUTHOR_LOCK` when saving a hand-edited project: it set `lockMode: "separate"` without copying the implied locks, which would release them. Use `separateLocks()`.
+- `INVALID_PRESENTATION … A locked dataset is missing` / `A locked source is missing`: a lock names an id that is not in the document.
+- `INVALID_DESIGN_PLAN … A chapter starts on a missing page`, `Start at most one chapter on a page`, `Use unique chapter ids`, or `Chapter ids must differ from page ids`.
+- `INVALID_DESIGN_PLAN … A page disclosure holds paragraph, list or callout blocks of the same page`, or `The focal block, the takeaway and interaction or annotation targets stay on the page`.
+
+Legacy fixtures and the negative fixture are checked by `node --test tests/s9a-author-controls.test.mjs`: `wave-a.*`, `families.en` and `evidence-scene.zh-CN` load unchanged, and every case in `tests/fixtures/visual/s9a.negative.json` is refused.

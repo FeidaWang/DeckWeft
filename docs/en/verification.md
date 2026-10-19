@@ -4,6 +4,24 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## S9a author controls — 2026-10-19
+
+State **LocalVerified** for the S9a scope. VIS-013 stays implemented-local and VIS-015 stays partial. [Evidence](../evidence/s9a-author-controls/review.md) · [Alignment §17](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19) · [Workbench](workbench.md#six-questions-and-three-directions-s9a) · [Visual Studio](visual-studio.md#author-controls-chapters-and-separate-locks-s9a).
+
+Results:
+
+- `npm run verify` passed **459 tests** (455 pass, 4 skips: the existing environment-gated one and 3 browser-gated Studio export tests), plus types, source and link checks over 1,497 files, packaging and demos.
+  - New: `tests/s9a-author-controls.test.mjs` (12), `tests/argument-units.test.mjs` (11), `tests/studio-export.test.mjs` (4).
+  - With `CHROMIUM_PATH` set, `tests/studio-export.test.mjs` passed 4 of 4, and its PowerPoint bytes equal the Playwright path of `scripts/export-targets.mjs` on 3 decks.
+- The render baseline was re-recorded once, in its own commit, for renderer `visual-art-direction.11` (page disclosure stylesheet rule). The per-entry diff against `4f26b33` shows no visible word, value, table, anchor or title changed; the player is unchanged.
+- `tests/browser_author_controls.mjs` (isolated Chrome for Testing 151, Playwright 1.61.1): 28 UI steps at 1440, 1024 and 390 px, 0 page errors, 0 external requests. The one console error is the expected HTTP 409 of a refused theme change on a locked layout.
+- `node scripts/s9a-directions.mjs --exports`:
+  - 24 direction decks (every theme as lead × supplied text and six-family × en and zh-CN) at three widths, with 0 fit, render or glyph issues; facts identical across themes.
+  - Studio PowerPoint and PDF exports passed the export order's checks on 48 of 48.
+  - 11 of 132 pages exceed the 900 px candidate budget at 1440 px (recorded).
+- Viewed: all four contact sheets, the direction cards at three widths, the plans and edits listed in the evidence. The weakest pages are named there.
+- PowerPoint, Keynote and Figma are installed and were not run. LibreOffice and After Effects are not installed. Claude is deferred.
+
 ## S8 T01–T03 theme packs and VIS-015 — 2026-10-19
 
 State **partial**. [Evidence](../evidence/vis-015/review.md) · [Manual](visual-studio.md#three-more-themes-silver-gray-editorial-fresh-report-orange-launch-s8-vis-015) · [Alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19).

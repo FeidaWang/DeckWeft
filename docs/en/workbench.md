@@ -20,6 +20,54 @@ Open **Explore compositions and story rhythm** to compare layouts. Open **Review
 6. Open **Edit page → Revise the result** and enter a revision, for example `Use evidence-top; keep every word and other page`. Codex also accepts ordinary phrasing for the existing composition/exact-data chart patch contract. Local mode accepts named compositions and the narrow chart grammar. For a chart, select an existing exact dataset if one is not already bound; missing data stops the operation. `Use dark-data` applies a typed scoped design choice locally. For other changes, use the existing advanced editor rather than assuming unsupported prose was executed.
 7. Under **Create → Languages and design choices**, choose **Selected page only** or **Entire project** before applying design choices. A scene choice persists on that scene, without replacing project defaults. Color/image profile overrides are typed scene fields used by the same derived renderer. Locked themes/compositions stay protected. **Preserve this page’s image and crop** adds author image locks; no generation, theme change or source synchronization unlocks them.
 
+## Six questions and three directions (S9a)
+
+**Create** starts with six questions: **Topic** (the text box), **Audience**, **Style**, **Detail**, **Motion** and **Output**. Languages, tone, colour, image emphasis and the update preference are under **More options**. DeckWeft draws the same content three ways before it builds the deck. The three previews differ in graphics, type, media and motion. Their facts are identical.
+
+1. Open **Create**. Paste your text (use `---` between pages) or a brief, and fill the six questions. **Style** may be *Suggest from my content* or one of the six themes. **Detail** sets how much material DeckWeft expects:
+   - *Brief*: question, evidence, action.
+   - *Standard*: also background and limits.
+   - *Detailed*: all six argument units.
+2. Choose **Content**: *The text above* (a new deck) or *The open deck* (restyle the deck you have open). Click **Show three directions**.
+3. Expect **Three directions** on the stage. Each card shows:
+   - a measured preview with buttons for its sample pages;
+   - what the direction changes: *Graphics* (surface, accent, the layout of each sample page, how many pages change layout), *Type* (display, body and number fonts, contrast), *Media*, *Motion* (what plays, or what would play when motion is on) and *Output* (how many elements are L1, L2 or L3 in PowerPoint or PDF);
+   - a fit line, for example *✓ Fits all 5 pages at 1440 px*.
+
+   The line above the cards gives the shared facts hash. A page taller than the 900 px candidate budget is listed and does not block the choice. Any other fit failure disables **Use this direction**.
+4. Read **Argument units** above the cards. A missing unit or an unsupported claim becomes a question, for example *Which data, source or quotation supports the claim on page 3? DeckWeft will not invent one.* Nothing is added to reach a page count.
+5. Click **Use this direction**.
+   - With *The text above*, the workbench builds the whole deck with that direction. It is the same design the preview showed: the server re-applies the direction to the same planned content.
+   - With *The open deck*, the direction is applied to every page through the normal edit path. **Undo** returns the previous design. A page whose theme or composition you locked keeps it; the card says how many pages were kept.
+
+If the directions do not appear, the message names the reason: an empty topic, an unknown field, or a deck with unsaved edits (save first).
+
+**Revise selected scope** and **Apply scoped choices** now show a scope statement before they run, for example *Scope: Page 3. It may change composition, chart data binding, theme on page 3; no other page changes. Facts, numbers, units and sources are never rewritten.* The statement follows the selected page and the scope list, and names any text, data, source or composition locks inside that scope.
+
+### Pages from the argument
+
+Open **Edit page → Author controls → Pages from the argument**.
+
+1. Choose a detail level and, optionally, a target page count. Click **Plan pages**.
+2. Expect a table: each page's argument unit and why it was chosen (*label*, *structure*, *keyword* or *position*, with the word that decided it), its text length and the pages it needs.
+3. Expect questions where material is missing. Typical questions: a missing unit, a claim without a source, or *The material supports 5 pages; the target is 9 … DeckWeft will not pad the deck.*
+4. **Mark evidence-required pages** marks the unsupported evidence pages. They get an *Evidence required* flag in the page list. Final exports (HTML, PowerPoint, PDF and the workbench's reviewed export) refuse them with `EVIDENCE_REQUIRED`; previews still work. To clear the mark, supply the evidence and set the page *sourced*, or set it *illustrative*.
+5. **Split long pages** moves whole paragraphs and lists to continuation pages, which repeat the heading. No word is rewritten. Undo restores the pages.
+
+### Save a design as a reusable profile
+
+A profile keeps the theme, the profile choices (colour, contrast, density, motion, image emphasis), the composition used for each kind of page, and the type and motion tokens that were drawn. It has no field for text, data, sources, images or branding.
+
+1. Save the deck. Under **Author controls → Design profiles**, type a name.
+2. A deck whose image review passed in this workbench is promoted with that review as its acceptance. Otherwise tick **I accept this design**.
+3. Click **Save this design as a profile**. Expect a message that names its theme and its number of composition choices. A refusal names the cause:
+   - `PROFILE_UNSAVED`: save first.
+   - `PROFILE_NOT_ACCEPTED`: pass the review or confirm acceptance.
+4. Reload the Studio and open another deck: the profile is still listed. Choose **Apply profile** at Deck, Chapter or Page scope. Read the stated effects, then apply.
+5. **Export profile** downloads the JSON. **Import profile** adds it back, as a copy when that id exists. Profiles are stored in `<library>/visual/profiles/`. If the theme draws differently from when the profile was saved, applying it lists the changed tokens.
+
+[S9a evidence](../evidence/s9a-author-controls/review.md)
+
 ## Actual screenshots and review
 
 The runtime has no external dependencies. Capture is optional and explicit. To enable it, start the studio with an isolated Chromium executable outside `/Applications`:

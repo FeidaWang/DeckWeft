@@ -69,8 +69,8 @@ Pattern summary: F 5 exist / 6 partial / 1 missing; M 2 / 10 / 8; C 5 / 9 / 10. 
 | 120 | Unified timeline | VIS-009 cues, replay, pause, seek slider, reduced motion | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md), [interactions manual](../en/interactions.md) | RevealMask, Crossfade and stagger primitives; chart annotation reveal |
 | 125 | Controlled comparison | VIS-009 `image-compare`, `image-hotspots`, `chart-select` | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md) | Generic tab stage; interactive rank sort; slider compare |
 | 130 | Output adaptation | S7: L1/L2/L3 levels in `src/targets/capabilities.mjs`, export order, v3 PowerPoint and PDF compilers with per-element receipts; DW-140 `partial`; VIS-016 `partial` | partial | LocalVerified (v3 package checks); ExportVerified (v1/v2 PPTX only) | [vis-016](../evidence/vis-016/review.md), [devday PowerPoint](../evidence/devday-redesign/review.json) | PowerPoint and Keynote runs; Chinese PDF search; PDF figure wrappers; small text on tall scenes ([§15](#15-s7-result--output-levels-and-vis-016-2026-10-19)) |
-| 200 | Author preferences and rhythm | VIS-005 profile, VIS-006 rhythm, VIS-013 page/project scopes and locks | partial | LocalVerified | [vis-013](../evidence/vis-013/review.md), [vis-006](../evidence/vis-006/review.md) | Chapter and object scopes (four levels proposed, two exist) |
-| 210 | Explanation and exploration scenes | VIS-009 steps and no-JS reading view | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md) | Parameter panel, scale shift, three-stage sequence |
+| 200 | Author preferences and rhythm | VIS-005 profile, VIS-006 rhythm, VIS-013 scopes and locks; S9a deck/chapter/page/object scope, separate locks, planned author actions, page planning, reusable profiles ([§17](#17-s9a-decisions-and-result--author-controls-2026-10-19)) | exists | LocalVerified | [s9a](../evidence/s9a-author-controls/review.md), [vis-013](../evidence/vis-013/review.md) | Codex draft path has no page-count plan; object-level profile choices are locks and per-object actions only |
+| 210 | Explanation and exploration scenes | VIS-009 steps and no-JS reading view | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md) | Three-stage sequence (blueprint A, S9b); parameter panel and scale shift not planned (§17, answer 5) |
 | 215 | Analytical chart extension | Relationship diagram only | partial | LocalVerified (network only) | [vis-008](../evidence/vis-008/review.md) | Map, bubble, box, waterfall, concentration |
 | 220 | Theme and bilingual extension | VIS-004 bilingual layout; VIS-015 `planned` | partial | LocalVerified (bilingual) | [interaction regression](../evidence/interaction-visual-regression/review.md) | T04/T05; composition switch after translation growth |
 | 230 | History recovery and compare | DW-110 `partial`; Visual Studio history; VIS-013 last-valid recovery | partial | LocalVerified | [visual-studio](../evidence/visual-studio/review.md), [vis-013](../evidence/vis-013/review.md) | Version diff; style-only restore |
@@ -557,3 +557,68 @@ State: **partial** (roadmap VIS-015) / LocalVerified for the web output in Chrom
 **Decisions made in S8** (besides decision 2): the stage hero's drawn orb appears only when no object is bound; theme-only compositions stay outside the family registry (validated in `plan.mjs`, replaced by family geometry when rhythm runs, as diagonal-cover is); the S8 stylesheet uses no text transform so exported text keeps its authored case; a declared monospace numeric role widens chart value space; the renderer version moved to `.9` and the player to `.5`, each re-recording in its own commit.
 
 **Returned to later steps:** reusable-profile promotion from author feedback (VIS-015, S9); pages over the 900 px candidate budget (a 16:9 tier or page splitting); table cells in zh-CN at 390 px; ScenarioSnapshot parameters; application runs by the user.
+
+## 17. S9a decisions and result — author controls, 2026-10-19
+
+Built on `4f26b33` (S1–S8) in a worktree branch stacked on `claude/design-handoff-alignment-19703c`. Nothing is pushed. State: **LocalVerified** for the S9a scope (isolated Chromium, viewed images). In the roadmap, VIS-013 stays `implemented-local` and VIS-015 stays `partial`. [Evidence](../evidence/s9a-author-controls/review.md) · [workbench manual](../en/workbench.md#six-questions-and-three-directions-s9a) · [Visual Studio manual](../en/visual-studio.md#author-controls-chapters-and-separate-locks-s9a).
+
+### The ten questions
+
+The brief left all ten questions unanswered, so each took its stated default. The answers are recorded here so S9b and S10 do not reopen them silently.
+
+| # | Question | Answer applied |
+|---|---|---|
+| 1 | One session or two | Two: S9a here; S9b in its own session and worktree, starting from S9a's tip |
+| 2 | Branch | Stacked on `claude/design-handoff-alignment-19703c` (this worktree's branch was fast-forwarded to `4f26b33`); `main` unchanged; nothing pushed |
+| 3 | Reusable profile in S9a | Yes |
+| 4 | Blueprint A object | A: DeckWeft's own export pipeline anatomy (measure → repair → review → export), for S9b |
+| 5 | Explore parameter control | None: Explore selects parts and compares states statically (S9b) |
+| 6 | Studio PowerPoint and PDF | Built now |
+| 7 | Pages over the 900 px budget | Recorded, not fixed |
+| 8 | S8 PowerPoint / Keynote checks | Treated as not run; VIS-015 / VIS-016 text unchanged on this point |
+| 9 | T04 Kinetic Proof, T05 Human Documentary | Proposed, not scheduled |
+| 10 | Claude host | Deferred |
+
+### Decisions made in S9a
+
+| Topic | Decision |
+|---|---|
+| Contract | Optional fields, no `schemaVersion` change: plan `chapters[] {id, startSceneId, profile?}`, scene `disclosure {blockIds}`, and `authorOverrides.lockMode` / `lockedDatasetIds` / `lockedSourceIds`. `schemas/design-profile.schema.json` is new. Negative fixture: `s9a.negative.json`. Migration: `separateLocks()` (explicit; copies every implied lock). |
+| Chapters | Defined by a start page; membership follows page order, so moves and splits never leave gaps. Precedence: object › page › chapter › deck (`effectiveProfile(document, scene, plan)`). |
+| Four levels | Deck, chapter and page carry profile choices. The object level carries locks and per-object actions (replace one image, move one block). |
+| Locks | Text, data, sources and composition are separate after `separateLocks()`; combined (S1) behaviour is unchanged until then. Entering separate mode without copying implied locks is refused. |
+| Author actions | Planned on the server, never applied there. Each plan states its scope and effects and what locks kept; the Studio applies it through `changed()`, so Undo, Save, conflicts and History are unchanged. |
+| Give the chart more space | Moves to the layout that draws the plot largest per theme, by measurement (`chart-space-measurements.json`): `evidence-top` caps the plot at 700 × 350 px; side layouts draw 780 × 390, `atlas-figure` 865 × 433 and `fieldnotes-figure` 834 × 417. Otherwise it moves supporting text behind the disclosure; more than two panels split into pages of two. |
+| Reduce text | Never deletes. Paragraphs and lists move behind a closed page disclosure (web), slide notes (PowerPoint) or notes pages (PDF). The first supporting block, numbers, units, qualifications (*synthetic*, *not measured*, …), citations and callouts stay; a callout moves only when chosen as the object. A renderer stylesheet rule was needed: `visual-art-direction.11`, baseline re-recorded in its own commit, no visible word or value changed. |
+| Directions | Three grammar groups: editorial, report and stage. The chosen style leads its group, and the S8 pack represents each other group. Auto order follows the content: charts → report, images → stage, else editorial. A chosen direction is re-applied deterministically by the workbench, so the deck equals its preview. No third identical composition in a row. |
+| Page planning | Classification uses the author's own labels, then structure, then keywords, then position; the deciding cue is shown. Capacity per detail level. The planner asks for missing units and unsourced claims, or marks pages `evidence-required`, which every final export refuses (`EVIDENCE_REQUIRED`); previews still render. It never pads or merges. |
+| Profiles | Promotion needs a passing workbench review of the saved deck, or explicit author acceptance. Stored per library. The dominant theme of the deck is recorded with its composition per page kind. Token drift is reported when applied. |
+| Studio export | PowerPoint and PDF run the S7 export order in the isolated capture browser over CDP. The CDP code moved from `capture.mjs` to `cdp.mjs` without behaviour change. Without `--capture-browser` the server refuses with `TARGET_BROWSER_REQUIRED`. |
+| S8 leftovers | Studio export menu: built. Studio control for splitting small multiples: built into Give the chart more space. Typed quote speaker fields: not added, since no author control needs them (the quotation family's citation rule stands). Over-budget pages: recorded (answer 7). |
+
+### Result
+
+| Brief item | Result |
+|---|---|
+| Six-question entry, three different previews, explanation before choosing, expand | Built. All seven style answers give three directions that differ in graphics, type, media and motion with identical facts (tested); the UI trace measured and expanded them at 1440 px and showed them at 1024 and 390 px |
+| Six actions with defined behaviour, stated first, undoable | Built; the UI trace applied, undid and redid Reduce text at three widths, and planned and applied the others at 1440 px |
+| Four-level overrides; separate locks surviving theme change, source update and history restore; partial redo states its scope | Built and tested; the browser trace restored a copy with chapters, disclosure and separate locks intact |
+| Page-count planning from argument units; ask or mark evidence-required | Built; the trace asked instead of padding (target 9, material 5) and marked a page whose export was then refused by name |
+| Reusable profile round trip | Built; saved, reloaded, applied to the zh-CN deck, exported and imported as a copy |
+| Studio PowerPoint and PDF | Built; 48 of 48 exports pass on the 24 direction decks, and the menu downloaded both formats in the trace |
+
+**Found and fixed while building:**
+
+- `applyChoices` passed the project envelope as the document, so page choices dropped the deck profile (VIS-013).
+- The Studio's mount-time API calls ran before the session token, so the capture-capability probe could fail with 401 (VIS-013).
+- The export layout did not measure diagram edges without an author id, so PowerPoint had 0 of 2 connectors on the six-family process page and failed its editability check. This also happens on `4f26b33` (VIS-016).
+- The first chart-space rule made the chart smaller.
+- Directions repeated one composition four times on text-only decks.
+
+**Returned to later steps:**
+
+- S9b (blueprint A, Explain → Diagram → Explore) and its export-target runs.
+- A page-count plan for the Codex draft path.
+- Pages over the 900 px budget: 11 of 132 in the S9a direction run.
+- PowerPoint and Keynote runs by the user.
+- Claude acceptance.

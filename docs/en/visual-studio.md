@@ -63,7 +63,7 @@ Open **History**, inspect a read-only snapshot, then select **Restore as a new c
 
 **Bring an existing deck** migrates the selected saved v1/v2 project. The original JSON and its hash are archived. Legacy metric strings remain text; old assets, design intent and private notes are retained in the archive with explicit limitations. Migration does not guess chart numbers or claim visual parity.
 
-Project JSON is the complete private envelope: semantic document, plan, asset manifest, revisions and archives. It references local asset files rather than embedding them; keep the assets folder for transfer to another library. Import validates the original envelope before assigning a new copy identity. HTML is portable and embeds the required images, but omits migration archives and private notes. V3 PPTX/Figma/AE/SVG export remains unsupported and fails explicitly; classic Studio retains its existing exporters and presenter.
+Project JSON is the complete private envelope: semantic document, plan, asset manifest, revisions and archives. It references local asset files rather than embedding them; keep the assets folder for transfer to another library. Import validates the original envelope before assigning a new copy identity. HTML is portable and embeds the required images, but omits migration archives and private notes. PowerPoint and PDF are in the export group when the studio runs with an isolated capture browser (see [Author controls](#author-controls-chapters-and-separate-locks-s9a)). V3 Figma, AE and SVG export remain unsupported and fail explicitly; classic Studio retains its existing exporters and presenter.
 
 ## Verification and contracts
 
@@ -187,3 +187,45 @@ The fit audit draws every distinct character of a page in its computed font on a
 - A Chinese heading still breaks inside a word: the word is longer than its column at this tier, so the last-resort break applied. Shorten the column text, choose another composition, or add an authored line break.
 
 For source preservation, named slots and protected crops, follow the [asset manual](assets.md). Run `npm run studio:assets` for the bilingual lab.
+
+## Author controls, chapters and separate locks (S9a)
+
+**Edit page → Author controls** changes design in stated steps. Every control works the same way:
+
+1. Choose **Apply to**: *This page*, *This chapter*, *Whole deck* or *One object* (pick the object in the second list).
+2. Click a control. Expect a plan box. It holds the scope statement, every effect (page by page) and every item an author lock kept. Nothing has changed yet.
+3. Click **Apply**, or **Cancel**. **Undo** restores the previous state; **Save** keeps it. If the deck changed after the plan, Apply refuses: plan again.
+
+| Control | What it does | What it never does |
+|---|---|---|
+| More editorial | Moves each page to its family's editorial layout (claim first, asymmetric; Editorial Fieldnotes pages to their own cover, thesis, method, figure or closing layout) and sets expressive type contrast and comfortable density at the chosen level. | Change the theme or any word. |
+| Give the chart more space | Moves a single-chart page to the layout that draws the plot largest in its theme. In Research Atlas that is `atlas-figure` and in Editorial Fieldnotes `fieldnotes-figure`; elsewhere it is a side layout, because the full-width `evidence-top` caps the plot height. If the page already has that layout, supporting text moves behind the page disclosure. A page with more than two panels is split into pages of two on one stated scale. | Hide a qualification: text with a number, a unit, *synthetic*, *not measured* and similar words stays on the page. |
+| Make quieter | Turns motion off for the deck, or for the chosen pages. Cues apply instantly and every key state stays reachable with Next and Previous. Says *Already quiet* when motion is off. | Remove a state or a cue. DeckWeft output has no loops or autoplay. |
+| Keep this layout | Adds a composition lock. A shared composition survives every theme change; a theme's own composition (for example `atlas-figure`) makes a theme change refuse and name it. Rhythm reports the page as *kept: author lock*. | Lock text, data or sources. |
+| Replace the visual | Replaces one image with another image already in the project and requires new alternative text. Lists the crop and the page's citations to check. | Change the composition, the crop or any other block; replace a locked image. |
+| Reduce text | Moves supporting paragraphs and lists behind a closed **More detail** disclosure on the same page; at object scope, the chosen paragraph, list or callout. The first supporting block stays as the page's explanation. | Delete or rewrite anything. The claim, the takeaway, numbers, units, qualifications and sources stay on the page. The moved words remain in the web page, the PowerPoint notes and the PDF appendix. |
+
+**Four levels.** Preferences resolve most specific first: object, page, chapter, deck. A page profile beats its chapter's profile, which beats the deck profile. Object scope holds per-object choices: locks, the image to replace, the text to move. **Start a chapter here** begins a chapter at the selected page; it runs to the page before the next chapter start and takes the profile of the chapter it splits, so nothing renders differently. **Remove this chapter** returns its pages to the previous chapter, or to none. Chapters follow page order, so moving or splitting pages never leaves a gap. Chapter starts carry a *Chapter* flag in the page list.
+
+**Separate locks.** Choose *Text*, *Data*, *Sources* or *Composition* and click **Lock** or **Unlock**:
+
+- Text locks the object as written.
+- Data locks the dataset: values, units, definitions, missing reasons, events and intervals.
+- Sources locks the source records.
+- Composition locks the page layout.
+
+The first data or source lock runs the explicit migration `separateLocks()` and says so. In older (combined) decks a locked chart also locked its dataset and sources; the migration copies those implied locks, so nothing is released. Afterwards the chart's wording and its data can be locked independently. Every lock survives theme changes, saving a source update, and **History → Restore as a new copy**.
+
+**Page disclosure.** Text moved by Reduce text or Give the chart more space appears after the composition as **More detail · n items**. Readers open it on the page; no JavaScript is needed. PowerPoint puts the text in the slide notes with a receipt per block. The PDF puts it on the notes pages. Composition rules apply to the blocks that stay visible: a closing page keeps its list.
+
+**Export group.** Next to **Export HTML** are **PowerPoint**, **PDF** and **Project JSON**. PowerPoint and PDF need the studio to run with `--capture-browser /absolute/isolated/chromium`; without it the buttons are disabled and the server refuses with `TARGET_BROWSER_REQUIRED`. With it, the current measured preview is measured again as a static scene. It then compiles through the export order (ready → static-state → freeze → stop-motion → reveal → render → check), and the message lists the stages, the L1/L2/L3 counts and the number of element receipts. A file that fails its own check is refused (`EXPORT_CHECK_FAILED`) and never downloaded. A workbench deck exports PowerPoint or PDF only after its image review passed for the current content. A page marked evidence-required refuses every final export. Open the file in PowerPoint, Keynote or a PDF reader yourself: these exports are package-checked here, not application-verified.
+
+### If something goes wrong
+
+- *This deck changed after the plan*: plan the control again.
+- *composition locked; kept*: unlock the layout (Composition → Unlock) if you want the control to change it.
+- *Already quiet* or *Nothing to move*: the control found nothing to change, and the plan says why.
+- *`EVIDENCE_REQUIRED`*: supply the evidence and set the page sourced, or set it illustrative.
+- *`EXPORT_CHECK_FAILED`*: the message lists the failed check per page; change that page and export again.
+
+[S9a evidence, traces and contact sheets](../evidence/s9a-author-controls/review.md) · [workbench steps](workbench.md#six-questions-and-three-directions-s9a)

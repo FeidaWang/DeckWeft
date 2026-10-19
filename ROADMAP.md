@@ -2,6 +2,19 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## S9a — author controls (DWD-200), 2026-10-19
+
+S9a extends VIS-013 inside the existing Visual Studio and builds VIS-015's last acceptance sentence. VIS-013 stays **implemented-local**. VIS-015 stays **partial**.
+
+- **Entry.** Create asks six questions (Topic, Audience, Style, Detail, Motion, Output) and draws the same content three ways. The three previews are measured; graphics, type, media and motion differ, and the facts are identical. Each says what it changes before the author chooses, then the deck is built from it.
+- **Author actions.** More editorial, Give the chart more space, Make quieter, Keep this layout, Replace the visual and Reduce text are planned first, state their scope and effects, then apply through the normal edit path, so Undo works. Reduce text moves text behind a page disclosure; nothing is deleted.
+- **Scope and locks.** Scope runs at four levels (deck, chapter, page, object). Text, data, source and composition locks are separate, through an explicit migration, and survive theme changes, source updates and history restore. Partial revisions state their scope first.
+- **Page planning.** Pages are planned from argument units. The planner asks, or marks pages evidence-required, and never pads.
+- **Reusable profiles.** An accepted design can be promoted into a profile that holds no text, images or branding.
+- **Studio export.** The export group now has PowerPoint and PDF, through the S7 export order.
+
+Checked in isolated Chromium at 1440, 1024 and 390 px: a 28-step UI trace, and 24 direction decks (six themes × two bases × two languages) with 0 fit, glyph or render issues. Studio PowerPoint and PDF exports pass on 48 of 48. PowerPoint and Keynote were not run, Claude is deferred, and S9b (blueprint A) has not started. [Workbench manual](docs/en/workbench.md#six-questions-and-three-directions-s9a) · [Visual Studio manual](docs/en/visual-studio.md#author-controls-chapters-and-separate-locks-s9a) · [Evidence](docs/evidence/s9a-author-controls/review.md).
+
 ## VIS-016 — target-specific editable exports (S7), 2026-10-19
 
 VIS-016 is **partial** (implemented locally). Every component declares an output level for web, PDF and PowerPoint (L1 native, L2 vector with real text, L3 image of one element with a summary). The export order is enforced in code. v3 decks compile to:

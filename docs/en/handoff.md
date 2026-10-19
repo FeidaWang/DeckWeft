@@ -1,3 +1,14 @@
+S9a (author controls, DWD-200) is **done locally** as of 2026-10-19. It sits on branch `claude/design-handoff-alignment-review-978a91`, stacked on the S1–S8 branch `claude/design-handoff-alignment-19703c`; it is not pushed. VIS-013 stays implemented-local and VIS-015 stays partial. What S9a adds:
+
+- the six-question entry and three measured directions;
+- planned author actions with undo;
+- four-level scope, chapters and separate locks;
+- page planning that asks instead of padding;
+- reusable profiles;
+- PowerPoint and PDF in the Studio export group.
+
+The ten answers and the decisions are in [alignment §17](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19); see also the [evidence](../evidence/s9a-author-controls/review.md). Next in the plan is S9b, blueprint A (Explain → Diagram → Explore), in its own session and worktree starting from S9a's tip. It is not authorized by this handoff.
+
 S7 (output levels and VIS-016) is **partial** as of 2026-10-19 on branch `claude/nice-archimedes-d8a127`. That branch starts from the S6 branch, so it holds S1–S7. It is not pushed.
 
 - Components declare L1/L2/L3 levels per format.
@@ -10,9 +21,9 @@ Run it with `npm run export:targets` ([manual](compatibility.md#version-3-powerp
 - Chinese PDF search (CJK radical code points)
 - PDF figure wrappers without alt text
 - small text on tall scenes
-- PowerPoint and PDF in the Studio menu
+- ~~PowerPoint and PDF in the Studio menu~~ (built in S9a)
 
-S8 (T01–T03, VIS-015) is done locally and partial ([evidence](../evidence/vis-015/review.md)). Next in the plan is S9. It is not authorized by this handoff.
+S8 (T01–T03, VIS-015) is done locally and partial ([evidence](../evidence/vis-015/review.md)).
 
 S6 (VIS-014 visual release gate) is **partial** as of 2026-10-19 on branch `claude/s6-start-1c14f9`. The branch merges S3, S4 and S5 and is not pushed. Start from it, not from `main`: `main` has none of S1–S6. The decisions are in [alignment §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19):
 

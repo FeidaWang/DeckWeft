@@ -26,6 +26,8 @@ Local coding-host adapters now support opt-in structured drafting, scoped revisi
 
 Enter a prompt or select a saved source in the existing Visual Studio, then watch, revise a page, inspect actual screenshots and export reviewed HTML. Language/style preferences, author locks and recovery persist locally. [Prompt-first workbench](docs/en/workbench.md) · [VIS-013 evidence](docs/evidence/vis-013/review.md). Claude login remains deferred.
 
+Create now asks six questions and shows three measured directions of the same content before it builds the deck. Edit page → Author controls states each change before applying it, and Undo reverses it. You also get chapters, separate text/data/source/composition locks, page planning that asks instead of padding, reusable design profiles, and PowerPoint/PDF export from the Studio. [Author controls](docs/en/visual-studio.md#author-controls-chapters-and-separate-locks-s9a) · [S9a evidence](docs/evidence/s9a-author-controls/review.md).
+
 Existing works now support source-bound chart switching, editable step explanations, finite motion and saved opening selections in Visual Studio. Full bilingual interaction regression and actual preview/export image comparison passed; see the [interaction manual](docs/en/interactions.md) and [current evidence](docs/evidence/interaction-visual-regression/review.md).
 
 ## Visual-first local implementation

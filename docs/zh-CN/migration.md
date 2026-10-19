@@ -49,3 +49,32 @@ S5（2026-10-19）新增两个可选计划字段：图表选择上的 `initialFo
 3. S5 之前导出的文件保留其内嵌播放器。重新导出即可获得 S5 播放器（按键守卫、聚焦、静态状态测量）。
 
 恢复：若 `data.focus` 提示或 `initialFocusSeriesId` 指向当时已隐藏的系列，计划会被拒绝（`INVALID_INTERACTION … Show a series before focusing it`）；请先显示该系列或修改聚焦对象。`STATIC_STATE_UNIMPLEMENTED` 已不存在。
+
+## 章节、页面折叠内容与分项锁定（S9a）
+
+S9a（2026-10-19）新增可选字段，没有新的 `schemaVersion`：现有文稿与计划照常加载和导出（渲染基线显示没有任何可见文字或数值变化）。
+
+| 字段 | 位置 | 含义 |
+|---|---|---|
+| `chapters[] {id, startSceneId, profile?}` | 设计计划 | 章节从起始页延续到下一个章节起始页之前。章节配置作用于没有自身页面配置的成员页。 |
+| `disclosure {blockIds}` | 设计计划中的页面 | 本页的辅助段落、列表或标注，收在一个关闭的“更多细节”控件后面。 |
+| `lockMode`、`lockedDatasetIds`、`lockedSourceIds` | `authorOverrides` | 分开的数据锁定与来源锁定。 |
+| `schemas/design-profile.schema.json` | 新契约 | 可复用的设计配置；没有可存放文字、数据、来源、图片或品牌的字段。 |
+
+只有锁定需要迁移，而且只在你需要分项锁定时：
+
+```js
+import {separateLocks} from './src/core/adapters/locks.mjs';
+const next=separateLocks(project);
+```
+
+预期结果：得到一份已校验的副本，`lockMode: "separate"`。原来由锁定对象隐含保护的数据集与来源（图表的数据集、块的来源及其步骤讲解的来源）全部写入 `lockedDatasetIds` / `lockedSourceIds`，不会释放任何锁定。输入不被修改，重复运行得到相同结果。在 Studio 中，第一次使用“数据”或“来源”锁定时会自动运行并说明。
+
+恢复：
+
+- 保存手工编辑的项目时出现 `AUTHOR_LOCK`：它设置了 `lockMode: "separate"` 却没有复制隐含锁定，这会释放锁定。请使用 `separateLocks()`。
+- `INVALID_PRESENTATION … A locked dataset is missing` / `A locked source is missing`：锁定指向文稿中不存在的 id。
+- `INVALID_DESIGN_PLAN … A chapter starts on a missing page`、`Start at most one chapter on a page`、`Use unique chapter ids` 或 `Chapter ids must differ from page ids`。
+- `INVALID_DESIGN_PLAN … A page disclosure holds paragraph, list or callout blocks of the same page` 或 `The focal block, the takeaway and interaction or annotation targets stay on the page`。
+
+旧示例与反例由 `node --test tests/s9a-author-controls.test.mjs` 检查：`wave-a.*`、`families.en` 与 `evidence-scene.zh-CN` 原样加载，`tests/fixtures/visual/s9a.negative.json` 中的每个反例都被拒绝。

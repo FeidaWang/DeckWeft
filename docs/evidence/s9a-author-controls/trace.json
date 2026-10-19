@@ -1,0 +1,411 @@
+{
+ "format": "deckweft-s9a-browser-trace",
+ "version": 1,
+ "browser": "151.0.7922.34",
+ "binary": "Chrome for Testing (Playwright cache, isolated)",
+ "node": "v24.14.0",
+ "widths": [
+  1440,
+  1024,
+  390
+ ],
+ "errors": [
+  {
+   "width": 1440,
+   "console": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+  }
+ ],
+ "externalRequests": [],
+ "trace": [
+  {
+   "width": 1440,
+   "step": "entry: three directions measured",
+   "ms": 2712,
+   "cards": [
+    {
+     "title": "1 · Editorial · silver-gray-editorial",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 3: Two-column thesis with margin notes; Page 5: Fieldnotes closing. 5 of 5 pages change composition.",
+      "Display Charter, body Gill Sans, numbers Charter; expressive contrast (display scale 1).",
+      "No images in this content. Text and figures take the media area.",
+      "Off, as you chose. With motion on this direction would use fade 280 ms, 6 px, ease-out; reduced motion: instant.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    },
+    {
+     "title": "2 · Research report · fresh-report",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Light surface #FAFAF7, accent #286448. Page 1: Kicker, headline and contents index; Page 3: Numbered section opener; Page 5: Atlas closing. 5 of 5 pages change composition.",
+      "Display Avenir Next, body Avenir Next, numbers Menlo; balanced contrast (display scale 0.85).",
+      "No images in this content. Text and figures take the media area.",
+      "Off, as you chose. With motion on this direction would use fade 200 ms, 0 px, linear; reduced motion: instant.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    },
+    {
+     "title": "3 · Launch stage · orange-launch",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Dark surface #0C1017, accent #A8D2EA. Page 1: One large object, title in the calm area; Page 3: Centered thesis → supporting stack; Page 5: Stage closing. 3 of 5 pages change composition.",
+      "Display Futura, body Helvetica Neue, numbers Futura; expressive contrast (display scale 1.08).",
+      "No images in this content. The stage hero draws one orb in the media area; nothing is invented as content.",
+      "Off, as you chose. With motion on this direction would use fade 360 ms, 12 px, ease-in-out; reduced motion: static.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    }
+   ],
+   "facts": "Facts identical in all three directions (60abec77aa78). Pick one to build the deck; Undo returns to the previous design.",
+   "plan": "Argument units (detail: standard): 5 page(s) from 5 supplied.question ✓background · missingmechanism ✓evidence ✓limits ✓action ✓What does the audience need to know first — what is true today? Add it in your own words.Which data, source or quotation supports the claim on page 3? DeckWeft will not invent one.DeckWeft never invents data or quotations to reach a page count; it asks, or marks a page evidence-required.",
+   "shot": "shots/directions-1440.png",
+   "cardShots": [
+    "shots/direction-1-1440.png",
+    "shots/direction-2-1440.png",
+    "shots/direction-3-1440.png"
+   ]
+  },
+  {
+   "width": 1440,
+   "step": "entry: direction expanded to the deck",
+   "ms": 3919,
+   "chosen": "2 · Research report · fresh-report",
+   "theme": "fresh-report",
+   "pages": [
+    "atlas-cover",
+    "atlas-appendix",
+    "atlas-section",
+    "atlas-section",
+    "atlas-closing"
+   ],
+   "shot": "shots/expanded-1440.png"
+  },
+  {
+   "width": 1440,
+   "step": "reduce text: effect stated before apply",
+   "ms": 4903,
+   "scope": "Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.",
+   "effects": [
+    "Page 1: moves “A full-violet chapter creates a deliberate paus…” (paragraph) behind “More detail”. The words stay on this page behind the disclosure, in the PowerPoint notes and in the PDF appendix."
+   ],
+   "kept": [],
+   "applyEnabled": true,
+   "shot": "shots/plan-reduce-1440.png"
+  },
+  {
+   "width": 1440,
+   "step": "reduce text: applied; disclosure in preview",
+   "ms": 5508,
+   "summary": "More detail · 1 item",
+   "shot": "shots/applied-reduce-1440.png"
+  },
+  {
+   "width": 1440,
+   "step": "reduce text: undo and redo",
+   "ms": 6348,
+   "horizontalOverflowPx": 0
+  },
+  {
+   "width": 1440,
+   "step": "chart space: largest measured layout for the theme",
+   "ms": 7409,
+   "effects": [
+    "Page 4: composition Plot left → evidence rail right → Single-chart conclusion (this theme’s figure layout draws the plot largest at 1440 px)."
+   ],
+   "plot": {
+    "x": 192.921875,
+    "y": 491.859375,
+    "width": 898.296875,
+    "height": 440
+   },
+   "shot": "shots/chart-space-1440.png"
+  },
+  {
+   "width": 1440,
+   "step": "keep layout: theme-own layout refuses a theme change; shared layout survives it",
+   "ms": 9326,
+   "keep": [
+    "Page 4: locks composition Single-chart conclusion. A theme change keeps this geometry; because it is this theme's own composition, a theme change is refused and names it. Rhythm reports it as “kept: author lock”."
+   ],
+   "refusal": "Unlock composition before applying a theme with different geometry.",
+   "collage": "web-scene metric-left active",
+   "shot": "shots/keep-layout-1440.png"
+  },
+  {
+   "width": 1440,
+   "step": "separate data lock (explicit migration stated)",
+   "ms": 9440,
+   "effects": [
+    "Separates text, data and source locks first (explicit migration); every existing lock stays.",
+    "Locks data: adoption-quarterly."
+   ],
+   "summary": "This page: 0 text, 1 data, 0 sources, 1 composition lock(s) · separate lock mode."
+  },
+  {
+   "width": 1440,
+   "step": "chapter started and chapter-level More editorial",
+   "ms": 10917,
+   "chapter": [
+    "Page 5: starts a chapter: pages 5–6."
+   ],
+   "editorial": [
+    "Page 5: composition Headline → matrix → conclusion → Question left → matrix right (claim first, asymmetric reading path).",
+    "Page 6: composition Headline → horizontal steps → detail → Thesis left → vertical sequence right (claim first, asymmetric reading path)."
+   ],
+   "flags": [
+    "Chapter"
+   ],
+   "shot": "shots/chapter-1440.png"
+  },
+  {
+   "width": 1440,
+   "step": "profile saved",
+   "ms": 11043,
+   "message": "Profile “Six-family editorial” saved (accepted by you): theme, 3 composition choice(s), type and motion. No text or images."
+  },
+  {
+   "width": 1440,
+   "step": "saved; history restore-as-copy keeps chapters, disclosure and locks",
+   "ms": 11083,
+   "restored": "deck_restore_1758b8353487bb60c54477ed",
+   "revision": 2
+  },
+  {
+   "width": 1440,
+   "step": "profile applied to the zh-CN deck",
+   "ms": 12911,
+   "effects": [
+    "Page 3: theme cream-collage → electric-violet.",
+    "Page 4: theme dark-data → electric-violet.",
+    "Page 5: theme cream-collage → electric-violet.",
+    "Page 6: composition Headline → horizontal steps → detail → Thesis left → vertical sequence right (recorded in the profile)."
+   ],
+   "kept": [],
+   "themes": [
+    "electric-violet"
+   ],
+   "shot": "shots/profile-applied-1440.png"
+  },
+  {
+   "width": 1440,
+   "step": "export html",
+   "ms": 12952,
+   "bytes": 3528469,
+   "message": "Standalone HTML exported with embedded local images."
+  },
+  {
+   "width": 1440,
+   "step": "export pptx",
+   "ms": 14740,
+   "bytes": 2450632,
+   "message": "PowerPoint exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=24; 8 element receipt(s). Open it in the target application to check it."
+  },
+  {
+   "width": 1440,
+   "step": "export pdf",
+   "ms": 17241,
+   "bytes": 4489893,
+   "message": "PDF exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=22,L2=2; 0 element receipt(s). Open it in the target application to check it."
+  },
+  {
+   "width": 1440,
+   "step": "export json",
+   "ms": 17265,
+   "bytes": 13323,
+   "message": "PDF exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=22,L2=2; 0 element receipt(s). Open it in the target application to check it."
+  },
+  {
+   "width": 1440,
+   "step": "profile exported and imported as a copy",
+   "ms": 17310,
+   "profiles": [
+    "Six-family editorial · electric-violet",
+    "Six-family editorial · electric-violet"
+   ]
+  },
+  {
+   "width": 1440,
+   "step": "page plan asks for material instead of padding",
+   "ms": 18134,
+   "questions": [
+    "What does the audience need to know first — what is true today? Add it in your own words.",
+    "Which data, source or quotation supports the claim on page 3? DeckWeft will not invent one.",
+    "The material supports 5 pages; the target is 9. Add material for the other 4 pages, or lower the target. DeckWeft will not pad the deck."
+   ],
+   "shot": "shots/page-plan-1440.png"
+  },
+  {
+   "width": 1440,
+   "step": "evidence-required marked; final export refused by name",
+   "ms": 18645,
+   "flags": 1,
+   "pages": [
+    "slide_903af799fe3a4f6c"
+   ],
+   "refusal": "Supply the evidence these pages ask for, or mark them illustrative, before a final export.",
+   "shot": "shots/evidence-required-1440.png"
+  },
+  {
+   "width": 1024,
+   "step": "entry: three directions measured",
+   "ms": 21353,
+   "cards": [
+    {
+     "title": "1 · Editorial · silver-gray-editorial",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 3: Two-column thesis with margin notes; Page 5: Fieldnotes closing. 5 of 5 pages change composition.",
+      "Display Charter, body Gill Sans, numbers Charter; expressive contrast (display scale 1).",
+      "No images in this content. Text and figures take the media area.",
+      "Off, as you chose. With motion on this direction would use fade 280 ms, 6 px, ease-out; reduced motion: instant.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    },
+    {
+     "title": "2 · Research report · fresh-report",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Light surface #FAFAF7, accent #286448. Page 1: Kicker, headline and contents index; Page 3: Numbered section opener; Page 5: Atlas closing. 5 of 5 pages change composition.",
+      "Display Avenir Next, body Avenir Next, numbers Menlo; balanced contrast (display scale 0.85).",
+      "No images in this content. Text and figures take the media area.",
+      "Off, as you chose. With motion on this direction would use fade 200 ms, 0 px, linear; reduced motion: instant.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    },
+    {
+     "title": "3 · Launch stage · orange-launch",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Dark surface #0C1017, accent #A8D2EA. Page 1: One large object, title in the calm area; Page 3: Centered thesis → supporting stack; Page 5: Stage closing. 3 of 5 pages change composition.",
+      "Display Futura, body Helvetica Neue, numbers Futura; expressive contrast (display scale 1.08).",
+      "No images in this content. The stage hero draws one orb in the media area; nothing is invented as content.",
+      "Off, as you chose. With motion on this direction would use fade 360 ms, 12 px, ease-in-out; reduced motion: static.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    }
+   ],
+   "facts": "Facts identical in all three directions (60abec77aa78). Pick one to build the deck; Undo returns to the previous design.",
+   "plan": "Argument units (detail: standard): 5 page(s) from 5 supplied.question ✓background · missingmechanism ✓evidence ✓limits ✓action ✓What does the audience need to know first — what is true today? Add it in your own words.Which data, source or quotation supports the claim on page 3? DeckWeft will not invent one.DeckWeft never invents data or quotations to reach a page count; it asks, or marks a page evidence-required.",
+   "shot": "shots/directions-1024.png",
+   "cardShots": [
+    "shots/direction-1-1024.png",
+    "shots/direction-2-1024.png",
+    "shots/direction-3-1024.png"
+   ]
+  },
+  {
+   "width": 1024,
+   "step": "reduce text: effect stated before apply",
+   "ms": 22336,
+   "scope": "Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.",
+   "effects": [
+    "Page 1: moves “A full-violet chapter creates a deliberate paus…” (paragraph) behind “More detail”. The words stay on this page behind the disclosure, in the PowerPoint notes and in the PDF appendix."
+   ],
+   "kept": [],
+   "applyEnabled": true,
+   "shot": "shots/plan-reduce-1024.png"
+  },
+  {
+   "width": 1024,
+   "step": "reduce text: applied; disclosure in preview",
+   "ms": 22940,
+   "summary": "More detail · 1 item",
+   "shot": "shots/applied-reduce-1024.png"
+  },
+  {
+   "width": 1024,
+   "step": "reduce text: undo and redo",
+   "ms": 23772,
+   "horizontalOverflowPx": 0
+  },
+  {
+   "width": 390,
+   "step": "entry: three directions measured",
+   "ms": 26425,
+   "cards": [
+    {
+     "title": "1 · Editorial · silver-gray-editorial",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 3: Two-column thesis with margin notes; Page 5: Fieldnotes closing. 5 of 5 pages change composition.",
+      "Display Charter, body Gill Sans, numbers Charter; expressive contrast (display scale 1).",
+      "No images in this content. Text and figures take the media area.",
+      "Off, as you chose. With motion on this direction would use fade 280 ms, 6 px, ease-out; reduced motion: instant.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    },
+    {
+     "title": "2 · Research report · fresh-report",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Light surface #FAFAF7, accent #286448. Page 1: Kicker, headline and contents index; Page 3: Numbered section opener; Page 5: Atlas closing. 5 of 5 pages change composition.",
+      "Display Avenir Next, body Avenir Next, numbers Menlo; balanced contrast (display scale 0.85).",
+      "No images in this content. Text and figures take the media area.",
+      "Off, as you chose. With motion on this direction would use fade 200 ms, 0 px, linear; reduced motion: instant.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    },
+    {
+     "title": "3 · Launch stage · orange-launch",
+     "fit": "✓ Fits all 5 pages at 1440 px",
+     "use": true,
+     "explain": [
+      "Dark surface #0C1017, accent #A8D2EA. Page 1: One large object, title in the calm area; Page 3: Centered thesis → supporting stack; Page 5: Stage closing. 3 of 5 pages change composition.",
+      "Display Futura, body Helvetica Neue, numbers Futura; expressive contrast (display scale 1.08).",
+      "No images in this content. The stage hero draws one orb in the media area; nothing is invented as content.",
+      "Off, as you chose. With motion on this direction would use fade 360 ms, 12 px, ease-in-out; reduced motion: static.",
+      "PowerPoint: 11 L1 (L1 native or real text, L2 vector with real text, L3 image with a summary)."
+     ]
+    }
+   ],
+   "facts": "Facts identical in all three directions (60abec77aa78). Pick one to build the deck; Undo returns to the previous design.",
+   "plan": "Argument units (detail: standard): 5 page(s) from 5 supplied.question ✓background · missingmechanism ✓evidence ✓limits ✓action ✓What does the audience need to know first — what is true today? Add it in your own words.Which data, source or quotation supports the claim on page 3? DeckWeft will not invent one.DeckWeft never invents data or quotations to reach a page count; it asks, or marks a page evidence-required.",
+   "shot": "shots/directions-390.png",
+   "cardShots": [
+    "shots/direction-1-390.png",
+    "shots/direction-2-390.png",
+    "shots/direction-3-390.png"
+   ]
+  },
+  {
+   "width": 390,
+   "step": "reduce text: effect stated before apply",
+   "ms": 27418,
+   "scope": "Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.",
+   "effects": [
+    "Page 1: moves “A full-violet chapter creates a deliberate paus…” (paragraph) behind “More detail”. The words stay on this page behind the disclosure, in the PowerPoint notes and in the PDF appendix."
+   ],
+   "kept": [],
+   "applyEnabled": true,
+   "shot": "shots/plan-reduce-390.png"
+  },
+  {
+   "width": 390,
+   "step": "reduce text: applied; disclosure in preview",
+   "ms": 28024,
+   "summary": "More detail · 1 item",
+   "shot": "shots/applied-reduce-390.png"
+  },
+  {
+   "width": 390,
+   "step": "reduce text: undo and redo",
+   "ms": 28848,
+   "horizontalOverflowPx": 0
+  },
+  {
+   "width": 0,
+   "step": "done",
+   "ms": 28854,
+   "errors": 1,
+   "external": 0
+  }
+ ]
+}

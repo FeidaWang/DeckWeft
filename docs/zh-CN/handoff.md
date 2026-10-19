@@ -1,3 +1,14 @@
+截至 2026-10-19，S9a（作者控制，DWD-200）已在本地完成。它位于分支 `claude/design-handoff-alignment-review-978a91`，叠加在 S1–S8 分支 `claude/design-handoff-alignment-19703c` 之上，尚未推送。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。S9a 新增：
+
+- 六个问题的入口与三个经测量的方向；
+- 可撤销、先说明后应用的作者操作；
+- 四个层级的范围、章节与分项锁定；
+- 提问而非填充的页数规划；
+- 可复用配置；
+- Studio 导出组中的 PowerPoint 与 PDF。
+
+十个问题的答案与各项决定见[对齐计划 §17（英文）](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19)，另见[证据（英文）](../evidence/s9a-author-controls/review.md)。计划中的下一步是 S9b（蓝图 A：Explain → Diagram → Explore），在独立的会话与 worktree 中从 S9a 的末端开始。本交接不构成授权。
+
 截至 2026-10-19，S7（输出等级与 VIS-016）在分支 `claude/nice-archimedes-d8a127` 上为 **partial**。该分支从 S6 分支开始，因此包含 S1–S7，尚未推送。
 
 - 组件按格式声明 L1/L2/L3 等级。
@@ -10,9 +21,9 @@
 - 中文 PDF 搜索（CJK 部首码位）
 - PDF 中缺替代文字的 figure 外层
 - 高场景的小字
-- Studio 菜单中的 PowerPoint 与 PDF
+- ~~Studio 菜单中的 PowerPoint 与 PDF~~（已在 S9a 中完成）
 
-计划中的下一步是 S8（T01–T03，VIS-015）。本交接不构成对它的授权。
+S8（T01–T03，VIS-015）已在本地完成，状态为 partial（[证据（英文）](../evidence/vis-015/review.md)）。
 
 截至 2026-10-19，S6（VIS-014 视觉发布门）在分支 `claude/s6-start-1c14f9` 上为 **partial**。该分支已合并 S3、S4、S5，尚未推送。请从这个分支继续，而不是 `main`：`main` 上没有任何 S1–S6 的内容。相关决定见[对齐文档 §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)：
 
