@@ -1,7 +1,7 @@
 import schema from '../../schemas/design-profile.schema.json' with { type: 'json' };
 import {validateSchema} from '../core/schema.mjs';
 import {DeckError} from '../core/errors.mjs';
-import {themePacks,resolveTheme,themeTokens,DEFAULT_PROFILE} from './theme-registry.mjs';
+import {themePacks,resolveTheme,themeTokens,effectiveProfile} from './theme-registry.mjs';
 import {THEME_COMPOSITIONS,visibleBlockIds} from './plan.mjs';
 /** S9a reusable design profiles (VIS-015's last acceptance sentence). A profile is promoted from an accepted design and keeps
  * only design: theme, profile choices, the composition used for each kind of page, and the type and motion tokens drawn.
@@ -31,7 +31,9 @@ export function drawnTokens(themeId,profile){
 export function promoteProfile(project,{id,name,acceptance}){
  const {document,plan}=project,count=new Map();for(const s of plan.scenes)count.set(s.theme,(count.get(s.theme)||0)+1);
  const theme=[...count].sort((a,b)=>b[1]-a[1]||(a[0]===plan.scenes[0].theme?-1:b[0]===plan.scenes[0].theme?1:0))[0][0],pack=themePacks().find(p=>p.id===theme);
- const profile={...DEFAULT_PROFILE,...document.visualBrief?.profile},chosen=new Map(),skipped=[];
+ // The profile those pages were drawn with: the most common effective profile (page › chapter › deck) among them.
+ const drawn=new Map();for(const s of plan.scenes.filter(s=>s.theme===theme)){const k=JSON.stringify(effectiveProfile(document,s,plan));drawn.set(k,(drawn.get(k)||0)+1);}
+ const profile=JSON.parse([...drawn].sort((a,b)=>b[1]-a[1])[0][0]),chosen=new Map(),skipped=[];
  for(const s of plan.scenes){if(s.theme!==theme){skipped.push({sceneId:s.id,reason:'other-theme'});continue;}const kind=pageKind(document,plan,s),k=chosen.get(kind)||new Map();k.set(s.composition,(k.get(s.composition)||0)+1);chosen.set(kind,k);}
  const compositions=PAGE_KINDS.filter(k=>chosen.has(k)).map(kind=>({kind,composition:[...chosen.get(kind)].sort((a,b)=>b[1]-a[1])[0][0]}));
  const tokens=drawnTokens(theme,profile);

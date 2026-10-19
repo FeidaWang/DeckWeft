@@ -190,3 +190,36 @@ test('S9a workbench: a chosen direction is re-applied to the planned deck exactl
  assert.deepEqual(r.project.document.visualBrief,expected.document.visualBrief);assert.equal(r.preferences.visualStyle,expected.plan.scenes[0].theme);
  assert.equal(factsHash(r.project.document),factsHash(expected.document));
 });
+
+test('S9a review fixes: disclosed text is covered by the render check, layout and text locks hold disclosures, profile-locked pages are reported',async t=>{
+ const {checkRender}=await import('../src/quality/render-checks.mjs'),{store,project}=await demo(t);
+ const next=planAuthorAction(project,{action:'reduce-text',level:'object',id:'chapter-body'}).project,out=exportDeck(next.document,'html',{plan:next.plan,experimentalWeb:true,assetResources:await visualAssetResources(next,store.home)});
+ const blocks=new Map(next.document.blocks.map(b=>[b.id,b])),body=next.document.blocks.find(b=>b.id==='chapter-body').text;
+ const observe=disclosed=>({fit:{viewport:{width:1440}},viewport:{width:1440},fontStatus:'loaded',scenes:out.scenes.map(s=>({sceneId:s.id,bounds:{x:0,y:0,width:1,height:1},regions:s.regions.map(r=>({nodeId:r.id,blockId:r.blockId,text:JSON.stringify(blocks.get(r.blockId)),links:[],images:[]})),disclosed:s.id==='chapter'?disclosed:[]}))});
+ const issues=checkRender(next,[observe([{blockId:'chapter-body',text:body}])]).issues;assert.ok(!issues.some(i=>/chapter-body/.test(i.reason)),'a disclosed block is not a missing region');
+ assert.ok(checkRender(next,[observe([])]).issues.some(i=>/Disclosed text is absent/.test(i.reason)),'dropped disclosed text is caught');
+ // Core locks: a layout lock covers the disclosure; a text-locked block never moves behind one.
+ const layout=structuredClone(project);layout.document.authorOverrides.sceneLocks=[{sceneId:'chapter',fields:['blockIds']}];const hidden=structuredClone(layout);sceneOf(hidden,'chapter').disclosure={blockIds:['chapter-body']};rejects(()=>assertVisualLocks(layout,hidden),'AUTHOR_LOCK');
+ const text=structuredClone(project);text.document.authorOverrides.lockedBlockIds=['chapter-body'];const moved=structuredClone(text);sceneOf(moved,'chapter').disclosure={blockIds:['chapter-body']};rejects(()=>assertVisualLocks(text,moved),'AUTHOR_LOCK');
+ // A profile lock without a page profile follows a deck change, and the plan says so.
+ const lockedProfile=structuredClone(project);lockedProfile.document.visualBrief={audience:'',outputLanguage:'en',profile:{colorIntensity:'bold',typographicContrast:'balanced',density:'compact',motionIntensity:'off',imageEmphasis:'large'}};lockedProfile.document.authorOverrides.sceneLocks=[{sceneId:'collage',fields:['profile']}];
+ assert.ok(planAuthorAction(lockedProfile,{action:'more-editorial',level:'deck'}).kept.some(k=>/^Page 3 has a profile lock but no page profile/.test(k.en)));
+});
+
+test('S9a review fixes: numbers stay with the claim, page plans are bound to their deck, combined-mode unlock works, themes and directions respect what is visible and the audience',async t=>{
+ const {planPages,applyPagePlan}=await import('../src/planning/argument-units.mjs'),{compileInteractionRuntime}=await import('../src/motion/web.mjs');
+ const deck=createVisualTask({request:'Budget\nWe asked for approval.\nThe board meets monthly.\n- Pilot budget: $40,000\n- Survey base: 1,200 respondents\n---\nNext\n- Decide'}).project;
+ for(const s of planAuthorAction(deck,{action:'reduce-text',level:'page',id:deck.plan.scenes[0].id}).project?.plan.scenes||[])assert.ok(!(s.disclosure?.blockIds||[]).includes('b0_items'),'a list with money and counts stays on the page');
+ const long=createVisualTask({request:'Long page\n'+'A long supporting sentence about the method. '.repeat(14)+'\n- one more supporting point\n- and another\n---\nEnd\n- Decide'}).project,plan=planPages(long,{detail:'brief'});
+ const shorter=structuredClone(long);shorter.document.blocks.find(b=>b.id==='b0_body').text='Short.';rejects(()=>applyPagePlan(shorter,plan,{split:true}),'PAGE_PLAN_STALE');
+ rejects(()=>applyPagePlan(long,{...plan,evidenceRequired:[long.plan.scenes[1].id]},{mark:true}),'PAGE_PLAN_STALE');
+ const {project}=await demo(t),combined=structuredClone(project);combined.document.authorOverrides.lockedBlockIds=['data-chart'];
+ const unlocked=planAuthorAction(combined,{action:'unlock',level:'object',id:'data-chart',options:{kind:'data'}});assert.deepEqual(unlocked.project.document.authorOverrides.lockedDatasetIds,[]);assert.match(unlocked.effects[0].en,/Separates text, data and source locks first/);
+ // A theme change chooses its layout from the blocks left on the page: with the paragraph disclosed, Fieldnotes' cover (needs a paragraph) is not chosen.
+ const base=textDeck(),id2=base.plan.scenes[1].id,atlas=applySceneTheme(base,id2,'fresh-report'),cover=structuredClone(atlas);sceneOf(cover,id2).composition='atlas-cover';sceneOf(cover,id2).disclosure={blockIds:[sceneOf(cover,id2).blockIds.find(b=>b.endsWith('_body'))]};assertVisualProject(cover);
+ assert.equal(sceneOf(applySceneTheme(cover,id2,'silver-gray-editorial'),id2).composition,'reading-flow');
+ const briefed=structuredClone(project);briefed.document.visualBrief={audience:'Board of directors',outputLanguage:'en',profile:{colorIntensity:'bold',typographicContrast:'expressive',density:'comfortable',motionIntensity:'off',imageEmphasis:'large'}};
+ assert.equal(applyDirection(briefed,{topic:'x'},0).project.document.visualBrief.audience,'Board of directors');assert.equal(applyDirection(briefed,{topic:'x',audience:'Engineers'},0).project.document.visualBrief.audience,'Engineers');
+ const moving=structuredClone(project);moving.document.visualBrief={...briefed.document.visualBrief,profile:{...briefed.document.visualBrief.profile,motionIntensity:'subtle'}};moving.plan=startChapter(moving.plan,'comparison');moving.plan.chapters[0].profile={...moving.document.visualBrief.profile,motionIntensity:'off'};
+ const runtime=compileInteractionRuntime(moving.document,moving.plan);assert.equal(runtime.scenes.find(s=>s.id==='process').motion.policy,'off');assert.equal(runtime.scenes.find(s=>s.id==='evidence').motion.policy,'subtle');
+});

@@ -37,7 +37,7 @@ const FIELDNOTES={opening:'fieldnotes-cover',chart:'fieldnotes-figure',text:'fie
  * chart-space-measurements.json): the full-width evidence-top caps the plot height (700 × 350 px), the side layouts draw it at
  * 780 × 390, atlas-figure at 865 × 433 and fieldnotes-figure at 834 × 417; stage-figure (774 × 387) is not larger than a side layout. */
 const LARGEST_PLOT={'fresh-report':'atlas-figure','silver-gray-editorial':'fieldnotes-figure'},SIDE=['evidence-left','evidence-right','chart-with-evidence-rail'];
-const QUALIFIER=/\b(only|except|unless|assum\w*|estimat\w*|approximately|at least|at most|up to|excluding|limited to|synthetic|illustrative|hypothetical|preliminary|caveat\w*|not (?:yet )?(?:measured|verified|tested|run|reviewed))\b|仅|除外|除非|假设|估计|约|至少|至多|不包括|仅限|合成|示意|虚构|初步|未(?:经)?(?:测量|验证|测试|运行|审阅)/i,NUMBER=/\d[\d.,]*\s*(%|％|[A-Za-z]{1,6}\b|[一-鿿])/;
+const QUALIFIER=/\b(only|except|unless|assum\w*|estimat\w*|approximately|at least|at most|up to|excluding|limited to|synthetic|illustrative|hypothetical|preliminary|caveat\w*|not (?:yet )?(?:measured|verified|tested|run|reviewed))\b|仅|除外|除非|假设|估计|约|至少|至多|不包括|仅限|合成|示意|虚构|初步|未(?:经)?(?:测量|验证|测试|运行|审阅)/i,NUMBER=/\d/;
 const sceneOf=(p,id)=>p.plan.scenes.find(s=>s.id===id),pageOf=(p,id)=>p.plan.scenes.findIndex(s=>s.id===id)+1,blockOf=(p,id)=>p.document.blocks.find(b=>b.id===id);
 const sceneLock=(p,id)=>p.document.authorOverrides.sceneLocks?.find(l=>l.sceneId===id)?.fields||[];
 const excerpt=b=>{const t=(b.type==='list'?b.items.join(' · '):b.text).replace(/\s+/g,' ');return [...t].length>48?[...t].slice(0,47).join('')+'…':t;};
@@ -47,10 +47,12 @@ function fits(p,sceneId,composition){
  const copy=structuredClone(p);sceneOf(copy,sceneId).composition=composition;try{assertVisualProject(copy);return true;}catch{return false;}
 }
 function context(project,scope){
- const effects=[],kept=[],p=structuredClone(project);
- const say=(list,sceneId,en,zh)=>list.push({sceneId,page:sceneId?pageOf(p,sceneId):null,en:sceneId?`Page ${pageOf(p,sceneId)}: ${en}`:en,zh:sceneId?`第 ${pageOf(p,sceneId)} 页：${zh}`:zh});
- return {p,scope,effects,kept,effect:(id,en,zh)=>say(effects,id,en,zh),keep:(id,en,zh)=>say(kept,id,en,zh)};
+ const effects=[],kept=[],c={p:structuredClone(project),scope,effects,kept};
+ const say=(list,sceneId,en,zh)=>{const n=sceneId?pageOf(c.p,sceneId):null;list.push({sceneId,page:n,en:sceneId?`Page ${n}: ${en}`:en,zh:sceneId?`第 ${n} 页：${zh}`:zh});};
+ c.effect=(id,en,zh)=>say(effects,id,en,zh);c.keep=(id,en,zh)=>say(kept,id,en,zh);return c;
 }
+/** “Page 3 has” or “Pages 3 and 5 have”. */
+const pages=(plan,ids,one,many)=>`${ids.length>1?'Pages':'Page'} ${pageList(plan,ids)} ${ids.length>1?many:one}`;
 const diffWords=(before,after)=>Object.keys(after).filter(k=>before[k]!==after[k]).map(k=>[`${PROFILE_WORDS[k][0]} ${PROFILE_WORDS[before[k]][0]} → ${PROFILE_WORDS[after[k]][0]}`,`${PROFILE_WORDS[k][1]}：${PROFILE_WORDS[before[k]][1]} → ${PROFILE_WORDS[after[k]][1]}`]);
 /** Write profile choices at the scope's own level: deck brief, chapter profile, or each page. A more specific choice is kept and reported. */
 function profileAt(c,changes){
@@ -60,19 +62,23 @@ function profileAt(c,changes){
   const after={...deck,...changes},words=diffWords(deck,after);if(!words.length)return;
   p.document.visualBrief={...(p.document.visualBrief||{audience:'',outputLanguage:p.document.locale}),profile:after};
   c.effect(null,`Deck profile: ${words.map(w=>w[0]).join('; ')}.`,`整套配置：${words.map(w=>w[1]).join('；')}。`);
-  const own=ownPages(scope.sceneIds),chapter=chapterPages(scope.sceneIds);
-  if(own.length)c.keep(null,`Pages ${pageList(p.plan,own)} keep their own page profile (a page choice beats the deck).`,`第 ${pageList(p.plan,own,true)} 页保留各自的页面配置（页面选择优先于整套）。`);
-  if(chapter.length)c.keep(null,`Pages ${pageList(p.plan,chapter)} follow their chapter profile (a chapter choice beats the deck).`,`第 ${pageList(p.plan,chapter,true)} 页沿用章节配置（章节选择优先于整套）。`);
+  const own=ownPages(scope.sceneIds),chapter=chapterPages(scope.sceneIds);followLocked(c,scope.sceneIds.filter(id=>!sceneOf(p,id).profile&&!chapterOf(p.plan,id)?.profile));
+  if(own.length)c.keep(null,`${pages(p.plan,own,'keeps its','keep their')} own page profile (a page choice beats the deck).`,`第 ${pageList(p.plan,own,true)} 页保留各自的页面配置（页面选择优先于整套）。`);
+  if(chapter.length)c.keep(null,`${pages(p.plan,chapter,'follows its','follow their')} chapter profile (a chapter choice beats the deck).`,`第 ${pageList(p.plan,chapter,true)} 页沿用章节配置（章节选择优先于整套）。`);
  }else if(scope.level==='chapter'){
   const ch=chapterRuns(p.plan).find(x=>x.id===scope.id),before=ch.profile||deck,after={...before,...changes},words=diffWords(before,after);if(!words.length)return;
   p.plan=setChapterProfile(p.plan,scope.id,after);
   c.effect(null,`Chapter profile: ${words.map(w=>w[0]).join('; ')}.`,`章节配置：${words.map(w=>w[1]).join('；')}。`);
-  const own=ownPages(scope.sceneIds);if(own.length)c.keep(null,`Pages ${pageList(p.plan,own)} keep their own page profile.`,`第 ${pageList(p.plan,own,true)} 页保留各自的页面配置。`);
+  const own=ownPages(scope.sceneIds);if(own.length)c.keep(null,`${pages(p.plan,own,'keeps its','keep their')} own page profile.`,`第 ${pageList(p.plan,own,true)} 页保留各自的页面配置。`);followLocked(c,scope.sceneIds.filter(id=>!sceneOf(p,id).profile));
  }else for(const id of scope.sceneIds){
   const s=sceneOf(p,id);if(sceneLock(p,id).includes('profile')){c.keep(id,'profile locked; kept.','页面配置已锁定，保持不变。');continue;}
   const before=effectiveProfile(p.document,s,p.plan),after={...before,...changes},words=diffWords(before,after);if(!words.length)continue;
   s.profile=after;c.effect(id,words.map(w=>w[0]).join('; ')+'.',words.map(w=>w[1]).join('；')+'。');
  }
+}
+function followLocked(c,ids){
+ const locked=ids.filter(id=>sceneLock(c.p,id).includes('profile'));
+ if(locked.length)c.keep(null,`${pages(c.p.plan,locked,'has','have')} a profile lock but no page profile of its own, so it follows this change. To hold the look, give the page a profile, then lock it.`,`第 ${pageList(c.p.plan,locked,true)} 页有配置锁定但没有自己的页面配置，因此会随此修改变化。若要保持外观，请先为其设置页面配置再锁定。`);
 }
 function setComposition(c,id,target,why){
  const {p}=c,s=sceneOf(p,id);if(!target||target===s.composition)return false;
@@ -150,7 +156,7 @@ const ACT={
   const asset=p.assets.find(a=>a.id===options?.assetId);if(!asset)fail('Choose an image already added to this project.');if(asset.id===b.assetId)fail('Choose a different image.');
   const alt=typeof options.alt==='string'?options.alt.trim():'';if(!alt)fail('Describe the new image: alternative text is required.');
   const target=p.document.blocks.find(v=>v.id===b.id),before=target.alt;target.assetId=asset.id;target.alt=alt;if(typeof options.factual==='boolean')target.factual=options.factual;
-  c.effect(id,`replaces only image ${b.id}: alternative text “${before}” → “${alt}”. Composition, crop and every other block stay.`,`仅替换图片 ${b.id}：替代文字“${before}” → “${alt}”。构图、裁切与其他内容不变。`);
+  c.effect(id,`replaces only image ${b.id} with ${asset.id}: alternative text “${before}” → “${alt}”. Composition, crop and every other block stay.`,`仅将图片 ${b.id} 替换为 ${asset.id}：替代文字“${before}” → “${alt}”。构图、裁切与其他内容不变。`);
   for(const sid of scope.sceneIds){const s=sceneOf(p,sid);if(s.crops?.some(v=>v.blockId===b.id))c.keep(sid,'the crop is kept: check the framing of the new image.','裁切保持不变：请检查新图片的取景。');
    for(const cite of s.blockIds.map(x=>blockOf(p,x)).filter(x=>x.type==='citation'))c.keep(sid,`check that citation “${excerpt(cite)}” describes the new image.`,`请确认引用“${excerpt(cite)}”与新图片相符。`);}
  },
@@ -175,7 +181,7 @@ const ACT={
  },
  'start-chapter'(c){const before=chapterOf(c.p.plan,c.scope.id);c.p.plan=startChapter(c.p.plan,c.scope.id);const after=chapterOf(c.p.plan,c.scope.id);
   c.effect(c.scope.id,`starts a chapter: pages ${pageList(c.p.plan,after.sceneIds)}${before?`, split from the chapter that started on page ${pageOf(c.p,before.startSceneId)}, keeping its profile so nothing renders differently`:''}.`,`开始新章节：第 ${pageList(c.p.plan,after.sceneIds,true)} 页${before?`，从第 ${pageOf(c.p,before.startSceneId)} 页开始的章节拆出，并沿用其配置，画面不变`:''}。`);},
- 'remove-chapter'(c){const ch=chapterRuns(c.p.plan).find(x=>x.id===c.scope.id);c.p.plan=removeChapter(c.p.plan,c.scope.id);const prev=chapterOf(c.p.plan,ch.startSceneId);
+ 'remove-chapter'(c){const ch=chapterRuns(c.p.plan).find(x=>x.id===c.scope.id);c.p.plan=removeChapter(c.p.plan,c.scope.id);const prev=chapterOf(c.p.plan,ch.startSceneId);if(ch.profile)followLocked(c,ch.sceneIds.filter(id=>!sceneOf(c.p,id).profile));
   c.effect(null,`Removes the chapter on pages ${pageList(c.p.plan,ch.sceneIds)}${ch.profile?'; its chapter profile is dropped':''}. ${prev?`They join the chapter that starts on page ${pageOf(c.p,prev.startSceneId)}.`:'They belong to no chapter and follow the deck.'}`,`移除第 ${pageList(c.p.plan,ch.sceneIds,true)} 页的章节${ch.profile?'，其章节配置一并移除':''}。${prev?`这些页面并入从第 ${pageOf(c.p,prev.startSceneId)} 页开始的章节。`:'这些页面不再属于任何章节，沿用整套配置。'}`);},
  'lock'(c,options){lockAction(c,options,true);},
  'unlock'(c,options){lockAction(c,options,false);}
@@ -184,7 +190,7 @@ const LOCK_WORDS={text:['text','文字'],data:['data','数据'],sources:['source
 function lockAction(c,options,on){
  const kind=options?.kind;if(!LOCK_WORDS[kind])fail('Choose a text, data, sources or composition lock.');
  if(kind==='composition'&&c.scope.level==='object')fail('Composition belongs to a page; choose Page, Chapter or Deck.');
- if(['data','sources'].includes(kind)&&c.p.document.authorOverrides.lockMode!=='separate'){c.p=separateLocks(c.p);c.effect(null,'Separates text, data and source locks first (explicit migration); every existing lock stays.','先将文字、数据与来源锁定分开（显式迁移）；现有锁定全部保留。');}
+ if(['data','sources'].includes(kind)&&c.p.document.authorOverrides.lockMode!=='separate'){c.p=separateLocks(c.p);c.migrated=structuredClone(c.p);c.effect(null,'Separates text, data and source locks first (explicit migration); every existing lock stays.','先将文字、数据与来源锁定分开（显式迁移）；现有锁定全部保留。');}
  const o=c.p.document.authorOverrides,blocks=c.scope.blockIds||[...new Set(c.p.plan.scenes.filter(s=>c.scope.sceneIds.includes(s.id)).flatMap(s=>s.blockIds))];
  const ids=kind==='text'?blocks:kind==='data'?[...new Set(blocks.map(id=>blockOf(c.p,id)).filter(b=>b.type==='chart').map(b=>b.datasetId))]:kind==='sources'?[...new Set(blocks.map(id=>blockOf(c.p,id)).flatMap(b=>[...b.sourceIds,...(b.sourceId?[b.sourceId]:[]),...(b.type==='chart'?c.p.document.datasets.find(d=>d.id===b.datasetId).sourceIds:[])]))]:c.scope.sceneIds;
  if(!ids.length)return c.keep(null,`Nothing to ${on?'lock':'unlock'}: this scope has no ${LOCK_WORDS[kind][0]}.`,`没有可${on?'锁定':'解锁'}的${LOCK_WORDS[kind][1]}。`);
@@ -202,7 +208,8 @@ export function planAuthorAction(project,{action,level,id,options}={}){
  if(action==='chart-space'&&level==='object'&&blockOf(input,id).type!=='chart')fail('Choose a chart.');
  if(action==='reduce-text'&&level==='object'&&!DISCLOSURE_TYPES.includes(blockOf(input,id).type))fail('Choose a paragraph, list or callout.');
  ACT[action](c,options);
- const next=assertVisualProject(c.p);assertVisualLocks(input,next);
+ // An unlock after the stated separation is checked against the separated deck: the migration released nothing, the unlock is explicit.
+ const next=assertVisualProject(c.p);assertVisualLocks(c.migrated||input,next);
  const changed=contentHash(next)!==contentHash(input);
  return {format:'deckweft-author-action',version:1,action,scope:{level:scope.level,id:scope.id,sceneIds:scope.sceneIds,blockIds:scope.blockIds,label:scope.label},basis:contentHash(input),scopeStatement:describeScope(input,scope,{changes:spec.changes}),effects:c.effects,kept:c.kept,changed,project:changed?next:null};
 }

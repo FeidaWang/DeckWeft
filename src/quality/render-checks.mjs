@@ -1,4 +1,5 @@
 import { contentHash } from '../scene/web/compile.mjs';
+import { visibleBlockIds } from '../design/plan.mjs';
 
 /** Bind receipts to source, renderer bytes, actual audience state and environment. */
 export function qualityBasis(project, observation) {
@@ -7,7 +8,7 @@ export function qualityBasis(project, observation) {
 // Executed in the real page by the optional browser harness. No runtime dependencies.
 export function inspectRenderedPage() {
  const box=n=>{const b=n.getBoundingClientRect();return {x:b.x+scrollX,y:b.y+scrollY,width:b.width,height:b.height};};
- const scenes=[...document.querySelectorAll('.web-scene')].map(s=>({sceneId:s.id,bounds:box(s),composition:[...s.classList].filter(c=>c!=='web-scene'&&c!=='active').join(' '),regions:[...s.querySelectorAll('.region')].map(n=>({nodeId:n.id,blockId:n.dataset.blockId,bounds:box(n),text:n.textContent,code:n.querySelector('.semantic-code code')?.textContent,links:[...n.querySelectorAll('a')].map(a=>({href:a.getAttribute('href'),text:a.textContent})),images:[...n.querySelectorAll('img')].map(i=>({ready:i.complete&&i.naturalWidth>0,src:i.currentSrc||i.src,width:i.naturalWidth,height:i.naturalHeight}))})),...window.deckweftAuditScene(s)}));
+ const scenes=[...document.querySelectorAll('.web-scene')].map(s=>({sceneId:s.id,bounds:box(s),composition:[...s.classList].filter(c=>c!=='web-scene'&&c!=='active').join(' '),regions:[...s.querySelectorAll('.region')].map(n=>({nodeId:n.id,blockId:n.dataset.blockId,bounds:box(n),text:n.textContent,code:n.querySelector('.semantic-code code')?.textContent,links:[...n.querySelectorAll('a')].map(a=>({href:a.getAttribute('href'),text:a.textContent})),images:[...n.querySelectorAll('img')].map(i=>({ready:i.complete&&i.naturalWidth>0,src:i.currentSrc||i.src,width:i.naturalWidth,height:i.naturalHeight}))})),disclosed:[...s.querySelectorAll('[data-disclosed-block-id]')].map(n=>({blockId:n.dataset.disclosedBlockId,text:n.textContent})),...window.deckweftAuditScene(s)}));
  return {sourceLinks:[...document.querySelectorAll('a[href]')].map(a=>a.getAttribute('href')),documentOverflow:document.documentElement.scrollWidth>innerWidth+1,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},renderHash:document.body.dataset.renderHash,dom:document.querySelector('main').outerHTML,state:window.deckweftInteractions?.snapshot(),fonts:[...document.fonts].map(f=>({family:f.family,status:f.status})),fontStatus:document.fonts.status,scenes,fit:window.deckweftFit};
 }
 const normalize=s=>String(s).replace(/\r\n?/g,'\n');
@@ -29,7 +30,9 @@ export function checkRender(project,observations,{traces=[],console:consoleEntri
   if(o.documentOverflow)add('viewport-overflow',null,null,'Document exceeds viewport width','Repair only the affected responsive layout.');
   if(o.fontStatus&&o.fontStatus!=='loaded')add('font',null,null,'Fonts are still loading','Wait for local font readiness and recapture.');
   for(const scene of project.plan.scenes){const s=o.scenes.find(s=>s.sceneId===scene.id);if(!s){add('coverage',{sceneId:scene.id,bounds:null},null,'Missing scene '+scene.id,'Restore the scene binding.');continue;}
-   for(const blockId of scene.blockIds){const b=project.document.blocks.find(b=>b.id===blockId),r=s.regions.find(r=>r.blockId===blockId);if(!r){add('coverage',s,{nodeId:null,blockId,bounds:null},'Missing block '+blockId,'Restore the stable region binding.');continue;}
+   // S9a: a block behind the page disclosure is not a composition region; its exact text must be inside the disclosure instead.
+   for(const blockId of scene.disclosure?.blockIds||[]){const b=project.document.blocks.find(b=>b.id===blockId),d=(s.disclosed||[]).find(d=>d.blockId===blockId),missing=d?expectedText(b,project.document).filter(t=>!normalize(d.text).includes(normalize(t))):['Disclosed block '+blockId];coverage.push({viewport:o.viewport,sceneId:s.sceneId,nodeId:null,blockId,missing,sources:[],disclosed:true});if(missing.length)add('text-coverage',s,{nodeId:null,blockId,bounds:null},'Disclosed text is absent from the page disclosure: '+missing.join(' | '),'Restore the exact text; nothing behind a disclosure may be dropped.');}
+   for(const blockId of visibleBlockIds(scene)){const b=project.document.blocks.find(b=>b.id===blockId),r=s.regions.find(r=>r.blockId===blockId);if(!r){add('coverage',s,{nodeId:null,blockId,bounds:null},'Missing block '+blockId,'Restore the stable region binding.');continue;}
     const missing=expectedText(b,project.document).filter(t=>!normalize(r.text).includes(normalize(t)));
     if(b.type==='code'&&normalize(r.code)!==normalize(b.text))missing.push('Exact code including whitespace');
     const sourceIds=[...new Set([...(b.sourceIds||[]),...(b.sourceId?[b.sourceId]:[]),...(b.datasetId?project.document.datasets.find(d=>d.id===b.datasetId)?.sourceIds||[]:[]),...(b.sourceAnchor?[b.sourceAnchor.sourceId]:[])])];

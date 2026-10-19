@@ -10,8 +10,8 @@ State **LocalVerified** for the S9a scope. VIS-013 stays implemented-local and V
 
 Results:
 
-- `npm run verify` passed **459 tests** (455 pass, 4 skips: the existing environment-gated one and 3 browser-gated Studio export tests), plus types, source and link checks over 1,497 files, packaging and demos.
-  - New: `tests/s9a-author-controls.test.mjs` (12), `tests/argument-units.test.mjs` (11), `tests/studio-export.test.mjs` (4).
+- `npm run verify` passed **461 tests** (457 pass, 4 skips: the existing environment-gated one and 3 browser-gated Studio export tests), plus types, source and link checks over 1,497 files, packaging and demos.
+  - New: `tests/s9a-author-controls.test.mjs` (14, two of them regression tests for an independent code review's 12 findings), `tests/argument-units.test.mjs` (11), `tests/studio-export.test.mjs` (4).
   - With `CHROMIUM_PATH` set, `tests/studio-export.test.mjs` passed 4 of 4, and its PowerPoint bytes equal the Playwright path of `scripts/export-targets.mjs` on 3 decks.
 - The render baseline was re-recorded once, in its own commit, for renderer `visual-art-direction.11` (page disclosure stylesheet rule). The per-entry diff against `4f26b33` shows no visible word, value, table, anchor or title changed; the player is unchanged.
 - `tests/browser_author_controls.mjs` (isolated Chrome for Testing 151, Playwright 1.61.1): 28 UI steps at 1440, 1024 and 390 px, 0 page errors, 0 external requests. The one console error is the expected HTTP 409 of a refused theme change on a locked layout.

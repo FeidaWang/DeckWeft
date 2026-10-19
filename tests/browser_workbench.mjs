@@ -37,6 +37,7 @@ try{
   const stale=await fetch(app.url+'/api/visual/workbench/'+id+'/action',{method:'POST',headers,body:JSON.stringify({expectedSequence:0,action:'inspect'})});assert.equal(stale.status,409);
  }
  for(const [width,height]of [[1600,1100],[390,844]]){await page.setViewportSize({width,height});await page.waitForFunction(()=>document.querySelector('#fit').textContent.startsWith('✓'),{},{timeout:20000});await page.screenshot({path:path.join(out,'workbench-'+width+'.png'),fullPage:true});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);}
+ await revealStudio(page,'create');if(!await page.locator('#workbench-uiLanguage').isVisible())await page.locator('#workbenchPreferences summary').click();
  await page.locator('#workbench-uiLanguage').selectOption('zh-CN');await page.screenshot({path:path.join(out,'workbench-zh.png'),fullPage:true});assert.equal(await page.locator('#workbenchGenerate').textContent(),a.live?'根据需求起草':'排版所提供的原文');assert.equal(await page.locator('#workbench-promptLanguage').inputValue(),'zh-CN');assert.equal(await page.locator('#workbench-outputLanguage').inputValue(),'en');
  report.id=id;report.home=home;report.checkpoint=path.join(store.home,'workbench',id,'checkpoint.json');report.ok=true;assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
 }catch(e){report.failure=e.stack;process.exitCode=1;await page.screenshot({path:path.join(out,'failure.png'),fullPage:true}).catch(()=>{});}

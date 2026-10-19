@@ -17,9 +17,10 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
   if(deck&&(state.dirty||state.drafts.size)&&!await save())return;
   if(!deck&&!a.topic.trim())throw Error(t('Enter the topic or the text to arrange first.','请先输入主题或需要排版的原文。'));
   $('#entryDirections').disabled=true;$('#entryStatus').textContent=t('Drawing the same content three ways…','正在用三种方式绘制同一内容…');
+  const counter=state.counter;
   try{
    const r=await json('/api/visual/directions',{answers:a,...(deck?{project:state.project}:{locale:document.querySelector('[data-preference="outputLanguage"]').value})});
-   directions={...r,deck,answers:a,counter:state.counter};
+   directions={...r,deck,answers:a,counter};
    $('#directionFacts').textContent=t(`Facts identical in all three directions (${r.factsHash.slice(0,12)}). Pick one to ${deck?'apply to this deck':'build the deck'}; Undo returns to the previous design.`,`三个方向事实完全相同（${r.factsHash.slice(0,12)}）。选择其一${deck?'应用于当前文稿':'生成整套演示'}；撤销可回到之前的设计。`);
    $('#entryPagePlan').innerHTML=planHTML(r.pagePlan);
    $('#directionCards').innerHTML=r.sets.map((s,k)=>{const e=s.explanation;return `<article class="direction-card" data-direction="${k}"><h3>${k+1} · ${x(say(e.title))}</h3><p class="direction-why">${x(say(e.why))}</p><div class="candidate-window"><iframe title="${x(t('Direction ','方向 ')+(k+1))}" sandbox="allow-scripts" src="${s.artifactUrl}#scene=${encodeURIComponent(e.samples[0])}"></iframe></div><div class="sample-pages">${e.samples.map(id=>`<button type="button" data-sample="${x(id)}">${x(t('Page ','第 ')+(s.scenes.findIndex(v=>v.sceneId===id)+1)+t('',' 页'))}</button>`).join('')}</div><dl class="direction-explain">${[['graphics','Graphics','图形'],['type','Type','字体'],['media','Media','媒体'],['motion','Motion','动效'],['output','Output','输出']].map(([k2,en,zh])=>`<dt>${x(t(en,zh))}</dt><dd>${x(say(e[k2]))}</dd>`).join('')}</dl>${e.kept.length?`<p class="hint">${x(t(`${e.kept.length} page(s) keep an author-locked theme or composition.`,`${e.kept.length} 页保留作者锁定的主题或构图。`))}</p>`:''}<p class="candidate-fit" role="status">${x(t('Measuring fonts and layout…','正在测量字体与排版…'))}</p><button type="button" data-use-direction="${k}" disabled>${x(t('Use this direction','使用此方向'))}</button></article>`;}).join('');
@@ -53,7 +54,7 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
   $('#actionObject').hidden=$('#actionLevel').value!=='object';$('#actionObject').replaceChildren(...objects.map(b=>new Option(`${b.type} · ${excerpt(b)}`,b.id)));if(objects.some(b=>b.id===keep))$('#actionObject').value=keep;
   const o=p.document.authorOverrides,locks=[[o.lockedBlockIds.filter(id=>s.blockIds.includes(id)).length,'text','文字'],[(o.lockedDatasetIds||[]).filter(d=>objects.some(b=>b.datasetId===d)).length,'data','数据'],[(o.lockedSourceIds||[]).filter(v=>objects.some(b=>b.sourceIds.includes(v))).length,'sources','来源'],[o.sceneLocks?.find(l=>l.sceneId===s.id)?.fields.includes('composition')?1:0,'composition','构图']];
   $('#lockSummary').textContent=t(`This page: ${locks.map(l=>l[0]+' '+l[1]).join(', ')} lock(s) · ${o.lockMode==='separate'?'separate':'combined'} lock mode${ch?` · chapter ${ch.id}`:''}.`,`本页锁定：${locks.map(l=>l[2]+' '+l[0]).join('，')} · ${o.lockMode==='separate'?'分项':'合并'}锁定模式${ch?` · 章节 ${ch.id}`:''}。`);
-  $('#replaceAsset').replaceChildren(...p.assets.map(a=>new Option(`${a.id} · ${a.alt}`,a.id)));
+  const asset=$('#replaceAsset').value;$('#replaceAsset').replaceChildren(...p.assets.map(a=>new Option(`${a.id} · ${a.alt}`,a.id)));if(p.assets.some(a=>a.id===asset))$('#replaceAsset').value=asset;
  }
  function scopeOf(action){const level=['start-chapter'].includes(action)?'page':action==='remove-chapter'?'chapter':action==='replace-visual'?'object':$('#actionLevel').value,s=page();
   // Replace the visual acts on one image: the chosen object when it is an image, otherwise this page's first image.
@@ -67,7 +68,7 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
   if(['lock','unlock'].includes(action))options.kind=$('#lockKind').value;
   if(action==='apply-profile'){options.profileId=$('#profileList').value;if(!options.profileId)throw Error(t('Save or import a profile first.','请先保存或导入配置。'));}
   const scope=scopeOf(action);if(scope.level!=='deck'&&!scope.id)throw Error(action==='replace-visual'?t('This page has no image to replace.','本页没有可替换的图片。'):t('Choose the chapter or object first.','请先选择章节或对象。'));
-  plan=await json('/api/visual/author-action',{project:p,action,...scope,options});planCounter=state.counter;
+  const counter=state.counter;plan=await json('/api/visual/author-action',{project:p,action,...scope,options});planCounter=counter;
   $('#actionTitle').textContent=button.textContent;$('#actionScope').textContent=say(plan.scopeStatement);
   $('#actionEffects').innerHTML=plan.effects.map(v=>`<li>${x(say(v))}</li>`).join('')||`<li>${x(t('No change.','没有修改。'))}</li>`;
   $('#actionKept').innerHTML=plan.kept.map(v=>`<li>${x(say(v))}</li>`).join('');
@@ -78,7 +79,7 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
  $('#actionCancel').onclick=()=>{plan=null;$('#actionPlan').hidden=true;$('#replaceFields').hidden=true;};
  $('#actionLevel').onchange=drawControls;
  // ---- Pages from the argument ----
- $('#planPages').onclick=async()=>{try{if(!state.project)throw Error(t('Open a deck first.','请先打开文稿。'));const target=Number($('#planTarget').value)||undefined;pagePlan=await json('/api/visual/page-plan',{project:state.project,detail:$('#planDetail').value,...(target?{targetPages:target}:{})});pagePlan.counter=state.counter;
+ $('#planPages').onclick=async()=>{try{if(!state.project)throw Error(t('Open a deck first.','请先打开文稿。'));const target=Number($('#planTarget').value)||undefined,counter=state.counter;pagePlan=await json('/api/visual/page-plan',{project:state.project,detail:$('#planDetail').value,...(target?{targetPages:target}:{})});pagePlan.counter=counter;
   const n=id=>state.project.plan.scenes.findIndex(s=>s.id===id)+1;
   $('#pagePlan').innerHTML=planHTML(pagePlan)+`<table><thead><tr><th>${x(t('Page','页'))}</th><th>${x(t('Unit','单元'))}</th><th>${x(t('Why','依据'))}</th><th>${x(t('Pages','页数'))}</th></tr></thead><tbody>${pagePlan.scenes.map(s=>`<tr><td>${n(s.sceneId)}</td><td>${x(t(...unitWords[s.unit]))}</td><td>${x(s.basis+' · '+s.cue)}</td><td>${s.pages}${s.advice?' · '+x(t('reduce text','减少文字')):''}</td></tr>`).join('')}</tbody></table>${pagePlan.evidenceRequired.length?`<p>${x(t(`Mark marks page ${pagePlan.evidenceRequired.map(n).join(', ')} evidence-required: final exports refuse them until you supply the evidence or mark them illustrative.`,`“标记”会将第 ${pagePlan.evidenceRequired.map(n).join('、')} 页设为待补证据：在补充证据或标为示意之前，最终导出会拒绝这些页面。`))}</p>`:''}${pagePlan.scenes.some(s=>s.splitAt)?`<p>${x(t(`Split moves whole blocks to continuation pages after page ${pagePlan.scenes.filter(s=>s.splitAt).map(s=>n(s.sceneId)).join(', ')}; no text is rewritten.`,`“拆分”把整块内容移到第 ${pagePlan.scenes.filter(s=>s.splitAt).map(s=>n(s.sceneId)).join('、')} 页之后的续页；不改写文字。`))}</p>`:''}`;
   $('#pagePlan').hidden=false;$('#planMark').disabled=!pagePlan.evidenceRequired.length;$('#planSplit').disabled=!pagePlan.scenes.some(s=>s.splitAt);}catch(err){error(err);}};

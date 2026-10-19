@@ -53,6 +53,8 @@ export function assertVisualLocks(previous,next) {
    for(const s of previous.plan.scenes){const after=next.plan.scenes.find(v=>v.id===s.id);for(const key of ['crops','imageSlots'])if(JSON.stringify((s[key]||[]).filter(v=>v.blockId===id))!==JSON.stringify((after?.[key]||[]).filter(v=>v.blockId===id)))fail();}
   }
    if(!separate&&b?.type==='chart'&&JSON.stringify(old.datasets.find(d=>d.id===b.datasetId))!==JSON.stringify(doc.datasets.find(d=>d.id===b.datasetId)))fail();
+   // A locked object is not moved behind a page disclosure.
+   for(const s of next.plan.scenes)if(s.disclosure?.blockIds.includes(id)&&!previous.plan.scenes.find(v=>v.id===s.id)?.disclosure?.blockIds.includes(id))fail();
  }
  // Entering separate mode never releases an implied lock: every dataset and source a combined object lock covered is locked on its own.
  if(old.authorOverrides.lockMode!=='separate'&&doc.authorOverrides.lockMode==='separate')for(const id of old.authorOverrides.lockedBlockIds.filter(id=>doc.authorOverrides.lockedBlockIds.includes(id))){const implied=impliedLocks(previous,id);if(implied.datasetIds.some(d=>!(doc.authorOverrides.lockedDatasetIds||[]).includes(d))||implied.sourceIds.some(s=>!(doc.authorOverrides.lockedSourceIds||[]).includes(s)))fail();}
@@ -61,6 +63,8 @@ export function assertVisualLocks(previous,next) {
  for(const lock of old.authorOverrides.sceneLocks||[]){const retained=doc.authorOverrides.sceneLocks?.find(l=>l.sceneId===lock.sceneId),a=previous.plan.scenes.find(s=>s.id===lock.sceneId),b=next.plan.scenes.find(s=>s.id===lock.sceneId);
   for(const key of lock.fields)if(retained?.fields.includes(key)&&JSON.stringify(a?.[key])!==JSON.stringify(b?.[key]))fail();
   if(lock.fields.includes('imageSlots')&&retained?.fields.includes('imageSlots')&&JSON.stringify(a?.crops)!==JSON.stringify(b?.crops))fail();
+  // S9a: what a page shows and what it puts behind its disclosure are part of its layout and its block list.
+  if(['blockIds','composition'].some(f=>lock.fields.includes(f)&&retained?.fields.includes(f))&&JSON.stringify(a?.disclosure||null)!==JSON.stringify(b?.disclosure||null))fail();
   // A static state names a cue boundary: cue and motion locks keep both the chosen key state and its position.
   const frozen=s=>s?.staticState?[s.staticState.keyStateId,s.keyStates?.find(k=>k.id===s.staticState.keyStateId)?.position]:null;
   if(['cues','motion'].some(f=>lock.fields.includes(f)&&retained?.fields.includes(f))&&JSON.stringify(frozen(a))!==JSON.stringify(frozen(b)))fail();

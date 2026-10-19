@@ -17,7 +17,7 @@
 
 ## Actual checks
 
-- **Unit tests.** `node --test tests/s9a-author-controls.test.mjs`: 12 tests. They cover:
+- **Unit tests.** `node --test tests/s9a-author-controls.test.mjs`: 14 tests. They cover:
   - the contract, legacy fixtures and every case of `tests/fixtures/visual/s9a.negative.json`;
   - chapters and profile precedence;
   - the page disclosure in web output and in PowerPoint and PDF notes;
@@ -83,6 +83,23 @@
 | VIS-013: a page-scoped choice dropped the deck profile (the project envelope passed as the document). | Fixed. |
 | VIS-013: the Studio's mount-time API calls could run before the session token. | Calls now wait for the token. |
 | Profiles did not list after reload; the trace read a project before its save finished. | Profiles load when the controls open; the trace waits for the save message. |
+
+### Independent code review
+
+A separate review of the S9a change set reported 12 defects; each was reproduced and fixed with a regression test (`tests/s9a-author-controls.test.mjs`, two review tests), and the browser evidence above was re-run on the fixed code.
+
+- **Machine review.** It reported a disclosed block as a missing region, so a deck with a disclosure could never pass. Disclosed text is now checked inside the disclosure.
+- **Core lock check.** It let a disclosure through on a layout-locked page, and let a text-locked block move behind one. Both are now refused.
+- **Profile locks.** Deck and chapter changes moved a profile-locked page that has no page profile without saying so. The plan now states it.
+- **Reduce text.** It moved `$40,000` and `1,200 respondents`: any digit now keeps a block with the claim.
+- **Page plans.** Stale plans applied, and a client could mark any page. Plans now carry a basis hash and are re-derived on apply.
+- **Studio state.** Plans captured the edit counter after the request, and applying a plan restored an old revision (the next save conflicted). Both are fixed.
+- **Combined-mode unlock.** Unlocking data or sources in combined mode was always refused. It is now checked against the separated deck.
+- **Theme changes.** They counted disclosed blocks, and directions misreported their refusal reason.
+- **Player.** It ignored chapter and page motion. Profile promotion recorded only the deck profile.
+- **Directions.** Applying one cleared the deck's audience.
+- **Replace the visual.** A re-render could reset the chosen image; the effect now names it.
+- **Page numbers.** After a split, effects cited old page numbers.
 
 ## Open — recorded, not fixed
 

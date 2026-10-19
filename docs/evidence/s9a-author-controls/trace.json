@@ -20,7 +20,7 @@
   {
    "width": 1440,
    "step": "entry: three directions measured",
-   "ms": 2712,
+   "ms": 2760,
    "cards": [
     {
      "title": "1 · Editorial · silver-gray-editorial",
@@ -71,7 +71,7 @@
   {
    "width": 1440,
    "step": "entry: direction expanded to the deck",
-   "ms": 3919,
+   "ms": 3970,
    "chosen": "2 · Research report · fresh-report",
    "theme": "fresh-report",
    "pages": [
@@ -86,7 +86,7 @@
   {
    "width": 1440,
    "step": "reduce text: effect stated before apply",
-   "ms": 4903,
+   "ms": 4938,
    "scope": "Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.",
    "effects": [
     "Page 1: moves “A full-violet chapter creates a deliberate paus…” (paragraph) behind “More detail”. The words stay on this page behind the disclosure, in the PowerPoint notes and in the PDF appendix."
@@ -98,20 +98,20 @@
   {
    "width": 1440,
    "step": "reduce text: applied; disclosure in preview",
-   "ms": 5508,
+   "ms": 5543,
    "summary": "More detail · 1 item",
    "shot": "shots/applied-reduce-1440.png"
   },
   {
    "width": 1440,
    "step": "reduce text: undo and redo",
-   "ms": 6348,
+   "ms": 6379,
    "horizontalOverflowPx": 0
   },
   {
    "width": 1440,
    "step": "chart space: largest measured layout for the theme",
-   "ms": 7409,
+   "ms": 7468,
    "effects": [
     "Page 4: composition Plot left → evidence rail right → Single-chart conclusion (this theme’s figure layout draws the plot largest at 1440 px)."
    ],
@@ -126,7 +126,7 @@
   {
    "width": 1440,
    "step": "keep layout: theme-own layout refuses a theme change; shared layout survives it",
-   "ms": 9326,
+   "ms": 9393,
    "keep": [
     "Page 4: locks composition Single-chart conclusion. A theme change keeps this geometry; because it is this theme's own composition, a theme change is refused and names it. Rhythm reports it as “kept: author lock”."
    ],
@@ -137,7 +137,7 @@
   {
    "width": 1440,
    "step": "separate data lock (explicit migration stated)",
-   "ms": 9440,
+   "ms": 9508,
    "effects": [
     "Separates text, data and source locks first (explicit migration); every existing lock stays.",
     "Locks data: adoption-quarterly."
@@ -147,7 +147,7 @@
   {
    "width": 1440,
    "step": "chapter started and chapter-level More editorial",
-   "ms": 10917,
+   "ms": 11002,
    "chapter": [
     "Page 5: starts a chapter: pages 5–6."
    ],
@@ -163,20 +163,20 @@
   {
    "width": 1440,
    "step": "profile saved",
-   "ms": 11043,
+   "ms": 11119,
    "message": "Profile “Six-family editorial” saved (accepted by you): theme, 3 composition choice(s), type and motion. No text or images."
   },
   {
    "width": 1440,
    "step": "saved; history restore-as-copy keeps chapters, disclosure and locks",
-   "ms": 11083,
-   "restored": "deck_restore_1758b8353487bb60c54477ed",
+   "ms": 11157,
+   "restored": "deck_restore_8d5dcc5605bb3df7606c00c5",
    "revision": 2
   },
   {
    "width": 1440,
    "step": "profile applied to the zh-CN deck",
-   "ms": 12911,
+   "ms": 12960,
    "effects": [
     "Page 3: theme cream-collage → electric-violet.",
     "Page 4: theme dark-data → electric-violet.",
@@ -192,35 +192,35 @@
   {
    "width": 1440,
    "step": "export html",
-   "ms": 12952,
+   "ms": 13007,
    "bytes": 3528469,
    "message": "Standalone HTML exported with embedded local images."
   },
   {
    "width": 1440,
    "step": "export pptx",
-   "ms": 14740,
+   "ms": 14770,
    "bytes": 2450632,
    "message": "PowerPoint exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=24; 8 element receipt(s). Open it in the target application to check it."
   },
   {
    "width": 1440,
    "step": "export pdf",
-   "ms": 17241,
+   "ms": 17264,
    "bytes": 4489893,
    "message": "PDF exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=22,L2=2; 0 element receipt(s). Open it in the target application to check it."
   },
   {
    "width": 1440,
    "step": "export json",
-   "ms": 17265,
+   "ms": 17285,
    "bytes": 13323,
    "message": "PDF exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=22,L2=2; 0 element receipt(s). Open it in the target application to check it."
   },
   {
    "width": 1440,
    "step": "profile exported and imported as a copy",
-   "ms": 17310,
+   "ms": 17337,
    "profiles": [
     "Six-family editorial · electric-violet",
     "Six-family editorial · electric-violet"
@@ -229,7 +229,7 @@
   {
    "width": 1440,
    "step": "page plan asks for material instead of padding",
-   "ms": 18134,
+   "ms": 18160,
    "questions": [
     "What does the audience need to know first — what is true today? Add it in your own words.",
     "Which data, source or quotation supports the claim on page 3? DeckWeft will not invent one.",
@@ -240,10 +240,10 @@
   {
    "width": 1440,
    "step": "evidence-required marked; final export refused by name",
-   "ms": 18645,
+   "ms": 18670,
    "flags": 1,
    "pages": [
-    "slide_903af799fe3a4f6c"
+    "slide_fc8e9da154764f77"
    ],
    "refusal": "Supply the evidence these pages ask for, or mark them illustrative, before a final export.",
    "shot": "shots/evidence-required-1440.png"
@@ -251,7 +251,7 @@
   {
    "width": 1024,
    "step": "entry: three directions measured",
-   "ms": 21353,
+   "ms": 21309,
    "cards": [
     {
      "title": "1 · Editorial · silver-gray-editorial",
@@ -302,7 +302,7 @@
   {
    "width": 1024,
    "step": "reduce text: effect stated before apply",
-   "ms": 22336,
+   "ms": 22284,
    "scope": "Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.",
    "effects": [
     "Page 1: moves “A full-violet chapter creates a deliberate paus…” (paragraph) behind “More detail”. The words stay on this page behind the disclosure, in the PowerPoint notes and in the PDF appendix."
@@ -314,20 +314,20 @@
   {
    "width": 1024,
    "step": "reduce text: applied; disclosure in preview",
-   "ms": 22940,
+   "ms": 22908,
    "summary": "More detail · 1 item",
    "shot": "shots/applied-reduce-1024.png"
   },
   {
    "width": 1024,
    "step": "reduce text: undo and redo",
-   "ms": 23772,
+   "ms": 23734,
    "horizontalOverflowPx": 0
   },
   {
    "width": 390,
    "step": "entry: three directions measured",
-   "ms": 26425,
+   "ms": 26414,
    "cards": [
     {
      "title": "1 · Editorial · silver-gray-editorial",
@@ -378,7 +378,7 @@
   {
    "width": 390,
    "step": "reduce text: effect stated before apply",
-   "ms": 27418,
+   "ms": 27402,
    "scope": "Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.",
    "effects": [
     "Page 1: moves “A full-violet chapter creates a deliberate paus…” (paragraph) behind “More detail”. The words stay on this page behind the disclosure, in the PowerPoint notes and in the PDF appendix."
@@ -390,20 +390,20 @@
   {
    "width": 390,
    "step": "reduce text: applied; disclosure in preview",
-   "ms": 28024,
+   "ms": 28009,
    "summary": "More detail · 1 item",
    "shot": "shots/applied-reduce-390.png"
   },
   {
    "width": 390,
    "step": "reduce text: undo and redo",
-   "ms": 28848,
+   "ms": 28826,
    "horizontalOverflowPx": 0
   },
   {
    "width": 0,
    "step": "done",
-   "ms": 28854,
+   "ms": 28834,
    "errors": 1,
    "external": 0
   }

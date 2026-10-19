@@ -27,11 +27,12 @@ export function scopeLocks(project,scope){
  const datasets=new Set(docBlocks.filter(b=>b.type==='chart').map(b=>b.datasetId)),sources=new Set(docBlocks.flatMap(b=>[...b.sourceIds,...(b.sourceId?[b.sourceId]:[])]));
  return {text:o.lockedBlockIds.filter(id=>blocks.has(id)),data:(o.lockedDatasetIds||[]).filter(id=>datasets.has(id)),sources:(o.lockedSourceIds||[]).filter(id=>sources.has(id)),composition:(o.sceneLocks||[]).filter(l=>scope.sceneIds.includes(l.sceneId)&&l.fields.includes('composition')).map(l=>l.sceneId),mode:o.lockMode||'combined'};
 }
+const CHANGE_ZH={composition:'构图','type contrast':'字体对比',density:'密度','page split':'拆页','page disclosure':'页面折叠内容',motion:'动效','composition lock':'构图锁定',image:'图片','alternative text':'替代文字',theme:'主题',profile:'配置',chapters:'章节',locks:'锁定','chart data binding':'图表数据绑定','colour intensity':'色彩强度','image emphasis':'图片比重'};
 /** The sentence shown before a partial operation: what it may change, what is locked, what never changes. */
 export function describeScope(project,scope,{changes=[]}={}){
  const locks=scopeLocks(project,scope),zh=[],en=[],pages=pageList(project.plan,scope.sceneIds),pagesZh=pageList(project.plan,scope.sceneIds,true);
  en.push(`Scope: ${scope.label.en}. It may change ${changes.length?changes.join(', '):'nothing'} on page${scope.sceneIds.length>1?'s':''} ${pages}; no other page changes.`);
- zh.push(`范围：${scope.label.zh}。可能修改第 ${pagesZh} 页的${changes.length?changes.join('、'):'（无）'}；其他页面不变。`);
+ zh.push(`范围：${scope.label.zh}。可能修改第 ${pagesZh} 页的${changes.length?changes.map(c=>CHANGE_ZH[c]||c).join('、'):'（无）'}；其他页面不变。`);
  const held=[locks.text.length&&[`${locks.text.length} text lock${locks.text.length>1?'s':''}`,`${locks.text.length} 项文字锁定`],locks.data.length&&[`${locks.data.length} data lock${locks.data.length>1?'s':''}`,`${locks.data.length} 项数据锁定`],locks.sources.length&&[`${locks.sources.length} source lock${locks.sources.length>1?'s':''}`,`${locks.sources.length} 项来源锁定`],locks.composition.length&&[`composition locked on page ${pageList(project.plan,locks.composition)}`,`第 ${pageList(project.plan,locks.composition,true)} 页构图已锁定`]].filter(Boolean);
  if(held.length){en.push(`Kept by author locks: ${held.map(h=>h[0]).join('; ')}.`);zh.push(`作者锁定保持不变：${held.map(h=>h[1]).join('；')}。`);}
  en.push('Facts, numbers, units and sources are never rewritten.');zh.push('事实、数值、单位与来源不会被改写。');

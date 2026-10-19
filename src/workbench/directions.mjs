@@ -55,7 +55,7 @@ export function applyDirection(project,answers,index){
  const g=GRAMMAR[d.group],kept=[];let next=structuredClone(base);
  for(const s of base.plan.scenes){
   const locks=base.document.authorOverrides.sceneLocks?.find(l=>l.sceneId===s.id)?.fields||[];
-  if(s.theme!==d.theme){if(locks.includes('theme')){kept.push({sceneId:s.id,reason:'theme-lock'});continue;}try{next=applySceneTheme(next,s.id,d.theme);}catch{kept.push({sceneId:s.id,reason:'composition-lock'});continue;}}
+  if(s.theme!==d.theme){if(locks.includes('theme')){kept.push({sceneId:s.id,reason:'theme-lock'});continue;}try{next=applySceneTheme(next,s.id,d.theme);}catch(e){kept.push({sceneId:s.id,reason:e.code==='AUTHOR_LOCK'?'composition-lock':'theme-refused',message:e.message});continue;}}
   if(locks.includes('composition'))continue;
   const scene=next.plan.scenes.find(v=>v.id===s.id),kind=pageKind(next.document,next.plan,scene),family=inferFamily(next.document,{...scene,blockIds:visibleBlockIds(scene)});
   for(const c of [g.own[d.theme]?.[kind],g.family[family]].filter(Boolean)){const copy=structuredClone(next);copy.plan.scenes.find(v=>v.id===s.id).composition=c;try{assertVisualProject(copy);next=copy;break;}catch{}}
@@ -68,7 +68,8 @@ export function applyDirection(project,answers,index){
   const variants=families[family].variants.map(v=>v[0]),start=Math.max(0,variants.indexOf(g.family[family]));
   for(const c of [...variants.slice(start+1),...variants.slice(0,start+1)].filter(c=>c!==s.composition)){const copy=structuredClone(next);copy.plan.scenes[i].composition=c;try{assertVisualProject(copy);next=copy;break;}catch{}}}
  const detail=a.detail==='detailed'?{density:'compact',typographicContrast:'balanced'}:{density:'comfortable'};
- next.document.visualBrief={audience:a.audience,outputLanguage:next.document.locale,profile:{...DEFAULT_PROFILE,...g.profile,...detail,motionIntensity:a.motion}};
+ // An empty Audience answer keeps the deck's own audience.
+ next.document.visualBrief={audience:a.audience||base.document.visualBrief?.audience||'',outputLanguage:next.document.locale,profile:{...DEFAULT_PROFILE,...g.profile,...detail,motionIntensity:a.motion}};
  next.extensions.deckweftDirection={version:1,group:d.group,theme:d.theme,style:a.style,detail:a.detail,motion:a.motion,output:a.output};
  if(factsHash(next.document)!==factsHash(base.document))throw new DeckError('WORKBENCH_DIRECTION','A direction changed a fact; refused.',500);
  assertVisualLocks(base,next);return {project:assertVisualProject(next),direction:{index,group:d.group,theme:d.theme,label:g.label},kept};

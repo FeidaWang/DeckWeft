@@ -77,4 +77,10 @@ const next=separateLocks(project);
 - `INVALID_DESIGN_PLAN … A chapter starts on a missing page`、`Start at most one chapter on a page`、`Use unique chapter ids` 或 `Chapter ids must differ from page ids`。
 - `INVALID_DESIGN_PLAN … A page disclosure holds paragraph, list or callout blocks of the same page` 或 `The focal block, the takeaway and interaction or annotation targets stay on the page`。
 
+新字段的锁定规则：
+
+- 页面的 `composition` 或 `blockIds` 锁定同时冻结该页的折叠内容。
+- 文字锁定的内容块不会被移入折叠内容。
+- `planPages()` 生成的页数规划带有 `basis` 哈希和所用选项；`applyPagePlan()` 对其他版本的文稿一律拒绝（`PAGE_PLAN_STALE`），并重新推导要拆分或标记的页面。
+
 旧示例与反例由 `node --test tests/s9a-author-controls.test.mjs` 检查：`wave-a.*`、`families.en` 与 `evidence-scene.zh-CN` 原样加载，`tests/fixtures/visual/s9a.negative.json` 中的每个反例都被拒绝。

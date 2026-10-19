@@ -121,7 +121,8 @@ $('#imageOpen').onclick=()=>$('#imageDialog').showModal();$('#imageClose').oncli
 addEventListener('beforeunload',e=>{if(state.dirty||state.drafts.size){e.preventDefault();e.returnValue='';}});addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='s'){e.preventDefault();save();}});
 async function boot(){translate();status();state.token=(await(await fetch('/api/session')).json()).token;sessionReady();const projects=await libraries(),id=new URLSearchParams(location.search).get('project')||projects.find(p=>!p.unreadable)?.id;if(id)activate((await json('/api/visual/projects/'+id,undefined,'GET')).project);else{panel('direction');message(t('Add your words to begin.','提供原文，即可开始。'));}status();}
 workbench=mountWorkbench({state,json,api,activate,libraries,save,leave,download,error,translate});
-author=mountAuthor({state,json,api,apply:project=>changed(()=>state.project=project,{fields:true}),download,error,message,x,workbench,save});
+// A plan's project carries the revision it was planned on; the editor keeps its current revision so the next save does not conflict.
+author=mountAuthor({state,json,api,apply:project=>changed(()=>{const revision=state.project.revision;state.project=project;state.project.revision=revision;},{fields:true}),download,error,message,x,workbench,save});
 boot().catch(error);
 
 $('#family').onchange=e=>{familyOverrides[state.active]=e.target.value;invalidateCandidates();message(t('Compare again to measure this family.','请重新比较并测量此类构图。'));};

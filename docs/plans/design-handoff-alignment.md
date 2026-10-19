@@ -615,6 +615,8 @@ The brief left all ten questions unanswered, so each took its stated default. Th
 - The first chart-space rule made the chart smaller.
 - Directions repeated one composition four times on text-only decks.
 
+An independent code review of the S9a change set then reported 12 defects. All were fixed with regression tests and the browser evidence was re-run ([list](../evidence/s9a-author-controls/review.md#independent-code-review)).
+
 **Returned to later steps:**
 
 - S9b (blueprint A, Explain → Diagram → Explore) and its export-target runs.

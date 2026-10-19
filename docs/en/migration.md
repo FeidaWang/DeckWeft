@@ -83,4 +83,10 @@ Recovery:
 - `INVALID_DESIGN_PLAN … A chapter starts on a missing page`, `Start at most one chapter on a page`, `Use unique chapter ids`, or `Chapter ids must differ from page ids`.
 - `INVALID_DESIGN_PLAN … A page disclosure holds paragraph, list or callout blocks of the same page`, or `The focal block, the takeaway and interaction or annotation targets stay on the page`.
 
+Lock rules for the new fields:
+
+- A `composition` or `blockIds` page lock also freezes that page's disclosure.
+- A text-locked block is never moved behind a disclosure.
+- A page plan from `planPages()` carries a `basis` hash and its options; `applyPagePlan()` refuses it for any other version of the deck (`PAGE_PLAN_STALE`) and re-derives what it splits or marks.
+
 Legacy fixtures and the negative fixture are checked by `node --test tests/s9a-author-controls.test.mjs`: `wave-a.*`, `families.en` and `evidence-scene.zh-CN` load unchanged, and every case in `tests/fixtures/visual/s9a.negative.json` is refused.

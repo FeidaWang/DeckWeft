@@ -1,4 +1,5 @@
 import {assertVisualProject,assertVisualLocks} from '../core/visual-project.mjs';
+import {contentHash} from '../scene/web/compile.mjs';
 import {DeckError} from '../core/errors.mjs';
 import {compositions,families,quoteAttributions} from '../design/compositions.mjs';
 import {THEME_COMPOSITIONS} from '../design/plan.mjs';
@@ -156,7 +157,8 @@ export function planPages(project,{detail='standard',units,targetPages}={}){
   ...(short?[{kind:'page-count',unit:null,en:`The material supports ${pages(proposedPages)}; the target is ${target}. Add material for the other ${pages(target-proposedPages)}, or lower the target. DeckWeft will not pad the deck.`,zh:`现有材料可支撑 ${proposedPages} 页，目标为 ${target} 页。请为其余 ${target-proposedPages} 页补充材料，或降低目标页数。DeckWeft 不会填充内容。`}]:[])
  ];
  const advice=over?[{kind:'over-target',en:`The material needs ${pages(proposedPages)}; the target is ${target}. Reduce the text or merge pages yourself. DeckWeft never merges pages automatically.`,zh:`现有材料需要 ${proposedPages} 页，目标为 ${target} 页。请精简文字或自行合并页面。DeckWeft 不会自动合并页面。`}]:[];
- return {detail,locale,capacity,scenes,present,missing,questions,evidenceRequired,proposedPages,suppliedPages,targetPages:target,status:missing.length||short?'needs-material':over?'over-target':'fits',advice};
+ // basis binds the plan to this exact deck; applyPagePlan re-derives it from the options and refuses any other version.
+ return {detail,locale,capacity,scenes,present,missing,questions,evidenceRequired,proposedPages,suppliedPages,targetPages:target,status:missing.length||short?'needs-material':over?'over-target':'fits',advice,basis:contentHash({document:project.document,plan:project.plan}),options:{detail,...(units?{units:structuredClone(units)}:{}),...(target!==null?{targetPages:target}:{})}};
 }
 /** Continuation pages use reading-flow: every theme pack lists it and it has no theme or block contract, so a heading plus text is always valid. */
 export const CONTINUATION_COMPOSITION='reading-flow';
@@ -170,6 +172,9 @@ export function applyPagePlan(project,plan,{split=false,mark=false}={}){
  if(!plan||typeof plan!=='object'||!Array.isArray(plan.scenes)||!Array.isArray(plan.evidenceRequired))fail('PAGE_PLAN_INVALID','Pass a page plan from planPages.');
  const copy=structuredClone(original),scenes=copy.plan.scenes,stale=()=>fail('PAGE_PLAN_STALE','This page plan describes another version of the deck; plan the pages again.',409);
  if(JSON.stringify(plan.scenes.map(s=>s?.sceneId))!==JSON.stringify(scenes.map(s=>s.id))||plan.evidenceRequired.some(id=>!scenes.some(s=>s.id===id)))stale();
+ // The plan must describe this exact deck, and what it splits or marks is re-derived here, never taken from the caller.
+ if(plan.basis!==contentHash({document:original.document,plan:original.plan}))stale();
+ const fresh=planPages(original,plan.options||{});if(JSON.stringify(fresh.evidenceRequired)!==JSON.stringify(plan.evidenceRequired)||JSON.stringify(fresh.scenes.map(s=>s.splitAt||null))!==JSON.stringify(plan.scenes.map(s=>s.splitAt||null)))stale();plan=fresh;
  const changes=[],skipped=[];
  // Mark first, so continuation pages carry the status of the page they continue.
  if(mark)for(const sceneId of unique(plan.evidenceRequired)){

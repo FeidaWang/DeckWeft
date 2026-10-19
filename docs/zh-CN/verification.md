@@ -10,8 +10,8 @@
 
 结果：
 
-- `npm run verify` 通过 **459 项测试**（455 项通过，4 项跳过：原有的环境门控测试与 3 项需要浏览器的 Studio 导出测试），以及类型、1,497 个文件的源码与链接检查、打包和演示。
-  - 新增：`tests/s9a-author-controls.test.mjs`（12 项）、`tests/argument-units.test.mjs`（11 项）、`tests/studio-export.test.mjs`（4 项）。
+- `npm run verify` 通过 **461 项测试**（457 项通过，4 项跳过：原有的环境门控测试与 3 项需要浏览器的 Studio 导出测试），以及类型、1,497 个文件的源码与链接检查、打包和演示。
+  - 新增：`tests/s9a-author-controls.test.mjs`（14 项，其中两项是针对独立代码审查 12 项发现的回归测试）、`tests/argument-units.test.mjs`（11 项）、`tests/studio-export.test.mjs`（4 项）。
   - 设置 `CHROMIUM_PATH` 后，`tests/studio-export.test.mjs` 4 项全部通过；在 3 份文稿上，其 PowerPoint 字节与 `scripts/export-targets.mjs` 的 Playwright 路径完全一致。
 - 渲染基线为渲染器 `visual-art-direction.11`（页面折叠内容的样式规则）重新记录一次，单独提交。与 `4f26b33` 的逐项对比显示没有任何可见文字、数值、表格、锚点或标题变化；播放器不变。
 - `tests/browser_author_controls.mjs`（隔离的 Chrome for Testing 151、Playwright 1.61.1）：在 1440、1024、390 px 下完成 28 个界面步骤，0 个页面错误，0 个外部请求。唯一的控制台错误是锁定版式后更换主题被拒绝时预期的 HTTP 409。
