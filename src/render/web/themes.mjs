@@ -25,7 +25,7 @@ export const themeCSS=`
 .web-scene${T01} .metric strong small{font-family:var(--body);letter-spacing:.08em;font-size:.14em}
 .web-scene${T01} blockquote{font-style:italic;border-left-color:var(--accent)}
 .web-scene${T01} .chart svg{font-size:13px}
-.web-scene${T01} th{background:transparent;color:var(--ink);border-bottom:2px solid var(--ink);font:600 12px/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.web-scene${T01} th{background:transparent;color:var(--ink);border-bottom:2px solid var(--ink);font:600 12px/1.4 var(--body);letter-spacing:.08em}
 .web-scene${T01} td{border-bottom:1px solid var(--reference,currentColor)}
 .web-scene${T01}.comparison-matrix th{background:transparent;color:var(--ink)}
 .web-scene${T01} .semantic-annotation,.web-scene${T01} .step-explanation,.web-scene${T01} .hotspot-explanation{background:#24241F0A}
