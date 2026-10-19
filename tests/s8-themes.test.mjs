@@ -169,7 +169,7 @@ test('C12: zh-CN display text breaks between dictionary words with Han numerals 
 test('C13: the glyph audit is embedded in the player, feeds the fit, the quality checks, the candidate fit and the export order',async()=>{
  assert.ok(runtime.includes(glyphScript));assert.ok(runtime.includes('glyphs:scanMissingGlyphs(scene)'));assert.ok(runtime.includes('s.glyphs.length===0'));assert.ok(runtime.includes('glyphIssues:scanMissingGlyphs(scene)'));
  assert.match(glyphScript,/\\u0378/);assert.equal(typeof scanMissingGlyphs,'function');
- assert.equal(PLAYER_VERSION,'semantic-player.5','the player bytes changed in S8');
+ assert.match(PLAYER_VERSION,/^semantic-player\.([5-9]|\d{2,})$/,'the player bytes changed in S8 (.5); S9b moved them to .6');
  const {document,plan}=await example('en'),out=exportDeck(document,'html',{experimentalWeb:true,plan});
  const scene=out.scenes[0],region=scene.regions[0];
  const observation={sourceLinks:[],documentOverflow:false,viewport:{width:1440,height:1000,dpr:1},renderHash:out.renderHash,dom:'',fontStatus:'loaded',fonts:[],scenes:out.scenes.map(s=>({sceneId:s.id,bounds:{},composition:s.composition,regions:s.regions.map(r=>({nodeId:r.id,blockId:r.blockId,bounds:{},text:'',links:[],images:[]})),contrastIssues:[],clipIssues:[],glyphIssues:s.id===scene.id?[{regionId:region.id,font:'serif',missing:['']}]:[]})),fit:{viewport:{width:1440},checks:out.scenes.map(s=>({sceneId:s.id,overflow:[],text:[],fonts:[],glyphs:s.id===scene.id?[{regionId:region.id,font:'serif',missing:['']}]:[]}))}};
