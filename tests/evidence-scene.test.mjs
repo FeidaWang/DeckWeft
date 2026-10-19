@@ -133,12 +133,13 @@ test('S2 static state on the one clock: the player opens there, and reduced moti
  clock.setReduced(false);assert.equal(clock.frozen,false);assert.equal(clock.restart(),true);assert.deepEqual(log.at(-1),['restart',0]);
 });
 
-test('S2 declared PPTX and PDF levels: no component declares L1, L2 or L3 and both targets are refused',async()=>{
+test('S7 declared PPTX and PDF levels for the vertical sample (S2 stage 9 closed): text L1 everywhere, the ranked bar L1 native in PowerPoint and L2 vector in PDF',async()=>{
  for(const locale of ['en','zh-CN']){
   const {document:d,plan:p}=await evidenceScene(locale),report=declaredExportLevels(d,p);
   for(const target of ['pptx','pdf']){
-   assert.deepEqual(report[target].refused,['TARGET_UNIMPLEMENTED']);
-   assert.deepEqual(report[target].components.map(c=>[c.blockId,c.level,c.supported,c.representation]),d.blocks.map(b=>[b.id,null,false,'unimplemented']));
+   assert.deepEqual(report[target].refused,[]);
+   assert.deepEqual(report[target].components.map(c=>[c.blockId,c.level,c.supported]),d.blocks.map(b=>[b.id,b.type==='chart'&&target==='pdf'?'L2':'L1',true]));
   }
+  assert.match(report.pptx.components.find(c=>c.component==='ranked-bar').representation,/native bar chart/);
  }
 });

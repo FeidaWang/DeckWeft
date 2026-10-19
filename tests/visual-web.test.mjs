@@ -49,8 +49,11 @@ test('legacy revision conflicts and read-only source preservation remain enforce
  try{const store=await new ProjectStore(home).init(),project=await read('product-en.baseline.json');const saved=await store.save(project,{create:true});migrateToPresentation(saved);assert.deepEqual(await store.get(saved.id),saved);await store.save(saved,{expectedRevision:1});await assert.rejects(store.save(saved,{expectedRevision:1}),{code:'REVISION_CONFLICT'});assert.equal((await store.snapshot(saved.id,1)).project.revision.number,1);}
  finally{await rm(home,{recursive:true,force:true});}
 });
-test('target-specific unsupported native exports do not block valid web output',async()=>{
- const {document,plan}=await fixture();assert.throws(()=>exportDeck(document,'html',{plan}),{code:'EXPERIMENTAL_WEB_REQUIRED'});assert.throws(()=>exportDeck(document,'pptx',{plan,experimentalWeb:true}),{code:'TARGET_CAPABILITY'});
+test('paged and unsupported native exports do not block valid web output',async()=>{
+ const {document,plan}=await fixture();assert.throws(()=>exportDeck(document,'html',{plan}),{code:'EXPERIMENTAL_WEB_REQUIRED'});
+ // S7: PowerPoint and PDF compile from a browser-measured static scene; without that measurement they refuse with a named code.
+ for(const target of ['pptx','pdf'])assert.throws(()=>exportDeck(document,target,{plan,experimentalWeb:true}),{code:'EXPORT_LAYOUT_REQUIRED'});
+ assert.throws(()=>exportDeck(document,'figma',{plan,experimentalWeb:true}),{code:'TARGET_CAPABILITY'});
  const out=exportDeck(document,'html',{plan,experimentalWeb:true});assert.equal(out.mime,'text/html; charset=utf-8');assert.ok(out.body.includes('<h2>'));assert.ok(out.body.includes('<polyline'));assert.ok(out.body.includes('<table>'));assert.equal(out.body.includes('<foreignObject'),false);
 });
 test('design plans never omit facts, point at absent blocks, or masquerade themes',async()=>{
