@@ -1,3 +1,13 @@
+S9b (blueprint A, Explain → Diagram → Explore, DWD-210) is **done locally** as of 2026-10-19. It sits on branch `claude/agitated-torvalds-969a1e`, stacked on S9a (`e80ecd7`); it is not pushed. VIS-009 stays implemented-local. What S9b adds:
+
+- one page that explains one object in three stages, built on diagram, `steps`, the cue clock, key states and the static state (one optional field, `blueprint`);
+- restore rule A (per-page memory while the document is open), keyboard isolation and reduced motion at every stage;
+- static, PowerPoint and PDF output that always carries the complete explanation, and export-order refusals by name;
+- a Studio action through the normal edit path;
+- a page-count plan for the Codex draft path (fake-host tests only).
+
+Renderer `visual-art-direction.12`, player `semantic-player.6`. The six answers and the decisions are in [alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19); see also the [evidence](../evidence/s9b-blueprint-a/review.md). Next in the plan is S10 (pattern library maintenance, DWD-310). It is not authorized by this handoff.
+
 S9a (author controls, DWD-200) is **done locally** as of 2026-10-19. It sits on branch `claude/design-handoff-alignment-review-978a91`, stacked on the S1–S8 branch `claude/design-handoff-alignment-19703c`; it is not pushed. VIS-013 stays implemented-local and VIS-015 stays partial. What S9a adds:
 
 - the six-question entry and three measured directions;
@@ -7,7 +17,7 @@ S9a (author controls, DWD-200) is **done locally** as of 2026-10-19. It sits on 
 - reusable profiles;
 - PowerPoint and PDF in the Studio export group.
 
-The ten answers and the decisions are in [alignment §17](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19); see also the [evidence](../evidence/s9a-author-controls/review.md). Next in the plan is S9b, blueprint A (Explain → Diagram → Explore), in its own session and worktree starting from S9a's tip. It is not authorized by this handoff.
+The ten answers and the decisions are in [alignment §17](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19); see also the [evidence](../evidence/s9a-author-controls/review.md). S9b followed (above).
 
 S7 (output levels and VIS-016) is **partial** as of 2026-10-19 on branch `claude/nice-archimedes-d8a127`. That branch starts from the S6 branch, so it holds S1–S7. It is not pushed.
 

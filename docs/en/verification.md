@@ -4,6 +4,23 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## S9b — blueprint A (DWD-210)
+
+State **LocalVerified** for the S9b scope, 2026-10-19. VIS-009 stays implemented-local. [Evidence](../evidence/s9b-blueprint-a/review.md) · [Alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19) · [Interactions](interactions.md#explain--diagram--explore-blueprint-a-s9b) · [Visual Studio](visual-studio.md#explain--diagram--explore-pages-s9b).
+
+Results:
+
+- `npm run verify` passed **470 tests**: 466 pass and 4 skip (the existing environment-gated test and 3 browser-gated Studio export tests). Types, source and link checks over 1,528 files, packaging and demos also passed.
+  - New: `tests/s9b-blueprint-a.test.mjs` (6), plus one Codex page-plan test each in `host-adapters`, `argument-units` and `workbench`.
+  - With `CHROMIUM_PATH` set, `tests/studio-export.test.mjs` passed 4 of 4.
+- The render baseline was re-recorded once, in its own commit, for renderer `visual-art-direction.12` and player `semantic-player.6`. The per-entry diff against `e80ecd7` shows no visible word, value, table, anchor or title changed.
+- `tests/browser_blueprint_a.mjs` ran in isolated Chrome for Testing 151 with Playwright 1.61.1: 66 steps (restore rule, keyboard isolation, reduced motion, no JavaScript) at 1440, 1024 and 390 px in English and Chinese, with 0 page errors and 0 external requests.
+- `tests/browser_blueprint_studio.mjs`: 9 steps. It covers the lock, the action, Undo/Redo, PowerPoint refused without a static state and PDF refused at Explain, then both exported with Diagram. The narrow inspector was shown at 1024 and 390 px.
+- `node scripts/s9b-blueprint.mjs`: 12 decks (six themes × two languages) with facts identical per language and 0 fit, contrast or glyph issues on every page and key state at three widths.
+- `npm run export:targets -- --s9`: PowerPoint editability and the page check pass on 12 of 12. Chinese PDF search is partial (the known S7 limit).
+- Viewed: both contact sheets, the player and Studio captures, and four export sheets. The weakest page is the Explain stage; four pages exceed the 900 px budget (recorded).
+- Not run: Firefox and WebKit, PowerPoint, Keynote, a live Codex run of the draft page plan, and Claude.
+
 ## S9a author controls — 2026-10-19
 
 State **LocalVerified** for the S9a scope. VIS-013 stays implemented-local and VIS-015 stays partial. [Evidence](../evidence/s9a-author-controls/review.md) · [Alignment §17](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19) · [Workbench](workbench.md#six-questions-and-three-directions-s9a) · [Visual Studio](visual-studio.md#author-controls-chapters-and-separate-locks-s9a).

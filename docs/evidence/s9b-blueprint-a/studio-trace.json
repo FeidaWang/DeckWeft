@@ -1,0 +1,95 @@
+{
+ "format": "deckweft-s9b-studio-trace",
+ "version": 1,
+ "widths": [
+  1440,
+  1024,
+  390
+ ],
+ "steps": [
+  {
+   "width": 1440,
+   "step": "scene interaction lock disables the action",
+   "ms": 1113,
+   "disabled": true
+  },
+  {
+   "width": 1440,
+   "step": "Make this page Explain → Diagram → Explore",
+   "ms": 1808,
+   "blueprint": {
+    "questionBlockId": "pipeline-question",
+    "answerBlockId": "pipeline-answer",
+    "wholeExplanationId": "i-ac77b910-d4c4-4438-a98e-05e718081797"
+   },
+   "cues": 5,
+   "keyStates": [
+    "Authored opening (default)",
+    "0 · Explain",
+    "1 · Diagram · the whole",
+    "2 · Explore · Measure"
+   ],
+   "hint": "PowerPoint and PDF exports refuse this page until you choose its static state: Diagram or an Explore state.",
+   "shot": "studio/1440-2-made.png"
+  },
+  {
+   "width": 1440,
+   "step": "Undo, Redo",
+   "ms": 2384,
+   "undo": "no interaction",
+   "redo": "blueprint"
+  },
+  {
+   "width": 1440,
+   "step": "preview player: Next stage → Diagram",
+   "ms": 3038,
+   "shot": "studio/1440-3-preview-diagram.png"
+  },
+  {
+   "width": 1440,
+   "step": "PowerPoint refused without a static state",
+   "ms": 4186,
+   "message": "Page pipeline: Choose the static state of this Explain → Diagram → Explore page (Diagram or an Explore state) before a paged export."
+  },
+  {
+   "width": 1440,
+   "step": "PDF refused with Explain as the static state",
+   "ms": 5895,
+   "message": "Page pipeline: The Explain stage does not show the object or its parts; choose Diagram or an Explore state as the static state.",
+   "hint": "Explain shows neither the object nor its parts, so PowerPoint and PDF exports refuse it. Choose Diagram or an Explore state."
+  },
+  {
+   "width": 1440,
+   "step": "Studio PowerPoint and PDF export with Diagram as the static state",
+   "ms": 9181,
+   "pptx": "exports/studio-pptx-deck.pptx",
+   "pdf": "exports/studio-pdf-print.pdf",
+   "explanationsOnSlide": 5,
+   "parts": 4
+  },
+  {
+   "width": 1024,
+   "step": "zh-CN blueprint page and static state in the Studio",
+   "ms": 11208,
+   "hint": "Static state: 图解 · 整体. Readers without JavaScript, PowerPoint and PDF get the whole object with every part and its explanation. The player still opens on Explain.",
+   "shot": "studio/1024-zh-CN-static.png"
+  },
+  {
+   "width": 390,
+   "step": "zh-CN blueprint page and static state in the Studio",
+   "ms": 12408,
+   "hint": "Static state: 图解 · 整体. Readers without JavaScript, PowerPoint and PDF get the whole object with every part and its explanation. The player still opens on Explain.",
+   "shot": "studio/390-zh-CN-static.png"
+  }
+ ],
+ "artifacts": {
+  "before": "studio/1440-1-before.png",
+  "made": "studio/1440-2-made.png",
+  "preview": "studio/1440-3-preview-diagram.png",
+  "chosen": "studio/1440-4-static-diagram.png",
+  "studio-1024": "studio/1024-zh-CN-static.png",
+  "studio-390": "studio/390-zh-CN-static.png"
+ },
+ "errors": [],
+ "external": []
+}

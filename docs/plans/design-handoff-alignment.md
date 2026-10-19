@@ -70,7 +70,7 @@ Pattern summary: F 5 exist / 6 partial / 1 missing; M 2 / 10 / 8; C 5 / 9 / 10. 
 | 125 | Controlled comparison | VIS-009 `image-compare`, `image-hotspots`, `chart-select` | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md) | Generic tab stage; interactive rank sort; slider compare |
 | 130 | Output adaptation | S7: L1/L2/L3 levels in `src/targets/capabilities.mjs`, export order, v3 PowerPoint and PDF compilers with per-element receipts; DW-140 `partial`; VIS-016 `partial` | partial | LocalVerified (v3 package checks); ExportVerified (v1/v2 PPTX only) | [vis-016](../evidence/vis-016/review.md), [devday PowerPoint](../evidence/devday-redesign/review.json) | PowerPoint and Keynote runs; Chinese PDF search; PDF figure wrappers; small text on tall scenes ([§15](#15-s7-result--output-levels-and-vis-016-2026-10-19)) |
 | 200 | Author preferences and rhythm | VIS-005 profile, VIS-006 rhythm, VIS-013 scopes and locks; S9a deck/chapter/page/object scope, separate locks, planned author actions, page planning, reusable profiles ([§17](#17-s9a-decisions-and-result--author-controls-2026-10-19)) | exists | LocalVerified | [s9a](../evidence/s9a-author-controls/review.md), [vis-013](../evidence/vis-013/review.md) | Codex draft path has no page-count plan; object-level profile choices are locks and per-object actions only |
-| 210 | Explanation and exploration scenes | VIS-009 steps and no-JS reading view | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md) | Three-stage sequence (blueprint A, S9b); parameter panel and scale shift not planned (§17, answer 5) |
+| 210 | Explanation and exploration scenes | VIS-009 steps and no-JS reading view; S9b blueprint A: Explain → Diagram → Explore on one page with an author-chosen complete static state ([§18](#18-s9b-decisions-and-result--blueprint-a-2026-10-19)) | partial | LocalVerified | [s9b](../evidence/s9b-blueprint-a/review.md), [vis-009](../evidence/vis-009/review.md) | Scroll advancement (no scroll trigger in v3); parameter panel and scale shift not planned (§17, answer 5) |
 | 215 | Analytical chart extension | Relationship diagram only | partial | LocalVerified (network only) | [vis-008](../evidence/vis-008/review.md) | Map, bubble, box, waterfall, concentration |
 | 220 | Theme and bilingual extension | VIS-004 bilingual layout; VIS-015 `planned` | partial | LocalVerified (bilingual) | [interaction regression](../evidence/interaction-visual-regression/review.md) | T04/T05; composition switch after translation growth |
 | 230 | History recovery and compare | DW-110 `partial`; Visual Studio history; VIS-013 last-valid recovery | partial | LocalVerified | [visual-studio](../evidence/visual-studio/review.md), [vis-013](../evidence/vis-013/review.md) | Version diff; style-only restore |
@@ -111,8 +111,8 @@ The handoff's own DW mapping (010 → DW-020, 030 → DW-130, 040 → DW-120) ma
 | M06 | Quote and gallery carousel | P1 | D+S | missing | Proposed | — | — | No quote or gallery carousel. |
 | M07 | Task/solution two-layer comparison | P1 | D+S | partial | LocalVerified | VIS-006, VIS-009 | [vis-009](../../docs/evidence/vis-009/review.md) | Comparison family plus image-compare tabs; no paired task/solution layer component. |
 | M08 | Before/after slider and revision sequence | P1 | S | partial | LocalVerified | VIS-009, [`timeline.mjs`](../../src/motion/timeline.mjs) | [vis-009](../../docs/evidence/vis-009/review.md), [interaction-visual-regression](../../docs/evidence/interaction-visual-regression/review.md) | image-compare offers first/second/both tabs; no 0–100 slider or revision sequence. |
-| M09 | Text → image → interface stages | P2 | S+V | partial | LocalVerified | VIS-009, [`cues.mjs`](../../src/motion/cues.mjs) | [vis-009](../../docs/evidence/vis-009/review.md) | steps interaction exists for diagram/code blocks only; no text→image→UI stage sequence. |
-| M10 | Part dissection, focus and linked note | P1 | V | exists | LocalVerified | VIS-009, [`cues.mjs`](../../src/motion/cues.mjs) | [vis-009](../../docs/evidence/vis-009/review.md) | image-hotspots bind stable annotations to image regions with annotation.reveal. |
+| M09 | Text → image → interface stages | P2 | S+V | partial | LocalVerified | VIS-009, [`cues.mjs`](../../src/motion/cues.mjs), [`blueprint.mjs`](../../src/motion/blueprint.mjs) | [vis-009](../../docs/evidence/vis-009/review.md), [s9b](../../docs/evidence/s9b-blueprint-a/review.md) | S9b: Explain → Diagram → Explore on one page; Next/Previous reach every stage; static state is an author-chosen complete explanation. No scroll advancement; the middle stage is a code-drawn diagram. |
+| M10 | Part dissection, focus and linked note | P1 | V | exists | LocalVerified | VIS-009, [`cues.mjs`](../../src/motion/cues.mjs), [`blueprint.mjs`](../../src/motion/blueprint.mjs) | [vis-009](../../docs/evidence/vis-009/review.md), [s9b](../../docs/evidence/s9b-blueprint-a/review.md) | image-hotspots bind stable annotations to image regions with annotation.reveal; S9b adds labelled, focusable SVG parts with exported explanations. No part groups. |
 | M11 | Parameter-driven result and checklist | P2 | D+S | missing | Proposed | — | — | No parameter inputs or computed results. |
 | M12 | Object-to-population scale shift | P2 | D+V | missing | Proposed | — | — | No object-to-population scale transition. |
 | M13 | Legend focus, filter and sort | P1 | S+V | partial | LocalVerified | VIS-009, [`timeline.mjs`](../../src/motion/timeline.mjs) | [vis-009](../../docs/evidence/vis-009/review.md), [explanatory-authoring](../../docs/evidence/explanatory-authoring/review.md) | chart-select provides series focus and category range; interactive sort is missing (ranked-bar sort is static). |
@@ -622,5 +622,63 @@ An independent code review of the S9a change set then reported 12 defects. All w
 - S9b (blueprint A, Explain → Diagram → Explore) and its export-target runs.
 - A page-count plan for the Codex draft path.
 - Pages over the 900 px budget: 11 of 132 in the S9a direction run.
+- PowerPoint and Keynote runs by the user.
+- Claude acceptance.
+
+## 18. S9b decisions and result — blueprint A, 2026-10-19
+
+Built on `e80ecd7` (S1–S9a) in the worktree branch `claude/agitated-torvalds-969a1e`. Nothing is pushed. State: **LocalVerified** for the S9b scope (isolated Chromium, viewed images). In the roadmap, VIS-009 stays `implemented-local` (S9b recorded under it) and DWD-210 stays `partial`. [Evidence](../evidence/s9b-blueprint-a/review.md) · [interactions manual](../en/interactions.md#explain--diagram--explore-blueprint-a-s9b) · [Visual Studio manual](../en/visual-studio.md#explain--diagram--explore-pages-s9b).
+
+### The six questions
+
+The user answered the kickoff questions on 2026-10-19 and asked for the last three in Chinese.
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Restore rule | **A**: per-page memory while the document is open; a reload opens on Explain |
+| 2 | Build on existing or new component | Build on diagram + `steps` + key states + static state |
+| 3 | One page or three | One page with the stages as key states |
+| 4 | Player change | Bump to `semantic-player.6` with its own baseline re-record (no visible word or value changed); the renderer moved to `visual-art-direction.12` in the same commit |
+| 5 | Firefox / WebKit traces | Chromium only, recorded |
+| 6 | S9a leftovers | **Handle the Codex draft-path page plan**; qualifier word lists and the 900 px pages stay recorded |
+
+### Decisions made in S9b
+
+| Topic | Decision |
+|---|---|
+| Contract | One optional field on `steps`: `blueprint {questionBlockId, answerBlockId, wholeExplanationId}`. Content stays in blocks and explanations; the plan stores identities. No `schemaVersion` change. Negative fixture `s9b.negative.json` (14 cases). The explicit migration of an existing page is the Studio action `addBlueprintA`, which keeps an existing node explanation and refuses relationship steps. |
+| Stages | Derived from the cue position, so the one clock drives them: 0 Explain, 1 Diagram, 2… Explore each part in reading order. A blueprint page's cues are 1 to parts + 1 `step.next` cues on that interaction; the page has no other interaction. |
+| Explain | Draws the question, the answer and the object's name; the diagram is not drawn (the handoff's Explain state). Recorded as the weakest page. |
+| Show whole | `step.select` without a part returns to Diagram, never to Explain. Only a blueprint accepts it. |
+| Opening | A blueprint page opens on Explain, even with a static state; its static state serves readers without JavaScript, paged exports and the static reduced-motion fallback. This is the one exception to the S2 rule that the player opens on the static state. **Use current chart / step as opening** refuses on a blueprint page. |
+| Restore rule | Answer 1: the existing per-scene state is kept on page turns (leaving stops the timer and animations); reload resets. Traced at three widths in both languages. |
+| Keyboard | Parts on the diagram are focusable controls (`tabindex`, `role="button"`); arrow keys, Home, End, Enter and Space change the part. `turnsPage` already ignores focused controls, so nothing new was needed to keep the page still. |
+| Skip | Jumps to the author's static state, or Diagram when none is declared. |
+| Static output | Every blueprint page carries the complete explanation without JavaScript (whole object, numbered parts, every explanation), whether or not a static state is declared. A static state adds its statement and marks an Explore part. |
+| Export order | The static-state stage refuses a missing static state (`BLUEPRINT_STATIC_REQUIRED`), Explain, or a measured page missing a part label or an explanation (`BLUEPRINT_STATIC_INCOMPLETE`). The message names the page. HTML export is not refused. |
+| Review gate | The measurement covers the opening, the static state and every blueprint key state. |
+| PowerPoint | Part numbers are measured with their part and compiled as native circles (found dropped silently during S9b). |
+| Codex page plan | `draftWithHost` takes `pagePlan {detail, targetPages}`; the prompt carries `pageBrief()` and forbids padding; `draftPagePlan` plans the drafted deck and lists pages holding none of the supplied lines as host-added (status `needs-review`). The workbench plans every generated deck after saving it. Fake-host tests only; no live Codex run. |
+| Object | DeckWeft's own export pipeline (measure → repair → review → export) as the code-drawn process diagram with stable part ids (answer 4 of §17). |
+
+### Result
+
+| Brief item | Result |
+|---|---|
+| Key states Explain, Diagram, Explore, Static | Built on one page. The player trace reached every stage by Next, Previous and part selection |
+| Restore rule | Rule A traced at 1440, 1024 and 390 px in English and Chinese: same stage and part after Next/Previous page and arrow-key pages; reload opens on Explain |
+| Keyboard isolation | 16 key presses on parts, part buttons, stage buttons, Skip, Replay and the slider never turned the page; ArrowRight with nothing focused did |
+| Reduced motion | Every stage reached with 0 running animations; `static` opens on the static state and still reaches Explain and Explore |
+| Export never leaves disassembled parts | Static page complete in every case; the export order refuses a missing or Explain static state, by name; Studio PowerPoint and PDF exported with Diagram, all 5 explanations on slide 2 |
+| Studio create and static state | Built through `changed()`: Undo/Redo, Save, scene and diagram locks honoured; traced at three widths |
+| Six themes, two languages | 12 decks, facts identical per language, 0 fit, contrast or glyph issues at three widths; contact sheets viewed |
+| `export:targets -- --s9` | PowerPoint editability and page check pass on 12 of 12; Chinese PDF search partial (known S7) |
+
+**Returned to later steps:**
+
+- The Explain stage composition (mostly empty page).
+- Pages over the 900 px budget: four pages in the S9b run (answer 7: recorded).
+- Scroll advancement (M09) and part groups (M10).
+- A live Codex run of the draft page plan (needs the user's go-ahead).
 - PowerPoint and Keynote runs by the user.
 - Claude acceptance.

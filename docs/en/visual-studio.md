@@ -229,3 +229,27 @@ The first data or source lock runs the explicit migration `separateLocks()` and 
 - *`EXPORT_CHECK_FAILED`*: the message lists the failed check per page; change that page and export again.
 
 [S9a evidence, traces and contact sheets](../evidence/s9a-author-controls/review.md) · [workbench steps](workbench.md#six-questions-and-three-directions-s9a)
+
+## Explain → Diagram → Explore pages (S9b)
+
+A page with a heading, a paragraph or callout and one diagram can become an Explain → Diagram → Explore page (blueprint A). The reader's side is in [interactions](interactions.md#explain--diagram--explore-blueprint-a-s9b); the evidence is in the [S9b review](../evidence/s9b-blueprint-a/review.md).
+
+1. Select the page. Open **Edit page → Content → Scene interactions and motion**.
+2. Click **Make this page Explain → Diagram → Explore**. Expected: the message says the page is now Explain → Diagram → Explore; the preview opens the page on Explain with the stage pills; **Static state for export and reduced motion** lists *Explain*, *Diagram · the whole* and *Explore · (first part)*; a hint says PowerPoint and PDF exports refuse the page until you choose its static state. The heading is the question, the first paragraph or callout the short answer and each diagram node a part, in node order. No block changes.
+3. Edit the words under **Step explanations**: *The whole object · name* (it starts as the part labels joined by arrows), *The whole object · explanation*, and each part's label and explanation (they start as the node label and note). Existing explanations of the diagram's nodes are kept.
+4. Choose the static state: **Diagram** or an **Explore** state. Expected: the hint reads *Static state: …* and says that readers without JavaScript, PowerPoint and PDF get the whole object with every part and its explanation, while the player still opens on Explain.
+5. Save, wait for **✓ Fonts, images and DOM layout measured**, then export. The measurement covers the opening and every key state of the page. **PowerPoint** and **PDF** (Studio started with `--capture-browser`) export the complete explanation; the message lists the export stages.
+
+Undo and Redo reverse the whole action, Save keeps it and History restores it as a copy. Locks:
+
+- With **Lock this scene interaction plan** on, the button is disabled.
+- A locked diagram is refused: *Unlock the diagram first.*
+- A locked page (cues and motion) keeps its static state: unlock it before choosing another.
+
+### If something goes wrong
+
+- *This page needs exactly one diagram on the page*: add one, or move the second diagram to another page. A diagram behind **More detail** does not count.
+- *Add a heading (the question) and a paragraph or callout (the short answer)*: add them, then click again.
+- *An Explain → Diagram → Explore page has one explanation sequence*: move the page's other interactions to another page first.
+- *This diagram's steps explain relationships*: blueprint parts are nodes; remove that steps interaction in **Authored interactions, cue order and motion · JSON**, then click again.
+- *Page …: Choose the static state…* or *The Explain stage does not show the object…* on export: choose Diagram or an Explore state (step 4), save and export again.

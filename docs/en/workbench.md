@@ -54,6 +54,8 @@ Open **Edit page → Author controls → Pages from the argument**.
 4. **Mark evidence-required pages** marks the unsupported evidence pages. They get an *Evidence required* flag in the page list. Final exports (HTML, PowerPoint, PDF and the workbench's reviewed export) refuse them with `EVIDENCE_REQUIRED`; previews still work. To clear the mark, supply the evidence and set the page *sourced*, or set it *illustrative*.
 5. **Split long pages** moves whole paragraphs and lists to continuation pages, which repeat the heading. No word is rewritten. Undo restores the pages.
 
+**Page plan after generation (S9b).** Every generated deck, local or Codex, is planned after it is saved, at the chosen direction's detail level (*standard* without one). Expect a *Page plan* box under the operation status. It shows the pages drafted, the pages the material supports and the target, then the questions. On the Codex path the plan also travels with the request: the prompt names the argument units, the characters a page holds and the target, and forbids pages, facts or quotations added to reach it. When you supplied source text, a drafted page holding none of its lines is listed: *Page n holds none of your supplied lines; the host added it.* Keep it only if it says what you mean, or delete it. A target outside 1–1000 is refused before anything runs (`PAGE_PLAN_TARGET`). The Codex path is tested with a simulated host only; no live Codex run was made for S9b.
+
 ### Save a design as a reusable profile
 
 A profile keeps the theme, the profile choices (colour, contrast, density, motion, image emphasis), the composition used for each kind of page, and the type and motion tokens that were drawn. It has no field for text, data, sources, images or branding.

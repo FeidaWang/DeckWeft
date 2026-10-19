@@ -28,6 +28,8 @@ Enter a prompt or select a saved source in the existing Visual Studio, then watc
 
 Create now asks six questions and shows three measured directions of the same content before it builds the deck. Edit page → Author controls states each change before applying it, and Undo reverses it. You also get chapters, separate text/data/source/composition locks, page planning that asks instead of padding, reusable design profiles, and PowerPoint/PDF export from the Studio. [Author controls](docs/en/visual-studio.md#author-controls-chapters-and-separate-locks-s9a) · [S9a evidence](docs/evidence/s9a-author-controls/review.md).
 
+A page with a heading, a short answer and a diagram can become **Explain → Diagram → Explore**. It asks the question, shows the whole object, then lets readers explore each part against the whole, with buttons or the keyboard. Static exports always carry the complete explanation. [Explain → Diagram → Explore](docs/en/interactions.md#explain--diagram--explore-blueprint-a-s9b) · [S9b evidence](docs/evidence/s9b-blueprint-a/review.md).
+
 Existing works now support source-bound chart switching, editable step explanations, finite motion and saved opening selections in Visual Studio. Full bilingual interaction regression and actual preview/export image comparison passed; see the [interaction manual](docs/en/interactions.md) and [current evidence](docs/evidence/interaction-visual-regression/review.md).
 
 ## Visual-first local implementation

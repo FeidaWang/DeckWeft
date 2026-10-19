@@ -71,6 +71,34 @@ A chart keeps separate pieces of state: dataset, metric, shown series, focused s
 3. In presentation view, ArrowLeft/ArrowRight turn the page only when no control has focus. Expected: with a slider, select, checkbox, button, link, disclosure, tab, scrollable code block or chart mark focused, arrow keys, Home/End, Space and Enter change that control or do nothing; the page number stays. Keys with Alt, Ctrl, Cmd or Shift never turn the page.
 4. Recovery: if the page does not turn, move focus off the control first (Tab past it, or click empty page space), then press the arrow key, or use **Previous** / **Next** in the header.
 
+## Explain → Diagram → Explore (blueprint A, S9b)
+
+One page explains one object in three stages. It is a `steps` interaction over a diagram with a `blueprint` declaration: the page's heading is the question, a paragraph or callout is the short answer, the diagram nodes are the parts and one explanation describes the whole object. The cue clock is the stage clock. [Evidence](../evidence/s9b-blueprint-a/review.md) · [Studio steps](visual-studio.md#explain--diagram--explore-pages-s9b).
+
+| Stage | Cue position | What the page shows | What the reader can do |
+|---|---|---|---|
+| Explain | 0 | The question, the short answer and the object's name. The diagram is not drawn yet. | **Next stage**, **Previous stage** (disabled here), **Skip to the complete explanation** |
+| Diagram | 1 | The whole object with every part label and its reading-order number, and the whole object's explanation | Select a part (on the diagram or with its button), **Show whole** |
+| Explore | 2 and later | One part against the whole: the part is marked and the other parts stay drawn; the panel gives the part, the whole object's explanation and the parts before and after it | Part buttons, the diagram's parts, arrow keys, **Show whole**, **Previous stage** / **Next stage** |
+| Static | the author's choice | The complete explanation, with no action: the whole object, numbered parts and every explanation as text | — |
+
+1. Open the exported HTML and go to the blueprint page. Expected: the page opens on **Explain** even when its static state is Diagram; the stage pills read *Explain · Diagram · Explore* with *Explain* marked and the count reads *Explain · 0 / n*.
+2. Choose **Next stage**. Expected: the diagram appears with numbered parts, the panel names the whole object and lists the reading order. Each further **Next stage** explores the next part in reading order; the last part stays.
+3. Select a part: click it on the diagram, or click its numbered button. Expected: the part is marked, the other parts stay visible (lighter outline), the panel reads *Part k of n · …* with the whole object and the parts before and after it. The count starts with *Exploring ·*. **Show whole** returns to Diagram, never to Explain.
+4. **Restore rule (A, per-page memory).** Turn the page with **Next** and come back with **Previous**, or with the arrow keys. Expected: the page shows the same stage and part you left, still marked *Exploring*. The memory lasts while the document is open; **reload** opens the page on Explain again. Leaving the page stops its cue timer and animations, and keeps the selection.
+5. **Keyboard.** Tab to a part on the diagram or to a part button. Arrow keys (left/right and up/down), Home, End, Enter and Space change the part. Enter or Space on **Next stage**, **Previous stage**, **Show whole**, **Skip** and **Replay from Explain**, and the arrow keys, Home and End on the cue slider, change the stage. Expected: none of these ever turns the page. With nothing focused (click empty page space), ArrowRight and ArrowLeft turn the page as before.
+6. **Skip to the complete explanation** jumps to the author's static state (Diagram when none is declared).
+7. **Reduced motion.** With the system setting or **Reduce motion** on, every stage changes instantly and Next / Previous still reach every stage. With `"reducedMotion": "static"` the page opens on its static state, **Replay** is disabled and a notice says cues do not play; Next, Previous and the slider still reach Explain and every part.
+8. **Without JavaScript, and in PowerPoint and PDF**, a blueprint page always shows the complete explanation: the whole object with numbered parts, the whole object's explanation and every part's explanation in reading order. With a static state, a line starts with **Static view** and names it; an Explore state marks its part. PowerPoint receives the parts as shapes with native number circles and the explanations as a native numbered list.
+9. **Export refusal.** PowerPoint and PDF refuse a blueprint page without a static state (`BLUEPRINT_STATIC_REQUIRED`) or with Explain as its static state (`BLUEPRINT_STATIC_INCOMPLETE`): the message names the page. The static-state stage of the export order also refuses a measured page that lacks a part label or an explanation. HTML export is not refused: its no-JavaScript view is complete.
+
+Recovery:
+
+- *Page …: Choose the static state…*: choose Diagram or an Explore state under **Static state for export and reduced motion**, save, wait for the measurement, export again.
+- *A blueprint A page always opens on Explain* when choosing **Use current chart / step as opening**: the opening is fixed; choose the static state instead.
+- A plan that names a relationship as a part, explains a part twice, adds a second interaction, sets `initialStepId`, has more stage cues than parts plus one, or hides the question, answer or diagram behind a disclosure is refused when the preview is built (`INVALID_INTERACTION`; see `tests/fixtures/visual/s9b.negative.json`).
+- No parameter control exists: Explore compares a part with the whole statically (alignment §17, answer 5).
+
 ## Author and save the behavior
 
 1. In **Content**, expand **Scene interactions and motion**. Edit its closed JSON object: `interactions`, ordered `cues`, and optional `motion`. Edit the separate **Semantic explanation content** field for labels, original explanation text and source references; the scene plan stores only stable explanation identities, not copies of those facts. Keep stable identities. Preview errors retain the edited project; invalid JSON remains in an unapplied draft until repaired or explicitly discarded.
@@ -80,7 +108,7 @@ A chart keeps separate pieces of state: dataset, metric, shown series, focused s
 
 ## Contract and limits
 
-Scene interaction kinds are `chart-select`, `image-compare`, `image-hotspots` and `steps`. They target existing same-scene blocks. Chart selection requires explicitly authored `categoryIds`; names or array positions never become inferred identities. Series keep their original palette identity when another series is hidden. A one-category range remains a real observation or missing value, with no invented adjacent points. Reordering/removing categories may invalidate a saved range or cue; repair it explicitly rather than accepting a guessed substitute.
+Scene interaction kinds are `chart-select`, `image-compare`, `image-hotspots` and `steps` (a `steps` interaction over a diagram may declare `blueprint {questionBlockId, answerBlockId, wholeExplanationId}`, S9b). They target existing same-scene blocks. Chart selection requires explicitly authored `categoryIds`; names or array positions never become inferred identities. Series keep their original palette identity when another series is hidden. A one-category range remains a real observation or missing value, with no invented adjacent points. Reordering/removing categories may invalidate a saved range or cue; repair it explicitly rather than accepting a guessed substitute.
 
 Comparison uses two existing image blocks and their existing local assets/crops; neither original is replaced. Hotspots use stable `id`, normalized original-image `x`/`y`, and an existing same-scene `annotationId`. Out-of-crop hotspots fail validation; explicit contain slots account for letterboxing. Crop/source changes are validated against these coordinates. Touch target placement may be inset to keep the full button operable at an edge; the displayed original coordinates remain exact.
 

@@ -598,13 +598,16 @@
       "repositoryState": "LocalVerified",
       "implementedBy": [
         "VIS-009",
-        "src/motion/cues.mjs"
+        "src/motion/cues.mjs",
+        "src/motion/blueprint.mjs",
+        "public/runtime/components.js"
       ],
       "verifiedBy": [
-        "docs/evidence/vis-009/review.md"
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s9b-blueprint-a/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "steps interaction exists for diagram/code blocks only; no text→image→UI stage sequence."
+      "repositoryNote": "S9b blueprint A: Explain (question, answer, object name) → Diagram (whole object, numbered parts) → Explore (one part against the whole) on one page; Next/Previous reach every stage, reduced motion switches directly, the static state is an author-chosen complete explanation. Stays partial: no scroll advancement (v3 has no scroll trigger) and the middle stage is a code-drawn diagram, not an image."
     },
     {
       "id": "M10",
@@ -624,13 +627,16 @@
       "repositoryState": "LocalVerified",
       "implementedBy": [
         "VIS-009",
-        "src/motion/cues.mjs"
+        "src/motion/cues.mjs",
+        "src/motion/blueprint.mjs",
+        "public/runtime/components.js"
       ],
       "verifiedBy": [
-        "docs/evidence/vis-009/review.md"
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s9b-blueprint-a/review.md"
       ],
       "checkedAt": "2026-10-19",
-      "repositoryNote": "image-hotspots bind stable annotations to image regions with annotation.reveal."
+      "repositoryNote": "image-hotspots bind stable annotations to image regions with annotation.reveal. S9b adds SVG part selection on a diagram: stable part ids, labelled focusable parts (click, buttons, arrow keys; no hover-only entry), the other parts stay drawn, and every part's explanation is exported as text. Part groups are not implemented."
     },
     {
       "id": "M11",

@@ -2,6 +2,25 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## S9b — blueprint A, Explain → Diagram → Explore (DWD-210), 2026-10-19
+
+S9b adds the first explanation scene of the design handoff to VIS-009. VIS-009 stays **implemented-local**.
+
+- **One page, three stages.** Explain (question, short answer, object name) → Diagram (the whole object, numbered parts) → Explore (one part against the whole). It is built on the existing diagram, `steps`, cue clock, key states and static state, with one optional field.
+- **Restore rule.** Each page remembers its stage and part while the document is open; a reload opens on Explain.
+- **Keyboard and motion.** Part selection and Explore controls never turn the page. Reduced motion reaches every stage.
+- **Exports never leave disassembled parts.** Without JavaScript and in PowerPoint and PDF the page always shows the whole object, numbered parts and every explanation. The export order refuses a page with no static state or with Explain as its static state.
+- **Studio.** **Make this page Explain → Diagram → Explore** goes through the normal edit path (undo, locks). The author chooses the static state.
+- **Codex page plan.** The Codex draft path now gets a page-count plan. Host-added pages are asked about, never accepted silently (fake-host tests only).
+
+Checked in isolated Chromium at 1440, 1024 and 390 px:
+
+- a 66-step player trace and a 9-step Studio trace, with refused and passing Studio PowerPoint/PDF exports;
+- 12 decks (six themes × two languages) with identical facts and 0 fit, contrast or glyph issues;
+- `export:targets --s9`: PowerPoint editability and the page check pass on 12 of 12.
+
+Firefox, WebKit, PowerPoint and Keynote were not run, and Claude is deferred. [Interactions manual](docs/en/interactions.md#explain--diagram--explore-blueprint-a-s9b) · [Visual Studio manual](docs/en/visual-studio.md#explain--diagram--explore-pages-s9b) · [Evidence](docs/evidence/s9b-blueprint-a/review.md).
+
 ## S9a — author controls (DWD-200), 2026-10-19
 
 S9a extends VIS-013 inside the existing Visual Studio and builds VIS-015's last acceptance sentence. VIS-013 stays **implemented-local**. VIS-015 stays **partial**.

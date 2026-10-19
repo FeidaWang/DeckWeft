@@ -1,3 +1,13 @@
+截至 2026-10-19，S9b（蓝图 A：讲解 → 图解 → 探索，DWD-210）已在本地完成。它位于分支 `claude/agitated-torvalds-969a1e`，叠加在 S9a（`e80ecd7`）之上，尚未推送。VIS-009 仍为 implemented-local。S9b 新增：
+
+- 一页分三个阶段讲解一个对象，建立在图、`steps`、提示时钟、关键状态与静态状态之上（只新增一个可选字段 `blueprint`）；
+- 恢复规则 A（文档打开期间每页记忆）、键盘隔离，以及每个阶段都可在减少动态效果时到达；
+- 静态、PowerPoint 与 PDF 输出始终包含完整说明，导出顺序按名称拒绝不完整的页面；
+- 经正常编辑路径的 Studio 操作；
+- Codex 草稿路径的页数规划（仅用模拟宿主测试）。
+
+渲染器 `visual-art-direction.12`，播放器 `semantic-player.6`。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。计划中的下一步是 S10（模式库维护，DWD-310）。本交接不构成授权。
+
 截至 2026-10-19，S9a（作者控制，DWD-200）已在本地完成。它位于分支 `claude/design-handoff-alignment-review-978a91`，叠加在 S1–S8 分支 `claude/design-handoff-alignment-19703c` 之上，尚未推送。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。S9a 新增：
 
 - 六个问题的入口与三个经测量的方向；
@@ -7,7 +17,7 @@
 - 可复用配置；
 - Studio 导出组中的 PowerPoint 与 PDF。
 
-十个问题的答案与各项决定见[对齐计划 §17（英文）](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19)，另见[证据（英文）](../evidence/s9a-author-controls/review.md)。计划中的下一步是 S9b（蓝图 A：Explain → Diagram → Explore），在独立的会话与 worktree 中从 S9a 的末端开始。本交接不构成授权。
+十个问题的答案与各项决定见[对齐计划 §17（英文）](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19)，另见[证据（英文）](../evidence/s9a-author-controls/review.md)。S9b 已随后完成（见上文）。
 
 截至 2026-10-19，S7（输出等级与 VIS-016）在分支 `claude/nice-archimedes-d8a127` 上为 **partial**。该分支从 S6 分支开始，因此包含 S1–S7，尚未推送。
 

@@ -229,3 +229,27 @@ S8 把设计交接文档的三个首发艺术方向做成主题包，沿用 VIS-
 - `EXPORT_CHECK_FAILED`：提示逐页列出未通过的检查；修改该页后重新导出。
 
 [S9a 证据、轨迹与对照表](../evidence/s9a-author-controls/review.md) · [工作台步骤](workbench.md#六个问题与三个方向s9a)
+
+## 讲解 → 图解 → 探索页面（S9b）
+
+含有标题、段落或提示框以及一张图的页面，可以变为“讲解 → 图解 → 探索”页面（蓝图 A）。读者一侧的说明见[交互](interactions.md#讲解--图解--探索蓝图-as9b)，证据见 [S9b 审阅（英文）](../evidence/s9b-blueprint-a/review.md)。
+
+1. 选中该页，打开**编辑本页 → 内容 → 页面交互与动效**。
+2. 点击**将本页设为“讲解 → 图解 → 探索”**。预期：消息说明本页已变为“讲解 → 图解 → 探索”；预览从“讲解”打开本页并显示阶段标签；**导出与减少动态时的静态状态**列出“讲解”“图解 · 整体”和“探索 · （第一个部分）”；提示说明在你选择静态状态前，PowerPoint 与 PDF 导出会拒绝本页。标题是问题，第一个段落或提示框是简短回答，图中每个节点按节点顺序成为一个部分。任何内容块都不会改变。
+3. 在**分步讲解**下修改文字：“整体对象 · 名称”（初始为用箭头连接的各部分标题）、“整体对象 · 说明”，以及每个部分的标题和说明（初始为节点标签和注释）。图中节点已有的说明会保留。
+4. 选择静态状态：**图解**或某个**探索**状态。预期：提示显示“静态状态：…”，并说明不使用 JavaScript 的读者以及 PowerPoint 与 PDF 都会得到完整对象、每个部分及其说明，而播放器仍从“讲解”开始。
+5. 保存，等待 **✓ 已在当前浏览器测量字体、图片与 DOM 排版**，然后导出。测量覆盖开场和本页的每个关键状态。**PowerPoint** 与 **PDF**（Studio 以 `--capture-browser` 启动时）导出完整说明；消息会列出导出阶段。
+
+撤销和重做会整体撤回或恢复这次操作，保存即保留，历史记录可将其恢复为副本。锁定：
+
+- 勾选**锁定本页交互计划**时，按钮不可用。
+- 图被锁定时会被拒绝：*Unlock the diagram first.*
+- 页面的提示与动效被锁定时，静态状态保持不变；要改选，请先解锁。
+
+### 出问题时
+
+- *This page needs exactly one diagram on the page*：添加一张图，或把第二张图移到其他页。放在“更多细节”里的图不计入。
+- *Add a heading (the question) and a paragraph or callout (the short answer)*：先添加，再点击一次。
+- *An Explain → Diagram → Explore page has one explanation sequence*：先把本页的其他交互移到别的页面。
+- *This diagram's steps explain relationships*：蓝图的部分必须是节点；先在**作者交互、提示顺序与动效 · JSON** 中移除该分步交互，再点击一次。
+- 导出时出现 *Page …: Choose the static state…* 或 *The Explain stage does not show the object…*：选择“图解”或某个探索状态（第 4 步），保存后再导出。

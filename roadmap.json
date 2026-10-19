@@ -1068,6 +1068,9 @@
     "Finite scene resources are released on scene exit, background visibility and pagehide; source/author locks, candidates, conflicts and history recovery remain covered."
    ],
    "evidence": "docs/evidence/vis-009/review.json",
+   "implemented": [
+    "S9b (DWD-210, blueprint A): Explain → Diagram → Explore on one page as a steps interaction over a diagram with an optional blueprint declaration; the cue clock is the stage clock; restore rule A (per-page memory while the document is open, reload opens on Explain); part selection and Explore controls never turn the page; reduced motion reaches every stage; no-JavaScript, PowerPoint and PDF output always carries the complete explanation and the export order refuses a missing or Explain static state (BLUEPRINT_STATIC_REQUIRED / BLUEPRINT_STATIC_INCOMPLETE); Studio action through the normal edit path. LocalVerified in isolated Chromium at 1440/1024/390 px, six themes, two languages (docs/evidence/s9b-blueprint-a/review.md)."
+   ],
    "remaining": "Other browser engines, actual screen reader/IME/200% zoom, arbitrary state/label collision coverage and native v3/host release gates remain open."
   },
   {
@@ -1152,7 +1155,8 @@
     "Typed independent language/tone/style/update preferences and per-scene profile overrides; author image/theme/composition locks retained",
     "Opt-in dependency-free isolated Chromium capture, current image gallery or actual Codex findings, strict reviewed HTML export and old-route bypass refusal",
     "Durable operation checkpoints, sequence/project conflicts, cancellation, explicit source synchronization, interrupted-task recovery and byte-exact last accepted HTML",
-    "S9a (DWD-200): six-question entry (Topic, Audience, Style, Detail, Motion, Output) and three measured directions of the same content with identical facts and a stated explanation per direction; planned author actions with stated effects and undo (More editorial, Give the chart more space, Make quieter, Keep this layout, Replace the visual, Reduce text); deck/chapter/page/object scope; separate text, data, source and composition locks (explicit separateLocks() migration); page planning from argument units that asks or marks evidence-required and never pads; scope statements before partial revisions; Studio PowerPoint and PDF export through the S7 export order (docs/evidence/s9a-author-controls/review.md)"
+    "S9a (DWD-200): six-question entry (Topic, Audience, Style, Detail, Motion, Output) and three measured directions of the same content with identical facts and a stated explanation per direction; planned author actions with stated effects and undo (More editorial, Give the chart more space, Make quieter, Keep this layout, Replace the visual, Reduce text); deck/chapter/page/object scope; separate text, data, source and composition locks (explicit separateLocks() migration); page planning from argument units that asks or marks evidence-required and never pads; scope statements before partial revisions; Studio PowerPoint and PDF export through the S7 export order (docs/evidence/s9a-author-controls/review.md)",
+    "S9b (S9a leftover): the Codex draft path receives a page plan (detail, argument units, characters per page, optional target) and the drafted deck is planned locally; with supplied source text, pages holding none of its lines are listed as host-added and asked about. Fake-host tests only; no live Codex run."
    ]
   },
   {
@@ -1381,6 +1385,12 @@
   "DW-110"
  ],
  "currentBuild": {
+  "scope": "S9b blueprint A (DWD-210; VIS-009 explanation scenes): Explain → Diagram → Explore on one page built on steps, cues, key states and the static state; Studio action; export-order refusal; Codex draft page plan (S9a leftover)",
+  "implementation": "implemented-local",
+  "acceptance": "LocalVerified in isolated Chromium at 1440/1024/390 px: 66-step player trace (restore rule, keyboard isolation, reduced motion, no JavaScript) in English and Chinese, 9-step Studio trace with refused and passing Studio PowerPoint/PDF exports, 12 decks (six themes x two languages, facts identical, 0 fit/contrast/glyph issues), export:targets --s9 PowerPoint editability and page check 12 of 12; Firefox/WebKit, PowerPoint and Keynote not run; Claude deferred",
+  "evidence": "docs/evidence/s9b-blueprint-a/review.md"
+ },
+ "previousAuthorControlsBuild": {
   "scope": "S9a author controls (DWD-200; VIS-013 workbench, VIS-015 reusable profile): six-question entry and three directions, planned author actions, four-level scope, chapters, page disclosure, separate locks, page planning from argument units, design profiles, Studio PowerPoint/PDF export",
   "implementation": "implemented-local",
   "acceptance": "LocalVerified in isolated Chromium at 1440/1024/390 px (UI trace, 24 direction decks in six themes and two languages with identical facts, 48 of 48 Studio exports pass the export order); VIS-013 stays implemented-local and VIS-015 stays partial; PowerPoint and Keynote not run; Claude deferred; S9b (blueprint A) not started",
@@ -1517,7 +1527,8 @@
   "VIS-014 partial: Claude host deferred, 390 px heatmap scroll, payload budget, author calibration of the scored review (missing-glyph detection and CJK heading breaks closed in S8)",
   "Actual screen reader/IME/200% zoom and projection; PowerPoint and Keynote runs of the S7 v3 packages (VIS-016) by the user (Chromium, Firefox and WebKit standalone loads recorded for VIS-014)",
   "VIS-016 partial: PowerPoint/Keynote not run, Chinese PDF search (CJK radical code points), PDF figure wrappers without alt, small text on tall scenes",
-  "VIS-015 partial: reusable-profile promotion from author feedback not built; 102 of 228 pages over the 900 px candidate budget; PowerPoint/Keynote runs of the S8 packages by the user; zh-CN word boundaries depend on the ICU version"
+  "VIS-015 partial: reusable-profile promotion from author feedback not built; 102 of 228 pages over the 900 px candidate budget; PowerPoint/Keynote runs of the S8 packages by the user; zh-CN word boundaries depend on the ICU version",
+  "S9b blueprint A: Firefox/WebKit traces not run; the Explain stage leaves most of the page empty (recorded weakest page); a live Codex run of the draft page plan not done"
  ],
  "previousVisualTaskBuild": {
   "scope": "VIS-011 local design director and one-task production loop",

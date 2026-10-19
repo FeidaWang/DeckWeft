@@ -1,0 +1,213 @@
+{
+ "format": "deckweft-s7-exports",
+ "version": 1,
+ "environment": {
+  "node": "v24.14.0",
+  "platform": "darwin 27.0.0",
+  "browser": "Chromium 151.0.7922.34 (isolated, Playwright cache)",
+  "playwright": "1.61.1",
+  "renderer": "visual-art-direction.12",
+  "player": "semantic-player.6",
+  "python": "Python 3.9.6",
+  "quickLook": true
+ },
+ "applications": {
+  "powerpoint": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "keynote": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "libreoffice": {
+   "state": "not installed"
+  },
+  "quickLook": {
+   "state": "rendered",
+   "detail": "macOS Quick Look (qlmanage, OfficeImport) drew each slide and PDF page as an independent reference render. It is neither PowerPoint nor Keynote."
+  }
+ },
+ "decks": [
+  {
+   "deck": "blueprint-cream-collage-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-dark-data-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-electric-violet-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-silver-gray-editorial-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-fresh-report-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-orange-launch-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-cream-collage-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-dark-data-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-electric-violet-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-silver-gray-editorial-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-fresh-report-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "blueprint-orange-launch-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 7,
+   "levels": {
+    "L1": 8,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  }
+ ]
+}

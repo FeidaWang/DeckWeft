@@ -4,6 +4,23 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S9b 蓝图 A — 讲解 → 图解 → 探索（DWD-210）
+
+状态：S9b 范围为 **LocalVerified**（2026-10-19）。VIS-009 仍为 implemented-local。[证据（英文）](../evidence/s9b-blueprint-a/review.md) · [对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19) · [交互](interactions.md#讲解--图解--探索蓝图-as9b) · [Visual Studio](visual-studio.md#讲解--图解--探索页面s9b)
+
+结果：
+
+- `npm run verify` 通过 **470 项测试**：466 项通过，4 项跳过（原有的环境门控测试，以及 3 项需要浏览器的 Studio 导出测试）。类型、1,528 个文件的源码与链接检查、打包和示例也全部通过。
+  - 新增：`tests/s9b-blueprint-a.test.mjs`（6 项），另在 `host-adapters`、`argument-units` 和 `workbench` 中各新增一项 Codex 页面规划测试。
+  - 设置 `CHROMIUM_PATH` 后，`tests/studio-export.test.mjs` 4 项全部通过。
+- 渲染基线在单独的提交中重新录制一次：渲染器 `visual-art-direction.12`、播放器 `semantic-player.6`。与 `e80ecd7` 的逐项对比显示，没有任何可见文字、数值、表格、锚点或标题发生变化。
+- `tests/browser_blueprint_a.mjs`（隔离的 Chrome for Testing 151，Playwright 1.61.1）：66 个步骤，覆盖恢复规则、键盘隔离、减少动态效果和无 JavaScript 视图，在 1440、1024、390 px 下用中英文各运行一遍；0 个页面错误，0 个外部请求。
+- `tests/browser_blueprint_studio.mjs`：9 个步骤。依次检查锁定、操作本身和撤销／重做；没有静态状态时 PowerPoint 被拒绝，静态状态为“讲解”时 PDF 被拒绝；选择“图解”后两者都成功导出。1024 与 390 px 下检查了窄检查器。
+- `node scripts/s9b-blueprint.mjs`：12 份文稿（六套主题 × 两种语言），每种语言内事实相同；在三种宽度下，每页和每个关键状态都没有版面、对比度或字形问题。
+- `npm run export:targets -- --s9`：PowerPoint 可编辑性与页面检查 12 份全部通过；中文 PDF 搜索为部分通过（S7 已知限制）。
+- 已查看：两张联系表、播放器与 Studio 截图、四张导出对照表。最弱的一页是“讲解”阶段；有四页超过 900 px 预算（已记录）。
+- 未运行：Firefox 与 WebKit、PowerPoint、Keynote、Codex 页面规划的真实运行，以及 Claude。
+
 ## S9a 作者控制 — 2026-10-19
 
 状态：S9a 范围为 **LocalVerified**。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。[证据（英文）](../evidence/s9a-author-controls/review.md) · [对齐计划 §17（英文）](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19) · [工作台](workbench.md#六个问题与三个方向s9a) · [Visual Studio](visual-studio.md#作者控制章节与分项锁定s9a)。

@@ -2,6 +2,25 @@
 
 [English](../../ROADMAP.md) · [任务数据](../../roadmap.json) · [证据](verification.md)
 
+## S9b — 蓝图 A：讲解 → 图解 → 探索（DWD-210），2026-10-19
+
+S9b 为 VIS-009 加入设计交接中的第一个讲解场景。VIS-009 仍为 **implemented-local**。
+
+- **一页三个阶段。**讲解（问题、简短回答、对象名称）→ 图解（完整对象，部分带编号）→ 探索（一个部分对照整体）。它建立在现有的图、`steps`、提示时钟、关键状态和静态状态之上，只新增一个可选字段。
+- **恢复规则。**文档打开期间，每页记住自己的阶段和部分；重新加载后从“讲解”开始。
+- **键盘与动效。**选择部分和探索控件永远不会翻页；减少动态效果时每个阶段都能到达。
+- **导出绝不只剩零散部分。**无 JavaScript 时以及在 PowerPoint 和 PDF 中，页面总是显示完整对象、带编号的部分和全部说明；没有静态状态或以“讲解”为静态状态的页面，导出顺序会拒绝。
+- **Studio。**“将本页设为‘讲解 → 图解 → 探索’”走正常编辑路径（可撤销，遵守锁定）；静态状态由作者选择。
+- **Codex 页数规划。**Codex 草稿路径现在会收到页数规划；宿主添加的页面会被提出来询问，绝不默默接受（仅用模拟宿主测试）。
+
+已在隔离 Chromium 中以 1440、1024、390 px 检查：
+
+- 66 步播放器轨迹和 9 步 Studio 轨迹，其中 Studio 的 PowerPoint／PDF 导出先被拒绝、后成功；
+- 12 份文稿（六套主题 × 两种语言），事实相同，没有版面、对比度或字形问题；
+- `export:targets --s9`：PowerPoint 可编辑性与页面检查 12/12 通过。
+
+未运行 Firefox、WebKit、PowerPoint 和 Keynote，Claude 仍暂缓。[交互手册](interactions.md#讲解--图解--探索蓝图-as9b) · [Visual Studio 手册](visual-studio.md#讲解--图解--探索页面s9b) · [证据（英文）](../evidence/s9b-blueprint-a/review.md)
+
 ## S9a — 作者控制（DWD-200），2026-10-19
 
 S9a 在现有 Visual Studio 中扩展 VIS-013，并完成 VIS-015 的最后一条验收。VIS-013 仍为 **implemented-local**，VIS-015 仍为 **partial**。
