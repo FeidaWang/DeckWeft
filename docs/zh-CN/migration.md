@@ -2,7 +2,7 @@
 
 [English](../en/migration.md) · [首页](../../README.zh-CN.md)
 
-前身叫 Open Deck Skill / Open Deck Astra。新项目不是到处替换名字、连原作者声明也抹掉。
+旧格式来自 Open Deck Skill / Open Deck Astra。DeckWeft 能导入其中一部分旧项目文件，但不假装支持所有旧格式。
 
 先备份原 JSON，然后运行：
 
