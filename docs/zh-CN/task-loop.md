@@ -11,7 +11,7 @@ VIS-011 将语义规划、本地素材、DOM/SVG 渲染、VIS-010 质量检查�
 3. 打开 `dist/my-task/preview.html`。应看到预览和 `task.json`：故事弧线、场景角色、焦点身份、三个同族构图候选、所选构图、配色模式、素材需求及相关主题规则。预览尚未通过最终审阅。
 4. 执行 `npm run deck:task -- --task dist/my-task/task.json --tool 工具名 --args args.json`。参数必须包含检查点当前整数 `expectedSequence`。CLI 锁定检查点，每步落盘；旧序号保留诊断，不覆盖新修订。
 5. 向 `src/agent/tools.mjs` 的 `runVisualTask` 提供真实浏览器捕获能力，或向 `render.inspect` 提交如实标注的宿主测量。`npm run deck:verify` 演示隔离浏览器实跑，需要已有测试用 `PLAYWRIGHT_MODULE` 和位于 `/Applications` 之外的 `CHROMIUM_PATH`；运行时不安装浏览器依赖。
-6. 实际查看回执要求的所有图片。向 `render.inspect` 提交 `review: {receiptId, reviewer, delivery, images, judgment, verdict, issues}`。问题需含稳定 `sceneId`、`nodeId`、边界、严重性、原因和修复建议。图像审阅是明确的看图声明；DOM 通过不等于已看图。宿主报告的测量单独标注，不能变成独立验证。
+6. 实际查看回执要求的所有图片。向 `render.inspect` 提交 `review: {receiptId, reviewer, delivery, images, judgment, verdict, issues}`。问题需含稳定 `sceneId`、`nodeId`、边界、严重性、原因和修复建议。图像审阅是明确的看图声明；DOM 通过不等于已看图。有人看过时加上 `attestation: "author"`；不填则记录为 `unattested`。这里不能提交宿主等级（见[宿主](hosts.md)）。宿主报告的测量单独标注，不能变成独立验证。
 7. 调用 `artifact.export`，指定 `format: "html"`。只有当前机器检查和图像审阅都通过，才输出带序号的独立 HTML。`"project"` 和 `"checkpoint"` 始终可导出恢复 JSON。保留原检查点及素材。v3 原生 PowerPoint/Figma/AE 导出仍待实现。
 
 | 工具 | 结果 |

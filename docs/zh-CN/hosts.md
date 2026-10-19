@@ -15,7 +15,7 @@ VIS-012 为现有七个任务工具增加 Codex 与 Claude Code CLI 薄适配层
 
 ## 生成本地预览
 
-1. 查看 `examples/host-brief.zh-CN.json` 或英文版。`request` 是指令，`locale` 独立设置输出语言，可选 `sourceText` 是精确原文。每个非空原文行必须逐字保留；带 `---` 的多页请求也自动获得此保护。翻译／改写受保护原文需另行准备替代来源；未提供原文的自由指令仍是未经事实验证的宿主创作。
+1. 查看 `examples/host-brief.zh-CN.json` 或英文版。`request` 是指令，`locale` 独立设置输出语言，可选 `sourceText` 是精确原文。每个非空原文行会被编号，宿主返回结构化大纲（按页分行，每行带原文行号或 0）。本地检查要求每个编号行恰好出现一次、保持原文顺序、去掉首尾空白后逐字节相等；编号为 0 的行记录为宿主新增（`hostDraft.hostAuthored`），需作者复核，因为没有任何检查能验证新增内容是否属实。带 `---` 的多页请求接受同样的检查。翻译／改写受保护原文需另行准备替代来源；未提供原文的自由指令仍是未经事实验证的宿主创作。
 2. 执行 `npm run deck:create -- --brief examples/host-brief.zh-CN.json --out dist/host-task-NEW --host codex --live`，使用新目录。只有授权且可用时才选择 `claude-code`；`--live` 防止仅指定宿主就意外调用模型。
 3. 预期得到 `task.json`、`preview.html` 及 `.deckweft-host-runs/<id>/receipt.json`。打开预览核对内容；这还不是已审阅成品。已有项目不能通过重新起草替换，应使用局部修订。
 4. 独立包使用 `node /absolute/plugin/runtime/bin/deckweft.mjs visual-task ...`，参数一致，不依赖源码 scripts、编译器或包下载。
@@ -28,7 +28,7 @@ VIS-012 为现有七个任务工具增加 Codex 与 Claude Code CLI 薄适配层
 2. 执行 `npm run deck:task -- --task dist/host-task-NEW/task.json --host codex --live --tool design.patch --request '将第 4 页改为 statement-center，保留文字和颜色。' --expected-sequence N`，将 `N` 替换为当前整数。支持选择构图或绑定已有精确数据集；更广语义编辑留待后续。
 3. 通过常规共享工具重新检查内容／设计／素材／预览，再按任务手册向 `render.inspect` 提供真实浏览器捕获。CLI 不会虚构浏览器能力。
 4. 获得当前机器检查通过的回执、并将截图保存在任务目录后，执行 `npm run deck:task -- --task dist/host-task-NEW/task.json --host codex --live --tool render.inspect --expected-sequence N`。
-5. 预期每张必审图片实际附加，返回哈希对应的逐图判断及具体场景／内容块问题。PNG／JPEG 必须位于任务工作区内且不能经过符号链接；最多 20 张，每张 8 MB，总计 24 MB。哈希和 CLI 图像参数不等于视觉通过。
+5. 预期每张必审图片实际附加，返回哈希对应的逐图判断及具体场景／内容块问题。PNG／JPEG 必须位于任务工作区内且不能经过符号链接；最多 20 张，每张 8 MB，总计 24 MB。哈希和 CLI 图像参数不等于视觉通过。每条评审都带 `attestation`（F5，2026-10-19）：`unattested`（默认：没有说明谁看过）、`author`（提交者声明有人看过）、`host-metadata-only`（宿主给出哈希对应的判断，但没有任何证据表明读了像素）或 `host-pixel-control`。后者需要评审时开启 `pixelControl: true`：宿主收到的是打了标记的截图副本（一个带三位数字的小洋红色块，宿主运行期间位置只保存在内存里，宿主进程结束后才写入 `.deckweft-pixel-control/<id>/control.json`，不出现在提示、文件名、替代文本或场景 JSON 里），并且必须在 `controls` 里把每个标记读回来；原图、原哈希与回执不变，结果记录在 `review.controls`（逐图命中/总数）。读回标记只证明视觉信息进入了回答，不证明检查了每个像素，也不证明判断正确。两种宿主等级只能来自本进程内的宿主评审运行；作为 `render.inspect` 工具参数提交的评审只能声明 `author` 或不填，声称宿主等级或附带 `controls` 会被拒绝（`REVIEW_ATTESTATION`）。
 6. 只有当前机器和图像审阅均通过后，才能由共享 `artifact.export` 导出最终 HTML；失败时仍可导出项目／检查点恢复 JSON。v3 原生导出仍不支持。
 
 程序接口在 `src/hosts/tasks.mjs`：`draftWithHost`、`patchWithHost`、`reviewWithHost`、`runHostVisualTask`。完整流程接收显式本地 `capture` 和检查点回调，复用一次能力探测；修复仍受 VIS-011 累计预算、原文和作者锁约束。宿主审阅缺失或失败会保留检查点，不授予导出通过。

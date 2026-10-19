@@ -7,8 +7,8 @@ import {atomicWrite,rejectSymlinks} from '../services/io.mjs';
 import {assertHost,probeHost} from './capabilities.mjs';
 import {draftWithHost,patchWithHost,reviewWithHost} from './tasks.mjs';
 export async function runTaskCli(argv=process.argv.slice(2)){
- const {values:a}=parseArgs({args:argv,options:{brief:{type:'string'},out:{type:'string'},task:{type:'string'},tool:{type:'string'},args:{type:'string'},home:{type:'string'},help:{type:'boolean'},host:{type:'string'},live:{type:'boolean'},model:{type:'string'},request:{type:'string'},'expected-sequence':{type:'string'},'timeout-ms':{type:'string'}}});
- if(a.help){console.log('Create: deckweft visual-task --brief brief.json --out dist/my-task [--home asset-home] [--host codex|claude-code --live]\nContinue: --task task.json --tool TOOL --args args.json\nHost revision: --task task.json --host codex --live --tool design.patch --request "..." --expected-sequence N\nHost pixel review: --task task.json --host codex --live --tool render.inspect --expected-sequence N\nOptions: --model exact-model (otherwise host default), --timeout-ms 120000 (1000–600000).\nEvery continuation requires the current expectedSequence. HTML requires current browser capture and actual image review. Host selection uses existing configured authentication and may consume its allowance; no host/model fallback. Without --host, all work stays deterministic and local.');return;}
+ const {values:a}=parseArgs({args:argv,options:{brief:{type:'string'},out:{type:'string'},task:{type:'string'},tool:{type:'string'},args:{type:'string'},home:{type:'string'},help:{type:'boolean'},host:{type:'string'},live:{type:'boolean'},'pixel-control':{type:'boolean'},model:{type:'string'},request:{type:'string'},'expected-sequence':{type:'string'},'timeout-ms':{type:'string'}}});
+ if(a.help){console.log('Create: deckweft visual-task --brief brief.json --out dist/my-task [--home asset-home] [--host codex|claude-code --live [--pixel-control]]\nContinue: --task task.json --tool TOOL --args args.json\nHost revision: --task task.json --host codex --live --tool design.patch --request "..." --expected-sequence N\nHost pixel review: --task task.json --host codex --live --tool render.inspect --expected-sequence N\nOptions: --model exact-model (otherwise host default), --timeout-ms 120000 (1000–600000).\nEvery continuation requires the current expectedSequence. HTML requires current browser capture and actual image review. Host selection uses existing configured authentication and may consume its allowance; no host/model fallback. Without --host, all work stays deterministic and local.');return;}
  if(a.host){assertHost(a.host);if(!a.live)throw Error('HOST_LIVE_OPT_IN_REQUIRED: add --live only for the selected authorized host.');}
  else if(a.live||a.model)throw Error('Choose --host for live/model options.');
  let file,task;
@@ -17,7 +17,7 @@ export async function runTaskCli(argv=process.argv.slice(2)){
  const lock=file+'.lock';await rejectSymlinks(lock);const handle=await open(lock,'wx',0o600);
  const controller=new AbortController(),abort=()=>controller.abort();process.once('SIGINT',abort);process.once('SIGTERM',abort);
  try{
-  const cwd=path.dirname(file),home=a.home||cwd,options={host:a.host,cwd,home,live:!!a.live,signal:controller.signal,...(a.model?{model:a.model}:{}),timeout:a['timeout-ms']===undefined?120000:Number(a['timeout-ms'])};
+  const cwd=path.dirname(file),home=a.home||cwd,options={host:a.host,cwd,home,live:!!a.live,pixelControl:!!a['pixel-control'],signal:controller.signal,...(a.model?{model:a.model}:{}),timeout:a['timeout-ms']===undefined?120000:Number(a['timeout-ms'])};
   if(a.brief){const brief=JSON.parse(await readFile(a.brief,'utf8'));if(a.host){options.capabilities=await probeHost({host:a.host,cwd});const r=await draftWithHost(brief,options);if(!r.ok){console.error(JSON.stringify({error:r.error||r.receipt.error,receipt:r.receiptFile}));process.exitCode=1;return;}task=r.task;}else task=createVisualTask(brief);await atomicWrite(file,JSON.stringify(task,null,2));}
   else task=JSON.parse(await readFile(file,'utf8'));
   if(a.host&&!a.brief){
@@ -25,7 +25,7 @@ export async function runTaskCli(argv=process.argv.slice(2)){
    if(!Number.isSafeInteger(expected)||expected!==task.sequence)throw Error('REVISION_CONFLICT: supply the current --expected-sequence or args expectedSequence.');
    let r;
    if(a.tool==='design.patch')r=await patchWithHost(task,a.request,options);
-   else if(a.tool==='render.inspect'){const review=await reviewWithHost({task},options);if(!review.ok){console.error(JSON.stringify({error:review.error||review.receipt.error,receipt:review.receiptFile}));process.exitCode=1;return;}r=await executeVisualTool(task,'render.inspect',{expectedSequence:task.sequence,review:review.review},{home});}
+   else if(a.tool==='render.inspect'){const review=await reviewWithHost({task},options);if(!review.ok){console.error(JSON.stringify({error:review.error||review.receipt.error,receipt:review.receiptFile}));process.exitCode=1;return;}r=await executeVisualTool(task,'render.inspect',{expectedSequence:task.sequence},{home,trustedReview:review.review});}
    else throw Error('Host continuation supports design.patch or render.inspect; use shared local tools for other steps.');
    if(r.task){task=r.task;await atomicWrite(file,JSON.stringify(task,null,2));}
    if(!r.ok){console.error(JSON.stringify({error:r.error||r.receipt?.error,receipt:r.receiptFile}));process.exitCode=1;return;}

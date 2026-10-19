@@ -8,7 +8,7 @@ import {pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 import {buildPlugin} from '../src/plugin/packager.mjs';
 import {rejectSymlinks} from '../src/services/io.mjs';
-const {values:a}=parseArgs({options:{host:{type:'string'},live:{type:'boolean'},out:{type:'string'},case:{type:'string',default:'gallery'},help:{type:'boolean'}}});
+const {values:a}=parseArgs({options:{host:{type:'string'},live:{type:'boolean'},'pixel-control':{type:'boolean'},out:{type:'string'},case:{type:'string',default:'gallery'},help:{type:'boolean'}}});
 if(a.help){console.log('Usage: CHROMIUM_PATH=/isolated/browser PLAYWRIGHT_MODULE=/qa/playwright-core/index.mjs npm run host:visual -- --host codex|claude-code --live --out dist/host-visual-NEW [--case gallery|drafted]\nRuns the selected existing host for drafting, real captured-image review, scoped revision and reviewed HTML export from an isolated bundled runtime. No login, provider fallback, desktop certification or global installation. Existing host configuration may consume its allowance.');process.exit(0);}
 if(!['gallery','drafted'].includes(a.case))throw Error('Use --case gallery (supplied diagnostic gallery, the VIS-012 run) or --case drafted (the host-drafted deck itself is reviewed, exported and revised; VIS-014).');
 if(!a.live||!['codex','claude-code'].includes(a.host)||!a.out)throw Error('Choose --host, --live and a new --out folder. Claude must only be selected when separately authorized.');
@@ -21,7 +21,7 @@ const capabilities=await probeHost({host:a.host,cwd:work,authentication:true});a
 if(capabilities.authentication.status!=='available')throw Error('Existing host authentication was not proven available; no login was attempted.');
 const {chromium}=await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE).href),routes=new Map(),errors=[],external=[];
 const server=http.createServer((req,res)=>{if(req.headers.host!==`127.0.0.1:${server.address().port}`||req.method!=='GET'||!routes.has(req.url)){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end(routes.get(req.url));});await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin=`http://127.0.0.1:${server.address().port}`;
-let browser,task,serial=0;const sha=b=>createHash('sha256').update(b).digest('hex'),options={host:a.host,cwd:work,home:work,capabilities,live:true,timeout:120000};
+let browser,task,serial=0;const sha=b=>createHash('sha256').update(b).digest('hex'),options={host:a.host,cwd:work,home:work,capabilities,live:true,pixelControl:!!a['pixel-control'],timeout:120000};
 const report={format:'deckweft-real-host-visual-acceptance',version:1,host:a.host,browser:null,case:a.case,scope:a.case==='drafted'?'Copied bundle: the host drafts a deck from a prompt, reviews its actual captures, exports it, then revises one page and exports again; not native desktop/plugin discovery':'Copied bundle CLI drafting plus supplied synthetic diagnostic gallery; not native desktop/plugin discovery or VIS-014 story release',ok:false,runs:[],errors,externalRequests:external};
 const checkpoint=async t=>{task=t;await writeFile(path.join(work,'task.json'),JSON.stringify(t,null,2));};
 try{

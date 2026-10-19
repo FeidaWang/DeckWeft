@@ -15,7 +15,7 @@ The bridge is an opt-in local queue with stdio MCP and connected-computer CLI tr
 7. Return a complete project with the assigned id, revision 0, requested schema version and supplied source ids/URLs. Optional `deckweft_checkpoint` persists a schema-valid v2 storyboard. `deckweft_complete_job` validates the final draft and can carry bounded **reported** token counts. Expected: `needs-review`, not applied.
 8. Review the returned content and timeline, then select **Save and open a new copy**. Expected: the new project opens and the source is intact. Exact application retries return the same copy.
 
-The generic connected-host mode is advisory when selection/effort cannot be confirmed. A known host-reported effort above the grant ceiling is blocked. Required mode also checks the returned host report. Neither a capability declaration nor a runner flag is independent server model attestation. See the actual pilot's limits before comparing costs.
+The generic connected-host mode is advisory when selection/effort cannot be confirmed. A known host-reported effort above the grant ceiling is blocked. Required mode checks the host-reported model/effort on every completion and tool route (complete, patch, visual tool, checkpoint); that report is not server attestation. Neither a capability declaration nor a runner flag is independent server model attestation. See the actual pilot's limits before comparing costs.
 
 ## CLI transport
 

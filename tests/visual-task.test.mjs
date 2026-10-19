@@ -37,7 +37,13 @@ test('preview and final HTML require ordered content and actual-review receipt; 
  let t=createVisualTask({request});assert.equal((await call(t,'render.preview')).error.code,'CONTENT_CHECK_REQUIRED');t=await ready(t);
  assert.equal((await call(t,'artifact.export',{format:'html'})).error.code,'STALE_RECEIPT');assert.equal((await call(t,'render.inspect')).error.code,'BROWSER_REQUIRED');
  let r=await call(t,'render.inspect',{}, {capture:syntheticCapture});assert.equal(r.ok,true);t=r.task;assert.equal(t.status,'awaiting-image-review');
- r=await call(t,'render.inspect',{review:{receiptId:t.receipt.id,reviewer:'unit fixture',delivery:'synthetic mock image record',images:['mock.png'],judgment:'Controller fixture only; no real visual acceptance.',verdict:'pass'}});assert.equal(r.ok,true);t=r.task;
+ const submitted={receiptId:t.receipt.id,reviewer:'unit fixture',delivery:'synthetic mock image record',images:['mock.png'],judgment:'Controller fixture only; no real visual acceptance.',verdict:'pass'};
+ // F5: a review in tool arguments may say "author" or nothing; host attestations and pixel controls come only as trusted in-process context.
+ for(const extra of [{attestation:'host-pixel-control',controls:{summary:{hits:1,total:1},images:[]}},{attestation:'host-metadata-only'},{controls:{summary:{hits:1,total:1},images:[]}}])assert.equal((await call(t,'render.inspect',{review:{...submitted,...extra}})).error.code,'REVIEW_ATTESTATION');
+ assert.equal((await call(t,'render.inspect',{review:submitted},{trustedReview:submitted})).error.code,'REVIEW_SOURCE');
+ assert.equal((await call(t,'render.inspect',{review:{...submitted,attestation:'author'}})).task.receipt.review.attestation,'author');
+ assert.equal((await call(t,'render.inspect',{},{trustedReview:{...submitted,attestation:'host-metadata-only'}})).task.receipt.review.attestation,'host-metadata-only');
+ r=await call(t,'render.inspect',{review:submitted});assert.equal(r.ok,true);assert.equal(r.task.receipt.review.attestation,'unattested');t=r.task;
  r=await call(t,'artifact.export',{format:'html'});assert.equal(r.ok,true);assert.equal(r.task.status,'exported');assert.ok(r.value.body.includes('Keep the supplied facts.'));
  const changed=structuredClone(t);changed.project.document.blocks[0].text='Changed';assert.equal((await call(changed,'artifact.export',{format:'html'})).error.code,'STALE_RECEIPT');
  const patched=await call(r.task,'design.patch',{patch:{kind:'composition',sceneId:t.scope[0],composition:'statement-center'}});assert.equal(patched.ok,true);assert.equal(patched.task.receipt,null);assert.equal(patched.task.lastValid.htmlHash,r.value.htmlHash);assert.equal(patched.task.history.length,1);

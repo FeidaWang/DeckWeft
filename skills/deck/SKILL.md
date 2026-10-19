@@ -74,7 +74,9 @@ configuration/model by default, and never fall back to another API/provider.
 Codex final schema JSON is separate from event JSONL; Claude results come only
 from structured_output. Installed manifests and mocks do not certify actual runs.
 
-A host draft with sourceText must retain every original nonempty line. A host
+A host draft with sourceText returns numbered lines: every numbered source line
+must appear exactly once, in order, byte-equal after trimming; lines numbered 0
+are recorded as host-authored and need author review. A host
 revision cannot unlock content or expand the scene grant. Actual image feedback
 requires every current capture's pixels and hash-matching findings; a PNG path is
 not a review. Keep failed candidates/checkpoints and the last valid artifact.

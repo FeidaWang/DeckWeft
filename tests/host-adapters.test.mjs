@@ -21,6 +21,11 @@ const ok=stdout=>({exitCode:0,stdout,stderr:'',elapsedMs:1});
 const schema={type:'object',properties:{answer:{type:'string'}},required:['answer'],additionalProperties:false};
 const help='--output-schema --output-last-message --json --sandbox --image --json-schema --output-format --input-format --permission-mode "manual"\n --tools --no-chrome --no-session-persistence';
 async function fakeProbe(command,args){return ok(args[0]==='--version'?(command==='codex'?'codex-cli 0.160.0':'2.1.288 (Claude Code)'):help);}
+/** F3: the structured outline a host returns. Text pages separated by ---; a line byte-equal (after trim) to an unused numbered source line gets that number, every other line is host-authored (0). */
+function pages(text,sourceText=null,{numbers={}}={}){
+ const source=sourceText?sourceText.split(/\r?\n/).map(l=>l.trim()).filter(l=>l&&l!=='---'):[],used=new Set();
+ return {pages:text.split(/\r?\n---\r?\n/).map(page=>({lines:page.split(/\r?\n/).filter(l=>l.trim()).map(line=>{if(Object.hasOwn(numbers,line))return {text:line,sourceLine:numbers[line]};const n=source.findIndex((s,i)=>s===line.trim()&&!used.has(i));if(n>=0)used.add(n);return {text:line,sourceLine:n+1};})}))};
+}
 function fakeHost(value,mutate=x=>x){return async(command,args,options)=>{
  if(args.includes('--help')||args.includes('--version'))return fakeProbe(command,args);
  const s=command==='codex'?JSON.parse(await readFile(args[args.indexOf('--output-schema')+1],'utf8')):JSON.parse(args[args.indexOf('--json-schema')+1]);
@@ -83,7 +88,7 @@ test('symlinked final output and invalid image bytes are refused without importi
  const r=await runStructuredHost({host:'codex',cwd,prompt:'x',schema,live:true,runner:async(c,a,o)=>{if(!a.includes('--output-schema'))return fakeProbe(c,a);await symlink(target,a[a.indexOf('--output-last-message')+1]);return ok('{"type":"turn.completed"}');}});assert.equal(r.ok,false);assert.equal(await readFile(target,'utf8'),'private');
 });
 test('host drafts remain unverified content and revisions pass through shared author locks/scope',async t=>{
- const cwd=await temp(t),options={host:'codex',cwd,live:true,runner:fakeHost({outline:'One\nSupplied fact\n---\nTwo\nKeep source\n---\nThree\nReview'})};
+ const cwd=await temp(t),options={host:'codex',cwd,live:true,runner:fakeHost(pages('One\nSupplied fact\n---\nTwo\nKeep source\n---\nThree\nReview'))};
  const draft=await draftWithHost({request:'Supplied fact'},options);assert.equal(draft.ok,true);assert.equal(draft.task.project.plan.scenes.length,3);assert.match(draft.task.hostDraft.factualVerification,/unverified/);
  const task=draft.task,scene=task.project.plan.scenes[0];task.scope=[scene.id];const original=structuredClone(task.project);const patch={kind:'composition',sceneId:scene.id,composition:'statement-banner',datasetId:''};
  const changed=await patchWithHost(task,'Make page 1 a banner',{...options,runner:fakeHost(patch)});assert.equal(changed.ok,true);assert.deepEqual(changed.task.project.document,original.document);assert.deepEqual(changed.task.project.plan.scenes.slice(1),original.plan.scenes.slice(1));
@@ -135,8 +140,8 @@ test('schema-valid image review still requires every actual capture hash and cur
 
 test('host drafting cannot drop or alter explicitly supplied source lines or numbers',async t=>{
  const cwd=await temp(t),brief={request:'Arrange this source.',sourceText:'Exact source\nThe supplied value is 12.50 kg.'},options={host:'codex',cwd,live:true};
- const bad=await draftWithHost(brief,{...options,runner:fakeHost({outline:'Exact source\nThe supplied value is 13 kg.'})});assert.equal(bad.ok,false);assert.equal(bad.error,'HOST_CONTENT_COVERAGE');
- const good=await draftWithHost(brief,{...options,runner:fakeHost({outline:brief.sourceText})});assert.equal(good.ok,true);assert.equal(good.task.sourceInput.text,brief.sourceText);
+ const bad=await draftWithHost(brief,{...options,runner:fakeHost(pages('Exact source\nThe supplied value is 13 kg.',brief.sourceText))});assert.equal(bad.ok,false);assert.equal(bad.error,'HOST_CONTENT_COVERAGE');
+ const good=await draftWithHost(brief,{...options,runner:fakeHost(pages(brief.sourceText,brief.sourceText))});assert.equal(good.ok,true);assert.equal(good.task.sourceInput.text,brief.sourceText);
 });
 test('public CLI rejects accidental live calls and stale revisions before starting a host',async t=>{
  const cwd=await temp(t),bin=fileURLToPath(new URL('../bin/deckweft.mjs',import.meta.url)),brief=path.join(cwd,'brief.json'),out=path.join(cwd,'task');await writeFile(brief,JSON.stringify({request:'One\nText\n---\nTwo\nMore'}));
@@ -168,16 +173,45 @@ test('S9b: a Codex draft receives the page plan, is planned locally, and pages h
  const capture=(value)=>{const run=fakeHost(value);return async(command,args,options)=>{if(args.includes('--output-schema'))prompts.push(options?.input??args.at(-1));return run(command,args,options);};};
  const padded=source+'\n---\nMarket context\nThe market is growing fast.';
  const brief={request:'Arrange this source.',sourceText:source,pagePlan:{detail:'brief',targetPages:4}};
- const draft=await draftWithHost(brief,{host:'codex',cwd,live:true,runner:capture({outline:padded})});
+ const draft=await draftWithHost(brief,{host:'codex',cwd,live:true,runner:capture(pages(padded,source))});
  assert.equal(draft.ok,true);const plan=draft.task.pagePlan;
  assert.match(String(prompts.at(-1)),/pagePlan/);assert.match(String(prompts.at(-1)),/Never add a page, fact or quotation to reach pagePlan\.targetPages/);
  assert.equal(plan.detail,'brief');assert.equal(plan.targetPages,4);assert.equal(plan.draftedPages,3);assert.deepEqual(plan.brief.units,['question','evidence','action']);
  assert.equal(plan.hostAddedPages.length,1);assert.equal(plan.status,'needs-material','missing material outranks review');assert.ok(plan.questions.some(q=>q.kind==='host-added-page'&&/holds none of your supplied lines/.test(q.en)&&/宿主添加/.test(q.zh)));
  assert.ok(plan.questions.some(q=>q.kind==='page-count'),'below the target it asks for material instead of padding');
- const review=await draftWithHost({...brief,pagePlan:{detail:'brief'}},{host:'codex',cwd,live:true,runner:capture({outline:padded})});assert.equal(review.task.pagePlan.hostAddedPages.length,1);
+ const review=await draftWithHost({...brief,pagePlan:{detail:'brief'}},{host:'codex',cwd,live:true,runner:capture(pages(padded,source))});assert.equal(review.task.pagePlan.hostAddedPages.length,1);
  // The exact source alone: nothing host-added; a bad target is refused before any host run.
- const clean=await draftWithHost({...brief,pagePlan:{detail:'standard'}},{host:'codex',cwd,live:true,runner:capture({outline:source})});assert.deepEqual(clean.task.pagePlan.hostAddedPages,[]);
- await assert.rejects(draftWithHost({...brief,pagePlan:{detail:'standard',targetPages:0}},{host:'codex',cwd,live:true,runner:capture({outline:source})}),{code:'PAGE_PLAN_TARGET'});
+ const clean=await draftWithHost({...brief,pagePlan:{detail:'standard'}},{host:'codex',cwd,live:true,runner:capture(pages(source,source))});assert.deepEqual(clean.task.pagePlan.hostAddedPages,[]);
+ await assert.rejects(draftWithHost({...brief,pagePlan:{detail:'standard',targetPages:0}},{host:'codex',cwd,live:true,runner:capture(pages(source,source))}),{code:'PAGE_PLAN_TARGET'});
  // Without a page plan the draft behaves as before.
- assert.equal((await draftWithHost({request:'Arrange this source.',sourceText:source},{host:'codex',cwd,live:true,runner:capture({outline:source})})).task.pagePlan,undefined);
+ assert.equal((await draftWithHost({request:'Arrange this source.',sourceText:source},{host:'codex',cwd,live:true,runner:capture(pages(source,source))})).task.pagePlan,undefined);
+});
+
+test('F3: structured source coverage refuses dropped repeats, changed whitespace, reordering, embedded substrings and misattributed lines; added lines are counted, never hidden',async t=>{
+ const cwd=await temp(t),options={host:'codex',cwd,live:true};
+ const source='Why exports drift\nA   B\nTeams lose hours after export.\nTeams lose hours after export.\n---\nEvidence\nEditability passed on 18 of 18 decks.';
+ const brief={request:'Arrange this source.',sourceText:source};
+ const run=async value=>draftWithHost(brief,{...options,runner:fakeHost(value)});
+ const exact=await run(pages(source,source));assert.equal(exact.ok,true,JSON.stringify(exact.receipt));
+ assert.equal(exact.task.hostDraft.hostAuthoredLines,0);assert.match(exact.task.sourceInput.coverage,/exactly once, in order/);
+ // The repeated sentence returned once: line 4 is missing.
+ const collapsed=await run(pages('Why exports drift\nA   B\nTeams lose hours after export.\n---\nEvidence\nEditability passed on 18 of 18 decks.',source));
+ assert.equal(collapsed.ok,false);assert.equal(collapsed.error,'HOST_CONTENT_COVERAGE');assert.deepEqual(collapsed.coverage.missing,[4]);
+ // Whitespace inside a protected line changed (A   B → A B) while claiming line 2.
+ const spaced=await run(pages(source.replace('A   B','A B'),source,{numbers:{'A B':2}}));
+ assert.equal(spaced.ok,false);assert.deepEqual(spaced.coverage.mismatched,[2]);
+ // Two protected lines swapped: order is not preserved.
+ const swapped=await run(pages('A   B\nWhy exports drift\nTeams lose hours after export.\nTeams lose hours after export.\n---\nEvidence\nEditability passed on 18 of 18 decks.',source));
+ assert.equal(swapped.ok,false);assert.ok(swapped.coverage.outOfOrder.length);
+ // A protected line embedded in a longer sentence: byte equality fails whether or not the number is claimed.
+ const embedded=await run(pages(source.replace('Evidence','Evidence: what we measured'),source,{numbers:{'Evidence: what we measured':5}}));
+ assert.equal(embedded.ok,false);assert.deepEqual(embedded.coverage.mismatched,[5]);
+ const unclaimed=await run(pages(source.replace('Evidence','Evidence: what we measured'),source));
+ assert.equal(unclaimed.ok,false);assert.deepEqual(unclaimed.coverage.missing,[5]);
+ // A sentence the host added is accepted but marked, and a number outside the source is refused.
+ const added=await run(pages(source+'\n---\nMarket context\nAdditional invented result: 999 units.',source));
+ assert.equal(added.ok,true);assert.equal(added.task.hostDraft.hostAuthoredLines,2);assert.deepEqual(added.task.hostDraft.hostAuthored.map(l=>l.text),['Market context','Additional invented result: 999 units.']);
+ const invalid=await run(pages(source,source,{numbers:{'Why exports drift':99}}));assert.equal(invalid.ok,false);assert.deepEqual(invalid.coverage.invalid,[99]);
+ // Without source text nothing is protected and every line is host-authored.
+ const free=await draftWithHost({request:'Explain one workflow.'},{...options,runner:fakeHost(pages('Workflow\nOne step.'))});assert.equal(free.ok,true);assert.equal(free.task.hostDraft.hostAuthoredLines,2);assert.equal(free.task.sourceInput,undefined);
 });

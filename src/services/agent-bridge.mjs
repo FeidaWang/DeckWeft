@@ -12,7 +12,7 @@ import {DeckError} from '../core/errors.mjs';
 import {validatePresentationRequest} from '../core/speech.mjs';
 import {projectIsEnglish} from '../core/presentation.mjs';
 import {atomicWrite,readJSON,rejectSymlinks,stringify} from './io.mjs';
-import {createGrant,negotiateCapabilities,modelBlock,assertGrant} from '../orchestration/grants.mjs';
+import {createGrant,negotiateCapabilities,modelBlock,assertModelPolicy,assertGrant} from '../orchestration/grants.mjs';
 import {executionBaseline,makeCapsule} from '../orchestration/execution-capsule.mjs';
 import {appendEvent,jobProgress} from '../orchestration/progress.mjs';
 const digest=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -52,6 +52,8 @@ export class AgentBridge {
   if(effort!==null&&!['low','medium','high','xhigh','max','ultra'].includes(effort))error('AGENT_IDENTITY','Use a supported reported effort.',400);
   const host={name,model,effort,capabilities:negotiateCapabilities(capabilities),session,seenAt:this.now()};if(!s.agent||s.agent.session===session)s.agent=host;else s.additionalWorkers=[host];return {connected:true,workerId:this.workerId(host),reportedModel:model,reportedEffort:effort,capabilities:host.capabilities,modelVerification:'reported-by-host',apiConfirmed:null};
  });}
+ /** Shared by complete, completePatch, visualTool and checkpoint (F2): one model/effort acceptance rule, and the accepted host report is recorded on the job. */
+ acceptModel(j,host){const blocked=assertModelPolicy(j.grant,host);if(blocked)error('AGENT_MODEL',blocked,422);j.model.reported={model:host.model,effort:host.effort};}
  agent(s,session){if(!s.enabled||!this.host(s,session)||this.host(s,session).seenAt+90_000<=this.now())error('AGENT_SESSION','Reconnect this agent before requesting work.');this.host(s,session).seenAt=this.now();}
  async request({project,brief,consent,requestId,englishOnly=false,presentation,policy,workerId,selectedConversation,workflow,sceneIds,budget}){
   const visual=workflow==='visual';if(workflow!==undefined&&!visual)error('AGENT_WORKFLOW','Choose the visual workflow.',422);if(visual&&policy?.kind==='code-change')error('GRANT_SCOPE','Visual work has no repository permission.',422);
@@ -83,7 +85,7 @@ export class AgentBridge {
   if(!j||!s.enabled||!this.host(s,session)||j.status!=='running'||j.owner!==session||j.lease!==lease)error('AGENT_LEASE','Visual tools need the current owned lease.');
   assertGrant(j.grant,this.now());if(j.expiresAt<=this.now())error('AGENT_EXPIRED','Lease expired.');
   if(!j.visualTask||!j.grant.tools.includes(tool))error('GRANT_SCOPE','Tool is outside this job grant.');
-  const blocked=modelBlock(j.grant,this.host(s,session));if(blocked)error('AGENT_MODEL',blocked,422);
+  this.acceptModel(j,this.host(s,session));
   if(secretFields(args)||JSON.stringify(args).includes(lease)||JSON.stringify(args).includes(session))error('AGENT_SECRETS','Keep session and credential material outside tool artifacts.',422);
   const result=await executeVisualTool(j.visualTask,tool,args,{home:path.dirname(this.dir)});j.visualTask=result.task;
   appendEvent(j,result.task.status,'Visual task tool completed: '+tool,this.now(),{outputHash:digest(result.task.project)});
@@ -91,7 +93,7 @@ export class AgentBridge {
   return result;
  });}
  async checkpoint({id,lease,taskId,artifact,completed,total},session){return this.transact(s=>{
-  const j=s.jobs.find(j=>j.id===id);if(!j||!s.enabled||!this.host(s,session)||j.status!=='running'||j.owner!==session||j.lease!==lease)error('AGENT_LEASE','Checkpoint needs the current owned lease.');assertGrant(j.grant,this.now());if(j.expiresAt<=this.now())error('AGENT_EXPIRED','Lease expired.');
+  const j=s.jobs.find(j=>j.id===id);if(!j||!s.enabled||!this.host(s,session)||j.status!=='running'||j.owner!==session||j.lease!==lease)error('AGENT_LEASE','Checkpoint needs the current owned lease.');assertGrant(j.grant,this.now());this.acceptModel(j,this.host(s,session));if(j.expiresAt<=this.now())error('AGENT_EXPIRED','Lease expired.');
   if(j.visualTask)error('GRANT_SCOPE','Use visual task tools for this workflow.',422);
   if(taskId!=='planning')error('CHECKPOINT_TASK','Only a validated storyboard checkpoint can be submitted before the final draft.',422);
   assertProject(artifact);if(JSON.stringify(artifact).includes(lease)||JSON.stringify(artifact).includes(session))error('AGENT_SECRETS','Lease/session material must stay outside a checkpoint.',422);if(secretFields(artifact)||artifact.schemaVersion!==2||artifact.id!==j.expectedProjectId)error('CHECKPOINT_ARTIFACT','Submit the assigned version 2 storyboard without credentials.',422);
@@ -113,7 +115,7 @@ export class AgentBridge {
  async completePatch({id,lease,patch},session){return this.transact(async s=>{
   const j=s.jobs.find(j=>j.id===id);if(!j||j.grant?.kind!=='code-change')error('GRANT_SCOPE','A deck grant cannot submit repository changes.');
   if(['needs-review','applied'].includes(j.status)&&j.owner===session&&j.lease===lease){if(digest(j.patch)!==digest(patch))error('AGENT_RESULT_CONFLICT','A different patch already completed this job.');return {id,status:j.status,replayed:true};}
-  if(!s.enabled||!this.host(s,session)||j.status!=='running'||j.owner!==session||j.lease!==lease)error('AGENT_LEASE','Patch needs the current owned lease.');assertGrant(j.grant,this.now());const blocked=modelBlock(j.grant,this.host(s,session));if(blocked)error('AGENT_MODEL',blocked,422);
+  if(!s.enabled||!this.host(s,session)||j.status!=='running'||j.owner!==session||j.lease!==lease)error('AGENT_LEASE','Patch needs the current owned lease.');assertGrant(j.grant,this.now());this.acceptModel(j,this.host(s,session));
   if(j.expiresAt<=this.now())error('AGENT_EXPIRED','Lease expired.');
   if(!Array.isArray(patch)||!patch.length||patch.length>20||Buffer.byteLength(JSON.stringify(patch))>1000000)error('PATCH_SIZE','Submit at most 20 bounded file replacements.',422);
   const seen=new Set();for(const p of patch){if(!p||Object.keys(p).some(k=>!['path','beforeHash','after'].includes(k))||!j.grant.workspacePaths.includes(p.path)||seen.has(p.path)||typeof p.after!=='string'||p.beforeHash!==j.capsule.sourceHashes[p.path])error('PATCH_SCOPE','Patch path/base hash is outside this grant.',422);seen.add(p.path);}
@@ -128,15 +130,14 @@ export class AgentBridge {
    if(['needs-review','applied'].includes(j.status)&&j.owner===session&&j.lease===lease){if(digest(j.result)!==digest(project))error('AGENT_RESULT_CONFLICT','A different result already completed this job.');return {id,status:j.status,replayed:true};}
    // Completing an owned in-flight task refreshes the heartbeat, even after a long model turn.
    if(!s.enabled||!this.host(s,session)||j.owner!==session||j.lease!==lease||!['running','expired'].includes(j.status))error('AGENT_LEASE','This result has no current, owned generation lease.');
-   assertGrant(j.grant,this.now());const blocked=modelBlock(j.grant,this.host(s,session));if(blocked)error('AGENT_MODEL',blocked,422);if(j.grant.kind!=='deck-generation')error('GRANT_SCOPE','This is a code-change grant. Submit a bounded patch proposal.');
+   assertGrant(j.grant,this.now());this.acceptModel(j,this.host(s,session));if(j.grant.kind!=='deck-generation')error('GRANT_SCOPE','This is a code-change grant. Submit a bounded patch proposal.');
    if(j.expiresAt<=this.now())error('AGENT_EXPIRED','This generation lease expired. Cancel and request a new draft.');
    if(project.schemaVersion!==j.input.project.schemaVersion)error('AGENT_RESULT_VERSION','Preserve the requested schema version. Migration requires a separately reviewed copy.',422);
    if(j.input.project.sources.some(source=>!project.sources.some(s=>s.id===source.id&&s.url===source.url)))error('AGENT_SOURCES','Retain the supplied source ids and URLs.',422);
    if(project.id!==j.expectedProjectId||project.revision.number!==0)error('AGENT_RESULT_ID','Use the assigned new project id and revision number 0.',422);
    if(j.input.englishOnly&&!projectIsEnglish(project))error('AGENT_LANGUAGE','This request requires an English draft.',422);
    if(Buffer.byteLength(JSON.stringify(project))>1_900_000)error('AGENT_RESULT_SIZE','Return a project smaller than 1.9 MB.',413);
-   if(j.grant.modelPolicy.required&&(this.host(s,session).model!==j.grant.modelPolicy.model||this.host(s,session).effort!==j.grant.modelPolicy.effort))error('AGENT_MODEL','Host report does not match required model/effort.',422);
-   j.reportedUsage=usage??null;j.model.reported={model:this.host(s,session).model,effort:this.host(s,session).effort};this.host(s,session).seenAt=this.now();j.status='validating';appendEvent(j,'validating','Schema, language and derived layout checks passed.',this.now(),{taskId:'validation'});j.result=structuredClone(project);j.completedTasks=['planning','draft','validation'];j.units={completed:project.slides.length,total:project.slides.length,label:'draft slides validated'};j.completedAt=this.now();j.status='needs-review';appendEvent(j,'needs-review','Editable draft validated. Waiting for user application.',this.now(),{outputHash:digest(project)});return {id,status:j.status,replayed:false};
+   j.reportedUsage=usage??null;this.host(s,session).seenAt=this.now();j.status='validating';appendEvent(j,'validating','Schema, language and derived layout checks passed.',this.now(),{taskId:'validation'});j.result=structuredClone(project);j.completedTasks=['planning','draft','validation'];j.units={completed:project.slides.length,total:project.slides.length,label:'draft slides validated'};j.completedAt=this.now();j.status='needs-review';appendEvent(j,'needs-review','Editable draft validated. Waiting for user application.',this.now(),{outputHash:digest(project)});return {id,status:j.status,replayed:false};
   });
  }
 }

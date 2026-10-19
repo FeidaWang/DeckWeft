@@ -6,7 +6,7 @@ import {exportDeck} from '../render/export.mjs';
 import {compositions,inferFamily} from '../design/compositions.mjs';
 import {checkRender} from '../quality/render-checks.mjs';
 import {boundedRepair} from '../quality/repair-plan.mjs';
-import {createQualityReceipt,recordVisualReview,receiptCurrent} from '../quality/visual-review.mjs';
+import {createQualityReceipt,recordVisualReview,receiptCurrent,CALLER_ATTESTATIONS} from '../quality/visual-review.mjs';
 import {designBrief,inspectContent} from './design-brief.mjs';
 import {parseRevision,applyRevision} from './revision-plan.mjs';
 import {TASK_TOOLS} from './director.mjs';
@@ -21,7 +21,9 @@ async function preview(project,home){const resources=await resolveAssets(project
 const invalidate=t=>{t.receipt=null;t.observation=null;t.previewHash=null;t.status='revision-pending';t.brief=designBrief(t.project,t.request,t.scope);};
 /** Same dispatcher for local scripts, bridge and MCP. Browser/image operations are explicit
  * capabilities: a host may report observations; the runtime never silently launches a provider. */
-export async function executeVisualTool(input,name,args={}, {home,capture,now=Date.now}={}) {
+// `trustedReview` is code-only context, never tool arguments: a review produced in this process by reviewWithHost or a
+// runVisualTask review callback. Only it may carry a host attestation and pixel-control results (F5).
+export async function executeVisualTool(input,name,args={}, {home,capture,now=Date.now,trustedReview}={}) {
  const task=structuredClone(input);let value;
  try{
   if(task.format!=='deckweft-visual-task'||task.version!==1)fail('TASK_FORMAT','Use a current task checkpoint.');
@@ -42,10 +44,13 @@ export async function executeVisualTool(input,name,args={}, {home,capture,now=Da
   }
   if(name==='render.inspect'){
    if(!task.previewHash||task.rendererBasis!==await rendererBasis()||hash(await preview(task.project,home))!==task.previewHash)fail('STALE_PREVIEW','Render the current source before inspection.');
-   if(args.review){
+   if(args.review&&trustedReview)fail('REVIEW_SOURCE','Supply one review: tool arguments or the in-process host review, not both.');
+   if(args.review||trustedReview){
     if(!task.receipt||!receiptCurrent(task.receipt,task.project,task.observation))fail('STALE_RECEIPT','Recapture the current source and audience state.');
-    // The caller must actually deliver/view pixels. The attestation is never a DOM inference.
-    task.receipt=recordVisualReview(task.receipt,args.review);task.status=task.receipt.status==='passed'?'reviewed':'quality-failed';value=task.receipt;
+    // The caller must actually deliver/view pixels. The attestation is never a DOM inference. A review in tool arguments is the
+    // caller's own statement: it may claim `author` or nothing (`unattested`), never a host attestation or pixel-control result.
+    if(args.review&&(!CALLER_ATTESTATIONS.includes(args.review.attestation??'unattested')||args.review.controls!==undefined))fail('REVIEW_ATTESTATION','A submitted review may state attestation "author" or omit it. Host attestations and pixel controls come only from a local host review run.');
+    task.receipt=recordVisualReview(task.receipt,trustedReview||args.review);task.status=task.receipt.status==='passed'?'reviewed':'quality-failed';value=task.receipt;
    }else{
     const measure=async(project,meta={})=>{
      const html=await preview(project,home),htmlHash=hash(html);
@@ -91,13 +96,14 @@ export async function executeVisualTool(input,name,args={}, {home,capture,now=Da
  * that receives the current captured images; its absence is a resumable boundary. */
 export async function runVisualTask(input,{home,capture,review,checkpoint=async()=>{},now}={}){
  let task=structuredClone(input),artifact=null;
- async function step(name,args={}){const r=await executeVisualTool(task,name,{expectedSequence:task.sequence,...args},{home,capture,now});task=r.task;await checkpoint(task);return r;}
+ async function step(name,args={},trustedReview){const r=await executeVisualTool(task,name,{expectedSequence:task.sequence,...args},{home,capture,now,trustedReview});task=r.task;await checkpoint(task);return r;}
  for(const name of ['content.inspect','design.propose','assets.resolve','render.preview']){const r=await step(name);if(!r.ok)return {ok:false,task,artifact,error:r.error};if(name==='render.preview')artifact={file:'preview.html',body:r.value.html};}
  if(!capture)return {ok:false,task,artifact,required:'browser-capture'};
  let r=await step('render.inspect',{repair:true});if(!r.ok||task.receipt?.checks.ok!==true)return {ok:false,task,artifact,error:r.error,required:'quality-repair'};
  if(!review)return {ok:false,task,artifact,required:'actual-image-review'};
  while(true){
-  r=await step('render.inspect',{review:await review({receipt:task.receipt,project:task.project,observation:task.observation})});
+  // The review callback is code supplied by the in-process caller, so its review travels as trusted context.
+  r=await step('render.inspect',{},await review({receipt:task.receipt,project:task.project,observation:task.observation}));
   if(!r.ok)return {ok:false,task,artifact,error:r.error,required:'actual-image-review'};
   if(task.receipt?.status==='passed')break;
   if(!task.receipt?.review?.issues.some(i=>i.severity==='error'))return {ok:false,task,artifact,required:'scoped-visual-diagnostic'};

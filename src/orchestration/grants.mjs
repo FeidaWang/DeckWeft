@@ -30,4 +30,10 @@ export function modelBlock(grant,host){
  if(!c.modelSelection||!c.effortSelection||!c.models.some(m=>m.id===p.model&&m.efforts.includes(p.effort)))return 'Required model/effort cannot be selected by this host. Select an authorized capable host or create a revised request.';
  return null;
 }
+/** The one acceptance check for every completion and tool route: the capability block above, then, under a required policy, the host-reported model/effort must equal the policy. Host reports are not server attestation. */
+export function assertModelPolicy(grant,host){
+ const blocked=modelBlock(grant,host);if(blocked)return blocked;
+ const p=grant.modelPolicy;if(p.required&&(host.model!==p.model||host.effort!==p.effort))return 'Host report does not match required model/effort.';
+ return null;
+}
 export function assertGrant(grant,now){if(grant.revokedAt!==null)throw new DeckError('GRANT_REVOKED','This grant was revoked. Late results are refused.',409);if(grant.expiresAt<=now)throw new DeckError('AGENT_EXPIRED','This grant expired. Review retained checkpoints and create a new authorized request.',409);}
