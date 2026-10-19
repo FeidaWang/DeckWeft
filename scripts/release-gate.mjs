@@ -103,7 +103,9 @@ if(steps.has('cases')){
   const session=await context.newCDPSession(page);await session.send('DOM.enable');await session.send('CSS.enable');const doc=await session.send('DOM.getDocument'),node=await session.send('DOM.querySelector',{nodeId:doc.root.nodeId,selector:'#st-open h2'}),fonts=(await session.send('CSS.getPlatformFontsForNode',{nodeId:node.nodeId})).fonts;
   await shot(page,path.join(dir,'missing-glyph.png'),'#st-open');await context.close();
   const fallback=fonts.filter(f=>/LastResort/i.test(f.familyName)||/LastResort/i.test(f.postScriptName||''));
-  record({id:'missing-glyph',locale:'en',page:'story 1 · st-open (cream-collage)',state:'opening',reproduction:'Append U+E000 to the cover title; open at 1440 px; read Chromium platform fonts for the heading.',observed:{renderChecks:issues,platformFonts:fonts,lastResortGlyphs:fallback.reduce((n,f)=>n+f.glyphCount,0)},passed:fallback.length>0&&issues.length===0,detectedBy:fallback.length?'CDP platform-font probe (this gate)':'not detected',fix:'Open: the fit audit and the Studio gate do not report missing glyphs (C13); only this probe does.'});
+  // S8 (C13): the in-page glyph audit is the detector; Chromium reports the primary font's own .notdef, so the platform-font probe stays a secondary signal.
+  const glyphIssues=issues.filter(i=>/^glyph/.test(i));
+  record({id:'missing-glyph',locale:'en',page:'story 1 · st-open (cream-collage)',state:'opening',reproduction:'Append U+E000 to the cover title; open at 1440 px; read the fit audit, the render checks and Chromium platform fonts for the heading.',observed:{renderChecks:issues,platformFonts:fonts,lastResortGlyphs:fallback.reduce((n,f)=>n+f.glyphCount,0)},passed:glyphIssues.length>0,detectedBy:glyphIssues.length?'in-page glyph audit (canvas pixels against the font\'s own .notdef), S8':fallback.length?'CDP platform-font probe only':'not detected',fix:glyphIssues.length?'C13 closed in S8: the fit audit, the Studio gate, the candidate fit and the export readiness stage all refuse the glyph.':'Open'});
  }
  // No-image asset: the generated starfield file is removed from the asset home before export.
  {

@@ -1,0 +1,2603 @@
+{
+  "method": "Every text node of each deck at 1440 px: computed colour over the composited backgrounds of its ancestors and the scene surface (decor paths are covered by the fit audit). WCAG 2.2 thresholds: 4.5:1 below 24 px (18.66 px bold), 3:1 at or above.",
+  "measured": [
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 10,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Chart range and series",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(235,232,224)",
+      "minRatio": 12.71,
+      "count": 3,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "对象说明",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 42,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Static view · All six page types: Eviden",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(243, 240, 232)",
+      "background": "rgb(36,36,31)",
+      "minRatio": 13.69,
+      "count": 5,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Author's focus",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 15,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 35,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "One release, two languages, every page r",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 15,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 4,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Evidence",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 15,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(235,232,224)",
+      "minRatio": 12.71,
+      "count": 2,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Measure → repair",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 15,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(235,232,224)",
+      "minRatio": 12.71,
+      "count": 1,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "选择热点查看说明；所有原文注释仍在页面中。",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 16,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 4,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Takeaway",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 16,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 12,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": ": Evidence pages take 6.5 hours, the cov",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 16,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(235,232,224)",
+      "minRatio": 12.71,
+      "count": 4,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Repair starts only from a measured failu",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 16,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(243, 240, 232)",
+      "background": "rgb(36,36,31)",
+      "minRatio": 13.69,
+      "count": 3,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "1",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 18,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 9,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "An eight-page review of one bilingual re",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 18,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(235,232,224)",
+      "minRatio": 12.71,
+      "count": 3,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "卡片就是论断：一句话、它的数字和单位，不悬停也能读。",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 21,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 18,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "The cover is checked first and most ofte",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 24,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 12,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Review all eight pages at 390 px.",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "body",
+      "size": 43.2,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 3,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "The visual presentation of text and imag",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "callout",
+      "size": 17,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 1,
+      "decks": [
+        "fieldnotes-en"
+      ],
+      "sample": "Margin note: a mark without a source is ",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "callout",
+      "size": 18,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 19,
+      "decks": [
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Margin note: measure after 苹方 (PingFang ",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "callout",
+      "size": 24,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 49,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "A BILINGUAL RELEASE IN EIGHT PAGES",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "caption",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 15,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "hours · ranked bar · zero · sorted by va",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "caption",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 1,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "区间：95% 置信区间 · 方法 合成自助法，2,000 次重抽样",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "caption",
+      "size": 14,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 8,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Focus: Evidence",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "caption",
+      "size": 17,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 4,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Which pages take the most review time?",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "citation",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 25,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Synthetic sample · not measured · DeckWe",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "citation",
+      "size": 16,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 3,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "W3C, WCAG 2.2, Success Criterion 1.4.3 ·",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 40,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 12,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "对比",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 44,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 2,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en"
+      ],
+      "sample": "The contrast rule is not ours.",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 48,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 3,
+      "decks": [
+        "story-editorial-fieldnotes-en"
+      ],
+      "sample": "Evidence pages take four times\nthe revie",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 48,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 34,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "从",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 64,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 1,
+      "decks": [
+        "fieldnotes-en"
+      ],
+      "sample": "Titles that wrap to a third line\nare whe",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 64,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 27,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "在",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 72,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 1,
+      "decks": [
+        "story-editorial-fieldnotes-en"
+      ],
+      "sample": "What the gate adds to a review.",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 72,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 29,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "保存",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 88,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 4,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en"
+      ],
+      "sample": "Name the weakest page,\nthen ship.",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 88,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 21,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "每一",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 96,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 3,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en"
+      ],
+      "sample": "Ship the whole story,\nnot the hero slide",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "display",
+      "size": 96,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 17,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "第一",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "numeric",
+      "size": 15.7,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(59, 91, 116)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 6.28,
+      "count": 2,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en"
+      ],
+      "sample": "pages",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "numeric",
+      "size": 32.2,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(59, 91, 116)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 6.28,
+      "count": 1,
+      "decks": [
+        "story-editorial-fieldnotes-en"
+      ],
+      "sample": "%",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "numeric",
+      "size": 112,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(59, 91, 116)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 6.28,
+      "count": 2,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "fieldnotes-en"
+      ],
+      "sample": "8",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "numeric",
+      "size": 230,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(59, 91, 116)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 6.28,
+      "count": 1,
+      "decks": [
+        "story-editorial-fieldnotes-en"
+      ],
+      "sample": "41",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "table",
+      "size": 12,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 14,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Check",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "table",
+      "size": 14,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 9,
+      "decks": [
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "合成样例",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "table",
+      "size": 20,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(243,240,232)",
+      "minRatio": 13.69,
+      "count": 26,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Pages reviewed",
+      "passes": true
+    },
+    {
+      "theme": "editorial-fieldnotes",
+      "role": "table",
+      "size": 20,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(36, 36, 31)",
+      "background": "rgb(236,233,226)",
+      "minRatio": 12.85,
+      "count": 10,
+      "decks": [
+        "story-editorial-fieldnotes-en",
+        "storyboard-editorial-fieldnotes-zh-CN"
+      ],
+      "sample": "Widths",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 8,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Chart range and series",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(30,34,40)",
+      "minRatio": 14.29,
+      "count": 3,
+      "decks": [
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "对象说明",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 14,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Static view · All six page types: Eviden",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 28,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Cover",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(12, 16, 23)",
+      "background": "rgb(242,243,238)",
+      "minRatio": 17.09,
+      "count": 5,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Author's focus",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 15,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 3,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Evidence",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 15,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 24,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "6.5",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 15,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(30,34,40)",
+      "minRatio": 14.29,
+      "count": 2,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Measure → repair",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 15,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(30,34,40)",
+      "minRatio": 14.29,
+      "count": 1,
+      "decks": [
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "选择热点查看说明；所有原文注释仍在页面中。",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 16,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 4,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Takeaway",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 16,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 4,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": ": Evidence pages take 6.5 hours, the cov",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 16,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(30,34,40)",
+      "minRatio": 14.29,
+      "count": 4,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Repair starts only from a measured failu",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 16,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(12, 16, 23)",
+      "background": "rgb(242,243,238)",
+      "minRatio": 17.09,
+      "count": 3,
+      "decks": [
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "1",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 18,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 15,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "One release, two languages, every page r",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 18,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(30,34,40)",
+      "minRatio": 14.29,
+      "count": 3,
+      "decks": [
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "卡片就是论断：一句话、它的数字和单位，不悬停也能读。",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 21,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 10,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Nothing here is a new tool. The gate cha",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 24,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 15,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "An eight-page review of one bilingual re",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "body",
+      "size": 43.2,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 2,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "The visual presentation of text and imag",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "callout",
+      "size": 12,
+      "weight": 500,
+      "required": 4.5,
+      "color": "rgb(168, 210, 234)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 11.86,
+      "count": 7,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "A BILINGUAL RELEASE IN EIGHT PAGES",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "callout",
+      "size": 24,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(168, 210, 234)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 11.86,
+      "count": 60,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Review the argument pages first; the cov",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "caption",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 8,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "hours · ranked bar · zero · sorted by va",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "caption",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 8,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "process",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "caption",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 1,
+      "decks": [
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "区间：95% 置信区间 · 方法 合成自助法，2,000 次重抽样",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "caption",
+      "size": 14,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 7,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Focus: Evidence",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "caption",
+      "size": 17,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(26,34,48)",
+      "minRatio": 14.32,
+      "count": 4,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Which pages take the most review time?",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "citation",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 26,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Synthetic sample · not measured · DeckWe",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "citation",
+      "size": 16,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 2,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "W3C, WCAG 2.2, Success Criterion 1.4.3 ·",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "display",
+      "size": 43,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 12,
+      "decks": [
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "对比",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "display",
+      "size": 48,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 38,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Evidence pages take four times\nthe revie",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "display",
+      "size": 69,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 89,
+      "decks": [
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Pages exported per minute rose across si",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "display",
+      "size": 72,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 2,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en"
+      ],
+      "sample": "Most review time goes to pages\nnobody pr",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "display",
+      "size": 78,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 1,
+      "decks": [
+        "story-luminous-stage-en"
+      ],
+      "sample": "What the gate adds to a review.",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "display",
+      "size": 80,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 1,
+      "decks": [
+        "stage-en"
+      ],
+      "sample": "One page at a time:\nthe v3 web output on",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "display",
+      "size": 95,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 9,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Name the weakest page,\nthen ship.",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "display",
+      "size": 130,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 2,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en"
+      ],
+      "sample": "Ship the whole story,\nnot the hero slide",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "numeric",
+      "size": 36.3,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(168, 210, 234)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 11.86,
+      "count": 1,
+      "decks": [
+        "story-luminous-stage-en"
+      ],
+      "sample": "pages",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "numeric",
+      "size": 38.3,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(168, 210, 234)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 11.86,
+      "count": 2,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en"
+      ],
+      "sample": "%",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "numeric",
+      "size": 259.2,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(168, 210, 234)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 11.86,
+      "count": 1,
+      "decks": [
+        "story-luminous-stage-en"
+      ],
+      "sample": "8",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "numeric",
+      "size": 273.6,
+      "weight": 500,
+      "required": 3,
+      "color": "rgb(168, 210, 234)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 11.86,
+      "count": 2,
+      "decks": [
+        "story-luminous-stage-en",
+        "stage-en"
+      ],
+      "sample": "41",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "table",
+      "size": 13,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(12, 16, 23)",
+      "background": "rgb(242,243,238)",
+      "minRatio": 17.09,
+      "count": 11,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Check",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "table",
+      "size": 14,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(12, 16, 23)",
+      "background": "rgb(242,243,238)",
+      "minRatio": 17.09,
+      "count": 3,
+      "decks": [
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "来源",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "table",
+      "size": 14,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 9,
+      "decks": [
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "合成样例",
+      "passes": true
+    },
+    {
+      "theme": "luminous-stage",
+      "role": "table",
+      "size": 20,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(242, 243, 238)",
+      "background": "rgb(12,16,23)",
+      "minRatio": 17.09,
+      "count": 36,
+      "decks": [
+        "story-luminous-stage-en",
+        "storyboard-luminous-stage-zh-CN"
+      ],
+      "sample": "Pages reviewed",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 18,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Chart range and series",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(241,241,238)",
+      "minRatio": 14.69,
+      "count": 3,
+      "decks": [
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "对象说明",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 86,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Static view · All six page types: Eviden",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(250, 250, 247)",
+      "background": "rgb(21,33,27)",
+      "minRatio": 15.87,
+      "count": 5,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Author's focus",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 14,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 6,
+      "decks": [
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Every number in this atlas is synthetic ",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 15,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 4,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Evidence",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 15,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 35,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "6.5",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 15,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(241,241,238)",
+      "minRatio": 14.69,
+      "count": 2,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Measure → repair",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 15,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(241,241,238)",
+      "minRatio": 14.69,
+      "count": 1,
+      "decks": [
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "选择热点查看说明；所有原文注释仍在页面中。",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 16,
+      "weight": 900,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 5,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Takeaway",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 16,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 5,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": ": Evidence pages take 6.5 hours, the cov",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 16,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(241,241,238)",
+      "minRatio": 14.69,
+      "count": 4,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Repair starts only from a measured failu",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 16,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 2,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Everything else in this story is a conse",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 16,
+      "weight": 700,
+      "required": 4.5,
+      "color": "rgb(250, 250, 247)",
+      "background": "rgb(21,33,27)",
+      "minRatio": 15.87,
+      "count": 3,
+      "decks": [
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "1",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 17,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 5,
+      "decks": [
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "观点与旁注",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 18,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 7,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "One release, two languages, every page r",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 18,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(241,241,238)",
+      "minRatio": 14.69,
+      "count": 3,
+      "decks": [
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "卡片就是论断：一句话、它的数字和单位，不悬停也能读。",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 19,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 8,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "The cover is checked first and most ofte",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 24,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 9,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "An eight-page review of one bilingual re",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "body",
+      "size": 43.2,
+      "weight": 400,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 2,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "The visual presentation of text and imag",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "callout",
+      "size": 20,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(40, 100, 72)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 6.68,
+      "count": 1,
+      "decks": [
+        "atlas-en"
+      ],
+      "sample": "Read across, not within: the same four f",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "callout",
+      "size": 24,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(40, 100, 72)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 6.68,
+      "count": 54,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "A BILINGUAL RELEASE IN EIGHT PAGES",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "callout",
+      "size": 24,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(52, 91, 197)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 5.82,
+      "count": 12,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "One action: add the weakest page to this",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "caption",
+      "size": 11,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 4,
+      "decks": [
+        "atlas-en"
+      ],
+      "sample": "Denominator: 100 renders · Sample: n = 1",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "caption",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 26,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "hours · ranked bar · zero · sorted by va",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "caption",
+      "size": 13,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 13,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Focus: Evidence",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "caption",
+      "size": 14,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 4,
+      "decks": [
+        "atlas-en"
+      ],
+      "sample": "Which fault fails most often here?",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "caption",
+      "size": 16,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 5,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Which pages take the most review time?",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "citation",
+      "size": 12,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 27,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Synthetic sample · not measured · DeckWe",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "citation",
+      "size": 16,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 2,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "W3C, WCAG 2.2, Success Criterion 1.4.3 ·",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "display",
+      "size": 37,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 12,
+      "decks": [
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "对比",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "display",
+      "size": 40,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 1,
+      "decks": [
+        "story-research-atlas-en"
+      ],
+      "sample": "The contrast rule is not ours.",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "display",
+      "size": 48,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 37,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Evidence pages take four times\nthe revie",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "display",
+      "size": 51.9,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 1,
+      "decks": [
+        "atlas-en"
+      ],
+      "sample": "Four panels, one scale: fit failures by ",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "display",
+      "size": 52.8,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 11,
+      "decks": [
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Appendix: definitions, sources and limit",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "display",
+      "size": 59,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 29,
+      "decks": [
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "First paint settles below 600 ms by the ",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "display",
+      "size": 66,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 45,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Most review time goes to pages\nnobody pr",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "display",
+      "size": 88,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 18,
+      "decks": [
+        "story-research-atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Ship the whole story,\nnot the hero slide",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "numeric",
+      "size": 28.8,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(40, 100, 72)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 6.68,
+      "count": 1,
+      "decks": [
+        "story-research-atlas-en"
+      ],
+      "sample": "%",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "numeric",
+      "size": 36.8,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(40, 100, 72)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 6.68,
+      "count": 1,
+      "decks": [
+        "story-research-atlas-en"
+      ],
+      "sample": "pages",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "numeric",
+      "size": 180,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(40, 100, 72)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 6.68,
+      "count": 1,
+      "decks": [
+        "story-research-atlas-en"
+      ],
+      "sample": "41",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "numeric",
+      "size": 230,
+      "weight": 600,
+      "required": 3,
+      "color": "rgb(40, 100, 72)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 6.68,
+      "count": 1,
+      "decks": [
+        "story-research-atlas-en"
+      ],
+      "sample": "8",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "table",
+      "size": 11,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 6,
+      "decks": [
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Term",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "table",
+      "size": 12,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 15,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Check",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "table",
+      "size": 14,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 21,
+      "decks": [
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "First paint",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "table",
+      "size": 20,
+      "weight": 600,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 13,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Pages reviewed",
+      "passes": true
+    },
+    {
+      "theme": "research-atlas",
+      "role": "table",
+      "size": 20,
+      "weight": 400,
+      "required": 4.5,
+      "color": "rgb(21, 33, 27)",
+      "background": "rgb(250,250,247)",
+      "minRatio": 15.87,
+      "count": 47,
+      "decks": [
+        "story-research-atlas-en",
+        "atlas-en",
+        "storyboard-research-atlas-zh-CN"
+      ],
+      "sample": "Cover and two more",
+      "passes": true
+    }
+  ],
+  "tokens": [
+    {
+      "theme": "editorial-fieldnotes",
+      "pairs": [
+        {
+          "name": "ink on paper",
+          "fg": "#24241F",
+          "bg": "#F3F0E8",
+          "ratio": 13.69
+        },
+        {
+          "name": "accent on paper",
+          "fg": "#A8503A",
+          "bg": "#F3F0E8",
+          "ratio": 4.76
+        },
+        {
+          "name": "secondary on paper",
+          "fg": "#3B5B74",
+          "bg": "#F3F0E8",
+          "ratio": 6.28
+        },
+        {
+          "name": "reference on paper",
+          "fg": "#6B675C",
+          "bg": "#F3F0E8",
+          "ratio": 4.96
+        },
+        {
+          "name": "missing on paper",
+          "fg": "#7A5B2E",
+          "bg": "#F3F0E8",
+          "ratio": 5.48
+        },
+        {
+          "name": "paper on ink (table header)",
+          "fg": "#F3F0E8",
+          "bg": "#24241F",
+          "ratio": 13.69
+        },
+        {
+          "name": "ink on secondary (stage orb)",
+          "fg": "#24241F",
+          "bg": "#3B5B74",
+          "ratio": 2.18
+        },
+        {
+          "name": "chart 1 on paper",
+          "fg": "#A8503A",
+          "bg": "#F3F0E8",
+          "ratio": 4.76
+        },
+        {
+          "name": "chart 2 on paper",
+          "fg": "#3B5B74",
+          "bg": "#F3F0E8",
+          "ratio": 6.28
+        },
+        {
+          "name": "chart 3 on paper",
+          "fg": "#4E6B3B",
+          "bg": "#F3F0E8",
+          "ratio": 5.28
+        },
+        {
+          "name": "chart 4 on paper",
+          "fg": "#8A6214",
+          "bg": "#F3F0E8",
+          "ratio": 4.8
+        },
+        {
+          "name": "chart 5 on paper",
+          "fg": "#6B3F6E",
+          "bg": "#F3F0E8",
+          "ratio": 7.2
+        },
+        {
+          "name": "chart 6 on paper",
+          "fg": "#24241F",
+          "bg": "#F3F0E8",
+          "ratio": 13.69
+        },
+        {
+          "name": "chart 7 on paper",
+          "fg": "#2A6E6B",
+          "bg": "#F3F0E8",
+          "ratio": 5.21
+        },
+        {
+          "name": "chart 8 on paper",
+          "fg": "#8E2F2A",
+          "bg": "#F3F0E8",
+          "ratio": 7.12
+        }
+      ]
+    },
+    {
+      "theme": "research-atlas",
+      "pairs": [
+        {
+          "name": "ink on paper",
+          "fg": "#15211B",
+          "bg": "#FAFAF7",
+          "ratio": 15.87
+        },
+        {
+          "name": "accent on paper",
+          "fg": "#286448",
+          "bg": "#FAFAF7",
+          "ratio": 6.68
+        },
+        {
+          "name": "secondary on paper",
+          "fg": "#345BC5",
+          "bg": "#FAFAF7",
+          "ratio": 5.82
+        },
+        {
+          "name": "reference on paper",
+          "fg": "#5E6A63",
+          "bg": "#FAFAF7",
+          "ratio": 5.4
+        },
+        {
+          "name": "missing on paper",
+          "fg": "#8A5A1E",
+          "bg": "#FAFAF7",
+          "ratio": 5.64
+        },
+        {
+          "name": "paper on ink (table header)",
+          "fg": "#FAFAF7",
+          "bg": "#15211B",
+          "ratio": 15.87
+        },
+        {
+          "name": "ink on secondary (stage orb)",
+          "fg": "#15211B",
+          "bg": "#345BC5",
+          "ratio": 2.73
+        },
+        {
+          "name": "chart 1 on paper",
+          "fg": "#286448",
+          "bg": "#FAFAF7",
+          "ratio": 6.68
+        },
+        {
+          "name": "chart 2 on paper",
+          "fg": "#3D66D1",
+          "bg": "#FAFAF7",
+          "ratio": 5
+        },
+        {
+          "name": "chart 3 on paper",
+          "fg": "#B5671A",
+          "bg": "#FAFAF7",
+          "ratio": 4.08
+        },
+        {
+          "name": "chart 4 on paper",
+          "fg": "#7A8A84",
+          "bg": "#FAFAF7",
+          "ratio": 3.46
+        },
+        {
+          "name": "chart 5 on paper",
+          "fg": "#6F3E80",
+          "bg": "#FAFAF7",
+          "ratio": 7.5
+        },
+        {
+          "name": "chart 6 on paper",
+          "fg": "#1F7E86",
+          "bg": "#FAFAF7",
+          "ratio": 4.58
+        },
+        {
+          "name": "chart 7 on paper",
+          "fg": "#B5452B",
+          "bg": "#FAFAF7",
+          "ratio": 5.21
+        },
+        {
+          "name": "chart 8 on paper",
+          "fg": "#15211B",
+          "bg": "#FAFAF7",
+          "ratio": 15.87
+        }
+      ]
+    },
+    {
+      "theme": "luminous-stage",
+      "pairs": [
+        {
+          "name": "ink on paper",
+          "fg": "#F2F3EE",
+          "bg": "#0C1017",
+          "ratio": 17.09
+        },
+        {
+          "name": "accent on paper",
+          "fg": "#A8D2EA",
+          "bg": "#0C1017",
+          "ratio": 11.86
+        },
+        {
+          "name": "secondary on paper",
+          "fg": "#4F7EA3",
+          "bg": "#0C1017",
+          "ratio": 4.4
+        },
+        {
+          "name": "reference on paper",
+          "fg": "#AEB6C0",
+          "bg": "#0C1017",
+          "ratio": 9.3
+        },
+        {
+          "name": "missing on paper",
+          "fg": "#E0A864",
+          "bg": "#0C1017",
+          "ratio": 9.03
+        },
+        {
+          "name": "paper on ink (table header)",
+          "fg": "#0C1017",
+          "bg": "#F2F3EE",
+          "ratio": 17.09
+        },
+        {
+          "name": "ink on secondary (stage orb)",
+          "fg": "#F2F3EE",
+          "bg": "#4F7EA3",
+          "ratio": 3.89
+        },
+        {
+          "name": "chart 1 on paper",
+          "fg": "#A8D2EA",
+          "bg": "#0C1017",
+          "ratio": 11.86
+        },
+        {
+          "name": "chart 2 on paper",
+          "fg": "#F2B75A",
+          "bg": "#0C1017",
+          "ratio": 10.61
+        },
+        {
+          "name": "chart 3 on paper",
+          "fg": "#8FE3C0",
+          "bg": "#0C1017",
+          "ratio": 12.63
+        },
+        {
+          "name": "chart 4 on paper",
+          "fg": "#F2A0B8",
+          "bg": "#0C1017",
+          "ratio": 9.52
+        },
+        {
+          "name": "chart 5 on paper",
+          "fg": "#C5B3F7",
+          "bg": "#0C1017",
+          "ratio": 10.13
+        },
+        {
+          "name": "chart 6 on paper",
+          "fg": "#D3D6DA",
+          "bg": "#0C1017",
+          "ratio": 13.07
+        },
+        {
+          "name": "chart 7 on paper",
+          "fg": "#D8E86A",
+          "bg": "#0C1017",
+          "ratio": 14.22
+        },
+        {
+          "name": "chart 8 on paper",
+          "fg": "#FF9A7A",
+          "bg": "#0C1017",
+          "ratio": 9.21
+        }
+      ]
+    }
+  ],
+  "ok": true
+}

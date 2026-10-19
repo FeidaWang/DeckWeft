@@ -49,9 +49,9 @@ You need Node 22 or later, Playwright, and an isolated browser outside `/Applica
 The [evidence](../evidence/vis-014/review.md#open--recorded-not-fixed) has the full list:
 
 - the Claude host
-- missing-glyph detection
+- missing-glyph detection: closed in S8 (the fit audit now reports it; [VIS-015](../evidence/vis-015/review.md))
 - the 390 px heatmap scroll
-- CJK heading breaks
+- CJK heading breaks: closed in S8 (phrase breaks at dictionary word boundaries)
 - payload size
 - screen readers, IME, 200% zoom and projection
 - PowerPoint and Keynote runs of the S7 packages; PowerPoint and PDF are compiled and checked in [VIS-016](../evidence/vis-016/review.md)

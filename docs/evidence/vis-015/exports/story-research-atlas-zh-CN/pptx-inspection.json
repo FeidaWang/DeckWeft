@@ -1,0 +1,89 @@
+{
+ "kind": "independent PPTX ZIP/XML/relationship/workbook/text check (Python standard library); not PowerPoint or Keynote acceptance",
+ "status": "pass",
+ "failures": [],
+ "missingText": [],
+ "chartsChecked": 1,
+ "slides": [
+  {
+   "slide": "ppt/slides/slide1.xml",
+   "textShapes": 9,
+   "pictures": 0,
+   "charts": 0,
+   "tables": 0,
+   "connectors": 4,
+   "timing": false,
+   "transition": false
+  },
+  {
+   "slide": "ppt/slides/slide2.xml",
+   "textShapes": 8,
+   "pictures": 0,
+   "charts": 0,
+   "tables": 0,
+   "connectors": 4,
+   "timing": false,
+   "transition": false
+  },
+  {
+   "slide": "ppt/slides/slide3.xml",
+   "textShapes": 12,
+   "pictures": 0,
+   "charts": 1,
+   "tables": 0,
+   "connectors": 3,
+   "timing": false,
+   "transition": false
+  },
+  {
+   "slide": "ppt/slides/slide4.xml",
+   "textShapes": 5,
+   "pictures": 0,
+   "charts": 0,
+   "tables": 1,
+   "connectors": 2,
+   "timing": false,
+   "transition": false
+  },
+  {
+   "slide": "ppt/slides/slide5.xml",
+   "textShapes": 14,
+   "pictures": 0,
+   "charts": 0,
+   "tables": 0,
+   "connectors": 5,
+   "timing": false,
+   "transition": false
+  },
+  {
+   "slide": "ppt/slides/slide6.xml",
+   "textShapes": 10,
+   "pictures": 2,
+   "charts": 0,
+   "tables": 0,
+   "connectors": 3,
+   "timing": false,
+   "transition": false
+  },
+  {
+   "slide": "ppt/slides/slide7.xml",
+   "textShapes": 7,
+   "pictures": 0,
+   "charts": 0,
+   "tables": 0,
+   "connectors": 3,
+   "timing": false,
+   "transition": false
+  },
+  {
+   "slide": "ppt/slides/slide8.xml",
+   "textShapes": 9,
+   "pictures": 0,
+   "charts": 0,
+   "tables": 0,
+   "connectors": 6,
+   "timing": false,
+   "transition": false
+  }
+ ]
+}

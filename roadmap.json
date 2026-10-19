@@ -1,1415 +1,1163 @@
 {
-  "project": "DeckWeft",
-  "version": "0.1.0-alpha.2",
-  "updated": "2026-10-19",
-  "statusMeaning": "implemented-local means local source/test evidence, not production or authenticated host certification",
-  "phases": [
-    {
-      "id": "P0",
-      "name": "Identity, contracts, and release honesty",
-      "dependsOn": [],
-      "state": "implemented-local; publishing gates remain",
-      "goal": "Make the project installable and understandable without inheriting unsupported claims.",
-      "tasks": [
-        "DW-001",
-        "DW-010",
-        "DW-020"
-      ]
-    },
-    {
-      "id": "P1",
-      "name": "A reliable local editing loop",
-      "dependsOn": [
-        "P0"
-      ],
-      "state": "alpha editing and recovery-as-copy implemented; wider accessibility and retention gates remain",
-      "goal": "Open, edit, save, reopen, and recover without losing the story.",
-      "tasks": [
-        "DW-100",
-        "DW-110",
-        "DW-120"
-      ]
-    },
-    {
-      "id": "P2",
-      "name": "Trustworthy layout and editable delivery",
-      "dependsOn": [
-        "P1"
-      ],
-      "state": "browser-measured text implemented; cross-app fidelity hardening remains",
-      "goal": "All output formats use one scene and preserve editable content.",
-      "tasks": [
-        "DW-130",
-        "DW-140",
-        "DW-150"
-      ]
-    },
-    {
-      "id": "P3",
-      "name": "Host-native AI with traceable content",
-      "dependsOn": [
-        "P2"
-      ],
-      "state": "skill bridge implemented; generation system planned",
-      "goal": "Let an agent draft and revise without hiding sources, cost, or failure.",
-      "tasks": [
-        "DW-200",
-        "DW-210",
-        "DW-220"
-      ]
-    },
-    {
-      "id": "P4",
-      "name": "Verified design-app and media workflows",
-      "dependsOn": [
-        "P2",
-        "P3"
-      ],
-      "state": "handoff sources implemented; real-app acceptance planned",
-      "goal": "Move editable work into Figma and AE with evidence, then add media.",
-      "tasks": [
-        "DW-300",
-        "DW-310",
-        "DW-320"
-      ]
-    },
-    {
-      "id": "P5",
-      "name": "Shared libraries and collaboration",
-      "dependsOn": [
-        "P3",
-        "P4"
-      ],
-      "state": "planned; defer until core adoption",
-      "goal": "Grow beyond one computer only after repeatable local quality.",
-      "tasks": [
-        "DW-400",
-        "DW-410",
-        "DW-420"
-      ]
-    },
-    {
-      "id": "VIS-A",
-      "name": "Visual-first semantic web foundation",
-      "dependsOn": [],
-      "state": "VIS-002–007 implemented-local; VIS-001 clean-checkout / remote CI accepted for the recorded source",
-      "goal": "Establish reproducible visual evidence and a separate semantic DOM/SVG path without changing v1/v2 storage.",
-      "tasks": [
-        "VIS-001",
-        "VIS-002",
-        "VIS-003",
-        "VIS-004",
-        "VIS-005",
-        "VIS-006",
-        "VIS-007"
-      ]
-    }
-  ],
-  "tasks": [
-    {
-      "id": "DW-001",
-      "priority": "P0",
-      "title": "New identity and English-first documentation",
-      "state": "implemented-local",
-      "dependsOn": [],
-      "acceptance": [
-        "All active surfaces use DeckWeft; attribution retained.",
-        "English and Simplified Chinese have separate entry points.",
-        "No fake badges, test claims, affiliation, or registry reservations."
-      ]
-    },
-    {
-      "id": "DW-010",
-      "priority": "P0",
-      "title": "Strict schema, explicit migration, and security boundary",
-      "state": "implemented-local",
-      "dependsOn": [
-        "DW-001"
-      ],
-      "acceptance": [
-        "Reject invalid current input and unsafe ids.",
-        "Preserve legacy originals and explain unsupported fields.",
-        "Loopback host/origin/token checks and bounded JSON requests pass."
-      ]
-    },
-    {
-      "id": "DW-020",
-      "priority": "P0",
-      "title": "Reproducible bundle and real-host release checks",
-      "state": "blocked",
-      "dependsOn": [
-        "DW-010"
-      ],
-      "acceptance": [
-        "Bundle runs after being copied away from the repository.",
-        "Both authenticated hosts actually load and execute the skill.",
-        "Record installed host versions and CI run ids before publishing."
-      ],
-      "evidence": "docs/evidence/dw-020/review.json",
-      "blocker": "Claude is not authenticated and user deferred sign-in; Codex native desktop activation and remote CI not tested.",
-      "implemented": [
-        "Isolated bundle, real subprocess probes, opt-in live runner, trace/hash evidence",
-        "Authenticated Codex CLI standalone project skill discovered and executed; three-slide output and command trace reviewed",
-        "Independent bundled HTML/PPTX byte comparison, native text/relationships, LibreOffice visual review",
-        "Claude validator passed; ordinary permission-mode compatibility, checked installation, bounded timeout and interrupted-evidence protection"
-      ]
-    },
-    {
-      "id": "DW-100",
-      "priority": "P1",
-      "title": "Studio editing and durable project storage",
-      "state": "implemented-local",
-      "dependsOn": [
-        "DW-010"
-      ],
-      "acceptance": [
-        "Edit, add, duplicate, reorder, save and reopen projects.",
-        "Multiple project ids do not share a global active pointer.",
-        "Stale saves return 409 without destroying unsaved browser edits."
-      ]
-    },
-    {
-      "id": "DW-110",
-      "priority": "P1",
-      "title": "History recovery and project management",
-      "state": "partial",
-      "dependsOn": [
-        "DW-100"
-      ],
-      "acceptance": [
-        "Snapshot browser with read-only inspection and restore-as-copy.",
-        "Configurable retention with preview before pruning.",
-        "Rename and archive projects without altering ids or deleting unknown files."
-      ],
-      "evidence": "docs/browser-evidence.json",
-      "implemented": [
-        "Read-only paged history",
-        "Measured snapshot preview",
-        "Hash-pinned idempotent restore-as-copy",
-        "Current draft preservation"
-      ],
-      "remaining": [
-        "Retention/pruning preview",
-        "Project archive management"
-      ]
-    },
-    {
-      "id": "DW-120",
-      "priority": "P1",
-      "title": "Interaction and accessibility hardening",
-      "state": "partial",
-      "dependsOn": [
-        "DW-100"
-      ],
-      "acceptance": [
-        "Desktop and narrow-window editing/export smoke tests.",
-        "Keyboard, focus return, tabs, drawers, 200% zoom, and screen-reader audit.",
-        "Document supported browsers and run each claimed engine."
-      ],
-      "evidence": "docs/browser-evidence.json",
-      "implemented": [
-        "IME event guards",
-        "Queued-dialog-close race fix",
-        "Tab focus loop/return",
-        "Typing during save and two-window conflict preservation",
-        "Stale preview and export guards",
-        "Signal icon rail, six-size direct-browser checks, tour, speech timing and reduced motion in the DevDay revision"
-      ],
-      "remaining": [
-        "Real OS IME",
-        "200% browser zoom",
-        "Screen reader",
-        "Direct-navigation CSP and other engines"
-      ],
-      "currentEvidence": "docs/evidence/devday-redesign/review.json"
-    },
-    {
-      "id": "DW-130",
-      "priority": "P2",
-      "title": "Measured multilingual text and adversarial layout corpus",
-      "state": "implemented-local",
-      "dependsOn": [
-        "DW-100"
-      ],
-      "acceptance": [
-        "Add real-font browser measurement behind a deterministic contract.",
-        "Test long English, CJK, mixed punctuation, numbers, emoji, all four ratios.",
-        "No text loss; block when every eligible layout overflows."
-      ],
-      "evidence": "docs/font-evidence.json",
-      "limits": [
-        "CLI remains offline-estimate",
-        "Cross-app font substitution and non-Chromium engines not certified"
-      ]
-    },
-    {
-      "id": "DW-140",
-      "priority": "P2",
-      "title": "Native editable output fidelity",
-      "state": "partial",
-      "dependsOn": [
-        "DW-130"
-      ],
-      "acceptance": [
-        "PPTX package and native shape/notes checks pass.",
-        "PowerPoint, Keynote, and LibreOffice produce inspected representative output.",
-        "Do not silently rasterize text to satisfy visual tests."
-      ],
-      "implemented": [
-        "Independent notes theme fixes observed PowerPoint repair prompt",
-        "Native text, shapes, individual media and 14-slide PowerPoint open/visual review for the DevDay style"
-      ],
-      "currentEvidence": "docs/evidence/devday-redesign/review.json"
-    },
-    {
-      "id": "DW-150",
-      "priority": "P2",
-      "title": "Semantic slide-family expansion",
-      "state": "partial",
-      "dependsOn": [
-        "DW-130",
-        "DW-140"
-      ],
-      "acceptance": [
-        "Add comparison, timeline, evidence chart, table and image-caption families.",
-        "Four candidates must differ structurally and respect semantic constraints.",
-        "Charts use explicit units and sources; accessibility summary retained."
-      ],
-      "implemented": [
-        "Reviewed semantic cover/comparison/process/timeline/metric/image-caption recipes, native measured scenes and explicit interaction fallback"
-      ],
-      "remaining": [
-        "Native charts/tables and their units/accessibility contracts",
-        "Four structurally distinct candidates for every semantic family",
-        "Broader cross-application acceptance"
-      ],
-      "currentEvidence": "docs/evidence/mb-06-10/review.json"
-    },
-    {
-      "id": "DW-200",
-      "priority": "P3",
-      "title": "Evidence-bearing story planner",
-      "state": "partial",
-      "dependsOn": [
-        "DW-130",
-        "DW-140"
-      ],
-      "acceptance": [
-        "Validated narrative and source proposals before document writes.",
-        "Distinguish quote, sourced fact, calculation, assumption and fictional example.",
-        "A source URL alone never becomes verified evidence."
-      ],
-      "implemented": [
-        "Per-slide claim/audience/source/visual/script proposals before save-as-copy",
-        "Strict source/asset references; URLs remain unverified"
-      ],
-      "remaining": [
-        "Explicit quote/fact/calculation/assumption/example classification and richer research workflow"
-      ],
-      "currentEvidence": "docs/evidence/mb-06-10/review.json"
-    },
-    {
-      "id": "DW-210",
-      "priority": "P3",
-      "title": "Safe host-agent jobs and resumable checkpoints",
-      "state": "partial",
-      "dependsOn": [
-        "DW-020",
-        "DW-200"
-      ],
-      "acceptance": [
-        "Host skill calls a complete runtime with no hidden provider.",
-        "Persist job input/output hashes and approved patches; cancel and resume.",
-        "Retry is idempotent and does not duplicate slides or paid actions."
-      ],
-      "implemented": [
-        "Opt-in local queue with exact-input request ids, owned leases, cancellation and review-as-copy",
-        "Actual stdio MCP and connected-computer CLI subprocess round trips; credential fields refused",
-        "Direct browser fixture-worker workflow and source preservation",
-        "Validated duration/speaking targets, exact-input hashing and copyable Dot connection task",
-        "Capability handshake, separate deck/code proposal scopes, hash-pinned execution capsule and renewed checkpoint grants",
-        "Durable bounded events, validated-work progress, comparable-run ETA fallback and atomic review/application",
-        "Actual Codex CLI task plus paired medium/high pilot; independent server model attestation unavailable"
-      ],
-      "remaining": [
-        "Actual Dot desktop host/model acceptance",
-        "Manual code-proposal integration and wider host discovery; multiple workers remain future scope"
-      ],
-      "evidence": "docs/evidence/dot-stage/review.json",
-      "currentEvidence": "docs/evidence/mb-06-10/review.json"
-    },
-    {
-      "id": "DW-220",
-      "priority": "P3",
-      "title": "Optional explicit provider and translation adapters",
-      "state": "planned",
-      "dependsOn": [
-        "DW-200",
-        "DW-210"
-      ],
-      "acceptance": [
-        "Opt-in provider keys remain outside deck JSON and logs.",
-        "Price/usage estimates, budget limit, cancellation, schema validation.",
-        "Translation is explicit and produces a new checked language edition."
-      ]
-    },
-    {
-      "id": "DW-300",
-      "priority": "P4",
-      "title": "Figma editable import acceptance",
-      "state": "partial",
-      "dependsOn": [
-        "DW-140"
-      ],
-      "acceptance": [
-        "Real assigned plugin id; no fabricated manifest id.",
-        "Text/shape layers and font fallbacks checked in the actual app.",
-        "Decide auto-layout/components vs fixed exported composition explicitly."
-      ]
-    },
-    {
-      "id": "DW-310",
-      "priority": "P4",
-      "title": "After Effects editable import acceptance",
-      "state": "partial",
-      "dependsOn": [
-        "DW-140"
-      ],
-      "acceptance": [
-        "Strict JSON parsing; cancel and rollback do not damage an existing project.",
-        "Verify composition hierarchy, native text/shapes, fonts and temporal easing.",
-        "Render a real AE preview and record environment and output evidence."
-      ]
-    },
-    {
-      "id": "DW-320",
-      "priority": "P4",
-      "title": "Rights-aware media and animation library",
-      "state": "partial",
-      "dependsOn": [
-        "DW-150",
-        "DW-300",
-        "DW-310"
-      ],
-      "acceptance": [
-        "Track asset origin, license, allowed uses and local content hash.",
-        "No scraping or redistribution of proprietary template collections.",
-        "Network use and chargeable generation require explicit opt-in."
-      ],
-      "implemented": [
-        "Local PNG content-addressed registry with origin/license/allowed-use/alt/fallback metadata and bounded file checks"
-      ],
-      "remaining": [
-        "Optional media generation/provider path and reviewed animation library",
-        "Actual downstream application support"
-      ],
-      "currentEvidence": "docs/evidence/mb-06-10/review.json"
-    },
-    {
-      "id": "DW-400",
-      "priority": "P5",
-      "title": "Template SDK and reviewed community contributions",
-      "state": "planned",
-      "dependsOn": [
-        "DW-150",
-        "DW-320"
-      ],
-      "acceptance": [
-        "Versioned recipe contract and validation corpus.",
-        "Theme/recipe examples and safe plugin boundaries.",
-        "Reject arbitrary code in imported content documents."
-      ]
-    },
-    {
-      "id": "DW-410",
-      "priority": "P5",
-      "title": "Optional collaboration service",
-      "state": "planned",
-      "dependsOn": [
-        "DW-200",
-        "DW-210",
-        "DW-400"
-      ],
-      "acceptance": [
-        "Define accounts, access rules, migrations, backup and tenant isolation.",
-        "Add multi-user version merge with an explicit conflict model.",
-        "Do not expose the local alpha server as the collaboration backend."
-      ]
-    },
-    {
-      "id": "DW-420",
-      "priority": "P5",
-      "title": "Optional commercial hosting and team controls",
-      "state": "planned",
-      "dependsOn": [
-        "DW-410"
-      ],
-      "acceptance": [
-        "Prove demand before introducing billing and operational burden.",
-        "Separate hosted value from the openly licensed local core.",
-        "Document support, retention, export rights and service limitations."
-      ]
-    },
-    {
-      "id": "MB-01",
-      "priority": "P0",
-      "title": "Typed contracts and reproducible build pilot",
-      "state": "implemented-local",
-      "implementationState": "implemented-local",
-      "dependsOn": [],
-      "acceptance": [
-        "Scoped strict type gate checks schema-aligned declarations and unknown input boundaries.",
-        "Emitted runtime, offline CLI, copied plugin bundle and reproducible output pass.",
-        "Document developer build cost and preserve current launcher until source-only distribution tradeoffs are resolved."
-      ],
-      "evidence": "docs/evidence/mb-01-05/review.json",
-      "remaining": []
-    },
-    {
-      "id": "MB-02",
-      "priority": "P0",
-      "title": "Semantic action hierarchy and compact controls",
-      "state": "partial",
-      "implementationState": "implemented-local",
-      "dependsOn": [
-        "MB-01"
-      ],
-      "acceptance": [
-        "Actions have consistent labels, icons, color roles, shape and focus states.",
-        "Keyboard, hit areas, narrow windows and 200% zoom are checked; color is not the only cue.",
-        "Measure task steps and usable canvas area before and after; no invented savings."
-      ],
-      "evidence": "docs/evidence/mb-01-05/review.json",
-      "remaining": [
-        "Real screen reader",
-        "200% browser zoom"
-      ]
-    },
-    {
-      "id": "MB-03",
-      "priority": "P0",
-      "title": "Editor appearance and shared accessibility preferences",
-      "state": "implemented-local",
-      "implementationState": "implemented-local",
-      "dependsOn": [
-        "MB-02"
-      ],
-      "acceptance": [
-        "Light, dark and live system editor appearance are separate from deck theme.",
-        "One quick reduce-motion control governs CSS, Web Animations, Three.js, replay and scrolling.",
-        "Off cancels active animation loops and leaves usable static interaction; preferences stay outside project content."
-      ],
-      "evidence": "docs/evidence/mb-01-05/review.json",
-      "remaining": []
-    },
-    {
-      "id": "MB-04",
-      "priority": "P0",
-      "title": "Separate audience projection and presenter session",
-      "state": "partial",
-      "implementationState": "implemented-local",
-      "dependsOn": [
-        "MB-01"
-      ],
-      "acceptance": [
-        "Audience document and audience exports omit private notes, project payloads and editor credentials.",
-        "Separate restricted loopback origin exposes no editor session/project endpoints; read-only capability and bounded origin-checked messages carry the filtered projection.",
-        "Real window sharing/extended display, refresh, popup failure, disconnect and close recovery are recorded."
-      ],
-      "evidence": "docs/evidence/mb-01-05/review.json",
-      "remaining": [
-        "Actual conferencing-share and extended-display acceptance"
-      ]
-    },
-    {
-      "id": "MB-05",
-      "priority": "P0",
-      "title": "Resizable slide-following teleprompter",
-      "state": "implemented-local",
-      "implementationState": "implemented-local",
-      "dependsOn": [
-        "MB-03",
-        "MB-04"
-      ],
-      "acceptance": [
-        "Current slide automatically selects its script; sidebar resizes/docks and retains text anchor.",
-        "English, Chinese and mixed-text pace plus pauses are calibrated separately from motion.duration.",
-        "Start, pause, manual scroll, resume and reduced-motion manual paging work; no microphone required."
-      ],
-      "evidence": "docs/evidence/mb-01-05/review.json",
-      "remaining": []
-    },
-    {
-      "id": "MB-06",
-      "priority": "P1",
-      "state": "implemented-local",
-      "title": "Storyboard, asset registry and derived scene contracts",
-      "dependsOn": [
-        "MB-01"
-      ],
-      "existingTasks": [
-        "DW-150",
-        "DW-200",
-        "DW-320"
-      ],
-      "estimatedPersonDays": [
-        4,
-        6
-      ],
-      "proposedModules": [
-        "src/planning/storyboard",
-        "src/contracts/assets",
-        "src/assets/registry"
-      ],
-      "reuse": [
-        "src/core/model.mjs",
-        "src/layout/scene.mjs",
-        "src/render/assets.mjs"
-      ],
-      "acceptance": [
-        "Brief produces reviewable per-slide intent, evidence and speaker-script proposals.",
-        "Assets have local hashes, rights/provenance, dimensions, alt text and fallbacks; binaries are outside project JSON.",
-        "Schema and validator evolve together with copy-preserving explicit migration; free-form extensions do not bypass validation."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-06-10/review.json",
-      "remainingAcceptance": []
-    },
-    {
-      "id": "MB-07",
-      "priority": "P1",
-      "state": "implemented-local",
-      "title": "Semantic templates, constrained SVG and interaction recipes",
-      "dependsOn": [
-        "MB-03",
-        "MB-06"
-      ],
-      "existingTasks": [
-        "DW-130",
-        "DW-140",
-        "DW-150",
-        "DW-400"
-      ],
-      "estimatedPersonDays": [
-        4,
-        6
-      ],
-      "proposedModules": [
-        "src/planning/visual-intent",
-        "src/layout/recipes",
-        "src/contracts/interaction"
-      ],
-      "reuse": [
-        "src/layout/engine.mjs",
-        "src/render/svg.mjs",
-        "src/render/pptx.mjs"
-      ],
-      "acceptance": [
-        "Comparison, process, timeline, metric, image-caption and cover recipes respond to semantic content.",
-        "Measured text and shared derived scenes drive every exporter, with editable native output.",
-        "Interactions are allowlisted state machines; keyboard/text alternatives and declared static fallbacks exist."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-06-10/review.json",
-      "remainingAcceptance": []
-    },
-    {
-      "id": "MB-08",
-      "priority": "P1",
-      "state": "partial",
-      "title": "Single Dot capability handshake and scoped execution grants",
-      "dependsOn": [
-        "MB-01"
-      ],
-      "existingTasks": [
-        "DW-020",
-        "DW-210"
-      ],
-      "estimatedPersonDays": [
-        4,
-        6
-      ],
-      "proposedModules": [
-        "src/orchestration/grants",
-        "src/orchestration/execution-capsule",
-        "src/adapters/hosts"
-      ],
-      "reuse": [
-        "src/services/agent-bridge.mjs",
-        "src/adapters/agent-mcp.mjs",
-        "bin/deckweft-worker.mjs"
-      ],
-      "acceptance": [
-        "A real authorized host negotiates supported conversation/model/effort/cancel/usage operations.",
-        "Selected adopted roadmap hashes, source baselines, AGENTS rules and acceptance commands are pinned per job.",
-        "Deck-generation and code-change have separate scopes; revocation and unsupported required-model paths fail explicitly."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-06-10/review.json",
-      "remainingAcceptance": [
-        "Actual Dot desktop capability handshake, model/effort and task acceptance"
-      ]
-    },
-    {
-      "id": "MB-09",
-      "priority": "P1",
-      "state": "implemented-local",
-      "title": "Durable jobs, checkpoints and honest progress timeline",
-      "dependsOn": [
-        "MB-08"
-      ],
-      "existingTasks": [
-        "DW-210"
-      ],
-      "estimatedPersonDays": [
-        4,
-        6
-      ],
-      "proposedModules": [
-        "src/orchestration/jobs",
-        "src/orchestration/events",
-        "src/orchestration/progress",
-        "ui/jobs"
-      ],
-      "reuse": [
-        "src/services/agent-bridge.mjs",
-        "public/agent-bridge.js"
-      ],
-      "acceptance": [
-        "Bounded monotonic events survive reconnect/restart, leases, retry and cancellation without duplicate application.",
-        "Validated artifacts and real units drive progress; opaque inference is indeterminate.",
-        "ETA uses comparable runs and critical path with ranges/confidence, or states insufficient history; review and blocked states are distinct."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-06-10/review.json",
-      "remainingAcceptance": []
-    },
-    {
-      "id": "MB-10",
-      "priority": "P1",
-      "state": "implemented-local",
-      "title": "Evaluate Astra effort and version the routing policy",
-      "dependsOn": [
-        "MB-06",
-        "MB-07",
-        "MB-09"
-      ],
-      "existingTasks": [
-        "DW-200",
-        "DW-210",
-        "DW-220"
-      ],
-      "estimatedPersonDays": [
-        2,
-        4
-      ],
-      "proposedModules": [
-        "src/orchestration/effort-policy",
-        "tests/evals"
-      ],
-      "reuse": [
-        "tests/core.test.mjs",
-        "tests/agent-bridge.test.mjs"
-      ],
-      "acceptance": [
-        "Compare medium/high on repeated representative English, Chinese, evidence, visual, interaction and code-change tasks.",
-        "Record acceptance quality, first-pass validity, repairs, latency and actual reported usage; mark unavailable cost unknown.",
-        "Store date/corpus/host/model/policy evidence; escalation honors the grant ceiling and no best-effort claim is made without results."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-06-10/review.json",
-      "remainingAcceptance": []
-    },
-    {
-      "id": "MB-11",
-      "priority": "P1",
-      "state": "implemented-local",
-      "title": "Opt-in image generation and local asset reuse",
-      "dependsOn": [
-        "MB-06",
-        "MB-07",
-        "MB-09",
-        "MB-10"
-      ],
-      "existingTasks": [
-        "DW-220",
-        "DW-320"
-      ],
-      "estimatedPersonDays": [
-        3,
-        6
-      ],
-      "proposedModules": [
-        "src/adapters/media",
-        "src/assets/cache",
-        "ui/workspace/asset-review"
-      ],
-      "reuse": [
-        "src/render/assets.mjs",
-        "src/services/store.mjs"
-      ],
-      "acceptance": [
-        "Only opted-in tools/providers receive approved data and chargeable requests; credentials stay outside projects/logs.",
-        "Relevant assets retain rights/alt text/content hash and are individually replaceable; offline reopen/export succeeds.",
-        "Bounded retries, cancellation and provider idempotency/recovery avoid blind duplicated paid work."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-11-15/review.json",
-      "remainingAcceptance": []
-    },
-    {
-      "id": "MB-12",
-      "priority": "P2",
-      "state": "partial",
-      "title": "Multiple workers and selected conversations",
-      "dependsOn": [
-        "MB-09",
-        "MB-10",
-        "MB-11"
-      ],
-      "existingTasks": [
-        "DW-210"
-      ],
-      "estimatedPersonDays": [
-        5,
-        8
-      ],
-      "proposedModules": [
-        "src/orchestration/scheduler",
-        "src/orchestration/integration",
-        "ui/jobs/workers"
-      ],
-      "reuse": [
-        "src/services/agent-bridge.mjs",
-        "src/services/store.mjs"
-      ],
-      "acceptance": [
-        "Two authorized workers process independent artifacts with scoped chat inputs and no permission inheritance.",
-        "One integrator checks revision/input hashes; coding workers use worktrees or isolated copies and stale patches conflict.",
-        "Revocation, crashes, lease theft, delayed completion and duplicate events do not cross scopes or duplicate outputs."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-11-15/review.json",
-      "remainingAcceptance": [
-        "Actual two-worker Dot desktop capability/conversation acceptance; current real host evidence is Codex CLI with selected authored snapshots only"
-      ]
-    },
-    {
-      "id": "MB-13",
-      "priority": "P2",
-      "state": "implemented-local",
-      "title": "General Three.js scene adapter",
-      "dependsOn": [
-        "MB-03",
-        "MB-07"
-      ],
-      "existingTasks": [
-        "DW-140",
-        "DW-320"
-      ],
-      "estimatedPersonDays": [
-        3,
-        5
-      ],
-      "proposedModules": [
-        "src/render/three-scene",
-        "src/contracts/render-capabilities"
-      ],
-      "reuse": [
-        "public/three-dots.js",
-        "src/render/three-bundle.mjs"
-      ],
-      "acceptance": [
-        "Approved scene recipes load locally only when needed with measured packaging/resource costs.",
-        "Context loss, static fallback, keyboard controls and reduced/off policies work.",
-        "Export declares static versus native behavior; editable text is not flattened with the 3D asset."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-11-15/review.json",
-      "remainingAcceptance": []
-    },
-    {
-      "id": "MB-14",
-      "priority": "P3",
-      "state": "partial",
-      "title": "Figma editable importer acceptance",
-      "dependsOn": [
-        "MB-07",
-        "MB-11"
-      ],
-      "existingTasks": [
-        "DW-300"
-      ],
-      "estimatedPersonDays": [
-        3,
-        5
-      ],
-      "proposedModules": [
-        "integrations/figma",
-        "src/adapters/handoff"
-      ],
-      "reuse": [
-        "integrations/figma/code.js",
-        "src/adapters/handoff.mjs"
-      ],
-      "acceptance": [
-        "Actual Figma importer runs with a real assigned identity.",
-        "Native text/shapes/media, fonts, node mapping and component/fixed-layout decisions are inspected.",
-        "Record actual environment and screenshots; exported JSON alone is not acceptance."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-11-15/review.json",
-      "remainingAcceptance": [
-        "Actual native Figma development-plugin registration with assigned id, editable media/font/source-map import and visual review"
-      ]
-    },
-    {
-      "id": "MB-15",
-      "priority": "P3",
-      "state": "partial",
-      "title": "After Effects temporal importer acceptance",
-      "dependsOn": [
-        "MB-07",
-        "MB-13"
-      ],
-      "existingTasks": [
-        "DW-310"
-      ],
-      "estimatedPersonDays": [
-        4,
-        7
-      ],
-      "proposedModules": [
-        "integrations/after-effects",
-        "src/adapters/handoff"
-      ],
-      "reuse": [
-        "integrations/after-effects/DeckWeft-Import.jsx",
-        "src/adapters/handoff.mjs"
-      ],
-      "acceptance": [
-        "Actual AE imports native layers with explicit temporal mapping and easing.",
-        "Strict parsing, cancel and rollback preserve existing projects.",
-        "Render and inspect real early/middle/settled preview frames; keep unsupported behavior explicit."
-      ],
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/mb-11-15/review.json",
-      "remainingAcceptance": [
-        "Actual After Effects execution, cancellation/rollback, fonts, temporal/easing and early/middle/settled preview rendering"
-      ]
-    },
-    {
-      "id": "VIS-001",
-      "priority": "P0",
-      "title": "Reproducible baseline and working CI",
-      "state": "implemented-local",
-      "dependsOn": [],
-      "implemented": [
-        "Locked npm ci before verify in CI",
-        "Three frozen legacy decks; isolated browser screenshots and source/font/output fingerprints",
-        "Clean committed checkout npm ci/verify passed locally and on GitHub Node 22 for Ubuntu, macOS and Windows; actual image comparison receipts retained"
-      ],
-      "remaining": "Baseline/CI acceptance passed for the recorded source commit; broader visual, accessibility, host and native release acceptance remains in its separate tasks.",
-      "evidence": "docs/evidence/visual-wave-a/review.md",
-      "acceptance": [
-        "Full acceptance remains defined in the supplied visual-first roadmap; this record covers the initial Wave A slice only."
-      ],
-      "currentEvidence": "docs/evidence/interaction-visual-regression/review.md"
-    },
-    {
-      "id": "VIS-002",
-      "priority": "P0",
-      "title": "Semantic document, design plan, and v3 adapter",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-001"
-      ],
-      "implemented": [
-        "Strict semantic blocks, numeric datasets, versioned source snapshots and anchors",
-        "Explicit nonmutating v1/v2 archive migration and validated import-as-copy",
-        "Revisioned v3 Visual Studio storage, immutable history, restore-as-copy and author locks"
-      ],
-      "remaining": "Source adapters and live synchronization are later SRC tasks.",
-      "evidence": "docs/evidence/visual-studio/review.json",
-      "acceptance": [
-        "V1/v2 readers still pass; migration preserves original JSON without mutation.",
-        "Numeric charts, long CJK headings, code and citations round-trip without numeric coercion.",
-        "Studio save/reopen, revision conflicts and restore-as-copy have actual browser evidence."
-      ]
-    },
-    {
-      "id": "VIS-003",
-      "priority": "P0",
-      "title": "Web scene and target capability contracts",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-002"
-      ],
-      "implemented": [
-        "Stable block/data bindings, text roles, groups, reading order and breakpoint variants",
-        "Validated SVG path/transform/clip/gradient and normalized crop contracts",
-        "Target-specific refusal for unsupported native v3 output; valid HTML stays available"
-      ],
-      "remaining": "Native v3 target compilers remain VIS-016 work; interaction/motion vocabulary is implemented locally under VIS-009.",
-      "evidence": "docs/evidence/visual-studio/review.json",
-      "acceptance": [
-        "Collage, cropped local image and chart bindings validate through one closed derived protocol.",
-        "SVG geometry, transforms, clipping, gradients, groups and responsive bindings are bounded data.",
-        "Unsupported native targets fail specifically and do not block valid web output."
-      ]
-    },
-    {
-      "id": "VIS-004",
-      "priority": "P0",
-      "title": "Semantic DOM/SVG renderer and bilingual layout",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-003"
-      ],
-      "implemented": [
-        "Bilingual semantic DOM/SVG renderer integrated into the real Studio editor",
-        "Local image/crop binding, exact numeric tables, no-JS reading and current-artifact export",
-        "Font/image readiness, DOM bounds, actual SVG/text contrast and clipping checks with negative browser cases"
-      ],
-      "remaining": "VIS-006–011 implement local families, components and bounded correction; the full VIS-014 release gallery and host gates remain open.",
-      "evidence": "docs/evidence/visual-studio/review.json",
-      "acceptance": [
-        "Same semantic document supports desktop presentation and 390 px no-JS reading.",
-        "Fonts and images finish before actual DOM bounds/contrast/clipping capture.",
-        "Screenshots, fit and export refer to the current hashed artifact; inserted contrast/clipping failures are detected."
-      ]
-    },
-    {
-      "id": "VIS-005",
-      "priority": "P1",
-      "title": "Theme packs and author profiles",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-002"
-      ],
-      "implemented": [
-        "Packaged versioned Cream Collage, Dark Data and Electric Violet theme grammar",
-        "English/Chinese typography, spacing, image treatment, charts, modes and motion",
-        "Scoped rule resolution and persisted audience, language, profile and scene/content locks"
-      ],
-      "remaining": "Full-story release acceptance and reference-guided personalization remain VIS-014/015 work.",
-      "evidence": "docs/evidence/visual-studio/review.json",
-      "acceptance": [
-        "Three versioned packs change typography, geometry, images and chapter behavior beyond palette alone.",
-        "Author choices and scoped locks survive actual saves, reloads and theme revisions.",
-        "Scoped rules resolve deterministically and fonts have observed local fallbacks."
-      ]
-    },
-    {
-      "id": "VIS-006",
-      "priority": "P1",
-      "title": "Compositions, candidates, and full-deck rhythm",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-004",
-        "VIS-005"
-      ],
-      "acceptance": [
-        "Six initial families each provide three materially different variants.",
-        "Feasible candidates preserve all facts; deck selection considers focal point, density and repetition.",
-        "Geometry and whole-story visual review establish diversity, not IDs alone."
-      ],
-      "evidence": "docs/evidence/vis-006/review.json",
-      "remaining": "VIS-014 wider gallery/story release, other browser engines and native v3 application acceptance remain open."
-    },
-    {
-      "id": "VIS-007",
-      "priority": "P1",
-      "title": "Asset direction, source extraction, and safe cropping",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-004",
-        "VIS-005"
-      ],
-      "acceptance": [
-        "Named image slots represent role, required pixels, focal/protected regions, source/factual status and honest backend capability.",
-        "Original local document images are reused with source revision/hash, license and original bytes preserved; JPEG/WebP have hash-bound native PNG and web derivatives.",
-        "Portrait/wide safe crops retain the protected subject; impossible crops stop or use explicit contain. Replacement retains scene family and unrelated author choices.",
-        "Generated/unknown concepts cannot automatically become factual source evidence; unavailable generation offers a deliberate content-preserving alternative."
-      ],
-      "evidence": "docs/evidence/vis-007/review.json",
-      "remaining": "Extraction is for registered images in saved local v2/v3 documents, not arbitrary PPTX/PDF parsing. Subject regions are author-marked, not detected. V3 generation transport/native export, VIS-014 broader release and other browser engines remain open."
-    },
-    {
-      "id": "VIS-008",
-      "priority": "P1",
-      "title": "Charts, diagrams, code, and annotation components",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-004",
-        "VIS-006"
-      ],
-      "acceptance": [
-        "Six typed exact-data chart variants, explicit units/axes/time zones and null gaps update geometry, labels, legends and accessible tables together.",
-        "Directed relationship, sequence and annotated process diagrams preserve supplied edges; exact code/emphasis/source anchors and stable annotation identities survive edits and reorder.",
-        "All three themes and both languages have actual browser measurements, static accessible representations, component capability receipts, editor/save/history and measured candidate/rhythm evidence."
-      ],
-      "evidence": "docs/evidence/vis-008/review.json",
-      "remaining": "native v3 target compilers, complex graph routing/label collision coverage, other engines/accessibility and broader VIS-014 release/host gates remain open."
-    },
-    {
-      "id": "VIS-009",
-      "priority": "P1",
-      "title": "Semantic motion and real interactive state",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-004",
-        "VIS-006",
-        "VIS-008"
-      ],
-      "acceptance": [
-        "Typed stable-id chart range/series selection, actual image comparison/hotspots and diagram/code explanations change semantic views and accessible content.",
-        "Keyboard, native touch, reduced-motion parity and deterministic cue-boundary replay/seek preserve exact source and immutable author content.",
-        "Finite scene resources are released on scene exit, background visibility and pagehide; source/author locks, candidates, conflicts and history recovery remain covered."
-      ],
-      "evidence": "docs/evidence/vis-009/review.json",
-      "remaining": "Other browser engines, actual screen reader/IME/200% zoom, arbitrary state/label collision coverage and native v3/host release gates remain open."
-    },
-    {
-      "id": "VIS-010",
-      "priority": "P1",
-      "title": "Browser QA and bounded visual correction",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-004",
-        "VIS-009"
-      ],
-      "acceptance": [
-        "Complete-story contact sheets, full-resolution scenes, platform fonts/resources/console diagnostics, text/source coverage and 234 real action traces across six bilingual three-theme stories and three responsive viewports.",
-        "Five deliberately injected fault classes detected; content/layout/state/renderer-bound receipts require actual delivered-image judgments.",
-        "Only affected scene composition changes, with two-round/candidate/scene/time budgets; author locks and a real failed-candidate/last-valid recovery probe remain enforced."
-      ],
-      "evidence": "docs/evidence/vis-010/review.json",
-      "remaining": "Finer visual repetition and chart-label spacing, exhaustive states, other engines/accessibility, native v3 compilers and broader host/release gates remain open. Automatic correction is restricted to composition; other diagnostics require explicit scoped work."
-    },
-    {
-      "id": "VIS-011",
-      "priority": "P1",
-      "title": "Design director and one-task production loop",
-      "state": "implemented-local",
-      "dependsOn": [
-        "VIS-006",
-        "VIS-007",
-        "VIS-008",
-        "VIS-009",
-        "VIS-010"
-      ],
-      "acceptance": [
-        "Shared content/design/assets/preview/inspection/scoped-patch/export tools with task-specific precompile direction and durable recovery.",
-        "Actual local five-page story at 1440/390px, precise page-4 exact-data chart revision, actual image review and final reviewed HTML exports.",
-        "Cumulative default two-round budgets, source/data/citation/identity preservation, author locks, missing data/assets, stale receipts, conflicts and accepted-artifact failure recovery."
-      ],
-      "evidence": "docs/evidence/vis-011/review.json",
-      "remaining": "Offline source inspection does not externally verify claims; deterministic supplied-text planning and narrow chart grammar need authorized host drafting for richer requests. Native v3 exports, VIS-012 authenticated host adapters and VIS-013 workbench remain open."
-    },
-    {
-      "id": "VIS-012",
-      "priority": "P1",
-      "dependsOn": [
-        "VIS-002",
-        "VIS-010",
-        "VIS-011"
-      ],
-      "title": "Codex and Claude Code adapters with capability probes",
-      "state": "partial",
-      "acceptance": [
-        "each real host independently produces validated artifacts and passes image-feedback delivery. An installed skill or successful mock test does not establish host acceptance. Package/install the plugin into a clean test environment and verify that themes, schemas, runtime files, fonts/assets, and scripts are included. No silent fallback from a user's selected host/model or subscription route to a separately charged API.\n"
-      ],
-      "remaining": "Claude authenticated artifact/image-feedback acceptance remains deferred by user. Codex strict image-reviewed before/after HTML export with a distinct page-4-only revision now passes. Native desktop/plugin activation, Windows child-tree/host checks, wider VIS-014 release and remote CI remain open.",
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/vis-012/review.json",
-      "implemented": [
-        "Codex final-file/event separation and Claude structured_output parsing; native image-input transports",
-        "Version/help capability probes, explicit optional auth status, configuration/workspace binding and expiry",
-        "Bounded stdin subprocesses, selected-host/model retention, secret-free hash receipts and no automatic retry/fallback",
-        "Shared v3 CLI draft/patch/review tools in source, standalone runtime and canonical skill; exact source-line protection",
-        "Actual Codex source drafting and captured-image feedback; Claude version/help only, authentication deferred",
-        "Responsive short-label charts and simple-chain diagrams; actual Codex distinct page-4 revision retained through image review and changed HTML export"
-      ]
-    },
-    {
-      "id": "VIS-013",
-      "priority": "P1",
-      "dependsOn": [
-        "VIS-011",
-        "VIS-012"
-      ],
-      "title": "Prompt-first workbench and persistent design choices",
-      "state": "implemented-local",
-      "acceptance": [
-        "normal generation and revision require no manual layout edits; explicit author locks survive theme changes and source updates; references can remain public while private speaker notes stay private. The output website contains audience navigation, not editor chrome.\n"
-      ],
-      "remaining": "Claude login/live acceptance remains deferred. Local supplied-text planning and narrow named-style/chart/composition revisions do not imply arbitrary semantic editing, PDF/Office ingestion or exhaustive interactive capture. VIS-014 broader story/accessibility/engine/native/packaging and remote CI gates remain open.",
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/vis-013/review.json",
-      "implemented": [
-        "Prompt-first modules inside the existing Visual Studio; local prompt/Markdown source or saved-source generation and scoped natural-language revisions through existing task tools",
-        "Typed independent language/tone/style/update preferences and per-scene profile overrides; author image/theme/composition locks retained",
-        "Opt-in dependency-free isolated Chromium capture, current image gallery or actual Codex findings, strict reviewed HTML export and old-route bypass refusal",
-        "Durable operation checkpoints, sequence/project conflicts, cancellation, explicit source synchronization, interrupted-task recovery and byte-exact last accepted HTML"
-      ]
-    },
-    {
-      "id": "VIS-014",
-      "priority": "P1",
-      "dependsOn": [
-        "VIS-005",
-        "VIS-006",
-        "VIS-007",
-        "VIS-008",
-        "VIS-009",
-        "VIS-010",
-        "VIS-011",
-        "VIS-012",
-        "VIS-013"
-      ],
-      "title": "First visual release gate",
-      "state": "partial",
-      "acceptance": [
-        "all three initial themes pass the bilingual 12-page gallery; each theme produces a coherent bilingual 8-page story; at least three interaction types work; both actual hosts finish a prompt-to-artifact task and a scoped revision; the standalone exported package works outside the repository. Compare the same content against VIS-001's baseline. Approve the whole story, including weakest pages, not only selected hero screenshots."
-      ],
-      "remaining": "Claude prompt-to-artifact and scoped revision remain deferred by the user, so the both-hosts criterion is unmet. Missing glyphs are not detected (C13); the 390 px heatmap still scrolls (S4 follow-up); CJK headings break inside words (C12); single-file exports are 6.8–7.0 MB against the ~2 MB starting budget. The advisory scored review is 74–77/100, below the 80 pilot threshold, and needs author calibration. Screen reader, IME, 200% zoom, projection and native applications remain untested; remote CI has not run this branch.",
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/vis-014/review.md",
-      "implemented": [
-        "Frozen requirements §9 gallery (decision C): 12 pages, four per theme, English and Simplified Chinese, per-page content hashes enforced by a test (docs/visual-acceptance/gallery-manifest.json)",
-        "One bilingual 8-page story drawn by each theme; facts, data tables, sources and citations identical across themes for gallery and stories (tested)",
-        "scripts/release-gate.mjs: VIS-010 quality pipeline on all eight decks (0 issues, 96 of 96 traces at 1440/1024/390 px), eleven explicit cases (10 pass), VIS-001 legacy comparison, standalone exports offline outside the repository in Chromium 151, Firefox 153 and WebKit 26.5, and the portable bundle run there",
-        "Six renderer failures found by the gallery fixed (cover citation contrast and split number, trend label overlap, heatmap label margin, before/after labels under the compare panel, linear process diagrams); render baseline re-recorded with no visible word or value change",
-        "Real Codex CLI drafted-deck run: prompt to reviewed export, page-3-only revision, second image review and export (attempt 3; attempts recorded)",
-        "S3, S4 and S5 merged with a layered chart-focus rule (decisions in design-handoff-alignment.md §13)"
-      ]
-    },
-    {
-      "id": "VIS-015",
-      "priority": "P2",
-      "dependsOn": [
-        "VIS-014"
-      ],
-      "title": "Additional styles and reference-guided personalization",
-      "state": "planned",
-      "acceptance": [
-        "extend the gallery with two pages per new direction and validate a full story in each. A reference-derived theme changes structure and visual grammar, not just colors. Author feedback can promote a successful design into a reusable profile without importing unrelated reference text or branding.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "VIS-016",
-      "priority": "P2",
-      "dependsOn": [
-        "VIS-003",
-        "VIS-008",
-        "VIS-014"
-      ],
-      "title": "Target-specific editable exports",
-      "state": "partial",
-      "acceptance": [
-        "supported text/data remain editable; unsupported elements have explicit per-element receipts; no whole-slide screenshot is presented as a fully editable export. Validate in the actual target application where that compatibility is claimed. The rich web output remains available even when a different target requires a limited fallback.\n"
-      ],
-      "remaining": "PowerPoint and Keynote were not run, so application compatibility is not claimed (open each package, Edit Data on native charts, per-point focus colours, line-chart markers/labels/gaps, text wrap and fonts, Accessibility Checker, Keynote object import). Chinese PDFs are only partly searchable: Chromium maps some ideographs to CJK radical code points. PDF figure wrappers lack /Alt (Chromium tagging of HTML <figure>). Tall scenes fitted into 16:9 reach 4.6 pt text. Charts with intervals, a log axis or a missing value are delivered at L3 (Quick Look drew them wrongly). Studio export still offers HTML and JSON only; remote CI has not run this branch.",
-      "implementationState": "implemented-local",
-      "evidence": "docs/evidence/vis-016/review.md",
-      "implemented": [
-        "Output levels L1/L2/L3 declared per component and format (web, PDF, PowerPoint) in src/targets/capabilities.mjs and listed per block in every export report",
-        "Export order enforced in code (src/targets/export-order.mjs): ready (hash-matched assets; measured layout of this render with loaded fonts, no last-resort glyph, decoded images) -> static-state -> freeze -> stop-motion -> reveal -> render -> check",
-        "Static delivery rules (src/targets/static-delivery.mjs): static state or final state, visible annotations, selected filter results with written statements, legends with series identity, both comparison states; absent v3 kinds recorded",
-        "VIS-016 PowerPoint compiler (src/targets/pptx/compile.mjs, fallbacks.mjs, audit.mjs, compatibility-report.mjs): native text, tables, charts with embedded workbooks, shapes, glued connectors, pictures and notes from the browser-measured static scene; L3 images of single charts with summaries; per-element receipts; no whole-slide picture",
-        "PDF print job (src/targets/pdf/print.mjs): one measured page per scene with real text, tagged, notes pages for disclosure content",
-        "Four separate results per deck: PowerPoint editability (compiler check plus independent Python check) and page check pass 9 of 9; PDF searchability pass for English, partial for Chinese; accessibility partial (package pass, PDF figure wrappers); visual fidelity partial (Quick Look reference renders)",
-        "scripts/export-targets.mjs runs the frozen VIS-014 corpus plus the S4 chart-kinds sample in an isolated browser and writes an export report per deck"
-      ]
-    },
-    {
-      "id": "SRC-001",
-      "priority": "P2",
-      "dependsOn": [
-        "VIS-002",
-        "VIS-014"
-      ],
-      "title": "Source snapshots and stable content extraction",
-      "state": "planned",
-      "acceptance": [
-        "rename, move, small edit, and deletion are distinguishable; unchanged logical blocks retain IDs; every published claim/graphic can link to source anchors. Extraction quality is reported before generation. A content hash supplements logical identity rather than replacing it.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "SRC-002",
-      "priority": "P2",
-      "dependsOn": [
-        "SRC-001",
-        "VIS-010",
-        "VIS-012"
-      ],
-      "title": "Durable incremental jobs",
-      "state": "planned",
-      "acceptance": [
-        "restart recovery, duplicate events, partial downloads, retries, expired credentials, stale workers, and out-of-order completion do not corrupt or duplicate publication. History retention and garbage collection are explicit. Locks and unchanged assets remain intact through incremental rebuilds.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "SRC-003",
-      "priority": "P2",
-      "dependsOn": [
-        "SRC-002",
-        "VIS-013"
-      ],
-      "title": "Local hourly publication and version history",
-      "state": "planned",
-      "acceptance": [
-        "editing one source changes only affected scenes plus necessary neighboring context; unchanged scene IDs/assets remain stable; a failed build leaves the last successful website available; rollback restores a known version. An older job cannot overwrite a newer source revision. Public references and private notes remain separate."
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "SRC-004",
-      "priority": "P2",
-      "dependsOn": [
-        "SRC-003"
-      ],
-      "title": "Google Drive adapter",
-      "state": "planned",
-      "acceptance": [
-        "folder rename/move, edited native documents, duplicates, deletion, revoked access, and missed notifications converge to the correct snapshot set. The adapter produces sources; it does not implement a separate design engine.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "SRC-005",
-      "priority": "P2",
-      "dependsOn": [
-        "SRC-003"
-      ],
-      "title": "Notion adapter",
-      "state": "planned",
-      "acceptance": [
-        "nested-block changes and deleted/archived/inaccessible content are reconciled without duplicating pages; linked evidence remains resolvable; webhook support, where used, is paired with reconciliation.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "SRC-006",
-      "priority": "P2",
-      "dependsOn": [
-        "SRC-003"
-      ],
-      "title": "Dropbox adapter",
-      "state": "planned",
-      "acceptance": [
-        "many-file pagination, interrupted cursor handling, identical names in different folders, and revoked access cannot leak one source's content into another. Use the existing incremental compiler and publisher.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "SRC-007",
-      "priority": "P2",
-      "dependsOn": [
-        "SRC-003"
-      ],
-      "title": "OneDrive adapter",
-      "state": "planned",
-      "acceptance": [
-        "personal/business deployment differences are explicitly tested for the supported account type; delta continuation, deletion, moved items, and access changes converge. This is a separate PR/deployment gate from other connectors. Select the first cloud connector based on the first pilot user's actual source system; the four adapters can proceed in parallel after the common contract is stable.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "DOC-001",
-      "priority": "P3",
-      "dependsOn": [
-        "SRC-003",
-        "VIS-008",
-        "VIS-013"
-      ],
-      "title": "Code-aware living documentation",
-      "state": "planned",
-      "acceptance": [
-        "a signature change updates the corresponding API page and affected examples; unrelated pages remain stable; runnable examples are tested in a controlled environment; inferred explanations are labelled; removed symbols do not remain as current API claims. Start with one language rather than promising all-language analysis.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    },
-    {
-      "id": "EXP-001",
-      "priority": "P3",
-      "dependsOn": [
-        "VIS-009",
-        "VIS-014"
-      ],
-      "title": "Optional spatial and advanced motion components",
-      "state": "planned",
-      "acceptance": [
-        "the effect explains supplied content, loads only for active scenes, supports reduced motion, stays within the selected device budget, and has an explicit export fallback. Core quality does not depend on adding 3D to every presentation.\n"
-      ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
-    }
-  ],
-  "executionOrder": [
+ "project": "DeckWeft",
+ "version": "0.1.0-alpha.2",
+ "updated": "2026-10-19",
+ "statusMeaning": "implemented-local means local source/test evidence, not production or authenticated host certification",
+ "phases": [
+  {
+   "id": "P0",
+   "name": "Identity, contracts, and release honesty",
+   "dependsOn": [],
+   "state": "implemented-local; publishing gates remain",
+   "goal": "Make the project installable and understandable without inheriting unsupported claims.",
+   "tasks": [
+    "DW-001",
+    "DW-010",
+    "DW-020"
+   ]
+  },
+  {
+   "id": "P1",
+   "name": "A reliable local editing loop",
+   "dependsOn": [
+    "P0"
+   ],
+   "state": "alpha editing and recovery-as-copy implemented; wider accessibility and retention gates remain",
+   "goal": "Open, edit, save, reopen, and recover without losing the story.",
+   "tasks": [
+    "DW-100",
+    "DW-110",
+    "DW-120"
+   ]
+  },
+  {
+   "id": "P2",
+   "name": "Trustworthy layout and editable delivery",
+   "dependsOn": [
+    "P1"
+   ],
+   "state": "browser-measured text implemented; cross-app fidelity hardening remains",
+   "goal": "All output formats use one scene and preserve editable content.",
+   "tasks": [
+    "DW-130",
+    "DW-140",
+    "DW-150"
+   ]
+  },
+  {
+   "id": "P3",
+   "name": "Host-native AI with traceable content",
+   "dependsOn": [
+    "P2"
+   ],
+   "state": "skill bridge implemented; generation system planned",
+   "goal": "Let an agent draft and revise without hiding sources, cost, or failure.",
+   "tasks": [
+    "DW-200",
+    "DW-210",
+    "DW-220"
+   ]
+  },
+  {
+   "id": "P4",
+   "name": "Verified design-app and media workflows",
+   "dependsOn": [
+    "P2",
+    "P3"
+   ],
+   "state": "handoff sources implemented; real-app acceptance planned",
+   "goal": "Move editable work into Figma and AE with evidence, then add media.",
+   "tasks": [
+    "DW-300",
+    "DW-310",
+    "DW-320"
+   ]
+  },
+  {
+   "id": "P5",
+   "name": "Shared libraries and collaboration",
+   "dependsOn": [
+    "P3",
+    "P4"
+   ],
+   "state": "planned; defer until core adoption",
+   "goal": "Grow beyond one computer only after repeatable local quality.",
+   "tasks": [
+    "DW-400",
+    "DW-410",
+    "DW-420"
+   ]
+  },
+  {
+   "id": "VIS-A",
+   "name": "Visual-first semantic web foundation",
+   "dependsOn": [],
+   "state": "VIS-002–007 implemented-local; VIS-001 clean-checkout / remote CI accepted for the recorded source",
+   "goal": "Establish reproducible visual evidence and a separate semantic DOM/SVG path without changing v1/v2 storage.",
+   "tasks": [
+    "VIS-001",
     "VIS-002",
     "VIS-003",
     "VIS-004",
     "VIS-005",
     "VIS-006",
+    "VIS-007"
+   ]
+  }
+ ],
+ "tasks": [
+  {
+   "id": "DW-001",
+   "priority": "P0",
+   "title": "New identity and English-first documentation",
+   "state": "implemented-local",
+   "dependsOn": [],
+   "acceptance": [
+    "All active surfaces use DeckWeft; attribution retained.",
+    "English and Simplified Chinese have separate entry points.",
+    "No fake badges, test claims, affiliation, or registry reservations."
+   ]
+  },
+  {
+   "id": "DW-010",
+   "priority": "P0",
+   "title": "Strict schema, explicit migration, and security boundary",
+   "state": "implemented-local",
+   "dependsOn": [
+    "DW-001"
+   ],
+   "acceptance": [
+    "Reject invalid current input and unsafe ids.",
+    "Preserve legacy originals and explain unsupported fields.",
+    "Loopback host/origin/token checks and bounded JSON requests pass."
+   ]
+  },
+  {
+   "id": "DW-020",
+   "priority": "P0",
+   "title": "Reproducible bundle and real-host release checks",
+   "state": "blocked",
+   "dependsOn": [
+    "DW-010"
+   ],
+   "acceptance": [
+    "Bundle runs after being copied away from the repository.",
+    "Both authenticated hosts actually load and execute the skill.",
+    "Record installed host versions and CI run ids before publishing."
+   ],
+   "evidence": "docs/evidence/dw-020/review.json",
+   "blocker": "Claude is not authenticated and user deferred sign-in; Codex native desktop activation and remote CI not tested.",
+   "implemented": [
+    "Isolated bundle, real subprocess probes, opt-in live runner, trace/hash evidence",
+    "Authenticated Codex CLI standalone project skill discovered and executed; three-slide output and command trace reviewed",
+    "Independent bundled HTML/PPTX byte comparison, native text/relationships, LibreOffice visual review",
+    "Claude validator passed; ordinary permission-mode compatibility, checked installation, bounded timeout and interrupted-evidence protection"
+   ]
+  },
+  {
+   "id": "DW-100",
+   "priority": "P1",
+   "title": "Studio editing and durable project storage",
+   "state": "implemented-local",
+   "dependsOn": [
+    "DW-010"
+   ],
+   "acceptance": [
+    "Edit, add, duplicate, reorder, save and reopen projects.",
+    "Multiple project ids do not share a global active pointer.",
+    "Stale saves return 409 without destroying unsaved browser edits."
+   ]
+  },
+  {
+   "id": "DW-110",
+   "priority": "P1",
+   "title": "History recovery and project management",
+   "state": "partial",
+   "dependsOn": [
+    "DW-100"
+   ],
+   "acceptance": [
+    "Snapshot browser with read-only inspection and restore-as-copy.",
+    "Configurable retention with preview before pruning.",
+    "Rename and archive projects without altering ids or deleting unknown files."
+   ],
+   "evidence": "docs/browser-evidence.json",
+   "implemented": [
+    "Read-only paged history",
+    "Measured snapshot preview",
+    "Hash-pinned idempotent restore-as-copy",
+    "Current draft preservation"
+   ],
+   "remaining": [
+    "Retention/pruning preview",
+    "Project archive management"
+   ]
+  },
+  {
+   "id": "DW-120",
+   "priority": "P1",
+   "title": "Interaction and accessibility hardening",
+   "state": "partial",
+   "dependsOn": [
+    "DW-100"
+   ],
+   "acceptance": [
+    "Desktop and narrow-window editing/export smoke tests.",
+    "Keyboard, focus return, tabs, drawers, 200% zoom, and screen-reader audit.",
+    "Document supported browsers and run each claimed engine."
+   ],
+   "evidence": "docs/browser-evidence.json",
+   "implemented": [
+    "IME event guards",
+    "Queued-dialog-close race fix",
+    "Tab focus loop/return",
+    "Typing during save and two-window conflict preservation",
+    "Stale preview and export guards",
+    "Signal icon rail, six-size direct-browser checks, tour, speech timing and reduced motion in the DevDay revision"
+   ],
+   "remaining": [
+    "Real OS IME",
+    "200% browser zoom",
+    "Screen reader",
+    "Direct-navigation CSP and other engines"
+   ],
+   "currentEvidence": "docs/evidence/devday-redesign/review.json"
+  },
+  {
+   "id": "DW-130",
+   "priority": "P2",
+   "title": "Measured multilingual text and adversarial layout corpus",
+   "state": "implemented-local",
+   "dependsOn": [
+    "DW-100"
+   ],
+   "acceptance": [
+    "Add real-font browser measurement behind a deterministic contract.",
+    "Test long English, CJK, mixed punctuation, numbers, emoji, all four ratios.",
+    "No text loss; block when every eligible layout overflows."
+   ],
+   "evidence": "docs/font-evidence.json",
+   "limits": [
+    "CLI remains offline-estimate",
+    "Cross-app font substitution and non-Chromium engines not certified"
+   ]
+  },
+  {
+   "id": "DW-140",
+   "priority": "P2",
+   "title": "Native editable output fidelity",
+   "state": "partial",
+   "dependsOn": [
+    "DW-130"
+   ],
+   "acceptance": [
+    "PPTX package and native shape/notes checks pass.",
+    "PowerPoint, Keynote, and LibreOffice produce inspected representative output.",
+    "Do not silently rasterize text to satisfy visual tests."
+   ],
+   "implemented": [
+    "Independent notes theme fixes observed PowerPoint repair prompt",
+    "Native text, shapes, individual media and 14-slide PowerPoint open/visual review for the DevDay style"
+   ],
+   "currentEvidence": "docs/evidence/devday-redesign/review.json"
+  },
+  {
+   "id": "DW-150",
+   "priority": "P2",
+   "title": "Semantic slide-family expansion",
+   "state": "partial",
+   "dependsOn": [
+    "DW-130",
+    "DW-140"
+   ],
+   "acceptance": [
+    "Add comparison, timeline, evidence chart, table and image-caption families.",
+    "Four candidates must differ structurally and respect semantic constraints.",
+    "Charts use explicit units and sources; accessibility summary retained."
+   ],
+   "implemented": [
+    "Reviewed semantic cover/comparison/process/timeline/metric/image-caption recipes, native measured scenes and explicit interaction fallback"
+   ],
+   "remaining": [
+    "Native charts/tables and their units/accessibility contracts",
+    "Four structurally distinct candidates for every semantic family",
+    "Broader cross-application acceptance"
+   ],
+   "currentEvidence": "docs/evidence/mb-06-10/review.json"
+  },
+  {
+   "id": "DW-200",
+   "priority": "P3",
+   "title": "Evidence-bearing story planner",
+   "state": "partial",
+   "dependsOn": [
+    "DW-130",
+    "DW-140"
+   ],
+   "acceptance": [
+    "Validated narrative and source proposals before document writes.",
+    "Distinguish quote, sourced fact, calculation, assumption and fictional example.",
+    "A source URL alone never becomes verified evidence."
+   ],
+   "implemented": [
+    "Per-slide claim/audience/source/visual/script proposals before save-as-copy",
+    "Strict source/asset references; URLs remain unverified"
+   ],
+   "remaining": [
+    "Explicit quote/fact/calculation/assumption/example classification and richer research workflow"
+   ],
+   "currentEvidence": "docs/evidence/mb-06-10/review.json"
+  },
+  {
+   "id": "DW-210",
+   "priority": "P3",
+   "title": "Safe host-agent jobs and resumable checkpoints",
+   "state": "partial",
+   "dependsOn": [
+    "DW-020",
+    "DW-200"
+   ],
+   "acceptance": [
+    "Host skill calls a complete runtime with no hidden provider.",
+    "Persist job input/output hashes and approved patches; cancel and resume.",
+    "Retry is idempotent and does not duplicate slides or paid actions."
+   ],
+   "implemented": [
+    "Opt-in local queue with exact-input request ids, owned leases, cancellation and review-as-copy",
+    "Actual stdio MCP and connected-computer CLI subprocess round trips; credential fields refused",
+    "Direct browser fixture-worker workflow and source preservation",
+    "Validated duration/speaking targets, exact-input hashing and copyable Dot connection task",
+    "Capability handshake, separate deck/code proposal scopes, hash-pinned execution capsule and renewed checkpoint grants",
+    "Durable bounded events, validated-work progress, comparable-run ETA fallback and atomic review/application",
+    "Actual Codex CLI task plus paired medium/high pilot; independent server model attestation unavailable"
+   ],
+   "remaining": [
+    "Actual Dot desktop host/model acceptance",
+    "Manual code-proposal integration and wider host discovery; multiple workers remain future scope"
+   ],
+   "evidence": "docs/evidence/dot-stage/review.json",
+   "currentEvidence": "docs/evidence/mb-06-10/review.json"
+  },
+  {
+   "id": "DW-220",
+   "priority": "P3",
+   "title": "Optional explicit provider and translation adapters",
+   "state": "planned",
+   "dependsOn": [
+    "DW-200",
+    "DW-210"
+   ],
+   "acceptance": [
+    "Opt-in provider keys remain outside deck JSON and logs.",
+    "Price/usage estimates, budget limit, cancellation, schema validation.",
+    "Translation is explicit and produces a new checked language edition."
+   ]
+  },
+  {
+   "id": "DW-300",
+   "priority": "P4",
+   "title": "Figma editable import acceptance",
+   "state": "partial",
+   "dependsOn": [
+    "DW-140"
+   ],
+   "acceptance": [
+    "Real assigned plugin id; no fabricated manifest id.",
+    "Text/shape layers and font fallbacks checked in the actual app.",
+    "Decide auto-layout/components vs fixed exported composition explicitly."
+   ]
+  },
+  {
+   "id": "DW-310",
+   "priority": "P4",
+   "title": "After Effects editable import acceptance",
+   "state": "partial",
+   "dependsOn": [
+    "DW-140"
+   ],
+   "acceptance": [
+    "Strict JSON parsing; cancel and rollback do not damage an existing project.",
+    "Verify composition hierarchy, native text/shapes, fonts and temporal easing.",
+    "Render a real AE preview and record environment and output evidence."
+   ]
+  },
+  {
+   "id": "DW-320",
+   "priority": "P4",
+   "title": "Rights-aware media and animation library",
+   "state": "partial",
+   "dependsOn": [
+    "DW-150",
+    "DW-300",
+    "DW-310"
+   ],
+   "acceptance": [
+    "Track asset origin, license, allowed uses and local content hash.",
+    "No scraping or redistribution of proprietary template collections.",
+    "Network use and chargeable generation require explicit opt-in."
+   ],
+   "implemented": [
+    "Local PNG content-addressed registry with origin/license/allowed-use/alt/fallback metadata and bounded file checks"
+   ],
+   "remaining": [
+    "Optional media generation/provider path and reviewed animation library",
+    "Actual downstream application support"
+   ],
+   "currentEvidence": "docs/evidence/mb-06-10/review.json"
+  },
+  {
+   "id": "DW-400",
+   "priority": "P5",
+   "title": "Template SDK and reviewed community contributions",
+   "state": "planned",
+   "dependsOn": [
+    "DW-150",
+    "DW-320"
+   ],
+   "acceptance": [
+    "Versioned recipe contract and validation corpus.",
+    "Theme/recipe examples and safe plugin boundaries.",
+    "Reject arbitrary code in imported content documents."
+   ]
+  },
+  {
+   "id": "DW-410",
+   "priority": "P5",
+   "title": "Optional collaboration service",
+   "state": "planned",
+   "dependsOn": [
+    "DW-200",
+    "DW-210",
+    "DW-400"
+   ],
+   "acceptance": [
+    "Define accounts, access rules, migrations, backup and tenant isolation.",
+    "Add multi-user version merge with an explicit conflict model.",
+    "Do not expose the local alpha server as the collaboration backend."
+   ]
+  },
+  {
+   "id": "DW-420",
+   "priority": "P5",
+   "title": "Optional commercial hosting and team controls",
+   "state": "planned",
+   "dependsOn": [
+    "DW-410"
+   ],
+   "acceptance": [
+    "Prove demand before introducing billing and operational burden.",
+    "Separate hosted value from the openly licensed local core.",
+    "Document support, retention, export rights and service limitations."
+   ]
+  },
+  {
+   "id": "MB-01",
+   "priority": "P0",
+   "title": "Typed contracts and reproducible build pilot",
+   "state": "implemented-local",
+   "implementationState": "implemented-local",
+   "dependsOn": [],
+   "acceptance": [
+    "Scoped strict type gate checks schema-aligned declarations and unknown input boundaries.",
+    "Emitted runtime, offline CLI, copied plugin bundle and reproducible output pass.",
+    "Document developer build cost and preserve current launcher until source-only distribution tradeoffs are resolved."
+   ],
+   "evidence": "docs/evidence/mb-01-05/review.json",
+   "remaining": []
+  },
+  {
+   "id": "MB-02",
+   "priority": "P0",
+   "title": "Semantic action hierarchy and compact controls",
+   "state": "partial",
+   "implementationState": "implemented-local",
+   "dependsOn": [
+    "MB-01"
+   ],
+   "acceptance": [
+    "Actions have consistent labels, icons, color roles, shape and focus states.",
+    "Keyboard, hit areas, narrow windows and 200% zoom are checked; color is not the only cue.",
+    "Measure task steps and usable canvas area before and after; no invented savings."
+   ],
+   "evidence": "docs/evidence/mb-01-05/review.json",
+   "remaining": [
+    "Real screen reader",
+    "200% browser zoom"
+   ]
+  },
+  {
+   "id": "MB-03",
+   "priority": "P0",
+   "title": "Editor appearance and shared accessibility preferences",
+   "state": "implemented-local",
+   "implementationState": "implemented-local",
+   "dependsOn": [
+    "MB-02"
+   ],
+   "acceptance": [
+    "Light, dark and live system editor appearance are separate from deck theme.",
+    "One quick reduce-motion control governs CSS, Web Animations, Three.js, replay and scrolling.",
+    "Off cancels active animation loops and leaves usable static interaction; preferences stay outside project content."
+   ],
+   "evidence": "docs/evidence/mb-01-05/review.json",
+   "remaining": []
+  },
+  {
+   "id": "MB-04",
+   "priority": "P0",
+   "title": "Separate audience projection and presenter session",
+   "state": "partial",
+   "implementationState": "implemented-local",
+   "dependsOn": [
+    "MB-01"
+   ],
+   "acceptance": [
+    "Audience document and audience exports omit private notes, project payloads and editor credentials.",
+    "Separate restricted loopback origin exposes no editor session/project endpoints; read-only capability and bounded origin-checked messages carry the filtered projection.",
+    "Real window sharing/extended display, refresh, popup failure, disconnect and close recovery are recorded."
+   ],
+   "evidence": "docs/evidence/mb-01-05/review.json",
+   "remaining": [
+    "Actual conferencing-share and extended-display acceptance"
+   ]
+  },
+  {
+   "id": "MB-05",
+   "priority": "P0",
+   "title": "Resizable slide-following teleprompter",
+   "state": "implemented-local",
+   "implementationState": "implemented-local",
+   "dependsOn": [
+    "MB-03",
+    "MB-04"
+   ],
+   "acceptance": [
+    "Current slide automatically selects its script; sidebar resizes/docks and retains text anchor.",
+    "English, Chinese and mixed-text pace plus pauses are calibrated separately from motion.duration.",
+    "Start, pause, manual scroll, resume and reduced-motion manual paging work; no microphone required."
+   ],
+   "evidence": "docs/evidence/mb-01-05/review.json",
+   "remaining": []
+  },
+  {
+   "id": "MB-06",
+   "priority": "P1",
+   "state": "implemented-local",
+   "title": "Storyboard, asset registry and derived scene contracts",
+   "dependsOn": [
+    "MB-01"
+   ],
+   "existingTasks": [
+    "DW-150",
+    "DW-200",
+    "DW-320"
+   ],
+   "estimatedPersonDays": [
+    4,
+    6
+   ],
+   "proposedModules": [
+    "src/planning/storyboard",
+    "src/contracts/assets",
+    "src/assets/registry"
+   ],
+   "reuse": [
+    "src/core/model.mjs",
+    "src/layout/scene.mjs",
+    "src/render/assets.mjs"
+   ],
+   "acceptance": [
+    "Brief produces reviewable per-slide intent, evidence and speaker-script proposals.",
+    "Assets have local hashes, rights/provenance, dimensions, alt text and fallbacks; binaries are outside project JSON.",
+    "Schema and validator evolve together with copy-preserving explicit migration; free-form extensions do not bypass validation."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-06-10/review.json",
+   "remainingAcceptance": []
+  },
+  {
+   "id": "MB-07",
+   "priority": "P1",
+   "state": "implemented-local",
+   "title": "Semantic templates, constrained SVG and interaction recipes",
+   "dependsOn": [
+    "MB-03",
+    "MB-06"
+   ],
+   "existingTasks": [
+    "DW-130",
+    "DW-140",
+    "DW-150",
+    "DW-400"
+   ],
+   "estimatedPersonDays": [
+    4,
+    6
+   ],
+   "proposedModules": [
+    "src/planning/visual-intent",
+    "src/layout/recipes",
+    "src/contracts/interaction"
+   ],
+   "reuse": [
+    "src/layout/engine.mjs",
+    "src/render/svg.mjs",
+    "src/render/pptx.mjs"
+   ],
+   "acceptance": [
+    "Comparison, process, timeline, metric, image-caption and cover recipes respond to semantic content.",
+    "Measured text and shared derived scenes drive every exporter, with editable native output.",
+    "Interactions are allowlisted state machines; keyboard/text alternatives and declared static fallbacks exist."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-06-10/review.json",
+   "remainingAcceptance": []
+  },
+  {
+   "id": "MB-08",
+   "priority": "P1",
+   "state": "partial",
+   "title": "Single Dot capability handshake and scoped execution grants",
+   "dependsOn": [
+    "MB-01"
+   ],
+   "existingTasks": [
+    "DW-020",
+    "DW-210"
+   ],
+   "estimatedPersonDays": [
+    4,
+    6
+   ],
+   "proposedModules": [
+    "src/orchestration/grants",
+    "src/orchestration/execution-capsule",
+    "src/adapters/hosts"
+   ],
+   "reuse": [
+    "src/services/agent-bridge.mjs",
+    "src/adapters/agent-mcp.mjs",
+    "bin/deckweft-worker.mjs"
+   ],
+   "acceptance": [
+    "A real authorized host negotiates supported conversation/model/effort/cancel/usage operations.",
+    "Selected adopted roadmap hashes, source baselines, AGENTS rules and acceptance commands are pinned per job.",
+    "Deck-generation and code-change have separate scopes; revocation and unsupported required-model paths fail explicitly."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-06-10/review.json",
+   "remainingAcceptance": [
+    "Actual Dot desktop capability handshake, model/effort and task acceptance"
+   ]
+  },
+  {
+   "id": "MB-09",
+   "priority": "P1",
+   "state": "implemented-local",
+   "title": "Durable jobs, checkpoints and honest progress timeline",
+   "dependsOn": [
+    "MB-08"
+   ],
+   "existingTasks": [
+    "DW-210"
+   ],
+   "estimatedPersonDays": [
+    4,
+    6
+   ],
+   "proposedModules": [
+    "src/orchestration/jobs",
+    "src/orchestration/events",
+    "src/orchestration/progress",
+    "ui/jobs"
+   ],
+   "reuse": [
+    "src/services/agent-bridge.mjs",
+    "public/agent-bridge.js"
+   ],
+   "acceptance": [
+    "Bounded monotonic events survive reconnect/restart, leases, retry and cancellation without duplicate application.",
+    "Validated artifacts and real units drive progress; opaque inference is indeterminate.",
+    "ETA uses comparable runs and critical path with ranges/confidence, or states insufficient history; review and blocked states are distinct."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-06-10/review.json",
+   "remainingAcceptance": []
+  },
+  {
+   "id": "MB-10",
+   "priority": "P1",
+   "state": "implemented-local",
+   "title": "Evaluate Astra effort and version the routing policy",
+   "dependsOn": [
+    "MB-06",
+    "MB-07",
+    "MB-09"
+   ],
+   "existingTasks": [
+    "DW-200",
+    "DW-210",
+    "DW-220"
+   ],
+   "estimatedPersonDays": [
+    2,
+    4
+   ],
+   "proposedModules": [
+    "src/orchestration/effort-policy",
+    "tests/evals"
+   ],
+   "reuse": [
+    "tests/core.test.mjs",
+    "tests/agent-bridge.test.mjs"
+   ],
+   "acceptance": [
+    "Compare medium/high on repeated representative English, Chinese, evidence, visual, interaction and code-change tasks.",
+    "Record acceptance quality, first-pass validity, repairs, latency and actual reported usage; mark unavailable cost unknown.",
+    "Store date/corpus/host/model/policy evidence; escalation honors the grant ceiling and no best-effort claim is made without results."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-06-10/review.json",
+   "remainingAcceptance": []
+  },
+  {
+   "id": "MB-11",
+   "priority": "P1",
+   "state": "implemented-local",
+   "title": "Opt-in image generation and local asset reuse",
+   "dependsOn": [
+    "MB-06",
+    "MB-07",
+    "MB-09",
+    "MB-10"
+   ],
+   "existingTasks": [
+    "DW-220",
+    "DW-320"
+   ],
+   "estimatedPersonDays": [
+    3,
+    6
+   ],
+   "proposedModules": [
+    "src/adapters/media",
+    "src/assets/cache",
+    "ui/workspace/asset-review"
+   ],
+   "reuse": [
+    "src/render/assets.mjs",
+    "src/services/store.mjs"
+   ],
+   "acceptance": [
+    "Only opted-in tools/providers receive approved data and chargeable requests; credentials stay outside projects/logs.",
+    "Relevant assets retain rights/alt text/content hash and are individually replaceable; offline reopen/export succeeds.",
+    "Bounded retries, cancellation and provider idempotency/recovery avoid blind duplicated paid work."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-11-15/review.json",
+   "remainingAcceptance": []
+  },
+  {
+   "id": "MB-12",
+   "priority": "P2",
+   "state": "partial",
+   "title": "Multiple workers and selected conversations",
+   "dependsOn": [
+    "MB-09",
+    "MB-10",
+    "MB-11"
+   ],
+   "existingTasks": [
+    "DW-210"
+   ],
+   "estimatedPersonDays": [
+    5,
+    8
+   ],
+   "proposedModules": [
+    "src/orchestration/scheduler",
+    "src/orchestration/integration",
+    "ui/jobs/workers"
+   ],
+   "reuse": [
+    "src/services/agent-bridge.mjs",
+    "src/services/store.mjs"
+   ],
+   "acceptance": [
+    "Two authorized workers process independent artifacts with scoped chat inputs and no permission inheritance.",
+    "One integrator checks revision/input hashes; coding workers use worktrees or isolated copies and stale patches conflict.",
+    "Revocation, crashes, lease theft, delayed completion and duplicate events do not cross scopes or duplicate outputs."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-11-15/review.json",
+   "remainingAcceptance": [
+    "Actual two-worker Dot desktop capability/conversation acceptance; current real host evidence is Codex CLI with selected authored snapshots only"
+   ]
+  },
+  {
+   "id": "MB-13",
+   "priority": "P2",
+   "state": "implemented-local",
+   "title": "General Three.js scene adapter",
+   "dependsOn": [
+    "MB-03",
+    "MB-07"
+   ],
+   "existingTasks": [
+    "DW-140",
+    "DW-320"
+   ],
+   "estimatedPersonDays": [
+    3,
+    5
+   ],
+   "proposedModules": [
+    "src/render/three-scene",
+    "src/contracts/render-capabilities"
+   ],
+   "reuse": [
+    "public/three-dots.js",
+    "src/render/three-bundle.mjs"
+   ],
+   "acceptance": [
+    "Approved scene recipes load locally only when needed with measured packaging/resource costs.",
+    "Context loss, static fallback, keyboard controls and reduced/off policies work.",
+    "Export declares static versus native behavior; editable text is not flattened with the 3D asset."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-11-15/review.json",
+   "remainingAcceptance": []
+  },
+  {
+   "id": "MB-14",
+   "priority": "P3",
+   "state": "partial",
+   "title": "Figma editable importer acceptance",
+   "dependsOn": [
+    "MB-07",
+    "MB-11"
+   ],
+   "existingTasks": [
+    "DW-300"
+   ],
+   "estimatedPersonDays": [
+    3,
+    5
+   ],
+   "proposedModules": [
+    "integrations/figma",
+    "src/adapters/handoff"
+   ],
+   "reuse": [
+    "integrations/figma/code.js",
+    "src/adapters/handoff.mjs"
+   ],
+   "acceptance": [
+    "Actual Figma importer runs with a real assigned identity.",
+    "Native text/shapes/media, fonts, node mapping and component/fixed-layout decisions are inspected.",
+    "Record actual environment and screenshots; exported JSON alone is not acceptance."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-11-15/review.json",
+   "remainingAcceptance": [
+    "Actual native Figma development-plugin registration with assigned id, editable media/font/source-map import and visual review"
+   ]
+  },
+  {
+   "id": "MB-15",
+   "priority": "P3",
+   "state": "partial",
+   "title": "After Effects temporal importer acceptance",
+   "dependsOn": [
+    "MB-07",
+    "MB-13"
+   ],
+   "existingTasks": [
+    "DW-310"
+   ],
+   "estimatedPersonDays": [
+    4,
+    7
+   ],
+   "proposedModules": [
+    "integrations/after-effects",
+    "src/adapters/handoff"
+   ],
+   "reuse": [
+    "integrations/after-effects/DeckWeft-Import.jsx",
+    "src/adapters/handoff.mjs"
+   ],
+   "acceptance": [
+    "Actual AE imports native layers with explicit temporal mapping and easing.",
+    "Strict parsing, cancel and rollback preserve existing projects.",
+    "Render and inspect real early/middle/settled preview frames; keep unsupported behavior explicit."
+   ],
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/mb-11-15/review.json",
+   "remainingAcceptance": [
+    "Actual After Effects execution, cancellation/rollback, fonts, temporal/easing and early/middle/settled preview rendering"
+   ]
+  },
+  {
+   "id": "VIS-001",
+   "priority": "P0",
+   "title": "Reproducible baseline and working CI",
+   "state": "implemented-local",
+   "dependsOn": [],
+   "implemented": [
+    "Locked npm ci before verify in CI",
+    "Three frozen legacy decks; isolated browser screenshots and source/font/output fingerprints",
+    "Clean committed checkout npm ci/verify passed locally and on GitHub Node 22 for Ubuntu, macOS and Windows; actual image comparison receipts retained"
+   ],
+   "remaining": "Baseline/CI acceptance passed for the recorded source commit; broader visual, accessibility, host and native release acceptance remains in its separate tasks.",
+   "evidence": "docs/evidence/visual-wave-a/review.md",
+   "acceptance": [
+    "Full acceptance remains defined in the supplied visual-first roadmap; this record covers the initial Wave A slice only."
+   ],
+   "currentEvidence": "docs/evidence/interaction-visual-regression/review.md"
+  },
+  {
+   "id": "VIS-002",
+   "priority": "P0",
+   "title": "Semantic document, design plan, and v3 adapter",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-001"
+   ],
+   "implemented": [
+    "Strict semantic blocks, numeric datasets, versioned source snapshots and anchors",
+    "Explicit nonmutating v1/v2 archive migration and validated import-as-copy",
+    "Revisioned v3 Visual Studio storage, immutable history, restore-as-copy and author locks"
+   ],
+   "remaining": "Source adapters and live synchronization are later SRC tasks.",
+   "evidence": "docs/evidence/visual-studio/review.json",
+   "acceptance": [
+    "V1/v2 readers still pass; migration preserves original JSON without mutation.",
+    "Numeric charts, long CJK headings, code and citations round-trip without numeric coercion.",
+    "Studio save/reopen, revision conflicts and restore-as-copy have actual browser evidence."
+   ]
+  },
+  {
+   "id": "VIS-003",
+   "priority": "P0",
+   "title": "Web scene and target capability contracts",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-002"
+   ],
+   "implemented": [
+    "Stable block/data bindings, text roles, groups, reading order and breakpoint variants",
+    "Validated SVG path/transform/clip/gradient and normalized crop contracts",
+    "Target-specific refusal for unsupported native v3 output; valid HTML stays available"
+   ],
+   "remaining": "Native v3 target compilers remain VIS-016 work; interaction/motion vocabulary is implemented locally under VIS-009.",
+   "evidence": "docs/evidence/visual-studio/review.json",
+   "acceptance": [
+    "Collage, cropped local image and chart bindings validate through one closed derived protocol.",
+    "SVG geometry, transforms, clipping, gradients, groups and responsive bindings are bounded data.",
+    "Unsupported native targets fail specifically and do not block valid web output."
+   ]
+  },
+  {
+   "id": "VIS-004",
+   "priority": "P0",
+   "title": "Semantic DOM/SVG renderer and bilingual layout",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-003"
+   ],
+   "implemented": [
+    "Bilingual semantic DOM/SVG renderer integrated into the real Studio editor",
+    "Local image/crop binding, exact numeric tables, no-JS reading and current-artifact export",
+    "Font/image readiness, DOM bounds, actual SVG/text contrast and clipping checks with negative browser cases"
+   ],
+   "remaining": "VIS-006–011 implement local families, components and bounded correction; the full VIS-014 release gallery and host gates remain open.",
+   "evidence": "docs/evidence/visual-studio/review.json",
+   "acceptance": [
+    "Same semantic document supports desktop presentation and 390 px no-JS reading.",
+    "Fonts and images finish before actual DOM bounds/contrast/clipping capture.",
+    "Screenshots, fit and export refer to the current hashed artifact; inserted contrast/clipping failures are detected."
+   ]
+  },
+  {
+   "id": "VIS-005",
+   "priority": "P1",
+   "title": "Theme packs and author profiles",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-002"
+   ],
+   "implemented": [
+    "Packaged versioned Cream Collage, Dark Data and Electric Violet theme grammar",
+    "English/Chinese typography, spacing, image treatment, charts, modes and motion",
+    "Scoped rule resolution and persisted audience, language, profile and scene/content locks"
+   ],
+   "remaining": "Full-story release acceptance and reference-guided personalization remain VIS-014/015 work.",
+   "evidence": "docs/evidence/visual-studio/review.json",
+   "acceptance": [
+    "Three versioned packs change typography, geometry, images and chapter behavior beyond palette alone.",
+    "Author choices and scoped locks survive actual saves, reloads and theme revisions.",
+    "Scoped rules resolve deterministically and fonts have observed local fallbacks."
+   ]
+  },
+  {
+   "id": "VIS-006",
+   "priority": "P1",
+   "title": "Compositions, candidates, and full-deck rhythm",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-004",
+    "VIS-005"
+   ],
+   "acceptance": [
+    "Six initial families each provide three materially different variants.",
+    "Feasible candidates preserve all facts; deck selection considers focal point, density and repetition.",
+    "Geometry and whole-story visual review establish diversity, not IDs alone."
+   ],
+   "evidence": "docs/evidence/vis-006/review.json",
+   "remaining": "VIS-014 wider gallery/story release, other browser engines and native v3 application acceptance remain open."
+  },
+  {
+   "id": "VIS-007",
+   "priority": "P1",
+   "title": "Asset direction, source extraction, and safe cropping",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-004",
+    "VIS-005"
+   ],
+   "acceptance": [
+    "Named image slots represent role, required pixels, focal/protected regions, source/factual status and honest backend capability.",
+    "Original local document images are reused with source revision/hash, license and original bytes preserved; JPEG/WebP have hash-bound native PNG and web derivatives.",
+    "Portrait/wide safe crops retain the protected subject; impossible crops stop or use explicit contain. Replacement retains scene family and unrelated author choices.",
+    "Generated/unknown concepts cannot automatically become factual source evidence; unavailable generation offers a deliberate content-preserving alternative."
+   ],
+   "evidence": "docs/evidence/vis-007/review.json",
+   "remaining": "Extraction is for registered images in saved local v2/v3 documents, not arbitrary PPTX/PDF parsing. Subject regions are author-marked, not detected. V3 generation transport/native export, VIS-014 broader release and other browser engines remain open."
+  },
+  {
+   "id": "VIS-008",
+   "priority": "P1",
+   "title": "Charts, diagrams, code, and annotation components",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-004",
+    "VIS-006"
+   ],
+   "acceptance": [
+    "Six typed exact-data chart variants, explicit units/axes/time zones and null gaps update geometry, labels, legends and accessible tables together.",
+    "Directed relationship, sequence and annotated process diagrams preserve supplied edges; exact code/emphasis/source anchors and stable annotation identities survive edits and reorder.",
+    "All three themes and both languages have actual browser measurements, static accessible representations, component capability receipts, editor/save/history and measured candidate/rhythm evidence."
+   ],
+   "evidence": "docs/evidence/vis-008/review.json",
+   "remaining": "native v3 target compilers, complex graph routing/label collision coverage, other engines/accessibility and broader VIS-014 release/host gates remain open."
+  },
+  {
+   "id": "VIS-009",
+   "priority": "P1",
+   "title": "Semantic motion and real interactive state",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-004",
+    "VIS-006",
+    "VIS-008"
+   ],
+   "acceptance": [
+    "Typed stable-id chart range/series selection, actual image comparison/hotspots and diagram/code explanations change semantic views and accessible content.",
+    "Keyboard, native touch, reduced-motion parity and deterministic cue-boundary replay/seek preserve exact source and immutable author content.",
+    "Finite scene resources are released on scene exit, background visibility and pagehide; source/author locks, candidates, conflicts and history recovery remain covered."
+   ],
+   "evidence": "docs/evidence/vis-009/review.json",
+   "remaining": "Other browser engines, actual screen reader/IME/200% zoom, arbitrary state/label collision coverage and native v3/host release gates remain open."
+  },
+  {
+   "id": "VIS-010",
+   "priority": "P1",
+   "title": "Browser QA and bounded visual correction",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-004",
+    "VIS-009"
+   ],
+   "acceptance": [
+    "Complete-story contact sheets, full-resolution scenes, platform fonts/resources/console diagnostics, text/source coverage and 234 real action traces across six bilingual three-theme stories and three responsive viewports.",
+    "Five deliberately injected fault classes detected; content/layout/state/renderer-bound receipts require actual delivered-image judgments.",
+    "Only affected scene composition changes, with two-round/candidate/scene/time budgets; author locks and a real failed-candidate/last-valid recovery probe remain enforced."
+   ],
+   "evidence": "docs/evidence/vis-010/review.json",
+   "remaining": "Finer visual repetition and chart-label spacing, exhaustive states, other engines/accessibility, native v3 compilers and broader host/release gates remain open. Automatic correction is restricted to composition; other diagnostics require explicit scoped work."
+  },
+  {
+   "id": "VIS-011",
+   "priority": "P1",
+   "title": "Design director and one-task production loop",
+   "state": "implemented-local",
+   "dependsOn": [
+    "VIS-006",
     "VIS-007",
     "VIS-008",
     "VIS-009",
+    "VIS-010"
+   ],
+   "acceptance": [
+    "Shared content/design/assets/preview/inspection/scoped-patch/export tools with task-specific precompile direction and durable recovery.",
+    "Actual local five-page story at 1440/390px, precise page-4 exact-data chart revision, actual image review and final reviewed HTML exports.",
+    "Cumulative default two-round budgets, source/data/citation/identity preservation, author locks, missing data/assets, stale receipts, conflicts and accepted-artifact failure recovery."
+   ],
+   "evidence": "docs/evidence/vis-011/review.json",
+   "remaining": "Offline source inspection does not externally verify claims; deterministic supplied-text planning and narrow chart grammar need authorized host drafting for richer requests. Native v3 exports, VIS-012 authenticated host adapters and VIS-013 workbench remain open."
+  },
+  {
+   "id": "VIS-012",
+   "priority": "P1",
+   "dependsOn": [
+    "VIS-002",
     "VIS-010",
+    "VIS-011"
+   ],
+   "title": "Codex and Claude Code adapters with capability probes",
+   "state": "partial",
+   "acceptance": [
+    "each real host independently produces validated artifacts and passes image-feedback delivery. An installed skill or successful mock test does not establish host acceptance. Package/install the plugin into a clean test environment and verify that themes, schemas, runtime files, fonts/assets, and scripts are included. No silent fallback from a user's selected host/model or subscription route to a separately charged API.\n"
+   ],
+   "remaining": "Claude authenticated artifact/image-feedback acceptance remains deferred by user. Codex strict image-reviewed before/after HTML export with a distinct page-4-only revision now passes. Native desktop/plugin activation, Windows child-tree/host checks, wider VIS-014 release and remote CI remain open.",
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/vis-012/review.json",
+   "implemented": [
+    "Codex final-file/event separation and Claude structured_output parsing; native image-input transports",
+    "Version/help capability probes, explicit optional auth status, configuration/workspace binding and expiry",
+    "Bounded stdin subprocesses, selected-host/model retention, secret-free hash receipts and no automatic retry/fallback",
+    "Shared v3 CLI draft/patch/review tools in source, standalone runtime and canonical skill; exact source-line protection",
+    "Actual Codex source drafting and captured-image feedback; Claude version/help only, authentication deferred",
+    "Responsive short-label charts and simple-chain diagrams; actual Codex distinct page-4 revision retained through image review and changed HTML export"
+   ]
+  },
+  {
+   "id": "VIS-013",
+   "priority": "P1",
+   "dependsOn": [
     "VIS-011",
     "VIS-012"
-  ],
-  "previousExecutionOrder": [
-    "DW-020",
-    "DW-130",
-    "DW-120",
-    "DW-110"
-  ],
-  "currentBuild": {
-    "scope": "S7 output levels and VIS-016 target-specific editable exports",
-    "implementation": "implemented-local",
-    "acceptance": "partial: levels, export order, PowerPoint and PDF compilers with receipts and four separate results on the frozen VIS-014 corpus; PowerPoint and Keynote not run; Chinese PDF search partial",
-    "evidence": "docs/evidence/vis-016/review.md",
-    "remainingManualAcceptance": [
-      "PowerPoint and Keynote runs on the user machine (report applicationChecks)",
-      "Chinese PDF Unicode maps",
-      "PDF figure wrappers without /Alt",
-      "Small text on tall scenes",
-      "Screen reader and remote CI"
-    ]
+   ],
+   "title": "Prompt-first workbench and persistent design choices",
+   "state": "implemented-local",
+   "acceptance": [
+    "normal generation and revision require no manual layout edits; explicit author locks survive theme changes and source updates; references can remain public while private speaker notes stay private. The output website contains audience navigation, not editor chrome.\n"
+   ],
+   "remaining": "Claude login/live acceptance remains deferred. Local supplied-text planning and narrow named-style/chart/composition revisions do not imply arbitrary semantic editing, PDF/Office ingestion or exhaustive interactive capture. VIS-014 broader story/accessibility/engine/native/packaging and remote CI gates remain open.",
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/vis-013/review.json",
+   "implemented": [
+    "Prompt-first modules inside the existing Visual Studio; local prompt/Markdown source or saved-source generation and scoped natural-language revisions through existing task tools",
+    "Typed independent language/tone/style/update preferences and per-scene profile overrides; author image/theme/composition locks retained",
+    "Opt-in dependency-free isolated Chromium capture, current image gallery or actual Codex findings, strict reviewed HTML export and old-route bypass refusal",
+    "Durable operation checkpoints, sequence/project conflicts, cancellation, explicit source synchronization, interrupted-task recovery and byte-exact last accepted HTML"
+   ]
   },
-  "previousWorkbenchBuild": {
-    "scope": "VIS-013 prompt-first Visual Studio workbench",
-    "implementation": "implemented-local",
-    "acceptance": "Local real UI generation/capture/review boundary, actual Codex selected-page revision and reviewed changed HTML, source/lock/privacy/recovery checks; Claude deferred",
-    "evidence": "docs/evidence/vis-013/review.json",
-    "remainingManualAcceptance": [
-      "Deferred Claude route, wider VIS-014 release stories, accessibility/other engines, native applications and remote CI"
-    ]
-  },
-  "authorizedTaskIds": [
-    "MB-01",
-    "MB-02",
-    "MB-03",
-    "MB-04",
-    "MB-05",
-    "MB-06",
-    "MB-07",
-    "MB-08",
-    "MB-09",
-    "MB-10",
-    "MB-11",
-    "MB-12",
-    "MB-13",
-    "MB-14",
-    "MB-15",
-    "VIS-001",
-    "VIS-002",
-    "VIS-003",
-    "VIS-004",
+  {
+   "id": "VIS-014",
+   "priority": "P1",
+   "dependsOn": [
     "VIS-005",
     "VIS-006",
     "VIS-007",
@@ -1418,119 +1166,388 @@
     "VIS-010",
     "VIS-011",
     "VIS-012",
-    "VIS-013",
+    "VIS-013"
+   ],
+   "title": "First visual release gate",
+   "state": "partial",
+   "acceptance": [
+    "all three initial themes pass the bilingual 12-page gallery; each theme produces a coherent bilingual 8-page story; at least three interaction types work; both actual hosts finish a prompt-to-artifact task and a scoped revision; the standalone exported package works outside the repository. Compare the same content against VIS-001's baseline. Approve the whole story, including weakest pages, not only selected hero screenshots."
+   ],
+   "remaining": "Claude prompt-to-artifact and scoped revision remain deferred by the user, so the both-hosts criterion is unmet. Missing glyphs are detected since S8 (C13) and CJK headings break between words (C12); the 390 px heatmap still scrolls (S4 follow-up); single-file exports are 6.8–7.0 MB against the ~2 MB starting budget. The advisory scored review is 74–77/100, below the 80 pilot threshold, and needs author calibration. Screen reader, IME, 200% zoom, projection and native applications remain untested; remote CI has not run this branch.",
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/vis-014/review.md",
+   "implemented": [
+    "Frozen requirements §9 gallery (decision C): 12 pages, four per theme, English and Simplified Chinese, per-page content hashes enforced by a test (docs/visual-acceptance/gallery-manifest.json)",
+    "One bilingual 8-page story drawn by each theme; facts, data tables, sources and citations identical across themes for gallery and stories (tested)",
+    "scripts/release-gate.mjs: VIS-010 quality pipeline on all eight decks (0 issues, 96 of 96 traces at 1440/1024/390 px), eleven explicit cases (10 pass), VIS-001 legacy comparison, standalone exports offline outside the repository in Chromium 151, Firefox 153 and WebKit 26.5, and the portable bundle run there",
+    "Six renderer failures found by the gallery fixed (cover citation contrast and split number, trend label overlap, heatmap label margin, before/after labels under the compare panel, linear process diagrams); render baseline re-recorded with no visible word or value change",
+    "Real Codex CLI drafted-deck run: prompt to reviewed export, page-3-only revision, second image review and export (attempt 3; attempts recorded)",
+    "S3, S4 and S5 merged with a layered chart-focus rule (decisions in design-handoff-alignment.md §13)"
+   ]
+  },
+  {
+   "id": "VIS-015",
+   "priority": "P2",
+   "dependsOn": [
     "VIS-014"
-  ],
-  "previousBuild": {
-    "scope": "MB-06 through MB-10",
-    "evidence": "docs/evidence/mb-06-10/review.json",
-    "implementation": "implemented-local",
-    "acceptance": "MB-08 partial until real Dot desktop acceptance",
-    "remainingManualAcceptance": [
-      "Actual Dot desktop handshake/model/effort/task acceptance"
-    ],
-    "olderPresenterGates": [
-      "200% browser zoom",
-      "Screen reader",
-      "Conferencing share",
-      "Extended display"
-    ]
+   ],
+   "title": "Additional styles and reference-guided personalization",
+   "state": "partial",
+   "acceptance": [
+    "extend the gallery with two pages per new direction and validate a full story in each. A reference-derived theme changes structure and visual grammar, not just colors. Author feedback can promote a successful design into a reusable profile without importing unrelated reference text or branding.\n"
+   ],
+   "remaining": "Author feedback promoting a successful design into a reusable profile is not built. 102 of 228 pages at 1440 px exceed the 900 px candidate budget (metric, chapter and interaction pages). zh-CN word boundaries depend on the platform ICU version. PowerPoint and Keynote were not run; Chinese PDF search stays partial; remote CI has not run this branch.",
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/vis-015/review.md",
+   "implemented": [
+    "Three versioned packs from the design handoff's first-wave art directions (decision 2 = Replace, alignment §16): editorial-fieldnotes (T01), research-atlas (T02), luminous-stage (T03, static hero, no shader), each with its own title, evidence and closing compositions (16 theme-only compositions), type roles, media ratio and motion character",
+    "Every S1 token role declared by the packs and consumed by the renderer through custom properties whose fallbacks keep the VIS-014 themes byte-identical in text, values and anchors (render baseline re-recorded with a per-entry diff)",
+    "Frozen VIS-014 gallery, the VIS-014 story and the handoff page-42 storyboard drawn in every new theme, both languages, facts identical (tested); T01 and T02 acceptance sample pages and T03 acceptance pages built (tests/s8-themes.mjs)",
+    "scripts/s8-themes.mjs: 24 decks at 1440/1024/390 px with 0 fit or render issues, 136 measured contrast pairs, drawn fonts recorded, nine explicit cases (missing glyph per theme, media-failure cover, low motion, black-and-white atlas, CJK phrase breaks)",
+    "C12: zh-CN display text breaks between dictionary words (<wbr> + keep-all) and keeps full-width punctuation advances; C13: in-page missing-glyph audit in the fit, the Studio gate, the candidate fit and the export readiness stage",
+    "npm run export:targets -- --s8: PowerPoint editability and page check pass on 18 of 18 S8 decks; fonts listed per report"
+   ]
   },
-  "previousMediaWorkersBuild": {
-    "scope": "MB-11 through MB-15",
-    "evidence": "docs/evidence/mb-11-15/review.json",
-    "implementation": "implemented-local",
-    "acceptance": "MB-11 and MB-13 local; MB-12 Dot desktop, MB-14 Figma and MB-15 AE acceptance remain partial",
-    "remainingManualAcceptance": [
-      "Actual two-worker Dot desktop capability/conversation acceptance; current real host evidence is Codex CLI with selected authored snapshots only",
-      "Actual native Figma development-plugin registration with assigned id, editable media/font/source-map import and visual review",
-      "Actual After Effects execution, cancellation/rollback, fonts, temporal/easing and early/middle/settled preview rendering"
-    ]
+  {
+   "id": "VIS-016",
+   "priority": "P2",
+   "dependsOn": [
+    "VIS-003",
+    "VIS-008",
+    "VIS-014"
+   ],
+   "title": "Target-specific editable exports",
+   "state": "partial",
+   "acceptance": [
+    "supported text/data remain editable; unsupported elements have explicit per-element receipts; no whole-slide screenshot is presented as a fully editable export. Validate in the actual target application where that compatibility is claimed. The rich web output remains available even when a different target requires a limited fallback.\n"
+   ],
+   "remaining": "PowerPoint and Keynote were not run, so application compatibility is not claimed (open each package, Edit Data on native charts, per-point focus colours, line-chart markers/labels/gaps, text wrap and fonts, Accessibility Checker, Keynote object import). Chinese PDFs are only partly searchable: Chromium maps some ideographs to CJK radical code points. PDF figure wrappers lack /Alt (Chromium tagging of HTML <figure>). Tall scenes fitted into 16:9 reach 4.6 pt text. Charts with intervals, a log axis or a missing value are delivered at L3 (Quick Look drew them wrongly). Studio export still offers HTML and JSON only; remote CI has not run this branch.",
+   "implementationState": "implemented-local",
+   "evidence": "docs/evidence/vis-016/review.md",
+   "implemented": [
+    "Output levels L1/L2/L3 declared per component and format (web, PDF, PowerPoint) in src/targets/capabilities.mjs and listed per block in every export report",
+    "Export order enforced in code (src/targets/export-order.mjs): ready (hash-matched assets; measured layout of this render with loaded fonts, no last-resort glyph, decoded images) -> static-state -> freeze -> stop-motion -> reveal -> render -> check",
+    "Static delivery rules (src/targets/static-delivery.mjs): static state or final state, visible annotations, selected filter results with written statements, legends with series identity, both comparison states; absent v3 kinds recorded",
+    "VIS-016 PowerPoint compiler (src/targets/pptx/compile.mjs, fallbacks.mjs, audit.mjs, compatibility-report.mjs): native text, tables, charts with embedded workbooks, shapes, glued connectors, pictures and notes from the browser-measured static scene; L3 images of single charts with summaries; per-element receipts; no whole-slide picture",
+    "PDF print job (src/targets/pdf/print.mjs): one measured page per scene with real text, tagged, notes pages for disclosure content",
+    "Four separate results per deck: PowerPoint editability (compiler check plus independent Python check) and page check pass 9 of 9; PDF searchability pass for English, partial for Chinese; accessibility partial (package pass, PDF figure wrappers); visual fidelity partial (Quick Look reference renders)",
+    "scripts/export-targets.mjs runs the frozen VIS-014 corpus plus the S4 chart-kinds sample in an isolated browser and writes an export report per deck"
+   ]
   },
-  "previousCompositionBuild": {
-    "scope": "VIS-006 six families, measured candidates and whole-deck rhythm",
-    "implementation": "implemented-local",
-    "evidence": "docs/evidence/vis-006/review.json",
-    "acceptance": "Six families × three geometries; both languages and all three packs, minimum two feasible candidates per representative scene; direct-loopback editor and legacy regression checks",
-    "remainingManualAcceptance": [
-      "VIS-001 successful remote CI",
-      "Other browser engines, real OS IME, screen reader and 200% zoom",
-      "VIS-014 broader release gallery/story gate and native v3 exports/host acceptance"
-    ]
+  {
+   "id": "SRC-001",
+   "priority": "P2",
+   "dependsOn": [
+    "VIS-002",
+    "VIS-014"
+   ],
+   "title": "Source snapshots and stable content extraction",
+   "state": "planned",
+   "acceptance": [
+    "rename, move, small edit, and deletion are distinguishable; unchanged logical blocks retain IDs; every published claim/graphic can link to source anchors. Extraction quality is reported before generation. A content hash supplements logical identity rather than replacing it.\n"
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
   },
-  "previousAssetBuild": {
-    "scope": "VIS-007 local asset direction, source extraction and protected cropping",
-    "implementation": "implemented-local",
-    "evidence": "docs/evidence/vis-007/review.json",
-    "acceptance": "PNG/JPEG/WebP original preservation, native PNG and optional web derivative, named slots, source extraction, protected crops and honest unavailable generation; bilingual three-theme browser review",
-    "remainingManualAcceptance": [
-      "VIS-001 remote CI",
-      "Other browser engines, real OS IME, screen reader and 200% zoom",
-      "VIS-014 broader release, native v3 exports and real host acceptance"
-    ]
-  },
-  "previousComponentBuild": {
-    "scope": "VIS-008 semantic charts, diagrams, exact code and stable annotations",
-    "implementation": "implemented-local",
-    "evidence": "docs/evidence/vis-008/review.json",
-    "acceptance": "Six bilingual three-theme 14-page stories, exact-data mutations, DOM/SVG measurements, static reading, measured candidates/rhythm and local editor/history regression evidence",
-    "remainingManualAcceptance": [
-      "VIS-009 interactive animation",
-      "Native v3 target compilers and real target/host acceptance",
-      "Other browser engines, real screen reader/IME/200% zoom, remote CI and VIS-014 broader release gates"
-    ]
-  },
-  "previousQualityBuild": {
-    "scope": "VIS-010 browser quality, actual image review and bounded correction",
-    "implementation": "implemented-local",
-    "evidence": "docs/evidence/vis-010/review.json",
-    "acceptance": "Six 15-scene stories, three responsive widths, 234 real action traces, 1,872 coverage records, five injected failures, actual image review and author-locked recovery",
-    "remainingManualAcceptance": [
-      "One warning per story: filtered missing label close to zero-axis tick",
-      "Mobile native code/plots/diagrams use horizontal scrollers and source alternatives, not simultaneous full-width display",
-      "Exhaustive states, other engines, screen reader, IME, 200% zoom and host/native export acceptance remain open"
-    ]
-  },
-  "requirementsDocument": "DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md",
-  "nextExecutionOrder": [
-    "VIS-014",
-    "VIS-015",
-    "VIS-016",
+  {
+   "id": "SRC-002",
+   "priority": "P2",
+   "dependsOn": [
     "SRC-001",
-    "SRC-002",
-    "SRC-003",
-    "SRC-004",
-    "SRC-005",
-    "SRC-006",
-    "SRC-007",
-    "DOC-001",
-    "EXP-001"
-  ],
-  "planningMeaning": "nextExecutionOrder is planning, not authorization. executionOrder retains historical batches; authorizedTaskIds includes the directly requested VIS-013.",
-  "openAcceptanceGates": [
-    "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",
-    "VIS-014 partial: Claude host deferred, missing-glyph detection, 390 px heatmap scroll, CJK heading breaks, payload budget, author calibration of the scored review",
-    "Actual screen reader/IME/200% zoom and projection; PowerPoint and Keynote runs of the S7 v3 packages (VIS-016) by the user (Chromium, Firefox and WebKit standalone loads recorded for VIS-014)",
-    "VIS-016 partial: PowerPoint/Keynote not run, Chinese PDF search (CJK radical code points), PDF figure wrappers without alt, small text on tall scenes"
-  ],
-  "previousVisualTaskBuild": {
-    "scope": "VIS-011 local design director and one-task production loop",
-    "implementation": "implemented-local",
-    "evidence": "docs/evidence/vis-011/review.json",
-    "acceptance": "Real isolated Chromium complete story, precise page-4 revision, actual pixel review, bounded repair and accepted-artifact recovery; shared bridge/MCP tool scope and conflicts",
-    "remainingManualAcceptance": [
-      "VIS-012 host adapters and VIS-013 workbench remain subsequent scope",
-      "Offline supplied claims remain externally unverified; rich drafting needs the existing authorized host",
-      "Native v3 exports, other engines/accessibility and broader release gates remain open"
-    ]
+    "VIS-010",
+    "VIS-012"
+   ],
+   "title": "Durable incremental jobs",
+   "state": "planned",
+   "acceptance": [
+    "restart recovery, duplicate events, partial downloads, retries, expired credentials, stale workers, and out-of-order completion do not corrupt or duplicate publication. History retention and garbage collection are explicit. Locks and unchanged assets remain intact through incremental rebuilds.\n"
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
   },
-  "previousReleaseGateBuild": {
-    "scope": "VIS-014 first visual release gate (S6)",
-    "implementation": "implemented-local",
-    "acceptance": "partial: frozen bilingual gallery, three bilingual 8-page stories, four interaction types, explicit cases, legacy comparison, standalone exports in three engines and a real Codex prompt-to-artifact task with a scoped revision; Claude deferred; missing-glyph detection open; advisory review below threshold",
-    "evidence": "docs/evidence/vis-014/review.md",
-    "remainingManualAcceptance": [
-      "Deferred Claude route, author calibration of the scored review, missing-glyph detection, accessibility (screen reader, IME, 200% zoom), projection, native applications and remote CI"
-    ]
+  {
+   "id": "SRC-003",
+   "priority": "P2",
+   "dependsOn": [
+    "SRC-002",
+    "VIS-013"
+   ],
+   "title": "Local hourly publication and version history",
+   "state": "planned",
+   "acceptance": [
+    "editing one source changes only affected scenes plus necessary neighboring context; unchanged scene IDs/assets remain stable; a failed build leaves the last successful website available; rollback restores a known version. An older job cannot overwrite a newer source revision. Public references and private notes remain separate."
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+  },
+  {
+   "id": "SRC-004",
+   "priority": "P2",
+   "dependsOn": [
+    "SRC-003"
+   ],
+   "title": "Google Drive adapter",
+   "state": "planned",
+   "acceptance": [
+    "folder rename/move, edited native documents, duplicates, deletion, revoked access, and missed notifications converge to the correct snapshot set. The adapter produces sources; it does not implement a separate design engine.\n"
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+  },
+  {
+   "id": "SRC-005",
+   "priority": "P2",
+   "dependsOn": [
+    "SRC-003"
+   ],
+   "title": "Notion adapter",
+   "state": "planned",
+   "acceptance": [
+    "nested-block changes and deleted/archived/inaccessible content are reconciled without duplicating pages; linked evidence remains resolvable; webhook support, where used, is paired with reconciliation.\n"
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+  },
+  {
+   "id": "SRC-006",
+   "priority": "P2",
+   "dependsOn": [
+    "SRC-003"
+   ],
+   "title": "Dropbox adapter",
+   "state": "planned",
+   "acceptance": [
+    "many-file pagination, interrupted cursor handling, identical names in different folders, and revoked access cannot leak one source's content into another. Use the existing incremental compiler and publisher.\n"
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+  },
+  {
+   "id": "SRC-007",
+   "priority": "P2",
+   "dependsOn": [
+    "SRC-003"
+   ],
+   "title": "OneDrive adapter",
+   "state": "planned",
+   "acceptance": [
+    "personal/business deployment differences are explicitly tested for the supported account type; delta continuation, deletion, moved items, and access changes converge. This is a separate PR/deployment gate from other connectors. Select the first cloud connector based on the first pilot user's actual source system; the four adapters can proceed in parallel after the common contract is stable.\n"
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+  },
+  {
+   "id": "DOC-001",
+   "priority": "P3",
+   "dependsOn": [
+    "SRC-003",
+    "VIS-008",
+    "VIS-013"
+   ],
+   "title": "Code-aware living documentation",
+   "state": "planned",
+   "acceptance": [
+    "a signature change updates the corresponding API page and affected examples; unrelated pages remain stable; runnable examples are tested in a controlled environment; inferred explanations are labelled; removed symbols do not remain as current API claims. Start with one language rather than promising all-language analysis.\n"
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+  },
+  {
+   "id": "EXP-001",
+   "priority": "P3",
+   "dependsOn": [
+    "VIS-009",
+    "VIS-014"
+   ],
+   "title": "Optional spatial and advanced motion components",
+   "state": "planned",
+   "acceptance": [
+    "the effect explains supplied content, loads only for active scenes, supports reduced motion, stays within the selected device budget, and has an explicit export fallback. Core quality does not depend on adding 3D to every presentation.\n"
+   ],
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
   }
+ ],
+ "executionOrder": [
+  "VIS-002",
+  "VIS-003",
+  "VIS-004",
+  "VIS-005",
+  "VIS-006",
+  "VIS-007",
+  "VIS-008",
+  "VIS-009",
+  "VIS-010",
+  "VIS-011",
+  "VIS-012"
+ ],
+ "previousExecutionOrder": [
+  "DW-020",
+  "DW-130",
+  "DW-120",
+  "DW-110"
+ ],
+ "currentBuild": {
+  "scope": "S8 T01–T03 theme packs (VIS-015), S1 token roles consumed, C12 CJK phrase breaks, C13 missing-glyph audit",
+  "implementation": "implemented-local",
+  "acceptance": "partial: three packs, sixteen theme-only compositions, gallery/story/storyboard in every new theme with identical facts, measured contrast, nine explicit cases, exports on 18 decks; reusable-profile promotion not built; PowerPoint and Keynote not run",
+  "evidence": "docs/evidence/vis-015/review.md"
+ },
+ "previousWorkbenchBuild": {
+  "scope": "VIS-013 prompt-first Visual Studio workbench",
+  "implementation": "implemented-local",
+  "acceptance": "Local real UI generation/capture/review boundary, actual Codex selected-page revision and reviewed changed HTML, source/lock/privacy/recovery checks; Claude deferred",
+  "evidence": "docs/evidence/vis-013/review.json",
+  "remainingManualAcceptance": [
+   "Deferred Claude route, wider VIS-014 release stories, accessibility/other engines, native applications and remote CI"
+  ]
+ },
+ "authorizedTaskIds": [
+  "MB-01",
+  "MB-02",
+  "MB-03",
+  "MB-04",
+  "MB-05",
+  "MB-06",
+  "MB-07",
+  "MB-08",
+  "MB-09",
+  "MB-10",
+  "MB-11",
+  "MB-12",
+  "MB-13",
+  "MB-14",
+  "MB-15",
+  "VIS-001",
+  "VIS-002",
+  "VIS-003",
+  "VIS-004",
+  "VIS-005",
+  "VIS-006",
+  "VIS-007",
+  "VIS-008",
+  "VIS-009",
+  "VIS-010",
+  "VIS-011",
+  "VIS-012",
+  "VIS-013",
+  "VIS-014"
+ ],
+ "previousBuild": {
+  "scope": "MB-06 through MB-10",
+  "evidence": "docs/evidence/mb-06-10/review.json",
+  "implementation": "implemented-local",
+  "acceptance": "MB-08 partial until real Dot desktop acceptance",
+  "remainingManualAcceptance": [
+   "Actual Dot desktop handshake/model/effort/task acceptance"
+  ],
+  "olderPresenterGates": [
+   "200% browser zoom",
+   "Screen reader",
+   "Conferencing share",
+   "Extended display"
+  ]
+ },
+ "previousMediaWorkersBuild": {
+  "scope": "MB-11 through MB-15",
+  "evidence": "docs/evidence/mb-11-15/review.json",
+  "implementation": "implemented-local",
+  "acceptance": "MB-11 and MB-13 local; MB-12 Dot desktop, MB-14 Figma and MB-15 AE acceptance remain partial",
+  "remainingManualAcceptance": [
+   "Actual two-worker Dot desktop capability/conversation acceptance; current real host evidence is Codex CLI with selected authored snapshots only",
+   "Actual native Figma development-plugin registration with assigned id, editable media/font/source-map import and visual review",
+   "Actual After Effects execution, cancellation/rollback, fonts, temporal/easing and early/middle/settled preview rendering"
+  ]
+ },
+ "previousCompositionBuild": {
+  "scope": "VIS-006 six families, measured candidates and whole-deck rhythm",
+  "implementation": "implemented-local",
+  "evidence": "docs/evidence/vis-006/review.json",
+  "acceptance": "Six families × three geometries; both languages and all three packs, minimum two feasible candidates per representative scene; direct-loopback editor and legacy regression checks",
+  "remainingManualAcceptance": [
+   "VIS-001 successful remote CI",
+   "Other browser engines, real OS IME, screen reader and 200% zoom",
+   "VIS-014 broader release gallery/story gate and native v3 exports/host acceptance"
+  ]
+ },
+ "previousAssetBuild": {
+  "scope": "VIS-007 local asset direction, source extraction and protected cropping",
+  "implementation": "implemented-local",
+  "evidence": "docs/evidence/vis-007/review.json",
+  "acceptance": "PNG/JPEG/WebP original preservation, native PNG and optional web derivative, named slots, source extraction, protected crops and honest unavailable generation; bilingual three-theme browser review",
+  "remainingManualAcceptance": [
+   "VIS-001 remote CI",
+   "Other browser engines, real OS IME, screen reader and 200% zoom",
+   "VIS-014 broader release, native v3 exports and real host acceptance"
+  ]
+ },
+ "previousComponentBuild": {
+  "scope": "VIS-008 semantic charts, diagrams, exact code and stable annotations",
+  "implementation": "implemented-local",
+  "evidence": "docs/evidence/vis-008/review.json",
+  "acceptance": "Six bilingual three-theme 14-page stories, exact-data mutations, DOM/SVG measurements, static reading, measured candidates/rhythm and local editor/history regression evidence",
+  "remainingManualAcceptance": [
+   "VIS-009 interactive animation",
+   "Native v3 target compilers and real target/host acceptance",
+   "Other browser engines, real screen reader/IME/200% zoom, remote CI and VIS-014 broader release gates"
+  ]
+ },
+ "previousQualityBuild": {
+  "scope": "VIS-010 browser quality, actual image review and bounded correction",
+  "implementation": "implemented-local",
+  "evidence": "docs/evidence/vis-010/review.json",
+  "acceptance": "Six 15-scene stories, three responsive widths, 234 real action traces, 1,872 coverage records, five injected failures, actual image review and author-locked recovery",
+  "remainingManualAcceptance": [
+   "One warning per story: filtered missing label close to zero-axis tick",
+   "Mobile native code/plots/diagrams use horizontal scrollers and source alternatives, not simultaneous full-width display",
+   "Exhaustive states, other engines, screen reader, IME, 200% zoom and host/native export acceptance remain open"
+  ]
+ },
+ "requirementsDocument": "DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md",
+ "nextExecutionOrder": [
+  "VIS-014",
+  "VIS-015",
+  "VIS-016",
+  "SRC-001",
+  "SRC-002",
+  "SRC-003",
+  "SRC-004",
+  "SRC-005",
+  "SRC-006",
+  "SRC-007",
+  "DOC-001",
+  "EXP-001"
+ ],
+ "planningMeaning": "nextExecutionOrder is planning, not authorization. executionOrder retains historical batches; authorizedTaskIds includes the directly requested VIS-013.",
+ "openAcceptanceGates": [
+  "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",
+  "VIS-014 partial: Claude host deferred, 390 px heatmap scroll, payload budget, author calibration of the scored review (missing-glyph detection and CJK heading breaks closed in S8)",
+  "Actual screen reader/IME/200% zoom and projection; PowerPoint and Keynote runs of the S7 v3 packages (VIS-016) by the user (Chromium, Firefox and WebKit standalone loads recorded for VIS-014)",
+  "VIS-016 partial: PowerPoint/Keynote not run, Chinese PDF search (CJK radical code points), PDF figure wrappers without alt, small text on tall scenes",
+  "VIS-015 partial: reusable-profile promotion from author feedback not built; 102 of 228 pages over the 900 px candidate budget; PowerPoint/Keynote runs of the S8 packages by the user; zh-CN word boundaries depend on the ICU version"
+ ],
+ "previousVisualTaskBuild": {
+  "scope": "VIS-011 local design director and one-task production loop",
+  "implementation": "implemented-local",
+  "evidence": "docs/evidence/vis-011/review.json",
+  "acceptance": "Real isolated Chromium complete story, precise page-4 revision, actual pixel review, bounded repair and accepted-artifact recovery; shared bridge/MCP tool scope and conflicts",
+  "remainingManualAcceptance": [
+   "VIS-012 host adapters and VIS-013 workbench remain subsequent scope",
+   "Offline supplied claims remain externally unverified; rich drafting needs the existing authorized host",
+   "Native v3 exports, other engines/accessibility and broader release gates remain open"
+  ]
+ },
+ "previousReleaseGateBuild": {
+  "scope": "VIS-014 first visual release gate (S6)",
+  "implementation": "implemented-local",
+  "acceptance": "partial: frozen bilingual gallery, three bilingual 8-page stories, four interaction types, explicit cases, legacy comparison, standalone exports in three engines and a real Codex prompt-to-artifact task with a scoped revision; Claude deferred; missing-glyph detection open; advisory review below threshold",
+  "evidence": "docs/evidence/vis-014/review.md",
+  "remainingManualAcceptance": [
+   "Deferred Claude route, author calibration of the scored review, missing-glyph detection, accessibility (screen reader, IME, 200% zoom), projection, native applications and remote CI"
+  ]
+ },
+ "previousOutputLevelsBuild": {
+  "scope": "S7 output levels and VIS-016 target-specific editable exports",
+  "implementation": "implemented-local",
+  "acceptance": "partial: levels, export order, PowerPoint and PDF compilers with receipts and four separate results on the frozen VIS-014 corpus; PowerPoint and Keynote not run; Chinese PDF search partial",
+  "evidence": "docs/evidence/vis-016/review.md",
+  "remainingManualAcceptance": [
+   "PowerPoint and Keynote runs on the user machine (report applicationChecks)",
+   "Chinese PDF Unicode maps",
+   "PDF figure wrappers without /Alt",
+   "Small text on tall scenes",
+   "Screen reader and remote CI"
+  ]
+ }
 }

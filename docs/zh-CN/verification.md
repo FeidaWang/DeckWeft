@@ -4,6 +4,21 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S8 T01–T03 主题包与 VIS-015 — 2026-10-19
+
+状态 **partial**。[证据（英文）](../evidence/vis-015/review.md) · [手册](visual-studio.md#再增三套主题editorial-fieldnotesresearch-atlasluminous-stages8vis-015) · [对齐文档 §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)。
+
+结果：
+
+- `npm run verify` 通过 **432 项测试**（431 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。
+  - 新增 11 项测试在 `tests/s8-themes.test.mjs`：三套主题包及其 Token 角色、测得的对比度、自定义属性及其回退值、字体角色、主题专属构图、主题 CSS、C12 词间换行、C13 缺字形审计、S8 故事、交接样页与第 42 页故事板。
+  - 既有测试为六套主题包、zh-CN 展示文字中的 `<wbr>`、每次适配结果中的 `glyphs` 列表以及导出就绪阶段的页内缺字形拒绝做了扩展。
+  - 渲染基线重新记录三次，每次单独提交，对应渲染器 `visual-art-direction.7` → `.9` 与播放器 `semantic-player.5`。与 `a8c0404` 的逐条对比显示没有任何可见文字、数值、表格、锚点或标题改变。
+- `node scripts/s8-themes.mjs`（隔离的 Chrome for Testing 151，Playwright 1.61.1，0 次外部请求）：24 份文稿在 1440、1024、390 px 下 0 个适配或渲染问题；136 对测得的对比度全部高于阈值；9 个显式用例全部通过（每个主题的缺字形、媒体失败封面、低动作模式、黑白 Research Atlas、每个主题的中文词间换行）；三个主题在两种语言下事实一致。
+- `npm run export:targets -- --s8`：18 份文稿。PowerPoint 可编辑性与逐页检查 18 份全部通过；PDF 可搜索性在 9 份英文文稿通过，在 9 份中文文稿为 partial（部首码位，与 VIS-016 相同）；每份报告列出所用字体。
+- VIS-014 的显式用例重新运行：11 项全部通过；缺字形现在由适配审计检测。
+- PowerPoint、Keynote 与 Figma 已安装但未运行。LibreOffice 与 After Effects 未安装。
+
 ## S7 输出等级与 VIS-016 导出 — 2026-10-19
 
 状态 **partial**。[证据（英文）](../evidence/vis-016/review.md) · [手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016) · [对齐文档 §15](../plans/design-handoff-alignment.md#15-s7-result--output-levels-and-vis-016-2026-10-19)。

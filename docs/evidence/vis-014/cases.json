@@ -64,9 +64,12 @@
       "locale": "en",
       "page": "story 1 · st-open (cream-collage)",
       "state": "opening",
-      "reproduction": "Append U+E000 to the cover title; open at 1440 px; read Chromium platform fonts for the heading.",
+      "reproduction": "Append U+E000 to the cover title; open at 1440 px; read the fit audit, the render checks and Chromium platform fonts for the heading.",
       "observed": {
-        "renderChecks": [],
+        "renderChecks": [
+          "glyph: {\"regionId\":\"r0fa20e7d545fa5e205fc\",\"font\":\"\\\"Iowan Old Style\\\", \\\"Palatino Linotype\\\", Georgia, serif\",\"missing\":[\"\"]}",
+          "glyph: Missing glyph: [\"\"] in \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif"
+        ],
         "platformFonts": [
           {
             "familyName": "Iowan Old Style",
@@ -77,9 +80,9 @@
         ],
         "lastResortGlyphs": 0
       },
-      "passed": false,
-      "detectedBy": "not detected",
-      "fix": "Open: the fit audit and the Studio gate do not report missing glyphs (C13); only this probe does."
+      "passed": true,
+      "detectedBy": "in-page glyph audit (canvas pixels against the font's own .notdef), S8",
+      "fix": "C13 closed in S8: the fit audit, the Studio gate, the candidate fit and the export readiness stage all refuse the glyph."
     },
     {
       "host": "local isolated Chromium (file://)",
@@ -190,5 +193,5 @@
       "fix": "None needed."
     }
   ],
-  "ok": false
+  "ok": true
 }

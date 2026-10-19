@@ -1,0 +1,280 @@
+{
+  "cases": [
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "missing-glyph",
+      "theme": "editorial-fieldnotes",
+      "locale": "en",
+      "page": "story 1 · st-open",
+      "state": "opening",
+      "reproduction": "Append U+E000 to the cover title; open at 1440 px; read the fit audit and the render checks.",
+      "observed": {
+        "fitOk": false,
+        "glyphs": [
+          {
+            "regionId": "r0fa20e7d545fa5e205fc",
+            "font": "Charter, \"Source Serif 4\", \"Source Serif Pro\", Georgia, \"Noto Serif\", serif",
+            "missing": [
+              ""
+            ]
+          }
+        ],
+        "glyphIssues": [
+          "{\"regionId\":\"r0fa20e7d545fa5e205fc\",\"font\":\"Charter, \\\"Source Serif 4\\\", \\\"Source Serif Pro\\\", Georgia, \\\"Noto Serif\\\", serif\",\"missing\":[\"\"]}",
+          "Missing glyph: [\"\"] in Charter, \"Source Serif 4\", \"Source Serif Pro\", Georgia, \"Noto Serif\", serif"
+        ]
+      },
+      "passed": true,
+      "detectedBy": "in-page glyph audit (canvas pixels against the font's own .notdef)",
+      "fix": "C13 closed for the web fit audit and the Studio gate; the export readiness stage refuses the same layout (FONT_GLYPH_MISSING)."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "missing-glyph",
+      "theme": "research-atlas",
+      "locale": "en",
+      "page": "story 1 · st-open",
+      "state": "opening",
+      "reproduction": "Append U+E000 to the cover title; open at 1440 px; read the fit audit and the render checks.",
+      "observed": {
+        "fitOk": false,
+        "glyphs": [
+          {
+            "regionId": "r0fa20e7d545fa5e205fc",
+            "font": "\"Avenir Next\", \"IBM Plex Sans\", \"Segoe UI\", \"Noto Sans\", Arial, sans-serif",
+            "missing": [
+              ""
+            ]
+          }
+        ],
+        "glyphIssues": [
+          "{\"regionId\":\"r0fa20e7d545fa5e205fc\",\"font\":\"\\\"Avenir Next\\\", \\\"IBM Plex Sans\\\", \\\"Segoe UI\\\", \\\"Noto Sans\\\", Arial, sans-serif\",\"missing\":[\"\"]}",
+          "Missing glyph: [\"\"] in \"Avenir Next\", \"IBM Plex Sans\", \"Segoe UI\", \"Noto Sans\", Arial, sans-serif"
+        ]
+      },
+      "passed": true,
+      "detectedBy": "in-page glyph audit (canvas pixels against the font's own .notdef)",
+      "fix": "C13 closed for the web fit audit and the Studio gate; the export readiness stage refuses the same layout (FONT_GLYPH_MISSING)."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "missing-glyph",
+      "theme": "luminous-stage",
+      "locale": "en",
+      "page": "story 1 · st-open",
+      "state": "opening",
+      "reproduction": "Append U+E000 to the cover title; open at 1440 px; read the fit audit and the render checks.",
+      "observed": {
+        "fitOk": false,
+        "glyphs": [
+          {
+            "regionId": "r0fa20e7d545fa5e205fc",
+            "font": "Futura, \"Century Gothic\", \"Avenir Next\", \"Noto Sans\", sans-serif",
+            "missing": [
+              ""
+            ]
+          }
+        ],
+        "glyphIssues": [
+          "{\"regionId\":\"r0fa20e7d545fa5e205fc\",\"font\":\"Futura, \\\"Century Gothic\\\", \\\"Avenir Next\\\", \\\"Noto Sans\\\", sans-serif\",\"missing\":[\"\"]}",
+          "Missing glyph: [\"\"] in Futura, \"Century Gothic\", \"Avenir Next\", \"Noto Sans\", sans-serif"
+        ]
+      },
+      "passed": true,
+      "detectedBy": "in-page glyph audit (canvas pixels against the font's own .notdef)",
+      "fix": "C13 closed for the web fit audit and the Studio gate; the export readiness stage refuses the same layout (FONT_GLYPH_MISSING)."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "media-failure-cover",
+      "theme": "luminous-stage",
+      "locale": "en",
+      "page": "stage sample · ls-cover-text",
+      "state": "opening",
+      "reproduction": "Render the hero without an image block; separately delete the hero image file from a copy of the asset home and export.",
+      "observed": {
+        "decor": true,
+        "headline": "95px",
+        "textOverOrb": false,
+        "fitOk": true,
+        "refusal": {
+          "export": "refused",
+          "code": "TARGET_CAPABILITY",
+          "details": [
+            "ASSET_UNRESOLVED"
+          ]
+        }
+      },
+      "passed": true,
+      "fix": "None needed: the cover composes without media and a missing file is refused by name."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "low-motion",
+      "theme": "luminous-stage",
+      "locale": "en",
+      "page": "story (luminous-stage)",
+      "state": "reduced motion, then full motion replay",
+      "reproduction": "Open with prefers-reduced-motion: reduce and read the animations; open without it, replay page 3 and read the running animations.",
+      "observed": {
+        "reduced": {
+          "fallback": [
+            "static"
+          ],
+          "animations": 0,
+          "snapshot": [
+            {
+              "sceneId": "st-open",
+              "position": 0,
+              "playing": false,
+              "frozen": false
+            },
+            {
+              "sceneId": "st-context",
+              "position": 0,
+              "playing": false,
+              "frozen": false
+            },
+            {
+              "sceneId": "st-evidence",
+              "position": 0,
+              "playing": false,
+              "frozen": true
+            },
+            {
+              "sceneId": "st-compare",
+              "position": 0,
+              "playing": false,
+              "frozen": false
+            },
+            {
+              "sceneId": "st-process",
+              "position": 0,
+              "playing": false,
+              "frozen": false
+            },
+            {
+              "sceneId": "st-pair",
+              "position": 0,
+              "playing": false,
+              "frozen": false
+            },
+            {
+              "sceneId": "st-quote",
+              "position": 0,
+              "playing": false,
+              "frozen": false
+            },
+            {
+              "sceneId": "st-close",
+              "position": 0,
+              "playing": false,
+              "frozen": false
+            }
+          ]
+        },
+        "full": {
+          "animations": [
+            {
+              "id": "SlideSmall",
+              "easing": "ease-in-out",
+              "delay": 40,
+              "duration": 180
+            }
+          ]
+        },
+        "declared": {
+          "distance": 12,
+          "easing": "ease-in-out",
+          "delay": 40,
+          "fallback": "static"
+        }
+      },
+      "passed": true,
+      "fix": "None needed."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "black-and-white",
+      "theme": "research-atlas",
+      "locale": "en",
+      "page": "at-figure, at-panels, at-interval",
+      "state": "grayscale filter over the whole page",
+      "reproduction": "Open the atlas sample, apply html{filter:grayscale(1)}, capture every chart page; compute the relative luminance of the first four series colours.",
+      "observed": {
+        "seriesLuminance": [
+          0.1,
+          0.151,
+          0.196,
+          0.24,
+          0.084,
+          0.169,
+          0.143,
+          0.013
+        ],
+        "minGapFirstFour": 0.043999999999999984,
+        "dashPatterns": [
+          "none",
+          "9 5",
+          "2 4"
+        ],
+        "captures": [
+          "cases/atlas-bw-at-figure.png",
+          "cases/atlas-bw-at-panels.png",
+          "cases/atlas-bw-at-interval.png"
+        ]
+      },
+      "passed": true,
+      "fix": "Series differ by luminance and by dash pattern; focus is drawn as solid versus outlined. The captures were viewed."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "cjk-breaks",
+      "theme": "editorial-fieldnotes",
+      "locale": "zh-CN",
+      "page": "gallery (every heading and callout with Han text)",
+      "state": "opening",
+      "reproduction": "Open the zh-CN gallery at 1440 and 390 px; read the line boxes of every heading character and compare line ends with the dictionary word boundaries; read the fit audit overflow list.",
+      "observed": {
+        "brokenInsideWord": [],
+        "overflowRegions": [],
+        "headingsChecked": 16
+      },
+      "passed": true,
+      "fix": "C12: <wbr> at dictionary word boundaries with word-break: keep-all on display text."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "cjk-breaks",
+      "theme": "research-atlas",
+      "locale": "zh-CN",
+      "page": "gallery (every heading and callout with Han text)",
+      "state": "opening",
+      "reproduction": "Open the zh-CN gallery at 1440 and 390 px; read the line boxes of every heading character and compare line ends with the dictionary word boundaries; read the fit audit overflow list.",
+      "observed": {
+        "brokenInsideWord": [],
+        "overflowRegions": [],
+        "headingsChecked": 16
+      },
+      "passed": true,
+      "fix": "C12: <wbr> at dictionary word boundaries with word-break: keep-all on display text."
+    },
+    {
+      "host": "local isolated Chromium (file://)",
+      "id": "cjk-breaks",
+      "theme": "luminous-stage",
+      "locale": "zh-CN",
+      "page": "gallery (every heading and callout with Han text)",
+      "state": "opening",
+      "reproduction": "Open the zh-CN gallery at 1440 and 390 px; read the line boxes of every heading character and compare line ends with the dictionary word boundaries; read the fit audit overflow list.",
+      "observed": {
+        "brokenInsideWord": [],
+        "overflowRegions": [],
+        "headingsChecked": 16
+      },
+      "passed": true,
+      "fix": "C12: <wbr> at dictionary word boundaries with word-break: keep-all on display text."
+    }
+  ],
+  "ok": true
+}

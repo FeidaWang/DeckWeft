@@ -535,3 +535,25 @@ Decision 2 ([§7](#decision-2--t01t03-and-the-vis-015-themes)) was left as a pla
 | VIS-015 acceptance text | Unchanged in `roadmap.json`. "Two gallery pages per new direction and a full story in each" is met by drawing the frozen 12-page gallery and an 8-page story in each new theme; "author feedback can promote a successful design into a reusable profile" is not built in S8, so VIS-015 can reach `partial` at most. | Status is set only with the S8 evidence ([VIS-015 review](../evidence/vis-015/review.md)). |
 | Fonts | Source Serif, IBM Plex and Noto CJK are candidates only and are not installed on the S8 machine. Packs name platform fonts first and the Open Font Licence candidates as later fallbacks; no font file is bundled. | The licence check and the fonts actually drawn are recorded in the VIS-015 review. |
 | Token roles | The S1 token roles (`typography.numeric`, `palette.reference` / `missing`, `spacing.captionGap` / `sectionGap` / `safeArea`, `motion.distance` / `easing` / `delay` / `fallback`) are declared by the three new packs and consumed by the renderer through CSS custom properties whose fallbacks equal the current literal values, so the three VIS-014 themes render exactly as before. | `resolveTheme()` gains a `tokens` object; the render baseline is re-recorded once, in its own commit, with the renderer and player version bumps that S8 needs anyway (new theme CSS, the C12 heading breaks, the C13 glyph audit). |
+
+### S8 result, 2026-10-19
+
+State: **partial** (roadmap VIS-015) / LocalVerified for the web output in Chromium; exports compile and pass their own checks; PowerPoint and Keynote not run. [Evidence](../evidence/vis-015/review.md) · [manual](../en/visual-studio.md#three-more-themes-editorial-fieldnotes-research-atlas-luminous-stage-s8-vis-015).
+
+| Brief item | Result |
+|---|---|
+| Three theme packs with attribution | `themes/editorial-fieldnotes`, `themes/research-atlas`, `themes/luminous-stage`, version 1.0.0; sixteen theme-only compositions (two or more title, two or more evidence, one closing per theme); type roles, media ratio and motion tokens differ per theme |
+| S1 token roles declared and consumed | All roles declared by the three packs; custom properties emitted only for declaring packs; consumers fall back to the previous literal values, so the VIS-014 themes keep their text, values and anchors (baseline diff) |
+| Contrast at actual sizes | 136 measured pairs as drawn, all above 4.5:1 (body) or 3:1 (large, graphics); T01 terracotta darkened to `#A8503A`; token pairs recorded |
+| Fonts | Platform fonts by name (Charter, Gill Sans, Futura, Avenir Next, Helvetica Neue, Menlo, Songti SC, PingFang SC); OFL candidates named as later fallbacks, none installed here, none bundled; drawn fonts recorded per deck and listed in every export report |
+| C12 | `<wbr>` at ICU word boundaries with `word-break: keep-all` on zh-CN display text; full-width punctuation advances kept so the measured box equals the drawn box; 24 headings per theme checked at 1440 and 390 px |
+| C13 | In-page glyph audit (canvas pixels against the font's own .notdef) in the fit audit, the Studio gate, the candidate fit, the quality checks and the export readiness stage; the VIS-014 missing-glyph case now passes |
+| T01 / T02 pairing | Shared type scale tiers, citation role and chart colour order; the S8 story document drawn by both keeps identical facts |
+| T03 acceptance | Title contrast measured, media-failure cover (drawn orb; missing file refused by name), low-motion mode (`fallback: static`), static composition; no WebGL |
+| Sample pages | T01 six pages and T02 six pages as listed by the handoff; T03 six pages; built before any motion work |
+| Page-42 storyboard | Twelve tasks in every theme and both languages, facts identical; ScenarioSnapshot drawn as a static comparison table and recorded as missing |
+| Verification | 24 decks × 3 widths with 0 issues; black-and-white atlas distinguishes the main series; contact sheets viewed and the weakest page named per theme; `npm run export:targets -- --s8` passes PowerPoint editability and the page check on 18 of 18 |
+
+**Decisions made in S8** (besides decision 2): the stage hero's drawn orb appears only when no object is bound; theme-only compositions stay outside the family registry (validated in `plan.mjs`, replaced by family geometry when rhythm runs, as diagonal-cover is); the S8 stylesheet uses no text transform so exported text keeps its authored case; a declared monospace numeric role widens chart value space; the renderer version moved to `.9` and the player to `.5`, each re-recording in its own commit.
+
+**Returned to later steps:** reusable-profile promotion from author feedback (VIS-015, S9); pages over the 900 px candidate budget (a 16:9 tier or page splitting); table cells in zh-CN at 390 px; ScenarioSnapshot parameters; application runs by the user.

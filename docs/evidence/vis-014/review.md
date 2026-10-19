@@ -57,9 +57,9 @@ Render baseline re-recorded deliberately for R1–R6 (25e2704). Against the prev
 
 | Item | Page and state | Reproduction | Owner |
 |---|---|---|---|
-| Missing glyph not detected | Story 1 (cover title + U+E000), 1440 px | Chromium draws a .notdef box inside Iowan Old Style; the fit audit, the Studio gate and the CDP platform-font probe (no LastResort font) all report nothing ([capture](case-missing-glyph.png)) | C13 font gate, S8 |
+| ~~Missing glyph not detected~~ Closed in S8 | Story 1 (cover title + U+E000), 1440 px | Chromium draws a .notdef box inside Iowan Old Style and the CDP platform-font probe names no last-resort font. Since S8 the fit audit compares canvas pixels with the font's own .notdef and reports the glyph; the case passes ([cases.json](cases.json), [VIS-015](../vis-015/review.md)) | C13, done |
 | Heatmap scrolls at 390 px | Gallery 11 | The 390 px column named by the takeaway is off-screen until scrolled; the fit audit does not flag legacy SVG kinds | S4 follow-up |
-| CJK headings break inside words | Gallery 2 zh, legacy `strategy-zh-CN` | `三十六种几何结／构`, `可执／行` | C12, S8 |
+| ~~CJK headings break inside words~~ Closed in S8 | Gallery 2 zh, legacy `strategy-zh-CN` | `三十六种几何结／构`, `可执／行`. Since S8 zh-CN headings, callouts and metric labels carry `<wbr>` at dictionary word boundaries with `word-break: keep-all` ([VIS-015](../vis-015/review.md)) | C12, done |
 | Payload | Every deck | Single-file exports are 6.84–6.96 MB against the ~2 MB initial-payload starting budget; a story embeds the same 2.5 MB PNG twice (once per crop) | Later; no lazy loading in standalone HTML |
 | Trend label stagger | Gallery 9, 1440 px | The stacking rule uses the narrow-screen type size, so the last label also drops a line where it would fit | Chart follow-up |
 | Interaction chrome | Every interactive page | The cue toolbar sits above every interactive headline | Design follow-up |

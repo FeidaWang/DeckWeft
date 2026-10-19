@@ -19,6 +19,22 @@ import themeSchema from '../schemas/theme-pack.schema.json' with {type:'json'};
 import planSchema from '../schemas/design-plan.schema.json' with {type:'json'};
 import sceneSchema from '../schemas/web-scene.schema.json' with {type:'json'};
 
+// The S8 corpus (tests/s8-themes.mjs): its asset home is prepared before any test registers, as in release-gate.test.mjs.
+import {mkdtemp,realpath,rm} from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {S8_THEMES,S8_STORY_COMPOSITIONS,STORYBOARD_TASKS,s8Project,s8Story,storyboard} from './s8-themes.mjs';
+import {releaseAssets,releaseStory,releaseProject,LOCALES} from './release-gate.mjs';
+import {assertVisualProject} from '../src/core/visual-project.mjs';
+import {visualAssetResources} from '../src/assets/visual.mjs';
+
+const corpusHome=await realpath(await mkdtemp(path.join(os.tmpdir(),'dw-s8-corpus-')));
+test.after(()=>rm(corpusHome,{recursive:true,force:true}));
+const corpusAssets=await releaseAssets(corpusHome);
+const factsOf=body=>({tables:body.match(/<tbody>[\s\S]*?<\/tbody>/g)||[],links:[...body.matchAll(/<a [^>]*href="([^"]+)"/g)].map(m=>m[1]).filter(u=>!u.startsWith('#')),citations:[...body.matchAll(/data-component="citation"[\s\S]*?<\/div>/g)].map(m=>m[0].replace(/<[^>]+>/g,''))});
+const render=async p=>exportDeck(p.document,'html',{experimentalWeb:true,plan:p.plan,assetResources:await visualAssetResources(p,corpusHome)}).body;
+
+
 const S8=['editorial-fieldnotes','research-atlas','luminous-stage'];
 const S8_COMPOSITIONS=Object.keys(THEME_COMPOSITIONS);
 const example=async locale=>JSON.parse(await readFile(new URL(`../tests/fixtures/visual/wave-a.${locale}.json`,import.meta.url)));
@@ -160,4 +176,64 @@ test('C13: the glyph audit is embedded in the player, feeds the fit, the quality
  const issues=checkRender({document,plan,assets:[]},[observation]).issues.filter(i=>i.kind==='glyph');
  assert.ok(issues.length>=1);assert.equal(issues[0].sceneId,scene.id);assert.equal(issues[0].nodeId,region.id);assert.match(issues[0].suggestion,/No installed font/);
  assert.deepEqual(candidateFit({overflow:[],clipIssues:[],contrastIssues:[],text:[],fonts:[],height:700,glyphs:[{regionId:'r',font:'x',missing:['']}],visualFeatures:{focus:'left:top',density:.4,imageRatio:0}},{width:1440}).reasons,['Missing glyph']);
+});
+
+test('S8 stories: the VIS-014 story document drawn by each new theme with that theme\'s own opening, evidence and closing; facts identical across the three',async()=>{
+ assert.deepEqual(Object.keys(S8_STORY_COMPOSITIONS),S8_THEMES);
+ for(const locale of LOCALES){
+  const base=releaseStory(locale,'dark-data',corpusAssets),stories=await Promise.all(S8_THEMES.map(theme=>s8Project('story',locale,corpusHome,theme)));
+  for(const [i,p] of stories.entries()){
+   assertVisualProject(p);assert.deepEqual({...p.document,id:null},{...base.document,id:null});
+   const theme=S8_THEMES[i],prefix={'editorial-fieldnotes':'fieldnotes','research-atlas':'atlas','luminous-stage':'stage'}[theme];
+   assert.ok(p.plan.scenes.every(s=>s.theme===theme&&!('colorMode' in s)));
+   assert.ok(p.plan.scenes[0].composition.startsWith(prefix),theme+' opens with its own title composition');
+   assert.ok(p.plan.scenes.find(s=>s.id==='st-evidence').composition===prefix+'-figure',theme+' evidence');
+   assert.equal(p.plan.scenes.at(-1).composition,prefix+'-closing',theme+' closing');
+   const families=p.plan.scenes.map(s=>compositions.find(c=>c.id===s.composition)?.family||s.composition);
+   assert.ok(new Set(families).size>=4,theme);for(let k=2;k<families.length;k++)assert.ok(!(p.plan.scenes[k].composition===p.plan.scenes[k-1].composition&&p.plan.scenes[k].composition===p.plan.scenes[k-2].composition));
+  }
+  const facts=await Promise.all(stories.map(async p=>factsOf(await render(p))));
+  assert.deepEqual(facts[1],facts[0]);assert.deepEqual(facts[2],facts[0]);assert.ok(facts[0].tables.length>=2&&facts[0].links.length>=3);
+  // The frozen gallery drawn in every new theme keeps its facts too.
+  const gallery=await releaseProject('gallery',locale,corpusHome),byTheme=[];
+  for(const theme of S8_THEMES){let p=gallery;for(const s of gallery.plan.scenes)p=applySceneTheme(p,s.id,theme);assert.deepEqual(p.document,gallery.document);byTheme.push(factsOf(await render(p)));}
+  assert.deepEqual(byTheme[1],byTheme[0]);assert.deepEqual(byTheme[2],byTheme[0]);
+ }
+});
+
+test('S8 handoff sample pages: T01 and T02 acceptance lists and the T03 acceptance pages, in both languages',async()=>{
+ for(const locale of LOCALES){
+  const fieldnotes=await s8Project('fieldnotes',locale,corpusHome),atlas=await s8Project('atlas',locale,corpusHome),stage=await s8Project('stage',locale,corpusHome);
+  for(const p of [fieldnotes,atlas,stage]){assertVisualProject(p);assert.equal(p.plan.scenes.length,6);assert.ok(p.plan.scenes.every(s=>s.blockIds.some(id=>p.document.blocks.find(b=>b.id===id).type==='citation')),'every page cites');for(const d of p.document.datasets)assert.equal(d.synthetic,true);}
+  // T01: cover, two-column thesis, chart evidence, method with margin note, quotation, conclusion.
+  assert.deepEqual(fieldnotes.plan.scenes.map(s=>s.composition),['fieldnotes-cover','fieldnotes-thesis','fieldnotes-figure','fieldnotes-method','quote-split','fieldnotes-closing']);
+  // T02: single-chart conclusion, multi-metric table, four-panel comparison, method flow, uncertain conclusion, evidence appendix.
+  assert.deepEqual(atlas.plan.scenes.map(s=>s.composition),['atlas-figure','comparison-matrix','atlas-panels','process-line','atlas-figure','atlas-appendix']);
+  const panels=atlas.plan.scenes[2].blockIds.map(id=>atlas.document.blocks.find(b=>b.id===id)).filter(b=>b.type==='chart');assert.equal(panels.length,4);assert.ok(panels.every(c=>c.axis.policy==='fixed'&&c.axis.min===0&&c.axis.max===100));
+  const interval=atlas.plan.scenes[4].blockIds.map(id=>atlas.document.blocks.find(b=>b.id===id)).find(b=>b.type==='chart');assert.equal(interval.chartType,'dot-interval');
+  assert.ok(atlas.document.blocks.some(b=>b.type==='table'&&b.rows.flat().some(c=>/^(Missing|缺失)$/.test(c))),'a missing cell is shown as such');
+  // T03: hero with image, hero without image (media-failure cover), chapter, figure, big number, closing.
+  assert.deepEqual(stage.plan.scenes.map(s=>s.composition),['stage-hero','stage-hero','stage-chapter','stage-figure','stage-metric','stage-closing']);
+  const has=(s,type)=>s.blockIds.some(id=>stage.document.blocks.find(b=>b.id===id).type===type);
+  assert.ok(has(stage.plan.scenes[0],'image')&&!has(stage.plan.scenes[1],'image'));
+  const web=await import('../src/scene/web/compile.mjs');const scenes=web.compileWebScenes(stage.document,stage.plan);
+  assert.deepEqual(scenes[1].graphics.map(g=>g.id),['orb'],'the hero without an object draws the orb');assert.deepEqual(scenes[0].graphics,[],'the hero with an image draws no orb');
+  for(const b of stage.document.blocks.filter(b=>b.type==='image'))assert.equal(b.factual,false);
+ }
+});
+
+test('S8 storyboard: the handoff page-42 twelve content tasks, one document per locale, drawn in every new theme with identical facts; what is missing is named',async()=>{
+ assert.equal(STORYBOARD_TASKS.length,12);
+ assert.deepEqual(STORYBOARD_TASKS.map(t=>t.page),[1,2,3,4,5,6,7,8,9,10,11,12]);
+ for(const t of STORYBOARD_TASKS)for(const theme of S8_THEMES)assert.ok(t.compositions[theme],`${t.id} ${theme}`);
+ assert.match(STORYBOARD_TASKS[7].missing,/ScenarioSnapshot/);assert.ok(STORYBOARD_TASKS.filter(t=>t.missing).length===1,'only the scenario snapshot is recorded as missing');
+ for(const locale of LOCALES){
+  const decks=await Promise.all(S8_THEMES.map(theme=>s8Project('storyboard',locale,corpusHome,theme)));
+  for(const [i,p] of decks.entries()){assertVisualProject(p);assert.equal(p.plan.scenes.length,12);assert.deepEqual(p.plan.scenes.map(s=>s.composition),STORYBOARD_TASKS.map(t=>t.compositions[S8_THEMES[i]]));assert.deepEqual({...p.document,id:null},{...decks[0].document,id:null});}
+  const kinds=new Set(decks[0].plan.scenes.flatMap(s=>(s.interactions||[]).map(i=>i.kind)));
+  assert.ok(kinds.has('image-hotspots')&&kinds.has('image-compare')&&kinds.has('steps'),'object anatomy, before/after and sequence carry real interactions');
+  const facts=await Promise.all(decks.map(async p=>factsOf(await render(p))));
+  assert.deepEqual(facts[1],facts[0]);assert.deepEqual(facts[2],facts[0]);
+  const quotes=decks[0].document.blocks.filter(b=>b.type==='quote');assert.ok(quotes.length>=1);for(const q of quotes)assert.deepEqual(q.sourceIds,['wcag22']);
+ }
 });

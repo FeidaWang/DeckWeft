@@ -4,6 +4,21 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## S8 T01–T03 theme packs and VIS-015 — 2026-10-19
+
+State **partial**. [Evidence](../evidence/vis-015/review.md) · [Manual](visual-studio.md#three-more-themes-editorial-fieldnotes-research-atlas-luminous-stage-s8-vis-015) · [Alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19).
+
+Results:
+
+- `npm run verify` passed **432 tests** (431 pass, 1 environment-gated skip), plus types, source and link checks, packaging and demos.
+  - The 11 new tests are in `tests/s8-themes.test.mjs`: the three packs and their token roles, measured contrast, custom properties and their fallbacks, type roles, theme-only compositions, the theme CSS, C12 phrase breaks, the C13 glyph audit, the S8 stories, the handoff sample pages and the page-42 storyboard.
+  - Existing tests were extended for six packs, `<wbr>` in zh-CN display text, a `glyphs` list in every fit and the in-page glyph refusal of the export readiness stage.
+  - The render baseline was re-recorded three times, each in its own commit, for renderer `visual-art-direction.7` → `.9` and player `semantic-player.5`. The per-entry diff against `a8c0404` shows no visible word, value, table, anchor or title changed.
+- `node scripts/s8-themes.mjs` (isolated Chrome for Testing 151, Playwright 1.61.1, 0 external requests): 24 decks at 1440, 1024 and 390 px with 0 fit or render issues; 136 measured contrast pairs all above their thresholds; 9 of 9 explicit cases pass (missing glyph in each theme, media-failure cover, low motion, black-and-white atlas, CJK phrase breaks in each theme); facts identical across the three themes in both languages.
+- `npm run export:targets -- --s8`: 18 decks. PowerPoint editability and the page check pass on 18 of 18; PDF searchability passes on the 9 English decks and is partial on the 9 Chinese decks (radical code points, as in VIS-016); fonts are listed in every report.
+- The VIS-014 explicit cases were re-run: 11 of 11 pass; the missing glyph is now detected by the fit audit.
+- PowerPoint, Keynote and Figma are installed and were not run. LibreOffice and After Effects are not installed.
+
 ## S7 output levels and VIS-016 exports — 2026-10-19
 
 State **partial**. [Evidence](../evidence/vis-016/review.md) · [Manual](compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016) · [Alignment §15](../plans/design-handoff-alignment.md#15-s7-result--output-levels-and-vis-016-2026-10-19).

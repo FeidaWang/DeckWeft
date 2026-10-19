@@ -12,7 +12,7 @@ Run it with `npm run export:targets` ([manual](compatibility.md#version-3-powerp
 - small text on tall scenes
 - PowerPoint and PDF in the Studio menu
 
-Next in the plan is S8 (T01–T03, VIS-015). It is not authorized by this handoff.
+S8 (T01–T03, VIS-015) is done locally and partial ([evidence](../evidence/vis-015/review.md)). Next in the plan is S9. It is not authorized by this handoff.
 
 S6 (VIS-014 visual release gate) is **partial** as of 2026-10-19 on branch `claude/s6-start-1c14f9`. The branch merges S3, S4 and S5 and is not pushed. Start from it, not from `main`: `main` has none of S1–S6. The decisions are in [alignment §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19):
 
