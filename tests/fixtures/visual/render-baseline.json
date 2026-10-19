@@ -1,25 +1,25 @@
 {
   "format": "deckweft-render-baseline",
-  "renderer": "visual-art-direction.7",
+  "renderer": "visual-art-direction.8",
   "player": {
     "version": "semantic-player.5",
     "sha256": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df"
   },
   "entries": {
-    "wave-a.en.html": "4745b3452abb6c71dc6e35fac40ab6aa1bc4ae5794e4813911501a5c7079f7dc",
+    "wave-a.en.html": "988a16436386f6ad585b6182f53d34226320115edd8d03c161160e37009f4279",
     "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-    "wave-a.zh-CN.html": "5c6cff9c8ea8790719c20edc187aa390c78225e34c4e04796896e55648d9bf8d",
+    "wave-a.zh-CN.html": "ab3e650eafd2cc22373d010b14007b14715f8dfffccf3f45b23a06c821794da2",
     "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-    "visual-demo.en.html": "a7c0e141908a4c869a483afcdf94f76e07fbd9f9b37b8e44a64d943f0d1952cc",
-    "visual-demo.zh-CN.html": "464a73c19105e12c7df7f100e2132bb37780665531dcfda013a12cc5b39d0344",
-    "component-demo.en.html": "42a1487d17e15a861bfa362d13cbd36f9006dc863594132e38928c3cef720678",
-    "component-demo.zh-CN.html": "f92cc212c448f0ef8861eb0c4f8bef12a692dc01eb996a9b1f14e9eef014fa8c",
-    "interaction-demo.en.html": "b574a43c4284958f1d70aaed579587a424b4a8c5928a3659e48ccf08576cefa3",
-    "interaction-demo.zh-CN.html": "25121e7a9996d9dea60ab2626b3e8aee8ad9fe5cf9f07699dd7519f8ae52eacc",
-    "composition-demo.en.html": "4af140183ee0f6ac10259b38ebb632840188e0f2a6496d15b4e19fb8389df5b3",
-    "composition-demo.zh-CN.html": "a9c1625a1dc5162610774069aafb540d0be436761f428860e5f2f39587870cb6",
-    "families.en.html": "0cac8e6502e04c6bcb6bd2bff549680068d61ba90c3dabe4c56880c784871e47",
-    "families.zh-CN.html": "d17f0d4f4c90bafe9193dbbfa776ccdabb28ff4aa36634e9223ae9682afc6986",
+    "visual-demo.en.html": "fdd319e5cbfa00141bbcc2aa8a6c211399454326d9567e5df50bce08d55b7b96",
+    "visual-demo.zh-CN.html": "a9bb042e91a4255ec08a5ba129c1e5142c0254c56d5b57316f611dfd22439ac8",
+    "component-demo.en.html": "67e4319de2c1764373f1bf2b450aaa692a3b643e0f3556a9c08e10a3c22a82b7",
+    "component-demo.zh-CN.html": "1cbd3566c8de48947ec284ada851bad594d4e7f96a4bd1df081ea72f840e5d09",
+    "interaction-demo.en.html": "628b19f614511e78e81d1735eedf76077a81474a81c11c2b1a0a44c807c4c270",
+    "interaction-demo.zh-CN.html": "0636d8badbc38de0b08c7b714f828faf6bac4c0e31648d553b1265c42f77e4fd",
+    "composition-demo.en.html": "f0c241153d9d19587b04743f960fa57f0123d415e8eede21df6b86348d50176d",
+    "composition-demo.zh-CN.html": "1ddbcae0780226a35c2737750762579dec292171a9ad216e3b0e79aa71f3bbe0",
+    "families.en.html": "204be12aa892c07424cc20f919d7517072d8642c29289eb632b946f7caa25bf8",
+    "families.zh-CN.html": "1b0fad0d1cf172d77791c63ed85c1daf7b4aeff8082f2d019ab3f52d3e0ca1e2",
     "theme.cream-collage.en.default": "13606af1e69412b1ef7d8ccb28bc9f8fbf589428cc4230677a94e016048c726a",
     "theme.cream-collage.en.chapter": "c0dcfae4070a42477f4f6b846457501a8f3e3bc3ca1ebe85593c2165e3da9eb9",
     "theme.cream-collage.zh-CN.default": "c075e9c42a4d69de323645e3242773c5eea44d667f7c91403ae3eb27630ba029",
@@ -87,76 +87,76 @@
   },
   "parts": {
     "wave-a.en.html": {
-      "markup": "9375d3970c88af3cc76d0eaadb61da0d37c048e58a34000e539943262932eda3",
+      "markup": "298b4d2057f2836f38c631f86fbb8a744eb106745c6d3ceea8f5561f57070584",
       "data": "d7eb21c3534ab6b6c3b36a15ed5fb7bedaafbd7a5ef2fc55f22c5fd8079a15d1",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "wave-a.zh-CN.html": {
-      "markup": "ac0c3366da17d11667904e9618fe7c6a20986ef7231d1de92f003edb86b38a86",
+      "markup": "9a6174f033ca3a6a2022da97bef8654c850b95257ff8753b97d3f346d8265403",
       "data": "dab714546da7d1751dec11d409d830e9cec6918992955dd30f36e1fec30f744c",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "visual-demo.en.html": {
-      "markup": "bb6b48f0ded5696a3e2f0cd267dd039ccbfd1f14d81501da01474baae5aa1dae",
+      "markup": "e375c8c0e497e75284ce83605fc7ea6d9685f55279264b0462fb95b076a358c2",
       "data": "122f6b169c70c1bef4ac5db0c905badbee58ac90bbb1823ccc2cdc8ddadd6419",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "visual-demo.zh-CN.html": {
-      "markup": "2657743ddae2bb773b18a666a2cf3c8e59a54b65f7e34ae8e80dbe9ab47c645b",
+      "markup": "2a9e5565d6b73a216d0bef5952861f08fde024f74fce0b0ad6156e0e1b7ff606",
       "data": "e0aac96b2ac915e40dfe5371f322207b1a020b819b2a9782ad3bc063534d8245",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "component-demo.en.html": {
-      "markup": "fc7b77d9852b4b18f24187ad0de587dc7e6821035a833b90992d2c9560812676",
+      "markup": "af0ffdb8d860b816240658f42abbec8ac1084fd67e5f9ec29a5b556c19057d98",
       "data": "b5eb69de63f6d31aea9f858c9dcae492d596cb701fc74d79415fbd3e69894394",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "component-demo.zh-CN.html": {
-      "markup": "6b1084e0a8f7cdc1525e57e07ea1342a763da7c74a3cbbb35face3feee6bc4c8",
+      "markup": "42bcd04e8ad7c8785c0e4d9beb282d4f3f3d4ef6e44c7c9fe1bef52771e824ec",
       "data": "f58aff60f9d494fda9a6bb8e04e77ec6b4d4b03bdf63998b39b61e9348b8559f",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "interaction-demo.en.html": {
-      "markup": "4e80aab4fb9e2d6be52833958380f13a97ecad2811a9c0cafd0094b5fccf6930",
+      "markup": "a8eab075f38868f71bacfa860f30b7f211dc5aa0a93a412b56c4990372acea73",
       "data": "78fda1fc13a296c0d608f850c15d465f18e540a1a6c7a1c495b1923184340c6e",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "interaction-demo.zh-CN.html": {
-      "markup": "28a3b5dc10afe291466d1fe77a8e98f2792f74a503e48b6b9bb996a23ed81e9e",
+      "markup": "dd9aeae8ed36348711500119381338cf989d2de99367f379248df6db5919bc45",
       "data": "f99731756ea6241df62abddaa657ced61ce4246320dd53d3f620421a9eb0aca5",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "composition-demo.en.html": {
-      "markup": "460dc05eddafa6fc68698255d362830a34765878a5c8dc3e247ddc3fae0c562a",
+      "markup": "fbadbfba507ee25a6bede274a14ff68dd3732565d09dff74a6f496b43343bff9",
       "data": "6c24595ade3cdfd1863cba36e3954dce883547de82ef9a347b2efea7ade84abb",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "composition-demo.zh-CN.html": {
-      "markup": "188fc2f0182af9dc6b794c6a8a6e31664c76ad067af130cc77e6723a8c896496",
+      "markup": "c8c6660caafde32d8cc5103bf55f7bca5e981de169c55c94f9bbe4db6a9d3af1",
       "data": "fb9bbee5d53414b80a40d06e289b3200f0b91927aec5ae1c192beced41a4e703",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "families.en.html": {
-      "markup": "58c53ba96d8015f25840bf34f944642c86a0f19736e4ad5a352237d0b02ffb4b",
+      "markup": "93a710b523064eda7c1c49eb58c16c128cf1aa916a784ad07186d5800c501293",
       "data": "2aeb9171e8b3f3536b3e80dd5a9d28e38007376ac38fddfbb3772b81bee01ad9",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     },
     "families.zh-CN.html": {
-      "markup": "d486bc7d1f707ef5ea31e345ff10a3637c796eb5cea40e9f27323c23bd66d7d7",
+      "markup": "1a265072788aaabd64dd06d0b62e4f803fe82411e28eaec46981d9abc3beaf75",
       "data": "ab9a5a3d6161d498b1b0cd22ec33aec3656c610e0c68e56db015c51d86a88063",
       "script": "eb86a840ddd2eace43e126bbd310ec3a009dd595b9ce7c0aa07370f224e230df",
-      "style": "d946d3698dd43592221dad43020974b3501bde7fc7ad0af1519bf6653f8464e6"
+      "style": "c6c0867922d91a87296deb254fb3de81bfb92ac4dbc40d330aad79cfd147b055"
     }
   },
   "playerHistory": [
@@ -182,6 +182,6 @@
     }
   ],
   "recordedAt": "2026-10-19",
-  "sourceCommit": "ac645ed",
-  "note": "S8: Research Atlas chart colour 4 moved from plum to grey-sage (#7A8A84) so the first four series keep distinct luminance in black and white; only the theme.research-atlas entries changed"
+  "sourceCommit": "feabcb6",
+  "note": "S8: renderer visual-art-direction.8 (theme stylesheet without text-transform) and player semantic-player.5; per-entry diff against a8c0404 shows no visible word or value changed"
 }
