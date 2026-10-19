@@ -9,7 +9,7 @@
   "platform": "darwin 27.0.0",
   "browser": "Chromium 151.0.7922.34 (isolated, Playwright cache)",
   "playwright": "1.61.1",
-  "renderer": "visual-art-direction.9",
+  "renderer": "visual-art-direction.10",
   "player": "semantic-player.5",
   "python": "Python 3.9.6",
   "quickLook": true
@@ -293,7 +293,7 @@
    },
    {
     "stage": "render",
-    "bytes": 115278,
+    "bytes": 115277,
     "slides": 6,
     "charts": 5,
     "media": 1,
@@ -343,7 +343,7 @@
     "stage": "render",
     "pages": 6,
     "appendixPages": 6,
-    "bytes": 138667
+    "bytes": 138602
    },
    {
     "stage": "check",
@@ -741,14 +741,14 @@
   "note": "Fonts are referenced by name, never embedded or redistributed. A machine without them substitutes another face."
  },
  "files": {
-  "pptxBytes": 115278,
+  "pptxBytes": 115277,
   "slides": 6,
   "charts": 5,
   "pictures": 1,
   "pdfPages": 12,
   "sha256": {
-   "pptx": "23c2b6b4855b3422372e9d37f2986fa9fae39ea1f201c0e50f9f0e634f9da50f",
-   "pdf": "508b96510460deafacd8f0c4389eeb86172e6682b0b47d8d5038f612b1b756e1"
+   "pptx": "5b564e521d6bcd7d55b8b0174be874fb1883b32a31295ab9a983fab780e26af8",
+   "pdf": "89990083a89ddc980be69b7a5fc28e6152de5c5377cc8b4c216033753ec2a876"
   }
  },
  "applications": {

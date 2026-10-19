@@ -1,10 +1,10 @@
 {
   "decks": [
     {
-      "name": "gallery-editorial-fieldnotes-en",
+      "name": "gallery-silver-gray-editorial-en",
       "kind": "gallery",
       "locale": "en",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "scenes": 12,
       "compositions": [
         "fieldnotes-cover",
@@ -20,15 +20,15 @@
         "evidence-top",
         "process-line"
       ],
-      "renderHash": "382b3eebc2f721f513cf0275e8110ab6d1c976a95fbb1edb8dc3b96b5b05b4f4",
-      "htmlBytes": 6993691,
+      "renderHash": "df02e3991d52f097eae7955c0b289a4d9b5b37e0bf2b77b1a293db225d82460f",
+      "htmlBytes": 6993675,
       "wbr": 0
     },
     {
-      "name": "story-editorial-fieldnotes-en",
+      "name": "story-silver-gray-editorial-en",
       "kind": "story",
       "locale": "en",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "scenes": 8,
       "compositions": [
         "fieldnotes-cover",
@@ -40,15 +40,15 @@
         "quote-split",
         "fieldnotes-closing"
       ],
-      "renderHash": "1b51615c236b2db73c90fa154fe567c099c58c48b23c533ea7d095dc89d93e16",
-      "htmlBytes": 6878024,
+      "renderHash": "fc25ece30fea84e74e58f49f6abd027391522ae93c7432cc83b5eacd336c5291",
+      "htmlBytes": 6878000,
       "wbr": 0
     },
     {
-      "name": "storyboard-editorial-fieldnotes-en",
+      "name": "storyboard-silver-gray-editorial-en",
       "kind": "storyboard",
       "locale": "en",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "scenes": 12,
       "compositions": [
         "chapter-low",
@@ -64,15 +64,15 @@
         "quote-split",
         "fieldnotes-closing"
       ],
-      "renderHash": "b9cc879e7228fd9dbf3cc0d8a35196198e7c442bb5848bd0855ec39498c70d65",
-      "htmlBytes": 3652055,
+      "renderHash": "02695e598337709ab2b38ab91a4f9c24adbdea3d757f8fb2440ef102fc59b611",
+      "htmlBytes": 3652038,
       "wbr": 0
     },
     {
-      "name": "gallery-research-atlas-en",
+      "name": "gallery-fresh-report-en",
       "kind": "gallery",
       "locale": "en",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "scenes": 12,
       "compositions": [
         "atlas-cover",
@@ -88,15 +88,15 @@
         "evidence-top",
         "process-line"
       ],
-      "renderHash": "2c5618fad018cce422510a2e6473af6072fdb217dba2a693d7be51e88226ccc2",
-      "htmlBytes": 6993074,
+      "renderHash": "11c0f5138eaf073a2aae2ddc3d9cf42a01d09ad0d72826eef22c252887c8d6fe",
+      "htmlBytes": 6992983,
       "wbr": 0
     },
     {
-      "name": "story-research-atlas-en",
+      "name": "story-fresh-report-en",
       "kind": "story",
       "locale": "en",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "scenes": 8,
       "compositions": [
         "atlas-cover",
@@ -108,15 +108,15 @@
         "quote-band",
         "atlas-closing"
       ],
-      "renderHash": "0dd6ce3a7abaea52a7d97d7f51a2e3f966403d6d15e3066ff7cbdf77f3178bfd",
-      "htmlBytes": 6877625,
+      "renderHash": "e219c9faf5d1082a14d26acc4bef3dcabb8af56ce889d0c4265d79f2f9819f9a",
+      "htmlBytes": 6877550,
       "wbr": 0
     },
     {
-      "name": "storyboard-research-atlas-en",
+      "name": "storyboard-fresh-report-en",
       "kind": "storyboard",
       "locale": "en",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "scenes": 12,
       "compositions": [
         "atlas-section",
@@ -132,15 +132,15 @@
         "quote-band",
         "atlas-closing"
       ],
-      "renderHash": "c125e2c87342ba1652e368917333e8ecfaf9ff5cd0b16be92b503de44f6b2255",
-      "htmlBytes": 3651475,
+      "renderHash": "b9b1d17a600bfc86d5ea47a78508cedf559855e8bbf883c33c288fd764e6c58f",
+      "htmlBytes": 3651386,
       "wbr": 0
     },
     {
-      "name": "gallery-luminous-stage-en",
+      "name": "gallery-orange-launch-en",
       "kind": "gallery",
       "locale": "en",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "scenes": 12,
       "compositions": [
         "stage-metric",
@@ -156,15 +156,15 @@
         "evidence-top",
         "process-line"
       ],
-      "renderHash": "0287660f5f4464d8aac73edd57bc4a72a80aff6ca7331c05eb995283f9ddf7b4",
-      "htmlBytes": 6993603,
+      "renderHash": "55cd642ec0f6d6fed2e8d29372d2c94d08c9c9cc32d52f523ddbbde5c3dffefc",
+      "htmlBytes": 6993537,
       "wbr": 0
     },
     {
-      "name": "story-luminous-stage-en",
+      "name": "story-orange-launch-en",
       "kind": "story",
       "locale": "en",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "scenes": 8,
       "compositions": [
         "stage-hero",
@@ -176,15 +176,15 @@
         "quote-center",
         "stage-closing"
       ],
-      "renderHash": "2e5591eb155c7c4af89492d24c051717d05730c624deddd77b0876fc8438e50b",
-      "htmlBytes": 6877592,
+      "renderHash": "23770b08e8fbf57bea09c0bf464b2953653226bb2617c6eadf8d6adea1cd7d1c",
+      "htmlBytes": 6877534,
       "wbr": 0
     },
     {
-      "name": "storyboard-luminous-stage-en",
+      "name": "storyboard-orange-launch-en",
       "kind": "storyboard",
       "locale": "en",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "scenes": 12,
       "compositions": [
         "stage-chapter",
@@ -200,15 +200,15 @@
         "quote-center",
         "stage-closing"
       ],
-      "renderHash": "9e39791c473ba222e30fa157fcb4a7f9306f4988210bcc1218e017768fcd94cb",
-      "htmlBytes": 3651673,
+      "renderHash": "43158bcb6e5ebf3df84a88200fc10aa20dac91a077037d7f8c00e012345892c3",
+      "htmlBytes": 3651608,
       "wbr": 0
     },
     {
       "name": "fieldnotes-en",
       "kind": "fieldnotes",
       "locale": "en",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "scenes": 6,
       "compositions": [
         "fieldnotes-cover",
@@ -218,15 +218,15 @@
         "quote-split",
         "fieldnotes-closing"
       ],
-      "renderHash": "75a2e4ad89eeefa4794dd87e367936024755d14e00e303a33f1f803b83fc9728",
-      "htmlBytes": 198582,
+      "renderHash": "a952c224401caebb723d0e85a1733f4890fdec1f227e11f6c971943f8e8a9af2",
+      "htmlBytes": 198553,
       "wbr": 0
     },
     {
       "name": "atlas-en",
       "kind": "atlas",
       "locale": "en",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "scenes": 6,
       "compositions": [
         "atlas-figure",
@@ -236,15 +236,15 @@
         "atlas-figure",
         "atlas-appendix"
       ],
-      "renderHash": "f82a1307b17a1086a85f3f9f48429392849cc07241c49da83f6d869a431731d0",
-      "htmlBytes": 234464,
+      "renderHash": "0a11eeb4974d5178925e14b215737a089352501a6822c44b05d43f85a6ff8b7f",
+      "htmlBytes": 234399,
       "wbr": 0
     },
     {
       "name": "stage-en",
       "kind": "stage",
       "locale": "en",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "scenes": 6,
       "compositions": [
         "stage-hero",
@@ -254,15 +254,15 @@
         "stage-metric",
         "stage-closing"
       ],
-      "renderHash": "5756dbdcdcb88f0fdd35ff659441fb49e1008e0d165f3ab559143b74e42d0d6a",
-      "htmlBytes": 3552920,
+      "renderHash": "a8603e9090053cafacd3955032d784bf0b42ba50882af04f09e82d034f92b098",
+      "htmlBytes": 3552867,
       "wbr": 0
     },
     {
-      "name": "gallery-editorial-fieldnotes-zh-CN",
+      "name": "gallery-silver-gray-editorial-zh-CN",
       "kind": "gallery",
       "locale": "zh-CN",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "scenes": 12,
       "compositions": [
         "fieldnotes-cover",
@@ -278,15 +278,15 @@
         "evidence-top",
         "process-line"
       ],
-      "renderHash": "5f9acffb92b379d71c97747c62746e9c45cb7855f0635f52ee99721408397cf4",
-      "htmlBytes": 6993215,
+      "renderHash": "d2f6818da2fd6a4dbdc05a60c7cbab14245c17c14e137f94947f9e331b5b478e",
+      "htmlBytes": 6993199,
       "wbr": 103
     },
     {
-      "name": "story-editorial-fieldnotes-zh-CN",
+      "name": "story-silver-gray-editorial-zh-CN",
       "kind": "story",
       "locale": "zh-CN",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "scenes": 8,
       "compositions": [
         "fieldnotes-cover",
@@ -298,15 +298,15 @@
         "quote-split",
         "fieldnotes-closing"
       ],
-      "renderHash": "32e6fbcdbc85ea37fdb9cea2d742930840a15f0a18d50b45f83ebc844e2c8fcd",
-      "htmlBytes": 6878129,
+      "renderHash": "88bc82c8a80805608eebf5f214ac7c8d2f51a25b445b01c7e1435a159a3ba1b5",
+      "htmlBytes": 6878105,
       "wbr": 99
     },
     {
-      "name": "storyboard-editorial-fieldnotes-zh-CN",
+      "name": "storyboard-silver-gray-editorial-zh-CN",
       "kind": "storyboard",
       "locale": "zh-CN",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "scenes": 12,
       "compositions": [
         "chapter-low",
@@ -322,15 +322,15 @@
         "quote-split",
         "fieldnotes-closing"
       ],
-      "renderHash": "064b05cfd52d2abbe95b4c460fd173e88d3ae4bcb6849cb7acfedf7d3f4a103b",
-      "htmlBytes": 3652294,
+      "renderHash": "fbfc2f63a0abd2d55dbf8f8f594a9fb872026cbba0bd314c42f33cec00c8023f",
+      "htmlBytes": 3652277,
       "wbr": 182
     },
     {
-      "name": "gallery-research-atlas-zh-CN",
+      "name": "gallery-fresh-report-zh-CN",
       "kind": "gallery",
       "locale": "zh-CN",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "scenes": 12,
       "compositions": [
         "atlas-cover",
@@ -346,15 +346,15 @@
         "evidence-top",
         "process-line"
       ],
-      "renderHash": "dadbd87febe0fc588d18f37b818ecf86e675ad0b0f215a47e22001442c9d0bf8",
-      "htmlBytes": 6993110,
+      "renderHash": "313c03aa85d9023c776cfa02555b395785cf8ffdc10036243322f750f24cb80e",
+      "htmlBytes": 6993019,
       "wbr": 103
     },
     {
-      "name": "story-research-atlas-zh-CN",
+      "name": "story-fresh-report-zh-CN",
       "kind": "story",
       "locale": "zh-CN",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "scenes": 8,
       "compositions": [
         "atlas-cover",
@@ -366,15 +366,15 @@
         "quote-band",
         "atlas-closing"
       ],
-      "renderHash": "0a90b6155f31ed66b4687ee14474eb5dc4f7a810117b020ec24a79dc37c62f45",
-      "htmlBytes": 6878082,
+      "renderHash": "70f31d6026aa717863ccb88be8b207c4c7ea3ca9b761f5b1a96dec24247ce97a",
+      "htmlBytes": 6878007,
       "wbr": 99
     },
     {
-      "name": "storyboard-research-atlas-zh-CN",
+      "name": "storyboard-fresh-report-zh-CN",
       "kind": "storyboard",
       "locale": "zh-CN",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "scenes": 12,
       "compositions": [
         "atlas-section",
@@ -390,15 +390,15 @@
         "quote-band",
         "atlas-closing"
       ],
-      "renderHash": "f9f6d69242775d81d6cd671edfce8c7004b58c0964699b054c67a5435e494586",
-      "htmlBytes": 3652194,
+      "renderHash": "02e7dcd47a68b0703c2a4ba2949fcd54c1d877dfa2bc16f77c862889fa8b7d41",
+      "htmlBytes": 3652105,
       "wbr": 182
     },
     {
-      "name": "gallery-luminous-stage-zh-CN",
+      "name": "gallery-orange-launch-zh-CN",
       "kind": "gallery",
       "locale": "zh-CN",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "scenes": 12,
       "compositions": [
         "stage-metric",
@@ -414,15 +414,15 @@
         "evidence-top",
         "process-line"
       ],
-      "renderHash": "a57ce1b5fa0d03c72cba71fc588ae05d953b8e1cad0315fcc9bd6e9f5e602514",
-      "htmlBytes": 6994387,
+      "renderHash": "95460596cc189e4e2ba7795c16fa6596f7d1c41eb499156e8fe2d40e1d6960dc",
+      "htmlBytes": 6994321,
       "wbr": 103
     },
     {
-      "name": "story-luminous-stage-zh-CN",
+      "name": "story-orange-launch-zh-CN",
       "kind": "story",
       "locale": "zh-CN",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "scenes": 8,
       "compositions": [
         "stage-hero",
@@ -434,15 +434,15 @@
         "quote-center",
         "stage-closing"
       ],
-      "renderHash": "1d2413d77fa40b10f89aeff0409c3c6f29d73a1d004efd3fd4df823c1c77b24d",
-      "htmlBytes": 6878561,
+      "renderHash": "470dff6eda2954c559045709982dd9ad52637be901ca076d0598a2ae75112069",
+      "htmlBytes": 6878503,
       "wbr": 99
     },
     {
-      "name": "storyboard-luminous-stage-zh-CN",
+      "name": "storyboard-orange-launch-zh-CN",
       "kind": "storyboard",
       "locale": "zh-CN",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "scenes": 12,
       "compositions": [
         "stage-chapter",
@@ -458,15 +458,15 @@
         "quote-center",
         "stage-closing"
       ],
-      "renderHash": "d71fce97765cd99591061ea388421ed2d52becd355832810efc987703a37eb40",
-      "htmlBytes": 3653100,
+      "renderHash": "961e2f2d3897ce3eaa6e74792b1a0250b032f3903a757d664ddcea5dd371a059",
+      "htmlBytes": 3653035,
       "wbr": 182
     },
     {
       "name": "fieldnotes-zh-CN",
       "kind": "fieldnotes",
       "locale": "zh-CN",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "scenes": 6,
       "compositions": [
         "fieldnotes-cover",
@@ -476,15 +476,15 @@
         "quote-split",
         "fieldnotes-closing"
       ],
-      "renderHash": "ec2609812fb55f3e5170a2768a6ddddab35dbd6d6e8ca7d7d6bc2aa0c6131ebf",
-      "htmlBytes": 198838,
+      "renderHash": "6b6f44d03acd4d615cef236e508c8d8be9f61b923f35ebb494df3b50252bc7a9",
+      "htmlBytes": 198809,
       "wbr": 117
     },
     {
       "name": "atlas-zh-CN",
       "kind": "atlas",
       "locale": "zh-CN",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "scenes": 6,
       "compositions": [
         "atlas-figure",
@@ -494,15 +494,15 @@
         "atlas-figure",
         "atlas-appendix"
       ],
-      "renderHash": "17cc5fa205436b862f5a7481b351f2cb09012132037a243e9b565093a8881715",
-      "htmlBytes": 234750,
+      "renderHash": "7d07c2c8b6edfc3f1a8e5965be9bef1f91ba9ae4cf7cde2bc2715b16c564c30d",
+      "htmlBytes": 234685,
       "wbr": 87
     },
     {
       "name": "stage-zh-CN",
       "kind": "stage",
       "locale": "zh-CN",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "scenes": 6,
       "compositions": [
         "stage-hero",
@@ -512,8 +512,8 @@
         "stage-metric",
         "stage-closing"
       ],
-      "renderHash": "a3c42ae2d438454c0b46d14922b15f4f788f05bd64950410b3909b8c795dd7e4",
-      "htmlBytes": 3553477,
+      "renderHash": "6a75444a2f3b4ffd2e6f45046975a5d807f3c627b12728d41201e15db375ea2b",
+      "htmlBytes": 3553424,
       "wbr": 69
     }
   ],
@@ -557,7 +557,7 @@
   ],
   "ok": true,
   "storyCompositions": {
-    "editorial-fieldnotes": {
+    "silver-gray-editorial": {
       "st-open": "fieldnotes-cover",
       "st-context": "metric-right",
       "st-evidence": "fieldnotes-figure",
@@ -567,7 +567,7 @@
       "st-quote": "quote-split",
       "st-close": "fieldnotes-closing"
     },
-    "research-atlas": {
+    "fresh-report": {
       "st-open": "atlas-cover",
       "st-context": "metric-band",
       "st-evidence": "atlas-figure",
@@ -577,7 +577,7 @@
       "st-quote": "quote-band",
       "st-close": "atlas-closing"
     },
-    "luminous-stage": {
+    "orange-launch": {
       "st-open": "stage-hero",
       "st-context": "stage-metric",
       "st-evidence": "stage-figure",
@@ -595,9 +595,9 @@
       "task": "Chapter (long bilingual title)",
       "family": "chapter",
       "compositions": {
-        "editorial-fieldnotes": "chapter-low",
-        "research-atlas": "atlas-section",
-        "luminous-stage": "stage-chapter"
+        "silver-gray-editorial": "chapter-low",
+        "fresh-report": "atlas-section",
+        "orange-launch": "stage-chapter"
       }
     },
     {
@@ -606,9 +606,9 @@
       "task": "Thesis + SideNote",
       "family": "statement",
       "compositions": {
-        "editorial-fieldnotes": "fieldnotes-thesis",
-        "research-atlas": "statement-split",
-        "luminous-stage": "statement-split"
+        "silver-gray-editorial": "fieldnotes-thesis",
+        "fresh-report": "statement-split",
+        "orange-launch": "statement-split"
       }
     },
     {
@@ -617,9 +617,9 @@
       "task": "Sequence",
       "family": "process",
       "compositions": {
-        "editorial-fieldnotes": "process-stair",
-        "research-atlas": "process-line",
-        "luminous-stage": "process-rail"
+        "silver-gray-editorial": "process-stair",
+        "fresh-report": "process-line",
+        "orange-launch": "process-rail"
       }
     },
     {
@@ -628,9 +628,9 @@
       "task": "Comparison (units in headers, one missing value)",
       "family": "comparison",
       "compositions": {
-        "editorial-fieldnotes": "comparison-stack",
-        "research-atlas": "comparison-matrix",
-        "luminous-stage": "comparison-rail"
+        "silver-gray-editorial": "comparison-stack",
+        "fresh-report": "comparison-matrix",
+        "orange-launch": "comparison-rail"
       }
     },
     {
@@ -639,9 +639,9 @@
       "task": "EvidenceChart (direct values, source status)",
       "family": "evidence",
       "compositions": {
-        "editorial-fieldnotes": "fieldnotes-figure",
-        "research-atlas": "atlas-figure",
-        "luminous-stage": "stage-figure"
+        "silver-gray-editorial": "fieldnotes-figure",
+        "fresh-report": "atlas-figure",
+        "orange-launch": "stage-figure"
       }
     },
     {
@@ -650,9 +650,9 @@
       "task": "DotInterval (with method)",
       "family": "evidence",
       "compositions": {
-        "editorial-fieldnotes": "fieldnotes-figure",
-        "research-atlas": "atlas-figure",
-        "luminous-stage": "stage-figure"
+        "silver-gray-editorial": "fieldnotes-figure",
+        "fresh-report": "atlas-figure",
+        "orange-launch": "stage-figure"
       }
     },
     {
@@ -661,9 +661,9 @@
       "task": "ObjectAnatomy (image hotspots)",
       "family": "image",
       "compositions": {
-        "editorial-fieldnotes": "image-right",
-        "research-atlas": "image-right",
-        "luminous-stage": "image-right"
+        "silver-gray-editorial": "image-right",
+        "fresh-report": "image-right",
+        "orange-launch": "image-right"
       }
     },
     {
@@ -672,9 +672,9 @@
       "task": "ScenarioSnapshot",
       "family": "comparison",
       "compositions": {
-        "editorial-fieldnotes": "comparison-rail",
-        "research-atlas": "comparison-rail",
-        "luminous-stage": "comparison-rail"
+        "silver-gray-editorial": "comparison-rail",
+        "fresh-report": "comparison-rail",
+        "orange-launch": "comparison-rail"
       },
       "missing": "ScenarioSnapshot family: drawn as a comparison table (P1 static contrast only)"
     },
@@ -684,9 +684,9 @@
       "task": "BeforeAfter (registered images, permanent labels)",
       "family": "before-after",
       "compositions": {
-        "editorial-fieldnotes": "before-after-split",
-        "research-atlas": "before-after-triptych",
-        "luminous-stage": "before-after-rail"
+        "silver-gray-editorial": "before-after-split",
+        "fresh-report": "before-after-triptych",
+        "orange-launch": "before-after-rail"
       }
     },
     {
@@ -695,9 +695,9 @@
       "task": "Reference (static appendix)",
       "family": "reference",
       "compositions": {
-        "editorial-fieldnotes": "fieldnotes-method",
-        "research-atlas": "atlas-appendix",
-        "luminous-stage": "reading-flow"
+        "silver-gray-editorial": "fieldnotes-method",
+        "fresh-report": "atlas-appendix",
+        "orange-launch": "reading-flow"
       }
     },
     {
@@ -706,9 +706,9 @@
       "task": "Quote / Documentary (no invented quotation)",
       "family": "quote",
       "compositions": {
-        "editorial-fieldnotes": "quote-split",
-        "research-atlas": "quote-band",
-        "luminous-stage": "quote-center"
+        "silver-gray-editorial": "quote-split",
+        "fresh-report": "quote-band",
+        "orange-launch": "quote-center"
       }
     },
     {
@@ -717,9 +717,9 @@
       "task": "Conclusion (one action)",
       "family": "closing",
       "compositions": {
-        "editorial-fieldnotes": "fieldnotes-closing",
-        "research-atlas": "atlas-closing",
-        "luminous-stage": "stage-closing"
+        "silver-gray-editorial": "fieldnotes-closing",
+        "fresh-report": "atlas-closing",
+        "orange-launch": "stage-closing"
       }
     }
   ]

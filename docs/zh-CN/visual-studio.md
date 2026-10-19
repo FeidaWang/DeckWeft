@@ -150,7 +150,7 @@ S3 在上述六类之外再增加六类，每页可选的构图类别共十二�
 
 ## 再增三套主题：Editorial Fieldnotes、Research Atlas、Luminous Stage（S8，VIS-015）
 
-S8 把设计交接文档的三个首发艺术方向做成主题包（[决定 2，对齐文档 §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)）。VIS-014 的三套主题保持不变。状态见 [VIS-015 证据](../evidence/vis-015/review.md)；路线图条目说明已支持的范围。
+S8 把设计交接文档的三个首发艺术方向做成主题包，沿用 VIS-015 原计划的主题 id（[决定 2，对齐文档 §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)）。VIS-014 的三套主题保持不变。状态见 [VIS-015 证据](../evidence/vis-015/review.md)；路线图条目说明已支持的范围。
 
 | 主题 | 方向 | 字体角色（平台字体，不打包任何字体文件） | 自有构图 |
 |---|---|---|---|

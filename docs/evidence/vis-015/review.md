@@ -1,12 +1,12 @@
 # VIS-015 T01–T03 theme packs (S8) — evidence, 2026-10-19
 
-[Theme manual](../../en/visual-studio.md#three-more-themes-editorial-fieldnotes-research-atlas-luminous-stage-s8-vis-015) · [Alignment §16](../../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19) · [Quality](quality.json) · [Contrast](contrast.json) · [Cases](cases.json) · [Exports](exports/exports.json) · [Baseline diff](baseline-diff-s8.json)
+[Theme manual](../../en/visual-studio.md#three-more-themes-silver-gray-editorial-fresh-report-orange-launch-s8-vis-015) · [Alignment §16](../../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19) · [Quality](quality.json) · [Contrast](contrast.json) · [Cases](cases.json) · [Exports](exports/exports.json) · [Baseline diff](baseline-diff-s8.json)
 
 **State: partial** (roadmap) / LocalVerified for the web output in Chromium; PowerPoint and PDF compile and pass their own checks; PowerPoint and Keynote were not run. VIS-015's last acceptance sentence (author feedback promoting a design into a reusable profile) is not built, so the task cannot reach `implemented-local`.
 
-Decision 2 is **Replace** ([§16](../../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)): the three handoff art directions are the three VIS-015 themes, under their own ids. The three VIS-014 themes are unchanged; the VIS-014 gate was not reopened.
+Decision 2 is **Merge** ([§16](../../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19), chosen by the user after an in-session Replace): the planned VIS-015 ids `silver-gray-editorial`, `fresh-report` and `orange-launch` carry the handoff's T01, T02 and T03 grammar, type roles, tokens and acceptance pages. The three VIS-014 themes are unchanged; the VIS-014 gate was not reopened.
 
-Source: branch `claude/design-handoff-alignment-19703c`, started from `claude/nice-archimedes-d8a127` (S1–S7). Renderer `visual-art-direction.9`, player `semantic-player.5`. Nothing was pushed or published.
+Source: branch `claude/design-handoff-alignment-19703c`, started from `claude/nice-archimedes-d8a127` (S1–S7). Renderer `visual-art-direction.10`, player `semantic-player.5`. Nothing was pushed or published.
 
 ## What ran
 
@@ -24,9 +24,9 @@ Environment: macOS, Node 24.14.0 locally (CI uses 22; remote CI has not run this
 
 | Pack | Surface / text / accent | Drawn fonts (DevTools platform fonts, 1440 px) | Own compositions |
 |---|---|---|---|
-| `editorial-fieldnotes` (T01) | `#F3F0E8` / `#24241F` / `#A8503A`, numbers `#3B5B74` | Charter (display, numerals), Gill Sans (body); zh: Songti SC, PingFang SC | fieldnotes-cover, -thesis, -figure, -method, -closing |
-| `research-atlas` (T02) | `#FAFAF7` / `#15211B` / `#286448`, `#345BC5` | Avenir Next and Avenir Next Demi Bold (display, body), Menlo (numerals, chart values); zh: PingFang SC | atlas-cover, -section, -figure, -panels, -appendix, -closing |
-| `luminous-stage` (T03) | `#0C1017` / `#F2F3EE` / `#A8D2EA`, object `#4F7EA3` | Futura (display, numerals), Helvetica Neue (body); zh: PingFang SC | stage-hero, -chapter, -figure, -metric, -closing |
+| `silver-gray-editorial` (T01 Editorial Fieldnotes) | `#F3F0E8` / `#24241F` / `#A8503A`, numbers `#3B5B74` | Charter (display, numerals), Gill Sans (body); zh: Songti SC, PingFang SC | fieldnotes-cover, -thesis, -figure, -method, -closing |
+| `fresh-report` (T02 Research Atlas) | `#FAFAF7` / `#15211B` / `#286448`, `#345BC5` | Avenir Next and Avenir Next Demi Bold (display, body), Menlo (numerals, chart values); zh: PingFang SC | atlas-cover, -section, -figure, -panels, -appendix, -closing |
+| `orange-launch` (T03 Luminous Stage) | `#0C1017` / `#F2F3EE` / `#A8D2EA`, object `#4F7EA3` | Futura (display, numerals), Helvetica Neue (body); zh: PingFang SC | stage-hero, -chapter, -figure, -metric, -closing |
 
 Every pack lists the twelve shared families and declares all S1 token roles (`typography.numeric`, `palette.reference` / `missing`, `spacing.captionGap` / `sectionGap` / `safeArea`, `motion.distance` / `easing` / `delay` / `fallback`). The renderer emits them as custom properties only for declaring packs; every consumer's fallback equals the previous literal value, which the re-recorded baseline confirms for the VIS-014 themes (text, values and anchors unchanged in all 12 entries).
 
@@ -55,9 +55,9 @@ Facts identical across the three new themes, per locale: gallery, story and stor
 
 | Theme | Pairs measured | Lowest ratio (role, size) | Required |
 |---|---|---|---|
-| editorial-fieldnotes | 46 | 6.28 (numeric 112 px, slate on paper) | 3:1 |
-| research-atlas | 44 | 5.82 (callout 16 px, cobalt on paper) | 4.5:1 |
-| luminous-stage | 46 | 11.86 (callout 12 px, ice blue on surface) | 4.5:1 |
+| silver-gray-editorial | 46 | 6.28 (numeric 112 px, slate on paper) | 3:1 |
+| fresh-report | 47 | 5.82 (callout 16 px, cobalt on paper) | 4.5:1 |
+| orange-launch | 43 | 11.86 (callout 12 px, ice blue on surface) | 4.5:1 |
 
 All 136 pairs pass. The token pairs computed from the packs: T01 ink 13.69, accent 4.76, secondary 6.28, reference 4.96, missing 5.48, chart colours 4.76–13.69; T02 ink 15.87, accent 6.68, secondary 5.82, reference 5.40, missing 5.64, chart 4.08–15.87; T03 text 17.09, accent 11.86, object 4.40 (used for the drawn orb and panel rules only; text never sits on it), reference 9.30, missing 9.03, chart 9.21–14.22. The fit audit's own contrast check (which also tests text over decor paths) reported no failure in any deck.
 
@@ -65,10 +65,10 @@ All 136 pairs pass. The token pairs computed from the packs: T01 ink 13.69, acce
 
 | Case | Theme | Result | Detail |
 |---|---|---|---|
-| Missing glyph (U+E000 in the cover title) | all three | pass | The fit audit lists the glyph and the region; `fit.ok` is false; the render checks file a `glyph` issue ([T01](case-missing-glyph-editorial-fieldnotes.png), [T02](case-missing-glyph-research-atlas.png), [T03](case-missing-glyph-luminous-stage.png)). Chromium draws the primary font's own .notdef box, so the DevTools platform-font list names no last-resort font; detection compares canvas pixels of every grapheme with the same font's U+0378 |
-| Media-failure cover | luminous-stage | pass | The hero without an image keeps a drawn orb, text never over it, contrast clean ([capture](case-stage-no-image.png)); with the hero image file deleted from a copy of the asset home, the export is refused with `ASSET_UNRESOLVED` |
-| Low-motion mode | luminous-stage | pass | Every scene carries `data-motion-fallback="static"`; with reduced motion no animation runs and the player opens on the static state; with full motion the replay animations use the declared easing (`ease-in-out`) and at least the declared delay (40 ms) |
-| Black and white | research-atlas | pass | Grayscale captures of the three chart pages ([figure](case-atlas-bw-at-figure.png), [panels](case-atlas-bw-at-panels.png), [interval](case-atlas-bw-at-interval.png)): series luminance 0.100 / 0.151 / 0.196 / 0.240 (smallest gap 0.044), line dashes `none`, `9 5`, `2 4`, focus solid versus outlined |
+| Missing glyph (U+E000 in the cover title) | all three | pass | The fit audit lists the glyph and the region; `fit.ok` is false; the render checks file a `glyph` issue ([T01](case-missing-glyph-silver-gray-editorial.png), [T02](case-missing-glyph-fresh-report.png), [T03](case-missing-glyph-orange-launch.png)). Chromium draws the primary font's own .notdef box, so the DevTools platform-font list names no last-resort font; detection compares canvas pixels of every grapheme with the same font's U+0378 |
+| Media-failure cover | orange-launch | pass | The hero without an image keeps a drawn orb, text never over it, contrast clean ([capture](case-stage-no-image.png)); with the hero image file deleted from a copy of the asset home, the export is refused with `ASSET_UNRESOLVED` |
+| Low-motion mode | orange-launch | pass | Every scene carries `data-motion-fallback="static"`; with reduced motion no animation runs and the player opens on the static state; with full motion the replay animations use the declared easing (`ease-in-out`) and at least the declared delay (40 ms) |
+| Black and white | fresh-report | pass | Grayscale captures of the three chart pages ([figure](case-atlas-bw-at-figure.png), [panels](case-atlas-bw-at-panels.png), [interval](case-atlas-bw-at-interval.png)): series luminance 0.100 / 0.151 / 0.196 / 0.240 (smallest gap 0.044), line dashes `none`, `9 5`, `2 4`, focus solid versus outlined |
 | CJK phrase breaks (C12) | all three | pass | Every heading and callout with Han text in the zh-CN gallery, at 1440 and 390 px: no line ends inside a dictionary word, no region overflow (24 headings per theme) |
 
 ## Exports ([exports.json](exports/exports.json), one report per deck)
@@ -88,7 +88,7 @@ Every report lists the fonts used (for example `Charter, Gill Sans, Songti SC` f
 
 ## Byte identity
 
-The renderer version moved `.6` → `.7` → `.8` → `.9` (theme stylesheet added, then the text transforms removed, then one missed header) and the player `.4` → `.5` (glyph audit, motion tokens, no behaviour change for undeclared packs). Each bump re-recorded [render-baseline.json](../../../tests/fixtures/visual/render-baseline.json) in its own commit. [baseline-diff-s8.json](baseline-diff-s8.json) compares the final tree with `a8c0404`: all 12 HTML entries changed bytes; in none did a visible word, value, data table, anchor or document title change. The Chinese entries now contain `<wbr>` between dictionary words; the diff tool treats it as the empty text it is.
+The renderer version moved `.6` → `.7` → `.8` → `.9` → `.10` (theme stylesheet added, the text transforms removed, one missed header, then the packs renamed to the planned VIS-015 ids) and the player `.4` → `.5` (glyph audit, motion tokens, no behaviour change for undeclared packs). Each bump re-recorded [render-baseline.json](../../../tests/fixtures/visual/render-baseline.json) in its own commit. [baseline-diff-s8.json](baseline-diff-s8.json) compares the final tree with `a8c0404`: all 12 HTML entries changed bytes; in none did a visible word, value, data table, anchor or document title change. The Chinese entries now contain `<wbr>` between dictionary words; the diff tool treats it as the empty text it is.
 
 ## Viewed
 

@@ -3,7 +3,7 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "missing-glyph",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "locale": "en",
       "page": "story 1 · st-open",
       "state": "opening",
@@ -31,7 +31,7 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "missing-glyph",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "locale": "en",
       "page": "story 1 · st-open",
       "state": "opening",
@@ -59,7 +59,7 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "missing-glyph",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "locale": "en",
       "page": "story 1 · st-open",
       "state": "opening",
@@ -87,7 +87,7 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "media-failure-cover",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "locale": "en",
       "page": "stage sample · ls-cover-text",
       "state": "opening",
@@ -111,9 +111,9 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "low-motion",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "locale": "en",
-      "page": "story (luminous-stage)",
+      "page": "story (orange-launch)",
       "state": "reduced motion, then full motion replay",
       "reproduction": "Open with prefers-reduced-motion: reduce and read the animations; open without it, replay page 3 and read the running animations.",
       "observed": {
@@ -196,7 +196,7 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "black-and-white",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "locale": "en",
       "page": "at-figure, at-panels, at-interval",
       "state": "grayscale filter over the whole page",
@@ -230,7 +230,7 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "cjk-breaks",
-      "theme": "editorial-fieldnotes",
+      "theme": "silver-gray-editorial",
       "locale": "zh-CN",
       "page": "gallery (every heading and callout with Han text)",
       "state": "opening",
@@ -246,7 +246,7 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "cjk-breaks",
-      "theme": "research-atlas",
+      "theme": "fresh-report",
       "locale": "zh-CN",
       "page": "gallery (every heading and callout with Han text)",
       "state": "opening",
@@ -262,7 +262,7 @@
     {
       "host": "local isolated Chromium (file://)",
       "id": "cjk-breaks",
-      "theme": "luminous-stage",
+      "theme": "orange-launch",
       "locale": "zh-CN",
       "page": "gallery (every heading and callout with Han text)",
       "state": "opening",

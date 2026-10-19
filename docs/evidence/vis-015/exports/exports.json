@@ -6,7 +6,7 @@
   "platform": "darwin 27.0.0",
   "browser": "Chromium 151.0.7922.34 (isolated, Playwright cache)",
   "playwright": "1.61.1",
-  "renderer": "visual-art-direction.9",
+  "renderer": "visual-art-direction.10",
   "player": "semantic-player.5",
   "python": "Python 3.9.6",
   "quickLook": true
@@ -30,7 +30,7 @@
  },
  "decks": [
   {
-   "deck": "gallery-editorial-fieldnotes-en",
+   "deck": "gallery-silver-gray-editorial-en",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "pass",
@@ -45,7 +45,7 @@
    "external": []
   },
   {
-   "deck": "story-editorial-fieldnotes-en",
+   "deck": "story-silver-gray-editorial-en",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "pass",
@@ -60,7 +60,7 @@
    "external": []
   },
   {
-   "deck": "gallery-research-atlas-en",
+   "deck": "gallery-fresh-report-en",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "pass",
@@ -75,7 +75,7 @@
    "external": []
   },
   {
-   "deck": "story-research-atlas-en",
+   "deck": "story-fresh-report-en",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "pass",
@@ -90,7 +90,7 @@
    "external": []
   },
   {
-   "deck": "gallery-luminous-stage-en",
+   "deck": "gallery-orange-launch-en",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "pass",
@@ -105,7 +105,7 @@
    "external": []
   },
   {
-   "deck": "story-luminous-stage-en",
+   "deck": "story-orange-launch-en",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "pass",
@@ -165,7 +165,7 @@
    "external": []
   },
   {
-   "deck": "gallery-editorial-fieldnotes-zh-CN",
+   "deck": "gallery-silver-gray-editorial-zh-CN",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "partial",
@@ -180,7 +180,7 @@
    "external": []
   },
   {
-   "deck": "story-editorial-fieldnotes-zh-CN",
+   "deck": "story-silver-gray-editorial-zh-CN",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "partial",
@@ -195,7 +195,7 @@
    "external": []
   },
   {
-   "deck": "gallery-research-atlas-zh-CN",
+   "deck": "gallery-fresh-report-zh-CN",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "partial",
@@ -210,7 +210,7 @@
    "external": []
   },
   {
-   "deck": "story-research-atlas-zh-CN",
+   "deck": "story-fresh-report-zh-CN",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "partial",
@@ -225,7 +225,7 @@
    "external": []
   },
   {
-   "deck": "gallery-luminous-stage-zh-CN",
+   "deck": "gallery-orange-launch-zh-CN",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "partial",
@@ -240,7 +240,7 @@
    "external": []
   },
   {
-   "deck": "story-luminous-stage-zh-CN",
+   "deck": "story-orange-launch-zh-CN",
    "pptxEditability": "pass",
    "sceneCheck": "pass",
    "pdfSearchability": "partial",

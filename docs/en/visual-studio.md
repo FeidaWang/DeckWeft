@@ -150,7 +150,7 @@ Changing a page's theme now changes only its theme and, when needed, its composi
 
 ## Three more themes: Editorial Fieldnotes, Research Atlas, Luminous Stage (S8, VIS-015)
 
-S8 adds the design handoff's three first-wave art directions as theme packs ([decision 2, alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)). The three VIS-014 themes are unchanged. State: see the [VIS-015 evidence](../evidence/vis-015/review.md); the roadmap entry says what is supported.
+S8 adds the design handoff's three first-wave art directions as theme packs under the planned VIS-015 ids ([decision 2, alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)). The three VIS-014 themes are unchanged. State: see the [VIS-015 evidence](../evidence/vis-015/review.md); the roadmap entry says what is supported.
 
 | Theme | Direction | Type roles (platform fonts, nothing bundled) | Own compositions |
 |---|---|---|---|

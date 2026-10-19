@@ -9,7 +9,7 @@
   "platform": "darwin 27.0.0",
   "browser": "Chromium 151.0.7922.34 (isolated, Playwright cache)",
   "playwright": "1.61.1",
-  "renderer": "visual-art-direction.9",
+  "renderer": "visual-art-direction.10",
   "player": "semantic-player.5",
   "python": "Python 3.9.6",
   "quickLook": true
@@ -290,7 +290,7 @@
    },
    {
     "stage": "render",
-    "bytes": 103730,
+    "bytes": 103726,
     "slides": 6,
     "charts": 5,
     "media": 1,
@@ -337,7 +337,7 @@
     "stage": "render",
     "pages": 6,
     "appendixPages": 6,
-    "bytes": 139227
+    "bytes": 139162
    },
    {
     "stage": "check",
@@ -653,7 +653,7 @@
      "sceneId": "at-appendix",
      "pptx": {
       "meanAbsDiff": 4.3,
-      "changedShare": 0.017
+      "changedShare": 0.016
      },
      "pdf": {
       "meanAbsDiff": 1.3,
@@ -761,14 +761,14 @@
   "note": "Fonts are referenced by name, never embedded or redistributed. A machine without them substitutes another face."
  },
  "files": {
-  "pptxBytes": 103730,
+  "pptxBytes": 103726,
   "slides": 6,
   "charts": 5,
   "pictures": 1,
   "pdfPages": 12,
   "sha256": {
-   "pptx": "4e72358123b35651b761ceb30c1475a21140b77ae4519450d18a3839fef17de6",
-   "pdf": "d34767859cac72288c3ee65fd36b27026f3d8d0d35702d135eb0bfc27c1c55b7"
+   "pptx": "08a92715d3276048b981bc2136ecee3c0f699ea1a75d7276c69185b1e1768f67",
+   "pdf": "a1a451e2b9645f1e3744c4e4ac1b875101d05e3132e5d1bf4442bb2113216a38"
   }
  },
  "applications": {
