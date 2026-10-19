@@ -36,6 +36,7 @@ const settle=async page=>{await page.evaluate(()=>document.fonts.ready);await pa
 async function shot(page,name,target){await settle(page);const file=path.join(shots,name+'.png');if(target)await page.locator(target).screenshot({path:file});else await page.screenshot({path:file,fullPage:false});return path.relative(out,file);}
 async function action(page,width,{level,object,act,kind,expect}){
  await revealStudio(page,'edit');if(!await page.locator('#authorControls').evaluate(n=>n.open))await page.locator('#authorControls > summary').click();
+ if(!await page.locator('#actionLevel').isVisible())record(width,'author controls not visible after disclosure',await page.locator('#actionLevel').evaluate(n=>({ancestors:[n,...(function*(e){while(e=e.parentElement)yield e;})(n)].filter(e=>e.id).map(e=>({id:e.id,hidden:e.hidden,open:e.open,display:getComputedStyle(e).display}))})));
  if(level)await page.locator('#actionLevel').selectOption(level);if(object)await page.locator('#actionObject').selectOption(object);if(kind)await page.locator('#lockKind').selectOption(kind);
  await page.locator(`[data-author-action="${act}"]`).click();await page.locator('#actionPlan').waitFor({state:'visible'});
  const plan={scope:await page.locator('#actionScope').textContent(),effects:await page.locator('#actionEffects li').allTextContents(),kept:await page.locator('#actionKept li').allTextContents(),applyEnabled:await page.locator('#actionApply').isEnabled()};

@@ -1,0 +1,30 @@
+1440 entry: three directions measured {"cards":[{"title":"1 · Editorial · silver-gray-editorial","fit":"✓ Fits all 5 pages at 1440 px","use":true,"explain":["Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 3: Two-column thesis with margin notes; Page 5: Fi
+1440 entry: direction expanded to the deck {"chosen":"2 · Research report · fresh-report","theme":"fresh-report","pages":["atlas-cover","atlas-appendix","atlas-section","atlas-section","atlas-closing"],"shot":"shots/expanded-1440.png"}
+1440 reduce text: effect stated before apply {"scope":"Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.","effects":["Page 1: moves “A full-violet chapter creates a deliberate
+1440 reduce text: applied; disclosure in preview {"summary":"More detail · 1 item","shot":"shots/applied-reduce-1440.png"}
+1440 reduce text: undo and redo {"horizontalOverflowPx":0}
+1440 chart space: largest measured layout for the theme {"effects":["Page 4: composition Plot left → evidence rail right → Single-chart conclusion (this theme’s figure layout draws the plot largest at 1440 px)."],"plot":{"x":192.921875,"y":491.859375,"width":898.296875,"height":440},"shot":"shot
+1440 keep layout: theme-own layout refuses a theme change; shared layout survives it {"keep":["Page 4: locks composition Single-chart conclusion. A theme change keeps this geometry; because it is this theme's own composition, a theme change is refused and names it. Rhythm reports it as “kept: author lock”."],"refusal":"Unlo
+1440 separate data lock (explicit migration stated) {"effects":["Separates text, data and source locks first (explicit migration); every existing lock stays.","Locks data: adoption-quarterly."],"summary":"This page: 0 text, 1 data, 0 sources, 1 composition lock(s) · separate lock mode."}
+1440 chapter started and chapter-level More editorial {"chapter":["Page 5: starts a chapter: pages 5–6."],"editorial":["Page 5: composition Headline → matrix → conclusion → Question left → matrix right (claim first, asymmetric reading path).","Page 6: composition Headline → horizontal steps → 
+1440 profile saved {"message":"Profile “Six-family editorial” saved (accepted by you): theme, 3 composition choice(s), type and motion. No text or images."}
+1440 saved; history restore-as-copy keeps chapters, disclosure and locks {"restored":"deck_restore_34657e0b461325d8616a5d5a","revision":2}
+1440 profile applied to the zh-CN deck {"effects":["Page 3: theme cream-collage → electric-violet.","Page 4: theme dark-data → electric-violet.","Page 5: theme cream-collage → electric-violet.","Page 6: composition Headline → horizontal steps → detail → Thesis left → vertical se
+1440 export html {"bytes":3537001,"message":"Standalone HTML exported with embedded local images."}
+1440 export dialog pptx {"status":"pass","paginateVisible":true}
+1440 export pptx {"bytes":2450632,"message":"PowerPoint exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=24; 8 element receipt(s). Open it in the target application to check it."}
+1440 export dialog pdf {"status":"pass","paginateVisible":false}
+1440 export pdf {"bytes":4489893,"message":"PDF exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=22,L2=2; 0 element receipt(s). Open it in the target application to check it."}
+1440 export json {"bytes":13323,"message":"PDF exported through the export order (ready,static-state,freeze,stop-motion,reveal,render,check). Levels: L1=22,L2=2; 0 element receipt(s). Open it in the target application to check it."}
+1440 profile exported and imported as a copy {"profiles":["Six-family editorial · electric-violet","Six-family editorial · electric-violet"]}
+1440 page plan asks for material instead of padding {"questions":["What does the audience need to know first — what is true today? Add it in your own words.","Which data, source or quotation supports the claim on page 3? DeckWeft will not invent one.","The material supports 5 pages; the targ
+1440 evidence-required marked; final export refused by name {"flags":1,"pages":["slide_f6c82a7375f644e6"],"refusal":"Supply the evidence these pages ask for, or mark them illustrative, before a final export.","shot":"shots/evidence-required-1440.png"}
+1024 entry: three directions measured {"cards":[{"title":"1 · Editorial · silver-gray-editorial","fit":"✓ Fits all 5 pages at 1440 px","use":true,"explain":["Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 3: Two-column thesis with margin notes; Page 5: Fi
+1024 reduce text: effect stated before apply {"scope":"Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.","effects":["Page 1: moves “A full-violet chapter creates a deliberate
+1024 reduce text: applied; disclosure in preview {"summary":"More detail · 1 item","shot":"shots/applied-reduce-1024.png"}
+1024 reduce text: undo and redo {"horizontalOverflowPx":0}
+390 entry: three directions measured {"cards":[{"title":"1 · Editorial · silver-gray-editorial","fit":"✓ Fits all 5 pages at 1440 px","use":true,"explain":["Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 3: Two-column thesis with margin notes; Page 5: Fi
+390 reduce text: effect stated before apply {"scope":"Scope: paragraph chapter-body on page 1. It may change page disclosure on page 1; no other page changes. Facts, numbers, units and sources are never rewritten.","effects":["Page 1: moves “A full-violet chapter creates a deliberate
+390 reduce text: applied; disclosure in preview {"summary":"More detail · 1 item","shot":"shots/applied-reduce-390.png"}
+390 reduce text: undo and redo {"horizontalOverflowPx":0}
+0 done {"errors":1,"external":0}

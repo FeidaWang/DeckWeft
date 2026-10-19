@@ -12,6 +12,7 @@ import {pageBrief,draftPagePlan} from '../planning/argument-units.mjs';
 import {localCapture} from './capture.mjs';
 import {hostImages} from '../hosts/run-receipt.mjs';
 import {DeckError} from '../core/errors.mjs';
+import {taskEvidence,evidenceMarkdown} from '../quality/task-evidence.mjs';
 const fail=(code,message,status=409)=>{throw new DeckError(code,message,status);};
 /** S9b: both draft paths get a page plan: the chosen direction's detail level (standard without one) and an optional target. */
 const pagesOf=(r,data)=>({detail:r.direction?.answers.detail||'standard',...(data.targetPages!==undefined?{targetPages:data.targetPages}:{})});
@@ -21,8 +22,10 @@ export class WorkbenchService {
  directory(id){if(!/^[a-f0-9-]{36}$/.test(id))fail('WORKBENCH_ID','Choose a current workbench.',404);return path.join(this.root,id);}
  async read(id){const file=path.join(this.directory(id),'checkpoint.json');await rejectSymlinks(file);return readJSON(file,64_000_000);}
  async write(r){await atomicWrite(path.join(this.directory(r.id),'checkpoint.json'),JSON.stringify(r));}
- summary(r){const t=r.task;return {id:r.id,pagePlan:t?.pagePlan||null,running:r.running,sequence:r.sequence,status:r.status,error:r.error||null,preferences:r.preferences,request:r.request,taskStatus:t?.status,project:t?.project||null,diagnostics:t?.diagnostics||[],events:t?.events||[],repairSpent:t?.repairSpent,receipt:t?.receipt?{id:t.receipt.id,status:t.receipt.status,checks:t.receipt.checks,review:t.receipt.review,captures:t.receipt.captures}:null,hasLastValid:!!t?.lastValid,preview:!!r.html,canExport:r.status==='exported'&&t?.receipt?.status==='passed'&&t.status==='exported'&&!r.running,captureAvailable:!!this.capture};}
+ summary(r){const t=r.task;return {id:r.id,evidence:taskEvidence(t),pagePlan:t?.pagePlan||null,running:r.running,sequence:r.sequence,status:r.status,error:r.error||null,preferences:r.preferences,request:r.request,taskStatus:t?.status,project:t?.project||null,diagnostics:t?.diagnostics||[],events:t?.events||[],repairSpent:t?.repairSpent,receipt:t?.receipt?{id:t.receipt.id,status:t.receipt.status,checks:t.receipt.checks,review:t.receipt.review,captures:t.receipt.captures}:null,hasLastValid:!!t?.lastValid,preview:!!r.html,canExport:r.status==='exported'&&t?.receipt?.status==='passed'&&t.status==='exported'&&!r.running,captureAvailable:!!this.capture};}
  async get(id){return this.summary(await this.read(id));}
+ /** Evidence is inspectable even when the current review failed; it never unlocks the artifact. */
+ async report(id,markdown=false){const r=await this.read(id),report={format:'deckweft-task-evidence-report',version:1,projectId:r.task?.project.id||null,receiptId:r.task?.receipt?.id||null,status:r.status,evidence:taskEvidence(r.task)};return markdown?'# Task evidence report\n\n'+evidenceMarkdown(report.evidence):report;}
  async create(data){
   const profile=preferences(data.preferences),request=text(data.request);
   // S9a: a direction chosen from the three previews is re-applied here deterministically, so the deck is what the preview showed.
@@ -59,7 +62,7 @@ export class WorkbenchService {
    task.original=structuredClone(task.project);await checkpoint(task);
   }else{
    const current=await this.store.get(task.project.id);if(data.action!=='sync'&&contentHash(current)!==contentHash(task.project))fail('REVISION_CONFLICT','The source was edited elsewhere. Recover or start from its saved version.');
-   if(data.action==='sync'){const previous=task;task=createVisualTask({request:task.request,project:current});task.lastValid=previous.lastValid;task.repairSpent=previous.repairSpent;task.history=previous.history;await checkpoint(task);
+   if(data.action==='sync'){const previous=task;task=createVisualTask({request:task.request,project:current});task.lastValid=previous.lastValid;task.repairSpent=previous.repairSpent;task.history=previous.history;if(previous.hostDraft)task.hostDraft={...previous.hostDraft,hostAuthored:(previous.hostDraft.hostAuthored||[]).map(l=>({...l,sceneId:l.sceneId||previous.original.plan.scenes[l.page]?.id}))};await checkpoint(task);
    }else if(data.action==='revise'){
     const request=text(data.request);if(!Array.isArray(data.sceneIds)||!data.sceneIds.length||data.sceneIds.some(id=>!task.project.plan.scenes.some(s=>s.id===id)))fail('TOOL_SCOPE','Choose existing pages for this revision.');task.scope=[...new Set(data.sceneIds)];
     const style=request.match(/(?:use|switch to|theme[: ]*|使用|改为|改成)\s*(electric-violet|dark-data|cream-collage|silver-gray-editorial|fresh-report|orange-launch)\b/i);

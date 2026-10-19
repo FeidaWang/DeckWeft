@@ -162,6 +162,15 @@ test('S7 export report: levels, every receipt and five separate results (typogra
  assert.equal(r.applicationChecks,APPLICATION_CHECKS);assert.equal(r.applications.powerpoint.state,'installed, not run');
  assert.equal(JSON.stringify(r).includes('ExportVerified'),false);
  const md=reportMarkdown(r);for(const s of ['PowerPoint editability','PDF searchability','Accessibility','Visual fidelity','| L1 |'])assert.ok(md.includes(s),s);
+ // F3/F5: task metadata is report evidence, never an inferred visual pass.
+ for(const attestation of ['author','host-metadata-only','host-pixel-control','unattested']){
+  const task={project:g,original:g,hostDraft:{hostAuthoredLines:2,hostAuthored:[{page:0,text:'Added | line'},{page:0,text:'Repeated line'}]},receipt:{review:{attestation,verdict:'fail',controls:{summary:{hits:1,total:2},images:[{expected:{text:'SECRET-CONTROL'}}]}}}};
+  const evidenceReport=exportReport({deck:'gallery-en',document:g.document,plan:g.plan,task,pptx:{run:pptx.run},pdf:{},environment:{},applications});
+  assert.equal(evidenceReport.evidence.hostAuthored.total,2);assert.equal(evidenceReport.evidence.hostAuthored.pages[0].sceneId,g.plan.scenes[0].id);
+  assert.deepEqual(evidenceReport.evidence.review,{attestation,verdict:'fail',controls:{hits:1,total:2}});
+  const evidenceMD=reportMarkdown(evidenceReport);assert.match(evidenceMD,/Host-added lines \| 2/);assert.ok(evidenceMD.includes(g.plan.scenes[0].id));assert.ok(evidenceMD.includes(attestation));assert.match(evidenceMD,/1\/2/);assert.ok(!evidenceMD.includes('SECRET-CONTROL'));assert.match(evidenceMD,/unverified/i);
+ }
+ assert.equal(r.evidence.review.attestation,'unattested');assert.equal(r.evidence.review.controls,null);assert.match(md,/not run/i);
 });
 
 test('S7 compiler helpers: measured line breaks, clipped decoration, blended translucent paint',()=>{

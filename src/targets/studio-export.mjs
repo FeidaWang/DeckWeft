@@ -11,6 +11,7 @@ import {scanMissingGlyphs} from '../render/web/glyphs.mjs';
 import {measureExportLayout,EXPORT_VIEWPORT} from './layout.mjs';
 import {presentationCapabilities} from './capabilities.mjs';
 import {withIsolatedBrowser,delay} from '../workbench/cdp.mjs';
+import {taskEvidence} from '../quality/task-evidence.mjs';
 
 const MIME={pptx:'application/vnd.openxmlformats-officedocument.presentationml.presentation',pdf:'application/pdf'};
 const REDUCED=[{name:'prefers-reduced-motion',value:'reduce'}];
@@ -62,7 +63,7 @@ const browserError=e=>e.message==='CAPTURE_REQUIRES_ISOLATED_BROWSER'?new DeckEr
  * text fell under the presentable minimum, recorded in report.check.typography (F1). Returns {body: Buffer, mime, extension, report}
  * where report is the export order's record (order, levels, delivery, check, receipts, pagination).
  */
-export async function studioTargetExport({browserPath,project,resources={},format,signal,paginate='auto',acceptTypography=null}){
+export async function studioTargetExport({browserPath,project,resources={},format,signal,paginate='auto',acceptTypography=null,task}){
  if(!MIME[format])throw new DeckError('EXPORT_FORMAT','The Studio exports pptx and pdf through the export order.',400);
  if(!browserPath)throw new DeckError('TARGET_BROWSER_REQUIRED','PowerPoint and PDF are measured in an isolated browser. Start the studio with --capture-browser /absolute/isolated/chromium, then export again.',422);
  const {document,plan}=project,opts={experimentalWeb:true,plan,assetResources:resources},html=exportDeck(document,'html',opts),pages=new Map([['/static',html.body]]);
@@ -76,6 +77,7 @@ export async function studioTargetExport({browserPath,project,resources={},forma
   const rasters=format==='pptx'?await captures(cdp,project,resources,layout,signal):{};external(cdp,origin);signal?.throwIfAborted();
   // No allowFailedCheck: whatever the export order refuses, the Studio refuses.
   const out=exportDeck(document,format,{...opts,layout,rasters,paginate,acceptTypography});
+  out.report.evidence=taskEvidence(task,project);
   if(format==='pptx')return {body:Buffer.from(out.body),mime:MIME.pptx,extension:'pptx',report:jsonSafe(out.report)};
   // Screen styles keep the measured layout (print media drops the scenes' minimum height); every printed scene is checked against it.
   pages.set('/print',out.body);await cdp.send('Emulation.setDeviceMetricsOverride',{...EXPORT_VIEWPORT,deviceScaleFactor:1,mobile:false});await cdp.send('Emulation.setEmulatedMedia',{media:'screen',features:REDUCED});await open(cdp,origin+'/print',signal);

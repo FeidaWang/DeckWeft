@@ -1,0 +1,30 @@
+{
+  "format": "deckweft-task-evidence-report",
+  "version": 1,
+  "projectId": "visual_f82827c1a5ba47ef",
+  "receiptId": "eba87ef76b66564eab37969e8d6a90b41a745d2b1281397b700cb2592861aae1",
+  "status": "review-required",
+  "evidence": {
+    "hostAuthored": {
+      "total": 4,
+      "pages": [
+        {
+          "sceneId": "chapter",
+          "page": 1,
+          "lines": [
+            "Different form.\nThe same truth.",
+            "<img src=x onerror=\"throw Error(123)\">",
+            "Repeated added line",
+            "Repeated added line"
+          ]
+        }
+      ],
+      "unlocated": 0
+    },
+    "review": {
+      "attestation": "author",
+      "verdict": "fail",
+      "controls": null
+    }
+  }
+}

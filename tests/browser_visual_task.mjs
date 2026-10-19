@@ -8,6 +8,7 @@ import {pathToFileURL} from 'node:url';
 import {createVisualTask} from '../src/agent/director.mjs';
 import {executeVisualTool} from '../src/agent/tools.mjs';
 import {inspectRenderedPage} from '../src/quality/render-checks.mjs';
+import {taskEvidence} from '../src/quality/task-evidence.mjs';
 const out=path.resolve('dist/visual-task'),shots=path.resolve('dist/visual-task/browser-captures');await mkdir(out,{recursive:true});await mkdir(shots,{recursive:true});
 const executablePath=await realpath(process.env.CHROMIUM_PATH||'');if(/\/Applications\//i.test(executablePath)||/\/Applications\//i.test(process.env.CHROMIUM_PATH))throw Error('Use an isolated testing browser outside Applications.');
 const {chromium}=await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE).href),routes=new Map();
@@ -30,10 +31,22 @@ let report={format:'deckweft-visual-task-browser',browser:browser.version(),runt
 try{
  let task=createVisualTask({request});const source=JSON.parse(await readFile(new URL('../examples/visual-demo.en.json',import.meta.url),'utf8'));task.project.document.datasets=structuredClone(source.document.datasets);task.project.document.sources=structuredClone(source.document.sources);task.original=structuredClone(task.project);
  task=await prepare(task);let r=await run(task,'render.inspect');task=r.task;await writeFile(path.join(out,'before.task.json'),JSON.stringify(task,null,2));report.before={status:task.status,receipt:task.receipt,htmlHash:task.previewHash};assert.equal(task.receipt.checks.ok,true);
+ // F3/F5 display data survives the real local tool loop; this metadata fixture is not a host review.
+ task.hostDraft={hostAuthoredLines:1,hostAuthored:[{page:3,text:'Offline display fixture'}]};
+ assert.equal(taskEvidence(task).review.attestation,'unattested');assert.equal(taskEvidence(task).review.controls,null);
  // Exact page-4 request; explicit original dataset selection, no prose parsing.
  const before=structuredClone(task.project);r=await run(task,'design.patch',{request:'把第 4 页改成图表，保持原文和颜色',datasetId:source.document.datasets[0].id});task=r.task;
  assert.deepEqual(task.project.document.blocks.slice(0,before.document.blocks.length),before.document.blocks);assert.deepEqual(task.project.document.datasets,before.document.datasets);assert.deepEqual(task.project.document.sources,before.document.sources);assert.deepEqual(task.project.plan.scenes.filter((_,i)=>i!==3),before.plan.scenes.filter((_,i)=>i!==3));for(const k of ['theme','colorMode','focalBlockId'])assert.equal(task.project.plan.scenes[3][k],before.plan.scenes[3][k]);
  label='revision';task=await prepare(task);r=await run(task,'render.inspect');task=r.task;assert.equal(task.receipt.checks.ok,true,JSON.stringify(task.receipt.checks.issues));report.after={status:task.status,receipt:task.receipt,htmlHash:task.previewHash};await writeFile(path.join(out,'after.task.json'),JSON.stringify(task,null,2));
+ assert.equal(taskEvidence(task).hostAuthored.pages[0].sceneId,before.plan.scenes[3].id);assert.equal(taskEvidence(task).hostAuthored.total,1);assert.equal(task.receipt.review,null);
+ report.evidenceFixtures=[];
+ for(const attestation of ['author','host-metadata-only','host-pixel-control','unattested']){
+  const controls={summary:{hits:attestation==='host-pixel-control'?3:0,total:3}};
+  const review={receiptId:task.receipt.id,reviewer:'Offline transport fixture',delivery:'Actual browser captures; synthetic review metadata, no visual acceptance',images:task.receipt.captures.map(c=>c.file),judgment:'Automated metadata transport check only',verdict:'fail',attestation,controls};
+  const checked=await executeVisualTool(task,'render.inspect',{expectedSequence:task.sequence},{home:out,trustedReview:review});assert.equal(checked.ok,true,JSON.stringify(checked.error));
+  assert.deepEqual(taskEvidence(checked.task).review,{attestation,verdict:'fail',controls:controls.summary});assert.equal(checked.task.receipt.status,'failed');report.evidenceFixtures.push(taskEvidence(checked.task));
+ }
+ assert.equal(task.receipt.review,null,'display fixtures must not approve the real capture');
  const noData=createVisualTask({request,project:before});const missing=await executeVisualTool(noData,'design.patch',{expectedSequence:0,request:'make slide 4 a chart'},{home:out});assert.equal(missing.error.code,'DATA_REQUIRED');await writeFile(path.join(out,'missing-data.task.json'),JSON.stringify(missing.task,null,2));
  const repeated=structuredClone(before);for(const s of repeated.plan.scenes)s.composition='statement-split';const locked=structuredClone(repeated);locked.document.authorOverrides.sceneLocks=locked.plan.scenes.map(s=>({sceneId:s.id,fields:['composition']}));
  label='bounded-repair';let repair=await prepare(createVisualTask({request,project:repeated}));repair=(await run(repair,'render.inspect',{repair:true})).task;assert.equal(repair.receipt.checks.ok,true);assert.ok(repair.repairSpent.rounds<=2);report.repair={status:repair.status,spent:repair.repairSpent,attempts:repair.repair.attempts,receipt:repair.receipt};await writeFile(path.join(out,'repair.task.json'),JSON.stringify(repair,null,2));

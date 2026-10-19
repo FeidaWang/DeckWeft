@@ -37,6 +37,7 @@ try{
  const page=await context.newPage();activePage=page;page.on('pageerror',e=>report.errors.push(e.message));
  await page.goto(app.url+'/');await page.locator('.visual-studio-link').click();await ready(page);report.checks.push('Classic Studio links directly to the live visual editor');
  await page.locator('#library').selectOption(examples[0].id);await ready(page);
+ assert.equal(await page.locator('.host-authored-badge').count(),0);assert.equal(await page.locator('#hostAuthoredLines').isVisible(),false);
  await page.locator('[data-scene="violet"]').click();await page.frameLocator('#preview').locator('#violet').waitFor({state:'visible'});
  await revealStudio(page,'edit');await page.locator('#designTab').click();await capture(page,'studio-violet-en.png');
  await page.locator('#lockScene').check();assert.ok(await page.locator('#theme').isDisabled());await page.locator('#save').click();await ready(page);await page.reload();await ready(page);await page.locator('[data-scene="violet"]').click();await revealStudio(page,'edit');await page.locator('#designTab').click();assert.ok(await page.locator('#theme').isDisabled());await page.locator('#lockScene').uncheck();report.checks.push('Theme/composition lock persists through save and reload');

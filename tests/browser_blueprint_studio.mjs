@@ -78,6 +78,7 @@ try{
  // downloads nothing; only the author's explicit acceptance exports the file, recorded with its time, and the status stays yellow.
  const YELLOW='rgb(255, 246, 214)';assert.ok(pagedDialog.paginateVisible,'the paging option is offered for PowerPoint');assert.notEqual(pagedDialog.color,YELLOW,'a passing export is not yellow');assert.equal(pagedDialog.acceptVisible,false);
  const whole=await studioExport(page,'#exportPPTX',{paginate:'none'});
+ assert.match(await page.locator('#exportEvidence').textContent(),/unattested/);assert.match(await page.locator('#exportEvidence').textContent(),/not run/);
  assert.equal(whole.status,'fail',whole.text);assert.equal(whole.color,YELLOW);assert.ok(whole.acceptVisible,'the acceptance is offered');
  assert.ok(whole.failures.length>0&&whole.failures.every(f=>/\d+(\.\d+)? pt/.test(f)),whole.failures.join(' | '));assert.ok(whole.failures.some(f=>f.includes('pipeline')),'the failures name the page');
  artifacts.typographyFail=await shot(page,'1440-5-typography-fail');
