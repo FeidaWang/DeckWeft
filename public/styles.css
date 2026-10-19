@@ -8,7 +8,7 @@
 /* DW-120: native modal focus/inert handling; no hidden off-screen interactive rail. */
 [hidden]{display:none!important}
 .mobile-title{display:none}
-.issue-banner{padding:12px 20px;color:var(--danger);background:#fff2ec;border-bottom:1px solid var(--line);font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.issue-banner{padding:12px 20px;color:var(--danger);background:#fff2ec;border-bottom:1px solid var(--line);font-size:12px;line-height:1.5;overflow-wrap:anywhere}.issue-banner.warning{color:#684016;background:#faf0de}
 .field-errors{padding:12px;border:1px solid var(--danger);border-radius:8px;color:var(--danger);line-height:1.5;overflow-wrap:anywhere}
 [aria-invalid=true]{border-color:var(--danger)}
 .stale{opacity:.65}

@@ -11,6 +11,7 @@
 | 提交状态 | 七轮全部提交在七轮分支（见 `git log main..`），**未推送**：前六轮六个提交；第七轮 `bf042bf`（F4 生成脚本）、`27bf948`（记录时忽略正在记录的日志）、`31968f8`（状态记录）。第八轮（F1 的 Studio 拆页选项与作者接受）已提交在第八轮分支：`7fe6106`（23 个文件）、`fb4c316`（状态记录），**未推送** |
 | `npm run verify` | 在干净的 `7fe6106` 上通过：495 项测试，490 通过，0 失败，5 环境门控跳过（第五项是 F1 的 Studio 导出接受测试，需要 `CHROMIUM_PATH`）；源码检查 1551 文件。日志 `docs/evidence/astra-second-verification/verify-7fe6106.txt`；`docs/current-status.json` 与 `PROJECT_STATUS.json` 记录 commit `7fe6106`、`worktreeClean: true`；`27bf948` 的记录移入 `history[]`。日志 `docs/evidence/astra-second-verification/verify-27bf948.txt`；`docs/current-status.json` 与 `PROJECT_STATUS.json` 记录 commit `27bf948`、`worktreeClean: true`。之前未提交树上的 `c09b795` 记录移入 `history[]`，日志 `verify.txt` 保留 |
 | 浏览器门控 | 第八轮，隔离 Chrome for Testing 149.0.7827.55 + Playwright 1.61.1：`tests/studio-export.test.mjs` 5/5（单独运行）、`browser_blueprint_studio.mjs`（12 步，0 错误）、`browser_author_controls.mjs`（30 步，首次即过，1 个已记录的 409 控制台错误）；`export:targets --s9 --decks blueprint-silver-gray-editorial-en` 以 `--paginate none` 与 auto 各一次。七轮：`browser_session_reconnect.mjs`（6 项，连续三次）、`browser_visual_studio.mjs`（22 项）、`browser_workbench.mjs`、`browser_visual_task.mjs` 通过。本轮没有重跑 session_reconnect / visual_studio / workbench / visual_task |
+| §5 历史容量提示（并入 main） | 历史容量提示（见下表）。提交前的树上 `npm run verify` 498 / 494 / 0 / 4，check 通过；当前状态未重新记录，仍是 `27bf948` 的 491 项。浏览器：`browser_history_capacity.mjs`（6 项）、`browser_session_reconnect.mjs`、`browser_visual_studio.mjs` 通过；`browser_author_controls.mjs` 三次中第一次偶发超时、后两次通过 |
 | 未能运行 | `tests/browser_acceptance.py`、`tests/browser_smoke.py`：本机 Python 没有 `playwright` 模块。第五轮改过 `browser_acceptance.py` 的 409 步骤，未经运行验证 |
 | 真实宿主 | 没有调用；Claude 登录仍 deferred |
 | 原生应用 | PowerPoint / Keynote / Figma / AE 未打开 |
@@ -60,6 +61,7 @@ npm run status:check
 | F6 重连并保留草稿 | 新文件 `public/session.js`（`ask`、`sessionRecovery`→`reconnect()`、`askSaveCopy`），`server.mjs` 以 `/session.js` 提供；`public/app.js` 与 `public/studio/visual.js` 的 `api()` 在 401 时弹"重新连接并保留修改"，取新令牌后重试一次，不刷新页面；选"暂不"后后台请求不再弹窗，直到再点保存；409 时弹"另存为独立副本 / 继续编辑"，副本走现有 import 路由；中英 `agent-bridge.md`、`manual.md` 同步 | 新 runner `tests/browser_session_reconnect.mjs`（经典版与视觉版：拒绝重连、重连保存、409 另存副本）；`browser_visual_studio.mjs` 与 `browser_acceptance.py` 的 409 步骤先点"继续编辑" |
 | F7 部分 | `src/workbench/cdp.mjs` SIGKILL 后有界等待；`tests/browser_harness.py` `try/finally` 与 TERM→KILL；`src/qa/hosts.mjs` 的 `commandProbe` 改为 POSIX 进程组 kill | `tests/hosts.test.mjs` 末尾 "F7: …"（孙进程被停止，Windows 跳过） |
 | §5 加固 | `sanitizeOutput` 增加 JWT/AWS/`api_key=`/`password:`/`token=`/home/`~/` 形状；`validateFit` 可见文字宽度下界 | `tests/hosts.test.mjs`、`tests/measurements.test.mjs` 各一条 |
+| §5 历史容量提示（第八轮） | `store.mjs` 的 `HISTORY_LIMITS`（500 个或 200 MB）与 `historyUsage`；`historyPage.usage`、保存响应 `historyUsage`；`public/history-capacity.js` 中英提示；经典版琥珀色横幅与历史对话框、视觉版保存消息与历史对话框；80% 起提示，不删除；中英 `manual.md` 清理步骤 | `tests/history-capacity.test.mjs`（7 条）；新 runner `tests/browser_history_capacity.mjs` |
 | §4 文案 | `agent-bridge.md`（worker 上限、required 模式）、`architecture.md`（session 端点）、`manual.md`（宿主联网）、`compatibility.md`（五项结果），中英同步；`docs/evidence/vis-010/review.md` 与 `docs/visual-acceptance/review.md` 标注为 agent 图像审阅；parity 阈值注释 | `npm run check` |
 
 ## 未完成（按方案编号）
@@ -72,7 +74,7 @@ npm run status:check
 | F5 剩余 | 在线三组对照脚本与通过标准（需用户授权真实宿主）；Studio 与导出报告显示 attestation；Claude 形状的 fake 读像素测试；Studio 评审表单提交 `attestation: 'author'` 的浏览器验证；`.deckweft-pixel-control/` 的清理与 `.gitignore`（第六轮已修：`control.json` 宿主运行后才写入、工具参数不能自报宿主等级） | §2 F5、§9 第四、六轮 |
 | F6 剩余 | 在装有 Python Playwright 的环境跑 `browser_acceptance.py` 与 `browser_smoke.py`；视觉版重启后旧测量票据被拒时顶部出现一次"Refresh the measured visual preview."（下一次预览后恢复，未改）；视觉版对话框主按钮没有强调色；`docs/en/verification.md` 的 runner 清单未加入新 runner | §9 第五轮 |
 | F7 剩余 | Windows CI 的进程树测试（`tests/process-tree.test.mjs`） | §2 F7 |
-| §5 剩余 | importer PNG 校验抽取、历史容量提示、CDP `Target.setAutoAttach`、bridge 分享确认文案、`SECURITY.md` 审查范围清单、Codex "no tools" 说明、doctor 输出首行说明、media-workers 文案核对 | §5、§4 |
+| §5 剩余 | importer PNG 校验抽取、历史"导出为 zip 并清空"操作与跨文稿总量提示（第八轮只做了提示）、CDP `Target.setAutoAttach`、bridge 分享确认文案、`SECURITY.md` 审查范围清单、Codex "no tools" 说明、doctor 输出首行说明、media-workers 文案核对 | §5、§4 |
 | §3.3 | 30 分钟作者实测协议与 `start.md` 重排 | §3.3 |
 | 英文版 | 方案与本文都只有中文；按 AGENTS.md 需要英文主页 | — |
 

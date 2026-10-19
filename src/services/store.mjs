@@ -7,9 +7,17 @@ import { DeckError } from '../core/errors.mjs';
 import { atomicWrite,rejectSymlinks,stringify,readJSON } from './io.mjs';
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function revisionNumber(value){if(!Number.isSafeInteger(value)||value<1||value>1_000_000_000)throw new DeckError('REVISION_RANGE','Choose a positive saved revision number.',400);return value;}
+// Suggested per-deck history size. Reaching 80% of either limit shows a cleanup note; nothing is pruned automatically.
+export const HISTORY_LIMITS=Object.freeze({snapshots:500,bytes:200_000_000});
+const HISTORY_WARNING=0.8;
+function historyLimits(value=HISTORY_LIMITS){
+  const ok=n=>Number.isSafeInteger(n)&&n>0;
+  if(!value||!ok(value.snapshots)||!ok(value.bytes))throw new DeckError('HISTORY_LIMITS','History limits need a positive whole number of snapshots and bytes.');
+  return {snapshots:value.snapshots,bytes:value.bytes};
+}
 export const defaultHome=()=>path.resolve(process.env.DECKWEFT_HOME||path.join(os.homedir(),'.deckweft'));
 export class ProjectStore {
-  constructor(home=defaultHome()){this.home=path.resolve(home);this.directory=path.join(this.home,'projects');}
+  constructor(home=defaultHome(),options={}){this.home=path.resolve(home);this.directory=path.join(this.home,'projects');this.historyLimits=historyLimits(options.historyLimits);}
   validateRecord(value){return assertProject(value);}
   describeRecord(p){return {id:p.id,title:p.title,locale:p.locale,slides:p.slides.length,revision:p.revision.number,updatedAt:p.revision.updatedAt};}
   copyRecord(p,id,title){const copy=structuredClone(p);copy.id=id;copy.title=title;copy.revision.number=0;return copy;}
@@ -67,6 +75,18 @@ export class ProjectStore {
     const current=await this.get(id),dir=path.join(this.home,'history',id);await rejectSymlinks(dir);
     try{return (await readdir(dir)).filter(f=>/^[1-9]\d*\.json$/.test(f)).map(f=>Number(f.slice(0,-5))).filter(n=>Number.isSafeInteger(n)&&n<current.revision.number&&n<=1_000_000_000).sort((a,b)=>b-a);}catch(e){if(e.code==='ENOENT')return [];throw e;}
   }
+  // Counts every numbered snapshot file of a deck (symbolic links and other files are skipped) and its bytes.
+  async historyUsage(id){
+    this.file(id);const directory=path.join(this.home,'history',id),limits=this.historyLimits;await rejectSymlinks(directory);
+    let snapshots=0,bytes=0,names=[];
+    try{names=(await readdir(directory)).filter(f=>/^[1-9]\d*\.json$/.test(f));}catch(e){if(e.code!=='ENOENT')throw e;}
+    for(const name of names){
+      let stat;try{stat=await lstat(path.join(directory,name));}catch(e){if(e.code==='ENOENT')continue;throw e;}
+      if(stat.isFile()){snapshots++;bytes+=stat.size;}
+    }
+    const share=Math.max(snapshots/limits.snapshots,bytes/limits.bytes),level=share>=1?'over':share>=HISTORY_WARNING?'near':'ok';
+    return {snapshots,bytes,limits,level,directory};
+  }
   async snapshot(id,revision){
     const file=this.snapshotFile(id,revision),current=await this.get(id);
     if(revision>=current.revision.number)throw new DeckError('SNAPSHOT_NOT_FOUND','Choose an earlier saved revision.',404);
@@ -85,7 +105,7 @@ export class ProjectStore {
       try{const item=await this.snapshot(id,revision);snapshots.push({revision,title:this.describeRecord(item.project).title,savedAt:item.project.revision.updatedAt,slides:this.describeRecord(item.project).slides,bytes:item.bytes,sha256:item.sha256,unreadable:false});}
       catch(error){snapshots.push({revision,unreadable:true,error:error.code||'READ_FAILED'});}
     }
-    return {projectId:id,currentRevision:current.revision.number,revisions:numbers,snapshots,nextBefore:eligible.length>limit?numbers.at(-1):null,retention:'Nothing is pruned automatically.'};
+    return {projectId:id,currentRevision:current.revision.number,revisions:numbers,snapshots,nextBefore:eligible.length>limit?numbers.at(-1):null,retention:'Nothing is pruned automatically.',usage:await this.historyUsage(id)};
   }
   async restoreAsCopy(id,revision,{snapshotHash,requestId,title}={}){
     revisionNumber(revision);

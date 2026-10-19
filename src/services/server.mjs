@@ -24,7 +24,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const staticFiles={'/shared/presentation.mjs':['../src/core/presentation.mjs','text/javascript; charset=utf-8'],'/':['index.html','text/html; charset=utf-8'],'/app.js':['app.js','text/javascript; charset=utf-8'],'/agent-bridge.js':['agent-bridge.js','text/javascript; charset=utf-8'],'/pitch-mode.js':['pitch-mode.js','text/javascript; charset=utf-8'],'/styles.css':['styles.css','text/css; charset=utf-8'],'/interaction.js':['interaction.js','text/javascript; charset=utf-8'],'/history.js':['history.js','text/javascript; charset=utf-8'],'/text-measurer.js':['text-measurer.js','text/javascript; charset=utf-8'],'/shared/text.mjs':['../src/layout/text.mjs','text/javascript; charset=utf-8']};
 for(const icon of ['undo-2','redo-2','save','play','download','plus','upload','history','sparkles','panel-left','panel-right','wand-sparkles','copy','arrow-up','arrow-down','trash-2','x','presentation','workflow','timer','check','plug','circle-help'])staticFiles[`/icons/${icon}.svg`]=[`vendor/lucide/${icon}.svg`,'image/svg+xml'];
 Object.assign(staticFiles,{'/three-scene.js':['three-scene.js','text/javascript; charset=utf-8'],'/three-dots.js':['three-dots.js','text/javascript; charset=utf-8'],'/studio-tools.js':['studio-tools.js','text/javascript; charset=utf-8'],'/shared/speech.mjs':['../src/core/speech.mjs','text/javascript; charset=utf-8'],'/showcase.deck.json':['../examples/devday-melbourne.deck.json','application/json; charset=utf-8']});
-for(const file of ['preferences.js','actions.js','presenter.js','storyboard.js','session.js'])staticFiles['/'+file]=[file,'text/javascript; charset=utf-8'];
+for(const file of ['preferences.js','actions.js','presenter.js','storyboard.js','session.js','history-capacity.js'])staticFiles['/'+file]=[file,'text/javascript; charset=utf-8'];
 staticFiles['/workspace.css']=['workspace.css','text/css; charset=utf-8'];
 staticFiles['/shared/preferences.mjs']=['../src/core/preferences.mjs','text/javascript; charset=utf-8'];
 staticFiles['/shared/clock.mjs']=['../src/presentation/clock.mjs','text/javascript; charset=utf-8'];
@@ -46,12 +46,12 @@ async function body(req){
   return value;
 }
 function tokenMatches(value,token){const a=Buffer.from(String(value||'')),b=Buffer.from(`Bearer ${token}`);return a.length===b.length&&timingSafeEqual(a,b);}
-export async function startStudio({port=4179,home,seed=true,captureBrowser,workbenchCapture,hostOptions}={}){
+export async function startStudio({port=4179,home,seed=true,captureBrowser,workbenchCapture,hostOptions,historyLimits}={}){
   if(!Number.isInteger(port)||port<0||port>65535)throw new DeckError('PORT','Use a port number from 0 to 65535.');
-  const store=await new ProjectStore(home).init();
+  const store=await new ProjectStore(home,{historyLimits}).init();
   const agentBridge=new AgentBridge(store.home);
   if(seed&&(await store.list()).length===0){const initial=JSON.parse(await readFile(path.join(root,'examples/welcome.deck.json'),'utf8'));await store.save(initial,{create:true});}
-  const visual=await createVisualService({home:store.home,legacyStore:store,body,send,browserPath:captureBrowser,workbenchCapture,hostOptions});
+  const visual=await createVisualService({home:store.home,legacyStore:store,body,send,browserPath:captureBrowser,workbenchCapture,hostOptions,historyLimits});
   const measurements=new MeasurementSessions();
   const presentations=new PresentationSessions(),audience=await startAudienceServer(presentations);
   const token=randomBytes(32).toString('hex');let actualPort=port;
@@ -143,7 +143,8 @@ export async function startStudio({port=4179,home,seed=true,captureBrowser,workb
         if(match&&method==='GET')return send(res,200,match[2]?{revisions:await store.history(match[1])}:{project:await store.get(match[1])});
         if(match&&!match[2]&&method==='PUT'){
           const data=await body(req);if(data?.project?.id!==match[1])throw new DeckError('ID_MISMATCH','The URL and deck id must match.');
-          return send(res,200,{project:await store.save(data.project,{expectedRevision:data.expectedRevision})});
+          const project=await store.save(data.project,{expectedRevision:data.expectedRevision});
+          return send(res,200,{project,historyUsage:await store.historyUsage(project.id)});
         }
         if(method==='POST'&&url.pathname==='/api/projects'){
           const data=await body(req);const p=data.project?assertProject(data.project):createProject(data.options||{});

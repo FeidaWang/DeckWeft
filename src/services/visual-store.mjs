@@ -3,7 +3,7 @@ import { ProjectStore, defaultHome } from './store.mjs';
 import { assertVisualProject, assertVisualLocks } from '../core/visual-project.mjs';
 /** Same atomic writer, conflict checks, immutable history and restore-as-copy; separate library. */
 export class VisualProjectStore extends ProjectStore {
- constructor(home=defaultHome()){super(path.join(home,'visual'));}
+ constructor(home=defaultHome(),options={}){super(path.join(home,'visual'),options);}
  validateRecord(p){return assertVisualProject(p);}
  describeRecord(p){return {id:p.id,title:p.document.title,locale:p.document.locale,slides:p.plan.scenes.length,revision:p.revision.number,updatedAt:p.revision.updatedAt};}
  copyRecord(p,id,title){const copy=structuredClone(p);copy.id=id;copy.document.id=id;copy.document.title=title;copy.plan.documentId=id;copy.revision.number=0;return copy;}

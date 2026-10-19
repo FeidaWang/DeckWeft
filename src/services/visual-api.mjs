@@ -37,8 +37,8 @@ import { promoteProfile, assertDesignProfile } from '../design/design-profile.mj
 import { studioTargetExport } from '../targets/studio-export.mjs';
 import { assertEvidenceSupplied } from '../design/scene-semantics.mjs';
 const fail422=message=>{throw new DeckError('WORKBENCH_ENTRY',message,422);};
-export async function createVisualService({home,legacyStore,body,send,browserPath,workbenchCapture,hostOptions}){
- const store=await new VisualProjectStore(home).init(),artifacts=new Map(),profiles=await new DesignProfileStore(store.home).init();
+export async function createVisualService({home,legacyStore,body,send,browserPath,workbenchCapture,hostOptions,historyLimits}){
+ const store=await new VisualProjectStore(home,{historyLimits}).init(),artifacts=new Map(),profiles=await new DesignProfileStore(store.home).init();
  const workbench=new WorkbenchService({store,browserPath,capture:workbenchCapture,hostOptions});
  const reviewed=async project=>{const id=project.extensions.deckweftWorkbench?.id;if(!id)return false;const r=await workbench.get(id).catch(()=>null);return !!r&&r.canExport&&r.receipt?.status==='passed'&&contentHash(r.project)===contentHash(project);};
  const entry=ticket=>{const item=artifacts.get(ticket);if(!item||Date.now()-item.createdAt>600000){artifacts.delete(ticket);throw new DeckError('STALE_VISUAL_RENDER','Refresh the measured visual preview.',409);}return item;};
@@ -123,7 +123,7 @@ export async function createVisualService({home,legacyStore,body,send,browserPat
      else if(method==='POST'&&restore){const data=await body(req);if(data.mode!=='copy')throw new DeckError('RESTORE_MODE','Restore an explicit separate copy.');send(res,201,await store.restoreAsCopy(id,Number(rev),data));}
      else throw new DeckError('METHOD_NOT_ALLOWED','Use a documented read-only history or restore-as-copy action.',405);
     }else if(method==='GET')send(res,200,{project:await store.get(id)});
-    else if(method==='PUT'){const data=await body(req);if(data.project?.id!==id)throw new DeckError('ID_MISMATCH','The URL and visual project id must match.');send(res,200,{project:await store.save(data.project,{expectedRevision:data.expectedRevision})});}
+    else if(method==='PUT'){const data=await body(req);if(data.project?.id!==id)throw new DeckError('ID_MISMATCH','The URL and visual project id must match.');const project=await store.save(data.project,{expectedRevision:data.expectedRevision});send(res,200,{project,historyUsage:await store.historyUsage(project.id)});}
     else throw new DeckError('METHOD_NOT_ALLOWED','Use GET or PUT for this project.',405);
     return true;
    }

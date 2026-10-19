@@ -62,7 +62,9 @@ Click **Version history** on the left. Each previous save is a photo of the whol
 
 Click **Restore as a new copy**. This creates a second deck, with a new id and revision 1. It does **not** replace the original and does **not** throw away your current unsaved typing. Only **Open restored copy** switches the workbench; if you have unsaved changes, choose Save and continue, Discard and continue, or Keep editing. A retry of the same restore request reuses the copy rather than making duplicates.
 
-No older versions? Save after making a change: the version you just replaced will appear here. A damaged snapshot is marked as needing repair; the app does not delete or silently fix it. If a snapshot changed since you opened it, refresh before restoring. Snapshots live in `~/.deckweft/history/PROJECT_ID/`; there is still **no automatic pruning or retention cap**. Back up the library and monitor disk use. This is not crash recovery for typing that was never saved.
+No older versions? Save after making a change: the version you just replaced will appear here. A damaged snapshot is marked as needing repair; the app does not delete or silently fix it. If a snapshot changed since you opened it, refresh before restoring. Snapshots live in `~/.deckweft/history/PROJECT_ID/` (Visual Studio decks in `~/.deckweft/visual/history/PROJECT_ID/`); there is still **no automatic pruning**.
+
+When a deck keeps 400 or more snapshots, or they use 160 MB or more (80% of the suggested 500 snapshots or 200 MB), the save message and the history dialog show a note with the count, the size and the folder. Expected result: the note says "close to" or "over the suggested limit"; nothing is deleted. To free space: 1. Restore any version you still want as a new copy. 2. Close DeckWeft. 3. Move older numbered files, such as `12.json`, out of the folder the note names, for example into an archive folder. Recovery: to bring a version back, move its file back into the same folder unchanged. Back up the library and monitor disk use. This is not crash recovery for typing that was never saved.
 
 ## Export: which box do you need?
 
