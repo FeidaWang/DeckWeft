@@ -3,10 +3,11 @@ import {initialInteractionState,reduceInteractionState,seekInteractionState} fro
 import {staticStatePosition} from '../design/scene-semantics.mjs';
 import {chartModel} from '../components/charts/model.mjs';
 import {chartSemantics} from '../components/charts/semantics.mjs';
+import {assertBlueprint} from './blueprint.mjs';
 export const SEMANTIC_EVENTS=['scene.enter','scene.exit','step.next','tab.select','data.filter','data.focus','annotation.reveal'];
 export function compileInteractions(document,scene){
  return (scene.interactions||[]).map(spec=>{
-  if(spec.kind==='steps')return {...structuredClone(spec),steps:spec.steps.map(step=>{const note=document.explanations.find(n=>n.id===step.explanationId);return {...structuredClone(step),label:note.label,text:note.text};})};
+  if(spec.kind==='steps'){const note=id=>document.explanations.find(n=>n.id===id),out={...structuredClone(spec),steps:spec.steps.map(step=>{const n=note(step.explanationId);return {...structuredClone(step),label:n.label,text:n.text};})};if(spec.blueprint){const w=note(spec.blueprint.wholeExplanationId);out.blueprint.whole={label:w.label,text:w.text};}return out;}
   if(spec.kind!=='chart-select')return structuredClone(spec);
   const b=document.blocks.find(b=>b.id===spec.blockId),d=document.datasets.find(d=>d.id===b.datasetId),semantics=chartSemantics(b,d);
   // The explanation line describes the top rank of a ranked bar and the last category (the latest, for time) of every other chart kind.
@@ -36,6 +37,7 @@ export function assertSceneInteractions(document,scene){
    for(const step of s.steps){if(!document.explanations?.some(e=>e.id===step.explanationId))fail('Explanation content is missing; bind an existing semantic explanation identity.');if(b.type==='diagram'){if(step.lines||![...b.nodes,...b.edges.filter(e=>e.id)].some(v=>v.id===step.objectId))fail('Diagram steps must target supplied stable node/edge ids.');}else if(step.objectId||!step.lines||step.lines.some(n=>n>b.text.split('\n').length))fail('Code steps must reference existing exact source lines.');}
   }
  }
+ assertBlueprint(document,scene);
  try{
   const compiled=compileInteractions(document,scene);let state=initialInteractionState(compiled);
   for(const spec of compiled.filter(s=>s.kind==='chart-select')){state=reduceInteractionState(compiled,state,{event:'data.filter',interactionId:spec.id,seriesIds:spec.initialSeriesIds,fromId:spec.initialFromId,toId:spec.initialToId});if(spec.initialFocusSeriesId)state=reduceInteractionState(compiled,state,{event:'data.focus',interactionId:spec.id,seriesId:spec.initialFocusSeriesId});}

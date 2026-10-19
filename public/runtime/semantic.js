@@ -1,13 +1,16 @@
 export function mountSemanticInteractions(config){
  const system=matchMedia('(prefers-reduced-motion:reduce)'),controllers=new Map(),events=[];let userReduced=false,suspended=false,measurementDepth=0,serial=0,measurementSaved=null,measurementFocus=null;
  const language=config.locale==='zh-CN',t=(en,zh)=>language?zh:en,reduced=()=>system.matches||userReduced;
+ // The key states the review gate measures besides the opening: the static state, and every key state of a blueprint A page.
+ const measuredStates=scene=>{const out=scene.staticState?[{sceneId:scene.id,keyStateId:scene.staticState.keyStateId,position:scene.staticState.position}]:[];for(const k of scene.blueprintKeyStates||[])if(!out.some(o=>o.keyStateId===k.id))out.push({sceneId:scene.id,keyStateId:k.id,position:k.position});return out;};
  for(const data of config.scenes){
   const scene=document.getElementById(data.id);if(!scene)continue;
   // Markup that only readers without JavaScript need: the player draws the same frozen state itself.
   for(const n of scene.querySelectorAll('[data-static-only]'))n.remove();
   for(const d of scene.querySelectorAll('details[data-static-wrapper]')){d.querySelector(':scope > summary')?.remove();d.replaceWith(...d.childNodes);}
-  const fixed=data.staticState||null,statements=[...scene.querySelectorAll('.static-state-note')];
-  const state={value:initialInteractionState(data.interactions),position:0,active:false,exploring:false},resources=createSceneResources(),parts=new Map();let timeline=null;
+  const fixed=data.staticState||null,statements=[...scene.querySelectorAll('.static-state-note')],blueprint=data.interactions.find(s=>s.kind==='steps'&&s.blueprint)||null;
+  const stageName=position=>blueprint?(position===0?t('Explain','讲解'):position===1?t('Diagram','图解'):t('Explore','探索')):null;
+  const skipTo=fixed?fixed.position:1,state={value:initialInteractionState(data.interactions),position:0,active:false,exploring:false},resources=createSceneResources(),parts=new Map();let timeline=null;
   function options(){return effectiveMotion({...(data.motion||{policy:'off',durationMs:0}),reduced:reduced(),visible:!document.hidden&&!suspended,active:state.active&&!measurementDepth});}
   /** Every state change animates through the same deterministic plan, whether it came from play, seek or exploration. */
   function animate(event,before,after){
@@ -19,7 +22,8 @@ export function mountSemanticInteractions(config){
    // The server-rendered statement of frozen values is true only at the static state.
    for(const n of statements)n.hidden=!fixed||state.exploring||state.position!==fixed.position;
    if(!timeline)return;const q=s=>timeline.querySelector(s),count=data.cues.length,frozen=clock.frozen,toggle=q('[data-cue-pause]');
-   q('[data-cue-position]').value=state.position;q('[data-cue-count]').textContent=(state.exploring?t('Exploring · ','探索中 · '):'')+state.position+' / '+count;
+   q('[data-cue-position]').value=state.position;q('[data-cue-count]').textContent=(state.exploring?t('Exploring · ','探索中 · '):'')+(blueprint?stageName(state.position)+' · ':'')+state.position+' / '+count;
+   if(blueprint){const stage=state.value.find(s=>s.id===blueprint.id).stage;for(const li of timeline.querySelectorAll('.blueprint-stages li'))if(li.dataset.stage===stage)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');const skip=q('[data-cue-skip]');skip.disabled=!state.exploring&&state.position===skipTo;}
    q('[data-cue-next]').disabled=state.position===count;q('[data-cue-previous]').disabled=state.position===0&&!state.exploring;
    toggle.textContent=clock.playing?t('Pause cues','暂停提示'):t('Play cues','播放提示');toggle.disabled=!count||(!clock.playing&&frozen);q('[data-cue-replay]').disabled=frozen;
    const notice=q('[data-static-fallback]');if(notice)notice.hidden=!frozen;
@@ -41,7 +45,7 @@ export function mountSemanticInteractions(config){
   for(const spec of data.interactions){
    const root=[...scene.querySelectorAll('.region')].find(r=>r.dataset.blockId===spec.blockId),detail=data.components[spec.id],cfg={...detail,spec,sceneId:data.id,locale:config.locale};let part;
    if(spec.kind==='chart-select')part=mountChartSelection(root,cfg,emit);
-   else if(spec.kind==='steps')part=mountStepExplanation(root,cfg,emit);
+   else if(spec.kind==='steps')part=spec.blueprint?mountBlueprint(root,cfg,emit):mountStepExplanation(root,cfg,emit);
    else if(spec.kind==='image-hotspots')part=mountImageHotspots(root,cfg,emit);
    else if(spec.kind==='image-compare')part=mountImageComparison(root,[...scene.querySelectorAll('.region')].find(r=>r.dataset.blockId===spec.otherBlockId),cfg,emit);
    if(part)parts.set(spec.id,part);
@@ -49,7 +53,10 @@ export function mountSemanticInteractions(config){
   if(data.interactions.length||data.cues.length){
    scene.classList.add('has-interactions');timeline=document.createElement('nav');timeline.className='semantic-timeline';timeline.setAttribute('aria-label',t('Scene replay and cue seek','页面重播与步骤定位'));
    const button=(text,key,action)=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.dataset[key]='';b.addEventListener('click',action);timeline.append(b);return b;};
-   button(t('Replay cue sequence','重播提示序列'),'cueReplay',()=>api.restart());button(t('Pause cues','暂停提示'),'cuePause',()=>clock.playing?api.pause():api.play());button(t('Previous cue','上一提示'),'cuePrevious',()=>api.previous());button(t('Next cue','下一提示'),'cueNext',()=>api.next());
+   // Blueprint A: the cue clock is the stage clock, so Previous / Next move between stages and Skip jumps to the complete explanation.
+   if(blueprint){const stages=document.createElement('ol');stages.className='blueprint-stages';stages.setAttribute('aria-label',t('Stages','阶段'));for(const [id,label]of [['explain',t('Explain','讲解')],['diagram',t('Diagram','图解')],['explore',t('Explore','探索')]]){const li=document.createElement('li');li.dataset.stage=id;li.textContent=label;stages.append(li);}timeline.append(stages);}
+   button(blueprint?t('Replay from Explain','从“讲解”重播'):t('Replay cue sequence','重播提示序列'),'cueReplay',()=>api.restart());button(t('Pause cues','暂停提示'),'cuePause',()=>clock.playing?api.pause():api.play());button(blueprint?t('Previous stage','上一阶段'):t('Previous cue','上一提示'),'cuePrevious',()=>api.previous());button(blueprint?t('Next stage','下一阶段'):t('Next cue','下一提示'),'cueNext',()=>api.next());
+   if(blueprint)button(t('Skip to the complete explanation','跳到完整说明'),'cueSkip',()=>api.skip());
    const label=document.createElement('label'),seek=document.createElement('input'),count=document.createElement('output');seek.type='range';seek.min=0;seek.max=data.cues.length;seek.step=1;seek.dataset.cuePosition='';count.dataset.cueCount='';label.append(document.createTextNode(t('Cue position ','提示位置 ')),seek);timeline.append(label,count);seek.addEventListener('input',()=>api.seek(Number(seek.value)));
    if(fixed?.reducedMotion==='static'){const note=document.createElement('span');note.className='interaction-status';note.dataset.staticFallback='';note.hidden=true;note.textContent=t('Reduced motion: the static state is shown and cues do not play.','已减少动态效果：显示静态状态，不自动播放提示。');timeline.append(note);}
    scene.querySelector('.folio').after(timeline);
@@ -60,6 +67,8 @@ export function mountSemanticInteractions(config){
   function show(position){state.exploring=false;state.value=seekInteractionState(data.interactions,data.cues,position);state.position=position;draw();}
   const api={
    dispatch:emit,
+   /** Blueprint A: the author's static state (the complete explanation), or Diagram when none is declared. */
+   skip(){reset();clock.seek(skipTo,'skip');},
    seek(position){atBoundary(position);reset();clock.seek(position);},
    next(){reset();clock.next();},
    previous(){reset();clock.previous();},
@@ -78,8 +87,9 @@ export function mountSemanticInteractions(config){
    reduceMotion(){resources.cancelAnimations();clock.setReduced(reduced());draw();},stop(){reset();},register(release){if(typeof release!=='function')throw Error('Resource cleanup must be a function.');if(!state.active||document.hidden||suspended){release();return ()=>{};}return resources.register(release);}
   };
   controllers.set(data.id,api);
-  // The player opens on the author's static state; Replay still starts from the opening.
-  if(fixed?.position)clock.seek(fixed.position,'static');
+  // The player opens on the author's static state; Replay still starts from the opening. A blueprint A page opens on Explain:
+  // its static state is for readers without JavaScript, paged exports and the static reduced-motion fallback.
+  if(fixed?.position&&!blueprint)clock.seek(fixed.position,'static');
   draw();
  }
  const motion=document.createElement('button');motion.type='button';motion.id='semantic-motion';motion.textContent=t('Reduce motion','减少动态效果');document.querySelector('header nav').append(motion);
@@ -101,7 +111,7 @@ export function mountSemanticInteractions(config){
   events(){return structuredClone(events);},
   registerResource(sceneId,release){return controller(sceneId).register(release);},
   /** Declared static states the review gate measures besides the opening. */
-  staticStates(){return config.scenes.filter(s=>s.staticState&&controllers.has(s.id)).map(s=>({sceneId:s.id,keyStateId:s.staticState.keyStateId,position:s.staticState.position}));},
+  staticStates(){return config.scenes.filter(s=>controllers.has(s.id)).flatMap(measuredStates);},
   beginMeasurement(){if(!measurementDepth){const n=document.activeElement;measurementFocus={node:n,id:n?.id,chartRegion:n?.matches('.chart-current-view summary')?n.closest('.region'):null};measurementSaved=new Map([...controllers].map(([id,c])=>[id,c.measureAt(0)]));}measurementDepth++;},
   /** Inside a measurement only: draw one scene at a cue boundary; endMeasurement restores every explored view. */
   showMeasurement(sceneId,position){if(!measurementDepth)throw Error('Begin a measurement first.');controller(sceneId).showAt(position);},

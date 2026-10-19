@@ -32,7 +32,7 @@ export function createVisualProject(document,plan,{assets=[],id=identifier('visu
 }
 /** The dataset and sources a combined (S1) object lock also protects: a chart's dataset, the block's sources and those of its step explanations. */
 export function impliedLocks(project,blockId){
- const doc=project.document,b=doc.blocks.find(b=>b.id===blockId),notes=new Set(project.plan.scenes.flatMap(s=>(s.interactions||[]).filter(i=>i.blockId===blockId||i.otherBlockId===blockId).flatMap(i=>(i.steps||[]).map(step=>step.explanationId))));
+ const doc=project.document,b=doc.blocks.find(b=>b.id===blockId),notes=new Set(project.plan.scenes.flatMap(s=>(s.interactions||[]).filter(i=>i.blockId===blockId||i.otherBlockId===blockId).flatMap(i=>[...(i.steps||[]).map(step=>step.explanationId),...(i.blueprint?[i.blueprint.wholeExplanationId]:[])])));
  return {datasetIds:b?.type==='chart'?[b.datasetId]:[],sourceIds:[...new Set([...(b?.sourceIds||[]),...(doc.explanations||[]).filter(e=>notes.has(e.id)).flatMap(e=>e.sourceIds)])]};
 }
 export function assertVisualLocks(previous,next) {
@@ -43,7 +43,7 @@ export function assertVisualLocks(previous,next) {
    const b=old.blocks.find(b=>b.id===id);
    for(const scene of previous.plan.scenes){const after=next.plan.scenes.find(s=>s.id===scene.id),touches=s=>(s?.interactions||[]).filter(i=>i.blockId===id||i.otherBlockId===id||i.hotspots?.some(h=>h.annotationId===id));if(JSON.stringify(touches(scene))!==JSON.stringify(touches(after)))fail();const bound=new Set(touches(scene).map(i=>i.id));if(JSON.stringify((scene.cues||[]).filter(c=>bound.has(c.interactionId)))!==JSON.stringify((after?.cues||[]).filter(c=>bound.has(c.interactionId))))fail();}
 
-   const notes=new Set(previous.plan.scenes.flatMap(s=>(s.interactions||[]).filter(i=>i.blockId===id||i.otherBlockId===id).flatMap(i=>(i.steps||[]).map(step=>step.explanationId))));
+   const notes=new Set(previous.plan.scenes.flatMap(s=>(s.interactions||[]).filter(i=>i.blockId===id||i.otherBlockId===id).flatMap(i=>[...(i.steps||[]).map(step=>step.explanationId),...(i.blueprint?[i.blueprint.wholeExplanationId]:[])])));
    for(const noteId of notes)if(JSON.stringify(old.explanations?.find(e=>e.id===noteId))!==JSON.stringify(doc.explanations?.find(e=>e.id===noteId)))fail();
    // S9a: in separate mode an object lock is the object as written; its dataset and sources have their own locks below.
    const separate=old.authorOverrides.lockMode==='separate'&&doc.authorOverrides.lockMode==='separate';

@@ -16,7 +16,7 @@ import { compositionCSS } from './compositions.mjs';
 import { themeCSS } from './themes.mjs';
 const css=baseCSS+compositionCSS+componentCSS+interactionCSS+artDirectionCSS+themeCSS;
 import { runtime } from './runtime.mjs';
-import { staticChartHTML,staticStepsHTML,staticCompareHTML,staticHotspotsHTML } from './static-state.mjs';
+import { staticChartHTML,staticStepsHTML,staticCompareHTML,staticHotspotsHTML,blueprintHTML } from './static-state.mjs';
 import { staticInteractionState } from '../../motion/cues.mjs';
 /** S8: only the roles a pack declares reach the page; CSS fallbacks hold the previous literal values. */
 const tokenStyle=theme=>{const t=theme.tokens,d=t.declared,out=[];if(d.typography)out.push(`--numeric:${t.typography.numeric}`);if(d.reference)out.push(`--reference:${t.palette.reference}`);if(d.missing)out.push(`--missing:${t.palette.missing}`);for(const k of d.spacing)out.push(`--${k.replace(/[A-Z]/g,c=>'-'+c.toLowerCase())}:${t.spacing[k]}px`);if(d.motion.includes('distance'))out.push(`--motion-distance:${t.motion.distance}px`);if(d.motion.includes('easing'))out.push(`--motion-easing:${t.motion.easing}`);if(d.motion.includes('delay'))out.push(`--motion-delay:${t.motion.delay}ms`);return out.length?';'+out.join(';'):'';};
@@ -42,6 +42,9 @@ export function exportPresentation(document, format, {plan,experimentalWeb=false
   const scenes = compileWebScenes(document,plan), zh=document.locale==='zh-CN';
   // A declared static state freezes every selection for readers without JavaScript; scenes without one render exactly as before.
   const region=(scene,b,theme,sceneId,markup)=>{
+   // Blueprint A pages always carry their complete explanation (S9b); a declared static state adds its statement and part.
+   const blueprint=scene.interactions?.find(i=>i.blockId===b.id&&i.blueprint);
+   if(blueprint){const keyState=scene.staticState&&scene.keyStates.find(k=>k.id===scene.staticState.keyStateId),state=keyState?staticInteractionState(document,scene).find(v=>v.id===blueprint.id):null;return blueprintHTML(markup(),b,document,{sceneId,spec:blueprint,state,keyState});}
    if(!scene.staticState)return markup();
    const spec=scene.interactions?.find(i=>i.blockId===b.id||(i.kind==='image-compare'&&i.otherBlockId===b.id));if(!spec)return markup();
    const state=staticInteractionState(document,scene).find(v=>v.id===spec.id),keyState=scene.keyStates.find(k=>k.id===scene.staticState.keyStateId);
@@ -62,7 +65,8 @@ export function exportPresentation(document, format, {plan,experimentalWeb=false
   const csp=`default-src 'none'; script-src 'sha256-${sha(script)}'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'`;
   const body=`<!doctype html><html lang="${document.locale}"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="${x(csp)}"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="deckweft-render-hash" content="${renderHash}"><title>${x(document.title)}</title><style>${css}</style></head><body data-render-hash="${renderHash}"${preview?' class="preview"':''}><header><h1>${x(document.title)}</h1><nav aria-label="${zh?'演示控件':'Presentation controls'}"><button id="present" hidden>${zh?'演示视图':'Present'}</button><button id="previous" hidden>${zh?'上一页':'Previous'}</button><output id="page" hidden></output><button id="next" hidden>${zh?'下一页':'Next'}</button></nav></header><main>${sections}</main><p id="status" class="status" role="status">${zh?'阅读视图无需 JavaScript。':'Reading view works without JavaScript.'}</p><script type="application/json" id="dw-runtime-data">${inertJSON(interactionConfig)}</script><script>${script}</script></body></html>`;
   // The review gate requires a measurement of each of these besides the opening.
-  const staticStates=interactionConfig.scenes.filter(s=>s.staticState).map(s=>({sceneId:s.id,keyStateId:s.staticState.keyStateId,position:s.staticState.position}));
+  // The static state, and every key state of a blueprint A page (S9b), in the order the player measures them.
+  const staticStates=interactionConfig.scenes.flatMap(s=>{const out=s.staticState?[{sceneId:s.id,keyStateId:s.staticState.keyStateId,position:s.staticState.position}]:[];for(const k of s.blueprintKeyStates||[])if(!out.some(o=>o.keyStateId===k.id))out.push({sceneId:s.id,keyStateId:k.id,position:k.position});return out;});
   return {body,mime:'text/html; charset=utf-8',extension:'html',renderHash,scenes,csp,sceneMarkup,staticStates};
 }
 

@@ -62,3 +62,30 @@ export function staticHotspotsHTML(markup,block,document,{scene,spec,state,keySt
  const text=open<0?(zh?'未展开热点；所有注释都在本页。':'no hotspot is open; every annotation is on this page.'):zh?`热点 ${open+1}——${annotation}（原图坐标：${h.x}, ${h.y}）`:`hotspot ${open+1} — ${annotation} (original-image coordinates ${h.x}, ${h.y})`;
  return statement(document.locale,keyState,text)+out;
 }
+
+/** Blueprint A (S9b): a reading-order number on each part of the diagram. Nested in the part's group, so it moves with the part on narrow screens and is not one of the part's own text runs. */
+export function numberBlueprintParts(markup,block,spec,sceneId){
+ let out=markup;
+ for(const [i,step]of spec.steps.entries()){
+  const open=`<g id="${objectAnchor(sceneId,block.id,step.objectId)}"`,at=out.indexOf(open),rect=out.indexOf('<rect ',at),end=out.indexOf('/>',rect)+2;if(at<0||rect<0)continue;
+  const tag=out.slice(rect,end),num=name=>+tag.match(new RegExp(` ${name}="(-?[\\d.]+)"`))[1],cx=num('x')+18,cy=num('y')+18;
+  out=out.slice(0,end)+`<g class="blueprint-number" aria-hidden="true"><circle cx="${cx}" cy="${cy}" r="12"/><text x="${cx}" y="${cy+5}" text-anchor="middle">${i+1}</text></g>`+out.slice(end);
+ }
+ return out;
+}
+
+/**
+ * Blueprint A for readers without JavaScript and for paged exports: the whole object with numbered parts, the whole object's
+ * explanation and every part's explanation in reading order. Drawn for every blueprint page, so no static reader ever gets
+ * disassembled parts; the player removes the list ([data-static-only]) and draws the stage it is at. With a static state, the
+ * statement names the stage, and an Explore state marks its part.
+ */
+export function blueprintHTML(markup,block,document,{sceneId,spec,state,keyState}){
+ const zh=document.locale==='zh-CN',notes=new Map(document.explanations.map(e=>[e.id,e])),whole=notes.get(spec.blueprint.wholeExplanationId),parts=spec.steps.map(s=>({...s,note:notes.get(s.explanationId)}));
+ let out=numberBlueprintParts(markup,block,spec,sceneId);const selected=state?.stage==='explore'?state.stepId:null;
+ if(selected){const open=`<g id="${objectAnchor(sceneId,block.id,spec.steps.find(s=>s.id===selected).objectId)}"`;out=out.replace(open,`${open} class="semantic-step-target"`);}
+ const order=parts.map(p=>p.note.label).join(' → '),n=parts.length,k=parts.findIndex(p=>p.id===selected)+1;
+ const list=`<div class="blueprint-complete" data-static-only><p class="blueprint-whole"><strong>${x(whole.label)}</strong>${zh?'——':' — '}${x(whole.text)}</p><ol class="blueprint-parts">${parts.map(p=>`<li data-part-id="${x(p.objectId)}"${p.id===selected?' data-selected="true"':''}><strong>${x(p.note.label)}</strong>${zh?'——':' — '}${x(p.note.text)}</li>`).join('')}</ol></div>`;
+ const text=!keyState?null:selected?(zh?`${parts[k-1].note.label}（第 ${k} 部分，共 ${n} 部分），对照整体：${whole.label}（${order}）。`:`${parts[k-1].note.label}, part ${k} of ${n}, against the whole: ${whole.label} (${order}).`):(zh?`${whole.label}——按阅读顺序共 ${n} 个部分：${order}。`:`${whole.label} — ${n} parts in reading order: ${order}.`);
+ return (text?statement(document.locale,keyState,text):'')+out+list;
+}

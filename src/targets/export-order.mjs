@@ -4,7 +4,7 @@
  *   ready → static-state → freeze → stop-motion → reveal → render → check
  *
  * ready: assets hash-match and the measured layout of this exact static render has loaded fonts, real glyphs and decoded images.
- * static-state: the author's static state per scene. freeze: filters, sort, focus and parameters. stop-motion: no cue, timing
+ * static-state: the author's static state per scene (a blueprint A page needs one at Diagram or Explore, measured complete). freeze: filters, sort, focus and parameters. stop-motion: no cue, timing
  * or transition is compiled. reveal: what must be readable without interaction. render: PowerPoint package or PDF print job.
  * check: the output is read back and compared with the derived scene.
  */
@@ -13,6 +13,7 @@ import {presentationCapabilities,documentLevels} from './capabilities.mjs';
 import {assertExportLayout} from './layout.mjs';
 import {assertEvidenceSupplied} from '../design/scene-semantics.mjs';
 import {staticStates,freezeViews,stopMotion,revealRequired} from './static-delivery.mjs';
+import {assertBlueprintStatic} from '../motion/blueprint.mjs';
 import {compileWebScenes} from '../scene/web/compile.mjs';
 import {compilePPTX} from './pptx/compile.mjs';
 import {auditPPTX} from './pptx/audit.mjs';
@@ -60,7 +61,8 @@ export function runExport(document,plan,target,{resources={},layout,rasters={},h
  if(!PAGED_TARGETS.includes(target))throw new DeckError('EXPORT_FORMAT','The export order applies to pptx and pdf.',400);
  const run=exportRun(target);
  const ready=run.stage('ready',()=>{const r=readiness(document,plan,target,{resources,layout,html});return {value:r,summary:{assets:r.assets.length,fonts:r.fonts,images:r.images}};});
- const states=run.stage('static-state',()=>{const v=staticStates(document,plan);return {value:v,summary:{declared:v.filter(s=>s.declared).map(s=>({sceneId:s.sceneId,keyStateId:s.keyStateId,position:s.position}))}};});
+ // S9b: a blueprint A page exports only its complete explanation (an author-chosen Diagram or Explore state, measured whole).
+ const states=run.stage('static-state',()=>{const blueprints=assertBlueprintStatic(document,plan,layout),v=staticStates(document,plan);return {value:v,summary:{declared:v.filter(s=>s.declared).map(s=>({sceneId:s.sceneId,keyStateId:s.keyStateId,position:s.position})),...(blueprints.length?{blueprints}:{})}};});
  const frozen=run.stage('freeze',()=>{const v=freezeViews(document,plan,states);return {value:v,summary:{charts:v.reduce((n,s)=>n+Object.keys(s.charts).length,0),frozenCharts:v.flatMap(s=>Object.entries(s.charts).filter(([,c])=>c.frozen).map(([id])=>id)),interactions:v.reduce((n,s)=>n+s.interactions.length,0)}};});
  const motion=run.stage('stop-motion',()=>{const v=stopMotion(plan);return {value:v,summary:{scenesWithMotion:v.filter(m=>m.policy!=='none'||m.cuesNotPlayed).length,cuesNotPlayed:v.reduce((n,m)=>n+m.cuesNotPlayed,0)}};});
  const reveal=run.stage('reveal',()=>{const v=revealRequired(document,plan,frozen);return {value:v,summary:{sources:v.reduce((n,s)=>n+s.sources.length,0),notes:v.reduce((n,s)=>n+s.notes.length,0)}};});

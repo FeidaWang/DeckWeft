@@ -11,7 +11,7 @@ export function captionSubject(spec,state){
  */
 export function initialInteractionState(specs){
  return specs.map(s=>{
-  if(s.kind!=='chart-select')return {id:s.id,kind:s.kind,...(s.kind==='image-compare'?{tabId:s.initialTab||'both'}:s.kind==='steps'?{stepId:s.initialStepId||s.steps[0].id}:{hotspotId:null})};
+  if(s.kind!=='chart-select')return {id:s.id,kind:s.kind,...(s.kind==='image-compare'?{tabId:s.initialTab||'both'}:s.kind==='steps'?(s.blueprint?{stage:'explain',stepId:null}:{stepId:s.initialStepId||s.steps[0].id}):{hotspotId:null})};
   const view={seriesIds:[...s.initialSeriesIds],focusSeriesId:s.initialFocusSeriesId??null,fromId:s.initialFromId,toId:s.initialToId};
   return {id:s.id,kind:s.kind,datasetId:s.datasetId,metricId:null,...view,sortKey:s.sortKey,scale:{...s.scale},caption:captionSubject(s,view)};
  });
@@ -35,9 +35,13 @@ export function reduceInteractionState(specs,state,event){
  }else if(event.event==='tab.select'&&spec.kind==='image-compare'){
   if(!['first','second','both'].includes(event.tabId))throw Error('Unknown comparison tab.');next.tabId=event.tabId;
  }else if(event.event==='step.next'&&spec.kind==='steps'){
-  next.stepId=spec.steps[Math.min(spec.steps.length-1,spec.steps.findIndex(s=>s.id===old.stepId)+1)].id;
+  // Blueprint A (S9b): Explain → Diagram (the whole, no part) → Explore each part in reading order; the last part stays.
+  if(spec.blueprint&&old.stage==='explain'){next.stage='diagram';next.stepId=null;}
+  else{next.stepId=spec.steps[Math.min(spec.steps.length-1,spec.steps.findIndex(s=>s.id===old.stepId)+1)].id;if(spec.blueprint)next.stage='explore';}
  }else if(event.event==='step.select'&&spec.kind==='steps'){
-  if(!spec.steps.some(s=>s.id===event.stepId))throw Error('Unknown stable step identity.');next.stepId=event.stepId;
+  // A blueprint's “Show whole” is step.select without a part: back to the Diagram stage.
+  if(spec.blueprint&&event.stepId===null){next.stage='diagram';next.stepId=null;}
+  else{if(!spec.steps.some(s=>s.id===event.stepId))throw Error('Unknown stable step identity.');next.stepId=event.stepId;if(spec.blueprint)next.stage='explore';}
  }else if(event.event==='annotation.reveal'&&spec.kind==='image-hotspots'){
   if(event.hotspotId!==null&&!spec.hotspots.some(h=>h.id===event.hotspotId))throw Error('Unknown stable hotspot identity.');next.hotspotId=event.hotspotId;
  }else throw Error('This semantic event does not apply to this component.');

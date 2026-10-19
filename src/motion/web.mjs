@@ -3,6 +3,7 @@ import {compileCues} from './cues.mjs';
 import {objectAnchor} from '../components/annotations/identity.mjs';
 import {resolveTheme,effectiveProfile} from '../design/theme-registry.mjs';
 import {staticStatePosition} from '../design/scene-semantics.mjs';
+import {blueprintSpec} from './blueprint.mjs';
 export function compileInteractionRuntime(document,plan,resources={}){
  const blocks=new Map(document.blocks.map(b=>[b.id,b]));
  return {version:1,locale:document.locale,scenes:plan.scenes.map(scene=>{
@@ -20,7 +21,7 @@ export function compileInteractionRuntime(document,plan,resources={}){
   }
   // S9a: the page's effective profile (page › chapter › deck), so a chapter or page motion choice reaches the player; the deck switch still wins.
   const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{profile:effectiveProfile(document,scene,plan)});
-  return {id:scene.id,interactions:compiled.interactions,cues:compiled.cues,motion:document.visualBrief?.profile.motionIntensity==='off'?{policy:'off',durationMs:0}:scene.motion||{policy:theme.motion.durationMs?'subtle':'off',durationMs:theme.motion.durationMs},components,...(scene.staticState?{staticState:{keyStateId:scene.staticState.keyStateId,position:staticStatePosition(scene),reducedMotion:scene.motion?.reducedMotion||theme.tokens?.motion.fallback||'instant'}}:{})};
+  return {id:scene.id,interactions:compiled.interactions,cues:compiled.cues,motion:document.visualBrief?.profile.motionIntensity==='off'?{policy:'off',durationMs:0}:scene.motion||{policy:theme.motion.durationMs?'subtle':'off',durationMs:theme.motion.durationMs},components,...(scene.staticState?{staticState:{keyStateId:scene.staticState.keyStateId,position:staticStatePosition(scene),reducedMotion:scene.motion?.reducedMotion||theme.tokens?.motion.fallback||'instant'}}:{}),...(blueprintSpec(scene)&&scene.keyStates?{blueprintKeyStates:scene.keyStates.map(k=>({id:k.id,position:k.position}))}:{})};
  })};
 }
 /** Hotspot positions inside the drawn image frame: crop-relative, or letterboxed for an explicit contain slot. */
@@ -34,5 +35,5 @@ export const inertJSON=value=>JSON.stringify(value).replace(/[<>&\u2028\u2029]/g
 export function interactionTranscript(scene,document){
  if(!scene.interactions?.length&&!scene.cues?.length)return '';
  const zh=document.locale==='zh-CN',labels={'data.filter':zh?'调整图表选择':'Change chart selection','data.focus':zh?'聚焦一个系列':'Focus one series','tab.select':zh?'比较图片':'Compare images','step.next':zh?'下一步说明':'Next explanation','annotation.reveal':zh?'显示注释':'Reveal annotation'};
- return `<details class="interaction-transcript"><summary>${zh?'全部作者说明与提示顺序':'All authored explanations and cue order'}</summary>${(scene.interactions||[]).flatMap(i=>i.steps||[]).map(s=>document.explanations.find(n=>n.id===s.explanationId)).map(s=>`<p><strong>${x(s.label)}</strong> · ${x(s.text)}</p>`).join('')}<ol>${(scene.cues||[]).map(c=>`<li>${x(c.label||labels[c.event])}</li>`).join('')}</ol></details>`;
+ return `<details class="interaction-transcript"><summary>${zh?'全部作者说明与提示顺序':'All authored explanations and cue order'}</summary>${(scene.interactions||[]).flatMap(i=>[...(i.blueprint?[{explanationId:i.blueprint.wholeExplanationId}]:[]),...(i.steps||[])]).map(s=>document.explanations.find(n=>n.id===s.explanationId)).map(s=>`<p><strong>${x(s.label)}</strong> · ${x(s.text)}</p>`).join('')}<ol>${(scene.cues||[]).map(c=>`<li>${x(c.label||labels[c.event])}</li>`).join('')}</ol></details>`;
 }

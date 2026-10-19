@@ -782,6 +782,30 @@
               "initialStepId": {
                 "type": "string",
                 "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "blueprint": {
+                "type": "object",
+                "description": "Blueprint A (S9b): this diagram explanation runs Explain → Diagram → Explore on one page. The question, short answer and the whole object are existing content; the plan stores their identities only.",
+                "properties": {
+                  "questionBlockId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                  },
+                  "answerBlockId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                  },
+                  "wholeExplanationId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                  }
+                },
+                "required": [
+                  "questionBlockId",
+                  "answerBlockId",
+                  "wholeExplanationId"
+                ],
+                "additionalProperties": false
               }
             },
             "required": [

@@ -25,3 +25,37 @@ export function mountImageHotspots(root,config,emit){
  const buttons=spec.hotspots.map((h,i)=>{const b=document.createElement('button');b.type='button';b.className='image-hotspot';b.dataset.hotspotId=h.id;b.style.left=`clamp(22px, ${positions[i].x*100}%, calc(100% - 22px))`;b.style.top=`clamp(22px, ${positions[i].y*100}%, calc(100% - 22px))`;b.textContent=String(i+1);b.setAttribute('aria-label',(zh?'图片热点 ':'Image hotspot ')+(i+1)+': '+annotations[h.annotationId].text);b.setAttribute('aria-controls',panel.id);frame.append(b);b.addEventListener('click',()=>emit({event:'annotation.reveal',interactionId:spec.id,hotspotId:b.getAttribute('aria-expanded')==='true'?null:h.id}));return b;});
  return {panel,targets:target=>target.kind==='panel'?[panel]:[],draw(state){panel.replaceChildren();for(const b of buttons){const active=b.dataset.hotspotId===state.hotspotId;b.setAttribute('aria-expanded',String(active));b.setAttribute('aria-pressed',String(active));}if(!state.hotspotId){panel.textContent=zh?'选择热点查看说明；所有原文注释仍在页面中。':'Select a hotspot for its explanation; all original annotations remain on this page.';return;}const h=spec.hotspots.find(h=>h.id===state.hotspotId),p=document.createElement('p');p.textContent=annotations[h.annotationId].text;const coordinates=document.createElement('p');coordinates.className='component-note';coordinates.textContent=(zh?'原图坐标：':'Original-image coordinates: ')+h.x+', '+h.y;panel.append(p,coordinates);}};
 }
+/**
+ * Blueprint A (S9b): one diagram explained in three stages on one page. The cue clock owns the stage (Explain 0, Diagram 1,
+ * Explore 2…); selecting a part, on a button or on the diagram itself, explores it; Show whole returns to Diagram. Every part is
+ * a focusable control, so arrow keys, Home/End, Enter and Space change the part and never turn the page (turnsPage).
+ */
+export function mountBlueprint(root,config,emit){
+ const {spec,locale,anchors}=config,zh=locale==='zh-CN',t=(en,cn)=>zh?cn:en,scene=root.closest('.web-scene'),whole=spec.blueprint.whole,n=spec.steps.length,sep=zh?'——':' — ';
+ root.classList.add('blueprint');
+ const controls=document.createElement('div'),panel=document.createElement('div');controls.className='semantic-controls step-controls';controls.setAttribute('role','group');controls.setAttribute('aria-label',t('Parts of ','部分：')+whole.label);
+ panel.className='step-explanation blueprint-panel';panel.id=config.panelId;panel.setAttribute('aria-live','polite');panel.setAttribute('aria-atomic','true');
+ const select=stepId=>emit({event:'step.select',interactionId:spec.id,stepId});
+ const all=document.createElement('button');all.type='button';all.dataset.showWhole='';all.textContent=t('Show whole','显示整体');all.setAttribute('aria-controls',panel.id);all.addEventListener('click',()=>select(null));controls.append(all);
+ const buttons=spec.steps.map((step,i)=>{const b=document.createElement('button');b.type='button';b.dataset.stepId=step.id;b.textContent=(i+1)+' · '+step.label;b.setAttribute('aria-controls',panel.id);controls.append(b);return b;});
+ const parts=spec.steps.map((step,i)=>{const g=document.getElementById(anchors[step.objectId]);if(!g)return null;g.dataset.part=step.id;g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',t(`Part ${i+1} of ${n}: `,`第 ${i+1} 部分，共 ${n} 部分：`)+step.label);g.setAttribute('aria-controls',panel.id);return g;});
+ root.append(controls,panel);
+ controls.addEventListener('click',e=>{const b=e.target.closest('[data-step-id]');if(b)select(b.dataset.stepId);});
+ // Arrow keys move along the reading order on the part buttons and on the diagram's parts alike.
+ const move=(list,e)=>{const i=list.indexOf(e.target.closest('[data-step-id],[data-part]'));if(i<0)return;let j;if(e.key==='ArrowRight'||e.key==='ArrowDown')j=Math.min(n-1,i+1);else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=Math.max(0,i-1);else if(e.key==='Home')j=0;else if(e.key==='End')j=n-1;else if(list===parts&&(e.key==='Enter'||e.key===' '))j=i;else return;e.preventDefault();e.stopPropagation();list[j]?.focus();select(spec.steps[j].id);};
+ controls.addEventListener('keydown',e=>move(buttons,e));
+ for(const g of parts)if(g){g.addEventListener('click',()=>select(g.dataset.part));g.addEventListener('keydown',e=>move(parts,e));}
+ const line=(cls,text)=>{const p=document.createElement('p');if(cls)p.className=cls;p.textContent=text;return p;};
+ return {panel,targets:target=>target.kind==='panel'?[panel]:target.kind==='step-targets'?[...root.querySelectorAll('.semantic-step-target')]:[],draw(state){
+  scene.dataset.blueprintStage=state.stage;root.querySelectorAll('.semantic-step-target').forEach(g=>g.classList.remove('semantic-step-target'));
+  const k=spec.steps.findIndex(s=>s.id===state.stepId);
+  all.setAttribute('aria-pressed',String(state.stage==='diagram'));for(const [i,b]of buttons.entries())b.setAttribute('aria-pressed',String(i===k));for(const [i,g]of parts.entries())g?.setAttribute('aria-pressed',String(i===k));
+  panel.classList.toggle('blueprint-explain',state.stage==='explain');panel.replaceChildren();const head=document.createElement('strong');panel.append(head);
+  const order=spec.steps.map((s,i)=>(i+1)+' '+s.label).join(' → ');
+  if(state.stage==='explain'){head.textContent=t('Object · ','对象 · ')+whole.label;panel.append(line('component-note',t('Next stage shows the whole object and its parts.','下一阶段显示完整对象及其各个部分。')));return;}
+  if(state.stage==='diagram'){head.textContent=whole.label+' · '+t(`${n} parts`,`${n} 个部分`);panel.append(line('',whole.text),line('component-note',t('Reading order: ','阅读顺序：')+order+t('. Select a part to explore it against the whole.','。选择一个部分，把它与整体对照查看。')));return;}
+  const step=spec.steps[k];parts[k]?.classList.add('semantic-step-target');
+  head.textContent=t(`Part ${k+1} of ${n} · `,`第 ${k+1} 部分，共 ${n} 部分 · `)+step.label;
+  panel.append(line('',step.text),line('component-note',t('Against the whole · ','对照整体 · ')+whole.label+sep+whole.text),line('component-note',t('Before it: ','前一部分：')+(k?spec.steps[k-1].label:t('none, this is the first part','无，这是第一部分'))+t(' · After it: ','；后一部分：')+(k<n-1?spec.steps[k+1].label:t('none, this is the last part','无，这是最后一部分'))));
+ }};
+}

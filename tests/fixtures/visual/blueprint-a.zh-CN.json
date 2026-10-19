@@ -1,0 +1,321 @@
+{
+ "document": {
+  "format": "deckweft-presentation",
+  "schemaVersion": 3,
+  "id": "s9b-blueprint-a-zh-CN",
+  "title": "从页面到文件：DeckWeft 导出流程的四个部分",
+  "locale": "zh-CN",
+  "visualBrief": {
+   "audience": "需要了解导出为何会被拒绝的作者。",
+   "outputLanguage": "zh-CN",
+   "profile": {
+    "colorIntensity": "restrained",
+    "typographicContrast": "expressive",
+    "density": "comfortable",
+    "motionIntensity": "subtle",
+    "imageEmphasis": "large"
+   }
+  },
+  "blocks": [
+   {
+    "id": "intro-title",
+    "type": "heading",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "一页内容要经过四个部分，按固定顺序，才成为文件。"
+   },
+   {
+    "id": "intro-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "本文稿只讲解一个对象：DeckWeft 自己的导出流程。下一页先提出一个问题并给出回答，再让你把每个部分与整体对照着查看。"
+   },
+   {
+    "id": "pipeline-question",
+    "type": "heading",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "一页 DeckWeft 内容如何变成可以交付的文件？"
+   },
+   {
+    "id": "pipeline-answer",
+    "type": "paragraph",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "它按固定顺序经过四个部分：测量、修复、审阅和导出。在任何一个部分未通过的页面，都不会进入下一个部分。"
+   },
+   {
+    "id": "pipeline-diagram",
+    "type": "diagram",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "diagramType": "process",
+    "nodes": [
+     {
+      "id": "measure",
+      "label": "测量"
+     },
+     {
+      "id": "repair",
+      "label": "修复"
+     },
+     {
+      "id": "review",
+      "label": "审阅"
+     },
+     {
+      "id": "export",
+      "label": "导出"
+     }
+    ],
+    "edges": [
+     {
+      "id": "measure-to-repair",
+      "from": "measure",
+      "to": "repair"
+     },
+     {
+      "id": "repair-to-review",
+      "from": "repair",
+      "to": "review"
+     },
+     {
+      "id": "review-to-export",
+      "from": "review",
+      "to": "export"
+     }
+    ]
+   },
+   {
+    "id": "pipeline-source",
+    "type": "citation",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "sourceId": "deckweft-source",
+    "text": "DeckWeft 代码库 · 导出顺序与质量循环"
+   },
+   {
+    "id": "close-title",
+    "type": "heading",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "被拒绝的导出会指明是哪个部分拒绝了它。"
+   },
+   {
+    "id": "close-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "每次拒绝都带有代码，例如 EXPORT_NOT_READY 或 BLUEPRINT_STATIC_REQUIRED，作者因此知道再次尝试前要修正哪个部分。"
+   }
+  ],
+  "datasets": [],
+  "sources": [
+   {
+    "id": "deckweft-source",
+    "title": "DeckWeft 源代码：导出顺序（src/targets/export-order.mjs）与质量循环（docs/en/visual-quality.md）",
+    "url": "https://github.com/FeidaWang/DeckWeft"
+   }
+  ],
+  "explanations": [
+   {
+    "id": "pipeline-whole",
+    "label": "DeckWeft 导出流程",
+    "text": "四个部分按固定顺序排列。每个部分只接收前一部分已通过的内容，因此未经测量或未经审阅的页面不会成为文件。",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   },
+   {
+    "id": "part-measure",
+    "label": "测量",
+    "text": "浏览器在字体和图片就绪后绘制每一页，并在 1440、1024 和 390 像素下测量版面、对比度与缺字。",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   },
+   {
+    "id": "part-repair",
+    "label": "修复",
+    "text": "未通过的页面得到一次有界修正，只改动这一页。连续两轮仍未通过时，保留最后一个有效版本。",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   },
+   {
+    "id": "part-review",
+    "label": "审阅",
+    "text": "有人查看实际截取的图像并记录发现，包括最弱的一页，之后才允许导出。",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   },
+   {
+    "id": "part-export",
+    "label": "导出",
+    "text": "PowerPoint 与 PDF 遵循同一顺序：就绪、静态状态、冻结、停止动效、显示、渲染，最后读回文件进行检查。",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   }
+  ],
+  "authorOverrides": {
+   "lockedBlockIds": []
+  },
+  "migration": {},
+  "rules": {
+   "misreading": "strict"
+  }
+ },
+ "plan": {
+  "format": "deckweft-design-plan",
+  "version": 1,
+  "documentId": "s9b-blueprint-a-zh-CN",
+  "scenes": [
+   {
+    "id": "intro",
+    "role": "opening",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "statement-split",
+    "blockIds": [
+     "intro-title",
+     "intro-body"
+    ],
+    "focalBlockId": "intro-title"
+   },
+   {
+    "id": "pipeline",
+    "role": "process",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "process-line",
+    "blockIds": [
+     "pipeline-question",
+     "pipeline-answer",
+     "pipeline-diagram",
+     "pipeline-source"
+    ],
+    "focalBlockId": "pipeline-question",
+    "takeaway": {
+     "blockId": "pipeline-answer"
+    },
+    "contentStatus": "sourced",
+    "interactions": [
+     {
+      "id": "pipeline-parts",
+      "kind": "steps",
+      "blockId": "pipeline-diagram",
+      "steps": [
+       {
+        "id": "step-measure",
+        "objectId": "measure",
+        "explanationId": "part-measure"
+       },
+       {
+        "id": "step-repair",
+        "objectId": "repair",
+        "explanationId": "part-repair"
+       },
+       {
+        "id": "step-review",
+        "objectId": "review",
+        "explanationId": "part-review"
+       },
+       {
+        "id": "step-export",
+        "objectId": "export",
+        "explanationId": "part-export"
+       }
+      ],
+      "blueprint": {
+       "questionBlockId": "pipeline-question",
+       "answerBlockId": "pipeline-answer",
+       "wholeExplanationId": "pipeline-whole"
+      }
+     }
+    ],
+    "cues": [
+     {
+      "id": "show-whole",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "显示完整流程"
+     },
+     {
+      "id": "explore-measure",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "查看“测量”"
+     },
+     {
+      "id": "explore-repair",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "查看“修复”"
+     },
+     {
+      "id": "explore-review",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "查看“审阅”"
+     },
+     {
+      "id": "explore-export",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "查看“导出”"
+     }
+    ],
+    "keyStates": [
+     {
+      "id": "explain",
+      "position": 0,
+      "label": "讲解"
+     },
+     {
+      "id": "diagram",
+      "position": 1,
+      "label": "图解 · 完整流程"
+     },
+     {
+      "id": "explore-measure",
+      "position": 2,
+      "label": "探索 · 对照整体查看“测量”"
+     }
+    ],
+    "staticState": {
+     "keyStateId": "diagram"
+    },
+    "motion": {
+     "policy": "subtle",
+     "durationMs": 240,
+     "trigger": "manual",
+     "clock": "cues",
+     "reducedMotion": "instant"
+    }
+   },
+   {
+    "id": "close",
+    "role": "closing",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "reading-flow",
+    "blockIds": [
+     "close-title",
+     "close-body"
+    ],
+    "focalBlockId": "close-title"
+   }
+  ]
+ }
+}

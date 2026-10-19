@@ -11,7 +11,7 @@ import {chartFacts,chartText} from '../components/charts/model.mjs';
 
 /** The handoff's static delivery rules and where each applies in the v3 vocabulary. */
 export const STATIC_DELIVERY_RULES=[
- {id:'staged-reveal',rule:'Masks and staged reveals export the complete final state, or the author’s static state.',v3:['steps','cues']},
+ {id:'staged-reveal',rule:'Masks and staged reveals export the complete final state, or the author’s static state.',v3:['steps','cues','blueprint A (Explain → Diagram → Explore)']},
  {id:'hover-fact',rule:'Hover and click facts become visible annotations.',v3:['image-hotspots','chart point titles']},
  {id:'filter',rule:'Filters export the selected result with its state written out.',v3:['chart-select']},
  {id:'legend',rule:'Legends keep series identity, scale and intervals.',v3:['chart']},
@@ -50,6 +50,7 @@ export function freezeViews(document,plan,states){
   for(const spec of specs){
    const state=s.declared?s.states.find(v=>v.id===spec.id):null;
    const delivery=spec.kind==='chart-select'?(state?'The selected result, with the filter, sort and focus written out in the static-state note.':'The complete authored data (no static state is declared).')
+    :spec.kind==='steps'&&spec.blueprint?`Blueprint A at ${state?.stage||'its opening'}: the whole object with every part numbered and every explanation as text on the page${state?.stepId?`; part ${state.stepId} is marked`:''}.`
     :spec.kind==='steps'?(state?`The static state’s step (${state.stepId}) is marked; every node and relationship is drawn.`:'The complete final state: every node and relationship is drawn.')
     :spec.kind==='image-compare'?(state&&state.tabId!=='both'?`Only the ${state.tabId} image is on the page; the other is in a closed disclosure and is listed in the notes.`:'Both images side by side, each labelled.')
     :(state?.hotspotId?'Numbered markers at the authored positions; the open annotation is in the static-state note; every annotation is on the page.':'Every annotation is visible text on the page.');
@@ -81,7 +82,7 @@ export function revealRequired(document,plan,frozen){
     notes.push({blockId:id,kind:'data',title:`${b.question||t.viewAll} — ${t.viewAll}`,lines:[...rows,...(view.frozen?[`${zh?'静态视图筛选':'Static view filter'}: ${view.categoryIds.join(', ')} · ${view.seriesIds.join(', ')}`]:[])]});}
    if(b.type==='diagram')notes.push({blockId:id,kind:'relationships',title:zh?'关系与节点说明':'Relationships and node notes',lines:[...b.nodes.map(n=>n.label.replace(/\n/g,' ')+(n.note?(zh?'：':': ')+n.note:'')),...b.edges.map(e=>`${b.nodes.find(n=>n.id===e.from).label.replace(/\n/g,' ')} → ${b.nodes.find(n=>n.id===e.to).label.replace(/\n/g,' ')}${e.label?' · '+e.label:''}`)]});
   }
-  const steps=(scene.interactions||[]).filter(s=>s.kind==='steps').flatMap(s=>s.steps.map(step=>{const e=document.explanations.find(e=>e.id===step.explanationId);return `${e.label}${zh?'——':' — '}${e.text}`;}));
+  const steps=(scene.interactions||[]).filter(s=>s.kind==='steps').flatMap(s=>[...(s.blueprint?[s.blueprint.wholeExplanationId]:[]),...s.steps.map(step=>step.explanationId)].map(id=>{const e=document.explanations.find(e=>e.id===id);return `${e.label}${zh?'——':' — '}${e.text}`;}));
   if(scene.disclosure)notes.push({kind:'disclosure',title:zh?'更多细节（网页中折叠）':'More detail (closed on the web page)',lines:scene.blockIds.filter(id=>scene.disclosure.blockIds.includes(id)).map(id=>blocks.get(id)).flatMap(b=>b.type==='list'?b.items:b.text.split('\n'))});
   if(steps.length)notes.push({kind:'explanations',title:zh?'全部讲解（按提示顺序）':'All authored explanations, in cue order',lines:steps});
   for(const it of frozen[i].interactions)if(it.kind==='image-compare'&&it.state&&it.state.tabId!=='both'){const hidden=blocks.get(it.state.tabId==='first'?(scene.interactions.find(s=>s.id===it.id).otherBlockId):it.blockId);notes.push({blockId:hidden.id,kind:'hidden-image',title:zh?'未在页面上的原始图片':'Original image not on the page',lines:[hidden.alt]});}

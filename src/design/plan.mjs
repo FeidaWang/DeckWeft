@@ -30,7 +30,7 @@ export function assertDesignPlan(document, plan) {
     if((['present','previous','next','page','status','dw-runtime-data','semantic-motion'].includes(scene.id)||scene.id.startsWith('dw-object-')))fail('Choose a scene id outside the player control namespace.');
     if (scene.blockIds.some(id => !blocks.has(id)) || !scene.blockIds.includes(scene.focalBlockId)) fail('Scene bindings and focal point must reference existing blocks.');
     for(const id of scene.blockIds){const b=blocks.get(id);if(b.type==='annotation'&&!scene.blockIds.includes(b.target.blockId))fail('Annotations must share a scene with their stable target.');}
-    assertSceneInteractions(document,scene);for(const i of scene.interactions||[])for(const step of i.steps||[])usedExplanations.add(step.explanationId);
+    assertSceneInteractions(document,scene);for(const i of scene.interactions||[]){for(const step of i.steps||[])usedExplanations.add(step.explanationId);if(i.blueprint)usedExplanations.add(i.blueprint.wholeExplanationId);}
     scene.blockIds.forEach(id => used.add(id));
     if(scene.disclosure){const hidden=new Set(scene.disclosure.blockIds),targets=new Set([...(scene.interactions||[]).flatMap(i=>[i.blockId,i.otherBlockId,...(i.hotspots||[]).map(h=>h.annotationId)]),...scene.blockIds.map(id=>blocks.get(id)).filter(b=>b.type==='annotation').map(b=>b.target.blockId)]);
      if(scene.disclosure.blockIds.some(id=>!scene.blockIds.includes(id)||!DISCLOSURE_TYPES.includes(blocks.get(id)?.type)))fail('A page disclosure holds paragraph, list or callout blocks of the same page.');

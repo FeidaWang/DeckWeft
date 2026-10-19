@@ -1,0 +1,321 @@
+{
+ "document": {
+  "format": "deckweft-presentation",
+  "schemaVersion": 3,
+  "id": "s9b-blueprint-a-en",
+  "title": "From page to file: the four parts of the DeckWeft export pipeline",
+  "locale": "en",
+  "visualBrief": {
+   "audience": "Authors who need to know why an export can be refused.",
+   "outputLanguage": "en",
+   "profile": {
+    "colorIntensity": "restrained",
+    "typographicContrast": "expressive",
+    "density": "comfortable",
+    "motionIntensity": "subtle",
+    "imageEmphasis": "large"
+   }
+  },
+  "blocks": [
+   {
+    "id": "intro-title",
+    "type": "heading",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "A page reaches a file through four parts, in a fixed order."
+   },
+   {
+    "id": "intro-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "This deck explains one object: DeckWeft’s own export pipeline. The next page asks one question, answers it, then lets you explore each part against the whole."
+   },
+   {
+    "id": "pipeline-question",
+    "type": "heading",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "How does a DeckWeft page become a file you can hand over?"
+   },
+   {
+    "id": "pipeline-answer",
+    "type": "paragraph",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "It passes four parts in a fixed order: measure, repair, review and export. A page that fails one part never reaches the next."
+   },
+   {
+    "id": "pipeline-diagram",
+    "type": "diagram",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "diagramType": "process",
+    "nodes": [
+     {
+      "id": "measure",
+      "label": "Measure"
+     },
+     {
+      "id": "repair",
+      "label": "Repair"
+     },
+     {
+      "id": "review",
+      "label": "Review"
+     },
+     {
+      "id": "export",
+      "label": "Export"
+     }
+    ],
+    "edges": [
+     {
+      "id": "measure-to-repair",
+      "from": "measure",
+      "to": "repair"
+     },
+     {
+      "id": "repair-to-review",
+      "from": "repair",
+      "to": "review"
+     },
+     {
+      "id": "review-to-export",
+      "from": "review",
+      "to": "export"
+     }
+    ]
+   },
+   {
+    "id": "pipeline-source",
+    "type": "citation",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "sourceId": "deckweft-source",
+    "text": "DeckWeft repository · export order and quality loop"
+   },
+   {
+    "id": "close-title",
+    "type": "heading",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "A refused export names the part that refused it."
+   },
+   {
+    "id": "close-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "deckweft-source"
+    ],
+    "text": "Each refusal carries a code, such as EXPORT_NOT_READY or BLUEPRINT_STATIC_REQUIRED, so the author knows which part to fix before trying again."
+   }
+  ],
+  "datasets": [],
+  "sources": [
+   {
+    "id": "deckweft-source",
+    "title": "DeckWeft source: export order (src/targets/export-order.mjs) and quality loop (docs/en/visual-quality.md)",
+    "url": "https://github.com/FeidaWang/DeckWeft"
+   }
+  ],
+  "explanations": [
+   {
+    "id": "pipeline-whole",
+    "label": "DeckWeft export pipeline",
+    "text": "Four parts in a fixed order. Each part accepts only what the part before it passed, so an unmeasured or unreviewed page never reaches a file.",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   },
+   {
+    "id": "part-measure",
+    "label": "Measure",
+    "text": "The browser draws every page after fonts and images are ready and measures fit, contrast and missing glyphs at 1440, 1024 and 390 px.",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   },
+   {
+    "id": "part-repair",
+    "label": "Repair",
+    "text": "A failed page gets a bounded correction that changes only that page. After two rounds without a pass, the last valid version is kept.",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   },
+   {
+    "id": "part-review",
+    "label": "Review",
+    "text": "Someone views the actual captured images and records the findings, including the weakest page, before an export is allowed.",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   },
+   {
+    "id": "part-export",
+    "label": "Export",
+    "text": "PowerPoint and PDF follow one order: ready, static state, freeze, stop motion, reveal, render, and a check that reads the file back.",
+    "sourceIds": [
+     "deckweft-source"
+    ]
+   }
+  ],
+  "authorOverrides": {
+   "lockedBlockIds": []
+  },
+  "migration": {},
+  "rules": {
+   "misreading": "strict"
+  }
+ },
+ "plan": {
+  "format": "deckweft-design-plan",
+  "version": 1,
+  "documentId": "s9b-blueprint-a-en",
+  "scenes": [
+   {
+    "id": "intro",
+    "role": "opening",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "statement-split",
+    "blockIds": [
+     "intro-title",
+     "intro-body"
+    ],
+    "focalBlockId": "intro-title"
+   },
+   {
+    "id": "pipeline",
+    "role": "process",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "process-line",
+    "blockIds": [
+     "pipeline-question",
+     "pipeline-answer",
+     "pipeline-diagram",
+     "pipeline-source"
+    ],
+    "focalBlockId": "pipeline-question",
+    "takeaway": {
+     "blockId": "pipeline-answer"
+    },
+    "contentStatus": "sourced",
+    "interactions": [
+     {
+      "id": "pipeline-parts",
+      "kind": "steps",
+      "blockId": "pipeline-diagram",
+      "steps": [
+       {
+        "id": "step-measure",
+        "objectId": "measure",
+        "explanationId": "part-measure"
+       },
+       {
+        "id": "step-repair",
+        "objectId": "repair",
+        "explanationId": "part-repair"
+       },
+       {
+        "id": "step-review",
+        "objectId": "review",
+        "explanationId": "part-review"
+       },
+       {
+        "id": "step-export",
+        "objectId": "export",
+        "explanationId": "part-export"
+       }
+      ],
+      "blueprint": {
+       "questionBlockId": "pipeline-question",
+       "answerBlockId": "pipeline-answer",
+       "wholeExplanationId": "pipeline-whole"
+      }
+     }
+    ],
+    "cues": [
+     {
+      "id": "show-whole",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "Show the whole pipeline"
+     },
+     {
+      "id": "explore-measure",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "Explore Measure"
+     },
+     {
+      "id": "explore-repair",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "Explore Repair"
+     },
+     {
+      "id": "explore-review",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "Explore Review"
+     },
+     {
+      "id": "explore-export",
+      "event": "step.next",
+      "interactionId": "pipeline-parts",
+      "label": "Explore Export"
+     }
+    ],
+    "keyStates": [
+     {
+      "id": "explain",
+      "position": 0,
+      "label": "Explain"
+     },
+     {
+      "id": "diagram",
+      "position": 1,
+      "label": "Diagram · the whole pipeline"
+     },
+     {
+      "id": "explore-measure",
+      "position": 2,
+      "label": "Explore · Measure against the whole"
+     }
+    ],
+    "staticState": {
+     "keyStateId": "diagram"
+    },
+    "motion": {
+     "policy": "subtle",
+     "durationMs": 240,
+     "trigger": "manual",
+     "clock": "cues",
+     "reducedMotion": "instant"
+    }
+   },
+   {
+    "id": "close",
+    "role": "closing",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "reading-flow",
+    "blockIds": [
+     "close-title",
+     "close-body"
+    ],
+    "focalBlockId": "close-title"
+   }
+  ]
+ }
+}
