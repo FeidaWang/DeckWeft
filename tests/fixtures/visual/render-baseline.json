@@ -36,10 +36,10 @@
     "theme.editorial-fieldnotes.en.chapter": "9e4d895636457f3ad2288875f70ae865649154a1010dddda32c6c66b4464f48d",
     "theme.editorial-fieldnotes.zh-CN.default": "822f213ee770548ee6a2c94a3b159d9b16ddbee23d1be6a4cb6238b209397ee0",
     "theme.editorial-fieldnotes.zh-CN.chapter": "822f213ee770548ee6a2c94a3b159d9b16ddbee23d1be6a4cb6238b209397ee0",
-    "theme.research-atlas.en.default": "290628f7b2de8aadfb1ea97a65aeb73b972778f1faf843fc3f6cdb7841a597ba",
-    "theme.research-atlas.en.chapter": "290628f7b2de8aadfb1ea97a65aeb73b972778f1faf843fc3f6cdb7841a597ba",
-    "theme.research-atlas.zh-CN.default": "8b1d507b4b50363a738afe70a10a3636f1c5c30a931356c82f1d793eeaeb9d7f",
-    "theme.research-atlas.zh-CN.chapter": "8b1d507b4b50363a738afe70a10a3636f1c5c30a931356c82f1d793eeaeb9d7f",
+    "theme.research-atlas.en.default": "1246dd58cbccbfd9214b5543d2fb2879956dffca05c916f71662c9fa6a746d45",
+    "theme.research-atlas.en.chapter": "1246dd58cbccbfd9214b5543d2fb2879956dffca05c916f71662c9fa6a746d45",
+    "theme.research-atlas.zh-CN.default": "6e85a1f06c032d0277bef371dab0bf24a3de3a2db4a0935e706d249d30f64535",
+    "theme.research-atlas.zh-CN.chapter": "6e85a1f06c032d0277bef371dab0bf24a3de3a2db4a0935e706d249d30f64535",
     "theme.luminous-stage.en.default": "52e73a46108d12710e4f38e2fb791b2124b6dfb693f7c4d0af3f8d5e5c432817",
     "theme.luminous-stage.en.chapter": "52e73a46108d12710e4f38e2fb791b2124b6dfb693f7c4d0af3f8d5e5c432817",
     "theme.luminous-stage.zh-CN.default": "f2e56adaf30912869bd776c79923d619f0a65ad6d492115701f5c55ded539207",
@@ -76,10 +76,10 @@
     "theme.editorial-fieldnotes.en.chapter": "c75dd664d35632ad5352b6421721a64e30749c176f8adf5fe7fa8ef0fa87aaae",
     "theme.editorial-fieldnotes.zh-CN.default": "8d5a1dde2a056ad38be09dc075313f0af8b137b1ab76fb95f6dbc2aba223d0be",
     "theme.editorial-fieldnotes.zh-CN.chapter": "8d5a1dde2a056ad38be09dc075313f0af8b137b1ab76fb95f6dbc2aba223d0be",
-    "theme.research-atlas.en.default": "4b54fd71b7ac4d5c0258825ed10532d4914e566f81e4e816d826ef6abe700419",
-    "theme.research-atlas.en.chapter": "4b54fd71b7ac4d5c0258825ed10532d4914e566f81e4e816d826ef6abe700419",
-    "theme.research-atlas.zh-CN.default": "bd2e2b8ead0ccce8b5374b147c5cd64ab4d7e04fd229e9e54b085872f4f90e30",
-    "theme.research-atlas.zh-CN.chapter": "bd2e2b8ead0ccce8b5374b147c5cd64ab4d7e04fd229e9e54b085872f4f90e30",
+    "theme.research-atlas.en.default": "bda8d65601cbd28864db0e57857b4efc8c7c85d60e9157f878d19ad3b19e5b22",
+    "theme.research-atlas.en.chapter": "bda8d65601cbd28864db0e57857b4efc8c7c85d60e9157f878d19ad3b19e5b22",
+    "theme.research-atlas.zh-CN.default": "8b817ce24cf94b7afa437c292725d9665b5e7550e7dd1a59a058db7a53c40546",
+    "theme.research-atlas.zh-CN.chapter": "8b817ce24cf94b7afa437c292725d9665b5e7550e7dd1a59a058db7a53c40546",
     "theme.luminous-stage.en.default": "3cfffa12ccee8de4dd8c8551eac823ee8da59d4dc0fa064073ed3af108cd0960",
     "theme.luminous-stage.en.chapter": "3cfffa12ccee8de4dd8c8551eac823ee8da59d4dc0fa064073ed3af108cd0960",
     "theme.luminous-stage.zh-CN.default": "4786dc7e01939146d682a8ca75748ce9072856b7f740d712b6e27038fac69a2d",
@@ -182,6 +182,6 @@
     }
   ],
   "recordedAt": "2026-10-19",
-  "sourceCommit": "60240ab",
-  "note": "S8: renderer visual-art-direction.7 (theme packs, token roles, C12 phrase breaks and punctuation advances, reference/missing marks) and player semantic-player.5 (glyph audit, motion tokens); re-recorded deliberately after a per-entry diff against a8c0404 showed no visible word or value changed"
+  "sourceCommit": "ac645ed",
+  "note": "S8: Research Atlas chart colour 4 moved from plum to grey-sage (#7A8A84) so the first four series keep distinct luminance in black and white; only the theme.research-atlas entries changed"
 }
