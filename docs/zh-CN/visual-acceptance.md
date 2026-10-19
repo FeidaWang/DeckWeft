@@ -54,4 +54,4 @@
 - 中文标题在词中断行
 - 页面体积
 - 读屏软件、输入法、200% 缩放与投影
-- PowerPoint、Keynote 与 PDF 原生导出（VIS-016）
+- 用 PowerPoint 与 Keynote 打开 S7 生成的文件；PowerPoint 与 PDF 已在 [VIS-016](../evidence/vis-016/review.md) 中编译并检查

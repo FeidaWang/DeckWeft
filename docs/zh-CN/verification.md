@@ -4,6 +4,27 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S7 输出等级与 VIS-016 导出 — 2026-10-19
+
+状态 **partial**。[证据（英文）](../evidence/vis-016/review.md) · [手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016) · [对齐文档 §15](../plans/design-handoff-alignment.md#15-s7-result--output-levels-and-vis-016-2026-10-19)。
+
+结果：
+
+- `npm run verify` 通过 **420 项测试**（419 通过，1 项按环境跳过），以及类型检查、1,334 个文件的源码与链接检查、打包和示例。
+  - 新增的 10 项测试在 `tests/export-targets.test.mjs` 中。它们覆盖等级、导出顺序、ready 阶段的拒绝、静态呈现、PowerPoint 编译、L3 回退、读回字节后发现的篡改、PDF 打印作业与检查、报告，以及编译辅助函数。
+  - 三项旧测试改为断言已声明的等级，不再断言 S2 的拒绝。
+  - 渲染基线不变。
+- `npm run export:targets` 跑完九份演示文稿（冻结的 VIS-014 语料加 S4 图表类型样例）。它使用禁用页面脚本的隔离 Chrome for Testing 151，外部请求为 0，约 50 秒完成。
+- PowerPoint 可编辑性与逐页对照派生场景的检查：9/9 通过。
+- 标准库检查 `tests/inspect_v3_pptx.py` 9/9 通过；每个内嵌工作簿都与图表缓存一致。
+- PDF 可搜索性（pypdf 6.16.2）：5 份英文通过，4 份中文 partial。Chromium 把页、门、长、见、母记成 CJK 部首码位。每个打印出的场景尺寸都与测量值一致。
+- 无障碍：PowerPoint 文件包检查通过；PDF partial（Chromium 的 figure 外层缺 `/Alt`）。
+- 视觉保真：partial，只有 macOS 快速查看的参考渲染。
+
+已查看：九份演示文稿的全部对照图（网页、PowerPoint、PDF 并排），以及封面、趋势、排序、热力图与示意图幻灯片的单张快速查看渲染。
+
+PowerPoint 与 Keynote 已安装但未运行；未发现 LibreOffice 与 After Effects。未测试：读屏软件、PDF/UA、远程 CI。
+
 ## VIS-014 首个视觉发布门 — 2026-10-19
 
 状态 **partial**。[证据（英文）](../evidence/vis-014/review.md) · [发布门手册](visual-acceptance.md) · [评分审阅（英文）](../visual-acceptance/review.md)。

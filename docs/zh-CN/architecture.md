@@ -106,3 +106,25 @@ MB-01～05 的本地构建详见[演示指南](presenting.md)。`src/contracts/p
 逐字节一致（C6）：S5 把 S2 的条件扩展并入唯一的播放器，而不是再加一个扩展，因为按键守卫（C14）和说明行（C4）是所有交互导出共有的缺陷，不只存在于声明了静态状态的文稿。`PLAYER_VERSION` 标识播放器字节（运行时加交互模块，包括内嵌的图表渲染器）。规则：这些字节的任何改动都要提升 `PLAYER_VERSION`，并在单独提交中重新记录 [render-baseline.json](../../tests/fixtures/visual/render-baseline.json)（`node tests/render-baseline.mjs --write`）；若同一版本对应两组字节，`playerHistory` 会使测试失败。基线为每个 HTML 条目分别记录读者可见标记、运行时数据、播放器脚本和 CSS 的哈希，因此重新记录时可以证明文字、数值和锚点未变。
 
 未声明 `staticState` 的页面的静态输出（C7，S5 决定）：保持不变。无 JavaScript 视图绘制完整的作者数据，播放器从作者开场开始。冻结开场是作者的明确选择（把位置 0 的关键状态设为静态状态），绝不自动迁移。
+
+## 分页导出目标（S7，2026-10-19）
+
+PowerPoint 与 PDF 从浏览器实际绘制的派生网页场景编译而来，不使用第二套排版引擎。[手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016) · [证据（英文）](../evidence/vis-016/review.md)。
+
+| 模块 | 职责 |
+| --- | --- |
+| `src/targets/capabilities.mjs` | `COMPONENT_LEVELS` 与 `outputLevel()`：每个组件在每种格式下的 L1/L2/L3。图表按类型和声明决定 PowerPoint 等级。 |
+| `src/targets/layout.mjs` | `measureExportLayout()` 在禁用脚本的静态页面中、1440 px 下、字体与图片就绪后运行。它测量带样式的文字片段、绘制的方框、页面坐标中的 SVG 形状、图表绘图区与标记、示意图节点与连线、带可见裁切的图片，以及表格。`assertExportLayout()` 把结果绑定到一次渲染的哈希。 |
+| `src/targets/export-order.mjs` | 七个阶段：ready → static-state → freeze → stop-motion → reveal → render → check。顺序不对即拒绝。 |
+| `src/targets/static-delivery.mjs` | 每个交互与图表的冻结状态、已停止的动效，以及折叠在展开控件中的内容。 |
+| `src/targets/pptx/*.mjs` | `compile` 把原生对象放到测得的位置；`fallbacks` 决定原生还是 L3 并写回执；`audit` 读回文件包；`compatibility-report` 生成每份演示文稿的报告。 |
+| `src/targets/pdf/print.mjs` | 打印文档（每页一个测得的场景，之后是备注页），以及文字与标签检查。 |
+| `scripts/export-targets.mjs` | 在浏览器中跑完一组语料：测量、截取回退图像、打印、独立检查与快速查看渲染。 |
+
+不变量：
+
+- 文字取自渲染后的派生场景；检查阶段与语义文稿（`expectedBlockText`）比较，不得丢失。
+- 每个场景用一个统一比例放入 16:9 的幻灯片或页面，不重新排版。
+- 不用图片代替整页。图片只用于图片块与 L3 图表，每个 L3 图表都有回执与摘要。
+- 相同输入得到相同字节；没有网络请求；字体按名称引用，不嵌入。
+- 网页导出不变：S7 没有改动内嵌播放器或渲染器的任何字节。

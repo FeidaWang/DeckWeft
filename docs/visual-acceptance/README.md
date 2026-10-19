@@ -54,4 +54,4 @@ The [evidence](../evidence/vis-014/review.md#open--recorded-not-fixed) has the f
 - CJK heading breaks
 - payload size
 - screen readers, IME, 200% zoom and projection
-- native PowerPoint, Keynote and PDF (VIS-016)
+- PowerPoint and Keynote runs of the S7 packages; PowerPoint and PDF are compiled and checked in [VIS-016](../evidence/vis-016/review.md)

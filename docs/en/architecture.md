@@ -167,3 +167,25 @@ State: **LocalVerified** in an isolated browser at 1440 and 390 px in both langu
 Byte identity (C6): S5 folded the S2 conditional extension into the one player instead of adding a second one, because the key guard (C14) and the explanation line (C4) were defects in every interactive export, not only in documents with a static state. `PLAYER_VERSION` names the player bytes (runtime plus interaction bundle, including the embedded chart renderer). Rule: any change to those bytes bumps `PLAYER_VERSION` and re-records [render-baseline.json](../../tests/fixtures/visual/render-baseline.json) in its own commit (`node tests/render-baseline.mjs --write`); `playerHistory` fails the test if one version names two byte sequences. The baseline keeps separate hashes for the reader-visible markup, runtime data, player script and CSS of each HTML entry, so a re-recording shows that text, values and anchors did not move.
 
 Static output for scenes without `staticState` (C7, decided in S5): unchanged. The no-JavaScript view draws the complete authored data, the player opens at the authored opening. Freezing the opening is an explicit author choice (a key state at position 0 chosen as the static state), never an automatic migration.
+
+## Paged export targets (S7, 2026-10-19)
+
+PowerPoint and PDF are compiled from the derived web scene as the browser actually drew it. They are never compiled from a second layout engine. [Manual](compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016) · [evidence](../evidence/vis-016/review.md).
+
+| Module | Responsibility |
+| --- | --- |
+| `src/targets/capabilities.mjs` | `COMPONENT_LEVELS` and `outputLevel()`: L1/L2/L3 per component and format. Charts resolve their PowerPoint level from kind and declarations. |
+| `src/targets/layout.mjs` | `measureExportLayout()` runs in the static page with scripts disabled at 1440 px after fonts and images are ready. It measures text parts with runs and styles, painted boxes, SVG shapes in page coordinates, chart plots and marks, diagram nodes and edges, images with their visible source crop, and tables. `assertExportLayout()` binds the result to one render hash. |
+| `src/targets/export-order.mjs` | The seven stages: ready → static-state → freeze → stop-motion → reveal → render → check. A stage out of order is refused. |
+| `src/targets/static-delivery.mjs` | The frozen state of every interaction and chart, stopped motion, and the content behind disclosures. |
+| `src/targets/pptx/*.mjs` | `compile` places native objects at the measured boxes. `fallbacks` decides native or L3 and writes receipts. `audit` reads the package back. `compatibility-report` builds the per-deck report. |
+| `src/targets/pdf/print.mjs` | The print document (one measured scene per page, then notes pages) and the text and tag checks. |
+| `scripts/export-targets.mjs` | The browser run over a corpus: measuring, capturing fallbacks, printing, independent inspectors and Quick Look renders. |
+
+Invariants:
+
+- Text comes from the rendered derived scene. The check stage compares it with the semantic document (`expectedBlockText`); nothing may be lost.
+- One uniform scale fits each scene into the 16:9 slide or page. Nothing is re-laid out.
+- No picture stands in for a slide. Pictures exist only for image blocks and L3 charts, and each L3 chart has a receipt and a summary.
+- The same inputs give the same bytes. No network request. Fonts are referenced by name, never embedded.
+- The web export is unchanged: no embedded player or renderer byte changed in S7.

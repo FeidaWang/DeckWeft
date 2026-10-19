@@ -1207,11 +1207,22 @@
         "VIS-014"
       ],
       "title": "Target-specific editable exports",
-      "state": "planned",
+      "state": "partial",
       "acceptance": [
         "supported text/data remain editable; unsupported elements have explicit per-element receipts; no whole-slide screenshot is presented as a fully editable export. Validate in the actual target application where that compatibility is claimed. The rich web output remains available even when a different target requires a limited fallback.\n"
       ],
-      "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+      "remaining": "PowerPoint and Keynote were not run, so application compatibility is not claimed (open each package, Edit Data on native charts, per-point focus colours, line-chart markers/labels/gaps, text wrap and fonts, Accessibility Checker, Keynote object import). Chinese PDFs are only partly searchable: Chromium maps some ideographs to CJK radical code points. PDF figure wrappers lack /Alt (Chromium tagging of HTML <figure>). Tall scenes fitted into 16:9 reach 4.6 pt text. Interval and log-axis charts are delivered at L3. Studio export still offers HTML and JSON only; remote CI has not run this branch.",
+      "implementationState": "implemented-local",
+      "evidence": "docs/evidence/vis-016/review.md",
+      "implemented": [
+        "Output levels L1/L2/L3 declared per component and format (web, PDF, PowerPoint) in src/targets/capabilities.mjs and listed per block in every export report",
+        "Export order enforced in code (src/targets/export-order.mjs): ready (hash-matched assets; measured layout of this render with loaded fonts, no last-resort glyph, decoded images) -> static-state -> freeze -> stop-motion -> reveal -> render -> check",
+        "Static delivery rules (src/targets/static-delivery.mjs): static state or final state, visible annotations, selected filter results with written statements, legends with series identity, both comparison states; absent v3 kinds recorded",
+        "VIS-016 PowerPoint compiler (src/targets/pptx/compile.mjs, fallbacks.mjs, audit.mjs, compatibility-report.mjs): native text, tables, charts with embedded workbooks, shapes, glued connectors, pictures and notes from the browser-measured static scene; L3 images of single charts with summaries; per-element receipts; no whole-slide picture",
+        "PDF print job (src/targets/pdf/print.mjs): one measured page per scene with real text, tagged, notes pages for disclosure content",
+        "Four separate results per deck: PowerPoint editability (compiler check plus independent Python check) and page check pass 9 of 9; PDF searchability pass for English, partial for Chinese; accessibility partial (package pass, PDF figure wrappers); visual fidelity partial (Quick Look reference renders)",
+        "scripts/export-targets.mjs runs the frozen VIS-014 corpus plus the S4 chart-kinds sample in an isolated browser and writes an export report per deck"
+      ]
     },
     {
       "id": "SRC-001",
@@ -1358,12 +1369,16 @@
     "DW-110"
   ],
   "currentBuild": {
-    "scope": "VIS-014 first visual release gate (S6)",
+    "scope": "S7 output levels and VIS-016 target-specific editable exports",
     "implementation": "implemented-local",
-    "acceptance": "partial: frozen bilingual gallery, three bilingual 8-page stories, four interaction types, explicit cases, legacy comparison, standalone exports in three engines and a real Codex prompt-to-artifact task with a scoped revision; Claude deferred; missing-glyph detection open; advisory review below threshold",
-    "evidence": "docs/evidence/vis-014/review.md",
+    "acceptance": "partial: levels, export order, PowerPoint and PDF compilers with receipts and four separate results on the frozen VIS-014 corpus; PowerPoint and Keynote not run; Chinese PDF search partial",
+    "evidence": "docs/evidence/vis-016/review.md",
     "remainingManualAcceptance": [
-      "Deferred Claude route, author calibration of the scored review, missing-glyph detection, accessibility (screen reader, IME, 200% zoom), projection, native applications and remote CI"
+      "PowerPoint and Keynote runs on the user machine (report applicationChecks)",
+      "Chinese PDF Unicode maps",
+      "PDF figure wrappers without /Alt",
+      "Small text on tall scenes",
+      "Screen reader and remote CI"
     ]
   },
   "previousWorkbenchBuild": {
@@ -1495,7 +1510,8 @@
   "openAcceptanceGates": [
     "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",
     "VIS-014 partial: Claude host deferred, missing-glyph detection, 390 px heatmap scroll, CJK heading breaks, payload budget, author calibration of the scored review",
-    "Actual screen reader/IME/200% zoom and projection; native v3 applications only when implemented (Chromium, Firefox and WebKit standalone loads now recorded for VIS-014)"
+    "Actual screen reader/IME/200% zoom and projection; PowerPoint and Keynote runs of the S7 v3 packages (VIS-016) by the user (Chromium, Firefox and WebKit standalone loads recorded for VIS-014)",
+    "VIS-016 partial: PowerPoint/Keynote not run, Chinese PDF search (CJK radical code points), PDF figure wrappers without alt, small text on tall scenes"
   ],
   "previousVisualTaskBuild": {
     "scope": "VIS-011 local design director and one-task production loop",
@@ -1506,6 +1522,15 @@
       "VIS-012 host adapters and VIS-013 workbench remain subsequent scope",
       "Offline supplied claims remain externally unverified; rich drafting needs the existing authorized host",
       "Native v3 exports, other engines/accessibility and broader release gates remain open"
+    ]
+  },
+  "previousReleaseGateBuild": {
+    "scope": "VIS-014 first visual release gate (S6)",
+    "implementation": "implemented-local",
+    "acceptance": "partial: frozen bilingual gallery, three bilingual 8-page stories, four interaction types, explicit cases, legacy comparison, standalone exports in three engines and a real Codex prompt-to-artifact task with a scoped revision; Claude deferred; missing-glyph detection open; advisory review below threshold",
+    "evidence": "docs/evidence/vis-014/review.md",
+    "remainingManualAcceptance": [
+      "Deferred Claude route, author calibration of the scored review, missing-glyph detection, accessibility (screen reader, IME, 200% zoom), projection, native applications and remote CI"
     ]
   }
 }

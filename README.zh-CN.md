@@ -91,7 +91,7 @@ node bin/deckweft.mjs export examples/welcome.zh-CN.deck.json --format pptx --ou
 
 ## 暂时没有的功能
 
-自动查资料、生成图片、原生可编辑图表、视频渲染、任意 PPTX 导入、多人实时协作、在线付费系统、直接控制桌面 Figma / AE，都没有被包装成已完成。两个导入器仍需要真实软件验收。切换语言不会自动翻译文稿。
+自动查资料、生成图片、视频渲染、任意 PPTX 导入、多人实时协作、在线付费系统、直接控制桌面 Figma / AE，都没有被包装成已完成。原生可编辑图表只存在于实验性的 v3 PowerPoint 导出（`npm run export:targets`）中，目前只经过文件包检查，尚未在 PowerPoint 或 Keynote 中验证（[兼容性](docs/zh-CN/compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016)）。两个导入器仍需要真实软件验收。切换语言不会自动翻译文稿。
 
 ## 开发与许可
 

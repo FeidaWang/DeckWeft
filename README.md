@@ -105,7 +105,7 @@ Output files are not overwritten unless you explicitly pass `--force`. The Chine
 
 ## Not implemented yet
 
-There is no automatic web research, built-in unattended image provider, native editable charts, video rendering, arbitrary PowerPoint import, real-time collaboration, hosted billing, or embedded Figma/AE desktop control. The Figma and AE importers are experimental, and their real application acceptance tests remain release gates. Language switching changes the interface or font preference; it does not translate your text.
+There is no automatic web research, built-in unattended image provider, video rendering, arbitrary PowerPoint import, real-time collaboration, hosted billing, or embedded Figma/AE desktop control. Native editable charts exist only in the experimental v3 PowerPoint export (`npm run export:targets`); it is checked by package inspection, not yet in PowerPoint or Keynote ([compatibility](docs/en/compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016)). The Figma and AE importers are experimental, and their real application acceptance tests remain release gates. Language switching changes the interface or font preference; it does not translate your text.
 
 ## Evidence, not badges
 

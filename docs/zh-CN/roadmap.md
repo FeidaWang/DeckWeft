@@ -2,6 +2,22 @@
 
 [English](../../ROADMAP.md) · [任务数据](../../roadmap.json) · [证据](verification.md)
 
+## VIS-016 — 面向目标的可编辑导出（S7），2026-10-19
+
+VIS-016 为 **partial**（本地已实现）。每个组件都为网页、PDF 与 PowerPoint 声明了输出等级（L1 原生、L2 矢量加真实文字、L3 单个元素的图像加摘要）。导出顺序由代码强制执行。v3 演示文稿可编译为：
+
+- PowerPoint：原生文字、表格、内嵌数据的图表、形状、连接线、图片与备注
+- PDF：每个场景一页，真实文字，带标签
+
+PowerPoint 没有收到的每个元素都有单独的回执，没有任何一页是截图。在冻结的 VIS-014 语料上，每份演示文稿都有导出报告，分别给出四项结果：
+
+- PowerPoint 可编辑性与逐页检查：9/9 通过。
+- PDF 可搜索性：英文通过，中文 partial（部分汉字被记成 CJK 部首码位）。
+- 无障碍：partial（PDF 中的 figure 外层缺替代文字）。
+- 视觉保真：partial（只有快速查看的参考渲染）。
+
+PowerPoint 与 Keynote 没有运行，因此不声称应用兼容。[手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016) · [证据（英文）](../evidence/vis-016/review.md)。
+
 ## VIS-014 — 首个视觉发布门（S6），2026-10-19
 
 VIS-014 为 **partial**。发布门已在本地运行：
@@ -40,7 +56,7 @@ VIS-012 已**完成本地实现，整体验收 partial**：Codex 与 Claude Code
 
 [更新后的视觉优先需求](../../DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) 已区分旧提交审计与当前视觉实现。VIS-001 已有基线／CI 验收；VIS-002～011 已有本地实现及下文证据。`roadmap.json` 补齐其余 VIS/SRC/DOC/EXP 任务和依赖；保留历史批次及授权记录，`nextExecutionOrder` 仅表示计划。
 
-VIS-012 宿主适配已完成本地实现，Claude 验收暂缓；VIS-013 已本地实现；VIS-014 为 partial（见上文），设计交接计划接下来是 S7（输出等级与 VIS-016）。为 VIS-014 补充另外六类构图、固定双语样例库与完整故事；实际宿主图像输入、无障碍和仓库外独立包仍需分别验收。v3 原生导出归 VIS-016，本地同步和云连接器属于后续显式启用范围。现有 bridge mock、确定性提纲规划及代表性质量样例不能关闭这些关卡。
+VIS-012 宿主适配已完成本地实现，Claude 验收暂缓；VIS-013 已本地实现；VIS-014 与 VIS-016 为 partial（见上文），设计交接计划接下来是 S8（T01–T03 主题，VIS-015）。为 VIS-014 补充另外六类构图、固定双语样例库与完整故事；实际宿主图像输入、无障碍和仓库外独立包仍需分别验收。v3 原生导出归 VIS-016，本地同步和云连接器属于后续显式启用范围。现有 bridge mock、确定性提纲规划及代表性质量样例不能关闭这些关卡。
 
 [校准和本次验证](../evidence/roadmap-reconciliation/review.md) · [后续交接](handoff.md)。
 

@@ -1,3 +1,19 @@
+截至 2026-10-19，S7（输出等级与 VIS-016）在分支 `claude/nice-archimedes-d8a127` 上为 **partial**。该分支从 S6 分支开始，因此包含 S1–S7，尚未推送。
+
+- 组件按格式声明 L1/L2/L3 等级。
+- 导出顺序已强制执行。
+- v3 演示文稿可编译为带逐元素回执的 PowerPoint 与 PDF。
+- 每份演示文稿都有一份分别给出四项结果的导出报告。
+
+用 `npm run export:targets` 运行（[手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016)、[证据（英文）](../evidence/vis-016/review.md)）。PowerPoint 与 Keynote 没有运行：需要用户检查的项目列在每份报告中。S7 之后仍未完成：
+
+- 中文 PDF 搜索（CJK 部首码位）
+- PDF 中缺替代文字的 figure 外层
+- 高场景的小字
+- Studio 菜单中的 PowerPoint 与 PDF
+
+计划中的下一步是 S8（T01–T03，VIS-015）。本交接不构成对它的授权。
+
 截至 2026-10-19，S6（VIS-014 视觉发布门）在分支 `claude/s6-start-1c14f9` 上为 **partial**。该分支已合并 S3、S4、S5，尚未推送。请从这个分支继续，而不是 `main`：`main` 上没有任何 S1–S6 的内容。相关决定见[对齐文档 §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)：
 
 - 画廊采用方案 C
@@ -6,7 +22,7 @@
 
 用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.4`），并在单独的提交中重录基线。
 
-S6 之后仍未完成：缺字形检测、390 px 热力图横向滚动、中文标题在词中断行、页面体积，以及作者对[评分审阅](../visual-acceptance/review.md)（74–77，低于 80）的校准。计划中的下一步是 S7：输出等级与 VIS-016。本交接不构成对它的授权。
+S6 之后仍未完成：缺字形检测、390 px 热力图横向滚动、中文标题在词中断行、页面体积，以及作者对[评分审阅](../visual-acceptance/review.md)（74–77，低于 80）的校准。随后进行了 S7（见上文）。
 
 
 # 从当前视觉实现继续

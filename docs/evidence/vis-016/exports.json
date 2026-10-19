@@ -1,0 +1,168 @@
+{
+ "format": "deckweft-s7-exports",
+ "version": 1,
+ "environment": {
+  "node": "v24.14.0",
+  "platform": "darwin 27.0.0",
+  "browser": "Chromium 151.0.7922.34 (isolated, Playwright cache)",
+  "playwright": "1.61.1",
+  "renderer": "visual-art-direction.6",
+  "player": "semantic-player.4",
+  "python": "Python 3.9.6",
+  "quickLook": true
+ },
+ "applications": {
+  "powerpoint": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "keynote": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "libreoffice": {
+   "state": "not installed"
+  },
+  "quickLook": {
+   "state": "rendered",
+   "detail": "macOS Quick Look (qlmanage, OfficeImport) drew each slide and PDF page as an independent reference render. It is neither PowerPoint nor Keynote."
+  }
+ },
+ "decks": [
+  {
+   "deck": "gallery-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 27,
+   "levels": {
+    "L1": 54,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "story-cream-collage-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 17,
+   "levels": {
+    "L1": 36,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "story-dark-data-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 17,
+   "levels": {
+    "L1": 36,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "story-electric-violet-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 19,
+   "levels": {
+    "L1": 36,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "gallery-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 26,
+   "levels": {
+    "L1": 54,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "story-cream-collage-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 18,
+   "levels": {
+    "L1": 36,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "story-dark-data-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 17,
+   "levels": {
+    "L1": 36,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "story-electric-violet-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 18,
+   "levels": {
+    "L1": 36,
+    "L2": 0,
+    "L3": 0
+   },
+   "external": []
+  },
+  {
+   "deck": "chart-kinds-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "partial",
+   "visualFidelity": "partial",
+   "receipts": 36,
+   "levels": {
+    "L1": 31,
+    "L2": 0,
+    "L3": 5
+   },
+   "external": []
+  }
+ ]
+}

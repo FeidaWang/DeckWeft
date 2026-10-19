@@ -2,6 +2,22 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## VIS-016 — target-specific editable exports (S7), 2026-10-19
+
+VIS-016 is **partial** (implemented locally). Every component declares an output level for web, PDF and PowerPoint (L1 native, L2 vector with real text, L3 image of one element with a summary). The export order is enforced in code. v3 decks compile to:
+
+- PowerPoint: native text, tables, charts with embedded data, shapes, connectors, pictures and notes
+- PDF: one page per scene with real, tagged text
+
+Every element PowerPoint does not receive has its own receipt, and no slide is a screenshot. On the frozen VIS-014 corpus each deck gets an export report with four separate results:
+
+- PowerPoint editability and the page check pass on 9 of 9 decks.
+- PDF search passes for English and is partial for Chinese (some ideographs are stored as CJK radical code points).
+- Accessibility is partial (PDF figure wrappers without alt text).
+- Visual fidelity is partial (Quick Look reference renders only).
+
+PowerPoint and Keynote were not run, so application compatibility is not claimed. [Manual](docs/en/compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016) · [Evidence](docs/evidence/vis-016/review.md).
+
 ## VIS-014 — first visual release gate (S6), 2026-10-19
 
 VIS-014 is **partial**. The gate runs locally:
@@ -40,7 +56,7 @@ VIS-012 is **implemented locally, partial acceptance**: Codex and Claude Code sh
 
 The [updated visual-first requirements](DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) now distinguish the old committed audit from the current visual implementation. VIS-001 baseline/CI acceptance is recorded; VIS-002–011 are implemented locally with the evidence below. `roadmap.json` includes every remaining VIS/SRC/DOC/EXP task and its dependencies. Historical batch orders and authorization records are retained; `nextExecutionOrder` is planning only.
 
-VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. VIS-014 is partial (see above); the design-handoff plan continues with S7 (output levels and VIS-016). Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
+VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. VIS-014 and VIS-016 are partial (see above); the design-handoff plan continues with S8 (T01–T03 themes, VIS-015). Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
 
 [Reconciliation and current validation](docs/evidence/roadmap-reconciliation/review.md) · [Next-task handoff](docs/en/handoff.md).
 

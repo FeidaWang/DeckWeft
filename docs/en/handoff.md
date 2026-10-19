@@ -1,3 +1,19 @@
+S7 (output levels and VIS-016) is **partial** as of 2026-10-19 on branch `claude/nice-archimedes-d8a127`. That branch starts from the S6 branch, so it holds S1–S7. It is not pushed.
+
+- Components declare L1/L2/L3 levels per format.
+- The export order is enforced.
+- v3 decks compile to PowerPoint and PDF with per-element receipts.
+- Each deck gets an export report with four separate results.
+
+Run it with `npm run export:targets` ([manual](compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016), [evidence](../evidence/vis-016/review.md)). PowerPoint and Keynote were not run: the user's checks are listed in each report. Also open after S7:
+
+- Chinese PDF search (CJK radical code points)
+- PDF figure wrappers without alt text
+- small text on tall scenes
+- PowerPoint and PDF in the Studio menu
+
+Next in the plan is S8 (T01–T03, VIS-015). It is not authorized by this handoff.
+
 S6 (VIS-014 visual release gate) is **partial** as of 2026-10-19 on branch `claude/s6-start-1c14f9`. The branch merges S3, S4 and S5 and is not pushed. Start from it, not from `main`: `main` has none of S1–S6. The decisions are in [alignment §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19):
 
 - gallery option C
@@ -6,7 +22,7 @@ S6 (VIS-014 visual release gate) is **partial** as of 2026-10-19 on branch `clau
 
 Run the gate with `node scripts/release-gate.mjs` ([manual](../visual-acceptance/README.md)). Embedded player changes still bump `PLAYER_VERSION` (now `semantic-player.4`) and re-record the baseline in their own commit.
 
-Open after S6: missing-glyph detection, the 390 px heatmap scroll, CJK heading breaks, payload size, and author calibration of the [scored review](../visual-acceptance/review.md) (74–77, below 80). Next in the plan is S7: output levels and VIS-016. It is not authorized by this handoff.
+Open after S6: missing-glyph detection, the 390 px heatmap scroll, CJK heading breaks, payload size, and author calibration of the [scored review](../visual-acceptance/review.md) (74–77, below 80). S7 followed (above).
 
 
 # Continue from the current visual implementation

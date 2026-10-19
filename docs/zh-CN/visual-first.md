@@ -44,6 +44,6 @@ npm run visual:render -- --case wave-a --locale all
 
 结果位于 `dist/visual/capture/`：截图、实际字体、DOM 边界测量、完整数值表、键盘展开、页面导航、禁用 JavaScript 阅读检查及各类哈希。报告区分源文件、输入、输出、渲染与截图指纹。相同像素还依赖相同浏览器、字体与视口。
 
-出现 `EXPERIMENTAL_WEB_REQUIRED` 时，显式开启实验选项；出现 `TARGET_CAPABILITY` 时选择 HTML/JSON，或继续用 v1/v2 导出原生文件。缺少浏览器工具时可先生成 HTML，但应记录尚未视觉检查。自动测量不能代替对比度和美观检查，必须实际查看截图。
+出现 `EXPERIMENTAL_WEB_REQUIRED` 时，显式开启实验选项；出现 `TARGET_CAPABILITY` 时，说明该目标（例如 Figma）没有 v3 编译器：选择 HTML/JSON，或继续用 v1/v2 导出原生文件。v3 的 PowerPoint 与 PDF 出现 `EXPORT_LAYOUT_REQUIRED` 时，需要先测量静态场景：运行 `npm run export:targets`（[手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016)）。缺少浏览器工具时可先生成 HTML，但应记录尚未视觉检查。自动测量不能代替对比度和美观检查，必须实际查看截图。
 
 VIS-001～005 均保持 **partial**。远程 CI 尚未运行。完整来源快照、素材裁切、交互协议、原生场景、作者偏好、Electric Violet、双语 12 页样例库、完整 8 页叙事、候选构图、自动纠错、宿主生成与 Studio 集成仍待后续实现。本批不关闭任何宿主或原生应用验收关卡。

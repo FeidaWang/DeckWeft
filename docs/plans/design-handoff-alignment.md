@@ -68,7 +68,7 @@ Pattern summary: F 5 exist / 6 partial / 1 missing; M 2 / 10 / 8; C 5 / 9 / 10. 
 | 110 | Semantic chart core | VIS-008 six variants + table + diagrams | partial | LocalVerified | [vis-008](../evidence/vis-008/review.md) | Grouped bar, dot-interval, small multiples, end labels (section 5) |
 | 120 | Unified timeline | VIS-009 cues, replay, pause, seek slider, reduced motion | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md), [interactions manual](../en/interactions.md) | RevealMask, Crossfade and stagger primitives; chart annotation reveal |
 | 125 | Controlled comparison | VIS-009 `image-compare`, `image-hotspots`, `chart-select` | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md) | Generic tab stage; interactive rank sort; slider compare |
-| 130 | Output adaptation | `src/targets/capabilities.mjs` receipts; DW-140 `partial`; VIS-016 `planned` | partial | ExportVerified (v1/v2 PPTX only) | [capabilities.mjs](../../src/targets/capabilities.mjs), [devday PowerPoint](../evidence/devday-redesign/review.json) | No L1/L2/L3 tiers; v3 PPTX/PDF compilers refused as `TARGET_UNIMPLEMENTED` |
+| 130 | Output adaptation | S7: L1/L2/L3 levels in `src/targets/capabilities.mjs`, export order, v3 PowerPoint and PDF compilers with per-element receipts; DW-140 `partial`; VIS-016 `partial` | partial | LocalVerified (v3 package checks); ExportVerified (v1/v2 PPTX only) | [vis-016](../evidence/vis-016/review.md), [devday PowerPoint](../evidence/devday-redesign/review.json) | PowerPoint and Keynote runs; Chinese PDF search; PDF figure wrappers; small text on tall scenes ([§15](#15-s7-result--output-levels-and-vis-016-2026-10-19)) |
 | 200 | Author preferences and rhythm | VIS-005 profile, VIS-006 rhythm, VIS-013 page/project scopes and locks | partial | LocalVerified | [vis-013](../evidence/vis-013/review.md), [vis-006](../evidence/vis-006/review.md) | Chapter and object scopes (four levels proposed, two exist) |
 | 210 | Explanation and exploration scenes | VIS-009 steps and no-JS reading view | partial | LocalVerified | [vis-009](../evidence/vis-009/review.md) | Parameter panel, scale shift, three-stage sequence |
 | 215 | Analytical chart extension | Relationship diagram only | partial | LocalVerified (network only) | [vis-008](../evidence/vis-008/review.md) | Map, bubble, box, waterfall, concentration |
@@ -134,9 +134,9 @@ Existing evidence only. Cells with no evidence are **Unknown**, not failed. "Not
 | Codex host | HostVerified for Codex CLI: a skill completed a three-slide task. [dw-020](../evidence/dw-020/review.json). Desktop native activation: Unknown. | HostVerified for Codex CLI: structured draft, image findings, distinct page-4 revision and two reviewed exports. [vis-012](../evidence/vis-012/review.md). Desktop: Unknown. |
 | Claude host | Deferred. Version/help probes only. [Claude preflight](../evidence/vis-012/claude-preflight.json). Live run: Unknown. | Deferred, same probes. [vis-012](../evidence/vis-012/review.md). Live run: Unknown. |
 | Remote CI | Passed: GitHub Actions Node 22 on Ubuntu, macOS and Windows ran `npm run verify` for `5427aa9`. [publication](../evidence/interaction-visual-regression/publication.json). | Same run. It covers unit, type, check, build and demo gates; browser capture is not part of CI. |
-| PowerPoint | ExportVerified: the 14-slide DevDay deck opened without repair [devday](../evidence/devday-redesign/review.json); the 7-slide planning deck opened [mb-06-10](../evidence/mb-06-10/review.md). | Not implemented: `TARGET_UNIMPLEMENTED` in [capabilities.mjs](../../src/targets/capabilities.mjs). |
-| Keynote | Unknown. Installed but never run. [app availability](../evidence/vis-006/app-availability.json), [mb-06-10](../evidence/mb-06-10/review.md). | Not implemented. |
-| LibreOffice | ExportVerified: 18 pages rendered and reviewed on Linux [office evidence](../office-evidence.json); three Codex-generated slides in LibreOfficeDev 26.8 [dw-020](../evidence/dw-020/review.json). | Not implemented. |
+| PowerPoint | ExportVerified: the 14-slide DevDay deck opened without repair [devday](../evidence/devday-redesign/review.json); the 7-slide planning deck opened [mb-06-10](../evidence/mb-06-10/review.md). | S7: compiled; package, workbook and text checks pass on 9 decks; Quick Look reference renders. PowerPoint not run: Unknown. [vis-016](../evidence/vis-016/review.md) |
+| Keynote | Unknown. Installed but never run. [app availability](../evidence/vis-006/app-availability.json), [mb-06-10](../evidence/mb-06-10/review.md). | S7 PowerPoint package exists; Keynote not run: Unknown. |
+| LibreOffice | ExportVerified: 18 pages rendered and reviewed on Linux [office evidence](../office-evidence.json); three Codex-generated slides in LibreOfficeDev 26.8 [dw-020](../evidence/dw-020/review.json). | Not installed in the S7 environment: Unknown. |
 | Figma | Partial. The handoff generator and mock tests exist. Figma desktop was opened, but plugin registration/import was not completed. [mb-11-15](../evidence/mb-11-15/review.md). Importer acceptance: Unknown. | Not implemented: no v3 Figma target. |
 | After Effects | Unknown. Not installed. [app availability](../evidence/vis-006/app-availability.json), [mb-11-15](../evidence/mb-11-15/review.md). | Not implemented. |
 
@@ -288,7 +288,7 @@ Priorities are the handoff's. "Owner" is the existing task or kickoff step that 
 | Motion | M20 mask/stagger, M19 chart annotation reveal, M08 slider, M05 tab stage, M13 interactive sort, M07 paired layers | DWD-120/125 → S5 |
 | Quote and media | F10 speaker/organisation fields; F12 v3 video/recording block with player controls; F02 cross-theme chapter | S3 |
 | Low-value P1 motion | M01 skippable intro, M03 hover cards, M06 carousel. Each conflicts with "no unsolicited autoplay" or adds pointer-only state. Propose re-ranking | user/S5 |
-| Output | L1/L2/L3 capability tiers; v3 PPTX/PDF compilers with per-element receipts | DWD-130 → VIS-016, S7 |
+| Output | ~~L1/L2/L3 capability tiers; v3 PPTX/PDF compilers with per-element receipts~~ Done locally in S7 ([§15](#15-s7-result--output-levels-and-vis-016-2026-10-19)); application runs remain | DWD-130 → VIS-016, S7 |
 | Release gate | Frozen gallery, three 8-page stories, both hosts, standalone package | VIS-014 → S6 |
 | Themes | T01–T03 per decision 2 | VIS-015 → S8 |
 
@@ -494,3 +494,32 @@ State: **partial** (roadmap) / LocalVerified for the gate's local scope; HostVer
 Found and fixed by the gate (renderer `visual-art-direction.6`, player `semantic-player.4`): diagonal-cover citation contrast and split cover number, trend label overlap, heatmap label margin, before/after labels under the compare panel, linear process layout. Also: the host adapter now names which review check failed.
 
 Handoff decisions not changed by S6: ProductStage, case-study and Table / Reference are not added; the page-42 storyboard stays a P1 exit check for S8; T01–T03 (decision 2) stays open for S8.
+
+## 15. S7 result — output levels and VIS-016, 2026-10-19
+
+State: **partial** (roadmap) / LocalVerified for the package and text checks. PowerPoint and Keynote were not run. [Evidence](../evidence/vis-016/review.md) · [manual](../en/compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016).
+
+| Kickoff step | Result |
+|---|---|
+| 1. Levels per component and format | `COMPONENT_LEVELS` and `outputLevel()` in [capabilities.mjs](../../src/targets/capabilities.mjs). Web is L1 throughout. In PDF, text, tables and images are L1; charts and diagrams are L2. In PowerPoint, everything is L1 except charts with no native form, interval bounds or a log axis, which are L3. Every export report lists them per block. |
+| 2. Export order in code | [export-order.mjs](../../src/targets/export-order.mjs): ready → static-state → freeze → stop-motion → reveal → render → check. `EXPORT_ORDER` refuses a stage out of order. Stage 1 refuses a stale or unmeasured layout, fonts not loaded, a last-resort glyph (`FONT_GLYPH_MISSING`) or an image not decoded. |
+| 3. Static delivery rules | [static-delivery.mjs](../../src/targets/static-delivery.mjs). Staged reveals export the final state or the static state. Hover facts are visible annotations. Filters export the selected result with a written statement. Legends keep series identity. Comparisons keep both states. Scroll stories, media scenes and shared-element transitions do not exist in the v3 schema; each is recorded as absent. |
+| 4. VIS-016 compiler | [compile.mjs](../../src/targets/pptx/compile.mjs), [fallbacks.mjs](../../src/targets/pptx/fallbacks.mjs), [audit.mjs](../../src/targets/pptx/audit.mjs) and [compatibility-report.mjs](../../src/targets/pptx/compatibility-report.mjs), plus [the PDF print job](../../src/targets/pdf/print.mjs). Charts that stay editable embed their data in a workbook. An L3 chart is an image of that chart only, with its summary in alt text and notes. |
+| 5. Four separate results | PowerPoint editability and the page check pass on 9 of 9 decks. PDF searchability passes for English; Chinese is partial (CJK radical code points). Accessibility is partial: the package passes, and the PDF has Chromium figure wrappers without alt text. Visual fidelity is partial (Quick Look renders only). |
+
+**Decisions made in S7** (no user decision was needed):
+
+- **Geometry comes from a browser measurement of the static web scene.** Each scene is scaled whole into 16:9, never re-laid out.
+- **Balanced headings get the browser's line breaks** as written breaks, with a receipt.
+- **Translucent paint is blended.** Horizontal bars store rows bottom-to-top. Both choices survive renderers that ignore transparency or a reversed axis.
+- **Log-axis charts are L3** until an application run confirms native log axes.
+- **The PDF prints with screen styles.** Closed disclosures keep only their summary; their content goes to the notes pages.
+- **The embedded web player and renderer are unchanged**, so no version bump or baseline re-recording.
+
+**Returned to later steps:**
+
+- the Chinese PDF Unicode maps
+- the PDF figure wrappers (a markup change, so a player bump)
+- small text on tall scenes (16:9 measurement or stepped pages)
+- PowerPoint and PDF export in the Studio menu (S9)
+- application runs by the user

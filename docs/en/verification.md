@@ -4,6 +4,27 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## S7 output levels and VIS-016 exports — 2026-10-19
+
+State **partial**. [Evidence](../evidence/vis-016/review.md) · [Manual](compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016) · [Alignment §15](../plans/design-handoff-alignment.md#15-s7-result--output-levels-and-vis-016-2026-10-19).
+
+Results:
+
+- `npm run verify` passed **420 tests** (419 pass, 1 environment-gated skip), plus types, source and link checks over 1,334 files, packaging and demos.
+  - The 10 new tests are in `tests/export-targets.test.mjs`. They cover levels, the export order, the ready stage's refusals, static delivery, the PowerPoint compile, L3 fallbacks, tampering caught by reading the bytes back, the PDF print job and checks, the report, and the compiler helpers.
+  - Three earlier tests now assert the declared levels instead of the S2 refusal.
+  - The render baseline is unchanged.
+- `npm run export:targets` ran the nine decks (the frozen VIS-014 corpus plus the S4 chart-kinds sample). It used isolated Chrome for Testing 151 with page scripts disabled, made 0 external requests, and finished in about 50 s.
+- PowerPoint editability and the page check against the derived scene: pass on 9 of 9.
+- The standard-library check `tests/inspect_v3_pptx.py` passed on 9 of 9; every embedded workbook equals its chart cache.
+- PDF searchability (pypdf 6.16.2): pass on 5 English decks, partial on 4 Chinese decks. Chromium stores 页 门 长 见 母 as CJK radical code points. Every printed scene matched its measured size.
+- Accessibility: the PowerPoint package checks pass. The PDF is partial (Chromium figure wrappers without `/Alt`).
+- Visual fidelity: partial. macOS Quick Look reference renders only.
+
+Viewed: every contact sheet (web, PowerPoint and PDF side by side) for the nine decks, and single Quick Look renders of the cover, trend, ranked, heatmap and diagram slides.
+
+PowerPoint and Keynote were installed but not run. LibreOffice and After Effects were not found. Not tested: screen readers, PDF/UA, remote CI.
+
 ## VIS-014 first visual release gate — 2026-10-19
 
 State **partial**. [Evidence](../evidence/vis-014/review.md) · [Gate manual](../visual-acceptance/README.md) · [Scored review](../visual-acceptance/review.md).
