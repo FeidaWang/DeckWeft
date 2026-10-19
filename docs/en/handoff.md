@@ -62,12 +62,14 @@ S6 (VIS-014 visual release gate) is **partial** as of 2026-10-19 and merged into
 - the layered chart-focus rule
 - Claude deferred
 
-Run the gate with `node scripts/release-gate.mjs` ([manual](../visual-acceptance/README.md)). Embedded player changes still bump `PLAYER_VERSION` (now `semantic-player.4`) and re-record the baseline in their own commit.
+Run the gate with `node scripts/release-gate.mjs` ([manual](../visual-acceptance/README.md)). Embedded player changes still bump `PLAYER_VERSION` (now `semantic-player.6`) and re-record the baseline in their own commit.
 
 Open after S6: missing-glyph detection, the 390 px heatmap scroll, CJK heading breaks, payload size, and author calibration of the [scored review](../visual-acceptance/review.md) (74–77, below 80). S7 followed (above).
 
 
 # Continue from the current visual implementation
+
+**Historical section.** Written for runtime source `5427aa9`; the S6–S11 entries above supersede its status claims (VIS-014 and later were built; see the top of this page). It is kept for its standing rules in the final paragraphs.
 
 [简体中文](../zh-CN/handoff.md) · [Roadmap](../../ROADMAP.md) · [Requirements](../../DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md)
 

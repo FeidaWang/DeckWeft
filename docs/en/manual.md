@@ -109,4 +109,4 @@ On smaller windows, use **Slides** and **Edit** to open the side drawers; Escape
 
 **The font looks different in PowerPoint.** The intended font may be absent. Install an appropriately licensed font yourself or change fonts in PowerPoint, then inspect every slide. DeckWeft does not bundle font files.
 
-**Is my text private?** The studio itself makes no external calls. Your browser, operating system, chosen AI host, backup software, and later cloud imports have their own behavior. Local-first is not encryption and not a defense against another process already running as you.
+**Is my text private?** The studio itself makes no external calls. When you choose an AI host, that host and its own hooks and configuration can use the network; the Studio's page-level network observation does not monitor it. Your browser, operating system, chosen AI host, backup software, and later cloud imports have their own behavior. Local-first is not encryption and not a defense against another process already running as you.

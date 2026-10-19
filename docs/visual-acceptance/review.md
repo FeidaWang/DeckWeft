@@ -2,7 +2,7 @@
 
 [Gate manual](README.md) · [Evidence and failures](../evidence/vis-014/review.md) · [Story cases](story-cases.json) · [Host receipts](host-receipts.json)
 
-The scores below are advisory. They use the rubric in the [requirements §9](../../DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) and come from one reviewer (the S6 agent) who viewed the actual captures listed at the end. Automated checks do not certify these pages, and these scores do not certify them either. The author should calibrate them on the same complete artifacts, weakest pages included.
+The scores below are advisory and are a single agent reviewer's image review, not a blinded human rating; the totals can be recomputed, the individual judgments cannot be reproduced deterministically. They use the rubric in the [requirements §9](../../DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) and come from one reviewer (the S6 agent) who viewed the actual captures listed at the end. Automated checks do not certify these pages, and these scores do not certify them either. The author should calibrate them on the same complete artifacts, weakest pages included.
 
 Pilot gate in the requirements: at least 80/100 overall, no category below 3/5, no hard-check failure.
 

@@ -62,12 +62,14 @@ S8（T01–T03，VIS-015）已完成并合并进 `main`，状态为 partial（[�
 - 分层图表聚焦规则
 - Claude 继续 deferred
 
-用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.4`），并在单独的提交中重录基线。
+用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.6`），并在单独的提交中重录基线。
 
 S6 之后仍未完成：缺字形检测、390 px 热力图横向滚动、中文标题在词中断行、页面体积，以及作者对[评分审阅](../visual-acceptance/review.md)（74–77，低于 80）的校准。随后进行了 S7（见上文）。
 
 
 # 从当前视觉实现继续
+
+**历史段落。** 写于运行时源码 `5427aa9`；上方 S6–S11 条目已取代其中的状态说法（VIS-014 及之后的步骤已完成，见本页顶部）。保留它是为了最后几段仍然有效的规则。
 
 [English](../en/handoff.md) · [路线图](roadmap.md) · [需求](../../DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md)
 

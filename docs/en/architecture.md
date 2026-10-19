@@ -73,7 +73,7 @@ This protects against common local interleaving and partial-file writes. It is n
 
 ## HTTP boundary
 
-The server binds only to `127.0.0.1`. It checks Host, Origin, and cross-site metadata and requires a per-process bearer token for project APIs. The same-origin session endpoint returns that token to the local studio. No CORS permission is issued. JSON requests are size-limited; static paths are allowlisted; imported text is escaped on rendering.
+The server binds only to `127.0.0.1`. It checks Host, Origin, and cross-site metadata and requires a per-process bearer token for project APIs. The session endpoint returns that token to the local studio; a local HTTP client that sends no Origin can also obtain it. Cross-site browser reads are blocked by the same-origin policy, CORP, the absence of CORS and Fetch Metadata, which is origin protection, not authentication of local processes. No CORS permission is issued. JSON requests are size-limited; static paths are allowlisted; imported text is escaped on rendering.
 
 Do not expose this service through a reverse proxy or open network binding. It has no multi-user identity, TLS termination, permission model, remote storage, or hostile local process isolation.
 

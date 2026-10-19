@@ -9,6 +9,23 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
+    "commit": "b86ec181769157e78c1eba0bad7d7671331a0676",
+    "total": 475,
+    "passed": 471,
+    "failed": 0,
+    "skipped": 4,
+    "skippedReason": "environment- or browser-gated (CHROMIUM_PATH, DECKWEFT_HANDOFF_DIR)",
+    "environment": {
+      "os": "macOS arm64",
+      "node": "v24.14.0"
+    },
+    "log": "docs/evidence/s11-merge-readiness/review.md",
+    "finalRun": "passed",
+    "supersedes": "historicalPublicationAutomatedTests"
+  },
+  "historicalPublicationAutomatedTests": {
+    "command": "npm run verify",
+    "commit": "5427aa9b10e07aea5ea0734562be6d01d4a1a92e",
     "passed": 338,
     "failed": 0,
     "skipped": 0,
@@ -17,7 +34,7 @@
       "node": "v24.14.0"
     },
     "log": "docs/evidence/interaction-visual-regression/verify.txt",
-    "finalRun": "passed"
+    "supersededBy": "automatedTests"
   },
   "browser": {
     "checksPassed": 22,
@@ -122,7 +139,7 @@
     "automatic web research",
     "built-in model provider",
     "automatic v3 image-generation transport (legacy opt-in local host-image journal exists)",
-    "editable native v3 charts (semantic web charts exist)",
+    "editable native v3 charts for chart kinds outside the native set (those export as an L3 picture)",
     "arbitrary PPTX import",
     "real-time collaboration",
     "hosted billing",

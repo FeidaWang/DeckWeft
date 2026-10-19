@@ -9,7 +9,7 @@
 1. 运行 `node bin/deckweft.mjs studio --home /absolute/path/to/library`。
 2. 打开 **Generate with Dot → Enable local bridge**。预期：等待代理连接，生成按钮仍禁用。
 3. 打开 **Connection details**，在连接的电脑上使用其中准确的 MCP 命令或 worker 路径。纯云端代理不能访问电脑上的回环地址。
-4. 调用 `deckweft_connect`，报告真实宿主名、已选模型，以及可选的强度和能力。只声明实际支持的模型选择、强度、取消、用量和事件操作；聊天操作为空，工作者上限为一。模型仍属宿主报告，`apiConfirmed` 保持 null。
+4. 调用 `deckweft_connect`，报告真实宿主名、已选模型，以及可选的强度和能力。只声明实际支持的模型选择、强度、取消、用量和事件操作；聊天操作为空；最多可连接两个工作者身份（`workerLimit: 2`），每个同时只持有一个租约。模型仍属宿主报告，`apiConfirmed` 保持 null。
 5. 在 Studio 填写简报、可选讲述目标和模型策略，审阅分享所选项目的勾选项。**Generate draft** 仅授权一份草稿、一个工作者、十分钟，不授予其他聊天、仓库路径、网络或工具权限。宿主权限仍由宿主管理。必选 Astra/强度不受支持时明确阻止，不替换模型。
 6. 宿主调用 `deckweft_next_job`。预期：取得租约、固定输入、授权和执行胶囊。胶囊固定任务、验收要求、路线图、规则、源码哈希、基线修订和选定输入。导入文稿只是数据。
 7. 返回完整项目，使用分配的 id、修订号 0、请求的 schema 版本，并保留来源 id/网址。`deckweft_checkpoint` 可保存通过 schema 验证的 v2 提案。`deckweft_complete_job` 验证最终草稿，可附带受限的宿主报告 token 计数。预期：`needs-review`，尚未应用。
