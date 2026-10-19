@@ -9,7 +9,6 @@ export function mountSemanticInteractions(config){
   for(const n of scene.querySelectorAll('[data-static-only]'))n.remove();
   for(const d of scene.querySelectorAll('details[data-static-wrapper]')){d.querySelector(':scope > summary')?.remove();d.replaceWith(...d.childNodes);}
   const fixed=data.staticState||null,statements=[...scene.querySelectorAll('.static-state-note')],blueprint=data.interactions.find(s=>s.kind==='steps'&&s.blueprint)||null;
-  const stageName=position=>blueprint?(position===0?t('Explain','讲解'):position===1?t('Diagram','图解'):t('Explore','探索')):null;
   const skipTo=fixed?fixed.position:1,state={value:initialInteractionState(data.interactions),position:0,active:false,exploring:false},resources=createSceneResources(),parts=new Map();let timeline=null;
   function options(){return effectiveMotion({...(data.motion||{policy:'off',durationMs:0}),reduced:reduced(),visible:!document.hidden&&!suspended,active:state.active&&!measurementDepth});}
   /** Every state change animates through the same deterministic plan, whether it came from play, seek or exploration. */
@@ -22,7 +21,7 @@ export function mountSemanticInteractions(config){
    // The server-rendered statement of frozen values is true only at the static state.
    for(const n of statements)n.hidden=!fixed||state.exploring||state.position!==fixed.position;
    if(!timeline)return;const q=s=>timeline.querySelector(s),count=data.cues.length,frozen=clock.frozen,toggle=q('[data-cue-pause]');
-   q('[data-cue-position]').value=state.position;q('[data-cue-count]').textContent=(state.exploring?t('Exploring · ','探索中 · '):'')+(blueprint?stageName(state.position)+' · ':'')+state.position+' / '+count;
+   q('[data-cue-position]').value=state.position;q('[data-cue-count]').textContent=(state.exploring?t('Exploring · ','探索中 · '):'')+(blueprint?{explain:t('Explain','讲解'),diagram:t('Diagram','图解'),explore:t('Explore','探索')}[state.value.find(s=>s.id===blueprint.id).stage]+' · ':'')+state.position+' / '+count;
    if(blueprint){const stage=state.value.find(s=>s.id===blueprint.id).stage;for(const li of timeline.querySelectorAll('.blueprint-stages li'))if(li.dataset.stage===stage)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');const skip=q('[data-cue-skip]');skip.disabled=!state.exploring&&state.position===skipTo;}
    q('[data-cue-next]').disabled=state.position===count;q('[data-cue-previous]').disabled=state.position===0&&!state.exploring;
    toggle.textContent=clock.playing?t('Pause cues','暂停提示'):t('Play cues','播放提示');toggle.disabled=!count||(!clock.playing&&frozen);q('[data-cue-replay]').disabled=frozen;

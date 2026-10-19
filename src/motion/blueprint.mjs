@@ -64,6 +64,7 @@ export function assertBlueprintStatic(document,plan,layout){
   if(!region||missing.length){problems.push({code:'BLUEPRINT_STATIC_INCOMPLETE',sceneId:scene.id,keyStateId:scene.staticState.keyStateId,message:'The measured static page does not show the whole object with every part and its explanation.',missing:region?missing:[{blockId:spec.blockId,missing:'region'}]});continue;}
   receipts.push({sceneId:scene.id,keyStateId:scene.staticState.keyStateId,stage,stepId,parts:block.nodes.length,explanations:spec.steps.length+1});
  }
- if(problems.length)throw new DeckError(problems.every(p=>p.code==='BLUEPRINT_STATIC_REQUIRED')?'BLUEPRINT_STATIC_REQUIRED':'BLUEPRINT_STATIC_INCOMPLETE','An Explain → Diagram → Explore page would export without its complete explanation.',422,problems);
+ // The message names each page and what to do, so the Studio's one-line answer is enough to act on.
+ if(problems.length)throw new DeckError(problems.every(p=>p.code==='BLUEPRINT_STATIC_REQUIRED')?'BLUEPRINT_STATIC_REQUIRED':'BLUEPRINT_STATIC_INCOMPLETE',problems.map(p=>`Page ${p.sceneId}: ${p.message}`).join(' '),422,problems);
  return receipts;
 }

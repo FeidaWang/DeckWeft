@@ -84,26 +84,27 @@ export function useStaticState(project,sceneId,keyStateId){
 export function addBlueprintA(project,sceneId,{newId=()=> 'i-'+crypto.randomUUID()}={}){
  const next=structuredClone(project),s=next.plan.scenes.find(s=>s.id===sceneId),d=next.document;
  if(!s)throw Error('Select an existing scene.');
+ // Messages are English like the other Studio actions; generated labels follow the deck's language.
  const zh=d.locale==='zh-CN',t=(en,cn)=>zh?cn:en,locks=d.authorOverrides.sceneLocks?.find(l=>l.sceneId===s.id)?.fields||[];
- if(locks.some(f=>['interactions','cues','motion'].includes(f)))throw Error(t('Unlock this scene interaction plan first.','请先解锁本页的交互计划。'));
+ if(locks.some(f=>['interactions','cues','motion'].includes(f)))throw Error('Unlock this scene interaction plan first.');
  const blocks=s.blockIds.filter(id=>!s.disclosure?.blockIds.includes(id)).map(id=>d.blocks.find(b=>b.id===id)),diagrams=blocks.filter(b=>b.type==='diagram');
- if(diagrams.length!==1)throw Error(t('This page needs exactly one diagram on the page: its nodes become the parts.','本页需要恰好一张显示在页面上的图：它的节点就是各个部分。'));
+ if(diagrams.length!==1)throw Error('This page needs exactly one diagram on the page: its nodes become the parts.');
  const b=diagrams[0],question=blocks.find(v=>v.type==='heading'),answer=blocks.find(v=>['paragraph','callout'].includes(v.type));
- if(!question||!answer)throw Error(t('Add a heading (the question) and a paragraph or callout (the short answer) to this page first.','请先为本页添加标题（问题）和段落或提示框（简短回答）。'));
- if(d.authorOverrides.lockedBlockIds.includes(b.id))throw Error(t('Unlock the diagram first.','请先解锁这张图。'));
- if(s.interactions?.some(i=>i.blockId!==b.id||i.kind!=='steps'))throw Error(t('An Explain → Diagram → Explore page has one explanation sequence. Move the other interactions on this page first.','“讲解 → 图解 → 探索”页面只有一个讲解序列。请先移走本页的其他交互。'));
- if(s.interactions?.some(i=>i.blueprint))throw Error(t('This page is already Explain → Diagram → Explore.','本页已经是“讲解 → 图解 → 探索”。'));
- if(b.nodes.length>30)throw Error(t('Author at most 30 parts explicitly in JSON.','最多 30 个部分，请在 JSON 中明确编写。'));
+ if(!question||!answer)throw Error('Add a heading (the question) and a paragraph or callout (the short answer) to this page first.');
+ if(d.authorOverrides.lockedBlockIds.includes(b.id))throw Error('Unlock the diagram first.');
+ if(s.interactions?.some(i=>i.blockId!==b.id||i.kind!=='steps'))throw Error('An Explain → Diagram → Explore page has one explanation sequence. Move the other interactions on this page first.');
+ if(s.interactions?.some(i=>i.blueprint))throw Error('This page is already Explain → Diagram → Explore.');
+ if(b.nodes.length>30)throw Error('Author at most 30 parts explicitly in JSON.');
  d.explanations??=[];
  // An existing explanation of this diagram is kept when its steps already name the nodes; steps on relationships cannot be parts.
  const old=s.interactions?.find(i=>i.blockId===b.id);
- if(old&&old.steps.some(step=>!b.nodes.some(n=>n.id===step.objectId)))throw Error(t('This diagram’s steps explain relationships; parts are nodes. Remove that interaction in JSON first.','这张图的步骤讲解的是连线；部分必须是节点。请先在 JSON 中移除该交互。'));
+ if(old&&old.steps.some(step=>!b.nodes.some(n=>n.id===step.objectId)))throw Error('This diagram’s steps explain relationships; parts are nodes. Remove that interaction in JSON first.');
  const steps=old?old.steps.map(step=>({id:step.id,objectId:step.objectId,explanationId:step.explanationId})):b.nodes.map(n=>{
-  if(n.label.length>100||(n.note||n.label).length>2000)throw Error(t('Shorten the part label or author its explanation explicitly in JSON.','请缩短部分标题，或在 JSON 中明确编写说明。'));
+  if(n.label.length>100||(n.note||n.label).length>2000)throw Error('Shorten the part label or author its explanation explicitly in JSON.');
   const explanationId=newId();d.explanations.push({id:explanationId,label:n.label,text:n.note||n.label,sourceIds:[...(b.sourceIds||[])]});return {id:newId(),objectId:n.id,explanationId};
  });
  const labels=steps.map(step=>b.nodes.find(n=>n.id===step.objectId).label.replace(/\n/g,' ')),name=labels.join(' → ');
- if(name.length>100)throw Error(t('Name the whole object explicitly in JSON; the part labels are too long to name it.','部分标题过长，无法组成整体名称；请在 JSON 中明确命名整体。'));
+ if(name.length>100)throw Error('Name the whole object explicitly in JSON; the part labels are too long to name it.');
  const wholeExplanationId=newId(),id=old?.id||newId();
  d.explanations.push({id:wholeExplanationId,label:name,text:t(`${labels.length} parts in reading order: ${labels.join(', ')}.`,`按阅读顺序共 ${labels.length} 个部分：${labels.join('、')}。`),sourceIds:[...(b.sourceIds||[])]});
  s.interactions=[{id,kind:'steps',blockId:b.id,steps,blueprint:{questionBlockId:question.id,answerBlockId:answer.id,wholeExplanationId}}];

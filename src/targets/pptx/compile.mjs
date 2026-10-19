@@ -175,6 +175,9 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
     const name=`${block.id}/node-${node.id}`,sid=nextId;
     push(presetShape({id:nextId,name,f,box:sh.box,preset,fill:sh.fill?.gradient?null:sh.fill,stroke:sh.stroke?.gradient?null:sh.stroke,strokeWidth:sh.strokeWidth,dash:sh.dash,radius:sh.radius||0,body:textBody(paras,{anchor:'ctr'})}),{shapeId:id(),name,blockId:block.id,kind:'shape',box:sh.box,text:node.texts.map(tx=>tx.lines.map(l=>l.text).join(' ')).join(' ')});
     nodeShapes.set(node.id,{id:sid,box:sh.box,preset});
+    // S9b: the part's reading-order number, a native circle with its digit on top of the part.
+    if(node.number){const nb=node.number,nname=`${name}/number`,np=nb.texts.map(tx=>paragraph([{text:tx.lines.map(l=>l.text).join(''),style:{...tx.style,fontSize:tx.style.fontSize*s}}],{f,lang,fonts:()=>fontsOf(tx.style),align:'ctr',lineHeight:tx.style.fontSize*s*1.2}));
+     push(presetShape({id:nextId,name:nname,f,box:nb.shape.box,preset:'ellipse',fill:nb.shape.fill?.gradient?null:nb.shape.fill,stroke:nb.shape.stroke?.gradient?null:nb.shape.stroke,strokeWidth:nb.shape.strokeWidth,dash:null,radius:0,body:textBody(np,{anchor:'ctr'})}),{shapeId:id(),name:nname,blockId:block.id,kind:'shape',box:nb.shape.box,text:nb.texts.map(tx=>tx.lines.map(l=>l.text).join('')).join('')});}
    }
    const glue=p=>{for(const n of nodeShapes.values()){const b=n.box;if(n.preset==='ellipse'||p[0]<b.x-10||p[0]>b.x+b.width+10||p[1]<b.y-10||p[1]>b.y+b.height+10)continue;const sites=[[b.x+b.width/2,b.y],[b.x,b.y+b.height/2],[b.x+b.width/2,b.y+b.height],[b.x+b.width,b.y+b.height/2]],d=sites.map(q=>Math.hypot(q[0]-p[0],q[1]-p[1]));return {id:n.id,idx:d.indexOf(Math.min(...d))};}return null;};
    for(const [k,edge] of dg.edges.entries()){const l=edge.line;if(!l.from||!l.to)continue;const name=`${block.id}/edge-${edge.id??'#'+(k+1)}`;
