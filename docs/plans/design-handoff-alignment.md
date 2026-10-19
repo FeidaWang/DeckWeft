@@ -33,8 +33,8 @@ Evidence links point to files in this repository. Sources: [AGENTS.md](../../AGE
 
 | File | Records | Added per record |
 |---|---|---|
-| [pattern-register.json](../design/pattern-register.json) | 56 patterns (12 F, 20 M, 24 C) | `evidenceMarks`, `referenceVerified`, `repositoryStatus`, `repositoryState`, `implementedBy`, `verifiedBy`, `checkedAt`, `repositoryNote`; C records also `chartClass` |
-| [source-register.json](../design/source-register.json) | 62 content sources, 1 supplement, 19 technical sources | `referenceVerified`, `repositoryStatus`, `implementedBy`, `verifiedBy`, `checkedAt`, `repositoryNote` |
+| [pattern-register.json](../design/pattern-register.json) | 56 patterns (12 F, 20 M, 24 C) | `evidenceMarks`, `referenceVerified`, `repositoryStatus`, `repositoryState`, `implementedBy`, `verifiedBy`, `checkedAt`, `repositoryNote`; C records also `chartClass`. S10 maintenance fields: `patternId`, `version`, `sourceUrl`, `locale`, `sourceCheckedAt`, `evidenceType`, `observedBehavior`, `dataRequirements`, `interactionState`, `staticFallback`, `outputTier`, `accessibility`, `assetStatus`, `verification`, `deprecatedBy` ([§19](#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19)) |
+| [source-register.json](../design/source-register.json) | 62 content sources, 1 supplement, 19 technical sources | `referenceVerified`, `repositoryStatus`, `implementedBy`, `verifiedBy`, `checkedAt`, `repositoryNote`. S10: `sourceUrl`, `locale`, `sourceCheckedAt`, `browserSample` |
 
 Location: `docs/design/`. These files are design evidence, not runtime contracts, so they stay out of `schemas/` and `src/`. They sit beside `docs/evidence/`, which they cite. See the [register guide](../design/README.md).
 
@@ -59,7 +59,7 @@ Pattern summary: F 5 exist / 6 partial / 1 missing; M 2 / 10 / 8; C 5 / 9 / 10. 
 
 | DWD | Handoff deliverable | Repository counterpart | Status | State | Proof | Remaining gap |
 |---|---|---|---|---|---|---|
-| 001 | Evidence register | New in this alignment (uncommitted) | exists | Implemented | [pattern register](../design/pattern-register.json), [test](../../tests/design-registers.test.mjs) | Pattern version and deprecation fields (DWD-310) |
+| 001 | Evidence register | The two registers and their test (S0), maintenance fields (S10) | exists | Implemented | [pattern register](../design/pattern-register.json), [test](../../tests/design-registers.test.mjs) | None for the register itself; page re-review is DWD-310 |
 | 010 | Host baseline (DW-020) | DW-020 `blocked`; VIS-012 `partial` | partial | HostVerified (Codex CLI only) | [vis-012](../evidence/vis-012/review.md), [dw-020](../evidence/dw-020/review.json) | Claude live run deferred; Codex desktop activation; host window resize and recovery not recorded |
 | 020 | SceneSpec and tokens | VIS-002/003/005: `presentation-v3`, `design-plan`, `web-scene`, `theme-pack` schemas | exists (criterion met) | LocalVerified | [visual-studio](../evidence/visual-studio/review.md), [design-plan schema](../../schemas/design-plan.schema.json) | No typed takeaway, `contentStatus`, `keyStates`/`staticState`; token roles `numeric`, `missing`, `reference`, motion `fallback` absent (S1) |
 | 030 | Fonts and layout (DW-130) | DW-130 `implemented-local`; VIS-004/010 | exists | LocalVerified | [font evidence](../font-evidence.json), [vis-010](../evidence/vis-010/review.md) | Other browser engines |
@@ -76,7 +76,7 @@ Pattern summary: F 5 exist / 6 partial / 1 missing; M 2 / 10 / 8; C 5 / 9 / 10. 
 | 230 | History recovery and compare | DW-110 `partial`; Visual Studio history; VIS-013 last-valid recovery | partial | LocalVerified | [visual-studio](../evidence/visual-studio/review.md), [vis-013](../evidence/vis-013/review.md) | Version diff; style-only restore |
 | 300 | Advanced hero visuals | MB-13 `implemented-local` (v1/v2 only); EXP-001 `planned` | partial | LocalVerified (legacy only) | [mb-11-15](../evidence/mb-11-15/review.md) | No v3 spatial component; no device budget |
 | 305 | Audio-visual process explanation | None | missing | Proposed | — | All |
-| 310 | Pattern library maintenance | None; these registers are the seed | partial | Implemented | [register guide](../design/README.md) | Re-review cadence, `version`/`deprecatedBy` fields |
+| 310 | Pattern library maintenance | S10: maintenance fields, [manual](../design/pattern-register.md) ([简体中文](../zh-CN/pattern-register.md)), lifecycle test, EXP-001 deferral notes, a three-page browser sample | partial | Implemented | [register guide](../design/README.md), [manual](../design/pattern-register.md), [sample](../evidence/s10-pattern-maintenance/browser-sample.json) | Template grouping of the 1,390 OpenAI paths; per-template desktop/mobile and four-state checks; a verifiable Anthropic URL list; a re-review cadence ([§19](#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19)) |
 
 The handoff's own DW mapping (010 → DW-020, 030 → DW-130, 040 → DW-120) matches the current task meanings.
 
@@ -308,7 +308,7 @@ Priorities are the handoff's. "Owner" is the existing task or kickoff step that 
 | Advanced visuals | M18 in v3, M17 pointer fragments | DWD-300 → EXP-001 |
 | Media clock | M16, C21 | DWD-305 (no task yet) |
 | Term map | C24 | Defer |
-| Pattern library | Version and deprecation fields, source re-review | DWD-310 → S10 |
+| Pattern library | ~~Version and deprecation fields~~ (S10); source re-review and full site verification remain | DWD-310 |
 
 ## 9. What remains Unknown
 
@@ -319,7 +319,9 @@ Priorities are the handoff's. "Owner" is the existing task or kickoff step that 
 - Firefox and Safari/WebKit.
 - Screen readers, real IME, 200% zoom.
 - Performance budgets on a reference device.
-- Every handoff source page: the repository did not re-open them. The 38 patterns without a V mark describe reference behaviour that remains unobserved.
+- Every handoff source page: the repository re-opened three of them in S10 (ANT-01, OAI-S01, OAI-S20; initial states and one sort). The other pages and the 38 patterns without a V mark describe reference behaviour that remains unobserved by this repository.
+- Reduced-motion and static states of any reference page; the table fit of OAI-S20 at 390 px.
+- The full Anthropic URL list; the template grouping of the 1,390 OpenAI zh-Hans-CN paths.
 
 ## 10. Commands run for this alignment
 
@@ -682,3 +684,61 @@ The user answered the kickoff questions on 2026-10-19 and asked for the last thr
 - Scroll advancement (M09) and part groups (M10).
 - PowerPoint and Keynote runs by the user.
 - Claude acceptance.
+
+## 19. S10 decisions and result — pattern library maintenance and the P3 boundary, 2026-10-19
+
+Built on `a2d5371` (S1–S9b) in the worktree branch `claude/pattern-library-maintenance-p3-28aa7c`. The worktree was created at `main` (`058b939`), which has none of S1–S9b; the branch was fast-forwarded to `a2d5371` before any edit. Nothing is pushed. State: **Implemented** for the maintenance mechanism (fields, manual, tests). DWD-310 stays `partial` and no `roadmap.json` task state changed. No runtime code and no schema changed. [Evidence](../evidence/s10-pattern-maintenance/review.md) · [Manual](../design/pattern-register.md) · [简体中文](../zh-CN/pattern-register.md) · [Merge plan](design-handoff-merge-to-main.md).
+
+### The six questions
+
+The user answered on 2026-10-19. Questions 1 and 2 were asked as one choice, and questions 5 and 6 as one multi-select (the plan ticked, the leftovers not).
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Where do the maintenance fields live | **A**: inside every record of `pattern-register.json` |
+| 2 | Initial `version` and `deprecatedBy` | All 56 patterns `"1.0.0"` and `null` |
+| 3 | Full site verification | **Sample a few reference pages** in the built-in browser (this allowed visiting openai.com and anthropic.com). Not the default |
+| 4 | Maintenance fields on the 62 sources | Yes, only fields the evidence supports |
+| 5 | S9b leftovers in S10 | No: recorded here only |
+| 6 | Plan for merging S1–S10 into `main` | Yes, a plan only: no merge, no push ([plan](design-handoff-merge-to-main.md)) |
+
+### Decisions made in S10
+
+| Topic | Decision |
+|---|---|
+| `checkedAt` collision | The handoff's `checkedAt` means "when the page was checked". The registers already use `checkedAt` (added in S1) for "when the repository status was checked". The existing field is untouched; the page date is **`sourceCheckedAt`**. Both registers' `import.addedFields` say so |
+| Derived, not typed | `patternId` = `id`; `sourceUrl` and `locale` follow `source_ids` through the source register; `evidenceType` spells out `evidenceMarks`; `verification.reference` follows `referenceVerified` and `verification.deckweft` follows `repositoryState`. A test keeps each equal |
+| `sourceCheckedAt` | `2026-10-18` (the handoff `as_of`) wherever the evidence has a V, S or D mark; `null` for proposal-only evidence (none today). All 82 source records carry the same date; technical sources state it in their own `reading_evidence` |
+| `observedBehavior` | Only for the 18 patterns with a V mark. F and M records copy the untouched evidence text, which can also carry S or D claims (`evidenceType` says which); C records copy the live-level details |
+| Left `null` | `dataRequirements`, `interactionState`, `staticFallback`, `outputTier`, `accessibility` (all 56). No pattern-level evidence exists. `outputTier` is per component in `src/targets/capabilities.mjs`; the handoff's static text stays in `acceptance_and_static`. They fill only through a browser check per the manual |
+| `assetStatus` | `no-reference-assets-bundled` for all 56 (handoff README; AGENTS.md) |
+| `verification` | `{reference, deckweft, browserSampleSources, evidence}`; `evidence` lists `verifiedBy` plus the sample file for sampled sources, and every path must exist |
+| Lifecycle | `version` is major.minor.patch; `deprecatedBy` is `null` or a different, registered pattern that is not itself deprecated. A test with synthetic bad records proves each refusal fires |
+| Browser sample | Three pages, once: ANT-01 and OAI-S01 (F01), OAI-S20 (C04, M13), at 1440 × 900 and 390 × 844, plus one table sort. Text only, no screenshots. Recorded in each source's `browserSample` |
+| `referenceVerified` | Not changed by the sample. It still means the handoff observed the behaviour; the sample is a spot check of the handoff's reading |
+| Source records | `sourceUrl` and `locale` copy `url` and `language`; a test keeps them equal |
+| P3 | EXP-001 in `roadmap.json` gained `notes`: the five deferrals and the budget precondition. Its `state` stays `planned` |
+| Placement of the full-verification record | In the [manual](../design/pattern-register.md#what-a-full-site-by-site-verification-still-needs), not in the registers: it is a list of work, not a property of a pattern |
+| Re-review cadence | None set. No scheduled job was created |
+
+### Result
+
+| Brief item | Result |
+|---|---|
+| Maintenance fields on every pattern record | 56 of 56 carry all 15 fields; originals byte-identical (`import.sourceSha256` matches the delivered files with `DECKWEFT_HANDOFF_DIR` set) |
+| English and Simplified Chinese manuals | [pattern-register.md](../design/pattern-register.md), [zh-CN](../zh-CN/pattern-register.md): when to add, browser check steps, upstream change handling, full-verification gap, P3 boundary |
+| Full verification record | OpenAI: 1,390 paths under 62 first segments, no template grouping yet, 8 cells per template (2 viewports × 4 states), 7 cells sampled, 0 reduced-motion or static. Anthropic: no URL list, coverage unknown |
+| EXP-001 notes | In `roadmap.json` |
+| Tests | `tests/design-registers.test.mjs` 3 → 9 tests (8 run, 1 gated on the delivered package); see the evidence file for the full run |
+| Merge plan | [design-handoff-merge-to-main.md](design-handoff-merge-to-main.md); not executed |
+
+### Open after S10
+
+| Item | Owner |
+|---|---|
+| Group the 1,390 OpenAI paths into templates; run the 8 cells per template | Follow-up (DWD-310) |
+| A verifiable full Anthropic URL list | Follow-up; needs a sitemap or a recorded crawl |
+| OAI-S20 table fit at 390 px was not looked at; reduced-motion and static states were not sampled anywhere | Follow-up |
+| Re-review cadence for sources | Undecided; no scheduled job |
+| S9b leftovers (answer 5 = no): the Explain stage composition, pages over 900 px, M10 part groups, Firefox and WebKit traces; also scroll advancement (M09) | Unchanged, in [§18](#18-s9b-decisions-and-result--blueprint-a-2026-10-19) |
+| Remote CI for the S1–S10 stack; PowerPoint, Keynote and Figma runs; Claude sign-in | Unchanged; user or later |

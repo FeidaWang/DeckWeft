@@ -1,3 +1,14 @@
+截至 2026-10-19，S10（模式库维护与 P3 边界，DWD-310）已在本地完成，位于分支 `claude/pattern-library-maintenance-p3-28aa7c`，叠加在 S9b（`a2d5371`）之上，尚未推送。该分支包含 S1–S10。S10 只涉及文档与登记表：没有改动运行时代码、schema 或任务状态，DWD-310 仍为 `partial`。S10 新增：
+
+- 56 条模式记录各加 15 个维护字段，82 条来源记录各加 4 个，只在有证据支持时填写（其余为 `null`）；`checkedAt` 保持“仓库核对日期”的含义，页面阅读日期用 `sourceCheckedAt`；
+- 一份[手册](pattern-register.md)（[English](../design/pattern-register.md)）：何时新增模式、如何做浏览器核验、上游改版如何记录而不影响已有作品；
+- 完整的全站逐页核验还缺什么（OpenAI 1,390 条 zh-Hans-CN 路径的模板归并、每个模板 8 格，以及一份可核对的 Anthropic URL 清单）；
+- P3 延后项，写在 EXP-001 的 `notes` 中，EXP-001 仍为 `planned`；
+- 一次经用户允许的三页[浏览器抽样](../evidence/s10-pattern-maintenance/browser-sample.json)（ANT-01、OAI-S01、OAI-S20）；
+- 一份[把 S1–S10 合并回 `main` 的计划](../plans/design-handoff-merge-to-main.md)。它只是计划：没有合并，也没有推送。
+
+六个回答和各项决定见[对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19)。设计交接计划（S1–S10）中没有其他待实现的步骤；未完成事项列在该节。本交接并不授权进一步的步骤。
+
 截至 2026-10-19，S9b（蓝图 A：讲解 → 图解 → 探索，DWD-210）已在本地完成。它位于分支 `claude/agitated-torvalds-969a1e`，叠加在 S9a（`e80ecd7`）之上，尚未推送。VIS-009 仍为 implemented-local。S9b 新增：
 
 - 一页分三个阶段讲解一个对象，建立在图、`steps`、提示时钟、关键状态与静态状态之上（只新增一个可选字段 `blueprint`）；
@@ -6,7 +17,7 @@
 - 经正常编辑路径的 Studio 操作；
 - Codex 草稿路径的页数规划（模拟宿主测试，加一次真实 Codex CLI 运行：没有填充）。
 
-渲染器 `visual-art-direction.12`，播放器 `semantic-player.6`。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。计划中的下一步是 S10（模式库维护，DWD-310）。本交接不构成授权。
+渲染器 `visual-art-direction.12`，播放器 `semantic-player.6`。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。S10 随后完成（见上）。
 
 截至 2026-10-19，S9a（作者控制，DWD-200）已在本地完成。它位于分支 `claude/design-handoff-alignment-review-978a91`，叠加在 S1–S8 分支 `claude/design-handoff-alignment-19703c` 之上，尚未推送。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。S9a 新增：
 

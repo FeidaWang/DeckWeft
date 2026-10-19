@@ -1,3 +1,14 @@
+S10 (pattern library maintenance and the P3 boundary, DWD-310) is **done locally** as of 2026-10-19 on branch `claude/pattern-library-maintenance-p3-28aa7c`, stacked on S9b (`a2d5371`); it is not pushed. That branch holds S1–S10. It is documentation and register work only: no runtime code, schema or task state changed, and DWD-310 stays `partial`. What S10 adds:
+
+- fifteen maintenance fields on all 56 pattern records and four on the 82 source records, filled only where evidence supports them (the rest are `null`); `checkedAt` keeps its repository-check meaning and the page date is `sourceCheckedAt`;
+- a [manual](../design/pattern-register.md) ([简体中文](../zh-CN/pattern-register.md)): when to add a pattern, how to run a browser check, how an upstream change is recorded without touching existing decks;
+- what a full site-by-site verification still needs (a template grouping of OpenAI's 1,390 zh-Hans-CN paths, 8 cells per template, and a verifiable Anthropic URL list);
+- the P3 deferrals as `notes` on EXP-001, which stays `planned`;
+- a three-page [browser sample](../evidence/s10-pattern-maintenance/browser-sample.json) (ANT-01, OAI-S01, OAI-S20) the user allowed;
+- a [plan for merging S1–S10 into `main`](../plans/design-handoff-merge-to-main.md). It is a plan: nothing was merged or pushed.
+
+The six answers and the decisions are in [alignment §19](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19). Nothing further in the design-handoff plan (S1–S10) is open for implementation; the open items are listed there. Further steps are not authorized by this handoff.
+
 S9b (blueprint A, Explain → Diagram → Explore, DWD-210) is **done locally** as of 2026-10-19. It sits on branch `claude/agitated-torvalds-969a1e`, stacked on S9a (`e80ecd7`); it is not pushed. VIS-009 stays implemented-local. What S9b adds:
 
 - one page that explains one object in three stages, built on diagram, `steps`, the cue clock, key states and the static state (one optional field, `blueprint`);
@@ -6,7 +17,7 @@ S9b (blueprint A, Explain → Diagram → Explore, DWD-210) is **done locally** 
 - a Studio action through the normal edit path;
 - a page-count plan for the Codex draft path (fake-host tests and one live Codex CLI run: no padding).
 
-Renderer `visual-art-direction.12`, player `semantic-player.6`. The six answers and the decisions are in [alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19); see also the [evidence](../evidence/s9b-blueprint-a/review.md). Next in the plan is S10 (pattern library maintenance, DWD-310). It is not authorized by this handoff.
+Renderer `visual-art-direction.12`, player `semantic-player.6`. The six answers and the decisions are in [alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19); see also the [evidence](../evidence/s9b-blueprint-a/review.md). S10 followed (above).
 
 S9a (author controls, DWD-200) is **done locally** as of 2026-10-19. It sits on branch `claude/design-handoff-alignment-review-978a91`, stacked on the S1–S8 branch `claude/design-handoff-alignment-19703c`; it is not pushed. VIS-013 stays implemented-local and VIS-015 stays partial. What S9a adds:
 

@@ -4,6 +4,17 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## S10 — pattern library maintenance (DWD-310)
+
+State **Implemented** for the register fields, manuals and tests, 2026-10-19. DWD-310 stays partial. [Evidence](../evidence/s10-pattern-maintenance/review.md) · [Alignment §19](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19) · [Manual](../design/pattern-register.md).
+
+Results:
+
+- `npm run verify` passed **475 tests** (471 pass, 4 skips: the same environment- and browser-gated ones as S9b), plus types, source and link checks, packaging and demos.
+- `tests/design-registers.test.mjs` has 9 tests; with `DECKWEFT_HANDOFF_DIR` set all 9 pass, which proves the delivered originals are unchanged.
+- A three-page browser sample (Chromium 152, built-in pane): initial states at 1440 and 390 px and one table sort. No reduced-motion or static state was captured. It is a spot check of the handoff's reading and does not change `referenceVerified`.
+- Not run: the other 1,387 OpenAI paths, Anthropic beyond its home page, Firefox, WebKit, PowerPoint, Keynote, Figma, and Claude.
+
 ## S9b — blueprint A (DWD-210)
 
 State **LocalVerified** for the S9b scope, 2026-10-19. VIS-009 stays implemented-local. [Evidence](../evidence/s9b-blueprint-a/review.md) · [Alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19) · [Interactions](interactions.md#explain--diagram--explore-blueprint-a-s9b) · [Visual Studio](visual-studio.md#explain--diagram--explore-pages-s9b).

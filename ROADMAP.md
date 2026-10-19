@@ -2,6 +2,19 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## S10 — pattern library maintenance and the P3 boundary (DWD-310), 2026-10-19
+
+S10 makes the design registers maintainable. It is documentation and register work: no runtime code, schema or task state changed. DWD-310 stays **partial**.
+
+- **Maintenance fields.** All 56 patterns carry `patternId`, `version` (`1.0.0`), source URL, locale, `sourceCheckedAt`, evidence type, observed behaviour, `verification` and `deprecatedBy`, among others. Only what the evidence supports is filled; the rest is `null`. The 82 sources gained `sourceUrl`, `locale`, `sourceCheckedAt` and `browserSample`.
+- **Manual.** [Maintaining the pattern register](docs/design/pattern-register.md) ([简体中文](docs/zh-CN/pattern-register.md)): when to add a pattern, how to run a browser check, how an upstream change is recorded without altering existing decks.
+- **Full verification, recorded not done.** OpenAI's 1,390 zh-Hans-CN paths still need a template grouping and 8 cells per template (desktop and mobile × initial, interaction, reduced motion, static). Anthropic has no verifiable URL list.
+- **EXP-001.** The P3 deferrals are `notes` on the task, which stays `planned`: no full-screen persistent particles, no multi-layer blur, no 3D without a static final state, no mouse-only openings, no meaningless number rolling before P1 acceptance. A budget needs a reference device, browser version, resolution, DPR and power mode first.
+- **Sample.** Three reference pages were opened once in the built-in browser ([evidence](docs/evidence/s10-pattern-maintenance/review.md)).
+- **Plan.** [Merging S1–S10 into `main`](docs/plans/design-handoff-merge-to-main.md): a plan only. Nothing is merged or pushed.
+
+[Alignment §19](docs/plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19).
+
 ## S9b — blueprint A, Explain → Diagram → Explore (DWD-210), 2026-10-19
 
 S9b adds the first explanation scene of the design handoff to VIS-009. VIS-009 stays **implemented-local**.

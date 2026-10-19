@@ -4,6 +4,17 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S10 模式库维护（DWD-310）
+
+登记表字段、手册与测试的状态为 **Implemented**（2026-10-19）。DWD-310 仍为 partial。[证据（英文）](../evidence/s10-pattern-maintenance/review.md) · [对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19) · [手册](pattern-register.md)。
+
+结果：
+
+- `npm run verify` 通过 **475 个测试**（471 通过，4 个跳过：与 S9b 相同的环境类和浏览器类测试），另有类型、源码与链接检查、打包和演示。
+- `tests/design-registers.test.mjs` 共 9 个测试；设置 `DECKWEFT_HANDOFF_DIR` 后 9 个全部通过，证明已交付的原始字段没有被改动。
+- 三个页面的浏览器抽样（Chromium 152，内置窗格）：1440 与 390 px 的初始状态，加一次表格排序。没有记录减少动态效果或静态状态。它只是对交接包读法的抽查，不改变 `referenceVerified`。
+- 未运行：其余 1,387 条 OpenAI 路径、Anthropic 首页以外的页面、Firefox、WebKit、PowerPoint、Keynote、Figma 与 Claude。
+
 ## S9b 蓝图 A — 讲解 → 图解 → 探索（DWD-210）
 
 状态：S9b 范围为 **LocalVerified**（2026-10-19）。VIS-009 仍为 implemented-local。[证据（英文）](../evidence/s9b-blueprint-a/review.md) · [对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19) · [交互](interactions.md#讲解--图解--探索蓝图-as9b) · [Visual Studio](visual-studio.md#讲解--图解--探索页面s9b)

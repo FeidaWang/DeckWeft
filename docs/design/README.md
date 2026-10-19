@@ -1,6 +1,6 @@
 # Design registers
 
-These files are imported copies of the 2026-10-18 design handoff registers. Each record has added repository status fields. They are design evidence, not runtime contracts. The [alignment](../plans/design-handoff-alignment.md) explains every field and table.
+These files are imported copies of the 2026-10-18 design handoff registers. Each record has added repository status fields and, since S10, maintenance fields. How to add, re-check and retire a pattern: [pattern-register.md](pattern-register.md) ([简体中文](../zh-CN/pattern-register.md)). They are design evidence, not runtime contracts. The [alignment](../plans/design-handoff-alignment.md) explains every field and table.
 
 | File | Contents |
 |---|---|
@@ -13,7 +13,9 @@ These files are imported copies of the 2026-10-18 design handoff registers. Each
 - `evidence` keeps the original V/S/D/P marks; `evidenceMarks` only indexes them.
 - `referenceVerified` is `true` only with a V mark.
 - `repositoryState` uses Proposed / Implemented / LocalVerified / HostVerified / ExportVerified. Any *Verified state must cite a `docs/` evidence file in `verifiedBy`.
-- Content sources keep `verifiedBy` empty until someone re-opens and records the page.
+- Content sources keep `verifiedBy` empty until someone re-opens and records the page. A spot check goes in `browserSample` with an evidence file; it does not change `referenceVerified`.
+- `checkedAt` is the date of the repository status check. The date a reference page was read is `sourceCheckedAt`.
+- `deprecatedBy` is `null` or the id of a registered, live, different pattern.
 
 ## Check
 
@@ -21,7 +23,7 @@ These files are imported copies of the 2026-10-18 design handoff registers. Each
 node --test tests/design-registers.test.mjs
 ```
 
-Expected: three tests pass. A fourth test, which compares against the delivered package, is skipped.
+Expected: eight tests pass. A ninth test, which compares against the delivered package, is skipped.
 
 To compare against the delivered package:
 
@@ -29,6 +31,6 @@ To compare against the delivered package:
 DECKWEFT_HANDOFF_DIR=/path/to/DeckWeft_Design_Handoff node --test tests/design-registers.test.mjs
 ```
 
-Expected: four tests pass.
+Expected: nine tests pass.
 
 If a test fails, the message names the record and the rule it broke. Fix the status fields. Never change the original evidence to make the test pass.

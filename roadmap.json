@@ -1362,7 +1362,17 @@
    "acceptance": [
     "the effect explains supplied content, loads only for active scenes, supports reduced motion, stays within the selected device budget, and has an explicit export fallback. Core quality does not depend on adding 3D to every presentation.\n"
    ],
-   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task."
+   "remaining": "Implementation and acceptance are pending; existing local foundations do not close this task.",
+   "notes": [
+    "P3 deferrals recorded in S10 (DWD-310, 2026-10-19). Nothing below is implemented; each is a boundary, not a plan.",
+    "No full-screen persistent particles.",
+    "No multi-layer blur or transparent filters.",
+    "No 3D without a static final state that reads and exports on its own.",
+    "No opening that can only be understood with a mouse.",
+    "No number rolling that carries no meaning, before P1 acceptance.",
+    "A performance budget needs a fixed reference device, browser version, resolution, device pixel ratio and power mode recorded in an evidence file first. No millisecond, frame-rate or memory number is written before that.",
+    "Deprecating an expensive effect keeps its static state, so decks that used it still read and export (docs/design/pattern-register.md)."
+   ]
   }
  ],
  "executionOrder": [

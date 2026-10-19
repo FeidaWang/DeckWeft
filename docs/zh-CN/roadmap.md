@@ -2,6 +2,19 @@
 
 [English](../../ROADMAP.md) · [任务数据](../../roadmap.json) · [证据](verification.md)
 
+## S10 — 模式库维护与 P3 边界（DWD-310），2026-10-19
+
+S10 让设计登记表可维护。它只涉及文档与登记表：没有改动运行时代码、schema 或任务状态。DWD-310 仍为 **partial**。
+
+- **维护字段。** 56 个模式都有 `patternId`、`version`（`1.0.0`）、来源 URL、语言、`sourceCheckedAt`、证据类型、已观察行为、`verification` 与 `deprecatedBy` 等字段。只填证据支持的内容，其余为 `null`。82 个来源新增 `sourceUrl`、`locale`、`sourceCheckedAt` 与 `browserSample`。
+- **手册。** [维护模式登记表](pattern-register.md)（[English](../design/pattern-register.md)）：何时新增模式、如何做浏览器核验、上游改版如何记录而不改变已有作品。
+- **全站逐页核验：只记录，未做。** OpenAI 的 1,390 条 zh-Hans-CN 路径还需要模板归并，并按每个模板 8 格（桌面与移动 × 初始、交互、减少动态效果、静态）核验。Anthropic 没有可核对的 URL 清单。
+- **EXP-001。** P3 延后项写在该任务的 `notes` 中，任务仍为 `planned`：不做全屏长期粒子、不做多层模糊、没有静态定稿就不做 3D、不做只能用鼠标理解的开屏、P1 验收前不做无语义的数字翻滚。预算要先有参考设备、浏览器版本、分辨率、DPR 和电源模式。
+- **抽样。** 在内置浏览器中各打开一次三个参考页面（[证据（英文）](../evidence/s10-pattern-maintenance/review.md)）。
+- **计划。** [把 S1–S10 合并回 `main`（英文）](../plans/design-handoff-merge-to-main.md)：只是计划，没有合并，也没有推送。
+
+[对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19)。
+
 ## S9b — 蓝图 A：讲解 → 图解 → 探索（DWD-210），2026-10-19
 
 S9b 为 VIS-009 加入设计交接中的第一个讲解场景。VIS-009 仍为 **implemented-local**。
