@@ -218,7 +218,7 @@ S8 把设计交接文档的三个首发艺术方向做成主题包，沿用 VIS-
 
 **页面折叠内容。**由“减少文字”或“给图表更多空间”移走的文字显示在构图之后，标为“更多细节 · n 项”。读者可在页面上展开，无需 JavaScript。PowerPoint 将其放入幻灯片备注并为每项内容给出回执，PDF 将其放在备注页。构图规则只作用于仍可见的内容，例如结尾页会保留其列表。
 
-**导出组。**“Export HTML”旁边是 **PowerPoint**、**PDF** 和**项目 JSON**。PowerPoint 与 PDF 需要以 `--capture-browser /absolute/isolated/chromium` 启动 Studio；否则按钮不可用，服务器以 `TARGET_BROWSER_REQUIRED` 拒绝。启动后，当前已测量的预览会作为静态场景再测量一次，按导出顺序编译（ready → static-state → freeze → stop-motion → reveal → render → check）；提示列出各阶段、L1/L2/L3 数量和元素回执数量。未通过自身检查的文件会被拒绝（`EXPORT_CHECK_FAILED`），不会下载。工作台文稿只有在当前内容通过图片审阅后才能导出 PowerPoint 或 PDF。标记为待补证据的页面会拒绝所有最终导出。请自行在 PowerPoint、Keynote 或 PDF 阅读器中打开文件：这些导出在本机经过文件包检查，并非应用验证。
+**导出组。**“Export HTML”旁边是 **PowerPoint**、**PDF** 和**项目 JSON**。PowerPoint 与 PDF 需要以 `--capture-browser /absolute/isolated/chromium` 启动 Studio；否则按钮不可用，服务器以 `TARGET_BROWSER_REQUIRED` 拒绝。启动后，点击 **PowerPoint** 或 **PDF** 会打开导出对话框。PowerPoint 的对话框提供**比幻灯片高的页面**选项：*拆成多张幻灯片，保持字号（auto）*（默认）或*每页保持整页（none）*。点击**导出**后，当前已测量的预览会作为静态场景再测量一次，按导出顺序编译（ready → static-state → freeze → stop-motion → reveal → render → check）；对话框状态变绿，列出各阶段、L1/L2/L3 数量、元素回执数量和拆页的高页面数。未通过自身检查的文件会被拒绝（`EXPORT_CHECK_FAILED`），不会下载。若唯一未通过的是字号结果（文字低于可读下限，F1），状态变**黄**并列出每一处失败（页面、角色、实际与要求字号、形状），不下载任何文件。此时可选择*拆成多张幻灯片*、缩短该页，或勾选**我接受这些字号，仍然导出文件**后再次导出：文件随即下载，导出报告写入 `typography.acceptedBy: 'author'` 与接受时间，状态仍为黄色并显示接受时间。接受不会把结果变绿；再次打开对话框时不会带上之前的接受。工作台文稿只有在当前内容通过图片审阅后才能导出 PowerPoint 或 PDF。标记为待补证据的页面会拒绝所有最终导出。请自行在 PowerPoint、Keynote 或 PDF 阅读器中打开文件：这些导出在本机经过文件包检查，并非应用验证。
 
 ### 出问题时
 
@@ -226,7 +226,7 @@ S8 把设计交接文档的三个首发艺术方向做成主题包，沿用 VIS-
 - “构图已锁定，保持不变”：如需让控件修改它，请先解锁版式（构图 → 解锁）。
 - “已经安静”或“没有可移走的内容”：控件没有发现需要修改之处，计划框会说明原因。
 - `EVIDENCE_REQUIRED`：补充证据并将页面设为 sourced，或设为 illustrative。
-- `EXPORT_CHECK_FAILED`：提示逐页列出未通过的检查；修改该页后重新导出。
+- `EXPORT_CHECK_FAILED`：提示逐页列出未通过的检查；修改该页后重新导出。若只有字号结果未通过，对话框改以黄色显示，并提供拆页选项与作者接受（见上）。
 
 [S9a 证据、轨迹与对照表](../evidence/s9a-author-controls/review.md) · [工作台步骤](workbench.md#六个问题与三个方向s9a)
 

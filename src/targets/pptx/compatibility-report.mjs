@@ -44,11 +44,13 @@ export function exportReport({deck,document,plan,pptx,pdf,fidelity,environment,a
  };
 }
 
+/** 'fail · accepted by author at <time>' when the author accepted text below the minimum (F1); the status alone otherwise. */
+export const typographyStatus=t=>!t?'not-run':t.acceptedBy?`${t.status} · accepted by ${t.acceptedBy} at ${t.acceptedAt}`:t.status;
 /** A short Markdown summary of one report, for review records. */
 export function reportMarkdown(r){
  const row=(k,v)=>`| ${k} | ${v} |`;
  return [`# Export report · ${r.deck}`,'',`${r.title} (${r.locale}) · ${r.files.slides} slides · ${r.files.charts} native charts · ${r.files.pictures} pictures · PDF ${r.files.pdfPages??'not printed'} pages`,'',
-  '| Result | Status |','|---|---|',row('PowerPoint editability',r.results.pptxEditability.status),row('Page check against the derived scene',r.results.pptxEditability.sceneCheck.status),row('PDF searchability',r.results.pdfSearchability.status),row('Accessibility (package checks)',r.results.accessibility.status),row('Typography (presentable text size by role)',r.results.typography?.status??'not-run'),row('Visual fidelity',r.results.visualFidelity.status),'',
+  '| Result | Status |','|---|---|',row('PowerPoint editability',r.results.pptxEditability.status),row('Page check against the derived scene',r.results.pptxEditability.sceneCheck.status),row('PDF searchability',r.results.pdfSearchability.status),row('Accessibility (package checks)',r.results.accessibility.status),row('Typography (presentable text size by role)',typographyStatus(r.results.typography)),row('Visual fidelity',r.results.visualFidelity.status),'',
   '| Level | Web | PDF | PowerPoint |','|---|---|---|---|',...['L1','L2','L3'].map(k=>`| ${k} | ${r.levelCounts.web[k]} | ${r.levelCounts.pdf[k]} | ${r.levelCounts.pptx[k]} |`),'',
   '## Receipts','',...(r.receipts.length?r.receipts.flatMap(g=>g.delivered?[`- \`${g.code}\` × ${g.count}: ${g.reason} ${g.delivered}`]:[`- \`${g.code}\` × ${g.count}: ${g.reason}`,...g.elements.map(e=>`  - ${e.sceneId||''} ${e.element}: ${e.delivered}`)]):['None.']),'',
   '## Fonts referenced, not embedded','',r.fonts.used.join(', ')||'None measured.','',

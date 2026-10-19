@@ -58,9 +58,11 @@ const browserError=e=>e.message==='CAPTURE_REQUIRES_ISOLATED_BROWSER'?new DeckEr
 
 /**
  * `project` is a validated visual project ({document, plan, assets, ...}); `resources` = await visualAssetResources(project, home).
- * Returns {body: Buffer, mime, extension, report} where report is the export order's record (order, levels, delivery, check, receipts).
+ * `paginate` 'auto' pages tall scenes, 'none' keeps every scene whole; `acceptTypography` {by: 'author', at} exports a file whose
+ * text fell under the presentable minimum, recorded in report.check.typography (F1). Returns {body: Buffer, mime, extension, report}
+ * where report is the export order's record (order, levels, delivery, check, receipts, pagination).
  */
-export async function studioTargetExport({browserPath,project,resources={},format,signal,paginate='auto'}){
+export async function studioTargetExport({browserPath,project,resources={},format,signal,paginate='auto',acceptTypography=null}){
  if(!MIME[format])throw new DeckError('EXPORT_FORMAT','The Studio exports pptx and pdf through the export order.',400);
  if(!browserPath)throw new DeckError('TARGET_BROWSER_REQUIRED','PowerPoint and PDF are measured in an isolated browser. Start the studio with --capture-browser /absolute/isolated/chromium, then export again.',422);
  const {document,plan}=project,opts={experimentalWeb:true,plan,assetResources:resources},html=exportDeck(document,'html',opts),pages=new Map([['/static',html.body]]);
@@ -73,7 +75,7 @@ export async function studioTargetExport({browserPath,project,resources={},forma
   const layout=await cdp.evaluate('('+measureExportLayout.toString()+')()');layout.platformFonts=await platformFonts(cdp);layout.missingGlyphs=await cdp.evaluate('('+scanMissingGlyphs.toString()+')(document)');
   const rasters=format==='pptx'?await captures(cdp,project,resources,layout,signal):{};external(cdp,origin);signal?.throwIfAborted();
   // No allowFailedCheck: whatever the export order refuses, the Studio refuses.
-  const out=exportDeck(document,format,{...opts,layout,rasters,paginate});
+  const out=exportDeck(document,format,{...opts,layout,rasters,paginate,acceptTypography});
   if(format==='pptx')return {body:Buffer.from(out.body),mime:MIME.pptx,extension:'pptx',report:jsonSafe(out.report)};
   // Screen styles keep the measured layout (print media drops the scenes' minimum height); every printed scene is checked against it.
   pages.set('/print',out.body);await cdp.send('Emulation.setDeviceMetricsOverride',{...EXPORT_VIEWPORT,deviceScaleFactor:1,mobile:false});await cdp.send('Emulation.setEmulatedMedia',{media:'screen',features:REDUCED});await open(cdp,origin+'/print',signal);

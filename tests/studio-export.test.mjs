@@ -67,3 +67,13 @@ test('Studio export refuses what the export order refuses, and stops when cancel
  await assert.rejects(studioTargetExport({browserPath,project:q,resources,format:'pdf',signal:controller.signal}),{name:'AbortError'});
  assert.deepEqual(await profiles(),[]);
 });
+
+test('F1: Studio export whole (paginate none) refuses a tall page by its text sizes; the author’s acceptance exports it, recorded with its time, still as a failed result',{skip},async()=>{
+ const {blueprintProject}=await import('./blueprint-a.mjs'),p=await blueprintProject('en',{theme:'silver-gray-editorial'}),slides=r=>[...readZip(r.body).keys()].filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).length;
+ await assert.rejects(studioTargetExport({browserPath,project:p,resources:{},format:'pptx',paginate:'none'}),e=>e.code==='EXPORT_CHECK_FAILED'&&e.status===422&&e.details.some(d=>d.check==='typography'&&d.failures.some(f=>f.sceneId==='pipeline'&&f.actualPt<f.requiredPt)));
+ await assert.rejects(studioTargetExport({browserPath,project:p,resources:{},format:'pptx',paginate:'none',acceptTypography:{by:'host',at:new Date().toISOString()}}),{code:'EXPORT_ACCEPTANCE'});
+ const at=new Date().toISOString(),whole=await studioTargetExport({browserPath,project:p,resources:{},format:'pptx',paginate:'none',acceptTypography:{by:'author',at}}),t=whole.report.check.typography;
+ assert.equal(whole.extension,'pptx');assert.equal(t.status,'fail');assert.equal(t.acceptedBy,'author');assert.equal(t.acceptedAt,at);assert.ok(t.failures.length);assert.deepEqual(whole.report.pagination,[]);
+ const paged=await studioTargetExport({browserPath,project:p,resources:{},format:'pptx'}),u=paged.report.check.typography;
+ assert.equal(u.status,'pass',JSON.stringify(u.failures).slice(0,400));assert.equal('acceptedBy' in u,false);assert.equal(paged.report.pagination[0]?.sceneId,'pipeline');assert.ok(slides(paged)>slides(whole));
+});

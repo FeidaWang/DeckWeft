@@ -29,8 +29,10 @@ import {WEB_RENDERER_VERSION} from '../src/scene/web/compile.mjs';
 import {PLAYER_VERSION} from '../src/render/web/runtime.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
-const {values:args}=parseArgs({options:{out:{type:'string'},decks:{type:'string'},supplementary:{type:'boolean',default:true},quicklook:{type:'boolean',default:true},s8:{type:'boolean',default:false},s9:{type:'boolean',default:false},help:{type:'boolean'}}});
-if(args.help){console.log('Usage: CHROMIUM_PATH=/isolated/browser PLAYWRIGHT_MODULE=/abs/playwright/index.mjs node scripts/export-targets.mjs [--out dist/export-targets] [--decks gallery-en,story-dark-data-zh-CN] [--no-supplementary] [--no-quicklook]\nThen view sheet-*.jpg and record the review. PowerPoint and Keynote checks stay with the user (report.applicationChecks).');process.exit(0);}
+const {values:args}=parseArgs({options:{out:{type:'string'},decks:{type:'string'},supplementary:{type:'boolean',default:true},quicklook:{type:'boolean',default:true},s8:{type:'boolean',default:false},s9:{type:'boolean',default:false},paginate:{type:'string',default:'auto'},help:{type:'boolean'}}});
+if(args.help){console.log('Usage: CHROMIUM_PATH=/isolated/browser PLAYWRIGHT_MODULE=/abs/playwright/index.mjs node scripts/export-targets.mjs [--out dist/export-targets] [--decks gallery-en,story-dark-data-zh-CN] [--no-supplementary] [--no-quicklook] [--paginate auto|none]\n--paginate auto (default) pages a scene whose text would fall under the typography minimum; none keeps every scene whole and records the failures (F1).\nThen view sheet-*.jpg and record the review. PowerPoint and Keynote checks stay with the user (report.applicationChecks).');process.exit(0);}
+// F1: the paging switch of the evidence run. Failures are recorded, never accepted here; acceptance belongs to the author in the Studio.
+if(!['auto','none'].includes(args.paginate))throw Error(`--paginate takes auto or none, not ${JSON.stringify(args.paginate)}.`);
 const out=path.resolve(args.out||path.join(root,'dist/export-targets')),home=path.join(out,'home'),hash=b=>createHash('sha256').update(b).digest('hex');
 // --s8 (VIS-015): the frozen gallery drawn in each S8 theme, the S8 stories and the three handoff sample decks, instead of the VIS-014 corpus.
 const S8_DECKS=LOCALES.flatMap(locale=>[...S8_THEMES.flatMap(theme=>[{name:`gallery-${theme}-${locale}`,kind:'s8-gallery',locale,theme},{name:`story-${theme}-${locale}`,kind:'s8-story',locale,theme}]),{name:`fieldnotes-${locale}`,kind:'fieldnotes',locale},{name:`atlas-${locale}`,kind:'atlas',locale},{name:`stage-${locale}`,kind:'stage',locale}]);
@@ -112,7 +114,7 @@ for(const d of DECKS){
  await writeFile(path.join(dir,'layout.json'),JSON.stringify(layout));await m.context.close();
  // Compile both paged targets through the export order.
  // Failures are recorded, not hidden: the evidence run keeps a failing file and its report.
- const pptx=exportDeck(p.document,'pptx',{...opts,layout,rasters,allowFailedCheck:true}),pdfJob=exportDeck(p.document,'pdf',{...opts,layout,rasters,allowFailedCheck:true});
+ const pptx=exportDeck(p.document,'pptx',{...opts,layout,rasters,allowFailedCheck:true,paginate:args.paginate}),pdfJob=exportDeck(p.document,'pdf',{...opts,layout,rasters,allowFailedCheck:true});
  const pptxFile=path.join(dir,d.name+'.pptx'),printFile=path.join(dir,'print.html'),pdfFile=path.join(dir,d.name+'.pdf');
  await writeFile(pptxFile,pptx.body);await writeFile(printFile,pdfJob.body);
  // Screen styles keep the measured layout (print media drops the scenes' minimum height); every printed scene is checked against it.
@@ -138,8 +140,8 @@ for(const d of DECKS){
  const report=exportReport({deck:d.name,document:p.document,plan:p.plan,pptx:{run:pptx.run,inspection:pptxInspection},pdf:{run:pdfJob.run,inspection:pdfInspection,searchability,accessibility:pdfAccess},fidelity,environment,applications});
  report.files.sha256={pptx:hash(pptx.body),pdf:hash(await readFile(pdfFile))};
  await writeFile(path.join(dir,'report.json'),JSON.stringify(report,null,1)+'\n');await writeFile(path.join(dir,'report.md'),reportMarkdown(report));
- const line={deck:d.name,pptxEditability:report.results.pptxEditability.status,sceneCheck:report.results.pptxEditability.sceneCheck.status,pdfSearchability:report.results.pdfSearchability.status,accessibility:report.results.accessibility.status,typography:report.results.typography?.status??'not-run',typographyFailures:report.results.typography?.failures?.length??null,visualFidelity:report.results.visualFidelity.status,receipts:report.receipts.reduce((n,g)=>n+g.count,0),levels:report.levelCounts.pptx,external:[...m.external,...pr.external]};
+ const line={deck:d.name,pptxEditability:report.results.pptxEditability.status,sceneCheck:report.results.pptxEditability.sceneCheck.status,pdfSearchability:report.results.pdfSearchability.status,accessibility:report.results.accessibility.status,typography:report.results.typography?.status??'not-run',typographyFailures:report.results.typography?.failures?.length??null,pagination:report.pagination.length,visualFidelity:report.results.visualFidelity.status,receipts:report.receipts.reduce((n,g)=>n+g.count,0),levels:report.levelCounts.pptx,external:[...m.external,...pr.external]};
  summary.push(line);console.log(JSON.stringify(line));
 }
-await writeFile(path.join(out,'exports.json'),JSON.stringify({format:'deckweft-s7-exports',version:1,environment,applications,decks:summary},null,1)+'\n');
+await writeFile(path.join(out,'exports.json'),JSON.stringify({format:'deckweft-s7-exports',version:1,environment,paginate:args.paginate,applications,decks:summary},null,1)+'\n');
 await browser.close();

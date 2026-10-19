@@ -255,3 +255,38 @@ test('F1: a scene taller than the slide is paged into slides that keep every blo
  const perScene=paged.run.output.receipts.filter(r=>r.sceneId===sceneId&&['PPTX_INTERACTION_STATIC','PPTX_MOTION_NOT_COMPILED','PPTX_DISCLOSURE'].includes(r.code)),wholeScene=whole.run.output.receipts.filter(r=>r.sceneId===sceneId&&['PPTX_INTERACTION_STATIC','PPTX_MOTION_NOT_COMPILED','PPTX_DISCLOSURE'].includes(r.code));
  assert.equal(perScene.length,wholeScene.length);
 });
+
+test('F1: a typography failure refuses the file unless the author accepts it; the acceptance is recorded with its time and the result stays a failure',async()=>{
+ const g=await releaseProject('gallery','en',home),resources=await visualAssetResources(g,home),h=html(g,resources),layout=syntheticLayout({...g,resources},h),rasters=l3Rasters(g,layout),sceneId='ev-evidence';
+ const go=(paginate,o={})=>exportDeck(g.document,'pptx',{experimentalWeb:true,plan:g.plan,assetResources:resources,layout,rasters,paginate,...o});
+ // Whole, the tall scene's body text is too small: the file is refused by name, like any other failed check.
+ assert.throws(()=>go('none'),e=>e.code==='EXPORT_CHECK_FAILED'&&e.status===422&&e.details.some(d=>d.check==='typography'&&d.failures.some(f=>f.sceneId===sceneId&&f.role==='body'&&f.actualPt<f.requiredPt)));
+ // The author accepts the sizes: the file is exported, the report records who accepted and when, and the result is still 'fail'.
+ const at='2026-10-19T12:00:00.000Z',accepted=go('none',{acceptTypography:{by:'author',at}}),t=accepted.report.check.typography;
+ assert.equal(accepted.extension,'pptx');assert.equal(t.status,'fail');assert.equal(t.acceptedBy,'author');assert.equal(t.acceptedAt,at);assert.ok(t.failures.length);
+ assert.ok(accepted.run.order.find(o=>o.stage==='check').typographyAcceptedBy==='author');
+ assert.equal(accepted.body.equals(go('none',{allowFailedCheck:true}).body),true,'acceptance changes the record, not the bytes');
+ // The export report and its Markdown carry the acceptance next to the failed result, never as a pass.
+ const applications={powerpoint:{state:'installed, not run'},keynote:{state:'installed, not run'},libreoffice:{state:'not installed'},quickLook:{state:'not run'}};
+ const r=exportReport({deck:'gallery-en',document:g.document,plan:g.plan,pptx:{run:accepted.run,inspection:null},pdf:{run:null,inspection:null,searchability:{status:'not-run'},accessibility:null},fidelity:null,environment:{},applications});
+ assert.equal(r.results.typography.status,'fail');assert.equal(r.results.typography.acceptedBy,'author');assert.equal(r.results.typography.acceptedAt,at);
+ assert.match(reportMarkdown(r),/Typography \(presentable text size by role\) \| fail · accepted by author at 2026-10-19T12:00:00\.000Z/);
+ // Only the author can accept, and only with a time; a passing result records no acceptance.
+ assert.throws(()=>go('none',{acceptTypography:{by:'host',at}}),{code:'EXPORT_ACCEPTANCE',status:422});
+ assert.throws(()=>go('none',{acceptTypography:{by:'author'}}),{code:'EXPORT_ACCEPTANCE',status:422});
+ assert.throws(()=>go('none',{acceptTypography:true}),{code:'EXPORT_ACCEPTANCE',status:422});
+ const paged=go('auto',{acceptTypography:{by:'author',at}});assert.equal(paged.report.check.typography.status,'pass');assert.equal('acceptedBy' in paged.report.check.typography,false);assert.equal('acceptedAt' in paged.report.check.typography,false);
+ // The evidence run still records the failure without any acceptance.
+ const recorded=go('none',{allowFailedCheck:true}).report.check.typography;assert.equal(recorded.status,'fail');assert.equal('acceptedBy' in recorded,false);
+});
+
+test('F1: a callout that a composition draws as the image caption (image-left, photo-split, atlas-cover) is an annotation for the typography minimum; elsewhere it is body text',async()=>{
+ const {typographyCheck,textRole,CAPTION_CALLOUT_COMPOSITIONS}=await import('../src/targets/pptx/audit.mjs');
+ assert.deepEqual([...CAPTION_CALLOUT_COMPOSITIONS].sort(),['atlas-cover','image-left','photo-split']);
+ const blocks=new Map([['violet-caption',{type:'callout'}],['p1',{type:'paragraph'}]]),shape=(name,pt)=>({name,sizes:[Math.round(pt*100)],decorative:false,title:false});
+ assert.equal(textRole(shape('violet-caption/text-11',8.67),blocks,'photo-split'),'annotation');assert.equal(textRole(shape('violet-caption/text-11',8.67),blocks,'image-left'),'annotation');
+ assert.equal(textRole(shape('violet-caption/text-11',8.67),blocks,'hero-statement'),'body');assert.equal(textRole(shape('violet-caption/text-11',8.67),blocks),'body');assert.equal(textRole(shape('p1/text',8.67),blocks,'photo-split'),'body');
+ // The measured Studio demo: the photo-split caption fits at 8.67 pt, which is an annotation at or above 6 pt, not body text under 10 pt.
+ const plan={scenes:[{id:'violet',composition:'photo-split'},{id:'other',composition:'hero-statement'}]},pkg={slides:[{name:'slide1.xml',shapes:[shape('violet-caption/text-11',8.67)]},{name:'slide2.xml',shapes:[shape('violet-caption/text-11',8.67)]}]};
+ const r=typographyCheck(pkg,blocks,plan);assert.equal(r.status,'fail');assert.deepEqual(r.failures,[{sceneId:'other',name:'violet-caption/text-11',role:'body',actualPt:8.67,requiredPt:10}]);
+});

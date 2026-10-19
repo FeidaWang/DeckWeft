@@ -1,4 +1,4 @@
-# Astra 二次验证响应：交接（2026-10-19，第七轮后更新）
+# Astra 二次验证响应：交接（2026-10-19，第八轮后更新）
 
 给下一个会话的交接。方案本身在 [响应方案](astra-second-verification-response.zh-CN.md)，其 §9 是实施记录；本文只说当前状态、做了什么、没做什么、下一步怎么开。
 
@@ -6,11 +6,11 @@
 
 | 项 | 值 |
 |---|---|
-| 分支 | `claude/astra-feedback-solutions-725dfb`（基于 `main` 的 `9771bf4`，未推送） |
-| 工作区 | `.claude/worktrees/astra-feedback-solutions-725dfb` |
-| 提交状态 | 七轮全部提交在本分支（见 `git log main..`），**未推送**：前六轮六个提交；第七轮 `bf042bf`（F4 生成脚本）、`27bf948`（记录时忽略正在记录的日志）以及一个状态记录提交。中间提交没有单独跑 `verify` |
-| `npm run verify` | 在干净的 `27bf948` 上通过：491 项测试，487 通过，0 失败，4 环境门控跳过。日志 `docs/evidence/astra-second-verification/verify-27bf948.txt`；`docs/current-status.json` 与 `PROJECT_STATUS.json` 记录 commit `27bf948`、`worktreeClean: true`。之前未提交树上的 `c09b795` 记录移入 `history[]`，日志 `verify.txt` 保留 |
-| 浏览器门控 | 隔离 Chrome for Testing 149.0.7827.55 + Playwright 1.61.1：`browser_session_reconnect.mjs`（6 项，连续三次）、`browser_visual_studio.mjs`（22 项）、`browser_author_controls.mjs`、`browser_workbench.mjs`、`browser_visual_task.mjs` 通过；`tests/studio-export.test.mjs` 4/4 |
+| 分支 | 第八轮在 `claude/schema-2-f1-export-dialog-ui-7bd6fe`（从七轮分支 `claude/astra-feedback-solutions-725dfb` 的 `31968f8` 快进而来；七轮分支基于 `main` 的 `9771bf4`），均未推送 |
+| 工作区 | `.claude/worktrees/schema-2-f1-export-dialog-ui-7bd6fe`（七轮：`.claude/worktrees/astra-feedback-solutions-725dfb`） |
+| 提交状态 | 七轮全部提交在七轮分支（见 `git log main..`），**未推送**：前六轮六个提交；第七轮 `bf042bf`（F4 生成脚本）、`27bf948`（记录时忽略正在记录的日志）、`31968f8`（状态记录）。**第八轮（F1 的 Studio 拆页选项与作者接受）在第八轮分支的工作树上，尚未提交**：20 个文件改动加新文件 `tests/export-targets-cli.test.mjs`，等用户说提交 |
+| `npm run verify` | 第八轮未提交树上通过：495 项测试，490 通过，0 失败，5 环境门控跳过；源码检查 1551 文件；`npm run check` 未因状态过期失败，所以没有重新记录。上一次记录：在干净的 `27bf948` 上通过：491 项测试，487 通过，0 失败，4 环境门控跳过。日志 `docs/evidence/astra-second-verification/verify-27bf948.txt`；`docs/current-status.json` 与 `PROJECT_STATUS.json` 记录 commit `27bf948`、`worktreeClean: true`。之前未提交树上的 `c09b795` 记录移入 `history[]`，日志 `verify.txt` 保留 |
+| 浏览器门控 | 第八轮，隔离 Chrome for Testing 149.0.7827.55 + Playwright 1.61.1：`tests/studio-export.test.mjs` 5/5（单独运行）、`browser_blueprint_studio.mjs`（12 步，0 错误）、`browser_author_controls.mjs`（30 步，首次即过，1 个已记录的 409 控制台错误）；`export:targets --s9 --decks blueprint-silver-gray-editorial-en` 以 `--paginate none` 与 auto 各一次。七轮：`browser_session_reconnect.mjs`（6 项，连续三次）、`browser_visual_studio.mjs`（22 项）、`browser_workbench.mjs`、`browser_visual_task.mjs` 通过。本轮没有重跑 session_reconnect / visual_studio / workbench / visual_task |
 | 未能运行 | `tests/browser_acceptance.py`、`tests/browser_smoke.py`：本机 Python 没有 `playwright` 模块。第五轮改过 `browser_acceptance.py` 的 409 步骤，未经运行验证 |
 | 真实宿主 | 没有调用；Claude 登录仍 deferred |
 | 原生应用 | PowerPoint / Keynote / Figma / AE 未打开 |
@@ -45,12 +45,13 @@ npm run status:check
 
 注意第一步的 verify 本身会跑 check：如果改了版本而状态还没更新，check 会失败、verify 停在 check。此时先用上一次完整通过的日志记录一次（第七轮就是这样引导的），再重跑。
 
-## 已完成（七轮，均在 2026-10-19）
+## 已完成（八轮，均在 2026-10-19）
 
 | 反馈项 | 做了什么 | 测试 |
 |---|---|---|
 | F2 required model 跨路径 | `src/orchestration/grants.mjs` 新增 `assertModelPolicy`；`src/services/agent-bridge.mjs` 的 `complete`、`completePatch`、`visualTool`、`checkpoint` 共用 `acceptModel`，通过时写 `model.reported` | `tests/planning-jobs.test.mjs` 末尾 "F2: …" |
 | F1 字号 gate | `src/targets/capabilities.mjs` 的 `TYPOGRAPHY_MINIMUM_PT`（校准后 标题 18 / 正文 10 / 注释 6）；`src/targets/pptx/audit.mjs` 的 `typographyCheck` 与 `textRole`；导出报告、Markdown、`export:targets` 摘要多出 `typography` | `tests/export-targets.test.mjs` 的 "F1: the typography result…" |
+| F1 Studio 拆页选项与作者接受（第八轮） | Studio 导出对话框 `#exportDialog`（`public/studio/visual.html`、`author.js`、`visual.css`）：PowerPoint 的拆页选项 auto（默认）/ none，字号失败时黄色状态与失败清单、不下载，作者勾选接受后导出且仍为黄色并显示时间；`runExport` 把 `typography` 加入拒绝清单，`acceptTypography: {by:'author', at}` 记入 `check.typography.acceptedBy/acceptedAt`（Studio API 为 `acceptTypography: true`，服务器盖时间；响应头 `X-DeckWeft-Typography`）；`report.md` 显示 `fail · accepted by author at …`；`export:targets --paginate auto\|none`；`audit.mjs` 的 `CAPTION_CALLOUT_COMPOSITIONS`（image-left / photo-split / atlas-cover 的 callout 按注释判定）；中英 `visual-studio.md`、`compatibility.md` | `tests/export-targets.test.mjs` 末尾两条 "F1: a typography failure…" / "F1: a callout…"；`tests/export-targets-cli.test.mjs`；`tests/studio-export.test.mjs` 的 "F1: Studio export whole…"（浏览器门控）；`tests/browser_blueprint_studio.mjs` 新增三步；`tests/browser_author_controls.mjs` 走对话框 |
 | F1 拆页 | `src/targets/pptx/paginate.mjs`（元素清单、均衡切段、分段布局）；`compilePPTX`/`auditPPTX`/`runExport`/`exportDeck`/`studioTargetExport`/Studio API 的 `paginate: 'auto' \| 'none'`；报告 `pagination`；中英 `compatibility.md` 说明 | `tests/export-targets.test.mjs` 的 "F1: a scene taller…"（gallery 真实高页）；隔离 Chromium 实测 blueprint en/zh：`auto` 4 张、五项 pass、最小 7.17 pt |
 | F5 离线部分 | `src/quality/pixel-control.mjs`（PNG 编解码、标记放置/识别）；`reviewWithHost` 的 `pixelControl` 与 `review.attestation`/`controls`；`recordVisualReview` 的 attestation；CLI `--pixel-control`；中英 `hosts.md` | `tests/pixel-control.test.mjs`（编解码、放置/识别、三种 fake host、attestation 规则） |
 | F3 结构化覆盖 | `schemas/host-response.schema.json` 的 `outline` 为 `pages[].lines[]{text, sourceLine}`；`src/hosts/tasks.mjs` 的 `sourceLines`/`checkSourceCoverage`/`outlineText`，逐字节、恰好一次、顺序单调，`hostDraft.hostAuthored` 记录新增行；中英 `hosts.md`、`skills/deck/SKILL.md` 同步 | `tests/host-adapters.test.mjs` 的 "F3: …"（重复、空白、重排、嵌入、错误归属、越界、新增计数、无源文） |
@@ -65,7 +66,7 @@ npm run status:check
 
 | 项 | 缺什么 | 方案位置 |
 |---|---|---|
-| F1 剩余 | Studio 导出对话框的 paginate 选项与黄色状态、作者显式接受（`typography.acceptedBy`）、`export:targets` 的 `--paginate` 开关、续页上的页码 chrome、18 个 deck 的失败清单、用户在 PowerPoint/Keynote 中打开冻结包 | §2 F1、§3.2、§9 第三轮 |
+| F1 剩余 | 独立检查器 `tests/inspect_v3_pptx.py` 不认识拆页（auto 下报 `slide count 4 vs 3 scenes` 并按张序号对照场景，`pptxEditability` 因独立检查 fail），18 个 deck 的失败清单因此还做不出；续页上的页码 chrome；用户在 PowerPoint/Keynote 中打开冻结包；`export:targets --help` 写的 `--no-quicklook`/`--no-supplementary` 实际不被接受（缺 `allowNegative`） | §2 F1、§3.2、§9 第八轮 |
 | F3 剩余 | Studio 大纲里的"宿主新增"标记与导出报告显示 | §2 F3 |
 | F4 剩余 | 浏览器版本只是声明，未从二进制探测；`PROJECT_STATUS.json` 的其他历史块（如 `browser.browserVersion` 144、各 `previous*`）和 README/handoff 正文里的测试数不在比较范围内 | §2 F4、§9 第七轮 |
 | F5 剩余 | 在线三组对照脚本与通过标准（需用户授权真实宿主）；Studio 与导出报告显示 attestation；Claude 形状的 fake 读像素测试；Studio 评审表单提交 `attestation: 'author'` 的浏览器验证；`.deckweft-pixel-control/` 的清理与 `.gitignore`（第六轮已修：`control.json` 宿主运行后才写入、工具参数不能自报宿主等级） | §2 F5、§9 第四、六轮 |
@@ -79,18 +80,19 @@ npm run status:check
 
 ## 下一个会话怎么开
 
-**推荐顺序。** 七轮已提交，当前状态记录在干净树上。下一个是 F1 的 Studio 拆页选项与作者接受 → F3/F5 的 Studio 显示 → §5 剩余 → 英文版文档。需要你授权或你本人操作的项（F5 在线对照、PowerPoint/Keynote 打开、Windows 实机、30 分钟实测）放在最后。一次会话只做一项，避免一个分支同时改 schema 和 UI。
+**推荐顺序。** 第八轮（F1 的 Studio 拆页选项与作者接受）已做完但**未提交**；先由用户决定提交，提交后在干净树上按上面三步重新记录状态（测试数 495 / 490 / 0 / 5）。注意另一条分支 `claude/astra-verification-s2-f1-ui-4819bf`（`5249740`）里有另一个会话对同一项（并含 F3、F5 显示）的实现，第八轮没有读取或合并它，两者只能留一个。之后是 F3/F5 的 Studio 显示 → 独立检查器认识拆页 → §5 剩余 → 英文版文档。需要你授权或你本人操作的项（F5 在线对照、PowerPoint/Keynote 打开、Windows 实机、30 分钟实测）放在最后。一次会话只做一项，避免一个分支同时改 schema 和 UI。
 
 **推荐模型与 effort。**
 
 | 任务 | 模型 | effort | 理由 |
 |---|---|---|---|
-| **F1 的 Studio 拆页选项与作者接受（推荐的下一个实现项）** | Claude Fable 5.1 | high | 改导出对话框、导出报告和 `export:targets`，牵动多个浏览器 runner，需要全局一致 |
+| ~~F1 的 Studio 拆页选项与作者接受~~（第八轮已做，未提交） | Claude Fable 5.1 | high | 改导出对话框、导出报告和 `export:targets`，牵动多个浏览器 runner，需要全局一致 |
+| 独立检查器 `inspect_v3_pptx.py` 认识拆页，再出 18 个 deck 的失败清单 | Claude Opus 5.5 | medium | 按报告的 `pagination` 把多张幻灯片归到同一场景，机械实现 |
 | Studio 显示 attestation 与宿主新增行（F3/F5） | Claude Fable 5.1 | high | 同上，UI 与报告一起改 |
 | F7 Windows 进程树测试、§5 剩余 | Claude Opus 5.5 | medium | 机械实现为主 |
 | 文案同步、英文版、`verification.md` runner 清单 | Claude Sonnet 5.5 | medium | 低风险 |
 
-**提示词：F1 的 Studio 拆页选项与作者接受（可直接粘贴）。**
+**提示词：F1 的 Studio 拆页选项与作者接受（第八轮已按此做完；换第二段可复用）。**
 
 ```text
 请先读 docs/plans/astra-second-verification-handover.zh-CN.md、docs/plans/astra-second-verification-response.zh-CN.md（含 §9 实施记录）和 AGENTS.md。工作区是分支 claude/astra-feedback-solutions-725dfb 的 worktree，前面的提交未推送，不要改写它们。
@@ -100,7 +102,7 @@ npm run status:check
 约束：不调用真实宿主、不登录、不推送、不加依赖、不打开 /Applications 里的应用；只在我说提交时提交。结束时按 AGENTS.md 列出跑过的测试、看过的图、没打开的应用，把做了什么和没做什么追加到方案 §9，并更新本交接文档。
 ```
 
-把第二段换成其他项（例如 "F3/F5 的 Studio 宿主新增标记与 attestation 显示"、"§5 历史容量提示" 或 "F7 的 Windows 进程树测试"）即可复用；改到 Studio UI 的项要同时跑受影响的浏览器 runner（命令见下）。
+把第二段换成其他项（例如 "F3/F5 的 Studio 宿主新增标记与 attestation 显示"、"§5 历史容量提示" 或 "F7 的 Windows 进程树测试"）即可复用；改到 Studio UI 的项要同时跑受影响的浏览器 runner（命令见下）。改到导出的项要跑 `tests/studio-export.test.mjs`（单独跑：它断言没有残留的 `dw-studio-export-*` 临时目录，与别的 Studio 导出并行会误报）和 `tests/browser_blueprint_studio.mjs`。Studio 的导出现在走 `#exportDialog`：runner 用 `tests/studio-controls.mjs` 的 `studioExport(page, id, {paginate, accept, open})` 与 `closeExportDialog(page)`，不要直接等下载。
 
 **开场命令。**
 

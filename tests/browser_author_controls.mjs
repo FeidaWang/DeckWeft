@@ -10,7 +10,7 @@ import {parseArgs} from 'node:util';
 import {startStudio} from '../src/services/server.mjs';
 import {VisualProjectStore} from '../src/services/visual-store.mjs';
 import {createCompositionDemo} from '../src/core/composition-demo.mjs';
-import {revealStudio} from './studio-controls.mjs';
+import {revealStudio,studioExport,closeExportDialog} from './studio-controls.mjs';
 const {values:a}=parseArgs({options:{out:{type:'string'},widths:{type:'string'}}}),out=path.resolve(a.out||'dist/s9a-author-controls'),shots=path.join(out,'shots');
 await rm(path.join(out,'library'),{recursive:true,force:true});await mkdir(path.join(out,'library'),{recursive:true});await mkdir(shots,{recursive:true});
 const home=await realpath(path.join(out,'library')),binary=await realpath(process.env.CHROMIUM_PATH||'');assert.ok(!/\/Applications\//i.test(binary),'Use an isolated browser outside /Applications.');
@@ -112,7 +112,9 @@ try{
     await saveDeck(second.page);await measured(second.page);
     const after=(await api('projects/'+deckB.id)).project;record(width,'profile applied to the zh-CN deck',{effects:applied.effects.slice(0,6),kept:applied.kept,themes:[...new Set(after.plan.scenes.map(s=>s.theme))],shot:await shot(second.page,`profile-applied-${width}`,'#frameSpace')});
     for(const [id,ext] of [['#exportHTML','html'],['#exportPPTX','pptx'],['#exportPDF','pdf'],['#exportJSON','json']]){
-     await second.page.waitForFunction(s=>!document.querySelector(s).disabled,id);const before=await second.page.locator('#message').textContent(),waiting=second.page.waitForEvent('download',{timeout:120000});await second.page.locator(id).click();
+     await second.page.waitForFunction(s=>!document.querySelector(s).disabled,id);const before=await second.page.locator('#message').textContent(),waiting=second.page.waitForEvent('download',{timeout:120000});
+     // PowerPoint and PDF go through the export dialog (F1): paging auto by default, then Export.
+     if(ext==='pptx'||ext==='pdf'){const r=await studioExport(second.page,id);if(r.status!=='pass')throw Error(`${ext} export refused (${r.status}): ${r.text}`);record(width,'export dialog '+ext,{status:r.status,paginateVisible:r.paginateVisible});await closeExportDialog(second.page);}else await second.page.locator(id).click();
      const download=await Promise.race([waiting,second.page.waitForFunction(b=>document.querySelector('#message').classList.contains('error')&&document.querySelector('#message').textContent!==b,before,{timeout:120000}).then(async()=>{throw Error(ext+' export refused: '+await second.page.locator('#message').textContent());})]);
      const file=path.join(out,'exports','profile-applied-zh-CN.'+ext);await mkdir(path.dirname(file),{recursive:true});await download.saveAs(file);const bytes=await readFile(file);
      assert.ok(ext==='pptx'?bytes.subarray(0,2).toString()==='PK':ext==='pdf'?bytes.subarray(0,4).toString()==='%PDF':bytes.length>100);

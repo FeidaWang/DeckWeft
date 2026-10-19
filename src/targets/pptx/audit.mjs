@@ -185,18 +185,24 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
 }
 
 const ANNOTATION_BLOCKS=new Set(['citation','chart','table','diagram','image']);
-/** The role a text shape plays, from the block it belongs to: the slide title, an annotation (citations, captions, chart/table labels) or body text. */
-export function textRole(shape,blocks){
+/** Compositions whose art direction draws the callout as the image caption (13 px label: art-direction.mjs image-left/photo-split, themes.mjs atlas-cover). */
+export const CAPTION_CALLOUT_COMPOSITIONS=new Set(['image-left','photo-split','atlas-cover']);
+/**
+ * The role a text shape plays, from the block it belongs to: the slide title, an annotation (citations, captions, chart/table
+ * labels, and a callout the composition draws as the image caption) or body text. `composition` is the scene's composition id.
+ */
+export function textRole(shape,blocks,composition){
  if(shape.title)return 'title';
  const blockId=shape.name.includes('/')?shape.name.split('/')[0]:null,type=blockId&&blocks.get(blockId)?.type;
  if(ANNOTATION_BLOCKS.has(type)||/\/(caption|source|label|axis|legend|footnote)/.test(shape.name))return 'annotation';
+ if(type==='callout'&&CAPTION_CALLOUT_COMPOSITIONS.has(composition))return 'annotation';
  return 'body';
 }
 /** F1: refuses text that fitted below the presentable minimum for its role. Every failure names the scene, the shape, the role, the actual and the required size. */
 export function typographyCheck(pkg,blocks,plan,minimums=TYPOGRAPHY_MINIMUM_PT,sceneOf=i=>plan.scenes[i]?.id){
  const failures=[];
- pkg.slides.forEach((slide,i)=>{const sceneId=sceneOf(i)??slide.name;
-  for(const s of slide.shapes){if(s.decorative||!s.sizes?.length)continue;const role=textRole(s,blocks),actualPt=Math.min(...s.sizes)/100,requiredPt=minimums[role];
+ pkg.slides.forEach((slide,i)=>{const sceneId=sceneOf(i)??slide.name,composition=plan.scenes.find(sc=>sc.id===sceneId)?.composition;
+  for(const s of slide.shapes){if(s.decorative||!s.sizes?.length)continue;const role=textRole(s,blocks,composition),actualPt=Math.min(...s.sizes)/100,requiredPt=minimums[role];
    if(actualPt+1e-9<requiredPt)failures.push({sceneId,name:s.name,role,actualPt,requiredPt});}
  });
  return {status:failures.length?'fail':'pass',failures,minimums:{...minimums},scope:'Run sizes after the uniform scene-to-slide fit, by role. Pass does not prove projection legibility, font availability or PowerPoint/Keynote rendering. Split or re-page a failing scene; the thresholds are not adjustable.'};

@@ -29,10 +29,10 @@ v1/v2 路径没有照片、视频、原生图表、表格、任意拖拽、多�
    ```
 
    预期：`dist/export-targets/decks/<deck>/` 中有 `<deck>.pptx`、`<deck>.pdf`、`report.json`、`report.md` 和 `sheet-*.jpg`；`exports.json` 列出每份演示文稿。只导出一份时加 `-- --decks gallery-zh-CN`。
-2. 打开 `report.md`，阅读五项结果（可编辑性、页面检查、PDF 可检索、无障碍、按角色的字号）和每一条回执。字号失败会指名场景、形状、角色、实际与要求字号；应拆页或重排该场景，而不是接受过小的文字。
+2. 打开 `report.md`，阅读五项结果（可编辑性、页面检查、PDF 可检索、无障碍、按角色的字号）和每一条回执。字号失败会指名场景、形状、角色、实际与要求字号；应拆页或重排该场景，而不是接受过小的文字。证据运行只记录失败，从不接受；`-- --paginate none` 让每个场景保持整页，报告因此列出整页导出会被拒绝的内容（`exports.json` 记录该开关）。
 3. 打开 `sheet-*.jpg`：网页场景、PowerPoint 幻灯片、PDF 页面并排（macOS 快速查看渲染）。
 
-   **高页面会被拆页（F1，2026-10-19）。** 一个场景用同一比例装进幻灯片，比 16:9 高的页面会把文字一起缩小。当任何文字会低于字号下限（`src/targets/capabilities.mjs` 的 `TYPOGRAPHY_MINIMUM_PT`：标题 18 pt、正文 10 pt、注释 6 pt，按 1440 px 页面等宽放入时的网页最小字号校准）时，编译器在没有元素跨越的水平线上把场景切成若干段，优先选区块之间的线并让各段均衡。每段是一张幻灯片；续页在标题占位符和备注里重复标题并带上序号，报告在 `pagination`（`{sceneId, parts}`）中列出。不缩字、不删字、不栅格化，相同输入得到相同字节。给 `exportDeck`/`studioTargetExport` 传 `paginate: 'none'`（Studio 导出请求里是 `paginate`）可让每个场景保持一页，此时字号结果会指名过小的文字。即使等宽放入文字仍过小的场景，两种方式都保持整页。在 S9b blueprint 页上的实测：整页时分部序号 5.2 pt、字号结果失败；拆页后两张（问题与回答；图解、分部与来源），每项结果通过，最小 7.2 pt。
+   **高页面会被拆页（F1，2026-10-19）。** 一个场景用同一比例装进幻灯片，比 16:9 高的页面会把文字一起缩小。当任何文字会低于字号下限（`src/targets/capabilities.mjs` 的 `TYPOGRAPHY_MINIMUM_PT`：标题 18 pt、正文 10 pt、注释 6 pt，按 1440 px 页面等宽放入时的网页最小字号校准）时，编译器在没有元素跨越的水平线上把场景切成若干段，优先选区块之间的线并让各段均衡。每段是一张幻灯片；续页在标题占位符和备注里重复标题并带上序号，报告在 `pagination`（`{sceneId, parts}`）中列出。不缩字、不删字、不栅格化，相同输入得到相同字节。给 `exportDeck`/`studioTargetExport` 传 `paginate: 'none'`（Studio 导出请求里是 `paginate`，`export:targets` 是 `--paginate none`）可让每个场景保持一页，此时字号结果会指名过小的文字。自 2026-10-19 起，字号结果失败与其他检查一样拒绝文件（`EXPORT_CHECK_FAILED`，`check: 'typography'`），除非作者接受：给 `exportDeck`/`studioTargetExport` 传 `acceptTypography: {by: 'author', at}`（Studio 导出请求里是 `acceptTypography: true`，由服务器记录时间）会导出文件，并在报告里写入 `typography.acceptedBy` 与 `typography.acceptedAt`；状态仍为 `fail`，`report.md` 显示 *fail · accepted by author at …*。证据运行（`allowFailedCheck`）只记录失败，不接受。即使等宽放入文字仍过小的场景，两种方式都保持整页。在 S9b blueprint 页上的实测：整页时分部序号 5.2 pt、字号结果失败；拆页后两张（问题与回答；图解、分部与来源），每项结果通过，最小 7.2 pt。
 4. 在 PowerPoint 和 Keynote 中打开 `.pptx`，逐项完成 `report.json` 中的 `applicationChecks`。
 
 在代码中，先在字体和图片就绪后测量静态网页导出（页面内运行 `src/targets/layout.mjs` 的 `measureExportLayout`），再调用 `exportDeck(document, 'pptx' | 'pdf', { plan, experimentalWeb: true, assetResources, layout, rasters })`。脚本会完成这两步。

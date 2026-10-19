@@ -90,9 +90,36 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
  $('#profileSave').onclick=async()=>{try{if(!state.project)throw Error(t('Open a deck first.','请先打开文稿。'));if((state.dirty||state.drafts.size)&&!await save())return;const r=await json('/api/visual/profiles',{project:state.project,name:$('#profileName').value,attest:$('#profileAttest').checked});await profiles();$('#profileList').value=r.profile.id;message(t(`Profile “${r.profile.name}” saved (${r.profile.acceptance.kind==='workbench-review'?'from the passing image review':'accepted by you'}): theme, ${r.profile.compositions.length} composition choice(s), type and motion. No text or images.`,`配置“${r.profile.name}”已保存（${r.profile.acceptance.kind==='workbench-review'?'来自通过的图片审阅':'由你确认接受'}）：主题、${r.profile.compositions.length} 项构图选择、字体与动效；不含文字与图片。`));}catch(err){error(err);}};
  $('#profileExport').onclick=async()=>{try{const id=$('#profileList').value;if(!id)throw Error(t('Choose a profile.','请选择配置。'));download(await(await api('/api/visual/profiles/'+id,undefined,'GET')).blob(),id+'.design-profile.json');}catch(err){error(err);}};
  $('#profileImport').onchange=async e=>{try{const file=e.target.files[0];if(!file)return;if(file.size>200000)throw Error(t('Choose a profile smaller than 200 KB.','请选择小于 200 KB 的配置文件。'));const r=await json('/api/visual/profiles/import',{profile:JSON.parse(await file.text())});await profiles();$('#profileList').value=r.profile.id;message(t(r.copied?'Profile imported as a copy (that id was taken).':'Profile imported.',r.copied?'配置已作为副本导入（原 id 已被使用）。':'配置已导入。'));}catch(err){error(err);}finally{e.target.value='';}};
- // ---- Export menu: PowerPoint and PDF through the export order, JSON as the complete project ----
- async function exportTarget(format){const r=await api('/api/visual/export',{project:state.project,format,ticket:state.render?.ticket});download(await r.blob(),'deckweft-visual.'+format);message(t(`${format==='pptx'?'PowerPoint':'PDF'} exported through the export order (${r.headers.get('X-DeckWeft-Export-Order')}). Levels: ${r.headers.get('X-DeckWeft-Levels')}; ${r.headers.get('X-DeckWeft-Receipts')} element receipt(s). Open it in the target application to check it.`,`${format==='pptx'?'PowerPoint':'PDF'} 已按导出顺序导出（${r.headers.get('X-DeckWeft-Export-Order')}）。等级：${r.headers.get('X-DeckWeft-Levels')}；${r.headers.get('X-DeckWeft-Receipts')} 项元素回执。请在目标应用中打开检查。`));}
- $('#exportPPTX').onclick=()=>exportTarget('pptx').catch(error);$('#exportPDF').onclick=()=>exportTarget('pdf').catch(error);$('#exportJSON').onclick=()=>$('#backup').click();
+ // ---- Export menu (S9a, F1): PowerPoint and PDF through the export order from the export dialog, JSON as the complete project ----
+ // The dialog offers the paging option (auto splits a tall page so its text keeps its size; none keeps the page whole), shows the
+ // typography result in yellow with every failure when the file is refused for text size, and takes the author's explicit
+ // acceptance. An accepted export is recorded with its time and stays yellow: acceptance never turns the result green.
+ let exportFormat='pptx';
+ const roleWord={title:['title','标题'],body:['body','正文'],annotation:['annotation','注释']};
+ function exportStatus(status,text,{acceptedAt}={}){const s=$('#exportStatus');s.dataset.status=status;s.textContent=text;if(acceptedAt)s.dataset.acceptedAt=acceptedAt;else delete s.dataset.acceptedAt;}
+ function typographyList(failures){const ul=$('#exportTypography'),shown=failures.slice(0,40);
+  ul.innerHTML=shown.map(f=>`<li>${x(t(`Page ${f.sceneId} · ${f.role in roleWord?roleWord[f.role][0]:f.role}: ${f.actualPt} pt, needs ${f.requiredPt} pt (${f.name})`,`第 ${f.sceneId} 页 · ${f.role in roleWord?roleWord[f.role][1]:f.role}：${f.actualPt} pt，需要 ${f.requiredPt} pt（${f.name}）`))}</li>`).join('')+(failures.length>shown.length?`<li>${x(t(`… and ${failures.length-shown.length} more`,`…还有 ${failures.length-shown.length} 处`))}</li>`:'');
+  ul.hidden=!failures.length;}
+ function openExport(format){exportFormat=format;$('#exportTitle').textContent=format==='pptx'?t('Export PowerPoint','导出 PowerPoint'):t('Export PDF','导出 PDF');$('#exportPaginateField').hidden=format!=='pptx';exportStatus('idle','');typographyList([]);$('#exportAcceptField').hidden=true;$('#exportAccept').checked=false;$('#exportRun').disabled=false;$('#exportDialog').showModal();}
+ async function runExport(){
+  const format=exportFormat,paginate=$('#exportPaginate').value,accept=!$('#exportAcceptField').hidden&&$('#exportAccept').checked,name=format==='pptx'?'PowerPoint':'PDF';
+  $('#exportRun').disabled=true;exportStatus('running',t('Measuring the static scene and compiling through the export order…','正在测量静态场景并按导出顺序编译…'));
+  try{
+   const r=await api('/api/visual/export',{project:state.project,format,ticket:state.render?.ticket,paginate,...(accept?{acceptTypography:true}:{})});
+   download(await r.blob(),'deckweft-visual.'+format);
+   const ty=JSON.parse(r.headers.get('X-DeckWeft-Typography')||'null'),summary=t(`${name} exported through the export order (${r.headers.get('X-DeckWeft-Export-Order')}). Levels: ${r.headers.get('X-DeckWeft-Levels')}; ${r.headers.get('X-DeckWeft-Receipts')} element receipt(s). Open it in the target application to check it.`,`${name} 已按导出顺序导出（${r.headers.get('X-DeckWeft-Export-Order')}）。等级：${r.headers.get('X-DeckWeft-Levels')}；${r.headers.get('X-DeckWeft-Receipts')} 项元素回执。请在目标应用中打开检查。`);
+   $('#exportAcceptField').hidden=true;
+   if(ty?.acceptedBy)exportStatus('accepted',t(`Exported with ${ty.failures} text size(s) below the presentable minimum, accepted by you at ${ty.acceptedAt}. The export report records this acceptance; the typography result stays a failure. ${summary}`,`已导出，其中 ${ty.failures} 处文字低于可读下限，由你在 ${ty.acceptedAt} 接受。导出报告记录了这次接受；字号结果仍为失败。${summary}`),{acceptedAt:ty.acceptedAt});
+   else{typographyList([]);exportStatus('pass',summary+(ty?.pagination?t(` ${ty.pagination} tall page(s) were split into slides to keep the text size.`,` ${ty.pagination} 个高页面已拆成多张幻灯片以保持字号。`):''));}
+   message(summary);
+  }catch(e){
+   const typography=e.code==='EXPORT_CHECK_FAILED'&&Array.isArray(e.details)&&e.details.length&&e.details.every(d=>d.check==='typography')?e.details[0].failures:null;
+   if(typography){typographyList(typography);$('#exportAcceptField').hidden=false;$('#exportAccept').checked=false;
+    exportStatus('fail',t(`${typography.length} text size(s) are below the presentable minimum; nothing was exported. ${paginate==='none'?'Choose “Split into slides” to keep the text size, or accept the sizes below.':'Shorten or split the page, or accept the sizes below.'}`,`${typography.length} 处文字低于可读下限，没有导出任何文件。${paginate==='none'?'选择“拆成多张幻灯片”以保持字号，或接受下方列出的字号。':'缩短或拆分该页，或接受下方列出的字号。'}`));}
+   else{typographyList([]);$('#exportAcceptField').hidden=true;exportStatus('error',e.code==='EXPORT_CHECK_FAILED'&&Array.isArray(e.details)?`${e.message} (${e.details.map(d=>d.check).join(', ')})`:e.message);error(e);}
+  }finally{$('#exportRun').disabled=false;}
+ }
+ $('#exportPPTX').onclick=()=>openExport('pptx');$('#exportPDF').onclick=()=>openExport('pdf');$('#exportRun').onclick=()=>runExport();$('#exportClose').onclick=()=>$('#exportDialog').close();$('#exportJSON').onclick=()=>$('#backup').click();
  json('/api/visual/workbench-capabilities',undefined,'GET').then(c=>{captureAvailable=c.captureAvailable;status();}).catch(error);
  function status(){const html=$('#exportHTML'),blocked=!captureAvailable;for(const id of ['#exportPPTX','#exportPDF']){$(id).disabled=html.disabled||blocked;$(id).title=blocked?t('Start the studio with --capture-browser to export PowerPoint and PDF.','以 --capture-browser 启动 Studio 才能导出 PowerPoint 与 PDF。'):'';}$('#exportJSON').disabled=!state.project;}
  // The session token arrives after mount, so the list loads when the author opens these controls.

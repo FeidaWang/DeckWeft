@@ -12,3 +12,19 @@ export async function revealStudio(page,kind){
  else if(kind==='compositions')await open('.candidate-panel:not(.directions-panel)');
  else if(kind==='review')await open('#reviewPanel');
 }
+
+/**
+ * The S7/F1 export dialog. Opens it from an export-group button (or keeps the open one with open:false), chooses the paging
+ * option, ticks the author's acceptance when asked, runs the export and returns the dialog's state once it settled.
+ * The caller waits for the download itself; a 'fail' or 'error' status downloads nothing.
+ */
+export async function studioExport(page,id,{paginate,accept=false,open=true}={}){
+ if(open){await revealStudio(page,'file');await page.waitForFunction(s=>!document.querySelector(s).disabled,id);await page.locator(id).click();}
+ await page.locator('#exportDialog').waitFor({state:'visible'});
+ if(paginate&&await page.locator('#exportPaginate').isVisible())await page.locator('#exportPaginate').selectOption(paginate);
+ if(accept)await page.locator('#exportAccept').check();
+ await page.locator('#exportRun').click();
+ await page.waitForFunction(()=>['pass','fail','accepted','error'].includes(document.querySelector('#exportStatus').dataset.status),{},{timeout:180000});
+ return page.evaluate(()=>{const s=document.querySelector('#exportStatus');return {status:s.dataset.status,text:s.textContent,acceptedAt:s.dataset.acceptedAt||null,color:getComputedStyle(s).backgroundColor,failures:[...document.querySelectorAll('#exportTypography li')].map(l=>l.textContent),acceptVisible:!document.querySelector('#exportAcceptField').hidden,paginateVisible:!document.querySelector('#exportPaginateField').hidden};});
+}
+export const closeExportDialog=async page=>{await page.locator('#exportClose').click();await page.locator('#exportDialog').waitFor({state:'hidden'});};

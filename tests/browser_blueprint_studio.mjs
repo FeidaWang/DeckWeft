@@ -11,7 +11,7 @@ import {startStudio} from '../src/services/server.mjs';
 import {VisualProjectStore} from '../src/services/visual-store.mjs';
 import {createVisualProject} from '../src/core/visual-project.mjs';
 import {readZip} from '../src/targets/pptx/audit.mjs';
-import {revealStudio} from './studio-controls.mjs';
+import {revealStudio,studioExport,closeExportDialog} from './studio-controls.mjs';
 import {blueprintFixture} from './blueprint-a.mjs';
 const {values:a}=parseArgs({options:{out:{type:'string'},widths:{type:'string'}}}),out=path.resolve(a.out||'dist/s9b-blueprint-a'),shots=path.join(out,'studio');
 await rm(path.join(out,'library'),{recursive:true,force:true});await mkdir(path.join(out,'library'),{recursive:true});await rm(shots,{recursive:true,force:true});await mkdir(shots,{recursive:true});await mkdir(path.join(out,'exports'),{recursive:true});
@@ -34,14 +34,14 @@ const save=async page=>{await measured(page);await revealStudio(page,'file');if(
 async function shot(page,name){await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(300);const file=path.join(shots,name+'.png');await page.screenshot({path:file});return path.relative(out,file);}
 const interactionPlan=async page=>JSON.parse(await page.locator('#interactionJSON').inputValue());
 const openInteractions=async page=>{await revealStudio(page,'edit');await page.locator('#contentTab').click();const d=page.locator('details').filter({has:page.locator('#enableBlueprint')});if(!await d.evaluate(n=>n.open))await d.locator(':scope > summary').click();};
-async function exportFile(page,id,ext,{refused}={}){
- await revealStudio(page,'file');await page.waitForFunction(s=>!document.querySelector(s).disabled,id);const before=await page.locator('#message').textContent(),waiting=page.waitForEvent('download',{timeout:180000});await page.locator(id).click();
- const error=page.waitForFunction(b=>document.querySelector('#message').classList.contains('error')&&document.querySelector('#message').textContent!==b,before,{timeout:180000}).then(()=>page.locator('#message').textContent());
- const result=await Promise.race([waiting.then(d=>({download:d})),error.then(message=>({message}))]);
- if(refused){assert.ok(result.message,`${ext} must be refused`);assert.match(result.message,refused);waiting.catch(()=>{});return result.message;}
- if(!result.download)throw Error(`${ext} export refused: ${result.message}`);
- const file=path.join(out,'exports',`studio-${path.basename(id).slice(7).toLowerCase()}-${ext==='pdf'?'print':'deck'}.${ext}`);await result.download.saveAs(file);return file;
+async function exportFile(page,id,ext,{refused,paginate}={}){
+ const waiting=page.waitForEvent('download',{timeout:180000});waiting.catch(()=>{});
+ const r=await studioExport(page,id,{paginate});
+ if(refused){assert.equal(r.status,'error',`${ext} must be refused: ${r.text}`);assert.match(r.text,refused);await closeExportDialog(page);return r.text;}
+ if(r.status!=='pass')throw Error(`${ext} export refused (${r.status}): ${r.text}`);
+ const file=path.join(out,'exports',`studio-${path.basename(id).slice(7).toLowerCase()}-${ext==='pdf'?'print':'deck'}.${ext}`);await (await waiting).saveAs(file);await closeExportDialog(page);return {file,dialog:r};
 }
+const slideCount=async file=>[...readZip(await readFile(file)).keys()].filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).length;
 const artifacts={};
 try{
  const en=await plainDeck('en'),zh=await plainDeck('zh-CN');
@@ -68,11 +68,32 @@ try{
  const explain=await exportFile(page,'#exportPDF','pdf',{refused:/Explain|object/i});record(widths[0],'PDF refused with Explain as the static state',{message:explain,hint:await page.locator('#blueprintStatic').textContent()});
  await openInteractions(page);await page.locator('#staticState').selectOption(options.find(o=>/Diagram/.test(o.text)).value);await measured(page);await save(page);await measured(page);
  assert.match(await page.locator('#blueprintStatic').textContent(),/Static state: Diagram/);artifacts.chosen=await shot(page,'1440-4-static-diagram');
- const pptx=await exportFile(page,'#exportPPTX','pptx'),pdf=await exportFile(page,'#exportPDF','pdf');
- const files=readZip(await readFile(pptx)),slide=[...files.keys()].filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).sort()[1],xml=files.get(slide).toString('utf8'),saved=await store.get(en.id);
+ const {file:pptx,dialog:pagedDialog}=await exportFile(page,'#exportPPTX','pptx'),{file:pdf}=await exportFile(page,'#exportPDF','pdf');
+ // Since F1 (2026-10-19) the tall blueprint page is paged (auto) into two slides; the explanations are text on one of its slides (between the opening and closing pages).
+ const files=readZip(await readFile(pptx)),names=[...files.keys()].filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).sort((a,b)=>a.length-b.length||a.localeCompare(b)),xml=names.slice(1,-1).map(n=>files.get(n).toString('utf8')).join('\n'),saved=await store.get(en.id);
  const explanations=saved.document.explanations,onSlide=explanations.filter(e=>xml.includes(e.text.replace(/&/g,'&amp;')));
- assert.equal(onSlide.length,explanations.length,'every explanation is text on slide 2');assert.equal((await readFile(pdf)).subarray(0,4).toString(),'%PDF');
- record(widths[0],'Studio PowerPoint and PDF export with Diagram as the static state',{pptx:path.relative(out,pptx),pdf:path.relative(out,pdf),explanationsOnSlide:onSlide.length,parts:4});
+ assert.equal(onSlide.length,explanations.length,'every explanation is text on a slide of the blueprint page');assert.equal(names.length,4,'opening, the two parts of the blueprint page, closing');assert.equal((await readFile(pdf)).subarray(0,4).toString(),'%PDF');
+ record(widths[0],'Studio PowerPoint and PDF export with Diagram as the static state',{pptx:path.relative(out,pptx),pdf:path.relative(out,pdf),explanationsOnSlide:onSlide.length,slides:names.length});
+ // F1: whole (paginate none), the page's part numbers fall under the typography minimum. The dialog shows the failures in yellow and
+ // downloads nothing; only the author's explicit acceptance exports the file, recorded with its time, and the status stays yellow.
+ const YELLOW='rgb(255, 246, 214)';assert.ok(pagedDialog.paginateVisible,'the paging option is offered for PowerPoint');assert.notEqual(pagedDialog.color,YELLOW,'a passing export is not yellow');assert.equal(pagedDialog.acceptVisible,false);
+ const whole=await studioExport(page,'#exportPPTX',{paginate:'none'});
+ assert.equal(whole.status,'fail',whole.text);assert.equal(whole.color,YELLOW);assert.ok(whole.acceptVisible,'the acceptance is offered');
+ assert.ok(whole.failures.length>0&&whole.failures.every(f=>/\d+(\.\d+)? pt/.test(f)),whole.failures.join(' | '));assert.ok(whole.failures.some(f=>f.includes('pipeline')),'the failures name the page');
+ artifacts.typographyFail=await shot(page,'1440-5-typography-fail');
+ record(widths[0],'PowerPoint whole (paginate none): typography failures listed in yellow, nothing downloaded',{status:whole.status,text:whole.text,failures:whole.failures,shot:artifacts.typographyFail});
+ const waitingWhole=page.waitForEvent('download',{timeout:180000});
+ const accepted=await studioExport(page,'#exportPPTX',{accept:true,open:false});
+ assert.equal(accepted.status,'accepted',accepted.text);assert.equal(accepted.color,YELLOW,'accepted stays yellow');assert.match(accepted.acceptedAt||'',/^\d{4}-\d\d-\d\dT/);assert.deepEqual(accepted.failures,whole.failures);
+ const wholeFile=path.join(out,'exports','studio-pptx-whole-accepted.pptx');await (await waitingWhole).saveAs(wholeFile);
+ const wholeSlides=await slideCount(wholeFile),pagedSlides=await slideCount(pptx);assert.ok(pagedSlides>wholeSlides,`paged ${pagedSlides} > whole ${wholeSlides}`);
+ artifacts.typographyAccepted=await shot(page,'1440-6-typography-accepted');await closeExportDialog(page);
+ record(widths[0],'PowerPoint whole after the author accepted the sizes: exported, still yellow, acceptance time shown',{status:accepted.status,text:accepted.text,acceptedAt:accepted.acceptedAt,wholeSlides,pagedSlides,pptx:path.relative(out,wholeFile),shot:artifacts.typographyAccepted});
+ // Opening the dialog again starts clean: paging back to auto by default, no acceptance carried over, and the paged export passes.
+ await revealStudio(page,'file');await page.locator('#exportPPTX').click();await page.locator('#exportDialog').waitFor({state:'visible'});
+ assert.equal(await page.locator('#exportPaginate').inputValue(),'none','the author\'s last choice is kept while the Studio is open');assert.equal(await page.locator('#exportAcceptField').isHidden(),true);assert.equal(await page.locator('#exportStatus').getAttribute('data-status'),'idle');
+ await page.locator('#exportPaginate').selectOption('auto');const waitingPaged=page.waitForEvent('download',{timeout:180000});const again=await studioExport(page,'#exportPPTX',{open:false});assert.equal(again.status,'pass',again.text);await waitingPaged;await closeExportDialog(page);
+ record(widths[0],'export dialog reopened: no acceptance carried over; paged export passes',{status:again.status});
  await context.close();
  // 1024 and 390: the saved deck in Chinese is made a blueprint page and shown; the controls and hint fit the narrow inspector.
  for(const width of widths.slice(1)){

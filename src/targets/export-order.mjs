@@ -53,12 +53,21 @@ export function readiness(document,plan,target,{resources={},layout,html}){
  return {assets,fonts:[...families].sort(),platformFontsMeasured:!!platform,glyphsAudited:Array.isArray(layout.missingGlyphs),images:layout.images.length,renderHash:layout.renderHash};
 }
 
+/** F1: the only acceptance the export order takes is the author's, with the time it was given (an ISO 8601 instant). */
+export function typographyAcceptance(value){
+ if(value===null||value===undefined||value===false)return null;
+ const ok=value&&typeof value==='object'&&value.by==='author'&&typeof value.at==='string'&&!Number.isNaN(Date.parse(value.at));
+ if(!ok)throw new DeckError('EXPORT_ACCEPTANCE','Text below the presentable minimum can be accepted only by the author, with the time of the acceptance ({by: "author", at: ISO 8601}).',422,[{received:value===true?true:value&&typeof value==='object'?{by:value.by??null,at:value.at??null}:typeof value}]);
+ return {by:'author',at:new Date(value.at).toISOString()};
+}
+
 /**
  * Runs every stage for one paged target. `html` is the static web export (exportPresentation with format html), `layout` its
  * browser measurement (measureExportLayout plus CDP platform fonts), `rasters` element captures for L3 fallbacks.
  */
-export function runExport(document,plan,target,{resources={},layout,rasters={},html,allowFailedCheck=false,paginate='auto'}){
+export function runExport(document,plan,target,{resources={},layout,rasters={},html,allowFailedCheck=false,paginate='auto',acceptTypography=null}){
  if(!PAGED_TARGETS.includes(target))throw new DeckError('EXPORT_FORMAT','The export order applies to pptx and pdf.',400);
+ const acceptance=typographyAcceptance(acceptTypography);
  const run=exportRun(target);
  const ready=run.stage('ready',()=>{const r=readiness(document,plan,target,{resources,layout,html});return {value:r,summary:{assets:r.assets.length,fonts:r.fonts,images:r.images}};});
  // S9b: a blueprint A page exports only its complete explanation (an author-chosen Diagram or Explore state, measured whole).
@@ -73,11 +82,15 @@ export function runExport(document,plan,target,{resources={},layout,rasters={},h
  });
  const levels=documentLevels(document);
  const check=run.stage('check',()=>{
-  if(target==='pptx'){const a=auditPPTX({bytes:output.bytes,document,plan,scenes,compiled:output,levels});return {value:a,summary:{editability:a.editability.status,sceneCheck:a.sceneCheck.status,accessibility:a.accessibility.status,typography:a.typography.status}};}
+  if(target==='pptx'){const a=auditPPTX({bytes:output.bytes,document,plan,scenes,compiled:output,levels});
+   // F1: the author may accept text below the presentable minimum. The acceptance is recorded with its time; the result stays a failure.
+   if(a.typography.status==='fail'&&acceptance){a.typography.acceptedBy=acceptance.by;a.typography.acceptedAt=acceptance.at;}
+   return {value:a,summary:{editability:a.editability.status,sceneCheck:a.sceneCheck.status,accessibility:a.accessibility.status,typography:a.typography.status,...(a.typography.acceptedBy?{typographyAcceptedBy:a.typography.acceptedBy}:{})}};}
   const c=checkPrintJob(output,{document,plan});return {value:c,summary:{status:c.status}};
  });
- // A failed check refuses the file unless the caller records failures on purpose (the evidence run does).
- const failed=target==='pptx'?['editability','sceneCheck','accessibility'].filter(k=>check[k].status==='fail'):check.status==='fail'?['print']:[];
+ // A failed check refuses the file unless the caller records failures on purpose (the evidence run does). A typography failure
+ // is refused too, unless the author accepted it (recorded above); paging the scene (paginate 'auto') is the other way out.
+ const failed=target==='pptx'?['editability','sceneCheck','accessibility','typography'].filter(k=>check[k].status==='fail'&&!(k==='typography'&&check[k].acceptedBy)):check.status==='fail'?['print']:[];
  if(failed.length&&!allowFailedCheck)throw new DeckError('EXPORT_CHECK_FAILED','The exported file failed its own check; see the details.',422,failed.map(k=>({check:k,failures:target==='pptx'?check[k].failures:check.failures})));
  const body=target==='pptx'?output.bytes:output.html;
  return {target,ready,delivery,levels,output,check,order:run.receipts,

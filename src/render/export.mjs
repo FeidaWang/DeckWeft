@@ -7,8 +7,8 @@ import { renderHTML } from './html.mjs';
 import { figmaHandoff,motionHandoff } from '../adapters/handoff.mjs';
 import { exportPresentation } from './web/document.mjs';
 const json=value=>JSON.stringify(value,null,2)+'\n';
-export function exportDeck(project,format,{slideIndex=0,resolved:provided,includeNotes=false,motion='system',assetResources={},experimentalWeb=false,plan,preview=false,layout,rasters,allowFailedCheck,paginate}={}){
-  if(project?.format==='deckweft-presentation')return exportPresentation(project,format,{plan,experimentalWeb,assetResources,preview,layout,rasters,allowFailedCheck,paginate});
+export function exportDeck(project,format,{slideIndex=0,resolved:provided,includeNotes=false,motion='system',assetResources={},experimentalWeb=false,plan,preview=false,layout,rasters,allowFailedCheck,paginate,acceptTypography}={}){
+  if(project?.format==='deckweft-presentation')return exportPresentation(project,format,{plan,experimentalWeb,assetResources,preview,layout,rasters,allowFailedCheck,paginate,acceptTypography});
   assertProject(project);
   if(typeof includeNotes!=='boolean'||!['system','full','reduced','off'].includes(motion))throw new DeckError('EXPORT_OPTIONS','Use a boolean includeNotes and a supported motion policy.');
   if(format==='json')return {body:json(project),mime:'application/json',extension:'deck.json'};
