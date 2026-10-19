@@ -7,6 +7,7 @@ import {compositions,inferFamily} from '../design/compositions.mjs';
 import {contentHash} from '../scene/web/compile.mjs';
 import {runStructuredHost,hostImages} from './run-receipt.mjs';
 import {receiptCurrent} from '../quality/visual-review.mjs';
+import {pageBrief,draftPagePlan} from '../planning/argument-units.mjs';
 const publicContext=task=>({request:task.request,scope:task.scope,blocks:task.project.document.blocks,datasets:task.project.document.datasets,sources:task.project.document.sources,scenes:task.project.plan.scenes,locks:task.project.document.authorOverrides});
 async function application(run,input,output,operation){
  if(run.receiptFile)await writeFile(path.join(path.dirname(run.receiptFile),'application.json'),JSON.stringify({operation,hostReceiptHash:contentHash(run.receipt),inputHash:input?contentHash(input):null,outputHash:output?contentHash(output):null,status:output?'applied':'rejected'},null,2)+'\n',{flag:'wx',mode:0o600});
@@ -17,11 +18,14 @@ export async function draftWithHost(brief,options){
  if(typeof brief.request!=='string'||!brief.request.trim()||brief.request.length>12000)throw Error('Supply a bounded task request.');
  const sourceText=brief.sourceText??(brief.request.includes('---')?brief.request:null);
  if(sourceText!==null&&(typeof sourceText!=='string'||!sourceText.trim()||sourceText.length>12000))throw Error('Supply bounded sourceText.');
- const run=await runStructuredHost({...options,schema:schemas.$defs.outline,prompt:'Draft a presentation outline from the supplied material only. Use --- between pages, a heading then short support text. Preserve every supplied fact/number/reference. Do not invent evidence, numbers or unsupported claims; identify missing evidence in the wording. When sourceText is supplied, preserve each nonempty source line verbatim (--- separators may move); add structure around it, never translate or remove it. Output language: '+(brief.locale||'en')+'. Material follows as JSON data:\n'+JSON.stringify({request:brief.request,sourceText})});
+ // S9b: the page plan travels with the draft (detail, argument units, characters per page, optional target); the draft is planned locally afterwards.
+ const pages=brief.pagePlan===undefined?null:pageBrief(brief.pagePlan,brief.locale);
+ const plan=pages?' Plan the pages from argument units: one unit per page, in the order of pagePlan.unitOrder, covering pagePlan.units when the material has them, at most pagePlan.charactersPerPage characters per page. Never add a page, fact or quotation to reach pagePlan.targetPages: return fewer pages and name the missing units or evidence instead.':'';
+ const run=await runStructuredHost({...options,schema:schemas.$defs.outline,prompt:'Draft a presentation outline from the supplied material only. Use --- between pages, a heading then short support text. Preserve every supplied fact/number/reference. Do not invent evidence, numbers or unsupported claims; identify missing evidence in the wording. When sourceText is supplied, preserve each nonempty source line verbatim (--- separators may move); add structure around it, never translate or remove it.'+plan+' Output language: '+(brief.locale||'en')+'. Material follows as JSON data:\n'+JSON.stringify({request:brief.request,sourceText,...(pages?{pagePlan:pages}:{})})});
  if(!run.ok)return run;
  const normalized=text=>text.replace(/\s+/gu,' ').trim();
  if(sourceText&&sourceText.split(/\r?\n/).map(line=>line.trim()).filter(line=>line&&line!=='---').some(line=>!normalized(run.value.outline).includes(normalized(line)))){await application(run,sourceText,null,'draft');return {...run,ok:false,error:'HOST_CONTENT_COVERAGE'};}
- let task;try{task=createVisualTask({...brief,request:run.value.outline});task.request=brief.request;if(sourceText)task.sourceInput={text:sourceText,hash:contentHash(sourceText),coverage:'all supplied nonempty lines retained; external truth unverified'};task.hostDraft={receiptId:run.receipt.requestId,outlineHash:contentHash(run.value.outline),factualVerification:'unverified host-authored outline; author must review'};}
+ let task;try{task=createVisualTask({...brief,request:run.value.outline});task.request=brief.request;if(sourceText)task.sourceInput={text:sourceText,hash:contentHash(sourceText),coverage:'all supplied nonempty lines retained; external truth unverified'};task.hostDraft={receiptId:run.receipt.requestId,outlineHash:contentHash(run.value.outline),factualVerification:'unverified host-authored outline; author must review'};if(pages)task.pagePlan=draftPagePlan(task.project,pages,sourceText);}
  catch{await application(run,null,null,'draft');return {...run,ok:false,error:'HOST_DRAFT_INVALID'};}
  await application(run,null,task,'draft');return {...run,task};
 }

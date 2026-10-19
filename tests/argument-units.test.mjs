@@ -158,3 +158,13 @@ test('deterministic: the same input gives deep-equal output and is never mutated
   assert.equal(JSON.stringify(p),before);
  }
 });
+
+test('S9b draftPagePlan: a fitting deck with a page that holds none of the supplied lines needs review',async()=>{
+ const {createVisualTask}=await import('../src/agent/director.mjs'),{draftPagePlan,pageBrief}=await import('../src/planning/argument-units.mjs');
+ const source='What should we decide?\nPick one export path.\n---\nEvidence\nEditability passed on 18 of 18 decks.\n---\nNext step\nRun PowerPoint yourself.';
+ const project=createVisualTask({request:source+'\n---\nAside\nA page the host wrote.'}).project,brief=pageBrief({detail:'brief'});
+ const plan=draftPagePlan(project,brief,source);
+ assert.equal(plan.hostAddedPages.length,1);assert.equal(plan.status,'needs-review');assert.equal(plan.draftedPages,4);
+ assert.deepEqual(draftPagePlan(createVisualTask({request:source}).project,brief,source).hostAddedPages,[]);
+ assert.throws(()=>pageBrief({detail:'long'}),e=>e.code==='PAGE_PLAN_DETAIL');
+});

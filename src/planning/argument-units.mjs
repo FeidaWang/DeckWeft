@@ -204,3 +204,24 @@ export function applyPagePlan(project,plan,{split=false,mark=false}={}){
  assertVisualLocks(original,copy);
  return {project:assertVisualProject(copy),changes,skipped};
 }
+
+/**
+ * S9b: the page plan a host draft receives (Codex). `pageBrief` is what the prompt carries: the detail level, the argument units
+ * it needs, the characters a page holds and an optional target. `draftPagePlan` plans the drafted deck exactly as the local path
+ * does, and, when the author supplied source text, lists drafted pages that hold none of its lines: the host added them, so the
+ * author is asked instead of a padded deck being accepted silently. Nothing is removed or merged here.
+ */
+export function pageBrief({detail='standard',targetPages}={},locale='en'){
+ if(!DETAIL_LEVELS.includes(detail))fail('PAGE_PLAN_DETAIL','Choose brief, standard or detailed.');
+ if(targetPages!==undefined&&(!Number.isInteger(targetPages)||targetPages<1||targetPages>1000))fail('PAGE_PLAN_TARGET','Choose a target of 1–1000 pages, or leave it empty.');
+ const lang=locale==='zh-CN'?'zh-CN':'en';
+ return {detail,units:[...DETAIL_TABLE[detail].required],unitOrder:[...ARGUMENT_UNITS],charactersPerPage:DETAIL_TABLE[detail].capacity[lang],...(targetPages!==undefined?{targetPages}:{})};
+}
+const normal=t=>t.replace(/\s+/gu,' ').trim();
+export function draftPagePlan(project,brief,sourceText=null){
+ const plan=planPages(project,{detail:brief.detail,...(brief.targetPages!==undefined?{targetPages:brief.targetPages}:{})}),{document}=project;
+ const lines=sourceText?sourceText.split(/\r?\n/).map(normal).filter(l=>l&&l!=='---'):[];
+ const added=lines.length?project.plan.scenes.map((s,i)=>({sceneId:s.id,n:i+1,text:normal(s.blockIds.map(id=>textOf(document.blocks.find(b=>b.id===id))).join(' '))})).filter(p=>!lines.some(l=>p.text.includes(l))):[];
+ const questions=[...plan.questions,...added.map(p=>({kind:'host-added-page',unit:null,sceneId:p.sceneId,en:`Page ${p.n} holds none of your supplied lines; the host added it. Keep it only if it says what you mean, or delete it. DeckWeft will not pad the deck.`,zh:`第 ${p.n} 页不包含你提供的任何原文，是宿主添加的。只有当它表达了你的意思时才保留，否则请删除。DeckWeft 不会填充内容。`}))];
+ return {...plan,brief:structuredClone(brief),draftedPages:project.plan.scenes.length,hostAddedPages:added.map(p=>p.sceneId),questions,status:added.length&&plan.status==='fits'?'needs-review':plan.status};
+}

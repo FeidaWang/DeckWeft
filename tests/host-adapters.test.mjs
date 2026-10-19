@@ -162,3 +162,22 @@ fs.writeFileSync('fixture-started',String(process.pid));process.stdin.resume();s
  let pid;for(let n=0;n<200;n++){try{pid=Number(await readFile(path.join(out,'fixture-started'),'utf8'));break;}catch{await new Promise(r=>setTimeout(r,10));}}
  assert.ok(pid,'fixture started');child.kill('SIGINT');const code=await closed;assert.equal(code,1,stderr);assert.match(stderr,/HOST_CANCELLED/);assert.ok(!(await readdir(out)).includes('task.json.lock'));assert.throws(()=>process.kill(pid,0),{code:'ESRCH'});
 });
+
+test('S9b: a Codex draft receives the page plan, is planned locally, and pages holding none of the supplied lines are asked about, never accepted silently',async t=>{
+ const cwd=await temp(t),prompts=[],source='Why exports drift\nTeams lose hours after export.\n---\nEvidence\nEditability passed on 18 of 18 decks.';
+ const capture=(value)=>{const run=fakeHost(value);return async(command,args,options)=>{if(args.includes('--output-schema'))prompts.push(options?.input??args.at(-1));return run(command,args,options);};};
+ const padded=source+'\n---\nMarket context\nThe market is growing fast.';
+ const brief={request:'Arrange this source.',sourceText:source,pagePlan:{detail:'brief',targetPages:4}};
+ const draft=await draftWithHost(brief,{host:'codex',cwd,live:true,runner:capture({outline:padded})});
+ assert.equal(draft.ok,true);const plan=draft.task.pagePlan;
+ assert.match(String(prompts.at(-1)),/pagePlan/);assert.match(String(prompts.at(-1)),/Never add a page, fact or quotation to reach pagePlan\.targetPages/);
+ assert.equal(plan.detail,'brief');assert.equal(plan.targetPages,4);assert.equal(plan.draftedPages,3);assert.deepEqual(plan.brief.units,['question','evidence','action']);
+ assert.equal(plan.hostAddedPages.length,1);assert.equal(plan.status,'needs-material','missing material outranks review');assert.ok(plan.questions.some(q=>q.kind==='host-added-page'&&/holds none of your supplied lines/.test(q.en)&&/宿主添加/.test(q.zh)));
+ assert.ok(plan.questions.some(q=>q.kind==='page-count'),'below the target it asks for material instead of padding');
+ const review=await draftWithHost({...brief,pagePlan:{detail:'brief'}},{host:'codex',cwd,live:true,runner:capture({outline:padded})});assert.equal(review.task.pagePlan.hostAddedPages.length,1);
+ // The exact source alone: nothing host-added; a bad target is refused before any host run.
+ const clean=await draftWithHost({...brief,pagePlan:{detail:'standard'}},{host:'codex',cwd,live:true,runner:capture({outline:source})});assert.deepEqual(clean.task.pagePlan.hostAddedPages,[]);
+ await assert.rejects(draftWithHost({...brief,pagePlan:{detail:'standard',targetPages:0}},{host:'codex',cwd,live:true,runner:capture({outline:source})}),{code:'PAGE_PLAN_TARGET'});
+ // Without a page plan the draft behaves as before.
+ assert.equal((await draftWithHost({request:'Arrange this source.',sourceText:source},{host:'codex',cwd,live:true,runner:capture({outline:source})})).task.pagePlan,undefined);
+});
