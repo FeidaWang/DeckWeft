@@ -96,7 +96,7 @@ try{
  assert.equal(options.find(o=>o.selected).value,'quote');assert.deepEqual(options.filter(o=>!o.disabled).map(o=>o.value).sort(),['chapter','quote','statement']);
  await revealStudio(editor,'compositions');await editor.locator('#compare').click();await editor.waitForFunction(()=>!document.querySelector('#rhythm').disabled,null,{timeout:120000});
  assert.equal(await editor.locator('.candidate-card').count(),3);const titles=await editor.locator('.candidate-card h3').allTextContents();assert.ok(titles.every(t=>/quote|verbatim/i.test(t)),JSON.stringify(titles));
- await editor.locator('.candidate-panel').scrollIntoViewIfNeeded();await capture(editor,'studio-quote-candidates.png');
+ await editor.locator('.candidate-panel:not(.directions-panel)').scrollIntoViewIfNeeded();await capture(editor,'studio-quote-candidates.png');
  await editor.locator('[data-inspect-candidate="2"]').click();await editor.locator('#candidateDialog').waitFor({state:'visible'});await editor.frameLocator('#largeCandidate').locator('#quote').waitFor({state:'visible'});await capture(editor,'studio-quote-large.png');await editor.locator('#candidateClose').click();
  await editor.locator('[data-select-candidate="2"]:enabled').click();await ready();await editor.locator('#save').click();await ready();await editor.reload();await ready();
  assert.equal((await store.get(saved.id)).plan.scenes.find(s=>s.id==='quote').composition,'quote-band');report.studio.push('Quote family: three measured candidates, larger view, quote-band selected, saved and reopened');
