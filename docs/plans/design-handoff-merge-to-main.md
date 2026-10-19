@@ -1,6 +1,6 @@
 # Plan: merging the S1–S10 stack into `main`
 
-Written 2026-10-19 in step S10; steps 1 to 5 were prepared locally in S11 (see [Readiness](#readiness-s11-2026-10-19)). **This is a plan.** Nothing has been merged, pushed or deleted, and no release was tagged. The one local action is the backup tag (step 5). Each remaining action needs the user's direct instruction, as AGENTS.md requires for anything that publishes.
+Written 2026-10-19 in step S10; steps 1 to 5 were prepared locally in S11 (see [Readiness](#readiness-s11-2026-10-19)). **Status: executed on 2026-10-19 at the user's instructions** (see [After the merge](#after-the-merge-2026-10-19)). The text below keeps the plan as written; the sentences about what had not yet happened describe the time of writing. No release was tagged.
 
 ## Where things stand
 
@@ -25,7 +25,7 @@ Facts that shape the plan:
 
 - `main` has not moved since the stack started. `git merge-base main d584d76` is `058b939`, so a fast-forward is possible and `git merge-tree --write-tree main d584d76` merges without conflict (checked 2026-10-19).
 - At `d584d76` the stack changes **562 files** over `main` (119,052 added and 1,801 deleted lines; 367 files are under `docs/evidence/`, 195 are elsewhere). At `a2d5371` it was 557 files. Five of the 562 are under `schemas/` (`design-plan`, `design-profile`, `presentation-v3`, `theme-pack`, `web-scene`, changed by S1 and later steps); state that in the pull request. Review by step, not as one diff.
-- `origin/claude/s6-start-1c14f9` **exists on the remote** at `4814952` (rechecked by `git fetch` on 2026-10-19), although the handoff text says the stack is not pushed. Who pushed it and when is not recorded in the repository. Every other branch above is local only.
+- `origin/claude/s6-start-1c14f9` **exists on the remote** at `4814952` (rechecked by `git fetch` on 2026-10-19), although the handoff text then said the stack was not pushed. That remote branch has since been deleted. Who pushed it and when is not recorded in the repository. Every other branch above is local only.
 - CI (`.github/workflows/ci.yml`) runs `npm ci` and `npm run verify` on Ubuntu, macOS and Windows with Node 22 for every push. None of S6–S10 has had a remote run on the current content. `npm run verify` here skips 4 environment- or browser-gated tests, so remote CI also skips them.
 - Embedded runtime bytes are pinned: the renderer is `visual-art-direction.12` and the player `semantic-player.6` (unchanged by S10 and S11), each bump with its own baseline re-record commit. A merge must not reorder or squash those commits away from their baselines.
 
@@ -90,3 +90,14 @@ Answered in S11 (2026-10-19); the plan records them and executes none:
 1. Merge commit (the leaning), over fast-forward or stacked pull requests.
 2. Wait for the user's PowerPoint and Keynote exports before the push (a precondition of step 6).
 3. Keep the remote `claude/s6-start-1c14f9`. The push in step 6 goes to a new branch name; the old one stays until the user decides otherwise.
+
+## After the merge (2026-10-19)
+
+| Plan step | What happened |
+|---|---|
+| 6 Push | The S11 branch was pushed to a new remote name (`claude/s11-merge-readiness-61283b`, first `844973a`). The user's rule to wait for the PowerPoint and Keynote exports was replaced by the user's later instruction to push; the exports have still not been opened |
+| 7 Remote CI | First run: Windows failed (`EPERM` in the atomic-write concurrency test). Fixed by `0ade8dc`; the rerun was green on Ubuntu, macOS and Windows, and so was the run on `main` after the merge |
+| 8 Pull request | Pull request #2 (S11 branch into `main`); #1 (S6 branch) also shows as merged |
+| 9 Merge | Merge commit `20457eb`, made by the user in GitHub. No squash, no auto-merge |
+| 10 Status text | Updated in the follow-up pull request: handoff (en and zh-CN), both roadmaps, both verification pages and the alignment plan. Evidence files were left as written |
+| Clean-up | The remote `claude/s6-start-1c14f9` and the S11 remote branch were deleted; eleven local step branches and worktrees were removed by the user. Four local branches remain and were not touched. The backup tag is local only |

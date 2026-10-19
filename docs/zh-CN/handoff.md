@@ -1,24 +1,25 @@
-截至 2026-10-19，S11（S1–S10 的合并就绪检查）已在本地完成，位于分支 `claude/s11-merge-readiness-61283b`，叠加在 S10（`d584d76`）之上，尚未推送。该分支包含 S1–S11，是将来要推送的分支。状态 **LocalVerified**。S11 做了：
+截至 2026-10-19，S11（S1–S10 的合并就绪检查）已完成，并通过拉取请求 #2 合并进 `main`（merge commit `20457eb`）。它建在分支 `claude/s11-merge-readiness-61283b` 上，叠加在 S10（`d584d76`）之上；该远端分支已删除。状态 **LocalVerified**；`main` 上的 Verify 在 Ubuntu、macOS、Windows 上都通过。S11 做了：
 
 - 冻结 `d584d76`，用干净归档验证（`npm ci`、`npm run verify`：475 个测试，471 通过，4 个受环境或浏览器限制而跳过），并在隔离的 Chrome for Testing 151 中重跑全部 18 个浏览器脚本和发布门禁；记录的数字均可复现（[证据，英文](../evidence/s11-merge-readiness/review.md)）；
 - 发现 `browser_families.mjs` 和 `browser_compositions.mjs` 在该提交上失败：S9a 新增的 `directionsPanel` 让一个测试选择器变得有歧义；只改了三行测试，没有改运行时代码；另有两个脚本各失败一次、重跑通过，原因未查明；
-- 拉取 `origin/main`（仍为 `058b939`，未变动），并在 `058b939` 建立本地标签 `backup/main-before-design-handoff`；两者都没有推送；
-- 更正[合并计划](../plans/design-handoff-merge-to-main.md)中的数字（相对 `main` 改动 562 个文件），并加入“就绪情况”一节。
+- 拉取 `origin/main`（仍为 `058b939`，未变动），并在 `058b939` 建立本地标签 `backup/main-before-design-handoff`；标签仍只在本地；
+- 更正[合并计划](../plans/design-handoff-merge-to-main.md)中的数字（相对 `main` 改动 562 个文件），并加入“就绪情况”一节；
+- 首次推送后，Windows 任务在 `tests/atomic-write.test.mjs` 失败（并发读者读取 checkpoint 时替换文件报 `EPERM`）。`0ade8dc` 让同一进程内对同一路径的读取和替换轮流进行（`src/services/io.mjs`），之后三个系统都通过。
 
-用户在 S11 的回答：倾向 merge commit（只记录，不执行）；保留远端 `claude/s6-start-1c14f9`；推送前先由用户打开 PowerPoint 和 Keynote 导出文件。详见[对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)。本交接不授权进一步步骤：合并、任何推送、拉取请求和删除分支都需要用户另行指示。
+用户在 S11 起初的回答：倾向 merge commit；保留远端 `claude/s6-start-1c14f9`；推送前先由用户打开 PowerPoint 和 Keynote 导出文件。之后用户指示推送、合并（由用户在 GitHub 上以 merge commit 完成）并删除多余分支，这取代了前两个回答。PowerPoint 和 Keynote 导出文件**没有**先打开，所以 ExportVerified 仍未达成。详见[对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)。本交接不授权进一步步骤。
 
-截至 2026-10-19，S10（模式库维护与 P3 边界，DWD-310）已在本地完成，位于分支 `claude/pattern-library-maintenance-p3-28aa7c`，叠加在 S9b（`a2d5371`）之上，尚未推送。该分支包含 S1–S10。S10 只涉及文档与登记表：没有改动运行时代码、schema 或任务状态，DWD-310 仍为 `partial`。S10 新增：
+截至 2026-10-19，S10（模式库维护与 P3 边界，DWD-310）已完成，并随 S11 合并进 `main`（建在分支 `claude/pattern-library-maintenance-p3-28aa7c` 上，叠加在 S9b `a2d5371` 之上；分支已删除）。S10 只涉及文档与登记表：没有改动运行时代码、schema 或任务状态，DWD-310 仍为 `partial`。S10 新增：
 
 - 56 条模式记录各加 15 个维护字段，82 条来源记录各加 4 个，只在有证据支持时填写（其余为 `null`）；`checkedAt` 保持“仓库核对日期”的含义，页面阅读日期用 `sourceCheckedAt`；
 - 一份[手册](pattern-register.md)（[English](../design/pattern-register.md)）：何时新增模式、如何做浏览器核验、上游改版如何记录而不影响已有作品；
 - 完整的全站逐页核验还缺什么（OpenAI 1,390 条 zh-Hans-CN 路径的模板归并、每个模板 8 格，以及一份可核对的 Anthropic URL 清单）；
 - P3 延后项，写在 EXP-001 的 `notes` 中，EXP-001 仍为 `planned`；
 - 一次经用户允许的三页[浏览器抽样](../evidence/s10-pattern-maintenance/browser-sample.json)（ANT-01、OAI-S01、OAI-S20）；
-- 一份[把 S1–S10 合并回 `main` 的计划](../plans/design-handoff-merge-to-main.md)。它只是计划：没有合并，也没有推送。
+- 一份[把 S1–S10 合并回 `main` 的计划](../plans/design-handoff-merge-to-main.md)。写下时只是计划，现已执行（见上面的 S11）。
 
 六个回答和各项决定见[对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19)。设计交接计划（S1–S10）中没有其他待实现的步骤；未完成事项列在该节。本交接并不授权进一步的步骤。
 
-截至 2026-10-19，S9b（蓝图 A：讲解 → 图解 → 探索，DWD-210）已在本地完成。它位于分支 `claude/agitated-torvalds-969a1e`，叠加在 S9a（`e80ecd7`）之上，尚未推送。VIS-009 仍为 implemented-local。S9b 新增：
+截至 2026-10-19，S9b（蓝图 A：讲解 → 图解 → 探索，DWD-210）已完成并合并进 `main`。它建在分支 `claude/agitated-torvalds-969a1e` 上，叠加在 S9a（`e80ecd7`）之上；分支已删除。VIS-009 仍为 implemented-local。S9b 新增：
 
 - 一页分三个阶段讲解一个对象，建立在图、`steps`、提示时钟、关键状态与静态状态之上（只新增一个可选字段 `blueprint`）；
 - 恢复规则 A（文档打开期间每页记忆）、键盘隔离，以及每个阶段都可在减少动态效果时到达；
@@ -28,7 +29,7 @@
 
 渲染器 `visual-art-direction.12`，播放器 `semantic-player.6`。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。S10 随后完成（见上）。
 
-截至 2026-10-19，S9a（作者控制，DWD-200）已在本地完成。它位于分支 `claude/design-handoff-alignment-review-978a91`，叠加在 S1–S8 分支 `claude/design-handoff-alignment-19703c` 之上，尚未推送。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。S9a 新增：
+截至 2026-10-19，S9a（作者控制，DWD-200）已完成并合并进 `main`。它建在分支 `claude/design-handoff-alignment-review-978a91` 上，叠加在 S1–S8 分支 `claude/design-handoff-alignment-19703c` 之上；两个分支都已删除。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。S9a 新增：
 
 - 六个问题的入口与三个经测量的方向；
 - 可撤销、先说明后应用的作者操作；
@@ -39,7 +40,7 @@
 
 十个问题的答案与各项决定见[对齐计划 §17（英文）](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19)，另见[证据（英文）](../evidence/s9a-author-controls/review.md)。S9b 已随后完成（见上文）。
 
-截至 2026-10-19，S7（输出等级与 VIS-016）在分支 `claude/nice-archimedes-d8a127` 上为 **partial**。该分支从 S6 分支开始，因此包含 S1–S7，尚未推送。
+截至 2026-10-19，S7（输出等级与 VIS-016）为 **partial**，已合并进 `main`。它建在分支 `claude/nice-archimedes-d8a127` 上，该分支从 S6 分支开始，包含 S1–S7；分支已删除。
 
 - 组件按格式声明 L1/L2/L3 等级。
 - 导出顺序已强制执行。
@@ -53,9 +54,9 @@
 - 高场景的小字
 - ~~Studio 菜单中的 PowerPoint 与 PDF~~（已在 S9a 中完成）
 
-S8（T01–T03，VIS-015）已在本地完成，状态为 partial（[证据（英文）](../evidence/vis-015/review.md)）。
+S8（T01–T03，VIS-015）已完成并合并进 `main`，状态为 partial（[证据（英文）](../evidence/vis-015/review.md)）。
 
-截至 2026-10-19，S6（VIS-014 视觉发布门）在分支 `claude/s6-start-1c14f9` 上为 **partial**。该分支已合并 S3、S4、S5，尚未推送。请从这个分支继续，而不是 `main`：`main` 上没有任何 S1–S6 的内容。相关决定见[对齐文档 §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)：
+截至 2026-10-19，S6（VIS-014 视觉发布门）为 **partial**，已合并进 `main`（拉取请求 #1 显示为已合并）。它建在分支 `claude/s6-start-1c14f9` 上，该分支合并了 S3、S4、S5；该远端分支已删除。请从 `main` 继续。相关决定见[对齐文档 §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)：
 
 - 画廊采用方案 C
 - 分层图表聚焦规则

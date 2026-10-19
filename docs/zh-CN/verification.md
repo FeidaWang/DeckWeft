@@ -12,7 +12,7 @@
 
 - 在仓库之外对 `d584d76` 做干净 `git archive`，再 `npm ci` 和 `npm run verify`：**475 个测试**（471 通过，4 个跳过：需要 `DECKWEFT_HANDOFF_DIR` 的登记表测试，以及需要 `CHROMIUM_PATH` 的三个 Studio 导出测试）。Node 24.14.0。
 - 发布门禁和 17 个浏览器脚本（S2 至 S9b）在隔离的 Chrome for Testing 151.0.7922.34、Playwright 1.61.1 中重跑：记录的数字都复现。`browser_families` 与 `browser_compositions` 起初因过期的 `.candidate-panel` 选择器失败（S9a 新增了同类名的面板），改三行测试后通过；parity 与 author-controls 各失败一次、重跑通过，原因未查明。发布门禁的显式用例为 11/11（S6 记录 10/11，S8 已修复）。
-- 已拉取 `origin/main`：仍为 `058b939`，未变动。在该处建立了本地标签 `backup/main-before-design-handoff`。没有推送。
+- 已拉取 `origin/main`：仍为 `058b939`，未变动。在该处建立了本地标签 `backup/main-before-design-handoff`。当时没有推送。之后分支已推送，Windows 任务曾在 atomic-write 并发测试中失败一次，已修复（`0ade8dc`），并合并进 `main`（`20457eb`）；推送、拉取请求和 `main` 上的 Ubuntu、macOS、Windows 都通过。
 - 未运行：PowerPoint、Keynote、Figma、Firefox、WebKit、Node 22、远程 CI、Claude。
 
 ## S10 模式库维护（DWD-310）

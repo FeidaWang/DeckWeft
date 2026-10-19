@@ -472,7 +472,7 @@ The user decided these at the start of S6 (VIS-014). They are recorded here so S
 
 | Topic | Decision | Consequence |
 |---|---|---|
-| Integration of S3, S4, S5 | Merge the three sibling branches into the S6 branch (S3 → S4 → S5). `main` is not changed and nothing is pushed. | One re-recording of [render-baseline.json](../../tests/fixtures/visual/render-baseline.json) after the merge, in its own commit, with `PLAYER_VERSION` → `semantic-player.3` and `WEB_RENDERER_VERSION` → `visual-art-direction.5`. |
+| Integration of S3, S4, S5 | Merge the three sibling branches into the S6 branch (S3 → S4 → S5). `main` is not changed and nothing is pushed (true when decided; merged into `main` later, see [§20](#20-s11-decisions-and-result--merge-readiness-2026-10-19)). | One re-recording of [render-baseline.json](../../tests/fixtures/visual/render-baseline.json) after the merge, in its own commit, with `PLAYER_VERSION` → `semantic-player.3` and `WEB_RENDERER_VERSION` → `visual-art-direction.5`. |
 | Decision 1 — frozen gallery | **Option C.** The requirements §9 gallery (four pages per theme, English and Simplified Chinese) is the frozen VIS-014 gallery. The page-42 storyboard stays a later P1 exit check (S8). | No change to VIS-014's acceptance text. Page 7 (annotated case / image story) uses the `image` family with image hotspots; no `case-study` family is added. ProductStage and Table / Reference are not added in VIS-014 either. |
 | C1 — chart focus (S4 `focus` vs S5 `data.focus`) | **Layered rule.** The declared block `focus` is the author's default emphasis and the no-JavaScript drawing. A reader's `data.focus` (one series) overrides it while set; clearing returns to the declared focus (**Author's focus**). A static state that freezes `data.focus` wins. Single-series charts show no series controls and refuse a series focus. | [charts.js](../../public/runtime/charts.js) `focusedChart` draws both the player and static output; the reducer refuses a single-series focus. [Tests](../../tests/layered-focus.test.mjs). Kinds that draw a declared series focus draw the reader's focus the same way; area, stacked and scatter keep S5's colour mixing. |
 | Claude host | Stays **deferred**. Only Codex runs a real prompt-to-artifact task and scoped revision. | VIS-014 needs both hosts, so the most its evidence can support is `partial`. |
@@ -562,7 +562,7 @@ State: **partial** (roadmap VIS-015) / LocalVerified for the web output in Chrom
 
 ## 17. S9a decisions and result — author controls, 2026-10-19
 
-Built on `4f26b33` (S1–S8) in a worktree branch stacked on `claude/design-handoff-alignment-19703c`. Nothing is pushed. State: **LocalVerified** for the S9a scope (isolated Chromium, viewed images). In the roadmap, VIS-013 stays `implemented-local` and VIS-015 stays `partial`. [Evidence](../evidence/s9a-author-controls/review.md) · [workbench manual](../en/workbench.md#six-questions-and-three-directions-s9a) · [Visual Studio manual](../en/visual-studio.md#author-controls-chapters-and-separate-locks-s9a).
+Built on `4f26b33` (S1–S8) in a worktree branch stacked on `claude/design-handoff-alignment-19703c`. Nothing was pushed when written; Merged into `main` with S11 (PR #2, `20457eb`). State: **LocalVerified** for the S9a scope (isolated Chromium, viewed images). In the roadmap, VIS-013 stays `implemented-local` and VIS-015 stays `partial`. [Evidence](../evidence/s9a-author-controls/review.md) · [workbench manual](../en/workbench.md#six-questions-and-three-directions-s9a) · [Visual Studio manual](../en/visual-studio.md#author-controls-chapters-and-separate-locks-s9a).
 
 ### The ten questions
 
@@ -571,7 +571,7 @@ The brief left all ten questions unanswered, so each took its stated default. Th
 | # | Question | Answer applied |
 |---|---|---|
 | 1 | One session or two | Two: S9a here; S9b in its own session and worktree, starting from S9a's tip |
-| 2 | Branch | Stacked on `claude/design-handoff-alignment-19703c` (this worktree's branch was fast-forwarded to `4f26b33`); `main` unchanged; nothing pushed |
+| 2 | Branch | Stacked on `claude/design-handoff-alignment-19703c` (this worktree's branch was fast-forwarded to `4f26b33`); `main` unchanged; nothing pushed (when written; merged in S11) |
 | 3 | Reusable profile in S9a | Yes |
 | 4 | Blueprint A object | A: DeckWeft's own export pipeline anatomy (measure → repair → review → export), for S9b |
 | 5 | Explore parameter control | None: Explore selects parts and compares states statically (S9b) |
@@ -629,7 +629,7 @@ An independent code review of the S9a change set then reported 12 defects. All w
 
 ## 18. S9b decisions and result — blueprint A, 2026-10-19
 
-Built on `e80ecd7` (S1–S9a) in the worktree branch `claude/agitated-torvalds-969a1e`. Nothing is pushed. State: **LocalVerified** for the S9b scope (isolated Chromium, viewed images). In the roadmap, VIS-009 stays `implemented-local` (S9b recorded under it) and DWD-210 stays `partial`. [Evidence](../evidence/s9b-blueprint-a/review.md) · [interactions manual](../en/interactions.md#explain--diagram--explore-blueprint-a-s9b) · [Visual Studio manual](../en/visual-studio.md#explain--diagram--explore-pages-s9b).
+Built on `e80ecd7` (S1–S9a) in the worktree branch `claude/agitated-torvalds-969a1e`. Nothing was pushed when written; Merged into `main` with S11 (PR #2, `20457eb`). State: **LocalVerified** for the S9b scope (isolated Chromium, viewed images). In the roadmap, VIS-009 stays `implemented-local` (S9b recorded under it) and DWD-210 stays `partial`. [Evidence](../evidence/s9b-blueprint-a/review.md) · [interactions manual](../en/interactions.md#explain--diagram--explore-blueprint-a-s9b) · [Visual Studio manual](../en/visual-studio.md#explain--diagram--explore-pages-s9b).
 
 ### The six questions
 
@@ -687,7 +687,7 @@ The user answered the kickoff questions on 2026-10-19 and asked for the last thr
 
 ## 19. S10 decisions and result — pattern library maintenance and the P3 boundary, 2026-10-19
 
-Built on `a2d5371` (S1–S9b) in the worktree branch `claude/pattern-library-maintenance-p3-28aa7c`. The worktree was created at `main` (`058b939`), which has none of S1–S9b; the branch was fast-forwarded to `a2d5371` before any edit. Nothing is pushed. State: **Implemented** for the maintenance mechanism (fields, manual, tests). DWD-310 stays `partial` and no `roadmap.json` task state changed. No runtime code and no schema changed. [Evidence](../evidence/s10-pattern-maintenance/review.md) · [Manual](../design/pattern-register.md) · [简体中文](../zh-CN/pattern-register.md) · [Merge plan](design-handoff-merge-to-main.md).
+Built on `a2d5371` (S1–S9b) in the worktree branch `claude/pattern-library-maintenance-p3-28aa7c`. The worktree was created at `main` (`058b939`), which has none of S1–S9b; the branch was fast-forwarded to `a2d5371` before any edit. Nothing was pushed when written; Merged into `main` with S11 (PR #2, `20457eb`). State: **Implemented** for the maintenance mechanism (fields, manual, tests). DWD-310 stays `partial` and no `roadmap.json` task state changed. No runtime code and no schema changed. [Evidence](../evidence/s10-pattern-maintenance/review.md) · [Manual](../design/pattern-register.md) · [简体中文](../zh-CN/pattern-register.md) · [Merge plan](design-handoff-merge-to-main.md).
 
 ### The six questions
 
@@ -700,7 +700,7 @@ The user answered on 2026-10-19. Questions 1 and 2 were asked as one choice, and
 | 3 | Full site verification | **Sample a few reference pages** in the built-in browser (this allowed visiting openai.com and anthropic.com). Not the default |
 | 4 | Maintenance fields on the 62 sources | Yes, only fields the evidence supports |
 | 5 | S9b leftovers in S10 | No: recorded here only |
-| 6 | Plan for merging S1–S10 into `main` | Yes, a plan only: no merge, no push ([plan](design-handoff-merge-to-main.md)) |
+| 6 | Plan for merging S1–S10 into `main` | Yes, a plan only: no merge, no push ([plan](design-handoff-merge-to-main.md)); carried out in S11 at the user's later instruction |
 
 ### Decisions made in S10
 
@@ -745,7 +745,7 @@ The user answered on 2026-10-19. Questions 1 and 2 were asked as one choice, and
 
 ## 20. S11 decisions and result — merge readiness, 2026-10-19
 
-Built on `d584d76` (S1–S10) in the worktree branch `claude/s11-merge-readiness-61283b`. The worktree was created at `main` (`058b939`); it was fast-forwarded to `d584d76` before any edit. Nothing is pushed, merged or deleted. State: **LocalVerified** for the S1–S10 tip; nothing is HostVerified or ExportVerified. No `roadmap.json` state changed and no schema changed. Runtime code is unchanged; three test selectors were fixed (below). [Evidence](../evidence/s11-merge-readiness/review.md) · [Merge plan, Readiness section](design-handoff-merge-to-main.md#readiness-s11-2026-10-19).
+Built on `d584d76` (S1–S10) in the worktree branch `claude/s11-merge-readiness-61283b`. The worktree was created at `main` (`058b939`); it was fast-forwarded to `d584d76` before any edit. Nothing was pushed, merged or deleted when this section was first written; the later events are under "After S11" below. State: **LocalVerified** for the S1–S10 tip; nothing is HostVerified or ExportVerified. No `roadmap.json` state changed and no schema changed. Runtime code is unchanged; three test selectors were fixed (below). [Evidence](../evidence/s11-merge-readiness/review.md) · [Merge plan, Readiness section](design-handoff-merge-to-main.md#readiness-s11-2026-10-19).
 
 ### Answers
 
@@ -778,4 +778,17 @@ The user answered four questions on 2026-10-19, in Chinese, before any work.
 | F4: 20 stage lines in the S2 script against 18 recorded | Follow-up; no effect on pass or fail |
 | PowerPoint and Keynote exports opened by the user; Figma | User, before the push |
 | Remote CI on three operating systems, Node 22, Firefox and WebKit, Claude sign-in | Unchanged; user or later |
-| The "not pushed" and "start from this branch" sentences | After a real merge (plan step 10) |
+| The "not pushed" and "start from this branch" sentences | Done after the merge, in the status-update pull request (see "After S11") |
+
+### After S11 (same day, at the user's instructions)
+
+| Event | Result |
+|---|---|
+| Push | `claude/s11-merge-readiness-61283b` pushed to a new remote branch at `844973a`. The PowerPoint and Keynote exports had not been opened first, so this replaced the user's earlier answer 4 |
+| First CI | Ubuntu and macOS passed; Windows failed in `durable atomic writes remain complete under concurrent checkpoint readers` (`EPERM` while replacing the checkpoint file) |
+| Fix | `0ade8dc`: in `src/services/io.mjs`, reads and replacements of one path in the same process take turns; the bounded retry stays for other processes. All three systems then passed on the push and the pull request. No Windows run was possible locally, so the evidence is CI only |
+| Merge | Merge commit `20457eb` on `main` (pull request #2, merged by the user in GitHub; PR #1 shows merged too). The Verify run on `main` passed on all three systems |
+| Branches | The remote `claude/s6-start-1c14f9` and `claude/s11-merge-readiness-61283b` were deleted. The eleven local step branches and their worktrees were removed by the user. Four local branches remain (`astra-high-review-prompt-bad528`, `brave-bhaskara-fd57a7`, `deckweft-design-handoff-analysis-1ab6ce`, `…-a6ff8c`) and the S11 branch until its session ends |
+| Tag | `backup/main-before-design-handoff` is still local only |
+| Status words | The handoff, both roadmaps, both verification pages and this plan were updated to say merged; evidence files keep what was true when written |
+| Still open | PowerPoint, Keynote and Figma exports opened by the user (ExportVerified not reached); Node 22 locally, Firefox and WebKit; F2 and F4 of the S11 evidence; Claude sign-in |
