@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "attribution": "Art direction T01 Editorial Fieldnotes proposed in the DeckWeft Design Handoff (DeckWeft_Design_Roadmap.md, 2026-10-18, art directions pages 28–31). Hex values are the handoff starting points adjusted for measured contrast; composition grammar, type roles, token values and rules authored for DeckWeft (S8, alignment §16). Fonts are referenced by platform name; Source Serif 4, IBM Plex and Noto CJK are Open Font Licence candidates named as later fallbacks and never bundled.",
-  "id": "editorial-fieldnotes",
+  "id": "silver-gray-editorial",
   "palette": {
     "paper": "#F3F0E8",
     "ink": "#24241F",

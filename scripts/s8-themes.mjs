@@ -29,7 +29,7 @@ const out=path.resolve(args.out||path.join(root,'dist/s8-themes')),home=path.joi
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const ALL_DECKS=LOCALES.flatMap(locale=>[
  ...S8_THEMES.flatMap(theme=>[{name:`gallery-${theme}-${locale}`,kind:'gallery',locale,theme},{name:`story-${theme}-${locale}`,kind:'story',locale,theme},{name:`storyboard-${theme}-${locale}`,kind:'storyboard',locale,theme}]),
- {name:`fieldnotes-${locale}`,kind:'fieldnotes',locale,theme:'editorial-fieldnotes'},{name:`atlas-${locale}`,kind:'atlas',locale,theme:'research-atlas'},{name:`stage-${locale}`,kind:'stage',locale,theme:'luminous-stage'}]);
+ {name:`fieldnotes-${locale}`,kind:'fieldnotes',locale,theme:'silver-gray-editorial'},{name:`atlas-${locale}`,kind:'atlas',locale,theme:'fresh-report'},{name:`stage-${locale}`,kind:'stage',locale,theme:'orange-launch'}]);
 const DECKS=args.decks?ALL_DECKS.filter(d=>args.decks.split(',').includes(d.name)):ALL_DECKS;
 const run={format:'deckweft-s8-themes',version:1,renderer:WEB_RENDERER_VERSION,player:PLAYER_VERSION,node:process.version,icu:process.versions.icu,steps:{}};
 const report=async(name,data)=>{run.steps[name]=data;await writeFile(path.join(out,name+'.json'),JSON.stringify(data,null,2)+'\n');};
@@ -158,27 +158,27 @@ if(steps.has('cases')){
   try{await cp(home,temporary,{recursive:true});const withImage=await load('stage-en'),image=withImage.document.blocks.find(b=>b.type==='image'),asset=withImage.assets.find(a=>a.id===image.assetId);await unlink(path.join(temporary,asset.path));
    try{exportDeck(withImage.document,'html',{experimentalWeb:true,plan:withImage.plan,assetResources:await visualAssetResources(withImage,temporary)});refusal={export:'succeeded'};}catch(error){refusal={export:'refused',code:error.code,details:(error.details||[]).map(d=>d.code)};}}
   finally{await rm(temporary,{recursive:true,force:true});}
-  record({id:'media-failure-cover',theme:'luminous-stage',locale:'en',page:`stage sample · ${scene.id}`,state:'opening',reproduction:'Render the hero without an image block; separately delete the hero image file from a copy of the asset home and export.',observed:{...observed,fitOk:fit.overflow.length===0&&fit.contrastIssues.length===0,refusal},passed:observed.decor&&observed.textOverOrb===false&&fit.contrastIssues.length===0&&refusal.export==='refused'&&refusal.details.includes('ASSET_UNRESOLVED'),fix:'None needed: the cover composes without media and a missing file is refused by name.'});
+  record({id:'media-failure-cover',theme:'orange-launch',locale:'en',page:`stage sample · ${scene.id}`,state:'opening',reproduction:'Render the hero without an image block; separately delete the hero image file from a copy of the asset home and export.',observed:{...observed,fitOk:fit.overflow.length===0&&fit.contrastIssues.length===0,refusal},passed:observed.decor&&observed.textOverOrb===false&&fit.contrastIssues.length===0&&refusal.export==='refused'&&refusal.details.includes('ASSET_UNRESOLVED'),fix:'None needed: the cover composes without media and a missing file is refused by name.'});
  }
  // Low-motion mode (T03): the theme declares fallback "static"; with reduced motion nothing animates and the player opens on the static state.
  {
-  const p=await load('story-luminous-stage-en'),file=await write('stage-low-motion',p);
+  const p=await load('story-orange-launch-en'),file=await write('stage-low-motion',p);
   const reduced=await open(file,{reducedMotion:'reduce'});const r=await reduced.page.evaluate(()=>({fallback:[...new Set([...document.querySelectorAll('.web-scene')].map(s=>s.dataset.motionFallback))],animations:document.getAnimations({subtree:true}).length,snapshot:window.deckweftInteractions.snapshot().map(s=>({sceneId:s.sceneId,position:s.position,playing:s.playing,frozen:s.frozen}))}));await reduced.context.close();
   const full=await open(file,{reducedMotion:'no-preference'});await full.page.evaluate(()=>{location.hash='scene=st-evidence';});await full.page.waitForFunction(()=>document.getElementById('st-evidence').classList.contains('active'));
   const f=await full.page.evaluate(()=>{window.deckweftInteractions.replay('st-evidence');return new Promise(r=>setTimeout(()=>r({animations:document.getAnimations({subtree:true}).map(a=>({id:a.id,easing:a.effect.getTiming().easing,delay:a.effect.getTiming().delay,duration:a.effect.getTiming().duration}))}),60));});await full.context.close();
-  const theme=resolveTheme('luminous-stage','1.0.0','en');
-  record({id:'low-motion',theme:'luminous-stage',locale:'en',page:'story (luminous-stage)',state:'reduced motion, then full motion replay',reproduction:'Open with prefers-reduced-motion: reduce and read the animations; open without it, replay page 3 and read the running animations.',observed:{reduced:r,full:f,declared:theme.tokens.motion},passed:r.fallback.includes('static')&&r.animations===0&&f.animations.every(a=>a.easing===theme.tokens.motion.easing&&a.delay>=theme.tokens.motion.delay),fix:'None needed.'});
+  const theme=resolveTheme('orange-launch','1.0.0','en');
+  record({id:'low-motion',theme:'orange-launch',locale:'en',page:'story (orange-launch)',state:'reduced motion, then full motion replay',reproduction:'Open with prefers-reduced-motion: reduce and read the animations; open without it, replay page 3 and read the running animations.',observed:{reduced:r,full:f,declared:theme.tokens.motion},passed:r.fallback.includes('static')&&r.animations===0&&f.animations.every(a=>a.easing===theme.tokens.motion.easing&&a.delay>=theme.tokens.motion.delay),fix:'None needed.'});
  }
  // Black-and-white Research Atlas: the main series stay distinguishable with the colour removed (luminance steps plus dash patterns).
  {
   const p=await load('atlas-en'),file=await write('atlas-bw',p),{page,context}=await open(file);
   await page.addStyleTag({content:'html{filter:grayscale(1)}'});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
-  const theme=resolveTheme('research-atlas','1.0.0','en'),lum=hex=>{const c=hex.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;};
+  const theme=resolveTheme('fresh-report','1.0.0','en'),lum=hex=>{const c=hex.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;};
   const greys=theme.chart.map(c=>Math.round(lum(c)*1000)/1000),gaps=greys.slice(0,4).flatMap((a,i)=>greys.slice(0,4).slice(i+1).map(b=>Math.abs(a-b)));
   const dashes=await page.evaluate(()=>[...new Set([...document.querySelectorAll('.chart svg polyline[stroke-dasharray],.legend-key path[stroke-dasharray]')].map(n=>n.getAttribute('stroke-dasharray')))]);
   const figures=p.plan.scenes.filter(s=>s.blockIds.some(id=>p.document.blocks.find(b=>b.id===id).type==='chart')),captures=[];for(const s of figures)captures.push(await shot(page,path.join(dir,`atlas-bw-${s.id}.png`),'#'+s.id));
   await context.close();
-  record({id:'black-and-white',theme:'research-atlas',locale:'en',page:figures.map(s=>s.id).join(', '),state:'grayscale filter over the whole page',reproduction:'Open the atlas sample, apply html{filter:grayscale(1)}, capture every chart page; compute the relative luminance of the first four series colours.',observed:{seriesLuminance:greys,minGapFirstFour:Math.min(...gaps),dashPatterns:dashes,captures:captures.map(c=>c.file)},passed:Math.min(...gaps)>=.03&&dashes.length>=2,fix:'Series differ by luminance and by dash pattern; focus is drawn as solid versus outlined. The captures were viewed.'});
+  record({id:'black-and-white',theme:'fresh-report',locale:'en',page:figures.map(s=>s.id).join(', '),state:'grayscale filter over the whole page',reproduction:'Open the atlas sample, apply html{filter:grayscale(1)}, capture every chart page; compute the relative luminance of the first four series colours.',observed:{seriesLuminance:greys,minGapFirstFour:Math.min(...gaps),dashPatterns:dashes,captures:captures.map(c=>c.file)},passed:Math.min(...gaps)>=.03&&dashes.length>=2,fix:'Series differ by luminance and by dash pattern; focus is drawn as solid versus outlined. The captures were viewed.'});
  }
  // CJK phrase breaks (C12): no heading line ends inside a dictionary word, in every new theme, at 1440 and 390 px; and no overflow is measured at a line-end punctuation mark.
  for(const theme of S8_THEMES){

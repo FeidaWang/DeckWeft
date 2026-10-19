@@ -5,27 +5,27 @@ import {releaseAssets,releaseStory,WCAG_143} from './release-gate.mjs';
  * handoff page-42 storyboard. Everything follows tests/release-gate.mjs: one bilingual document per sample, synthetic numbers
  * that say so in dataset, caption and citation, generated artwork labelled as such, and the WCAG 2.2 text as the only quotation.
  */
-export const S8_THEMES=['editorial-fieldnotes','research-atlas','luminous-stage'];
+export const S8_THEMES=['silver-gray-editorial','fresh-report','orange-launch'];
 /** The release story drawn by each S8 theme: its own cover, figure and closing, shared families elsewhere, no two alike. */
 export const S8_STORY_COMPOSITIONS={
- 'editorial-fieldnotes':{'st-open':'fieldnotes-cover','st-context':'metric-right','st-evidence':'fieldnotes-figure','st-compare':'comparison-stack','st-process':'process-stair','st-pair':'before-after-triptych','st-quote':'quote-split','st-close':'fieldnotes-closing'},
- 'research-atlas':{'st-open':'atlas-cover','st-context':'metric-band','st-evidence':'atlas-figure','st-compare':'comparison-matrix','st-process':'process-line','st-pair':'before-after-split','st-quote':'quote-band','st-close':'atlas-closing'},
- 'luminous-stage':{'st-open':'stage-hero','st-context':'stage-metric','st-evidence':'stage-figure','st-compare':'comparison-rail','st-process':'process-rail','st-pair':'before-after-rail','st-quote':'quote-center','st-close':'stage-closing'}
+ 'silver-gray-editorial':{'st-open':'fieldnotes-cover','st-context':'metric-right','st-evidence':'fieldnotes-figure','st-compare':'comparison-stack','st-process':'process-stair','st-pair':'before-after-triptych','st-quote':'quote-split','st-close':'fieldnotes-closing'},
+ 'fresh-report':{'st-open':'atlas-cover','st-context':'metric-band','st-evidence':'atlas-figure','st-compare':'comparison-matrix','st-process':'process-line','st-pair':'before-after-split','st-quote':'quote-band','st-close':'atlas-closing'},
+ 'orange-launch':{'st-open':'stage-hero','st-context':'stage-metric','st-evidence':'stage-figure','st-compare':'comparison-rail','st-process':'process-rail','st-pair':'before-after-rail','st-quote':'quote-center','st-close':'stage-closing'}
 };
 /** The handoff page-42 storyboard: twelve content tasks, one document, one composition per theme. `missing` names what the repository lacks. */
 export const STORYBOARD_TASKS=[
- {page:1,id:'sb-chapter',task:'Chapter (long bilingual title)',family:'chapter',compositions:{'editorial-fieldnotes':'chapter-low','research-atlas':'atlas-section','luminous-stage':'stage-chapter'}},
- {page:2,id:'sb-thesis',task:'Thesis + SideNote',family:'statement',compositions:{'editorial-fieldnotes':'fieldnotes-thesis','research-atlas':'statement-split','luminous-stage':'statement-split'}},
- {page:3,id:'sb-sequence',task:'Sequence',family:'process',compositions:{'editorial-fieldnotes':'process-stair','research-atlas':'process-line','luminous-stage':'process-rail'}},
- {page:4,id:'sb-comparison',task:'Comparison (units in headers, one missing value)',family:'comparison',compositions:{'editorial-fieldnotes':'comparison-stack','research-atlas':'comparison-matrix','luminous-stage':'comparison-rail'}},
- {page:5,id:'sb-evidence',task:'EvidenceChart (direct values, source status)',family:'evidence',compositions:{'editorial-fieldnotes':'fieldnotes-figure','research-atlas':'atlas-figure','luminous-stage':'stage-figure'}},
- {page:6,id:'sb-interval',task:'DotInterval (with method)',family:'evidence',compositions:{'editorial-fieldnotes':'fieldnotes-figure','research-atlas':'atlas-figure','luminous-stage':'stage-figure'}},
- {page:7,id:'sb-anatomy',task:'ObjectAnatomy (image hotspots)',family:'image',compositions:{'editorial-fieldnotes':'image-right','research-atlas':'image-right','luminous-stage':'image-right'}},
- {page:8,id:'sb-scenario',task:'ScenarioSnapshot',family:'comparison',compositions:{'editorial-fieldnotes':'comparison-rail','research-atlas':'comparison-rail','luminous-stage':'comparison-rail'},missing:'ScenarioSnapshot family: drawn as a comparison table (P1 static contrast only)'},
- {page:9,id:'sb-pair',task:'BeforeAfter (registered images, permanent labels)',family:'before-after',compositions:{'editorial-fieldnotes':'before-after-split','research-atlas':'before-after-triptych','luminous-stage':'before-after-rail'}},
- {page:10,id:'sb-reference',task:'Reference (static appendix)',family:'reference',compositions:{'editorial-fieldnotes':'fieldnotes-method','research-atlas':'atlas-appendix','luminous-stage':'reading-flow'}},
- {page:11,id:'sb-quote',task:'Quote / Documentary (no invented quotation)',family:'quote',compositions:{'editorial-fieldnotes':'quote-split','research-atlas':'quote-band','luminous-stage':'quote-center'}},
- {page:12,id:'sb-conclusion',task:'Conclusion (one action)',family:'closing',compositions:{'editorial-fieldnotes':'fieldnotes-closing','research-atlas':'atlas-closing','luminous-stage':'stage-closing'}}
+ {page:1,id:'sb-chapter',task:'Chapter (long bilingual title)',family:'chapter',compositions:{'silver-gray-editorial':'chapter-low','fresh-report':'atlas-section','orange-launch':'stage-chapter'}},
+ {page:2,id:'sb-thesis',task:'Thesis + SideNote',family:'statement',compositions:{'silver-gray-editorial':'fieldnotes-thesis','fresh-report':'statement-split','orange-launch':'statement-split'}},
+ {page:3,id:'sb-sequence',task:'Sequence',family:'process',compositions:{'silver-gray-editorial':'process-stair','fresh-report':'process-line','orange-launch':'process-rail'}},
+ {page:4,id:'sb-comparison',task:'Comparison (units in headers, one missing value)',family:'comparison',compositions:{'silver-gray-editorial':'comparison-stack','fresh-report':'comparison-matrix','orange-launch':'comparison-rail'}},
+ {page:5,id:'sb-evidence',task:'EvidenceChart (direct values, source status)',family:'evidence',compositions:{'silver-gray-editorial':'fieldnotes-figure','fresh-report':'atlas-figure','orange-launch':'stage-figure'}},
+ {page:6,id:'sb-interval',task:'DotInterval (with method)',family:'evidence',compositions:{'silver-gray-editorial':'fieldnotes-figure','fresh-report':'atlas-figure','orange-launch':'stage-figure'}},
+ {page:7,id:'sb-anatomy',task:'ObjectAnatomy (image hotspots)',family:'image',compositions:{'silver-gray-editorial':'image-right','fresh-report':'image-right','orange-launch':'image-right'}},
+ {page:8,id:'sb-scenario',task:'ScenarioSnapshot',family:'comparison',compositions:{'silver-gray-editorial':'comparison-rail','fresh-report':'comparison-rail','orange-launch':'comparison-rail'},missing:'ScenarioSnapshot family: drawn as a comparison table (P1 static contrast only)'},
+ {page:9,id:'sb-pair',task:'BeforeAfter (registered images, permanent labels)',family:'before-after',compositions:{'silver-gray-editorial':'before-after-split','fresh-report':'before-after-triptych','orange-launch':'before-after-rail'}},
+ {page:10,id:'sb-reference',task:'Reference (static appendix)',family:'reference',compositions:{'silver-gray-editorial':'fieldnotes-method','fresh-report':'atlas-appendix','orange-launch':'reading-flow'}},
+ {page:11,id:'sb-quote',task:'Quote / Documentary (no invented quotation)',family:'quote',compositions:{'silver-gray-editorial':'quote-split','fresh-report':'quote-band','orange-launch':'quote-center'}},
+ {page:12,id:'sb-conclusion',task:'Conclusion (one action)',family:'closing',compositions:{'silver-gray-editorial':'fieldnotes-closing','fresh-report':'atlas-closing','orange-launch':'stage-closing'}}
 ];
 const REPO='https://github.com/FeidaWang/DeckWeft';
 const shell=(locale,id,title,audience)=>({format:'deckweft-presentation',schemaVersion:3,id,title,locale,
@@ -62,7 +62,7 @@ export function s8Story(locale,theme,assets){
 
 /** T01 Editorial Fieldnotes acceptance pages: cover, two-column thesis, chart evidence, method with margin note, quotation, conclusion. */
 export function fieldnotesSample(locale){
- const theme='editorial-fieldnotes';
+ const theme='silver-gray-editorial';
  const {t,document,plan,add,data,synthetic,wcag,scene}=start(locale,'s8-fieldnotes',
   ['Reading a research brief: how long titles, margins and sources survive a translation','阅读一份研究简报：长标题、页边注与来源如何经受翻译'],
   ['Editors reviewing a bilingual brief before it goes to a second reader.','在简报交给第二位读者之前进行双语审校的编辑。'],['synthetic','wcag22'],'fieldnotes');
@@ -114,7 +114,7 @@ export function fieldnotesSample(locale){
 
 /** T02 Research Atlas acceptance pages: single-chart conclusion, metric table, four panels, method flow, uncertain conclusion, appendix. */
 export function atlasSample(locale){
- const theme='research-atlas';
+ const theme='fresh-report';
  const {t,document,plan,add,data,synthetic,wcag,scene}=start(locale,'s8-atlas',
   ['What a release gate measures: synthetic numbers for three widths and two languages','发布门衡量什么：三种宽度、两种语言的合成数字'],
   ['Reviewers reading the gate report as a numbered atlas rather than a slide deck.','把发布门报告当作带编号的图集而不是幻灯片来读的审阅者。'],['synthetic','wcag22'],'atlas');
@@ -182,7 +182,7 @@ export function atlasSample(locale){
 
 /** T03 Luminous Stage acceptance pages: hero with image, hero without image, chapter, figure, big number, closing. */
 export function stageSample(locale,assets){
- const theme='luminous-stage';
+ const theme='orange-launch';
  const {t,document,plan,add,data,synthetic,scene}=start(locale,'s8-stage',
   ['DeckWeft v3 web output — a sample launch deck','DeckWeft v3 网页输出——示例发布演示'],
   ['A launch rehearsal audience; every figure is synthetic and no product claim is made.','发布彩排的观众；所有数字均为合成，不构成任何产品承诺。'],['synthetic','cosmos-file'],'stage');
@@ -346,7 +346,7 @@ export function storyboard(locale,theme,assets){
 }
 
 /** Visual projects with registered assets. `kind` is `story`, `fieldnotes`, `atlas`, `stage` or `storyboard`. */
-export async function s8Project(kind,locale,home,theme='editorial-fieldnotes'){
+export async function s8Project(kind,locale,home,theme='silver-gray-editorial'){
  const assets=await releaseAssets(home),suffix=locale.toLowerCase();
  const built={story:()=>[s8Story(locale,theme,assets),`s8-story-${theme}-${suffix}`],fieldnotes:()=>[fieldnotesSample(locale,assets),`s8-fieldnotes-${suffix}`],atlas:()=>[atlasSample(locale,assets),`s8-atlas-${suffix}`],
   stage:()=>[stageSample(locale,assets),`s8-stage-${suffix}`],storyboard:()=>[storyboard(locale,theme,assets),`s8-storyboard-${theme}-${suffix}`]}[kind];

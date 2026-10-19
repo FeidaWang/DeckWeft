@@ -6,7 +6,7 @@
 
 ## S8 T01–T03 主题包与 VIS-015 — 2026-10-19
 
-状态 **partial**。[证据（英文）](../evidence/vis-015/review.md) · [手册](visual-studio.md#再增三套主题editorial-fieldnotesresearch-atlasluminous-stages8vis-015) · [对齐文档 §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)。
+状态 **partial**。[证据（英文）](../evidence/vis-015/review.md) · [手册](visual-studio.md#再增三套主题silver-gray-editorialfresh-reportorange-launchs8vis-015) · [对齐文档 §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)。
 
 结果：
 

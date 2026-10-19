@@ -154,9 +154,9 @@ S8 把设计交接文档的三个首发艺术方向做成主题包（[决定 2�
 
 | 主题 | 方向 | 字体角色（平台字体，不打包任何字体文件） | 自有构图 |
 |---|---|---|---|
-| `editorial-fieldnotes`（T01） | 纸色 `#F3F0E8`、墨色 `#24241F`、陶色 `#A8503A`、石板蓝数字。主栏加旁注，细分隔线，充分留白。 | 展示字体 Charter（中文：宋体 Songti SC），正文 Gill Sans（中文：苹方 PingFang SC），数字 Charter | `fieldnotes-cover`、`fieldnotes-thesis`（双栏论点加旁注）、`fieldnotes-figure`（窄阅读栏、宽图形）、`fieldnotes-method`（方法正文加旁注）、`fieldnotes-closing` |
-| `research-atlas`（T02） | 底色 `#FAFAF7`、墨色 `#15211B`、深绿 `#286448`、钴蓝 `#345BC5`。共用网格、编号章节，图形占主要面积。 | 展示与正文 Avenir Next（中文：苹方），数字 Menlo（等宽对齐） | `atlas-cover`（引题、标题、目录）、`atlas-section`（章节编号）、`atlas-figure`（单图结论）、`atlas-panels`（二至四个共用标尺的图表面板）、`atlas-appendix`（表格、限制、来源）、`atlas-closing` |
-| `luminous-stage`（T03） | 底色 `#0C1017`、文字 `#F2F3EE`、冰蓝 `#A8D2EA`。深色舞台、单个大物件，正文留在平静区域。仅静态主视觉：没有 Shader，也没有 WebGL。 | 展示字体 Futura（中文：苹方），正文 Helvetica Neue，数字 Futura | `stage-hero`（物件在右；没有图片时画一个圆形物件）、`stage-chapter`、`stage-figure`（图表置于面板）、`stage-metric`、`stage-closing` |
+| `silver-gray-editorial`（T01） | 纸色 `#F3F0E8`、墨色 `#24241F`、陶色 `#A8503A`、石板蓝数字。主栏加旁注，细分隔线，充分留白。 | 展示字体 Charter（中文：宋体 Songti SC），正文 Gill Sans（中文：苹方 PingFang SC），数字 Charter | `fieldnotes-cover`、`fieldnotes-thesis`（双栏论点加旁注）、`fieldnotes-figure`（窄阅读栏、宽图形）、`fieldnotes-method`（方法正文加旁注）、`fieldnotes-closing` |
+| `fresh-report`（T02） | 底色 `#FAFAF7`、墨色 `#15211B`、深绿 `#286448`、钴蓝 `#345BC5`。共用网格、编号章节，图形占主要面积。 | 展示与正文 Avenir Next（中文：苹方），数字 Menlo（等宽对齐） | `atlas-cover`（引题、标题、目录）、`atlas-section`（章节编号）、`atlas-figure`（单图结论）、`atlas-panels`（二至四个共用标尺的图表面板）、`atlas-appendix`（表格、限制、来源）、`atlas-closing` |
+| `orange-launch`（T03） | 底色 `#0C1017`、文字 `#F2F3EE`、冰蓝 `#A8D2EA`。深色舞台、单个大物件，正文留在平静区域。仅静态主视觉：没有 Shader，也没有 WebGL。 | 展示字体 Futura（中文：苹方），正文 Helvetica Neue，数字 Futura | `stage-hero`（物件在右；没有图片时画一个圆形物件）、`stage-chapter`、`stage-figure`（图表置于面板）、`stage-metric`、`stage-closing` |
 
 每个主题包同时列出十二个共用构图族。交接文档的色号只是起点：每个前景色都按实际使用的字号在自己的底色上测量，测得的比值记录在证据中。
 
@@ -182,7 +182,7 @@ S8 把设计交接文档的三个首发艺术方向做成主题包（[决定 2�
 ### 出问题时
 
 - *`atlas-panels` needs at least 2 chart panels* 或 *Declare the shared scale*：给每个面板相同的图表类型、单位、类别和固定坐标轴。
-- *`stage-hero` … belongs to the luminous-stage theme*：换主题时保留了另一个主题的专属构图；请选择新主题的构图。
+- *`stage-hero` … belongs to the orange-launch theme*：换主题时保留了另一个主题的专属构图；请选择新主题的构图。
 - 看起来正常的页面报告 *Missing glyph*：该字符在所选字体族中被画成方框；查看适配报告中的 `glyphs` 列表确认字符和字体。
 - 中文标题仍在词内断开：该词在此字号下比栏宽还长，触发了最后手段。缩短栏内文字、换一种构图，或加入作者换行。
 

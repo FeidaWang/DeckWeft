@@ -154,9 +154,9 @@ S8 adds the design handoff's three first-wave art directions as theme packs ([de
 
 | Theme | Direction | Type roles (platform fonts, nothing bundled) | Own compositions |
 |---|---|---|---|
-| `editorial-fieldnotes` (T01) | Paper `#F3F0E8`, ink `#24241F`, terracotta `#A8503A`, slate numbers. Main column, margin notes, hairlines, generous space. | Display Charter (zh: Songti SC), body Gill Sans (zh: PingFang SC), numerals Charter | `fieldnotes-cover`, `fieldnotes-thesis` (two-column thesis with margin notes), `fieldnotes-figure` (narrow reading column, wide figure), `fieldnotes-method` (method text with a margin note), `fieldnotes-closing` |
-| `research-atlas` (T02) | Paper `#FAFAF7`, ink `#15211B`, green `#286448`, cobalt `#345BC5`. Shared grid, numbered sections, figures take the main area. | Display and body Avenir Next (zh: PingFang SC), numerals Menlo (tabular) | `atlas-cover` (kicker, headline, contents index), `atlas-section` (section number), `atlas-figure` (single-chart conclusion), `atlas-panels` (two to four chart panels on one declared scale), `atlas-appendix` (table, limits, sources), `atlas-closing` |
-| `luminous-stage` (T03) | Surface `#0C1017`, text `#F2F3EE`, ice blue `#A8D2EA`. Dark stage, one large object, body text in the calm area. Static hero only: no shader, no WebGL. | Display Futura (zh: PingFang SC), body Helvetica Neue, numerals Futura | `stage-hero` (object right; without an image a drawn orb), `stage-chapter`, `stage-figure` (chart on a panel), `stage-metric`, `stage-closing` |
+| `silver-gray-editorial` (T01) | Paper `#F3F0E8`, ink `#24241F`, terracotta `#A8503A`, slate numbers. Main column, margin notes, hairlines, generous space. | Display Charter (zh: Songti SC), body Gill Sans (zh: PingFang SC), numerals Charter | `fieldnotes-cover`, `fieldnotes-thesis` (two-column thesis with margin notes), `fieldnotes-figure` (narrow reading column, wide figure), `fieldnotes-method` (method text with a margin note), `fieldnotes-closing` |
+| `fresh-report` (T02) | Paper `#FAFAF7`, ink `#15211B`, green `#286448`, cobalt `#345BC5`. Shared grid, numbered sections, figures take the main area. | Display and body Avenir Next (zh: PingFang SC), numerals Menlo (tabular) | `atlas-cover` (kicker, headline, contents index), `atlas-section` (section number), `atlas-figure` (single-chart conclusion), `atlas-panels` (two to four chart panels on one declared scale), `atlas-appendix` (table, limits, sources), `atlas-closing` |
+| `orange-launch` (T03) | Surface `#0C1017`, text `#F2F3EE`, ice blue `#A8D2EA`. Dark stage, one large object, body text in the calm area. Static hero only: no shader, no WebGL. | Display Futura (zh: PingFang SC), body Helvetica Neue, numerals Futura | `stage-hero` (object right; without an image a drawn orb), `stage-chapter`, `stage-figure` (chart on a panel), `stage-metric`, `stage-closing` |
 
 Every pack also lists the twelve shared families. The handoff's hex values were starting points: each foreground is measured against its own surface at the sizes it is used, and the measured ratios are in the evidence.
 
@@ -182,7 +182,7 @@ The fit audit draws every distinct character of a page in its computed font on a
 ### If something goes wrong
 
 - *`atlas-panels` needs at least 2 chart panels* or *Declare the shared scale*: give every panel the same chart type, unit, categories and a fixed axis.
-- *`stage-hero` … belongs to the luminous-stage theme*: a theme-only composition was kept while the theme changed; choose the new theme's composition.
+- *`stage-hero` … belongs to the orange-launch theme*: a theme-only composition was kept while the theme changed; choose the new theme's composition.
 - *Missing glyph* on a page that looks fine: the character is drawn as a box in the chosen font family; check the fit report's `glyphs` list for the character and the font.
 - A Chinese heading still breaks inside a word: the word is longer than its column at this tier, so the last-resort break applied. Shorten the column text, choose another composition, or add an authored line break.
 

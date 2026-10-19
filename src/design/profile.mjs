@@ -8,9 +8,9 @@ import { DeckError } from '../core/errors.mjs';
 /** S8 themes: the composition a page gets when its current one belongs to another theme. Content decides; nothing is removed. */
 const has=(blocks,type)=>blocks.some(b=>b.type===type);
 const S8_DEFAULTS={
- 'editorial-fieldnotes':b=>has(b,'chart')?'fieldnotes-figure':has(b,'paragraph')?'fieldnotes-cover':'reading-flow',
- 'research-atlas':b=>has(b,'chart')?'atlas-figure':'atlas-cover',
- 'luminous-stage':b=>has(b,'chart')?'stage-figure':has(b,'metric')?'stage-metric':'stage-hero'
+ 'silver-gray-editorial':b=>has(b,'chart')?'fieldnotes-figure':has(b,'paragraph')?'fieldnotes-cover':'reading-flow',
+ 'fresh-report':b=>has(b,'chart')?'atlas-figure':'atlas-cover',
+ 'orange-launch':b=>has(b,'chart')?'stage-figure':has(b,'metric')?'stage-metric':'stage-hero'
 };
 export function applySceneTheme(project,sceneId,theme){
  const copy=structuredClone(assertVisualProject(project)),scene=copy.plan.scenes.find(s=>s.id===sceneId),pack=themePacks().find(p=>p.id===theme);

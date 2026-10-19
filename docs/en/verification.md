@@ -6,7 +6,7 @@ Prepared 2026-10-16. These are observed local results, not a promise that every 
 
 ## S8 T01–T03 theme packs and VIS-015 — 2026-10-19
 
-State **partial**. [Evidence](../evidence/vis-015/review.md) · [Manual](visual-studio.md#three-more-themes-editorial-fieldnotes-research-atlas-luminous-stage-s8-vis-015) · [Alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19).
+State **partial**. [Evidence](../evidence/vis-015/review.md) · [Manual](visual-studio.md#three-more-themes-silver-gray-editorial-fresh-report-orange-launch-s8-vis-015) · [Alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19).
 
 Results:
 

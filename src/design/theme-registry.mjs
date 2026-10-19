@@ -1,9 +1,9 @@
 import cream from '../../themes/cream-collage/theme.json' with { type: 'json' };
 import dark from '../../themes/dark-data/theme.json' with { type: 'json' };
 import violet from '../../themes/electric-violet/theme.json' with { type: 'json' };
-import fieldnotes from '../../themes/editorial-fieldnotes/theme.json' with { type: 'json' };
-import atlas from '../../themes/research-atlas/theme.json' with { type: 'json' };
-import stage from '../../themes/luminous-stage/theme.json' with { type: 'json' };
+import fieldnotes from '../../themes/silver-gray-editorial/theme.json' with { type: 'json' };
+import atlas from '../../themes/fresh-report/theme.json' with { type: 'json' };
+import stage from '../../themes/orange-launch/theme.json' with { type: 'json' };
 import schema from '../../schemas/theme-pack.schema.json' with { type: 'json' };
 import { validateSchema } from '../core/schema.mjs';
 import { resolveScopedRules } from './rules.mjs';

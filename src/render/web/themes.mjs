@@ -3,7 +3,7 @@
 // keeps every region in the DOM; long content fails the candidate height gate instead of being clipped. 1440 px uses the grids
 // below; 701–1100 px keeps them except where noted; 700 px and below reads in DOM order. Shared families and components take
 // their theme flavour from the [data-theme] rules, and the S1 token roles arrive as custom properties (see document.mjs).
-const T01='[data-theme=editorial-fieldnotes]',T02='[data-theme=research-atlas]',T03='[data-theme=luminous-stage]';
+const T01='[data-theme=silver-gray-editorial]',T02='[data-theme=fresh-report]',T03='[data-theme=orange-launch]';
 const FIELDNOTES=':is(.fieldnotes-cover,.fieldnotes-thesis,.fieldnotes-figure,.fieldnotes-method,.fieldnotes-closing)';
 const ATLAS=':is(.atlas-cover,.atlas-section,.atlas-figure,.atlas-panels,.atlas-appendix,.atlas-closing)';
 const STAGE=':is(.stage-hero,.stage-chapter,.stage-figure,.stage-metric,.stage-closing)';

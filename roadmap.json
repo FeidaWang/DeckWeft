@@ -1200,7 +1200,7 @@
    "implementationState": "implemented-local",
    "evidence": "docs/evidence/vis-015/review.md",
    "implemented": [
-    "Three versioned packs from the design handoff's first-wave art directions (decision 2 = Replace, alignment §16): editorial-fieldnotes (T01), research-atlas (T02), luminous-stage (T03, static hero, no shader), each with its own title, evidence and closing compositions (16 theme-only compositions), type roles, media ratio and motion character",
+    "Three versioned packs from the design handoff's first-wave art directions (decision 2 = Replace, alignment §16): silver-gray-editorial (T01), fresh-report (T02), orange-launch (T03, static hero, no shader), each with its own title, evidence and closing compositions (16 theme-only compositions), type roles, media ratio and motion character",
     "Every S1 token role declared by the packs and consumed by the renderer through custom properties whose fallbacks keep the VIS-014 themes byte-identical in text, values and anchors (render baseline re-recorded with a per-entry diff)",
     "Frozen VIS-014 gallery, the VIS-014 story and the handoff page-42 storyboard drawn in every new theme, both languages, facts identical (tested); T01 and T02 acceptance sample pages and T03 acceptance pages built (tests/s8-themes.mjs)",
     "scripts/s8-themes.mjs: 24 decks at 1440/1024/390 px with 0 fit or render issues, 136 measured contrast pairs, drawn fonts recorded, nine explicit cases (missing glyph per theme, media-failure cover, low motion, black-and-white atlas, CJK phrase breaks)",

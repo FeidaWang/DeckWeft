@@ -35,7 +35,7 @@ const factsOf=body=>({tables:body.match(/<tbody>[\s\S]*?<\/tbody>/g)||[],links:[
 const render=async p=>exportDeck(p.document,'html',{experimentalWeb:true,plan:p.plan,assetResources:await visualAssetResources(p,corpusHome)}).body;
 
 
-const S8=['editorial-fieldnotes','research-atlas','luminous-stage'];
+const S8=['silver-gray-editorial','fresh-report','orange-launch'];
 const S8_COMPOSITIONS=Object.keys(THEME_COMPOSITIONS);
 const example=async locale=>JSON.parse(await readFile(new URL(`../tests/fixtures/visual/wave-a.${locale}.json`,import.meta.url)));
 
@@ -106,7 +106,7 @@ test('S8 token roles reach the page as custom properties only for declaring pack
  // The theme's declared fallback becomes a scene's reduced-motion result when the author declared none.
  const {compileInteractionRuntime}=await import('../src/motion/web.mjs');
  const {createVisualProject:envelope}=await import('../src/core/visual-project.mjs');
- const stage=(()=>{let p=envelope(structuredClone(document),structuredClone(plan),{id:'s8-stage-fallback'});for(const s of p.plan.scenes)p=applySceneTheme(p,s.id,'luminous-stage');return p;})();
+ const stage=(()=>{let p=envelope(structuredClone(document),structuredClone(plan),{id:'s8-stage-fallback'});for(const s of p.plan.scenes)p=applySceneTheme(p,s.id,'orange-launch');return p;})();
  const scene=stage.plan.scenes.find(s=>s.interactions?.length)||stage.plan.scenes[0];
  if(scene.interactions?.length){scene.keyStates=scene.keyStates||[{id:'open',position:0,label:'Open'}];scene.staticState={keyStateId:scene.keyStates[0].id};
   const compiled=compileInteractionRuntime(stage.document,stage.plan,{});assert.equal(compiled.scenes.find(s=>s.id===scene.id).staticState.reducedMotion,'static');}
@@ -122,7 +122,7 @@ test('S8 type roles: each theme changes headline weight, tracking, leading, body
   assert.notEqual(key,[base.headlineWeight,base.headlineTracking,base.headlineLeading,base.body,base.gutter,base.measure].join('|'));
   const t=resolveTheme(id,'1.0.0','en');assert.notEqual(t.split,resolveTheme('cream-collage','1.0.0','en').split,id+' media ratio');
  }
- assert.ok(sceneDirection({...document,locale:'en'},{...plan,scenes:plan.scenes.map(s=>({...s,theme:'luminous-stage',composition:'reading-flow'}))},0).headline>=120,'the stage opens larger');
+ assert.ok(sceneDirection({...document,locale:'en'},{...plan,scenes:plan.scenes.map(s=>({...s,theme:'orange-launch',composition:'reading-flow'}))},0).headline>=120,'the stage opens larger');
 });
 
 test('S8 theme-only compositions refuse another theme or missing blocks and never drop content',async()=>{
@@ -130,13 +130,13 @@ test('S8 theme-only compositions refuse another theme or missing blocks and neve
  const scene=structuredClone(plan.scenes[0]),blocks=scene.blockIds.map(id=>document.blocks.find(b=>b.id===id)),kinds=blocks.map(b=>b.type);
  assert.ok(kinds.includes('heading')&&kinds.includes('paragraph')&&kinds.includes('metric'),'the example cover has a heading, a paragraph and a metric');
  const check=(theme,composition)=>{const p=structuredClone(plan);Object.assign(p.scenes[0],{theme,composition});return assertDesignPlan(document,p);};
- for(const [theme,composition] of [['editorial-fieldnotes','fieldnotes-cover'],['research-atlas','atlas-cover'],['luminous-stage','stage-metric'],['luminous-stage','stage-hero']])assert.ok(check(theme,composition));
- for(const [theme,composition,pattern] of [['cream-collage','fieldnotes-cover',/belongs to the editorial-fieldnotes theme/],['research-atlas','stage-hero',/belongs to the luminous-stage theme/],['editorial-fieldnotes','fieldnotes-figure',/needs chart/],['research-atlas','atlas-panels',/needs chart/],['luminous-stage','stage-closing',/needs list/]])assert.throws(()=>check(theme,composition),e=>e.code==='INVALID_DESIGN_PLAN'&&pattern.test(e.message));
+ for(const [theme,composition] of [['silver-gray-editorial','fieldnotes-cover'],['fresh-report','atlas-cover'],['orange-launch','stage-metric'],['orange-launch','stage-hero']])assert.ok(check(theme,composition));
+ for(const [theme,composition,pattern] of [['cream-collage','fieldnotes-cover',/belongs to the silver-gray-editorial theme/],['fresh-report','stage-hero',/belongs to the orange-launch theme/],['silver-gray-editorial','fieldnotes-figure',/needs chart/],['fresh-report','atlas-panels',/needs chart/],['orange-launch','stage-closing',/needs list/]])assert.throws(()=>check(theme,composition),e=>e.code==='INVALID_DESIGN_PLAN'&&pattern.test(e.message));
  // A theme change keeps every block and chooses the theme's own composition by content.
  const {createVisualProject}=await import('../src/core/visual-project.mjs');let p=createVisualProject(structuredClone(document),structuredClone(plan),{id:'s8-switch'});
- for(const [theme,expected] of [['editorial-fieldnotes','fieldnotes-cover'],['research-atlas','atlas-cover'],['luminous-stage','stage-metric']]){const q=applySceneTheme(p,p.plan.scenes[0].id,theme);assert.equal(q.plan.scenes[0].composition,expected,theme);assert.deepEqual(q.document,p.document);}
+ for(const [theme,expected] of [['silver-gray-editorial','fieldnotes-cover'],['fresh-report','atlas-cover'],['orange-launch','stage-metric']]){const q=applySceneTheme(p,p.plan.scenes[0].id,theme);assert.equal(q.plan.scenes[0].composition,expected,theme);assert.deepEqual(q.document,p.document);}
  // Round trip back to the original theme restores the original composition family choice without touching facts.
- const away=applySceneTheme(p,p.plan.scenes[0].id,'research-atlas'),back=applySceneTheme(away,p.plan.scenes[0].id,p.plan.scenes[0].theme);assert.deepEqual(back.document,p.document);
+ const away=applySceneTheme(p,p.plan.scenes[0].id,'fresh-report'),back=applySceneTheme(away,p.plan.scenes[0].id,p.plan.scenes[0].theme);assert.deepEqual(back.document,p.document);
 });
 
 test('S8 theme CSS covers the sixteen compositions at 1440 and stacks them under 700 px; nothing clips or clamps',()=>{
@@ -184,7 +184,7 @@ test('S8 stories: the VIS-014 story document drawn by each new theme with that t
   const base=releaseStory(locale,'dark-data',corpusAssets),stories=await Promise.all(S8_THEMES.map(theme=>s8Project('story',locale,corpusHome,theme)));
   for(const [i,p] of stories.entries()){
    assertVisualProject(p);assert.deepEqual({...p.document,id:null},{...base.document,id:null});
-   const theme=S8_THEMES[i],prefix={'editorial-fieldnotes':'fieldnotes','research-atlas':'atlas','luminous-stage':'stage'}[theme];
+   const theme=S8_THEMES[i],prefix={'silver-gray-editorial':'fieldnotes','fresh-report':'atlas','orange-launch':'stage'}[theme];
    assert.ok(p.plan.scenes.every(s=>s.theme===theme&&!('colorMode' in s)));
    assert.ok(p.plan.scenes[0].composition.startsWith(prefix),theme+' opens with its own title composition');
    assert.ok(p.plan.scenes.find(s=>s.id==='st-evidence').composition===prefix+'-figure',theme+' evidence');
