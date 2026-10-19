@@ -2,6 +2,16 @@
 
 [English](../../ROADMAP.md) · [任务数据](../../roadmap.json) · [证据](verification.md)
 
+## S11 — S1–S10 合并就绪检查，2026-10-19
+
+S11 只检查、不发布。没有改动运行时代码、schema 或任务状态，只修了三处测试选择器。状态 **LocalVerified**。
+
+- **干净归档。** `d584d76` 在空目录中通过 `npm run verify`：475 个测试，471 通过，4 个受限跳过。
+- **浏览器门禁。** 18 个脚本在隔离的 Chrome for Testing 151 中都复现了记录的数字，其中两个经修复或重跑。[证据（英文）](../evidence/s11-merge-readiness/review.md)。
+- **计划。** [合并计划](../plans/design-handoff-merge-to-main.md)更正了数字并加入“就绪情况”。`origin/main` 未变；备份标签仅在本地。没有合并，也没有推送。
+
+[对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)
+
 ## S10 — 模式库维护与 P3 边界（DWD-310），2026-10-19
 
 S10 让设计登记表可维护。它只涉及文档与登记表：没有改动运行时代码、schema 或任务状态。DWD-310 仍为 **partial**。

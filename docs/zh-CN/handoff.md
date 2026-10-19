@@ -1,3 +1,12 @@
+截至 2026-10-19，S11（S1–S10 的合并就绪检查）已在本地完成，位于分支 `claude/s11-merge-readiness-61283b`，叠加在 S10（`d584d76`）之上，尚未推送。该分支包含 S1–S11，是将来要推送的分支。状态 **LocalVerified**。S11 做了：
+
+- 冻结 `d584d76`，用干净归档验证（`npm ci`、`npm run verify`：475 个测试，471 通过，4 个受环境或浏览器限制而跳过），并在隔离的 Chrome for Testing 151 中重跑全部 18 个浏览器脚本和发布门禁；记录的数字均可复现（[证据，英文](../evidence/s11-merge-readiness/review.md)）；
+- 发现 `browser_families.mjs` 和 `browser_compositions.mjs` 在该提交上失败：S9a 新增的 `directionsPanel` 让一个测试选择器变得有歧义；只改了三行测试，没有改运行时代码；另有两个脚本各失败一次、重跑通过，原因未查明；
+- 拉取 `origin/main`（仍为 `058b939`，未变动），并在 `058b939` 建立本地标签 `backup/main-before-design-handoff`；两者都没有推送；
+- 更正[合并计划](../plans/design-handoff-merge-to-main.md)中的数字（相对 `main` 改动 562 个文件），并加入“就绪情况”一节。
+
+用户在 S11 的回答：倾向 merge commit（只记录，不执行）；保留远端 `claude/s6-start-1c14f9`；推送前先由用户打开 PowerPoint 和 Keynote 导出文件。详见[对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)。本交接不授权进一步步骤：合并、任何推送、拉取请求和删除分支都需要用户另行指示。
+
 截至 2026-10-19，S10（模式库维护与 P3 边界，DWD-310）已在本地完成，位于分支 `claude/pattern-library-maintenance-p3-28aa7c`，叠加在 S9b（`a2d5371`）之上，尚未推送。该分支包含 S1–S10。S10 只涉及文档与登记表：没有改动运行时代码、schema 或任务状态，DWD-310 仍为 `partial`。S10 新增：
 
 - 56 条模式记录各加 15 个维护字段，82 条来源记录各加 4 个，只在有证据支持时填写（其余为 `null`）；`checkedAt` 保持“仓库核对日期”的含义，页面阅读日期用 `sourceCheckedAt`；

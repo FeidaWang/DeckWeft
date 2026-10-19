@@ -742,3 +742,40 @@ The user answered on 2026-10-19. Questions 1 and 2 were asked as one choice, and
 | Re-review cadence for sources | Undecided; no scheduled job |
 | S9b leftovers (answer 5 = no): the Explain stage composition, pages over 900 px, M10 part groups, Firefox and WebKit traces; also scroll advancement (M09) | Unchanged, in [§18](#18-s9b-decisions-and-result--blueprint-a-2026-10-19) |
 | Remote CI for the S1–S10 stack; PowerPoint, Keynote and Figma runs; Claude sign-in | Unchanged; user or later |
+
+## 20. S11 decisions and result — merge readiness, 2026-10-19
+
+Built on `d584d76` (S1–S10) in the worktree branch `claude/s11-merge-readiness-61283b`. The worktree was created at `main` (`058b939`); it was fast-forwarded to `d584d76` before any edit. Nothing is pushed, merged or deleted. State: **LocalVerified** for the S1–S10 tip; nothing is HostVerified or ExportVerified. No `roadmap.json` state changed and no schema changed. Runtime code is unchanged; three test selectors were fixed (below). [Evidence](../evidence/s11-merge-readiness/review.md) · [Merge plan, Readiness section](design-handoff-merge-to-main.md#readiness-s11-2026-10-19).
+
+### Answers
+
+The user answered four questions on 2026-10-19, in Chinese, before any work.
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Merge method | Merge commit. Recorded as a leaning; not executed |
+| 2 | Browser gates | Rerun all of them |
+| 3 | Remote `claude/s6-start-1c14f9` | Keep; recorded in the plan only |
+| 4 | Wait for PowerPoint and Keynote exports before pushing | Yes; a pre-push user step in the plan |
+
+### Result
+
+| Plan step | Result |
+|---|---|
+| 1 Freeze | `d584d76`, clean |
+| 2 Clean archive | 475 tests, 471 pass, 4 skipped (named in the evidence); types, source and link checks, packaging and demos pass |
+| 3 Browser gates | 18 runners in isolated Chrome for Testing 151; all reproduce the recorded numbers. Two failed on the tip for a stale test selector (F1, fixed in tests); two failed once and passed on rerun (F2, cause not found). Release-gate cases 11 of 11 against S6's 10 of 11 (F3, explained by S8) |
+| 4 `origin/main` | Fetched; still `058b939`; no merge needed; no conflict by `git merge-tree` |
+| 5 Backup tag | `backup/main-before-design-handoff` at `058b939`, local only |
+| 6 Plan check | Table matched; S10 tip, commit counts and the size figure (562 files, 119,052 added lines, five under `schemas/`) corrected; remote S6 branch still `4814952` |
+| 7 Sentences | Listed in the evidence; not changed |
+
+### Open after S11
+
+| Item | Owner |
+|---|---|
+| F2: the parity comparison and the 1024 px `#actionLevel` timeout each failed once; cause unknown | Follow-up if either recurs in the pull request's browser run |
+| F4: 20 stage lines in the S2 script against 18 recorded | Follow-up; no effect on pass or fail |
+| PowerPoint and Keynote exports opened by the user; Figma | User, before the push |
+| Remote CI on three operating systems, Node 22, Firefox and WebKit, Claude sign-in | Unchanged; user or later |
+| The "not pushed" and "start from this branch" sentences | After a real merge (plan step 10) |

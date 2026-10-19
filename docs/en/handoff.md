@@ -1,3 +1,12 @@
+S11 (merge readiness for S1–S10) is **done locally** as of 2026-10-19 on branch `claude/s11-merge-readiness-61283b`, stacked on S10 (`d584d76`); it is not pushed. That branch holds S1–S11 and is the one to push. State **LocalVerified**. What S11 did:
+
+- froze `d584d76`, proved it from a clean archive (`npm ci`, `npm run verify`: 475 tests, 471 pass, 4 environment- or browser-gated skips) and reran all 18 browser runners and the release gate in isolated Chrome for Testing 151; the recorded numbers reproduce ([evidence](../evidence/s11-merge-readiness/review.md));
+- found that `browser_families.mjs` and `browser_compositions.mjs` failed on the tip because S9a's `directionsPanel` made a test selector ambiguous; fixed in three test lines, no runtime code; two other runners failed once and passed on rerun, cause not found;
+- fetched `origin/main` (unmoved at `058b939`) and created the local tag `backup/main-before-design-handoff` at `058b939`; neither is pushed;
+- corrected the figures in the [merge plan](../plans/design-handoff-merge-to-main.md) (562 files changed over `main`) and added its Readiness section.
+
+The user's S11 answers: merge commit is the leaning (not executed), keep the remote `claude/s6-start-1c14f9`, and open the PowerPoint and Keynote exports before any push. Details are in [alignment §20](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19). Nothing further is authorized by this handoff: the merge, any push, the pull request and any branch deletion each need the user's instruction.
+
 S10 (pattern library maintenance and the P3 boundary, DWD-310) is **done locally** as of 2026-10-19 on branch `claude/pattern-library-maintenance-p3-28aa7c`, stacked on S9b (`a2d5371`); it is not pushed. That branch holds S1–S10. It is documentation and register work only: no runtime code, schema or task state changed, and DWD-310 stays `partial`. What S10 adds:
 
 - fifteen maintenance fields on all 56 pattern records and four on the 82 source records, filled only where evidence supports them (the rest are `null`); `checkedAt` keeps its repository-check meaning and the page date is `sourceCheckedAt`;

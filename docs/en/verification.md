@@ -4,6 +4,17 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## S11 — merge readiness for S1–S10 (local), 2026-10-19
+
+State **LocalVerified** for the tip `d584d76`. [Evidence](../evidence/s11-merge-readiness/review.md) · [Alignment §20](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19) · [Merge plan](../plans/design-handoff-merge-to-main.md#readiness-s11-2026-10-19).
+
+Results:
+
+- A clean `git archive` of `d584d76`, then `npm ci` and `npm run verify` outside the repository: **475 tests** (471 pass, 4 skips: the register test needing `DECKWEFT_HANDOFF_DIR` and the three Studio export tests needing `CHROMIUM_PATH`). Node 24.14.0.
+- The release gate and 17 browser runners (S2 to S9b) in isolated Chrome for Testing 151.0.7922.34 with Playwright 1.61.1: the recorded numbers reproduce. `browser_families` and `browser_compositions` first failed on a stale `.candidate-panel` test selector (S9a added a second panel with that class) and pass after a three-line test fix; the parity and author-controls runners each failed once and passed on rerun, cause not found. Release-gate cases are 11 of 11 (S6 recorded 10 of 11; S8 had fixed it).
+- `origin/main` fetched: unmoved at `058b939`. Local tag `backup/main-before-design-handoff` created there. Nothing pushed.
+- Not run: PowerPoint, Keynote, Figma, Firefox, WebKit, Node 22, remote CI, Claude.
+
 ## S10 — pattern library maintenance (DWD-310)
 
 State **Implemented** for the register fields, manuals and tests, 2026-10-19. DWD-310 stays partial. [Evidence](../evidence/s10-pattern-maintenance/review.md) · [Alignment §19](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19) · [Manual](../design/pattern-register.md).

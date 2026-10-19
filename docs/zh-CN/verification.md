@@ -4,6 +4,17 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S11 S1–S10 合并就绪检查（本地），2026-10-19
+
+对 `d584d76` 的状态为 **LocalVerified**。[证据（英文）](../evidence/s11-merge-readiness/review.md) · [对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19) · [合并计划](../plans/design-handoff-merge-to-main.md#readiness-s11-2026-10-19)。
+
+结果：
+
+- 在仓库之外对 `d584d76` 做干净 `git archive`，再 `npm ci` 和 `npm run verify`：**475 个测试**（471 通过，4 个跳过：需要 `DECKWEFT_HANDOFF_DIR` 的登记表测试，以及需要 `CHROMIUM_PATH` 的三个 Studio 导出测试）。Node 24.14.0。
+- 发布门禁和 17 个浏览器脚本（S2 至 S9b）在隔离的 Chrome for Testing 151.0.7922.34、Playwright 1.61.1 中重跑：记录的数字都复现。`browser_families` 与 `browser_compositions` 起初因过期的 `.candidate-panel` 选择器失败（S9a 新增了同类名的面板），改三行测试后通过；parity 与 author-controls 各失败一次、重跑通过，原因未查明。发布门禁的显式用例为 11/11（S6 记录 10/11，S8 已修复）。
+- 已拉取 `origin/main`：仍为 `058b939`，未变动。在该处建立了本地标签 `backup/main-before-design-handoff`。没有推送。
+- 未运行：PowerPoint、Keynote、Figma、Firefox、WebKit、Node 22、远程 CI、Claude。
+
 ## S10 模式库维护（DWD-310）
 
 登记表字段、手册与测试的状态为 **Implemented**（2026-10-19）。DWD-310 仍为 partial。[证据（英文）](../evidence/s10-pattern-maintenance/review.md) · [对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19) · [手册](pattern-register.md)。

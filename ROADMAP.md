@@ -2,6 +2,16 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## S11 — merge readiness for S1–S10, 2026-10-19
+
+S11 checks the stack without publishing it. It changed no runtime code, schema or task state; three test selectors were fixed. State **LocalVerified**.
+
+- **Clean archive.** `d584d76` passes `npm run verify` from an empty directory: 475 tests, 471 pass, 4 gated skips.
+- **Browser gates.** All 18 runners reproduce the recorded numbers in isolated Chrome for Testing 151, two after a fix or rerun. [Evidence](docs/evidence/s11-merge-readiness/review.md).
+- **Plan.** The [merge plan](docs/plans/design-handoff-merge-to-main.md) has corrected figures and a Readiness section. `origin/main` is unmoved; the backup tag is local. Nothing is merged or pushed.
+
+[Alignment §20](docs/plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)
+
 ## S10 — pattern library maintenance and the P3 boundary (DWD-310), 2026-10-19
 
 S10 makes the design registers maintainable. It is documentation and register work: no runtime code, schema or task state changed. DWD-310 stays **partial**.
