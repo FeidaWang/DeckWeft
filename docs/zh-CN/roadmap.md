@@ -2,6 +2,99 @@
 
 [English](../../ROADMAP.md) · [任务数据](../../roadmap.json) · [证据](verification.md)
 
+## S11 — S1–S10 合并就绪检查，2026-10-19
+
+S11 只检查、不发布。没有改动运行时代码、schema 或任务状态，只修了三处测试选择器。状态 **LocalVerified**。
+
+- **干净归档。** `d584d76` 在空目录中通过 `npm run verify`：475 个测试，471 通过，4 个受限跳过。
+- **浏览器门禁。** 18 个脚本在隔离的 Chrome for Testing 151 中都复现了记录的数字，其中两个经修复或重跑。[证据（英文）](../evidence/s11-merge-readiness/review.md)。
+- **计划。** [合并计划](../plans/design-handoff-merge-to-main.md)更正了数字并加入“就绪情况”。`origin/main` 未变；备份标签仅在本地。没有合并，也没有推送。
+
+[对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)
+
+## S10 — 模式库维护与 P3 边界（DWD-310），2026-10-19
+
+S10 让设计登记表可维护。它只涉及文档与登记表：没有改动运行时代码、schema 或任务状态。DWD-310 仍为 **partial**。
+
+- **维护字段。** 56 个模式都有 `patternId`、`version`（`1.0.0`）、来源 URL、语言、`sourceCheckedAt`、证据类型、已观察行为、`verification` 与 `deprecatedBy` 等字段。只填证据支持的内容，其余为 `null`。82 个来源新增 `sourceUrl`、`locale`、`sourceCheckedAt` 与 `browserSample`。
+- **手册。** [维护模式登记表](pattern-register.md)（[English](../design/pattern-register.md)）：何时新增模式、如何做浏览器核验、上游改版如何记录而不改变已有作品。
+- **全站逐页核验：只记录，未做。** OpenAI 的 1,390 条 zh-Hans-CN 路径还需要模板归并，并按每个模板 8 格（桌面与移动 × 初始、交互、减少动态效果、静态）核验。Anthropic 没有可核对的 URL 清单。
+- **EXP-001。** P3 延后项写在该任务的 `notes` 中，任务仍为 `planned`：不做全屏长期粒子、不做多层模糊、没有静态定稿就不做 3D、不做只能用鼠标理解的开屏、P1 验收前不做无语义的数字翻滚。预算要先有参考设备、浏览器版本、分辨率、DPR 和电源模式。
+- **抽样。** 在内置浏览器中各打开一次三个参考页面（[证据（英文）](../evidence/s10-pattern-maintenance/review.md)）。
+- **计划。** [把 S1–S10 合并回 `main`（英文）](../plans/design-handoff-merge-to-main.md)：只是计划，没有合并，也没有推送。
+
+[对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19)。
+
+## S9b — 蓝图 A：讲解 → 图解 → 探索（DWD-210），2026-10-19
+
+S9b 为 VIS-009 加入设计交接中的第一个讲解场景。VIS-009 仍为 **implemented-local**。
+
+- **一页三个阶段。**讲解（问题、简短回答、对象名称）→ 图解（完整对象，部分带编号）→ 探索（一个部分对照整体）。它建立在现有的图、`steps`、提示时钟、关键状态和静态状态之上，只新增一个可选字段。
+- **恢复规则。**文档打开期间，每页记住自己的阶段和部分；重新加载后从“讲解”开始。
+- **键盘与动效。**选择部分和探索控件永远不会翻页；减少动态效果时每个阶段都能到达。
+- **导出绝不只剩零散部分。**无 JavaScript 时以及在 PowerPoint 和 PDF 中，页面总是显示完整对象、带编号的部分和全部说明；没有静态状态或以“讲解”为静态状态的页面，导出顺序会拒绝。
+- **Studio。**“将本页设为‘讲解 → 图解 → 探索’”走正常编辑路径（可撤销，遵守锁定）；静态状态由作者选择。
+- **Codex 页数规划。**Codex 草稿路径现在会收到页数规划；宿主添加的页面会被提出来询问，绝不默默接受。一次真实的 Codex CLI 运行在目标 6 页时只起草了 4 页，没有填充，规划随即询问缺少的材料。
+
+已在隔离 Chromium 中以 1440、1024、390 px 检查：
+
+- 66 步播放器轨迹和 9 步 Studio 轨迹，其中 Studio 的 PowerPoint／PDF 导出先被拒绝、后成功；
+- 12 份文稿（六套主题 × 两种语言），事实相同，没有版面、对比度或字形问题；
+- `export:targets --s9`：PowerPoint 可编辑性与页面检查 12/12 通过。
+
+未运行 Firefox、WebKit、PowerPoint 和 Keynote，Claude 仍暂缓。[交互手册](interactions.md#讲解--图解--探索蓝图-as9b) · [Visual Studio 手册](visual-studio.md#讲解--图解--探索页面s9b) · [证据（英文）](../evidence/s9b-blueprint-a/review.md)
+
+## S9a — 作者控制（DWD-200），2026-10-19
+
+S9a 在现有 Visual Studio 中扩展 VIS-013，并完成 VIS-015 的最后一条验收。VIS-013 仍为 **implemented-local**，VIS-015 仍为 **partial**。
+
+- **入口。**创作栏只问六个问题（主题、受众、风格、详细程度、动效、输出），并用三种方式绘制同一内容。三个预览都经过测量，图形、字体、媒体与动效不同，事实完全相同。每个方向在作者选择前说明它改变了什么，再据此生成整套演示。
+- **作者操作。**“更具编辑感”“给图表更多空间”“更安静”“保留此版式”“替换视觉”“减少文字”都先规划、说明范围与效果，再经正常编辑路径应用，可以撤销。“减少文字”把文字移入页面折叠内容，不删除任何内容。
+- **范围与锁定。**范围分四个层级（整套、章节、页面、对象）。文字、数据、来源与构图锁定经显式迁移后分开保存，在更换主题、来源更新与历史恢复后都会保留。局部修订会先说明范围。
+- **页数规划。**按论证单元规划页数：材料不足时提问或标记待补证据，绝不填充页数。
+- **可复用配置。**通过审阅的设计可保存为不含文字、图片或品牌的配置。
+- **Studio 导出。**导出组新增 PowerPoint 与 PDF，经 S7 导出顺序生成。
+
+已在隔离 Chromium 中以 1440、1024、390 px 检查：28 步界面轨迹；24 份方向文稿（六套主题 × 两种内容 × 两种语言）无排版、字形或渲染问题；Studio 的 PowerPoint 与 PDF 导出 48/48 通过。未运行 PowerPoint 与 Keynote，Claude 仍延后，S9b（蓝图 A）尚未开始。[工作台手册](workbench.md#六个问题与三个方向s9a) · [Visual Studio 手册](visual-studio.md#作者控制章节与分项锁定s9a) · [证据](../evidence/s9a-author-controls/review.md)。
+
+## VIS-016 — 面向目标的可编辑导出（S7），2026-10-19
+
+VIS-016 为 **partial**（本地已实现）。每个组件都为网页、PDF 与 PowerPoint 声明了输出等级（L1 原生、L2 矢量加真实文字、L3 单个元素的图像加摘要）。导出顺序由代码强制执行。v3 演示文稿可编译为：
+
+- PowerPoint：原生文字、表格、内嵌数据的图表、形状、连接线、图片与备注
+- PDF：每个场景一页，真实文字，带标签
+
+PowerPoint 没有收到的每个元素都有单独的回执，没有任何一页是截图。在冻结的 VIS-014 语料上，每份演示文稿都有导出报告，分别给出四项结果：
+
+- PowerPoint 可编辑性与逐页检查：9/9 通过。
+- PDF 可搜索性：英文通过，中文 partial（部分汉字被记成 CJK 部首码位）。
+- 无障碍：partial（PDF 中的 figure 外层缺替代文字）。
+- 视觉保真：partial（只有快速查看的参考渲染）。
+
+PowerPoint 与 Keynote 没有运行，因此不声称应用兼容。[手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016) · [证据（英文）](../evidence/vis-016/review.md)。
+
+## VIS-014 — 首个视觉发布门（S6），2026-10-19
+
+VIS-014 为 **partial**。发布门已在本地运行：
+
+- 冻结的 12 页双语画廊（需求第 9 节）
+- 每个主题一份双语 8 页故事，三个主题中事实完全相同
+- 对全部 8 份整稿运行 VIS-010 流程（0 个问题，96/96 条交互轨迹通过）
+- 11 个显式用例，其中 10 个通过
+- 与 VIS-001 旧基线的对照
+- 独立导出文件复制到仓库之外，在 Chromium、Firefox 与 WebKit 中离线打开
+
+真实 Codex CLI 运行从提示起草整稿，审阅其实际截图后导出，再只修订一页并重新导出。发布门发现了六个渲染缺陷，已修复，并有意重录了基线。
+
+仍未完成：
+
+- Claude 仍为 deferred，“两个宿主”的要求未满足。
+- 缺字形无法被检测。
+- 390 px 下热力图需要横向滚动，中文标题会在词中断行。
+- 咨询性评分为 74–77/100，低于试点门槛，需要作者校准。
+
+本分支先合并了 S3、S4、S5，并采用分层图表聚焦规则。[发布门手册](visual-acceptance.md) · [评分审阅（英文）](../visual-acceptance/review.md) · [证据（英文）](../evidence/vis-014/review.md)。
+
 ## 源码推送与验证 — 2026-10-18
 
 VIS-001 已有对应源码的干净目录与远程 CI 验收：338 项测试及类型／源码／构建／导出检查在本地及 GitHub Node 22 的 Ubuntu、macOS、Windows 均通过。完整交互图库和真实预览／导出画面对照已通过；更广的宿主／原生应用／无障碍及 VIS-014 发布关卡仍单独保留。[证据](../evidence/interaction-visual-regression/review.md)。
@@ -18,7 +111,7 @@ VIS-012 已**完成本地实现，整体验收 partial**：Codex 与 Claude Code
 
 [更新后的视觉优先需求](../../DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) 已区分旧提交审计与当前视觉实现。VIS-001 已有基线／CI 验收；VIS-002～011 已有本地实现及下文证据。`roadmap.json` 补齐其余 VIS/SRC/DOC/EXP 任务和依赖；保留历史批次及授权记录，`nextExecutionOrder` 仅表示计划。
 
-VIS-012 宿主适配已完成本地实现，Claude 验收暂缓；VIS-013 已本地实现，后续计划为 **VIS-014 视觉发布验收**。为 VIS-014 补充另外六类构图、固定双语样例库与完整故事；实际宿主图像输入、无障碍和仓库外独立包仍需分别验收。v3 原生导出归 VIS-016，本地同步和云连接器属于后续显式启用范围。现有 bridge mock、确定性提纲规划及代表性质量样例不能关闭这些关卡。
+VIS-012 宿主适配已完成本地实现，Claude 验收暂缓；VIS-013 已本地实现；VIS-014 与 VIS-016 为 partial（见上文），设计交接计划接下来是 S8（T01–T03 主题，VIS-015）。为 VIS-014 补充另外六类构图、固定双语样例库与完整故事；实际宿主图像输入、无障碍和仓库外独立包仍需分别验收。v3 原生导出归 VIS-016，本地同步和云连接器属于后续显式启用范围。现有 bridge mock、确定性提纲规划及代表性质量样例不能关闭这些关卡。
 
 [校准和本次验证](../evidence/roadmap-reconciliation/review.md) · [后续交接](handoff.md)。
 

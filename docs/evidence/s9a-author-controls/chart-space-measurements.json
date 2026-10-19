@@ -1,0 +1,295 @@
+{
+ "format": "deckweft-s9a-plot-sizes",
+ "version": 1,
+ "page": "six-family-en / evidence (one line chart)",
+ "width": 1440,
+ "browser": "151.0.7922.34",
+ "rows": [
+  {
+   "theme": "cream-collage",
+   "composition": "evidence-left",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 867
+  },
+  {
+   "theme": "cream-collage",
+   "composition": "evidence-top",
+   "drawn": [
+    700,
+    350
+   ],
+   "box": [
+    1296,
+    350
+   ],
+   "sceneHeight": 935
+  },
+  {
+   "theme": "cream-collage",
+   "composition": "evidence-right",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 867
+  },
+  {
+   "theme": "dark-data",
+   "composition": "evidence-left",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 867
+  },
+  {
+   "theme": "dark-data",
+   "composition": "evidence-top",
+   "drawn": [
+    700,
+    350
+   ],
+   "box": [
+    1296,
+    350
+   ],
+   "sceneHeight": 940
+  },
+  {
+   "theme": "dark-data",
+   "composition": "evidence-right",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 867
+  },
+  {
+   "theme": "dark-data",
+   "composition": "chart-with-evidence-rail",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 867
+  },
+  {
+   "theme": "electric-violet",
+   "composition": "evidence-left",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 867
+  },
+  {
+   "theme": "electric-violet",
+   "composition": "evidence-top",
+   "drawn": [
+    700,
+    350
+   ],
+   "box": [
+    1296,
+    350
+   ],
+   "sceneHeight": 935
+  },
+  {
+   "theme": "electric-violet",
+   "composition": "evidence-right",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 867
+  },
+  {
+   "theme": "silver-gray-editorial",
+   "composition": "evidence-left",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 880
+  },
+  {
+   "theme": "silver-gray-editorial",
+   "composition": "evidence-top",
+   "drawn": [
+    700,
+    350
+   ],
+   "box": [
+    1264,
+    350
+   ],
+   "sceneHeight": 951
+  },
+  {
+   "theme": "silver-gray-editorial",
+   "composition": "evidence-right",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 880
+  },
+  {
+   "theme": "silver-gray-editorial",
+   "composition": "fieldnotes-figure",
+   "drawn": [
+    834,
+    417
+   ],
+   "box": [
+    834,
+    417
+   ],
+   "sceneHeight": 810
+  },
+  {
+   "theme": "fresh-report",
+   "composition": "evidence-left",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 843
+  },
+  {
+   "theme": "fresh-report",
+   "composition": "evidence-top",
+   "drawn": [
+    700,
+    350
+   ],
+   "box": [
+    1296,
+    350
+   ],
+   "sceneHeight": 908
+  },
+  {
+   "theme": "fresh-report",
+   "composition": "evidence-right",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 843
+  },
+  {
+   "theme": "fresh-report",
+   "composition": "atlas-figure",
+   "drawn": [
+    865,
+    433
+   ],
+   "box": [
+    865,
+    433
+   ],
+   "sceneHeight": 894
+  },
+  {
+   "theme": "orange-launch",
+   "composition": "evidence-left",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 899
+  },
+  {
+   "theme": "orange-launch",
+   "composition": "evidence-top",
+   "drawn": [
+    700,
+    350
+   ],
+   "box": [
+    1248,
+    350
+   ],
+   "sceneHeight": 966
+  },
+  {
+   "theme": "orange-launch",
+   "composition": "evidence-right",
+   "drawn": [
+    780,
+    390
+   ],
+   "box": [
+    780,
+    390
+   ],
+   "sceneHeight": 899
+  },
+  {
+   "theme": "orange-launch",
+   "composition": "stage-figure",
+   "drawn": [
+    774,
+    387
+   ],
+   "box": [
+    774,
+    387
+   ],
+   "sceneHeight": 979
+  }
+ ]
+}

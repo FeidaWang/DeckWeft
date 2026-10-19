@@ -41,7 +41,8 @@ test('VIS-008 code exact whitespace, escaped markup, emphasis and source anchor'
 });
 test('VIS-008 locks bind chart datasets and exact code; truthful per-component capabilities',()=>{
  for(const kind of ['line','code']){const base=structuredClone(p),next=structuredClone(p),id='component-'+kind;base.document.authorOverrides.lockedBlockIds.push(id);next.document.authorOverrides.lockedBlockIds.push(id);if(kind==='line')next.document.datasets.find(d=>d.id==='data-line').series[0].values[0]=123;else next.document.blocks.find(b=>b.id===id).text+=' ';assert.throws(()=>assertVisualLocks(base,next));}
- assert.equal(presentationCapabilities('pptx',p.document).components.every(c=>!c.supported),true);assert.equal(presentationCapabilities('json',p.document).components.every(c=>c.supported&&!c.animation),true);
+ // S7: every component declares a PowerPoint level; nothing is animated or interactive there. Figma still has no v3 compiler.
+ assert.equal(presentationCapabilities('pptx',p.document).components.every(c=>c.supported&&['L1','L3'].includes(c.level)&&!c.animation&&!c.interactionSupport.length),true);assert.deepEqual(presentationCapabilities('figma',p.document).issues.map(i=>i.code),['TARGET_UNIMPLEMENTED']);assert.equal(presentationCapabilities('json',p.document).components.every(c=>c.supported&&!c.animation),true);
 });
 test('VIS-008 exact components persist through conflicts, immutable history and restore-as-copy',async()=>{
  const {VisualProjectStore}=await import('../src/services/visual-store.mjs'),store=await new VisualProjectStore(path.join(home,'store')).init();

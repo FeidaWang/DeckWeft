@@ -34,9 +34,9 @@ try{
   await capture(page,name+'-full-deck.png');for(const s of p.plan.scenes)await capture(page,name+'-'+s.id+'.png',page.locator('#'+s.id));
   const source=await page.locator('#dw-runtime-data').textContent();
   for(const kind of ['line','area','ranked-bar','stacked','scatter','heatmap']){
-   const root=page.locator('[data-block-id="component-'+kind+'"]'),current=root.locator('.chart-current-view');const before=await current.locator('svg').innerHTML();
+   const root=page.locator('[data-block-id="component-'+kind+'"]'),current=root.locator('.chart-current-view');const before=await current.locator('.chart-plot svg,.chart-rows').innerHTML();
    await root.locator('[data-range="fromId"]').selectOption('gamma');await root.locator('[data-range="toId"]').selectOption('gamma');const boxes=root.locator('input[type=checkbox]');if(await boxes.count()>1)await boxes.first().uncheck();
-   assert.equal(await current.locator('tbody tr').count(),1);assert.equal(await root.locator('.full-source-data tbody tr').count(),4);assert.notEqual(await current.locator('svg').innerHTML(),before);if(kind==='line')await capture(page,name+'-chart-filtered.png',page.locator('#component-line'));assert.ok(!/NaN|Infinity|undefined/.test(await current.innerHTML()));
+   assert.equal(await current.locator('tbody tr').count(),1);assert.equal(await root.locator('.full-source-data tbody tr').count(),4);assert.notEqual(await current.locator('.chart-plot svg,.chart-rows').innerHTML(),before);if(kind==='line')await capture(page,name+'-chart-filtered.png',page.locator('#component-line'));assert.ok(!/NaN|Infinity|undefined/.test(await current.innerHTML()));
    const spec='select-'+kind;const state=await page.evaluate(id=>window.deckweftInteractions.snapshot().find(s=>s.sceneId===id).state[0],'component-'+kind);assert.deepEqual(state.seriesIds,kind==='ranked-bar'?['local']:['reviewed']);assert.equal(state.fromId,'gamma');
    const unchanged=await page.locator('#dw-runtime-data').textContent();assert.equal(unchanged,source);
    const filteredTarget=page.locator('#component-'+kind+' .semantic-annotation a');await filteredTarget.click();assert.ok(await root.locator('.full-source-data').evaluate(n=>n.open));

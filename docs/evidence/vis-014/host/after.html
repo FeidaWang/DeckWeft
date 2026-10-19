@@ -1,0 +1,827 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;sha256-AozbpRhseHkh7chriPwlN/tf2EV+ne8CSIMhS+7uKwA=&#39;; style-src &#39;unsafe-inline&#39;; img-src data:; font-src &#39;none&#39;; base-uri &#39;none&#39;; form-action &#39;none&#39;; connect-src &#39;none&#39;"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="deckweft-render-hash" content="cfdfc125e8bc89fa2ff64614afc071e1404d4692f26c12e73eea4bb14f034628"><title>Paper workshop</title><style>*{box-sizing:border-box}html{color-scheme:light}body{margin:0;background:#deded9;color:#171717;font:16px Arial,sans-serif}button{font:inherit;min-height:44px;padding:8px 18px;background:transparent;border:1px solid currentColor;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #f05a39;outline-offset:4px}button:disabled{opacity:.4;cursor:default}header{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1440px;margin:auto;padding:20px 32px}header h1{font-size:15px;font-weight:500}nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}[hidden]{display:none!important}main{max-width:1440px;margin:auto}.web-scene{position:relative;isolation:isolate;margin:0 24px 32px;background:var(--paper);color:var(--ink);font-family:var(--body);padding:var(--page);min-height:720px;overflow-wrap:anywhere}.folio{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:14px;margin-bottom:40px}.regions{position:relative;z-index:1}.region{min-width:0}h2{white-space:pre-line;font-family:var(--display);font-weight:500;font-size:clamp(40px,calc(5.5vw * var(--display-scale)),80px);line-height:1.04;letter-spacing:-.045em;margin:0 0 32px}p,blockquote{font-size:22px;line-height:1.5;margin:0 0 24px;white-space:pre-wrap}a{color:inherit;text-underline-offset:4px}.citation{font-size:12px;line-height:1.6;max-width:70ch}.metric strong{display:block;font:500 clamp(80px,13vw,180px)/.9 var(--body);letter-spacing:-.08em}.metric small{display:block;font-size:.22em;letter-spacing:-.02em;margin-top:14px}.metric span{display:block;font-size:16px;max-width:20ch;margin-top:16px}.decor{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}.diagonal-cover .regions{display:grid;grid-template-columns:1.65fr 1fr;column-gap:9%;align-items:start}.diagonal-cover [data-component=heading]{grid-column:1;grid-row:1}.diagonal-cover [data-component=paragraph]{grid-column:1}.diagonal-cover [data-component=metric]{grid-column:2;grid-row:1 / span 2;padding:90px 0 0 clamp(24px,calc(9vw - 30px),100px);color:var(--paper)}.diagonal-cover [data-component=callout]{grid-column:1}.diagonal-cover .regions>.region[data-component=citation]{grid-column:1}.diagonal-cover [data-component=paragraph] p{max-width:34ch}.diagonal-cover .folio{margin-right:36%}.chart-with-evidence-rail h2{font:500 clamp(36px,4.2vw,60px)/1.06 var(--display);max-width:22ch;letter-spacing:-.04em}.chart-with-evidence-rail .regions{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:0 36px}.chart-with-evidence-rail [data-component=heading]{grid-column:1 / -1}.chart-with-evidence-rail [data-component=chart]{grid-column:1;grid-row:2 / span 3}.chart-with-evidence-rail [data-component=paragraph],.chart-with-evidence-rail [data-component=callout]{grid-column:2}.chart-with-evidence-rail [data-component=callout] p{color:var(--accent);font-size:28px;line-height:1.2}.chart-with-evidence-rail [data-component=paragraph] p{font-size:16px}.chart-with-evidence-rail [data-component=citation]{grid-column:1 / -1;margin-top:24px}.chart{margin:0}.chart svg{width:100%;height:auto;display:block;overflow:visible;font:12px Arial,sans-serif}.chart svg text{fill:currentColor}.chart figcaption{font-size:12px;opacity:.8}.legend{display:flex;gap:24px;list-style:none;margin:0 0 18px;padding:0;font-size:14px}.legend span{display:inline-block;width:18px;height:4px;vertical-align:middle;margin-right:8px}summary{cursor:pointer;padding:10px 0;font-size:14px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:10px;border-bottom:1px solid #8887}caption{text-align:left}.table-scroll{overflow-x:auto}pre{padding:24px;background:#8882;overflow:auto;line-height:1.6;font-size:16px}code{font-family:var(--code,monospace)}.reading-flow .region{max-width:900px;margin:auto}.reading-flow h2{font-size:48px}.playing main{max-width:1440px}.playing .web-scene{display:none}.playing .web-scene.active{display:block}.playing header{position:sticky;top:0;background:#deded9;z-index:10}.web-scene:lang(zh-CN) h2{line-height:1.17;letter-spacing:-.025em}.web-scene:lang(zh-CN) p{line-height:1.65}.status{max-width:1440px;margin:0 auto 24px;padding:0 32px;font-size:12px}@media(max-width:1200px){.chart svg{font-size:16px}}@media(max-width:700px){header{padding:16px;align-items:start;flex-direction:column;gap:8px}header h1{margin:0}.web-scene{margin:0 0 20px;padding:28px 22px;min-height:0}.folio{margin-bottom:32px;gap:12px;font-size:10px}h2{font-size:46px}.diagonal-cover .folio{margin-right:0}.diagonal-cover .regions,.chart-with-evidence-rail .regions{display:flex;flex-direction:column;gap:8px}.diagonal-cover [data-component=metric]{padding:22px;background:var(--secondary);margin:8px 0 24px;width:100%}.metric strong{font-size:100px}.metric span{max-width:none}.decor{display:none}p{font-size:19px}.chart-with-evidence-rail h2{font-size:38px}.chart-with-evidence-rail [data-component=chart]{width:100%;margin-bottom:24px}.chart-with-evidence-rail [data-component=callout] p{font-size:24px}.chart svg{font-size:28px}.diagonal-cover:lang(zh-CN) h2{font-size:40px}.legend{gap:16px;font-size:12px}.reading-flow h2{font-size:36px}.citation{font-size:12px}.status{padding:0 16px}}@media print{header,.status{display:none}.web-scene,.playing .web-scene{display:block!important;break-after:page;margin:0;min-height:0}details{display:block}main{max-width:none}}
+.web-image{margin:0}.image-crop{position:relative;overflow:hidden;width:100%;background:#d8d8d0}.image-crop img{position:absolute;max-width:none;display:block}.web-image figcaption{font-size:12px;line-height:1.5;margin-top:12px}.photo-split{border-top:12px solid var(--accent)}.photo-split .regions{display:grid;grid-template-columns:minmax(0,calc(100% - var(--image-split) - var(--gap))) minmax(0,var(--image-split));column-gap:var(--gap);align-items:start}.photo-split [data-component=image]{grid-column:2;grid-row:1 / span 6}.photo-split [data-component=heading],.photo-split [data-component=paragraph],.photo-split [data-component=callout]{grid-column:1}.photo-split h2{font-family:var(--body);font-weight:700;font-size:clamp(36px,4.6vw,68px);letter-spacing:-.055em}.photo-split [data-component=callout] p{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin-top:36px}.violet-chapter .regions{min-height:480px;display:flex;flex-direction:column;justify-content:center;max-width:1000px}.violet-chapter h2{font-family:var(--body);font-size:clamp(46px,7vw,100px);font-weight:700;letter-spacing:-.06em}.violet-chapter p{max-width:48ch;font-size:22px}.preview header,.preview .status{display:none}.preview .web-scene{margin:0}.preview main{max-width:none}@keyframes web-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}@media(max-width:700px){.web-scene{padding:28px 22px}.photo-split .regions{display:flex;flex-direction:column;gap:12px}.photo-split [data-component=image]{width:100%;order:2}.photo-split [data-component=paragraph]{order:1}.photo-split [data-component=callout]{order:3}.photo-split h2{font-size:42px}.violet-chapter .regions{min-height:440px}.violet-chapter h2{font-size:48px}.violet-chapter p{font-size:19px}.web-image figcaption{font-size:12px}}
+:is(.statement-split,.statement-banner,.statement-center,.image-left,.image-strip,.image-right,.metric-left,.metric-band,.metric-right,.evidence-left,.evidence-top,.evidence-right,.comparison-matrix,.comparison-rail,.comparison-stack,.process-line,.process-rail,.process-stair) .regions{display:grid;gap:18px 40px;align-items:start}
+:is(.statement-split,.statement-banner,.statement-center,.image-left,.image-strip,.image-right,.metric-left,.metric-band,.metric-right,.evidence-left,.evidence-top,.evidence-right,.comparison-matrix,.comparison-rail,.comparison-stack,.process-line,.process-rail,.process-stair) h2{font-size:clamp(36px,4.2vw,60px);margin-bottom:8px}
+:is(.statement-split,.statement-banner,.statement-center,.image-left,.image-strip,.image-right,.metric-left,.metric-band,.metric-right,.evidence-left,.evidence-top,.evidence-right,.comparison-matrix,.comparison-rail,.comparison-stack,.process-line,.process-rail,.process-stair) p{font-size:20px;margin-bottom:8px}
+.regions>.region[data-component=citation]{grid-column:1 / -1}
+.statement-split .regions{grid-template-columns:1.2fr 1fr}.statement-split [data-component=heading]{grid-column:1;grid-row:1 / span 5;border-right:3px solid var(--accent);padding-right:36px}.statement-split .region:not([data-component=heading]):not([data-component=citation]){grid-column:2}
+.statement-banner .regions{grid-template-columns:1fr 1fr}.statement-banner [data-component=heading]{grid-column:1 / -1;border-bottom:6px solid var(--accent);padding-bottom:32px}.statement-banner [data-component=paragraph]{grid-column:1}.statement-banner [data-component=callout]{grid-column:2;border-left:1px solid currentColor;padding-left:24px}
+.statement-center .regions{max-width:900px;margin:auto;text-align:center;justify-items:center;padding-top:40px}.statement-center h2{font-size:clamp(44px,5.4vw,78px)}.statement-center [data-component=paragraph]{max-width:60ch}.statement-center [data-component=callout]{border-top:6px solid var(--accent);padding-top:24px}
+.image-left .web-image{max-width:500px}.image-right .web-image{max-width:400px}.image-left .regions{grid-template-columns:1.25fr 1fr}.image-left [data-component=image]{grid-column:1;grid-row:1 / span 8}.image-left .region:not([data-component=image]):not([data-component=citation]){grid-column:2}
+.image-right .regions{grid-template-columns:1fr 1fr}.image-right [data-component=heading]{grid-column:1 / -1}.image-right [data-component=image]{grid-column:2;grid-row:2 / span 8}.image-right .region:not([data-component=image]):not([data-component=heading]):not([data-component=citation]){grid-column:1}
+.image-strip .regions{grid-template-columns:1fr 1fr}.image-strip [data-component=image]{grid-column:1 / -1;grid-row:2}.image-strip .web-image{max-width:460px;margin:auto}.image-strip [data-component=heading]{grid-column:1}.image-strip [data-component=paragraph]{grid-column:2;grid-row:1}.image-strip [data-component=callout]{grid-column:1 / -1}
+:is(.metric-left,.metric-right) .regions{grid-template-columns:1fr 1.1fr}.metric-left [data-component=metric]{grid-column:1;grid-row:1 / span 6;padding-top:60px}.metric-left .region:not([data-component=metric]):not([data-component=citation]){grid-column:2}.metric-right [data-component=metric]{grid-column:2;grid-row:1 / span 6;border-left:4px solid var(--accent);padding:60px 0 0 36px}.metric-right .region:not([data-component=metric]):not([data-component=citation]){grid-column:1}
+.metric-band .regions{grid-template-columns:1fr 1fr}.metric-band [data-component=heading]{grid-column:1 / -1}.metric-band [data-component=metric]{grid-column:1 / -1;border-block:3px solid var(--accent);padding:20px 0}.metric-band .metric{display:flex;gap:50px;align-items:center}.metric-band .metric strong{font-size:140px}.metric-band .metric span{max-width:38ch}
+:is(.evidence-left,.evidence-right) .regions{grid-template-columns:2fr 1fr}.evidence-left [data-component=heading],.evidence-right [data-component=heading]{grid-column:1 / -1}.evidence-left [data-component=chart]{grid-column:1;grid-row:2 / span 6}.evidence-left .region:not([data-component=heading]):not([data-component=chart]):not([data-component=citation]){grid-column:2}.evidence-right .regions{grid-template-columns:1fr 2fr}.evidence-right [data-component=chart]{grid-column:2;grid-row:2 / span 6}.evidence-right .region:not([data-component=heading]):not([data-component=chart]):not([data-component=citation]){grid-column:1}
+.evidence-top .regions{grid-template-columns:1fr 1fr}.evidence-top [data-component=heading],.evidence-top [data-component=chart]{grid-column:1 / -1}.evidence-top .chart svg{max-height:350px}.evidence-top [data-component=chart]{grid-row:2}
+.comparison-matrix .regions{grid-template-columns:1fr 1fr}.comparison-matrix [data-component=heading],.comparison-matrix [data-component=table]{grid-column:1 / -1}.comparison-matrix th{background:var(--ink);color:var(--paper)}.comparison-matrix td{font-size:22px;padding:22px}
+.comparison-rail .regions{grid-template-columns:1fr 1.65fr}.comparison-rail [data-component=table]{grid-column:2;grid-row:1 / span 6}.comparison-rail .region:not([data-component=table]):not([data-component=citation]){grid-column:1}.comparison-rail td,.comparison-rail th{padding:22px 12px}
+.comparison-stack .regions{max-width:1000px;margin:auto}.comparison-stack tbody{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.comparison-stack tbody tr{display:flex;flex-direction:column;border-left:6px solid var(--accent)}.comparison-stack td{padding:18px;font-size:20px}.comparison-stack td::before{content:attr(data-column);display:block;font-size:12px;margin-bottom:8px}.comparison-stack thead tr{display:flex;gap:24px}.comparison-stack thead th{flex:1}.comparison-stack tbody tr:nth-child(even){background:#8881}
+.diagram{padding:0;list-style-position:inside;font-size:20px;line-height:1.5}.diagram li{padding:24px;border:1px solid currentColor;border-top:5px solid var(--accent)}.process-line .diagram{display:flex;gap:16px}.process-line .diagram li{flex:1;min-width:0}.process-line [data-component=heading],.process-line [data-component=diagram]{grid-column:1 / -1}.process-line .regions{grid-template-columns:1fr 1fr}
+.process-rail .regions{grid-template-columns:1fr 1.2fr}.process-rail [data-component=diagram]{grid-column:2;grid-row:1 / span 6}.process-rail .region:not([data-component=diagram]):not([data-component=citation]){grid-column:1}.process-rail .diagram{margin:0}.process-rail .diagram li{padding:18px;margin-bottom:12px}
+.process-stair .regions{max-width:1100px;margin:auto}.process-stair .diagram{margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.process-stair .diagram li:nth-child(3n+2){margin-top:40px}.process-stair .diagram li:nth-child(3n){margin-top:80px}
+.regions p.citation{font-size:12px}
+@media(max-width:700px){.comparison-stack tbody{display:block}.comparison-stack tbody tr{margin-bottom:16px}:is(.statement-split,.statement-banner,.statement-center,.image-left,.image-strip,.image-right,.metric-left,.metric-band,.metric-right,.evidence-left,.evidence-top,.evidence-right,.comparison-matrix,.comparison-rail,.comparison-stack,.process-line,.process-rail,.process-stair) .regions{display:flex;flex-direction:column;padding:0;gap:20px;text-align:left;align-items:stretch}.regions>.region{min-width:0}.statement-split [data-component=heading],.statement-banner [data-component=callout],.metric-right [data-component=metric]{border:0;padding:0}.metric-left [data-component=metric]{padding:0}.metric-band .metric{display:block}.metric-band .metric strong{font-size:100px}.process-line .diagram,.process-stair .diagram{display:block}.diagram li,.process-stair .diagram li:nth-child(n){margin:0 0 16px;padding:16px}.comparison-matrix td,.comparison-stack td{font-size:16px;padding:12px}.image-strip .web-image{max-width:none}}
+
+.web-scene:is(.chapter-low,.chapter-index,.chapter-margin,.before-after-split,.before-after-rail,.before-after-triptych,.system-map-wide,.system-map-rail,.system-map-key,.small-multiples-row,.small-multiples-lead,.small-multiples-center,.quote-center,.quote-split,.quote-band,.closing-split,.closing-steps,.closing-focus) .regions{display:grid;align-items:start}
+.web-scene.chapter-low .regions{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}.web-scene.chapter-low [data-component=heading]{grid-column:1;grid-row:1 / span 3;align-self:end}.web-scene.chapter-low .region:not([data-component=heading]):not([data-component=citation]){grid-column:2}
+.web-scene.chapter-index .regions{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}.web-scene.chapter-index .region:not([data-component=list]):not([data-component=citation]){grid-column:1}.web-scene.chapter-index [data-component=list]{grid-column:2;grid-row:1 / span 4;align-self:center}
+.web-scene.chapter-margin .regions{grid-template-columns:minmax(0,.62fr) minmax(0,1.6fr)}.web-scene.chapter-margin .region:not([data-component=list]):not([data-component=citation]){grid-column:2}.web-scene.chapter-margin [data-component=list]{grid-column:1;grid-row:1 / span 4;align-self:end}
+.web-scene.before-after-split .regions{grid-template-columns:repeat(2,minmax(0,1fr))}.web-scene.before-after-split [data-component=heading]{grid-column:1 / -1}
+.web-scene.before-after-rail .regions{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}.web-scene.before-after-rail .region:not([data-component=image]):not([data-component=citation]){grid-column:1}.web-scene.before-after-rail [data-component=image]{grid-column:2;grid-row:1 / span 3}.web-scene.before-after-rail [data-component=image]~[data-component=image]{grid-row:4 / span 3}
+.web-scene.before-after-triptych .regions{grid-template-columns:minmax(0,1fr) minmax(0,.62fr) minmax(0,1fr)}.web-scene.before-after-triptych [data-component=heading]{grid-column:1 / -1}.web-scene.before-after-triptych [data-component=image]{grid-column:1;grid-row:2 / span 3}.web-scene.before-after-triptych [data-component=image]~[data-component=image]{grid-column:3}.web-scene.before-after-triptych .region:not([data-component=heading]):not([data-component=image]):not([data-component=citation]){grid-column:2}
+.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych) .web-image{margin:0}.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych) .web-image::before{content:"Before · baseline";display:block;font:700 12px/1.4 var(--body);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych) [data-component=image]~[data-component=image] .web-image::before,.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych) .compare-panel .web-image~.web-image::before{content:"After"}
+.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych):lang(zh-CN) .web-image::before{content:"之前 · 基线";letter-spacing:.04em}.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych):lang(zh-CN) [data-component=image]~[data-component=image] .web-image::before,.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych):lang(zh-CN) .compare-panel .web-image~.web-image::before{content:"之后"}
+.web-scene.system-map-wide .regions{grid-template-columns:repeat(2,minmax(0,1fr))}.web-scene.system-map-wide .region:is([data-component=diagram],[data-component=list]){grid-column:1 / -1}
+.web-scene.system-map-rail .regions{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}.web-scene.system-map-rail [data-component=diagram]{grid-column:1;grid-row:1 / span 5}.web-scene.system-map-rail .region:not([data-component=diagram]):not([data-component=citation]){grid-column:2}
+.web-scene.system-map-key .regions{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}.web-scene.system-map-key [data-component=heading]{grid-column:1 / -1}.web-scene.system-map-key [data-component=diagram]{grid-column:2;grid-row:2 / span 4}.web-scene.system-map-key .region:not([data-component=heading]):not([data-component=diagram]):not([data-component=citation]){grid-column:1}
+.web-scene:is(.small-multiples-row,.small-multiples-lead,.small-multiples-center) .regions{grid-template-columns:repeat(2,minmax(0,1fr))}.web-scene:is(.small-multiples-row,.small-multiples-lead,.small-multiples-center) [data-component=annotation]{grid-column:1 / -1}
+.web-scene.small-multiples-row .region:is([data-component=heading],[data-component=list]){grid-column:1 / -1}
+.web-scene.small-multiples-lead [data-component=heading]{grid-column:1;grid-row:1 / span 2}.web-scene.small-multiples-lead .region:is([data-component=paragraph],[data-component=callout],[data-component=list]){grid-column:2}.web-scene.small-multiples-lead .regions:not(:has(>:is([data-component=paragraph],[data-component=callout],[data-component=list]))) [data-component=heading]{grid-column:1 / -1;grid-row:auto}
+.web-scene.small-multiples-center .region:is([data-component=heading],[data-component=list]){grid-column:1 / -1}
+.web-scene.quote-center .regions{max-width:1040px;margin:0 auto;width:100%;justify-items:center;text-align:center}
+.web-scene.quote-split .regions{grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr)}.web-scene.quote-split .region:not([data-component=quote]):not([data-component=citation]){grid-column:1}.web-scene.quote-split [data-component=quote]{grid-column:2;grid-row:1 / span 3}.web-scene.quote-split [data-component=quote]+[data-component=citation]{grid-column:2;grid-row:4}
+.web-scene.quote-band .regions{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}.web-scene.quote-band .region:is([data-component=heading],[data-component=quote]){grid-column:1 / -1}.web-scene.quote-band [data-component=quote]+[data-component=citation]{grid-column:1}.web-scene.quote-band .region:is([data-component=paragraph],[data-component=callout],[data-component=list]){grid-column:2}
+.web-scene.closing-split .regions{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.web-scene.closing-split .region:is([data-component=heading],[data-component=paragraph]){grid-column:1}.web-scene.closing-split [data-component=list]{grid-column:2;grid-row:1 / span 2}.web-scene.closing-split [data-component=callout]{grid-column:2}
+.web-scene.closing-steps .regions{grid-template-columns:repeat(2,minmax(0,1fr))}.web-scene.closing-steps .region:is([data-component=heading],[data-component=list]){grid-column:1 / -1}
+.web-scene.closing-focus .regions{grid-template-columns:repeat(2,minmax(0,1fr));max-width:1120px;margin:0 auto;width:100%}.web-scene.closing-focus .region:is([data-component=heading],[data-component=callout]){grid-column:1 / -1;justify-self:center;text-align:center}
+@media(max-width:1100px) and (min-width:701px){.web-scene:is(.small-multiples-row,.small-multiples-lead,.small-multiples-center,.system-map-rail,.system-map-key) .regions{display:flex;flex-direction:column;align-items:stretch}.web-scene:is(.small-multiples-row,.small-multiples-lead,.small-multiples-center,.system-map-rail,.system-map-key) .region{align-self:stretch}}
+@media(max-width:700px){.web-scene:is(.chapter-low,.chapter-index,.chapter-margin,.before-after-split,.before-after-rail,.before-after-triptych,.system-map-wide,.system-map-rail,.system-map-key,.small-multiples-row,.small-multiples-lead,.small-multiples-center,.quote-center,.quote-split,.quote-band,.closing-split,.closing-steps,.closing-focus) .regions{display:flex;flex-direction:column;align-items:stretch;text-align:left;gap:22px}.web-scene:is(.chapter-low,.chapter-index,.chapter-margin,.before-after-split,.before-after-rail,.before-after-triptych,.system-map-wide,.system-map-rail,.system-map-key,.small-multiples-row,.small-multiples-lead,.small-multiples-center,.quote-center,.quote-split,.quote-band,.closing-split,.closing-steps,.closing-focus) .region{min-width:0;align-self:stretch}}
+.chart figcaption{opacity:1}.chart-caption{opacity:.8}.chart-question{display:block;font-size:17px;line-height:1.35;font-weight:600;margin:0 0 4px}.chart-notes{list-style:none;margin:4px 0 8px;padding:0;font-size:13px;line-height:1.45}.chart-notes li{margin:2px 0}.chart .chart-takeaway{font-size:16px;line-height:1.45;margin:8px 0;white-space:normal}.chart .chart-definition{font-size:12px;line-height:1.5;margin:4px 0 8px;white-space:normal}.legend li[data-muted]{opacity:.75}.legend .legend-key{display:inline-block;width:28px;height:12px;vertical-align:middle;margin-right:8px;overflow:visible}.legend .legend-muted{background:transparent;border:1.5px solid;height:10px}.legend span,.chart svg{-webkit-print-color-adjust:exact;print-color-adjust:exact}.chart-rows{list-style:none;margin:10px 0 12px;padding:0;display:grid;gap:8px;font-size:15px;line-height:1.3}.chart-row,.chart-axis{display:grid;grid-template-columns:minmax(0,min(38%,var(--label-width))) minmax(0,1fr);column-gap:14px;align-items:center}.chart-row-label{overflow-wrap:anywhere}.chart-row[data-focus=true] .chart-row-label{font-weight:700}.chart-event-ref{display:inline-block;min-width:1.4em;margin-left:4px;border:1px solid currentColor;border-radius:1em;font-size:11px;line-height:1.3;text-align:center}.chart-row-marks{display:grid;gap:4px;min-width:0}.chart-line{display:grid;grid-template-columns:minmax(0,min(40%,var(--series-width))) minmax(0,1fr);column-gap:10px;align-items:center}.chart-series-name{font-size:13px;overflow-wrap:anywhere}.chart-line[data-muted] .chart-series-name{opacity:.85}.chart-mark{display:block;min-height:26px}.chart-track{position:relative;display:block;width:calc(100% - var(--value-space));min-height:26px}.chart .chart-track svg{position:absolute;left:0;top:4px;width:100%;height:18px;min-width:0;max-width:none;overflow:visible}.chart-value{position:absolute;top:0;left:calc(100% * var(--end) + 8px);line-height:26px;white-space:nowrap;font-variant-numeric:tabular-nums}.chart-mark[data-missing] .chart-value{position:static;display:block;white-space:normal;line-height:1.3;padding:4px 0}.chart-axis{opacity:.85}.chart-axis-track{position:relative;display:block;width:calc(100% - var(--value-space));height:1.5em}.chart-axis-track span{position:absolute;top:0;font-size:12px;white-space:nowrap}.web-scene:has(>.interaction-transcript) .chart-plot svg{max-height:290px}.chart-plot svg[data-type-scale]{min-width:0;max-width:720px}.chart svg[data-type-scale]{font-size:14px}.chart-facets{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:16px 20px;margin:10px 0 12px}.chart-facet{min-width:0}.chart .chart-facet svg{font-size:13px;max-height:none}.chart .chart-facet-title{font-size:15px;line-height:1.35;margin:0 0 4px;white-space:normal}.chart-facet-name{font-weight:700}.chart-facet[data-muted] .chart-facet-name{font-weight:400}.chart-benchmark{margin:10px 0 12px}.benchmark-table{font-size:15px}.benchmark-table td{font-variant-numeric:tabular-nums}.benchmark-table tr[data-focus=true] th{font-weight:700}.chart-best{display:inline-block;margin-left:6px;padding:0 4px;border:1px solid currentColor;font-size:11px;line-height:1.4;letter-spacing:.04em;text-transform:uppercase}.chart-qualifier{font-size:11px;margin-left:2px}@media(max-width:700px){.web-scene:has(>.interaction-transcript) .chart-plot svg{max-height:none}.chart-rows{font-size:14px}.chart-row,.chart-axis,.chart-line{grid-template-columns:minmax(0,1fr);row-gap:2px}.chart-row-label{font-weight:600}.chart svg[data-type-scale]{font-size:22px}.chart-rows[data-kind=dot-interval] .chart-track,.chart-rows[data-kind=dot-interval] .chart-axis-track{width:100%}.chart-rows[data-kind=dot-interval] .chart-track{padding-top:22px;min-height:44px}.chart-rows[data-kind=dot-interval] .chart-track svg{top:24px}.chart-rows[data-kind=dot-interval] .chart-value{left:0;line-height:22px}.chart-rows[data-kind=dot-interval] .chart-row-marks{gap:10px}.chart-rows[data-kind=dot-interval] .chart-line{row-gap:0}.benchmark-table,.benchmark-table tbody,.benchmark-table tr,.benchmark-table th,.benchmark-table td{display:block}.benchmark-table thead{display:none}.benchmark-table tr{padding:8px 0;border-bottom:1px solid #8887}.benchmark-table th,.benchmark-table td{border:0;padding:3px 0}.benchmark-table td{display:flex;justify-content:space-between;gap:12px}.benchmark-table td::before{content:attr(data-column);font-size:13px}}.chart-plot{overflow-x:auto}.chart-plot svg{min-width:600px}.chart-plot svg[data-compact-chart]{min-width:0}@media(max-width:700px){.chart svg[data-compact-chart]{font-size:30px}.semantic-diagram svg[data-responsive-diagram]{min-width:0;max-width:360px;font-size:18px}}.component-note{font-size:13px!important;line-height:1.5!important;margin:8px 0!important}.semantic-diagram,.semantic-code{margin:0}.semantic-diagram svg{width:100%;max-width:800px;display:block;overflow:visible;font:16px var(--body);color:var(--ink)}.semantic-diagram svg text{fill:var(--ink)}.semantic-diagram figcaption,.semantic-code figcaption{font-size:12px;margin-bottom:12px}.semantic-code pre{white-space:pre;tab-size:4;margin:0;border-left:4px solid var(--accent);max-width:100%}.code-emphasis{background:var(--ink);color:var(--paper);box-shadow:0 0 0 2px var(--ink)}.semantic-annotation{border-left:4px solid var(--accent);padding:12px 16px;background:#8881}.semantic-annotation p{font-size:18px!important}.semantic-annotation a,.semantic-annotation span{font-size:12px}.legend{flex-wrap:wrap}.chart svg{font:14px var(--body)}.diagram-scroll{overflow-x:auto}:target{outline:3px solid var(--accent);outline-offset:3px}@media(max-width:700px){.chart svg{font-size:18px}.semantic-code pre{font-size:13px;padding:16px}.semantic-diagram svg{min-width:600px}}@media print{.chart-plot{overflow:visible}.chart-plot svg{min-width:0}details> :not(summary){display:block!important}details{content-visibility:visible}.semantic-code pre{overflow:visible;white-space:pre-wrap;overflow-wrap:anywhere}.diagram-scroll{overflow:visible}}.chart-series-switch{display:flex;gap:6px;flex-wrap:wrap}.chart-selection-explanation{overflow-wrap:anywhere}.semantic-diagram .semantic-step-target>path{stroke:var(--accent);stroke-width:4}.semantic-diagram .semantic-step-target>rect{stroke-width:4}.region[data-comparison-secondary]{grid-column:1 / -1!important;grid-row:auto!important}.semantic-controls{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;padding:10px 12px;margin:12px 0;border:1px solid currentColor;font-size:13px;min-width:0}.semantic-controls button,.semantic-timeline button{min-height:44px;font-size:13px;padding:8px 12px}.semantic-controls label{display:flex;gap:6px;align-items:center}.semantic-controls input[type=checkbox]{width:20px;height:20px}.semantic-controls select{min-height:44px;max-width:230px;background:var(--paper);color:var(--ink);font:inherit;border:1px solid currentColor}.chart-controls legend{font-size:12px}.interaction-status{font-size:12px!important;line-height:1.4!important;margin:0!important}.semantic-timeline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:12px;margin:-22px 0 20px}.semantic-timeline label{display:flex;align-items:center;gap:8px}.semantic-timeline input{min-height:44px;width:150px}.step-explanation,.hotspot-explanation{padding:12px 16px;border-left:4px solid var(--accent);background:#8881;font-size:15px}.step-explanation p,.hotspot-explanation p{font-size:16px!important;line-height:1.5!important;margin:6px 0!important}.step-explanation pre{font-size:13px;padding:12px;margin:8px 0;white-space:pre;overflow:auto}.semantic-controls [aria-pressed=true],.semantic-controls [aria-selected=true]{background:var(--ink);color:var(--paper)}.semantic-step-target{outline:3px solid var(--accent);outline-offset:3px}.semantic-code .semantic-step-target{background:var(--ink);color:var(--paper)}.compare-panel{display:grid;grid-template-columns:1fr;gap:16px}.compare-panel[data-tab=both]{grid-template-columns:1fr 1fr}.compare-panel .web-image{min-width:0}.compare-panel:not([data-tab=both])>.web-image{max-width:min(440px,calc((100% - 16px)/2));width:100%;justify-self:center}.image-hotspot{position:absolute;z-index:2;transform:translate(-50%,-50%);width:44px;height:44px;padding:0;border:2px solid var(--paper);border-radius:50%;background:var(--ink);color:var(--paper);font-weight:bold;box-shadow:0 0 0 1px var(--ink)}.image-hotspot[aria-pressed=true]{outline:3px solid var(--accent);outline-offset:2px}.has-interactions .regions{row-gap:12px!important}.has-interactions .interaction-transcript{margin-top:12px}.has-interactions h2{font-size:48px!important}.has-interactions summary{padding:6px 0}.has-interactions .semantic-controls{padding:6px 8px;margin:8px 0}.has-interactions .semantic-annotation{padding:8px 12px}.hotspot-component .web-image{max-width:320px}.has-interactions .semantic-diagram svg{max-width:520px}.semantic-diagram svg[data-linear-diagram]{font-size:20px}.has-interactions .semantic-diagram svg[data-linear-diagram]{max-width:800px}.interaction-transcript{font-size:13px;margin-top:16px}.interaction-transcript p{font-size:14px;line-height:1.5;margin:8px 0}.semantic-reduced *{animation:none!important;transition:none!important}.semantic-annotation :target{scroll-margin:80px}#semantic-motion{font-size:13px}.chart-series-switch,.chart-series-visibility{display:flex;gap:6px 12px;flex-wrap:wrap;align-items:center}.static-hotspot{display:grid;place-items:center;pointer-events:none}.static-hotspot[data-active]{outline:3px solid var(--accent);outline-offset:2px}@media(max-width:700px){.semantic-timeline{margin:0 0 20px}.semantic-controls{gap:8px;padding:10px}.semantic-controls select{max-width:200px}.compare-panel[data-tab=both]{grid-template-columns:1fr 1fr}.image-hotspot{min-height:44px}.step-explanation pre{font-size:12px}.semantic-timeline input{width:120px}}@media print{.semantic-timeline,.semantic-controls,.image-hotspot{display:none!important}.compare-panel .web-image[hidden]{display:block!important}.compare-panel{grid-template-columns:1fr 1fr!important}details::details-content{content-visibility:visible!important;display:block!important}}
+.web-scene{min-height:810px;display:flex;flex-direction:column;padding:56px var(--page);font-synthesis:none}
+.web-scene .folio{font:600 11px/1.4 var(--body);letter-spacing:.16em;border-bottom:1px solid currentColor;padding-bottom:16px;margin-bottom:48px;gap:24px}
+.web-scene .regions{flex:1;align-content:start;column-gap:var(--story-gutter);row-gap:24px}
+.web-scene h2{font-family:var(--display);font-size:var(--headline);font-weight:var(--headline-weight);line-height:var(--headline-leading);letter-spacing:var(--headline-tracking);margin:0 0 10px;text-wrap:balance}
+.web-scene .region[data-component=paragraph] p,.web-scene blockquote{font-size:var(--body-size);line-height:1.55;max-width:var(--text-measure);margin:0 0 12px}
+.web-scene .region[data-component=list] ul{font-size:var(--body-size);line-height:1.6;padding-left:1.1em;max-width:var(--text-measure);margin:0}
+/* A verbatim quotation never looks like body text or paraphrase, in any composition. */
+.web-scene blockquote{font-family:var(--display);border-left:3px solid var(--accent);padding-left:20px}
+.web-scene .region[data-component=list] li+li{margin-top:12px}
+.web-scene .region[data-component=callout] p{font-size:var(--lead-size);font-weight:600;line-height:1.3;letter-spacing:-.02em;max-width:32ch;margin:0;color:var(--accent)}
+.web-scene .region[data-component=citation]{margin-top:20px;padding-top:16px;border-top:1px solid currentColor;grid-column:1 / -1}
+.web-scene .citation{font:400 12px/1.6 var(--body);letter-spacing:0;max-width:90ch;margin:0}
+.web-scene .web-image figcaption{font:400 12px/1.5 var(--body);max-width:60ch;margin-top:14px}
+.web-scene .metric strong{font-family:var(--body);font-size:clamp(112px,16vw,230px);font-weight:650;letter-spacing:-.075em;line-height:.88;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:normal;word-break:keep-all}
+.web-scene .metric strong small{font-size:.17em;line-height:1.3;letter-spacing:.03em;margin-top:24px}
+.web-scene .metric span{font-size:18px;line-height:1.5;margin-top:22px;max-width:24ch}
+.web-scene[data-theme=cream-collage] .metric strong{color:var(--secondary)}
+.web-scene[data-theme=electric-violet] h2{font-weight:var(--headline-weight)}
+.web-scene[data-theme=dark-data] .region[data-component=paragraph] p{font-size:20px;line-height:1.65}
+.web-scene[data-space=open] .regions{align-content:center;min-height:500px}
+.web-scene.statement-split .regions{grid-template-columns:minmax(0,1.25fr) minmax(0,.8fr)}
+.web-scene.statement-split [data-component=heading]{border:0;padding-right:0}
+.web-scene.statement-split [data-component=heading] h2{max-width:12ch}
+.web-scene.statement-split .region[data-component=paragraph]{border-left:1px solid currentColor;padding-left:28px}
+.web-scene.statement-split .region[data-component=paragraph] p{font-size:var(--lead-size);max-width:30ch}
+.web-scene.statement-banner .regions{grid-template-columns:1fr 1fr;align-content:center}
+.web-scene.statement-banner [data-component=heading]{border-bottom:2px solid var(--accent);padding-bottom:40px;margin-bottom:16px}
+.web-scene.statement-banner h2{max-width:18ch}
+.web-scene.statement-center .regions{max-width:1120px;padding-top:0;justify-items:center;align-content:center}
+.web-scene.statement-center [data-component=heading] h2{max-width:19ch}
+.web-scene.statement-center .region[data-component=paragraph] p{max-width:48ch;font-size:var(--lead-size)}
+.web-scene.reading-flow .regions{max-width:1020px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:28px;justify-content:center}
+.web-scene.reading-flow .region{max-width:100%;margin:0}
+.web-scene.reading-flow .region[data-component=paragraph] p{max-width:54ch}
+.web-scene.image-left .regions{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-content:center}
+.web-scene.image-left .web-image{width:min(100%,calc(570px * var(--image-aspect)));max-width:none;margin:auto}
+.web-scene.image-left [data-component=heading]{align-self:end}
+.web-scene.image-right .web-image{width:min(100%,calc(440px * var(--image-aspect)));max-width:none}
+.web-scene.image-right .regions{align-content:center}
+.web-scene.image-strip .regions{align-content:center}
+.web-scene.image-strip .web-image{width:min(100%,calc(320px * var(--image-aspect)));max-width:600px}
+.web-scene.image-left .region[data-component=callout] p,.web-scene.photo-split .region[data-component=callout] p{font-size:13px;line-height:1.6;font-weight:500;letter-spacing:.04em;border-top:1px solid currentColor;padding-top:20px}
+.web-scene.photo-split .regions{align-content:center}.web-scene.photo-split .web-image{width:min(100%,calc(570px * var(--image-aspect)));margin:auto}
+.web-scene.violet-chapter .regions{max-width:1160px;min-height:560px}
+.web-scene.violet-chapter h2{max-width:16ch}
+.web-scene.violet-chapter .region[data-component=paragraph] p{font-size:var(--lead-size);max-width:38ch;margin-top:28px}
+.web-scene:is(.metric-left,.metric-right) .regions{align-content:center;align-items:center;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.web-scene.metric-left [data-component=metric]{padding-top:0}
+.web-scene.metric-right [data-component=metric]{padding-top:0;border-left:1px solid currentColor}
+.web-scene.metric-band [data-component=metric]{border-block-width:1px;padding:28px 0}
+.web-scene.metric-band .metric strong{font-size:180px}
+/* The metric can cross the decorative diagonal as its type/height changes.
+   Give the complete source text an actual contrasting surface at every width. */
+.web-scene.diagonal-cover .metric{background:var(--secondary);padding:24px}
+.web-scene.diagonal-cover [data-component=metric] .metric strong{color:inherit}
+.web-scene:is(.evidence-left,.evidence-right,.evidence-top,.chart-with-evidence-rail) .regions{row-gap:12px;align-content:center;column-gap:40px}
+.web-scene:is(.evidence-left,.evidence-right,.evidence-top,.chart-with-evidence-rail) h2{max-width:24ch}
+.web-scene:is(.evidence-left,.evidence-right,.evidence-top,.chart-with-evidence-rail) .region[data-component=paragraph] p{font-size:18px;max-width:40ch}
+.web-scene:is(.evidence-left,.evidence-right) .region[data-component=callout]{padding-top:12px;border-top:2px solid var(--accent)}
+.web-scene:is(.evidence-left,.evidence-right,.chart-with-evidence-rail) .chart svg{max-width:780px}
+.web-scene:is(.evidence-left,.evidence-right,.evidence-top,.chart-with-evidence-rail) .folio{margin-bottom:32px}
+.web-scene:is(.evidence-left,.evidence-right,.evidence-top,.chart-with-evidence-rail) .region[data-component=citation]{margin-top:12px;padding-top:12px}
+.web-scene.evidence-top .chart svg{max-height:350px}
+.web-scene:is(.comparison-matrix,.comparison-rail,.comparison-stack) h2{max-width:23ch}
+.web-scene.comparison-matrix th{background:var(--ink);color:var(--paper);font-size:13px;letter-spacing:.04em;padding:18px 22px}
+.web-scene.comparison-matrix td{font-size:24px;padding:24px 22px}
+.web-scene.comparison-matrix td:first-child{font-size:16px;font-weight:600}
+.web-scene.comparison-rail .regions{align-content:center}
+.web-scene.comparison-rail th{font-size:13px}
+.web-scene.comparison-rail td{font-size:20px}
+.web-scene:is(.process-line,.process-rail,.process-stair) .regions{align-content:center}
+.web-scene[data-beat=closing] .region[data-component=heading]{margin-bottom:16px}
+.web-scene[data-profile=compact]{padding-block:36px}
+.web-scene[data-profile=compact] .folio{margin-bottom:32px}
+.web-scene.has-interactions{padding-block:40px}
+.web-scene.has-interactions .folio{margin-bottom:28px}
+.web-scene.has-interactions h2{font-size:48px!important;line-height:1.12}
+.web-scene.has-interactions .regions{align-content:start;min-height:0;row-gap:12px}
+.web-scene.has-interactions .region[data-component=citation]{margin-top:6px;padding-top:10px}
+.web-scene.has-interactions .region[data-component=paragraph] p{font-size:18px;margin-bottom:8px}
+@media(max-width:1100px) and (min-width:701px){.web-scene h2{font-size:calc(var(--headline) * .82)}.web-scene .metric strong{font-size:clamp(100px,16vw,180px)}.web-scene .regions{column-gap:32px}}
+@media(max-width:700px){
+ .web-scene{min-height:0;padding:32px 24px}
+ .web-scene .folio{font-size:10px;letter-spacing:.1em;margin-bottom:36px;padding-bottom:14px;gap:18px}
+ .web-scene h2{font-size:var(--reading-headline);line-height:1.1;letter-spacing:-.035em;max-width:100%}
+ .web-scene:lang(zh-CN) h2{line-height:1.2;letter-spacing:-.02em}
+ .web-scene:is(.image-left,.image-strip,.image-right,.photo-split) .web-image{width:100%;max-width:none}
+ .web-scene .regions,.web-scene[data-space=open] .regions,.web-scene.violet-chapter .regions{min-height:0;gap:26px;align-content:start;justify-content:start;padding:0}
+ .web-scene .region[data-component=paragraph] p{font-size:19px;line-height:1.6;max-width:100%;margin:0}
+ .web-scene .region[data-component=callout] p{font-size:22px;max-width:100%}
+ .web-scene .region[data-component=list] ul{font-size:19px}
+ .web-scene.statement-split .region[data-component=paragraph]{padding-left:0;border:0}
+ .web-scene.statement-split .region[data-component=paragraph] p,.web-scene.statement-center .region[data-component=paragraph] p,.web-scene.violet-chapter .region[data-component=paragraph] p{font-size:20px;max-width:100%;margin:0}
+ .web-scene:is(.statement-banner,.statement-split,.statement-center,.image-left,.image-right,.image-strip,.metric-left,.metric-band,.metric-right,.evidence-left,.evidence-top,.evidence-right,.comparison-matrix,.comparison-rail,.comparison-stack,.process-line,.process-rail,.process-stair,.reading-flow,.photo-split) .regions{display:flex;flex-direction:column;text-align:left;align-items:stretch}
+ .web-scene.statement-banner [data-component=heading]{padding-bottom:24px;margin:0}
+ .web-scene.statement-split [data-component=heading] h2{max-width:100%}
+ .web-scene .region[data-component=citation]{margin-top:8px;padding-top:16px}
+ .web-scene .metric strong,.web-scene.metric-band .metric strong{font-size:clamp(80px,25vw,116px)}
+ .web-scene .metric strong small{font-size:.2em;margin-top:18px}
+ .web-scene .metric span{font-size:16px;margin-top:18px;max-width:100%}
+ .web-scene.metric-right [data-component=metric]{border:0;padding:0}
+ .web-scene.comparison-matrix td{font-size:18px;padding:16px 12px}
+ .web-scene.comparison-matrix th{font-size:12px;padding:14px 12px}
+ .web-scene:is(.evidence-left,.evidence-right,.evidence-top,.chart-with-evidence-rail) .region[data-component=paragraph] p{font-size:18px}
+ .web-scene.has-interactions h2{font-size:36px!important}
+ .web-scene.has-interactions{padding:28px 22px}
+}
+@media print{.web-scene{display:block;min-height:0}.web-scene .regions{min-height:0}}
+
+.web-scene:is(.chapter-low,.chapter-index,.chapter-margin) h2{max-width:13ch}
+.web-scene.chapter-low .regions{align-content:end;column-gap:72px}
+.web-scene:is(.chapter-low,.chapter-margin) .region[data-component=paragraph] p{font-size:var(--lead-size);max-width:32ch}
+.web-scene:is(.chapter-index,.chapter-margin) .region[data-component=list] ul{list-style:none;padding:0}
+.web-scene:is(.chapter-index,.chapter-margin) .region[data-component=list] li{border-top:1px solid currentColor;padding-top:12px}
+.web-scene.chapter-index .region[data-component=list] ul{font-size:var(--lead-size);line-height:1.3}
+.web-scene:is(.chapter-low,.chapter-margin) .region[data-component=list] ul{font-size:16px;line-height:1.5}
+.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych) .regions{align-content:center;column-gap:40px;row-gap:16px}
+.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych,.system-map-wide,.system-map-rail,.system-map-key,.small-multiples-row,.small-multiples-lead,.small-multiples-center) .folio{margin-bottom:32px}
+.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych,.system-map-wide,.system-map-rail,.system-map-key,.small-multiples-row,.small-multiples-lead,.small-multiples-center) .region[data-component=citation]{margin-top:12px;padding-top:12px}
+.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych) h2{max-width:24ch}
+.web-scene.before-after-split .web-image{width:min(100%,calc(300px * var(--image-aspect)))}
+.web-scene.before-after-rail .web-image{width:min(100%,calc(240px * var(--image-aspect)))}
+.web-scene.before-after-triptych .web-image{width:min(100%,calc(340px * var(--image-aspect)))}
+.web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych) .region[data-component=paragraph] p{font-size:18px;max-width:40ch}
+.web-scene.before-after-triptych .region[data-component=paragraph]{border-top:1px solid currentColor;padding-top:14px}
+.web-scene:is(.system-map-wide,.system-map-rail,.system-map-key) .regions{align-content:center;row-gap:16px;column-gap:48px}
+.web-scene:is(.system-map-wide,.system-map-rail,.system-map-key) h2{max-width:20ch}
+.web-scene.system-map-wide .semantic-diagram svg{max-width:560px;margin:0 auto}
+.web-scene.system-map-key .semantic-diagram svg{max-width:640px;margin-left:auto}
+.web-scene.system-map-wide .region[data-component=list] ul{columns:3;column-gap:40px;max-width:none}.web-scene.system-map-wide .region[data-component=list] li{break-inside:avoid}
+.web-scene:is(.system-map-wide,.system-map-rail,.system-map-key) .region[data-component=paragraph] p{font-size:18px;max-width:42ch}
+.web-scene:is(.system-map-wide,.system-map-rail,.system-map-key) .region[data-component=list] ul{font-size:16px;line-height:1.5}
+.web-scene:is(.small-multiples-row,.small-multiples-lead,.small-multiples-center) .regions{align-content:center;row-gap:14px;column-gap:40px}
+.web-scene:is(.small-multiples-row,.small-multiples-lead,.small-multiples-center) h2{max-width:22ch}
+.web-scene:is(.small-multiples-row,.small-multiples-lead,.small-multiples-center) .region[data-component=paragraph] p{font-size:18px;max-width:46ch}
+.web-scene.small-multiples-lead .region[data-component=paragraph]{border-left:1px solid currentColor;padding-left:24px}
+.web-scene:is(.small-multiples-row,.small-multiples-lead,.small-multiples-center) .chart svg{max-height:300px}
+.web-scene.small-multiples-center [data-component=heading]{justify-self:center;text-align:center}
+.web-scene.small-multiples-center [data-component=paragraph]{justify-self:end;text-align:right}.web-scene.small-multiples-center [data-component=paragraph] p{margin-left:auto}
+.web-scene:is(.quote-center,.quote-split,.quote-band) blockquote{font-family:var(--display);font-size:clamp(30px,3vw,44px);line-height:1.2;letter-spacing:-.015em;max-width:24ch;margin:0;border-left:0;padding-left:0}
+.web-scene:is(.quote-center,.quote-split,.quote-band) blockquote::before{content:"\201C" / "";display:block;font:400 112px/.75 var(--display);color:var(--accent);margin-bottom:6px}
+.web-scene:is(.quote-center,.quote-split,.quote-band):lang(zh-CN) blockquote{line-height:1.45;letter-spacing:0;max-width:17em}
+.web-scene.quote-band blockquote{max-width:34ch;border-block:2px solid var(--accent);padding:24px 0 28px}
+.web-scene:is(.quote-center,.quote-split,.quote-band) [data-component=quote]+[data-component=citation]{margin-top:0;padding-top:4px;border:0}
+.web-scene:is(.quote-center,.quote-split,.quote-band) [data-component=quote]+[data-component=citation] .citation{font-size:16px;line-height:1.5;font-weight:600}
+.web-scene:is(.quote-center,.quote-split,.quote-band) [data-component=quote]+[data-component=citation] .citation::before{content:"— " / ""}
+.web-scene:is(.quote-center,.quote-split,.quote-band) .region[data-component=paragraph] p{font-size:var(--body-size);font-style:normal;max-width:42ch}
+.web-scene.quote-center .region[data-component=paragraph]{border-top:1px solid currentColor;padding-top:20px;margin-top:12px}
+.web-scene.quote-split .region[data-component=paragraph]{border-left:1px solid currentColor;padding-left:24px}
+.web-scene:is(.closing-split,.closing-steps,.closing-focus) .regions{align-content:center;column-gap:56px}
+.web-scene.closing-split .region[data-component=list] ul{list-style:none;padding:0;font-size:var(--lead-size);line-height:1.3}
+.web-scene.closing-split .region[data-component=list] li{border-top:1px solid currentColor;padding-top:14px}
+.web-scene.closing-steps .region[data-component=list] ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;list-style:none;padding:0;max-width:none}
+.web-scene.closing-steps .region[data-component=list] li{margin:0;padding-top:18px;border-top:5px solid var(--accent);font-size:var(--lead-size);line-height:1.3}
+.web-scene.closing-focus h2{max-width:18ch}
+.web-scene.closing-focus .region[data-component=callout] p{font-size:clamp(26px,2.4vw,36px);max-width:30ch;margin:0 auto;border-top:4px solid var(--accent);padding-top:18px}
+@media(max-width:700px){
+ .web-scene:is(.chapter-low,.chapter-index,.chapter-margin,.before-after-split,.before-after-rail,.before-after-triptych,.system-map-wide,.system-map-rail,.system-map-key,.small-multiples-row,.small-multiples-lead,.small-multiples-center,.quote-center,.quote-split,.quote-band,.closing-split,.closing-steps,.closing-focus) h2{max-width:100%}
+ .web-scene.chapter-low .regions{align-content:start}
+ .web-scene:is(.quote-center,.quote-split,.quote-band) blockquote{font-size:26px;max-width:100%}
+ .web-scene:is(.quote-center,.quote-split,.quote-band) blockquote::before{font-size:72px}
+ .web-scene.quote-center .regions{justify-items:stretch;text-align:left}
+ .web-scene:is(.quote-split,.small-multiples-lead) .region[data-component=paragraph]{border:0;padding:0}
+ .web-scene:is(.before-after-split,.before-after-rail,.before-after-triptych) .web-image{width:100%}
+ .web-scene.small-multiples-center .region:not([data-component=chart]){justify-self:stretch;text-align:left}
+ .web-scene.small-multiples-center [data-component=paragraph] p{margin-left:0}
+ .web-scene.system-map-wide .region[data-component=list] ul{columns:auto}
+ .web-scene.closing-steps .region[data-component=list] ul{display:block}
+ .web-scene.closing-steps .region[data-component=list] li+li{margin-top:18px}
+ .web-scene.closing-focus .region:is([data-component=heading],[data-component=callout]){justify-self:stretch;text-align:left}
+ .web-scene.closing-focus .region[data-component=callout] p{font-size:24px;margin:0}
+}
+</style></head><body data-render-hash="cfdfc125e8bc89fa2ff64614afc071e1404d4692f26c12e73eea4bb14f034628"><header><h1>Paper workshop</h1><nav aria-label="Presentation controls"><button id="present" hidden>Present</button><button id="previous" hidden>Previous</button><output id="page" hidden></output><button id="next" hidden>Next</button></nav></header><main><section id="slide_9e573cf153794973" class="web-scene statement-split" style="--paper:#F5EBD9;--ink:#1C2C3C;--accent:#BD4027;--secondary:#2454CF;--display:&quot;Iowan Old Style&quot;, &quot;Palatino Linotype&quot;, Georgia, serif;--body:&quot;Avenir Next&quot;, &quot;Segoe UI&quot;, Arial, &quot;PingFang SC&quot;, sans-serif;--code:Menlo, Consolas, monospace;--page:48px;--gap:36px;--display-scale:1;--image-split:56.00000000000001%;--motion-ms:0ms;--headline:112px;--reading-headline:58px;--headline-weight:400;--headline-leading:1.02;--headline-tracking:-.045em;--body-size:22px;--lead-size:24px;--story-gutter:56px;--text-measure:36ch" data-theme="cream-collage" data-beat="opening" data-space="open" data-profile="comfortable" data-source-hash="3743960b24e7d70618cfb76c3825075542ad4c979464f901678da414b964d015" data-focal-block="b0_title" data-motion="off" aria-labelledby="r529770147f195571b28e"><div class="folio"><span>DeckWeft / cream collage</span><span>01 / 05</span></div><div class="regions"><div id="r529770147f195571b28e" class="region" data-block-id="b0_title" data-component="heading" data-text-role="display"><h2>Paper workshop</h2></div><div id="ra510648830df91a05567" class="region" data-block-id="b0_body" data-component="paragraph" data-text-role="body"><p>This is a fictional local club exercise about folding a paper model.</p></div></div></section><section id="slide_b8383da6811c48c8" class="web-scene statement-banner" style="--paper:#F5EBD9;--ink:#1C2C3C;--accent:#BD4027;--secondary:#2454CF;--display:&quot;Iowan Old Style&quot;, &quot;Palatino Linotype&quot;, Georgia, serif;--body:&quot;Avenir Next&quot;, &quot;Segoe UI&quot;, Arial, &quot;PingFang SC&quot;, sans-serif;--code:Menlo, Consolas, monospace;--page:48px;--gap:36px;--display-scale:1;--image-split:56.00000000000001%;--motion-ms:0ms;--headline:88px;--reading-headline:48px;--headline-weight:400;--headline-leading:1.02;--headline-tracking:-.045em;--body-size:22px;--lead-size:24px;--story-gutter:56px;--text-measure:36ch" data-theme="cream-collage" data-beat="context" data-space="open" data-profile="comfortable" data-source-hash="02f7f58c17d6f1d9db5726e1f46f7171abba1db408983e22d5d79d28a38657c6" data-focal-block="b1_title" data-motion="off" aria-labelledby="r15acbbdd848df09a9d59"><div class="folio"><span>DeckWeft / cream collage</span><span>02 / 05</span></div><div class="regions"><div id="r15acbbdd848df09a9d59" class="region" data-block-id="b1_title" data-component="heading" data-text-role="display"><h2>Choose a shape</h2></div><div id="rf0a52d04143992586b29" class="region" data-block-id="b1_body" data-component="paragraph" data-text-role="body"><p>Use a simple design and keep the instructions beside the paper.</p></div></div></section><section id="slide_435f53145f7e4209" class="web-scene statement-split" style="--paper:#F5EBD9;--ink:#1C2C3C;--accent:#BD4027;--secondary:#2454CF;--display:&quot;Iowan Old Style&quot;, &quot;Palatino Linotype&quot;, Georgia, serif;--body:&quot;Avenir Next&quot;, &quot;Segoe UI&quot;, Arial, &quot;PingFang SC&quot;, sans-serif;--code:Menlo, Consolas, monospace;--page:48px;--gap:36px;--display-scale:1;--image-split:56.00000000000001%;--motion-ms:0ms;--headline:88px;--reading-headline:48px;--headline-weight:400;--headline-leading:1.02;--headline-tracking:-.045em;--body-size:22px;--lead-size:24px;--story-gutter:56px;--text-measure:36ch" data-theme="cream-collage" data-beat="context" data-space="open" data-profile="comfortable" data-source-hash="393717206737bd4e640a9c27020493f542e0c70974eedbcfe3332bc4b4c0db25" data-focal-block="b2_title" data-motion="off" aria-labelledby="r61222ec02c4609ca8613"><div class="folio"><span>DeckWeft / cream collage</span><span>03 / 05</span></div><div class="regions"><div id="r61222ec02c4609ca8613" class="region" data-block-id="b2_title" data-component="heading" data-text-role="display"><h2>Fold and compare</h2></div><div id="r38c69aacde5049dc4a06" class="region" data-block-id="b2_body" data-component="paragraph" data-text-role="body"><p>Follow one crease at a time, then compare the model with the instructions.</p></div></div></section><section id="slide_0e35bd3d5d094719" class="web-scene statement-split" style="--paper:#F5EBD9;--ink:#1C2C3C;--accent:#BD4027;--secondary:#2454CF;--display:&quot;Iowan Old Style&quot;, &quot;Palatino Linotype&quot;, Georgia, serif;--body:&quot;Avenir Next&quot;, &quot;Segoe UI&quot;, Arial, &quot;PingFang SC&quot;, sans-serif;--code:Menlo, Consolas, monospace;--page:48px;--gap:36px;--display-scale:1;--image-split:56.00000000000001%;--motion-ms:0ms;--headline:88px;--reading-headline:48px;--headline-weight:400;--headline-leading:1.02;--headline-tracking:-.045em;--body-size:22px;--lead-size:24px;--story-gutter:56px;--text-measure:36ch" data-theme="cream-collage" data-beat="context" data-space="open" data-profile="comfortable" data-source-hash="9faf032276b771468277e31aca08075401e99b9c9697336e3b4c7c62258f15d7" data-focal-block="b3_title" data-motion="off" aria-labelledby="r35ed291b18f1ad7b0a28"><div class="folio"><span>DeckWeft / cream collage</span><span>04 / 05</span></div><div class="regions"><div id="r35ed291b18f1ad7b0a28" class="region" data-block-id="b3_title" data-component="heading" data-text-role="display"><h2>Inspect the model</h2></div><div id="rd502830a0cb7fc7c79ec" class="region" data-block-id="b3_body" data-component="paragraph" data-text-role="body"><p>Check the folds and note where a step needs a clearer explanation.</p></div></div></section><section id="slide_fc406d5d3f664fb6" class="web-scene statement-banner" style="--paper:#F5EBD9;--ink:#1C2C3C;--accent:#BD4027;--secondary:#2454CF;--display:&quot;Iowan Old Style&quot;, &quot;Palatino Linotype&quot;, Georgia, serif;--body:&quot;Avenir Next&quot;, &quot;Segoe UI&quot;, Arial, &quot;PingFang SC&quot;, sans-serif;--code:Menlo, Consolas, monospace;--page:48px;--gap:36px;--display-scale:1;--image-split:56.00000000000001%;--motion-ms:0ms;--headline:112px;--reading-headline:58px;--headline-weight:400;--headline-leading:1.02;--headline-tracking:-.045em;--body-size:22px;--lead-size:24px;--story-gutter:56px;--text-measure:36ch" data-theme="cream-collage" data-beat="closing" data-space="open" data-profile="comfortable" data-source-hash="e41e5a8bccd972271f9f2b25c24382fb212f87d0d04095c4b347422241771a86" data-focal-block="b4_title" data-motion="off" aria-labelledby="r0fa16008b3fc94361fb5"><div class="folio"><span>DeckWeft / cream collage</span><span>05 / 05</span></div><div class="regions"><div id="r0fa16008b3fc94361fb5" class="region" data-block-id="b4_title" data-component="heading" data-text-role="display"><h2>Keep a record</h2></div><div id="r6a37751ae4a376315712" class="region" data-block-id="b4_body" data-component="paragraph" data-text-role="body"><p>Save the instructions and the observations for the next workshop.</p></div></div></section></main><p id="status" class="status" role="status">Reading view works without JavaScript.</p><script type="application/json" id="dw-runtime-data">{"version":1,"locale":"en","scenes":[{"id":"slide_9e573cf153794973","interactions":[],"cues":[],"motion":{"policy":"off","durationMs":0},"components":{}},{"id":"slide_b8383da6811c48c8","interactions":[],"cues":[],"motion":{"policy":"off","durationMs":0},"components":{}},{"id":"slide_435f53145f7e4209","interactions":[],"cues":[],"motion":{"policy":"off","durationMs":0},"components":{}},{"id":"slide_0e35bd3d5d094719","interactions":[],"cues":[],"motion":{"policy":"off","durationMs":0},"components":{}},{"id":"slide_fc406d5d3f664fb6","interactions":[],"cues":[],"motion":{"policy":"off","durationMs":0},"components":{}}]}</script><script>(() => {
+ const MOTION_PRIMITIVES = {"FadeIn":{"cues":["data.focus","step.next","step.select"],"targets":"marks of the focused series; the highlighted diagram node, edge or code line","reducedMotion":"content-visible","maxMs":220,"added":null,"frames":[{"opacity":0.35},{"opacity":1}]},"SlideSmall":{"cues":["scene.enter","data.filter","data.focus"],"targets":"scene regions on entry and replay; the current chart view after a range change; the chart explanation line","reducedMotion":"content-visible","maxMs":220,"added":null,"frames":[{"opacity":0.65,"transform":"translateY(4px)"},{"opacity":1,"transform":"none"}]},"Crossfade":{"cues":["tab.select"],"targets":"the comparison panel, already in its new layout","reducedMotion":"target-layout","maxMs":400,"added":"keyframes","frames":[{"opacity":0.4},{"opacity":1}]},"RevealMask":{"cues":["step.next","step.select"],"targets":"the step explanation panel, revealed from its reading edge","reducedMotion":"full-graphic","maxMs":400,"added":"keyframes","frames":[{"clipPath":"inset(0 100% 0 0)"},{"clipPath":"inset(0 0 0 0)"}]},"SeriesReveal":{"cues":["data.filter"],"targets":"marks of each newly shown series, one series after another; axes, units and baseline stay still","reducedMotion":"full-graphic","maxMs":400,"added":"targets and stagger","stagger":60,"frames":[{"opacity":0},{"opacity":1}]},"AnnotationReveal":{"cues":["annotation.reveal"],"targets":"the hotspot explanation panel","reducedMotion":"full-graphic","maxMs":400,"added":"name only (VIS-009 panel motion)","frames":[{"opacity":0.65,"transform":"translateY(4px)"},{"opacity":1,"transform":"none"}]}};
+const x = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const domain = function domain(values,axis={policy:'zero'}){
+ const v=values.filter(v=>v!==null);let low=Math.min(...v),high=Math.max(...v);
+ if(!v.length){low=0;high=1;}
+ if(axis.policy==='fixed')return [axis.min,axis.max];
+ // A log axis spans whole decades around the positive data; the misreading guards reject zero and negative values before this runs.
+ if(axis.scale==='log'){if(!v.length)return [1,10];low=10**Math.floor(Math.log10(low));high=10**Math.ceil(Math.log10(high));return [low,high===low?high*10:high];}
+ if(axis.policy==='zero'){low=Math.min(0,low);high=Math.max(0,high);}
+ if(low===high){const pad=Math.abs(low)*.1||1;low-=pad;high+=pad;}
+ return [low,high];
+};
+const chartModel = function chartModel(b,d){
+ const kind=b.chartType||'line',sort=b.sort||(kind==='ranked-bar'?'value-desc':'author'),order=d.categories.map((_,i)=>i);
+ const key=kind==='stacked'?i=>d.series.some(s=>s.values[i]===null)?null:d.series.reduce((v,s)=>v+s.values[i],0):i=>d.series[0].values[i];
+ if(sort!=='author'&&['ranked-bar','stacked'].includes(kind))order.sort((a,c)=>{const p=key(a),q=key(c);return p===null?q===null?a-c:1:q===null?-1:(sort==='value-asc'?p-q:q-p)||a-c;});
+ // Interval bounds belong to the plotted range wherever the renderer draws them.
+ const bounds=['line','dot-interval'].includes(kind)?d.series.flatMap(s=>s.interval?[...s.interval.lower,...s.interval.upper]:[]):[];
+ const values=kind==='stacked'?d.categories.flatMap((_,i)=>d.series.some(s=>s.values[i]===null)?[]:[d.series.reduce((v,s)=>v+Math.min(0,s.values[i]),0),d.series.reduce((v,s)=>v+Math.max(0,s.values[i]),0)]):[...d.series.flatMap(s=>s.values),...bounds];
+ return {kind,sort,order,scale:{y:b.axis?.scale||'linear',x:b.xAxis?.scale||'linear'},domain:domain(values,b.axis),xDomain:kind==='scatter'?domain(d.series.flatMap(s=>s.xValues),b.xAxis||{policy:'extent'}):null};
+};
+const chartShare = function chartShare(v,[low,high],scale='linear'){
+ return scale==='log'?(Math.log10(v)-Math.log10(low))/(Math.log10(high)-Math.log10(low)):(v-low)/(high-low);
+};
+const chartTicks = function chartTicks([low,high],scale='linear',count=5){
+ if(scale==='log'){const ticks=[];for(let e=Math.round(Math.log10(low));e<=Math.round(Math.log10(high));e++)ticks.push(Number((10**e).toPrecision(5)));return ticks;}
+ return Array.from({length:count},(_,i)=>low+(high-low)*i/(count-1));
+};
+const chartText = function chartText(locale){
+ return locale==='zh-CN'?{
+  missing:'缺失',reasons:{'not-collected':'未收集','not-applicable':'不适用',suppressed:'已隐去','not-comparable':'不可比','unknown':'原因未知'},
+  kinds:{line:'折线',trend:'末端标注趋势',area:'面积','ranked-bar':'排序条形','direct-bar':'直接标注条形',stacked:'堆叠比较',scatter:'散点',heatmap:'热力矩阵','grouped-bar':'分组条形','dot-interval':'点与区间','small-multiples':'小多图','benchmark-table':'带限定说明的基准表'},
+  policies:{zero:'含零',extent:'数据范围',fixed:'固定范围'},log:'对数刻度',truncated:'截断坐标轴',
+  sorts:{author:'作者顺序','value-desc':'按数值从高到低','value-asc':'按数值从低到高'},
+  synthetic:'合成演示数据',viewAll:'查看完整数据',category:'原始类别／时间',events:'事件',interval:'区间',
+  explanation:'缺失值保留为空缺，不插值；堆叠中任一缺失使整组留空；散点需要两个坐标。',
+  takeaway:'结论',question:'问题',definition:{denominator:'分母',sample:'样本',normalized:'已归一化',raw:'未归一化',version:'版本',collectedAt:'采集日期',validPeriod:'有效期'},
+  better:{higher:'数值越高越好',lower:'数值越低越好',none:'无优劣方向'},
+  intervalTypes:{ci:level=>`${level}% 置信区间`,sd:()=>'标准差',iqr:()=>'四分位距',range:()=>'范围'},method:'方法',
+  relations:{temporal:'时间相邻，不表示因果',attributed:'归因见所引来源'},
+  focus:'重点',other:'其他类别',otherSeries:'其他系列',best:'最佳',qualifier:'限定说明：编号见下方注释',
+  truncation:low=>`坐标轴从 ${low} 开始，而不是 0`,logNote:'对数刻度：相同间距代表相同倍数。',shared:(low,high,unit)=>`所有小图共用同一刻度：${low}–${high} ${unit}`,
+  bestRule:better=>`每列${better==='lower'?'最低':'最高'}的未限定数值标为“最佳”`,
+  missingNote:'缺失值',paren:v=>`（${v}）`,dash:'——',separator:'，',listEnd:'。',colon:'：',rank:'排名',of:(n,total)=>`${total} 个中的 ${n} 个`,
+  filter:(from,to,n,total)=>`筛选：按作者顺序 ${from} → ${to}（${total} 个类别中的 ${n} 个）`,seriesFilter:(names,n,total)=>`显示系列：${names}（${total} 个中的 ${n} 个）`,
+  ranks:(ranks,total)=>`在全部 ${total} 个类别中的排名：${ranks}`,staticView:'静态视图',completeBelow:'完整数据见下方。'
+ }:{
+  missing:'Missing',reasons:{'not-collected':'not collected','not-applicable':'not applicable',suppressed:'suppressed','not-comparable':'not comparable','unknown':'reason unknown'},
+  kinds:{line:'line',trend:'trend with end labels',area:'area','ranked-bar':'ranked bar','direct-bar':'direct-labelled bar',stacked:'stacked',scatter:'scatter',heatmap:'heatmap','grouped-bar':'grouped bar','dot-interval':'dot and interval','small-multiples':'small multiples','benchmark-table':'qualified benchmark table'},
+  policies:{zero:'zero',extent:'extent',fixed:'fixed'},log:'log scale',truncated:'truncated axis',
+  sorts:{author:'author order','value-desc':'sorted by value, highest first','value-asc':'sorted by value, lowest first'},
+  synthetic:'Synthetic demonstration data',viewAll:'View all data',category:'Original category / time',events:'Events',interval:'interval',
+  explanation:'Missing values remain gaps; no interpolation. Stacks with any missing member remain gaps. Scatter points need both coordinates.',
+  takeaway:'Takeaway',question:'Question',definition:{denominator:'Denominator',sample:'Sample',normalized:'Normalized',raw:'Not normalized',version:'Version',collectedAt:'Collected',validPeriod:'Valid'},
+  better:{higher:'Higher is better',lower:'Lower is better',none:'No better direction'},
+  intervalTypes:{ci:level=>`${level}% confidence interval`,sd:()=>'standard deviation',iqr:()=>'interquartile range',range:()=>'range'},method:'method',
+  relations:{temporal:'adjacent in time; not a cause',attributed:'attributed in a cited source'},
+  focus:'Focus',other:'Other categories',otherSeries:'Other series',best:'best',qualifier:'Qualifier: numbered note below',
+  truncation:low=>`Axis starts at ${low}, not zero`,logNote:'Log scale: equal steps are equal ratios.',shared:(low,high,unit)=>`All panels share one scale: ${low}–${high} ${unit}`,
+  bestRule:better=>`“best” marks the ${better==='lower'?'lowest':'highest'} unqualified value in each column`,
+  missingNote:'Missing',paren:v=>` (${v})`,dash:' — ',separator:', ',listEnd:'.',colon:': ',rank:'rank',of:(n,total)=>`${n} of ${total}`,
+  filter:(from,to,n,total)=>`Filter: author order, ${from} → ${to} (${n} of ${total} categories)`,seriesFilter:(names,n,total)=>`Series shown: ${names} (${n} of ${total})`,
+  ranks:(ranks,total)=>`ranks among all ${total}: ${ranks}`,staticView:'Static view',completeBelow:'Complete data below.'
+ };
+};
+const chartFacts = function chartFacts(block,d,locale){
+ const t=chartText(locale),model=chartModel(block,d),kind=model.kind,ids=d.categoryIds||d.categories.map((_,i)=>'category-'+i),index=new Map(ids.map((id,i)=>[id,i])),seriesIndex=new Map(d.series.map((s,j)=>[s.id,j]));
+ const display=i=>d.categoryKind==='datetime'?new Intl.DateTimeFormat(locale,{timeZone:d.timeZone,month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(d.categories[i])):d.categories[i];
+ // Only reasons, qualifiers and events bound to what this view shows are drawn; the complete table always carries the rest. Qualifier numbers follow the dataset's own order, so a filtered view and the complete table share them.
+ const missing=(d.missing||[]).filter(m=>index.has(m.categoryId)&&seriesIndex.has(m.seriesId)).map(m=>({...m,i:index.get(m.categoryId),j:seriesIndex.get(m.seriesId)}));
+ const qualifiers=(d.qualifiers||[]).filter(q=>index.has(q.categoryId)&&seriesIndex.has(q.seriesId)).map(q=>({...q,i:index.get(q.categoryId),j:seriesIndex.get(q.seriesId)})).sort((a,b)=>a.i-b.i||a.j-b.j);
+ const marks=[...new Set((d.qualifiers||[]).map(q=>q.label))],qualifierAt=(j,i)=>qualifiers.find(q=>q.i===i&&q.j===j)||null,missingAt=(j,i)=>missing.find(m=>m.i===i&&m.j===j)||null;
+ const events=(d.events||[]).map((e,n)=>({...e,n:n+1})).filter(e=>index.has(e.categoryId)).map(e=>({...e,i:index.get(e.categoryId)}));
+ const interval=d.series.find(s=>s.interval)?.interval||null;
+ const text=(j,i)=>{const v=d.series[j].values[i];return v===null?t.missing:String(v);};
+ const sup=n=>String(n).replace(/\d/g,c=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[c]),cell=(j,i)=>{const m=missingAt(j,i),q=qualifierAt(j,i);return text(j,i)+(m?' · '+t.reasons[m.reason]:'')+(q?sup(marks.indexOf(q.label)+1):'');};
+ const better=d.definition?.betterDirection||'none';
+ // Best per column only among unqualified values; ties are all marked.
+ const best=d.series.map((s,j)=>{if(better==='none')return new Set();const v=s.values.map((v,i)=>v===null||qualifierAt(j,i)?null:v),pick=better==='higher'?Math.max(...v.filter(v=>v!==null)):Math.min(...v.filter(v=>v!==null));return new Set(v.flatMap((v,i)=>v!==null&&v===pick?[i]:[]));});
+ const focus=block.focus?.categoryIds?{categories:new Set(block.focus.categoryIds.filter(id=>index.has(id))),series:null}:block.focus?.seriesIds?{categories:null,series:new Set(block.focus.seriesIds)}:{categories:null,series:null};
+ return {kind,model,t,locale,unit:d.unit,ids,display,categories:d.categories,series:d.series,text,cell,missing,missingAt,qualifiers,qualifierAt,marks,events,interval,better,best,focus,
+  // A missing value is named and never given a unit.
+  withUnit:value=>value===t.missing||!d.unit?value:value+' '+d.unit,
+  sortLabel:['ranked-bar','stacked'].includes(kind)&&(kind==='ranked-bar'||model.sort!=='author')?t.sorts[model.sort]:null,
+  intervalText:(j,i)=>{const s=d.series[j];return s.interval&&s.values[i]!==null?`${s.interval.lower[i]}–${s.interval.upper[i]}`:'';}};
+};
+const chart = function chart(block,document,theme,{sceneId='scene',anchors,paletteIds}={}){
+ const anchor=(objectId,seriesId='')=>anchors?anchors[JSON.stringify([objectId,seriesId])]:objectAnchor(sceneId,block.id,objectId,seriesId);
+ const d=document.datasets.find(d=>d.id===block.datasetId),f=chartFacts(block,d,document.locale),t=f.t,m=f.model,kind=m.kind;
+ const color=j=>theme.chart[(kind==='heatmap'||!paletteIds?j:paletteIds.indexOf(d.series[j]?.id))%theme.chart.length];
+ const name=kind==='ranked-bar'&&m.sort==='author'?'direct-bar':kind==='line'&&block.labels==='end'?'trend':kind,policy=block.axis?.policy||'zero';
+ const caption=`${d.unit} · ${t.kinds[name]} · ${t.policies[policy]}${m.scale.y==='log'||m.scale.x==='log'?' · '+t.log:''}${block.truncation?' · '+t.truncated:''}${kind==='heatmap'?' ['+m.domain.join(', ')+']':''}${f.sortLabel?' · '+f.sortLabel:''}${d.timeZone?' · '+d.timeZone:''}${d.synthetic?' · '+t.synthetic:''}`;
+ const view={block,d,f,t,theme,color,anchor,caption,ident:(i,j)=>`id="${anchor(f.ids[i],d.series[j].id)}" tabindex="-1" data-object-id="${x(f.ids[i])}" data-series-id="${x(d.series[j].id)}"`};
+ const plot=['ranked-bar','grouped-bar','dot-interval'].includes(kind)?rowPlot(view):kind==='small-multiples'?facetPlot(view):kind==='benchmark-table'?benchmarkPlot(view):name==='trend'?trendPlot(view):svgPlot(view);
+ // Legend keys are inline SVG so they print and keep the series shape and dash; a black-and-white copy still tells series apart.
+ const key=(j,c,shape)=>`<svg class="legend-key" viewBox="0 0 28 12" aria-hidden="true">${shape==='line'?`<path d="M1 6H27" stroke="${c}" stroke-width="2.5" stroke-dasharray="${chartDash(j)}"/>${chartShape(j,14,6,4.5,c)}`:shape==='point'?chartShape(j,14,6,4.5,c):shape==='muted'?`<rect x="2" y="2" width="24" height="8" fill="${c}" fill-opacity=".28" stroke="${c}" stroke-width="1.5"/>`:shape==='outline'?`<rect x="2" y="2" width="24" height="8" fill="${c}" stroke="currentColor"/>`:`<rect x="2" y="2" width="24" height="8" fill="${c}"/>`}</svg>`;
+ const item=(k,label,muted=false)=>`<li${muted?' data-muted="true"':''}>${k}${x(label)}</li>`,inFocus=s=>f.focus.series&&f.focus.series.has(s.id)?' · '+t.focus:'';
+ const legend=`<ul class="legend">${kind==='benchmark-table'?(f.better==='none'?'':item(`<svg class="legend-key" viewBox="0 0 28 12" aria-hidden="true"><rect x="1" y="1" width="26" height="10" fill="none" stroke="currentColor"/></svg>`,`${t.better[f.better]}${t.separator}${t.bestRule(f.better)}`))+(f.marks.length?item(`<svg class="legend-key" viewBox="0 0 28 12" aria-hidden="true"><path d="M8 10V2l-3 2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>`,t.qualifier):''):kind==='heatmap'?[[f.locale==='zh-CN'?'负数':'Negative',color(1)],[f.locale==='zh-CN'?'零':'Zero','transparent'],[f.locale==='zh-CN'?'正数':'Positive',color(0)],[t.missing,'transparent']].map(([label,c])=>item(key(0,c,'outline'),label)).join(''):f.focus.categories?item(key(0,color(0),'bar'),t.focus+t.colon+[...f.focus.categories].map(id=>f.display(f.ids.indexOf(id))).join(t.separator))+item(key(0,color(0),'muted'),t.other):d.series.map((s,j)=>item(key(j,color(j),['line','small-multiples'].includes(kind)?'line':['scatter','dot-interval'].includes(kind)?'point':'bar'),s.label+inFocus(s),f.focus.series&&!f.focus.series.has(s.id))).join('')}</ul>`;
+ const def=d.definition||{},definition=[def.denominator&&t.definition.denominator+t.colon+def.denominator,def.sample&&t.definition.sample+t.colon+def.sample,def.normalized!==undefined&&(def.normalized?t.definition.normalized:t.definition.raw),def.betterDirection&&t.better[def.betterDirection],d.version&&t.definition.version+t.colon+d.version,d.collectedAt&&t.definition.collectedAt+t.colon+d.collectedAt,d.validPeriod&&t.definition.validPeriod+t.colon+d.validPeriod.from+' – '+d.validPeriod.to].filter(Boolean);
+ return `<figure class="chart" data-chart-type="${kind}"${name!==kind?` data-chart-variant="${name}"`:''}><figcaption>${block.question?`<span class="chart-question">${x(block.question)}</span>`:''}<span class="chart-caption">${x(caption)}</span></figcaption>${plot}${legend}${chartNotes(view)}${block.takeaway?`<p class="chart-takeaway"><strong>${x(t.takeaway)}</strong>${x(t.colon+block.takeaway)}</p>`:''}${definition.length?`<p class="chart-definition">${x(definition.join(' · '))}</p>`:''}${chartTable(view)}</figure>`;
+};
+const chartDash = function chartDash(j){return ['none','9 5','2 4','10 4 2 4'][j%4];};
+const chartShape = function chartShape(j,cx,cy,r,fill){
+ // Shapes cycle against the four dashes, so up to eight series keep a distinct dash-and-shape pair.
+ const k=(j+Math.floor(j/4))%4,paint=k>=2?`fill="none" stroke="${fill}" stroke-width="2"`:`fill="${fill}"`;
+ return k%2?`<rect x="${cx}" y="${cy}" width="${r*1.8}" height="${r*1.8}" transform="translate(${-r*.9} ${-r*.9})" ${paint}/>`:`<circle cx="${cx}" cy="${cy}" r="${r}" ${paint}/>`;
+};
+const chartNotes = function chartNotes({block,d,f,t}){
+ const m=f.model,kind=m.kind,notes=[];
+ if(block.truncation)notes.push(t.truncation(m.domain[0])+t.colon+block.truncation.note);
+ if(m.scale.y==='log'||m.scale.x==='log')notes.push(t.logNote);
+ if(kind==='small-multiples')notes.push(t.shared(m.domain[0],m.domain[1],d.unit));
+ if(f.interval&&['line','dot-interval'].includes(kind))notes.push(`${t.interval[0].toUpperCase()+t.interval.slice(1)}${t.colon}${t.intervalTypes[f.interval.type](f.interval.level)} · ${t.method} ${f.interval.method}`);
+ for(const e of f.events)notes.push(`${e.n} · ${f.display(e.i)} · ${e.label}${t.paren(t.relations[e.relation])}`);
+ for(const r of f.missing)notes.push(`${t.missingNote} · ${d.series[r.j].label}${t.separator}${f.display(r.i)}${t.colon}${t.reasons[r.reason]}${r.note?t.dash+r.note:''}`);
+ f.marks.forEach((label,n)=>{const cells=f.qualifiers.filter(q=>q.label===label);if(cells.length)notes.push(`${n+1} ${label}${[...new Set(cells.flatMap(q=>q.note?[q.note]:[]))].map(v=>t.dash+v).join('')}`);});
+ return notes.length?`<ul class="chart-notes">${notes.map(n=>`<li>${x(n)}</li>`).join('')}</ul>`:'';
+};
+const chartTable = function chartTable({d,f,t,caption}){
+ const kind=f.model.kind,intervals=d.series.filter(s=>s.interval);
+ return `<details><summary>${x(t.viewAll)}</summary><p class="component-note">${x(t.explanation)}</p><div class="table-scroll"><table><caption>${x(caption)}</caption><thead><tr><th scope="col">${x(t.category)}</th>${d.series.map(s=>`${kind==='scatter'?`<th scope="col">${x(s.label+' x · '+d.xUnit)}</th>`:''}<th scope="col">${x(s.label+' · '+d.unit)}</th>`).join('')}${intervals.map(s=>`<th scope="col">${x(s.label+' · '+t.intervalTypes[s.interval.type](s.interval.level))}</th>`).join('')}${f.events.length?`<th scope="col">${x(t.events)}</th>`:''}</tr></thead><tbody>${d.categories.map((c,i)=>`<tr><th scope="row">${x(c)}</th>${d.series.map((s,j)=>`${kind==='scatter'?`<td>${x(s.xValues[i]===null?t.missing:String(s.xValues[i]))}</td>`:''}<td>${x(f.cell(j,i))}</td>`).join('')}${intervals.map(s=>`<td>${x(f.intervalText(d.series.indexOf(s),i))}</td>`).join('')}${f.events.length?`<td>${x(f.events.filter(e=>e.i===i).map(e=>`${e.n} ${e.label}${t.paren(t.relations[e.relation])}`).join(t.separator))}</td>`:''}</tr>`).join('')}</tbody></table></div></details>`;
+};
+const svgPlot = function svgPlot({block,d,f,t,color,anchor,ident,caption}){
+ const m=f.model,kind=m.kind,missing=t.missing,value=v=>v===null?missing:String(v),tick=v=>Number(v.toPrecision(5)),hasIntervals=kind==='line'&&d.series.some(s=>s.interval);
+ // A heatmap's row labels sit left of the cells; the margin grows with the longest label (CJK counts as a full em), up to a third of the frame.
+ const rowLabel=kind==='heatmap'?Math.max(0,...d.series.map(s=>[...s.label].reduce((w,c)=>w+(/[⺀-鿿＀-￯]/.test(c)?18:10.5),0))):0;
+ const compact=['line','area'].includes(kind)&&!hasIntervals&&!f.events.length&&m.scale.y==='linear'&&d.categoryKind!=='datetime'&&d.categories.length<=6&&d.categories.every(c=>c.length<=5)&&d.series.length<=2&&d.series.every(s=>s.values.every(v=>v===null||String(v).length<=5))&&chartTicks(m.domain).every(v=>String(tick(v)).length<=5),W=800,H=400,L=Math.min(260,Math.max(100,Math.ceil(rowLabel+16))),R=680,T=compact?50:30,B=compact?270:310;
+ const share=v=>Math.max(0,Math.min(1,chartShare(v,m.domain,m.scale.y))),y=v=>B-share(v)*(B-T),linearX=i=>d.categories.length===1?(L+R)/2:(compact?L+45:L)+i*(R-L-(compact?45:0))/(d.categories.length-1),px=i=>d.categories.length===1?(L+R)/2:d.categoryKind==='datetime'?L+(Date.parse(d.categories[i])-Date.parse(d.categories[0]))/(Date.parse(d.categories.at(-1))-Date.parse(d.categories[0]))*(R-L):(kind==='stacked'?L+60+i*(R-L-120)/(d.categories.length-1):linearX(i));
+ // Stacks follow the declared sort; every other kind keeps author (or time) order.
+ const at=i=>px(kind==='stacked'?m.order.indexOf(i):i),title=(i,j)=>`<title>${x(d.categories[i]+' · '+d.series[j].label+': '+value(d.series[j].values[i])+' '+d.unit)}</title>`;
+ const txt=(a,b,s,extra='')=>`<text x="${a}" y="${b}" ${extra}>${x(s)}</text>`,muted=j=>f.focus.series&&!f.focus.series.has(d.series[j].id);
+ let marks='',axes='';
+ if(kind!=='heatmap'){
+  axes=chartTicks(m.domain,m.scale.y).map(v=>`<path d="M${L} ${y(v)}H${R}" stroke="currentColor" opacity=".2"/>`+txt(L-12,y(v)+4,tick(v),'text-anchor="end"')).join('');
+  axes+=d.categories.map((_,i)=>kind==='scatter'?'':txt(at(i),350,f.display(i),'text-anchor="middle"')).join('');
+  if(block.truncation)axes+=`<path d="M${L-6} ${B-4}l6 -5 6 5 6 -5" fill="none" stroke="currentColor" stroke-width="2"/>`;
+ }
+ for(const e of kind==='scatter'||kind==='heatmap'?[]:f.events)axes+=`<g data-event-id="${x(e.id)}"><path d="M${at(e.i)} ${T}V${B}" stroke="currentColor" stroke-dasharray="3 5" opacity=".7"/><circle cx="${at(e.i)}" cy="${T-14}" r="10" fill="none" stroke="currentColor"/>${txt(at(e.i),T-9,e.n,'text-anchor="middle"')}</g>`;
+ if(['line','area'].includes(kind))d.series.forEach((s,j)=>{
+  let runs=[],run=[];s.values.forEach((v,i)=>{if(v===null){if(run.length)runs.push(run);run=[];}else run.push([px(i),y(v)]);});if(run.length)runs.push(run);
+  const base=y(Math.max(m.domain[0],Math.min(m.domain[1],0))),stroke=muted(j)?`stroke="${color(j)}" stroke-width="2" opacity=".45"`:`stroke="${color(j)}" stroke-width="3"`;
+  marks+=runs.map(r=>`${kind==='area'?`<polygon points="${r[0][0]},${base} ${r.map(p=>p.join(',')).join(' ')} ${r.at(-1)[0]},${base}" fill="${color(j)}" opacity=".18"/>`:''}<polyline fill="none" ${stroke}${j?` stroke-dasharray="${chartDash(j)}"`:''} points="${r.map(p=>p.join(',')).join(' ')}"/>`).join('');
+  marks+=s.values.map((v,i)=>v===null?`<g ${ident(i,j)}>${title(i,j)}${j===0?txt(px(i),B-8,missing,'text-anchor="middle"'):''}</g>`:`<g ${ident(i,j)}>${title(i,j)}${s.interval?`<path d="M${px(i)} ${y(s.interval.lower[i])}V${y(s.interval.upper[i])}M${px(i)-5} ${y(s.interval.lower[i])}h10M${px(i)-5} ${y(s.interval.upper[i])}h10" stroke="${color(j)}" stroke-width="1.5"/>`:''}${chartShape(j,px(i),y(v),5,color(j))}${txt(px(i)+(s.interval?10:0),y(v)+(compact&&d.series.some((s,k)=>k!==j&&s.values[i]!==null&&(s.values[i]>v||s.values[i]===v&&k<j))?36:compact?-16:-12),value(v),s.interval?'text-anchor="start"':'text-anchor="middle"')}</g>`).join('');
+ });
+ if(kind==='stacked')d.categories.forEach((_,i)=>{
+  if(d.series.some(s=>s.values[i]===null)){marks+=d.series.map((s,j)=>`<g ${ident(i,j)}>${title(i,j)}${j===0?txt(at(i),y(Math.max(m.domain[0],0))-12,missing,'text-anchor="middle"'):''}</g>`).join('');return;}
+  let pos=0,neg=0;d.series.forEach((s,j)=>{const v=s.values[i],from=v>=0?pos:neg,to=from+v;if(v>=0)pos=to;else neg=to;const width=Math.min(70,(R-L)/d.categories.length*.7);marks+=`<g ${ident(i,j)}>${title(i,j)}<rect x="${at(i)-width/2}" y="${Math.min(y(from),y(to))}" width="${width}" height="${Math.max(1,Math.abs(y(to)-y(from)))}" fill="${color(j)}"/>${txt(at(i)+width/2+6,v===0?y(0)-14:(y(from)+y(to))/2+4,value(v))}</g>`;});
+ });
+ if(kind==='scatter'){
+  const sx=v=>L+chartShare(v,m.xDomain,m.scale.x)*(R-L);
+  axes+=chartTicks(m.xDomain,m.scale.x).map(v=>txt(sx(v),350,tick(v),'text-anchor="middle"')).join('');
+  d.series.forEach((s,j)=>s.values.forEach((v,i)=>{if(v===null||s.xValues[i]===null){marks+=`<g ${ident(i,j)}>${title(i,j)}</g>`;return;}marks+=`<g ${ident(i,j)}>${title(i,j)}${chartShape(j,sx(s.xValues[i]),y(v),7,color(j))}${txt(sx(s.xValues[i])+(sx(s.xValues[i])>540?-10:10),y(v)-10,d.categories[i]+': '+s.xValues[i]+', '+v,sx(s.xValues[i])>540?'text-anchor="end"':'')}</g>`;}));
+ }
+ if(kind==='heatmap'){
+  const cw=(R-L)/d.categories.length,ch=(B-T)/d.series.length,extent=Math.max(...m.domain.map(Math.abs),Number.MIN_VALUE);
+  axes=d.categories.map((_,i)=>txt(L+(i+.5)*cw,350,f.display(i),'text-anchor="middle"')).join('')+d.series.map((s,j)=>txt(L-10,T+(j+.5)*ch,s.label,'text-anchor="end"')).join('');
+  d.series.forEach((s,j)=>s.values.forEach((v,i)=>marks+=`<g ${ident(i,j)}>${title(i,j)}<rect x="${L+i*cw}" y="${T+j*ch}" width="${cw-4}" height="${ch-4}" fill="${v===null?'none':v<0?color(1):color(0)}" fill-opacity="${v===null?0:.1+Math.abs(v)/extent*.35}" stroke="currentColor" stroke-dasharray="${v===null?'4 4':'none'}"/>${txt(L+(i+.5)*cw,T+(j+.5)*ch,value(v),'text-anchor="middle"')}</g>`));
+ }
+ return `<div class="chart-plot"><svg ${compact?'data-compact-chart="true"':''} role="img" aria-label="${x(caption)}" viewBox="0 0 ${W} ${H}"><title>${x(d.series.map(s=>s.label).join(' / '))}</title><desc>${x(t.explanation)}</desc>${axes}${d.categoryIds?.map((id,i)=>`<g id="${anchor(id)}" transform="translate(${at(i)} ${B})"><title>${x(d.categories[i])}</title></g>`).join('')||''}${marks}${txt(L,385,kind==='scatter'?d.xUnit:d.timeZone||'')}${txt(12,38,d.unit)}</svg></div>`;
+};
+const rowPlot = function rowPlot({d,f,t,color,anchor,ident,caption}){
+ const m=f.model,kind=m.kind,[low,high]=m.domain,log=m.scale.y==='log',share=v=>Math.max(0,Math.min(1,chartShare(v,m.domain,m.scale.y))),pct=v=>Number((v*100).toFixed(3))+'%',multi=d.series.length>1;
+ const zero=log?null:share(Math.max(low,Math.min(high,0))),width=s=>[...String(s)].reduce((w,c)=>w+(/[⺀-鿿＀-￯]/.test(c)?2:1),0);
+ const label=(j,i)=>kind==='dot-interval'&&d.series[j].values[i]!==null?`${f.cell(j,i)} [${f.intervalText(j,i)}]`:f.cell(j,i);
+ const value=(j,i)=>{const q=f.qualifierAt(j,i),m=f.missingAt(j,i),base=f.text(j,i)+(m?' · '+t.reasons[m.reason]:'')+(kind==='dot-interval'&&d.series[j].values[i]!==null?` [${f.intervalText(j,i)}]`:'');return x(base)+(q?`<sup class="chart-qualifier">${f.marks.indexOf(q.label)+1}</sup>`:'');};
+ // Room for the widest value label keeps every label inside the figure at any width.
+ const space=Math.max(4,...d.series.flatMap((s,j)=>s.values.flatMap((v,i)=>v===null?[]:[width(label(j,i))])))+1,labelWidth=Math.min(28,Math.max(6,...d.categories.map((_,i)=>width(f.display(i))))),seriesWidth=Math.min(24,Math.max(4,...d.series.map(s=>width(s.label))));
+ const focused=i=>f.focus.categories?f.focus.categories.has(f.ids[i]):null,muted=(i,j)=>focused(i)===false||(f.focus.series?!f.focus.series.has(d.series[j].id):false);
+ const reference=zero===null||(kind==='dot-interval'&&!(low<0&&high>0))?'':`<line x1="${pct(zero)}" x2="${pct(zero)}" y1="-4" y2="22" stroke="currentColor" stroke-width="1"${kind==='dot-interval'?' stroke-dasharray="2 3"':''}/>`;
+ const cut=f.model.kind!=='dot-interval'&&low>0?'<path d="M-1 -4l7 5-7 5 7 5-7 5" fill="none" stroke="currentColor" stroke-width="2"/>':'';
+ const mark=(i,j)=>{
+  const v=d.series[j].values[i],c=color(kind==='ranked-bar'?0:j),dim=muted(i,j);
+  if(v===null)return `<span class="chart-mark" data-missing="true" ${ident(i,j)}><span class="chart-value" data-conclusion-label="true">${value(j,i)}</span></span>`;
+  let end,graphic;
+  if(kind==='dot-interval'){const s=d.series[j],lo=share(s.interval.lower[i]),hi=share(s.interval.upper[i]),at=share(v),stroke=`stroke="${c}"${dim?' stroke-opacity=".45"':''}`;end=Math.max(hi,at);graphic=`<line x1="${pct(lo)}" x2="${pct(hi)}" y1="9" y2="9" ${stroke} stroke-width="2.5"${j>=4?' stroke-dasharray="5 3"':''}/><line x1="${pct(lo)}" x2="${pct(lo)}" y1="3" y2="15" ${stroke} stroke-width="2"/><line x1="${pct(hi)}" x2="${pct(hi)}" y1="3" y2="15" ${stroke} stroke-width="2"/>${chartShape(j,pct(at),9,6,c)}`;}
+  else{const a=Math.min(zero,share(v)),b=Math.max(zero,share(v));end=b;graphic=`<rect x="${pct(a)}" y="0" width="${pct(b-a)}" height="18" ${dim?`fill="${c}" fill-opacity=".28" stroke="${c}" stroke-width="1.5"`:`fill="${c}"`}/>`;}
+  return `<span class="chart-mark" ${ident(i,j)}><span class="chart-track" style="--end:${Number(end.toFixed(5))}"><svg aria-hidden="true" focusable="false">${reference}${cut}${graphic}</svg><span class="chart-value" data-conclusion-label="true">${value(j,i)}</span></span></span>`;
+ };
+ const refs=i=>f.events.filter(e=>e.i===i).map(e=>` <span class="chart-event-ref">${e.n}</span>`).join('');
+ const ticks=log?chartTicks(m.domain,'log'):[low,...(low<0&&high>0?[0]:[]),high],track=`<span class="chart-axis-track">${ticks.map(v=>{const s=share(v);return `<span style="left:${Number((s*100).toFixed(3))}%${s===0?'':s===1?';transform:translateX(-100%)':';transform:translateX(-50%)'}">${x(String(Number(v.toPrecision(5))))}</span>`;}).join('')}</span>`;
+ const rows=m.order.map(i=>`<li class="chart-row"${d.categoryIds?` id="${anchor(f.ids[i])}"`:''} data-category-id="${x(f.ids[i])}"${focused(i)===null?'':` data-focus="${focused(i)}"`}><span class="chart-row-label"><span data-conclusion-label="true">${x(f.display(i))}</span>${refs(i)}</span><span class="chart-row-marks">${multi?d.series.map((s,j)=>`<span class="chart-line"${f.focus.series&&!f.focus.series.has(s.id)?' data-muted="true"':''}><span class="chart-series-name" data-conclusion-label="true">${x(s.label)}</span>${mark(i,j)}</span>`).join(''):mark(i,0)}</span></li>`).join('');
+ return `<ol class="chart-rows" data-kind="${kind}" aria-label="${x(caption)}" style="--value-space:${space}ch;--label-width:${labelWidth}ch;--series-width:${seriesWidth}ch">${rows}<li class="chart-axis" aria-hidden="true"><span></span>${multi?`<span class="chart-line"><span></span>${track}</span>`:track}</li></ol>`;
+};
+const trendPlot = function trendPlot({block,d,f,t,color,anchor,ident,caption}){
+ const m=f.model,F=22,W=600,T=50,B=286,H=356,width=s=>[...String(s)].reduce((w,c)=>w+(/[⺀-鿿＀-￯]/.test(c)?1:.62),0)*F,tick=v=>String(Number(v.toPrecision(5)));
+ const ticks=chartTicks(m.domain,m.scale.y),L=Math.ceil(16+Math.max(...ticks.map(v=>width(tick(v))))),share=v=>Math.max(0,Math.min(1,chartShare(v,m.domain,m.scale.y))),y=v=>B-share(v)*(B-T),muted=j=>f.focus.series&&!f.focus.series.has(d.series[j].id);
+ // End labels name each series and its last shown value; a label that does not fit one line takes two.
+ const ends=d.series.flatMap((s,j)=>{let i=s.values.length-1;while(i>=0&&s.values[i]===null)i--;if(i<0)return [];const value=f.text(j,i)+(i<d.categories.length-1?` (${f.display(i)})`:''),one=`${s.label} ${value}`;return [{j,i,lines:width(one)<=W*.34?[one]:[s.label,value]}];});
+ const R=Math.floor(W-22-Math.min(W*.42,Math.max(0,...ends.flatMap(e=>e.lines.map(width))))),txt=(a,b,s,extra='')=>`<text x="${a}" y="${b}" ${extra}>${x(s)}</text>`;
+ const px=i=>d.categories.length===1?(L+R)/2:d.categoryKind==='datetime'?L+(Date.parse(d.categories[i])-Date.parse(d.categories[0]))/(Date.parse(d.categories.at(-1))-Date.parse(d.categories[0]))*(R-L):L+i*(R-L)/(d.categories.length-1);
+ // Labels keep their value order and are pushed apart, then back inside the frame.
+ const placed=ends.map(e=>({...e,want:y(d.series[e.j].values[e.i]),h:e.lines.length*F*1.2})).sort((a,b)=>a.want-b.want||a.j-b.j);
+ placed.forEach((p,k)=>{p.at=Math.max(p.want,k?placed[k-1].at+placed[k-1].h/2+p.h/2+4:p.h/2+4);});
+ for(let k=placed.length-1;k>=0;k--){const p=placed[k],next=placed[k+1];p.at=Math.min(p.at,next?next.at-next.h/2-p.h/2-4:H-4-p.h/2);}
+ let marks=chartTicks(m.domain,m.scale.y).map(v=>`<path d="M${L} ${y(v)}H${R}" stroke="currentColor" opacity=".18"/>`+txt(L-10,y(v)+F*.35,tick(v),'text-anchor="end"')).join('');
+ for(const e of f.events)marks+=`<g data-event-id="${x(e.id)}"><path d="M${px(e.i)} ${T}V${B}" stroke="currentColor" stroke-dasharray="3 5" opacity=".7"/><circle cx="${px(e.i)}" cy="${T-22}" r="${F*.6}" fill="none" stroke="currentColor"/>${txt(px(e.i),T-22+F*.35,e.n,'text-anchor="middle"')}</g>`;
+ d.series.forEach((s,j)=>{
+  let runs=[],run=[];s.values.forEach((v,i)=>{if(v===null){if(run.length)runs.push(run);run=[];}else run.push([px(i),y(v)]);});if(run.length)runs.push(run);
+  marks+=runs.map(r=>`<polyline fill="none" stroke="${color(j)}" stroke-width="${muted(j)?2:3.5}"${muted(j)?' opacity=".45"':''} stroke-dasharray="${chartDash(j)}" points="${r.map(p=>p.join(',')).join(' ')}"/>`).join('');
+  marks+=s.values.map((v,i)=>`<g ${ident(i,j)}><title>${x(d.categories[i]+' · '+s.label+': '+f.text(j,i)+' '+d.unit)}</title>${v===null?'':`${s.interval?`<path d="M${px(i)} ${y(s.interval.lower[i])}V${y(s.interval.upper[i])}M${px(i)-5} ${y(s.interval.lower[i])}h10M${px(i)-5} ${y(s.interval.upper[i])}h10" stroke="${color(j)}" stroke-width="1.5"/>`:''}${chartShape(j,px(i),y(v),ends.some(e=>e.j===j&&e.i===i)?6:3.5,color(j))}`}</g>`).join('');
+ });
+ for(const p of placed){const top=p.at-p.h/2,leader=Math.abs(p.at-p.want)>3?`<path d="M${px(p.i)+8} ${p.want}L${R+10} ${p.at}" stroke="${color(p.j)}" stroke-width="1"/>`:'';marks+=leader+p.lines.map((line,k)=>txt(R+14,top+F*(.95+k*1.2),line,`data-conclusion-label="true"${muted(p.j)?'':' font-weight="700"'}`)).join('');}
+ const first=f.display(0),lastLabel=f.display(d.categories.length-1),stacked=d.categories.length>1&&width(first)+width(lastLabel)+F>R-L,height=H+(stacked?Math.ceil(F*1.45):0);
+ // Long first and last labels (dates with times) would collide; the last one then takes its own line.
+ marks+=d.categories.length===1?txt(px(0),B+F+14,first,'text-anchor="middle" data-conclusion-label="true"'):txt(L,B+F+14,first,'data-conclusion-label="true"')+txt(R,B+F+14+(stacked?F*1.45:0),lastLabel,'text-anchor="end" data-conclusion-label="true"');
+ return `<div class="chart-plot"><svg data-type-scale="true" role="img" aria-label="${x(caption)}" viewBox="0 0 ${W} ${height}"><title>${x(d.series.map(s=>s.label).join(' / '))}</title><desc>${x(t.explanation)}</desc>${txt(0,F,d.unit)}${d.categoryIds?.map((id,i)=>`<g id="${anchor(id)}" transform="translate(${px(i)} ${B})"><title>${x(d.categories[i])}</title></g>`).join('')||''}${marks}</svg></div>`;
+};
+const facetPlot = function facetPlot({d,f,t,color,ident}){
+ const m=f.model,W=260,H=158,F=13,T=20,B=H-30,tick=v=>String(Number(v.toPrecision(5))),width=s=>[...String(s)].reduce((w,c)=>w+(/[⺀-鿿＀-￯]/.test(c)?1:.62),0)*F;
+ const L=Math.ceil(10+Math.max(width(tick(m.domain[0])),width(tick(m.domain[1])))),R=W-10,share=v=>Math.max(0,Math.min(1,chartShare(v,m.domain,m.scale.y))),y=v=>B-share(v)*(B-T),px=i=>d.categories.length===1?(L+R)/2:L+i*(R-L)/(d.categories.length-1);
+ const txt=(a,b,s,extra='')=>`<text x="${a}" y="${b}" ${extra}>${x(s)}</text>`,line=(s,attrs)=>{let runs=[],run=[];s.values.forEach((v,i)=>{if(v===null){if(run.length)runs.push(run);run=[];}else run.push([px(i),y(v)]);});if(run.length)runs.push(run);return runs.map(r=>`<polyline fill="none" ${attrs} points="${r.map(p=>p.join(',')).join(' ')}"/>`).join('');};
+ return `<div class="chart-facets">${d.series.map((s,j)=>{
+  let i=s.values.length-1;while(i>=0&&s.values[i]===null)i--;
+  const last=i<0?t.missing:f.withUnit(f.text(j,i))+(i<d.categories.length-1?` (${f.display(i)})`:` · ${f.display(i)}`),muted=f.focus.series&&!f.focus.series.has(s.id);
+  return `<div class="chart-facet" data-series-id="${x(s.id)}"${muted?' data-muted="true"':''}><p class="chart-facet-title"><span class="chart-facet-name" data-conclusion-label="true">${x(s.label)}</span> <span class="chart-facet-value" data-conclusion-label="true">${x(last)}</span></p><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${x(s.label+' · '+last)}">${[m.domain[0],m.domain[1]].map(v=>`<path d="M${L} ${y(v)}H${R}" stroke="currentColor" opacity=".2"/>`+txt(L-6,y(v)+F*.35,tick(v),'text-anchor="end"')).join('')}${f.events.map(e=>`<g data-event-id="${x(e.id)}"><path d="M${px(e.i)} ${T}V${B}" stroke="currentColor" stroke-dasharray="2 4" opacity=".6"/>${txt(px(e.i)+4,T-4,e.n)}</g>`).join('')}${d.series.map((o,k)=>k===j?'':line(o,'stroke="currentColor" stroke-width="1" opacity=".22"')).join('')}${line(s,`stroke="${color(j)}" stroke-width="${muted?2:3}"${muted?' opacity=".5"':''} stroke-dasharray="${chartDash(j)}"`)}${s.values.map((v,k)=>`<g ${ident(k,j)}><title>${x(d.categories[k]+' · '+s.label+': '+f.text(j,k)+' '+d.unit)}</title>${v===null?'':chartShape(j,px(k),y(v),k===i?4.5:2.5,color(j))}</g>`).join('')}${txt(L,H-8,f.display(0))}${d.categories.length>1?txt(R,H-8,f.display(d.categories.length-1),'text-anchor="end"'):''}</svg></div>`;
+ }).join('')}</div>`;
+};
+const benchmarkPlot = function benchmarkPlot({d,f,t,anchor,ident}){
+ const refs=i=>f.events.filter(e=>e.i===i).map(e=>` <span class="chart-event-ref">${e.n}</span>`).join('');
+ return `<div class="chart-benchmark"><table class="benchmark-table" role="table"><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">${x(t.category)}</th>${d.series.map(s=>`<th scope="col" role="columnheader">${x(s.label+' · '+d.unit)}</th>`).join('')}</tr></thead><tbody role="rowgroup">${f.model.order.map(i=>`<tr role="row"${d.categoryIds?` id="${anchor(f.ids[i])}"`:''}${f.focus.categories?` data-focus="${f.focus.categories.has(f.ids[i])}"`:''}><th scope="row" role="rowheader"><span data-conclusion-label="true">${x(f.display(i))}</span>${refs(i)}</th>${d.series.map((s,j)=>{const best=f.best[j].has(i),m=f.missingAt(j,i),q=f.qualifierAt(j,i),value=x(f.text(j,i)+(m?' · '+t.reasons[m.reason]:''));return `<td role="cell" ${ident(i,j)} data-column="${x(s.label+' · '+d.unit)}"${best?' data-best="true"':''}><span data-conclusion-label="true">${best?`<strong>${value}</strong>`:value}${q?`<sup class="chart-qualifier">${f.marks.indexOf(q.label)+1}</sup>`:''}${best?` <span class="chart-best">${x(t.best)}</span>`:''}</span></td>`;}).join('')}</tr>`).join('')}</tbody></table></div>`;
+};
+const captionSubject = function captionSubject(spec,state){
+ const from=spec.categoryIds.indexOf(state.fromId),to=spec.categoryIds.indexOf(state.toId),categoryId=spec.captionOrder.find(id=>{const i=spec.categoryIds.indexOf(id);return i>=from&&i<=to;});
+ return {categoryId,seriesIds:state.focusSeriesId?[state.focusSeriesId]:[...state.seriesIds]};
+};
+const initialInteractionState = function initialInteractionState(specs){
+ return specs.map(s=>{
+  if(s.kind!=='chart-select')return {id:s.id,kind:s.kind,...(s.kind==='image-compare'?{tabId:s.initialTab||'both'}:s.kind==='steps'?{stepId:s.initialStepId||s.steps[0].id}:{hotspotId:null})};
+  const view={seriesIds:[...s.initialSeriesIds],focusSeriesId:s.initialFocusSeriesId??null,fromId:s.initialFromId,toId:s.initialToId};
+  return {id:s.id,kind:s.kind,datasetId:s.datasetId,metricId:null,...view,sortKey:s.sortKey,scale:{...s.scale},caption:captionSubject(s,view)};
+ });
+};
+const reduceInteractionState = function reduceInteractionState(specs,state,event){
+ const spec=specs.find(s=>s.id===event.interactionId),old=state.find(s=>s.id===event.interactionId);if(!spec||!old)throw Error('Unknown stable interaction identity.');
+ const next={...old};
+ if(event.event==='data.filter'&&spec.kind==='chart-select'){
+  if(!Array.isArray(event.seriesIds)||!event.seriesIds.length||new Set(event.seriesIds).size!==event.seriesIds.length||event.seriesIds.some(id=>!spec.seriesIds.includes(id)))throw Error('Select at least one existing series.');
+  const from=spec.categoryIds.indexOf(event.fromId),to=spec.categoryIds.indexOf(event.toId);if(from<0||to<from)throw Error('Select an ordered range of existing categories.');
+  next.seriesIds=spec.seriesIds.filter(id=>event.seriesIds.includes(id));next.fromId=event.fromId;next.toId=event.toId;
+  // Hiding the focused series ends the focus; the focus never moves to another series.
+  if(next.focusSeriesId&&!next.seriesIds.includes(next.focusSeriesId))next.focusSeriesId=null;
+  next.caption=captionSubject(spec,next);
+ }else if(event.event==='data.focus'&&spec.kind==='chart-select'){
+  const seriesId=event.seriesId??null;
+  if(seriesId!==null&&spec.chartType==='heatmap')throw Error('Series focus is not drawn on heatmaps; show or hide rows instead.');
+  if(seriesId!==null&&spec.seriesIds.length<2)throw Error('A single-series chart cannot focus a series; declare a category focus on the chart instead.');
+  if(seriesId!==null&&!old.seriesIds.includes(seriesId))throw Error('Show a series before focusing it; focus never reveals a hidden series.');
+  next.focusSeriesId=seriesId;next.caption=captionSubject(spec,next);
+ }else if(event.event==='tab.select'&&spec.kind==='image-compare'){
+  if(!['first','second','both'].includes(event.tabId))throw Error('Unknown comparison tab.');next.tabId=event.tabId;
+ }else if(event.event==='step.next'&&spec.kind==='steps'){
+  next.stepId=spec.steps[Math.min(spec.steps.length-1,spec.steps.findIndex(s=>s.id===old.stepId)+1)].id;
+ }else if(event.event==='step.select'&&spec.kind==='steps'){
+  if(!spec.steps.some(s=>s.id===event.stepId))throw Error('Unknown stable step identity.');next.stepId=event.stepId;
+ }else if(event.event==='annotation.reveal'&&spec.kind==='image-hotspots'){
+  if(event.hotspotId!==null&&!spec.hotspots.some(h=>h.id===event.hotspotId))throw Error('Unknown stable hotspot identity.');next.hotspotId=event.hotspotId;
+ }else throw Error('This semantic event does not apply to this component.');
+ return state.map(s=>s.id===next.id?next:s);
+};
+const seekInteractionState = function seekInteractionState(specs,cues,position){
+ if(!Number.isSafeInteger(position)||position<0||position>cues.length)throw Error('Seek to an existing cue boundary.');
+ return cues.slice(0,position).reduce((state,event)=>reduceInteractionState(specs,state,event),initialInteractionState(specs));
+};
+const selectedDataset = function selectedDataset(dataset,state){
+ const from=dataset.categoryIds.indexOf(state.fromId),to=dataset.categoryIds.indexOf(state.toId),indices=dataset.categories.map((_,i)=>i).filter(i=>i>=from&&i<=to);
+ return {...dataset,categories:indices.map(i=>dataset.categories[i]),categoryIds:indices.map(i=>dataset.categoryIds[i]),series:dataset.series.filter(s=>state.seriesIds.includes(s.id)).map(s=>({...s,values:indices.map(i=>s.values[i]),...(s.xValues?{xValues:indices.map(i=>s.xValues[i])}:{})}))};
+};
+const effectiveMotion = function effectiveMotion({policy='off',durationMs=0,reduced=false,visible=true,active=true}={}){
+ return {enabled:policy==='subtle'&&!reduced&&visible&&active&&durationMs>0,durationMs:policy==='subtle'&&!reduced&&visible&&active?Math.min(400,Math.max(0,durationMs)):0};
+};
+const createCueClock = function createCueClock({count,schedule,apply,interval=1000,staticState=null}){
+ let position=0,playing=false,exploring=false,reduced=false,cancel=null;
+ // Reduced motion with a static fallback shows the author's static state and never plays cues; next, previous and seek still apply state.
+ const frozen=()=>!!staticState&&staticState.reducedMotion==='static'&&reduced;
+ function halt(){if(cancel){const stop=cancel;cancel=null;stop();}playing=false;}
+ function go(next,reason){if(!Number.isSafeInteger(next)||next<0||next>count)throw Error('Seek to an existing cue boundary.');position=next;exploring=false;apply(position,reason);}
+ function tick(){cancel=null;if(!playing)return;playing=position+1<count;go(position+1,'play');if(playing)cancel=schedule(tick,interval);}
+ function start(){playing=true;cancel=schedule(tick,interval);}
+ const clock={
+  get position(){return position;},get playing(){return playing;},get exploring(){return exploring;},get frozen(){return frozen();},get pending(){return cancel?1:0;},
+  seek(next,reason='seek'){halt();go(next,reason);},
+  next(){clock.seek(Math.min(count,position+1),'next');},
+  previous(){clock.seek(Math.max(0,position-1),'previous');},
+  /** Continue from the current boundary; from the end, start again at the authored opening. */
+  play(){if(frozen()){clock.toStatic();return false;}halt();if(!count)return false;if(position>=count||exploring){playing=true;go(0,'restart');cancel=schedule(tick,interval);return true;}start();return true;},
+  /** Always from the authored opening (position 0). */
+  restart(){if(frozen()){clock.toStatic();return false;}halt();playing=count>0;go(0,'restart');if(playing)cancel=schedule(tick,interval);return playing;},
+  pause(){halt();},
+  /** Manual exploration leaves the cue boundary; the position is kept so next and previous continue from it. */
+  explore(){halt();exploring=true;},
+  setReduced(value){reduced=!!value;if(frozen())clock.toStatic();},
+  toStatic(){halt();if(staticState&&(exploring||position!==staticState.position))go(staticState.position,'static');}
+ };
+ return clock;
+};
+const motionPlan = function motionPlan(spec,before,after,event){
+ const step=(primitive,target,delay=0)=>({primitive,target,delay});
+ if(event.event==='scene.enter')return [step('SlideSmall',{kind:'regions'})];
+ if(!spec)return [];
+ if(spec.kind==='chart-select'){
+  if(event.event==='data.focus')return [...(after.focusSeriesId?[step('FadeIn',{kind:'series',seriesId:after.focusSeriesId})]:[]),step('SlideSmall',{kind:'explanation'})];
+  const shown=after.seriesIds.filter(id=>!before.seriesIds.includes(id));
+  return shown.length?[...shown.map((seriesId,k)=>step('SeriesReveal',{kind:'series',seriesId},k*MOTION_PRIMITIVES.SeriesReveal.stagger)),step('SlideSmall',{kind:'explanation'})]:[step('SlideSmall',{kind:'view'}),step('SlideSmall',{kind:'explanation'})];
+ }
+ if(spec.kind==='steps')return [step('RevealMask',{kind:'panel'}),step('FadeIn',{kind:'step-targets',stepId:after.stepId})];
+ if(spec.kind==='image-compare')return [step('Crossfade',{kind:'panel'})];
+ if(spec.kind==='image-hotspots')return [step('AnnotationReveal',{kind:'panel'})];
+ return [];
+};
+const createSceneResources = function createSceneResources(){
+ const animations=new Set(),releases=new Set(),timers=new Set();
+ return {
+  /** One named motion primitive; the final state is the element's own state, so a cancelled or skipped animation leaves it visible. */
+  animate(node,options,primitive,delay=0){
+   if(!options.enabled||!node?.animate)return;const name=primitive||(node.namespaceURI==='http://www.w3.org/2000/svg'?'FadeIn':'SlideSmall'),p=MOTION_PRIMITIVES[name],duration=Math.min(options.durationMs,p.maxMs)-delay;if(duration<=0)return;
+   const a=node.animate(p.frames,{id:name,duration,delay,easing:'ease-out',fill:delay?'backwards':'none'});animations.add(a);a.finished.catch(()=>{}).finally(()=>animations.delete(a));
+  },
+  schedule(callback,delay){const timer=setTimeout(()=>{timers.delete(timer);callback();},delay);timers.add(timer);return ()=>{clearTimeout(timer);timers.delete(timer);};},
+  cancelAnimations(){for(const a of animations)a.cancel();animations.clear();},
+  register(release){if(typeof release!=='function')throw Error('Resource cleanup must be a function.');releases.add(release);return ()=>{if(releases.delete(release))release();};},
+  dispose(){for(const timer of timers)clearTimeout(timer);timers.clear();for(const a of animations)a.cancel();animations.clear();for(const release of releases){try{release();}catch{/* Other resources must still be released. */}}releases.clear();},
+  snapshot(){return {animations:animations.size,timers:timers.size,registered:releases.size};}
+ };
+};
+const focusTheme = function focusTheme(theme,dataset,state){
+ if(!state.focusSeriesId)return theme;
+ const hex=c=>/^#[0-9a-f]{6}$/i.test(c)?[1,3,5].map(i=>parseInt(c.slice(i,i+2),16)):null,paper=hex(theme.paper);if(!paper)return theme;
+ const luminance=c=>{const a=c.map(v=>{v/=255;return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4);});return a[0]*.2126+a[1]*.7152+a[2]*.0722;},ratio=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);};
+ const mute=c=>{const rgb=hex(c);if(!rgb)return c;let best=rgb;for(let k=1;k<=12;k++){const m=rgb.map((v,i)=>Math.round(v+(paper[i]-v)*k*.05));if(ratio(m,paper)<3)break;best=m;}return '#'+best.map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();};
+ const chart=[...theme.chart];dataset.series.forEach((s,j)=>{if(s.id!==state.focusSeriesId)chart[j%chart.length]=mute(theme.chart[j%theme.chart.length]);});
+ return {...theme,chart};
+};
+const focusedChart = function focusedChart(block,theme,dataset,state){
+ if(!state.focusSeriesId)return {block,theme};
+ const {focus,...rest}=block;
+ // Must equal SERIES_FOCUS_KINDS in src/components/charts/semantics.mjs (a test checks it); this file is embedded without imports.
+ return ['line','grouped-bar','dot-interval','small-multiples'].includes(block.chartType)?{block:{...rest,focus:{seriesIds:[state.focusSeriesId]}},theme}:{block:rest,theme:focusTheme(theme,dataset,state)};
+};
+const captionText = function captionText(dataset,state,locale){
+ const zh=locale==='zh-CN',i=dataset.categoryIds.indexOf(state.caption.categoryId),missing=zh?'缺失':'Missing';if(i<0)return '';
+ return dataset.categories[i]+(zh?'：':': ')+dataset.series.filter(s=>state.caption.seriesIds.includes(s.id)).map(s=>s.label+' '+(s.xValues?'x='+String(s.xValues[i])+' '+(dataset.xUnit||'')+', y=':'')+(s.values[i]===null?missing:String(s.values[i]))+' '+(dataset.unit||'')).join(' · ');
+};
+const mountChartSelection = function mountChartSelection(root,config,emit){
+ const {spec,block,dataset,locale,theme,sceneId,anchors}=config,zh=locale==='zh-CN',original=root.querySelector('.chart'),view=document.createElement('div'),controls=document.createElement('fieldset'),legend=document.createElement('legend');
+ legend.textContent=zh?'图表范围与系列':'Chart range and series';controls.className='semantic-controls chart-controls';controls.append(legend);
+ const selects={};for(const [key,label]of [['fromId',zh?'起始类别':'From category'],['toId',zh?'结束类别':'To category']]){const l=document.createElement('label'),select=document.createElement('select');l.append(document.createTextNode(label+' '),select);select.dataset.range=key;for(const [i,id]of dataset.categoryIds.entries()){const o=document.createElement('option');o.value=id;o.textContent=dataset.categories[i];select.append(o);}controls.append(l);selects[key]=select;}
+ const group=(className,label,lead)=>{const g=document.createElement('div'),s=document.createElement('span');g.className=className;g.setAttribute('role','group');g.setAttribute('aria-label',label);s.textContent=lead;g.append(s);controls.append(g);return g;};
+ // Showing and hiding is a filter: a hidden series leaves the marks, the legend and the selected data.
+ const shown=group('chart-series-visibility',zh?'显示或隐藏系列':'Show or hide series',zh?'显示：':'Show:');
+ const checkboxes=dataset.series.map(s=>{const l=document.createElement('label'),n=document.createElement('input');n.type='checkbox';n.value=s.id;n.dataset.series=s.id;l.append(n,document.createTextNode(s.label));shown.append(l);return n;});
+ // Focus emphasises one shown series and keeps every other shown series as context; it never hides data.
+ const presets=group('chart-series-switch',zh?'聚焦一个系列':'Focus one series',zh?'聚焦：':'Focus:');if(spec.chartType==='heatmap')presets.hidden=true;
+ // A single-series chart has no series to focus or hide: its emphasis is the declared category focus.
+ if(dataset.series.length<2)presets.hidden=shown.hidden=true;
+ const status=document.createElement('p');status.className='interaction-status';status.setAttribute('role','status');
+ // Clearing the reader's focus returns to the author's declared focus, so the button says which one it returns to.
+ const choices=[{id:'',label:block.focus?(zh?'作者设定的重点':'Author\'s focus'):(zh?'不聚焦':'No focus')},...dataset.series];
+ const buttons=choices.map(choice=>{const b=document.createElement('button');b.type='button';b.dataset.selectSeries=choice.id;b.textContent=choice.label;presets.append(b);b.addEventListener('click',()=>{try{emit({event:'data.focus',interactionId:spec.id,...(choice.id?{seriesId:choice.id}:{})});}catch(e){draw(current);status.textContent=zh?'聚焦未应用：请先显示该系列。':'Focus not applied: '+e.message;}});return b;});
+ controls.append(status);
+ const full=original.querySelector('details').cloneNode(true);full.className='full-source-data';full.querySelector('summary').textContent=zh?'完整原始数据（不受筛选影响）':'Full original dataset (unfiltered)';
+ original.replaceWith(controls,view,full);view.className='chart-current-view';const explanation=document.createElement('p');explanation.className='chart-selection-explanation component-note';explanation.setAttribute('aria-live','polite');view.after(explanation);let current;
+ function change(){try{emit({event:'data.filter',interactionId:spec.id,seriesIds:checkboxes.filter(n=>n.checked).map(n=>n.value),fromId:selects.fromId.value,toId:selects.toId.value});}catch(e){draw(current);status.textContent=zh?'选择未应用：请选择至少一个系列，并保持类别范围顺序。':'Selection not applied: '+e.message;}}
+ controls.addEventListener('change',change);
+ for(const select of Object.values(selects))select.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;let index=select.selectedIndex;if(e.key==='ArrowDown')index=Math.min(select.options.length-1,index+1);else if(e.key==='ArrowUp')index=Math.max(0,index-1);else if(e.key==='Home')index=0;else if(e.key==='End')index=select.options.length-1;else return;e.preventDefault();e.stopPropagation();select.value=select.options[index].value;change();});
+ function draw(state){
+  const open=view.querySelector('details')?.open||false;current=state;for(const [key,n]of Object.entries(selects))n.value=state[key];for(const n of checkboxes)n.checked=state.seriesIds.includes(n.value);
+  const d=selectedDataset(dataset,state),drawn=focusedChart(block,theme,dataset,state);view.innerHTML=chart(drawn.block,{locale,datasets:[d]},drawn.theme,{sceneId,anchors,paletteIds:dataset.series.map(s=>s.id)});
+  const selection=zh?'当前视图':'Current view',focused=dataset.series.find(s=>s.id===state.focusSeriesId);view.querySelector('details').open=open;view.querySelector('summary').textContent=zh?'查看当前筛选数据':'View selected data';status.textContent=selection+(zh?'：':': ')+d.categories[0]+' → '+d.categories.at(-1)+' · '+d.series.map(s=>s.label).join(' / ')+(focused?(zh?' · 聚焦：':' · Focus: ')+focused.label:'');
+  explanation.textContent=captionText(dataset,state,locale);
+  for(const b of buttons){const id=b.dataset.selectSeries;b.setAttribute('aria-pressed',String(id?state.focusSeriesId===id:state.focusSeriesId===null));b.disabled=!!id&&!state.seriesIds.includes(id);}
+  // Removed marks keep their original identity in the complete source table, never another point.
+  full.querySelectorAll('[data-excluded-anchor]').forEach(n=>n.remove());
+  const rows=[...full.querySelectorAll('tbody tr')];for(const [i,categoryId]of dataset.categoryIds.entries()){
+   const excludedCategory=!d.categoryIds.includes(categoryId),row=rows[i];
+   if(excludedCategory){const span=document.createElement('span');span.id=anchors[JSON.stringify([categoryId,''])];span.dataset.excludedAnchor='true';span.textContent=zh?'（当前范围外）':' (outside current range)';row.querySelector('th').append(span);}
+   for(const [j,series]of dataset.series.entries())if(excludedCategory||!state.seriesIds.includes(series.id)){const span=document.createElement('span');span.id=anchors[JSON.stringify([categoryId,series.id])];span.dataset.excludedAnchor='true';span.textContent=zh?'（当前视图外）':' (outside current view)';row.querySelectorAll('td')[j*(block.chartType==='scatter'?2:1)].append(span);}
+  }
+ }
+ /** Nodes for a motion plan target: marks of one series, the whole current view, or the explanation line. */
+ function targets(target){if(target.kind==='series')return [...view.querySelectorAll('g[data-series-id]')].filter(g=>g.dataset.seriesId===target.seriesId);if(target.kind==='explanation')return [explanation];if(target.kind==='view')return [view];return [];}
+ return {draw,panel:view,targets,dispose(){controls.removeEventListener('change',change);}};
+};
+const mountImageComparison = function mountImageComparison(root,other,config,emit){
+ const zh=config.locale==='zh-CN',tabs=document.createElement('div'),panel=document.createElement('div'),first=root.querySelector('.web-image'),second=other.querySelector('.web-image').cloneNode(true),originalOther=other.querySelector('.web-image'),fallback=document.createElement('details'),summary=document.createElement('summary');
+ summary.textContent=zh?'第二张原始图片':'Second original image';fallback.append(summary);originalOther.replaceWith(fallback);fallback.append(originalOther);
+ tabs.className='semantic-controls compare-tabs';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label',zh?'图片比较':'Image comparison');panel.className='compare-panel';panel.id=config.panelId;panel.setAttribute('role','tabpanel');panel.tabIndex=0;
+ first.replaceWith(tabs,panel);panel.append(first,second);const buttons=['first','second','both'].map((id,i)=>{const b=document.createElement('button');b.type='button';b.dataset.tabId=id;b.id=config.panelId+'-'+id;b.setAttribute('role','tab');b.setAttribute('aria-controls',panel.id);b.textContent=(zh?['第一张','第二张','并列比较']:['First image','Second image','Compare both'])[i];tabs.append(b);return b;});
+ function pick(id){emit({event:'tab.select',interactionId:config.spec.id,tabId:id});}
+ tabs.addEventListener('click',e=>{const b=e.target.closest('[data-tab-id]');if(b)pick(b.dataset.tabId);});
+ tabs.addEventListener('keydown',e=>{const i=buttons.indexOf(e.target);if(i<0)return;let j;if(e.key==='ArrowRight')j=(i+1)%3;else if(e.key==='ArrowLeft')j=(i+2)%3;else if(e.key==='Home')j=0;else if(e.key==='End')j=2;else return;e.preventDefault();e.stopPropagation();buttons[j].focus();pick(buttons[j].dataset.tabId);});
+ return {panel,targets:target=>target.kind==='panel'?[panel]:[],draw(state){panel.dataset.tab=state.tabId;first.hidden=state.tabId==='second';second.hidden=state.tabId==='first';for(const b of buttons){const active=b.dataset.tabId===state.tabId;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;if(active)panel.setAttribute('aria-labelledby',b.id);}}};
+};
+const mountStepExplanation = function mountStepExplanation(root,config,emit){
+ const {spec,block,locale,anchors}=config,zh=locale==='zh-CN',controls=document.createElement('div'),panel=document.createElement('div');controls.className='semantic-controls step-controls';controls.setAttribute('role','group');controls.setAttribute('aria-label',zh?'分步说明':'Step explanation');panel.className='step-explanation';panel.id=config.panelId;panel.setAttribute('aria-live','polite');panel.setAttribute('aria-atomic','true');
+ const buttons=spec.steps.map(step=>{const b=document.createElement('button');b.type='button';b.dataset.stepId=step.id;b.textContent=step.label;controls.append(b);return b;});
+ root.append(controls,panel);controls.addEventListener('click',e=>{const b=e.target.closest('[data-step-id]');if(b)emit({event:'step.select',interactionId:spec.id,stepId:b.dataset.stepId});});
+ controls.addEventListener('keydown',e=>{const i=buttons.indexOf(e.target);if(i<0)return;let j;if(e.key==='ArrowRight')j=(i+1)%buttons.length;else if(e.key==='ArrowLeft')j=(i+buttons.length-1)%buttons.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=buttons.length-1;else return;e.preventDefault();e.stopPropagation();buttons[j].focus();emit({event:'step.select',interactionId:spec.id,stepId:buttons[j].dataset.stepId});});
+ return {panel,targets:target=>target.kind==='panel'?[panel]:target.kind==='step-targets'?[...root.querySelectorAll('.semantic-step-target')]:[],draw(state){
+  const step=spec.steps.find(s=>s.id===state.stepId);for(const b of buttons){const active=b.dataset.stepId===state.stepId;b.setAttribute('aria-pressed',String(active));b.setAttribute('aria-controls',config.panelId);}root.querySelectorAll('.semantic-step-target').forEach(n=>n.classList.remove('semantic-step-target'));panel.replaceChildren();const heading=document.createElement('strong'),text=document.createElement('p');heading.textContent=step.label;text.textContent=step.text;panel.append(heading,text);
+  if(block.type==='code'){const excerpt=document.createElement('pre'),code=document.createElement('code');code.textContent=step.lines.map(n=>block.text.split('\n')[n-1]).join('\n');excerpt.append(code);const location=document.createElement('p');location.className='component-note';location.textContent=(zh?'原文行：':'Source lines: ')+step.lines.join(', ');panel.append(location,excerpt);for(const n of step.lines)root.querySelector('[data-line="'+n+'"]')?.classList.add('semantic-step-target');}
+  else {const target=document.getElementById(anchors[step.objectId]);target?.classList.add('semantic-step-target');const edge=block.edges.find(e=>e.id===step.objectId);if(edge)for(const id of [edge.from,edge.to])document.getElementById(anchors[id])?.classList.add('semantic-step-target');const description=document.createElement('p');description.className='component-note';description.textContent=edge?block.nodes.find(n=>n.id===edge.from).label+' → '+block.nodes.find(n=>n.id===edge.to).label+(edge.label?' · '+edge.label:''):block.nodes.find(n=>n.id===step.objectId).label;panel.append(description);}
+ }};
+};
+const mountImageHotspots = function mountImageHotspots(root,config,emit){
+ root.classList.add('hotspot-component');
+ const {spec,locale,annotations,positions}=config,zh=locale==='zh-CN',frame=root.querySelector('.image-crop'),panel=document.createElement('div');panel.className='hotspot-explanation';panel.setAttribute('aria-live','polite');panel.id=config.panelId;root.append(panel);
+ const buttons=spec.hotspots.map((h,i)=>{const b=document.createElement('button');b.type='button';b.className='image-hotspot';b.dataset.hotspotId=h.id;b.style.left=`clamp(22px, ${positions[i].x*100}%, calc(100% - 22px))`;b.style.top=`clamp(22px, ${positions[i].y*100}%, calc(100% - 22px))`;b.textContent=String(i+1);b.setAttribute('aria-label',(zh?'图片热点 ':'Image hotspot ')+(i+1)+': '+annotations[h.annotationId].text);b.setAttribute('aria-controls',panel.id);frame.append(b);b.addEventListener('click',()=>emit({event:'annotation.reveal',interactionId:spec.id,hotspotId:b.getAttribute('aria-expanded')==='true'?null:h.id}));return b;});
+ return {panel,targets:target=>target.kind==='panel'?[panel]:[],draw(state){panel.replaceChildren();for(const b of buttons){const active=b.dataset.hotspotId===state.hotspotId;b.setAttribute('aria-expanded',String(active));b.setAttribute('aria-pressed',String(active));}if(!state.hotspotId){panel.textContent=zh?'选择热点查看说明；所有原文注释仍在页面中。':'Select a hotspot for its explanation; all original annotations remain on this page.';return;}const h=spec.hotspots.find(h=>h.id===state.hotspotId),p=document.createElement('p');p.textContent=annotations[h.annotationId].text;const coordinates=document.createElement('p');coordinates.className='component-note';coordinates.textContent=(zh?'原图坐标：':'Original-image coordinates: ')+h.x+', '+h.y;panel.append(p,coordinates);}};
+};
+const mountSemanticInteractions = function mountSemanticInteractions(config){
+ const system=matchMedia('(prefers-reduced-motion:reduce)'),controllers=new Map(),events=[];let userReduced=false,suspended=false,measurementDepth=0,serial=0,measurementSaved=null,measurementFocus=null;
+ const language=config.locale==='zh-CN',t=(en,zh)=>language?zh:en,reduced=()=>system.matches||userReduced;
+ for(const data of config.scenes){
+  const scene=document.getElementById(data.id);if(!scene)continue;
+  // Markup that only readers without JavaScript need: the player draws the same frozen state itself.
+  for(const n of scene.querySelectorAll('[data-static-only]'))n.remove();
+  for(const d of scene.querySelectorAll('details[data-static-wrapper]')){d.querySelector(':scope > summary')?.remove();d.replaceWith(...d.childNodes);}
+  const fixed=data.staticState||null,statements=[...scene.querySelectorAll('.static-state-note')];
+  const state={value:initialInteractionState(data.interactions),position:0,active:false,exploring:false},resources=createSceneResources(),parts=new Map();let timeline=null;
+  function options(){return effectiveMotion({...(data.motion||{policy:'off',durationMs:0}),reduced:reduced(),visible:!document.hidden&&!suspended,active:state.active&&!measurementDepth});}
+  /** Every state change animates through the same deterministic plan, whether it came from play, seek or exploration. */
+  function animate(event,before,after){
+   const spec=data.interactions.find(s=>s.id===event.interactionId),part=spec&&parts.get(spec.id),o=options();
+   for(const step of motionPlan(spec,spec&&before.find(s=>s.id===spec.id),spec&&after.find(s=>s.id===spec.id),event))for(const node of step.target.kind==='regions'?[scene.querySelector('.regions')]:part?.targets(step.target)||[])resources.animate(node,o,step.primitive,step.delay);
+  }
+  function draw(){
+   for(const s of state.value)parts.get(s.id)?.draw(s);
+   // The server-rendered statement of frozen values is true only at the static state.
+   for(const n of statements)n.hidden=!fixed||state.exploring||state.position!==fixed.position;
+   if(!timeline)return;const q=s=>timeline.querySelector(s),count=data.cues.length,frozen=clock.frozen,toggle=q('[data-cue-pause]');
+   q('[data-cue-position]').value=state.position;q('[data-cue-count]').textContent=(state.exploring?t('Exploring · ','探索中 · '):'')+state.position+' / '+count;
+   q('[data-cue-next]').disabled=state.position===count;q('[data-cue-previous]').disabled=state.position===0&&!state.exploring;
+   toggle.textContent=clock.playing?t('Pause cues','暂停提示'):t('Play cues','播放提示');toggle.disabled=!count||(!clock.playing&&frozen);q('[data-cue-replay]').disabled=frozen;
+   const notice=q('[data-static-fallback]');if(notice)notice.hidden=!frozen;
+  }
+  function signal(event){events.push({...event,sceneId:data.id,sequence:++serial});if(events.length>200)events.shift();}
+  // The one clock: play, pause, seek, next, previous, restart and the reduced-motion fallback all arrive here.
+  const clock=createCueClock({count:data.cues.length,staticState:fixed,schedule:(fn,ms)=>resources.schedule(fn,ms),apply(position,reason){
+   state.value=seekInteractionState(data.interactions,data.cues,position);state.position=position;state.exploring=false;draw();
+   if(reason==='restart'||reason==='replay'){animate({event:'scene.enter'},state.value,state.value);signal({event:'scene.enter',reason:'replay'});}
+   else{const cue=data.cues[position-1];if(cue&&reason!=='static')animate(cue,seekInteractionState(data.interactions,data.cues,position-1),state.value);signal(reason==='play'?cue:{event:'timeline.seek',position,reason});}
+   scene.dispatchEvent(new CustomEvent('deckweft:interaction',{bubbles:true,detail:{sceneId:data.id,event:'timeline.'+reason,position}}));
+  }});
+  // Cancels this scene's pending cue timer, finite animations and registered resources together.
+  function reset(){clock.pause();resources.dispose();}
+  function emit(event){
+   const before=state.value,next=reduceInteractionState(data.interactions,state.value,event);reset();clock.explore();state.exploring=true;state.value=next;draw();animate(event,before,next);signal(event);
+   scene.dispatchEvent(new CustomEvent('deckweft:interaction',{bubbles:true,detail:{sceneId:data.id,event:event.event}}));
+  }
+  for(const spec of data.interactions){
+   const root=[...scene.querySelectorAll('.region')].find(r=>r.dataset.blockId===spec.blockId),detail=data.components[spec.id],cfg={...detail,spec,sceneId:data.id,locale:config.locale};let part;
+   if(spec.kind==='chart-select')part=mountChartSelection(root,cfg,emit);
+   else if(spec.kind==='steps')part=mountStepExplanation(root,cfg,emit);
+   else if(spec.kind==='image-hotspots')part=mountImageHotspots(root,cfg,emit);
+   else if(spec.kind==='image-compare')part=mountImageComparison(root,[...scene.querySelectorAll('.region')].find(r=>r.dataset.blockId===spec.otherBlockId),cfg,emit);
+   if(part)parts.set(spec.id,part);
+  }
+  if(data.interactions.length||data.cues.length){
+   scene.classList.add('has-interactions');timeline=document.createElement('nav');timeline.className='semantic-timeline';timeline.setAttribute('aria-label',t('Scene replay and cue seek','页面重播与步骤定位'));
+   const button=(text,key,action)=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.dataset[key]='';b.addEventListener('click',action);timeline.append(b);return b;};
+   button(t('Replay cue sequence','重播提示序列'),'cueReplay',()=>api.restart());button(t('Pause cues','暂停提示'),'cuePause',()=>clock.playing?api.pause():api.play());button(t('Previous cue','上一提示'),'cuePrevious',()=>api.previous());button(t('Next cue','下一提示'),'cueNext',()=>api.next());
+   const label=document.createElement('label'),seek=document.createElement('input'),count=document.createElement('output');seek.type='range';seek.min=0;seek.max=data.cues.length;seek.step=1;seek.dataset.cuePosition='';count.dataset.cueCount='';label.append(document.createTextNode(t('Cue position ','提示位置 ')),seek);timeline.append(label,count);seek.addEventListener('input',()=>api.seek(Number(seek.value)));
+   if(fixed?.reducedMotion==='static'){const note=document.createElement('span');note.className='interaction-status';note.dataset.staticFallback='';note.hidden=true;note.textContent=t('Reduced motion: the static state is shown and cues do not play.','已减少动态效果：显示静态状态，不自动播放提示。');timeline.append(note);}
+   scene.querySelector('.folio').after(timeline);
+   const fallback=document.createElement('details');fallback.className='interaction-transcript';const summary=document.createElement('summary');summary.textContent=t('All authored explanations and cue order','全部作者说明与提示顺序');fallback.append(summary);for(const spec of data.interactions){if(spec.kind==='steps')for(const step of spec.steps){const p=document.createElement('p');p.textContent=step.label+': '+step.text;fallback.append(p);}}const list=document.createElement('ol');for(const cue of data.cues){const li=document.createElement('li');li.textContent=cue.label||({'data.filter':t('Change chart selection','调整图表选择'),'data.focus':t('Focus one series','聚焦一个系列'),'tab.select':t('Compare images','比较图片'),'step.next':t('Next explanation','下一步说明'),'annotation.reveal':t('Reveal annotation','显示注释')})[cue.event];list.append(li);}fallback.append(list);if(!scene.querySelector('.interaction-transcript'))scene.append(fallback);
+  }
+  const live=()=>{if(!state.active||document.hidden)throw Error('Enter this scene before playing cues.');};
+  const atBoundary=position=>{if(!Number.isSafeInteger(position)||position<0||position>data.cues.length)throw Error('Seek to an existing cue boundary.');return position;};
+  function show(position){state.exploring=false;state.value=seekInteractionState(data.interactions,data.cues,position);state.position=position;draw();}
+  const api={
+   dispatch:emit,
+   seek(position){atBoundary(position);reset();clock.seek(position);},
+   next(){reset();clock.next();},
+   previous(){reset();clock.previous();},
+   /** The authored opening, without playing. */
+   replay(){reset();clock.seek(0,'replay');},
+   /** From the authored opening, playing every cue. */
+   restart(){live();reset();clock.restart();draw();},
+   /** From the current cue boundary; from the end or after exploring, from the opening. */
+   play(){live();clock.play();draw();},
+   pause(){reset();draw();},
+   activate(value){if(state.active===value)return;state.active=value;if(!value){reset();for(const media of scene.querySelectorAll('audio,video'))media.pause();scene.getAnimations({subtree:true}).forEach(a=>a.cancel());signal({event:'scene.exit'});draw();}else{signal({event:'scene.enter'});animate({event:'scene.enter'},state.value,state.value);}},
+   snapshot(){return {sceneId:data.id,active:state.active,position:state.position,playing:clock.playing,exploring:state.exploring,staticPosition:fixed?fixed.position:null,frozen:clock.frozen,state:structuredClone(state.value),resources:resources.snapshot()};},
+   measureAt(position){const live=[...scene.querySelectorAll('[aria-live],[role=status]')].map(n=>({node:n,value:n.getAttribute('aria-live')}));for(const {node}of live)node.setAttribute('aria-live','off');const saved={value:state.value,position:state.position,exploring:state.exploring,live};show(position);return saved;},
+   showAt:show,
+   restoreMeasurement(saved){state.value=saved.value;state.position=saved.position;state.exploring=saved.exploring;draw();for(const {node,value}of saved.live){if(value===null)node.removeAttribute('aria-live');else node.setAttribute('aria-live',value);}},
+   reduceMotion(){resources.cancelAnimations();clock.setReduced(reduced());draw();},stop(){reset();},register(release){if(typeof release!=='function')throw Error('Resource cleanup must be a function.');if(!state.active||document.hidden||suspended){release();return ()=>{};}return resources.register(release);}
+  };
+  controllers.set(data.id,api);
+  // The player opens on the author's static state; Replay still starts from the opening.
+  if(fixed?.position)clock.seek(fixed.position,'static');
+  draw();
+ }
+ const motion=document.createElement('button');motion.type='button';motion.id='semantic-motion';motion.textContent=t('Reduce motion','减少动态效果');document.querySelector('header nav').append(motion);
+ function applyReduction(){const r=reduced();document.body.classList.toggle('semantic-reduced',r);motion.setAttribute('aria-pressed',String(r));motion.disabled=system.matches;for(const c of controllers.values())c.reduceMotion();}
+ motion.addEventListener('click',()=>{userReduced=!userReduced;applyReduction();});system.addEventListener('change',applyReduction);applyReduction();
+ document.addEventListener('click',e=>{const a=e.target.closest('.semantic-annotation a');if(!a?.hash)return;const target=document.getElementById(decodeURIComponent(a.hash.slice(1)));if(target?.closest('.full-source-data'))target.closest('details').open=true;});
+ const controller=id=>{const c=controllers.get(id);if(!c)throw Error('Unknown scene identity.');return c;};
+ const api={
+  updateVisibility(presenting,sceneId){if(measurementDepth)return;for(const [id,c]of controllers)c.activate(!document.hidden&&!suspended&&(presenting?id===sceneId:(()=>{const r=document.getElementById(id).getBoundingClientRect();return r.bottom>0&&r.top<innerHeight;})()));},
+  replay(sceneId){controller(sceneId).replay();},
+  restart(sceneId){controller(sceneId).restart();},
+  play(sceneId){controller(sceneId).play();},
+  pause(sceneId){controller(sceneId).pause();},
+  seek(sceneId,position){controller(sceneId).seek(position);},
+  next(sceneId){controller(sceneId).next();},
+  previous(sceneId){controller(sceneId).previous();},
+  dispatch(sceneId,event){controller(sceneId).dispatch(event);},
+  snapshot(){return [...controllers.values()].map(c=>c.snapshot());},
+  events(){return structuredClone(events);},
+  registerResource(sceneId,release){return controller(sceneId).register(release);},
+  /** Declared static states the review gate measures besides the opening. */
+  staticStates(){return config.scenes.filter(s=>s.staticState&&controllers.has(s.id)).map(s=>({sceneId:s.id,keyStateId:s.staticState.keyStateId,position:s.staticState.position}));},
+  beginMeasurement(){if(!measurementDepth){const n=document.activeElement;measurementFocus={node:n,id:n?.id,chartRegion:n?.matches('.chart-current-view summary')?n.closest('.region'):null};measurementSaved=new Map([...controllers].map(([id,c])=>[id,c.measureAt(0)]));}measurementDepth++;},
+  /** Inside a measurement only: draw one scene at a cue boundary; endMeasurement restores every explored view. */
+  showMeasurement(sceneId,position){if(!measurementDepth)throw Error('Begin a measurement first.');controller(sceneId).showAt(position);},
+  endMeasurement(){measurementDepth=Math.max(0,measurementDepth-1);if(!measurementDepth&&measurementSaved){for(const [id,s]of measurementSaved)controllers.get(id).restoreMeasurement(s);measurementSaved=null;if(measurementFocus?.node&&!measurementFocus.node.isConnected){const n=measurementFocus.id?document.getElementById(measurementFocus.id):measurementFocus.chartRegion?.querySelector('.chart-current-view summary');n?.focus({preventScroll:true});}measurementFocus=null;}},
+  dispose(){suspended=true;for(const c of controllers.values()){c.activate(false);c.stop();}}
+ };
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)for(const c of controllers.values()){c.activate(false);c.stop();}});
+ addEventListener('pagehide',()=>{suspended=true;for(const c of controllers.values()){c.activate(false);c.stop();}});addEventListener('pageshow',()=>{suspended=false;document.dispatchEvent(new Event('deckweft:resume'));});
+ window.deckweftInteractions=api;return api;
+};
+const turnsPage = function turnsPage(e){
+ if(e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||e.isComposing)return false;
+ const target=e.target?.nodeType===1?e.target:e.target?.parentElement;
+ return !target?.closest('input,textarea,select,button,summary,a,area,iframe,audio,video,[contenteditable]:not([contenteditable="false"]),[tabindex],[role="slider"],[role="spinbutton"],[role="tab"],[role="tablist"],[role="listbox"],[role="radiogroup"],[role="menu"],[role="grid"]');
+};
+ function auditContrast(scene){
+ function rgb(value){const m=value.match(/^rgba?\(([^)]+)\)$/);if(!m)return null;const n=m[1].split(/[, /]+/).filter(Boolean).map(Number);return n.length>=3?{c:n.slice(0,3),a:n[3]??1}:null;}
+ function mix(top,bottom){return top.c.map((v,i)=>v*top.a+bottom[i]*(1-top.a));}
+ function luminance(c){const a=c.map(v=>{v=v/255;return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4);});return a[0]*.2126+a[1]*.7152+a[2]*.0722;}
+ function ratio(a,b){const x=luminance(a),y=luminance(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05);}
+ const issues=[],page=rgb(getComputedStyle(scene).backgroundColor)?.c||[255,255,255],paths=[...scene.querySelectorAll('.decor path')].reverse();
+ for(const region of scene.querySelectorAll('.region')){
+  const walker=document.createTreeWalker(region,NodeFilter.SHOW_TEXT);let node;let failed=false;
+  while((node=walker.nextNode())&&!failed){if(!node.textContent.trim())continue;const el=node.parentElement;if(!el||el.closest('script,style'))continue;const style=getComputedStyle(el),fg=rgb(style.color);if(!fg)continue;
+   const range=document.createRange();range.selectNodeContents(node);const rects=[...range.getClientRects()].filter(r=>r.width>.1&&r.height>.1);const size=parseFloat(style.fontSize),threshold=size>=24||(size>=18.66&&Number(style.fontWeight)>=700)?3:4.5;
+   for(const rect of rects){if(failed)break;for(const px of [rect.left+Math.min(1,rect.width/2),rect.left+rect.width/2,rect.right-Math.min(1,rect.width/2)]){
+    const py=rect.top+rect.height/2;let backgrounds=[page];
+    for(const path of paths){const matrix=path.getScreenCTM();if(!matrix||!path.getBoundingClientRect().width)continue;const pt=new DOMPoint(px,py).matrixTransform(matrix.inverse());if(!path.isPointInFill(pt))continue;
+     const fill=getComputedStyle(path).fill,solid=rgb(fill);if(solid)backgrounds=[mix(solid,page)];else if(fill.includes('url(')){const id=path.getAttribute('fill').match(/#([^)]*)/);const gradient=id&&scene.querySelector('[id="'+CSS.escape(id[1])+'"]');if(gradient){const stops=[...gradient.querySelectorAll('stop')].map(s=>rgb(getComputedStyle(s).stopColor)).filter(Boolean);if(stops.length)backgrounds=stops.map(s=>mix(s,page));}}
+     break;
+    }
+    const ancestors=[];for(let a=el;a&&a!==scene;a=a.parentElement)ancestors.push(a);ancestors.reverse();for(const a of ancestors){const bg=rgb(getComputedStyle(a).backgroundColor);if(bg&&bg.a>0)backgrounds=backgrounds.map(b=>mix(bg,b));}
+    const minimum=Math.min(...backgrounds.map(bg=>ratio(mix(fg,bg),bg)));
+    if(minimum+.01<threshold){issues.push({regionId:region.id,ratio:Number(minimum.toFixed(2)),required:threshold,text:node.textContent.slice(0,80)});failed=true;break;}
+   }}
+  }
+ }
+ return issues;
+}
+ function auditClipping(scene){
+ const issues=[];
+ for(const region of scene.querySelectorAll('.region')){
+  const walker=document.createTreeWalker(region,NodeFilter.SHOW_TEXT);let node;let failed=false;
+  while((node=walker.nextNode())&&!failed){if(!node.textContent.trim())continue;const range=document.createRange();range.selectNodeContents(node);const rects=[...range.getClientRects()].filter(r=>r.width>.1&&r.height>.1);
+   for(let a=node.parentElement;a&&a!==scene;a=a.parentElement){const style=getComputedStyle(a),clipX=['hidden','clip'].includes(style.overflowX),clipY=['hidden','clip'].includes(style.overflowY);if(!clipX&&!clipY)continue;const box=a.getBoundingClientRect();if(rects.some(r=>clipX&&(r.left<box.left-1||r.right>box.right+1)||clipY&&(r.top<box.top-1||r.bottom>box.bottom+1))){issues.push({regionId:region.id,element:a.tagName,text:node.textContent.slice(0,80)});failed=true;break;}}
+  }
+ }
+ // Labels a chart needs to state its conclusion are marked data-conclusion-label. Each must be displayed, uncovered by other such labels, and inside every clipping or scrolling box and the viewport without scrolling.
+ for(const figure of scene.querySelectorAll('.chart')){
+  const region=figure.closest('.region'),boxes=[];
+  for(const label of figure.querySelectorAll('[data-conclusion-label]')){
+   if(label.closest('details:not([open])'))continue;
+   const style=getComputedStyle(label),rects=[...label.getClientRects()].filter(r=>r.width>.1&&r.height>.1),text=label.textContent.slice(0,80);
+   if(!rects.length||style.visibility==='hidden'||Number(style.opacity)===0){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion label is not displayed'});continue;}
+   let failed=false;
+   for(let a=label.parentElement;a&&a!==document.body&&!failed;a=a.parentElement){const s=getComputedStyle(a);if(s.overflowX==='visible'&&s.overflowY==='visible')continue;const box=a.getBoundingClientRect();if(rects.some(r=>r.left<box.left-1||r.right>box.right+1||r.top<box.top-1||r.bottom>box.bottom+1)){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion label is clipped or only reachable by scrolling',scroller:a.className&&String(a.className.baseVal??a.className)||a.tagName});failed=true;}}
+   if(!failed&&rects.some(r=>r.left<-1||r.right>document.documentElement.clientWidth+1)){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion label is outside the viewport'});failed=true;}
+   for(const r of rects){const other=boxes.find(b=>b.label!==label&&!b.label.contains(label)&&!label.contains(b.label)&&Math.min(r.right,b.r.right)-Math.max(r.left,b.r.left)>1&&Math.min(r.bottom,b.r.bottom)-Math.max(r.top,b.r.top)>1);if(other&&!failed){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion labels overlap',other:other.label.textContent.slice(0,80)});failed=true;}boxes.push({label,r});}
+  }
+ }
+ return issues;
+}
+ function auditComponentGeometry(scene){const issues=[];for(const svg of scene.querySelectorAll('.chart svg,.semantic-diagram svg')){const v=svg.viewBox.baseVal;for(const text of svg.querySelectorAll('text')){const local=text.getBBox(),matrix=svg.getScreenCTM().inverse().multiply(text.getScreenCTM()),points=[[local.x,local.y],[local.x+local.width,local.y],[local.x,local.y+local.height],[local.x+local.width,local.y+local.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(matrix)),left=Math.min(...points.map(p=>p.x)),top=Math.min(...points.map(p=>p.y)),b={x:left,y:top,width:Math.max(...points.map(p=>p.x))-left,height:Math.max(...points.map(p=>p.y))-top};if(b.x<v.x-1||b.y<v.y-1||b.x+b.width>v.x+v.width+1||b.y+b.height>v.y+v.height+1)issues.push({regionId:svg.closest('.region').id,element:'svg text',text:text.textContent,reason:'Text outside component viewBox',bounds:{x:b.x,y:b.y,width:b.width,height:b.height}});}}return issues;}
+
+ window.deckweftAuditScene=scene=>({contrastIssues:auditContrast(scene),clipIssues:[...auditClipping(scene),...auditComponentGeometry(scene)]});
+ if(parent!==window)document.body.classList.add('preview');
+ const scenes=[...document.querySelectorAll('.web-scene')], present=document.querySelector('#present'),prev=document.querySelector('#previous'),next=document.querySelector('#next'),page=document.querySelector('#page'),status=document.querySelector('#status');
+ const semantic=mountSemanticInteractions(JSON.parse(document.getElementById('dw-runtime-data').textContent));
+ let publishedScene=null;
+ const requested=new URLSearchParams(location.hash.slice(1)).get('scene');let index=Math.max(0,scenes.findIndex(s=>s.id===requested)),playing=!!requested; const zh=document.documentElement.lang==='zh-CN';
+ function update(){semantic.updateVisibility(playing,scenes[index]?.id);document.body.classList.toggle('playing',playing);scenes.forEach((s,i)=>s.classList.toggle('active',i===index));prev.hidden=next.hidden=page.hidden=!playing;prev.disabled=index===0;next.disabled=index===scenes.length-1;page.textContent=(index+1)+' / '+scenes.length;present.textContent=playing?(zh?'阅读视图':'Reading view'):(zh?'演示视图':'Present');present.setAttribute('aria-pressed',String(playing));if(parent!==window&&playing&&publishedScene!==scenes[index]?.id){publishedScene=scenes[index]?.id;parent.postMessage({type:'deckweft:scene',sceneId:publishedScene,renderHash:document.body.dataset.renderHash},'*');}}
+ present.hidden=false;present.addEventListener('click',()=>{playing=!playing;update();});prev.addEventListener('click',()=>{index=Math.max(0,index-1);update();});next.addEventListener('click',()=>{index=Math.min(scenes.length-1,index+1);update();});
+ document.addEventListener('keydown',e=>{if(!playing||!turnsPage(e))return;if(e.key==='Escape'){playing=false;update();present.focus();}if(e.key==='ArrowRight')next.click();if(e.key==='ArrowLeft')prev.click();});
+ const narrow=matchMedia('(max-width:700px)');narrow.addEventListener('change',()=>{if(narrow.matches&&parent===window){playing=false;update();}});update();
+ async function measure(){await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode()));
+ for(const svg of document.querySelectorAll('[data-responsive-diagram]'))for(const element of [svg,...svg.querySelectorAll('*')])for(const name of ['viewBox','transform','d']){const value=element.getAttribute('data-'+(innerWidth<=700?'narrow':'wide')+'-'+name.toLowerCase());if(value!==null)element.setAttribute(name,value);}
+ semantic.beginMeasurement();const was=playing;playing=false;update();
+ const check=scene=>{const regions=[...scene.querySelectorAll('.region')],sb=scene.getBoundingClientRect(),area=Math.max(1,sb.width*sb.height);let occupied=0,imageArea=0;for(const r of regions){const graphic=r.querySelector('.image-crop,svg');if(graphic){const b=graphic.getBoundingClientRect();occupied+=b.width*b.height;if(graphic.matches('.image-crop'))imageArea+=b.width*b.height;}else{const range=document.createRange();range.selectNodeContents(r);const b=range.getBoundingClientRect();occupied+=b.width*b.height;}}const focal=regions.find(r=>r.dataset.blockId===scene.dataset.focalBlock)||regions[0],range=document.createRange();range.selectNodeContents(focal);const fb=range.getBoundingClientRect(),fx=(fb.left+fb.width/2-sb.left)/sb.width,fy=(fb.top+fb.height/2-sb.top)/sb.height;const visualFeatures={focus:(fx<.4?'left':fx>.6?'right':'center')+':'+(fy<.4?'top':fy>.6?'bottom':'middle'),density:Math.min(1,occupied/area),imageRatio:Math.min(1,imageArea/area)};return {sceneId:scene.id,visualFeatures,components:[...scene.querySelectorAll('.chart svg,.semantic-diagram svg,.semantic-code pre')].map(n=>{const s=getComputedStyle(n),box=n.getBoundingClientRect(),scroller=n.closest('.chart-plot,.diagram-scroll')||n;const glyphs=[...n.querySelectorAll('text')].map(t=>{const m=t.getScreenCTM();return parseFloat(getComputedStyle(t).fontSize)*Math.hypot(m.a,m.b);});return {blockId:n.closest('.region').dataset.blockId,width:box.width,height:box.height,minTextPixels:glyphs.length?Math.min(...glyphs):parseFloat(s.fontSize),scrollWidth:scroller.scrollWidth,clientWidth:scroller.clientWidth};}),height:scene.getBoundingClientRect().height,sourceHash:scene.dataset.sourceHash,contrastIssues:auditContrast(scene),clipIssues:[...auditClipping(scene),...auditComponentGeometry(scene)],fonts:regions.map(r=>{const n=r.querySelector('h2,p,code,figcaption,ul,table,ol,blockquote')||r,s=getComputedStyle(n),c=document.createElement('canvas'),ctx=c.getContext('2d');ctx.font=s.font;return {regionId:r.id,family:s.fontFamily,font:s.font,loaded:document.fonts.check(s.font),probeWidth:ctx.measureText('DeckWeft 中文 0123').width};}),overflow:regions.filter(r=>r.scrollWidth>r.clientWidth+1||(['hidden','clip','auto','scroll'].includes(getComputedStyle(r).overflowY)&&r.scrollHeight>r.clientHeight+1)).map(r=>r.id),text:regions.map(r=>{const range=document.createRange();range.selectNodeContents(r);const b=r.querySelector('.image-crop,svg')?r.getBoundingClientRect():range.getBoundingClientRect(),s=scene.getBoundingClientRect();return {regionId:r.id,inside:b.left>=s.left-1&&b.right<=s.right+1&&b.top>=s.top-1&&b.bottom<=s.bottom+1};})};};
+ const checks=scenes.map(check);
+ // The opening and every declared static state: readers without JavaScript and the player both open on the static state.
+ const states=semantic.staticStates().map(s=>{semantic.showMeasurement(s.sceneId,s.position);const result={keyStateId:s.keyStateId,position:s.position,...check(document.getElementById(s.sceneId))};semantic.showMeasurement(s.sceneId,0);return result;});
+ const passes=s=>s.overflow.length===0&&s.contrastIssues.length===0&&s.clipIssues.length===0&&s.text.every(t=>t.inside)&&s.fonts.every(f=>f.loaded);
+ playing=was;semantic.endMeasurement();update();window.deckweftFit={version:1,player:'semantic-player.4',renderHash:document.body.dataset.renderHash,viewport:{width:innerWidth,height:innerHeight},contrastMethod:'DOM text runs, actual SVG fill geometry and conservative gradient-stop contrast',checks,states,ok:checks.every(passes)&&states.every(passes)};status.textContent=zh?'本地实验性网页 · 字体与排版已测量':'Local experimental web output · fonts and layout measured';document.body.dataset.ready='true';if(parent!==window)parent.postMessage({type:'deckweft:web-fit',fit:window.deckweftFit},'*');}
+ addEventListener('hashchange',()=>{const id=new URLSearchParams(location.hash.slice(1)).get('scene');if(!id)return;const i=scenes.findIndex(s=>s.id===id);if(i>=0){index=i;playing=true;update();scrollTo(0,0);}});
+ addEventListener('message',e=>{if(parent===window||e.source!==parent||e.data?.type!=='deckweft:request-opening'||e.data.renderHash!==document.body.dataset.renderHash)return;const snapshot=semantic.snapshot().find(s=>s.sceneId===e.data.sceneId);if(snapshot)parent.postMessage({type:'deckweft:opening',id:e.data.id,renderHash:document.body.dataset.renderHash,sceneId:snapshot.sceneId,state:snapshot.state,position:snapshot.position,exploring:snapshot.exploring,staticPosition:snapshot.staticPosition},'*');});
+ addEventListener('message',e=>{if(e.source!==parent||e.data?.type!=='deckweft:select')return;const i=scenes.findIndex(s=>s.id===e.data.sceneId);if(i>=0){index=i;playing=true;update();scrollTo(0,0);}});
+ function failed(e){status.textContent=String(e);document.body.dataset.ready='failed';if(parent!==window)parent.postMessage({type:'deckweft:web-error',renderHash:document.body.dataset.renderHash,message:String(e)},'*');}
+ addEventListener('scroll',()=>semantic.updateVisibility(playing,scenes[index]?.id),{passive:true});document.addEventListener('deckweft:resume',()=>update());document.addEventListener('visibilitychange',()=>{if(document.hidden){clearTimeout(timer);timer=null;}else scheduleMeasure();update();});
+ measure().catch(failed);
+ let timer;function scheduleMeasure(){clearTimeout(timer);if(document.hidden)return;timer=setTimeout(()=>measure().catch(failed),150);}addEventListener('resize',scheduleMeasure);document.addEventListener('deckweft:interaction',scheduleMeasure);addEventListener('pagehide',()=>clearTimeout(timer));
+})();</script></body></html>

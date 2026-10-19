@@ -1,0 +1,277 @@
+{
+  "directory": "<os temp>/deckweft-standalone-*",
+  "decks": [
+    {
+      "deck": "gallery-en",
+      "file": "gallery-en.html",
+      "bytes": 6958326,
+      "images": 3
+    },
+    {
+      "deck": "story-cream-collage-en",
+      "file": "story-cream-collage-en.html",
+      "bytes": 6844441,
+      "images": 3
+    },
+    {
+      "deck": "story-dark-data-en",
+      "file": "story-dark-data-en.html",
+      "bytes": 6843772,
+      "images": 3
+    },
+    {
+      "deck": "story-electric-violet-en",
+      "file": "story-electric-violet-en.html",
+      "bytes": 6843859,
+      "images": 3
+    },
+    {
+      "deck": "gallery-zh-CN",
+      "file": "gallery-zh-CN.html",
+      "bytes": 6957285,
+      "images": 3
+    },
+    {
+      "deck": "story-cream-collage-zh-CN",
+      "file": "story-cream-collage-zh-CN.html",
+      "bytes": 6843736,
+      "images": 3
+    },
+    {
+      "deck": "story-dark-data-zh-CN",
+      "file": "story-dark-data-zh-CN.html",
+      "bytes": 6843472,
+      "images": 3
+    },
+    {
+      "deck": "story-electric-violet-zh-CN",
+      "file": "story-electric-violet-zh-CN.html",
+      "bytes": 6843559,
+      "images": 3
+    }
+  ],
+  "engines": {
+    "chromium": {
+      "available": true,
+      "version": "151.0.7922.34",
+      "runs": [
+        {
+          "deck": "gallery-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-cream-collage-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-dark-data-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-electric-violet-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "gallery-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-cream-collage-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-dark-data-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-electric-violet-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        }
+      ],
+      "ok": true
+    },
+    "firefox": {
+      "available": true,
+      "version": "153.0",
+      "runs": [
+        {
+          "deck": "gallery-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-cream-collage-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-dark-data-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-electric-violet-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "gallery-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-cream-collage-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-dark-data-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-electric-violet-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        }
+      ],
+      "ok": true
+    },
+    "webkit": {
+      "available": true,
+      "version": "26.5",
+      "runs": [
+        {
+          "deck": "gallery-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-cream-collage-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-dark-data-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-electric-violet-en",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "gallery-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-cream-collage-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-dark-data-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        },
+        {
+          "deck": "story-electric-violet-zh-CN",
+          "ok": true,
+          "interaction": "true",
+          "external": [],
+          "errors": [],
+          "error": null
+        }
+      ],
+      "ok": true
+    }
+  },
+  "bundle": {
+    "exit": 0,
+    "stderr": "",
+    "files": [
+      "preview.html",
+      "task.json"
+    ]
+  },
+  "ok": true
+}

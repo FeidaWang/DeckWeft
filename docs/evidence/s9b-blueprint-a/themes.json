@@ -1,0 +1,2532 @@
+{
+ "format": "deckweft-s9b-themes",
+ "version": 1,
+ "renderer": "visual-art-direction.12",
+ "player": "semantic-player.6",
+ "browser": "Chromium (isolated, Playwright cache)",
+ "factsIdenticalPerLanguage": true,
+ "decks": [
+  {
+   "deck": "cream-collage-en",
+   "theme": "cream-collage",
+   "locale": "en",
+   "composition": "process-line",
+   "factsHash": "ee2472fa1c7ae8e7e957a6667fc1951b4fa4e64aa9d9b2b3dcf23b4912c1dd40",
+   "renderHash": "b79dbb2c2bc797231748eccd5f8a7dc8c98546610d26aa5840f3bd2424fa7743",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 644,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 935,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 588,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1863,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 935,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1890,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 989,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1008,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 855,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 874,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/cream-collage-en-1-explain.png",
+    "diagram": "themes/cream-collage-en-2-diagram.png",
+    "explore": "themes/cream-collage-en-3-explore.png",
+    "static": "themes/cream-collage-en-4-static.png"
+   }
+  },
+  {
+   "deck": "dark-data-en",
+   "theme": "dark-data",
+   "locale": "en",
+   "composition": "process-line",
+   "factsHash": "ee2472fa1c7ae8e7e957a6667fc1951b4fa4e64aa9d9b2b3dcf23b4912c1dd40",
+   "renderHash": "2c2022f302f6c1600d87a131e5eddd7d488174774485e2caa961b018811bfc78",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 649,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 979,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 665,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1907,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 979,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1934,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 995,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1013,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 861,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 879,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/dark-data-en-1-explain.png",
+    "diagram": "themes/dark-data-en-2-diagram.png",
+    "explore": "themes/dark-data-en-3-explore.png",
+    "static": "themes/dark-data-en-4-static.png"
+   }
+  },
+  {
+   "deck": "electric-violet-en",
+   "theme": "electric-violet",
+   "locale": "en",
+   "composition": "process-line",
+   "factsHash": "ee2472fa1c7ae8e7e957a6667fc1951b4fa4e64aa9d9b2b3dcf23b4912c1dd40",
+   "renderHash": "3814d5cfcb07d44a492abf778a4afbc9b9b98f0bfc6dc5faecfc68661ee9b602",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 644,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 975,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 660,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1903,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 975,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1931,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 989,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1008,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 855,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 874,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/electric-violet-en-1-explain.png",
+    "diagram": "themes/electric-violet-en-2-diagram.png",
+    "explore": "themes/electric-violet-en-3-explore.png",
+    "static": "themes/electric-violet-en-4-static.png"
+   }
+  },
+  {
+   "deck": "silver-gray-editorial-en",
+   "theme": "silver-gray-editorial",
+   "locale": "en",
+   "composition": "process-line",
+   "factsHash": "ee2472fa1c7ae8e7e957a6667fc1951b4fa4e64aa9d9b2b3dcf23b4912c1dd40",
+   "renderHash": "8590354293b0121f6ffbc149a0dc356f4aba19bc45860945db8a7dbadf7b59fd",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 523,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 856,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 541,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1767,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 856,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1789,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 982,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1000,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 848,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 867,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/silver-gray-editorial-en-1-explain.png",
+    "diagram": "themes/silver-gray-editorial-en-2-diagram.png",
+    "explore": "themes/silver-gray-editorial-en-3-explore.png",
+    "static": "themes/silver-gray-editorial-en-4-static.png"
+   }
+  },
+  {
+   "deck": "fresh-report-en",
+   "theme": "fresh-report",
+   "locale": "en",
+   "composition": "process-line",
+   "factsHash": "ee2472fa1c7ae8e7e957a6667fc1951b4fa4e64aa9d9b2b3dcf23b4912c1dd40",
+   "renderHash": "e9609ed87c150b7fa34e832e9fb75e296cf27a6e2be103b120362c4428b44498",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 528,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 969,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 513,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1897,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 969,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1925,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 987,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1005,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 853,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 871,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/fresh-report-en-1-explain.png",
+    "diagram": "themes/fresh-report-en-2-diagram.png",
+    "explore": "themes/fresh-report-en-3-explore.png",
+    "static": "themes/fresh-report-en-4-static.png"
+   }
+  },
+  {
+   "deck": "orange-launch-en",
+   "theme": "orange-launch",
+   "locale": "en",
+   "composition": "process-line",
+   "factsHash": "ee2472fa1c7ae8e7e957a6667fc1951b4fa4e64aa9d9b2b3dcf23b4912c1dd40",
+   "renderHash": "00104f1a9a51b555b103ea7dfe4ba64b909150b783d24b4605b788c6ab2e3ffd",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 639,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 895,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 645,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1820,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 895,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1848,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 981,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 902,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 979,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 998,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1014,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1071,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 899,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 918,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/orange-launch-en-1-explain.png",
+    "diagram": "themes/orange-launch-en-2-diagram.png",
+    "explore": "themes/orange-launch-en-3-explore.png",
+    "static": "themes/orange-launch-en-4-static.png"
+   }
+  },
+  {
+   "deck": "cream-collage-zh-CN",
+   "theme": "cream-collage",
+   "locale": "zh-CN",
+   "composition": "process-line",
+   "factsHash": "651d60f58d062105a8c2e1bd432a1cbb5ef300ad4b6775d745684bab171d3bdc",
+   "renderHash": "0ca168d76fa4f5eb4cec0f51ba4ef8fdca54e952dc5443dc41c4beca9f38852b",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 523,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 800,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 475,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1738,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 800,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1761,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 847,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 943,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 962,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 989,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 833,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 827,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/cream-collage-zh-CN-1-explain.png",
+    "diagram": "themes/cream-collage-zh-CN-2-diagram.png",
+    "explore": "themes/cream-collage-zh-CN-3-explore.png",
+    "static": "themes/cream-collage-zh-CN-4-static.png"
+   }
+  },
+  {
+   "deck": "dark-data-zh-CN",
+   "theme": "dark-data",
+   "locale": "zh-CN",
+   "composition": "process-line",
+   "factsHash": "651d60f58d062105a8c2e1bd432a1cbb5ef300ad4b6775d745684bab171d3bdc",
+   "renderHash": "deddff415200a51f210fc88a2847cbb45e04798176c431eb139533f954f045fc",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 527,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 803,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 519,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1741,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 803,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1764,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 847,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 949,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 967,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 858,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 836,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 831,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/dark-data-zh-CN-1-explain.png",
+    "diagram": "themes/dark-data-zh-CN-2-diagram.png",
+    "explore": "themes/dark-data-zh-CN-3-explore.png",
+    "static": "themes/dark-data-zh-CN-4-static.png"
+   }
+  },
+  {
+   "deck": "electric-violet-zh-CN",
+   "theme": "electric-violet",
+   "locale": "zh-CN",
+   "composition": "process-line",
+   "factsHash": "651d60f58d062105a8c2e1bd432a1cbb5ef300ad4b6775d745684bab171d3bdc",
+   "renderHash": "b10bf4326867c8170df892f5745c34e21a466d66bbfd258bffb4afed99fe5549",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 523,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 800,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 514,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1738,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 800,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1761,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 847,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 943,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 962,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 858,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 833,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 827,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/electric-violet-zh-CN-1-explain.png",
+    "diagram": "themes/electric-violet-zh-CN-2-diagram.png",
+    "explore": "themes/electric-violet-zh-CN-3-explore.png",
+    "static": "themes/electric-violet-zh-CN-4-static.png"
+   }
+  },
+  {
+   "deck": "silver-gray-editorial-zh-CN",
+   "theme": "silver-gray-editorial",
+   "locale": "zh-CN",
+   "composition": "process-line",
+   "factsHash": "651d60f58d062105a8c2e1bd432a1cbb5ef300ad4b6775d745684bab171d3bdc",
+   "renderHash": "8fe58363b41f7be3fd4d6c97a9275feb478c3fca9930eb9d0dac60a62af4b19c",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 506,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 802,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 442,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1739,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 802,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1762,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 997,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 992,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 892,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 863,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 858,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/silver-gray-editorial-zh-CN-1-explain.png",
+    "diagram": "themes/silver-gray-editorial-zh-CN-2-diagram.png",
+    "explore": "themes/silver-gray-editorial-zh-CN-3-explore.png",
+    "static": "themes/silver-gray-editorial-zh-CN-4-static.png"
+   }
+  },
+  {
+   "deck": "fresh-report-zh-CN",
+   "theme": "fresh-report",
+   "locale": "zh-CN",
+   "composition": "process-line",
+   "factsHash": "651d60f58d062105a8c2e1bd432a1cbb5ef300ad4b6775d745684bab171d3bdc",
+   "renderHash": "af588f399da3e5a0adb437b08b4be08709cdc6acb7e38db8022db231ab4331b9",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 483,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 796,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 488,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1734,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 796,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1757,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 941,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 959,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 858,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 853,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/fresh-report-zh-CN-1-explain.png",
+    "diagram": "themes/fresh-report-zh-CN-2-diagram.png",
+    "explore": "themes/fresh-report-zh-CN-3-explore.png",
+    "static": "themes/fresh-report-zh-CN-4-static.png"
+   }
+  },
+  {
+   "deck": "orange-launch-zh-CN",
+   "theme": "orange-launch",
+   "locale": "zh-CN",
+   "composition": "process-line",
+   "factsHash": "651d60f58d062105a8c2e1bd432a1cbb5ef300ad4b6775d745684bab171d3bdc",
+   "renderHash": "fc697fdf66a2c1a9b199295dd78b7ad033bc2b44cbfd829fca62d86a430e285e",
+   "ok": true,
+   "issues": 0,
+   "fit": {
+    "390": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 419,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 798,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 483,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1735,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 798,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 1758,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1024": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 844,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 994,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 989,
+       "fontsLoaded": true
+      }
+     ]
+    },
+    "1440": {
+     "ok": true,
+     "pages": [
+      {
+       "sceneId": "intro",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "pipeline",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "sceneId": "close",
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 844,
+       "fontsLoaded": true
+      }
+     ],
+     "states": [
+      {
+       "keyStateId": "diagram",
+       "position": 1,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 861,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explain",
+       "position": 0,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 810,
+       "fontsLoaded": true
+      },
+      {
+       "keyStateId": "explore-measure",
+       "position": 2,
+       "overflow": 0,
+       "clip": 0,
+       "contrast": 0,
+       "glyphs": 0,
+       "height": 855,
+       "fontsLoaded": true
+      }
+     ]
+    }
+   },
+   "shots": {
+    "explain": "themes/orange-launch-zh-CN-1-explain.png",
+    "diagram": "themes/orange-launch-zh-CN-2-diagram.png",
+    "explore": "themes/orange-launch-zh-CN-3-explore.png",
+    "static": "themes/orange-launch-zh-CN-4-static.png"
+   }
+  }
+ ],
+ "errors": [],
+ "external": []
+}

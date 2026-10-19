@@ -24,7 +24,7 @@ The checked-out HEAD is still `9204f21161fd5b5c15c4040bd2414bed55fb4d99`; the su
 | VIS-010 | Real browser diagnostics, image-bound review receipts and bounded composition repair. | [Quality evidence](docs/evidence/vis-010/review.md); representative tests do not close exhaustive state or release acceptance. |
 | VIS-011 | Seven shared tools, local task checkpoints, scoped chart/composition revisions and reviewed HTML/recovery exports. | [Task evidence](docs/evidence/vis-011/review.md); supplied-text planning is deterministic, rich host drafting remains open. |
 | VIS-012 | Thin local host adapters, probes, bounded transport and shared drafting/patch/image-review routes. | [Host evidence](docs/evidence/vis-012/review.md); Claude login/live acceptance deferred, overall partial. |
-| VIS-013–014 | VIS-013 is implemented locally; VIS-014 release integration remains planned. | Actual workbench UI/Codex evidence does not close the broader release gate. |
+| VIS-013–014 | VIS-013 is implemented locally. VIS-014 is **partial** (2026-10-19): frozen bilingual gallery, three bilingual 8-page stories, explicit cases, legacy comparison, standalone exports in three engines and a real Codex task with a scoped revision ([evidence](docs/evidence/vis-014/review.md)). | Claude is deferred; missing-glyph detection, the 390 px heatmap, CJK heading breaks, payload size and author calibration of the below-threshold review remain open. |
 | VIS-015/016, SRC-001–007, DOC-001, EXP-001 | Planned extensions; existing source records, jobs, native v1/v2 exports and spatial demos are reusable foundations. | Do not infer completed synchronization, v3 native output or living documentation from those foundations. |
 
 Current source boundaries are `src/agent/` (director/tools/revisions), `src/design/` (themes/compositions/rhythm), `src/components/`, `src/motion/`, `src/scene/web/`, `src/render/web/`, `src/quality/`, `src/services/visual-api.mjs`, `src/services/visual-store.mjs` and `public/studio/`. The legacy contract remains `schemas/project.schema.json`; v3 uses `presentation-v3`, `design-plan`, `web-scene` and `visual-project` schemas. `src/targets/capabilities.mjs` explicitly refuses unsupported native v3 targets.
@@ -350,7 +350,7 @@ An author can say “keep these facts; use electric-violet photography; let the 
 
 ### VIS-014 — First visual release gate
 
-Current state: **planned**. See section 0 and `roadmap.json` for scope and remaining acceptance.
+Current state: **partial** (2026-10-19). Gate manual and records in `docs/visual-acceptance/`; evidence in `docs/evidence/vis-014/review.md`. See section 0 and `roadmap.json` for what remains.
 
 **P1 · M · Dependencies: VIS-005 through VIS-013**
 
@@ -598,6 +598,7 @@ Use Node.js 22+. `npm ci` installs the locked development compiler; runtime star
 | `npm run visual:render -- --case studio --locale all` | Available: bilingual three-theme Studio examples. `wave-a` is also supported. This renderer rejects `release-gallery`. |
 | `npm run studio:compositions` / `studio:assets` / `studio:components` / `studio:interactions` | Available: focused Visual Studio demos. |
 | `npm run visual:verify -- --case release-gallery` | Available: representative six-story browser QA suite, not the VIS-014 fixed release gallery. Requires isolated QA browser/Playwright. Actual image review is a separate required step. |
+| `node scripts/release-gate.mjs` | Available: the VIS-014 gate (frozen gallery, stories, explicit cases, legacy comparison, standalone package in each available engine). Requires isolated QA browser/Playwright; see `docs/visual-acceptance/README.md`. |
 | `npm run visual:review` | Available: loopback review of captured evidence. |
 | `npm run deck:create -- --brief examples/task-brief.en.json --out dist/my-task` | Available: local checkpoint and provisional preview; optional `--host codex|claude-code --live` enables the existing selected host. Final HTML requires current capture and image-review receipts. |
 | `npm run deck:task -- --help` | Available: resume a checkpoint through the shared tools and expected sequence checks. |

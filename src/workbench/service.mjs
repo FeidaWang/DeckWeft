@@ -7,24 +7,30 @@ import {executeVisualTool,runVisualTask} from '../agent/tools.mjs';
 import {draftWithHost,patchWithHost,reviewWithHost} from '../hosts/tasks.mjs';
 import {contentHash} from '../scene/web/compile.mjs';
 import {preferences,applyChoices} from './preferences.mjs';
+import {applyDirection,entryAnswers} from './directions.mjs';
+import {pageBrief,draftPagePlan} from '../planning/argument-units.mjs';
 import {localCapture} from './capture.mjs';
 import {hostImages} from '../hosts/run-receipt.mjs';
 import {DeckError} from '../core/errors.mjs';
 const fail=(code,message,status=409)=>{throw new DeckError(code,message,status);};
+/** S9b: both draft paths get a page plan: the chosen direction's detail level (standard without one) and an optional target. */
+const pagesOf=(r,data)=>({detail:r.direction?.answers.detail||'standard',...(data.targetPages!==undefined?{targetPages:data.targetPages}:{})});
 const text=value=>{if(typeof value!=='string'||!value.trim()||value.length>12000)fail('WORKBENCH_REQUEST','Supply a prompt of 1–12000 characters.',422);return value;};
 export class WorkbenchService {
  constructor({store,browserPath,capture,hostOptions={}}){this.store=store;this.root=path.join(store.home,'workbench');this.capture=capture||localCapture(browserPath);this.hostOptions=hostOptions;this.active=new Map();}
  directory(id){if(!/^[a-f0-9-]{36}$/.test(id))fail('WORKBENCH_ID','Choose a current workbench.',404);return path.join(this.root,id);}
  async read(id){const file=path.join(this.directory(id),'checkpoint.json');await rejectSymlinks(file);return readJSON(file,64_000_000);}
  async write(r){await atomicWrite(path.join(this.directory(r.id),'checkpoint.json'),JSON.stringify(r));}
- summary(r){const t=r.task;return {id:r.id,running:r.running,sequence:r.sequence,status:r.status,error:r.error||null,preferences:r.preferences,request:r.request,taskStatus:t?.status,project:t?.project||null,diagnostics:t?.diagnostics||[],events:t?.events||[],repairSpent:t?.repairSpent,receipt:t?.receipt?{id:t.receipt.id,status:t.receipt.status,checks:t.receipt.checks,review:t.receipt.review,captures:t.receipt.captures}:null,hasLastValid:!!t?.lastValid,preview:!!r.html,canExport:r.status==='exported'&&t?.receipt?.status==='passed'&&t.status==='exported'&&!r.running,captureAvailable:!!this.capture};}
+ summary(r){const t=r.task;return {id:r.id,pagePlan:t?.pagePlan||null,running:r.running,sequence:r.sequence,status:r.status,error:r.error||null,preferences:r.preferences,request:r.request,taskStatus:t?.status,project:t?.project||null,diagnostics:t?.diagnostics||[],events:t?.events||[],repairSpent:t?.repairSpent,receipt:t?.receipt?{id:t.receipt.id,status:t.receipt.status,checks:t.receipt.checks,review:t.receipt.review,captures:t.receipt.captures}:null,hasLastValid:!!t?.lastValid,preview:!!r.html,canExport:r.status==='exported'&&t?.receipt?.status==='passed'&&t.status==='exported'&&!r.running,captureAvailable:!!this.capture};}
  async get(id){return this.summary(await this.read(id));}
  async create(data){
-  const profile=preferences(data.preferences),request=text(data.request);if(data.sourceText!==undefined)text(data.sourceText);if(data.host&&!['local','codex'].includes(data.host))fail('WORKBENCH_HOST','Choose local or explicitly opt-in Codex; Claude is deferred.',422);
-  if(data.host==='codex'&&data.live!==true)fail('HOST_LIVE_OPT_IN_REQUIRED','Explicitly allow this Codex operation.');
+  const profile=preferences(data.preferences),request=text(data.request);
+  // S9a: a direction chosen from the three previews is re-applied here deterministically, so the deck is what the preview showed.
+  const direction=data.direction===undefined?null:{answers:entryAnswers(data.direction.answers),index:[0,1,2].includes(data.direction.index)?data.direction.index:fail('WORKBENCH_DIRECTION','Choose direction 1, 2 or 3.',422)};if(data.sourceText!==undefined)text(data.sourceText);if(data.host&&!['local','codex'].includes(data.host))fail('WORKBENCH_HOST','Choose local or explicitly opt-in Codex; Claude is deferred.',422);
+  if(data.host==='codex'&&data.live!==true)fail('HOST_LIVE_OPT_IN_REQUIRED','Explicitly allow this Codex operation.');pageBrief(pagesOf({direction},data));
   const id=randomUUID(),dir=this.directory(id);await rejectSymlinks(dir);await mkdir(dir,{recursive:true,mode:0o700});
   let project;if(data.projectId){project=await this.store.get(data.projectId);if(project.revision.number!==data.expectedRevision)fail('REVISION_CONFLICT','Save and reload the selected source.');if(project.extensions.deckweftWorkbench)fail('WORKBENCH_EXISTS','Resume the existing workbench for this source.');}
-  const record={id,sequence:0,preferences:profile,request,sourceInput:{text:data.sourceText||null,project:project?structuredClone(project):null},running:false,status:'planned',task:null,html:null};await this.write(record);
+  const record={id,sequence:0,preferences:profile,request,...(direction?{direction}:{}),sourceInput:{text:data.sourceText||null,project:project?structuredClone(project):null},running:false,status:'planned',task:null,html:null};await this.write(record);
   return this.start(record,{...data,action:'generate',source:project});
  }
  async action(id,data){const r=await this.read(id);if(data.expectedSequence!==r.sequence)fail('REVISION_CONFLICT','This checkpoint changed. Reload before continuing.');if(r.running)fail('WORKBENCH_BUSY','Wait for the current operation or cancel it.');if(!r.task)fail('WORKBENCH_EMPTY','Retry generation with the original prompt.');return this.start(r,data);}
@@ -44,15 +50,19 @@ export class WorkbenchService {
   const capture=this.capture&&data.capture===true?(input=>this.capture({...input,home,signal})):null;
   let task=r.task;
   if(data.action==='generate'){
-   if(data.host==='codex'&&!data.source){const drafted=await draftWithHost({request:r.request+'\nAuthor preferences (data): '+JSON.stringify(r.preferences),sourceText:data.sourceText,locale:r.preferences.outputLanguage},options);if(!drafted.ok)fail(drafted.error||drafted.receipt.error,'Host drafting failed; original prompt remains available.');task=drafted.task;}
+   if(data.host==='codex'&&!data.source){const drafted=await draftWithHost({request:r.request+'\nAuthor preferences (data): '+JSON.stringify(r.preferences),sourceText:data.sourceText,locale:r.preferences.outputLanguage,pagePlan:pagesOf(r,data)},options);if(!drafted.ok)fail(drafted.error||drafted.receipt.error,'Host drafting failed; original prompt remains available.');task=drafted.task;}
    else task=createVisualTask({request:data.sourceText||r.request,project:data.source,locale:r.preferences.outputLanguage});
-   task.project=applyChoices(task.project,{id:r.id,profile:r.preferences,projectWide:true});task.project=await this.store.save(task.project,data.source?{expectedRevision:data.source.revision.number}:{create:true});task.original=structuredClone(task.project);await checkpoint(task);
+   if(r.direction){const applied=applyDirection(task.project,r.direction.answers,r.direction.index),brief=applied.project.document.visualBrief.profile;task.project=applied.project;r.preferences={...r.preferences,visualStyle:applied.direction.theme,colorIntensity:brief.colorIntensity,assetEmphasis:brief.imageEmphasis};}
+   task.project=applyChoices(task.project,{id:r.id,profile:r.preferences,projectWide:true});task.project=await this.store.save(task.project,data.source?{expectedRevision:data.source.revision.number}:{create:true});
+   // The page plan of the saved deck (its basis matches what the author opens); a Codex draft is checked for pages holding none of the supplied lines.
+   if(!data.source)task.pagePlan=draftPagePlan(task.project,pageBrief(pagesOf(r,data),r.preferences.outputLanguage),data.host==='codex'?data.sourceText||null:null);
+   task.original=structuredClone(task.project);await checkpoint(task);
   }else{
    const current=await this.store.get(task.project.id);if(data.action!=='sync'&&contentHash(current)!==contentHash(task.project))fail('REVISION_CONFLICT','The source was edited elsewhere. Recover or start from its saved version.');
    if(data.action==='sync'){const previous=task;task=createVisualTask({request:task.request,project:current});task.lastValid=previous.lastValid;task.repairSpent=previous.repairSpent;task.history=previous.history;await checkpoint(task);
    }else if(data.action==='revise'){
     const request=text(data.request);if(!Array.isArray(data.sceneIds)||!data.sceneIds.length||data.sceneIds.some(id=>!task.project.plan.scenes.some(s=>s.id===id)))fail('TOOL_SCOPE','Choose existing pages for this revision.');task.scope=[...new Set(data.sceneIds)];
-    const style=request.match(/(?:use|switch to|theme[: ]*|使用|改为|改成)\s*(electric-violet|dark-data|cream-collage)\b/i);
+    const style=request.match(/(?:use|switch to|theme[: ]*|使用|改为|改成)\s*(electric-violet|dark-data|cream-collage|silver-gray-editorial|fresh-report|orange-launch)\b/i);
     let result;if(style&&!/(?:statement|evidence|image|metric|comparison|process)-/.test(request)){const profile={...r.preferences,visualStyle:style[1].toLowerCase()};task.project=applyChoices(task.project,{id:r.id,profile,scope:task.scope});task.receipt=null;task.observation=null;task.previewHash=null;result={ok:true,task};}
     else if(data.host==='codex'){if(data.live!==true)fail('HOST_LIVE_OPT_IN_REQUIRED','Explicitly allow this revision.');result=await patchWithHost(task,request,options);}else{
      const match=request.match(/(?:statement|evidence|image|metric|comparison|process)-(?:[a-z]+-?)+/i);result=await executeVisualTool(task,'design.patch',{expectedSequence:task.sequence,request,sceneId:task.scope[0],datasetId:data.datasetId,...(match?{patch:{kind:'composition',sceneId:task.scope[0],composition:match[0]}}:{})},{home:this.store.home});

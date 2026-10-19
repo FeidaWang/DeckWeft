@@ -63,7 +63,7 @@ Open **History**, inspect a read-only snapshot, then select **Restore as a new c
 
 **Bring an existing deck** migrates the selected saved v1/v2 project. The original JSON and its hash are archived. Legacy metric strings remain text; old assets, design intent and private notes are retained in the archive with explicit limitations. Migration does not guess chart numbers or claim visual parity.
 
-Project JSON is the complete private envelope: semantic document, plan, asset manifest, revisions and archives. It references local asset files rather than embedding them; keep the assets folder for transfer to another library. Import validates the original envelope before assigning a new copy identity. HTML is portable and embeds the required images, but omits migration archives and private notes. V3 PPTX/Figma/AE/SVG export remains unsupported and fails explicitly; classic Studio retains its existing exporters and presenter.
+Project JSON is the complete private envelope: semantic document, plan, asset manifest, revisions and archives. It references local asset files rather than embedding them; keep the assets folder for transfer to another library. Import validates the original envelope before assigning a new copy identity. HTML is portable and embeds the required images, but omits migration archives and private notes. PowerPoint and PDF are in the export group when the studio runs with an isolated capture browser (see [Author controls](#author-controls-chapters-and-separate-locks-s9a)). V3 Figma, AE and SVG export remain unsupported and fail explicitly; classic Studio retains its existing exporters and presenter.
 
 ## Verification and contracts
 
@@ -102,4 +102,154 @@ A candidate fails if content overflows, is clipped, has inadequate measured cont
 
 The six families are statement (split/banner/center), image narrative (left/sequential/right), oversized number (left/band/right), data evidence (plot left/full width/plot right), comparison (matrix/side rail/dimension cards), and process (horizontal/vertical/stepped). English and Chinese representative content was checked under Cream Collage, Electric Violet and Dark Data. [Measured geometry, screenshots, failures and repairs](../evidence/vis-006/review.md).
 
+## Six more composition families (S3)
+
+S3 adds six families to the six above, so a page can now use twelve. They are never inferred from content: choose them yourself.
+
+1. Select a page and open **Design → Composition family**. The new families follow the original six: Chapter, Before / after, System map, Small multiples, Quotation, Conclusion / next step. A family is disabled when the page lacks its required block.
+2. Click **Compare three compositions**. Expect three measured previews. If the page breaks a family contract, comparing stops with a reason (for example *Attribute every verbatim quotation*). Nothing is repaired or removed for you.
+3. Choose a passing candidate, or **Apply measured deck rhythm**. Your family choice is kept; rhythm only picks among its three geometries.
+4. Save and reload. The composition stays.
+
+| Family | Needs | Three geometries (reading path) | 1440 / 1024 / 390 px |
+|---|---|---|---|
+| Chapter | heading; text only (no chart, table, diagram, image, metric, code) | headline low left, intro beside it · headline and intro left, contents index right · contents in a narrow margin, headline right | 2 / 2 / 1 |
+| Before / after | exactly two images, both factual or both illustrations, shown at the same aspect ratio | baseline left, after right · text rail, baseline above after · baseline, what changed, after | 2 / 2 / 1 (triptych 3 / 3 / 1) |
+| System map | a relationship diagram that branches or loops (a single chain is a process) | header row, full-width map, key row · map left, text right · key left, map right | 2 / 2 / 1; rail and key stack at 1024 |
+| Small multiples | two or more charts with the same chart type, unit, fixed value axis (same range and scale) and, for line, area, stacked and heatmap, the same categories | panels side by side, notes below · heading beside the reading note, panels below · centered heading, note and key on a centre line, panels below | 2 / 1 / 1 |
+| Quotation | a quote block, each quote attributed by a citation of one of its sources | centered quote · paraphrase left, quote right · full-width quote band | 1 / 1 / 1 (centre), 2 / 2 / 1 |
+| Conclusion / next step | a list of next steps | conclusion left, steps right · steps in one row · centered conclusion and ask | 2 / 2 / 1 |
+
+What each contract protects:
+
+- **Before / after.** The first image in block order is the baseline. Every geometry places it first (left, top or first in the row) and labels both images *Before · baseline* and *After* above the frame, so the label is visible without interaction, in the no-JavaScript view and in print. Both frames have the same size. If the two images are shown at different aspect ratios, saving fails: crop them to the same framing. A comparison control on this page must pair the baseline with the changed image and may not open on the changed image alone.
+- **Small multiples.** The shared scale is declared, not inferred: every panel needs a fixed value axis with the same range. Panels are always the same size. With the current chart drawing, two panels fit a 1440 px page; at 1024 and 390 px they stack. To split a page with more panels, call `splitSmallMultiples(project, sceneId, perPage)` from `src/design/rhythm.mjs`. Every page keeps the heading and the sources, the panels stay in order, and text blocks stay on the first page. It refuses pages with interactions, locks, or a page size that would leave one panel alone. There is no Studio control for this yet.
+- **Quotation.** Verbatim words are the quote block, set in the display type with an ornamental mark. The citation that attributes it sits directly under it. Paraphrase is a paragraph, in body type, separated by a rule; it is never styled as a quotation. Speaker and organisation are written in the citation text: the quote block has no separate speaker fields.
+
+### Rhythm rules
+
+**Apply measured deck rhythm** now also follows three handoff rules. The report under the button lists any that remain:
+
+- The same composition appears at most twice in a row. Runs of one comparison family (comparison, process, before / after, small multiples) are allowed: a sequence may keep its structure.
+- No three heading-plus-cards pages in a row (comparison dimension cards or next steps in one row, with three or more cards).
+- A 10–15 page deck uses at least four families. Families come from your content and choices, so this rule is advice. The report suggests pages that could use an unused family; nothing changes on its own.
+
+Author choices win. A composition locked with **Lock this scene’s theme and composition** is kept even when it breaks a rule; the report marks it *kept: author lock*. A rule that remains without a lock means no measured candidate could avoid it.
+
+### Theme changes keep the colour mode
+
+Changing a page's theme now changes only its theme and, when needed, its composition. The colour mode is left as it was. Changing to another theme and back returns the original plan and the same render hash. Violet chapter is offered only when the page can use the chapter colour; a page whose colour mode is explicitly *default* gets reading flow instead.
+
+### If something goes wrong
+
+- *Show both states at the same aspect ratio*: edit one crop until both match, then save.
+- *Declare the shared scale*: give every chart the same `axis: {policy: "fixed", min, max}`.
+- *No measured candidate fits*: keep the content. Choose another family, shorten the text yourself, or split small multiples into more pages.
+
+[S3 measured candidates, contact sheets, failures and open issues](../evidence/s3-composition-families/review.md).
+
+## Three more themes: Editorial Fieldnotes, Research Atlas, Luminous Stage (S8, VIS-015)
+
+S8 adds the design handoff's three first-wave art directions as theme packs under the planned VIS-015 ids ([decision 2, alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)). The three VIS-014 themes are unchanged. State: see the [VIS-015 evidence](../evidence/vis-015/review.md); the roadmap entry says what is supported.
+
+| Theme | Direction | Type roles (platform fonts, nothing bundled) | Own compositions |
+|---|---|---|---|
+| `silver-gray-editorial` (T01) | Paper `#F3F0E8`, ink `#24241F`, terracotta `#A8503A`, slate numbers. Main column, margin notes, hairlines, generous space. | Display Charter (zh: Songti SC), body Gill Sans (zh: PingFang SC), numerals Charter | `fieldnotes-cover`, `fieldnotes-thesis` (two-column thesis with margin notes), `fieldnotes-figure` (narrow reading column, wide figure), `fieldnotes-method` (method text with a margin note), `fieldnotes-closing` |
+| `fresh-report` (T02) | Paper `#FAFAF7`, ink `#15211B`, green `#286448`, cobalt `#345BC5`. Shared grid, numbered sections, figures take the main area. | Display and body Avenir Next (zh: PingFang SC), numerals Menlo (tabular) | `atlas-cover` (kicker, headline, contents index), `atlas-section` (section number), `atlas-figure` (single-chart conclusion), `atlas-panels` (two to four chart panels on one declared scale), `atlas-appendix` (table, limits, sources), `atlas-closing` |
+| `orange-launch` (T03) | Surface `#0C1017`, text `#F2F3EE`, ice blue `#A8D2EA`. Dark stage, one large object, body text in the calm area. Static hero only: no shader, no WebGL. | Display Futura (zh: PingFang SC), body Helvetica Neue, numerals Futura | `stage-hero` (object right; without an image a drawn orb), `stage-chapter`, `stage-figure` (chart on a panel), `stage-metric`, `stage-closing` |
+
+Every pack also lists the twelve shared families. The handoff's hex values were starting points: each foreground is measured against its own surface at the sizes it is used, and the measured ratios are in the evidence.
+
+1. Select a page, open **Design → Scene theme** and choose one of the three. Expect the page to keep every block and to take the theme's own composition by content: a chart gets `…-figure`, a metric gets `stage-metric` on the stage, a text page gets the theme's cover.
+2. Choose the theme's other compositions from **Composition family** as before. A theme-only composition refuses another theme and names the block it needs (for example *atlas-panels needs at least 2 chart panels*); nothing is removed for you.
+3. Compare three compositions and apply rhythm as before. Rhythm varies geometry within the shared families; a theme-only composition stays until you change it.
+4. Export. The same packs reach HTML, PowerPoint and PDF (`npm run export:targets -- --s8` runs the S8 decks).
+
+Pairing: a deck may use Editorial Fieldnotes for the narrative and Research Atlas for the evidence chapters. Both share the type scale tiers, the citation role and the stable chart colour order, so a legend keeps its meaning across chapters.
+
+### Token roles the renderer now consumes
+
+The three packs declare the S1 token roles, and the page receives them as custom properties: `--numeric` (metric numbers, chart values, axis ticks, table numbers), `--reference` and `--missing` (reference lines, missing-value labels and notes), `--caption-gap`, `--section-gap`, `--safe-area`, and `--motion-distance`, `--motion-easing`, `--motion-delay`. A pack that declares none of them, like the three VIS-014 packs, renders exactly as before, because every consumer falls back to the previous literal value. The motion `fallback` (`instant` or `static`) is the reduced-motion result of a page that declared none itself.
+
+### Chinese headings break between words (C12)
+
+In a zh-CN document, headings, callouts and metric labels carry `<wbr>` at dictionary word boundaries and `word-break: keep-all`, so a line ends between words (三十六种 · 几何 · 结构) instead of inside one. Han numerals stay with their measure word. `<wbr>` has no text, so copied text, the coverage check and every exporter see the authored string. The scene's `overflow-wrap: anywhere` remains the last resort for a word longer than its column. Word boundaries come from the platform's ICU dictionary (`Intl.Segmenter`); the evidence records the ICU version.
+
+### Missing glyphs are detected (C13)
+
+The fit audit draws every distinct character of a page in its computed font on a canvas and compares it with the same font's `.notdef` box (the unassigned code point U+0378). A match is a missing glyph: the fit fails, the Studio gate answers `VISUAL_FIT`, a composition candidate reports *Missing glyph*, the quality pipeline files a `glyph` issue, and the export readiness stage refuses with `FONT_GLYPH_MISSING`. Change the text or the theme font; never export a box. The DevTools platform-font probe stays as a second signal where an engine reports a last-resort font.
+
+### If something goes wrong
+
+- *`atlas-panels` needs at least 2 chart panels* or *Declare the shared scale*: give every panel the same chart type, unit, categories and a fixed axis.
+- *`stage-hero` … belongs to the orange-launch theme*: a theme-only composition was kept while the theme changed; choose the new theme's composition.
+- *Missing glyph* on a page that looks fine: the character is drawn as a box in the chosen font family; check the fit report's `glyphs` list for the character and the font.
+- A Chinese heading still breaks inside a word: the word is longer than its column at this tier, so the last-resort break applied. Shorten the column text, choose another composition, or add an authored line break.
+
 For source preservation, named slots and protected crops, follow the [asset manual](assets.md). Run `npm run studio:assets` for the bilingual lab.
+
+## Author controls, chapters and separate locks (S9a)
+
+**Edit page → Author controls** changes design in stated steps. Every control works the same way:
+
+1. Choose **Apply to**: *This page*, *This chapter*, *Whole deck* or *One object* (pick the object in the second list).
+2. Click a control. Expect a plan box. It holds the scope statement, every effect (page by page) and every item an author lock kept. Nothing has changed yet.
+3. Click **Apply**, or **Cancel**. **Undo** restores the previous state; **Save** keeps it. If the deck changed after the plan, Apply refuses: plan again.
+
+| Control | What it does | What it never does |
+|---|---|---|
+| More editorial | Moves each page to its family's editorial layout (claim first, asymmetric; Editorial Fieldnotes pages to their own cover, thesis, method, figure or closing layout) and sets expressive type contrast and comfortable density at the chosen level. | Change the theme or any word. |
+| Give the chart more space | Moves a single-chart page to the layout that draws the plot largest in its theme. In Research Atlas that is `atlas-figure` and in Editorial Fieldnotes `fieldnotes-figure`; elsewhere it is a side layout, because the full-width `evidence-top` caps the plot height. If the page already has that layout, supporting text moves behind the page disclosure. A page with more than two panels is split into pages of two on one stated scale. | Hide a qualification: text with a number, a unit, *synthetic*, *not measured* and similar words stays on the page. |
+| Make quieter | Turns motion off for the deck, or for the chosen pages. Cues apply instantly and every key state stays reachable with Next and Previous. Says *Already quiet* when motion is off. | Remove a state or a cue. DeckWeft output has no loops or autoplay. |
+| Keep this layout | Adds a composition lock. A shared composition survives every theme change; a theme's own composition (for example `atlas-figure`) makes a theme change refuse and name it. Rhythm reports the page as *kept: author lock*. | Lock text, data or sources. |
+| Replace the visual | Replaces one image with another image already in the project and requires new alternative text. Lists the crop and the page's citations to check. | Change the composition, the crop or any other block; replace a locked image. |
+| Reduce text | Moves supporting paragraphs and lists behind a closed **More detail** disclosure on the same page; at object scope, the chosen paragraph, list or callout. The first supporting block stays as the page's explanation. | Delete or rewrite anything. The claim, the takeaway, numbers, units, qualifications and sources stay on the page. The moved words remain in the web page, the PowerPoint notes and the PDF appendix. |
+
+**Four levels.** Preferences resolve most specific first: object, page, chapter, deck. A page profile beats its chapter's profile, which beats the deck profile. The same order reaches the player: a chapter or page with motion off plays no motion, and the deck's *off* still wins everywhere. A profile lock protects the page's own profile. A locked page without one follows deck and chapter changes, and the plan says so; to hold its look, give it a page profile first. Object scope holds per-object choices: locks, the image to replace, the text to move. **Start a chapter here** begins a chapter at the selected page; it runs to the page before the next chapter start and takes the profile of the chapter it splits, so nothing renders differently. **Remove this chapter** returns its pages to the previous chapter, or to none. Chapters follow page order, so moving or splitting pages never leaves a gap. Chapter starts carry a *Chapter* flag in the page list.
+
+**Separate locks.** Choose *Text*, *Data*, *Sources* or *Composition* and click **Lock** or **Unlock**:
+
+- Text locks the object as written.
+- Data locks the dataset: values, units, definitions, missing reasons, events and intervals.
+- Sources locks the source records.
+- Composition locks the page layout.
+
+The first data or source lock runs the explicit migration `separateLocks()` and says so. In older (combined) decks a locked chart also locked its dataset and sources; the migration copies those implied locks, so nothing is released. Afterwards the chart's wording and its data can be locked independently. Every lock survives theme changes, saving a source update, and **History → Restore as a new copy**.
+
+**Page disclosure.** Text moved by Reduce text or Give the chart more space appears after the composition as **More detail · n items**. Readers open it on the page; no JavaScript is needed. PowerPoint puts the text in the slide notes with a receipt per block. The PDF puts it on the notes pages. Composition rules apply to the blocks that stay visible: a closing page keeps its list.
+
+**Export group.** Next to **Export HTML** are **PowerPoint**, **PDF** and **Project JSON**. PowerPoint and PDF need the studio to run with `--capture-browser /absolute/isolated/chromium`; without it the buttons are disabled and the server refuses with `TARGET_BROWSER_REQUIRED`. With it, the current measured preview is measured again as a static scene. It then compiles through the export order (ready → static-state → freeze → stop-motion → reveal → render → check), and the message lists the stages, the L1/L2/L3 counts and the number of element receipts. A file that fails its own check is refused (`EXPORT_CHECK_FAILED`) and never downloaded. A workbench deck exports PowerPoint or PDF only after its image review passed for the current content. A page marked evidence-required refuses every final export. Open the file in PowerPoint, Keynote or a PDF reader yourself: these exports are package-checked here, not application-verified.
+
+### If something goes wrong
+
+- *This deck changed after the plan*: plan the control again.
+- *composition locked; kept*: unlock the layout (Composition → Unlock) if you want the control to change it.
+- *Already quiet* or *Nothing to move*: the control found nothing to change, and the plan says why.
+- *`EVIDENCE_REQUIRED`*: supply the evidence and set the page sourced, or set it illustrative.
+- *`EXPORT_CHECK_FAILED`*: the message lists the failed check per page; change that page and export again.
+
+[S9a evidence, traces and contact sheets](../evidence/s9a-author-controls/review.md) · [workbench steps](workbench.md#six-questions-and-three-directions-s9a)
+
+## Explain → Diagram → Explore pages (S9b)
+
+A page with a heading, a paragraph or callout and one diagram can become an Explain → Diagram → Explore page (blueprint A). The reader's side is in [interactions](interactions.md#explain--diagram--explore-blueprint-a-s9b); the evidence is in the [S9b review](../evidence/s9b-blueprint-a/review.md).
+
+1. Select the page. Open **Edit page → Content → Scene interactions and motion**.
+2. Click **Make this page Explain → Diagram → Explore**. Expected: the message says the page is now Explain → Diagram → Explore; the preview opens the page on Explain with the stage pills; **Static state for export and reduced motion** lists *Explain*, *Diagram · the whole* and *Explore · (first part)*; a hint says PowerPoint and PDF exports refuse the page until you choose its static state. The heading is the question, the first paragraph or callout the short answer and each diagram node a part, in node order. No block changes.
+3. Edit the words under **Step explanations**: *The whole object · name* (it starts as the part labels joined by arrows), *The whole object · explanation*, and each part's label and explanation (they start as the node label and note). Existing explanations of the diagram's nodes are kept.
+4. Choose the static state: **Diagram** or an **Explore** state. Expected: the hint reads *Static state: …* and says that readers without JavaScript, PowerPoint and PDF get the whole object with every part and its explanation, while the player still opens on Explain.
+5. Save, wait for **✓ Fonts, images and DOM layout measured**, then export. The measurement covers the opening and every key state of the page. **PowerPoint** and **PDF** (Studio started with `--capture-browser`) export the complete explanation; the message lists the export stages.
+
+Undo and Redo reverse the whole action, Save keeps it and History restores it as a copy. Locks:
+
+- With **Lock this scene interaction plan** on, the button is disabled.
+- A locked diagram is refused: *Unlock the diagram first.*
+- A locked page (cues and motion) keeps its static state: unlock it before choosing another.
+
+### If something goes wrong
+
+- *This page needs exactly one diagram on the page*: add one, or move the second diagram to another page. A diagram behind **More detail** does not count.
+- *Add a heading (the question) and a paragraph or callout (the short answer)*: add them, then click again.
+- *An Explain → Diagram → Explore page has one explanation sequence*: move the page's other interactions to another page first.
+- *This diagram's steps explain relationships*: blueprint parts are nodes; remove that steps interaction in **Authored interactions, cue order and motion · JSON**, then click again.
+- *Page …: Choose the static state…* or *The Explain stage does not show the object…* on export: choose Diagram or an Explore state (step 4), save and export again.

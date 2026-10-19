@@ -1,0 +1,175 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "s2-evidence-scene-en",
+    "title": "Claim first, review faster? An illustrative ranking of six writing habits — synthetic data (2026), not a measured result",
+    "locale": "en",
+    "visualBrief": {
+      "audience": "Review leads deciding whether to pilot claim-first writing; they need the question, the ranking and its limits on one page.",
+      "outputLanguage": "en",
+      "profile": {
+        "colorIntensity": "bold",
+        "typographicContrast": "expressive",
+        "density": "comfortable",
+        "motionIntensity": "subtle",
+        "imageEmphasis": "large"
+      }
+    },
+    "blocks": [
+      {
+        "id": "evidence-title",
+        "type": "heading",
+        "sourceIds": ["illustrative-sample"],
+        "text": "Claim first, review faster: teams that wrote the takeaway before the slides cut review time most — an illustrative ranking (synthetic, 2026)."
+      },
+      {
+        "id": "evidence-chart",
+        "type": "chart",
+        "sourceIds": ["illustrative-sample"],
+        "datasetId": "review-time",
+        "chartType": "ranked-bar",
+        "axis": {"policy": "zero", "scale": "linear"},
+        "sort": "value-desc",
+        "focus": {
+          "categoryIds": [
+            "claim-first"
+          ]
+        },
+        "question": "Which writing habit saw the largest drop in review time?",
+        "takeaway": "Claim-first teams show the largest illustrative drop (38%)."
+      },
+      {
+        "id": "evidence-takeaway",
+        "type": "callout",
+        "sourceIds": ["illustrative-sample"],
+        "text": "Claim-first teams: 38% less review time — about twice the drop of template users (19%)."
+      },
+      {
+        "id": "evidence-caption",
+        "type": "paragraph",
+        "sourceIds": ["illustrative-sample"],
+        "text": "Bars rank six habits by the illustrative drop in review hours; each value is a share of the team's own pre-adoption hours. Synthetic data, labelled as such: no product outcome is claimed."
+      },
+      {
+        "id": "evidence-source",
+        "type": "citation",
+        "sourceIds": ["illustrative-sample"],
+        "sourceId": "illustrative-sample",
+        "text": "Illustrative sample · synthetic, not measured"
+      },
+      {
+        "id": "close-title",
+        "type": "heading",
+        "sourceIds": ["illustrative-sample"],
+        "text": "Next: test the claim with measured data."
+      },
+      {
+        "id": "close-body",
+        "type": "paragraph",
+        "sourceIds": ["illustrative-sample"],
+        "text": "Replace the illustrative sample with a sourced dataset before presenting this as evidence; keep the same question, definition and denominator."
+      },
+      {
+        "id": "close-source",
+        "type": "citation",
+        "sourceIds": ["illustrative-sample"],
+        "sourceId": "illustrative-sample",
+        "text": "Method note · same synthetic sample"
+      }
+    ],
+    "datasets": [
+      {
+        "id": "review-time",
+        "unit": "%",
+        "synthetic": true,
+        "categories": ["Claim first", "Outline first", "Data first", "Template", "Slide by slide", "No set habit"],
+        "categoryIds": ["claim-first", "outline-first", "data-first", "template", "slide-by-slide", "no-habit"],
+        "series": [
+          {
+            "id": "reduction",
+            "label": "Drop in review hours (illustrative)",
+            "values": [38, 31, 27, 19, 12, 9]
+          }
+        ],
+        "sourceIds": ["illustrative-sample"],
+        "version": "s2-sample-2026-10",
+        "collectedAt": "2026-10-01",
+        "validPeriod": {"from": "2026-01-01", "to": "2026-09-30"},
+        "definition": {
+          "denominator": "Each team's own review hours before adoption (synthetic)",
+          "sample": "n = 6 habit groups, synthetic",
+          "normalized": true,
+          "betterDirection": "higher"
+        }
+      }
+    ],
+    "sources": [
+      {
+        "id": "illustrative-sample",
+        "title": "DeckWeft S2 illustrative sample (synthetic)",
+        "url": "https://example.org/deckweft/s2-illustrative-sample"
+      }
+    ],
+    "authorOverrides": {"lockedBlockIds": []},
+    "migration": {},
+    "rules": {"misreading": "strict"}
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "s2-evidence-scene-en",
+    "scenes": [
+      {
+        "id": "evidence",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": ["evidence-title", "evidence-chart", "evidence-takeaway", "evidence-caption", "evidence-source"],
+        "focalBlockId": "evidence-title",
+        "takeaway": {"blockId": "evidence-takeaway"},
+        "contentStatus": "illustrative",
+        "interactions": [
+          {"id": "focus-habits", "kind": "chart-select", "blockId": "evidence-chart"}
+        ],
+        "cues": [
+          {
+            "id": "focus-structure-first",
+            "event": "data.filter",
+            "interactionId": "focus-habits",
+            "seriesIds": ["reduction"],
+            "fromId": "claim-first",
+            "toId": "data-first",
+            "label": "Focus on the three structure-first habits"
+          },
+          {
+            "id": "restore-ranking",
+            "event": "data.filter",
+            "interactionId": "focus-habits",
+            "seriesIds": ["reduction"],
+            "fromId": "claim-first",
+            "toId": "no-habit",
+            "label": "Restore all six habits"
+          }
+        ],
+        "keyStates": [
+          {"id": "opening", "position": 0, "label": "All six habits"},
+          {"id": "structure-first", "position": 1, "label": "Structure-first habits (3 of 6)"},
+          {"id": "complete", "position": 2, "label": "All six habits restored"}
+        ],
+        "staticState": {"keyStateId": "opening"},
+        "motion": {"policy": "subtle", "durationMs": 240, "trigger": "manual", "clock": "cues", "reducedMotion": "static"}
+      },
+      {
+        "id": "next-step",
+        "role": "closing",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "reading-flow",
+        "blockIds": ["close-title", "close-body", "close-source"],
+        "focalBlockId": "close-title"
+      }
+    ]
+  }
+}

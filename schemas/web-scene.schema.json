@@ -17,7 +17,10 @@
       "enum": [
         "cream-collage",
         "dark-data",
-        "electric-violet"
+        "electric-violet",
+        "silver-gray-editorial",
+        "fresh-report",
+        "orange-launch"
       ]
     },
     "themeVersion": {
@@ -30,6 +33,22 @@
         "reading-flow",
         "photo-split",
         "violet-chapter",
+        "fieldnotes-cover",
+        "fieldnotes-thesis",
+        "fieldnotes-figure",
+        "fieldnotes-method",
+        "fieldnotes-closing",
+        "atlas-cover",
+        "atlas-section",
+        "atlas-figure",
+        "atlas-panels",
+        "atlas-appendix",
+        "atlas-closing",
+        "stage-hero",
+        "stage-chapter",
+        "stage-figure",
+        "stage-metric",
+        "stage-closing",
         "statement-split",
         "statement-banner",
         "statement-center",
@@ -47,7 +66,25 @@
         "comparison-stack",
         "process-line",
         "process-rail",
-        "process-stair"
+        "process-stair",
+        "chapter-low",
+        "chapter-index",
+        "chapter-margin",
+        "before-after-split",
+        "before-after-rail",
+        "before-after-triptych",
+        "system-map-wide",
+        "system-map-rail",
+        "system-map-key",
+        "small-multiples-row",
+        "small-multiples-lead",
+        "small-multiples-center",
+        "quote-center",
+        "quote-split",
+        "quote-band",
+        "closing-split",
+        "closing-steps",
+        "closing-focus"
       ]
     },
     "focalBlockId": {
@@ -202,12 +239,12 @@
                       },
                       "width": {
                         "type": "number",
-                        "minimum": 1e-06,
+                        "minimum": 0.000001,
                         "maximum": 1
                       },
                       "height": {
                         "type": "number",
-                        "minimum": 1e-06,
+                        "minimum": 0.000001,
                         "maximum": 1
                       }
                     },
@@ -578,6 +615,10 @@
                 "minItems": 1,
                 "uniqueItems": true
               },
+              "initialFocusSeriesId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
               "initialFromId": {
                 "type": "string",
                 "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
@@ -741,6 +782,30 @@
               "initialStepId": {
                 "type": "string",
                 "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "blueprint": {
+                "type": "object",
+                "description": "Blueprint A (S9b): this diagram explanation runs Explain → Diagram → Explore on one page. The question, short answer and the whole object are existing content; the plan stores their identities only.",
+                "properties": {
+                  "questionBlockId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                  },
+                  "answerBlockId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                  },
+                  "wholeExplanationId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                  }
+                },
+                "required": [
+                  "questionBlockId",
+                  "answerBlockId",
+                  "wholeExplanationId"
+                ],
+                "additionalProperties": false
               }
             },
             "required": [
@@ -805,6 +870,37 @@
               "seriesIds",
               "fromId",
               "toId"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "event": {
+                "const": "data.focus"
+              },
+              "interactionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "seriesId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "event",
+              "interactionId"
             ],
             "additionalProperties": false
           },
@@ -920,11 +1016,89 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 400
+        },
+        "trigger": {
+          "enum": [
+            "manual"
+          ]
+        },
+        "clock": {
+          "enum": [
+            "cues"
+          ]
+        },
+        "reducedMotion": {
+          "enum": [
+            "instant",
+            "static"
+          ]
         }
       },
       "required": [
         "policy",
         "durationMs"
+      ],
+      "additionalProperties": false
+    },
+    "takeaway": {
+      "type": "object",
+      "properties": {
+        "blockId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+        }
+      },
+      "required": [
+        "blockId"
+      ],
+      "additionalProperties": false
+    },
+    "contentStatus": {
+      "enum": [
+        "sourced",
+        "illustrative",
+        "evidence-required"
+      ]
+    },
+    "keyStates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "id",
+          "position"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 20
+    },
+    "staticState": {
+      "type": "object",
+      "properties": {
+        "keyStateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+        }
+      },
+      "required": [
+        "keyStateId"
       ],
       "additionalProperties": false
     }

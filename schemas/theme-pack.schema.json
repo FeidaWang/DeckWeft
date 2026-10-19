@@ -7,7 +7,10 @@
       "enum": [
         "cream-collage",
         "dark-data",
-        "electric-violet"
+        "electric-violet",
+        "silver-gray-editorial",
+        "fresh-report",
+        "orange-launch"
       ]
     },
     "version": {
@@ -33,6 +36,14 @@
           "pattern": "^#[a-fA-F0-9]{6}$"
         },
         "secondary": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "reference": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "missing": {
           "type": "string",
           "pattern": "^#[a-fA-F0-9]{6}$"
         }
@@ -72,6 +83,11 @@
           "type": "number",
           "minimum": 0.7,
           "maximum": 1.4
+        },
+        "numeric": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
         }
       },
       "required": [
@@ -96,6 +112,21 @@
           "type": "number",
           "minimum": 12,
           "maximum": 60
+        },
+        "captionGap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 60
+        },
+        "sectionGap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 120
+        },
+        "safeArea": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 120
         }
       },
       "required": [
@@ -150,6 +181,22 @@
           "reading-flow",
           "photo-split",
           "violet-chapter",
+          "fieldnotes-cover",
+          "fieldnotes-thesis",
+          "fieldnotes-figure",
+          "fieldnotes-method",
+          "fieldnotes-closing",
+          "atlas-cover",
+          "atlas-section",
+          "atlas-figure",
+          "atlas-panels",
+          "atlas-appendix",
+          "atlas-closing",
+          "stage-hero",
+          "stage-chapter",
+          "stage-figure",
+          "stage-metric",
+          "stage-closing",
           "statement-split",
           "statement-banner",
           "statement-center",
@@ -167,11 +214,29 @@
           "comparison-stack",
           "process-line",
           "process-rail",
-          "process-stair"
+          "process-stair",
+          "chapter-low",
+          "chapter-index",
+          "chapter-margin",
+          "before-after-split",
+          "before-after-rail",
+          "before-after-triptych",
+          "system-map-wide",
+          "system-map-rail",
+          "system-map-key",
+          "small-multiples-row",
+          "small-multiples-lead",
+          "small-multiples-center",
+          "quote-center",
+          "quote-split",
+          "quote-band",
+          "closing-split",
+          "closing-steps",
+          "closing-focus"
         ]
       },
       "minItems": 1,
-      "maxItems": 23,
+      "maxItems": 57,
       "uniqueItems": true
     },
     "density": {
@@ -192,6 +257,31 @@
           "enum": [
             "none",
             "fade"
+          ]
+        },
+        "distance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 80
+        },
+        "easing": {
+          "enum": [
+            "linear",
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out"
+          ]
+        },
+        "delay": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 600
+        },
+        "fallback": {
+          "enum": [
+            "instant",
+            "static"
           ]
         }
       },

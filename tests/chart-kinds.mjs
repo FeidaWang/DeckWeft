@@ -1,0 +1,69 @@
+import {createVisualProject} from '../src/core/visual-project.mjs';
+/** S4 chart sample: every new kind and every S1 chart declaration on stable ids, with identical numbers in English and Simplified Chinese. All data are synthetic and labelled so. */
+export const CHART_KIND_SCENES=['direct-bar','filter-sort','ranked-truncated','grouped','dot-interval','dot-log','trend','log-line','small-multiples','benchmark','stacked-sorted','area-truncated'];
+export function chartKinds(locale){
+ const zh=locale==='zh-CN',t=(en,cn)=>zh?cn:en,source='synthetic-source',themes=['dark-data','cream-collage','electric-violet'];
+ const document={format:'deckweft-presentation',schemaVersion:3,id:'s4-chart-kinds-'+locale,title:t('Chart kinds that keep their facts — S4 synthetic sample','保留事实的图表类型——S4 合成样例'),locale,
+  visualBrief:{audience:t('Authors checking that each chart states its question, values, limits and source without hover.','需要确认每张图在不悬停时也能说明问题、数值、限制与来源的作者。'),outputLanguage:locale,profile:{colorIntensity:'bold',typographicContrast:'expressive',density:'comfortable',motionIntensity:'subtle',imageEmphasis:'large'}},
+  sources:[{id:source,title:t('DeckWeft S4 chart sample (synthetic)','DeckWeft S4 图表样例（合成）'),url:'https://example.org/deckweft/s4-chart-sample'}],authorOverrides:{lockedBlockIds:[]},migration:{},blocks:[],datasets:[]};
+ const plan={format:'deckweft-design-plan',version:1,documentId:document.id,scenes:[]};
+ const scene=(id,title,chart,dataset,extra={})=>{
+  document.datasets.push({id:'data-'+id,synthetic:true,sourceIds:[source],...dataset});
+  document.blocks.push({id:id+'-title',type:'heading',sourceIds:[source],text:title},{id:id+'-chart',type:'chart',sourceIds:[source],datasetId:'data-'+id,...chart},{id:id+'-source',type:'citation',sourceIds:[source],sourceId:source,text:t('Synthetic sample · not measured','合成样例 · 非实测')});
+  plan.scenes.push({id,role:'evidence',theme:themes[plan.scenes.length%3],themeVersion:'1.0.0',composition:'evidence-top',blockIds:[id+'-title',id+'-chart',id+'-source'],focalBlockId:id+'-title',...extra});
+ };
+ // C01 direct-labelled bar: author order, a declared category focus (C1) and an attributed event on a row.
+ scene('direct-bar',t('Review is the slowest stage of a deck.','审阅是制作演示文稿最慢的环节。'),{chartType:'ranked-bar',sort:'author',axis:{policy:'zero'},focus:{categoryIds:['review']},question:t('Which stage takes the most hours?','哪个环节耗时最多？'),takeaway:t('Review takes 11.25 hours, more than drafting and revising together.','审阅耗时 11.25 小时，超过起草与修订之和。')},
+  {unit:t('hours','小时'),categories:t(['Draft','Review','Revise','Approve','Publish'],['起草','审阅','修订','批准','发布']),categoryIds:['draft','review','revise','approve','publish'],series:[{id:'hours',label:t('Median hours per deck','每份文稿中位耗时'),values:[6.5,11.25,4,2.5,1]}],
+   version:'s4-sample-1',collectedAt:'2026-09-30',validPeriod:{from:'2026-07-01',to:'2026-09-30'},definition:{sample:t('n = 40 synthetic decks','n = 40 份合成文稿'),normalized:false,betterDirection:'lower'},
+   events:[{id:'two-reviewers',categoryId:'review',label:t('Two-reviewer rule applies at this stage','此环节适用双人审阅规则'),relation:'attributed',sourceIds:[source]}]});
+ // C3: a range filter in author order on a value-sorted ranking; the static view states the filter and the ranks separately.
+ scene('filter-sort',t('A filtered ranking names its filter and its ranks.','筛选后的排名写明筛选条件与名次。'),{chartType:'ranked-bar',axis:{policy:'zero'},question:t('Which writing habits save the most review time?','哪些写作习惯最能节省审阅时间？')},
+  {unit:'%',categories:t(['Audience first','Claim first','Data first','Outline first','Slide by slide','Template'],['先看受众','先写结论','先看数据','先列提纲','逐页制作','套用模板']),categoryIds:['audience','claim','data','outline','slide','template'],series:[{id:'saving',label:t('Drop in review hours (illustrative)','审阅时长降幅（示意）'),values:[22,38,27,31,12,19]}],definition:{denominator:t("Each team's review hours before adoption (synthetic)",'各团队采用前的审阅时长（合成）'),betterDirection:'higher'}},
+  {interactions:[{id:'range',kind:'chart-select',blockId:'filter-sort-chart'}],cues:[{id:'middle',event:'data.filter',interactionId:'range',seriesIds:['saving'],fromId:'claim',toId:'slide',label:t('Author-order range Claim first → Slide by slide','按作者顺序筛选：先写结论 → 逐页制作')}],keyStates:[{id:'opening',position:0,label:t('All six habits','全部六种习惯')},{id:'middle',position:1,label:t('Four habits by author order','按作者顺序的四种习惯')}],staticState:{keyStateId:'middle'},motion:{policy:'subtle',durationMs:240,trigger:'manual',clock:'cues',reducedMotion:'static'}});
+ // Truncation with a note, ascending sort and a missing value with its reason.
+ scene('ranked-truncated',t('Scores sit close together; the axis says so.','得分相近，坐标轴如实说明。'),{chartType:'ranked-bar',sort:'value-asc',axis:{policy:'fixed',min:80,max:100},truncation:{note:t('Scores cluster between 80 and 100; starting at 80 makes the gaps look larger than they are.','得分集中在 80 到 100 之间；从 80 起画会放大差距。')}},
+  {unit:'%',categories:t(['Contrast','Keyboard','Captions','Alt text','Reading order','Zoom'],['对比度','键盘操作','字幕','替代文本','阅读顺序','缩放']),categoryIds:['contrast','keyboard','captions','alt','order','zoom'],series:[{id:'score',label:t('Accessibility audit score','无障碍审查得分'),values:[96,91,null,88,93.5,84]}],
+   missing:[{seriesId:'score',categoryId:'captions',reason:'not-applicable',note:t('No video in the audited decks.','受审文稿不含视频。')}]});
+ // C02 grouped bar with a missing value and a qualifier.
+ scene('grouped',t('Review rounds fell for every deck type.','每类文稿的审阅轮数都在下降。'),{chartType:'grouped-bar',axis:{policy:'zero'},question:t('How many review rounds does each deck type need?','每类文稿需要几轮审阅？'),takeaway:t('Board memos still need the most rounds, but fewer than in 2024.','董事会备忘录仍需最多轮次，但少于 2024 年。')},
+  {unit:t('rounds','轮'),categories:t(['Strategy deck','Product update','Research readout','Board memo'],['战略汇报','产品更新','研究报告','董事会备忘录']),categoryIds:['strategy','product','research','board'],series:[{id:'y2024',label:'2024',values:[4,3,5,6]},{id:'y2025',label:'2025',values:[3,2,4,5]},{id:'y2026',label:'2026',values:[2,2,null,3]}],
+   missing:[{seriesId:'y2026',categoryId:'research',reason:'not-collected',note:t('No research readouts were reviewed in 2026 yet.','2026 年尚无研究报告完成审阅。')}],qualifiers:[{seriesId:'y2026',categoryId:'board',label:t('preliminary','初步'),note:t('Two of five board memos are still in review.','五份董事会备忘录中有两份仍在审阅。')}],definition:{betterDirection:'lower'}});
+ // C09 dot and interval: two series, one interval type and level, a category focus.
+ scene('dot-interval',t('Claim-first drafts start sooner for everyone.','先写结论让所有人更早开始起草。'),{chartType:'dot-interval',axis:{policy:'zero'},focus:{categoryIds:['claim']},question:t('How long until the first full draft?','多久能完成第一版完整草稿？'),takeaway:t('Claim first is fastest for novices and experts; the intervals overlap with outline first.','先写结论对新手和熟手都最快；它与先列提纲的区间有重叠。')},
+  {unit:t('minutes','分钟'),categories:t(['Outline first','Claim first','Template','Blank page'],['先列提纲','先写结论','套用模板','从空白开始']),categoryIds:['outline','claim','template','blank'],series:[
+   {id:'novice',label:t('Novice authors','新手作者'),values:[48,40,57,75],interval:{type:'ci',level:95,method:t('Synthetic bootstrap, 2,000 resamples','合成自助法，2,000 次重抽样'),lower:[42,34,49,64],upper:[55,47,66,87]}},
+   {id:'expert',label:t('Experienced authors','熟练作者'),values:[36,30,45,61],interval:{type:'ci',level:95,method:t('Synthetic bootstrap, 2,000 resamples','合成自助法，2,000 次重抽样'),lower:[31,26,39,52],upper:[41,35,52,71]}}],definition:{sample:t('n = 120 synthetic authors','n = 120 位合成作者'),betterDirection:'lower'}});
+ // Log axis on a dot-interval chart: values span four orders of magnitude.
+ scene('dot-log',t('Render time grows by orders of magnitude.','渲染时间按数量级增长。'),{chartType:'dot-interval',axis:{policy:'extent',scale:'log'}},
+  {unit:'ms',categories:t(['Text slide','Chart slide','Image slide','Video slide'],['文字页','图表页','图片页','视频页']),categoryIds:['text','chart','image','video'],series:[{id:'render',label:t('Median render time','渲染时间中位数'),values:[12,48,310,4200],interval:{type:'iqr',method:t('Synthetic measurements, 200 runs each','合成测量，每类 200 次'),lower:[9,40,250,3100],upper:[15,61,390,5600]}}],definition:{betterDirection:'lower'}});
+ // C13 trend with end labels, C14 events, a muted background under a series focus, a missing value and an interval on the focus series.
+ scene('trend',t('Guided adoption pulled away after week 3.','第 3 周后引导模式的采用率明显领先。'),{chartType:'line',labels:'end',axis:{policy:'zero'},focus:{seriesIds:['guided']},question:t('Which mode do authors adopt fastest?','作者最快采用哪种模式？'),takeaway:t('Guided mode reaches 44% by week 8; the other modes stay below 21%.','引导模式在第 8 周达到 44%；其他模式都低于 21%。')},
+  {unit:'%',categories:t(['W1','W2','W3','W4','W5','W6','W7','W8'],['第1周','第2周','第3周','第4周','第5周','第6周','第7周','第8周']),categoryIds:['w1','w2','w3','w4','w5','w6','w7','w8'],series:[
+   {id:'guided',label:t('Guided','引导'),values:[12,15,19,24,31,37,41,44],interval:{type:'ci',level:90,method:t('Synthetic survey weights','合成调查权重'),lower:[10,13,16,21,27,33,37,40],upper:[14,17,22,27,35,41,45,48]}},
+   {id:'manual',label:t('Manual','手动'),values:[12,13,14,16,null,18,19,20]},{id:'template',label:t('Template','模板'),values:[10,11,11,12,13,13,14,14]}],
+   missing:[{seriesId:'manual',categoryId:'w5',reason:'not-collected',note:t('Survey paused in week 5.','第 5 周暂停调查。')}],
+   events:[{id:'release',categoryId:'w3',label:t('Guided mode released','引导模式发布'),relation:'temporal',sourceIds:[]},{id:'training',categoryId:'w6',label:t('Team training credited in the survey','调查中受访者归功于团队培训'),relation:'attributed',sourceIds:[source]}],
+   definition:{denominator:t('Active authors that week (synthetic)','当周活跃作者（合成）'),betterDirection:'higher'}});
+ // Log axis on a point-labelled line.
+ scene('log-line',t('Export size grew a hundredfold.','导出体积增长了一百倍。'),{chartType:'line',axis:{policy:'extent',scale:'log'}},
+  {unit:'KB',categories:['2019','2020','2021','2022','2023','2024','2025','2026'],categoryIds:['y2019','y2020','y2021','y2022','y2023','y2024','y2025','y2026'],series:[{id:'size',label:t('Median export size','导出体积中位数'),values:[180,260,540,900,2100,3800,7400,15500]}]});
+ // C17 small multiples on one shared scale, with a temporal event.
+ scene('small-multiples',t('Each region on the same scale.','各地区使用同一刻度。'),{chartType:'small-multiples',axis:{policy:'zero'},question:t('Where did review volume grow?','哪些地区的审阅量增长了？'),takeaway:t('East grew fastest; West declined every month.','东区增长最快；西区每月下降。')},
+  {unit:t('reviews','次审阅'),categories:t(['Jan','Feb','Mar','Apr','May','Jun'],['1月','2月','3月','4月','5月','6月']),categoryIds:['m1','m2','m3','m4','m5','m6'],series:[{id:'north',label:t('North','北区'),values:[20,24,27,31,35,38]},{id:'south',label:t('South','南区'),values:[18,17,19,18,20,21]},{id:'east',label:t('East','东区'),values:[9,12,16,22,29,37]},{id:'west',label:t('West','西区'),values:[25,24,22,21,19,18]}],
+   events:[{id:'tooling',categoryId:'m3',label:t('New review tooling available','新审阅工具上线'),relation:'temporal',sourceIds:[]}]});
+ // C05 qualified benchmark table: units, betterDirection, missing reasons and qualifiers per cell.
+ scene('benchmark',t('Export fidelity, with every qualifier kept.','导出保真度，保留每条限定说明。'),{chartType:'benchmark-table',focus:{categoryIds:['pipeline-a']},question:t('Which export pipeline keeps the most content checks?','哪条导出流程通过的内容检查最多？'),takeaway:t('Pipeline A leads three of four columns; Pipeline C reports a higher chart score but self-reported.','流程 A 在四列中领先三列；流程 C 的图表分更高，但为自报数据。')},
+  {unit:t('% checks passed','% 检查通过'),categories:t(['Pipeline A','Pipeline B','Pipeline C','Pipeline D'],['流程 A','流程 B','流程 C','流程 D']),categoryIds:['pipeline-a','pipeline-b','pipeline-c','pipeline-d'],series:[{id:'text',label:t('Text','文字'),values:[98.9,97.8,99.3,96.1]},{id:'charts',label:t('Charts','图表'),values:[97.5,88.1,98,93.7]},{id:'tables',label:t('Tables','表格'),values:[98.1,95,null,94.4]},{id:'motion',label:t('Motion','动效'),values:[92.4,null,85.2,80]}],
+   missing:[{seriesId:'motion',categoryId:'pipeline-b',reason:'not-applicable',note:t('Pipeline B exports no motion.','流程 B 不导出动效。')},{seriesId:'tables',categoryId:'pipeline-c',reason:'not-comparable',note:t('Pipeline C flattens tables to images.','流程 C 把表格压平为图片。')}],
+   qualifiers:[{seriesId:'charts',categoryId:'pipeline-c',label:t('self-reported','自报'),note:t('Vendor figure; not reproduced.','供应商数据，未复现。')},{seriesId:'text',categoryId:'pipeline-b',label:t('self-reported','自报')}],
+   version:'s4-sample-1',collectedAt:'2026-10-01',definition:{sample:t('500 synthetic content checks per pipeline','每条流程 500 项合成内容检查'),betterDirection:'higher'}});
+ // A stacked comparison sorted by its net totals.
+ scene('stacked-sorted',t('The longest decks are the writing-heavy ones.','耗时最长的文稿以写作为主。'),{chartType:'stacked',sort:'value-desc',axis:{policy:'zero'}},
+  {unit:t('hours','小时'),categories:t(['Deck A','Deck B','Deck C','Deck D','Deck E'],['文稿 A','文稿 B','文稿 C','文稿 D','文稿 E']),categoryIds:['a','b','c','d','e'],series:[{id:'writing',label:t('Writing','写作'),values:[5,3,6,2,4]},{id:'design',label:t('Design','设计'),values:[2,4,1,3,2]},{id:'review',label:t('Review','审阅'),values:[3,1,2,4,1]}]});
+ // A truncated area with its note.
+ scene('area-truncated',t('Uptime dips are small; the axis is cut.','可用率波动很小，坐标轴已截断。'),{chartType:'area',axis:{policy:'fixed',min:98.4,max:99.6},truncation:{note:t('Uptime stays between 98.7% and 99.6%; the cut axis exaggerates every dip.','可用率在 98.7% 到 99.6% 之间；截断的坐标轴会放大每次下降。')}},
+  {unit:'%',categories:t(['Mon','Tue','Wed','Thu','Fri'],['周一','周二','周三','周四','周五']),categoryIds:['mon','tue','wed','thu','fri'],series:[{id:'uptime',label:t('Service uptime','服务可用率'),values:[99.1,99.4,98.7,99.6,99.2]}]});
+ return {document,plan};
+}
+export const chartKindsProject=locale=>{const {document,plan}=chartKinds(locale);return createVisualProject(document,plan,{id:'s4-chart-kinds-'+locale});};

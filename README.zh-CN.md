@@ -25,7 +25,7 @@
 执行 `npm run deck:create -- --brief examples/task-brief.zh-CN.json --out dist/my-task`，生成保留源内容的本地任务检查点和预览。共享工具连接规划、精确数据修订、真实浏览器检查、实际图像审阅、有界修复与已审阅 HTML 导出。[任务说明](docs/zh-CN/task-loop.md) · [VIS-011 证据](docs/evidence/vis-011/review.md)。VIS-012 宿主适配已有本地实现，Claude 验收暂缓；VIS-013 工作台已有本地实现。
 
 
-当前需求已按实际代码校准：VIS-002～011 为本地实现，VIS-012 宿主适配已有本地实现及暂缓的 Claude 验收，VIS-013 工作台已有本地实现，VIS-014 发布验收仍为后续计划。完整样例库、真实宿主和 v3 原生导出仍有待验证或开发；详见[路线图](docs/zh-CN/roadmap.md)。
+当前需求已按实际代码校准：VIS-002～011 为本地实现，VIS-012 宿主适配已有本地实现及暂缓的 Claude 验收，VIS-013 工作台已有本地实现，VIS-014 发布验收仍为后续计划。S9a 起，创作栏只问六个问题，并在生成整套演示前显示同一内容的三个已测量方向。“编辑页面 → 作者控制”在应用前说明每项修改，可以撤销。另有章节、分项的文字/数据/来源/构图锁定、提问而非填充的页数规划、可复用设计配置，以及 Studio 中的 PowerPoint/PDF 导出（[作者控制](docs/zh-CN/visual-studio.md#作者控制章节与分项锁定s9a) · [S9a 证据（英文）](docs/evidence/s9a-author-controls/review.md)）。S9b 起，含标题、简短回答和一张图的页面可以变为“讲解 → 图解 → 探索”：先提问，再显示完整对象，读者可用按钮或键盘把每个部分与整体对照查看；静态导出总是包含完整说明（[讲解 → 图解 → 探索](docs/zh-CN/interactions.md#讲解--图解--探索蓝图-as9b) · [S9b 证据（英文）](docs/evidence/s9b-blueprint-a/review.md)）。完整样例库、真实宿主和 v3 原生导出仍有待验证或开发；详见[路线图](docs/zh-CN/roadmap.md)。
 
 本地宿主适配已支持显式启用的结构化起草、局部修订及实际截图反馈，复用共享任务工具。Claude 真实验收继续暂缓，VIS-012 保持 partial。[宿主手册](docs/zh-CN/hosts.md) · [证据](docs/evidence/vis-012/review.md)。
 
@@ -91,7 +91,7 @@ node bin/deckweft.mjs export examples/welcome.zh-CN.deck.json --format pptx --ou
 
 ## 暂时没有的功能
 
-自动查资料、生成图片、原生可编辑图表、视频渲染、任意 PPTX 导入、多人实时协作、在线付费系统、直接控制桌面 Figma / AE，都没有被包装成已完成。两个导入器仍需要真实软件验收。切换语言不会自动翻译文稿。
+自动查资料、生成图片、视频渲染、任意 PPTX 导入、多人实时协作、在线付费系统、直接控制桌面 Figma / AE，都没有被包装成已完成。原生可编辑图表只存在于实验性的 v3 PowerPoint 导出（`npm run export:targets`）中，目前只经过文件包检查，尚未在 PowerPoint 或 Keynote 中验证（[兼容性](docs/zh-CN/compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016)）。两个导入器仍需要真实软件验收。切换语言不会自动翻译文稿。
 
 ## 开发与许可
 

@@ -18,7 +18,7 @@ await mkdir(path.join(root,'dist/types'),{recursive:true});
 await writeFile(path.join(root,'dist/types/project.d.mts'),'// Generated from schemas/project.schema.json. Do not edit.\n'+Object.entries(schema.$defs).map(([name,rule])=>`export type ${name} = ${type(rule)};`).join('\n')+`\nexport type Project = ${type(schema)};\n`);
 const schemaV1=JSON.parse(await readFile(path.join(root,'schemas/project-v1.schema.json'),'utf8'));
 await writeFile(path.join(root,'dist/types/project-v1.d.mts'),'// Generated legacy contract.\n'+Object.entries(schemaV1.$defs).map(([name,rule])=>`export type ${name} = ${type(rule)};`).join('\n')+`\nexport type Project = ${type(schemaV1)};\n`);
-for(const name of ['presentation-v3','design-plan','web-scene','visual-project','theme-pack','asset-brief','host-response']) {
+for(const name of ['presentation-v3','design-plan','web-scene','visual-project','theme-pack','asset-brief','host-response','design-profile']) {
  const contract=JSON.parse(await readFile(path.join(root,`schemas/${name}.schema.json`),'utf8'));
  await writeFile(path.join(root,`dist/types/${name}.d.mts`),'// Generated from the versioned JSON schema.\n'+Object.entries(contract.$defs||{}).map(([n,r])=>`export type ${n} = ${type(r)};`).join('\n')+`\nexport type Contract = ${type(contract)};\n`);
 }

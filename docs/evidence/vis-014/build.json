@@ -1,0 +1,82 @@
+{
+  "decks": [
+    {
+      "name": "gallery-en",
+      "kind": "gallery",
+      "locale": "en",
+      "scenes": 12,
+      "renderHash": "93cc83c091dbfa1ef79336b3c064c68518c2864732e4b33f59ba2b7e31065d4c",
+      "htmlBytes": 6958326,
+      "images": 3
+    },
+    {
+      "name": "story-cream-collage-en",
+      "kind": "story",
+      "locale": "en",
+      "theme": "cream-collage",
+      "scenes": 8,
+      "renderHash": "73539b3bccbaa4768a894dac891b1f1d3a154c6439330050d59e7d542ee0e0d6",
+      "htmlBytes": 6844441,
+      "images": 2
+    },
+    {
+      "name": "story-dark-data-en",
+      "kind": "story",
+      "locale": "en",
+      "theme": "dark-data",
+      "scenes": 8,
+      "renderHash": "8c9dbae431119b790219390004278c5c26d00169bd8609cd693e8f2f8d1b0afd",
+      "htmlBytes": 6843772,
+      "images": 2
+    },
+    {
+      "name": "story-electric-violet-en",
+      "kind": "story",
+      "locale": "en",
+      "theme": "electric-violet",
+      "scenes": 8,
+      "renderHash": "87c80ad00a2a2374432c11eb7b02b6f836d0753f46b4fb629ab8f27edf4e90d1",
+      "htmlBytes": 6843859,
+      "images": 2
+    },
+    {
+      "name": "gallery-zh-CN",
+      "kind": "gallery",
+      "locale": "zh-CN",
+      "scenes": 12,
+      "renderHash": "e80f67f76f36e7dcbd6de98b245f4c9907eb224cac5accff5deb5cc14aa966b4",
+      "htmlBytes": 6957285,
+      "images": 3
+    },
+    {
+      "name": "story-cream-collage-zh-CN",
+      "kind": "story",
+      "locale": "zh-CN",
+      "theme": "cream-collage",
+      "scenes": 8,
+      "renderHash": "5dea6775b5ad74b2b57f11af1e5ef5f1df1b7290d4bda47fda8b5fd43ef1bada",
+      "htmlBytes": 6843736,
+      "images": 2
+    },
+    {
+      "name": "story-dark-data-zh-CN",
+      "kind": "story",
+      "locale": "zh-CN",
+      "theme": "dark-data",
+      "scenes": 8,
+      "renderHash": "32e8f8ba437ca26b14f2711d7d6b0920011f1390cf11c16b1f877fc0979db2c7",
+      "htmlBytes": 6843472,
+      "images": 2
+    },
+    {
+      "name": "story-electric-violet-zh-CN",
+      "kind": "story",
+      "locale": "zh-CN",
+      "theme": "electric-violet",
+      "scenes": 8,
+      "renderHash": "5f5253b9e48746f33ebdcfbf18c1ba41a2fcfe2310e1c39bf93e43041f092a6a",
+      "htmlBytes": 6843559,
+      "images": 2
+    }
+  ]
+}

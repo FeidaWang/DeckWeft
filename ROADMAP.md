@@ -2,6 +2,99 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## S11 — merge readiness for S1–S10, 2026-10-19
+
+S11 checks the stack without publishing it. It changed no runtime code, schema or task state; three test selectors were fixed. State **LocalVerified**.
+
+- **Clean archive.** `d584d76` passes `npm run verify` from an empty directory: 475 tests, 471 pass, 4 gated skips.
+- **Browser gates.** All 18 runners reproduce the recorded numbers in isolated Chrome for Testing 151, two after a fix or rerun. [Evidence](docs/evidence/s11-merge-readiness/review.md).
+- **Plan.** The [merge plan](docs/plans/design-handoff-merge-to-main.md) has corrected figures and a Readiness section. `origin/main` is unmoved; the backup tag is local. Nothing is merged or pushed.
+
+[Alignment §20](docs/plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)
+
+## S10 — pattern library maintenance and the P3 boundary (DWD-310), 2026-10-19
+
+S10 makes the design registers maintainable. It is documentation and register work: no runtime code, schema or task state changed. DWD-310 stays **partial**.
+
+- **Maintenance fields.** All 56 patterns carry `patternId`, `version` (`1.0.0`), source URL, locale, `sourceCheckedAt`, evidence type, observed behaviour, `verification` and `deprecatedBy`, among others. Only what the evidence supports is filled; the rest is `null`. The 82 sources gained `sourceUrl`, `locale`, `sourceCheckedAt` and `browserSample`.
+- **Manual.** [Maintaining the pattern register](docs/design/pattern-register.md) ([简体中文](docs/zh-CN/pattern-register.md)): when to add a pattern, how to run a browser check, how an upstream change is recorded without altering existing decks.
+- **Full verification, recorded not done.** OpenAI's 1,390 zh-Hans-CN paths still need a template grouping and 8 cells per template (desktop and mobile × initial, interaction, reduced motion, static). Anthropic has no verifiable URL list.
+- **EXP-001.** The P3 deferrals are `notes` on the task, which stays `planned`: no full-screen persistent particles, no multi-layer blur, no 3D without a static final state, no mouse-only openings, no meaningless number rolling before P1 acceptance. A budget needs a reference device, browser version, resolution, DPR and power mode first.
+- **Sample.** Three reference pages were opened once in the built-in browser ([evidence](docs/evidence/s10-pattern-maintenance/review.md)).
+- **Plan.** [Merging S1–S10 into `main`](docs/plans/design-handoff-merge-to-main.md): a plan only. Nothing is merged or pushed.
+
+[Alignment §19](docs/plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19).
+
+## S9b — blueprint A, Explain → Diagram → Explore (DWD-210), 2026-10-19
+
+S9b adds the first explanation scene of the design handoff to VIS-009. VIS-009 stays **implemented-local**.
+
+- **One page, three stages.** Explain (question, short answer, object name) → Diagram (the whole object, numbered parts) → Explore (one part against the whole). It is built on the existing diagram, `steps`, cue clock, key states and static state, with one optional field.
+- **Restore rule.** Each page remembers its stage and part while the document is open; a reload opens on Explain.
+- **Keyboard and motion.** Part selection and Explore controls never turn the page. Reduced motion reaches every stage.
+- **Exports never leave disassembled parts.** Without JavaScript and in PowerPoint and PDF the page always shows the whole object, numbered parts and every explanation. The export order refuses a page with no static state or with Explain as its static state.
+- **Studio.** **Make this page Explain → Diagram → Explore** goes through the normal edit path (undo, locks). The author chooses the static state.
+- **Codex page plan.** The Codex draft path now gets a page-count plan. Host-added pages are asked about, never accepted silently. One live Codex CLI run drafted 4 pages for a target of 6 without padding, and the plan asked for the missing material.
+
+Checked in isolated Chromium at 1440, 1024 and 390 px:
+
+- a 66-step player trace and a 9-step Studio trace, with refused and passing Studio PowerPoint/PDF exports;
+- 12 decks (six themes × two languages) with identical facts and 0 fit, contrast or glyph issues;
+- `export:targets --s9`: PowerPoint editability and the page check pass on 12 of 12.
+
+Firefox, WebKit, PowerPoint and Keynote were not run, and Claude is deferred. [Interactions manual](docs/en/interactions.md#explain--diagram--explore-blueprint-a-s9b) · [Visual Studio manual](docs/en/visual-studio.md#explain--diagram--explore-pages-s9b) · [Evidence](docs/evidence/s9b-blueprint-a/review.md).
+
+## S9a — author controls (DWD-200), 2026-10-19
+
+S9a extends VIS-013 inside the existing Visual Studio and builds VIS-015's last acceptance sentence. VIS-013 stays **implemented-local**. VIS-015 stays **partial**.
+
+- **Entry.** Create asks six questions (Topic, Audience, Style, Detail, Motion, Output) and draws the same content three ways. The three previews are measured; graphics, type, media and motion differ, and the facts are identical. Each says what it changes before the author chooses, then the deck is built from it.
+- **Author actions.** More editorial, Give the chart more space, Make quieter, Keep this layout, Replace the visual and Reduce text are planned first, state their scope and effects, then apply through the normal edit path, so Undo works. Reduce text moves text behind a page disclosure; nothing is deleted.
+- **Scope and locks.** Scope runs at four levels (deck, chapter, page, object). Text, data, source and composition locks are separate, through an explicit migration, and survive theme changes, source updates and history restore. Partial revisions state their scope first.
+- **Page planning.** Pages are planned from argument units. The planner asks, or marks pages evidence-required, and never pads.
+- **Reusable profiles.** An accepted design can be promoted into a profile that holds no text, images or branding.
+- **Studio export.** The export group now has PowerPoint and PDF, through the S7 export order.
+
+Checked in isolated Chromium at 1440, 1024 and 390 px: a 28-step UI trace, and 24 direction decks (six themes × two bases × two languages) with 0 fit, glyph or render issues. Studio PowerPoint and PDF exports pass on 48 of 48. PowerPoint and Keynote were not run, Claude is deferred, and S9b (blueprint A) has not started. [Workbench manual](docs/en/workbench.md#six-questions-and-three-directions-s9a) · [Visual Studio manual](docs/en/visual-studio.md#author-controls-chapters-and-separate-locks-s9a) · [Evidence](docs/evidence/s9a-author-controls/review.md).
+
+## VIS-016 — target-specific editable exports (S7), 2026-10-19
+
+VIS-016 is **partial** (implemented locally). Every component declares an output level for web, PDF and PowerPoint (L1 native, L2 vector with real text, L3 image of one element with a summary). The export order is enforced in code. v3 decks compile to:
+
+- PowerPoint: native text, tables, charts with embedded data, shapes, connectors, pictures and notes
+- PDF: one page per scene with real, tagged text
+
+Every element PowerPoint does not receive has its own receipt, and no slide is a screenshot. On the frozen VIS-014 corpus each deck gets an export report with four separate results:
+
+- PowerPoint editability and the page check pass on 9 of 9 decks.
+- PDF search passes for English and is partial for Chinese (some ideographs are stored as CJK radical code points).
+- Accessibility is partial (PDF figure wrappers without alt text).
+- Visual fidelity is partial (Quick Look reference renders only).
+
+PowerPoint and Keynote were not run, so application compatibility is not claimed. [Manual](docs/en/compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016) · [Evidence](docs/evidence/vis-016/review.md).
+
+## VIS-014 — first visual release gate (S6), 2026-10-19
+
+VIS-014 is **partial**. The gate runs locally:
+
+- a frozen bilingual 12-page gallery (requirements §9)
+- one bilingual 8-page story per theme, with identical facts in every theme
+- the VIS-010 pipeline on all eight decks (0 issues, 96 of 96 interaction traces)
+- eleven explicit cases, ten of which pass
+- the VIS-001 legacy comparison
+- standalone exports opened offline outside the repository in Chromium, Firefox and WebKit
+
+A real Codex CLI run drafted a deck from a prompt, reviewed its actual captures, exported it, revised one page and exported it again. The gate found six renderer failures, which were fixed with a deliberate baseline re-recording.
+
+What remains open:
+
+- Claude is deferred, so the both-hosts criterion is unmet.
+- Missing glyphs are not detected.
+- The 390 px heatmap scrolls, and CJK headings break inside words.
+- The advisory scored review is 74–77/100, below the pilot threshold, and needs the author's calibration.
+
+S3, S4 and S5 were merged into this branch first, with a layered chart-focus rule. [Gate manual](docs/visual-acceptance/README.md) · [Scored review](docs/visual-acceptance/review.md) · [Evidence](docs/evidence/vis-014/review.md).
+
 ## Verified source publication — 2026-10-18
 
 VIS-001 now has clean-checkout and remote CI acceptance for the recorded source. All 338 tests/types/check/build/export gates passed locally and on GitHub Node 22 for Ubuntu, macOS and Windows. The complete interaction gallery and actual preview/export image comparison passed; wider host/native/accessibility and VIS-014 release gates remain separate. [Evidence](docs/evidence/interaction-visual-regression/review.md).
@@ -18,7 +111,7 @@ VIS-012 is **implemented locally, partial acceptance**: Codex and Claude Code sh
 
 The [updated visual-first requirements](DeckWeft-Visual-First-Build-Roadmap-2026-10-18.md) now distinguish the old committed audit from the current visual implementation. VIS-001 baseline/CI acceptance is recorded; VIS-002–011 are implemented locally with the evidence below. `roadmap.json` includes every remaining VIS/SRC/DOC/EXP task and its dependencies. Historical batch orders and authorization records are retained; `nextExecutionOrder` is planning only.
 
-VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. Next planned implementation: **VIS-014 visual release gate**. Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
+VIS-012 adapters are implemented locally with deferred Claude acceptance. VIS-013 is implemented locally. VIS-014, VIS-015 and VIS-016 are partial (see above); S8 added the T01–T03 theme packs under VIS-015 ([evidence](docs/evidence/vis-015/review.md)), and the design-handoff plan continues with S9. Prepare the six additional families and frozen bilingual gallery/stories for VIS-014. Keep actual host image delivery, accessibility and standalone packaging as explicit acceptance gates. Native v3 exports follow under VIS-016; local synchronization and cloud connectors remain later opt-in scope. Existing bridge mocks, deterministic outline planning and representative QA stories do not close those gates.
 
 [Reconciliation and current validation](docs/evidence/roadmap-reconciliation/review.md) · [Next-task handoff](docs/en/handoff.md).
 

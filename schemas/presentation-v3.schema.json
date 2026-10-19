@@ -143,6 +143,70 @@
                   },
                   "maxItems": 100,
                   "minItems": 2
+                },
+                "interval": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "ci",
+                        "sd",
+                        "iqr",
+                        "range"
+                      ]
+                    },
+                    "level": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "method": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 500
+                    },
+                    "lower": {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "number",
+                            "minimum": -1000000000000.0,
+                            "maximum": 1000000000000.0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "minItems": 2,
+                      "maxItems": 100
+                    },
+                    "upper": {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "number",
+                            "minimum": -1000000000000.0,
+                            "maximum": 1000000000000.0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "minItems": 2,
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "method",
+                    "lower",
+                    "upper"
+                  ],
+                  "additionalProperties": false
                 }
               },
               "required": [
@@ -188,6 +252,178 @@
           "xUnit": {
             "type": "string",
             "maxLength": 50
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "collectedAt": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "validPeriod": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "to": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            },
+            "required": [
+              "from",
+              "to"
+            ],
+            "additionalProperties": false
+          },
+          "definition": {
+            "type": "object",
+            "properties": {
+              "denominator": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "sample": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "normalized": {
+                "type": "boolean"
+              },
+              "betterDirection": {
+                "enum": [
+                  "higher",
+                  "lower",
+                  "none"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "missing": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seriesId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "categoryId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "reason": {
+                  "enum": [
+                    "not-collected",
+                    "not-applicable",
+                    "suppressed",
+                    "not-comparable",
+                    "unknown"
+                  ]
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 500
+                }
+              },
+              "required": [
+                "seriesId",
+                "categoryId",
+                "reason"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "categoryId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "relation": {
+                  "enum": [
+                    "temporal",
+                    "attributed"
+                  ]
+                },
+                "sourceIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "id",
+                "categoryId",
+                "label",
+                "relation",
+                "sourceIds"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 50
+          },
+          "qualifiers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seriesId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "categoryId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 60
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 500
+                }
+              },
+              "required": [
+                "seriesId",
+                "categoryId",
+                "label"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 200
           }
         },
         "required": [
@@ -283,6 +519,35 @@
           },
           "minItems": 0,
           "maxItems": 100
+        },
+        "lockMode": {
+          "description": "S9a. Absent or combined: a locked chart block also locks its dataset and linked sources (the S1 mapping). separate: lockedBlockIds lock the object as written; data and sources are locked only by lockedDatasetIds and lockedSourceIds. Entered by the explicit migration separateLocks(), which copies every implied lock so nothing is released.",
+          "enum": [
+            "combined",
+            "separate"
+          ]
+        },
+        "lockedDatasetIds": {
+          "description": "S9a data locks: the dataset (values, units, definitions, missing reasons, events, intervals) cannot change.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "minItems": 0,
+          "maxItems": 300,
+          "uniqueItems": true
+        },
+        "lockedSourceIds": {
+          "description": "S9a source locks: the source record (title, url) cannot change.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "minItems": 0,
+          "maxItems": 300,
+          "uniqueItems": true
         }
       },
       "required": [
@@ -460,6 +725,20 @@
         ],
         "additionalProperties": false
       }
+    },
+    "rules": {
+      "type": "object",
+      "properties": {
+        "misreading": {
+          "enum": [
+            "strict"
+          ]
+        }
+      },
+      "required": [
+        "misreading"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -780,7 +1059,11 @@
             "ranked-bar",
             "stacked",
             "scatter",
-            "heatmap"
+            "heatmap",
+            "grouped-bar",
+            "dot-interval",
+            "small-multiples",
+            "benchmark-table"
           ]
         },
         "axis": {
@@ -802,6 +1085,12 @@
               "type": "number",
               "minimum": -1000000000000.0,
               "maximum": 1000000000000.0
+            },
+            "scale": {
+              "enum": [
+                "linear",
+                "log"
+              ]
             }
           },
           "required": [
@@ -828,12 +1117,81 @@
               "type": "number",
               "minimum": -1000000000000.0,
               "maximum": 1000000000000.0
+            },
+            "scale": {
+              "enum": [
+                "linear",
+                "log"
+              ]
             }
           },
           "required": [
             "policy"
           ],
           "additionalProperties": false
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "takeaway": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sort": {
+          "enum": [
+            "author",
+            "value-desc",
+            "value-asc"
+          ]
+        },
+        "truncation": {
+          "type": "object",
+          "properties": {
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          },
+          "required": [
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "focus": {
+          "type": "object",
+          "properties": {
+            "categoryIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "uniqueItems": true
+            },
+            "seriesIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+              },
+              "minItems": 1,
+              "maxItems": 8,
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "labels": {
+          "enum": [
+            "points",
+            "end"
+          ]
         }
       },
       "required": [

@@ -24,17 +24,29 @@ export async function renameWrittenFile(temporary,file,{platform=process.platfor
     }
   }
 }
+/** Windows refuses to replace a file that any handle in this process still has open, however briefly.
+ * Reads and replacements of the same path in this process therefore take turns (first come, first served);
+ * the bounded retry above still covers handles held by other processes, such as a scanner.
+ */
+const fileTurns=new Map();
+async function inTurn(file,work){
+  const key=path.resolve(file),previous=fileTurns.get(key)||Promise.resolve();
+  let release;const mine=new Promise(resolve=>{release=resolve;}),tail=previous.then(()=>mine);
+  fileTurns.set(key,tail);
+  await previous;
+  try{return await work();}finally{release();if(fileTurns.get(key)===tail)fileTurns.delete(key);}
+}
 export async function atomicWrite(file,data){
   await rejectSymlinks(file);await mkdir(path.dirname(file),{recursive:true});
   const temporary=`${file}.tmp-${randomUUID()}`;
   try{
     const handle=await open(temporary,'wx',0o600);
     try{await handle.writeFile(data);await handle.sync();}finally{await handle.close();}
-    await renameWrittenFile(temporary,file);
+    await inTurn(file,()=>renameWrittenFile(temporary,file));
   }finally{await rm(temporary,{force:true});}
 }
 export async function readJSON(file,maxBytes=4_000_000){
-  const content=await readFile(file);
+  const content=await inTurn(file,()=>readFile(file));
   if(content.length>maxBytes)throw new DeckError('FILE_SIZE','Use a JSON file smaller than 4 MB.',413);
   try{return JSON.parse(content.toString('utf8'));}catch{throw new DeckError('INVALID_JSON','This file is not valid JSON. Check for missing commas or brackets.',400);}
 }

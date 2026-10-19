@@ -1,0 +1,669 @@
+{
+  "decks": [
+    {
+      "deck": "gallery-en",
+      "status": "awaiting-visual-review",
+      "machineOk": true,
+      "exit": 0,
+      "browser": "151.0.7922.34",
+      "issues": [],
+      "traces": [
+        {
+          "sceneId": "ev-case",
+          "action": "touch reveal original-image context",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "keyboard select explanation p2",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "select actual chart category review",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "ev-case",
+          "action": "touch reveal original-image context",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "keyboard select explanation p2",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "select actual chart category review",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "ev-case",
+          "action": "touch reveal original-image context",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "keyboard select explanation p2",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "select actual chart category review",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "deterministic replay and seek",
+          "ok": true
+        }
+      ],
+      "repair": {
+        "rounds": 0,
+        "candidates": 0,
+        "sceneChanges": 0,
+        "milliseconds": 1
+      },
+      "receipt": "af1ac33dc7cfb7b1b35dc9e9c0f47563c245b9316147b8c8cc161d6516859060",
+      "captures": [
+        "project-1440-explored.png",
+        "project-contact.png"
+      ],
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "deck": "story-cream-collage-en",
+      "status": "awaiting-visual-review",
+      "machineOk": true,
+      "exit": 0,
+      "browser": "151.0.7922.34",
+      "issues": [],
+      "traces": [
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        }
+      ],
+      "repair": {
+        "rounds": 0,
+        "candidates": 0,
+        "sceneChanges": 0,
+        "milliseconds": 1
+      },
+      "receipt": "9bcab0cc04df83c7560a4409df4c8a6b253bc824647a167c14fc6e04ef83ec60",
+      "captures": [
+        "project-1440-explored.png",
+        "project-contact.png"
+      ],
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "deck": "story-dark-data-en",
+      "status": "awaiting-visual-review",
+      "machineOk": true,
+      "exit": 0,
+      "browser": "151.0.7922.34",
+      "issues": [],
+      "traces": [
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        }
+      ],
+      "repair": {
+        "rounds": 0,
+        "candidates": 0,
+        "sceneChanges": 0,
+        "milliseconds": 0
+      },
+      "receipt": "2afef3611e2624e190b0fe7ce7ca90f808d1052d1acfb8a73ff091a1f044b78e",
+      "captures": [
+        "project-1440-explored.png",
+        "project-contact.png"
+      ],
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "deck": "story-electric-violet-en",
+      "status": "awaiting-visual-review",
+      "machineOk": true,
+      "exit": 0,
+      "browser": "151.0.7922.34",
+      "issues": [],
+      "traces": [
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        }
+      ],
+      "repair": {
+        "rounds": 0,
+        "candidates": 0,
+        "sceneChanges": 0,
+        "milliseconds": 1
+      },
+      "receipt": "0ef8740db655103754b2836e3dd4b871a712aebfb6ee3d28f0af600b8e0dcc85",
+      "captures": [
+        "project-1440-explored.png",
+        "project-contact.png"
+      ],
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "deck": "gallery-zh-CN",
+      "status": "awaiting-visual-review",
+      "machineOk": true,
+      "exit": 0,
+      "browser": "151.0.7922.34",
+      "issues": [],
+      "traces": [
+        {
+          "sceneId": "ev-case",
+          "action": "touch reveal original-image context",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "keyboard select explanation p2",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "select actual chart category review",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "ev-case",
+          "action": "touch reveal original-image context",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "keyboard select explanation p2",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "select actual chart category review",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "ev-case",
+          "action": "touch reveal original-image context",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "keyboard select explanation p2",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "select actual chart category review",
+          "ok": true
+        },
+        {
+          "sceneId": "dd-explain",
+          "action": "deterministic replay and seek",
+          "ok": true
+        }
+      ],
+      "repair": {
+        "rounds": 0,
+        "candidates": 0,
+        "sceneChanges": 0,
+        "milliseconds": 0
+      },
+      "receipt": "6b22993e88246d887f7f3ffbc2fc43416d07864b181de1f9225f78439343e5a6",
+      "captures": [
+        "project-1440-explored.png",
+        "project-contact.png"
+      ],
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "deck": "story-cream-collage-zh-CN",
+      "status": "awaiting-visual-review",
+      "machineOk": true,
+      "exit": 0,
+      "browser": "151.0.7922.34",
+      "issues": [],
+      "traces": [
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        }
+      ],
+      "repair": {
+        "rounds": 0,
+        "candidates": 0,
+        "sceneChanges": 0,
+        "milliseconds": 1
+      },
+      "receipt": "1dc06e8e3e744ae07140c8d0dc125c9734372033e9d9e1bf50294396f5af996d",
+      "captures": [
+        "project-1440-explored.png",
+        "project-contact.png"
+      ],
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "deck": "story-dark-data-zh-CN",
+      "status": "awaiting-visual-review",
+      "machineOk": true,
+      "exit": 0,
+      "browser": "151.0.7922.34",
+      "issues": [],
+      "traces": [
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        }
+      ],
+      "repair": {
+        "rounds": 0,
+        "candidates": 0,
+        "sceneChanges": 0,
+        "milliseconds": 0
+      },
+      "receipt": "5f95fc567ac4587f9add3a89b9f6cc550f57be13071c8abd3093ff313608e692",
+      "captures": [
+        "project-1440-explored.png",
+        "project-contact.png"
+      ],
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "deck": "story-electric-violet-zh-CN",
+      "status": "awaiting-visual-review",
+      "machineOk": true,
+      "exit": 0,
+      "browser": "151.0.7922.34",
+      "issues": [],
+      "traces": [
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        },
+        {
+          "sceneId": "st-evidence",
+          "action": "select actual chart category evidence",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "keyboard select explanation e2",
+          "ok": true
+        },
+        {
+          "sceneId": "st-pair",
+          "action": "touch first crop then keyboard second",
+          "ok": true
+        },
+        {
+          "sceneId": "st-process",
+          "action": "deterministic replay and seek",
+          "ok": true
+        }
+      ],
+      "repair": {
+        "rounds": 0,
+        "candidates": 0,
+        "sceneChanges": 0,
+        "milliseconds": 0
+      },
+      "receipt": "d92c98fd9099739b5427719ae91b2543089bb6611a86191f77dd05e66175097c",
+      "captures": [
+        "project-1440-explored.png",
+        "project-contact.png"
+      ],
+      "errors": [],
+      "externalRequests": []
+    }
+  ],
+  "ok": true
+}

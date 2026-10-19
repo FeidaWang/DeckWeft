@@ -1,0 +1,2465 @@
+{
+ "format": "deckweft-s9b-player-trace",
+ "version": 1,
+ "renderer": "visual-art-direction.12",
+ "player": "semantic-player.6",
+ "browser": "Chromium (isolated, Playwright cache)",
+ "widths": [
+  1440,
+  1024,
+  390
+ ],
+ "runs": [
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data"
+  }
+ ],
+ "restoreRule": "A: per-page memory while the document is open; a reload opens on Explain",
+ "steps": [
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "opens on Explain",
+   "ms": 774,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "Object · DeckWeft export pipeline",
+   "animations": 1,
+   "count": "Explain · 0 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "fit audit: opening and every key state",
+   "ms": 775,
+   "ok": true,
+   "states": [
+    {
+     "keyStateId": "diagram",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explain",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explore-measure",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    }
+   ]
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "Next stage → Diagram",
+   "ms": 1309,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": false,
+   "stage": "diagram",
+   "stepId": null,
+   "drawnStage": "diagram",
+   "figureShown": true,
+   "pressed": [],
+   "marked": [],
+   "panel": "DeckWeft export pipeline · 4 parts",
+   "animations": 1,
+   "count": "Diagram · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "select Repair on the diagram",
+   "ms": 1824,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 2,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "Next page, Previous page: the same stage and part",
+   "ms": 2347,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 1,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "ArrowRight, ArrowLeft with nothing focused: pages turn, the part is restored",
+   "ms": 2368,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 1,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "reload resets to Explain",
+   "ms": 2432,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "Object · DeckWeft export pipeline",
+   "animations": 1,
+   "count": "Explain · 0 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "keyboard isolation",
+   "ms": 2516,
+   "keys": 17,
+   "control": "3 / 3"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "reduced motion: every stage by Next / Previous, Skip, no animation",
+   "ms": 3448,
+   "reduced": [
+    [
+     1,
+     "diagram",
+     null,
+     0
+    ],
+    [
+     2,
+     "explore",
+     "step-measure",
+     0
+    ],
+    [
+     3,
+     "explore",
+     "step-repair",
+     0
+    ],
+    [
+     4,
+     "explore",
+     "step-review",
+     0
+    ],
+    [
+     5,
+     "explore",
+     "step-export",
+     0
+    ],
+    [
+     0,
+     "explain",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "reducedMotion static: opens on Diagram, Replay disabled, Explain and Explore reachable",
+   "ms": 3731,
+   "notice": true,
+   "replayDisabled": true
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1440,
+   "step": "no JavaScript: whole object, numbered parts, every explanation",
+   "ms": 4388,
+   "parts": [
+    143,
+    142,
+    132,
+    141
+   ],
+   "numbers": 4,
+   "statement": "Static view · Diagram · the whole pipeline: DeckWeft export pipeline — 4 parts in reading order: Measure → Repair → Review → Export."
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "opens on Explain",
+   "ms": 5079,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "Object · DeckWeft export pipeline",
+   "animations": 1,
+   "count": "Explain · 0 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "fit audit: opening and every key state",
+   "ms": 5079,
+   "ok": true,
+   "states": [
+    {
+     "keyStateId": "diagram",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explain",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explore-measure",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    }
+   ]
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "Next stage → Diagram",
+   "ms": 5615,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": false,
+   "stage": "diagram",
+   "stepId": null,
+   "drawnStage": "diagram",
+   "figureShown": true,
+   "pressed": [],
+   "marked": [],
+   "panel": "DeckWeft export pipeline · 4 parts",
+   "animations": 1,
+   "count": "Diagram · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "select Repair on the diagram",
+   "ms": 6133,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 2,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "Next page, Previous page: the same stage and part",
+   "ms": 6665,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 1,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "ArrowRight, ArrowLeft with nothing focused: pages turn, the part is restored",
+   "ms": 6685,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 1,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "reload resets to Explain",
+   "ms": 6745,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "Object · DeckWeft export pipeline",
+   "animations": 1,
+   "count": "Explain · 0 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "keyboard isolation",
+   "ms": 6824,
+   "keys": 17,
+   "control": "3 / 3"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "reduced motion: every stage by Next / Previous, Skip, no animation",
+   "ms": 7739,
+   "reduced": [
+    [
+     1,
+     "diagram",
+     null,
+     0
+    ],
+    [
+     2,
+     "explore",
+     "step-measure",
+     0
+    ],
+    [
+     3,
+     "explore",
+     "step-repair",
+     0
+    ],
+    [
+     4,
+     "explore",
+     "step-review",
+     0
+    ],
+    [
+     5,
+     "explore",
+     "step-export",
+     0
+    ],
+    [
+     0,
+     "explain",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "reducedMotion static: opens on Diagram, Replay disabled, Explain and Explore reachable",
+   "ms": 8032,
+   "notice": true,
+   "replayDisabled": true
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 1024,
+   "step": "no JavaScript: whole object, numbered parts, every explanation",
+   "ms": 8687,
+   "parts": [
+    143,
+    142,
+    132,
+    141
+   ],
+   "numbers": 4,
+   "statement": "Static view · Diagram · the whole pipeline: DeckWeft export pipeline — 4 parts in reading order: Measure → Repair → Review → Export."
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "opens on Explain",
+   "ms": 9408,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "Object · DeckWeft export pipeline",
+   "animations": 1,
+   "count": "Explain · 0 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "fit audit: opening and every key state",
+   "ms": 9409,
+   "ok": true,
+   "states": [
+    {
+     "keyStateId": "diagram",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explain",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explore-measure",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    }
+   ]
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "Next stage → Diagram",
+   "ms": 9939,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": false,
+   "stage": "diagram",
+   "stepId": null,
+   "drawnStage": "diagram",
+   "figureShown": true,
+   "pressed": [],
+   "marked": [],
+   "panel": "DeckWeft export pipeline · 4 parts",
+   "animations": 1,
+   "count": "Diagram · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "select Repair on the diagram",
+   "ms": 10445,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 2,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "Next page, Previous page: the same stage and part",
+   "ms": 10971,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 1,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "ArrowRight, ArrowLeft with nothing focused: pages turn, the part is restored",
+   "ms": 11019,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "Part 2 of 4 · Repair",
+   "animations": 1,
+   "count": "Exploring · Explore · 1 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "reload resets to Explain",
+   "ms": 11094,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "Object · DeckWeft export pipeline",
+   "animations": 1,
+   "count": "Explain · 0 / 5"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "keyboard isolation",
+   "ms": 11175,
+   "keys": 17,
+   "control": "3 / 3"
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "reduced motion: every stage by Next / Previous, Skip, no animation",
+   "ms": 12062,
+   "reduced": [
+    [
+     1,
+     "diagram",
+     null,
+     0
+    ],
+    [
+     2,
+     "explore",
+     "step-measure",
+     0
+    ],
+    [
+     3,
+     "explore",
+     "step-repair",
+     0
+    ],
+    [
+     4,
+     "explore",
+     "step-review",
+     0
+    ],
+    [
+     5,
+     "explore",
+     "step-export",
+     0
+    ],
+    [
+     0,
+     "explain",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "reducedMotion static: opens on Diagram, Replay disabled, Explain and Explore reachable",
+   "ms": 12367,
+   "notice": true,
+   "replayDisabled": true
+  },
+  {
+   "locale": "en",
+   "theme": "silver-gray-editorial",
+   "width": 390,
+   "step": "no JavaScript: whole object, numbered parts, every explanation",
+   "ms": 13012,
+   "parts": [
+    143,
+    142,
+    132,
+    141
+   ],
+   "numbers": 4,
+   "statement": "Static view · Diagram · the whole pipeline: DeckWeft export pipeline — 4 parts in reading order: Measure → Repair → Review → Export."
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "opens on Explain",
+   "ms": 13738,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "对象 · DeckWeft 导出流程",
+   "animations": 1,
+   "count": "讲解 · 0 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "fit audit: opening and every key state",
+   "ms": 13739,
+   "ok": true,
+   "states": [
+    {
+     "keyStateId": "diagram",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explain",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explore-measure",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    }
+   ]
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "Next stage → Diagram",
+   "ms": 14260,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": false,
+   "stage": "diagram",
+   "stepId": null,
+   "drawnStage": "diagram",
+   "figureShown": true,
+   "pressed": [],
+   "marked": [],
+   "panel": "DeckWeft 导出流程 · 4 个部分",
+   "animations": 1,
+   "count": "图解 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "select Repair on the diagram",
+   "ms": 14768,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 2,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "Next page, Previous page: the same stage and part",
+   "ms": 15284,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 1,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "ArrowRight, ArrowLeft with nothing focused: pages turn, the part is restored",
+   "ms": 15303,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 1,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "reload resets to Explain",
+   "ms": 15377,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "对象 · DeckWeft 导出流程",
+   "animations": 1,
+   "count": "讲解 · 0 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "keyboard isolation",
+   "ms": 15467,
+   "keys": 17,
+   "control": "3 / 3"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "reduced motion: every stage by Next / Previous, Skip, no animation",
+   "ms": 16383,
+   "reduced": [
+    [
+     1,
+     "diagram",
+     null,
+     0
+    ],
+    [
+     2,
+     "explore",
+     "step-measure",
+     0
+    ],
+    [
+     3,
+     "explore",
+     "step-repair",
+     0
+    ],
+    [
+     4,
+     "explore",
+     "step-review",
+     0
+    ],
+    [
+     5,
+     "explore",
+     "step-export",
+     0
+    ],
+    [
+     0,
+     "explain",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "reducedMotion static: opens on Diagram, Replay disabled, Explain and Explore reachable",
+   "ms": 16724,
+   "notice": true,
+   "replayDisabled": true
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1440,
+   "step": "no JavaScript: whole object, numbered parts, every explanation",
+   "ms": 17421,
+   "parts": [
+    56,
+    47,
+    37,
+    61
+   ],
+   "numbers": 4,
+   "statement": "静态视图 · 图解 · 完整流程：DeckWeft 导出流程——按阅读顺序共 4 个部分：测量 → 修复 → 审阅 → 导出。"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "opens on Explain",
+   "ms": 18148,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "对象 · DeckWeft 导出流程",
+   "animations": 1,
+   "count": "讲解 · 0 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "fit audit: opening and every key state",
+   "ms": 18149,
+   "ok": true,
+   "states": [
+    {
+     "keyStateId": "diagram",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explain",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explore-measure",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    }
+   ]
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "Next stage → Diagram",
+   "ms": 18695,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": false,
+   "stage": "diagram",
+   "stepId": null,
+   "drawnStage": "diagram",
+   "figureShown": true,
+   "pressed": [],
+   "marked": [],
+   "panel": "DeckWeft 导出流程 · 4 个部分",
+   "animations": 1,
+   "count": "图解 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "select Repair on the diagram",
+   "ms": 19228,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 2,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "Next page, Previous page: the same stage and part",
+   "ms": 19776,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 1,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "ArrowRight, ArrowLeft with nothing focused: pages turn, the part is restored",
+   "ms": 19794,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 1,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "reload resets to Explain",
+   "ms": 19874,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "对象 · DeckWeft 导出流程",
+   "animations": 1,
+   "count": "讲解 · 0 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "keyboard isolation",
+   "ms": 19941,
+   "keys": 17,
+   "control": "3 / 3"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "reduced motion: every stage by Next / Previous, Skip, no animation",
+   "ms": 20857,
+   "reduced": [
+    [
+     1,
+     "diagram",
+     null,
+     0
+    ],
+    [
+     2,
+     "explore",
+     "step-measure",
+     0
+    ],
+    [
+     3,
+     "explore",
+     "step-repair",
+     0
+    ],
+    [
+     4,
+     "explore",
+     "step-review",
+     0
+    ],
+    [
+     5,
+     "explore",
+     "step-export",
+     0
+    ],
+    [
+     0,
+     "explain",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "reducedMotion static: opens on Diagram, Replay disabled, Explain and Explore reachable",
+   "ms": 21158,
+   "notice": true,
+   "replayDisabled": true
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 1024,
+   "step": "no JavaScript: whole object, numbered parts, every explanation",
+   "ms": 21829,
+   "parts": [
+    56,
+    47,
+    37,
+    61
+   ],
+   "numbers": 4,
+   "statement": "静态视图 · 图解 · 完整流程：DeckWeft 导出流程——按阅读顺序共 4 个部分：测量 → 修复 → 审阅 → 导出。"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "opens on Explain",
+   "ms": 22562,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "对象 · DeckWeft 导出流程",
+   "animations": 1,
+   "count": "讲解 · 0 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "fit audit: opening and every key state",
+   "ms": 22562,
+   "ok": true,
+   "states": [
+    {
+     "keyStateId": "diagram",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explain",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    },
+    {
+     "keyStateId": "explore-measure",
+     "overflow": 0,
+     "clip": 0,
+     "contrast": 0,
+     "glyphs": 0
+    }
+   ]
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "Next stage → Diagram",
+   "ms": 23105,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": false,
+   "stage": "diagram",
+   "stepId": null,
+   "drawnStage": "diagram",
+   "figureShown": true,
+   "pressed": [],
+   "marked": [],
+   "panel": "DeckWeft 导出流程 · 4 个部分",
+   "animations": 1,
+   "count": "图解 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "select Repair on the diagram",
+   "ms": 23625,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 2,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "Next page, Previous page: the same stage and part",
+   "ms": 24155,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 1,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "ArrowRight, ArrowLeft with nothing focused: pages turn, the part is restored",
+   "ms": 24169,
+   "page": "2 / 3",
+   "position": 1,
+   "exploring": true,
+   "stage": "explore",
+   "stepId": "step-repair",
+   "drawnStage": "explore",
+   "figureShown": true,
+   "pressed": [
+    "step-repair"
+   ],
+   "marked": [
+    "step-repair"
+   ],
+   "panel": "第 2 部分，共 4 部分 · 修复",
+   "animations": 1,
+   "count": "探索中 · 探索 · 1 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "reload resets to Explain",
+   "ms": 24240,
+   "page": "2 / 3",
+   "position": 0,
+   "exploring": false,
+   "stage": "explain",
+   "stepId": null,
+   "drawnStage": "explain",
+   "figureShown": false,
+   "pressed": [],
+   "marked": [],
+   "panel": "对象 · DeckWeft 导出流程",
+   "animations": 1,
+   "count": "讲解 · 0 / 5"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "keyboard isolation",
+   "ms": 24308,
+   "keys": 17,
+   "control": "3 / 3"
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "reduced motion: every stage by Next / Previous, Skip, no animation",
+   "ms": 25244,
+   "reduced": [
+    [
+     1,
+     "diagram",
+     null,
+     0
+    ],
+    [
+     2,
+     "explore",
+     "step-measure",
+     0
+    ],
+    [
+     3,
+     "explore",
+     "step-repair",
+     0
+    ],
+    [
+     4,
+     "explore",
+     "step-review",
+     0
+    ],
+    [
+     5,
+     "explore",
+     "step-export",
+     0
+    ],
+    [
+     0,
+     "explain",
+     null,
+     0
+    ]
+   ]
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "reducedMotion static: opens on Diagram, Replay disabled, Explain and Explore reachable",
+   "ms": 25541,
+   "notice": true,
+   "replayDisabled": true
+  },
+  {
+   "locale": "zh-CN",
+   "theme": "dark-data",
+   "width": 390,
+   "step": "no JavaScript: whole object, numbered parts, every explanation",
+   "ms": 26218,
+   "parts": [
+    56,
+    47,
+    37,
+    61
+   ],
+   "numbers": 4,
+   "statement": "静态视图 · 图解 · 完整流程：DeckWeft 导出流程——按阅读顺序共 4 个部分：测量 → 修复 → 审阅 → 导出。"
+  }
+ ],
+ "results": {
+  "en-1440": {
+   "images": {
+    "explain": "player/en-1440-1-explain.png",
+    "diagram": "player/en-1440-2-diagram.png",
+    "explore": "player/en-1440-3-explore-repair.png",
+    "restored": "player/en-1440-4-restored.png",
+    "reduced": "player/en-1440-5-reduced-skip.png",
+    "nojs": "player/en-1440-6-no-javascript.png"
+   },
+   "keys": [
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-export\"]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowDown",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-review\"]",
+     "key": "ArrowLeft",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-repair\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-review",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-show-whole]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-next]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-previous]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 5
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "#pipeline [data-cue-skip]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-replay]",
+     "key": "Space",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "nothing focused (control)",
+     "key": "ArrowRight",
+     "page": "3 / 3"
+    }
+   ],
+   "fit": {
+    "ok": true,
+    "states": [
+     {
+      "keyStateId": "diagram",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explain",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explore-measure",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     }
+    ]
+   }
+  },
+  "en-1024": {
+   "images": {
+    "explain": "player/en-1024-1-explain.png",
+    "diagram": "player/en-1024-2-diagram.png",
+    "explore": "player/en-1024-3-explore-repair.png",
+    "restored": "player/en-1024-4-restored.png",
+    "reduced": "player/en-1024-5-reduced-skip.png",
+    "nojs": "player/en-1024-6-no-javascript.png"
+   },
+   "keys": [
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-export\"]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowDown",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-review\"]",
+     "key": "ArrowLeft",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-repair\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-review",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-show-whole]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-next]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-previous]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 5
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "#pipeline [data-cue-skip]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-replay]",
+     "key": "Space",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "nothing focused (control)",
+     "key": "ArrowRight",
+     "page": "3 / 3"
+    }
+   ],
+   "fit": {
+    "ok": true,
+    "states": [
+     {
+      "keyStateId": "diagram",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explain",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explore-measure",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     }
+    ]
+   }
+  },
+  "en-390": {
+   "images": {
+    "explain": "player/en-390-1-explain.png",
+    "diagram": "player/en-390-2-diagram.png",
+    "explore": "player/en-390-3-explore-repair.png",
+    "restored": "player/en-390-4-restored.png",
+    "reduced": "player/en-390-5-reduced-skip.png",
+    "nojs": "player/en-390-6-no-javascript.png"
+   },
+   "keys": [
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-export\"]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowDown",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-review\"]",
+     "key": "ArrowLeft",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-repair\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-review",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-show-whole]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-next]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-previous]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 5
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "#pipeline [data-cue-skip]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-replay]",
+     "key": "Space",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "nothing focused (control)",
+     "key": "ArrowRight",
+     "page": "3 / 3"
+    }
+   ],
+   "fit": {
+    "ok": true,
+    "states": [
+     {
+      "keyStateId": "diagram",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explain",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explore-measure",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     }
+    ]
+   }
+  },
+  "zh-CN-1440": {
+   "images": {
+    "explain": "player/zh-CN-1440-1-explain.png",
+    "diagram": "player/zh-CN-1440-2-diagram.png",
+    "explore": "player/zh-CN-1440-3-explore-repair.png",
+    "restored": "player/zh-CN-1440-4-restored.png",
+    "reduced": "player/zh-CN-1440-5-reduced-skip.png",
+    "nojs": "player/zh-CN-1440-6-no-javascript.png"
+   },
+   "keys": [
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-export\"]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowDown",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-review\"]",
+     "key": "ArrowLeft",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-repair\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-review",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-show-whole]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-next]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-previous]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 5
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "#pipeline [data-cue-skip]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-replay]",
+     "key": "Space",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "nothing focused (control)",
+     "key": "ArrowRight",
+     "page": "3 / 3"
+    }
+   ],
+   "fit": {
+    "ok": true,
+    "states": [
+     {
+      "keyStateId": "diagram",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explain",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explore-measure",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     }
+    ]
+   }
+  },
+  "zh-CN-1024": {
+   "images": {
+    "explain": "player/zh-CN-1024-1-explain.png",
+    "diagram": "player/zh-CN-1024-2-diagram.png",
+    "explore": "player/zh-CN-1024-3-explore-repair.png",
+    "restored": "player/zh-CN-1024-4-restored.png",
+    "reduced": "player/zh-CN-1024-5-reduced-skip.png",
+    "nojs": "player/zh-CN-1024-6-no-javascript.png"
+   },
+   "keys": [
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-export\"]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowDown",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-review\"]",
+     "key": "ArrowLeft",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-repair\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-review",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-show-whole]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-next]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-previous]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 5
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "#pipeline [data-cue-skip]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-replay]",
+     "key": "Space",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "nothing focused (control)",
+     "key": "ArrowRight",
+     "page": "3 / 3"
+    }
+   ],
+   "fit": {
+    "ok": true,
+    "states": [
+     {
+      "keyStateId": "diagram",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explain",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explore-measure",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     }
+    ]
+   }
+  },
+  "zh-CN-390": {
+   "images": {
+    "explain": "player/zh-CN-390-1-explain.png",
+    "diagram": "player/zh-CN-390-2-diagram.png",
+    "explore": "player/zh-CN-390-3-explore-repair.png",
+    "restored": "player/zh-CN-390-4-restored.png",
+    "reduced": "player/zh-CN-390-5-reduced-skip.png",
+    "nojs": "player/zh-CN-390-6-no-javascript.png"
+   },
+   "keys": [
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-export\"]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-measure\"]",
+     "key": "ArrowDown",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline g[data-part=\"step-repair\"]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-review\"]",
+     "key": "ArrowLeft",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-repair",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-step-id=\"step-repair\"]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-review",
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-show-whole]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-next]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-previous]",
+     "key": " ",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "ArrowRight",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-measure",
+     "position": 2
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "End",
+     "page": "2 / 3",
+     "stage": "explore",
+     "stepId": "step-export",
+     "position": 5
+    },
+    {
+     "target": "#pipeline [data-cue-position]",
+     "key": "Home",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "#pipeline [data-cue-skip]",
+     "key": "Enter",
+     "page": "2 / 3",
+     "stage": "diagram",
+     "stepId": null,
+     "position": 1
+    },
+    {
+     "target": "#pipeline [data-cue-replay]",
+     "key": "Space",
+     "page": "2 / 3",
+     "stage": "explain",
+     "stepId": null,
+     "position": 0
+    },
+    {
+     "target": "nothing focused (control)",
+     "key": "ArrowRight",
+     "page": "3 / 3"
+    }
+   ],
+   "fit": {
+    "ok": true,
+    "states": [
+     {
+      "keyStateId": "diagram",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explain",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     },
+     {
+      "keyStateId": "explore-measure",
+      "overflow": 0,
+      "clip": 0,
+      "contrast": 0,
+      "glyphs": 0
+     }
+    ]
+   }
+  }
+ },
+ "errors": [],
+ "external": []
+}

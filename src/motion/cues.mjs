@@ -1,12 +1,18 @@
 import {DeckError} from '../core/errors.mjs';
-import {initialInteractionState,reduceInteractionState} from './timeline.mjs';
-export const SEMANTIC_EVENTS=['scene.enter','scene.exit','step.next','tab.select','data.filter','annotation.reveal'];
+import {initialInteractionState,reduceInteractionState,seekInteractionState} from './timeline.mjs';
+import {staticStatePosition} from '../design/scene-semantics.mjs';
+import {chartModel} from '../components/charts/model.mjs';
+import {chartSemantics} from '../components/charts/semantics.mjs';
+import {assertBlueprint} from './blueprint.mjs';
+export const SEMANTIC_EVENTS=['scene.enter','scene.exit','step.next','tab.select','data.filter','data.focus','annotation.reveal'];
 export function compileInteractions(document,scene){
  return (scene.interactions||[]).map(spec=>{
-  if(spec.kind==='steps')return {...structuredClone(spec),steps:spec.steps.map(step=>{const note=document.explanations.find(n=>n.id===step.explanationId);return {...structuredClone(step),label:note.label,text:note.text};})};
+  if(spec.kind==='steps'){const note=id=>document.explanations.find(n=>n.id===id),out={...structuredClone(spec),steps:spec.steps.map(step=>{const n=note(step.explanationId);return {...structuredClone(step),label:n.label,text:n.text};})};if(spec.blueprint){const w=note(spec.blueprint.wholeExplanationId);out.blueprint.whole={label:w.label,text:w.text};}return out;}
   if(spec.kind!=='chart-select')return structuredClone(spec);
-  const b=document.blocks.find(b=>b.id===spec.blockId),d=document.datasets.find(d=>d.id===b.datasetId);
-  return {...structuredClone(spec),seriesIds:d.series.map(s=>s.id),categoryIds:[...d.categoryIds],initialSeriesIds:spec.initialSeriesIds||d.series.map(s=>s.id),initialFromId:spec.initialFromId||d.categoryIds[0],initialToId:spec.initialToId||d.categoryIds.at(-1)};
+  const b=document.blocks.find(b=>b.id===spec.blockId),d=document.datasets.find(d=>d.id===b.datasetId),semantics=chartSemantics(b,d);
+  // The explanation line describes the top rank of a ranked bar and the last category (the latest, for time) of every other chart kind.
+  const captionOrder=semantics.kind==='ranked-bar'?chartModel(b,d).order.map(i=>d.categoryIds[i]):[...d.categoryIds].reverse();
+  return {...structuredClone(spec),datasetId:d.id,chartType:semantics.kind,sortKey:semantics.sort,scale:semantics.scale,seriesIds:d.series.map(s=>s.id),categoryIds:[...d.categoryIds],captionOrder,initialSeriesIds:spec.initialSeriesIds||d.series.map(s=>s.id),initialFocusSeriesId:spec.initialFocusSeriesId??null,initialFromId:spec.initialFromId||d.categoryIds[0],initialToId:spec.initialToId||d.categoryIds.at(-1)};
  });
 }
 export function assertSceneInteractions(document,scene){
@@ -31,9 +37,10 @@ export function assertSceneInteractions(document,scene){
    for(const step of s.steps){if(!document.explanations?.some(e=>e.id===step.explanationId))fail('Explanation content is missing; bind an existing semantic explanation identity.');if(b.type==='diagram'){if(step.lines||![...b.nodes,...b.edges.filter(e=>e.id)].some(v=>v.id===step.objectId))fail('Diagram steps must target supplied stable node/edge ids.');}else if(step.objectId||!step.lines||step.lines.some(n=>n>b.text.split('\n').length))fail('Code steps must reference existing exact source lines.');}
   }
  }
+ assertBlueprint(document,scene);
  try{
   const compiled=compileInteractions(document,scene);let state=initialInteractionState(compiled);
-  for(const spec of compiled.filter(s=>s.kind==='chart-select'))state=reduceInteractionState(compiled,state,{event:'data.filter',interactionId:spec.id,seriesIds:spec.initialSeriesIds,fromId:spec.initialFromId,toId:spec.initialToId});
+  for(const spec of compiled.filter(s=>s.kind==='chart-select')){state=reduceInteractionState(compiled,state,{event:'data.filter',interactionId:spec.id,seriesIds:spec.initialSeriesIds,fromId:spec.initialFromId,toId:spec.initialToId});if(spec.initialFocusSeriesId)state=reduceInteractionState(compiled,state,{event:'data.focus',interactionId:spec.id,seriesId:spec.initialFocusSeriesId});}
   const cues=scene.cues||[];if(new Set(cues.map(c=>c.id)).size!==cues.length)fail('Use unique stable cue ids.');
   for(const cue of cues)state=reduceInteractionState(compiled,state,cue);
  }catch(error){fail(error.message);}
@@ -42,4 +49,8 @@ export function assertSceneInteractions(document,scene){
 export function compileCues(document,scene){
  const lifecycle=[{id:scene.id+'-enter',event:'scene.enter',sceneId:scene.id},...(scene.cues||[]).map(c=>({...c,sceneId:scene.id})),{id:scene.id+'-exit',event:'scene.exit',sceneId:scene.id}];
  return {sceneId:scene.id,interactions:compileInteractions(document,scene),cues:structuredClone(scene.cues||[]),lifecycle};
+}
+/** The frozen filter/focus selection for static output: the authored opening, or the named static state's cue boundary. */
+export function staticInteractionState(document,scene){
+ return seekInteractionState(compileInteractions(document,scene),scene.cues||[],staticStatePosition(scene));
 }

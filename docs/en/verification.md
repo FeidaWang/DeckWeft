@@ -4,6 +4,171 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## S11 — merge readiness for S1–S10 (local), 2026-10-19
+
+State **LocalVerified** for the tip `d584d76`. [Evidence](../evidence/s11-merge-readiness/review.md) · [Alignment §20](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19) · [Merge plan](../plans/design-handoff-merge-to-main.md#readiness-s11-2026-10-19).
+
+Results:
+
+- A clean `git archive` of `d584d76`, then `npm ci` and `npm run verify` outside the repository: **475 tests** (471 pass, 4 skips: the register test needing `DECKWEFT_HANDOFF_DIR` and the three Studio export tests needing `CHROMIUM_PATH`). Node 24.14.0.
+- The release gate and 17 browser runners (S2 to S9b) in isolated Chrome for Testing 151.0.7922.34 with Playwright 1.61.1: the recorded numbers reproduce. `browser_families` and `browser_compositions` first failed on a stale `.candidate-panel` test selector (S9a added a second panel with that class) and pass after a three-line test fix; the parity and author-controls runners each failed once and passed on rerun, cause not found. Release-gate cases are 11 of 11 (S6 recorded 10 of 11; S8 had fixed it).
+- `origin/main` fetched: unmoved at `058b939`. Local tag `backup/main-before-design-handoff` created there. Nothing pushed.
+- Not run: PowerPoint, Keynote, Figma, Firefox, WebKit, Node 22, remote CI, Claude.
+
+## S10 — pattern library maintenance (DWD-310)
+
+State **Implemented** for the register fields, manuals and tests, 2026-10-19. DWD-310 stays partial. [Evidence](../evidence/s10-pattern-maintenance/review.md) · [Alignment §19](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19) · [Manual](../design/pattern-register.md).
+
+Results:
+
+- `npm run verify` passed **475 tests** (471 pass, 4 skips: the same environment- and browser-gated ones as S9b), plus types, source and link checks, packaging and demos.
+- `tests/design-registers.test.mjs` has 9 tests; with `DECKWEFT_HANDOFF_DIR` set all 9 pass, which proves the delivered originals are unchanged.
+- A three-page browser sample (Chromium 152, built-in pane): initial states at 1440 and 390 px and one table sort. No reduced-motion or static state was captured. It is a spot check of the handoff's reading and does not change `referenceVerified`.
+- Not run: the other 1,387 OpenAI paths, Anthropic beyond its home page, Firefox, WebKit, PowerPoint, Keynote, Figma, and Claude.
+
+## S9b — blueprint A (DWD-210)
+
+State **LocalVerified** for the S9b scope, 2026-10-19. VIS-009 stays implemented-local. [Evidence](../evidence/s9b-blueprint-a/review.md) · [Alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19) · [Interactions](interactions.md#explain--diagram--explore-blueprint-a-s9b) · [Visual Studio](visual-studio.md#explain--diagram--explore-pages-s9b).
+
+Results:
+
+- `npm run verify` passed **470 tests**: 466 pass and 4 skip (the existing environment-gated test and 3 browser-gated Studio export tests). Types, source and link checks over 1,528 files, packaging and demos also passed.
+  - New: `tests/s9b-blueprint-a.test.mjs` (6), plus one Codex page-plan test each in `host-adapters`, `argument-units` and `workbench`.
+  - With `CHROMIUM_PATH` set, `tests/studio-export.test.mjs` passed 4 of 4.
+- The render baseline was re-recorded once, in its own commit, for renderer `visual-art-direction.12` and player `semantic-player.6`. The per-entry diff against `e80ecd7` shows no visible word, value, table, anchor or title changed.
+- `tests/browser_blueprint_a.mjs` ran in isolated Chrome for Testing 151 with Playwright 1.61.1: 66 steps (restore rule, keyboard isolation, reduced motion, no JavaScript) at 1440, 1024 and 390 px in English and Chinese, with 0 page errors and 0 external requests.
+- `tests/browser_blueprint_studio.mjs`: 9 steps. It covers the lock, the action, Undo/Redo, PowerPoint refused without a static state and PDF refused at Explain, then both exported with Diagram. The narrow inspector was shown at 1024 and 390 px.
+- `node scripts/s9b-blueprint.mjs`: 12 decks (six themes × two languages) with facts identical per language and 0 fit, contrast or glyph issues on every page and key state at three widths.
+- `npm run export:targets -- --s9`: PowerPoint editability and the page check pass on 12 of 12. Chinese PDF search is partial (the known S7 limit).
+- Viewed: both contact sheets, the player and Studio captures, and four export sheets. The weakest page is the Explain stage; four pages exceed the 900 px budget (recorded).
+- One live Codex CLI run of the draft page plan (Codex CLI 0.160.0, at the user's request): 3 supplied pages and a target of 6 gave 4 drafted pages, no padding and no host-added page. The local plan asked for the background and limits units and 2 more pages ([record](../evidence/s9b-blueprint-a/codex-page-plan/page-plan.json)).
+- Not run: Firefox and WebKit, PowerPoint, Keynote, and Claude.
+
+## S9a author controls — 2026-10-19
+
+State **LocalVerified** for the S9a scope. VIS-013 stays implemented-local and VIS-015 stays partial. [Evidence](../evidence/s9a-author-controls/review.md) · [Alignment §17](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19) · [Workbench](workbench.md#six-questions-and-three-directions-s9a) · [Visual Studio](visual-studio.md#author-controls-chapters-and-separate-locks-s9a).
+
+Results:
+
+- `npm run verify` passed **461 tests** (457 pass, 4 skips: the existing environment-gated one and 3 browser-gated Studio export tests), plus types, source and link checks over 1,497 files, packaging and demos.
+  - New: `tests/s9a-author-controls.test.mjs` (14, two of them regression tests for an independent code review's 12 findings), `tests/argument-units.test.mjs` (11), `tests/studio-export.test.mjs` (4).
+  - With `CHROMIUM_PATH` set, `tests/studio-export.test.mjs` passed 4 of 4, and its PowerPoint bytes equal the Playwright path of `scripts/export-targets.mjs` on 3 decks.
+- The render baseline was re-recorded once, in its own commit, for renderer `visual-art-direction.11` (page disclosure stylesheet rule). The per-entry diff against `4f26b33` shows no visible word, value, table, anchor or title changed; the player is unchanged.
+- `tests/browser_author_controls.mjs` (isolated Chrome for Testing 151, Playwright 1.61.1): 28 UI steps at 1440, 1024 and 390 px, 0 page errors, 0 external requests. The one console error is the expected HTTP 409 of a refused theme change on a locked layout.
+- `node scripts/s9a-directions.mjs --exports`:
+  - 24 direction decks (every theme as lead × supplied text and six-family × en and zh-CN) at three widths, with 0 fit, render or glyph issues; facts identical across themes.
+  - Studio PowerPoint and PDF exports passed the export order's checks on 48 of 48.
+  - 11 of 132 pages exceed the 900 px candidate budget at 1440 px (recorded).
+- Viewed: all four contact sheets, the direction cards at three widths, the plans and edits listed in the evidence. The weakest pages are named there.
+- PowerPoint, Keynote and Figma are installed and were not run. LibreOffice and After Effects are not installed. Claude is deferred.
+
+## S8 T01–T03 theme packs and VIS-015 — 2026-10-19
+
+State **partial**. [Evidence](../evidence/vis-015/review.md) · [Manual](visual-studio.md#three-more-themes-silver-gray-editorial-fresh-report-orange-launch-s8-vis-015) · [Alignment §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19).
+
+Results:
+
+- `npm run verify` passed **432 tests** (431 pass, 1 environment-gated skip), plus types, source and link checks, packaging and demos.
+  - The 11 new tests are in `tests/s8-themes.test.mjs`: the three packs and their token roles, measured contrast, custom properties and their fallbacks, type roles, theme-only compositions, the theme CSS, C12 phrase breaks, the C13 glyph audit, the S8 stories, the handoff sample pages and the page-42 storyboard.
+  - Existing tests were extended for six packs, `<wbr>` in zh-CN display text, a `glyphs` list in every fit and the in-page glyph refusal of the export readiness stage.
+  - The render baseline was re-recorded three times, each in its own commit, for renderer `visual-art-direction.7` → `.9` and player `semantic-player.5`. The per-entry diff against `a8c0404` shows no visible word, value, table, anchor or title changed.
+- `node scripts/s8-themes.mjs` (isolated Chrome for Testing 151, Playwright 1.61.1, 0 external requests): 24 decks at 1440, 1024 and 390 px with 0 fit or render issues; 136 measured contrast pairs all above their thresholds; 9 of 9 explicit cases pass (missing glyph in each theme, media-failure cover, low motion, black-and-white atlas, CJK phrase breaks in each theme); facts identical across the three themes in both languages.
+- `npm run export:targets -- --s8`: 18 decks. PowerPoint editability and the page check pass on 18 of 18; PDF searchability passes on the 9 English decks and is partial on the 9 Chinese decks (radical code points, as in VIS-016); fonts are listed in every report.
+- The VIS-014 explicit cases were re-run: 11 of 11 pass; the missing glyph is now detected by the fit audit.
+- PowerPoint, Keynote and Figma are installed and were not run. LibreOffice and After Effects are not installed.
+
+## S7 output levels and VIS-016 exports — 2026-10-19
+
+State **partial**. [Evidence](../evidence/vis-016/review.md) · [Manual](compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016) · [Alignment §15](../plans/design-handoff-alignment.md#15-s7-result--output-levels-and-vis-016-2026-10-19).
+
+Results:
+
+- `npm run verify` passed **421 tests** (420 pass, 1 environment-gated skip), plus types, source and link checks over 1,334 files, packaging and demos.
+  - The 11 new tests are in `tests/export-targets.test.mjs`. They cover levels, the export order, the ready stage's refusals, static delivery, the PowerPoint compile, L3 fallbacks, tampering caught by reading the bytes back, the PDF print job and checks, the report, the compiler helpers, and the fixes from an independent code review.
+  - Three earlier tests now assert the declared levels instead of the S2 refusal.
+  - The render baseline is unchanged.
+- `npm run export:targets` ran the nine decks (the frozen VIS-014 corpus plus the S4 chart-kinds sample). It used isolated Chrome for Testing 151 with page scripts disabled, made 0 external requests, and finished in about 50 s.
+- PowerPoint editability and the page check against the derived scene: pass on 9 of 9. Charts with a missing value, a log axis or intervals are L3 images: 9 charts in all.
+- The standard-library check `tests/inspect_v3_pptx.py` passed on 9 of 9; every embedded workbook equals its chart cache.
+- PDF searchability (pypdf 6.16.2): pass on 5 English decks, partial on 4 Chinese decks. Chromium stores 页 门 长 见 母 as CJK radical code points. Every printed scene matched its measured size.
+- Accessibility: the PowerPoint package checks pass. The PDF is partial (Chromium figure wrappers without `/Alt`).
+- Visual fidelity: partial. macOS Quick Look reference renders only.
+
+Viewed: every contact sheet (web, PowerPoint and PDF side by side) for the nine decks, and single Quick Look renders of the cover, trend, ranked, heatmap and diagram slides.
+
+PowerPoint and Keynote were installed but not run. LibreOffice and After Effects were not found. Not tested: screen readers, PDF/UA, remote CI.
+
+## VIS-014 first visual release gate — 2026-10-19
+
+State **partial**. [Evidence](../evidence/vis-014/review.md) · [Gate manual](../visual-acceptance/README.md) · [Scored review](../visual-acceptance/review.md).
+
+Results:
+
+- `npm run verify` passed **410 tests** (409 pass, 1 environment-gated skip), plus types, source and link checks over 1,271 files, packaging and demos.
+- `scripts/release-gate.mjs` ran in isolated Chrome for Testing 151 with temporary contexts. The frozen gallery and the three stories, in both languages, had 0 issues and 96 of 96 interaction traces at 1440, 1024 and 390 px.
+- Ten of eleven explicit cases passed. The missing glyph is not detected.
+- The three VIS-001 legacy decks keep all their text in every theme.
+- All eight exports opened offline from an OS temp folder in Chromium 151, Firefox 153 (cached build) and WebKit 26.5. The copied bundle ran a local task there.
+- A real Codex CLI 0.160.0 run drafted a deck from a prompt, reviewed seven actual captures, exported it, revised page 3 only, reviewed again and exported. It passed on attempt 3. Attempt 1 was a gate-script defect; attempt 2 was a rejected host review, whose reason the adapter now names.
+- Claude is deferred.
+- Re-run on the merged branch:
+  - `tests/browser_evidence_scene.mjs` (S2)
+  - `browser_motion_state.mjs` (S5)
+  - `browser_chart_kinds.mjs` (S4)
+  - `browser_families.mjs` (S3)
+  - `browser_compositions.mjs` (VIS-006)
+  - `browser_interaction_visual_parity.mjs` (VIS-009, 216 comparisons)
+
+  The S2 and S5 scripts were updated for the layered focus rule and S4's HTML bar marks.
+
+Viewed: every deck's 1440 px contact sheet, two 390 px sheets, the case, legacy and per-engine captures, and the host before/after pages.
+
+The advisory review scores 74–77/100, below the 80 pilot threshold.
+
+PowerPoint, Keynote and Figma were installed but not run (no v3 compiler). LibreOffice and After Effects were not found.
+
+## S6 integration of S3, S4 and S5 — 2026-10-19
+
+Re-recorded a second time in S6 (`semantic-player.4`, `visual-art-direction.6`) for six renderer failures the VIS-014 gallery exposed: diagonal-cover citation contrast, a split cover number, overlapping trend time labels, heatmap row labels outside the frame, mislabelled before/after images under the compare panel, and wrapped linear process diagrams. Against the previous recording (`8252c10`) no visible word or value changed in any of the 12 HTML entries; anchors and data tables are equal. [Receipt](../evidence/s6-integration/baseline-diff-gallery-fixes.json).
+
+S3, S4 and S5 were sibling branches off S2; each re-recorded the render baseline on its own. S6 merged them (S3 → S4 → S5) and applied the layered chart-focus rule ([decisions](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)). `PLAYER_VERSION` is now `semantic-player.3` and `WEB_RENDERER_VERSION` `visual-art-direction.5`. **Render baseline re-recorded deliberately** in its own commit, keeping the player history (`.1`, `.2`, `.3`). All 12 HTML entries changed bytes. Per-entry receipts against each branch tip: against S4, no visible word or value changed in any entry, and anchors and data tables are equal; against S3 and S5, the only text changes are S4's own ranked-bar changes (sorted-by-value caption, a 0 tick, chart-type wording), with equal anchors and data tables. The 2 JSON hashes are unchanged. [S3](../evidence/s6-integration/baseline-diff-s3.json) · [S4](../evidence/s6-integration/baseline-diff-s4.json) · [S5](../evidence/s6-integration/baseline-diff-s5.json).
+
+## S5 motion state and player conflicts — 2026-10-19
+
+The S2 static-state extension is folded into one embedded player (`PLAYER_VERSION` `semantic-player.2`) with one cue clock (play, pause, seek, next, previous, restart, reduced motion), six named motion primitives with declared reduced-motion results, separate EvidenceStage chart state (focus is not hiding), a key guard that never turns the page from a focused control or chart mark, a gate that also measures every declared static state, a Studio opening action that refuses to copy the static state, and frozen steps, comparison tabs and hotspots without JavaScript. Absent `staticState` output is unchanged (C7). `render-baseline.json` was re-recorded deliberately in its own commit: the 10 HTML entries changed only in player script and CSS (plus added fields in the interaction demo's runtime data); reader-visible markup, both JSON entries and all 12 themes are unchanged. `npm run verify` passed **373 tests** (372 pass, 1 environment-gated skip), plus types, source/link checks, packaging and demos. `tests/browser_motion_state.mjs` passed in isolated Chrome for Testing 151 with temporary profiles: 2,864 keyboard presses at 1440 and 390 px in both languages changed no page; all 28 captures were viewed. The S2 script, VIS-009 acceptance and explanatory-authoring browser tests pass on the new player; the preview/export parity test fails on 390 px diagram edge pixels on both the S2 commit and this build. PowerPoint, Keynote and Figma were installed but not run; After Effects and LibreOffice were not found. [Evidence](../evidence/s5-motion-state/review.md) · [Conflicts](../plans/design-handoff-vertical-sample.md#s5-update-2026-10-19) · [Interactions](interactions.md#cue-clock-motion-and-keyboard).
+
+## S4 design-handoff chart renderer — 2026-10-19
+
+The chart renderer draws the S1 declarations (log axes, truncation with a note, author/ascending sort, intervals, events, missing reasons), closes the S2 chart conflicts C1, C2, C3, C10 and C19, and adds the six P1 kinds: direct-labelled bar, `grouped-bar`, `dot-interval`, trend with end labels, `small-multiples` and `benchmark-table` with qualifiers. One data object feeds the graphic, labels, statement and table; the table is byte-identical in all three themes. `npm run verify` passed **375 tests** (374 pass, 1 environment-gated skip), plus types, source/link checks over 1,149 files, packaging and demos. `tests/browser_chart_kinds.mjs` passed in isolated Chrome for Testing 151 with temporary profiles in both languages at 1440, 1024 and 390 px, with and without JavaScript and in grayscale: 119 conclusion labels per view, none hidden or scroll-only; the Studio measure gate refused an injected scroller with `VISUAL_FIT`. The S2 vertical sample and the existing interaction suite passed again; all committed images were viewed. **Render baseline re-recorded deliberately** in a separate commit: all 10 HTML hashes changed (embedded chart code, CSS and `WEB_RENDERER_VERSION` `visual-art-direction.4`), anchors, data tables and values are unchanged in each; JSON and theme hashes are unchanged. PowerPoint, Keynote and Figma were installed but not run (no v3 compiler); After Effects and LibreOffice were not found. [Evidence](../evidence/s4-chart-renderer/review.md) · [Field decisions](../plans/design-handoff-alignment.md#s4-field-list-decisions-2026-10-19).
+
+## S3 composition families — 2026-10-19
+
+Six families were added to the six from VIS-006: chapter, before / after, system map, small multiples, quotation, and conclusion / next step. Each has three geometries, a required block, focus and density metadata, and 1440 / 1024 / 390 px column rules; all are in the schemas and the three theme packs. Table / Reference was left out because the comparison family already owns tables. The new families are chosen explicitly, never inferred.
+
+Rhythm selection now follows the handoff rules: no third identical composition in a row (sequences and comparisons excepted), no three heading-plus-cards pages, and advice when a 10–15 page deck uses fewer than four families. Author locks win and are reported. C9 is fixed: a theme round trip returns the original plan and render hash.
+
+Results:
+
+- `npm run verify` passed **376 tests** (375 pass, 1 environment-gated skip), plus types, source and link checks, packaging and demos.
+- `tests/browser_families.mjs`, in isolated Chrome for Testing 151 with temporary profiles: 108 of 108 new candidates fit at 1440 px; 324 checks at 1440 / 1024 / 390 px matched each variant's columns; 54 baseline-label checks passed; 0 page errors and 0 external requests.
+- A four-panel page failed all three geometries and was refused; after `splitSmallMultiples` both pages passed.
+- The existing 108-candidate `tests/browser_compositions.mjs` and the S2 `tests/browser_evidence_scene.mjs` still pass.
+- All six 1440 px contact sheets were viewed, plus 390 px sheets, selected decks and the Studio captures.
+
+`render-baseline.json` was re-recorded deliberately in a separate commit. 22 byte hashes changed (stylesheet and theme composition lists), the two JSON exports are unchanged, and every content hash (text, values, ids, links, scripts) equals `232060e`.
+
+PowerPoint, Keynote and Figma were installed but not run (no v3 compiler). LibreOffice, After Effects and Firefox were not found.
+
+[Evidence](../evidence/s3-composition-families/review.md) · [Byte identity](../evidence/s3-composition-families/byte-identity.json) · [Manual](visual-studio.md#six-more-composition-families-s3).
+
+## S2 design-handoff vertical sample — 2026-10-19
+
+One illustrative evidence scene (claim, ranked bar, source, focus) ran through Studio import, two theme packs, font measurement, mouse and keyboard focus, pause/seek, the new static-state choice, the existing measured-export gate and the exported views, in English and Simplified Chinese. Static output now applies a declared `staticState` to chart selections, and `reducedMotion: "static"` shows it instead of playing cues; existing output stays byte-identical. `npm run verify` passed **362 tests** (361 pass, 1 environment-gated skip), plus types, source/link checks, packaging and demos. `tests/browser_evidence_scene.mjs` passed in isolated Chrome for Testing 151 with temporary profiles; all 20 captures at 1440 and 390 px were viewed. Keyboard focus never changed the page and rapid navigation left 0 pending timers. PowerPoint, Keynote and Figma were installed but not run (no v3 compiler); After Effects and LibreOffice were not found. Twenty conflicts are listed with reproductions. [Evidence](../evidence/s2-vertical-sample/review.md) · [Conflict list](../plans/design-handoff-vertical-sample.md).
+
+## S1 design-handoff contract extension — 2026-10-19
+
+Contract-only change, state **Implemented**. The four v3 schemas gained optional handoff fields (scene takeaway, content status, key states and static state; dataset identity, definitions, missing reasons, intervals and events; per-chart scale, sort and truncation; motion trigger/clock/reduced-motion; theme token roles). `npm run verify` passed **355 tests** (354 pass, 1 environment-gated skip), regenerated types, source/link checks over 1,083 files, reproducible packaging and demos. Thirteen new tests cover the six misreading guards with a passing and a failing case each, the legacy and negative fixtures, the explicit `declareChartSemantics()` migration, lock mapping and theme defaults; one test proves that 12 existing HTML/JSON outputs and 12 resolved themes match the hashes recorded before the change. No browser, host, PowerPoint, Keynote, Figma or After Effects run; nothing was visually inspected. Declarations without a renderer are refused for HTML with a named code. [Fields and recovery](architecture.md#version-3-handoff-fields-s1-2026-10-19) · [Plan record](../plans/design-handoff-alignment.md#11-s1-result--contract-extension-2026-10-19).
+
 ## Interaction visual regression closure — 2026-10-18
 
 The cover number now has an explicit contrasting surface; mobile reverse-edge labels use separate rows/tracks. `npm run verify` passed **338 tests**. The complete interaction gallery passed **6 stories / 146 captures** at 1440/1024/390px, including native touch/background cleanup, locks and history. Existing-work authoring passed in both languages. **216 actual preview/downloaded-HTML image pairs** passed with exact HTML/scene/state checks and documented raster rounding tolerance. All six story and interaction contact sheets plus native cover/flow/editor images were viewed. No observed page errors/external requests. PowerPoint/Keynote/Figma were not run; After Effects was not found. [Full evidence, repairs and limits](../evidence/interaction-visual-regression/review.md). This supersedes the older open cover-contrast blocker below.

@@ -1,0 +1,726 @@
+{
+  "decks": [
+    {
+      "name": "gallery-silver-gray-editorial-en",
+      "kind": "gallery",
+      "locale": "en",
+      "theme": "silver-gray-editorial",
+      "scenes": 12,
+      "compositions": [
+        "fieldnotes-cover",
+        "metric-left",
+        "process-line",
+        "closing-steps",
+        "fieldnotes-cover",
+        "fieldnotes-cover",
+        "image-right",
+        "evidence-right",
+        "fieldnotes-figure",
+        "evidence-left",
+        "evidence-top",
+        "process-line"
+      ],
+      "renderHash": "df02e3991d52f097eae7955c0b289a4d9b5b37e0bf2b77b1a293db225d82460f",
+      "htmlBytes": 6993675,
+      "wbr": 0
+    },
+    {
+      "name": "story-silver-gray-editorial-en",
+      "kind": "story",
+      "locale": "en",
+      "theme": "silver-gray-editorial",
+      "scenes": 8,
+      "compositions": [
+        "fieldnotes-cover",
+        "metric-right",
+        "fieldnotes-figure",
+        "comparison-stack",
+        "process-stair",
+        "before-after-triptych",
+        "quote-split",
+        "fieldnotes-closing"
+      ],
+      "renderHash": "fc25ece30fea84e74e58f49f6abd027391522ae93c7432cc83b5eacd336c5291",
+      "htmlBytes": 6878000,
+      "wbr": 0
+    },
+    {
+      "name": "storyboard-silver-gray-editorial-en",
+      "kind": "storyboard",
+      "locale": "en",
+      "theme": "silver-gray-editorial",
+      "scenes": 12,
+      "compositions": [
+        "chapter-low",
+        "fieldnotes-thesis",
+        "process-stair",
+        "comparison-stack",
+        "fieldnotes-figure",
+        "fieldnotes-figure",
+        "image-right",
+        "comparison-rail",
+        "before-after-split",
+        "fieldnotes-method",
+        "quote-split",
+        "fieldnotes-closing"
+      ],
+      "renderHash": "02695e598337709ab2b38ab91a4f9c24adbdea3d757f8fb2440ef102fc59b611",
+      "htmlBytes": 3652038,
+      "wbr": 0
+    },
+    {
+      "name": "gallery-fresh-report-en",
+      "kind": "gallery",
+      "locale": "en",
+      "theme": "fresh-report",
+      "scenes": 12,
+      "compositions": [
+        "atlas-cover",
+        "metric-left",
+        "process-line",
+        "closing-steps",
+        "atlas-cover",
+        "atlas-cover",
+        "image-right",
+        "evidence-right",
+        "atlas-figure",
+        "evidence-left",
+        "evidence-top",
+        "process-line"
+      ],
+      "renderHash": "11c0f5138eaf073a2aae2ddc3d9cf42a01d09ad0d72826eef22c252887c8d6fe",
+      "htmlBytes": 6992983,
+      "wbr": 0
+    },
+    {
+      "name": "story-fresh-report-en",
+      "kind": "story",
+      "locale": "en",
+      "theme": "fresh-report",
+      "scenes": 8,
+      "compositions": [
+        "atlas-cover",
+        "metric-band",
+        "atlas-figure",
+        "comparison-matrix",
+        "process-line",
+        "before-after-split",
+        "quote-band",
+        "atlas-closing"
+      ],
+      "renderHash": "e219c9faf5d1082a14d26acc4bef3dcabb8af56ce889d0c4265d79f2f9819f9a",
+      "htmlBytes": 6877550,
+      "wbr": 0
+    },
+    {
+      "name": "storyboard-fresh-report-en",
+      "kind": "storyboard",
+      "locale": "en",
+      "theme": "fresh-report",
+      "scenes": 12,
+      "compositions": [
+        "atlas-section",
+        "statement-split",
+        "process-line",
+        "comparison-matrix",
+        "atlas-figure",
+        "atlas-figure",
+        "image-right",
+        "comparison-rail",
+        "before-after-triptych",
+        "atlas-appendix",
+        "quote-band",
+        "atlas-closing"
+      ],
+      "renderHash": "b9b1d17a600bfc86d5ea47a78508cedf559855e8bbf883c33c288fd764e6c58f",
+      "htmlBytes": 3651386,
+      "wbr": 0
+    },
+    {
+      "name": "gallery-orange-launch-en",
+      "kind": "gallery",
+      "locale": "en",
+      "theme": "orange-launch",
+      "scenes": 12,
+      "compositions": [
+        "stage-metric",
+        "metric-left",
+        "process-line",
+        "closing-steps",
+        "stage-hero",
+        "stage-hero",
+        "image-right",
+        "evidence-right",
+        "stage-figure",
+        "evidence-left",
+        "evidence-top",
+        "process-line"
+      ],
+      "renderHash": "55cd642ec0f6d6fed2e8d29372d2c94d08c9c9cc32d52f523ddbbde5c3dffefc",
+      "htmlBytes": 6993537,
+      "wbr": 0
+    },
+    {
+      "name": "story-orange-launch-en",
+      "kind": "story",
+      "locale": "en",
+      "theme": "orange-launch",
+      "scenes": 8,
+      "compositions": [
+        "stage-hero",
+        "stage-metric",
+        "stage-figure",
+        "comparison-rail",
+        "process-rail",
+        "before-after-rail",
+        "quote-center",
+        "stage-closing"
+      ],
+      "renderHash": "23770b08e8fbf57bea09c0bf464b2953653226bb2617c6eadf8d6adea1cd7d1c",
+      "htmlBytes": 6877534,
+      "wbr": 0
+    },
+    {
+      "name": "storyboard-orange-launch-en",
+      "kind": "storyboard",
+      "locale": "en",
+      "theme": "orange-launch",
+      "scenes": 12,
+      "compositions": [
+        "stage-chapter",
+        "statement-split",
+        "process-rail",
+        "comparison-rail",
+        "stage-figure",
+        "stage-figure",
+        "image-right",
+        "comparison-rail",
+        "before-after-rail",
+        "reading-flow",
+        "quote-center",
+        "stage-closing"
+      ],
+      "renderHash": "43158bcb6e5ebf3df84a88200fc10aa20dac91a077037d7f8c00e012345892c3",
+      "htmlBytes": 3651608,
+      "wbr": 0
+    },
+    {
+      "name": "fieldnotes-en",
+      "kind": "fieldnotes",
+      "locale": "en",
+      "theme": "silver-gray-editorial",
+      "scenes": 6,
+      "compositions": [
+        "fieldnotes-cover",
+        "fieldnotes-thesis",
+        "fieldnotes-figure",
+        "fieldnotes-method",
+        "quote-split",
+        "fieldnotes-closing"
+      ],
+      "renderHash": "a952c224401caebb723d0e85a1733f4890fdec1f227e11f6c971943f8e8a9af2",
+      "htmlBytes": 198553,
+      "wbr": 0
+    },
+    {
+      "name": "atlas-en",
+      "kind": "atlas",
+      "locale": "en",
+      "theme": "fresh-report",
+      "scenes": 6,
+      "compositions": [
+        "atlas-figure",
+        "comparison-matrix",
+        "atlas-panels",
+        "process-line",
+        "atlas-figure",
+        "atlas-appendix"
+      ],
+      "renderHash": "0a11eeb4974d5178925e14b215737a089352501a6822c44b05d43f85a6ff8b7f",
+      "htmlBytes": 234399,
+      "wbr": 0
+    },
+    {
+      "name": "stage-en",
+      "kind": "stage",
+      "locale": "en",
+      "theme": "orange-launch",
+      "scenes": 6,
+      "compositions": [
+        "stage-hero",
+        "stage-hero",
+        "stage-chapter",
+        "stage-figure",
+        "stage-metric",
+        "stage-closing"
+      ],
+      "renderHash": "a8603e9090053cafacd3955032d784bf0b42ba50882af04f09e82d034f92b098",
+      "htmlBytes": 3552867,
+      "wbr": 0
+    },
+    {
+      "name": "gallery-silver-gray-editorial-zh-CN",
+      "kind": "gallery",
+      "locale": "zh-CN",
+      "theme": "silver-gray-editorial",
+      "scenes": 12,
+      "compositions": [
+        "fieldnotes-cover",
+        "metric-left",
+        "process-line",
+        "closing-steps",
+        "fieldnotes-cover",
+        "fieldnotes-cover",
+        "image-right",
+        "evidence-right",
+        "fieldnotes-figure",
+        "evidence-left",
+        "evidence-top",
+        "process-line"
+      ],
+      "renderHash": "d2f6818da2fd6a4dbdc05a60c7cbab14245c17c14e137f94947f9e331b5b478e",
+      "htmlBytes": 6993199,
+      "wbr": 103
+    },
+    {
+      "name": "story-silver-gray-editorial-zh-CN",
+      "kind": "story",
+      "locale": "zh-CN",
+      "theme": "silver-gray-editorial",
+      "scenes": 8,
+      "compositions": [
+        "fieldnotes-cover",
+        "metric-right",
+        "fieldnotes-figure",
+        "comparison-stack",
+        "process-stair",
+        "before-after-triptych",
+        "quote-split",
+        "fieldnotes-closing"
+      ],
+      "renderHash": "88bc82c8a80805608eebf5f214ac7c8d2f51a25b445b01c7e1435a159a3ba1b5",
+      "htmlBytes": 6878105,
+      "wbr": 99
+    },
+    {
+      "name": "storyboard-silver-gray-editorial-zh-CN",
+      "kind": "storyboard",
+      "locale": "zh-CN",
+      "theme": "silver-gray-editorial",
+      "scenes": 12,
+      "compositions": [
+        "chapter-low",
+        "fieldnotes-thesis",
+        "process-stair",
+        "comparison-stack",
+        "fieldnotes-figure",
+        "fieldnotes-figure",
+        "image-right",
+        "comparison-rail",
+        "before-after-split",
+        "fieldnotes-method",
+        "quote-split",
+        "fieldnotes-closing"
+      ],
+      "renderHash": "fbfc2f63a0abd2d55dbf8f8f594a9fb872026cbba0bd314c42f33cec00c8023f",
+      "htmlBytes": 3652277,
+      "wbr": 182
+    },
+    {
+      "name": "gallery-fresh-report-zh-CN",
+      "kind": "gallery",
+      "locale": "zh-CN",
+      "theme": "fresh-report",
+      "scenes": 12,
+      "compositions": [
+        "atlas-cover",
+        "metric-left",
+        "process-line",
+        "closing-steps",
+        "atlas-cover",
+        "atlas-cover",
+        "image-right",
+        "evidence-right",
+        "atlas-figure",
+        "evidence-left",
+        "evidence-top",
+        "process-line"
+      ],
+      "renderHash": "313c03aa85d9023c776cfa02555b395785cf8ffdc10036243322f750f24cb80e",
+      "htmlBytes": 6993019,
+      "wbr": 103
+    },
+    {
+      "name": "story-fresh-report-zh-CN",
+      "kind": "story",
+      "locale": "zh-CN",
+      "theme": "fresh-report",
+      "scenes": 8,
+      "compositions": [
+        "atlas-cover",
+        "metric-band",
+        "atlas-figure",
+        "comparison-matrix",
+        "process-line",
+        "before-after-split",
+        "quote-band",
+        "atlas-closing"
+      ],
+      "renderHash": "70f31d6026aa717863ccb88be8b207c4c7ea3ca9b761f5b1a96dec24247ce97a",
+      "htmlBytes": 6878007,
+      "wbr": 99
+    },
+    {
+      "name": "storyboard-fresh-report-zh-CN",
+      "kind": "storyboard",
+      "locale": "zh-CN",
+      "theme": "fresh-report",
+      "scenes": 12,
+      "compositions": [
+        "atlas-section",
+        "statement-split",
+        "process-line",
+        "comparison-matrix",
+        "atlas-figure",
+        "atlas-figure",
+        "image-right",
+        "comparison-rail",
+        "before-after-triptych",
+        "atlas-appendix",
+        "quote-band",
+        "atlas-closing"
+      ],
+      "renderHash": "02e7dcd47a68b0703c2a4ba2949fcd54c1d877dfa2bc16f77c862889fa8b7d41",
+      "htmlBytes": 3652105,
+      "wbr": 182
+    },
+    {
+      "name": "gallery-orange-launch-zh-CN",
+      "kind": "gallery",
+      "locale": "zh-CN",
+      "theme": "orange-launch",
+      "scenes": 12,
+      "compositions": [
+        "stage-metric",
+        "metric-left",
+        "process-line",
+        "closing-steps",
+        "stage-hero",
+        "stage-hero",
+        "image-right",
+        "evidence-right",
+        "stage-figure",
+        "evidence-left",
+        "evidence-top",
+        "process-line"
+      ],
+      "renderHash": "95460596cc189e4e2ba7795c16fa6596f7d1c41eb499156e8fe2d40e1d6960dc",
+      "htmlBytes": 6994321,
+      "wbr": 103
+    },
+    {
+      "name": "story-orange-launch-zh-CN",
+      "kind": "story",
+      "locale": "zh-CN",
+      "theme": "orange-launch",
+      "scenes": 8,
+      "compositions": [
+        "stage-hero",
+        "stage-metric",
+        "stage-figure",
+        "comparison-rail",
+        "process-rail",
+        "before-after-rail",
+        "quote-center",
+        "stage-closing"
+      ],
+      "renderHash": "470dff6eda2954c559045709982dd9ad52637be901ca076d0598a2ae75112069",
+      "htmlBytes": 6878503,
+      "wbr": 99
+    },
+    {
+      "name": "storyboard-orange-launch-zh-CN",
+      "kind": "storyboard",
+      "locale": "zh-CN",
+      "theme": "orange-launch",
+      "scenes": 12,
+      "compositions": [
+        "stage-chapter",
+        "statement-split",
+        "process-rail",
+        "comparison-rail",
+        "stage-figure",
+        "stage-figure",
+        "image-right",
+        "comparison-rail",
+        "before-after-rail",
+        "reading-flow",
+        "quote-center",
+        "stage-closing"
+      ],
+      "renderHash": "961e2f2d3897ce3eaa6e74792b1a0250b032f3903a757d664ddcea5dd371a059",
+      "htmlBytes": 3653035,
+      "wbr": 182
+    },
+    {
+      "name": "fieldnotes-zh-CN",
+      "kind": "fieldnotes",
+      "locale": "zh-CN",
+      "theme": "silver-gray-editorial",
+      "scenes": 6,
+      "compositions": [
+        "fieldnotes-cover",
+        "fieldnotes-thesis",
+        "fieldnotes-figure",
+        "fieldnotes-method",
+        "quote-split",
+        "fieldnotes-closing"
+      ],
+      "renderHash": "6b6f44d03acd4d615cef236e508c8d8be9f61b923f35ebb494df3b50252bc7a9",
+      "htmlBytes": 198809,
+      "wbr": 117
+    },
+    {
+      "name": "atlas-zh-CN",
+      "kind": "atlas",
+      "locale": "zh-CN",
+      "theme": "fresh-report",
+      "scenes": 6,
+      "compositions": [
+        "atlas-figure",
+        "comparison-matrix",
+        "atlas-panels",
+        "process-line",
+        "atlas-figure",
+        "atlas-appendix"
+      ],
+      "renderHash": "7d07c2c8b6edfc3f1a8e5965be9bef1f91ba9ae4cf7cde2bc2715b16c564c30d",
+      "htmlBytes": 234685,
+      "wbr": 87
+    },
+    {
+      "name": "stage-zh-CN",
+      "kind": "stage",
+      "locale": "zh-CN",
+      "theme": "orange-launch",
+      "scenes": 6,
+      "compositions": [
+        "stage-hero",
+        "stage-hero",
+        "stage-chapter",
+        "stage-figure",
+        "stage-metric",
+        "stage-closing"
+      ],
+      "renderHash": "6a75444a2f3b4ffd2e6f45046975a5d807f3c627b12728d41201e15db375ea2b",
+      "htmlBytes": 3553424,
+      "wbr": 69
+    }
+  ],
+  "facts": [
+    {
+      "kind": "gallery",
+      "locale": "en",
+      "same": true,
+      "hash": "f599e21b7eb89f2bdd935eb90197550753fe430f5887f8a007b29ff636de33b3"
+    },
+    {
+      "kind": "story",
+      "locale": "en",
+      "same": true,
+      "hash": "e4a3d5eb63b97f5fe8b93a12930f77a44c05058dd3c1bd6370d27a741337d3d8"
+    },
+    {
+      "kind": "storyboard",
+      "locale": "en",
+      "same": true,
+      "hash": "124350587210b927e3502337fb79098d2fb75c3e07ff5b8d631739309af5efa7"
+    },
+    {
+      "kind": "gallery",
+      "locale": "zh-CN",
+      "same": true,
+      "hash": "547e1212695967c8fb4b662b354d4dfd915347e9d1b3d9ce8fd9cfdb188fa29e"
+    },
+    {
+      "kind": "story",
+      "locale": "zh-CN",
+      "same": true,
+      "hash": "31798d1e725900c1cb3ff6fdd02abb23430b3c9c6856ad0b4931fa7f78c7bea6"
+    },
+    {
+      "kind": "storyboard",
+      "locale": "zh-CN",
+      "same": true,
+      "hash": "72545c41642e0ac73d08228c82af506763551844291fb53d14300de8daa9a2bf"
+    }
+  ],
+  "ok": true,
+  "storyCompositions": {
+    "silver-gray-editorial": {
+      "st-open": "fieldnotes-cover",
+      "st-context": "metric-right",
+      "st-evidence": "fieldnotes-figure",
+      "st-compare": "comparison-stack",
+      "st-process": "process-stair",
+      "st-pair": "before-after-triptych",
+      "st-quote": "quote-split",
+      "st-close": "fieldnotes-closing"
+    },
+    "fresh-report": {
+      "st-open": "atlas-cover",
+      "st-context": "metric-band",
+      "st-evidence": "atlas-figure",
+      "st-compare": "comparison-matrix",
+      "st-process": "process-line",
+      "st-pair": "before-after-split",
+      "st-quote": "quote-band",
+      "st-close": "atlas-closing"
+    },
+    "orange-launch": {
+      "st-open": "stage-hero",
+      "st-context": "stage-metric",
+      "st-evidence": "stage-figure",
+      "st-compare": "comparison-rail",
+      "st-process": "process-rail",
+      "st-pair": "before-after-rail",
+      "st-quote": "quote-center",
+      "st-close": "stage-closing"
+    }
+  },
+  "storyboard": [
+    {
+      "page": 1,
+      "id": "sb-chapter",
+      "task": "Chapter (long bilingual title)",
+      "family": "chapter",
+      "compositions": {
+        "silver-gray-editorial": "chapter-low",
+        "fresh-report": "atlas-section",
+        "orange-launch": "stage-chapter"
+      }
+    },
+    {
+      "page": 2,
+      "id": "sb-thesis",
+      "task": "Thesis + SideNote",
+      "family": "statement",
+      "compositions": {
+        "silver-gray-editorial": "fieldnotes-thesis",
+        "fresh-report": "statement-split",
+        "orange-launch": "statement-split"
+      }
+    },
+    {
+      "page": 3,
+      "id": "sb-sequence",
+      "task": "Sequence",
+      "family": "process",
+      "compositions": {
+        "silver-gray-editorial": "process-stair",
+        "fresh-report": "process-line",
+        "orange-launch": "process-rail"
+      }
+    },
+    {
+      "page": 4,
+      "id": "sb-comparison",
+      "task": "Comparison (units in headers, one missing value)",
+      "family": "comparison",
+      "compositions": {
+        "silver-gray-editorial": "comparison-stack",
+        "fresh-report": "comparison-matrix",
+        "orange-launch": "comparison-rail"
+      }
+    },
+    {
+      "page": 5,
+      "id": "sb-evidence",
+      "task": "EvidenceChart (direct values, source status)",
+      "family": "evidence",
+      "compositions": {
+        "silver-gray-editorial": "fieldnotes-figure",
+        "fresh-report": "atlas-figure",
+        "orange-launch": "stage-figure"
+      }
+    },
+    {
+      "page": 6,
+      "id": "sb-interval",
+      "task": "DotInterval (with method)",
+      "family": "evidence",
+      "compositions": {
+        "silver-gray-editorial": "fieldnotes-figure",
+        "fresh-report": "atlas-figure",
+        "orange-launch": "stage-figure"
+      }
+    },
+    {
+      "page": 7,
+      "id": "sb-anatomy",
+      "task": "ObjectAnatomy (image hotspots)",
+      "family": "image",
+      "compositions": {
+        "silver-gray-editorial": "image-right",
+        "fresh-report": "image-right",
+        "orange-launch": "image-right"
+      }
+    },
+    {
+      "page": 8,
+      "id": "sb-scenario",
+      "task": "ScenarioSnapshot",
+      "family": "comparison",
+      "compositions": {
+        "silver-gray-editorial": "comparison-rail",
+        "fresh-report": "comparison-rail",
+        "orange-launch": "comparison-rail"
+      },
+      "missing": "ScenarioSnapshot family: drawn as a comparison table (P1 static contrast only)"
+    },
+    {
+      "page": 9,
+      "id": "sb-pair",
+      "task": "BeforeAfter (registered images, permanent labels)",
+      "family": "before-after",
+      "compositions": {
+        "silver-gray-editorial": "before-after-split",
+        "fresh-report": "before-after-triptych",
+        "orange-launch": "before-after-rail"
+      }
+    },
+    {
+      "page": 10,
+      "id": "sb-reference",
+      "task": "Reference (static appendix)",
+      "family": "reference",
+      "compositions": {
+        "silver-gray-editorial": "fieldnotes-method",
+        "fresh-report": "atlas-appendix",
+        "orange-launch": "reading-flow"
+      }
+    },
+    {
+      "page": 11,
+      "id": "sb-quote",
+      "task": "Quote / Documentary (no invented quotation)",
+      "family": "quote",
+      "compositions": {
+        "silver-gray-editorial": "quote-split",
+        "fresh-report": "quote-band",
+        "orange-launch": "quote-center"
+      }
+    },
+    {
+      "page": 12,
+      "id": "sb-conclusion",
+      "task": "Conclusion (one action)",
+      "family": "closing",
+      "compositions": {
+        "silver-gray-editorial": "fieldnotes-closing",
+        "fresh-report": "atlas-closing",
+        "orange-launch": "stage-closing"
+      }
+    }
+  ]
+}

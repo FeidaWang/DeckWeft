@@ -1,0 +1,106 @@
+{
+  "format": "deckweft-vis-014-host-receipts",
+  "version": 1,
+  "recordedAt": "2026-10-19",
+  "command": "CHROMIUM_PATH=<isolated Chrome for Testing 151> PLAYWRIGHT_MODULE=<Playwright 1.61.1> npm run host:visual -- --host codex --live --out dist/host-visual-s6 --case drafted",
+  "hosts": {
+    "codex": {
+      "state": "HostVerified for this run (local CLI)",
+      "cli": "codex-cli 0.160.0",
+      "authentication": {
+        "status": "available",
+        "evidence": "status-exit-only; output discarded"
+      },
+      "billingRoute": "unknown; existing host configuration is retained",
+      "modelEvidence": "unknown unless reported by the host; never inferred",
+      "browser": "151.0.7922.34",
+      "promptToArtifact": {
+        "brief": "Five-page fictional paper workshop; keep every supplied line exactly",
+        "draft": "applied",
+        "review": {
+          "verdict": "pass",
+          "images": 7,
+          "weakestPageNamedByHost": "scene 2"
+        },
+        "export": {
+          "file": "../evidence/vis-014/host/before.html",
+          "htmlHash": "5d7e8f3d00fe9c3a7a227f6d0ae2ad0182beb0b82a81d02b51ddb1da1488899f"
+        }
+      },
+      "scopedRevision": {
+        "page": 3,
+        "sceneId": "slide_435f53145f7e4209",
+        "from": "statement-center",
+        "to": "statement-split",
+        "request": "Make page 3 use statement-split. Keep every word, color, source and other page exactly unchanged.",
+        "review": {
+          "verdict": "pass",
+          "images": 7,
+          "hostNote": "scene 4 is now the weakest page: consecutive split layouts on pages 3 and 4 repeat"
+        },
+        "export": {
+          "file": "../evidence/vis-014/host/after.html",
+          "htmlHash": "39f38adab690e45f759ccd2636fca01e9e4259d0bbbf0e67549c53dfe81547fe"
+        },
+        "exactScope": "Only page 3 composition changed; semantic document and all other scenes byte-equivalent"
+      },
+      "receipts": [
+        {
+          "requestId": "5a4d2168-2f92-479a-a4e8-c49ebff17c43",
+          "operation": "draft",
+          "status": "applied",
+          "hostStatus": "validated",
+          "images": 0,
+          "receipt": "../evidence/vis-014/host/receipts/5a4d2168-2f92-479a-a4e8-c49ebff17c43.receipt.json"
+        },
+        {
+          "requestId": "418e05df-5526-4c25-94c3-319f8249881e",
+          "operation": "render.inspect-review",
+          "status": "applied",
+          "hostStatus": "validated",
+          "images": 7,
+          "receipt": "../evidence/vis-014/host/receipts/418e05df-5526-4c25-94c3-319f8249881e.receipt.json"
+        },
+        {
+          "requestId": "83f44e92-e199-48a1-a1b5-2c86d5726bbd",
+          "operation": "render.inspect-review",
+          "status": "applied",
+          "hostStatus": "validated",
+          "images": 7,
+          "receipt": "../evidence/vis-014/host/receipts/83f44e92-e199-48a1-a1b5-2c86d5726bbd.receipt.json"
+        },
+        {
+          "requestId": "036cb96b-afc7-44c8-9fd4-481d1de97856",
+          "operation": "design.patch",
+          "status": "applied",
+          "hostStatus": "validated",
+          "images": 0,
+          "receipt": "../evidence/vis-014/host/receipts/036cb96b-afc7-44c8-9fd4-481d1de97856.receipt.json"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "result": "failed",
+          "cause": "Gate-script defect (S6, fixed before attempt 3): the drafted case did not checkpoint the patched task, so review re-ran the unpatched page and the assertion caught it. Not a host failure."
+        },
+        {
+          "attempt": 2,
+          "result": "failed",
+          "cause": "HOST_REVIEW_FINDINGS_INVALID at the first image review. The adapter then hid which check failed; it now returns the failed check as `reason` (src/hosts/tasks.mjs, tested)."
+        },
+        {
+          "attempt": 3,
+          "result": "passed",
+          "cause": "Draft, image review, export, page-3 revision, image review and export all applied."
+        }
+      ],
+      "scope": "Copied bundle: the host drafts a deck from a prompt, reviews its actual captures, exports it, then revises one page and exports again; not native desktop/plugin discovery"
+    },
+    "claude-code": {
+      "state": "deferred",
+      "reason": "User decision at the start of S6: Claude sign-in stays deferred. No login, probe or live task was attempted. This cell is deferred, not failed."
+    }
+  },
+  "vis014": "Both hosts are required; with Claude deferred the host requirement is not met, so VIS-014 stays partial."
+}

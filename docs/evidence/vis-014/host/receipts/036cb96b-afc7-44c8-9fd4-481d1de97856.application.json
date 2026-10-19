@@ -1,0 +1,7 @@
+{
+  "operation": "design.patch",
+  "hostReceiptHash": "9642055ddd1957f51309528863de097e735efa54a9b305d034b6047b66e070fd",
+  "inputHash": "a76780a057608669b95d6bb753fa7ec8b89d37b3f1c76ea977a44c347742cf18",
+  "outputHash": "d5fbc635649c321a31f114896d882915ebe7c6c4ed7d36ebf31fa1f6622829af",
+  "status": "applied"
+}

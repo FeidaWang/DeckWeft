@@ -1,0 +1,545 @@
+{
+ "document": {
+  "format": "deckweft-presentation",
+  "schemaVersion": 3,
+  "id": "s3-families-zh-cn",
+  "title": "六种新构图，完整讲述",
+  "locale": "zh-CN",
+  "visualBrief": {
+   "audience": "审阅构图类型的设计与产品团队",
+   "outputLanguage": "zh-CN",
+   "profile": {
+    "colorIntensity": "bold",
+    "typographicContrast": "expressive",
+    "density": "comfortable",
+    "motionIntensity": "off",
+    "imageEmphasis": "large"
+   }
+  },
+  "blocks": [
+   {
+    "id": "chapter-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "第二部分\n逐页查看证据"
+   },
+   {
+    "id": "chapter-intro",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "这一部分从结论走向证据。每一页都把来源放在它所支持的图形旁边。"
+   },
+   {
+    "id": "chapter-contents",
+    "type": "list",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "items": [
+     "同一张照片，两种裁切",
+     "一次修改如何抵达每种导出",
+     "两个团队，同一尺度",
+     "审阅者提出的要求"
+    ]
+   },
+   {
+    "id": "pair-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "同一张照片，\n一次有意的裁切"
+   },
+   {
+    "id": "pair-before",
+    "type": "image",
+    "sourceIds": [
+     "workbench-asset"
+    ],
+    "assetId": "asset_70c32da27c9df448e0749ce3",
+    "alt": "原始工作台照片，未裁切。",
+    "factual": false
+   },
+   {
+    "id": "pair-after",
+    "type": "image",
+    "sourceIds": [
+     "workbench-asset"
+    ],
+    "assetId": "asset_70c32da27c9df448e0749ce3",
+    "alt": "同一张照片，裁切到线轴与纸卡。",
+    "factual": false
+   },
+   {
+    "id": "pair-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "只有取景变了。主体、像素与宽高比都相同，因此两种状态可以直接比较。"
+   },
+   {
+    "id": "pair-note",
+    "type": "callout",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "没有任何重绘。"
+   },
+   {
+    "id": "pair-source",
+    "type": "citation",
+    "sourceIds": [
+     "workbench-asset"
+    ],
+    "sourceId": "workbench-asset",
+    "text": "生成的装饰性图片 · 本地素材"
+   },
+   {
+    "id": "map-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "一次修改，\n每种导出"
+   },
+   {
+    "id": "map-diagram",
+    "type": "diagram",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "diagramType": "relationship",
+    "nodes": [
+     {
+      "id": "document",
+      "label": "文档"
+     },
+     {
+      "id": "plan",
+      "label": "设计方案"
+     },
+     {
+      "id": "theme",
+      "label": "主题包"
+     },
+     {
+      "id": "scene",
+      "label": "网页场景"
+     },
+     {
+      "id": "export",
+      "label": "HTML 导出"
+     }
+    ],
+    "edges": [
+     {
+      "from": "document",
+      "to": "scene"
+     },
+     {
+      "from": "plan",
+      "to": "scene"
+     },
+     {
+      "from": "theme",
+      "to": "scene"
+     },
+     {
+      "from": "scene",
+      "to": "export"
+     }
+    ]
+   },
+   {
+    "id": "map-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "事实只存在于文档中。方案与主题只负责编排，因此切换主题不会改变任何数字。"
+   },
+   {
+    "id": "map-key",
+    "type": "list",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "items": [
+     "文档：事实、数值与来源",
+     "设计方案：顺序、构图与锁定",
+     "主题包：色彩与字体角色"
+    ]
+   },
+   {
+    "id": "map-source",
+    "type": "citation",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "示意性架构草图",
+    "sourceId": "family-sample"
+   },
+   {
+    "id": "panels-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "两个团队，\n同一尺度"
+   },
+   {
+    "id": "panel-a",
+    "type": "chart",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "datasetId": "team-a",
+    "chartType": "line",
+    "axis": {
+     "policy": "fixed",
+     "min": 0,
+     "max": 40
+    }
+   },
+   {
+    "id": "panel-b",
+    "type": "chart",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "datasetId": "team-b",
+    "chartType": "line",
+    "axis": {
+     "policy": "fixed",
+     "min": 0,
+     "max": 40
+    }
+   },
+   {
+    "id": "panels-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "两个面板共用 0–40 小时的固定坐标轴，较低的折线确实更低。数值为虚构。"
+   },
+   {
+    "id": "panels-note",
+    "type": "callout",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "同一坐标轴、同样的周次、同一单位。"
+   },
+   {
+    "id": "panels-source",
+    "type": "citation",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "sourceId": "family-sample",
+    "text": "虚构的每周审阅时长 · 非实测"
+   },
+   {
+    "id": "quote-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "审阅者提出的要求"
+   },
+   {
+    "id": "quote-words",
+    "type": "quote",
+    "sourceIds": [
+     "review-notes"
+    ],
+    "text": "把数字放在结论旁边。要是得翻页才能核对，我就不再相信这页幻灯片了。"
+   },
+   {
+    "id": "quote-attribution",
+    "type": "citation",
+    "sourceIds": [
+     "review-notes"
+    ],
+    "sourceId": "review-notes",
+    "text": "审阅者 A，设计评审（示意访谈）"
+   },
+   {
+    "id": "quote-paraphrase",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "换句话说：证据应与结论出现在同一页。"
+   },
+   {
+    "id": "close-title",
+    "type": "heading",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "在证据可见时做决定"
+   },
+   {
+    "id": "close-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "每一页在三种主题与两种语言中都保留了事实、来源与顺序。"
+   },
+   {
+    "id": "close-steps",
+    "type": "list",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "items": [
+     "为每一页选择构图",
+     "审阅已测量的候选",
+     "导出并归档审阅后的文稿"
+    ]
+   },
+   {
+    "id": "close-ask",
+    "type": "callout",
+    "sourceIds": [
+     "family-sample"
+    ],
+    "text": "下次评审：2026 年 11 月 2 日（周一）"
+   }
+  ],
+  "datasets": [
+   {
+    "id": "team-a",
+    "unit": "小时",
+    "synthetic": true,
+    "categories": [
+     "W1",
+     "W2",
+     "W3",
+     "W4",
+     "W5",
+     "W6"
+    ],
+    "categoryIds": [
+     "w1",
+     "w2",
+     "w3",
+     "w4",
+     "w5",
+     "w6"
+    ],
+    "series": [
+     {
+      "id": "team-a-hours",
+      "label": "A 组审阅时长（虚构）",
+      "values": [
+       31,
+       28,
+       26,
+       22,
+       19,
+       17
+      ]
+     }
+    ],
+    "sourceIds": [
+     "family-sample"
+    ]
+   },
+   {
+    "id": "team-b",
+    "unit": "小时",
+    "synthetic": true,
+    "categories": [
+     "W1",
+     "W2",
+     "W3",
+     "W4",
+     "W5",
+     "W6"
+    ],
+    "categoryIds": [
+     "w1",
+     "w2",
+     "w3",
+     "w4",
+     "w5",
+     "w6"
+    ],
+    "series": [
+     {
+      "id": "team-b-hours",
+      "label": "B 组审阅时长（虚构）",
+      "values": [
+       24,
+       25,
+       23,
+       24,
+       22,
+       23
+      ]
+     }
+    ],
+    "sourceIds": [
+     "family-sample"
+    ]
+   }
+  ],
+  "sources": [
+   {
+    "id": "family-sample",
+    "title": "DeckWeft S3 示意样例（虚构）",
+    "url": "https://example.org/deckweft/s3-illustrative-sample"
+   },
+   {
+    "id": "review-notes",
+    "title": "示意评审记录 · 虚构，并非真实人物",
+    "url": "https://example.org/deckweft/s3-review-notes"
+   },
+   {
+    "id": "workbench-asset",
+    "title": "DeckWeft 本地演示素材",
+    "url": "https://example.org/deckweft/workbench-asset"
+   }
+  ],
+  "authorOverrides": {
+   "lockedBlockIds": [],
+   "sceneLocks": []
+  },
+  "migration": {}
+ },
+ "plan": {
+  "format": "deckweft-design-plan",
+  "version": 1,
+  "documentId": "s3-families-zh-cn",
+  "scenes": [
+   {
+    "id": "chapter",
+    "role": "opening",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "chapter-low",
+    "blockIds": [
+     "chapter-title",
+     "chapter-intro",
+     "chapter-contents"
+    ],
+    "focalBlockId": "chapter-title"
+   },
+   {
+    "id": "before-after",
+    "role": "evidence",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "before-after-split",
+    "blockIds": [
+     "pair-title",
+     "pair-before",
+     "pair-after",
+     "pair-body",
+     "pair-note",
+     "pair-source"
+    ],
+    "focalBlockId": "pair-title",
+    "crops": [
+     {
+      "blockId": "pair-before",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+     },
+     {
+      "blockId": "pair-after",
+      "x": 0.3,
+      "y": 0.18,
+      "width": 0.5,
+      "height": 0.5
+     }
+    ]
+   },
+   {
+    "id": "system-map",
+    "role": "process",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "system-map-wide",
+    "blockIds": [
+     "map-title",
+     "map-diagram",
+     "map-body",
+     "map-key",
+     "map-source"
+    ],
+    "focalBlockId": "map-title"
+   },
+   {
+    "id": "small-multiples",
+    "role": "evidence",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "small-multiples-row",
+    "blockIds": [
+     "panels-title",
+     "panel-a",
+     "panel-b",
+     "panels-body",
+     "panels-note",
+     "panels-source"
+    ],
+    "focalBlockId": "panels-title"
+   },
+   {
+    "id": "quote",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "quote-split",
+    "blockIds": [
+     "quote-title",
+     "quote-words",
+     "quote-attribution",
+     "quote-paraphrase"
+    ],
+    "focalBlockId": "quote-title"
+   },
+   {
+    "id": "closing",
+    "role": "closing",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "closing-split",
+    "blockIds": [
+     "close-title",
+     "close-body",
+     "close-steps",
+     "close-ask"
+    ],
+    "focalBlockId": "close-title"
+   }
+  ]
+ },
+ "assets": [
+  {
+   "id": "asset_70c32da27c9df448e0749ce3",
+   "hash": "70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1",
+   "mime": "image/png",
+   "width": 1536,
+   "height": 1024,
+   "path": "assets/70c32da27c9df448e0749ce358230df723f3bf56b09b7c8294b0af72d26bdde1.png",
+   "provenance": "Original host-generated decorative artwork, retained from the MB-11–15 build. Not documentary photography or product evidence.",
+   "license": "Generated artwork; no third-party rights clearance asserted",
+   "allowedUse": "Local DeckWeft demonstration; review rights for your own redistribution",
+   "alt": "Blank paper story cards linked by blue thread on a wooden workbench",
+   "fallback": "A series of paper cards joined by blue thread; decorative artwork."
+  }
+ ]
+}

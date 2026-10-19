@@ -4,6 +4,7 @@ import schema from '../../schemas/visual-project.schema.json' with { type: 'json
 import { validateSchema } from './schema.mjs';
 import { assertPresentation } from './blocks.mjs';
 import { assertDesignPlan } from '../design/plan.mjs';
+import { assertCompositionAssets } from '../design/compositions.mjs';
 import { identifier } from './model.mjs';
 import { DeckError } from './errors.mjs';
 export function assertVisualProject(project) {
@@ -21,12 +22,18 @@ export function assertVisualProject(project) {
  }
  for(const s of project.plan.scenes)assertImageSlots(project.document,s,project.assets);
  for(const b of project.document.blocks)if(b.type==='image'&&!project.assets.some(a=>a.id===b.assetId))fail('An image references a missing asset manifest.');
+ for(const s of project.plan.scenes)assertCompositionAssets(project.document,s,project.assets);
  for(const key of ['createdAt','updatedAt'])if(!Number.isFinite(Date.parse(project.revision[key])))fail('Revision timestamps must be valid ISO dates.');
  return project;
 }
 export function createVisualProject(document,plan,{assets=[],id=identifier('visual')}={}) {
  const copy=structuredClone(document),design=structuredClone(plan),now=new Date().toISOString();copy.id=id;design.documentId=id;
  return assertVisualProject({format:'deckweft-visual-project',version:1,id,document:copy,plan:design,assets:structuredClone(assets),revision:{number:0,createdAt:now,updatedAt:now},extensions:{}});
+}
+/** The dataset and sources a combined (S1) object lock also protects: a chart's dataset, the block's sources and those of its step explanations. */
+export function impliedLocks(project,blockId){
+ const doc=project.document,b=doc.blocks.find(b=>b.id===blockId),notes=new Set(project.plan.scenes.flatMap(s=>(s.interactions||[]).filter(i=>i.blockId===blockId||i.otherBlockId===blockId).flatMap(i=>[...(i.steps||[]).map(step=>step.explanationId),...(i.blueprint?[i.blueprint.wholeExplanationId]:[])])));
+ return {datasetIds:b?.type==='chart'?[b.datasetId]:[],sourceIds:[...new Set([...(b?.sourceIds||[]),...(doc.explanations||[]).filter(e=>notes.has(e.id)).flatMap(e=>e.sourceIds)])]};
 }
 export function assertVisualLocks(previous,next) {
  const old=previous.document,doc=next.document;
@@ -36,17 +43,30 @@ export function assertVisualLocks(previous,next) {
    const b=old.blocks.find(b=>b.id===id);
    for(const scene of previous.plan.scenes){const after=next.plan.scenes.find(s=>s.id===scene.id),touches=s=>(s?.interactions||[]).filter(i=>i.blockId===id||i.otherBlockId===id||i.hotspots?.some(h=>h.annotationId===id));if(JSON.stringify(touches(scene))!==JSON.stringify(touches(after)))fail();const bound=new Set(touches(scene).map(i=>i.id));if(JSON.stringify((scene.cues||[]).filter(c=>bound.has(c.interactionId)))!==JSON.stringify((after?.cues||[]).filter(c=>bound.has(c.interactionId))))fail();}
 
-   const notes=new Set(previous.plan.scenes.flatMap(s=>(s.interactions||[]).filter(i=>i.blockId===id||i.otherBlockId===id).flatMap(i=>(i.steps||[]).map(step=>step.explanationId))));
+   const notes=new Set(previous.plan.scenes.flatMap(s=>(s.interactions||[]).filter(i=>i.blockId===id||i.otherBlockId===id).flatMap(i=>[...(i.steps||[]).map(step=>step.explanationId),...(i.blueprint?[i.blueprint.wholeExplanationId]:[])])));
    for(const noteId of notes)if(JSON.stringify(old.explanations?.find(e=>e.id===noteId))!==JSON.stringify(doc.explanations?.find(e=>e.id===noteId)))fail();
-   const linked=new Set([...(b?.sourceIds||[]),...(old.explanations||[]).filter(e=>notes.has(e.id)).flatMap(e=>e.sourceIds)]);for(const sourceId of linked)if(JSON.stringify(old.sources.find(s=>s.id===sourceId))!==JSON.stringify(doc.sources.find(s=>s.id===sourceId)))fail();
+   // S9a: in separate mode an object lock is the object as written; its dataset and sources have their own locks below.
+   const separate=old.authorOverrides.lockMode==='separate'&&doc.authorOverrides.lockMode==='separate';
+   const linked=new Set(separate?[]:[...(b?.sourceIds||[]),...(old.explanations||[]).filter(e=>notes.has(e.id)).flatMap(e=>e.sourceIds)]);for(const sourceId of linked)if(JSON.stringify(old.sources.find(s=>s.id===sourceId))!==JSON.stringify(doc.sources.find(s=>s.id===sourceId)))fail();
    if(b?.type==='image'){
    if(JSON.stringify(previous.assets.find(a=>a.id===b.assetId))!==JSON.stringify(next.assets.find(a=>a.id===b.assetId)))fail();
    for(const s of previous.plan.scenes){const after=next.plan.scenes.find(v=>v.id===s.id);for(const key of ['crops','imageSlots'])if(JSON.stringify((s[key]||[]).filter(v=>v.blockId===id))!==JSON.stringify((after?.[key]||[]).filter(v=>v.blockId===id)))fail();}
   }
-   if(b?.type==='chart'&&JSON.stringify(old.datasets.find(d=>d.id===b.datasetId))!==JSON.stringify(doc.datasets.find(d=>d.id===b.datasetId)))fail();
+   if(!separate&&b?.type==='chart'&&JSON.stringify(old.datasets.find(d=>d.id===b.datasetId))!==JSON.stringify(doc.datasets.find(d=>d.id===b.datasetId)))fail();
+   // A locked object is not moved behind a page disclosure.
+   for(const s of next.plan.scenes)if(s.disclosure?.blockIds.includes(id)&&!previous.plan.scenes.find(v=>v.id===s.id)?.disclosure?.blockIds.includes(id))fail();
  }
+ // Entering separate mode never releases an implied lock: every dataset and source a combined object lock covered is locked on its own.
+ if(old.authorOverrides.lockMode!=='separate'&&doc.authorOverrides.lockMode==='separate')for(const id of old.authorOverrides.lockedBlockIds.filter(id=>doc.authorOverrides.lockedBlockIds.includes(id))){const implied=impliedLocks(previous,id);if(implied.datasetIds.some(d=>!(doc.authorOverrides.lockedDatasetIds||[]).includes(d))||implied.sourceIds.some(s=>!(doc.authorOverrides.lockedSourceIds||[]).includes(s)))fail();}
+ for(const id of old.authorOverrides.lockedDatasetIds||[])if((doc.authorOverrides.lockedDatasetIds||[]).includes(id)&&JSON.stringify(old.datasets.find(d=>d.id===id))!==JSON.stringify(doc.datasets.find(d=>d.id===id)))fail();
+ for(const id of old.authorOverrides.lockedSourceIds||[])if((doc.authorOverrides.lockedSourceIds||[]).includes(id)&&JSON.stringify(old.sources.find(s=>s.id===id))!==JSON.stringify(doc.sources.find(s=>s.id===id)))fail();
  for(const lock of old.authorOverrides.sceneLocks||[]){const retained=doc.authorOverrides.sceneLocks?.find(l=>l.sceneId===lock.sceneId),a=previous.plan.scenes.find(s=>s.id===lock.sceneId),b=next.plan.scenes.find(s=>s.id===lock.sceneId);
   for(const key of lock.fields)if(retained?.fields.includes(key)&&JSON.stringify(a?.[key])!==JSON.stringify(b?.[key]))fail();
   if(lock.fields.includes('imageSlots')&&retained?.fields.includes('imageSlots')&&JSON.stringify(a?.crops)!==JSON.stringify(b?.crops))fail();
+  // S9a: what a page shows and what it puts behind its disclosure are part of its layout and its block list.
+  if(['blockIds','composition'].some(f=>lock.fields.includes(f)&&retained?.fields.includes(f))&&JSON.stringify(a?.disclosure||null)!==JSON.stringify(b?.disclosure||null))fail();
+  // A static state names a cue boundary: cue and motion locks keep both the chosen key state and its position.
+  const frozen=s=>s?.staticState?[s.staticState.keyStateId,s.keyStates?.find(k=>k.id===s.staticState.keyStateId)?.position]:null;
+  if(['cues','motion'].some(f=>lock.fields.includes(f)&&retained?.fields.includes(f))&&JSON.stringify(frozen(a))!==JSON.stringify(frozen(b)))fail();
  }
 }

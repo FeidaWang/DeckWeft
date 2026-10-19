@@ -4,6 +4,171 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## S11 S1–S10 合并就绪检查（本地），2026-10-19
+
+对 `d584d76` 的状态为 **LocalVerified**。[证据（英文）](../evidence/s11-merge-readiness/review.md) · [对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19) · [合并计划](../plans/design-handoff-merge-to-main.md#readiness-s11-2026-10-19)。
+
+结果：
+
+- 在仓库之外对 `d584d76` 做干净 `git archive`，再 `npm ci` 和 `npm run verify`：**475 个测试**（471 通过，4 个跳过：需要 `DECKWEFT_HANDOFF_DIR` 的登记表测试，以及需要 `CHROMIUM_PATH` 的三个 Studio 导出测试）。Node 24.14.0。
+- 发布门禁和 17 个浏览器脚本（S2 至 S9b）在隔离的 Chrome for Testing 151.0.7922.34、Playwright 1.61.1 中重跑：记录的数字都复现。`browser_families` 与 `browser_compositions` 起初因过期的 `.candidate-panel` 选择器失败（S9a 新增了同类名的面板），改三行测试后通过；parity 与 author-controls 各失败一次、重跑通过，原因未查明。发布门禁的显式用例为 11/11（S6 记录 10/11，S8 已修复）。
+- 已拉取 `origin/main`：仍为 `058b939`，未变动。在该处建立了本地标签 `backup/main-before-design-handoff`。没有推送。
+- 未运行：PowerPoint、Keynote、Figma、Firefox、WebKit、Node 22、远程 CI、Claude。
+
+## S10 模式库维护（DWD-310）
+
+登记表字段、手册与测试的状态为 **Implemented**（2026-10-19）。DWD-310 仍为 partial。[证据（英文）](../evidence/s10-pattern-maintenance/review.md) · [对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19) · [手册](pattern-register.md)。
+
+结果：
+
+- `npm run verify` 通过 **475 个测试**（471 通过，4 个跳过：与 S9b 相同的环境类和浏览器类测试），另有类型、源码与链接检查、打包和演示。
+- `tests/design-registers.test.mjs` 共 9 个测试；设置 `DECKWEFT_HANDOFF_DIR` 后 9 个全部通过，证明已交付的原始字段没有被改动。
+- 三个页面的浏览器抽样（Chromium 152，内置窗格）：1440 与 390 px 的初始状态，加一次表格排序。没有记录减少动态效果或静态状态。它只是对交接包读法的抽查，不改变 `referenceVerified`。
+- 未运行：其余 1,387 条 OpenAI 路径、Anthropic 首页以外的页面、Firefox、WebKit、PowerPoint、Keynote、Figma 与 Claude。
+
+## S9b 蓝图 A — 讲解 → 图解 → 探索（DWD-210）
+
+状态：S9b 范围为 **LocalVerified**（2026-10-19）。VIS-009 仍为 implemented-local。[证据（英文）](../evidence/s9b-blueprint-a/review.md) · [对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19) · [交互](interactions.md#讲解--图解--探索蓝图-as9b) · [Visual Studio](visual-studio.md#讲解--图解--探索页面s9b)
+
+结果：
+
+- `npm run verify` 通过 **470 项测试**：466 项通过，4 项跳过（原有的环境门控测试，以及 3 项需要浏览器的 Studio 导出测试）。类型、1,528 个文件的源码与链接检查、打包和示例也全部通过。
+  - 新增：`tests/s9b-blueprint-a.test.mjs`（6 项），另在 `host-adapters`、`argument-units` 和 `workbench` 中各新增一项 Codex 页面规划测试。
+  - 设置 `CHROMIUM_PATH` 后，`tests/studio-export.test.mjs` 4 项全部通过。
+- 渲染基线在单独的提交中重新录制一次：渲染器 `visual-art-direction.12`、播放器 `semantic-player.6`。与 `e80ecd7` 的逐项对比显示，没有任何可见文字、数值、表格、锚点或标题发生变化。
+- `tests/browser_blueprint_a.mjs`（隔离的 Chrome for Testing 151，Playwright 1.61.1）：66 个步骤，覆盖恢复规则、键盘隔离、减少动态效果和无 JavaScript 视图，在 1440、1024、390 px 下用中英文各运行一遍；0 个页面错误，0 个外部请求。
+- `tests/browser_blueprint_studio.mjs`：9 个步骤。依次检查锁定、操作本身和撤销／重做；没有静态状态时 PowerPoint 被拒绝，静态状态为“讲解”时 PDF 被拒绝；选择“图解”后两者都成功导出。1024 与 390 px 下检查了窄检查器。
+- `node scripts/s9b-blueprint.mjs`：12 份文稿（六套主题 × 两种语言），每种语言内事实相同；在三种宽度下，每页和每个关键状态都没有版面、对比度或字形问题。
+- `npm run export:targets -- --s9`：PowerPoint 可编辑性与页面检查 12 份全部通过；中文 PDF 搜索为部分通过（S7 已知限制）。
+- 已查看：两张联系表、播放器与 Studio 截图、四张导出对照表。最弱的一页是“讲解”阶段；有四页超过 900 px 预算（已记录）。
+- 应用户要求，用真实 Codex CLI（0.160.0）运行了一次草稿页数规划：提供 3 页原文、目标 6 页，结果起草 4 页，没有填充，也没有宿主添加的页面；本地规划询问了缺少的“背景”和“局限”单元以及另外 2 页材料（[记录（英文）](../evidence/s9b-blueprint-a/codex-page-plan/page-plan.json)）。
+- 未运行：Firefox 与 WebKit、PowerPoint、Keynote，以及 Claude。
+
+## S9a 作者控制 — 2026-10-19
+
+状态：S9a 范围为 **LocalVerified**。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。[证据（英文）](../evidence/s9a-author-controls/review.md) · [对齐计划 §17（英文）](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19) · [工作台](workbench.md#六个问题与三个方向s9a) · [Visual Studio](visual-studio.md#作者控制章节与分项锁定s9a)。
+
+结果：
+
+- `npm run verify` 通过 **461 项测试**（457 项通过，4 项跳过：原有的环境门控测试与 3 项需要浏览器的 Studio 导出测试），以及类型、1,497 个文件的源码与链接检查、打包和演示。
+  - 新增：`tests/s9a-author-controls.test.mjs`（14 项，其中两项是针对独立代码审查 12 项发现的回归测试）、`tests/argument-units.test.mjs`（11 项）、`tests/studio-export.test.mjs`（4 项）。
+  - 设置 `CHROMIUM_PATH` 后，`tests/studio-export.test.mjs` 4 项全部通过；在 3 份文稿上，其 PowerPoint 字节与 `scripts/export-targets.mjs` 的 Playwright 路径完全一致。
+- 渲染基线为渲染器 `visual-art-direction.11`（页面折叠内容的样式规则）重新记录一次，单独提交。与 `4f26b33` 的逐项对比显示没有任何可见文字、数值、表格、锚点或标题变化；播放器不变。
+- `tests/browser_author_controls.mjs`（隔离的 Chrome for Testing 151、Playwright 1.61.1）：在 1440、1024、390 px 下完成 28 个界面步骤，0 个页面错误，0 个外部请求。唯一的控制台错误是锁定版式后更换主题被拒绝时预期的 HTTP 409。
+- `node scripts/s9a-directions.mjs --exports`：
+  - 24 份方向文稿（每套主题分别作为首选方向 × 原文与六类构图 × 英文与中文）在三种宽度下无排版、渲染或字形问题，各主题间事实一致。
+  - Studio 的 PowerPoint 与 PDF 导出 48/48 通过导出顺序的检查。
+  - 1440 px 下 132 页中有 11 页超过 900 px 候选预算（已记录）。
+- 已查看：全部四张对照表、三种宽度下的方向卡片，以及证据中列出的计划与编辑结果；最弱页面已在证据中注明。
+- PowerPoint、Keynote 与 Figma 已安装但未运行；LibreOffice 与 After Effects 未安装；Claude 仍延后。
+
+## S8 T01–T03 主题包与 VIS-015 — 2026-10-19
+
+状态 **partial**。[证据（英文）](../evidence/vis-015/review.md) · [手册](visual-studio.md#再增三套主题silver-gray-editorialfresh-reportorange-launchs8vis-015) · [对齐文档 §16](../plans/design-handoff-alignment.md#16-s8-decisions--t01t03-themes-and-vis-015-2026-10-19)。
+
+结果：
+
+- `npm run verify` 通过 **432 项测试**（431 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。
+  - 新增 11 项测试在 `tests/s8-themes.test.mjs`：三套主题包及其 Token 角色、测得的对比度、自定义属性及其回退值、字体角色、主题专属构图、主题 CSS、C12 词间换行、C13 缺字形审计、S8 故事、交接样页与第 42 页故事板。
+  - 既有测试为六套主题包、zh-CN 展示文字中的 `<wbr>`、每次适配结果中的 `glyphs` 列表以及导出就绪阶段的页内缺字形拒绝做了扩展。
+  - 渲染基线重新记录三次，每次单独提交，对应渲染器 `visual-art-direction.7` → `.9` 与播放器 `semantic-player.5`。与 `a8c0404` 的逐条对比显示没有任何可见文字、数值、表格、锚点或标题改变。
+- `node scripts/s8-themes.mjs`（隔离的 Chrome for Testing 151，Playwright 1.61.1，0 次外部请求）：24 份文稿在 1440、1024、390 px 下 0 个适配或渲染问题；136 对测得的对比度全部高于阈值；9 个显式用例全部通过（每个主题的缺字形、媒体失败封面、低动作模式、黑白 Research Atlas、每个主题的中文词间换行）；三个主题在两种语言下事实一致。
+- `npm run export:targets -- --s8`：18 份文稿。PowerPoint 可编辑性与逐页检查 18 份全部通过；PDF 可搜索性在 9 份英文文稿通过，在 9 份中文文稿为 partial（部首码位，与 VIS-016 相同）；每份报告列出所用字体。
+- VIS-014 的显式用例重新运行：11 项全部通过；缺字形现在由适配审计检测。
+- PowerPoint、Keynote 与 Figma 已安装但未运行。LibreOffice 与 After Effects 未安装。
+
+## S7 输出等级与 VIS-016 导出 — 2026-10-19
+
+状态 **partial**。[证据（英文）](../evidence/vis-016/review.md) · [手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016) · [对齐文档 §15](../plans/design-handoff-alignment.md#15-s7-result--output-levels-and-vis-016-2026-10-19)。
+
+结果：
+
+- `npm run verify` 通过 **421 项测试**（420 通过，1 项按环境跳过），以及类型检查、1,334 个文件的源码与链接检查、打包和示例。
+  - 新增的 11 项测试在 `tests/export-targets.test.mjs` 中。它们覆盖等级、导出顺序、ready 阶段的拒绝、静态呈现、PowerPoint 编译、L3 回退、读回字节后发现的篡改、PDF 打印作业与检查、报告、编译辅助函数，以及独立代码审查发现的问题的修复。
+  - 三项旧测试改为断言已声明的等级，不再断言 S2 的拒绝。
+  - 渲染基线不变。
+- `npm run export:targets` 跑完九份演示文稿（冻结的 VIS-014 语料加 S4 图表类型样例）。它使用禁用页面脚本的隔离 Chrome for Testing 151，外部请求为 0，约 50 秒完成。
+- PowerPoint 可编辑性与逐页对照派生场景的检查：9/9 通过。带缺失值、对数轴或区间的图表以 L3 图像交付，共 9 个。
+- 标准库检查 `tests/inspect_v3_pptx.py` 9/9 通过；每个内嵌工作簿都与图表缓存一致。
+- PDF 可搜索性（pypdf 6.16.2）：5 份英文通过，4 份中文 partial。Chromium 把页、门、长、见、母记成 CJK 部首码位。每个打印出的场景尺寸都与测量值一致。
+- 无障碍：PowerPoint 文件包检查通过；PDF partial（Chromium 的 figure 外层缺 `/Alt`）。
+- 视觉保真：partial，只有 macOS 快速查看的参考渲染。
+
+已查看：九份演示文稿的全部对照图（网页、PowerPoint、PDF 并排），以及封面、趋势、排序、热力图与示意图幻灯片的单张快速查看渲染。
+
+PowerPoint 与 Keynote 已安装但未运行；未发现 LibreOffice 与 After Effects。未测试：读屏软件、PDF/UA、远程 CI。
+
+## VIS-014 首个视觉发布门 — 2026-10-19
+
+状态 **partial**。[证据（英文）](../evidence/vis-014/review.md) · [发布门手册](visual-acceptance.md) · [评分审阅（英文）](../visual-acceptance/review.md)。
+
+结果：
+
+- `npm run verify` 通过 **410 项测试**（409 通过，1 项按环境跳过），以及类型检查、1,271 个文件的源码与链接检查、打包和示例。
+- `scripts/release-gate.mjs` 在隔离的 Chrome for Testing 151 和临时上下文中运行。冻结画廊与三份故事的中英文版本在 1440、1024、390 px 下均为 0 个问题，96/96 条交互轨迹通过。
+- 11 个显式用例中 10 个通过；缺字形无法被检测。
+- 三份 VIS-001 旧版整稿在每个主题中都保留全部文字。
+- 8 份导出文件从系统临时目录离线打开，在 Chromium 151、Firefox 153（缓存版本）和 WebKit 26.5 中均正常；复制出去的运行包也在那里完成了一个本地任务。
+- 真实 Codex CLI 0.160.0 运行：从提示起草整稿，审阅 7 张实际截图后导出，只修订第 3 页，再次审阅并导出，第 3 次尝试通过。第 1 次是发布门脚本的缺陷；第 2 次是宿主审阅被拒，适配器现在会写明拒绝原因。
+- Claude 仍为 deferred。
+- 在合并后的分支上重新运行：
+  - `tests/browser_evidence_scene.mjs`（S2）
+  - `browser_motion_state.mjs`（S5）
+  - `browser_chart_kinds.mjs`（S4）
+  - `browser_families.mjs`（S3）
+  - `browser_compositions.mjs`（VIS-006）
+  - `browser_interaction_visual_parity.mjs`（VIS-009，216 项对照）
+
+  S2 与 S5 脚本已按分层聚焦规则和 S4 的 HTML 条形标记更新。
+
+已查看：每份整稿的 1440 px 对照表、两张 390 px 对照表、用例截图、旧基线对照、各引擎截图，以及宿主修订前后的页面。
+
+咨询性评分为 74–77/100，低于 80 的试点门槛。
+
+PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 LibreOffice 与 After Effects。
+
+## S6 合并 S3、S4、S5 — 2026-10-19
+
+S6 中又重录了一次（`semantic-player.4`、`visual-art-direction.6`），原因是 VIS-014 画廊暴露出六个渲染缺陷：斜切封面的引用对比度、封面数字被拆行、趋势图时间标签重叠、热力图行标签超出画框、比较面板下前后对比图片标签错误、线性流程图换行。与上一次记录（`8252c10`）相比，12 个 HTML 条目中没有任何可见文字或数值变化；锚点与数据表相同。[回执](../evidence/s6-integration/baseline-diff-gallery-fixes.json)。
+
+S3、S4、S5 是从 S2 分出的三个平行分支，各自重录过渲染基线。S6 按 S3 → S4 → S5 的顺序合并，并应用分层图表聚焦规则（[决定](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)）。`PLAYER_VERSION` 现为 `semantic-player.3`，`WEB_RENDERER_VERSION` 为 `visual-art-direction.5`。**渲染基线已在单独的提交中有意重录**，保留播放器历史（`.1`、`.2`、`.3`）。全部 12 个 HTML 条目的字节都有变化。与各分支末端逐条对照：相对 S4，任何条目的可见文字和数值都没有变化，锚点与数据表相同；相对 S3 和 S5，唯一的文字变化就是 S4 本身对排序条形图的修改（“按数值从高到低”说明、0 刻度、图表类型措辞），锚点与数据表相同。2 个 JSON 哈希不变。[S3](../evidence/s6-integration/baseline-diff-s3.json) · [S4](../evidence/s6-integration/baseline-diff-s4.json) · [S5](../evidence/s6-integration/baseline-diff-s5.json)。
+
+## S5 动效状态与播放器冲突 — 2026-10-19
+
+S2 的静态状态扩展并入唯一的内嵌播放器（`PLAYER_VERSION` 为 `semantic-player.2`）：一个提示时钟统一播放、暂停、定位、下一、上一、重播与减少动态；六个具名动效原语，各自声明减少动态时的结果；EvidenceStage 图表状态分开保存（聚焦不等于隐藏）；控件或图表标记获得焦点时按键不会翻页；审查门同时测量每个已声明的静态状态；Studio 开场操作拒绝复制静态状态；无 JavaScript 时绘制冻结的步骤、比较标签与热点。未声明 `staticState` 的输出保持不变（C7）。`render-baseline.json` 在单独提交中有意重新记录：10 个 HTML 条目只有播放器脚本与 CSS 变化（交互样例的运行时数据另有新增字段）；读者可见标记、两个 JSON 条目和全部 12 个主题条目不变。`npm run verify` 通过 **373 项测试**（372 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。`tests/browser_motion_state.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过：中英文、1440 与 390px 下共 2,864 次按键均未翻页；已查看全部 28 张截图。S2 脚本、VIS-009 验收和讲解编辑浏览器测试在新播放器上通过；预览／导出像素一致性测试在 S2 提交和本版本上都因 390px 图解边缘像素而失败。PowerPoint、Keynote、Figma 已安装但未运行；未发现 After Effects 与 LibreOffice。[证据](../evidence/s5-motion-state/review.md) · [冲突](../plans/design-handoff-vertical-sample.md#s5-update-2026-10-19) · [交互](interactions.md#提示时钟动效与键盘)。
+
+## S3 构图类型 — 2026-10-19
+
+在 VIS-006 的六类之外新增六类：章节、前后对比、系统关系图、小倍数图、引语、结论与下一步。每类有三种结构、一种必需内容块、焦点与密度元数据，以及 1440 / 1024 / 390px 的分栏规则；三个 schema 与三套主题包均已列出。表格／参考类未加入，因为比较类已覆盖表格。新增类别只能由作者明确选择，不会自动推断。
+
+整稿节奏选择现在遵循交接包规则：同一构图不连续出现第三次（顺序内容与比较内容除外），不出现连续三页“标题加卡片”，10–15 页文稿少于四种类别时给出建议。作者锁定优先，并在报告中列出。C9 已修复：切换主题再切回，方案与渲染哈希都与原来相同。
+
+结果：
+
+- `npm run verify` 通过 **376 项测试**（375 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。
+- `tests/browser_families.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中运行：108 个新候选全部在 1440px 下通过；1440 / 1024 / 390px 的 324 项检查均符合各结构的分栏规则；54 项基线标签检查通过；页面错误与外部请求均为 0。
+- 四个面板的页面在三种结构下都未通过，因此被拒绝；用 `splitSmallMultiples` 拆分后，两页均通过。
+- 现有 108 个候选的 `tests/browser_compositions.mjs` 与 S2 的 `tests/browser_evidence_scene.mjs` 仍然通过。
+- 已查看全部六张 1440px 对照表，以及 390px 对照表、整稿截图和 Studio 截图。
+
+`render-baseline.json` 已在单独的提交中有意重新记录：22 个字节哈希改变（样式表与主题构图列表），两个 JSON 导出不变，所有内容哈希（文字、数值、标识、链接、脚本）与 `232060e` 一致。
+
+PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 LibreOffice、After Effects 与 Firefox。
+
+[证据](../evidence/s3-composition-families/review.md) · [逐字节对照](../evidence/s3-composition-families/byte-identity.json) · [说明](visual-studio.md#新增六类构图s3)。
+
+## S4 设计交接图表渲染器 — 2026-10-19
+
+图表渲染器现在绘制 S1 的各项声明（对数轴、带说明的截断、作者顺序／升序排序、区间、事件、缺失原因），关闭 S2 的图表冲突 C1、C2、C3、C10 与 C19，并新增六种 P1 图表：直接标注条形、`grouped-bar`、`dot-interval`、末端标注趋势、`small-multiples`，以及带限定说明的 `benchmark-table`。图形、标签、文字陈述和数据表都来自同一个数据对象；三套主题下的数据表逐字节一致。`npm run verify` 通过 **375 项测试**（374 通过，1 项按环境跳过），以及类型、1,149 个文件的源码与链接检查、打包和演示。`tests/browser_chart_kinds.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过，覆盖中英文、1440／1024／390px、有无 JavaScript 和灰度：每个视图 119 个结论标签，无一被隐藏或只能滚动查看；注入滚动容器后，Studio 测量审查门以 `VISUAL_FIT` 拒绝。S2 垂直样本与现有交互套件再次通过；已提交的所有图片均已查看。**渲染基线经有意重新记录**，单独提交：10 个 HTML 哈希全部变化（嵌入的图表代码、CSS 与 `WEB_RENDERER_VERSION` `visual-art-direction.4`），每个文件的锚点、数据表和数值均未改变；JSON 与主题哈希不变。PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 After Effects 与 LibreOffice。[证据](../evidence/s4-chart-renderer/review.md) · [字段决定](../plans/design-handoff-alignment.md#s4-field-list-decisions-2026-10-19)。
+
+## S2 设计交接垂直样本 — 2026-10-19
+
+一页示意证据页（结论、排序条形图、来源、焦点）以中英文完整走过 Studio 导入、两套主题包、字体测量、鼠标与键盘焦点、暂停与定位、新增的静态状态选择、现有的测量后导出审查门，以及导出文件的各个视图。静态输出现在会把已声明的 `staticState` 应用到图表选择；`reducedMotion: "static"` 时显示该状态而不播放提示；现有输出保持逐字节一致。`npm run verify` 通过 **362 项测试**（361 通过，1 项按环境跳过），以及类型、源码与链接检查、打包和演示。`tests/browser_evidence_scene.mjs` 在隔离的 Chrome for Testing 151 和临时配置文件中通过；已查看 1440 与 390px 的全部 20 张截图。键盘焦点从未翻页，快速翻页后待执行计时器为 0。PowerPoint、Keynote、Figma 已安装但未运行（没有 v3 编译器）；未发现 After Effects 与 LibreOffice。20 项冲突附复现步骤列出。[证据](../evidence/s2-vertical-sample/review.md) · [冲突清单](../plans/design-handoff-vertical-sample.md)。
+
+## S1 设计交接契约扩展 — 2026-10-19
+
+仅契约变更，状态 **Implemented**。四个 v3 schema 新增可选交接字段（场景结论、内容状态、关键状态与静态状态；数据集身份、定义、缺失原因、区间与事件；按图声明的刻度、排序与截断；动效触发／时钟／减少动态；主题 token 角色）。`npm run verify` 通过 **355 项测试**（354 通过，1 项按环境跳过）、类型重新生成、1,083 个文件的源码与链接检查、可复现打包和演示。新增 13 项测试覆盖六条误读守卫（各含一正一反）、旧示例与反例、显式 `declareChartSemantics()` 迁移、锁定映射与主题默认值；其中一项证明 12 份现有 HTML／JSON 输出和 12 份主题解析结果与变更前记录的哈希完全一致。未运行浏览器、宿主、PowerPoint、Keynote、Figma 或 After Effects，未做任何视觉检查。尚无渲染器的声明会以具名错误码拒绝 HTML 导出。[字段与恢复](architecture.md#版本-3-交接字段s12026-10-19) · [计划记录](../plans/design-handoff-alignment.md#11-s1-result--contract-extension-2026-10-19)。
+
 ## 交互视觉回归闭环 — 2026-10-18
 
 封面数字已有明确的对比色承载面；窄屏反向连线使用独立标签行与箭头轨道。`npm run verify` 通过 **338 项测试**；完整交互图库通过 **6 套故事／146 张截图**，覆盖 1440／1024／390px、触控、原生后台清理、锁定与历史。已有作品的中英文编辑流程均通过；**216 对真实预览／下载 HTML 画面**通过，HTML、页面标记与选择状态精确相同，像素比较使用已记录的光栅舍入容差。已查看六套整稿与交互联系图，以及封面、流程、编辑器原图。未观察到页面错误或外部请求。PowerPoint／Keynote／Figma 未运行，未发现 After Effects。[完整证据、修复与边界](../evidence/interaction-visual-regression/review.md)。本次结果取代下方历史记录中尚未解决的封面对比度阻断。

@@ -1,0 +1,55 @@
+{
+  "scope": "A three-page sample of reference pages, opened once in the built-in browser pane of the Claude desktop app (Chromium 152). It is a spot check of the handoff's reading, not a site-by-site verification. No screenshots are kept: the handoff does not bundle reference-site pictures and neither does this repository.",
+  "date": "2026-10-19",
+  "method": "Navigate, wait for the page to settle, then read layout facts with page JavaScript and look at one screenshot per viewport. Viewports 1440x900 and 390x844, device pixel ratio 2. The pane's reduced-motion setting could not be changed, so prefers-reduced-motion stayed false.",
+  "pages": [
+    {
+      "sourceId": "ANT-01",
+      "url": "https://www.anthropic.com/",
+      "patterns": ["F01"],
+      "desktop1440": {
+        "observed": "The headline reveals word by word while the page loads (mid-reveal at about 4 s: 'research and products' visible, the rest faint). A short company statement sits in the right column. Three artwork tiles sit below the fold line. Hero text and statement carry different widths and reading levels. Page height 3340 px. Two canvas elements, no video.",
+        "matchesHandoff": "consistent: unequal areas for claim, explanation and media (F01)"
+      },
+      "mobile390": {
+        "observed": "No horizontal scroll (scrollWidth 390). The menu collapses to one icon. At 2.5 s the headline was still invisible although it was in the DOM; at about 6.5 s it was fully shown (opacity 1, 20 word spans), followed by the statement and the featured-release card in one column. Page height 6805 px.",
+        "matchesHandoff": "consistent: the layout reorders into one column in reading order"
+      },
+      "notChecked": ["reduced motion", "no-JavaScript static view", "tablet width", "scroll-linked states", "frame rate"]
+    },
+    {
+      "sourceId": "OAI-S01",
+      "url": "https://openai.com/zh-Hans-CN/",
+      "patterns": ["F01"],
+      "desktop1440": {
+        "observed": "Page language zh-Hans-CN, title 'OpenAI | 研究与部署'. A question entry ('有什么可以帮忙的？') with a prompt box and five chips sits above the editorial sections ('dot 正式登场', '最新动态', '客户案例', '最新研究', ...). Two looping muted videos are present and paused at load (autoplay off). No horizontal scroll. Page height 6264 px.",
+        "matchesHandoff": "consistent for the question entry, editorial area and media; the page content has changed since the handoff reading (the lead story is now 'dot')"
+      },
+      "mobile390": {
+        "observed": "The same question entry and chips stack in one column; no horizontal scroll; 20 images and 2 videos; page height 8569 px.",
+        "matchesHandoff": "consistent"
+      },
+      "notChecked": ["reduced motion", "hover transitions", "video playback controls", "tablet width"]
+    },
+    {
+      "sourceId": "OAI-S20",
+      "url": "https://openai.com/zh-Hans-CN/signals/enterprise-data/",
+      "patterns": ["C04", "M13"],
+      "desktop1440": {
+        "observed": "One table with a header row and 8 industry rows, columns 'ChatGPT 采用', 'ChatGPT 使用强度', 'Codex 采用', 'API 调用强度'. Five header buttons. Activating the 'Codex 采用' header (a scripted click, not a pointer gesture) changed the row order (first row '艺术、娱乐与休闲' before, '专业、科学与技术服务' after) and set aria-sort='ascending' on that header. 82 SVG elements on the page, no canvas.",
+        "matchesHandoff": "consistent: a table header sort reorders the rows (M13, C04)"
+      },
+      "mobile390": {
+        "observed": "No horizontal page scroll. The table measured 800 px wide inside an 800 px wrapper with overflow-x hidden at a 390 px viewport; its appearance was not inspected, so how the table fits is unknown. 85 SVG elements, page height 19106 px.",
+        "matchesHandoff": "not decided: needs a visual look at the table at 390 px"
+      },
+      "notChecked": ["other columns' sort", "chart linking", "reduced motion", "pointer-driven sort", "keyboard sort"]
+    }
+  ],
+  "limits": [
+    "Reduced-motion and static (no JavaScript) states were not captured on any page.",
+    "Only the initial state was captured everywhere except the OAI-S20 sort.",
+    "The sample says nothing about the other 1,387 OpenAI paths or about any Anthropic page except the home page.",
+    "The user answered question 3 of this task with 'open a few pages', which allowed these visits. No account was used, nothing was typed into a form and no file was downloaded."
+  ]
+}

@@ -1,0 +1,3561 @@
+{
+  "title": "DeckWeft 可实施设计模式",
+  "as_of": "2026-10-18",
+  "status": "proposal",
+  "counts": {
+    "composition": 12,
+    "motion_interaction": 20,
+    "chart_infographic": 24
+  },
+  "notes": [
+    "不同维度会复用同一能力；总条目数不是官方站点风格数量。",
+    "实现、时长和验收均为提案，除具体列出的 V 证据外不代表通过运行测试。"
+  ],
+  "patterns": [
+    {
+      "id": "F01",
+      "title": "编辑式非对称主视觉",
+      "source_ids": [
+        "ANT-01",
+        "OAI-S01"
+      ],
+      "evidence": "V：主张、解释、媒体在首页承担不同面积与阅读层级。",
+      "deckweft": "提供 Thesis + SideNote / Media 构图；标题先表达论点，辅助栏只放必要解释。使用真实文本和响应式栅格。",
+      "acceptance_and_static": "窄屏按语义顺序重排；静态页保留标题、解释与媒体署名。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-006",
+        "src/design/compositions.mjs",
+        "themes/cream-collage/theme.json"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-006/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "statement-split, image-right and the Cream Collage diagonal-cover give an asymmetric thesis/support hero.",
+      "patternId": "F01",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/",
+        "https://openai.com/zh-Hans-CN/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：主张、解释、媒体在首页承担不同面积与阅读层级。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [
+          "ANT-01",
+          "OAI-S01"
+        ],
+        "evidence": [
+          "docs/evidence/vis-006/review.md",
+          "docs/evidence/s10-pattern-maintenance/browser-sample.json"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F02",
+      "title": "大标题与克制的章节页",
+      "source_ids": [
+        "ANT-05",
+        "OAI-S05"
+      ],
+      "evidence": "V：发布页将超大标题与独立主视觉结合，正文另有阅读区域。",
+      "deckweft": "提供 Chapter / ProductStage；艺术文字与语义标题分层。每章只设一个主要视觉焦点。",
+      "acceptance_and_static": "完整标题可读且可访问；缺少艺术层时仍有可识别的文字标题。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-005",
+        "VIS-006",
+        "src/design/compositions.mjs",
+        "themes/electric-violet/theme.json"
+      ],
+      "verifiedBy": [
+        "docs/evidence/visual-studio/review.md",
+        "docs/evidence/s3-composition-families/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "S3 chapter family (chapter-low, chapter-index, chapter-margin) in all three themes, text only, one large heading; violet-chapter stays Electric Violet's own colour page.",
+      "patternId": "F02",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：发布页将超大标题与独立主视觉结合，正文另有阅读区域。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/visual-studio/review.md",
+          "docs/evidence/s3-composition-families/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F03",
+      "title": "窄正文、宽证据的可变节奏",
+      "source_ids": [
+        "ANT-05",
+        "OAI-S02"
+      ],
+      "evidence": "V：正文段落和大型图表 / 交互舞台使用不同宽度。",
+      "deckweft": "正文限制行宽；图表、样例和图片可跨栏。按信息需要改变媒体面积，保留连续的对齐基线。",
+      "acceptance_and_static": "阅读视图重排，演示视图按比例适配；长段落拆页，不靠持续缩小文字。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-006",
+        "src/design/art-direction.mjs",
+        "src/render/web/art-direction.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-006/review.md",
+        "docs/evidence/interaction-visual-regression/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Bounded reading widths with evidence-top full-width plots; text and evidence use different widths.",
+      "patternId": "F03",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：正文段落和大型图表 / 交互舞台使用不同宽度。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md",
+          "docs/evidence/interaction-visual-regression/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F04",
+      "title": "章节目录与进度标识",
+      "source_ids": [
+        "ANT-05",
+        "ANT-11",
+        "OAI-S02"
+      ],
+      "evidence": "V + D：发布页和报告以章节锚点组织长内容；实测部分页面可见侧边目录。",
+      "deckweft": "共用章节数据生成目录、缩略图、进度和页面导航；演示模式以场景 ID 定位。",
+      "acceptance_and_static": "当前章节清楚；键盘跳转后焦点合理；PDF 用书签或页码承担定位。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "D",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/render/web/document.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Previous/next and a page counter exist; no chapter table of contents or section progress marker.",
+      "patternId": "F04",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/transparency",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "observed"
+      ],
+      "observedBehavior": "V + D：发布页和报告以章节锚点组织长内容；实测部分页面可见侧边目录。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F05",
+      "title": "结论、图形、图注、来源四层",
+      "source_ids": [
+        "ANT-09",
+        "ANT-20",
+        "OAI-S19"
+      ],
+      "evidence": "D + S：研究与数据页同时提供标题、可视化、解释与方法口径。",
+      "deckweft": "将 takeaway / figure / caption / source 设为独立角色；图表渲染不能吞掉说明。",
+      "acceptance_and_static": "最终导出中单位、日期、样本与限定条件可读，不只存在于 tooltip。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-006",
+        "VIS-008",
+        "src/design/compositions.mjs",
+        "src/components/charts/render.mjs",
+        "src/design/scene-semantics.mjs",
+        "src/components/charts/semantics.mjs",
+        "src/render/web/static-state.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md",
+        "docs/evidence/s2-vertical-sample/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Heading, chart, notes and citation blocks share one scene. S1 (2026-10-19) added the typed scene takeaway (design-plan scene.takeaway → a block id) and chart question/takeaway fields; a typed method note is still a paragraph block. S2 (2026-10-19) checked the four layers in an illustrative bilingual evidence scene at 1440/390 px with and without JavaScript: title, takeaway block, chart with visible labels and legend, chart caption, authored caption and source are visible text. Chart question/takeaway and dataset definition/sample/dates are declared but not drawn (conflict C10); at 390 px ranked-bar values sit in a horizontal scroller (C2).",
+      "patternId": "F05",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/project-swap",
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+        "https://openai.com/zh-Hans-CN/signals/data/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md",
+          "docs/evidence/s2-vertical-sample/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F06",
+      "title": "对齐属性的比较版式",
+      "source_ids": [
+        "ANT-05",
+        "OAI-S05",
+        "OAI-S06"
+      ],
+      "evidence": "V + S：基准矩阵和三方产品比较按同一维度对齐。",
+      "deckweft": "Comparison 支持二或三方案，共用属性行与单位；可突出一列，参考列保持明确标签。",
+      "acceptance_and_static": "缺失值与不可比值有独立状态；不能用高亮暗示未经数据支持的优胜。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-006",
+        "src/design/compositions.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-006/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "comparison-matrix, comparison-rail and comparison-stack align a table on shared dimensions.",
+      "patternId": "F06",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/",
+        "https://openai.com/zh-Hans-CN/api/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V + S：基准矩阵和三方产品比较按同一维度对齐。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F07",
+      "title": "文本目录与媒体密度切换",
+      "source_ids": [
+        "ANT-02",
+        "ANT-13",
+        "OAI-S17",
+        "OAI-S18"
+      ],
+      "evidence": "D + S：目录提供分类、搜索或排序，OpenAI 页面结构还提供媒体显隐。",
+      "deckweft": "模式浏览器支持紧凑列表与视觉预览；按内容目的、图形任务和风格筛选。",
+      "acceptance_and_static": "筛选状态可见且可重置；无结果状态可操作；预览不同时自动播放。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No catalog/search/sort or media-density toggle inside slides; the Studio library is a project list, not this pattern.",
+      "patternId": "F07",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research",
+        "https://www.anthropic.com/news",
+        "https://openai.com/zh-Hans-CN/stories/",
+        "https://openai.com/zh-Hans-CN/research/index/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F08",
+      "title": "渐进披露与方法附录",
+      "source_ids": [
+        "ANT-26",
+        "ANT-11",
+        "OAI-S16"
+      ],
+      "evidence": "D：长文使用可折叠次级信息或版本化报告结构。",
+      "deckweft": "正文保留结论与必要限制；技术方法、数据明细和高级设置按需展开。",
+      "acceptance_and_static": "按钮语义和展开状态完整；静态导出显式选择展开附录或保留可见摘要。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/render/web/interaction-bundle.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No-JavaScript reading view and expandable explanations/data tables exist; no method-appendix composition.",
+      "patternId": "F08",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/constitution",
+        "https://www.anthropic.com/transparency",
+        "https://openai.com/zh-Hans-CN/trust-and-transparency/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F09",
+      "title": "人物摄影与编辑式裁切",
+      "source_ids": [
+        "ANT-22",
+        "ANT-23"
+      ],
+      "evidence": "D：人物、工作场景和真实过程形成内容证据。",
+      "deckweft": "Documentary 使用与故事有关的摄影；保留人物、场景与作者信息，可与研究主题共用字级。",
+      "acceptance_and_static": "图片裁切不移除必要语境；替代文本解释内容；使用原创或获授权的素材。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-007",
+        "src/assets/crop.mjs",
+        "themes/electric-violet/theme.json"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-007/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Image family, author-protected crops and photo-split; subject detection is not implemented.",
+      "patternId": "F09",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/company",
+        "https://www.anthropic.com/careers"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-007/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F10",
+      "title": "引语与作者身份分层",
+      "source_ids": [
+        "ANT-05",
+        "ANT-06",
+        "OAI-S25"
+      ],
+      "evidence": "D：客户与人物观点包含引语、姓名和组织字段，部分有选择器。",
+      "deckweft": "Quote 将观点与出处分开；短引语可成为独立页，长引语保留上下文或改为摘要。",
+      "acceptance_and_static": "不虚构原话；明确引语与转述；静态页保留作者、组织及来源。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-002",
+        "src/render/web/components/blocks.mjs",
+        "src/design/compositions.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/s3-composition-families/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "S3 quote family separates the verbatim quote block, its attributing citation (directly under it) and paraphrase paragraphs in three geometries; speaker and organisation are citation text, not typed fields.",
+      "patternId": "F10",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://openai.com/business/solutions/design/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/s3-composition-families/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F11",
+      "title": "编号序列与里程碑叙事",
+      "source_ids": [
+        "ANT-22",
+        "ANT-28",
+        "OAI-S15",
+        "OAI-S23"
+      ],
+      "evidence": "D + S：价值观、流程和活动资料以序列组织。",
+      "deckweft": "Sequence、Milestone、Loop 分别保存顺序、时间和反馈边；按内容选用编号或日期。",
+      "acceptance_and_static": "真实日期使用真实间隔；步骤不能伪装成时间比例；静态状态保留完整关系。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-006",
+        "VIS-008",
+        "src/components/diagrams/render.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-006/review.md",
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Process family and sequence/process diagrams exist; no dated milestone timeline in v3 (legacy MB-07 timeline recipe only).",
+      "patternId": "F11",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/company",
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://openai.com/zh-Hans-CN/safety/",
+        "https://openai.com/zh-Hans-CN/live/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md",
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "F12",
+      "title": "媒体舞台与明确的观看控制",
+      "source_ids": [
+        "ANT-06",
+        "OAI-S02",
+        "OAI-S23",
+        "OAI-S27"
+      ],
+      "evidence": "V + D + S：视频、演示样例与图像序列承担产品说明，部分可见播放控制。",
+      "deckweft": "ProductStage 给主要媒体足够面积，提供封面、字幕、播放 / 暂停与演示说明。",
+      "acceptance_and_static": "失败显示封面与摘要；视频、图像序列、真实交互各自标明；导出采用可解释的代表帧。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-007",
+        "VIS-009"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Image stage with comparison/hotspot controls exists; v3 has no video or screen-recording block or player.",
+      "patternId": "F12",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://openai.com/index/gpt-6-for-everyone/",
+        "https://openai.com/zh-Hans-CN/live/",
+        "https://openai.com/index/introducing-chatgpt-images-2-5/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V + D + S：视频、演示样例与图像序列承担产品说明，部分可见播放控制。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M01",
+      "title": "可跳过的发布开场",
+      "source_ids": [
+        "ANT-05",
+        "ANT-06"
+      ],
+      "evidence": "V + D：Haiku 可见开场艺术与滚动入口；Skip 控件存在，但本次未完成按钮本身的成功操作。",
+      "deckweft": "IntroScene 保存 start / complete；提供 Skip、章节直达与关闭非必要动作；不要依赖播放完才能读正文。",
+      "acceptance_and_static": "跳过后准确进入第一内容状态，连续跳过无残留；PDF 固定为完整标题与主视觉。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No intro sequence; v3 deliberately has no unsolicited autoplay.",
+      "patternId": "M01",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-sonnet-5-5"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "observed"
+      ],
+      "observedBehavior": "V + D：Haiku 可见开场艺术与滚动入口；Skip 控件存在，但本次未完成按钮本身的成功操作。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M02",
+      "title": "微反馈与复制状态",
+      "source_ids": [
+        "ANT-05",
+        "ANT-31",
+        "OAI-S02"
+      ],
+      "evidence": "D + S：模型标识与引用有复制入口；Intelligent UI 清单包含勾选与进度状态。",
+      "deckweft": "对复制数据、保存预设、切换选择给出轻量反馈；依据真实结果显示成功或失败。",
+      "acceptance_and_static": "反馈不引发布局跳动；键盘可触发，状态可被辅助技术感知；静态输出省略瞬时消息。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "Implemented",
+      "implementedBy": [
+        "DW-100",
+        "src/render/web/document.mjs"
+      ],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "role=status announcements exist; no copy-to-clipboard or checklist micro-feedback component.",
+      "patternId": "M02",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Implemented",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M03",
+      "title": "媒体卡片的轻量变化",
+      "source_ids": [
+        "OAI-S01",
+        "OAI-S09"
+      ],
+      "evidence": "S：媒体与图片存在变换类，生态元素存在错峰延迟属性；未逐一测量 hover。",
+      "deckweft": "封面可选轻微缩放、裁切变化或短循环预览；以 transform / opacity 为优先试验路径。",
+      "acceptance_and_static": "可关闭、鼠标离开回到稳定封面；触屏可直接打开；打印与导出使用静帧。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No hover transforms on media cards.",
+      "patternId": "M03",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/",
+        "https://openai.com/zh-Hans-CN/open-models/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M04",
+      "title": "章节定位与阅读状态变化",
+      "source_ids": [
+        "ANT-05",
+        "OAI-S02"
+      ],
+      "evidence": "V：长页能保持章节线索；精确吸附、平滑曲线和时长未测。",
+      "deckweft": "章节导航、滚动高亮和演示进度共用当前位置；必要时平滑定位，减弱动作时立即定位。",
+      "acceptance_and_static": "不阻断自然滚动；返回原章节可预测；静态文件保留页码与书签。",
+      "priority": "P0",
+      "evidenceMarks": [
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/render/web/document.mjs",
+        "public/runtime/keys.js"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s2-vertical-sample/review.md",
+        "docs/evidence/s5-motion-state/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Page position changes with previous/next; no chapter-level reading state. S2 (2026-10-19) vertical sample: keyboard and pointer focus changes in a chart never change the page (1 / 2 stays), and six rapid Next/Previous pairs leave 0 pending page timers, scene timers and animations; a focused SVG chart mark still let ArrowRight change the page (conflict C14). S5 (2026-10-19) fixed C14: page keys never apply while a control, link, slider, tab or focusable chart mark has focus; keyboard traces at 1440/390 px in both languages changed no page, and fast paging leaves 0 timers, animations and registered resources. Chapter-level reading state remains missing.",
+      "patternId": "M04",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：长页能保持章节线索；精确吸附、平滑曲线和时长未测。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s2-vertical-sample/review.md",
+          "docs/evidence/s5-motion-state/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M05",
+      "title": "基准图表与样例标签页",
+      "source_ids": [
+        "ANT-05",
+        "ANT-14",
+        "OAI-S04"
+      ],
+      "evidence": "V（Haiku）+ S / D：控件切换展示的基准或样例。",
+      "deckweft": "TabStage 使问题、数据、图例、图注一起切换，默认手动；保持可比较区域的尺寸稳定。",
+      "acceptance_and_static": "选中态与 panel 对应；键盘可切换；导出作者指定面板或逐面板展开。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/timeline.mjs",
+        "src/render/web/static-state.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s5-motion-state/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Image-compare tabs and chart series selection exist; no generic tab stage switching between charts or samples. S5 (2026-10-19): a static state can freeze a comparison tab; output without JavaScript shows the chosen image and keeps the other in a closed original-image disclosure.",
+      "patternId": "M05",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V（Haiku）+ S / D：控件切换展示的基准或样例。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s5-motion-state/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M06",
+      "title": "引语与画廊轮播",
+      "source_ids": [
+        "ANT-05",
+        "OAI-S10",
+        "OAI-S28"
+      ],
+      "evidence": "D + S：存在引语选择和前后导航；GPT-Live 源码有 5,000 ms 周期声明，未实测播放。",
+      "deckweft": "对观点与媒体默认手动前进；需要自动播放时提供暂停，并在交互后保持用户选择。",
+      "acceptance_and_static": "焦点进入时不会失去内容；无动作模式呈静态列表；导出保留选定引语与身份。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No quote or gallery carousel.",
+      "patternId": "M06",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/brand/",
+        "https://openai.com/index/introducing-gpt-live/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M07",
+      "title": "任务与方案双层对照",
+      "source_ids": [
+        "ANT-14",
+        "ANT-06",
+        "OAI-S25"
+      ],
+      "evidence": "D + S：任务 / 场景选择与两个输出方案并存。",
+      "deckweft": "将 scenarioId 与 variantId 独立；先定同一任务，再比较方案；保留对应标题和说明。",
+      "acceptance_and_static": "比较口径相同；窄屏用有标签的单面板切换；PDF 默认并排展示双方关键内容。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-006",
+        "VIS-009"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Comparison family plus image-compare tabs; no paired task/solution layer component.",
+      "patternId": "M07",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://openai.com/business/solutions/design/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M08",
+      "title": "前后图像滑块与修订序列",
+      "source_ids": [
+        "OAI-S27"
+      ],
+      "evidence": "S：存在 0–100、步长 1、初始 50 的范围控件与图像版本序列；未实际拖动。",
+      "deckweft": "BeforeAfter 对齐两张图的同一空间，用可访问范围控件调整分界；修订过程另设步骤条。",
+      "acceptance_and_static": "有键盘与按钮等价操作；不能仅靠拖拽；静态导出为明确标记的并排图。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/timeline.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/interaction-visual-regression/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "image-compare offers first/second/both tabs; no 0–100 slider or revision sequence.",
+      "patternId": "M08",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-chatgpt-images-2-5/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/interaction-visual-regression/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M09",
+      "title": "文字到图像再到界面的三阶段",
+      "source_ids": [
+        "OAI-S02"
+      ],
+      "evidence": "V + S：滚动故事包含 text、images 和 Intelligent UI 阶段；核心状态切换已观察。",
+      "deckweft": "ExplainToExplore 保存 text / diagram / interactive 三个关键状态，同一数据支持滚动和演示步进。",
+      "acceptance_and_static": "Next / Previous 均可到达每一阶段；无动画直接切换；静态选择终态或展开三页。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/cues.mjs",
+        "src/motion/blueprint.mjs",
+        "public/runtime/components.js"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s9b-blueprint-a/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "S9b blueprint A: Explain (question, answer, object name) → Diagram (whole object, numbered parts) → Explore (one part against the whole) on one page; Next/Previous reach every stage, reduced motion switches directly, the static state is an author-chosen complete explanation. Stays partial: no scroll advancement (v3 has no scroll trigger) and the middle stage is a code-drawn diagram, not an image.",
+      "patternId": "M09",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V + S：滚动故事包含 text、images 和 Intelligent UI 阶段；核心状态切换已观察。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s9b-blueprint-a/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M10",
+      "title": "部件拆解、聚焦与说明联动",
+      "source_ids": [
+        "OAI-S02"
+      ],
+      "evidence": "V：自行车部件可选，Wheels 选择与范围值 0 的状态已核验。",
+      "deckweft": "对象保存稳定部件 ID、分组与说明；SVG 局部高亮，次要部分保持足够可见。",
+      "acceptance_and_static": "选择具备文字标签与焦点；每个关键部件有可导出的静态说明；不把悬停作为唯一入口。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/cues.mjs",
+        "src/motion/blueprint.mjs",
+        "public/runtime/components.js"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s9b-blueprint-a/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "image-hotspots bind stable annotations to image regions with annotation.reveal. S9b adds SVG part selection on a diagram: stable part ids, labelled focusable parts (click, buttons, arrow keys; no hover-only entry), the other parts stay drawn, and every part's explanation is exported as text. Part groups are not implemented.",
+      "patternId": "M10",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "observed"
+      ],
+      "observedBehavior": "V：自行车部件可选，Wheels 选择与范围值 0 的状态已核验。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s9b-blueprint-a/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M11",
+      "title": "参数调整驱动结果与清单",
+      "source_ids": [
+        "OAI-S02",
+        "ANT-07"
+      ],
+      "evidence": "S / D：页面包含计算器、数量调整、计划清单或情景输入；未验证全部计算。",
+      "deckweft": "ScenarioPanel 先支持 1–3 个有解释价值的参数；计算函数单独版本化，基准始终可见。",
+      "acceptance_and_static": "输入限制、单位和计算依据可查；保存输入与结果快照；缺失数据不给伪精确结果。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No parameter inputs or computed results.",
+      "patternId": "M11",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/",
+        "https://www.anthropic.com/institute/econ-scenarios"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M12",
+      "title": "从对象到群体的尺度转换",
+      "source_ids": [
+        "ANT-07",
+        "ANT-08"
+      ],
+      "evidence": "D，开屏 V：叙事意图从任务 / 职业推进到总体经济；完整变换未实测。",
+      "deckweft": "ScaleStory 把个体、分组、系统作为命名场景，保持对象身份与聚合规则，再添加共享元素过渡。",
+      "acceptance_and_static": "每一级都能静态解释；聚合计算可复现；按步推进可替代滚动与视觉缩放。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "D",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No object-to-population scale transition.",
+      "patternId": "M12",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/institute/econ-scenarios",
+        "https://www.anthropic.com/research/ai-expectations-gap"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "observed"
+      ],
+      "observedBehavior": "D，开屏 V：叙事意图从任务 / 职业推进到总体经济；完整变换未实测。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M13",
+      "title": "图例聚焦、筛选与排序",
+      "source_ids": [
+        "ANT-05",
+        "OAI-S19",
+        "OAI-S20"
+      ],
+      "evidence": "V：Haiku 选择单个系列后聚焦；Enterprise 表头选择 Codex 后真实重排；其余筛选为 S。",
+      "deckweft": "FilterState 保存 series / metric / sort / geography；区分“隐藏”“单系列聚焦”“重排”，控件名称说明后果。",
+      "acceptance_and_static": "颜色、标签与焦点一致；缺失值排序规则明确；导出写出筛选和排序口径。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/timeline.mjs",
+        "src/components/charts/semantics.mjs",
+        "src/design/scene-semantics.mjs",
+        "src/render/web/static-state.mjs",
+        "public/runtime/charts.js"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/explanatory-authoring/review.md",
+        "docs/evidence/s2-vertical-sample/review.md",
+        "docs/evidence/s5-motion-state/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "chart-select provides series focus and category range; S1 added the static chart sort declaration and the named staticState over the authored opening. Interactive sort is missing (ranked-bar sort is static). S2 (2026-10-19) applies the author's static state in web output: the no-JS view draws the frozen chart selection with a text line of every shown value and the full table, and reading/presentation views start at that cue boundary; reduced motion can fall back to it. On a single-series ranked bar the legend focus is degenerate (conflict C1) and the range filter uses author order, not rank (C3). S5 (2026-10-19) separates focus from hiding: data.focus / initialFocusSeriesId emphasise one shown series and keep the others as muted context; data.filter hides whole series; hiding the focused series ends the focus. The chart state keeps dataset, metric, shown series, focus, range, sort, scale and caption subject as separate fields, and static output freezes the author focus. Interactive sort is still missing; a ranked-bar category focus is still undecided (C1).",
+      "patternId": "M13",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/zh-Hans-CN/signals/data/",
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V：Haiku 选择单个系列后聚焦；Enterprise 表头选择 Codex 后真实重排；其余筛选为 S。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [
+          "OAI-S20"
+        ],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/explanatory-authoring/review.md",
+          "docs/evidence/s2-vertical-sample/review.md",
+          "docs/evidence/s5-motion-state/review.md",
+          "docs/evidence/s10-pattern-maintenance/browser-sample.json"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M14",
+      "title": "参数改变图表所回答的问题",
+      "source_ids": [
+        "OAI-S02",
+        "OAI-S04"
+      ],
+      "evidence": "S：图表参数包括回答进度或成本 / 延迟等不同横轴维度。",
+      "deckweft": "MetricSwitch 改变字段时同步改标题、单位、定义与图注；坐标变更应显式可见。",
+      "acceptance_and_static": "任何过渡都不掩盖尺度变化；静态文件写出当前参数，完整数据表保持对应。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No parameter that switches the chart dimension.",
+      "patternId": "M14",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/",
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M15",
+      "title": "流程边与当前阶段逐步强调",
+      "source_ids": [
+        "ANT-28",
+        "ANT-15",
+        "OAI-S15"
+      ],
+      "evidence": "D + S：原站可确认流程拓扑；部分箭头存在延迟字段，完整描边动画未测。",
+      "deckweft": "StepHighlight 根据步骤状态强调节点与关系；只有有向关系才使用方向性动画。",
+      "acceptance_and_static": "静止时完整图仍可读；回退恢复对应步骤；复杂路径可分多页解释。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/cues.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "steps target stable diagram node/edge ids; stroke-drawing animation is not used.",
+      "patternId": "M15",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://www.anthropic.com/research/tracing-thoughts-language-model",
+        "https://openai.com/zh-Hans-CN/safety/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M16",
+      "title": "音频、流程与文字的同步时钟",
+      "source_ids": [
+        "OAI-S28"
+      ],
+      "evidence": "S：四个音频元素、播放按钮、时间轴滑块语义和配套文字存在。",
+      "deckweft": "NarratedDiagram 用一个时间源同步声音、当前流程节点与文字；支持静音和用户跳转。",
+      "acceptance_and_static": "键盘可拖动时间；无音频也有完整转录；PDF 用静态流程、摘要与可选链接。",
+      "priority": "P3",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "v3 has no audio/media clock.",
+      "patternId": "M16",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-gpt-live/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M17",
+      "title": "文字周围的图像碎片与指针响应",
+      "source_ids": [
+        "OAI-S27"
+      ],
+      "evidence": "S：开屏有按字母划分的命中层、索引目标与图像；确切运行效果仍待专项验证。",
+      "deckweft": "TypeImageHero 用原创标题和图像片段形成开屏，可选一次入场或轻量指针响应。",
+      "acceptance_and_static": "另保留真实语义标题；字形不承载唯一信息；触屏、无动作与导出用作者认可的定稿。",
+      "priority": "P3",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No pointer-reactive image fragments.",
+      "patternId": "M17",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-chatgpt-images-2-5/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M18",
+      "title": "抽象 Canvas / Shader 主视觉",
+      "source_ids": [
+        "OAI-S04",
+        "OAI-S05",
+        "OAI-S28",
+        "ANT-07"
+      ],
+      "evidence": "V：Sol 与经济情景开屏外观。S：Sol 的 Canvas、Astra 的拖动与回退、GPT-Live 的 Shader / GPU 等级分别有源码声明。",
+      "deckweft": "HeroRenderer 提供静态、轻量 Canvas、增强 Shader 三级；每页最多一个高成本主视觉作为初始约束。",
+      "acceptance_and_static": "离屏暂停；失败不空白；减弱动画有替代；导出固定 seed 与构图，不能随机截取中间帧。",
+      "priority": "P3",
+      "evidenceMarks": [
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "MB-13",
+        "EXP-001",
+        "src/render/three-bundle.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/mb-11-15/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Legacy v1/v2 Three.js orbit/layer recipes with static fallbacks; nothing in v3 (EXP-001 planned).",
+      "patternId": "M18",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/",
+        "https://openai.com/index/introducing-gpt-live/",
+        "https://www.anthropic.com/institute/econ-scenarios"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "V：Sol 与经济情景开屏外观。S：Sol 的 Canvas、Astra 的拖动与回退、GPT-Live 的 Shader / GPU 等级分别有源码声明。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/mb-11-15/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M19",
+      "title": "数据系列与注释逐步揭示",
+      "source_ids": [
+        "ANT-05",
+        "OAI-S04",
+        "OAI-S20"
+      ],
+      "evidence": "D + S 确认图层与注释；统一逐步揭示动效为 P，不声称原站均播放此效果。",
+      "deckweft": "SeriesReveal 先显示轴、单位与基准，再出现系列和结论注释；用动作突出论证顺序。",
+      "acceptance_and_static": "不动画化数据含义；同一时刻可重复；静态状态显示完整终值、区间和来源。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "P",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/cues.mjs",
+        "src/motion/primitives.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s5-motion-state/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Cue replay of data.filter gives series reveal; annotation.reveal is limited to image hotspots, not chart annotations. S5 (2026-10-19): SeriesReveal animates the marks of each newly shown series one after another while axes, units and baseline stay still; the static state shows the complete frozen graphic. Chart annotation reveal is still missing.",
+      "patternId": "M19",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "proposal",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s5-motion-state/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "M20",
+      "title": "淡入、遮罩与错峰的主题原语",
+      "source_ids": [
+        "OAI-S01",
+        "OAI-S09",
+        "OAI-S05"
+      ],
+      "evidence": "S：存在变换、渐变遮罩和错峰属性；以下原语抽象为 P。",
+      "deckweft": "将 FadeIn、RevealMask、SlideSmall、Crossfade、ImagePan 统一为有限原语；主题只调整克制程度。",
+      "acceptance_and_static": "内容默认可见的失败策略；动作关闭后无空白；不要根据共享 CSS 推断每页实测时长。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "P",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-005",
+        "VIS-009",
+        "src/motion/policies.mjs",
+        "src/motion/primitives.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s5-motion-state/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "Finite fade/small translate up to 400 ms. S5 (2026-10-19) names six primitives on the existing cue events — FadeIn, SlideSmall, Crossfade (panel fades into its new layout; no shared-element morph), RevealMask (clip-path from the reading edge), SeriesReveal (per-series stagger) and AnnotationReveal — each with a declared reduced-motion result (content visible, target layout, full graphic); all six observed with their registry keyframes in the browser. ImagePan is not added; the 400 ms cap stays.",
+      "patternId": "M20",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/",
+        "https://openai.com/zh-Hans-CN/open-models/",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "proposal",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s5-motion-state/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C01",
+      "title": "直接标值条形图",
+      "kind": "quantitative",
+      "source_ids": [
+        "OAI-S04",
+        "OAI-S05",
+        "ANT-29"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S04",
+          "level": "source",
+          "detail": "图表规格包含条形与文字图层、固定数量域和选中系列强调。"
+        },
+        {
+          "source_id": "ANT-29",
+          "level": "text",
+          "detail": "图片替代文字明确描述模型基准条形图。"
+        }
+      ],
+      "deckweft": "提供水平与垂直布局，以直接数值、零起点和单一重点系列作为默认；数值标签随数据同步布局。",
+      "acceptance_and_static": "永久显示数值、系列名称和优劣方向，必要时把细长纵图改成横向排列。",
+      "misuse_risk": "截断条形轴会夸大差距；百分比、Elo 和金额不应放在同一数量轴。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/charts/model.mjs",
+        "src/components/charts/semantics.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "ranked-bar is a single-series, value-sorted, direct-labelled bar. S1 added the per-chart sort declaration (author | value-desc | value-asc) in the contract; author order is still not drawn and is refused for HTML until S4.",
+      "chartClass": "extension",
+      "patternId": "C01",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/",
+        "https://www.anthropic.com/news/claude-3-7-sonnet"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C02",
+      "title": "分组条形图",
+      "kind": "quantitative",
+      "source_ids": [
+        "OAI-S20"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S20",
+          "level": "source",
+          "detail": "分组条形规格声明 xOffset、比较参数、条纹系列和条件数量域。"
+        }
+      ],
+      "deckweft": "共享组内基线，固定方案顺序；用纹理作为颜色之外的辨别方式，避免新增方案悄悄改变坐标域。",
+      "acceptance_and_static": "固定导出时所选方案与坐标范围，保留每组的直接标签或简洁图例。",
+      "misuse_risk": "比较项过多会拥挤；切换方案后轴域变化容易让相同高度产生不同含义。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No multi-series grouped bars; would extend ranked-bar geometry with grouping and author order.",
+      "chartClass": "extension",
+      "patternId": "C02",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C05",
+      "title": "带限定条件的基准表",
+      "kind": "quantitative",
+      "source_ids": [
+        "ANT-05",
+        "ANT-14",
+        "ANT-11"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-05",
+          "level": "text",
+          "detail": "表格中包含每个测试的分数、限定条件及缺失值。"
+        },
+        {
+          "source_id": "ANT-05",
+          "level": "live",
+          "detail": "主代理确认 Haiku 基准表与图表 tab；未对全部发布页表格做交互验收。"
+        }
+      ],
+      "deckweft": "建立具有单位、条件、来源和缺失状态的单元格模型，支持重点列与分组行。",
+      "acceptance_and_static": "把关键脚注带到同页，窄空间按主题拆表，禁止通过缩字硬塞。",
+      "misuse_risk": "不同条件下的分数容易被当成同口径；空值不可转换成0。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-006",
+        "src/design/compositions.mjs",
+        "src/components/charts/semantics.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-006/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "table block in comparison family; no per-cell qualifiers. S1 added dataset-level missing-value reasons (dataset.missing) in the contract; the table block itself has no qualifiers yet. Table block, not a chart variant.",
+      "chartClass": "extension",
+      "patternId": "C05",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://www.anthropic.com/transparency"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "observed"
+      ],
+      "observedBehavior": "主代理确认 Haiku 基准表与图表 tab；未对全部发布页表格做交互验收。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C03",
+      "title": "堆叠构成图",
+      "kind": "quantitative",
+      "source_ids": [
+        "OAI-S19",
+        "OAI-S20",
+        "ANT-31"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S19",
+          "level": "source",
+          "detail": "源码规格包含构成条形和相关筛选。"
+        },
+        {
+          "source_id": "ANT-31",
+          "level": "text",
+          "detail": "图注说明每个团队的横向堆叠条与整体团队基准。"
+        }
+      ],
+      "deckweft": "提供绝对量和百分比两种明确模式，稳定分类颜色与堆叠顺序；可加入总体基准行。",
+      "acceptance_and_static": "在标题或图注写清分母、筛选范围和是否归一化，保留类别图例。",
+      "misuse_risk": "百分比变化不代表绝对量变化；多段堆叠的中间片段不适合精确比较。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/charts/model.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "stacked variant with positive/negative stacking and null gaps.",
+      "chartClass": "existing",
+      "patternId": "C03",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/data/",
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/",
+        "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C04",
+      "title": "可排序排名矩阵",
+      "kind": "quantitative",
+      "source_ids": [
+        "OAI-S20"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S20",
+          "level": "source",
+          "detail": "页面包含八个行业、四项指标的排名表与变化符号。"
+        },
+        {
+          "source_id": "OAI-S20",
+          "level": "live",
+          "detail": "主代理仅实测按 Codex 列对行业排名排序。"
+        }
+      ],
+      "deckweft": "用真实排名数值与有符号变化显示信息，低对比度色阶辅助扫描；列排序必须有可见状态。",
+      "acceptance_and_static": "注明当前排序列、排名方向及比较月份，永久保留排名数值和变动符号。",
+      "misuse_risk": "排名不等于量差；第1名的含义及变动基准不清会误导。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/charts/render.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "heatmap gives a value matrix; no rank semantics, change markers or interactive sort.",
+      "chartClass": "extension",
+      "patternId": "C04",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "主代理仅实测按 Codex 列对行业排名排序。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [
+          "OAI-S20"
+        ],
+        "evidence": [
+          "docs/evidence/vis-008/review.md",
+          "docs/evidence/s10-pattern-maintenance/browser-sample.json"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C08",
+      "title": "指标数值卡",
+      "kind": "infographic",
+      "source_ids": [
+        "OAI-S16",
+        "OAI-S06"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S16",
+          "level": "text",
+          "detail": "透明度页面将大数值与指标名称、报告期间及报告下载并列。"
+        },
+        {
+          "source_id": "OAI-S06",
+          "level": "text",
+          "detail": "API 概览以可比较卡片重复呈现指标行。"
+        }
+      ],
+      "deckweft": "定义数值、单位、口径、日期、来源和可选基准，不默认添加数字滚动动画。",
+      "acceptance_and_static": "保留完整数字精度规则和基准说明，多卡之间对齐单位与日期。",
+      "misuse_risk": "孤立大数字容易失去分母或夸大趋势；页面有大数值并不证明其存在计数动画。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-006",
+        "src/design/compositions.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-006/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "metric block with metric-left/band/right compositions. Metric block, not a chart variant; no reporting-period field.",
+      "chartClass": "existing",
+      "patternId": "C08",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/trust-and-transparency/",
+        "https://openai.com/zh-Hans-CN/api/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-006/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C06",
+      "title": "成本与效果前沿曲线",
+      "kind": "quantitative",
+      "source_ids": [
+        "ANT-05",
+        "ANT-06",
+        "OAI-S04",
+        "OAI-S05"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-05",
+          "level": "text",
+          "detail": "发布页描述不同 effort 下的得分与每任务成本。"
+        },
+        {
+          "source_id": "ANT-05",
+          "level": "live",
+          "detail": "主代理确认 GDPval 图的对数横轴和图例单系列聚焦。"
+        },
+        {
+          "source_id": "OAI-S05",
+          "level": "source",
+          "detail": "规格包含按次序连接的线、点、形状和显式线性轴配置。"
+        }
+      ],
+      "deckweft": "同一选项的不同设定用稳定ID连接，允许改变横轴指标；每张图独立声明线性或对数尺度。",
+      "acceptance_and_static": "保留所选指标、尺度类型、单位、点的设定和比较系列；单系列聚焦必须在标题可见。",
+      "misuse_risk": "不得把某一来源的对数轴复制到所有图；跨模型、跨测试口径连线会制造不存在的连续关系。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/charts/model.mjs",
+        "src/components/charts/semantics.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "scatter exists; connected ordering is missing. S1 added the per-chart axis.scale / xAxis.scale (linear | log) declaration; log axes are validated but refused for HTML until S4 draws them.",
+      "chartClass": "extension",
+      "patternId": "C06",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/claude-haiku-5-5",
+        "https://www.anthropic.com/claude-sonnet-5-5",
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://openai.com/zh-Hans-CN/index/introducing-gpt-6-1-sol/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "主代理确认 GDPval 图的对数横轴和图例单系列聚焦。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C07",
+      "title": "关系散点图",
+      "kind": "quantitative",
+      "source_ids": [
+        "ANT-09",
+        "ANT-16",
+        "ANT-18",
+        "ANT-20"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-09",
+          "level": "text",
+          "detail": "图注描述个体排名散点、拟合线和完全一致参考线。"
+        },
+        {
+          "source_id": "ANT-20",
+          "level": "text",
+          "detail": "图注明确描述分箱散点与回归拟合线。"
+        }
+      ],
+      "deckweft": "把单点与分箱聚合视为同一家族的不同数据模式；拟合、参考线、区间带必须有方法字段。",
+      "acceptance_and_static": "标明点或分箱代表的对象、样本范围、轴尺度与拟合方法；重点标签直接显示。",
+      "misuse_risk": "点密度和聚合会影响结论；拟合线不是因果证据，也不应跨无数据范围外推。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/charts/model.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "scatter variant with explicit xUnit; fit/reference lines are not drawn.",
+      "chartClass": "existing",
+      "patternId": "C07",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/project-swap",
+        "https://www.anthropic.com/research/persona-vectors",
+        "https://www.anthropic.com/research/economic-index-geography",
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C09",
+      "title": "点与区间图",
+      "kind": "quantitative",
+      "source_ids": [
+        "ANT-09",
+        "ANT-08",
+        "ANT-31"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-09",
+          "level": "text",
+          "detail": "效率点图图注明确 95% 置信区间和聚类标准误。"
+        },
+        {
+          "source_id": "ANT-31",
+          "level": "text",
+          "detail": "多面板变化图的误差线为 95% 置信区间。"
+        }
+      ],
+      "deckweft": "把估计值、上下界、区间类型和样本信息设为必需字段；可用横向排列提升长名称可读性。",
+      "acceptance_and_static": "区间类型与置信水平写入图注，所有端点和中心点均保持可辨认。",
+      "misuse_risk": "置信区间、标准差和分位范围不可混称；区间重叠本身不自动给出显著性结论。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "Implemented",
+      "implementedBy": [
+        "src/components/charts/semantics.mjs"
+      ],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "S1 (2026-10-19) added the interval contract: series.interval {type ci|sd|iqr|range, level, method, lower, upper} with one type per dataset and bounds that enclose each value. No dot-interval renderer exists; HTML export refuses declared intervals until S4.",
+      "chartClass": "new",
+      "patternId": "C09",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/project-swap",
+        "https://www.anthropic.com/research/ai-expectations-gap",
+        "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Implemented",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C10",
+      "title": "分布箱线图",
+      "kind": "quantitative",
+      "source_ids": [
+        "ANT-21",
+        "ANT-08"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-21",
+          "level": "text",
+          "detail": "图注明确中位线、25/75分位箱体与10/90分位须。"
+        },
+        {
+          "source_id": "ANT-08",
+          "level": "text",
+          "detail": "经济增长分布以中心与外部分位区间呈现。"
+        }
+      ],
+      "deckweft": "支持明确命名的分位方案，不把不同须定义放进同一默认；提供样本数和群体说明。",
+      "acceptance_and_static": "直接写出中位数及箱体/须的含义，必要时附完整分位数据。",
+      "misuse_risk": "此类箱线图不一定使用传统1.5倍IQR须，不能凭惯例解读；分布摘要也可能隐藏多峰。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No distribution summary contract.",
+      "chartClass": "new",
+      "patternId": "C10",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/economic-index-june-2026-report",
+        "https://www.anthropic.com/research/ai-expectations-gap"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C11",
+      "title": "面积气泡概览",
+      "kind": "quantitative",
+      "source_ids": [
+        "ANT-17"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-17",
+          "level": "text",
+          "detail": "图注明确圆面积代表对话占比，标题由聚类主题生成。"
+        }
+      ],
+      "deckweft": "按面积编码数量，优先稳定布局和标签；层级展开依赖真实树结构，不模拟无数据的分组。",
+      "acceptance_and_static": "显示主要类别标签、面积图例或代表性数值，附排序表用于精确查阅。",
+      "misuse_risk": "半径与数值成比例会夸大差异；人眼难精确比较面积，气泡距离也不一定有语义。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No area-encoded bubble layout.",
+      "chartClass": "new",
+      "patternId": "C11",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/clio"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C12",
+      "title": "区域分级地图",
+      "kind": "quantitative",
+      "source_ids": [
+        "OAI-S19",
+        "ANT-19",
+        "ANT-18"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S19",
+          "level": "source",
+          "detail": "规格包含 geoshape、排名/主题份额、图例、边界和缺失数据条件。"
+        },
+        {
+          "source_id": "ANT-19",
+          "level": "text",
+          "detail": "图注说明世界和美国州的使用分级地图。"
+        }
+      ],
+      "deckweft": "几何与指标分离，用稳定地区ID连接；明确数值、排名或分位分级，并提供地点表。",
+      "acceptance_and_static": "保留地图范围、统计期、分级阈值、缺失状态与可读图例。",
+      "misuse_risk": "大面积地区不代表高人口或高总量；未知、低样本和低值必须区别。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No geographic shapes.",
+      "chartClass": "new",
+      "patternId": "C12",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/data/",
+        "https://www.anthropic.com/research/anthropic-economic-index-september-2025-report",
+        "https://www.anthropic.com/research/economic-index-geography"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C13",
+      "title": "带末端标签的时间趋势图",
+      "kind": "quantitative",
+      "source_ids": [
+        "OAI-S19",
+        "OAI-S20",
+        "ANT-10",
+        "ANT-21"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S19",
+          "level": "source",
+          "detail": "时间序列规格包含线与末端文字标签。"
+        },
+        {
+          "source_id": "OAI-S20",
+          "level": "source",
+          "detail": "规格含弱化背景系列、重点群体与参考倍数。"
+        },
+        {
+          "source_id": "ANT-21",
+          "level": "text",
+          "detail": "报告展示小时请求节律与按时间变化的使用现象。"
+        }
+      ],
+      "deckweft": "保持真实时间间距，优先末端直接标签；用一条重点线与弱化背景提供上下文。",
+      "acceptance_and_static": "突出最后时间点和参考期，保留归一化方式与断点说明。",
+      "misuse_risk": "平滑可能制造转折，隐藏缺失期会制造连续性；归一化曲线不能直接解释成绝对规模。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/charts/render.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "line with datetime categories and time zones; labels every point, no end-label strategy or muted background series.",
+      "chartClass": "extension",
+      "patternId": "C13",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/data/",
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/",
+        "https://www.anthropic.com/engineering/redesigning-source-control",
+        "https://www.anthropic.com/research/economic-index-june-2026-report"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C14",
+      "title": "带事件注释的面积趋势图",
+      "kind": "quantitative",
+      "source_ids": [
+        "OAI-S20"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S20",
+          "level": "source",
+          "detail": "规格以 area、line、point、rule 与 text 图层组合份额趋势及事件注释。"
+        }
+      ],
+      "deckweft": "面积承担量感，边界线承担读数；只标少量关键事件，注释与时间轴绑定。",
+      "acceptance_and_static": "保存面积基线、分母和注释日期，并避免注释遮挡峰值。",
+      "misuse_risk": "事件同时发生不证明因果；变化的分母会使面积误导，非零基线需特别说明。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/charts/render.mjs",
+        "src/components/charts/semantics.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "area variant exists. S1 added dataset.events (temporal | attributed, sourced) in the contract; events are not drawn on a chart axis and are refused for HTML until S4.",
+      "chartClass": "extension",
+      "patternId": "C14",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/signals/enterprise-data/"
+      ],
+      "locale": [
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C16",
+      "title": "累计集中度曲线",
+      "kind": "quantitative",
+      "source_ids": [
+        "ANT-20"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-20",
+          "level": "text",
+          "detail": "图注明确使用洛伦兹曲线以及45度均等参考线比较地域集中度。"
+        }
+      ],
+      "deckweft": "按定义排序非负数据，再计算累计对象份额与累计数量份额；统一比较群体。",
+      "acceptance_and_static": "写清横纵轴各累计什么、统计总体和时间，保留均等参考线。",
+      "misuse_risk": "排序方式、权重和总体改变会使曲线不可比；曲线接近对角线不等于总量更高。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No cumulative-share/Lorenz semantics with equality reference.",
+      "chartClass": "new",
+      "patternId": "C16",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C15",
+      "title": "瀑布分解图",
+      "kind": "quantitative",
+      "source_ids": [
+        "ANT-09"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-09",
+          "level": "text",
+          "detail": "图注详细分解最优结果到实际结果之间的代表偏差与市场设计损失。"
+        }
+      ],
+      "deckweft": "明确起点、终点、正负贡献与累计和，以连接线维持计算关系。",
+      "acceptance_and_static": "保留每一步的数值、正负号与最终校验总量，标签过多时使用分组。",
+      "misuse_risk": "步骤若互相重叠会重复计量；叙事顺序不能伪装成因果分解。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No waterfall decomposition.",
+      "chartClass": "new",
+      "patternId": "C15",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/project-swap"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C17",
+      "title": "分面小多图",
+      "kind": "composition",
+      "source_ids": [
+        "OAI-S04",
+        "ANT-08",
+        "ANT-20",
+        "ANT-31"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S04",
+          "level": "source",
+          "detail": "多个基准图复用同一声明式图表体系。"
+        },
+        {
+          "source_id": "ANT-31",
+          "level": "text",
+          "detail": "图注明确多个并列面板比较任务复杂度、工具调用和人工轮次。"
+        }
+      ],
+      "deckweft": "这是编排语法，不新建重复图形引擎；声明共享与独立的轴、图例和分组。",
+      "acceptance_and_static": "空间不足时拆成连续页，重复关键轴与列标题；每页保留比较关系。",
+      "misuse_risk": "相同尺寸不意味着可比较；不同单位或独立缩放必须显眼标识。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "src/design/compositions.mjs",
+        "src/design/rhythm.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/s3-composition-families/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "S3 small-multiples layout: equal panels on a declared shared scale (same chart type, unit, fixed value axis and categories) and a layout-only split into continuation pages. Drawing panels at panel size, so more than two fit a 1440 px page, is S4.",
+      "chartClass": "new",
+      "patternId": "C17",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/zh-Hans-CN/index/gpt-6-astra/",
+        "https://www.anthropic.com/research/ai-expectations-gap",
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+        "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/s3-composition-families/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C18",
+      "title": "关系网络与计算路径图",
+      "kind": "infographic",
+      "source_ids": [
+        "ANT-15",
+        "ANT-17"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-15",
+          "level": "text",
+          "detail": "图注描述并行计算路径、多步概念连接及对照电路图。"
+        },
+        {
+          "source_id": "ANT-17",
+          "level": "text",
+          "detail": "文章描述分层主题与聚类关系。"
+        }
+      ],
+      "deckweft": "节点和边保留语义ID、方向与关系种类；只在有证据时编码权重和距离。",
+      "acceptance_and_static": "显示完整关键路径、方向图例与节点名称，复杂图拆成总览和局部。",
+      "misuse_risk": "连接不一定代表因果；布局距离、线粗和颜色若无定义会制造额外含义。",
+      "priority": "P2",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/diagrams/render.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "relationship diagram with directed supplied edges; bounded routing, no layered path layout. Diagram block, not a chart variant.",
+      "chartClass": "extension",
+      "patternId": "C18",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/tracing-thoughts-language-model",
+        "https://www.anthropic.com/research/clio"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C19",
+      "title": "流程与反馈循环图",
+      "kind": "infographic",
+      "source_ids": [
+        "ANT-28",
+        "OAI-S15"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-28",
+          "level": "text",
+          "detail": "文章配套流程图涵盖串联、路由、并行、编排与评估反馈。"
+        },
+        {
+          "source_id": "OAI-S15",
+          "level": "source",
+          "detail": "源码存在迭代流程的SVG箭头与延迟属性，但未实测播放。"
+        }
+      ],
+      "deckweft": "与网络图共享布局基础，增加步骤顺序、条件、输入输出与终止状态；演示时按语义步骤高亮。",
+      "acceptance_and_static": "保持全部路径可见，以序号与条件标签代替依赖播放方向。",
+      "misuse_risk": "循环如果没有结束条件会隐去关键逻辑；源码中的动画属性不证明运行时动效。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D",
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/diagrams/render.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "process/sequence diagrams draw supplied edges, including back edges. Diagram block, not a chart variant.",
+      "chartClass": "existing",
+      "patternId": "C19",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://openai.com/zh-Hans-CN/safety/"
+      ],
+      "locale": [
+        "en",
+        "zh-Hans-CN"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text",
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C20",
+      "title": "对象剖析与部件聚焦图",
+      "kind": "infographic",
+      "source_ids": [
+        "OAI-S02"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S02",
+          "level": "source",
+          "detail": "源码包含自行车SVG分层、range控件及系统选择器。"
+        },
+        {
+          "source_id": "OAI-S02",
+          "level": "live",
+          "detail": "主代理实测选择 Wheels 并对范围控件按 Home，看到值 0 与部件重点变化。"
+        }
+      ],
+      "deckweft": "用SVG分组与语义部件ID连接局部图形和说明；保留可见标签，支持点选和键盘入口。",
+      "acceptance_and_static": "采用编号引线或分解视图，完整显示各部件的说明。",
+      "misuse_risk": "装饰层不能被误认为功能结构；隐藏部件可能让静态图缺失必要关系。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "S",
+        "V"
+      ],
+      "referenceVerified": true,
+      "repositoryStatus": "exists",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/cues.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "image-hotspots with stable annotations. Image component, not a chart variant.",
+      "chartClass": "existing",
+      "patternId": "C20",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source",
+        "observed"
+      ],
+      "observedBehavior": "主代理实测选择 Wheels 并对范围控件按 Home，看到值 0 与部件重点变化。",
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "observed",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C21",
+      "title": "带旁白与字幕的过程时间轴",
+      "kind": "infographic",
+      "source_ids": [
+        "OAI-S28"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S28",
+          "level": "source",
+          "detail": "源码包含四个音频元素、播放按钮、ARIA时间滑块、过程节点与逐字稿。"
+        }
+      ],
+      "deckweft": "一套时钟同步音频、阶段高亮、进度和字幕，允许静音与键盘定位；不把多种播放方式各算一个图形。",
+      "acceptance_and_static": "导出带时间码的阶段图和文字稿，可选补充一组关键帧。",
+      "misuse_risk": "音频播放顺序不等于系统实际耗时；模拟流程应标明，不能把录制演示当作实时测量。",
+      "priority": "P3",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No narration/caption timeline.",
+      "chartClass": "new",
+      "patternId": "C21",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-gpt-live/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C22",
+      "title": "前后对照图",
+      "kind": "infographic",
+      "source_ids": [
+        "OAI-S27"
+      ],
+      "evidence": [
+        {
+          "source_id": "OAI-S27",
+          "level": "source",
+          "detail": "源码存在0–100范围输入、before/after可访问标签与图像序列视频。"
+        }
+      ],
+      "deckweft": "图像配准后使用分隔滑块或并排视图；以永久标签说明两个版本，必要时提供版本序列。",
+      "acceptance_and_static": "默认导出并排视图及局部放大，而不保留遮挡大部分画面的滑块中间状态。",
+      "misuse_risk": "裁剪、缩放和曝光不一致会制造改善印象；图像序列不是实时对象模拟。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "S"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-009",
+        "src/motion/timeline.mjs",
+        "src/design/compositions.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-009/review.md",
+        "docs/evidence/s3-composition-families/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "image-compare tabs (VIS-009); S3 before-after family shows both states in equal frames with permanent Before · baseline / After labels and refuses unequal aspect ratios; no slider.",
+      "chartClass": "existing",
+      "patternId": "C22",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://openai.com/index/introducing-chatgpt-images-2-5/"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "source"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-009/review.md",
+          "docs/evidence/s3-composition-families/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C23",
+      "title": "里程碑与事件时间轴",
+      "kind": "infographic",
+      "source_ids": [
+        "ANT-29",
+        "ANT-30"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-29",
+          "level": "text",
+          "detail": "图片替代文字明确描述从助手到先锋的里程碑时间轴。"
+        },
+        {
+          "source_id": "ANT-30",
+          "level": "text",
+          "detail": "图片替代文字描述带关键事件的价格表现图。"
+        }
+      ],
+      "deckweft": "区分真实时间轴与等距叙事步骤；事件保存日期、持续时间、状态和来源。",
+      "acceptance_and_static": "长期跨度拆分成阶段页，关键时间与事件标题永久可见。",
+      "misuse_risk": "等距排版会扭曲实际时距；未来计划必须区别于已发生事实。",
+      "priority": "P1",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "partial",
+      "repositoryState": "LocalVerified",
+      "implementedBy": [
+        "VIS-008",
+        "src/components/diagrams/render.mjs"
+      ],
+      "verifiedBy": [
+        "docs/evidence/vis-008/review.md"
+      ],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "sequence/process diagrams; no dated milestone axis in v3.",
+      "chartClass": "extension",
+      "patternId": "C23",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/news/claude-3-7-sonnet",
+        "https://www.anthropic.com/news/claude-for-financial-services"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "LocalVerified",
+        "browserSampleSources": [],
+        "evidence": [
+          "docs/evidence/vis-008/review.md"
+        ]
+      },
+      "deprecatedBy": null
+    },
+    {
+      "id": "C24",
+      "title": "带权重的主题词图",
+      "kind": "infographic",
+      "source_ids": [
+        "ANT-20"
+      ],
+      "evidence": [
+        {
+          "source_id": "ANT-20",
+          "level": "text",
+          "detail": "图注明确按任务和请求分组生成词云，并解释筛选与聚合口径。"
+        }
+      ],
+      "deckweft": "用确定性布局和显式词权重生成图形，视作辅助主题表达；同时提供排序词表。",
+      "acceptance_and_static": "固定布局与字体测量，保留权重口径和关键高频词，不依赖随机重排。",
+      "misuse_risk": "字形面积难精确比较；词频不代表重要性或情绪，不能替代严谨排名。",
+      "priority": "P3",
+      "evidenceMarks": [
+        "D"
+      ],
+      "referenceVerified": false,
+      "repositoryStatus": "missing",
+      "repositoryState": "Proposed",
+      "implementedBy": [],
+      "verifiedBy": [],
+      "checkedAt": "2026-10-19",
+      "repositoryNote": "No weighted term layout.",
+      "chartClass": "new",
+      "patternId": "C24",
+      "version": "1.0.0",
+      "sourceUrl": [
+        "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report"
+      ],
+      "locale": [
+        "en"
+      ],
+      "sourceCheckedAt": "2026-10-18",
+      "evidenceType": [
+        "text"
+      ],
+      "observedBehavior": null,
+      "dataRequirements": null,
+      "interactionState": null,
+      "staticFallback": null,
+      "outputTier": null,
+      "accessibility": null,
+      "assetStatus": "no-reference-assets-bundled",
+      "verification": {
+        "reference": "source-or-text-only",
+        "deckweft": "Proposed",
+        "browserSampleSources": [],
+        "evidence": []
+      },
+      "deprecatedBy": null
+    }
+  ],
+  "import": {
+    "importedAt": "2026-10-19",
+    "from": "DeckWeft_Design_Handoff/DeckWeft_Pattern_Register.json",
+    "sourceSha256": "a2227366c57351239377be6d7357fd6622d22f45734a26ff52fce74821bdeb1c",
+    "addedFields": {
+      "evidenceMarks": "derived index of the V/S/D/P marks in the untouched evidence field (chart levels: live=V, source=S, text=D)",
+      "referenceVerified": "true only when V is present; S/D/P-only patterns are never verified references",
+      "repositoryStatus": "exists | partial | missing",
+      "repositoryState": "Proposed | Implemented | LocalVerified | HostVerified | ExportVerified, for the DeckWeft implementation only",
+      "implementedBy": "roadmap task ids and repository modules",
+      "verifiedBy": "repository evidence paths; empty unless repositoryState is LocalVerified or stronger",
+      "checkedAt": "date of this repository check",
+      "repositoryNote": "what exists and what is missing",
+      "chartClass": "C records only: existing | extension | new, against src/components/charts/model.mjs and the v3 block types",
+      "patternId": "S10 maintenance: equals id; the stable reference decks and docs use",
+      "version": "S10 maintenance: semantic version of the pattern record; every record starts at 1.0.0 (user answer 2)",
+      "sourceUrl": "S10 maintenance: the url of each id in source_ids, in the same order (derived from source-register.json)",
+      "locale": "S10 maintenance: sorted unique language of those sources",
+      "sourceCheckedAt": "S10 maintenance: the handoff reading date when the evidence has a V, S or D mark; null for proposal-only. Not checkedAt, which is the repository check date",
+      "evidenceType": "S10 maintenance: evidenceMarks spelled out: observed (V), source (S), text (D), proposal (P)",
+      "observedBehavior": "S10 maintenance: only when referenceVerified; F/M copy the untouched evidence text (it may also carry S/D claims, see evidenceType), C copy the live-level details",
+      "dataRequirements": "S10 maintenance: null until a pattern-level source states the content inputs",
+      "interactionState": "S10 maintenance: null until a browser check records the states per the pattern register manual",
+      "staticFallback": "S10 maintenance: null; the handoff wording stays in acceptance_and_static",
+      "outputTier": "S10 maintenance: null; output levels are declared per component in src/targets/capabilities.mjs, not per pattern",
+      "accessibility": "S10 maintenance: null until a pattern-level accessibility finding is recorded",
+      "assetStatus": "S10 maintenance: no-reference-assets-bundled for every record (handoff README; AGENTS.md)",
+      "verification": "S10 maintenance: {reference: observed | source-or-text-only | proposal-only, deckweft: repositoryState, browserSampleSources: ids of sampled sources, evidence: verifiedBy plus the browser-sample file when sampled}",
+      "deprecatedBy": "S10 maintenance: null, or the id of the pattern that replaces this one"
+    },
+    "originalFieldsUnchanged": true,
+    "maintenanceUpdatedAt": "2026-10-19"
+  }
+}

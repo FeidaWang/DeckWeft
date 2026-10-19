@@ -11,6 +11,7 @@ import {designBrief,inspectContent} from './design-brief.mjs';
 import {parseRevision,applyRevision} from './revision-plan.mjs';
 import {TASK_TOOLS} from './director.mjs';
 import {DeckError} from '../core/errors.mjs';
+import {assertEvidenceSupplied} from '../design/scene-semantics.mjs';
 const fail=(code,message)=>{throw new DeckError(code,message,409);};
 const hash=contentHash;
 /** Bytes of the local renderer/contracts/themes invalidate receipts after source changes. */
@@ -76,6 +77,7 @@ export async function executeVisualTool(input,name,args={}, {home,capture,now=Da
    if(args.format==='project'){value={file:'recovery.project.json',body:JSON.stringify(task.project,null,2),mime:'application/json'};}
    else if(args.format==='checkpoint'){value={file:'recovery.task.json',body:JSON.stringify(task,null,2),mime:'application/json'};}
    else if(args.format==='html'){
+    assertEvidenceSupplied(task.project.plan);
     const html=await preview(task.project,home);
     if(task.receipt?.status!=='passed'||!receiptCurrent(task.receipt,task.project,task.observation)||task.rendererBasis!==await rendererBasis()||hash(html)!==task.previewHash)fail('STALE_RECEIPT','Final HTML needs a current passing machine and actual image review receipt.');
     task.lastValid={project:structuredClone(task.project),artifact:html,receipt:task.receipt,htmlHash:hash(html)};task.status='exported';value={file:'presentation.html',body:html,mime:'text/html',htmlHash:hash(html),receiptId:task.receipt.id};

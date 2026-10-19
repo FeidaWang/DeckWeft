@@ -36,7 +36,8 @@
     "deck:task": "node scripts/deck-task.mjs",
     "deck:verify": "node tests/browser_visual_task.mjs",
     "deck:review": "node scripts/visual-verify.mjs --serve --out dist/visual-task",
-    "host:visual": "node scripts/host-visual-acceptance.mjs"
+    "host:visual": "node scripts/host-visual-acceptance.mjs",
+    "export:targets": "node scripts/export-targets.mjs"
   },
   "keywords": [
     "slides",

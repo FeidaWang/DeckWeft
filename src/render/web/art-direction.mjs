@@ -1,21 +1,96 @@
 // Shared by editor previews, non-interactive thumbnails and standalone audience HTML.
+const QUOTE=':is(.quote-center,.quote-split,.quote-band)',PAIR=':is(.before-after-split,.before-after-rail,.before-after-triptych)',MAP=':is(.system-map-wide,.system-map-rail,.system-map-key)',PANELS=':is(.small-multiples-row,.small-multiples-lead,.small-multiples-center)',CHAPTER=':is(.chapter-low,.chapter-index,.chapter-margin)',CLOSING=':is(.closing-split,.closing-steps,.closing-focus)';
+// S3 families. Verbatim quotation uses the display role; paraphrase stays body text; the attribution sits directly under its quote.
+const s3ArtDirectionCSS=`
+.web-scene${CHAPTER} h2{max-width:13ch}
+.web-scene.chapter-low .regions{align-content:end;column-gap:72px}
+.web-scene:is(.chapter-low,.chapter-margin) .region[data-component=paragraph] p{font-size:var(--lead-size);max-width:32ch}
+.web-scene:is(.chapter-index,.chapter-margin) .region[data-component=list] ul{list-style:none;padding:0}
+.web-scene:is(.chapter-index,.chapter-margin) .region[data-component=list] li{border-top:1px solid currentColor;padding-top:12px}
+.web-scene.chapter-index .region[data-component=list] ul{font-size:var(--lead-size);line-height:1.3}
+.web-scene:is(.chapter-low,.chapter-margin) .region[data-component=list] ul{font-size:16px;line-height:1.5}
+.web-scene${PAIR} .regions{align-content:center;column-gap:40px;row-gap:16px}
+.web-scene:is(${PAIR.slice(4,-1)},${MAP.slice(4,-1)},${PANELS.slice(4,-1)}) .folio{margin-bottom:32px}
+.web-scene:is(${PAIR.slice(4,-1)},${MAP.slice(4,-1)},${PANELS.slice(4,-1)}) .region[data-component=citation]{margin-top:12px;padding-top:12px}
+.web-scene${PAIR} h2{max-width:24ch}
+.web-scene.before-after-split .web-image{width:min(100%,calc(300px * var(--image-aspect)))}
+.web-scene.before-after-rail .web-image{width:min(100%,calc(240px * var(--image-aspect)))}
+.web-scene.before-after-triptych .web-image{width:min(100%,calc(340px * var(--image-aspect)))}
+.web-scene${PAIR} .region[data-component=paragraph] p{font-size:18px;max-width:40ch}
+.web-scene.before-after-triptych .region[data-component=paragraph]{border-top:1px solid currentColor;padding-top:14px}
+.web-scene${MAP} .regions{align-content:center;row-gap:16px;column-gap:48px}
+.web-scene${MAP} h2{max-width:20ch}
+.web-scene.system-map-wide .semantic-diagram svg{max-width:560px;margin:0 auto}
+.web-scene.system-map-key .semantic-diagram svg{max-width:640px;margin-left:auto}
+.web-scene.system-map-wide .region[data-component=list] ul{columns:3;column-gap:40px;max-width:none}.web-scene.system-map-wide .region[data-component=list] li{break-inside:avoid}
+.web-scene${MAP} .region[data-component=paragraph] p{font-size:18px;max-width:42ch}
+.web-scene${MAP} .region[data-component=list] ul{font-size:16px;line-height:1.5}
+.web-scene${PANELS} .regions{align-content:center;row-gap:14px;column-gap:40px}
+.web-scene${PANELS} h2{max-width:22ch}
+.web-scene${PANELS} .region[data-component=paragraph] p{font-size:18px;max-width:46ch}
+.web-scene.small-multiples-lead .region[data-component=paragraph]{border-left:1px solid currentColor;padding-left:24px}
+.web-scene${PANELS} .chart svg{max-height:300px}
+.web-scene.small-multiples-center [data-component=heading]{justify-self:center;text-align:center}
+.web-scene.small-multiples-center [data-component=paragraph]{justify-self:end;text-align:right}.web-scene.small-multiples-center [data-component=paragraph] p{margin-left:auto}
+.web-scene${QUOTE} blockquote{font-family:var(--display);font-size:clamp(30px,3vw,44px);line-height:1.2;letter-spacing:-.015em;max-width:24ch;margin:0;border-left:0;padding-left:0}
+.web-scene${QUOTE} blockquote::before{content:"\\201C" / "";display:block;font:400 112px/.75 var(--display);color:var(--accent);margin-bottom:6px}
+.web-scene${QUOTE}:lang(zh-CN) blockquote{line-height:1.45;letter-spacing:0;max-width:17em}
+.web-scene.quote-band blockquote{max-width:34ch;border-block:2px solid var(--accent);padding:24px 0 28px}
+.web-scene${QUOTE} [data-component=quote]+[data-component=citation]{margin-top:0;padding-top:4px;border:0}
+.web-scene${QUOTE} [data-component=quote]+[data-component=citation] .citation{font-size:16px;line-height:1.5;font-weight:600}
+.web-scene${QUOTE} [data-component=quote]+[data-component=citation] .citation::before{content:"— " / ""}
+.web-scene${QUOTE} .region[data-component=paragraph] p{font-size:var(--body-size);font-style:normal;max-width:42ch}
+.web-scene.quote-center .region[data-component=paragraph]{border-top:1px solid currentColor;padding-top:20px;margin-top:12px}
+.web-scene.quote-split .region[data-component=paragraph]{border-left:1px solid currentColor;padding-left:24px}
+.web-scene${CLOSING} .regions{align-content:center;column-gap:56px}
+.web-scene.closing-split .region[data-component=list] ul{list-style:none;padding:0;font-size:var(--lead-size);line-height:1.3}
+.web-scene.closing-split .region[data-component=list] li{border-top:1px solid currentColor;padding-top:14px}
+.web-scene.closing-steps .region[data-component=list] ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;list-style:none;padding:0;max-width:none}
+.web-scene.closing-steps .region[data-component=list] li{margin:0;padding-top:18px;border-top:5px solid var(--accent);font-size:var(--lead-size);line-height:1.3}
+.web-scene.closing-focus h2{max-width:18ch}
+.web-scene.closing-focus .region[data-component=callout] p{font-size:clamp(26px,2.4vw,36px);max-width:30ch;margin:0 auto;border-top:4px solid var(--accent);padding-top:18px}
+@media(max-width:700px){
+ .web-scene:is(${CHAPTER.slice(4,-1)},${PAIR.slice(4,-1)},${MAP.slice(4,-1)},${PANELS.slice(4,-1)},${QUOTE.slice(4,-1)},${CLOSING.slice(4,-1)}) h2{max-width:100%}
+ .web-scene.chapter-low .regions{align-content:start}
+ .web-scene${QUOTE} blockquote{font-size:26px;max-width:100%}
+ .web-scene${QUOTE} blockquote::before{font-size:72px}
+ .web-scene.quote-center .regions{justify-items:stretch;text-align:left}
+ .web-scene:is(.quote-split,.small-multiples-lead) .region[data-component=paragraph]{border:0;padding:0}
+ .web-scene${PAIR} .web-image{width:100%}
+ .web-scene.small-multiples-center .region:not([data-component=chart]){justify-self:stretch;text-align:left}
+ .web-scene.small-multiples-center [data-component=paragraph] p{margin-left:0}
+ .web-scene.system-map-wide .region[data-component=list] ul{columns:auto}
+ .web-scene.closing-steps .region[data-component=list] ul{display:block}
+ .web-scene.closing-steps .region[data-component=list] li+li{margin-top:18px}
+ .web-scene.closing-focus .region:is([data-component=heading],[data-component=callout]){justify-self:stretch;text-align:left}
+ .web-scene.closing-focus .region[data-component=callout] p{font-size:24px;margin:0}
+}
+`;
 // Content stays in native regions. Neither fixed clipping nor line clamping creates a fit.
 export const artDirectionCSS = `
-.web-scene{min-height:810px;display:flex;flex-direction:column;padding:56px var(--page);font-synthesis:none}
+.web-scene{min-height:810px;display:flex;flex-direction:column;padding:var(--safe-area,56px) var(--safe-area,var(--page));font-synthesis:none}
 .web-scene .folio{font:600 11px/1.4 var(--body);letter-spacing:.16em;border-bottom:1px solid currentColor;padding-bottom:16px;margin-bottom:48px;gap:24px}
-.web-scene .regions{flex:1;align-content:start;column-gap:var(--story-gutter);row-gap:24px}
+.web-scene .regions{flex:1;align-content:start;column-gap:var(--story-gutter);row-gap:var(--section-gap,24px)}
 .web-scene h2{font-family:var(--display);font-size:var(--headline);font-weight:var(--headline-weight);line-height:var(--headline-leading);letter-spacing:var(--headline-tracking);margin:0 0 10px;text-wrap:balance}
 .web-scene .region[data-component=paragraph] p,.web-scene blockquote{font-size:var(--body-size);line-height:1.55;max-width:var(--text-measure);margin:0 0 12px}
 .web-scene .region[data-component=list] ul{font-size:var(--body-size);line-height:1.6;padding-left:1.1em;max-width:var(--text-measure);margin:0}
+/* A verbatim quotation never looks like body text or paraphrase, in any composition. */
+.web-scene blockquote{font-family:var(--display);border-left:3px solid var(--accent);padding-left:20px}
 .web-scene .region[data-component=list] li+li{margin-top:12px}
 .web-scene .region[data-component=callout] p{font-size:var(--lead-size);font-weight:600;line-height:1.3;letter-spacing:-.02em;max-width:32ch;margin:0;color:var(--accent)}
-.web-scene .region[data-component=citation]{margin-top:20px;padding-top:16px;border-top:1px solid currentColor;grid-column:1 / -1}
+.web-scene .region[data-component=citation]{margin-top:20px;padding-top:var(--caption-gap,16px);border-top:1px solid currentColor;grid-column:1 / -1}
 .web-scene .citation{font:400 12px/1.6 var(--body);letter-spacing:0;max-width:90ch;margin:0}
-.web-scene .web-image figcaption{font:400 12px/1.5 var(--body);max-width:60ch;margin-top:14px}
-.web-scene .metric strong{font-family:var(--body);font-size:clamp(112px,16vw,230px);font-weight:650;letter-spacing:-.075em;line-height:.88;color:var(--accent);font-variant-numeric:tabular-nums}
+.web-scene .web-image figcaption{font:400 12px/1.5 var(--body);max-width:60ch;margin-top:var(--caption-gap,14px)}
+.web-scene .metric strong{font-family:var(--numeric,var(--body));font-size:clamp(112px,16vw,230px);font-weight:650;letter-spacing:-.075em;line-height:.88;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:normal;word-break:keep-all}
 .web-scene .metric strong small{font-size:.17em;line-height:1.3;letter-spacing:.03em;margin-top:24px}
 .web-scene .metric span{font-size:18px;line-height:1.5;margin-top:22px;max-width:24ch}
+.web-scene:lang(zh-CN){text-spacing-trim:space-all}
+.web-scene:lang(zh-CN) :is(h2,.region[data-component=callout] p,.metric span){word-break:keep-all;line-break:strict}
 .web-scene[data-theme=cream-collage] .metric strong{color:var(--secondary)}
+/* S1 token roles consumed here (S8): numeric type role, reference and missing colours. Undeclared packs inherit the previous values. */
+.web-scene .chart-value,.web-scene .chart-axis-track span,.web-scene .benchmark-table td,.web-scene .chart svg text,.web-scene .comparison-matrix td,.web-scene .comparison-rail td{font-family:var(--numeric,inherit)}
+.web-scene .chart [data-reference]{stroke:var(--reference,currentColor)}
+.web-scene .chart-mark[data-missing] .chart-value,.web-scene .chart-notes li[data-missing]{color:var(--missing,inherit)}
 .web-scene[data-theme=electric-violet] h2{font-weight:var(--headline-weight)}
 .web-scene[data-theme=dark-data] .region[data-component=paragraph] p{font-size:20px;line-height:1.65}
 .web-scene[data-space=open] .regions{align-content:center;min-height:500px}
@@ -107,4 +182,4 @@ export const artDirectionCSS = `
  .web-scene.has-interactions{padding:28px 22px}
 }
 @media print{.web-scene{display:block;min-height:0}.web-scene .regions{min-height:0}}
-`;
+`+s3ArtDirectionCSS;

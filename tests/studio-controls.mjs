@@ -9,6 +9,6 @@ export async function revealStudio(page,kind){
  }else if(kind==='revision'){
   await revealStudio(page,'edit');await open('#workbenchRevisionPanel');
  }else if(kind==='file')await open('.file-menu');
- else if(kind==='compositions')await open('.candidate-panel');
+ else if(kind==='compositions')await open('.candidate-panel:not(.directions-panel)');
  else if(kind==='review')await open('#reviewPanel');
 }

@@ -1,0 +1,1683 @@
+{
+ "format": "deckweft-s9a-directions",
+ "version": 1,
+ "renderer": "visual-art-direction.11",
+ "player": "semantic-player.5",
+ "browser": "151.0.7922.34",
+ "node": "v24.14.0",
+ "icu": "78.2",
+ "widths": [
+  1440,
+  1024,
+  390
+ ],
+ "bases": [
+  {
+   "base": "text-en",
+   "locale": "en",
+   "facts": "60abec77aa786561593004cc47ebdf29e84e31fc708ce9d63f23d3c7194779fa",
+   "decks": [
+    {
+     "theme": "cream-collage",
+     "group": "editorial",
+     "facts": "60abec77aa786561593004cc47ebdf29e84e31fc708ce9d63f23d3c7194779fa",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #F5EBD9, accent #BD4027. Page 1: Left thesis → right support; Page 3: Top headline → lower columns; Page 5: Left thesis → right support. 3 of 5 pages change composition.",
+      "type": "Display Iowan Old Style, body Avenir Next, numbers Avenir Next; expressive contrast (display scale 1).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21317,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 3,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 54753,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "dark-data",
+     "group": "report",
+     "facts": "60abec77aa786561593004cc47ebdf29e84e31fc708ce9d63f23d3c7194779fa",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Dark surface #112120, accent #B9EF79. Page 1: Top headline → lower columns; Page 3: Centered thesis → supporting stack; Page 5: Top headline → lower columns. 2 of 5 pages change composition.",
+      "type": "Display Helvetica Neue, body Avenir Next, numbers Avenir Next; balanced contrast (display scale 0.85).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21304,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 1,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 54363,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "electric-violet",
+     "group": "stage",
+     "facts": "60abec77aa786561593004cc47ebdf29e84e31fc708ce9d63f23d3c7194779fa",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #FAF9F5, accent #5420E8. Page 1: Centered thesis → supporting stack; Page 3: Left thesis → right support; Page 5: Centered thesis → supporting stack. 5 of 5 pages change composition.",
+      "type": "Display Helvetica Neue, body Avenir Next, numbers Avenir Next; expressive contrast (display scale 1).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21253,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 1,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 48501,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "silver-gray-editorial",
+     "group": "editorial",
+     "facts": "60abec77aa786561593004cc47ebdf29e84e31fc708ce9d63f23d3c7194779fa",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 3: Two-column thesis with margin notes; Page 5: Fieldnotes closing. 5 of 5 pages change composition.",
+      "type": "Display Charter, body Gill Sans, numbers Charter; expressive contrast (display scale 1).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 280 ms, 6 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21138,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 1,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 73831,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "fresh-report",
+     "group": "report",
+     "facts": "60abec77aa786561593004cc47ebdf29e84e31fc708ce9d63f23d3c7194779fa",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #FAFAF7, accent #286448. Page 1: Kicker, headline and contents index; Page 3: Numbered section opener; Page 5: Atlas closing. 5 of 5 pages change composition.",
+      "type": "Display Avenir Next, body Avenir Next, numbers Menlo; balanced contrast (display scale 0.85).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 200 ms, 0 px, linear; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21219,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 2,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 58783,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "orange-launch",
+     "group": "stage",
+     "facts": "60abec77aa786561593004cc47ebdf29e84e31fc708ce9d63f23d3c7194779fa",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Dark surface #0C1017, accent #A8D2EA. Page 1: One large object, title in the calm area; Page 3: Centered thesis → supporting stack; Page 5: Stage closing. 3 of 5 pages change composition.",
+      "type": "Display Futura, body Helvetica Neue, numbers Futura; expressive contrast (display scale 1.08).",
+      "media": "No images in this content. The stage hero draws one orb in the media area; nothing is invented as content.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 360 ms, 12 px, ease-in-out; reduced motion: static."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21468,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 2,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 54931,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    }
+   ],
+   "factsIdentical": true,
+   "sheet": "text-en-contact.jpg"
+  },
+  {
+   "base": "six-family-en",
+   "locale": "en",
+   "facts": "db315956d119d24cd599a0a6f1effe0f3efb35ec44bcc1f0350562e99e73815d",
+   "decks": [
+    {
+     "theme": "cream-collage",
+     "group": "editorial",
+     "facts": "db315956d119d24cd599a0a6f1effe0f3efb35ec44bcc1f0350562e99e73815d",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #F5EBD9, accent #BD4027. Page 1: Left thesis → right support; Page 2: Image left → text right; Page 6: Thesis left → vertical sequence right. 4 of 6 pages change composition.",
+      "type": "Display Iowan Old Style, body Avenir Next, numbers Avenir Next; expressive contrast (display scale 1).",
+      "media": "Images hard-edge, 56% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2449915,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 8,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4066672,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "dark-data",
+     "group": "report",
+     "facts": "db315956d119d24cd599a0a6f1effe0f3efb35ec44bcc1f0350562e99e73815d",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Dark surface #112120, accent #B9EF79. Page 1: Top headline → lower columns; Page 2: Text → image → caption; Page 6: Headline → horizontal steps → detail. 4 of 6 pages change composition.",
+      "type": "Display Helvetica Neue, body Avenir Next, numbers Avenir Next; balanced contrast (display scale 0.85).",
+      "media": "Images evidence, 44% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2449584,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 8,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4047232,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "electric-violet",
+     "group": "stage",
+     "facts": "db315956d119d24cd599a0a6f1effe0f3efb35ec44bcc1f0350562e99e73815d",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #FAF9F5, accent #5420E8. Page 1: Centered thesis → supporting stack; Page 2: Large photo split; Page 6: Headline → stepped sequence → detail. 5 of 6 pages change composition.",
+      "type": "Display Helvetica Neue, body Avenir Next, numbers Avenir Next; expressive contrast (display scale 1).",
+      "media": "Images full-height, 56% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2450312,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 9,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4055639,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "silver-gray-editorial",
+     "group": "editorial",
+     "facts": "db315956d119d24cd599a0a6f1effe0f3efb35ec44bcc1f0350562e99e73815d",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 2: Image left → text right; Page 6: Thesis left → vertical sequence right. 4 of 6 pages change composition.",
+      "type": "Display Charter, body Gill Sans, numbers Charter; expressive contrast (display scale 1).",
+      "media": "Images hard-edge, 50% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 280 ms, 6 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [
+        {
+         "sceneId": "violet",
+         "height": 997
+        },
+        {
+         "sceneId": "collage",
+         "height": 918
+        },
+        {
+         "sceneId": "process",
+         "height": 950
+        }
+       ],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [
+        {
+         "sceneId": "violet",
+         "height": 971
+        }
+       ],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2449517,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 8,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4067526,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "fresh-report",
+     "group": "report",
+     "facts": "db315956d119d24cd599a0a6f1effe0f3efb35ec44bcc1f0350562e99e73815d",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #FAFAF7, accent #286448. Page 1: Kicker, headline and contents index; Page 2: Text → image → caption; Page 6: Headline → horizontal steps → detail. 5 of 6 pages change composition.",
+      "type": "Display Avenir Next, body Avenir Next, numbers Menlo; balanced contrast (display scale 0.85).",
+      "media": "Images evidence, 44% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 200 ms, 0 px, linear; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2449553,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 8,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4054879,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "orange-launch",
+     "group": "stage",
+     "facts": "db315956d119d24cd599a0a6f1effe0f3efb35ec44bcc1f0350562e99e73815d",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Dark surface #0C1017, accent #A8D2EA. Page 1: One large object, title in the calm area; Page 2: Headline → text left / image right; Page 6: Headline → stepped sequence → detail. 6 of 6 pages change composition.",
+      "type": "Display Futura, body Helvetica Neue, numbers Futura; expressive contrast (display scale 1.08).",
+      "media": "Images full-height, 62% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 360 ms, 12 px, ease-in-out; reduced motion: static."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [
+        {
+         "sceneId": "violet",
+         "height": 946
+        },
+        {
+         "sceneId": "comparison",
+         "height": 925
+        },
+        {
+         "sceneId": "process",
+         "height": 914
+        }
+       ],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [
+        {
+         "sceneId": "chapter",
+         "height": 933
+        },
+        {
+         "sceneId": "violet",
+         "height": 980
+        },
+        {
+         "sceneId": "evidence",
+         "height": 979
+        },
+        {
+         "sceneId": "comparison",
+         "height": 953
+        },
+        {
+         "sceneId": "process",
+         "height": 986
+        }
+       ],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2450496,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 9,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4075888,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    }
+   ],
+   "factsIdentical": true,
+   "sheet": "six-family-en-contact.jpg"
+  },
+  {
+   "base": "text-zh-CN",
+   "locale": "zh-CN",
+   "facts": "f3780f41b2dd333de20620b78cdf7b62b241b85e550e7dd618cc106025d358cc",
+   "decks": [
+    {
+     "theme": "cream-collage",
+     "group": "editorial",
+     "facts": "f3780f41b2dd333de20620b78cdf7b62b241b85e550e7dd618cc106025d358cc",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #F5EBD9, accent #BD4027. Page 1: Left thesis → right support; Page 3: Top headline → lower columns; Page 5: Left thesis → right support. 3 of 5 pages change composition.",
+      "type": "Display Songti SC, body PingFang SC, numbers PingFang SC; expressive contrast (display scale 1).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21592,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 3,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 135003,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "dark-data",
+     "group": "report",
+     "facts": "f3780f41b2dd333de20620b78cdf7b62b241b85e550e7dd618cc106025d358cc",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Dark surface #112120, accent #B9EF79. Page 1: Top headline → lower columns; Page 3: Centered thesis → supporting stack; Page 5: Top headline → lower columns. 2 of 5 pages change composition.",
+      "type": "Display PingFang SC, body PingFang SC, numbers PingFang SC; balanced contrast (display scale 0.85).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21432,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 175926,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "electric-violet",
+     "group": "stage",
+     "facts": "f3780f41b2dd333de20620b78cdf7b62b241b85e550e7dd618cc106025d358cc",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #FAF9F5, accent #5420E8. Page 1: Centered thesis → supporting stack; Page 3: Left thesis → right support; Page 5: Centered thesis → supporting stack. 5 of 5 pages change composition.",
+      "type": "Display PingFang SC, body PingFang SC, numbers PingFang SC; expressive contrast (display scale 1).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21409,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 1,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 163044,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "silver-gray-editorial",
+     "group": "editorial",
+     "facts": "f3780f41b2dd333de20620b78cdf7b62b241b85e550e7dd618cc106025d358cc",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 3: Two-column thesis with margin notes; Page 5: Fieldnotes closing. 5 of 5 pages change composition.",
+      "type": "Display Songti SC, body PingFang SC, numbers Charter; expressive contrast (display scale 1).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 280 ms, 6 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21574,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 1,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 132506,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "fresh-report",
+     "group": "report",
+     "facts": "f3780f41b2dd333de20620b78cdf7b62b241b85e550e7dd618cc106025d358cc",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #FAFAF7, accent #286448. Page 1: Kicker, headline and contents index; Page 3: Numbered section opener; Page 5: Atlas closing. 5 of 5 pages change composition.",
+      "type": "Display PingFang SC, body PingFang SC, numbers Menlo; balanced contrast (display scale 0.85).",
+      "media": "No images in this content. Text and figures take the media area.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 200 ms, 0 px, linear; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21531,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 1,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 168406,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "orange-launch",
+     "group": "stage",
+     "facts": "f3780f41b2dd333de20620b78cdf7b62b241b85e550e7dd618cc106025d358cc",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Dark surface #0C1017, accent #A8D2EA. Page 1: One large object, title in the calm area; Page 3: Centered thesis → supporting stack; Page 5: Stage closing. 3 of 5 pages change composition.",
+      "type": "Display PingFang SC, body PingFang SC, numbers Futura; expressive contrast (display scale 1.08).",
+      "media": "No images in this content. The stage hero draws one orb in the media area; nothing is invented as content.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 360 ms, 12 px, ease-in-out; reduced motion: static."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 21740,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 1,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 156132,
+      "levels": {
+       "L1": 11
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    }
+   ],
+   "factsIdentical": true,
+   "sheet": "text-zh-CN-contact.jpg"
+  },
+  {
+   "base": "six-family-zh-CN",
+   "locale": "zh-CN",
+   "facts": "3bd900fa424c1eb8ced0d04ca51ace06cddcf032279c02003b554b6e7b20294f",
+   "decks": [
+    {
+     "theme": "cream-collage",
+     "group": "editorial",
+     "facts": "3bd900fa424c1eb8ced0d04ca51ace06cddcf032279c02003b554b6e7b20294f",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #F5EBD9, accent #BD4027. Page 1: Left thesis → right support; Page 2: Image left → text right; Page 6: Thesis left → vertical sequence right. 4 of 6 pages change composition.",
+      "type": "Display Songti SC, body PingFang SC, numbers PingFang SC; expressive contrast (display scale 1).",
+      "media": "Images hard-edge, 56% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2451046,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 8,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4421922,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "dark-data",
+     "group": "report",
+     "facts": "3bd900fa424c1eb8ced0d04ca51ace06cddcf032279c02003b554b6e7b20294f",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Dark surface #112120, accent #B9EF79. Page 1: Top headline → lower columns; Page 2: Text → image → caption; Page 6: Headline → horizontal steps → detail. 4 of 6 pages change composition.",
+      "type": "Display PingFang SC, body PingFang SC, numbers PingFang SC; balanced contrast (display scale 0.85).",
+      "media": "Images evidence, 44% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2450567,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 8,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4460586,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "electric-violet",
+     "group": "stage",
+     "facts": "3bd900fa424c1eb8ced0d04ca51ace06cddcf032279c02003b554b6e7b20294f",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #FAF9F5, accent #5420E8. Page 1: Centered thesis → supporting stack; Page 2: Large photo split; Page 6: Headline → stepped sequence → detail. 5 of 6 pages change composition.",
+      "type": "Display PingFang SC, body PingFang SC, numbers PingFang SC; expressive contrast (display scale 1).",
+      "media": "Images full-height, 56% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 240 ms, 4 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2451197,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 9,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4507699,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "silver-gray-editorial",
+     "group": "editorial",
+     "facts": "3bd900fa424c1eb8ced0d04ca51ace06cddcf032279c02003b554b6e7b20294f",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #F3F0E8, accent #A8503A. Page 1: Fieldnotes cover; Page 2: Image left → text right; Page 6: Thesis left → vertical sequence right. 4 of 6 pages change composition.",
+      "type": "Display Songti SC, body PingFang SC, numbers Charter; expressive contrast (display scale 1).",
+      "media": "Images hard-edge, 50% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 280 ms, 6 px, ease-out; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2450867,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 8,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4362347,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "fresh-report",
+     "group": "report",
+     "facts": "3bd900fa424c1eb8ced0d04ca51ace06cddcf032279c02003b554b6e7b20294f",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Light surface #FAFAF7, accent #286448. Page 1: Kicker, headline and contents index; Page 2: Text → image → caption; Page 6: Headline → horizontal steps → detail. 5 of 6 pages change composition.",
+      "type": "Display PingFang SC, body PingFang SC, numbers Menlo; balanced contrast (display scale 0.85).",
+      "media": "Images evidence, 44% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 200 ms, 0 px, linear; reduced motion: instant."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2450767,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 8,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4518068,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    },
+    {
+     "theme": "orange-launch",
+     "group": "stage",
+     "facts": "3bd900fa424c1eb8ced0d04ca51ace06cddcf032279c02003b554b6e7b20294f",
+     "distinct": true,
+     "explanation": {
+      "graphics": "Dark surface #0C1017, accent #A8D2EA. Page 1: One large object, title in the calm area; Page 2: Headline → text left / image right; Page 6: Headline → stepped sequence → detail. 6 of 6 pages change composition.",
+      "type": "Display PingFang SC, body PingFang SC, numbers Futura; expressive contrast (display scale 1.08).",
+      "media": "Images full-height, 62% of the width, captions visible.",
+      "motion": "Off, as you chose. With motion on this direction would use fade 360 ms, 12 px, ease-in-out; reduced motion: static."
+     },
+     "widths": {
+      "390": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [],
+       "external": [],
+       "errors": []
+      },
+      "1024": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [
+        {
+         "sceneId": "violet",
+         "height": 942
+        },
+        {
+         "sceneId": "comparison",
+         "height": 971
+        }
+       ],
+       "external": [],
+       "errors": []
+      },
+      "1440": {
+       "ok": true,
+       "issues": [],
+       "glyphs": [],
+       "overBudget": [
+        {
+         "sceneId": "chapter",
+         "height": 984
+        },
+        {
+         "sceneId": "violet",
+         "height": 977
+        },
+        {
+         "sceneId": "evidence",
+         "height": 1014
+        },
+        {
+         "sceneId": "comparison",
+         "height": 1004
+        },
+        {
+         "sceneId": "process",
+         "height": 948
+        }
+       ],
+       "external": [],
+       "errors": []
+      }
+     },
+     "pptx": {
+      "ok": true,
+      "bytes": 2451695,
+      "levels": {
+       "L1": 24
+      },
+      "receipts": 9,
+      "check": {
+       "stage": "check",
+       "editability": "pass",
+       "sceneCheck": "pass",
+       "accessibility": "pass"
+      }
+     },
+     "pdf": {
+      "ok": true,
+      "bytes": 4553642,
+      "levels": {
+       "L1": 22,
+       "L2": 2
+      },
+      "receipts": 0,
+      "check": {
+       "stage": "check",
+       "status": "pass"
+      }
+     }
+    }
+   ],
+   "factsIdentical": true,
+   "sheet": "six-family-zh-CN-contact.jpg"
+  }
+ ],
+ "ok": true
+}

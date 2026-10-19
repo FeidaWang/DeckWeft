@@ -20,7 +20,7 @@ test('v3 numeric charts, CJK headings, code and citations survive JSON round tri
  const code={id:'example-code',type:'code',language:'js',text:'const x = "<script>";\nawait client.save({expectedRevision: 3});',sourceIds:[]};
  d.blocks.push(code);p.scenes[1].blockIds.push(code.id);d.datasets[0].series[0].values[0]=18.125;
  const out=exportDeck(d,'json',{experimentalWeb:true});assert.deepEqual(assertPresentation(JSON.parse(out.body)),d);
- const html=exportDeck(d,'html',{experimentalWeb:true,plan:p}).body;assert.ok(html.includes('18.125'));assert.ok(html.includes('const x = &quot;&lt;script&gt;&quot;'));assert.ok(html.includes('让大胆的想法'));assert.ok(html.includes('https://example.org/deckweft/synthetic'));
+ const html=exportDeck(d,'html',{experimentalWeb:true,plan:p}).body;assert.ok(html.includes('18.125'));assert.ok(html.includes('const x = &quot;&lt;script&gt;&quot;'));assert.ok(html.replaceAll('<wbr>','').includes('让大胆的想法'));assert.ok(html.includes('https://example.org/deckweft/synthetic'));
 });
 test('v3 rejects coercion, nonfinite numbers, broken references and unknown executable fields',async()=>{
  const {document:d}=await fixture();
@@ -49,8 +49,11 @@ test('legacy revision conflicts and read-only source preservation remain enforce
  try{const store=await new ProjectStore(home).init(),project=await read('product-en.baseline.json');const saved=await store.save(project,{create:true});migrateToPresentation(saved);assert.deepEqual(await store.get(saved.id),saved);await store.save(saved,{expectedRevision:1});await assert.rejects(store.save(saved,{expectedRevision:1}),{code:'REVISION_CONFLICT'});assert.equal((await store.snapshot(saved.id,1)).project.revision.number,1);}
  finally{await rm(home,{recursive:true,force:true});}
 });
-test('target-specific unsupported native exports do not block valid web output',async()=>{
- const {document,plan}=await fixture();assert.throws(()=>exportDeck(document,'html',{plan}),{code:'EXPERIMENTAL_WEB_REQUIRED'});assert.throws(()=>exportDeck(document,'pptx',{plan,experimentalWeb:true}),{code:'TARGET_CAPABILITY'});
+test('paged and unsupported native exports do not block valid web output',async()=>{
+ const {document,plan}=await fixture();assert.throws(()=>exportDeck(document,'html',{plan}),{code:'EXPERIMENTAL_WEB_REQUIRED'});
+ // S7: PowerPoint and PDF compile from a browser-measured static scene; without that measurement they refuse with a named code.
+ for(const target of ['pptx','pdf'])assert.throws(()=>exportDeck(document,target,{plan,experimentalWeb:true}),{code:'EXPORT_LAYOUT_REQUIRED'});
+ assert.throws(()=>exportDeck(document,'figma',{plan,experimentalWeb:true}),{code:'TARGET_CAPABILITY'});
  const out=exportDeck(document,'html',{plan,experimentalWeb:true});assert.equal(out.mime,'text/html; charset=utf-8');assert.ok(out.body.includes('<h2>'));assert.ok(out.body.includes('<polyline'));assert.ok(out.body.includes('<table>'));assert.equal(out.body.includes('<foreignObject'),false);
 });
 test('design plans never omit facts, point at absent blocks, or masquerade themes',async()=>{

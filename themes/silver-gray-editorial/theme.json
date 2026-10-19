@@ -1,0 +1,127 @@
+{
+  "version": "1.0.0",
+  "attribution": "Art direction T01 Editorial Fieldnotes proposed in the DeckWeft Design Handoff (DeckWeft_Design_Roadmap.md, 2026-10-18, art directions pages 28–31). Hex values are the handoff starting points adjusted for measured contrast; composition grammar, type roles, token values and rules authored for DeckWeft (S8, alignment §16). Fonts are referenced by platform name; Source Serif 4, IBM Plex and Noto CJK are Open Font Licence candidates named as later fallbacks and never bundled.",
+  "id": "silver-gray-editorial",
+  "palette": {
+    "paper": "#F3F0E8",
+    "ink": "#24241F",
+    "accent": "#A8503A",
+    "secondary": "#3B5B74",
+    "reference": "#6B675C",
+    "missing": "#7A5B2E"
+  },
+  "typography": {
+    "displayEn": "\"Charter\", \"Source Serif 4\", \"Source Serif Pro\", Georgia, \"Noto Serif\", serif",
+    "displayZh": "\"Songti SC\", \"Noto Serif CJK SC\", \"Source Han Serif SC\", \"SimSun\", serif",
+    "bodyEn": "\"Gill Sans\", \"Gill Sans MT\", \"Seravek\", \"IBM Plex Sans\", \"Noto Sans\", Arial, sans-serif",
+    "bodyZh": "\"PingFang SC\", \"Noto Sans CJK SC\", \"Source Han Sans SC\", \"Microsoft YaHei\", sans-serif",
+    "code": "Menlo, \"IBM Plex Mono\", Consolas, monospace",
+    "displayScale": 1,
+    "numeric": "\"Charter\", \"Source Serif 4\", Georgia, serif"
+  },
+  "spacing": {
+    "page": 56,
+    "gap": 32,
+    "captionGap": 10,
+    "sectionGap": 40,
+    "safeArea": 64
+  },
+  "imageGrammar": {
+    "split": 0.5,
+    "treatment": "hard-edge",
+    "caption": "visible"
+  },
+  "chartColors": [
+    "#A8503A",
+    "#3B5B74",
+    "#4E6B3B",
+    "#8A6214",
+    "#6B3F6E",
+    "#24241F",
+    "#2A6E6B",
+    "#8E2F2A"
+  ],
+  "compositions": [
+    "fieldnotes-cover",
+    "fieldnotes-thesis",
+    "fieldnotes-figure",
+    "fieldnotes-method",
+    "fieldnotes-closing",
+    "reading-flow",
+    "statement-split",
+    "statement-banner",
+    "statement-center",
+    "image-left",
+    "image-strip",
+    "image-right",
+    "metric-left",
+    "metric-band",
+    "metric-right",
+    "evidence-left",
+    "evidence-top",
+    "evidence-right",
+    "comparison-matrix",
+    "comparison-rail",
+    "comparison-stack",
+    "process-line",
+    "process-rail",
+    "process-stair",
+    "chapter-low",
+    "chapter-index",
+    "chapter-margin",
+    "before-after-split",
+    "before-after-rail",
+    "before-after-triptych",
+    "system-map-wide",
+    "system-map-rail",
+    "system-map-key",
+    "small-multiples-row",
+    "small-multiples-lead",
+    "small-multiples-center",
+    "quote-center",
+    "quote-split",
+    "quote-band",
+    "closing-split",
+    "closing-steps",
+    "closing-focus"
+  ],
+  "density": "comfortable",
+  "motion": {
+    "durationMs": 280,
+    "effect": "fade",
+    "distance": 6,
+    "easing": "ease-out",
+    "delay": 0,
+    "fallback": "instant"
+  },
+  "modes": {
+    "default": "light",
+    "chapter": "light"
+  },
+  "rules": [
+    {
+      "sceneRole": "any",
+      "mode": "any",
+      "property": "contrast",
+      "value": "required-text-readable",
+      "severity": "require",
+      "rationale": "Required text must remain readable in every profile."
+    },
+    {
+      "sceneRole": "opening",
+      "mode": "default",
+      "property": "composition",
+      "value": "fieldnotes-cover",
+      "severity": "prefer",
+      "rationale": "An editorial deck opens with its thesis in the main column and the context in the margin."
+    },
+    {
+      "sceneRole": "evidence",
+      "mode": "default",
+      "property": "composition",
+      "value": "fieldnotes-figure",
+      "severity": "prefer",
+      "rationale": "Evidence keeps a narrow reading column beside a wide figure."
+    }
+  ]
+}

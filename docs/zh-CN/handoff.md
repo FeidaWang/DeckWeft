@@ -1,4 +1,70 @@
-VIS-013 已在现有 Visual Studio 中本地实现，保留[工作台证据](../evidence/vis-013/review.md)、独立偏好、范围选择及严格图片审阅导出。Claude 继续暂缓，VIS-014 是后续计划，不自动授权执行。
+截至 2026-10-19，S11（S1–S10 的合并就绪检查）已在本地完成，位于分支 `claude/s11-merge-readiness-61283b`，叠加在 S10（`d584d76`）之上，尚未推送。该分支包含 S1–S11，是将来要推送的分支。状态 **LocalVerified**。S11 做了：
+
+- 冻结 `d584d76`，用干净归档验证（`npm ci`、`npm run verify`：475 个测试，471 通过，4 个受环境或浏览器限制而跳过），并在隔离的 Chrome for Testing 151 中重跑全部 18 个浏览器脚本和发布门禁；记录的数字均可复现（[证据，英文](../evidence/s11-merge-readiness/review.md)）；
+- 发现 `browser_families.mjs` 和 `browser_compositions.mjs` 在该提交上失败：S9a 新增的 `directionsPanel` 让一个测试选择器变得有歧义；只改了三行测试，没有改运行时代码；另有两个脚本各失败一次、重跑通过，原因未查明；
+- 拉取 `origin/main`（仍为 `058b939`，未变动），并在 `058b939` 建立本地标签 `backup/main-before-design-handoff`；两者都没有推送；
+- 更正[合并计划](../plans/design-handoff-merge-to-main.md)中的数字（相对 `main` 改动 562 个文件），并加入“就绪情况”一节。
+
+用户在 S11 的回答：倾向 merge commit（只记录，不执行）；保留远端 `claude/s6-start-1c14f9`；推送前先由用户打开 PowerPoint 和 Keynote 导出文件。详见[对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19)。本交接不授权进一步步骤：合并、任何推送、拉取请求和删除分支都需要用户另行指示。
+
+截至 2026-10-19，S10（模式库维护与 P3 边界，DWD-310）已在本地完成，位于分支 `claude/pattern-library-maintenance-p3-28aa7c`，叠加在 S9b（`a2d5371`）之上，尚未推送。该分支包含 S1–S10。S10 只涉及文档与登记表：没有改动运行时代码、schema 或任务状态，DWD-310 仍为 `partial`。S10 新增：
+
+- 56 条模式记录各加 15 个维护字段，82 条来源记录各加 4 个，只在有证据支持时填写（其余为 `null`）；`checkedAt` 保持“仓库核对日期”的含义，页面阅读日期用 `sourceCheckedAt`；
+- 一份[手册](pattern-register.md)（[English](../design/pattern-register.md)）：何时新增模式、如何做浏览器核验、上游改版如何记录而不影响已有作品；
+- 完整的全站逐页核验还缺什么（OpenAI 1,390 条 zh-Hans-CN 路径的模板归并、每个模板 8 格，以及一份可核对的 Anthropic URL 清单）；
+- P3 延后项，写在 EXP-001 的 `notes` 中，EXP-001 仍为 `planned`；
+- 一次经用户允许的三页[浏览器抽样](../evidence/s10-pattern-maintenance/browser-sample.json)（ANT-01、OAI-S01、OAI-S20）；
+- 一份[把 S1–S10 合并回 `main` 的计划](../plans/design-handoff-merge-to-main.md)。它只是计划：没有合并，也没有推送。
+
+六个回答和各项决定见[对齐计划 §19（英文）](../plans/design-handoff-alignment.md#19-s10-decisions-and-result--pattern-library-maintenance-and-the-p3-boundary-2026-10-19)。设计交接计划（S1–S10）中没有其他待实现的步骤；未完成事项列在该节。本交接并不授权进一步的步骤。
+
+截至 2026-10-19，S9b（蓝图 A：讲解 → 图解 → 探索，DWD-210）已在本地完成。它位于分支 `claude/agitated-torvalds-969a1e`，叠加在 S9a（`e80ecd7`）之上，尚未推送。VIS-009 仍为 implemented-local。S9b 新增：
+
+- 一页分三个阶段讲解一个对象，建立在图、`steps`、提示时钟、关键状态与静态状态之上（只新增一个可选字段 `blueprint`）；
+- 恢复规则 A（文档打开期间每页记忆）、键盘隔离，以及每个阶段都可在减少动态效果时到达；
+- 静态、PowerPoint 与 PDF 输出始终包含完整说明，导出顺序按名称拒绝不完整的页面；
+- 经正常编辑路径的 Studio 操作；
+- Codex 草稿路径的页数规划（模拟宿主测试，加一次真实 Codex CLI 运行：没有填充）。
+
+渲染器 `visual-art-direction.12`，播放器 `semantic-player.6`。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。S10 随后完成（见上）。
+
+截至 2026-10-19，S9a（作者控制，DWD-200）已在本地完成。它位于分支 `claude/design-handoff-alignment-review-978a91`，叠加在 S1–S8 分支 `claude/design-handoff-alignment-19703c` 之上，尚未推送。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。S9a 新增：
+
+- 六个问题的入口与三个经测量的方向；
+- 可撤销、先说明后应用的作者操作；
+- 四个层级的范围、章节与分项锁定；
+- 提问而非填充的页数规划；
+- 可复用配置；
+- Studio 导出组中的 PowerPoint 与 PDF。
+
+十个问题的答案与各项决定见[对齐计划 §17（英文）](../plans/design-handoff-alignment.md#17-s9a-decisions-and-result--author-controls-2026-10-19)，另见[证据（英文）](../evidence/s9a-author-controls/review.md)。S9b 已随后完成（见上文）。
+
+截至 2026-10-19，S7（输出等级与 VIS-016）在分支 `claude/nice-archimedes-d8a127` 上为 **partial**。该分支从 S6 分支开始，因此包含 S1–S7，尚未推送。
+
+- 组件按格式声明 L1/L2/L3 等级。
+- 导出顺序已强制执行。
+- v3 演示文稿可编译为带逐元素回执的 PowerPoint 与 PDF。
+- 每份演示文稿都有一份分别给出四项结果的导出报告。
+
+用 `npm run export:targets` 运行（[手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016)、[证据（英文）](../evidence/vis-016/review.md)）。PowerPoint 与 Keynote 没有运行：需要用户检查的项目列在每份报告中。S7 之后仍未完成：
+
+- 中文 PDF 搜索（CJK 部首码位）
+- PDF 中缺替代文字的 figure 外层
+- 高场景的小字
+- ~~Studio 菜单中的 PowerPoint 与 PDF~~（已在 S9a 中完成）
+
+S8（T01–T03，VIS-015）已在本地完成，状态为 partial（[证据（英文）](../evidence/vis-015/review.md)）。
+
+截至 2026-10-19，S6（VIS-014 视觉发布门）在分支 `claude/s6-start-1c14f9` 上为 **partial**。该分支已合并 S3、S4、S5，尚未推送。请从这个分支继续，而不是 `main`：`main` 上没有任何 S1–S6 的内容。相关决定见[对齐文档 §13](../plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19)：
+
+- 画廊采用方案 C
+- 分层图表聚焦规则
+- Claude 继续 deferred
+
+用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.4`），并在单独的提交中重录基线。
+
+S6 之后仍未完成：缺字形检测、390 px 热力图横向滚动、中文标题在词中断行、页面体积，以及作者对[评分审阅](../visual-acceptance/review.md)（74–77，低于 80）的校准。随后进行了 S7（见上文）。
+
 
 # 从当前视觉实现继续
 

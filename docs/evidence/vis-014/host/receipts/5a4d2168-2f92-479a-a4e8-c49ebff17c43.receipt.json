@@ -1,0 +1,31 @@
+{
+  "format": "deckweft-host-run",
+  "version": 1,
+  "requestId": "5a4d2168-2f92-479a-a4e8-c49ebff17c43",
+  "host": "codex",
+  "surface": "local-cli",
+  "capabilityId": "61a0aaaba3f39f6e663b45606deb731c0b90c9333c9144e022db42e64f7acb35",
+  "requestedModel": null,
+  "actualModel": null,
+  "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+  "authentication": "available",
+  "billingRoute": "unknown; existing host configuration is retained",
+  "inputHash": "27f74c639a63a0ee8d67a6c00d8086d35b31e51648d127527de10c742e97e5ac",
+  "schemaHash": "aeeeca99cc8443899a82926a46c021226f64bfb721fe958cc1f45431f96c9206",
+  "images": [],
+  "timeoutMs": 120000,
+  "status": "validated",
+  "error": null,
+  "hostAcceptance": false,
+  "process": {
+    "exitCode": 0,
+    "elapsedMs": 6645,
+    "timedOut": false,
+    "outputLimited": false,
+    "cancelled": false
+  },
+  "events": {
+    "completedTurns": 1
+  },
+  "outputHash": "306b80d116848532480af21847bcfcf051f8d24b466708c9549b03055b2b2ad9"
+}

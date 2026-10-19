@@ -1,0 +1,74 @@
+{
+  "format": "deckweft-host-run",
+  "version": 1,
+  "requestId": "418e05df-5526-4c25-94c3-319f8249881e",
+  "host": "codex",
+  "surface": "local-cli",
+  "capabilityId": "61a0aaaba3f39f6e663b45606deb731c0b90c9333c9144e022db42e64f7acb35",
+  "requestedModel": null,
+  "actualModel": null,
+  "modelEvidence": "unknown unless explicitly reported by host; never inferred from selector",
+  "authentication": "available",
+  "billingRoute": "unknown; existing host configuration is retained",
+  "inputHash": "e47a451c40f59448cff45fa575702b7da81d0a155e717de285ac475f3d10a449",
+  "schemaHash": "db63bf6e6398f690e461e8be93734f5c64564a6ee86ae286431264e2417c86ca",
+  "images": [
+    {
+      "file": "capture-1-1440.png",
+      "hash": "bafa5cb16a821a640934b8db15a9ec5af7e9602931c52dc4babdc5ecedb37fb4",
+      "mime": "image/png",
+      "delivery": "submitted-to-cli; model finding required"
+    },
+    {
+      "file": "capture-1-390.png",
+      "hash": "d33bcd5c2d99d2876d0bfae413abc41afba3e005067793d1f35d2c24ecda1f48",
+      "mime": "image/png",
+      "delivery": "submitted-to-cli; model finding required"
+    },
+    {
+      "file": "capture-1-scene-1.png",
+      "hash": "22d7194984337a531671cf6cfaed31b6908e24331b3115f8149c2a3d236e1b1d",
+      "mime": "image/png",
+      "delivery": "submitted-to-cli; model finding required"
+    },
+    {
+      "file": "capture-1-scene-2.png",
+      "hash": "5224b136381784a6e0ad2e2a697e5be7a1b447e962b4e53b868454cae2e2f3e0",
+      "mime": "image/png",
+      "delivery": "submitted-to-cli; model finding required"
+    },
+    {
+      "file": "capture-1-scene-3.png",
+      "hash": "a399bb9edd31203b1d045df52a104f7d7fb484e94f88f8781b6dfad9075f7069",
+      "mime": "image/png",
+      "delivery": "submitted-to-cli; model finding required"
+    },
+    {
+      "file": "capture-1-scene-4.png",
+      "hash": "e595a93821ba005b416336a2ee95607b8790085f0115d83b1461171c0701eb7b",
+      "mime": "image/png",
+      "delivery": "submitted-to-cli; model finding required"
+    },
+    {
+      "file": "capture-1-scene-5.png",
+      "hash": "2c13066dec8567d21fc690112572bc3d1331a998e93cb7b3bc94ae0e01f878c2",
+      "mime": "image/png",
+      "delivery": "submitted-to-cli; model finding required"
+    }
+  ],
+  "timeoutMs": 120000,
+  "status": "validated",
+  "error": null,
+  "hostAcceptance": false,
+  "process": {
+    "exitCode": 0,
+    "elapsedMs": 31000,
+    "timedOut": false,
+    "outputLimited": false,
+    "cancelled": false
+  },
+  "events": {
+    "completedTurns": 1
+  },
+  "outputHash": "163983c3adce5e5f74f822b6794618c84fb1ba886a0f264d7e857f2d50206f64"
+}

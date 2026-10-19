@@ -1,0 +1,7 @@
+{
+  "operation": "render.inspect-review",
+  "hostReceiptHash": "0afbdf8c5ef315c8509d54de242a57e912897ef0b0039cc83811529412d717f7",
+  "inputHash": "817004fa1cb766edc34a35b7633499778505c4e81369a378cd192736589bd75f",
+  "outputHash": "8c37d982d0190d935d52d3ca65e658a63683e009f805ab537cb82fb4fb8555bd",
+  "status": "applied"
+}

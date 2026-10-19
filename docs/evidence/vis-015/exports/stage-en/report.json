@@ -1,0 +1,741 @@
+{
+ "format": "deckweft-export-report",
+ "version": 1,
+ "deck": "stage-en",
+ "locale": "en",
+ "title": "DeckWeft v3 web output — a sample launch deck",
+ "environment": {
+  "node": "v24.14.0",
+  "platform": "darwin 27.0.0",
+  "browser": "Chromium 151.0.7922.34 (isolated, Playwright cache)",
+  "playwright": "1.61.1",
+  "renderer": "visual-art-direction.10",
+  "player": "semantic-player.5",
+  "python": "Python 3.9.6",
+  "quickLook": true
+ },
+ "levels": [
+  {
+   "blockId": "ls-hero-title",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "ls-hero-kicker",
+   "component": "callout",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "ls-hero-body",
+   "component": "paragraph",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "ls-hero-image",
+   "component": "image",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native picture with crop and alt text"
+  },
+  {
+   "blockId": "ls-hero-source",
+   "component": "citation",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text with a hyperlink to the source"
+  },
+  {
+   "blockId": "ls-cover-title",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "ls-cover-kicker",
+   "component": "callout",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "ls-cover-body",
+   "component": "paragraph",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "ls-cover-source",
+   "component": "citation",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text with a hyperlink to the source"
+  },
+  {
+   "blockId": "ls-chapter-title",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "ls-chapter-body",
+   "component": "paragraph",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "ls-chapter-source",
+   "component": "citation",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text with a hyperlink to the source"
+  },
+  {
+   "blockId": "ls-figure-title",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "ls-figure-chart",
+   "component": "line",
+   "web": "L1",
+   "pdf": "L2",
+   "pptx": "L1",
+   "pptxRepresentation": "native line chart with embedded data"
+  },
+  {
+   "blockId": "ls-figure-source",
+   "component": "citation",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text with a hyperlink to the source"
+  },
+  {
+   "blockId": "ls-metric-title",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "ls-metric-number",
+   "component": "metric",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box: value, unit and label as separate runs"
+  },
+  {
+   "blockId": "ls-metric-body",
+   "component": "paragraph",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "ls-metric-source",
+   "component": "citation",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text with a hyperlink to the source"
+  },
+  {
+   "blockId": "ls-close-title",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "ls-close-steps",
+   "component": "list",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box with list bullets"
+  },
+  {
+   "blockId": "ls-close-ask",
+   "component": "callout",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "ls-close-source",
+   "component": "citation",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text with a hyperlink to the source"
+  }
+ ],
+ "levelCounts": {
+  "web": {
+   "L1": 23,
+   "L2": 0,
+   "L3": 0
+  },
+  "pdf": {
+   "L1": 22,
+   "L2": 1,
+   "L3": 0
+  },
+  "pptx": {
+   "L1": 23,
+   "L2": 0,
+   "L3": 0
+  }
+ },
+ "exportOrder": {
+  "pptx": [
+   {
+    "stage": "ready",
+    "assets": 1,
+    "fonts": [
+     "Futura",
+     "Helvetica Neue"
+    ],
+    "images": 1
+   },
+   {
+    "stage": "static-state",
+    "declared": []
+   },
+   {
+    "stage": "freeze",
+    "charts": 1,
+    "frozenCharts": [],
+    "interactions": 0
+   },
+   {
+    "stage": "stop-motion",
+    "scenesWithMotion": 0,
+    "cuesNotPlayed": 0
+   },
+   {
+    "stage": "reveal",
+    "sources": 6,
+    "notes": 1
+   },
+   {
+    "stage": "render",
+    "bytes": 2497715,
+    "slides": 6,
+    "charts": 1,
+    "media": 1,
+    "receipts": 7
+   },
+   {
+    "stage": "check",
+    "editability": "pass",
+    "sceneCheck": "pass",
+    "accessibility": "pass"
+   }
+  ],
+  "pdf": [
+   {
+    "stage": "ready",
+    "assets": 1,
+    "fonts": [
+     "Futura",
+     "Helvetica Neue"
+    ],
+    "images": 1
+   },
+   {
+    "stage": "static-state",
+    "declared": []
+   },
+   {
+    "stage": "freeze",
+    "charts": 1,
+    "frozenCharts": [],
+    "interactions": 0
+   },
+   {
+    "stage": "stop-motion",
+    "scenesWithMotion": 0,
+    "cuesNotPlayed": 0
+   },
+   {
+    "stage": "reveal",
+    "sources": 6,
+    "notes": 1
+   },
+   {
+    "stage": "render",
+    "pages": 6,
+    "appendixPages": 6,
+    "bytes": 3459159
+   },
+   {
+    "stage": "check",
+    "status": "pass"
+   }
+  ]
+ },
+ "receipts": [
+  {
+   "code": "PPTX_TEXT_BALANCE",
+   "count": 6,
+   "reason": "PowerPoint does not balance lines.",
+   "delivered": "The measured line breaks are written as line breaks; the text stays editable.",
+   "elements": [
+    {
+     "sceneId": "ls-hero",
+     "blockId": "ls-hero-title",
+     "element": "balanced line breaks (5 lines)"
+    },
+    {
+     "sceneId": "ls-cover-text",
+     "blockId": "ls-cover-title",
+     "element": "balanced line breaks (6 lines)"
+    },
+    {
+     "sceneId": "ls-chapter",
+     "blockId": "ls-chapter-title",
+     "element": "balanced line breaks (3 lines)"
+    },
+    {
+     "sceneId": "ls-figure",
+     "blockId": "ls-figure-title",
+     "element": "balanced line breaks (2 lines)"
+    },
+    {
+     "sceneId": "ls-metric",
+     "blockId": "ls-metric-title",
+     "element": "balanced line breaks (2 lines)"
+    },
+    {
+     "sceneId": "ls-close",
+     "blockId": "ls-close-title",
+     "element": "balanced line breaks (3 lines)"
+    }
+   ]
+  },
+  {
+   "code": "PPTX_DISCLOSURE",
+   "count": 1,
+   "reason": "A slide has no disclosure control.",
+   "delivered": "Its content is in the slide notes.",
+   "elements": [
+    {
+     "sceneId": "ls-figure",
+     "blockId": "ls-figure-chart",
+     "element": "“View all data” disclosure"
+    }
+   ]
+  }
+ ],
+ "results": {
+  "pptxEditability": {
+   "status": "pass",
+   "compiler": {
+    "status": "pass",
+    "failures": [],
+    "counts": {
+     "text": 38,
+     "title": 6,
+     "table": 0,
+     "chart": 1,
+     "connector": 17,
+     "shape": 5,
+     "picture": 1,
+     "l3Picture": 0,
+     "decorative": 32,
+     "receipts": 7,
+     "charts": 1
+    },
+    "notes": [
+     "Smallest text is 5.23 pt after fitting the scene to the slide."
+    ]
+   },
+   "independent": {
+    "status": "pass",
+    "failures": [],
+    "missingText": [],
+    "chartsChecked": 1
+   },
+   "sceneCheck": {
+    "status": "pass",
+    "failures": []
+   }
+  },
+  "pdfSearchability": {
+   "status": "pass",
+   "pageCount": 12,
+   "scenes": [
+    {
+     "sceneId": "ls-hero",
+     "expected": 5,
+     "onPage": 5,
+     "inNotes": 0,
+     "radical": [],
+     "missing": []
+    },
+    {
+     "sceneId": "ls-cover-text",
+     "expected": 4,
+     "onPage": 4,
+     "inNotes": 0,
+     "radical": [],
+     "missing": []
+    },
+    {
+     "sceneId": "ls-chapter",
+     "expected": 3,
+     "onPage": 3,
+     "inNotes": 0,
+     "radical": [],
+     "missing": []
+    },
+    {
+     "sceneId": "ls-figure",
+     "expected": 15,
+     "onPage": 7,
+     "inNotes": 8,
+     "radical": [],
+     "missing": []
+    },
+    {
+     "sceneId": "ls-metric",
+     "expected": 6,
+     "onPage": 6,
+     "inNotes": 0,
+     "radical": [],
+     "missing": []
+    },
+    {
+     "sceneId": "ls-close",
+     "expected": 6,
+     "onPage": 6,
+     "inNotes": 0,
+     "radical": [],
+     "missing": []
+    }
+   ],
+   "failures": [],
+   "radicalCodePoints": null,
+   "printGeometry": {
+    "status": "pass",
+    "mismatches": []
+   }
+  },
+  "accessibility": {
+   "status": "partial",
+   "pptx": {
+    "status": "pass",
+    "failures": [],
+    "smallestTextPt": 5.23,
+    "scope": "Package checks only: slide titles, alt text, decorative marking, reading order, language, links, notes and contrast. No screen reader or PowerPoint Accessibility Checker was run."
+   },
+   "pdf": {
+    "status": "partial",
+    "failures": [],
+    "limits": [
+     {
+      "check": "grouping figures without /Alt",
+      "count": 2,
+      "note": "Chromium maps each HTML <figure> to a /Figure that wraps the tagged image or chart; the inner figure has the alternative text."
+     }
+    ],
+    "scope": "Structure checks on the PDF bytes. No screen reader or PDF/UA validator was run.",
+    "facts": {
+     "tagged": true,
+     "marked": true,
+     "lang": "en",
+     "title": "DeckWeft v3 web output — a sample launch deck",
+     "figures": 2,
+     "figuresWithAlt": 2,
+     "groupingFigures": 2
+    }
+   },
+   "notTested": [
+    "screen readers",
+    "PowerPoint Accessibility Checker",
+    "PDF/UA validation"
+   ]
+  },
+  "visualFidelity": {
+   "status": "partial",
+   "reason": "Reference renders by macOS Quick Look only; PowerPoint and Keynote were not run. Metrics are advisory; the contact sheets were viewed.",
+   "renderer": "qlmanage (OfficeImport)",
+   "slides": [
+    {
+     "sceneId": "ls-hero",
+     "pptx": {
+      "meanAbsDiff": 3.2,
+      "changedShare": 0.013
+     },
+     "pdf": {
+      "meanAbsDiff": 2.9,
+      "changedShare": 0.006
+     }
+    },
+    {
+     "sceneId": "ls-cover-text",
+     "pptx": {
+      "meanAbsDiff": 7.4,
+      "changedShare": 0.041
+     },
+     "pdf": {
+      "meanAbsDiff": 3,
+      "changedShare": 0.012
+     }
+    },
+    {
+     "sceneId": "ls-chapter",
+     "pptx": {
+      "meanAbsDiff": 10,
+      "changedShare": 0.063
+     },
+     "pdf": {
+      "meanAbsDiff": 1.9,
+      "changedShare": 0.006
+     }
+    },
+    {
+     "sceneId": "ls-figure",
+     "pptx": {
+      "meanAbsDiff": 6.4,
+      "changedShare": 0.038
+     },
+     "pdf": {
+      "meanAbsDiff": 2.2,
+      "changedShare": 0.007
+     }
+    },
+    {
+     "sceneId": "ls-metric",
+     "pptx": {
+      "meanAbsDiff": 9.7,
+      "changedShare": 0.064
+     },
+     "pdf": {
+      "meanAbsDiff": 1.2,
+      "changedShare": 0.002
+     }
+    },
+    {
+     "sceneId": "ls-close",
+     "pptx": {
+      "meanAbsDiff": 4.4,
+      "changedShare": 0.026
+     },
+     "pdf": {
+      "meanAbsDiff": 2,
+      "changedShare": 0.004
+     }
+    }
+   ],
+   "sheets": [
+    "decks/stage-en/sheet-1.jpg"
+   ]
+  }
+ },
+ "delivery": [
+  {
+   "sceneId": "ls-hero",
+   "staticState": null,
+   "interactions": [],
+   "motion": {
+    "sceneId": "ls-hero",
+    "policy": "none",
+    "cuesNotPlayed": 0,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": null
+   }
+  },
+  {
+   "sceneId": "ls-cover-text",
+   "staticState": null,
+   "interactions": [],
+   "motion": {
+    "sceneId": "ls-cover-text",
+    "policy": "none",
+    "cuesNotPlayed": 0,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": null
+   }
+  },
+  {
+   "sceneId": "ls-chapter",
+   "staticState": null,
+   "interactions": [],
+   "motion": {
+    "sceneId": "ls-chapter",
+    "policy": "none",
+    "cuesNotPlayed": 0,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": null
+   }
+  },
+  {
+   "sceneId": "ls-figure",
+   "staticState": null,
+   "interactions": [],
+   "motion": {
+    "sceneId": "ls-figure",
+    "policy": "none",
+    "cuesNotPlayed": 0,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": null
+   }
+  },
+  {
+   "sceneId": "ls-metric",
+   "staticState": null,
+   "interactions": [],
+   "motion": {
+    "sceneId": "ls-metric",
+    "policy": "none",
+    "cuesNotPlayed": 0,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": null
+   }
+  },
+  {
+   "sceneId": "ls-close",
+   "staticState": null,
+   "interactions": [],
+   "motion": {
+    "sceneId": "ls-close",
+    "policy": "none",
+    "cuesNotPlayed": 0,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": null
+   }
+  }
+ ],
+ "fonts": {
+  "used": [
+   "Futura",
+   "Helvetica Neue"
+  ],
+  "embedded": false,
+  "note": "Fonts are referenced by name, never embedded or redistributed. A machine without them substitutes another face."
+ },
+ "files": {
+  "pptxBytes": 2497715,
+  "slides": 6,
+  "charts": 1,
+  "pictures": 1,
+  "pdfPages": 12,
+  "sha256": {
+   "pptx": "d6f04641487dc587cc0c9452c631aed1d9002b0e33cacfc653812a185c45dba9",
+   "pdf": "0ce169ca6c9c9532a52c8d59bd805891035be689e24fe0c0fd8bf04d5f710c89"
+  }
+ },
+ "applications": {
+  "powerpoint": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "keynote": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "libreoffice": {
+   "state": "not installed"
+  },
+  "quickLook": {
+   "state": "rendered",
+   "detail": "macOS Quick Look (qlmanage, OfficeImport) drew each slide and PDF page as an independent reference render. It is neither PowerPoint nor Keynote."
+  }
+ },
+ "applicationChecks": [
+  {
+   "id": "open",
+   "check": "Open every .pptx in PowerPoint and in Keynote: no repair prompt, no import warning, every slide present.",
+   "quickLook": "Quick Look rendered every slide; it is not PowerPoint or Keynote."
+  },
+  {
+   "id": "edit-data",
+   "check": "Use Edit Data on each native chart: the embedded workbook opens and holds the values the chart shows.",
+   "quickLook": "Not testable; the workbook was parsed independently and equals the chart caches."
+  },
+  {
+   "id": "focus-colours",
+   "check": "Ranked and grouped bars: the focused category is solid and the others pale with an outline (per-point fills).",
+   "quickLook": "Quick Look ignores per-point fills and draws every bar solid."
+  },
+  {
+   "id": "chart-details",
+   "check": "Native charts: markers, dashes, value labels, end labels, first/last time labels and the value-axis steps.",
+   "quickLook": "Quick Look ignores markers, dashes, data labels, label skipping and the axis step."
+  },
+  {
+   "id": "gaps",
+   "check": "Charts with a missing value are images (L3) in this release. Before compiling them natively: in PowerPoint and Keynote a missing value must stay a gap on its own category, never zero, and later values must keep their categories.",
+   "quickLook": "Quick Look moves later values onto earlier categories when a point is omitted, and draws #N/A as zero."
+  },
+  {
+   "id": "text-fit",
+   "check": "Headings and paragraphs wrap as on the web; negative letter-spacing is applied.",
+   "quickLook": "Quick Look ignores negative letter-spacing and wraps some 5–6 pt chrome text despite wrap=\"none\"."
+  },
+  {
+   "id": "fonts",
+   "check": "The fonts listed in the report are installed; otherwise the application substitutes them and line breaks change. Fonts are not embedded.",
+   "quickLook": "Rendered with this Mac’s fonts."
+  },
+  {
+   "id": "freeform-colour",
+   "check": "Free-form decorative shapes have the same colour as rectangles of the same value.",
+   "quickLook": "Quick Look draws free-form shapes slightly lighter than the stored colour."
+  },
+  {
+   "id": "accessibility",
+   "check": "Run PowerPoint’s Accessibility Checker and a screen reader: slide titles, alt text, reading order, decorative marks, table headers.",
+   "quickLook": "Not testable."
+  },
+  {
+   "id": "keynote-objects",
+   "check": "Keynote: charts, tables, connectors and notes import as editable objects.",
+   "quickLook": "Not testable."
+  }
+ ]
+}

@@ -5,5 +5,8 @@ export function renderProgress(root,record,t){
  output.textContent=t(...(labels[record.running?'running':record.status]||['Review the operation details','请查看操作详情']));
  root.querySelector('#workbenchDiagnostics').textContent=record.error?.message||record.diagnostics?.at(-1)?.message||record.receipt?.review?.judgment||'';
  root.querySelector('#workbenchExport').disabled=!record.canExport;root.querySelector('#workbenchLastValid').disabled=!record.hasLastValid;root.querySelector('#workbenchCancel').disabled=!record.running;
+ // S9b: the page plan of the drafted deck, the same for the local and the Codex path; DeckWeft asks instead of padding.
+ const plan=record.pagePlan,box=root.querySelector('#workbenchPagePlan');box.replaceChildren();
+ if(plan){const head=document.createElement('p');head.textContent=t(`Page plan (${plan.detail}): ${plan.draftedPages} page(s) drafted; the material supports ${plan.proposedPages}${plan.targetPages?`; target ${plan.targetPages}`:''}.`,`页面规划（${({brief:'简要',standard:'标准',detailed:'详细'})[plan.detail]}）：已起草 ${plan.draftedPages} 页；材料可支撑 ${plan.proposedPages} 页${plan.targetPages?`；目标 ${plan.targetPages} 页`:''}。`);box.append(head);if(plan.questions.length){const list=document.createElement('ol');for(const q of plan.questions){const li=document.createElement('li');li.textContent=t(q.en,q.zh);list.append(li);}box.append(list);}}
  root.querySelector('#workbenchEvents').textContent=(record.events||[]).slice(-8).map(e=>e.tool+' · '+e.status).join('\n');
 }

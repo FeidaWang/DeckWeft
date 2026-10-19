@@ -1,0 +1,178 @@
+{
+  "format": "deckweft-vis-014-gallery",
+  "version": 1,
+  "decision": "docs/plans/design-handoff-alignment.md#13-s6-decisions-2026-10-19 (option C: requirements §9 gallery)",
+  "frozenAt": "2026-10-19",
+  "locales": [
+    "en",
+    "zh-CN"
+  ],
+  "themes": [
+    "cream-collage",
+    "dark-data",
+    "electric-violet"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "id": "cc-cover",
+      "theme": "cream-collage",
+      "composition": "diagonal-cover",
+      "task": "Diagonal cover",
+      "hashes": {
+        "en": "77d411bc648e7c99167d18da92adfe28153f1e9dda4f1fea638111cfc2172847",
+        "zh-CN": "ef2113f1affbdd1120d2fa7d3b53117f6883394b361529e83364d2747ef83bed"
+      },
+      "contentStatus": "sourced",
+      "interactions": []
+    },
+    {
+      "page": 2,
+      "id": "cc-metrics",
+      "theme": "cream-collage",
+      "composition": "metric-left",
+      "task": "Asymmetric large metrics",
+      "hashes": {
+        "en": "8595cc18cd87af96a8e10a2ca0e5b305f7caeb440edd822ecff0b92c27d91091",
+        "zh-CN": "7044da6f643ee2671481919cbc366ef63f7fabcb5fae5dae334d2cfd33b4a3ca"
+      },
+      "contentStatus": "sourced",
+      "interactions": []
+    },
+    {
+      "page": 3,
+      "id": "cc-timeline",
+      "theme": "cream-collage",
+      "composition": "process-line",
+      "task": "Editorial timeline",
+      "hashes": {
+        "en": "6503d5d41fe04cf8cdb41ffe8382f330a9ae62569668262734f730746309ba4f",
+        "zh-CN": "caff1162b6186818bc23806b29b721eb23dcf9d1915c0b772f5842bb496dc552"
+      },
+      "contentStatus": "sourced",
+      "interactions": []
+    },
+    {
+      "page": 4,
+      "id": "cc-closing",
+      "theme": "cream-collage",
+      "composition": "closing-steps",
+      "task": "Bold closing / action composition",
+      "hashes": {
+        "en": "2ccceff58808045cf462d3e1b9ecfc7d5eaff30c42fb55dcfb825e3d1d636917",
+        "zh-CN": "6c8ea66f7718a58b83db20cd0131919d74efe6169066b4336ab69b92f32339d2"
+      },
+      "contentStatus": "sourced",
+      "interactions": []
+    },
+    {
+      "page": 5,
+      "id": "ev-photo",
+      "theme": "electric-violet",
+      "composition": "photo-split",
+      "task": "Photography split",
+      "hashes": {
+        "en": "fec51e41f59696deef157cdd1ded1db49ee57f0f3e64fd29111a607c5ba274d0",
+        "zh-CN": "6cbf9ba454e66e9f98ac1149abde4ad370737ed326e072b8b97b5047fcd1ba9c"
+      },
+      "contentStatus": "illustrative",
+      "interactions": []
+    },
+    {
+      "page": 6,
+      "id": "ev-chapter",
+      "theme": "electric-violet",
+      "composition": "violet-chapter",
+      "task": "Full-violet chapter",
+      "hashes": {
+        "en": "2ac0c034bebe17de7059b50b5812a9b79a84827714d9d8b6920c0036c8d3ecb6",
+        "zh-CN": "5df7a9de56032e44d80042e596ed1f3211cf0af3920a4dec3de4557d0a557026"
+      },
+      "contentStatus": "illustrative",
+      "interactions": []
+    },
+    {
+      "page": 7,
+      "id": "ev-case",
+      "theme": "electric-violet",
+      "composition": "image-right",
+      "task": "Annotated case / image story",
+      "hashes": {
+        "en": "9228a8c7d228a44d6973535bcccdb2c856db9b702791df30c3e49a389713c83a",
+        "zh-CN": "41036b7128be3b444a6198b034fba4c3c43e5d8e4c734a8e9a70bd8d9ce7c6d7"
+      },
+      "contentStatus": "illustrative",
+      "interactions": [
+        "image-hotspots"
+      ]
+    },
+    {
+      "page": 8,
+      "id": "ev-evidence",
+      "theme": "electric-violet",
+      "composition": "evidence-right",
+      "task": "Chart-and-image evidence page",
+      "hashes": {
+        "en": "185d6e0a0d09daa427b24cc2d84ed4fc9861dcfdc9b2133249eb598495482b5a",
+        "zh-CN": "3ec647cf06c1905b342c52176e45c01cd2a9734792d40b6115262d01cb398707"
+      },
+      "contentStatus": "illustrative",
+      "interactions": []
+    },
+    {
+      "page": 9,
+      "id": "dd-trend",
+      "theme": "dark-data",
+      "composition": "chart-with-evidence-rail",
+      "task": "Multi-series time plot",
+      "hashes": {
+        "en": "35be85b4436a3765458c01ebc2c24966ffe09f20f2a3fc0dc55a0afc7bfb6542",
+        "zh-CN": "5f9600b9699ce17aedc60511e1d97aa56b0e247b5b729c22a56686616d4aae0a"
+      },
+      "contentStatus": "illustrative",
+      "interactions": []
+    },
+    {
+      "page": 10,
+      "id": "dd-ranked",
+      "theme": "dark-data",
+      "composition": "evidence-left",
+      "task": "Ranked comparison",
+      "hashes": {
+        "en": "adc9238b9c69c0535d464dba497bba9e9632e95cae1e03a15155b7444a9a590d",
+        "zh-CN": "9798577a05d53f8f28169512ddc0204d139675c99cd1e39634e99dc605ca0ad8"
+      },
+      "contentStatus": "illustrative",
+      "interactions": []
+    },
+    {
+      "page": 11,
+      "id": "dd-matrix",
+      "theme": "dark-data",
+      "composition": "evidence-top",
+      "task": "Matrix / heatmap where data justifies it",
+      "hashes": {
+        "en": "9662c8b2ff0d928a71318b5052b985f5f5b1d0be40fb9e4d951e6186147e2253",
+        "zh-CN": "731dae6235cab2f3aceae2cc5a96138e54d4ff7862a9e5f91cf57170e89f9ace"
+      },
+      "contentStatus": "illustrative",
+      "interactions": []
+    },
+    {
+      "page": 12,
+      "id": "dd-explain",
+      "theme": "dark-data",
+      "composition": "process-line",
+      "task": "Explanatory diagram with data-focused interaction",
+      "hashes": {
+        "en": "09e5c67c338452b31f70b692c7241600cb80684848407899bbaf9626274b511c",
+        "zh-CN": "3cd1356df181ccf5bba2d5195a9722a6df9127345fd1901f6fa8237e0031813b"
+      },
+      "contentStatus": "illustrative",
+      "interactions": [
+        "steps",
+        "chart-select"
+      ]
+    }
+  ]
+}

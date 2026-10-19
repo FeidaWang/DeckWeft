@@ -38,7 +38,7 @@ test('VIS-004: local images are embedded with a normalized crop and hashes bind 
  const file=path.join(store.home,p.assets[0].path),bytes=await readFile(file);bytes[bytes.length-1]^=1;await writeFile(file,bytes);await assert.rejects(visualAssetResources(p,store.home),{code:'ASSET_TYPE'});
 });
 test('VIS-005: all three executable packs carry grammar, scoped rules and validated system font fallbacks',async t=>{
- const {p}=await demo(t);assert.equal(themePacks().length,3);for(const pack of themePacks()){assert.ok(pack.typography.displayZh);assert.ok(pack.imageGrammar);assert.ok(pack.motion);assert.ok(pack.rules.every(r=>r.sceneRole&&r.severity&&r.rationale));}
+ const {p}=await demo(t);assert.deepEqual(themePacks().slice(0,3).map(v=>v.id),['cream-collage','dark-data','electric-violet']);assert.equal(themePacks().length,6);for(const pack of themePacks()){assert.ok(pack.typography.displayZh);assert.ok(pack.imageGrammar);assert.ok(pack.motion);assert.ok(pack.rules.every(r=>r.sceneRole&&r.severity&&r.rationale));}
  const violet=applySceneTheme(p,'collage','electric-violet');assert.equal(violet.plan.scenes[0].composition,'violet-chapter');assert.deepEqual(violet.document,p.document);assert.deepEqual(violet.plan.scenes[1],p.plan.scenes[1]);
  const a=resolveTheme('electric-violet','1.0.0','en',{colorMode:'chapter'}),b=resolveTheme('electric-violet','1.0.0','zh-CN',{profile:{...p.document.visualBrief.profile,colorIntensity:'restrained'},colorMode:'chapter'});assert.notEqual(a.paper,b.paper);assert.notEqual(a.display,b.display);
 });

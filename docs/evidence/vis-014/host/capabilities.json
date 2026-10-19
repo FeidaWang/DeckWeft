@@ -1,0 +1,29 @@
+{
+  "format": "deckweft-host-capabilities",
+  "version": 1,
+  "host": "codex",
+  "surface": "local-cli",
+  "checkedAt": "2026-10-18T22:47:05.382Z",
+  "workspaceHash": "9f2e15968a895943c259e9073cc68e5a9cbb17c622c55f198ccebf5d2f895754",
+  "configurationFingerprint": "c49e16d4873cbbd5fd9c03bf88294e1bf5281fe9471278658c8c6a43a3f9297f",
+  "available": true,
+  "cliVersion": "codex-cli 0.160.0",
+  "authentication": {
+    "status": "available",
+    "evidence": "status-exit-only; output discarded"
+  },
+  "billingRoute": "unknown; existing host configuration is retained",
+  "structuredOutput": "advertised",
+  "imageInput": "advertised-not-delivery-verified",
+  "permissionMode": null,
+  "writableScope": "read-only child; parent applies validated local tools",
+  "renderer": "shared local renderer; actual capture is supplied separately",
+  "domDiagnostics": "requires explicit browser capture callback",
+  "imageBackend": "unknown; no generation request",
+  "timeout": {
+    "supported": true,
+    "maximumMs": 600000
+  },
+  "ready": true,
+  "id": "61a0aaaba3f39f6e663b45606deb731c0b90c9333c9144e022db42e64f7acb35"
+}

@@ -20,3 +20,67 @@ node bin/deckweft.mjs check imported.deck.json
 新安装器只写新目录，不会删除旧插件。先验收新的导出流程，再通过宿主管理器移除旧插件。排查问题时尽量不要同时启用两套相似触发器。
 
 活动代码、界面、包名和手册使用 DeckWeft；旧名只在迁移、审计和 [NOTICE](../../NOTICE.md) 中作为来源保留。原 [LICENSE](../../LICENSE) 完整保留。
+
+## 启用严格误读守卫
+
+v3 文稿在 2026-10-19 新增了可选的图表、数据集、场景、动效与主题字段（[字段清单](architecture.md#版本-3-交接字段s12026-10-19)）。六条误读守卫中有五条只在相关字段存在时生效，所以现有 v3 文稿全部原样加载。第六条——百分比必须声明分母——会拒绝现有示例与演示，因此改为显式启用：`rules.misreading: "strict"`。
+
+```js
+import {declareChartSemantics} from './src/core/adapters/chart-semantics.mjs';
+const strict=declareChartSemantics(document,{datasets:{'adoption-quarterly':{definition:{denominator:'当季活跃团队'},collectedAt:'2026-09-30'}}});
+```
+
+预期结果：得到一份已校验的副本，带有 `rules.misreading` 和所声明的定义；输入文稿不被修改，各系列数值逐字节相同。
+
+恢复：
+
+- `MIGRATION_DECLARATION … No denominator was inferred`：某个百分比数据集没有声明分母。在 `datasets.<id>.definition.denominator` 中补上；迁移永远不会猜测。
+- `MIGRATION_DECLARATION … does not exist`：声明引用了文稿中不存在的数据集 id。
+- `INVALID_PRESENTATION … denominator of percentage dataset`：手工编辑的文稿设置了 `rules` 却没有声明。补上分母或删除 `rules`。
+
+旧示例与反例由 `node --test tests/handoff-contracts.test.mjs` 检查：`tests/fixtures/visual/wave-a.*.json` 原样加载，`semantic-chart.en.json` 携带全部新字段，`semantic-chart.negative.json` 被拒绝。
+
+## 系列聚焦与静态状态（S5）：无需迁移
+
+S5（2026-10-19）新增两个可选计划字段：图表选择上的 `initialFocusSeriesId` 和 `data.focus` 提示（[用法](interactions.md#聚焦一个系列或隐藏它)）。现有计划照常加载与导出，不做任何转换。
+
+1. 未声明 `staticState` 的页面输出不变：无 JavaScript 时绘制完整的作者数据，播放器从作者开场开始（决定 C7）。预期：每份现有导出的读者可见标记逐字节一致（[基线测试](../../tests/handoff-contracts.test.mjs)）。
+2. 若要在无 JavaScript 的输出中冻结开场，请添加位置为 0 的关键状态并将其设为静态状态，例如 `"keyStates":[{"id":"opening","position":0}],"staticState":{"keyStateId":"opening"}`。预期：导出文件绘制开场时的选择、步骤、标签或热点，并附一行说明。
+3. S5 之前导出的文件保留其内嵌播放器。重新导出即可获得 S5 播放器（按键守卫、聚焦、静态状态测量）。
+
+恢复：若 `data.focus` 提示或 `initialFocusSeriesId` 指向当时已隐藏的系列，计划会被拒绝（`INVALID_INTERACTION … Show a series before focusing it`）；请先显示该系列或修改聚焦对象。`STATIC_STATE_UNIMPLEMENTED` 已不存在。
+
+## 章节、页面折叠内容与分项锁定（S9a）
+
+S9a（2026-10-19）新增可选字段，没有新的 `schemaVersion`：现有文稿与计划照常加载和导出（渲染基线显示没有任何可见文字或数值变化）。
+
+| 字段 | 位置 | 含义 |
+|---|---|---|
+| `chapters[] {id, startSceneId, profile?}` | 设计计划 | 章节从起始页延续到下一个章节起始页之前。章节配置作用于没有自身页面配置的成员页。 |
+| `disclosure {blockIds}` | 设计计划中的页面 | 本页的辅助段落、列表或标注，收在一个关闭的“更多细节”控件后面。 |
+| `lockMode`、`lockedDatasetIds`、`lockedSourceIds` | `authorOverrides` | 分开的数据锁定与来源锁定。 |
+| `schemas/design-profile.schema.json` | 新契约 | 可复用的设计配置；没有可存放文字、数据、来源、图片或品牌的字段。 |
+
+只有锁定需要迁移，而且只在你需要分项锁定时：
+
+```js
+import {separateLocks} from './src/core/adapters/locks.mjs';
+const next=separateLocks(project);
+```
+
+预期结果：得到一份已校验的副本，`lockMode: "separate"`。原来由锁定对象隐含保护的数据集与来源（图表的数据集、块的来源及其步骤讲解的来源）全部写入 `lockedDatasetIds` / `lockedSourceIds`，不会释放任何锁定。输入不被修改，重复运行得到相同结果。在 Studio 中，第一次使用“数据”或“来源”锁定时会自动运行并说明。
+
+恢复：
+
+- 保存手工编辑的项目时出现 `AUTHOR_LOCK`：它设置了 `lockMode: "separate"` 却没有复制隐含锁定，这会释放锁定。请使用 `separateLocks()`。
+- `INVALID_PRESENTATION … A locked dataset is missing` / `A locked source is missing`：锁定指向文稿中不存在的 id。
+- `INVALID_DESIGN_PLAN … A chapter starts on a missing page`、`Start at most one chapter on a page`、`Use unique chapter ids` 或 `Chapter ids must differ from page ids`。
+- `INVALID_DESIGN_PLAN … A page disclosure holds paragraph, list or callout blocks of the same page` 或 `The focal block, the takeaway and interaction or annotation targets stay on the page`。
+
+新字段的锁定规则：
+
+- 页面的 `composition` 或 `blockIds` 锁定同时冻结该页的折叠内容。
+- 文字锁定的内容块不会被移入折叠内容。
+- `planPages()` 生成的页数规划带有 `basis` 哈希和所用选项；`applyPagePlan()` 对其他版本的文稿一律拒绝（`PAGE_PLAN_STALE`），并重新推导要拆分或标记的页面。
+
+旧示例与反例由 `node --test tests/s9a-author-controls.test.mjs` 检查：`wave-a.*`、`families.en` 与 `evidence-scene.zh-CN` 原样加载，`tests/fixtures/visual/s9a.negative.json` 中的每个反例都被拒绝。

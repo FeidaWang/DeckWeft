@@ -36,3 +36,9 @@ test('local arranging follows the attached topic and exports no private task or 
  assert.ok(!disk.html.includes('promptWorkbench'));
  assert.ok(!disk.html.includes('sourceInput'));
 });
+test('S9b: a generated deck carries the page plan of the saved deck (direction detail, optional target) and a bad target is refused before work starts',async t=>{
+ const {service}=await setup(t),made=await service.create({request,targetPages:40,direction:{answers:{detail:'brief'},index:0}}),r=await settled(service,made.id);
+ assert.equal(r.pagePlan.detail,'brief');assert.equal(r.pagePlan.targetPages,40);assert.equal(r.pagePlan.draftedPages,r.project.plan.scenes.length);assert.deepEqual(r.pagePlan.hostAddedPages,[]);
+ assert.equal(r.pagePlan.basis.length>0,true);assert.ok(r.pagePlan.questions.some(q=>q.kind==='page-count'),'below the target it asks instead of padding');
+ await assert.rejects(service.create({request,targetPages:0}),{code:'PAGE_PLAN_TARGET'});
+});

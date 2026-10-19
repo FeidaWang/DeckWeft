@@ -1,0 +1,19 @@
+{
+  "negativeFixture": "S9b blueprint A declarations that must be refused. Each case sets one path on the English blueprint A fixture (tests/fixtures/visual/blueprint-a.en.json, scene 1 = the blueprint page); createVisualProject must reject it.",
+  "cases": [
+    {"why": "The question is a heading block.", "set": {"plan.scenes.1.interactions.0.blueprint.questionBlockId": "pipeline-answer"}},
+    {"why": "The short answer is a paragraph or callout, not a heading.", "set": {"plan.scenes.1.interactions.0.blueprint.answerBlockId": "pipeline-question"}},
+    {"why": "The question sits on the blueprint page itself.", "set": {"plan.scenes.1.interactions.0.blueprint.questionBlockId": "intro-title"}},
+    {"why": "The whole object has an existing explanation.", "set": {"plan.scenes.1.interactions.0.blueprint.wholeExplanationId": "no-such-explanation"}},
+    {"why": "The whole object and a part do not share one explanation.", "set": {"plan.scenes.1.interactions.0.blueprint.wholeExplanationId": "part-measure"}},
+    {"why": "All three references are required.", "set": {"plan.scenes.1.interactions.0.blueprint": {"questionBlockId": "pipeline-question", "answerBlockId": "pipeline-answer"}}},
+    {"why": "No other blueprint field exists.", "set": {"plan.scenes.1.interactions.0.blueprint.parameter": "speed"}},
+    {"why": "Parts are diagram nodes, never relationships.", "set": {"plan.scenes.1.interactions.0.steps.0.objectId": "measure-to-repair"}},
+    {"why": "Each part is explained once.", "set": {"plan.scenes.1.interactions.0.steps.1.objectId": "measure"}},
+    {"why": "A blueprint page always opens on Explain.", "set": {"plan.scenes.1.interactions.0.initialStepId": "step-repair"}},
+    {"why": "The cues are the stages: at most one per part plus Diagram.", "set": {"plan.scenes.1.cues": [{"id": "c1", "event": "step.next", "interactionId": "pipeline-parts"}, {"id": "c2", "event": "step.next", "interactionId": "pipeline-parts"}, {"id": "c3", "event": "step.next", "interactionId": "pipeline-parts"}, {"id": "c4", "event": "step.next", "interactionId": "pipeline-parts"}, {"id": "c5", "event": "step.next", "interactionId": "pipeline-parts"}, {"id": "c6", "event": "step.next", "interactionId": "pipeline-parts"}]}},
+    {"why": "A blueprint page has at least the Diagram cue.", "set": {"plan.scenes.1.cues": [], "plan.scenes.1.keyStates": [{"id": "explain", "position": 0}], "plan.scenes.1.staticState": {"keyStateId": "explain"}}},
+    {"why": "The diagram stays on the page, not behind a disclosure.", "set": {"plan.scenes.1.disclosure": {"blockIds": ["pipeline-diagram"]}}},
+    {"why": "Blueprint A explains a diagram, not a paragraph.", "set": {"plan.scenes.1.interactions.0.blockId": "pipeline-answer"}}
+  ]
+}
