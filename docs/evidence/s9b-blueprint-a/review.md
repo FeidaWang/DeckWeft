@@ -16,7 +16,7 @@ Checked 2026-10-19 on branch `claude/agitated-torvalds-969a1e`, stacked on S9a (
 - **Static output.** Every blueprint page carries the complete explanation without JavaScript: the whole object, numbered parts and every explanation. A static state adds its statement and marks an Explore part. PowerPoint receives native number circles and a native numbered list.
 - **Export order.** The static-state stage refuses a blueprint page with no static state (`BLUEPRINT_STATIC_REQUIRED`). It also refuses Explain as the static state, or a measured page missing a part label or an explanation (`BLUEPRINT_STATIC_INCOMPLETE`). The review gate measures every blueprint key state.
 - **Studio.** **Make this page Explain → Diagram → Explore** goes through `changed()`, so Undo, Redo, Save and History work, and it honours the scene lock and the diagram lock. The whole object's explanation is editable. A hint states what the static state means for exports.
-- **Codex draft page plan (S9a leftover).** The prompt carries `pageBrief()`. The drafted deck is planned locally (`draftPagePlan`), and pages holding none of the supplied lines are listed as host-added and asked about. Tested with the fake host only.
+- **Codex draft page plan (S9a leftover).** The prompt carries `pageBrief()`. The drafted deck is planned locally (`draftPagePlan`), and pages holding none of the supplied lines are listed as host-added and asked about. Tested with the fake host and one live Codex run (below).
 
 ## Restore rule, keyboard, reduced motion — player trace
 
@@ -75,6 +75,24 @@ Weakest export page: the blueprint page in 16:9. The tall static page (diagram p
 
 Studio PowerPoint and PDF: see the Studio trace above.
 
+## Live Codex run of the draft page plan
+
+Run on 2026-10-19 at the user's request: [`codex-page-plan/`](codex-page-plan/) holds the brief, the hash-only host receipt and application record, and [`page-plan.json`](codex-page-plan/page-plan.json).
+
+- **Command:** `node bin/deckweft.mjs visual-task --brief brief.json --out dist/s9b-codex/run --host codex --live --timeout-ms 600000`.
+- **Host:** Codex CLI 0.160.0 with the existing login; model and billing are not inferred.
+- **Receipt:** validated, exit 0, 29.3 s, one turn.
+- **Brief:** three supplied pages (question and mechanism, evidence, next step), detail *standard*, target 6 pages.
+
+| Check | Result |
+|---|---|
+| Padding | Codex returned 4 pages, not 6. It split the first supplied page into a question page and a mechanism page. Every page holds supplied lines, so no page is host-added. |
+| Coverage | Every supplied line is on a drafted page (`HOST_CONTENT_COVERAGE` passed). |
+| Local plan | `needs-material`: units present are question, mechanism, evidence and action; background and limits are missing. Four questions follow: two missing units, one unsourced claim (page 3), and *The material supports 4 pages; the target is 6 … DeckWeft will not pad the deck.* |
+| Host wording | Codex wrote the unit names as page headings and added one sentence on the last page naming the missing units. It added no fact, number or quotation. The draft stays marked *unverified host-authored outline; author must review*. |
+
+The run checks one host path with one brief. It does not certify Codex desktop or other briefs, and Claude stays deferred.
+
 ## Byte identity
 
 The renderer `.11 → .12` and the player `.5 → .6` were re-recorded in their own commit. [`baseline-diff-s9b.json`](baseline-diff-s9b.json) compares against `e80ecd7`. In all 12 HTML entries, no visible word, value, data table, anchor or title changed.
@@ -93,7 +111,6 @@ The renderer `.11 → .12` and the player `.5 → .6` were re-recorded in their 
 | Pages over the 900 px budget | In the player at 1440 px: Luminous Stage English opening 1014 px, closing 1071 px, Explore 918 px; Cream Collage Chinese opening 989 px. Answer 7 = record only | Follow-up |
 | Scroll advancement (M09) | v3 has no scroll trigger; Next / Previous only | Open since S1 |
 | Part groups (M10) | Parts are single nodes; no grouping | Follow-up |
-| Live Codex page plan | Fake host only; a live run consumes allowance and needs your go-ahead | User |
 | Qualifier word lists, mixed-theme profiles | S9a leftovers, unchanged (answer 6) | Follow-up / by design |
 | PowerPoint, Keynote | Installed, not run; open the exports yourself | User |
 

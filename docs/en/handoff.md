@@ -4,7 +4,7 @@ S9b (blueprint A, Explain → Diagram → Explore, DWD-210) is **done locally** 
 - restore rule A (per-page memory while the document is open), keyboard isolation and reduced motion at every stage;
 - static, PowerPoint and PDF output that always carries the complete explanation, and export-order refusals by name;
 - a Studio action through the normal edit path;
-- a page-count plan for the Codex draft path (fake-host tests only).
+- a page-count plan for the Codex draft path (fake-host tests and one live Codex CLI run: no padding).
 
 Renderer `visual-art-direction.12`, player `semantic-player.6`. The six answers and the decisions are in [alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19); see also the [evidence](../evidence/s9b-blueprint-a/review.md). Next in the plan is S10 (pattern library maintenance, DWD-310). It is not authorized by this handoff.
 

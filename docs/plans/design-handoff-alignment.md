@@ -658,7 +658,7 @@ The user answered the kickoff questions on 2026-10-19 and asked for the last thr
 | Export order | The static-state stage refuses a missing static state (`BLUEPRINT_STATIC_REQUIRED`), Explain, or a measured page missing a part label or an explanation (`BLUEPRINT_STATIC_INCOMPLETE`). The message names the page. HTML export is not refused. |
 | Review gate | The measurement covers the opening, the static state and every blueprint key state. |
 | PowerPoint | Part numbers are measured with their part and compiled as native circles (found dropped silently during S9b). |
-| Codex page plan | `draftWithHost` takes `pagePlan {detail, targetPages}`; the prompt carries `pageBrief()` and forbids padding; `draftPagePlan` plans the drafted deck and lists pages holding none of the supplied lines as host-added (status `needs-review`). The workbench plans every generated deck after saving it. Fake-host tests only; no live Codex run. |
+| Codex page plan | `draftWithHost` takes `pagePlan {detail, targetPages}`; the prompt carries `pageBrief()` and forbids padding; `draftPagePlan` plans the drafted deck and lists pages holding none of the supplied lines as host-added (status `needs-review`). The workbench plans every generated deck after saving it. Fake-host tests, plus one live Codex CLI run at the user's request: 3 supplied pages, target 6, Codex returned 4 pages without padding and the local plan asked for the missing material ([evidence](../evidence/s9b-blueprint-a/codex-page-plan/page-plan.json)). |
 | Object | DeckWeft's own export pipeline (measure → repair → review → export) as the code-drawn process diagram with stable part ids (answer 4 of §17). |
 
 ### Result
@@ -671,6 +671,7 @@ The user answered the kickoff questions on 2026-10-19 and asked for the last thr
 | Reduced motion | Every stage reached with 0 running animations; `static` opens on the static state and still reaches Explain and Explore |
 | Export never leaves disassembled parts | Static page complete in every case; the export order refuses a missing or Explain static state, by name; Studio PowerPoint and PDF exported with Diagram, all 5 explanations on slide 2 |
 | Studio create and static state | Built through `changed()`: Undo/Redo, Save, scene and diagram locks honoured; traced at three widths |
+| Codex draft page plan | One live Codex CLI run: 4 pages for a target of 6, no padding, no host-added page; the local plan asked for background, limits and 2 more pages |
 | Six themes, two languages | 12 decks, facts identical per language, 0 fit, contrast or glyph issues at three widths; contact sheets viewed |
 | `export:targets -- --s9` | PowerPoint editability and page check pass on 12 of 12; Chinese PDF search partial (known S7) |
 
@@ -679,6 +680,5 @@ The user answered the kickoff questions on 2026-10-19 and asked for the last thr
 - The Explain stage composition (mostly empty page).
 - Pages over the 900 px budget: four pages in the S9b run (answer 7: recorded).
 - Scroll advancement (M09) and part groups (M10).
-- A live Codex run of the draft page plan (needs the user's go-ahead).
 - PowerPoint and Keynote runs by the user.
 - Claude acceptance.

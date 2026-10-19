@@ -4,7 +4,7 @@
 - 恢复规则 A（文档打开期间每页记忆）、键盘隔离，以及每个阶段都可在减少动态效果时到达；
 - 静态、PowerPoint 与 PDF 输出始终包含完整说明，导出顺序按名称拒绝不完整的页面；
 - 经正常编辑路径的 Studio 操作；
-- Codex 草稿路径的页数规划（仅用模拟宿主测试）。
+- Codex 草稿路径的页数规划（模拟宿主测试，加一次真实 Codex CLI 运行：没有填充）。
 
 渲染器 `visual-art-direction.12`，播放器 `semantic-player.6`。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。计划中的下一步是 S10（模式库维护，DWD-310）。本交接不构成授权。
 

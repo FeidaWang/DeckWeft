@@ -19,7 +19,8 @@
 - `node scripts/s9b-blueprint.mjs`：12 份文稿（六套主题 × 两种语言），每种语言内事实相同；在三种宽度下，每页和每个关键状态都没有版面、对比度或字形问题。
 - `npm run export:targets -- --s9`：PowerPoint 可编辑性与页面检查 12 份全部通过；中文 PDF 搜索为部分通过（S7 已知限制）。
 - 已查看：两张联系表、播放器与 Studio 截图、四张导出对照表。最弱的一页是“讲解”阶段；有四页超过 900 px 预算（已记录）。
-- 未运行：Firefox 与 WebKit、PowerPoint、Keynote、Codex 页面规划的真实运行，以及 Claude。
+- 应用户要求，用真实 Codex CLI（0.160.0）运行了一次草稿页数规划：提供 3 页原文、目标 6 页，结果起草 4 页，没有填充，也没有宿主添加的页面；本地规划询问了缺少的“背景”和“局限”单元以及另外 2 页材料（[记录（英文）](../evidence/s9b-blueprint-a/codex-page-plan/page-plan.json)）。
+- 未运行：Firefox 与 WebKit、PowerPoint、Keynote，以及 Claude。
 
 ## S9a 作者控制 — 2026-10-19
 

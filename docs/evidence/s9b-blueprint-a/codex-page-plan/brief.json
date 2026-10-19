@@ -1,0 +1,6 @@
+{
+ "request": "Arrange my notes on the DeckWeft export pipeline into a short presentation for authors. Use only these notes.",
+ "sourceText": "How does a DeckWeft page become a file you can hand over?\nIt passes four parts in a fixed order: measure, repair, review and export.\n---\nEvidence\nIn the S9b run, PowerPoint editability and the page check passed on 12 of 12 blueprint decks.\n---\nNext step\nOpen the exported PowerPoint file yourself; DeckWeft does not run PowerPoint.",
+ "locale": "en",
+ "pagePlan": {"detail": "standard", "targetPages": 6}
+}

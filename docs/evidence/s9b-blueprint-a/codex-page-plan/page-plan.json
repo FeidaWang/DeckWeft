@@ -1,0 +1,112 @@
+{
+ "format": "deckweft-s9b-codex-page-plan",
+ "version": 1,
+ "date": "2026-10-19",
+ "command": "node bin/deckweft.mjs visual-task --brief brief.json --out dist/s9b-codex/run --host codex --live --timeout-ms 600000",
+ "host": "Codex CLI 0.160.0 (local, existing login; model and billing not inferred)",
+ "receipt": "receipt.json (status validated, exit 0, 29.3 s, 1 completed turn)",
+ "brief": {
+  "detail": "standard",
+  "targetPages": 6,
+  "suppliedPages": 3,
+  "suppliedLines": 6
+ },
+ "result": {
+  "draftedPages": 4,
+  "proposedPages": 4,
+  "status": "needs-material",
+  "present": [
+   "question",
+   "mechanism",
+   "evidence",
+   "action"
+  ],
+  "missing": [
+   "background",
+   "limits"
+  ],
+  "hostAddedPages": [],
+  "questions": [
+   {
+    "kind": "missing-unit",
+    "en": "What does the audience need to know first — what is true today? Add it in your own words."
+   },
+   {
+    "kind": "missing-unit",
+    "en": "What are the limits, risks or open questions? Name them so the deck does not overclaim."
+   },
+   {
+    "kind": "unsupported-evidence",
+    "en": "Which data, source or quotation supports the claim on page 3? DeckWeft will not invent one."
+   },
+   {
+    "kind": "page-count",
+    "en": "The material supports 4 pages; the target is 6. Add material for the other 2 pages, or lower the target. DeckWeft will not pad the deck."
+   }
+  ]
+ },
+ "coverage": "every supplied line is on a drafted page (HOST_CONTENT_COVERAGE passed)",
+ "pages": [
+  {
+   "page": 1,
+   "unit": "question",
+   "decidedBy": "Question",
+   "text": [
+    "Question",
+    "How does a DeckWeft page become a file you can hand over?"
+   ],
+   "suppliedLines": [
+    "How does a DeckWeft page become a file you can hand over?"
+   ]
+  },
+  {
+   "page": 2,
+   "unit": "mechanism",
+   "decidedBy": "Mechanism",
+   "text": [
+    "Mechanism",
+    "It passes four parts in a fixed order: measure, repair, review and export."
+   ],
+   "suppliedLines": [
+    "It passes four parts in a fixed order: measure, repair, review and export."
+   ]
+  },
+  {
+   "page": 3,
+   "unit": "evidence",
+   "decidedBy": "Evidence",
+   "text": [
+    "Evidence",
+    "In the S9b run, PowerPoint editability and the page check passed on 12 of 12 blueprint decks."
+   ],
+   "suppliedLines": [
+    "Evidence",
+    "In the S9b run, PowerPoint editability and the page check passed on 12 of 12 blueprint decks."
+   ]
+  },
+  {
+   "page": 4,
+   "unit": "action",
+   "decidedBy": "Next step",
+   "text": [
+    "Next step",
+    "Open the exported PowerPoint file yourself; DeckWeft does not run PowerPoint.\nMissing unit: background. Limits appear only in this next-step note; no further evidence on limitations was supplied."
+   ],
+   "suppliedLines": [
+    "Next step",
+    "Open the exported PowerPoint file yourself; DeckWeft does not run PowerPoint."
+   ]
+  }
+ ],
+ "observations": [
+  "Codex wrote the argument-unit names (Question, Mechanism, Evidence) as page headings and moved the supplied lines into the page bodies; the local plan then classified each page by that label.",
+  "Codex split the first supplied page into a question page and a mechanism page (4 pages from 3 supplied); every page holds supplied lines, so none is listed as host-added.",
+  "Codex did not pad to the target of 6: the local plan asks for 2 more pages of material and names the missing units (background, limits).",
+  "Codex added one host-authored sentence on the last page naming the missing units; it adds no fact, number or quotation, and the draft stays marked unverified for the author."
+ ],
+ "hostDraft": {
+  "receiptId": "b43d27df-89f8-4727-bcf9-c86b3b6a7034",
+  "outlineHash": "30830553b6b265c60133774cb52de9b39785cb29c6956c22a00a19baf0f83fe6",
+  "factualVerification": "unverified host-authored outline; author must review"
+ }
+}

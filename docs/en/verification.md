@@ -19,7 +19,8 @@ Results:
 - `node scripts/s9b-blueprint.mjs`: 12 decks (six themes × two languages) with facts identical per language and 0 fit, contrast or glyph issues on every page and key state at three widths.
 - `npm run export:targets -- --s9`: PowerPoint editability and the page check pass on 12 of 12. Chinese PDF search is partial (the known S7 limit).
 - Viewed: both contact sheets, the player and Studio captures, and four export sheets. The weakest page is the Explain stage; four pages exceed the 900 px budget (recorded).
-- Not run: Firefox and WebKit, PowerPoint, Keynote, a live Codex run of the draft page plan, and Claude.
+- One live Codex CLI run of the draft page plan (Codex CLI 0.160.0, at the user's request): 3 supplied pages and a target of 6 gave 4 drafted pages, no padding and no host-added page. The local plan asked for the background and limits units and 2 more pages ([record](../evidence/s9b-blueprint-a/codex-page-plan/page-plan.json)).
+- Not run: Firefox and WebKit, PowerPoint, Keynote, and Claude.
 
 ## S9a author controls — 2026-10-19
 

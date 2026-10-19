@@ -1156,7 +1156,7 @@
     "Opt-in dependency-free isolated Chromium capture, current image gallery or actual Codex findings, strict reviewed HTML export and old-route bypass refusal",
     "Durable operation checkpoints, sequence/project conflicts, cancellation, explicit source synchronization, interrupted-task recovery and byte-exact last accepted HTML",
     "S9a (DWD-200): six-question entry (Topic, Audience, Style, Detail, Motion, Output) and three measured directions of the same content with identical facts and a stated explanation per direction; planned author actions with stated effects and undo (More editorial, Give the chart more space, Make quieter, Keep this layout, Replace the visual, Reduce text); deck/chapter/page/object scope; separate text, data, source and composition locks (explicit separateLocks() migration); page planning from argument units that asks or marks evidence-required and never pads; scope statements before partial revisions; Studio PowerPoint and PDF export through the S7 export order (docs/evidence/s9a-author-controls/review.md)",
-    "S9b (S9a leftover): the Codex draft path receives a page plan (detail, argument units, characters per page, optional target) and the drafted deck is planned locally; with supplied source text, pages holding none of its lines are listed as host-added and asked about. Fake-host tests only; no live Codex run."
+    "S9b (S9a leftover): the Codex draft path receives a page plan (detail, argument units, characters per page, optional target) and the drafted deck is planned locally; with supplied source text, pages holding none of its lines are listed as host-added and asked about. Fake-host tests and one live Codex CLI run (3 supplied pages, target 6: 4 pages drafted without padding, the local plan asked for the missing material; docs/evidence/s9b-blueprint-a/codex-page-plan/page-plan.json)."
    ]
   },
   {
@@ -1387,7 +1387,7 @@
  "currentBuild": {
   "scope": "S9b blueprint A (DWD-210; VIS-009 explanation scenes): Explain → Diagram → Explore on one page built on steps, cues, key states and the static state; Studio action; export-order refusal; Codex draft page plan (S9a leftover)",
   "implementation": "implemented-local",
-  "acceptance": "LocalVerified in isolated Chromium at 1440/1024/390 px: 66-step player trace (restore rule, keyboard isolation, reduced motion, no JavaScript) in English and Chinese, 9-step Studio trace with refused and passing Studio PowerPoint/PDF exports, 12 decks (six themes x two languages, facts identical, 0 fit/contrast/glyph issues), export:targets --s9 PowerPoint editability and page check 12 of 12; Firefox/WebKit, PowerPoint and Keynote not run; Claude deferred",
+  "acceptance": "LocalVerified in isolated Chromium at 1440/1024/390 px: 66-step player trace (restore rule, keyboard isolation, reduced motion, no JavaScript) in English and Chinese, 9-step Studio trace with refused and passing Studio PowerPoint/PDF exports, 12 decks (six themes x two languages, facts identical, 0 fit/contrast/glyph issues), export:targets --s9 PowerPoint editability and page check 12 of 12; one live Codex CLI draft with a page plan (no padding); Firefox/WebKit, PowerPoint and Keynote not run; Claude deferred",
   "evidence": "docs/evidence/s9b-blueprint-a/review.md"
  },
  "previousAuthorControlsBuild": {
@@ -1528,7 +1528,7 @@
   "Actual screen reader/IME/200% zoom and projection; PowerPoint and Keynote runs of the S7 v3 packages (VIS-016) by the user (Chromium, Firefox and WebKit standalone loads recorded for VIS-014)",
   "VIS-016 partial: PowerPoint/Keynote not run, Chinese PDF search (CJK radical code points), PDF figure wrappers without alt, small text on tall scenes",
   "VIS-015 partial: reusable-profile promotion from author feedback not built; 102 of 228 pages over the 900 px candidate budget; PowerPoint/Keynote runs of the S8 packages by the user; zh-CN word boundaries depend on the ICU version",
-  "S9b blueprint A: Firefox/WebKit traces not run; the Explain stage leaves most of the page empty (recorded weakest page); a live Codex run of the draft page plan not done"
+  "S9b blueprint A: Firefox/WebKit traces not run; the Explain stage leaves most of the page empty (recorded weakest page)"
  ],
  "previousVisualTaskBuild": {
   "scope": "VIS-011 local design director and one-task production loop",

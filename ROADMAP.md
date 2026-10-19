@@ -11,7 +11,7 @@ S9b adds the first explanation scene of the design handoff to VIS-009. VIS-009 s
 - **Keyboard and motion.** Part selection and Explore controls never turn the page. Reduced motion reaches every stage.
 - **Exports never leave disassembled parts.** Without JavaScript and in PowerPoint and PDF the page always shows the whole object, numbered parts and every explanation. The export order refuses a page with no static state or with Explain as its static state.
 - **Studio.** **Make this page Explain → Diagram → Explore** goes through the normal edit path (undo, locks). The author chooses the static state.
-- **Codex page plan.** The Codex draft path now gets a page-count plan. Host-added pages are asked about, never accepted silently (fake-host tests only).
+- **Codex page plan.** The Codex draft path now gets a page-count plan. Host-added pages are asked about, never accepted silently. One live Codex CLI run drafted 4 pages for a target of 6 without padding, and the plan asked for the missing material.
 
 Checked in isolated Chromium at 1440, 1024 and 390 px:
 
