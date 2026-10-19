@@ -80,6 +80,8 @@ const familyRules={
   return quotes.every(q=>pairs.has(q.id))?null:'Attribute every verbatim quotation: add a citation in this page whose source is one of the quote’s sources. Paraphrase belongs in a paragraph, not a quote block.';
  }
 };
+/** The small-multiples content contract for any composition that draws several chart panels on one scale (atlas-panels reuses it). */
+export function sharedScaleMessage(document,scene){return familyRules['small-multiples'](sceneBlocks(document,scene),scene,document);}
 export function assertComposition(document,scene){const c=compositions.find(c=>c.id===scene.composition);if(!c)return;const types=scene.blockIds.map(id=>document.blocks.find(b=>b.id===id)?.type);if(!types.includes('heading')||!types.includes(families[c.family].required))throw new DeckError('COMPOSITION_CONTENT',`The ${c.family} family needs a heading and ${families[c.family].required}; keep all existing content.`,422);const message=familyRules[c.family]?.(sceneBlocks(document,scene),scene,document);if(message)throw new DeckError('COMPOSITION_CONTENT',message,422);}
 /** Families whose content contract this scene already meets. Used for rhythm advice; it never changes a page. */
 export function eligibleFamilies(document,scene){return Object.keys(families).filter(family=>{try{assertComposition(document,{...scene,composition:families[family].variants[0][0]});return true;}catch{return false;}});}

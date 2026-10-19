@@ -39,10 +39,11 @@ export function checkRender(project,observations,{traces=[],console:consoleEntri
     if(sources.some(s=>!s.present||!s.rendered))add('source-coverage',s,r,'Source reference absent from document or output','Restore the original source anchor.');
     if(r.images.some(i=>!i.ready))add('missing-asset',s,r,'An image failed decoding or has no native pixels','Restore the original local asset; do not substitute a remote image.');
    }
-   for(const [kind,list]of [['clipping',s.clipIssues],['contrast',s.contrastIssues]])for(const issue of list||[])add(kind,s,s.regions.find(r=>r.nodeId===issue.regionId),JSON.stringify(issue),kind==='contrast'?'Adjust the affected region/theme token contrast.':'Choose a feasible layout for this scene; retain all content.');
+   for(const [kind,list]of [['clipping',s.clipIssues],['contrast',s.contrastIssues],['glyph',s.glyphIssues]])for(const issue of list||[])add(kind,s,s.regions.find(r=>r.nodeId===issue.regionId),JSON.stringify(issue),kind==='contrast'?'Adjust the affected region/theme token contrast.':kind==='glyph'?'No installed font draws this character; change the text or the theme font. Never export a box.':'Choose a feasible layout for this scene; retain all content.');
    const fit=o.fit?.checks?.find(c=>c.sceneId===s.sceneId);
    for(const t of fit?.text||[])if(!t.inside)add('clipping',s,s.regions.find(r=>r.nodeId===t.regionId),'Text lies outside the scene','Repair only the affected scene geometry.');
    for(const id of fit?.overflow||[])add('overflow',s,s.regions.find(r=>r.nodeId===id),'Region overflows its box','Change the affected layout or slot size.');
+   for(const g of fit?.glyphs||[])add('glyph',s,s.regions.find(r=>r.nodeId===g.regionId),'Missing glyph: '+JSON.stringify(g.missing)+' in '+g.font,'No installed font draws this character; change the text or the theme font.');
    for(const font of fit?.fonts||[])if(!font.loaded)add('font',s,s.regions.find(r=>r.nodeId===font.regionId),'Font not ready: '+font.family,'Install/select an available local font and recapture.');
   }
   if(o.viewport.width>700){let run=[];for(const s of o.scenes){run=run.at(-1)?.composition===s.composition?[...run,s]:[s];if(run.length===repetitionLimit+1)add('repeated-composition',s,null,`${run.length} adjacent scenes share ${s.composition}`,'Vary only an affected scene composition after measurement.');}}

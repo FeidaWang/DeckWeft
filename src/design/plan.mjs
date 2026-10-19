@@ -1,11 +1,17 @@
 import {assertSceneInteractions} from '../motion/cues.mjs';
 import {assertImageSlots} from '../assets/brief.mjs';
-import { assertComposition } from './compositions.mjs';
+import { assertComposition, sharedScaleMessage } from './compositions.mjs';
 import { assertSceneSemantics } from './scene-semantics.mjs';
 import schema from '../../schemas/design-plan.schema.json' with { type: 'json' };
 import { validateSchema } from '../core/schema.mjs';
 import { assertPresentation } from '../core/blocks.mjs';
 import { DeckError } from '../core/errors.mjs';
+/** S8 theme-only compositions (alignment §16): each belongs to one theme and names the blocks it composes. */
+export const THEME_COMPOSITIONS=Object.freeze({
+ 'fieldnotes-cover':{theme:'editorial-fieldnotes',needs:['heading','paragraph']},'fieldnotes-thesis':{theme:'editorial-fieldnotes',needs:['heading','paragraph']},'fieldnotes-figure':{theme:'editorial-fieldnotes',needs:['heading','chart']},'fieldnotes-method':{theme:'editorial-fieldnotes',needs:['heading',['paragraph','list','diagram','table']]},'fieldnotes-closing':{theme:'editorial-fieldnotes',needs:['heading','list']},
+ 'atlas-cover':{theme:'research-atlas',needs:['heading']},'atlas-section':{theme:'research-atlas',needs:['heading']},'atlas-figure':{theme:'research-atlas',needs:['heading','chart']},'atlas-panels':{theme:'research-atlas',needs:['heading','chart'],panels:[2,4],sharedScale:true},'atlas-appendix':{theme:'research-atlas',needs:['heading',['table','list']]},'atlas-closing':{theme:'research-atlas',needs:['heading','list']},
+ 'stage-hero':{theme:'luminous-stage',needs:['heading']},'stage-chapter':{theme:'luminous-stage',needs:['heading']},'stage-figure':{theme:'luminous-stage',needs:['heading','chart']},'stage-metric':{theme:'luminous-stage',needs:['heading','metric']},'stage-closing':{theme:'luminous-stage',needs:['heading','list']}
+});
 export function assertDesignPlan(document, plan) {
   assertPresentation(document);
   const result = validateSchema(plan, schema);
@@ -31,6 +37,8 @@ export function assertDesignPlan(document, plan) {
     }
     if(scene.composition==='photo-split'&&(scene.theme!=='electric-violet'||!kinds.includes('image')||!kinds.includes('heading')))fail('Photo split needs Electric Violet, a heading and a local image.');
     if(scene.composition==='violet-chapter'&&(scene.theme!=='electric-violet'||!kinds.includes('heading')))fail('Violet chapter needs Electric Violet and a heading.');
+    const own=THEME_COMPOSITIONS[scene.composition];
+    if(own){if(scene.theme!==own.theme)fail(`${scene.composition} belongs to the ${own.theme} theme.`);for(const need of own.needs)if(!(Array.isArray(need)?need.some(k=>kinds.includes(k)):kinds.includes(need)))fail(`${scene.composition} needs ${Array.isArray(need)?need.join(' or '):need}; keep all existing content.`);if(own.panels&&kinds.filter(k=>k==='chart').length<own.panels[0])fail(`${scene.composition} needs at least ${own.panels[0]} chart panels.`);if(own.panels&&kinds.filter(k=>k==='chart').length>own.panels[1])fail(`${scene.composition} shows at most ${own.panels[1]} chart panels per page.`);if(own.sharedScale){const message=sharedScaleMessage(document,scene);if(message)fail(message);}}
   }
   for(const lock of document.authorOverrides.sceneLocks||[])if(!plan.scenes.some(s=>s.id===lock.sceneId))fail('A locked scene is missing.');
   if (document.blocks.some(b => !used.has(b.id))) fail('Every block must remain visible in at least one scene.');

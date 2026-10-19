@@ -21,7 +21,8 @@ import {createCueClock} from '../src/motion/clock.mjs';
 import {addExplanatoryInteractions,useStaticState} from '../public/studio/interactions.js';
 import {evidenceScene,evidenceProject,semanticView,declaredExportLevels} from './evidence-scene.mjs';
 const html=project=>exportDeck(project.document,'html',{experimentalWeb:true,plan:project.plan});
-const section=(body,id)=>body.slice(body.indexOf(`<section id="${id}"`),body.indexOf('</section>',body.indexOf(`<section id="${id}"`)));
+// S8 (C12): zh display text carries <wbr> phrase breaks, which have no text content; the facts are compared without them.
+const section=(body,id)=>body.slice(body.indexOf(`<section id="${id}"`),body.indexOf('</section>',body.indexOf(`<section id="${id}"`))).replaceAll('<wbr>','');
 const runtimeData=body=>JSON.parse(body.match(/<script type="application\/json" id="dw-runtime-data">([\s\S]*?)<\/script>/)[1]);
 const rejects=(fn,code,pattern)=>assert.throws(fn,error=>{assert.equal(error.code,code);if(pattern)assert.match(error.message,pattern);return true;});
 const sceneOf=p=>p.plan.scenes.find(s=>s.id==='evidence');

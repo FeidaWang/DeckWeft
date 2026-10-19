@@ -4,7 +4,7 @@
  * does not match, and the evidence runs measure real pages (scripts/export-targets.mjs).
  */
 const COLORS=['5114F6','B33C1E','166C65','BD4027','759786','6A5ACD'];
-export function syntheticLayout(project,html,{fontStatus='loaded',lastResort=false,imageReady=true}={}){
+export function syntheticLayout(project,html,{fontStatus='loaded',lastResort=false,missingGlyph=false,imageReady=true}={}){
  const {document,plan}=project,blocks=new Map(document.blocks.map(b=>[b.id,b])),platformFonts={};let mid=0;
  const style=(size,{weight=400,id,wrap='wrap',align='start',whiteSpace='normal'}={})=>({fontFamily:document.locale==='zh-CN'?'"PingFang SC", Arial, sans-serif':'Arial, sans-serif',fontSize:size,fontWeight:weight,italic:false,lineHeight:Math.round(size*1.3),letterSpacing:0,color:{hex:'171717',alpha:1},align,transform:'none',whiteSpace,wrap,underline:false,measureId:id});
  const font=text=>{const id=String(++mid);platformFonts[id]=[{familyName:lastResort&&mid===1?'LastResort':'Arial',postScriptName:lastResort&&mid===1?'LastResort':'ArialMT',isCustomFont:false,glyphCount:Math.max(1,text.length)}];return id;};
@@ -44,5 +44,5 @@ export function syntheticLayout(project,html,{fontStatus='loaded',lastResort=fal
   }
   return {sceneId:scene.id,bounds:{x:24,y:top,width:1392,height:Math.max(810,y-top+60)},background:{hex:'FAF9F5',alpha:1},backgroundImage:null,decor:[],chrome:{texts:[part(`${String(k+1).padStart(2,'0')} / ${String(html.scenes.length).padStart(2,'0')}`,{x,y:top+30,width:80,size:11,tag:'span'})],boxes:[]},regions,disclosures:[]};
  });
- return {format:'deckweft-export-layout',version:1,renderHash:html.renderHash,viewport:{width:1440,height:810,dpr:1},fontStatus,fontFaces:[],images:document.blocks.filter(b=>b.type==='image').map(()=>({ready:imageReady,measureId:null})),pseudo:{materialized:0,unresolved:0,heightsBefore:[],heightsAfter:[],stable:true},scenes,platformFonts};
+ return {format:'deckweft-export-layout',version:1,renderHash:html.renderHash,viewport:{width:1440,height:810,dpr:1},fontStatus,fontFaces:[],images:document.blocks.filter(b=>b.type==='image').map(()=>({ready:imageReady,measureId:null})),pseudo:{materialized:0,unresolved:0,heightsBefore:[],heightsAfter:[],stable:true},scenes,platformFonts,missingGlyphs:missingGlyph?[{regionId:scenes[0].regions[0].nodeId,font:'Arial, sans-serif',missing:['\uE000']}]:[]};
 }

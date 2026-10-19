@@ -157,8 +157,9 @@ test('S4 theme switch: the data table is byte-identical across all three themes;
  for(const locale of ['en','zh-CN']){
   const {document:d}=chartKinds(locale);
   for(const id of CHART_KIND_SCENES){
+   // Since S8 every theme pack, the three VIS-014 themes and the three T01–T03 themes, draws the same table and text.
    const views=themePacks().map(pack=>render(d,id,{theme:pack.id}));
-   assert.equal(views.length,3);
+   assert.equal(views.length,themePacks().length);assert.ok(views.length>=6);
    for(const view of views.slice(1)){assert.equal(table(view),table(views[0]),id);assert.equal(text(view),text(views[0]),id);}
    if(id!=='benchmark')assert.notEqual(graphic(views[1]),graphic(views[0]),id+': colour may change');
   }

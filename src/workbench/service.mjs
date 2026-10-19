@@ -52,7 +52,7 @@ export class WorkbenchService {
    if(data.action==='sync'){const previous=task;task=createVisualTask({request:task.request,project:current});task.lastValid=previous.lastValid;task.repairSpent=previous.repairSpent;task.history=previous.history;await checkpoint(task);
    }else if(data.action==='revise'){
     const request=text(data.request);if(!Array.isArray(data.sceneIds)||!data.sceneIds.length||data.sceneIds.some(id=>!task.project.plan.scenes.some(s=>s.id===id)))fail('TOOL_SCOPE','Choose existing pages for this revision.');task.scope=[...new Set(data.sceneIds)];
-    const style=request.match(/(?:use|switch to|theme[: ]*|使用|改为|改成)\s*(electric-violet|dark-data|cream-collage)\b/i);
+    const style=request.match(/(?:use|switch to|theme[: ]*|使用|改为|改成)\s*(electric-violet|dark-data|cream-collage|editorial-fieldnotes|research-atlas|luminous-stage)\b/i);
     let result;if(style&&!/(?:statement|evidence|image|metric|comparison|process)-/.test(request)){const profile={...r.preferences,visualStyle:style[1].toLowerCase()};task.project=applyChoices(task.project,{id:r.id,profile,scope:task.scope});task.receipt=null;task.observation=null;task.previewHash=null;result={ok:true,task};}
     else if(data.host==='codex'){if(data.live!==true)fail('HOST_LIVE_OPT_IN_REQUIRED','Explicitly allow this revision.');result=await patchWithHost(task,request,options);}else{
      const match=request.match(/(?:statement|evidence|image|metric|comparison|process)-(?:[a-z]+-?)+/i);result=await executeVisualTool(task,'design.patch',{expectedSequence:task.sequence,request,sceneId:task.scope[0],datasetId:data.datasetId,...(match?{patch:{kind:'composition',sceneId:task.scope[0],composition:match[0]}}:{})},{home:this.store.home});

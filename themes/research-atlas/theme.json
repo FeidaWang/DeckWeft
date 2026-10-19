@@ -1,0 +1,120 @@
+{
+  "version": "1.0.0",
+  "attribution": "Art direction T02 Research Atlas proposed in the DeckWeft Design Handoff (DeckWeft_Design_Roadmap.md, 2026-10-18, art directions pages 28–31). Hex values are the handoff starting points adjusted for measured contrast; composition grammar, type roles, token values and rules authored for DeckWeft (S8, alignment §16). Fonts are referenced by platform name; Source Serif 4, IBM Plex and Noto CJK are Open Font Licence candidates named as later fallbacks and never bundled.",
+  "id": "research-atlas",
+  "palette": {
+    "paper": "#FAFAF7",
+    "ink": "#15211B",
+    "accent": "#286448",
+    "secondary": "#345BC5",
+    "reference": "#5E6A63",
+    "missing": "#8A5A1E"
+  },
+  "typography": {
+    "displayEn": "\"Avenir Next\", \"IBM Plex Sans\", \"Segoe UI\", \"Noto Sans\", Arial, sans-serif",
+    "displayZh": "\"PingFang SC\", \"Noto Sans CJK SC\", \"Source Han Sans SC\", \"Microsoft YaHei\", sans-serif",
+    "bodyEn": "\"Avenir Next\", \"IBM Plex Sans\", \"Segoe UI\", \"Noto Sans\", Arial, sans-serif",
+    "bodyZh": "\"PingFang SC\", \"Noto Sans CJK SC\", \"Source Han Sans SC\", \"Microsoft YaHei\", sans-serif",
+    "code": "Menlo, \"IBM Plex Mono\", Consolas, monospace",
+    "displayScale": 0.92,
+    "numeric": "Menlo, \"IBM Plex Mono\", Consolas, monospace"
+  },
+  "spacing": {
+    "page": 48,
+    "gap": 28,
+    "captionGap": 8,
+    "sectionGap": 28,
+    "safeArea": 48
+  },
+  "imageGrammar": {
+    "split": 0.4,
+    "treatment": "evidence",
+    "caption": "visible"
+  },
+  "chartColors": [
+    "#286448",
+    "#3D66D1",
+    "#B5671A",
+    "#6F3E80",
+    "#6C7470",
+    "#1F7E86",
+    "#B5452B",
+    "#15211B"
+  ],
+  "compositions": [
+    "atlas-cover",
+    "atlas-section",
+    "atlas-figure",
+    "atlas-panels",
+    "atlas-appendix",
+    "atlas-closing",
+    "reading-flow",
+    "statement-split",
+    "statement-banner",
+    "statement-center",
+    "image-left",
+    "image-strip",
+    "image-right",
+    "metric-left",
+    "metric-band",
+    "metric-right",
+    "evidence-left",
+    "evidence-top",
+    "evidence-right",
+    "comparison-matrix",
+    "comparison-rail",
+    "comparison-stack",
+    "process-line",
+    "process-rail",
+    "process-stair",
+    "chapter-low",
+    "chapter-index",
+    "chapter-margin",
+    "before-after-split",
+    "before-after-rail",
+    "before-after-triptych",
+    "system-map-wide",
+    "system-map-rail",
+    "system-map-key",
+    "small-multiples-row",
+    "small-multiples-lead",
+    "small-multiples-center",
+    "quote-center",
+    "quote-split",
+    "quote-band",
+    "closing-split",
+    "closing-steps",
+    "closing-focus"
+  ],
+  "density": "compact",
+  "motion": {
+    "durationMs": 200,
+    "effect": "fade",
+    "distance": 0,
+    "easing": "linear",
+    "delay": 60,
+    "fallback": "instant"
+  },
+  "modes": {
+    "default": "light",
+    "chapter": "light"
+  },
+  "rules": [
+    {
+      "sceneRole": "any",
+      "mode": "any",
+      "property": "contrast",
+      "value": "required-text-readable",
+      "severity": "require",
+      "rationale": "Required text must remain readable in every profile."
+    },
+    {
+      "sceneRole": "evidence",
+      "mode": "default",
+      "property": "composition",
+      "value": "atlas-figure",
+      "severity": "prefer",
+      "rationale": "The figure takes the main area; axes and definitions come before the series and the conclusion."
+    }
+  ]
+}

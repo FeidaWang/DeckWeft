@@ -36,7 +36,10 @@
             "enum": [
               "cream-collage",
               "dark-data",
-              "electric-violet"
+              "electric-violet",
+              "editorial-fieldnotes",
+              "research-atlas",
+              "luminous-stage"
             ]
           },
           "themeVersion": {
@@ -49,6 +52,22 @@
               "reading-flow",
               "photo-split",
               "violet-chapter",
+              "fieldnotes-cover",
+              "fieldnotes-thesis",
+              "fieldnotes-figure",
+              "fieldnotes-method",
+              "fieldnotes-closing",
+              "atlas-cover",
+              "atlas-section",
+              "atlas-figure",
+              "atlas-panels",
+              "atlas-appendix",
+              "atlas-closing",
+              "stage-hero",
+              "stage-chapter",
+              "stage-figure",
+              "stage-metric",
+              "stage-closing",
               "statement-split",
               "statement-banner",
               "statement-center",
@@ -399,12 +418,12 @@
                         },
                         "width": {
                           "type": "number",
-                          "minimum": 1e-06,
+                          "minimum": 0.000001,
                           "maximum": 1
                         },
                         "height": {
                           "type": "number",
-                          "minimum": 1e-06,
+                          "minimum": 0.000001,
                           "maximum": 1
                         }
                       },

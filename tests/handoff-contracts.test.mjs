@@ -192,14 +192,16 @@ test('S1 motion declarations stay compatible with effectiveMotion and the runtim
  assert.deepEqual(runtime.motion,declared);
  for(const change of [m=>m.trigger='scroll',m=>m.clock='media',m=>m.reducedMotion='pause',m=>m.durationMs=401]){const plan=structuredClone(p);change(sceneOf(plan).motion);rejects(()=>assertDesignPlan(d,plan),'INVALID_DESIGN_PLAN');}
 });
-test('S1 theme token roles default to the current rendering and no packaged theme declares them yet',async()=>{
+test('S1 theme token roles default to the current rendering; the VIS-014 packs declare none and the S8 packs declare all of them',async()=>{
  const styles=await readFile(new URL('../src/render/web/art-direction.mjs',import.meta.url),'utf8'),resources=await readFile(new URL('../public/runtime/resources.js',import.meta.url),'utf8');
  // S5 moved the keyframes into the named primitives; the slide distance and easing are unchanged.
- assert.ok(styles.includes(`margin-top:${TOKEN_DEFAULTS.captionGap}px`));assert.equal(MOTION_PRIMITIVES.SlideSmall.frames[0].transform,`translateY(${TOKEN_DEFAULTS.motion.distance}px)`);assert.ok(resources.includes(`easing:'${TOKEN_DEFAULTS.motion.easing}'`));
- for(const pack of themePacks())for(const locale of ['en','zh-CN']){
+ assert.ok(styles.includes(`margin-top:var(--caption-gap,${TOKEN_DEFAULTS.captionGap}px)`));assert.equal(MOTION_PRIMITIVES.SlideSmall.frames[0].transform,`translateY(${TOKEN_DEFAULTS.motion.distance}px)`);assert.ok(resources.includes(`'${TOKEN_DEFAULTS.motion.easing}'`));
+ const S8=['editorial-fieldnotes','research-atlas','luminous-stage'];
+ for(const pack of themePacks().filter(p=>S8.includes(p.id)))for(const locale of ['en','zh-CN']){const t=themeTokens(pack.id,locale);assert.deepEqual(t.declared,{typography:true,reference:true,missing:true,spacing:['captionGap','sectionGap','safeArea'],motion:['distance','easing','delay','fallback']},pack.id);assert.deepEqual(resolveTheme(pack.id,pack.version,locale).tokens,Object.fromEntries(Object.entries(t).filter(([k])=>!['id','version'].includes(k))));}
+ for(const pack of themePacks().filter(p=>!S8.includes(p.id)))for(const locale of ['en','zh-CN']){
   const tokens=themeTokens(pack.id,locale);
   assert.deepEqual(tokens,{id:pack.id,version:pack.version,typography:{numeric:locale==='zh-CN'?pack.typography.bodyZh:pack.typography.bodyEn},palette:{reference:pack.palette.ink,missing:pack.palette.ink},spacing:{captionGap:14,sectionGap:pack.spacing.gap,safeArea:pack.spacing.page},motion:{distance:4,easing:'ease-out',delay:0,fallback:'instant'},declared:{typography:false,reference:false,missing:false,spacing:[],motion:[]}});
-  assert.deepEqual(Object.keys(resolveTheme(pack.id,pack.version,locale)).sort(),['accent','body','chart','code','colorIntensity','compositions','display','displayScale','gap','id','ink','locale','motion','page','paper','rules','secondary','split','version']);
+  assert.deepEqual(Object.keys(resolveTheme(pack.id,pack.version,locale)).sort(),['accent','body','chart','code','colorIntensity','compositions','display','displayScale','gap','id','ink','locale','motion','page','paper','rules','secondary','split','tokens','version']);
  }
  const declared=structuredClone(themePacks()[0]);Object.assign(declared.typography,{numeric:'"Helvetica Neue", Arial, sans-serif'});Object.assign(declared.palette,{reference:'#888888',missing:'#BBBBBB'});Object.assign(declared.spacing,{captionGap:10,sectionGap:48,safeArea:64});Object.assign(declared.motion,{distance:8,easing:'ease-in-out',delay:40,fallback:'static'});
  assert.equal(validateSchema(declared,themeSchema).ok,true);

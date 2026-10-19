@@ -16,6 +16,7 @@ import {chartKindsProject} from '../tests/chart-kinds.mjs';
 import {visualAssetResources} from '../src/assets/visual.mjs';
 import {exportDeck} from '../src/render/export.mjs';
 import {measureExportLayout,EXPORT_VIEWPORT} from '../src/targets/layout.mjs';
+import {scanMissingGlyphs} from '../src/render/web/glyphs.mjs';
 import {presentationCapabilities} from '../src/targets/capabilities.mjs';
 import {checkPdfText,checkPdfAccessibility} from '../src/targets/pdf/print.mjs';
 import {readZip} from '../src/targets/pptx/audit.mjs';
@@ -95,7 +96,7 @@ for(const d of DECKS){
  const resources=await visualAssetResources(p,home),opts={experimentalWeb:true,plan:p.plan,assetResources:resources};
  const html=exportDeck(p.document,'html',opts),staticFile=path.join(dir,'static.html');await writeFile(staticFile,html.body);await writeFile(path.join(dir,'project.json'),JSON.stringify(p,null,1));
  // Measure (after fonts and images), confirm the drawn fonts, capture each scene and every element delivered as an image.
- const m=await open(staticFile,{dpr:2}),layout=await m.page.evaluate(measureExportLayout);layout.platformFonts=await platformFonts(m.context,m.page);
+ const m=await open(staticFile,{dpr:2}),layout=await m.page.evaluate(measureExportLayout);layout.platformFonts=await platformFonts(m.context,m.page);layout.missingGlyphs=await m.page.evaluate(scanMissingGlyphs,await m.page.evaluateHandle(()=>document));
  const rasters={},webShots={},levels=presentationCapabilities('pptx',p.document,resources,p.plan).components;
  for(const s of layout.scenes){webShots[s.sceneId]=path.join(dir,`web-${s.sceneId}.png`);await m.page.locator('#'+s.sceneId).screenshot({path:webShots[s.sceneId],animations:'disabled'});
   for(const r of s.regions){const lv=levels.find(c=>c.blockId===r.blockId);

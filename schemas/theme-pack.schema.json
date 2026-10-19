@@ -7,7 +7,10 @@
       "enum": [
         "cream-collage",
         "dark-data",
-        "electric-violet"
+        "electric-violet",
+        "editorial-fieldnotes",
+        "research-atlas",
+        "luminous-stage"
       ]
     },
     "version": {
@@ -178,6 +181,22 @@
           "reading-flow",
           "photo-split",
           "violet-chapter",
+          "fieldnotes-cover",
+          "fieldnotes-thesis",
+          "fieldnotes-figure",
+          "fieldnotes-method",
+          "fieldnotes-closing",
+          "atlas-cover",
+          "atlas-section",
+          "atlas-figure",
+          "atlas-panels",
+          "atlas-appendix",
+          "atlas-closing",
+          "stage-hero",
+          "stage-chapter",
+          "stage-figure",
+          "stage-metric",
+          "stage-closing",
           "statement-split",
           "statement-banner",
           "statement-center",
@@ -217,7 +236,7 @@
         ]
       },
       "minItems": 1,
-      "maxItems": 41,
+      "maxItems": 57,
       "uniqueItems": true
     },
     "density": {

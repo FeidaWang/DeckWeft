@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "attribution": "Art direction T03 Luminous Stage proposed in the DeckWeft Design Handoff (DeckWeft_Design_Roadmap.md, 2026-10-18, art directions pages 28–31). Hex values are the handoff starting points adjusted for measured contrast; composition grammar, type roles, token values and rules authored for DeckWeft (S8, alignment §16). Fonts are referenced by platform name; Source Serif 4, IBM Plex and Noto CJK are Open Font Licence candidates named as later fallbacks and never bundled.",
+  "id": "luminous-stage",
+  "palette": {
+    "paper": "#0C1017",
+    "ink": "#F2F3EE",
+    "accent": "#A8D2EA",
+    "secondary": "#4F7EA3",
+    "reference": "#AEB6C0",
+    "missing": "#E0A864"
+  },
+  "typography": {
+    "displayEn": "\"Futura\", \"Century Gothic\", \"Avenir Next\", \"Noto Sans\", sans-serif",
+    "displayZh": "\"PingFang SC\", \"Hiragino Sans GB\", \"Noto Sans CJK SC\", \"Source Han Sans SC\", \"Microsoft YaHei\", sans-serif",
+    "bodyEn": "\"Helvetica Neue\", \"IBM Plex Sans\", Arial, \"Noto Sans\", sans-serif",
+    "bodyZh": "\"PingFang SC\", \"Noto Sans CJK SC\", \"Source Han Sans SC\", \"Microsoft YaHei\", sans-serif",
+    "code": "Menlo, \"IBM Plex Mono\", Consolas, monospace",
+    "displayScale": 1.08,
+    "numeric": "\"Futura\", \"Century Gothic\", \"Helvetica Neue\", Arial, sans-serif"
+  },
+  "spacing": {
+    "page": 64,
+    "gap": 40,
+    "captionGap": 14,
+    "sectionGap": 48,
+    "safeArea": 72
+  },
+  "imageGrammar": {
+    "split": 0.62,
+    "treatment": "full-height",
+    "caption": "visible"
+  },
+  "chartColors": [
+    "#A8D2EA",
+    "#F2B75A",
+    "#8FE3C0",
+    "#F2A0B8",
+    "#C5B3F7",
+    "#D3D6DA",
+    "#D8E86A",
+    "#FF9A7A"
+  ],
+  "compositions": [
+    "stage-hero",
+    "stage-chapter",
+    "stage-figure",
+    "stage-metric",
+    "stage-closing",
+    "reading-flow",
+    "statement-split",
+    "statement-banner",
+    "statement-center",
+    "image-left",
+    "image-strip",
+    "image-right",
+    "metric-left",
+    "metric-band",
+    "metric-right",
+    "evidence-left",
+    "evidence-top",
+    "evidence-right",
+    "comparison-matrix",
+    "comparison-rail",
+    "comparison-stack",
+    "process-line",
+    "process-rail",
+    "process-stair",
+    "chapter-low",
+    "chapter-index",
+    "chapter-margin",
+    "before-after-split",
+    "before-after-rail",
+    "before-after-triptych",
+    "system-map-wide",
+    "system-map-rail",
+    "system-map-key",
+    "small-multiples-row",
+    "small-multiples-lead",
+    "small-multiples-center",
+    "quote-center",
+    "quote-split",
+    "quote-band",
+    "closing-split",
+    "closing-steps",
+    "closing-focus"
+  ],
+  "density": "comfortable",
+  "motion": {
+    "durationMs": 360,
+    "effect": "fade",
+    "distance": 12,
+    "easing": "ease-in-out",
+    "delay": 40,
+    "fallback": "static"
+  },
+  "modes": {
+    "default": "dark",
+    "chapter": "dark"
+  },
+  "rules": [
+    {
+      "sceneRole": "any",
+      "mode": "any",
+      "property": "contrast",
+      "value": "required-text-readable",
+      "severity": "require",
+      "rationale": "Required text must remain readable in every profile."
+    },
+    {
+      "sceneRole": "opening",
+      "mode": "default",
+      "property": "composition",
+      "value": "stage-hero",
+      "severity": "prefer",
+      "rationale": "A launch opens on one large object and a short title; body text stays in the calm area."
+    }
+  ]
+}

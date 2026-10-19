@@ -20,7 +20,7 @@ test('v3 numeric charts, CJK headings, code and citations survive JSON round tri
  const code={id:'example-code',type:'code',language:'js',text:'const x = "<script>";\nawait client.save({expectedRevision: 3});',sourceIds:[]};
  d.blocks.push(code);p.scenes[1].blockIds.push(code.id);d.datasets[0].series[0].values[0]=18.125;
  const out=exportDeck(d,'json',{experimentalWeb:true});assert.deepEqual(assertPresentation(JSON.parse(out.body)),d);
- const html=exportDeck(d,'html',{experimentalWeb:true,plan:p}).body;assert.ok(html.includes('18.125'));assert.ok(html.includes('const x = &quot;&lt;script&gt;&quot;'));assert.ok(html.includes('让大胆的想法'));assert.ok(html.includes('https://example.org/deckweft/synthetic'));
+ const html=exportDeck(d,'html',{experimentalWeb:true,plan:p}).body;assert.ok(html.includes('18.125'));assert.ok(html.includes('const x = &quot;&lt;script&gt;&quot;'));assert.ok(html.replaceAll('<wbr>','').includes('让大胆的想法'));assert.ok(html.includes('https://example.org/deckweft/synthetic'));
 });
 test('v3 rejects coercion, nonfinite numbers, broken references and unknown executable fields',async()=>{
  const {document:d}=await fixture();

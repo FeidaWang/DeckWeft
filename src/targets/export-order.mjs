@@ -43,9 +43,11 @@ export function readiness(document,plan,target,{resources={},layout,html}){
  if(layout.images.some(i=>!i.ready))problems.push({code:'IMAGE_NOT_READY',message:'An image was not decoded when the layout was measured.'});
  const platform=layout.platformFonts||null,families=new Set();
  if(platform)for(const [id,fonts]of Object.entries(platform)){for(const f of fonts)if(f.glyphCount>0)families.add(f.familyName);if(fonts.some(f=>/LastResort/i.test(f.familyName)||/LastResort/i.test(f.postScriptName||'')))problems.push({code:'FONT_GLYPH_MISSING',message:'A measured text part was drawn with the last-resort font (a missing glyph).',measureId:id});}
+ // S8 (C13): the in-page audit (canvas pixels against the font's own .notdef) catches what no engine reports as a last-resort font.
+ for(const g of layout.missingGlyphs||[])problems.push({code:'FONT_GLYPH_MISSING',message:`No installed font draws ${JSON.stringify(g.missing)} (drawn as the .notdef box of ${g.font}).`,regionId:g.regionId});
  if(problems.length)throw new DeckError('EXPORT_NOT_READY','Fonts or images were not ready when the layout was measured.',422,problems);
  const assets=document.blocks.filter(b=>b.type==='image').map(b=>({blockId:b.id,assetId:b.assetId,mime:resources[b.assetId]?.mime||null,hash:resources[b.assetId]?.hash||null}));
- return {assets,fonts:[...families].sort(),platformFontsMeasured:!!platform,images:layout.images.length,renderHash:layout.renderHash};
+ return {assets,fonts:[...families].sort(),platformFontsMeasured:!!platform,glyphsAudited:Array.isArray(layout.missingGlyphs),images:layout.images.length,renderHash:layout.renderHash};
 }
 
 /**

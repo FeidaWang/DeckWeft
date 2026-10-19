@@ -33,9 +33,10 @@ export function chartNotes({block,d,f,t}){
  if(kind==='small-multiples')notes.push(t.shared(m.domain[0],m.domain[1],d.unit));
  if(f.interval&&['line','dot-interval'].includes(kind))notes.push(`${t.interval[0].toUpperCase()+t.interval.slice(1)}${t.colon}${t.intervalTypes[f.interval.type](f.interval.level)} · ${t.method} ${f.interval.method}`);
  for(const e of f.events)notes.push(`${e.n} · ${f.display(e.i)} · ${e.label}${t.paren(t.relations[e.relation])}`);
- for(const r of f.missing)notes.push(`${t.missingNote} · ${d.series[r.j].label}${t.separator}${f.display(r.i)}${t.colon}${t.reasons[r.reason]}${r.note?t.dash+r.note:''}`);
+ const missingAt=new Set();
+ for(const r of f.missing)notes.push(missingAt.add(notes.length)&&`${t.missingNote} · ${d.series[r.j].label}${t.separator}${f.display(r.i)}${t.colon}${t.reasons[r.reason]}${r.note?t.dash+r.note:''}`);
  f.marks.forEach((label,n)=>{const cells=f.qualifiers.filter(q=>q.label===label);if(cells.length)notes.push(`${n+1} ${label}${[...new Set(cells.flatMap(q=>q.note?[q.note]:[]))].map(v=>t.dash+v).join('')}`);});
- return notes.length?`<ul class="chart-notes">${notes.map(n=>`<li>${x(n)}</li>`).join('')}</ul>`:'';
+ return notes.length?`<ul class="chart-notes">${notes.map((n,i)=>`<li${missingAt.has(i)?' data-missing="true"':''}>${x(n)}</li>`).join('')}</ul>`:'';
 }
 /** The complete data in author order: original categories, exact values, missing reasons, qualifier marks, interval bounds and events. Theme-independent by construction. */
 export function chartTable({d,f,t,caption}){
@@ -90,7 +91,7 @@ export function rowPlot({d,f,t,color,anchor,ident,caption}){
  // Room for the widest value label keeps every label inside the figure at any width.
  const space=Math.max(4,...d.series.flatMap((s,j)=>s.values.flatMap((v,i)=>v===null?[]:[width(label(j,i))])))+1,labelWidth=Math.min(28,Math.max(6,...d.categories.map((_,i)=>width(f.display(i))))),seriesWidth=Math.min(24,Math.max(4,...d.series.map(s=>width(s.label))));
  const focused=i=>f.focus.categories?f.focus.categories.has(f.ids[i]):null,muted=(i,j)=>focused(i)===false||(f.focus.series?!f.focus.series.has(d.series[j].id):false);
- const reference=zero===null||(kind==='dot-interval'&&!(low<0&&high>0))?'':`<line x1="${pct(zero)}" x2="${pct(zero)}" y1="-4" y2="22" stroke="currentColor" stroke-width="1"${kind==='dot-interval'?' stroke-dasharray="2 3"':''}/>`;
+ const reference=zero===null||(kind==='dot-interval'&&!(low<0&&high>0))?'':`<line data-reference="true" x1="${pct(zero)}" x2="${pct(zero)}" y1="-4" y2="22" stroke="currentColor" stroke-width="1"${kind==='dot-interval'?' stroke-dasharray="2 3"':''}/>`;
  const cut=f.model.kind!=='dot-interval'&&low>0?'<path d="M-1 -4l7 5-7 5 7 5-7 5" fill="none" stroke="currentColor" stroke-width="2"/>':'';
  const mark=(i,j)=>{
   const v=d.series[j].values[i],c=color(kind==='ranked-bar'?0:j),dim=muted(i,j);

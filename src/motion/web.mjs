@@ -19,7 +19,7 @@ export function compileInteractionRuntime(document,plan,resources={}){
    components[spec.id]=detail;
   }
   const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{profile:document.visualBrief?.profile});
-  return {id:scene.id,interactions:compiled.interactions,cues:compiled.cues,motion:document.visualBrief?.profile.motionIntensity==='off'?{policy:'off',durationMs:0}:scene.motion||{policy:theme.motion.durationMs?'subtle':'off',durationMs:theme.motion.durationMs},components,...(scene.staticState?{staticState:{keyStateId:scene.staticState.keyStateId,position:staticStatePosition(scene),reducedMotion:scene.motion?.reducedMotion||'instant'}}:{})};
+  return {id:scene.id,interactions:compiled.interactions,cues:compiled.cues,motion:document.visualBrief?.profile.motionIntensity==='off'?{policy:'off',durationMs:0}:scene.motion||{policy:theme.motion.durationMs?'subtle':'off',durationMs:theme.motion.durationMs},components,...(scene.staticState?{staticState:{keyStateId:scene.staticState.keyStateId,position:staticStatePosition(scene),reducedMotion:scene.motion?.reducedMotion||theme.tokens?.motion.fallback||'instant'}}:{})};
  })};
 }
 /** Hotspot positions inside the drawn image frame: crop-relative, or letterboxed for an explicit contain slot. */

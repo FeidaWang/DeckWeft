@@ -68,6 +68,8 @@ test('S7 ready stage: a measured layout of this render with loaded fonts, real g
  assert.throws(()=>go(missing),e=>e.details.some(d=>d.code==='EXPORT_LAYOUT_REGION'));
  assert.throws(()=>go(syntheticLayout(p,h,{fontStatus:'loading'})),e=>e.code==='EXPORT_NOT_READY'&&e.details.some(d=>d.code==='FONT_NOT_READY'));
  assert.throws(()=>go(syntheticLayout(p,h,{lastResort:true})),e=>e.code==='EXPORT_NOT_READY'&&e.details.some(d=>d.code==='FONT_GLYPH_MISSING'));
+ // S8 (C13): the in-page glyph audit refuses the export even when no engine reports a last-resort font.
+ assert.throws(()=>go(syntheticLayout(p,h,{missingGlyph:true})),e=>e.code==='EXPORT_NOT_READY'&&e.details.some(d=>d.code==='FONT_GLYPH_MISSING'&&/E000|\uE000/.test(d.message)));
  const out=go(ok);assert.deepEqual(out.report.order.map(r=>r.stage),EXPORT_ORDER);
  const g=await releaseProject('gallery','en',home),resources=await visualAssetResources(g,home);
  assert.throws(()=>exportDeck(g.document,'pdf',{experimentalWeb:true,plan:g.plan,assetResources:resources,layout:syntheticLayout({...g,resources},html(g,resources),{imageReady:false})}),e=>e.details.some(d=>d.code==='IMAGE_NOT_READY'));

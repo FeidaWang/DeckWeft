@@ -1,6 +1,12 @@
 import {effectiveProfile,resolveTheme} from './theme-registry.mjs';
 import {compositions} from './compositions.mjs';
 
+/** S8 theme type roles (alignment §16). Fieldnotes: light serif, generous measure. Atlas: demi-bold, tight, narrow measure beside figures. Stage: medium geometric, open leading. */
+const S8_TYPE={
+ 'editorial-fieldnotes':{weight:zh=>zh?500:400,leading:zh=>zh?1.18:1.06,tracking:zh=>zh?'-.01em':'-.02em',body:21,gutter:64,measure:visual=>visual?40:38},
+ 'research-atlas':{weight:()=>600,leading:zh=>zh?1.16:1.05,tracking:zh=>zh?'-.02em':'-.03em',body:19,gutter:40,measure:visual=>visual?38:46},
+ 'luminous-stage':{weight:zh=>zh?500:500,leading:zh=>zh?1.14:1.0,tracking:zh=>zh?'-.02em':'-.035em',body:21,gutter:56,measure:visual=>visual?36:34}
+};
 /** Rendering direction, not a rewrite of the saved document or the author's plan. */
 export function sceneDirection(document,plan,index){
  const scene=plan.scenes[index],profile=effectiveProfile(document,scene),blocks=scene.blockIds.map(id=>document.blocks.find(b=>b.id===id));
@@ -20,9 +26,12 @@ export function sceneDirection(document,plan,index){
  // A long authored headline gets a different type tier, never truncation or hidden text.
  if(length>(zh?34:85))headline=Math.min(headline,76);
  if(length>(zh?60:140))headline=Math.min(headline,60);
+ // S8 themes: an editorial serif holds a quieter tier; the atlas keeps headlines below its figures; the stage opens larger.
+ if(scene.theme==='research-atlas')headline=Math.min(headline,beat==='opening'?96:72);
+ if(scene.theme==='luminous-stage'&&(beat==='opening'||family==='chapter'))headline=Math.max(headline,120);
  headline*=theme.displayScale;
  const readingHeadline=zh?Math.max(36,Math.min(48,Math.round(headline*.46))):Math.max(34,Math.min(58,Math.round(headline*.54)));
- return {readingHeadline,theme,beat,colorMode,sparse,headline:Math.round(headline),headlineWeight:scene.theme==='cream-collage'?(zh?600:400):scene.theme==='electric-violet'?750:650,headlineLeading:zh?1.12:1.02,headlineTracking:zh?'-.025em':scene.theme==='cream-collage'?'-.045em':'-.06em',body:profile.density==='compact'?20:22,lead:profile.density==='compact'?22:24,gutter:profile.density==='compact'?32:56,measure:visual?42:36};
+ return {readingHeadline,theme,beat,colorMode,sparse,headline:Math.round(headline),headlineWeight:S8_TYPE[scene.theme]?.weight(zh)??(scene.theme==='cream-collage'?(zh?600:400):scene.theme==='electric-violet'?750:650),headlineLeading:S8_TYPE[scene.theme]?.leading(zh)??(zh?1.12:1.02),headlineTracking:S8_TYPE[scene.theme]?.tracking(zh)??(zh?'-.025em':scene.theme==='cream-collage'?'-.045em':'-.06em'),body:S8_TYPE[scene.theme]?.body??(profile.density==='compact'?20:22),lead:profile.density==='compact'?22:24,gutter:S8_TYPE[scene.theme]?.gutter??(profile.density==='compact'?32:56),measure:S8_TYPE[scene.theme]?.measure(visual)??(visual?42:36)};
 }
 
 /** Prefer a deliberate entrance, readable proof and a quieter final statement. */

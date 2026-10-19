@@ -68,9 +68,9 @@ const s3ArtDirectionCSS=`
 `;
 // Content stays in native regions. Neither fixed clipping nor line clamping creates a fit.
 export const artDirectionCSS = `
-.web-scene{min-height:810px;display:flex;flex-direction:column;padding:56px var(--page);font-synthesis:none}
+.web-scene{min-height:810px;display:flex;flex-direction:column;padding:var(--safe-area,56px) var(--safe-area,var(--page));font-synthesis:none}
 .web-scene .folio{font:600 11px/1.4 var(--body);letter-spacing:.16em;border-bottom:1px solid currentColor;padding-bottom:16px;margin-bottom:48px;gap:24px}
-.web-scene .regions{flex:1;align-content:start;column-gap:var(--story-gutter);row-gap:24px}
+.web-scene .regions{flex:1;align-content:start;column-gap:var(--story-gutter);row-gap:var(--section-gap,24px)}
 .web-scene h2{font-family:var(--display);font-size:var(--headline);font-weight:var(--headline-weight);line-height:var(--headline-leading);letter-spacing:var(--headline-tracking);margin:0 0 10px;text-wrap:balance}
 .web-scene .region[data-component=paragraph] p,.web-scene blockquote{font-size:var(--body-size);line-height:1.55;max-width:var(--text-measure);margin:0 0 12px}
 .web-scene .region[data-component=list] ul{font-size:var(--body-size);line-height:1.6;padding-left:1.1em;max-width:var(--text-measure);margin:0}
@@ -78,13 +78,18 @@ export const artDirectionCSS = `
 .web-scene blockquote{font-family:var(--display);border-left:3px solid var(--accent);padding-left:20px}
 .web-scene .region[data-component=list] li+li{margin-top:12px}
 .web-scene .region[data-component=callout] p{font-size:var(--lead-size);font-weight:600;line-height:1.3;letter-spacing:-.02em;max-width:32ch;margin:0;color:var(--accent)}
-.web-scene .region[data-component=citation]{margin-top:20px;padding-top:16px;border-top:1px solid currentColor;grid-column:1 / -1}
+.web-scene .region[data-component=citation]{margin-top:20px;padding-top:var(--caption-gap,16px);border-top:1px solid currentColor;grid-column:1 / -1}
 .web-scene .citation{font:400 12px/1.6 var(--body);letter-spacing:0;max-width:90ch;margin:0}
-.web-scene .web-image figcaption{font:400 12px/1.5 var(--body);max-width:60ch;margin-top:14px}
-.web-scene .metric strong{font-family:var(--body);font-size:clamp(112px,16vw,230px);font-weight:650;letter-spacing:-.075em;line-height:.88;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:normal;word-break:keep-all}
+.web-scene .web-image figcaption{font:400 12px/1.5 var(--body);max-width:60ch;margin-top:var(--caption-gap,14px)}
+.web-scene .metric strong{font-family:var(--numeric,var(--body));font-size:clamp(112px,16vw,230px);font-weight:650;letter-spacing:-.075em;line-height:.88;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:normal;word-break:keep-all}
 .web-scene .metric strong small{font-size:.17em;line-height:1.3;letter-spacing:.03em;margin-top:24px}
 .web-scene .metric span{font-size:18px;line-height:1.5;margin-top:22px;max-width:24ch}
+.web-scene:lang(zh-CN) :is(h2,.region[data-component=callout] p,.metric span){word-break:keep-all;line-break:strict}
 .web-scene[data-theme=cream-collage] .metric strong{color:var(--secondary)}
+/* S1 token roles consumed here (S8): numeric type role, reference and missing colours. Undeclared packs inherit the previous values. */
+.web-scene .chart-value,.web-scene .chart-axis-track span,.web-scene .benchmark-table td,.web-scene .chart svg text,.web-scene .comparison-matrix td,.web-scene .comparison-rail td{font-family:var(--numeric,inherit)}
+.web-scene .chart [data-reference]{stroke:var(--reference,currentColor)}
+.web-scene .chart-mark[data-missing] .chart-value,.web-scene .chart-notes li[data-missing]{color:var(--missing,inherit)}
 .web-scene[data-theme=electric-violet] h2{font-weight:var(--headline-weight)}
 .web-scene[data-theme=dark-data] .region[data-component=paragraph] p{font-size:20px;line-height:1.65}
 .web-scene[data-space=open] .regions{align-content:center;min-height:500px}
