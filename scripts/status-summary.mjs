@@ -68,7 +68,8 @@ async function record(root,log,browser){
  const counts=parseVerifyLog(await readFile(path.join(root,rel),'utf8')),git=args=>{const r=spawnSync('git',args,{cwd:root,encoding:'utf8'});if(r.status!==0)throw Error('git '+args.join(' ')+' failed.');return r.stdout.trim();};
  const live=await liveFields(root);
  const current={format:'deckweft-current-status',version:live.version,playerVersion:live.playerVersion,rendererVersion:live.rendererVersion,browserVersion:browser,
-  automatedTests:{command:'npm run verify',commit:git(['rev-parse','HEAD']),worktreeClean:git(['status','--porcelain'])==='',log:rel,...counts},
+  // The log being recorded is the run's own output, so it does not make the worktree unclean.
+  automatedTests:{command:'npm run verify',commit:git(['rev-parse','HEAD']),worktreeClean:git(['status','--porcelain','--untracked-files=all']).split('\n').filter(l=>l&&l.slice(3)!==rel).length===0,log:rel,...counts},
   openAcceptanceGates:live.openAcceptanceGates};
  await writeFile(path.join(root,CURRENT_STATUS),JSON.stringify(current,null,2)+'\n');
  return current;
