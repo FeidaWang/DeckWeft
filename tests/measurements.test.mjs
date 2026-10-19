@@ -25,3 +25,7 @@ test('DW-130: bounded plan cache evicts oldest, and missing boxes are rejected',
 const req={id:'box',text:'A👨‍👩‍👧‍👦 B',box:{w:900,h:200},style:{preferred:32,minimum:20,...fontPreference()}};
 const good=()=>fixtureResults({requests:[req]})[0];
 for(const [name,mutate]of Object.entries({wrongId:r=>r.id='another',droppedText:r=>r.ranges=[[0,1]],splitEmoji:r=>{r.ranges=[[0,2],[2,req.text.length]];r.widths=[20,100];},wrongFamily:r=>r.fontFamily='Injected font',smallFont:r=>r.fontSize=1,nanWidth:r=>r.widths=[NaN],zeroWidth:r=>r.widths=[0],negativeAscent:r=>r.ascent=-1,duplicateRange:r=>{r.ranges=[[0,req.text.length],[0,req.text.length]];r.widths=[100,100];}}))test(`DW-130: rejects malformed measurement ${name}`,()=>{const r=good();mutate(r);assert.throws(()=>validateFit(req,r),{code:'INVALID_MEASUREMENT'});});
+test('hardening: an implausibly narrow positive width for visible text is refused; a plausible one passes',()=>{
+ const r=good();r.widths=r.widths.map(()=>0.001);assert.throws(()=>validateFit(req,r),{code:'INVALID_MEASUREMENT'});
+ const ok=good();assert.ok(validateFit(req,ok));
+});

@@ -26,7 +26,10 @@ export function validateFit(request,result){
     if(a===b&&!(i===ranges.length-1&&b===text.length&&(text===''||/[\r\n]$/u.test(text))))fail('Only the final empty paragraph may have a zero-length range.');
     if(/[\r\n]/u.test(visibleLine(text.slice(a,b))))fail('A hard paragraph break cannot be hidden in a line.');
     if(!Number.isFinite(widths[i])||widths[i]<0||widths[i]>10_000_000)fail('Invalid measured width.');
-    if(visibleLine(text.slice(a,b)).length&&widths[i]===0)fail('Nonempty text cannot have zero width.');
+    const visible=visibleLine(text.slice(a,b));
+    if(visible.length&&widths[i]===0)fail('Nonempty text cannot have zero width.');
+    // Same-origin metrics are trusted, not proven; this lower bound only refuses widths no font could produce (F: fabricated 0.001 px fits).
+    if(visible.length&&widths[i]<graphemes(visible).length*fontSize*0.05)fail('Measured width is implausibly narrow for the text.');
     cursor=b;
   });
   if(cursor!==text.length)fail('Some source text was dropped by the measurement.');

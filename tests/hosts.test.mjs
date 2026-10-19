@@ -51,3 +51,17 @@ test('DW-020: symlinked artifacts are rejected before copying local files into e
   await symlink(path.join(fixture.work,'host-result.html'),path.join(other,'host-result.html'));
   await assert.rejects(verifyHostArtifacts({...fixture,work:other}),{code:'SYMLINK_PATH'});
 });
+test('hardening: evidence redacts JWT, AWS, generic key/password/token shapes and the home directory (best effort, not a guarantee)',()=>{
+ const home=process.env.HOME||'/Users/example';
+ const text=`token eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.abcDEFghiJKLmnoPQRstuVWXyz123456 key AKIAIOSFODNN7EXAMPLE api_key=abcdef0123456789 password: hunter2secret token=0123456789abcdef path ${home}/private/deck.json and ~/private/other.json`;
+ const clean=sanitizeOutput(text);
+ assert.doesNotMatch(clean,/eyJhbGci|AKIAIOSFODNN7EXAMPLE|abcdef0123456789|hunter2secret|0123456789abcdef|~\/private/);assert.ok(!clean.includes(home));
+ assert.match(clean,/<redacted>/);assert.match(clean,/<local-path>/);
+});
+test('F7: a timed-out QA probe also stops the grandchild it spawned (POSIX process group)',{skip:process.platform==='win32'&&'Windows stops the direct child only; tree behaviour is recorded as unverified'},async()=>{
+ const script="const {spawn}=require('child_process');const g=spawn(process.execPath,['-e','setTimeout(()=>{},30000)'],{stdio:'ignore'});process.stdout.write(String(g.pid)+'\\n');setTimeout(()=>{},30000);";
+ const r=await commandProbe(process.execPath,['-e',script],{timeout:400});
+ assert.equal(r.timedOut,true);const gpid=Number(r.stdout.trim());assert.ok(gpid>0,'grandchild pid was printed');
+ await new Promise(res=>setTimeout(res,300));
+ assert.throws(()=>process.kill(gpid,0),{code:'ESRCH'},'grandchild should be gone');
+});

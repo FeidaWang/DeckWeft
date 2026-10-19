@@ -44,10 +44,17 @@ def studio_browser(mode='direct', viewport=None):
                     page.evaluate("""if(!crypto.randomUUID) Object.defineProperty(crypto,'randomUUID',{value:()=>{const b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;return [...b].map((v,i)=>([4,6,8,10].includes(i)?'-':'')+v.toString(16).padStart(2,'0')).join('')}})""")
                     page.set_content((ROOT/'public/index.html').read_text().replace('<head>','<head><base href="https://deckweft.test/">'))
                 page=context.new_page();page_setup(page)
-                yield {'page':page,'context':context,'setup':page_setup,'server':server,'browser':browser,'errors':errors,'folder':Path(folder),'mode':mode}
-                browser.close()
+                try:
+                    yield {'page':page,'context':context,'setup':page_setup,'server':server,'browser':browser,'errors':errors,'folder':Path(folder),'mode':mode}
+                finally:
+                    # Runs when the test body raises too; the browser owns only its own temporary context.
+                    browser.close()
         finally:
-            process.terminate();process.wait(timeout=10)
+            # TERM, bounded wait, then KILL and wait: a server that ignores TERM does not keep the port or profile alive.
+            process.terminate()
+            try: process.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                process.kill();process.wait(timeout=10)
 
 def api(server,route,body=None,token=None,method=None):
     req=urllib.request.Request(server+route,data=json.dumps(body).encode() if body is not None else None,headers={'Content-Type':'application/json',**({'Authorization':'Bearer '+token} if token else {})},method=method or ('POST' if body is not None else 'GET'))

@@ -39,19 +39,27 @@ export async function verifyHostArtifacts({work,runtime,nonce,env}) {
 
 export function sanitizeOutput(value, roots=[]) {
   let text=String(value||'').replace(/\u001b\[[0-9;]*m/g,'');
-  for(const root of roots.filter(Boolean)) text=text.split(root).join('<local-path>');
+  // Best effort only: known prefixes, bearer tokens, JWT/AWS shapes, generic key=value secrets, emails and supplied roots plus the home directory. Arbitrary secrets can survive.
+  const home=os.homedir();
+  for(const root of [...roots,home].filter(Boolean)) text=text.split(root).join('<local-path>');
+  text=text.replace(/(^|[\s"'(])~\//g,'$1<local-path>/');
   return text.replace(/\b(?:sk-|sk-ant-|sess-)[A-Za-z0-9_-]{12,}\b/g,'<redacted>')
+    .replace(/\beyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\b/g,'<redacted>')
+    .replace(/\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/g,'<redacted>')
+    .replace(/\b((?:api[_-]?key|secret|password|passwd|token|access[_-]?token)\s*[:=]\s*)[^\s"']+/gi,'$1<redacted>')
     .replace(/Bearer\s+[^\s"']+/gi,'Bearer <redacted>')
     .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi,'<email>');
 }
 export function commandProbe(command,args,{cwd,env=process.env,timeout=15000}={}) {
   return new Promise(resolve=>{
     const started=Date.now(); let stdout='',stderr='',settled=false,limited=false,timedOut=false;
-    const child=spawn(command,args,{cwd,env,stdio:['ignore','pipe','pipe'],windowsHide:true,shell:false});
+    // Same bounded rule as src/hosts/process.mjs (F7): a POSIX process group so grandchildren stop too; Windows stops the direct child only (tree behaviour unverified).
+    const child=spawn(command,args,{cwd,env,stdio:['ignore','pipe','pipe'],windowsHide:true,shell:false,detached:process.platform!=='win32'});
+    const stop=sig=>{try{if(process.platform!=='win32'&&child.pid)process.kill(-child.pid,sig);else child.kill(sig);}catch{}};
     const finish=result=>{if(settled)return;settled=true;clearTimeout(timer);resolve({command,args,...result,elapsedMs:Date.now()-started,timedOut,outputLimited:limited,stdout,stderr});};
-    const append=key=>chunk=>{if((stdout.length+stderr.length)>1_000_000){limited=true;child.kill('SIGTERM');return;}if(key==='stdout')stdout+=chunk;else stderr+=chunk;};
+    const append=key=>chunk=>{if((stdout.length+stderr.length)>1_000_000){limited=true;stop('SIGTERM');return;}if(key==='stdout')stdout+=chunk;else stderr+=chunk;};
     child.stdout?.on('data',append('stdout'));child.stderr?.on('data',append('stderr'));
-    const timer=setTimeout(()=>{timedOut=true;child.kill('SIGTERM');setTimeout(()=>child.kill('SIGKILL'),1000).unref();},timeout);
+    const timer=setTimeout(()=>{timedOut=true;stop('SIGTERM');setTimeout(()=>stop('SIGKILL'),1000).unref();},timeout);
     child.on('error',error=>finish({exitCode:null,error:error.code||error.message}));
     child.on('close',(code,signal)=>finish({exitCode:code,signal}));
   });
