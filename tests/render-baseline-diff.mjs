@@ -22,7 +22,8 @@ const main=body=>body.slice(body.indexOf('<main>'),body.indexOf('</main>'));
 const anchors=body=>[...new Set(body.match(/id="dw-object-[0-9a-f]{32}"/g)||[])].sort();
 const tables=body=>(main(body).match(/<tbody>[\s\S]*?<\/tbody>/g)||[]);
 // Visible text: no scripts or styles, no hover-only SVG titles, no table captions (they repeat the chart caption).
-const visible=body=>main(body).replace(/<title>[\s\S]*?<\/title>/g,' ').replace(/<caption>[\s\S]*?<\/caption>/g,' ').replace(/<[^>]+>/g,' ').replace(/&#39;/g,"'").replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+// <wbr> (S8, C12) has no text content: it is removed, not replaced by a space, so a phrase break never looks like a changed word.
+const visible=body=>main(body).replace(/<wbr>/g,'').replace(/<title>[\s\S]*?<\/title>/g,' ').replace(/<caption>[\s\S]*?<\/caption>/g,' ').replace(/<[^>]+>/g,' ').replace(/&#39;/g,"'").replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
 const words=text=>text.split(/[\s·]+/).filter(Boolean);
 const numbers=text=>(text.match(/-?\d+(?:\.\d+)?/g)||[]).sort();
 const minus=(a,b)=>{const left=new Map();for(const v of b)left.set(v,(left.get(v)||0)+1);return a.filter(v=>{const n=left.get(v);if(n){left.set(v,n-1);return false;}return true;});};

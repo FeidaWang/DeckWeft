@@ -3,8 +3,9 @@ import { createHash } from 'node:crypto';
 import { assertDesignPlan } from '../../design/plan.mjs';
 import {sceneDirection} from '../../design/art-direction.mjs';
 import { assertWebScene } from './validate.mjs';
+// .7 (S8): three theme packs, token-role custom properties, zh-CN phrase breaks and full-width punctuation advances, reference and missing marks; every HTML stylesheet changed.
 // .4 (S4): chart() and its CSS draw new kinds, rows and declarations; every chart's drawing changed, so scene source hashes must not claim the .3 renderer.
-export const WEB_RENDERER_VERSION = 'visual-art-direction.6';
+export const WEB_RENDERER_VERSION = 'visual-art-direction.7';
 export const contentHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function compileWebScenes(document,plan){
  assertDesignPlan(document,plan);

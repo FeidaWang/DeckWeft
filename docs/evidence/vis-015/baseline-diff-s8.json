@@ -1,0 +1,378 @@
+{
+  "format": "deckweft-render-baseline-diff",
+  "older": "a8c0404 (S7, before S8)",
+  "entries": [
+    {
+      "entry": "wave-a.en.html",
+      "changed": true,
+      "before": "0d6e3cc9cadd8468a5c491b14fd898512cea2cf30039f2f6b633b4305d887592",
+      "after": "4745b3452abb6c71dc6e35fac40ab6aa1bc4ae5794e4813911501a5c7079f7dc",
+      "anchors": {
+        "before": 12,
+        "after": 12,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 1,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 47,
+        "after": 47,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 13,
+        "after": 13,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "wave-a.zh-CN.html",
+      "changed": true,
+      "before": "9699ad621bf1ff78041631f6ae9515ffeb1b8be80d02a6c791ef206aee2e7e5c",
+      "after": "5c6cff9c8ea8790719c20edc187aa390c78225e34c4e04796896e55648d9bf8d",
+      "anchors": {
+        "before": 12,
+        "after": 12,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 1,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 47,
+        "after": 47,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 13,
+        "after": 13,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "visual-demo.en.html",
+      "changed": true,
+      "before": "2260d5e91bcfc71e7502fa42a3f762bf414f74f4de480ff3417959351df15075",
+      "after": "a7c0e141908a4c869a483afcdf94f76e07fbd9f9b37b8e44a64d943f0d1952cc",
+      "anchors": {
+        "before": 12,
+        "after": 12,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 1,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 51,
+        "after": 51,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 13,
+        "after": 13,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "visual-demo.zh-CN.html",
+      "changed": true,
+      "before": "95c9f3cc0d559c7d37c0ddf4b90944a2f0b298083c3d72500631364058ad543e",
+      "after": "464a73c19105e12c7df7f100e2132bb37780665531dcfda013a12cc5b39d0344",
+      "anchors": {
+        "before": 12,
+        "after": 12,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 1,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 51,
+        "after": 51,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 13,
+        "after": 13,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "component-demo.en.html",
+      "changed": true,
+      "before": "fd37dcd2243069523bc83f76ef2e9f18c7a4b388b96061100e78ce4e14e6056f",
+      "after": "42a1487d17e15a861bfa362d13cbd36f9006dc863594132e38928c3cef720678",
+      "anchors": {
+        "before": 103,
+        "after": 103,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 7,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 233,
+        "after": 233,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 90,
+        "after": 90,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "component-demo.zh-CN.html",
+      "changed": true,
+      "before": "b56334045b22753b16fa6630416b19abed258ae8750f453d5ae68a2292e48cbc",
+      "after": "f92cc212c448f0ef8861eb0c4f8bef12a692dc01eb996a9b1f14e9eef014fa8c",
+      "anchors": {
+        "before": 103,
+        "after": 103,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 7,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 237,
+        "after": 237,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 90,
+        "after": 90,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "interaction-demo.en.html",
+      "changed": true,
+      "before": "b617e93dd42b678fdd198a40f636f25a73219791b4f3bd22477e91681ac2762c",
+      "after": "b574a43c4284958f1d70aaed579587a424b4a8c5928a3659e48ccf08576cefa3",
+      "anchors": {
+        "before": 103,
+        "after": 103,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 7,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 235,
+        "after": 235,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 90,
+        "after": 90,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "interaction-demo.zh-CN.html",
+      "changed": true,
+      "before": "51dd8fa303aa2365a2c658e27e9622a99717bbdbe8f29d0a1ffcbff7b8ead9c7",
+      "after": "25121e7a9996d9dea60ab2626b3e8aee8ad9fe5cf9f07699dd7519f8ae52eacc",
+      "anchors": {
+        "before": 103,
+        "after": 103,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 7,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 239,
+        "after": 239,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 90,
+        "after": 90,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "composition-demo.en.html",
+      "changed": true,
+      "before": "bcdbdbc13122db467de55b6c296093319689a592f0b7bce8895460af8c787a66",
+      "after": "4af140183ee0f6ac10259b38ebb632840188e0f2a6496d15b4e19fb8389df5b3",
+      "anchors": {
+        "before": 15,
+        "after": 15,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 2,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 59,
+        "after": 59,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 16,
+        "after": 16,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "composition-demo.zh-CN.html",
+      "changed": true,
+      "before": "ec861a6437c96eeac47666ef15039cd098c66d0aadbda5361e6e0a76b71eab0e",
+      "after": "a9c1625a1dc5162610774069aafb540d0be436761f428860e5f2f39587870cb6",
+      "anchors": {
+        "before": 15,
+        "after": 15,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 2,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 59,
+        "after": 59,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 16,
+        "after": 16,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "families.en.html",
+      "changed": true,
+      "before": "e239ffd0e2c68813a6b6503a81973f1df6c6c042c4504a6982d6c832ef7b2adf",
+      "after": "0cac8e6502e04c6bcb6bd2bff549680068d61ba90c3dabe4c56880c784871e47",
+      "anchors": {
+        "before": 29,
+        "after": 29,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 2,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 76,
+        "after": 76,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 31,
+        "after": 31,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    },
+    {
+      "entry": "families.zh-CN.html",
+      "changed": true,
+      "before": "4e6a50a588a0e6621ca1de2226614605afff092905453062780b8c157bffbe74",
+      "after": "d17f0d4f4c90bafe9193dbbfa776ccdabb28ff4aa36634e9223ae9682afc6986",
+      "anchors": {
+        "before": 29,
+        "after": 29,
+        "equal": true
+      },
+      "dataTables": {
+        "count": 2,
+        "equal": true
+      },
+      "visibleValues": {
+        "before": 77,
+        "after": 77,
+        "removed": [],
+        "added": []
+      },
+      "visibleWords": {
+        "removed": [],
+        "added": []
+      },
+      "hoverOnlyTitles": {
+        "before": 31,
+        "after": 31,
+        "valuesNotVisibleAfter": []
+      },
+      "documentTitle": true
+    }
+  ]
+}
