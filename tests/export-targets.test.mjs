@@ -92,7 +92,8 @@ test('VIS-016 PowerPoint: native text, tables, charts with embedded data, shapes
  const g=await releaseProject('gallery','en',home),resources=await visualAssetResources(g,home),{out}=paged(g,'pptx',{resources}),a=out.report.check;
  assert.equal(out.extension,'pptx');assert.equal(out.mime,'application/vnd.openxmlformats-officedocument.presentationml.presentation');
  assert.deepEqual([a.editability.status,a.sceneCheck.status,a.accessibility.status],['pass','pass','pass'],JSON.stringify([a.editability.failures,a.sceneCheck.failures,a.accessibility.failures]).slice(0,2000));
- const pkg=inspectPackage(out.body);assert.deepEqual(pkg.errors,[]);assert.equal(pkg.slides.length,12);
+ // F1 (2026-10-19): the gallery's evidence page is 1292 px tall; at the whole-scene fit its body would be 8.4 pt, so it is paged into two slides.
+ const pkg=inspectPackage(out.body);assert.deepEqual(pkg.errors,[]);assert.equal(pkg.slides.length,13);assert.deepEqual(out.run.output.pagination,[{sceneId:'ev-evidence',parts:2,reason:'paged'}]);
  assert.equal(Object.keys(pkg.charts).length,3);assert.ok(Object.values(pkg.charts).every(c=>c.workbook?.length));
  const shapes=pkg.slides.flatMap(s=>s.shapes),pictures=shapes.filter(s=>s.kind==='picture');
  assert.equal(pictures.filter(s=>s.name.endsWith('/image')).length,3);assert.deepEqual(pictures.filter(s=>!s.name.endsWith('/image')).map(s=>s.name),['trend-chart/chart-image'],'the trend has a missing value');assert.ok(pictures.every(s=>s.descr));
@@ -150,11 +151,11 @@ test('S7 PDF: one measured page per scene, disclosures kept closed, searchabilit
  assert.equal(checkPdfAccessibility({...facts,lang:'zh-CN'},{locale:'en'}).status,'fail');
 });
 
-test('S7 export report: levels, every receipt and four separate results; applications only from runs',async()=>{
+test('S7 export report: levels, every receipt and five separate results (typography added by F1); applications only from runs',async()=>{
  const g=await releaseProject('gallery','en',home),resources=await visualAssetResources(g,home),pptx=paged(g,'pptx',{resources}).out,pdf=paged(g,'pdf',{resources}).out;
  const applications={powerpoint:{state:'installed, not run'},keynote:{state:'installed, not run'},libreoffice:{state:'not installed'},quickLook:{state:'not run'}};
  const r=exportReport({deck:'gallery-en',document:g.document,plan:g.plan,pptx:{run:pptx.run,inspection:null},pdf:{run:pdf.run,inspection:null,searchability:{status:'not-run'},accessibility:null},fidelity:null,environment:{},applications});
- assert.deepEqual(Object.keys(r.results),['pptxEditability','pdfSearchability','accessibility','visualFidelity']);
+ assert.deepEqual(Object.keys(r.results),['pptxEditability','pdfSearchability','accessibility','visualFidelity','typography']);assert.ok(['pass','fail'].includes(r.results.typography.status));assert.match(reportMarkdown(r),/Typography \(presentable text size by role\)/);
  assert.equal(r.results.pdfSearchability.status,'not-run');assert.equal(r.results.visualFidelity.status,'not-run');assert.equal(r.results.accessibility.status,'partial');
  assert.equal(r.levels.length,g.document.blocks.length);assert.deepEqual(r.levelCounts.web,{L1:g.document.blocks.length,L2:0,L3:0});
  assert.equal(r.receipts.reduce((n,x)=>n+x.count,0),pptx.report.receipts.length);
@@ -213,4 +214,44 @@ test('S7 review hardening: invalid paint, spans, unsupported paths, archives, pr
  assert.throws(()=>exportDeck(st.document,'pptx',{experimentalWeb:true,plan:st.plan,assetResources:resources,layout:nan}),e=>e.details.some(d=>d.code==='EXPORT_LAYOUT_VALUES'));
  const hex=structuredClone(layout);hex.scenes[0].background={hex:'"/><x',alpha:1};
  assert.throws(()=>exportDeck(st.document,'pdf',{experimentalWeb:true,plan:st.plan,assetResources:resources,layout:hex}),e=>e.details.some(d=>d.code==='EXPORT_LAYOUT_VALUES'));
+});
+
+test('F1: the typography result refuses text fitted below its role minimum and names scene, shape, role and sizes; the thresholds come from capabilities',async()=>{
+ const {typographyCheck,textRole}=await import('../src/targets/pptx/audit.mjs'),{TYPOGRAPHY_MINIMUM_PT}=await import('../src/targets/capabilities.mjs');
+ const blocks=new Map([['h1',{type:'heading'}],['p1',{type:'paragraph'}],['c1',{type:'citation'}],['ch1',{type:'chart'}]]);
+ const shape=(name,pt,extra={})=>({name,sizes:[Math.round(pt*100)],decorative:false,title:false,...extra});
+ assert.deepEqual(TYPOGRAPHY_MINIMUM_PT,{title:18,body:10,annotation:6});
+ assert.equal(textRole(shape('h1/text',20,{title:true}),blocks),'title');assert.equal(textRole(shape('p1/text',12),blocks),'body');assert.equal(textRole(shape('c1/text',9),blocks),'annotation');assert.equal(textRole(shape('ch1/axis',9),blocks),'annotation');
+ const plan={scenes:[{id:'explain'}]};
+ const pass=typographyCheck({slides:[{name:'slide1.xml',shapes:[shape('h1/text',18,{title:true}),shape('p1/text',10),shape('c1/text',6),shape('decor/x',3,{decorative:true})]}]},blocks,plan);
+ assert.equal(pass.status,'pass');assert.deepEqual(pass.failures,[]);
+ const fail=typographyCheck({slides:[{name:'slide1.xml',shapes:[shape('h1/text',18,{title:true}),shape('p1/text',7.48),shape('p1/number',5.18),shape('c1/text',6)]}]},blocks,plan);
+ assert.equal(fail.status,'fail');assert.deepEqual(fail.failures,[{sceneId:'explain',name:'p1/text',role:'body',actualPt:7.48,requiredPt:10},{sceneId:'explain',name:'p1/number',role:'body',actualPt:5.18,requiredPt:10}]);
+ assert.match(fail.scope,/not adjustable/);
+});
+
+test('F1: a scene taller than the slide is paged into slides that keep every block, repeat the heading and meet the typography minimums; paginate none keeps it whole and fails typography',async()=>{
+ const g=await releaseProject('gallery','en',home),resources=await visualAssetResources(g,home),h=html(g,resources),layout=syntheticLayout({...g,resources},h),rasters=l3Rasters(g,layout),sceneId='ev-evidence';
+ const go=paginate=>exportDeck(g.document,'pptx',{experimentalWeb:true,plan:g.plan,assetResources:resources,layout,rasters,paginate,allowFailedCheck:true});
+ const whole=go('none'),a=whole.report.check;
+ assert.equal(whole.run.output.slides.length,g.plan.scenes.length);assert.deepEqual(whole.run.output.pagination,[]);
+ assert.equal(a.typography.status,'fail');assert.ok(a.typography.failures.some(f=>f.sceneId===sceneId&&f.role==='body'),JSON.stringify(a.typography.failures).slice(0,500));
+ const paged=go('auto'),b=paged.report.check,parts=paged.run.output.slides.filter(s=>s.sceneId===sceneId);
+ assert.equal(parts.length,2,'the tall scene became two slides');assert.deepEqual(parts.map(s=>[s.part,s.parts]),[[1,2],[2,2]]);
+ assert.deepEqual(paged.run.output.pagination,[{sceneId,parts:2,reason:'paged'}]);assert.deepEqual(paged.report.pagination,paged.run.output.pagination);assert.deepEqual(b.typography.pagination,paged.run.output.pagination);
+ assert.equal(paged.run.output.slides.length,g.plan.scenes.length+1,'other scenes stay one slide each');
+ assert.equal(b.typography.status,'pass',JSON.stringify(b.typography.failures).slice(0,800));
+ for(const k of ['editability','sceneCheck','accessibility'])assert.equal(b[k].status,'pass',k+' '+JSON.stringify(b[k].failures).slice(0,800));
+ // Every slide of the scene has a title; the continuation slide carries the heading with its part number in the title placeholder, and its own notes.
+ const pkg=inspectPackage(paged.body),first=paged.run.output.slides.findIndex(s=>s.sceneId===sceneId),slides=pkg.slides.slice(first,first+2);
+ const heading=g.document.blocks.find(x=>g.plan.scenes.find(s=>s.id===sceneId).blockIds.includes(x.id)&&x.type==='heading').text.replace(/\n/g,' ');
+ const squash=v=>v.replace(/\s+/g,'');
+ slides.forEach((s,i)=>{const t=s.shapes.find(x=>x.title);assert.ok(t,'title on part '+(i+1));assert.ok(squash(t.text).includes(squash(heading)),t.text);if(i)assert.ok(t.text.endsWith('(2/2)'),t.text);assert.ok(s.notes.includes(i?'(2/2)':'(1/2)'),s.notes.split('\n')[0]);});
+ // Nothing is lost or drawn outside a slide; every block of the scene is on one of its two slides, and no block is on both unless it was cut.
+ assert.ok(!b.sceneCheck.failures.some(f=>f.check==='text coverage'||f.check==='inside the slide'||f.check==='block present'));
+ const owners=slides.map(s=>new Set(s.shapes.filter(x=>!x.decorative&&x.name.includes('/')).map(x=>x.name.split('/')[0])));assert.ok(owners[1].size>=1&&owners[0].size>=1);
+ // Same input, same bytes; and a scene-level receipt is not repeated per part.
+ assert.equal(go('auto').body.equals(paged.body),true);
+ const perScene=paged.run.output.receipts.filter(r=>r.sceneId===sceneId&&['PPTX_INTERACTION_STATIC','PPTX_MOTION_NOT_COMPILED','PPTX_DISCLOSURE'].includes(r.code)),wholeScene=whole.run.output.receipts.filter(r=>r.sceneId===sceneId&&['PPTX_INTERACTION_STATIC','PPTX_MOTION_NOT_COMPILED','PPTX_DISCLOSURE'].includes(r.code));
+ assert.equal(perScene.length,wholeScene.length);
 });

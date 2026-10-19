@@ -57,7 +57,7 @@ export function readiness(document,plan,target,{resources={},layout,html}){
  * Runs every stage for one paged target. `html` is the static web export (exportPresentation with format html), `layout` its
  * browser measurement (measureExportLayout plus CDP platform fonts), `rasters` element captures for L3 fallbacks.
  */
-export function runExport(document,plan,target,{resources={},layout,rasters={},html,allowFailedCheck=false}){
+export function runExport(document,plan,target,{resources={},layout,rasters={},html,allowFailedCheck=false,paginate='auto'}){
  if(!PAGED_TARGETS.includes(target))throw new DeckError('EXPORT_FORMAT','The export order applies to pptx and pdf.',400);
  const run=exportRun(target);
  const ready=run.stage('ready',()=>{const r=readiness(document,plan,target,{resources,layout,html});return {value:r,summary:{assets:r.assets.length,fonts:r.fonts,images:r.images}};});
@@ -68,12 +68,12 @@ export function runExport(document,plan,target,{resources={},layout,rasters={},h
  const reveal=run.stage('reveal',()=>{const v=revealRequired(document,plan,frozen);return {value:v,summary:{sources:v.reduce((n,s)=>n+s.sources.length,0),notes:v.reduce((n,s)=>n+s.notes.length,0)}};});
  const delivery={states,frozen,motion,reveal},scenes=compileWebScenes(document,plan);
  const output=run.stage('render',()=>{
-  if(target==='pptx'){const c=compilePPTX({document,plan,scenes,layout,delivery,resources,rasters});return {value:c,summary:{bytes:c.bytes.length,slides:c.slides.length,charts:c.charts.length,media:c.media,receipts:c.receipts.length}};}
+  if(target==='pptx'){const c=compilePPTX({document,plan,scenes,layout,delivery,resources,rasters,paginate});return {value:c,summary:{bytes:c.bytes.length,slides:c.slides.length,paged:c.pagination.length,charts:c.charts.length,media:c.media,receipts:c.receipts.length}};}
   const job=pdfPrintJob({document,plan,html,layout,delivery});return {value:job,summary:{pages:job.pages.length,appendixPages:job.appendix.length,bytes:Buffer.byteLength(job.html)}};
  });
  const levels=documentLevels(document);
  const check=run.stage('check',()=>{
-  if(target==='pptx'){const a=auditPPTX({bytes:output.bytes,document,plan,scenes,compiled:output,levels});return {value:a,summary:{editability:a.editability.status,sceneCheck:a.sceneCheck.status,accessibility:a.accessibility.status}};}
+  if(target==='pptx'){const a=auditPPTX({bytes:output.bytes,document,plan,scenes,compiled:output,levels});return {value:a,summary:{editability:a.editability.status,sceneCheck:a.sceneCheck.status,accessibility:a.accessibility.status,typography:a.typography.status}};}
   const c=checkPrintJob(output,{document,plan});return {value:c,summary:{status:c.status}};
  });
  // A failed check refuses the file unless the caller records failures on purpose (the evidence run does).

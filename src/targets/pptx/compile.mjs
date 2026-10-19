@@ -12,6 +12,7 @@ import {pptxChartPlan,layoutReceipts,PPTX_IMAGE_TYPES} from './fallbacks.mjs';
 import {sceneFrame,esc,solid,paragraph,textBody,textShape,presetShape,pathShape,gradFill,picture,connector,chartFrame,tableFrame,ALIGN,typefaces} from './ooxml.mjs';
 import {chartXML,workbook} from './chart.mjs';
 import {packagePPTX} from './package.mjs';
+import {sceneBands,bandLayout} from './paginate.mjs';
 import {contrast} from './audit.mjs';
 import {createHash} from 'node:crypto';
 
@@ -37,12 +38,22 @@ export function breakRuns(runs,lines){
  for(const line of lines.slice(0,-1)){const at=text.indexOf(line,pos);if(at<0)return runs;pos=at+line.length;cuts.set(pos,/[ \n]/.test(text[pos]||'')?'replace':'insert');}
  let offset=0;return runs.map(r=>{let out='';for(let i=0;i<r.text.length;i++){const k=offset+i,cut=cuts.get(k);if(cut==='replace'){out+='\n';continue;}if(cut==='insert')out+='\n';out+=r.text[i];}offset+=r.text.length;return {...r,text:out};});
 }
-export function compilePPTX({document,plan,scenes,layout,delivery,resources={},rasters={}}){
+export function compilePPTX({document,plan,scenes,layout,delivery,resources={},rasters={},paginate='auto'}){
  const lang=document.locale==='zh-CN'?'zh-CN':'en-US',zh=document.locale==='zh-CN',t=chartText(document.locale),blocks=new Map(document.blocks.map(b=>[b.id,b]));
  const platform=layout.platformFonts||{},fontsOf=style=>platform[style?.measureId]||null;
  const receipts=[],media=new Map(),charts=[],slides=[],records=[],seriesColors=[];
+ const pagination=[];
  plan.scenes.forEach((scene,index)=>{
-  const m=layout.scenes.find(s=>s.sceneId===scene.id),derived=scenes[index],f=sceneFrame(m.bounds),shapes=[],rels=[],links=Object.create(null),notes=[],elements=[];
+  const whole=layout.scenes.find(s=>s.sceneId===scene.id),derived=scenes[index];
+  const order=derived.readingOrder.map(rid=>derived.regions.find(r=>r.id===rid).blockId),titleBlock=order.find(id=>blocks.get(id)?.type==='heading');
+  const title=titleBlock?blocks.get(titleBlock).text.replace(/\n/g,' '):scene.id;
+  // F1: a scene taller than the slide is cut into bands (paginate.mjs); every band is compiled exactly like a whole scene.
+  const headingStyle=whole.regions.find(r=>r.blockId===titleBlock)?.texts[0]?.style||{fontFamily:'Arial, sans-serif',fontSize:28,fontWeight:600,italic:false,lineHeight:34,letterSpacing:0,color:{hex:'171717',alpha:1},align:'start',transform:'none',measureId:null};
+  const strip=Math.round((headingStyle.lineHeight||headingStyle.fontSize*1.2)+24);
+  const paged=paginate==='none'?{bands:null,reason:'off'}:sceneBands(whole,blocks,{titleBlockId:titleBlock,strip});
+  const bands=paged.bands||[null],parts=bands.length;if(parts>1)pagination.push({sceneId:scene.id,parts,reason:paged.reason});
+  bands.forEach((band,part)=>{
+  const m=band?bandLayout(whole,band,{strip:part?strip:0,first:part===0}):whole,f=sceneFrame(m.bounds),shapes=[],rels=[],links=Object.create(null),notes=[],elements=[];
   let nextId=2,relId=3;const id=()=>nextId++,rel=(type,target,external)=>{const r='rId'+(relId++);rels.push([r,type,target,external]);return r;};
   const record=(e)=>{elements.push(e);return e;};
   const push=(xml,e)=>{if(!xml)return;shapes.push(xml);record(e);};
@@ -189,7 +200,8 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
   for(const d of m.decor){if(d.unsupported)continue;const commands=d.clip?clipPath(d.commands,d.clip):d.commands,name=`decor/${d.id||elements.length+1}`;
    push(pathShape({id:nextId,name,f,commands,fill:d.fill?.gradient?null:d.fill,gradient:d.fill?.gradient?{...d.fill.gradient,alpha:d.fill.alpha}:null,stroke:null,decorative:true}),{shapeId:id(),name,blockId:null,kind:'shape',decorative:true,box:d.box});}
   decorations(m.chrome.boxes,{blockId:null,prefix:'chrome'});textBoxes(m.chrome.texts,{blockId:null,decorative:true,prefix:'chrome'});
-  const order=derived.readingOrder.map(rid=>derived.regions.find(r=>r.id===rid).blockId),titleBlock=order.find(id=>blocks.get(id)?.type==='heading');
+  // A continuation slide repeats the heading in the reserved strip above its band, unless the heading itself lies in this band.
+  if(part>0&&!m.regions.find(r=>r.blockId===titleBlock)?.texts.length){const lh=headingStyle.lineHeight||headingStyle.fontSize*1.2,pad=Math.max(0,Math.min(...whole.regions.map(r=>r.bounds.x))-whole.bounds.x)||48,tb={x:whole.bounds.x+pad,y:m.bounds.y+12,width:whole.bounds.width-2*pad,height:lh},tp={box:tb,content:{...tb},lines:1,style:{...headingStyle,align:'start'},runs:[{text:`${title} (${part+1}/${parts})`,style:headingStyle}]};textBoxes([tp],{blockId:titleBlock||null,titlePart:tp,prefix:titleBlock||'continuation'});}
   for(const blockId of order){
    const region=m.regions.find(r=>r.blockId===blockId),block=blocks.get(blockId);if(!region)continue;
    decorations(region.boxes,{blockId,prefix:blockId});
@@ -210,22 +222,22 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
    if(region.cardTables)receipts.push({code:'PPTX_TABLE_AS_CARDS',target:'pptx',sceneId:scene.id,blockId,element:'table drawn as cards',reason:'The web lays this table out as one card per row; a native table cannot take that layout.',delivered:'Each card is native text with its column labels; the slide is not a PowerPoint table.'});
    for(const s of region.disclosures)receipts.push({code:'PPTX_DISCLOSURE',target:'pptx',sceneId:scene.id,blockId,element:`“${s}” disclosure`,reason:'A slide has no disclosure control.',delivered:'Its content is in the slide notes.'});
   }
-  for(const s of m.disclosures)receipts.push({code:'PPTX_DISCLOSURE',target:'pptx',sceneId:scene.id,element:`“${s}” disclosure`,reason:'A slide has no disclosure control.',delivered:'The explanations are in the slide notes in cue order.'});
+  if(part===0)for(const s of whole.disclosures)receipts.push({code:'PPTX_DISCLOSURE',target:'pptx',sceneId:scene.id,element:`“${s}” disclosure`,reason:'A slide has no disclosure control.',delivered:'The explanations are in the slide notes in cue order.'});
   // S9a: text the author moved behind the page disclosure (Reduce text) is never dropped: it is in the notes, block by block.
-  for(const blockId of scene.blockIds.filter(id=>scene.disclosure?.blockIds.includes(id)))receipts.push({code:'PPTX_DISCLOSURE',target:'pptx',sceneId:scene.id,blockId,element:`${blockId} in the page disclosure`,reason:'A slide has no disclosure control.',delivered:'Its text is in the slide notes.'});
-  for(const it of delivery.frozen[index].interactions)receipts.push({code:'PPTX_INTERACTION_STATIC',target:'pptx',sceneId:scene.id,blockId:it.blockId,element:`${it.kind} interaction ${it.id}`,reason:'Slides are not interactive in this compiler.',delivered:it.delivery});
-  const mo=delivery.motion[index];if(mo.cuesNotPlayed||mo.policy!=='none')receipts.push({code:'PPTX_MOTION_NOT_COMPILED',target:'pptx',sceneId:scene.id,element:`motion (${mo.policy}, ${mo.cuesNotPlayed} cue${mo.cuesNotPlayed===1?'':'s'})`,reason:'No animation, transition or timing is compiled.',delivered:'The slide shows the static state.'});
-  receipts.push(...layoutReceipts(m,id=>blocks.get(id)));
+  if(part===0)for(const blockId of scene.blockIds.filter(id=>scene.disclosure?.blockIds.includes(id)))receipts.push({code:'PPTX_DISCLOSURE',target:'pptx',sceneId:scene.id,blockId,element:`${blockId} in the page disclosure`,reason:'A slide has no disclosure control.',delivered:'Its text is in the slide notes.'});
+  if(part===0)for(const it of delivery.frozen[index].interactions)receipts.push({code:'PPTX_INTERACTION_STATIC',target:'pptx',sceneId:scene.id,blockId:it.blockId,element:`${it.kind} interaction ${it.id}`,reason:'Slides are not interactive in this compiler.',delivered:it.delivery});
+  const mo=delivery.motion[index];if(part===0&&(mo.cuesNotPlayed||mo.policy!=='none'))receipts.push({code:'PPTX_MOTION_NOT_COMPILED',target:'pptx',sceneId:scene.id,element:`motion (${mo.policy}, ${mo.cuesNotPlayed} cue${mo.cuesNotPlayed===1?'':'s'})`,reason:'No animation, transition or timing is compiled.',delivered:'The slide shows the static state.'});
+  if(part===0)receipts.push(...layoutReceipts(whole,id=>blocks.get(id)));
   // Notes: delivery, revealed content and sources.
   const rv=delivery.reveal[index];
-  notes.unshift(`${String(index+1).padStart(2,'0')} · ${scene.id}`);
+  notes.unshift(`${String(index+1).padStart(2,'0')} · ${scene.id}${parts>1?` (${part+1}/${parts})`:''}`);
   for(const it of delivery.frozen[index].interactions)notes.push(`${it.kind}: ${it.delivery}`);
   if(mo.cuesNotPlayed)notes.push(zh?`动效未播放（${mo.cuesNotPlayed} 个提示）；本页为静态状态。`:`Motion is not played (${mo.cuesNotPlayed} cue${mo.cuesNotPlayed===1?'':'s'}); this slide shows the static state.`);
   for(const n of rv.notes){notes.push(`${n.title}${zh?'：':':'}`);for(const l of n.lines)notes.push('· '+l);}
   if(rv.sources.length){notes.push(zh?'来源：':'Sources:');for(const s of rv.sources)notes.push(`· ${s.title} — ${s.url}`);}
-  const title=titleBlock?blocks.get(titleBlock).text.replace(/\n/g,' '):scene.id;
-  slides.push({name:title,background:solid(m.background||{hex:'FFFFFF',alpha:1}),shapes,rels,notes});
-  records.push({sceneId:scene.id,title,scale:Math.round(f.ratio*1000)/1000,elements,notes});
+  slides.push({name:parts>1?`${title} (${part+1}/${parts})`:title,background:solid(m.background||{hex:'FFFFFF',alpha:1}),shapes,rels,notes});
+  records.push({sceneId:scene.id,title,part:part+1,parts,scale:Math.round(f.ratio*1000)/1000,elements,notes});
+  });
  });
  // Theme fonts and colours follow the deck: the first title and body runs, the first background and the chart colours.
  const firstStyle=k=>{for(const s of layout.scenes)for(const r of s.regions)if(blocks.get(r.blockId)?.type===k&&r.texts[0])return r.texts[0].style;return null;};
@@ -233,5 +245,5 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
  const head=firstStyle('heading'),body=firstStyle('paragraph')||head;
  const themeInfo={major:face(head),minor:face(body),colors:{...(head?.color?{dk1:head.color.hex}:{}),...(layout.scenes[0]?.background?{lt1:layout.scenes[0].background.hex}:{}),...Object.fromEntries(seriesColors.slice(0,6).map((c,i)=>['accent'+(i+1),c]))}};
  const bytes=packagePPTX({title:document.title,lang,slides,media:[...media.values()],charts,themeInfo});
- return {bytes,slides:records,receipts,media:media.size,charts:charts.map(c=>({path:c.path,kind:c.data.kind,categories:c.data.categories,series:c.data.series.map(s=>({name:s.name,values:s.values}))}))};
+ return {bytes,slides:records,pagination,receipts,media:media.size,charts:charts.map(c=>({path:c.path,kind:c.data.kind,categories:c.data.categories,series:c.data.series.map(s=>({name:s.name,values:s.values}))}))};
 }

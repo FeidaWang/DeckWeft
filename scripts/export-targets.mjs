@@ -138,7 +138,7 @@ for(const d of DECKS){
  const report=exportReport({deck:d.name,document:p.document,plan:p.plan,pptx:{run:pptx.run,inspection:pptxInspection},pdf:{run:pdfJob.run,inspection:pdfInspection,searchability,accessibility:pdfAccess},fidelity,environment,applications});
  report.files.sha256={pptx:hash(pptx.body),pdf:hash(await readFile(pdfFile))};
  await writeFile(path.join(dir,'report.json'),JSON.stringify(report,null,1)+'\n');await writeFile(path.join(dir,'report.md'),reportMarkdown(report));
- const line={deck:d.name,pptxEditability:report.results.pptxEditability.status,sceneCheck:report.results.pptxEditability.sceneCheck.status,pdfSearchability:report.results.pdfSearchability.status,accessibility:report.results.accessibility.status,visualFidelity:report.results.visualFidelity.status,receipts:report.receipts.reduce((n,g)=>n+g.count,0),levels:report.levelCounts.pptx,external:[...m.external,...pr.external]};
+ const line={deck:d.name,pptxEditability:report.results.pptxEditability.status,sceneCheck:report.results.pptxEditability.sceneCheck.status,pdfSearchability:report.results.pdfSearchability.status,accessibility:report.results.accessibility.status,typography:report.results.typography?.status??'not-run',typographyFailures:report.results.typography?.failures?.length??null,visualFidelity:report.results.visualFidelity.status,receipts:report.receipts.reduce((n,g)=>n+g.count,0),levels:report.levelCounts.pptx,external:[...m.external,...pr.external]};
  summary.push(line);console.log(JSON.stringify(line));
 }
 await writeFile(path.join(out,'exports.json'),JSON.stringify({format:'deckweft-s7-exports',version:1,environment,applications,decks:summary},null,1)+'\n');

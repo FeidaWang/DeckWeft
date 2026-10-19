@@ -28,7 +28,7 @@ const disclosureHTML=(scene,document,theme,blocks)=>{
  if(!scene.disclosure)return '';const ids=scene.blockIds.filter(id=>scene.disclosure.blockIds.includes(id)),n=ids.length,zh=document.locale==='zh-CN';
  return `<details class="scene-disclosure" data-disclosure="${x(scene.id)}"><summary>${zh?`更多细节 · ${n} 项`:`More detail · ${n} item${n===1?'':'s'}`}</summary>${ids.map(id=>`<div class="disclosed" data-disclosed-block-id="${x(id)}">${blockHTML(blocks.get(id),document,theme,{sceneId:scene.id})}</div>`).join('')}</details>`;
 };
-export function exportPresentation(document, format, {plan,experimentalWeb=false,assetResources={},preview=false,layout,rasters={},allowFailedCheck=false}={}) {
+export function exportPresentation(document, format, {plan,experimentalWeb=false,assetResources={},preview=false,layout,rasters={},allowFailedCheck=false,paginate='auto'}={}) {
   if (!experimentalWeb) throw new DeckError('EXPERIMENTAL_WEB_REQUIRED','Explicitly enable experimentalWeb for the version 3 presentation path.');
   assertPresentation(document);
   assertPresentationTarget(format,document,assetResources,plan);
@@ -36,8 +36,8 @@ export function exportPresentation(document, format, {plan,experimentalWeb=false
   // Paged targets compile from the static web scene through the export order (S7); the rich web output stays as it is.
   if (format === 'pptx' || format === 'pdf') {
     const html=exportPresentation(document,'html',{plan,experimentalWeb,assetResources});
-    const run=runExport(document,plan,format,{resources:assetResources,layout,rasters,html,allowFailedCheck});
-    return {...run.file,report:{order:run.order,levels:run.levels,delivery:run.delivery,check:run.check,receipts:run.output.receipts||[]},run};
+    const run=runExport(document,plan,format,{resources:assetResources,layout,rasters,html,allowFailedCheck,paginate});
+    return {...run.file,report:{order:run.order,levels:run.levels,delivery:run.delivery,check:run.check,receipts:run.output.receipts||[],pagination:run.output.pagination||[]},run};
   }
   const scenes = compileWebScenes(document,plan), zh=document.locale==='zh-CN';
   // A declared static state freezes every selection for readers without JavaScript; scenes without one render exactly as before.

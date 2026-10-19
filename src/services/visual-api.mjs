@@ -226,7 +226,7 @@ export async function createVisualService({home,legacyStore,body,send,browserPat
     if(project.extensions.deckweftWorkbench||saved?.extensions.deckweftWorkbench){if(data.format==='html'||!await reviewed(project))throw new DeckError('WORKBENCH_REVIEW_REQUIRED','Export this task from its image-reviewed workbench.',409);}
     if(data.format!=='html'){
      if(!project.extensions.deckweftWorkbench){const a=entry(data.ticket);if(!a.fit||a.inputHash!==contentHash(project))throw new DeckError('STALE_VISUAL_RENDER','Wait for a measured preview of these exact edits before exporting.',409);}
-     const file=await studioTargetExport({browserPath,project,resources:await visualAssetResources(project,store.home),format:data.format}),levels=Object.entries(file.report.levels.reduce((m,c)=>{const l=c[data.format]?.level;if(l)m[l]=(m[l]||0)+1;return m;},{})).map(([k,v])=>k+'='+v).join(',');
+     const file=await studioTargetExport({browserPath,project,resources:await visualAssetResources(project,store.home),format:data.format,paginate:data.paginate==='none'?'none':'auto'}),levels=Object.entries(file.report.levels.reduce((m,c)=>{const l=c[data.format]?.level;if(l)m[l]=(m[l]||0)+1;return m;},{})).map(([k,v])=>k+'='+v).join(',');
      res.writeHead(200,{'Content-Type':file.mime,'Content-Disposition':`attachment; filename="deckweft-visual.${file.extension}"`,'X-DeckWeft-Export-Order':file.report.order.map(o=>o.stage).join(','),'X-DeckWeft-Levels':levels,'X-DeckWeft-Receipts':String(file.report.receipts.length)});res.end(file.body);return true;
     }
     const a=entry(data.ticket);if(!a.fit||a.inputHash!==contentHash(project))throw new DeckError('STALE_VISUAL_RENDER','Wait for a measured preview of these exact edits before exporting.',409);

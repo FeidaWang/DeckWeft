@@ -15,6 +15,12 @@ const {log:LOG_KINDS,intervals:INTERVAL_KINDS,events:EVENT_KINDS}=HTML_CHART_DRA
 export const OUTPUT_LEVELS={L1:'native editable text, shapes, tables and supported charts',L2:'embedded vector drawing; title, caption and source kept as real text',L3:'high-resolution image of the element plus a semantic summary'};
 /** The formats with declared levels. `html` is the web format. */
 export const LEVEL_FORMATS=['html','pdf','pptx'];
+/** F1 (2026-10-19): minimum presentable text size per role after the scene is fitted to the slide, in points. Calibrated to the web
+ * minimums at the width fit of a 1440 px page (1 px = 0.667 pt): 28 px headings → 18 pt, 16 px body → 10 pt, and the compiler's own
+ * 6 pt floor for native chart labels. A package that passes every structural check but falls below these is editable, not presentable.
+ * There is no switch to lower them; a tall scene is paged (compilePPTX paginate) instead. Measured on 2026-10-19 across the demo,
+ * chart-kinds and blueprint decks: only scenes taller than the slide fail. */
+export const TYPOGRAPHY_MINIMUM_PT={title:18,body:10,annotation:6};
 const text=(pptx='native text box')=>({html:['L1','DOM text'],pdf:['L1','real, searchable text'],pptx:['L1',pptx]});
 /** The declaration, per component and format. Charts are resolved per kind and declaration by `outputLevel`. */
 export const COMPONENT_LEVELS={

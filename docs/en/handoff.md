@@ -45,7 +45,7 @@ S7 (output levels and VIS-016) is **partial** as of 2026-10-19 and merged into `
 - Components declare L1/L2/L3 levels per format.
 - The export order is enforced.
 - v3 decks compile to PowerPoint and PDF with per-element receipts.
-- Each deck gets an export report with four separate results.
+- Each deck gets an export report with four separate results (a fifth, typography by role, was added on 2026-10-19 after the Astra second verification; see [the response plan](../plans/astra-second-verification-response.zh-CN.md)).
 
 Run it with `npm run export:targets` ([manual](compatibility.md#version-3-powerpoint-and-pdf-s7-vis-016), [evidence](../evidence/vis-016/review.md)). PowerPoint and Keynote were not run: the user's checks are listed in each report. Also open after S7:
 

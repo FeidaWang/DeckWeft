@@ -5,6 +5,7 @@
  */
 import {inflateRawSync} from 'node:zlib';
 import {SLIDE} from './ooxml.mjs';
+import {TYPOGRAPHY_MINIMUM_PT} from '../capabilities.mjs';
 import {crc32} from '../../render/zip.mjs';
 
 /**
@@ -113,10 +114,13 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
  const scene=[],edit=[],access=[],editNotes=[];
  if(pkg.errors.length)fail(edit,'package',{errors:pkg.errors});
  for(const r of receipts.filter(r=>r.error))fail(edit,'element delivered',{sceneId:r.sceneId,blockId:r.blockId,code:r.code,element:r.element});
- if(pkg.slides.length!==plan.scenes.length)fail(scene,'slide count',{slides:pkg.slides.length,scenes:plan.scenes.length});
+ // F1: a paged scene owns several consecutive slides (compiled.slides records sceneId/part); every scene needs at least one.
+ const slideScene=k=>compiled.slides[k]?.sceneId??plan.scenes[k]?.id;
+ if(pkg.slides.length!==compiled.slides.length||plan.scenes.some(sp=>!compiled.slides.some(r=>r.sceneId===sp.id)))fail(scene,'slide count',{slides:pkg.slides.length,compiled:compiled.slides.length,scenes:plan.scenes.length});
  const counts={text:0,title:0,table:0,chart:0,connector:0,shape:0,picture:0,l3Picture:0,decorative:0,receipts:receipts.length,charts:Object.keys(pkg.charts).length};
  plan.scenes.forEach((sp,i)=>{
-  const slide=pkg.slides[i];if(!slide)return;const derived=scenes[i],order=derived.readingOrder.map(r=>derived.regions.find(x=>x.id===r).blockId);
+  const own=pkg.slides.filter((s,k)=>slideScene(k)===sp.id);if(!own.length)return;
+  const slide={shapes:own.flatMap(s=>s.shapes),notes:own.map(s=>s.notes).join('\n'),timing:own.some(s=>s.timing),transition:own.some(s=>s.transition)};const derived=scenes[i],order=derived.readingOrder.map(r=>derived.regions.find(x=>x.id===r).blockId);
   const owner=s=>s.name.includes('/')&&blocks.has(s.name.split('/')[0])?s.name.split('/')[0]:null;
   if(slide.timing||slide.transition)fail(scene,'motion stopped',{sceneId:sp.id,timing:slide.timing,transition:slide.transition});
   // Reading order: blocks appear in the derived scene's reading order.
@@ -155,12 +159,12 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
    if(s.box&&(s.box.x<-SLIDE.width*.01||s.box.y<-SLIDE.height*.01||s.box.x+s.box.width>SLIDE.width*1.01||s.box.y+s.box.height>SLIDE.height*1.01))fail(scene,'inside the slide',{sceneId:sp.id,name:s.name});
   }
   // Accessibility of the package.
-  if(!slide.shapes.some(s=>s.title&&s.text.trim()))fail(access,'slide title',{sceneId:sp.id});
+  for(const one of own)if(!one.shapes.some(s=>s.title&&s.text.trim()))fail(access,'slide title',{sceneId:sp.id,slide:one.name});
   for(const s of slide.shapes)if(['picture','chart','table'].includes(s.kind)&&!s.descr.trim()&&!s.decorative)fail(access,'alternative text',{sceneId:sp.id,name:s.name});
   for(const s of slide.shapes)if((s.name.startsWith('decor/')||s.name.startsWith('chrome/'))&&!s.decorative)fail(access,'decoration marked decorative',{sceneId:sp.id,name:s.name});
   for(const s of slide.shapes)if(s.runsWithoutLang)fail(access,'language on every run',{sceneId:sp.id,name:s.name});
   for(const s of slide.shapes)for(const l of s.links)if(l.missing||!l.external||!/^https?:\/\//.test(l.target))fail(access,'links resolve to sources',{sceneId:sp.id,name:s.name});
-  if(!slide.notes.trim())fail(access,'notes present',{sceneId:sp.id});
+  for(const one of own)if(!one.notes.trim())fail(access,'notes present',{sceneId:sp.id,slide:one.name});
   if(JSON.stringify(seen)!==JSON.stringify(expectedOrder))fail(access,'reading order',{sceneId:sp.id});
  });
  // Contrast is computed by the compiler against what lies under each text box; the package colours are the measured web colours.
@@ -168,12 +172,32 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
  if(low.length)fail(access,'text contrast',{items:low});
  const sizes=pkg.slides.flatMap(s=>s.shapes.filter(x=>!x.decorative).flatMap(x=>x.sizes)),smallest=sizes.length?Math.min(...sizes)/100:null;
  if(smallest!==null&&smallest<7)editNotes.push(`Smallest text is ${smallest} pt after fitting the scene to the slide.`);
+ const typography={...typographyCheck(pkg,blocks,plan,TYPOGRAPHY_MINIMUM_PT,slideScene),pagination:compiled.pagination||[]};
  const status=list=>list.length?'fail':'pass';
  return {
   package:{parts:pkg.parts.length,errors:pkg.errors},
   editability:{status:status(edit),failures:edit,counts,notes:editNotes},
   sceneCheck:{status:status(scene),failures:scene},
+  typography,
   accessibility:{status:status(access),failures:access,smallestTextPt:smallest,scope:'Package checks only: slide titles, alt text, decorative marking, reading order, language, links, notes and contrast. No screen reader or PowerPoint Accessibility Checker was run.'},
   slides:pkg.slides.map(s=>({name:s.name,title:s.title,shapes:s.shapes.length,pictures:s.shapes.filter(x=>x.kind==='picture').length,charts:s.shapes.filter(x=>x.kind==='chart').length,tables:s.shapes.filter(x=>x.kind==='table').length,notesLines:s.notesLines.length}))
  };
+}
+
+const ANNOTATION_BLOCKS=new Set(['citation','chart','table','diagram','image']);
+/** The role a text shape plays, from the block it belongs to: the slide title, an annotation (citations, captions, chart/table labels) or body text. */
+export function textRole(shape,blocks){
+ if(shape.title)return 'title';
+ const blockId=shape.name.includes('/')?shape.name.split('/')[0]:null,type=blockId&&blocks.get(blockId)?.type;
+ if(ANNOTATION_BLOCKS.has(type)||/\/(caption|source|label|axis|legend|footnote)/.test(shape.name))return 'annotation';
+ return 'body';
+}
+/** F1: refuses text that fitted below the presentable minimum for its role. Every failure names the scene, the shape, the role, the actual and the required size. */
+export function typographyCheck(pkg,blocks,plan,minimums=TYPOGRAPHY_MINIMUM_PT,sceneOf=i=>plan.scenes[i]?.id){
+ const failures=[];
+ pkg.slides.forEach((slide,i)=>{const sceneId=sceneOf(i)??slide.name;
+  for(const s of slide.shapes){if(s.decorative||!s.sizes?.length)continue;const role=textRole(s,blocks),actualPt=Math.min(...s.sizes)/100,requiredPt=minimums[role];
+   if(actualPt+1e-9<requiredPt)failures.push({sceneId,name:s.name,role,actualPt,requiredPt});}
+ });
+ return {status:failures.length?'fail':'pass',failures,minimums:{...minimums},scope:'Run sizes after the uniform scene-to-slide fit, by role. Pass does not prove projection legibility, font availability or PowerPoint/Keynote rendering. Split or re-page a failing scene; the thresholds are not adjustable.'};
 }

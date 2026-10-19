@@ -45,7 +45,7 @@
 - 组件按格式声明 L1/L2/L3 等级。
 - 导出顺序已强制执行。
 - v3 演示文稿可编译为带逐元素回执的 PowerPoint 与 PDF。
-- 每份演示文稿都有一份分别给出四项结果的导出报告。
+- 每份演示文稿都有一份分别给出四项结果的导出报告（2026-10-19 Astra 二次验证后增加第五项：按角色的字号；见[响应方案](../plans/astra-second-verification-response.zh-CN.md)）。
 
 用 `npm run export:targets` 运行（[手册](compatibility.md#v3-视觉演示文稿的-powerpoint-与-pdfs7vis-016)、[证据（英文）](../evidence/vis-016/review.md)）。PowerPoint 与 Keynote 没有运行：需要用户检查的项目列在每份报告中。S7 之后仍未完成：
 

@@ -26,7 +26,8 @@ export function exportReport({deck,document,plan,pptx,pdf,fidelity,environment,a
   pptxEditability:{status:audit.editability.status==='pass'&&(!pptx.inspection||pptx.inspection.status==='pass')?'pass':'fail',compiler:audit.editability,independent:pptx.inspection?{status:pptx.inspection.status,failures:pptx.inspection.failures,missingText:pptx.inspection.missingText,chartsChecked:pptx.inspection.chartsChecked}:{status:'not-run'},sceneCheck:audit.sceneCheck},
   pdfSearchability:pdf.searchability||{status:'not-run'},
   accessibility:{status:[audit.accessibility.status,pdf.accessibility?.status||'not-run'].every(s=>s==='pass')?'pass':[audit.accessibility.status,pdf.accessibility?.status].includes('fail')?'fail':'partial',pptx:audit.accessibility,pdf:pdf.accessibility||{status:'not-run'},notTested:['screen readers','PowerPoint Accessibility Checker','PDF/UA validation']},
-  visualFidelity:fidelity||{status:'not-run'}
+  visualFidelity:fidelity||{status:'not-run'},
+  typography:audit.typography||{status:'not-run'}
  };
  return {format:'deckweft-export-report',version:1,deck,locale:document.locale,title:document.title,environment,
   levels:levels.map(l=>({blockId:l.blockId,component:l.variant,web:l.html.level,pdf:l.pdf.level,pptx:l.pptx.level,pptxRepresentation:l.pptx.representation})),
@@ -34,6 +35,7 @@ export function exportReport({deck,document,plan,pptx,pdf,fidelity,environment,a
   exportOrder:{pptx:run.order,pdf:pdf.run?.order||null},
   receipts:group(receipts),
   results,
+  pagination:run.output.pagination||[],
   delivery:run.delivery.frozen.map((s,i)=>({sceneId:s.sceneId,staticState:run.delivery.states[i].keyStateId,interactions:s.interactions.map(v=>({id:v.id,kind:v.kind,rule:v.rule,delivered:v.delivery})),motion:run.delivery.motion[i]})),
   fonts:{used:fonts,embedded:false,note:'Fonts are referenced by name, never embedded or redistributed. A machine without them substitutes another face.'},
   files:{pptxBytes:run.output.bytes.length,slides:run.output.slides.length,charts:run.output.charts.length,pictures:run.output.media,pdfPages:pdf.inspection?.pageCount??null},
@@ -46,7 +48,7 @@ export function exportReport({deck,document,plan,pptx,pdf,fidelity,environment,a
 export function reportMarkdown(r){
  const row=(k,v)=>`| ${k} | ${v} |`;
  return [`# Export report · ${r.deck}`,'',`${r.title} (${r.locale}) · ${r.files.slides} slides · ${r.files.charts} native charts · ${r.files.pictures} pictures · PDF ${r.files.pdfPages??'not printed'} pages`,'',
-  '| Result | Status |','|---|---|',row('PowerPoint editability',r.results.pptxEditability.status),row('Page check against the derived scene',r.results.pptxEditability.sceneCheck.status),row('PDF searchability',r.results.pdfSearchability.status),row('Accessibility (package checks)',r.results.accessibility.status),row('Visual fidelity',r.results.visualFidelity.status),'',
+  '| Result | Status |','|---|---|',row('PowerPoint editability',r.results.pptxEditability.status),row('Page check against the derived scene',r.results.pptxEditability.sceneCheck.status),row('PDF searchability',r.results.pdfSearchability.status),row('Accessibility (package checks)',r.results.accessibility.status),row('Typography (presentable text size by role)',r.results.typography?.status??'not-run'),row('Visual fidelity',r.results.visualFidelity.status),'',
   '| Level | Web | PDF | PowerPoint |','|---|---|---|---|',...['L1','L2','L3'].map(k=>`| ${k} | ${r.levelCounts.web[k]} | ${r.levelCounts.pdf[k]} | ${r.levelCounts.pptx[k]} |`),'',
   '## Receipts','',...(r.receipts.length?r.receipts.flatMap(g=>g.delivered?[`- \`${g.code}\` × ${g.count}: ${g.reason} ${g.delivered}`]:[`- \`${g.code}\` × ${g.count}: ${g.reason}`,...g.elements.map(e=>`  - ${e.sceneId||''} ${e.element}: ${e.delivered}`)]):['None.']),'',
   '## Fonts referenced, not embedded','',r.fonts.used.join(', ')||'None measured.','',
