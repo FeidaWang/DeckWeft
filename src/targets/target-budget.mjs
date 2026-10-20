@@ -56,7 +56,8 @@ export function targetFit(m,blocks,{format='pptx',titleBlockId=null,strip=0,targ
  const paged=sceneBands(m,blocks,{titleBlockId,strip,minimums:target.typography.minimum,frame,unitsPerPt});
  const scale=Math.round(pxScale(b)*10000)/10000;
  const report=(els,s,extra)=>({...extra,scale:Math.round(s*10000)/10000,...typographyReport(els,blocks,{titleBlockId,ptPerPx,scale:s,target:target.typography.target,minimum:target.typography.minimum})});
- if(!paged.bands)return {status:paged.reason,bands:null,scale,typography:[report(sceneElements(m),pxScale(b),{part:1,parts:1})]};
- const typography=paged.bands.map((band,part)=>{const layout=bandLayout(m,band,{strip:part?strip:0,first:part===0});return report(sceneElements(layout),pxScale(layout.bounds),{part:part+1,parts:paged.bands.length});});
- return {status:paged.reason,bands:paged.bands,scale,typography};
+ if(!paged.bands)return {status:paged.reason,bands:null,scale,typography:[report(sceneElements(m),pxScale(b),{part:1,parts:1,overHeight:false})]};
+ // A band taller than the budget holds one element taken whole (a chart or image no cut may cross); it is reported, never cut.
+ const typography=paged.bands.map((band,part)=>{const layout=bandLayout(m,band,{strip:part?strip:0,first:part===0});return report(sceneElements(layout),pxScale(layout.bounds),{part:part+1,parts:paged.bands.length,overHeight:band.height>paged.budget+0.5});});
+ return {status:paged.reason,bands:paged.bands,scale,budget:paged.budget,typography};
 }

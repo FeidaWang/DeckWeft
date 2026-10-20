@@ -114,13 +114,14 @@ for(const d of DECKS){
  await writeFile(path.join(dir,'layout.json'),JSON.stringify(layout));await m.context.close();
  // Compile both paged targets through the export order.
  // Failures are recorded, not hidden: the evidence run keeps a failing file and its report.
- const pptx=exportDeck(p.document,'pptx',{...opts,layout,rasters,allowFailedCheck:true,paginate:args.paginate}),pdfJob=exportDeck(p.document,'pdf',{...opts,layout,rasters,allowFailedCheck:true});
+ const pptx=exportDeck(p.document,'pptx',{...opts,layout,rasters,allowFailedCheck:true,paginate:args.paginate}),pdfJob=exportDeck(p.document,'pdf',{...opts,layout,rasters,allowFailedCheck:true,paginate:args.paginate});
  const pptxFile=path.join(dir,d.name+'.pptx'),printFile=path.join(dir,'print.html'),pdfFile=path.join(dir,d.name+'.pdf');
  await writeFile(pptxFile,pptx.body);await writeFile(printFile,pdfJob.body);
  // Screen styles keep the measured layout (print media drops the scenes' minimum height); every printed scene is checked against it.
  const pr=await open(printFile);await pr.page.emulateMedia({media:'screen'});
  const printed=await pr.page.evaluate(()=>[...document.querySelectorAll('.dw-fit>.web-scene')].map(s=>({sceneId:s.id,width:s.offsetWidth,height:s.offsetHeight})));
- const geometry=printed.map((g,i)=>({...g,measured:{width:layout.scenes[i].bounds.width,height:layout.scenes[i].bounds.height}})).filter(g=>Math.abs(g.height-g.measured.height)>1.5||Math.abs(g.width-g.measured.width)>1.5);
+ // CINE-001: a paged scene prints once per band (same scene markup, clipped), so the printed scenes map through the job's pages.
+ const geometry=printed.map((g,i)=>{const m=layout.scenes.find(s=>s.sceneId===(pdfJob.run.output.pages[i]?.sceneId??g.sceneId))||layout.scenes[i];return {...g,part:pdfJob.run.output.pages[i]?.part??1,measured:{width:m.bounds.width,height:m.bounds.height}};}).filter(g=>Math.abs(g.height-g.measured.height)>1.5||Math.abs(g.width-g.measured.width)>1.5);
  await pr.page.pdf({path:pdfFile,width:pdfJob.print.width+'px',height:pdfJob.print.height+'px',printBackground:true,tagged:true,outline:true,preferCSSPageSize:true});await pr.context.close();
  // Independent inspections.
  const expected=pdfJob.run.output.expected,expectFile=path.join(dir,'expected.json');await writeFile(expectFile,JSON.stringify(expected,null,1));

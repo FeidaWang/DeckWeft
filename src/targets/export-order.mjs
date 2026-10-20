@@ -78,7 +78,7 @@ export function runExport(document,plan,target,{resources={},layout,rasters={},h
  const delivery={states,frozen,motion,reveal},scenes=compileWebScenes(document,plan);
  const output=run.stage('render',()=>{
   if(target==='pptx'){const c=compilePPTX({document,plan,scenes,layout,delivery,resources,rasters,paginate});return {value:c,summary:{bytes:c.bytes.length,slides:c.slides.length,paged:c.pagination.length,charts:c.charts.length,media:c.media,receipts:c.receipts.length}};}
-  const job=pdfPrintJob({document,plan,html,layout,delivery});return {value:job,summary:{pages:job.pages.length,appendixPages:job.appendix.length,bytes:Buffer.byteLength(job.html)}};
+  const job=pdfPrintJob({document,plan,html,layout,delivery,paginate});return {value:job,summary:{pages:job.pages.length,paged:job.pagination.length,appendixPages:job.appendix.length,bytes:Buffer.byteLength(job.html)}};
  });
  const levels=documentLevels(document);
  const check=run.stage('check',()=>{

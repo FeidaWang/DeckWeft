@@ -61,8 +61,9 @@ export function sceneBands(m,blocks,{titleBlockId=null,strip=0,minimums=TYPOGRAP
   if(cut===null)cut=ends.find(c=>c>start+1&&!crosses(c))??bottom;
   bands.push({y:start,height:cut-start});cursor=cut;
  }
- if(bands.length>1)return {bands,reason:'paged'};
- if(bands.length===1&&bands[0].height<b.height-1)return {bands,reason:'trimmed'};
+ // `budget` is the band height that keeps the minima (page px); a band taller than it holds one element taken whole.
+ if(bands.length>1)return {bands,reason:'paged',budget:H};
+ if(bands.length===1&&bands[0].height<b.height-1)return {bands,reason:'trimmed',budget:H};
  return {bands:null,reason:'fits'};
 }
 /** The measured layout of one band: the same scene with only the elements whose centre lies in the band, decor clipped to it. */

@@ -67,3 +67,57 @@ test('CINE-001 targetFit on the synthetic overflow page: PowerPoint pages it, PD
  // The default sceneBands call is unchanged: no frame or unit given means the PowerPoint slide in EMU.
  assert.deepEqual(sceneBands(of.m,blocks,{titleBlockId:'of-title',strip:60}),sceneBands(of.m,blocks,{titleBlockId:'of-title',strip:60,frame:{width:12192000,height:6858000},unitsPerPt:12700}));
 });
+
+// ---- Task 2: CINE-001 PDF pages tall scenes on the PowerPoint bands ----
+/** Compiles one paged target from the synthetic layout (unit tests only; real runs measure a browser). */
+function paged(p,target,{resources={},layout,paginate}={}){
+ const h=html(p,resources),l=layout||syntheticLayout({...p,resources},h);
+ return {html:h,layout:l,out:exportDeck(p.document,target,{experimentalWeb:true,plan:p.plan,assetResources:resources,layout:l,rasters:{},...(paginate?{paginate}:{})})};
+}
+test('CINE-001 PDF: the overflow page becomes two print pages at a scale that keeps 10 pt body text; the heading repeats; the strip stays on the last band',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),resources=await visualAssetResources(p,home),{out,layout}=paged(p,'pdf',{resources}),job=out.run.output;
+ const pages=job.pages.filter(x=>x.sceneId==='overflow');
+ // The synthetic layout stacks every region, so its tall image and chart pages are paged too; a browser measurement is Task 12's.
+ assert.ok(pages.length>=2);assert.deepEqual(job.pagination.find(x=>x.sceneId==='overflow'),{sceneId:'overflow',parts:pages.length,reason:'paged'});assert.deepEqual(out.report.pagination,job.pagination);
+ assert.deepEqual(pages.map(x=>x.part),pages.map((_,i)=>i+1));for(const x of pages)assert.equal(x.parts,pages.length);
+ for(const x of job.pages)assert.ok(x.scale*PT_PER_PX.pdf*20>=10-1e-9,`${x.sceneId} part ${x.part}: scale ${x.scale}`);
+ assert.equal(pages[1].clip.y,pages[0].clip.y+pages[0].clip.height);
+ assert.equal(job.pages.length,p.plan.scenes.length+job.pagination.reduce((n,x)=>n+x.parts-1,0));assert.equal(out.report.check.status,'pass');assert.equal(out.report.check.pages,job.pages.length);
+ // The continuation page repeats the heading in a strip above its band and names the part; the first page has no strip.
+ const title=p.document.blocks.find(b=>b.id==='of-title').text,strips=(job.html.match(/<div class="dw-strip"[\s\S]*?<\/section><\/div>/g)||[]).filter(s=>s.includes(title));
+ assert.equal(strips.length,pages.length-1);assert.ok(strips.every(s=>/\(\d+\/\d+\)/.test(s)));assert.equal(strips[0].includes('(2/'+pages.length+')'),true);
+ assert.equal((job.html.match(/class="dw-page"/g)||[]).length,job.pages.length);
+ // The citations (the source strip of CINE-002) end the page, so they lie in the last band.
+ const m=layout.scenes[p.plan.scenes.findIndex(s=>s.id==='overflow')],last=pages.at(-1).clip,cites=m.regions.filter(r=>r.blockId.startsWith('of-source'));
+ for(const r of cites)for(const t of r.texts)assert.ok(t.box.y+t.box.height/2>=last.y&&t.box.y+t.box.height/2<=last.y+last.height);
+ // Every other scene is one page at its whole-scene scale, as before.
+ for(const s of p.plan.scenes.filter(s=>!job.pagination.some(x=>x.sceneId===s.id))){const own=job.pages.filter(x=>x.sceneId===s.id);assert.equal(own.length,1);assert.equal(own[0].parts,1);assert.equal(own[0].reason,'fits');assert.equal(own[0].overHeight,false);}
+});
+test('CINE-001 PDF: a page whose only element is taller than one band is taken whole and reported, not cut',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),resources=await visualAssetResources(p,home),h=html(p,resources),layout=syntheticLayout({...p,resources},h);
+ // Stretch the first chart plot of the evidence page to 1500 px and move everything below it down.
+ const k=p.plan.scenes.findIndex(s=>s.id==='evidence'),m=layout.scenes[k],region=m.regions.find(r=>r.blockId==='ev-chart-a'),plot=region.plot,extra=1200,from=plot.box.y+plot.box.height;
+ const shift=o=>{if(o?.box&&o.box.y>=from)o.box.y+=extra;};
+ plot.box.height+=extra;
+ for(const r of m.regions){for(const list of [r.texts,r.boxes,r.shapes,r.tables||[]])list.forEach(shift);if(r.plot&&r!==region)shift(r.plot);shift(r.image);shift(r.diagram);if(r.bounds.y>=from)r.bounds.y+=extra;else if(r.bounds.y+r.bounds.height>=from)r.bounds.height+=extra;}
+ m.bounds.height+=extra;
+ const {out}=paged(p,'pdf',{resources,layout}),job=out.run.output,pages=job.pages.filter(x=>x.sceneId==='evidence'),chart={y:plot.box.y,bottom:plot.box.y+plot.box.height};
+ for(const x of pages)assert.ok(!(x.clip.y>chart.y+0.5&&x.clip.y<chart.bottom-0.5),`a page clip starts inside the chart at ${x.clip.y}`);
+ const whole=pages.find(x=>x.clip.y<=chart.y+0.5&&x.clip.y+x.clip.height>=chart.bottom-0.5);assert.ok(whole,'one page takes the chart whole');
+ if(pages.length===1)assert.equal(pages[0].reason,'width-bound');
+ else{assert.equal(pages[0].reason,'paged');assert.equal(whole.overHeight,true,'the over-height band is reported');assert.ok(whole.scale<0.667);assert.deepEqual(out.report.check.typography.overHeight.map(o=>[o.sceneId,o.part]),[['evidence',whole.part]]);}
+ assert.equal(out.report.check.status,'pass','typography is reported on the PDF, not refused (batch 1)');
+});
+test('CINE-001 PDF: paginate:"none" keeps one page per scene (today\'s behaviour) and the check names the whole-scene scale',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),resources=await visualAssetResources(p,home),{out}=paged(p,'pdf',{resources,paginate:'none'}),job=out.run.output;
+ assert.equal(job.pages.length,p.plan.scenes.length);assert.deepEqual(job.pagination,[]);
+ for(const x of job.pages){assert.equal(x.part,1);assert.equal(x.parts,1);assert.equal(x.reason,'off');assert.equal(x.clip.height,x.height);}
+ const of=job.pages.find(x=>x.sceneId==='overflow');assert.ok(of.scale<810/of.height+1e-6);
+ assert.equal(out.report.check.status,'pass');assert.equal((job.html.match(/class="dw-strip"/g)||[]).length,0);
+ // The structural check names a page whose scale is off: whole-scene scale.
+ const bad=structuredClone(job);bad.pages[0].scale=1.2;const c=(await import('../src/targets/pdf/print.mjs')).checkPrintJob(bad,{plan:p.plan});
+ assert.equal(c.status,'fail');assert.ok(c.failures.some(f=>f.check==='whole-scene scale'&&f.sceneId===bad.pages[0].sceneId));
+ // Parts out of order are refused too.
+ const {out:auto}=paged(p,'pdf',{resources}),gap=structuredClone(auto.run.output);gap.pages=gap.pages.filter(x=>!(x.sceneId==='overflow'&&x.part===1));
+ const g=(await import('../src/targets/pdf/print.mjs')).checkPrintJob(gap,{plan:p.plan});assert.equal(g.status,'fail');assert.ok(g.failures.some(f=>f.check==='parts'&&f.sceneId==='overflow'));
+});
