@@ -39,7 +39,7 @@ const dialog=page=>page.locator('#sessionDialog');
 // so it reaches the restarted server; ⌘/Ctrl S is its explicit save. Since single entry step 3 Visual Studio does the same.
 const studios=[
  {name:'classic',projectRoute:id=>'/api/projects/'+id,listRoute:'/api/projects',
-  async open(page){await page.goto(app.url+'/');await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await settle(page);return (await call('/api/projects')).projects[0].id;},
+  async open(page){await page.goto(app.url+'/');await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await settle(page);return (await call('/api/projects')).projects[0].id;},
   // Wait for the debounced preview so no background request reaches the restarted server first.
   async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
   value:page=>page.locator('#slideTitle').inputValue(),
@@ -50,7 +50,7 @@ const studios=[
   saved:page=>page.waitForSelector('#saveState[data-state="saved"]',{state:'attached',timeout:20000})},
  // Single entry step 3: Visual Studio shares the shell, so it autosaves and recovers exactly like classic.
  {name:'visual',projectRoute:id=>'/api/visual/projects/'+id,listRoute:'/api/visual/projects',
-  async open(page){await page.goto(app.url+'/visual?project='+visualDemo.id);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');await settle(page);return visualDemo.id;},
+  async open(page){await page.goto(app.url+'/?project='+visualDemo.id);await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');await settle(page);return visualDemo.id;},
   async edit(page,text){await page.locator('#deckTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
   value:page=>page.locator('#deckTitle').inputValue(),
   autosaves:true,

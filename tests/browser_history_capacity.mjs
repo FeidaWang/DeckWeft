@@ -35,7 +35,7 @@ const snapshotFiles=async(kind,id)=>(await readdir(path.join(home,...(kind==='vi
 // Each studio says how to open it, edit one field, save, read the save message and open its history dialog.
 const studios=[
  {name:'classic',kind:'classic',projectRoute:id=>'/api/projects/'+id,
-  async open(page){await page.goto(app.url+'/');await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await page.waitForLoadState('networkidle');return (await call('/api/projects')).projects[0].id;},
+  async open(page){await page.goto(app.url+'/');await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await page.waitForLoadState('networkidle');return (await call('/api/projects')).projects[0].id;},
   async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
   // Classic autosaves 1.2 s after the edit; nothing is clicked.
   async save(page){await page.waitForSelector('#saveState[data-state="saved"]',{state:'attached',timeout:20000});},
@@ -43,7 +43,7 @@ const studios=[
   async history(page){await page.locator('#openMore').click();await page.locator('#openHistory').click();await page.locator('#historyDialog [data-revision]').first().waitFor();return page.locator('#historyCapacity');},
   close:page=>page.locator('#historyDialog [data-close]').first().click()},
  {name:'visual',kind:'visual',projectRoute:id=>'/api/visual/projects/'+id,
-  async open(page){await page.goto(app.url+'/visual?project='+visualDemo.id);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');return visualDemo.id;},
+  async open(page){await page.goto(app.url+'/?project='+visualDemo.id);await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');return visualDemo.id;},
   // Single entry step 3: Visual Studio shares the shell, so it autosaves and explains cleanup in the same banner as classic.
   async edit(page,text){await page.locator('#deckTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
   async save(page){await page.waitForSelector('#saveState[data-state="saved"]',{state:'attached',timeout:20000});},

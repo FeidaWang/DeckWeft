@@ -35,7 +35,7 @@ for(const file of ['welcome.deck.json','welcome.zh-CN.deck.json'])staticFiles['/
 staticFiles['/shared/preferences.mjs']=['../src/core/preferences.mjs','text/javascript; charset=utf-8'];
 staticFiles['/shared/clock.mjs']=['../src/presentation/clock.mjs','text/javascript; charset=utf-8'];
 for(const file of ['visual.js','visual.css','interactions.js','assets.js','workbench.js','prompt.js','profile.js','revisions.js','author.js','evidence.js'])staticFiles['/studio/'+file]=['studio/'+file,file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8'];
-staticFiles['/visual']=['studio/visual.html','text/html; charset=utf-8'];
+staticFiles['/visual']='/'; // Single entry: Visual Studio is served from /; the old address redirects, keeping the query.
 const secureHeaders={
   'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',
   'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
@@ -189,6 +189,7 @@ export async function startStudio({port=4179,home,seed=true,captureBrowser,workb
         throw new DeckError('NOT_FOUND','This API route does not exist.',404);
       }
       if(method==='GET'&&url.pathname==='/three-vendor.js'){res.writeHead(200,{'Content-Type':'text/javascript; charset=utf-8'});return res.end(threeBundle());}
+      if((method==='GET'||method==='HEAD')&&typeof staticFiles[url.pathname]==='string'){res.writeHead(302,{Location:staticFiles[url.pathname]+url.search});return res.end();}
       if(method!=='GET'||!staticFiles[url.pathname])throw new DeckError('NOT_FOUND','This page does not exist.',404);
       const [file,type]=staticFiles[url.pathname];res.writeHead(200,{'Content-Type':type});res.end(await readFile(path.join(root,'public',file)));
     }catch(error){send(res,error.status||500,{error:{code:error.code||'INTERNAL_ERROR',message:error.status?error.message:'The local server could not finish this request. Check the terminal.',details:error.details||[]}});}

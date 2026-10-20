@@ -15,6 +15,7 @@ window.addEventListener('storage',e=>{if(e.key==='deckweft.preferences.v1'){try{
 apply();
 export function mountPreferences({dialogs,$}){
  function sync(){
+  if(!$('#playbackMotion'))return; // the settings dialog is out of the page while the other deck kind is shown; opening it syncs again
   const effective=getPreferences();
   for(const button of document.querySelectorAll('button[data-appearance]'))button.setAttribute('aria-pressed',String(preferences.appearance===button.dataset.appearance));
   $('#playbackMotion').value=preferences.motion;$('#reduceMotion').checked=effective.motion!=='full';$('#reduceMotion').disabled=reduced.matches;

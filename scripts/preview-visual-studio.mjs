@@ -14,5 +14,5 @@ const components=process.argv.includes('--components');
 const composition=process.argv.includes('--compositions'),assets=process.argv.includes('--assets');
 const home=path.join(root,interactions?'dist/visual-interactions/library':components?'dist/visual-components/library':assets?'dist/visual-assets/library':composition?'dist/visual-compositions/library':'dist/visual-studio/library'),store=await new VisualProjectStore(home).init();
 if(!(await store.list()).length)for(const locale of ['en','zh-CN'])await store.save(await (interactions?createInteractionDemo:components?createComponentDemo:assets?createAssetDemo:composition?createCompositionDemo:createVisualDemo)(locale,store.home),{create:true});
-const app=await startStudio({home,port:0});console.log(`DeckWeft Visual Studio: ${app.url}/visual${assets?'?scene=violet':''}\nClassic Studio: ${app.url}\nDemo library: ${home}\nCtrl+C stops this local preview.`);
+const app=await startStudio({home,port:0});console.log(`DeckWeft Studio (visual and classic decks open here): ${app.url}/${assets?'?scene=violet':''}\nDemo library: ${home}\nCtrl+C stops this local preview.`);
 process.once('SIGINT',()=>app.close());process.once('SIGTERM',()=>app.close());

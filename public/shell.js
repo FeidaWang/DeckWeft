@@ -55,6 +55,8 @@ import {t,applyLanguage} from './i18n.js';
  *
  * @typedef {object} Shell
  * @property {DialogManager} dialogs
+ * @property {HTMLElement} root  The workspace; `root.isConnected` is false while another kind is on the page.
+ * @property {(locale:string)=>void} setLocale  Switch the interface language, as the language button does.
  * @property {(key:string,params?:Record<string,unknown>)=>string} t  The shared dictionary (i18n.js), in the current language.
  * @property {string} locale
  * @property {(message:string)=>void} toast
@@ -132,9 +134,29 @@ function place(container,nodes){
   for(const stale of [...container.children].filter(n=>n.dataset.key&&!nodes.includes(n)))stale.remove();
 }
 
+/**
+ * Asks the page loader (app.js) to open a deck of another kind in this same page: the current kind is taken out of the
+ * page, the other one is put in, and nothing reloads. Resolves true once the deck is open, false when it could not be.
+ * @param {'classic'|'visual'} kind @param {string} [id]
+ */
+export function openDeck(kind,id){
+  return new Promise(resolve=>{
+    const request=new CustomEvent('deckweft:switch-deck',{cancelable:true,detail:{kind,id,done:resolve}});
+    if(window.dispatchEvent(request))resolve(false);
+  });
+}
+
+/** Keeps the address on the deck that is on screen (`?project=<id>`, other parameters stay), so a reload or a shared link opens the same deck. */
+export function rememberDeck(id){
+  const url=new URL(location.href);if(url.searchParams.get('project')===id)return;
+  url.searchParams.set('project',id);history.replaceState(null,'',url);
+}
+
 /** @param {Adapter} adapter @param {HTMLElement} root @returns {Shell} */
 export function mountShell(adapter,root){
   const $=selector=>document.querySelector(selector);
+  // Another kind can take this shell out of the page and put it back. While it is out, its document-wide listeners sleep.
+  const alive=()=>root.isConnected;
   const parts=adapter.parts?.()||{};
   root.className='workspace';root.innerHTML=workspaceMarkup;root.insertAdjacentHTML('beforebegin',band);root.insertAdjacentHTML('afterend',after);
   for(const slot of document.querySelectorAll('[data-slot]')){const markup=slot.dataset.slot.split('.').reduce((o,k)=>o?.[k],parts);if(markup)slot.insertAdjacentHTML('beforebegin',markup);slot.remove();}
@@ -144,7 +166,7 @@ export function mountShell(adapter,root){
   for(const section of document.querySelectorAll('#moreDialog .more-section'))if(section.children.length<2)section.hidden=true;
   let locale=adapter.locale?.()||'en',toastTimer;
   applyLanguage(document,locale);
-  const dialogs=new DialogManager(document),more=$('#moreDialog');
+  const dialogs=new DialogManager(document,alive),more=$('#moreDialog');
   function toast(message){clearTimeout(toastTimer);$('#toastRegion').textContent=message;$('#toastRegion').classList.add('visible');toastTimer=setTimeout(()=>{$('#toastRegion').textContent='';$('#toastRegion').classList.remove('visible');},6500);}
   function notice(message,tone){$('#issueBanner').hidden=!message;$('#issueBanner').textContent=message||'';$('#issueBanner').classList.toggle('warning',tone==='warning');}
 
@@ -168,7 +190,7 @@ export function mountShell(adapter,root){
   const phone=matchMedia('(max-width:680px)');
   const topSlots=['undo','redo','deckTitle'].map(id=>{const el=$('#'+id),marker=document.createComment('top-'+id);el.before(marker);return {el,marker};});
   function placeTopControls(){for(const {el,marker} of topSlots){if(phone.matches)$('#moreTop').append(el);else marker.after(el);}}
-  phone.addEventListener('change',placeTopControls);placeTopControls();
+  phone.addEventListener('change',()=>{if(alive())placeTopControls();});placeTopControls();
 
   // Page strip and choices, redrawn whenever the kind reports a change. Cards stay in place, so focus stays where it was and
   // a picture is replaced only when it changed.
@@ -231,7 +253,7 @@ export function mountShell(adapter,root){
     else if(['ArrowDown','ArrowUp'].includes(event.key)&&items.length){event.preventDefault();items[(i+(event.key==='ArrowDown'?1:items.length-1))%items.length].focus();}
     else if(event.key==='Tab')closeMenu();
   });
-  document.addEventListener('pointerdown',event=>{if(!menu.hidden&&!menu.contains(event.target))closeMenu();});
+  document.addEventListener('pointerdown',event=>{if(alive()&&!menu.hidden&&!menu.contains(event.target))closeMenu();});
 
   // Colour matching: focus in Words frames the matching block on the canvas in yellow, or outlines the whole slide when
   // that field draws nothing; focus in Look outlines the slide in blue.
@@ -251,7 +273,7 @@ export function mountShell(adapter,root){
   $('.inspector').addEventListener('focusin',event=>{const zone=event.target.closest('[data-zone]');zoneFocus=zone?{zone:zone.dataset.zone,field:event.target.id}:null;markZone();});
   $('.inspector').addEventListener('focusout',()=>{zoneFocus=null;markZone();});
   $('#toggleStory').onclick=()=>dialogs.openDrawer('story');$('#toggleInspector').onclick=()=>dialogs.openDrawer('inspector');
-  window.addEventListener('resize',()=>dialogs.resize(innerWidth));
+  window.addEventListener('resize',()=>{if(alive())dialogs.resize(innerWidth);});
 
   // First run (design guide §10): an empty library shows one paste box on the stage instead of an empty workbench.
   function showFirstRun(){document.body.classList.add('first-run');$('#canvas').hidden=true;$('#firstRun').hidden=false;$('#firstRunText').focus();}
@@ -290,6 +312,7 @@ export function mountShell(adapter,root){
   }
   $('#openExport').onclick=()=>{syncExports();adapter.exportOpened?.();dialogs.open($('#exportDialog'));};
   document.addEventListener('click',event=>{
+    if(!alive())return;
     const button=event.target.closest('button');if(!button||button.disabled)return;
     if(button.dataset.close)document.getElementById(button.dataset.close)?.close();
     if(button.dataset.export){const entry=adapter.exports()[button.dataset.export];if(entry&&!entry.disabled)entry.run();}
@@ -304,7 +327,7 @@ export function mountShell(adapter,root){
 
   // A 401 is answered before the request is handled, so the kind may retry once after reconnecting.
   const reconnect=sessionRecovery({setToken:token=>adapter.setToken(token)});
-  const shell={dialogs,t,get locale(){return locale;},toast,notice,status,syncExports,showFirstRun,closeFirstRun,reconnect,askSaveCopy:()=>askSaveCopy(),
+  const shell={dialogs,t,get locale(){return locale;},get root(){return root;},setLocale:next=>{if(next!==locale)setLocale(next);},toast,notice,status,syncExports,showFirstRun,closeFirstRun,reconnect,askSaveCopy:()=>askSaveCopy(),
     // From 80% of the suggested history size the banner explains cleanup; nothing is deleted.
     capacity:usage=>notice(historyCapacityNote(usage),'warning')};
   adapter.onChange(refresh);adapter.mount(shell);syncExports();

@@ -21,7 +21,7 @@ try{
  // workbench API here, and the browser keeps showing what they record (F3 added lines, F5 attestations).
  const measured=()=>page.waitForFunction(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale');},{},{timeout:30000});
  const settle=async r=>{for(let k=0;k<1500&&r.running;k++){await new Promise(z=>setTimeout(z,200));r=await(await api('workbench/'+r.id,undefined,'GET')).json();}return r;};
- await page.goto(app.url+'/visual?project='+source.id);await page.waitForFunction(()=>document.querySelector('#sceneTitle').textContent.length>0);
+ await page.goto(app.url+'/?project='+source.id);await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>document.querySelector('#sceneTitle').textContent.length>0);
  for(const gone of ['#reviewPanel','#workbenchCapture','#workbenchInspect','#workbenchReview','#workbenchImages','#workbenchJudgment','#workbenchVerdict','#workbenchAttest','#workbenchHumanReview','#workbenchReport','#workbenchExport','#workbench-uiLanguage','#workbench-promptLanguage','#workbench-outputLanguage','#workbench-contentTone','#fit'])assert.equal(await page.locator(gone).count(),0,gone);
  await revealStudio(page,'agent');if(!await page.locator('#workbenchPreferences').evaluate(n=>n.open))await page.locator('#workbenchPreferences summary').click();
  await page.locator('#workbench-visualStyle').selectOption('electric-violet');
@@ -45,7 +45,7 @@ try{
   const lines=[r.project.document.blocks.find(b=>b.id===r.project.plan.scenes[0].focalBlockId).text,'<img src=x onerror="throw Error(123)">','Repeated added line','Repeated added line'];
   fixture.task.hostDraft={hostAuthoredLines:4,hostAuthored:lines.map(text=>({page:0,text}))};await writeFile(file,JSON.stringify(fixture));
   const thumb=page.locator('#slideList [data-slide="'+sceneId+'"]');
-  await page.reload();await page.waitForFunction(id=>/Host added · 4/.test(document.querySelector('#slideList [data-slide="'+id+'"] .thumbnail-mark')?.textContent||''),sceneId);
+  await page.reload();await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(id=>/Host added · 4/.test(document.querySelector('#slideList [data-slide="'+id+'"] .thumbnail-mark')?.textContent||''),sceneId);
   assert.match(await thumb.locator('.thumbnail-mark').textContent(),/Host added.*4/);
   assert.match(await thumb.getAttribute('aria-label'),/Host added.*4.*unverified/);
   await thumb.click();await revealStudio(page,'edit');
@@ -55,17 +55,17 @@ try{
   const route=app.url+'/api/visual/workbench/'+id;
   for(const attestation of ['author','host-metadata-only','host-pixel-control','unattested']){
    await page.route(route,async route=>{const response=await route.fetch(),data=await response.json();data.evidence.review={attestation,verdict:'fail',controls:{hits:attestation==='host-pixel-control'?2:0,total:2}};await route.fulfill({response,json:data});});
-   await page.reload();await page.waitForFunction(a=>document.querySelector('#workbenchEvidence')?.textContent.includes(a),attestation);
+   await page.reload();await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(a=>document.querySelector('#workbenchEvidence')?.textContent.includes(a),attestation);
    assert.match(await page.locator('#workbenchEvidence').textContent(),new RegExp((attestation==='host-pixel-control'?'2':'0')+'/2'));
    await revealStudio(page,'agent');await page.locator('#workbenchEvidence').screenshot({path:path.join(out,'attestation-'+attestation+'.png')});await closeStudio(page);
    await page.unroute(route);
   }
-  await page.reload();await page.waitForFunction(()=>/unattested/.test(document.querySelector('#workbenchEvidence')?.textContent||''));assert.ok(r.receipt.captures.length>0,'the capture is recorded');
+  await page.reload();await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>/unattested/.test(document.querySelector('#workbenchEvidence')?.textContent||''));assert.ok(r.receipt.captures.length>0,'the capture is recorded');
   assert.match(await page.locator('#workbenchEvidence').textContent(),/unattested/);assert.match(await page.locator('#workbenchEvidence').textContent(),/not run/);
   // The author's judgment, explicitly *failing*, through the review action (transport evidence, not visual acceptance); the drawer shows it.
   r=await(await api('workbench/'+id+'/action',{expectedSequence:r.sequence,action:'review',host:'local',review:{attestation:'author',reviewer:'Local author',delivery:'Automated author-form transport fixture; native image files supplied',images:r.receipt.captures.map(c=>c.file),judgment:'Automated author-form transport fixture; no human visual acceptance.',verdict:'fail'}})).json();r=await settle(r);
   assert.equal(r.status,'review-required');assert.equal(r.receipt.review.attestation,'author');assert.equal(r.canExport,false);
-  await page.reload();await page.waitForFunction(()=>/author/.test(document.querySelector('#workbenchEvidence')?.textContent||''));await revealStudio(page,'agent');await page.locator('#workbenchEvidence').screenshot({path:path.join(out,'author-form-result.png')});await closeStudio(page);
+  await page.reload();await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>/author/.test(document.querySelector('#workbenchEvidence')?.textContent||''));await revealStudio(page,'agent');await page.locator('#workbenchEvidence').screenshot({path:path.join(out,'author-form-result.png')});await closeStudio(page);
   // The evidence report, as the release gate downloads it.
   const md=await(await api('workbench/'+id+'/report?format=md',undefined,'GET')).text();await writeFile(path.join(out,'report.md'),md);
   const markdown=await readFile(path.join(out,'report.md'),'utf8');assert.match(markdown,/Host-added lines \| 4/);assert.match(markdown,/author/);assert.match(markdown,/fail/);assert.match(markdown,/not run/);assert.ok(markdown.includes(sceneId));

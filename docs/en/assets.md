@@ -5,7 +5,7 @@
 ## Open the local example
 
 1. Run `npm run studio:assets` with Node.js 22 or newer.
-2. Open the printed `/visual?scene=violet` address. The isolated library is `dist/visual-assets/library`; your usual library is separate.
+2. Open the printed address (it ends in `?scene=violet`). The isolated library is `dist/visual-assets/library`; your usual library is separate.
 3. Choose the English or Chinese example, open **Design**, and find **Asset direction & protected subject**. Expect an original authored synthetic fixture, explicitly labelled as non-documentary.
 4. Use **Inspect original & crop candidates**. The orange outline is the author-marked protected region; the circle is the focal point. No automatic subject detection runs.
 5. Compare portrait, square and wide options. Apply a passing crop, inspect the main preview, then save. Use **Contain complete image in 16:9** to retain every original pixel in the frame.

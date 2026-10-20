@@ -10,8 +10,10 @@ import {renderAddedLines} from '../studio/evidence.js';
 import {keyboardAction} from '../interaction.js';
 import {historyCapacityNote} from '../history-capacity.js';
 import {t} from '../i18n.js';
+import {openDeck,rememberDeck} from '../shell.js';
 const $=s=>document.querySelector(s),x=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const query=new URLSearchParams(location.search);
+// Read when asked, not once: the page is not reloaded when the loader switches kinds or opens another deck.
+const query={get:name=>new URLSearchParams(location.search).get(name)};
 const storedUI=(()=>{try{return localStorage.getItem('deckweft.visual.ui');}catch{return null;}})();
 const state={token:'',project:null,active:'',dirty:false,counter:0,saving:false,saveIssue:null,previewError:false,firstRun:false,render:null,fit:null,measured:false,ui:['en','zh-CN'].includes(query.get('ui'))?query.get('ui'):storedUI==='zh-CN'?'zh-CN':'en',undo:[],redo:[],drafts:new Map(),snapshot:null,taskEvidence:null,detail:'standard'};
 // Labels the server sends as [id, English, Chinese] are data, not interface text: they pick by pair.
@@ -20,6 +22,8 @@ const scene=()=>state.project?.plan.scenes.find(s=>s.id===state.active),profile=
 const THEMES=['cream-collage','electric-violet','dark-data','silver-gray-editorial','fresh-report','orange-launch'];
 const changeListeners=[];
 let shell,dialogs,workbench,author;
+// While the classic kind is on the page this one is out of it: its document-wide listeners sleep.
+const live=()=>!!shell?.root.isConnected;
 let selectedImage='',assetInspection=null,sourceEntries=[];
 let previewTimer,saveTimer,compareTimer,sequence=0,candidateRun=0,candidateState=null,comparing=false,compareFailed=-1,familyOverrides=Object.create(null);
 
@@ -122,6 +126,7 @@ function notify(){for(const fn of changeListeners)fn();scaleThumbnails();scaleCa
 // ---- Status: the square, the export buttons, the page buttons ----
 function exportBlocked(){const p=state.project;return !p||state.saving||!state.measured||!!state.drafts.size||(!!p?.extensions.deckweftWorkbench&&!workbench?.ready());}
 function status(){
+  if(!live())return; // answers that arrive while the other kind is on the page draw nothing
   const p=state.project;if(!shell)return;
   const attention=!!state.saveIssue||!!state.drafts.size||state.previewError;
   const square=!p?(state.firstRun?'unsaved':'saving'):state.saving?'saving':attention?'attention':state.dirty?'unsaved':'saved';
@@ -147,7 +152,7 @@ async function libraries(){
   $('#projectPicker').innerHTML=items.map(p=>`<option value="${p.kind==='classic'?'classic:':''}${x(p.id)}" ${p.unreadable?'disabled':''}>${x(t('visual.backup.pickerItem',{title:p.title,kind:t(p.kind==='visual'?'visual.backup.kindVisual':'visual.backup.kindClassic')}))}</option>`).join('');
   if(state.project)$('#projectPicker').value=state.project.id;return visual.projects;
 }
-function activate(project){invalidateCandidates();familyOverrides=Object.create(null);clearTimeout(previewTimer);clearTimeout(saveTimer);sequence++;shell.closeFirstRun();state.firstRun=false;state.project=project;state.taskEvidence=null;state.saveIssue=null;state.previewError=false;shell.notice('');const requested=query.get('scene');state.active=project.plan.scenes.some(s=>s.id===requested)?requested:project.plan.scenes[0].id;state.dirty=false;state.counter++;state.undo=[];state.redo=[];state.drafts.clear();state.render=null;state.measured=false;draw();schedulePreview();workbench?.selection();}
+function activate(project){rememberDeck(project.id);invalidateCandidates();familyOverrides=Object.create(null);clearTimeout(previewTimer);clearTimeout(saveTimer);sequence++;shell.closeFirstRun();state.firstRun=false;state.project=project;state.taskEvidence=null;state.saveIssue=null;state.previewError=false;shell.notice('');const requested=query.get('scene');state.active=project.plan.scenes.some(s=>s.id===requested)?requested:project.plan.scenes[0].id;state.dirty=false;state.counter++;state.undo=[];state.redo=[];state.drafts.clear();state.render=null;state.measured=false;draw();schedulePreview();workbench?.selection();}
 async function leave(){return !state.dirty&&!state.drafts.size||confirm(t('visual.main.leaveTheseUnsavedEditsExportProject'));}
 async function open(loader){if(!await leave())return false;state.measured=false;state.render=null;status();try{activate(await loader());await libraries();return true;}catch(e){error(e);status();return false;}}
 
@@ -188,7 +193,7 @@ function scale(){
   const frame=$('#preview');frame.style.width='1440px';frame.style.height=height+'px';frame.style.transform=`scale(${s})`;
   for(const n of [$('#canvas'),space]){n.style.width=Math.floor(1440*s)+'px';n.style.height=Math.ceil(height*s)+'px';}
 }
-function schedulePreview(){clearTimeout(previewTimer);const run=++sequence;state.render=null;state.fit=null;state.measured=false;status();notify();if(state.drafts.size){$('#preview').removeAttribute('src');return;}previewTimer=setTimeout(async()=>{const counter=state.counter;try{const r=await json('/api/visual/preview',{project:state.project});if(run!==sequence||counter!==state.counter)return;state.render=r;state.previewError=false;thumbnailHeights.clear();$('#preview').src=r.artifactUrl+'#scene='+encodeURIComponent(state.active);scale();notify();status();}catch(e){if(run===sequence){state.previewError=true;error(e);status();}}},200);}
+function schedulePreview(){clearTimeout(previewTimer);const run=++sequence;state.render=null;state.fit=null;state.measured=false;status();notify();if(state.drafts.size){$('#preview').removeAttribute('src');return;}previewTimer=setTimeout(async()=>{if(!live())return;const counter=state.counter;try{const r=await json('/api/visual/preview',{project:state.project});if(run!==sequence||counter!==state.counter)return;state.render=r;state.previewError=false;thumbnailHeights.clear();$('#preview').src=r.artifactUrl+'#scene='+encodeURIComponent(state.active);scale();notify();status();}catch(e){if(run===sequence){state.previewError=true;error(e);status();}}},200);}
 // A save changes only the revision: the page renders the same, so a fresh ticket is measured with the fit already taken instead
 // of reloading the frame. Exports and choices need the ticket of these exact bytes, revision included.
 async function refreshTicket(){
@@ -290,7 +295,7 @@ const motionOpened=new Set();
 function invalidateCandidates(){candidateRun++;candidateState=null;clearTimeout(compareTimer);if($('#candidateDialog')?.open)$('#candidateDialog').close();$('#largeCandidate')?.removeAttribute('src');if($('#rhythm'))$('#rhythm').disabled=true;$('#rhythmReport')?.replaceChildren();if($('#candidateStatus'))$('#candidateStatus').textContent='';}
 function scheduleCompare(){clearTimeout(compareTimer);if(!state.project||!state.measured||state.drafts.size||candidateState||comparing||compareFailed===state.counter)return;compareTimer=setTimeout(compare,600);}
 async function compare(){
-  if(!state.project||state.drafts.size||candidateState||comparing)return;const run=++candidateRun,counter=state.counter;comparing=true;$('#candidateStatus').textContent=t('visual.main.preparingThreeCompleteCandidateDecks');
+  if(!live()||!state.project||state.drafts.size||candidateState||comparing)return;const run=++candidateRun,counter=state.counter;comparing=true;$('#candidateStatus').textContent=t('visual.main.preparingThreeCompleteCandidateDecks');
   try{const result=await json('/api/visual/candidates',{project:state.project,families:familyOverrides});if(run!==candidateRun||counter!==state.counter)return;result.active=state.active;candidateState=result;notify();drawCandidates();}
   catch(e){if(run===candidateRun){compareFailed=counter;$('#candidateStatus').textContent=e.message;}}finally{comparing=false;}
 }
@@ -358,7 +363,7 @@ async function example(){try{activate((await json('/api/visual/demo',{locale:sta
 
 function mount(s){
   shell=s;dialogs=s.dialogs;document.body.classList.add('kind-visual');
-  new ResizeObserver(()=>{scale();scaleThumbnails();scaleCandidates();}).observe($('#stage'));
+  new ResizeObserver(()=>{if(!live())return;scale();scaleThumbnails();scaleCandidates();}).observe($('#stage'));
   // Words
   $('#fields').addEventListener('input',e=>{const n=e.target,b=state.project.document.blocks.find(b=>b.id===Object.values(n.dataset)[0]);if(!b||b.id!==Object.values(n.dataset)[0])return;
    if(n.dataset.dataset||n.dataset.block||n.dataset.codeMeta){try{const parsed=JSON.parse(n.value);if(n.dataset.codeMeta){if(Object.hasOwn(parsed,'text'))throw Error('Edit exact code in the code text field.');parsed.text=b.text;}if(n.dataset.dataset&&(parsed.id!==b.datasetId||!Array.isArray(parsed.series)||parsed.series.some(s=>!Array.isArray(s.values)||s.values.some(v=>v!==null&&(typeof v!=='number'||!Number.isFinite(v))))))throw Error('Use finite numeric series or explicit null gaps; keep the dataset id.');if((n.dataset.block||n.dataset.codeMeta)&&(parsed.id!==b.id||parsed.type!==b.type))throw Error('Keep the semantic block id and type.');state.drafts.delete(b.id);n.classList.remove('invalid');changed(()=>{if(n.dataset.dataset)state.project.document.datasets[state.project.document.datasets.findIndex(d=>d.id===b.datasetId)]=parsed;else state.project.document.blocks[state.project.document.blocks.findIndex(v=>v.id===b.id)]=parsed;});status();}catch(err){state.drafts.set(b.id,n.value);sequence++;clearTimeout(previewTimer);clearTimeout(saveTimer);state.render=null;state.measured=false;n.classList.add('invalid');status();error(err);}return;}
@@ -401,7 +406,7 @@ function mount(s){
   $('#outputLanguage').onchange=e=>changed(()=>{state.project.document.locale=e.target.value;const d=state.project.document;d.visualBrief??={audience:'',outputLanguage:d.locale,profile:profile()};d.visualBrief.outputLanguage=e.target.value;});
   $('#audience').oninput=e=>changed(()=>{const d=state.project.document;d.visualBrief??={audience:'',outputLanguage:d.locale,profile:profile()};d.visualBrief.audience=e.target.value;});
   $('#profileFields').onchange=e=>{if(e.target.dataset.profile)changed(()=>{const d=state.project.document;d.visualBrief??={audience:'',outputLanguage:d.locale,profile:profile()};d.visualBrief.profile[e.target.dataset.profile]=e.target.value;});};
-  $('#projectPicker').onchange=async e=>{const value=e.target.value;if(value.startsWith('classic:')){if(await leave())location.assign('/');else e.target.value=state.project?.id||'';return;}const counter=state.counter;if(!await leave()){e.target.value=state.project.id;return;}try{state.measured=false;state.render=null;status();const result=await json('/api/visual/projects/'+value,undefined,'GET');if(counter!==state.counter){e.target.value=state.project.id;schedulePreview();throw new Error(t('visual.main.yourEditsChangedWhileOpeningAnother'));}activate(result.project);}catch(err){error(err);}};
+  $('#projectPicker').onchange=async e=>{const value=e.target.value;if(value.startsWith('classic:')){if(!await leave()||!await openDeck('classic',value.slice(8)))e.target.value=state.project?.id||'';return;}const counter=state.counter;if(!await leave()){e.target.value=state.project.id;return;}try{state.measured=false;state.render=null;status();const result=await json('/api/visual/projects/'+value,undefined,'GET');if(counter!==state.counter){e.target.value=state.project.id;schedulePreview();throw new Error(t('visual.main.yourEditsChangedWhileOpeningAnother'));}activate(result.project);}catch(err){error(err);}};
   $('#demo').onclick=()=>open(async()=>(await json('/api/visual/demo',{locale:state.ui})).project);
   $('#compositionDemo').onclick=()=>open(async()=>(await json('/api/visual/composition-demo',{locale:state.ui})).project);
   for(const [id,route,first] of [['assetDemo','asset-demo','violet'],['componentDemo','component-demo','component-line'],['interactionDemo','interaction-demo','component-line']])$('#'+id).onclick=async()=>{if(await open(async()=>(await json('/api/visual/'+route,{locale:state.ui})).project))selectScene(first);};
@@ -417,13 +422,14 @@ function mount(s){
   $('#restore').onclick=async()=>{if(!state.snapshot)return;if(await open(async()=>(await json('/api/visual/projects/'+state.project.id+'/history/'+state.snapshot.project.revision.number+'/restore',{mode:'copy',snapshotHash:state.snapshot.sha256,requestId:crypto.randomUUID().replaceAll('-','')})).project))$('#historyDialog').close();};
   // Keyboard: ⌘/Ctrl S saves (and offers the copy after a conflict), ⌘/Ctrl Z undoes outside text fields; arrows walk the strip.
   addEventListener('keydown',e=>{
+    if(!live())return;
     if(e.target.closest?.('#slideList')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)&&state.project){const scenes=state.project.plan.scenes,i=scenes.findIndex(s=>s.id===state.active),next=e.key==='Home'?0:e.key==='End'?scenes.length-1:Math.max(0,Math.min(scenes.length-1,i+(e.key==='ArrowRight'?1:-1)));e.preventDefault();selectScene(scenes[next].id,{focus:true});return;}
     const action=keyboardAction(e,{editing:!!e.target.closest?.('input,textarea,select,[contenteditable="true"]'),modal:!!document.querySelector('dialog[open]')});
     if(!action||!state.project)return;if(action==='save'){e.preventDefault();save();}else if(action==='undo'){e.preventDefault();moveHistory();}else if(action==='redo'){e.preventDefault();moveHistory(true);}
   });
-  addEventListener('beforeunload',e=>{if(state.dirty||state.drafts.size){e.preventDefault();e.returnValue='';}});
+  addEventListener('beforeunload',e=>{if(live()&&(state.dirty||state.drafts.size)){e.preventDefault();e.returnValue='';}});
   // A finished draft opens on the stage: the drawer steps aside, as the old Create panel did.
-  document.addEventListener('deckweft:work-ready',()=>{if($('#moreDialog').open)$('#moreDialog').close();});
+  document.addEventListener('deckweft:work-ready',()=>{if(live()&&$('#moreDialog').open)$('#moreDialog').close();});
   workbench=mountWorkbench({state,json,api,activate,libraries,save,leave,download,error,setEvidence:evidence=>{if(JSON.stringify(state.taskEvidence)===JSON.stringify(evidence))return;state.taskEvidence=evidence;drawScenes();drawEditor();}});
   // A plan's project carries the revision it was planned on; the editor keeps its current revision so the next save does not conflict.
   author=mountAuthor({state,json,api,apply:project=>changed(()=>{const revision=state.project.revision;state.project=project;state.project.revision=revision;},{fields:true}),download,error,message,x,workbench,save,dialogs,pageKept,sceneLock,status});
@@ -437,6 +443,15 @@ addEventListener('message',e=>{
 });
 
 /** @type {import('../shell.js').Adapter & {open:()=>Promise<void>}} */
+// The dialogs only this kind uses (larger layout, earlier versions, image import, local PNG). The loader puts them beside
+// <main id="root"> before this kind is mounted, and takes them out again when the classic kind is on the page.
+export const dialogMarkup=/*html*/`
+<dialog id="candidateDialog"><div class="dialog-head"><h2 id="candidateTitle"></h2><button id="candidateClose" data-i18n-attr="aria-label:shell.close" aria-label="Close">×</button></div><div class="candidate-window"><iframe id="largeCandidate" data-i18n-attr="title:visual.candidateLarge" title="Layout, larger" sandbox="allow-scripts"></iframe></div></dialog>
+<dialog id="historyDialog"><div class="dialog-head"><h2 data-i18n="visual.historyDialog.1">Earlier versions</h2><button id="historyClose" data-i18n-attr="aria-label:shell.close" aria-label="Close">×</button></div><p data-i18n="visual.historyDialog.2">Inspect a read-only snapshot. Restore creates a separate copy.</p><p id="historyCapacity" class="history-capacity" role="status" hidden></p><div id="historyList"></div><textarea id="snapshot" readonly data-i18n-attr="aria-label:visual.historySnapshot" aria-label="Earlier version, read only" hidden></textarea><button id="restore" hidden data-i18n="visual.restore">Restore as a new copy</button></dialog>
+<dialog id="sourceDialog"><form id="sourceForm"><div class="dialog-head"><h2 data-i18n="visual.sourceForm.1">Import an original image</h2><button id="sourceClose" type="button" data-i18n-attr="aria-label:shell.close" aria-label="Close">×</button></div><p data-i18n="visual.sourceForm.2">Original bytes stay local and unchanged. Browser conversion retains full dimensions. Each source/encoded file must be ≤1.3 MB.</p><label for="sourceFile">PNG / JPEG / WebP</label><input id="sourceFile" type="file" accept="image/png,image/jpeg,image/webp" required><label for="sourceOrigin" data-i18n="visual.sourceForm.3">Declared origin</label><select id="sourceOrigin"><option value="unknown" data-i18n="visual.sourceOrigin.1">Unclassified — cannot serve as factual evidence</option><option value="original" data-i18n="visual.sourceOrigin.2">Original photo / product screenshot</option><option value="generated" data-i18n="visual.sourceOrigin.3">Generated concept — decorative only</option></select><label for="webEncoding" data-i18n="visual.sourceForm.4">Optional local web derivative</label><select id="webEncoding"><option value="none" data-i18n="visual.webEncoding.1">PNG, original quality</option><option value="image/webp" data-i18n="visual.webEncoding.2">WebP, smaller file</option><option value="image/jpeg" data-i18n="visual.webEncoding.3">JPEG, smaller file</option></select><p class="hint" data-i18n="visual.sourceForm.5">Factual images and product screenshot slots use the native PNG. No automatic provider or remote fetch.</p><label for="sourceAlt" data-i18n="visual.sourceForm.6">Alternative text</label><input id="sourceAlt" required maxlength="1000"><label for="sourceProvenance" data-i18n="visual.sourceForm.7">Source / provenance</label><input id="sourceProvenance" required maxlength="2000"><label for="sourceLicense" data-i18n="visual.sourceForm.8">License</label><input id="sourceLicense" required maxlength="500"><label for="sourceUse" data-i18n="visual.sourceForm.9">Allowed use</label><input id="sourceUse" required maxlength="500"><label for="sourceFallback" data-i18n="visual.sourceForm.10">Fallback description</label><input id="sourceFallback" required maxlength="1000"><button id="sourceSubmit" type="submit" data-i18n="visual.sourceSubmit">Preserve and attach to this slot</button></form></dialog>
+<dialog id="imageDialog"><form id="imageForm"><div class="dialog-head"><h2 data-i18n="visual.imageForm.1">Local image</h2><button id="imageClose" type="button" data-i18n-attr="aria-label:shell.close" aria-label="Close">×</button></div><label for="imageFile">PNG · ≤ 1.3 MB</label><input id="imageFile" type="file" accept="image/png" required><label for="imageAlt" data-i18n="visual.imageForm.2">Alternative text</label><input id="imageAlt" required maxlength="1000"><label for="imageProvenance" data-i18n="visual.imageForm.3">Provenance</label><input id="imageProvenance" required maxlength="2000"><label for="imageLicense" data-i18n="visual.imageForm.4">License</label><input id="imageLicense" required maxlength="500"><label for="imageUse" data-i18n="visual.imageForm.5">Allowed use</label><input id="imageUse" required maxlength="500"><label for="imageFallback" data-i18n="visual.imageForm.6">Text fallback</label><input id="imageFallback" required maxlength="1000"><button type="submit" data-i18n="visual.imageForm.7">Attach to this scene</button></form></dialog>
+`;
+
 export const visualAdapter={
   fields:()=>fields,look:()=>look,parts,candidates,thumbnails,save:()=>save(),exports,onChange:fn=>{changeListeners.push(fn);},
   undo:()=>moveHistory(),redo:()=>moveHistory(true),firstRun,example,mount,
@@ -448,9 +463,9 @@ export const visualAdapter={
   locale:()=>state.ui,
   localize:locale=>{state.ui=locale;try{localStorage.setItem('deckweft.visual.ui',locale);}catch{}if(state.project)draw();workbench?.mode();author?.localize();},
   exportOpened:()=>author?.exportOpened(),dropFile,
-  // Opens ?project=<id>, else the newest readable deck, else the first-run form.
-  async open(){
-    try{status();state.token=(await(await fetch('/api/session')).json()).token;sessionReady();const projects=await libraries(),id=query.get('project')||projects.find(p=>!p.unreadable)?.id;if(id)activate((await json('/api/visual/projects/'+id,undefined,'GET')).project);else{state.firstRun=true;shell.showFirstRun();status();}}
+  // Opens `id` (the loader's choice), else ?project=<id>, else the newest readable deck, else the first-run form.
+  async open(requested){
+    try{status();state.token=(await(await fetch('/api/session')).json()).token;sessionReady();const projects=await libraries(),id=requested||query.get('project')||projects.find(p=>!p.unreadable)?.id;if(id)activate((await json('/api/visual/projects/'+id,undefined,'GET')).project);else{state.firstRun=true;shell.showFirstRun();status();}}
     catch(e){error(e);}
   }
 };

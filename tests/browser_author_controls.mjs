@@ -29,7 +29,7 @@ async function open(width,query){
  const context=await browser.newContext({viewport:{width,height:width<500?860:1000},acceptDownloads:true}),page=await context.newPage();page.setDefaultTimeout(60000);
  page.on('pageerror',e=>errors.push({width,message:e.message}));page.on('console',m=>{if(m.type()==='error')errors.push({width,console:m.text()});});
  await context.route('**/*',r=>{const u=r.request().url();if(u.startsWith(app.url+'/')||u.startsWith('data:')||u.startsWith('blob:'))return r.continue();external.push(u);return r.abort();});
- await page.goto(app.url+'/visual'+query);await page.waitForFunction(()=>document.querySelector('#sceneTitle')?.textContent.length>0||!document.querySelector('#emptyCanvas')?.hidden);
+ await page.goto(app.url+'/'+query);await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>document.querySelector('#sceneTitle')?.textContent.length>0||!document.querySelector('#emptyCanvas')?.hidden);
  return {context,page};
 }
 // Single entry step 3: autosave and the state square replace Save; the canvas says when the preview of these exact edits is measured.
@@ -91,7 +91,7 @@ try{
     // Give the chart more space (API): in Research Atlas the theme's figure layout draws the plot largest (measured); the preview shows it.
     await page.locator('#slideList [data-slide="evidence"]').click();await measured(page);await revealStudio(page,'compositions');await page.locator('[data-zone=look] [data-theme="fresh-report"]').click();await measured(page);
     let deck=await savedWhen(deckA.id,p=>p.plan.scenes.find(s=>s.id==='evidence').theme==='fresh-report');await squareSaved(page);const space=await planned(deck,'chart-space','page','evidence');assert.match(statement(space),/figure layout draws the plot largest/);
-    deck=(await api('projects/'+deckA.id,{project:space.project,expectedRevision:deck.revision.number},'PUT')).project;await page.reload();await measured(page);await page.locator('#slideList [data-slide="evidence"]').click();await measured(page);
+    deck=(await api('projects/'+deckA.id,{project:space.project,expectedRevision:deck.revision.number},'PUT')).project;await page.reload();await page.waitForSelector('#root.workspace',{state:'attached'});await measured(page);await page.locator('#slideList [data-slide="evidence"]').click();await measured(page);
     assert.match(await page.frameLocator('#preview').locator('section#evidence').getAttribute('class'),/atlas-figure/);const plotAfter=await page.frameLocator('#preview').locator('section#evidence .chart-plot svg').first().boundingBox();
     record(width,'chart space (API): largest measured layout for the theme',{effects:space.effects.map(v=>v.en),plot:plotAfter,shot:await shot(page,`chart-space-${width}`,'#frameSpace')});
     // Keep this layout (API): a theme-own composition refuses a theme change by name; a shared composition keeps its geometry.

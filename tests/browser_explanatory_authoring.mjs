@@ -19,7 +19,7 @@ try{
   source.document.visualBrief.profile.motionIntensity='subtle';
   const saved=await store.save(source,{create:true}),page=await browser.newPage({viewport:{width:1600,height:1100},acceptDownloads:true});page.setDefaultTimeout(15000);page.on('pageerror',e=>errors.push(e.message));
   await page.route('**/*',r=>r.request().url().startsWith(app.url+'/')||/^(data|blob):/.test(r.request().url())?r.continue():(external.push(r.request().url()),r.abort()));
-  await page.goto(app.url+'/visual?project='+saved.id+'&scene=evidence&ui='+locale);await page.waitForFunction(()=>document.querySelector('#sceneTitle').textContent.length>0);await revealStudio(page,'edit');
+  await page.goto(app.url+'/?project='+saved.id+'&scene=evidence&ui='+locale);await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>document.querySelector('#sceneTitle').textContent.length>0);await revealStudio(page,'edit');
   // Single entry step 3: "Let this page move" in Look opens the ways the page can move; the explanations are one of them.
   await revealStudio(page,'compositions');assert.equal(await page.locator('#motionSwitch').getAttribute('aria-checked'),'false');assert.ok(await page.locator('#motionControls').isHidden());
   await page.locator('#motionSwitch').click();await page.locator('#motionControls').waitFor({state:'visible'});assert.equal(await page.locator('#motionSwitch').getAttribute('aria-checked'),'true');
@@ -45,7 +45,7 @@ try{
   await exported.goto(pathToFileURL(file).href+'#scene=evidence');await exported.waitForFunction(()=>document.body.dataset.ready==='true');for(const box of await exported.locator('#evidence input[data-series]:not(:checked)').all())await box.check();assert.equal(await exported.locator('.chart-current-view .legend li').count(),2);await exported.evaluate(()=>Promise.all(document.getAnimations({subtree:true}).map(a=>a.finished.catch(()=>{}))));await exported.locator('#evidence').screenshot({path:path.join(out,locale+'-chart.png')});
   await exported.setViewportSize({width:390,height:844});await exported.emulateMedia({reducedMotion:'reduce'});await exported.locator('#evidence input[data-series]').first().uncheck();assert.equal(await exported.locator('.chart-current-view .legend li').count(),1);assert.ok(await exported.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.ok(await exported.evaluate(()=>window.deckweftInteractions.snapshot().every(s=>s.resources.animations===0)));
   await exported.screenshot({path:path.join(out,locale+'-mobile.png'),fullPage:true});
-  await page.reload();await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled);await page.locator('#slideList [data-slide="process"]').click();assert.ok((await page.frameLocator('#preview').locator('.step-explanation').textContent()).includes(authored));
+  await page.reload();await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled);await page.locator('#slideList [data-slide="process"]').click();assert.ok((await page.frameLocator('#preview').locator('.step-explanation').textContent()).includes(authored));
   report.checks.push({locale,sourceId:saved.id,verified:'Existing-page authoring, exact values, saved opening, source-bound explanation, reload, measured HTML download and interactive offline export at 1440/390px'});await exported.close();await page.close();
  }
  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);report.ok=true;

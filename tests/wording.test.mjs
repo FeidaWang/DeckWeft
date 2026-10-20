@@ -49,14 +49,14 @@ function scan(file,nodes){
 }
 const report=hits=>hits.map(h=>`${h.file} ${h.element} "${h.text}" (${h.rule})`).join('\n');
 
-// Single entry: the shell markup lives in /*html*/ template strings in shell.js and the deck kinds; each page keeps its own
-// dialogs. The walk only needs HTML text, so it reads the templates and the page joined. Since step 3 Visual Studio is the
-// same shell with the visual kind, and the shell's own words are shell.* keys.
+// Single entry: the shell markup lives in /*html*/ template strings in shell.js and the deck kinds, and the page (index.html)
+// carries the classic dialogs. Since step 4 there is one page at one address: the walk reads the shell's templates, both
+// kinds' templates (the visual kind carries its own dialogs) and index.html joined. The shell's own words are shell.* keys.
 const templates=file=>[...read(file).matchAll(/\/\*html\*\/`([^`]*)`/g)].map(m=>m[1]).join('\n');
-const PAGE='public/shell.js + public/kinds/classic.js + public/index.html',VISUAL='public/shell.js + public/kinds/visual.js + public/studio/visual.html';
-const index=templates('public/shell.js')+templates('public/kinds/classic.js')+read('public/index.html'),visual=templates('public/shell.js')+templates('public/kinds/visual.js')+read('public/studio/visual.html');
+const PAGE='public/shell.js + public/kinds/classic.js + public/kinds/visual.js + public/index.html';
+const index=templates('public/shell.js')+templates('public/kinds/classic.js')+templates('public/kinds/visual.js')+read('public/index.html');
 
-test('default classic interface has no engineering words',()=>{
+test('the one page has no engineering words in its default text',()=>{
   const hits=scan(PAGE,visibleText(index));
   assert.equal(hits.length,0,`${hits.length} hit(s):\n${report(hits)}`);
 });
@@ -68,7 +68,8 @@ const wordingHits=include=>{
   for(const language of ['en','zh'])for(const [key,value] of Object.entries(dict[language]))if(include(key))for(const rule of FORBIDDEN)if(rule.test(String(value)))hits.push({file:'public/i18n.js',element:`${language}.${key}`,text:String(value),rule:String(rule)});
   return hits;
 };
-const pageKeys=new Set(keysIn(index));
+// Like the visible-text walk, words that only the developer sections show (data-developer) are not the page's default text.
+const pageKeys=new Set(keysIn(index.replace(/<details data-developer>[\s\S]*?<\/details>/g,'')));
 
 test('the dictionary has the same keys in English and Chinese',()=>{
   const en=Object.keys(dict.en),zh=new Set(Object.keys(dict.zh));
@@ -77,16 +78,14 @@ test('the dictionary has the same keys in English and Chinese',()=>{
   for(const language of ['en','zh'])for(const [key,value] of Object.entries(dict[language]))assert.equal(typeof value,'string',`${language}.${key}`);
 });
 
-test('every data-i18n and data-i18n-attr key in both pages is in the dictionary',()=>{
-  for(const [file,html] of [[PAGE,index],[VISUAL,visual]])
-    assert.deepEqual(keysIn(html).filter(k=>!(k in dict.en)).sort(),[],`${file}: keys without a dictionary entry`);
-  assert.deepEqual(keysIn(index).filter(k=>!/^(?:classic|shell)\./.test(k)),[],'the classic page uses classic.* and shell.* keys');
-  assert.deepEqual(keysIn(visual).filter(k=>!/^(?:visual|shell)\./.test(k)),[],'Visual Studio uses visual.* and shell.* keys');
+test('every data-i18n and data-i18n-attr key in the page is in the dictionary',()=>{
+  assert.deepEqual(keysIn(index).filter(k=>!(k in dict.en)).sort(),[],`${PAGE}: keys without a dictionary entry`);
+  assert.deepEqual(keysIn(index).filter(k=>!/^(?:classic|visual|shell)\./.test(k)),[],'the page uses classic.*, visual.* and shell.* keys');
 });
 
 test('every dictionary key is used by a page or a module',()=>{
   // A key counts as used when its whole string appears in a page or script; a quoted literal ending in "." covers keys built from it.
-  const text=[index,visual,...sources.map(read)].join('\n');
+  const text=[index,...sources.map(read)].join('\n');
   const exact=new Set([...text.matchAll(/(?:classic|visual|shell)\.[\w.]*/g)].map(m=>m[0])),prefixes=[...text.matchAll(/['"`]((?:classic|visual|shell)\.[\w.]*\.)['"`]/g)].map(m=>m[1]);
   const unused=Object.keys(dict.en).filter(key=>!exact.has(key)&&!prefixes.some(prefix=>key.startsWith(prefix)));
   assert.deepEqual(unused.sort(),[],'dictionary keys that no page or module references');
@@ -115,8 +114,3 @@ test('elements retired by the shell redesign are gone from the document',()=>{
   assert.ok(ids.includes('save'),'#save stays for the keyboard shortcut');
 });
 
-test('Visual Studio page wording',()=>{
-  const hits=scan(VISUAL,visibleText(visual));
-  console.log(`Visual Studio page: ${hits.length} hit(s)`);
-  assert.equal(hits.length,0,`${hits.length} hit(s):\n${report(hits)}`);
-});

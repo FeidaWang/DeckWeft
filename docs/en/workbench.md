@@ -8,7 +8,7 @@ Opening a saved deck shows its page first. The page strip on the left uses non-i
 
 Local mode arranges the supplied wording. Leave a blank line between pages; one supplied page stays one page. It does not research a topic, rewrite the text or add repeated pages to reach a requested length. Codex is an explicit choice under **More → Let the assistant write for me**; its operation permission appears only there.
 
-1. Start `node bin/deckweft.mjs studio --open`. Follow the Visual Studio link from the printed loopback address.
+1. Start `node bin/deckweft.mjs studio --open`. Open the printed loopback address: visual and classic decks open at the same address, and choosing a deck of the other kind in **More → Backup and restore → My decks** switches in place, without reloading.
 2. With no deck open, the page shows the first-run paste box. Paste what you want to say (leave a blank line between pages) and press **Arrange**, or press **See an example first**. Expected: a plain v3 deck with your words exact, and the three directions below. No model runs.
 3. To draft from a brief, open **More → Let the assistant write for me**. Enter what the presentation should explain, optionally a local `.txt` or `.md` source (up to 12,000 characters), and **Audience**. Choose **Your own words, arranged here** or **Codex**, then **Arrange supplied text** or **Use / resume selected deck**. Supplied words and numbers stay exact; arbitrary PDF/Office ingestion is not implemented here.
 4. For Codex, tick the permission line for that operation. It uses the existing host configuration and may consume its allowance. Nothing signs in, chooses another model/provider or infers billing. Claude remains deferred.

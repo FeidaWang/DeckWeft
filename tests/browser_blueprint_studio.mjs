@@ -26,7 +26,7 @@ async function open(width,id){
  const context=await browser.newContext({viewport:{width,height:width<500?860:1000},acceptDownloads:true}),page=await context.newPage();page.setDefaultTimeout(90000);
  page.on('pageerror',e=>errors.push({width,message:e.message}));page.on('console',m=>{if(m.type()==='error'&&!/Failed to load resource: the server responded with a status of 4\d\d/.test(m.text()))errors.push({width,console:m.text()});});
  await context.route('**/*',r=>{const u=r.request().url();if(u.startsWith(app.url+'/')||u.startsWith('data:')||u.startsWith('blob:'))return r.continue();external.push(u);return r.abort();});
- await page.goto(app.url+'/visual?project='+id);await page.waitForFunction(()=>document.querySelector('#sceneTitle')?.textContent.length>0);return {context,page};
+ await page.goto(app.url+'/?project='+id);await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>document.querySelector('#sceneTitle')?.textContent.length>0);return {context,page};
 }
 // Single entry step 3: the canvas says when these exact edits are measured; autosave and ⌘/Ctrl S replace Save.
 const measured=page=>page.waitForFunction(()=>{const c=document.querySelector('#canvas');return !document.querySelector('#exportHTML').disabled&&c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale');},{},{timeout:90000});

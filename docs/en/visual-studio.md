@@ -2,7 +2,7 @@
 
 [简体中文](../zh-CN/visual-studio.md) · [Build review](../evidence/visual-studio/review.md) · [Earlier Wave A](visual-first.md)
 
-Visual Studio is the v3 editing workspace in the same local DeckWeft application, on the same shell as the classic workbench: a top band (Undo, deck title, state square, **More**, **Take away**), the page strip, the page, and **Words** above **Look**. Open a visual deck from **More → Backup and restore → My decks**, or use the Visual Studio address the studio prints. Existing v1/v2 projects remain in the classic workbench. Migration is explicit and creates a separate saved copy.
+Visual Studio is the v3 editing workspace in the same local DeckWeft application, on the same shell as the classic workbench: a top band (Undo, deck title, state square, **More**, **Take away**), the page strip, the page, and **Words** above **Look**. Open a visual deck from **More → Backup and restore → My decks**, or open the address the studio prints: `/visual` redirects there, keeping the query. Existing v1/v2 projects remain in the classic workbench. Migration is explicit and creates a separate saved copy.
 
 ## Visual expression in existing presentations
 

@@ -57,7 +57,8 @@ try{
   const save=async()=>{await studio.keyboard.press('Control+s');await studio.waitForFunction(()=>document.querySelector('#saveState').dataset.state==='saved');await measured();};
   // 1. Import data: the visual JSON envelope through the Studio file import (validated and copied to a new local id).
   const projectFile=path.join(out,locale+'-import.visual.json');await writeFile(projectFile,JSON.stringify(source,null,2)+'\n');
-  await studio.goto(app.url+'/visual?ui='+locale);await studio.waitForFunction(()=>document.querySelector('#uiLanguage'));await revealStudio(studio,'library');
+  const token=(await(await fetch(app.url+'/api/session')).json()).token,anchor=(await(await fetch(app.url+'/api/visual/demo',{method:'POST',headers:{Authorization:'Bearer '+token,Origin:app.url,'Content-Type':'application/json'},body:JSON.stringify({locale})})).json()).project; // one address: a visual deck must be open for the visual kind's drawer
+  await studio.goto(app.url+'/?project='+anchor.id+'&ui='+locale);await studio.waitForSelector('#root.workspace',{state:'attached'});await studio.waitForFunction(()=>document.querySelector('#uiLanguage'));await revealStudio(studio,'library');
   await studio.locator('#projectFile').setInputFiles(projectFile);await studio.waitForFunction(title=>document.querySelector('#deckTitle').value===title,source.document.title);await closeStudio(studio);await measured();
   for(const gone of ['#library','#deckName','#designTab','#contentTab','#theme','#lockInteractions','#fit'])assert.equal(await studio.locator(gone).count(),0,gone);
   const id=await studio.locator('#projectPicker').inputValue(),imported=await store.get(id);

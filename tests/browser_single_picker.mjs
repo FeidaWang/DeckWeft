@@ -29,15 +29,16 @@ try{
  const context=await browser.newContext({viewport:{width:1440,height:900},deviceScaleFactor:1});
  await context.route('**/*',async route=>{const url=route.request().url();if(url.startsWith(app.url+'/')||url.startsWith('data:')||url.startsWith('blob:'))await route.continue();else{report.externalRequests.push(url);await route.abort();}});
  const page=await context.newPage(),requests=[];
- page.on('pageerror',e=>report.errors.push(e.message));page.on('request',r=>requests.push(`${r.method()} ${new URL(r.url()).pathname}`));
+ page.on('pageerror',e=>report.errors.push(e.message+(process.env.STACK?' '+e.stack:'')));page.on('request',r=>requests.push(`${r.method()} ${new URL(r.url()).pathname}`));
  const migrations=()=>requests.filter(r=>r.includes('/api/visual/migrate'));
- const settled=()=>page.waitForFunction(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state==='saved';},{},{timeout:30000});
+ const settled=()=>page.waitForFunction(()=>{const c=document.querySelector('#canvas');return !!c&&c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState')?.dataset.state==='saved';},{},{timeout:30000});
  const optionTexts=()=>page.locator('#projectPicker option').evaluateAll(list=>list.map(o=>({value:o.value,text:o.textContent})));
 // A native select list does not show in a headless screenshot, so it is drawn open as a list box for the picture only.
  const shoot=async name=>{await page.locator('#projectPicker').evaluate(n=>{n.size=n.options.length;});await page.screenshot({path:path.join(shots,name)});await page.locator('#projectPicker').evaluate(n=>{n.size=1;});};
  const openDrawer=async()=>{if(!await page.locator('#moreDialog').evaluate(n=>n.open))await page.locator('#openMore').click();};
 
- await page.goto(app.url+'/');await settled();
+ await page.goto(app.url+'/?project='+roadmap.id);await settled();
+ await page.evaluate(()=>{window.__sameDocument=true;}); // survives only while the page is never reloaded
  // 1. one list, typed, newest first. Both reads happen at startup; neither converts.
  assert.ok(requests.includes('GET /api/projects')&&requests.includes('GET /api/visual/projects'),'both lists are read at startup');
  let options=await optionTexts();
@@ -56,18 +57,20 @@ try{
 
  // 3. choosing the visual deck opens Visual Studio on it.
  await page.locator('#projectPicker').selectOption('visual:'+visual.id);
- await page.waitForURL(url=>url.pathname==='/visual'&&url.searchParams.get('project')===visual.id);
+ await page.waitForURL(url=>url.pathname==='/'&&url.searchParams.get('project')===visual.id);
  await page.waitForFunction(()=>document.querySelector('#sceneTitle')?.textContent.length>0);
  // Single entry step 3: Visual Studio shares the shell, so its drawer has the same typed deck list.
  assert.equal(await page.locator('#library').count(),0);assert.equal(await page.locator('#projectPicker').inputValue(),visual.id,'Visual Studio opened the chosen deck');
- step('choosing a visual deck opens /visual?project=<id> on that deck');
+ step('choosing a visual deck opens that deck at /?project=<id>, in the same page');
 
  // 4. back in the workbench: a classic deck switches in place (no navigation), then the visual one is chosen again.
- await page.goto(app.url+'/');await settled();await openDrawer();
- await page.locator('#projectPicker').selectOption(quarterly.id);
+ // Step 4 of the plan: no reload, the visual kind steps out and the classic one comes back.
+ await openDrawer();
+ await page.locator('#projectPicker').selectOption('classic:'+quarterly.id); // Visual Studio's list marks the other kind
  await page.waitForFunction(()=>document.querySelector('#deckTitle').value==='Quarterly story');await settled();
  assert.equal(new URL(page.url()).pathname,'/');
- step('choosing a classic deck switches in place and stays in the workbench');
+ assert.equal(await page.locator('#sceneTitle').count(),0,'the visual kind is out of the page');
+ step('choosing a classic deck from Visual Studio brings the classic kind back in the same page');
 
  // 5. no list path and no switch called migrate.
  assert.deepEqual(migrations(),[],'no request to /api/visual/migrate while listing or switching');
@@ -87,13 +90,15 @@ try{
  // 7. the copy button migrates once, opens the copy, and leaves the original alone.
  const before={classic:(await call('/api/projects',undefined,'GET')).projects.length,visual:(await call('/api/visual/projects',undefined,'GET')).projects.length};
  await openDrawer();await page.locator('#makeCopy').click();
- await page.waitForURL(url=>url.pathname==='/visual'&&url.searchParams.get('project')&&url.searchParams.get('project')!==visual.id);
+ await page.waitForURL(url=>url.pathname==='/'&&url.searchParams.get('project')&&![visual.id,quarterly.id].includes(url.searchParams.get('project')));
  const copyId=new URL(page.url()).searchParams.get('project');
  assert.equal(migrations().length,1,'exactly one migrate request, from the button');
  const after={classic:(await call('/api/projects',undefined,'GET')).projects.length,visual:(await call('/api/visual/projects',undefined,'GET')).projects.length};
  assert.equal(after.classic,before.classic,'the classic original is kept');assert.equal(after.visual,before.visual+1,'one new visual copy');
  assert.ok((await call('/api/visual/projects',undefined,'GET')).projects.some(p=>p.id===copyId));
  step('Make a new-version copy migrates once, opens the copy, and keeps the original');
+ assert.equal(await page.evaluate(()=>window.__sameDocument===true),true,'the page was never reloaded across both kinds');
+ step('classic → visual → classic → visual without a reload');
 
  assert.deepEqual(report.errors,[]);assert.deepEqual(report.externalRequests,[]);
  console.log(`Single picker passed: ${report.checks.length} checks.`);

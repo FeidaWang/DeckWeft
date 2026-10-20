@@ -10,6 +10,7 @@ import {mountPreferences,getPreferences} from '../preferences.js';
 import {applyActions} from '../actions.js';
 import {mountPresenter} from '../presenter.js';
 import {t} from '../i18n.js';
+import {openDeck,rememberDeck} from '../shell.js';
 import { mountHistory } from '../history.js';
 import {mountStudioTools} from '../studio-tools.js';
 const $=selector=>document.querySelector(selector);
@@ -18,6 +19,8 @@ const familyLabel=id=>labels[id]?t(labels[id]):id;
 const state={token:'',project:null,active:'',preview:null,dirty:false,saving:false,operation:false,exporting:false,locale:'en',counter:0,previewState:'idle',composing:false,saveIssue:null,firstRun:false};
 const edits=new EditHistory(),textMeasurer=new BrowserTextMeasurer(),changeListeners=[];
 let shell,dialogs,previewTimer,previewTicket=0,previewAbort,presenter,saveTimer;
+// While Visual Studio's kind is on the page this one is out of it: its document-wide listeners sleep.
+const live=()=>!!shell?.root.isConnected;
 const x=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 // The two zones' fields. The ids are the classic editor's; renderEditor() keeps their values current.
@@ -77,6 +80,7 @@ function onError(error){if(error.name==='AbortError')return;const message=error.
 function slide(){return state.project?.slides.find(s=>s.id===state.active);}
 function ready(){return !!state.project&&!state.operation;}
 function updateStatus(){
+  if(!live())return; // answers that arrive while the other kind is on the page draw nothing
   const p=state.project,i=p?.slides.findIndex(s=>s.id===state.active)??0,count=p?.slides.length||0;
   const attention=!!state.saveIssue||state.previewState==='error'||state.preview?.audit.ok===false;
   const saveState=!p&&state.firstRun?'unsaved':!p||state.saving?'saving':attention?'attention':state.dirty?'unsaved':'saved';
@@ -134,6 +138,7 @@ async function library(){
   return projects;
 }
 function activate(project){
+  rememberDeck(project.id);
   if(pitchMode&&!projectIsEnglish(project))throw new Error('Presentation mode opens English projects only. Use the standard Studio to open another language edition.');
   // The first page replaces the first-run form for good.
   shell.closeFirstRun();state.firstRun=false;
@@ -151,7 +156,7 @@ function renderEditor(){
   updateStatus();renderPreview();
 }
 function cancelPreview(){clearTimeout(previewTimer);previewTicket++;previewAbort?.abort();}
-function schedulePreview(){cancelPreview();state.previewState='pending';updateStatus();const ticket=previewTicket;previewTimer=setTimeout(()=>refreshPreview(ticket),220);}
+function schedulePreview(){cancelPreview();state.previewState='pending';updateStatus();const ticket=previewTicket;previewTimer=setTimeout(()=>{if(live())refreshPreview(ticket);},220);}
 async function measurePreview(project,active,{signal,onProgress}={}){
   const plan=await json('/api/measure/plan',{project},'POST',signal);
   const shaped=await textMeasurer.resolve(plan,{signal,onProgress});
@@ -281,19 +286,20 @@ function setTab(){}
 // Words fields and the canvas blocks they draw. Renderer node ids are <slide id>_<role>_<n>.
 const zoneBlocks={eyebrow:['eyebrow'],slideTitle:['title'],body:['body'],items:['item'],metrics:['metric-value','metric-label']};
 function blocks(field,svg){const roles=zoneBlocks[field];if(!roles)return null;return {name:roles[0],nodes:[...svg.querySelectorAll('[data-node]')].filter(n=>roles.some(r=>n.dataset.node.startsWith(`${state.active}_${r}_`)))};}
-// A visual deck opens in Visual Studio; nothing is converted. Ids never contain ':', so the prefix is unambiguous.
+// A visual deck opens in the same page with the visual kind; nothing is converted. Ids never contain ':', so the prefix is unambiguous.
 async function openVisual(id){
   if(!ready()||state.saving)return;
   if(!await canLeave()){$('#projectPicker').value=state.project.id;return;}
-  location.assign('/visual?project='+encodeURIComponent(id));
+  if(!await openDeck('visual',id))$('#projectPicker').value=state.project.id;
 }
 // The one place a classic deck becomes a visual one: a separate copy through the existing migrate route; the original stays.
 async function makeNewVersionCopy(){
   if(!ready()||state.saving||!state.project)return;
   if(state.dirty&&!await save())return;
   state.operation=true;updateStatus();
-  try{const {project}=await json('/api/visual/migrate',{projectId:state.project.id});location.assign('/visual?project='+encodeURIComponent(project.id));}
-  catch(error){state.operation=false;updateStatus();onError(error);}
+  try{const {project}=await json('/api/visual/migrate',{projectId:state.project.id});await openDeck('visual',project.id);}
+  catch(error){onError(error);}
+  finally{state.operation=false;updateStatus();}
 }
 async function switchProject(id){
   if(!ready()||state.saving)return false;if(!await canLeave()){$('#projectPicker').value=state.project.id;return false;}
@@ -318,10 +324,10 @@ function showFirstRun(){state.firstRun=true;updateStatus();shell.showFirstRun();
 function mount(s){
   shell=s;dialogs=s.dialogs;
   applyPitchMode(document);
-  document.addEventListener('compositionstart',()=>{if(!state.composing){state.composing=true;cancelPreview();state.previewState='pending';updateStatus();}});
-  document.addEventListener('compositionend',()=>{if(state.composing){state.composing=false;edits.endGroup();schedulePreview();scheduleSave();}});
+  document.addEventListener('compositionstart',()=>{if(live()&&!state.composing){state.composing=true;cancelPreview();state.previewState='pending';updateStatus();}});
+  document.addEventListener('compositionend',()=>{if(live()&&state.composing){state.composing=false;edits.endGroup();schedulePreview();scheduleSave();}});
   document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cancel',event=>{if(state.composing)event.preventDefault();}));
-  new ResizeObserver(sizeCanvas).observe($('#stage'));
+  new ResizeObserver(()=>{if(live())sizeCanvas();}).observe($('#stage'));
   for(const key of ['eyebrow','body','slideTitle','items','metrics','notes','deckTitle','deckTitleSmall']){
     const input=$('#'+key);
     input.addEventListener('compositionstart',()=>{edits.endGroup();state.composing=true;cancelPreview();state.previewState='pending';updateStatus();});
@@ -354,12 +360,13 @@ function mount(s){
   };
   $('#addSource').onclick=()=>{try{const title=$('#sourceTitle').value.trim(),url=$('#sourceURL').value.trim(),parsed=new URL(url);if(!title||!['https:','http:'].includes(parsed.protocol)||parsed.username||parsed.password)throw Error(t('classic.app.addANameAndANormal'));changed(()=>{const id='src_'+crypto.randomUUID().replaceAll('-','').slice(0,16);state.project.sources.push({id,title,url});slide().sourceIds.push(id);},{full:true});$('#sourceTitle').value='';$('#sourceURL').value='';}catch(error){onError(error);}};
   document.addEventListener('click',event=>{
+    if(!live())return;
     const button=event.target.closest('button');if(!button||button.disabled)return;
     if(button.dataset.theme)changed(()=>state.project.theme=button.dataset.theme,{full:true});if(button.dataset.tab)setTab(button.dataset.tab);
   });
-  document.addEventListener('change',event=>{if(event.target.dataset.source){const id=event.target.dataset.source;changed(()=>{const s=slide();s.sourceIds=event.target.checked?[...new Set([...s.sourceIds,id])]:s.sourceIds.filter(v=>v!==id);});}});
+  document.addEventListener('change',event=>{if(live()&&event.target.dataset.source){const id=event.target.dataset.source;changed(()=>{const s=slide();s.sourceIds=event.target.checked?[...new Set([...s.sourceIds,id])]:s.sourceIds.filter(v=>v!==id);});}});
   document.addEventListener('keydown',event=>{
-    if(document.body.classList.contains('presenting'))return;
+    if(!live()||document.body.classList.contains('presenting'))return;
     // Alt+Up / Alt+Down move the current page, outside text fields (where Alt+arrows move the caret) and dialogs.
     if(event.altKey&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&['ArrowUp','ArrowDown'].includes(event.key)&&!event.isComposing&&!state.composing&&!event.target.closest('input,textarea,select,[contenteditable="true"]')&&!document.querySelector('dialog[open]')){event.preventDefault();slideAction(event.key==='ArrowUp'?'up':'down');return;}
     if(event.target.matches('[role="tab"]')&&!event.isComposing){const tabs=[...document.querySelectorAll('[role="tab"]')],i=tabs.indexOf(event.target);let next;if(event.key==='ArrowRight')next=(i+1)%tabs.length;if(event.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;if(event.key==='Home')next=0;if(event.key==='End')next=tabs.length-1;if(next!==undefined){event.preventDefault();setTab(tabs[next].dataset.tab,true);return;}}
@@ -369,8 +376,8 @@ function mount(s){
     else if(action.startsWith('layout-')&&state.previewState==='ready'){const choice=state.preview.choices[Number(action.at(-1))-1];if(choice)changed(()=>slide().design.layout=choice.id);}
     else{const i=state.project.slides.findIndex(s=>s.id===state.active),next=action==='first'?0:action==='last'?state.project.slides.length-1:i+(action==='next'?1:-1);if(state.project.slides[next])selectSlide(state.project.slides[next].id);}
   });
-  window.addEventListener('beforeunload',event=>{if(state.dirty){event.preventDefault();event.returnValue='';}});
-  document.fonts.addEventListener?.('loadingdone',()=>{if(state.project&&!state.composing)schedulePreview();});
+  window.addEventListener('beforeunload',event=>{if(live()&&state.dirty){event.preventDefault();event.returnValue='';}});
+  document.fonts.addEventListener?.('loadingdone',()=>{if(live()&&state.project&&!state.composing)schedulePreview();});
   // Files dropped on the stage go through the Import handler of #fileInput. A dashed yellow line shows where to drop.
   const droppable=event=>[...(event.dataTransfer?.types||[])].includes('Files');
   $('#stage').addEventListener('dragover',event=>{if(!droppable(event))return;event.preventDefault();event.dataTransfer.dropEffect='copy';$('#stage').classList.add('drop-ready');});
@@ -404,8 +411,9 @@ export const classicAdapter={
   assistant:async()=>(await json('/api/agent/status',undefined,'GET')).connected,
   localize,languageLocked:()=>state.composing||pitchMode,
   // Opens the first readable deck in the library, or the first-run form when there is none.
-  async open(){
-    try{updateStatus();state.token=(await(await fetch('/api/session')).json()).token;const projects=await library(),first=projects.find(p=>!p.unreadable);if(first)activate((await json(`/api/projects/${first.id}`,undefined,'GET')).project);else showFirstRun();}
+  // `id` is a deck the loader chose (?project=, or a deck picked in the other kind); otherwise the newest readable one.
+  async open(id){
+    try{updateStatus();state.token=(await(await fetch('/api/session')).json()).token;const projects=await library(),first=projects.find(p=>p.id===id&&!p.unreadable)||projects.find(p=>!p.unreadable);if(first)activate((await json(`/api/projects/${first.id}`,undefined,'GET')).project);else showFirstRun();}
     catch(error){onError(error);}
   }
 };

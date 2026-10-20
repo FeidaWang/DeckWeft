@@ -89,7 +89,7 @@ try{
   await sheet('stress-small-multiples.png','Four panels fail every geometry and are refused; the layout-only split passes',cells);}
  // Direct-loopback Studio: the family control offers the new families; compare, choose, save and reopen.
  const project=await familyProject('en',store.home),saved=await store.save(project,{create:true});editor=await context.newPage();editor.on('pageerror',e=>report.errors.push(e.message));await editor.setViewportSize({width:1920,height:1100});
- await editor.goto(app.url+'/visual?project='+saved.id+'&scene=quote');const ready=()=>editor.waitForFunction(()=>!document.querySelector('#exportHTML').disabled);await ready();
+ await editor.goto(app.url+'/?project='+saved.id+'&scene=quote');await editor.waitForSelector('#root.workspace',{state:'attached'});const ready=()=>editor.waitForFunction(()=>!document.querySelector('#exportHTML').disabled);await ready();
  // Single entry step 3: the composition family is a developer setting in More; the choices lead Look and measure themselves.
  const storedWhen=async test=>{for(let k=0;k<120;k++){const s=await store.get(saved.id);if(test(s))return s;await new Promise(r=>setTimeout(r,250));}throw Error('autosave did not land');};
  for(const gone of ['#designTab','#compare','.candidate-card','[data-select-candidate]'])assert.equal(await editor.locator(gone).count(),0,gone);
@@ -100,7 +100,7 @@ try{
  assert.equal(await editor.locator('#candidates .candidate').count(),3);const titles=await editor.locator('#candidates .candidate-label span').allTextContents();assert.ok(titles.every(t=>/quote|verbatim/i.test(t)),JSON.stringify(titles));
  await editor.locator('[data-zone=look] .directions').scrollIntoViewIfNeeded();await capture(editor,'studio-quote-candidates.png');
  await editor.locator('[data-inspect-layout="2"]').click();await editor.locator('#candidateDialog').waitFor({state:'visible'});await editor.frameLocator('#largeCandidate').locator('#quote').waitFor({state:'visible'});await capture(editor,'studio-quote-large.png');await editor.locator('#candidateClose').click();
- await editor.locator('#candidates .candidate[data-layout="2"]:enabled').click();await ready();await storedWhen(s=>s.plan.scenes.find(v=>v.id==='quote').composition==='quote-band');await editor.reload();await ready();
+ await editor.locator('#candidates .candidate[data-layout="2"]:enabled').click();await ready();await storedWhen(s=>s.plan.scenes.find(v=>v.id==='quote').composition==='quote-band');await editor.reload();await editor.waitForSelector('#root.workspace',{state:'attached'});await ready();
  assert.equal((await store.get(saved.id)).plan.scenes.find(s=>s.id==='quote').composition,'quote-band');report.studio.push('Quote family: three measured candidates, larger view, quote-band selected, saved and reopened');
  // An author's family choice wins: the quotation page becomes a chapter opener when the author says so.
  await revealStudio(editor,'developer');await editor.locator('#family').selectOption('chapter');await closeStudio(editor);await revealStudio(editor,'compositions');await editor.waitForFunction(()=>!document.querySelector('#rhythm').disabled,null,{timeout:120000});

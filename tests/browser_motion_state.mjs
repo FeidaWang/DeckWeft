@@ -87,7 +87,7 @@ try{
   const files={};
   for(const [name,project] of [['demo',await demoProject(locale)],['evidence',await evidenceProject(locale,{staticState:'structure-first'})]]){
    const saved=await store.save(project,{create:true}),fits=[];studio.on('console',()=>{});
-   await studio.goto(app.url+'/visual?project='+saved.id+'&ui='+locale);await measured();
+   await studio.goto(app.url+'/?project='+saved.id+'&ui='+locale);await studio.waitForSelector('#root.workspace',{state:'attached'});await measured();
    const preview=(await studio.locator('#preview').getAttribute('src')).split('#')[0],fit=await studio.frameLocator('#preview').locator('body').evaluate(()=>window.deckweftFit);
    assert.equal(fit.ok,true);assert.equal(fit.player,PLAYER_VERSION);assert.deepEqual(fit.states.map(s=>[s.sceneId,s.keyStateId,s.position]),project.plan.scenes.filter(s=>s.staticState).map(s=>[s.id,s.staticState.keyStateId,s.keyStates.find(k=>k.id===s.staticState.keyStateId).position]));
    const download=studio.waitForEvent('download');await revealStudio(studio,'file');await studio.locator('#exportHTML').click();const file=path.join(out,`${locale}-${name}.html`);await (await download).saveAs(file);
@@ -95,7 +95,7 @@ try{
    log('gate',locale,{project:name,measuredStates:fit.states.map(s=>({sceneId:s.sceneId,keyStateId:s.keyStateId,position:s.position,overflow:s.overflow.length,clip:s.clipIssues.length,contrast:s.contrastIssues.length})),ok:fit.ok,viewport:fit.viewport,bytes:Buffer.byteLength(exported),sha256:hash(exported)});
   }
   // 2. Studio opening guard (C20): the preview opens on the static state; copying it without exploring is refused.
-  await studio.goto(app.url+'/visual?project='+files.evidence.project.id+'&scene=evidence&ui='+locale);await measured();assert.equal(await studio.locator('#contentTab').count(),0);
+  await studio.goto(app.url+'/?project='+files.evidence.project.id+'&scene=evidence&ui='+locale);await studio.waitForSelector('#root.workspace',{state:'attached'});await measured();assert.equal(await studio.locator('#contentTab').count(),0);
   // "Use current chart / step as opening" sits behind "Let this page move", which is on for a page with interactions.
   await revealStudio(studio,'compositions');assert.equal(await studio.locator('#motionSwitch').getAttribute('aria-checked'),'true');await studio.locator('#motionControls').waitFor({state:'visible'});
   const frame=studio.frameLocator('#preview'),previewSnap=()=>frame.locator('body').evaluate(()=>window.deckweftInteractions.snapshot().find(s=>s.sceneId==='evidence'));

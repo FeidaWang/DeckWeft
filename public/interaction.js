@@ -31,9 +31,9 @@ export function validSlideAction(type,index,count){
   return type==='up'?index>0:type==='down'?index<count-1:type==='delete'?count>1:['add','duplicate'].includes(type)?count<100:false;
 }
 export class DialogManager {
-  constructor(document){this.document=document;this.origins=new WeakMap();this.drawer=null;
+  constructor(document,alive=()=>true){this.document=document;this.origins=new WeakMap();this.drawer=null;
     document.addEventListener('keydown',event=>{
-      if(event.key!=='Tab'||event.isComposing)return;
+      if(!alive()||event.key!=='Tab'||event.isComposing)return;
       const dialog=document.activeElement?.closest('dialog[open]')||[...document.querySelectorAll('dialog[open]')].at(-1);if(!dialog)return;
       const items=[...dialog.querySelectorAll('button,input,select,textarea,a[href],[tabindex]')].filter(el=>!el.disabled&&el.tabIndex>=0&&el.getClientRects().length);
       if(!items.length){event.preventDefault();dialog.focus();return;}
