@@ -4,6 +4,32 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## CINE 批次 2 电影化构图 P1，2026-10-21
+
+CINE-005 至 CINE-007 在批次 1 分支的延续上（从 `claude/deckweft-design-roadmap-2d3d10` 的 `a5b331c` 切出的工作树分支，未合并）状态为 **implemented-local**：图片槽位简报的五个可选主体标注字段、每个主题的六个字号角色、播放器的测量与灰度层级、七个有定义的软性特征、最弱页与带差异说明的候选排序。任务状态不变。[证据（英文）](../evidence/cine-p1/review.md) · [计划（英文）](../plans/cinematic-composition-batch-2.md) · [迁移](migration.md#主体标注字号角色与软性特征cine-批次-2) · [软性特征（英文）](../visual-acceptance/review.md#soft-features-cine-007) · [视觉工作室](visual-studio.md#图片槽位中的主体标注cine-批次-2)。
+
+命令（隔离浏览器为 Playwright 缓存中的 Chrome for Testing 151.0.7922.34，Playwright 1.61.1）：
+
+```bash
+npm run verify
+CHROMIUM_PATH=… node --test tests/studio-export.test.mjs
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node tests/browser_cine.mjs --evidence
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node tests/browser_assets.mjs
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node scripts/export-targets.mjs --cine --out dist/export-targets-cine
+```
+
+结果：
+
+- `npm run verify` 通过 **573 个测试**（567 通过，5 个跳过：需要 `DECKWEFT_HANDOFF_DIR` 的登记表测试与需要 `CHROMIUM_PATH` 的四个工作室导出测试；一个措辞测试仍是单入口第 3 步标记的 todo），并通过类型、源码与链接检查、打包与演示。Node 24.14.0。
+  - 新增 `tests/cine-p1.test.mjs`（20 个测试：简报契约、主体感知的 `safeCrop`、证据截图、双语标注语料及其七个反例、主体占比、图注与定位框标记、渲染检查的替代文本规则、分页导出、带标注主体的 `candidateFit`、字号角色、声明页与旧页的指令和标记、播放器、软性特征、最弱页、排序、A/B 规则与文档）。批次 1 的 `tests/cine-p0.test.mjs` 把渲染器版本钉到 `.14`。
+  - 设置 `CHROMIUM_PATH` 后，单独运行 `tests/studio-export.test.mjs` 通过 5/5。
+- 渲染基线分三次各自独立提交重新记录：渲染器 `visual-art-direction.14`（定位框规则）、字号角色样式表与来源条修正（仅样式表部分），以及播放器 `semantic-player.7`（脚本部分）；每个条目的标记与内容哈希相同；主题条目不变（角色在 `resolveTheme` 之外读取）。
+- `tests/browser_cine.mjs`（隔离 Chromium 151，Playwright 1.61.1，播放器 .7）：中英文在 1440、1024、390 px 下共 60 次页面测量、118 张截图、0 个页面错误、0 个外部请求。产品主图（其简报的 `subjectBounds`）报告容器占页面 55.0 %、主体 18.3 %，`annotated: true`；12 条来源的来源条高 46.2 px（预算 48 px）；溢出页经三轮拆成四个合格页面；产品页的三个候选依次为 image-right、image-left、image-strip（最后一个以 952 px 未过 900 px 门禁）；两种语言的最弱页都是 `product-center`（0.66 分：主体小，且声明居中入口而标题靠左）。1440 px 下超出 900 px 预算的页面与批次 1 相同。
+- `node scripts/export-targets.mjs --cine`：2 份文稿。PowerPoint 可编辑性、独立检查、页面检查与字号下限在 2/2 上通过（0 项失败）；PDF 可搜索性英文通过、中文部分通过（S7 已知限制）；无障碍部分通过。交付的正文字号在 10 页中的 5 页达到 18 pt 目标，detail 与 long-heading 差 0.6 pt 以内；mechanism、evidence（构图固定 18 px）与 overflow（密集页）低于目标；图表与图解的 SVG 标签（7.4–9.9 pt）低于 14 pt 的标签目标；来源条标记因来源条预算的决定保持 7.4–8.3 pt，低于 10 pt 的引用目标。
+- `tests/browser_assets.mjs`：通过，13 项检查（含新的证据截图裁切被 `PROTECTED_REGION` 拒绝），36 个用例，53 张截图。
+- 已查看：1440 与 390 px 的两份联络表、媒体联络表、product、detail（双语）、product-center 与 evidence 页面、四份灰度副本、两个候选变体、产品页幻灯片的 Quick Look 渲染与产品页 PDF 页面。最弱页为 `product-center`，其次 `evidence`。
+- PowerPoint 与 Keynote 已安装但**未运行**；LibreOffice 未安装。Firefox、WebKit、屏幕阅读器、PDF/UA 验证器、发布门与 Claude 均未运行。
+
 ## CINE 批次 1 电影化构图 P0，2026-10-20
 
 CINE-001 至 CINE-004 在分支 `claude/deckweft-design-roadmap-2d3d10` 上的状态为 **implemented-local**（未合并）：一个声明的演示目标、三个可选场景字段 `references`、`intent`、`media`、紧凑来源条与编号、页面意图与媒体角色。任务状态不变。[证据（英文）](../evidence/cine-p0/review.md) · [构建地图](../plans/cinematic-composition-build-map.md) · [迁移](migration.md#来源呈现页面意图与媒体角色cine-批次-1) · [视觉工作室](visual-studio.md#页面用途与入口cine-003)。

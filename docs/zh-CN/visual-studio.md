@@ -272,3 +272,18 @@ S9a 的作者动作原先在“作者控制”面板里，带范围列表和计�
 - *An Explain → Diagram → Explore page has one explanation sequence*：先把本页的其他交互移到别的页面。
 - *This diagram's steps explain relationships*：蓝图的部分必须是节点；先在**更多 → 给开发者 → 数据编辑 → 作者交互、提示顺序与动效 · JSON** 中移除该分步交互，再点击一次。
 - 导出时出现 *Page …: Choose the static state…* 或 *The Explain stage does not show the object…*：选择“图解”或某个探索状态（第 4 步），保存后再导出。
+
+## 图片槽位中的主体标注（CINE 批次 2）
+
+图片槽位通过原有的槽位路径（`POST /api/visual/image-slot`，动作 `configure`，与**应用**按钮发送的请求体相同）接受批次 2 的简报字段；本批次工作室里没有对应的绘制控件（CINE-011）。在槽位的 `brief` 中设置它们（[迁移](migration.md#主体标注字号角色与软性特征cine-批次-2)）：
+
+1. 加入 `subjectBounds`（画出的主体），需要裁切保留更多时再加 `protectedRegions` 与 `contextRegion`。预期：**给视觉更多空间**与各裁切按钮让每个保护区留在裁切内且不超出场景区；下限装不下的裁切被禁用，API 以 `PROTECTED_REGION` 拒绝（`contain` 仍可用）。测得的主体占比报告 `annotated: true`。
+2. 加入 `visibleCaption`。预期：页面在图片下方显示它；替代文本仍留在图片上以及 PowerPoint 的图片描述里。
+3. 在细节页上，给细节的简报加入 `detailLocator: {blockId, region}`，指向本页显示整体的图片。预期：定位图在该矩形处画出一个框。
+4. 标记证据截图（`role: "product-screenshot"`、`factual: true` 并指定来源）。预期：槽位切换为“包含整图”；裁切按钮以 `PROTECTED_REGION` 拒绝。
+
+### 出问题时
+
+- `SAFE_REGION`：场景区必须包含安全区、主体与每个保护区；放大场景区或移动这些区域。
+- `IMAGE_SLOT … A detail locator names another image of this page`：定位图必须是绑定到同一页的另一张图片块。
+- `PROTECTED_REGION`：选择“包含整图”，或明确放宽保护区；任何裁切都不会切过保护区。

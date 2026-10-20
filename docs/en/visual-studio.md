@@ -272,3 +272,18 @@ A page with a heading, a paragraph or callout and one diagram can become an Expl
 - *An Explain → Diagram → Explore page has one explanation sequence*: move the page's other interactions to another page first.
 - *This diagram's steps explain relationships*: blueprint parts are nodes; remove that steps interaction in **More → For developers → Data editors → Authored interactions, cue order and motion · JSON**, then click again.
 - *Page …: Choose the static state…* or *The Explain stage does not show the object…* on export: choose Diagram or an Explore state (step 4), save and export again.
+
+## Subject annotations in the image slot (CINE batch 2)
+
+The image slot accepts the batch 2 brief fields through the normal slot path (`POST /api/visual/image-slot`, action `configure`, the same body the **Apply** button sends); the Studio shows no drawing control for them in this batch (CINE-011). Set them in the slot's `brief` ([migration](migration.md#subject-annotations-type-roles-and-soft-features-cine-batch-2)):
+
+1. Add `subjectBounds` (the drawn subject) and, where the crop must keep more, `protectedRegions` and a `contextRegion`. Expected: **Give the visual more space** and the crop buttons keep every protected region inside the crop and never leave the context region; a crop the floor cannot fit is disabled and the API refuses it with `PROTECTED_REGION` (`contain` stays available). The measured subject fraction reports `annotated: true`.
+2. Add a `visibleCaption`. Expected: the page shows it under the image; the alt text stays on the image and in PowerPoint's picture description.
+3. On a detail page, add `detailLocator: {blockId, region}` to the detail's brief, naming the page's whole-object image. Expected: the locator image draws a frame at that rectangle.
+4. Mark an evidence screenshot (`role: "product-screenshot"`, `factual: true`, a source). Expected: the slot switches to *contain*; the crop buttons are refused with `PROTECTED_REGION`.
+
+### If something goes wrong
+
+- `SAFE_REGION`: the context region must contain the safe region, the subject and every protected region; enlarge it or move the regions.
+- `IMAGE_SLOT … A detail locator names another image of this page`: the locator must be a different image block bound to the same page.
+- `PROTECTED_REGION`: choose *contain*, or loosen the protected regions explicitly; nothing is cropped through a protected region.

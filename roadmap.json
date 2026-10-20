@@ -1017,7 +1017,8 @@
    "evidence": "docs/evidence/vis-006/review.json",
    "remaining": "VIS-014 wider gallery/story release, other browser engines and native v3 application acceptance remain open.",
    "notes": [
-    "CINE batch 1 (2026-10-20, branch claude/deckweft-design-roadmap-2d3d10, docs/evidence/cine-p0): CINE-003 adds inferred or declared page intent (purpose, entry) and a variant preference per purpose in the rhythm; CINE-004 gives the image family 7/5 and 5/7 media grids and media roles. State unchanged."
+    "CINE batch 1 (2026-10-20, branch claude/deckweft-design-roadmap-2d3d10, docs/evidence/cine-p0): CINE-003 adds inferred or declared page intent (purpose, entry) and a variant preference per purpose in the rhythm; CINE-004 gives the image family 7/5 and 5/7 media grids and media roles. State unchanged.",
+    "CINE batch 2 (2026-10-21, docs/evidence/cine-p1): CINE-006 six type roles per theme; a declared page takes the role sizes unless dense; CINE-007 soft features (entry clarity, alignment, grouping) and ranked candidates with stated differences. State unchanged."
    ]
   },
   {
@@ -1038,7 +1039,8 @@
    "evidence": "docs/evidence/vis-007/review.json",
    "remaining": "Extraction is for registered images in saved local v2/v3 documents, not arbitrary PPTX/PDF parsing. Subject regions are author-marked, not detected. V3 generation transport/native export, VIS-014 broader release and other browser engines remain open.",
    "notes": [
-    "CINE batch 1 (2026-10-20): CINE-004 media roles (hero, mechanism, context, supporting), the 260 px supporting image and a subject-fraction report that says 'no subject annotation' instead of inventing one; subject-aware framing itself is CINE-005 (batch 2, not built). State unchanged."
+    "CINE batch 1 (2026-10-20): CINE-004 media roles (hero, mechanism, context, supporting), the 260 px supporting image and a subject-fraction report that says 'no subject annotation' instead of inventing one; subject-aware framing itself is CINE-005 (batch 2, not built). State unchanged.",
+    "CINE batch 2 (2026-10-21): CINE-005 authored subjectBounds, protectedRegions, contextRegion, visibleCaption and detailLocator on the image slot brief; safeCrop keeps the floor and ceiling, evidence screenshots stay whole (PROTECTED_REGION), the subject fraction reports annotated:true only for a drawn subject. State unchanged."
    ]
   },
   {
@@ -1094,7 +1096,10 @@
     "Only affected scene composition changes, with two-round/candidate/scene/time budgets; author locks and a real failed-candidate/last-valid recovery probe remain enforced."
    ],
    "evidence": "docs/evidence/vis-010/review.json",
-   "remaining": "Finer visual repetition and chart-label spacing, exhaustive states, other engines/accessibility, native v3 compilers and broader host/release gates remain open. Automatic correction is restricted to composition; other diagnostics require explicit scoped work."
+   "remaining": "Finer visual repetition and chart-label spacing, exhaustive states, other engines/accessibility, native v3 compilers and broader host/release gates remain open. Automatic correction is restricted to composition; other diagnostics require explicit scoped work.",
+   "notes": [
+    "CINE batch 2 (2026-10-21): CINE-007 the player (semantic-player.7) measures per-region text sizes, image boxes, the strip height and a grayscale hierarchy; checkRender carries seven documented soft features and the weakest page; the receipt names it. Advisory, never a gate. State unchanged."
+   ]
   },
   {
    "id": "VIS-011",
@@ -1197,6 +1202,9 @@
     "Six renderer failures found by the gallery fixed (cover citation contrast and split number, trend label overlap, heatmap label margin, before/after labels under the compare panel, linear process diagrams); render baseline re-recorded with no visible word or value change",
     "Real Codex CLI drafted-deck run: prompt to reviewed export, page-3-only revision, second image review and export (attempt 3; attempts recorded)",
     "S3, S4 and S5 merged with a layered chart-focus rule (decisions in design-handoff-alignment.md §13)"
+   ],
+   "notes": [
+    "CINE batch 2 (2026-10-21): the release gate prints each deck's weakest page from the soft features (scripts/release-gate.mjs, quality step). State unchanged."
    ]
   },
   {
@@ -1249,7 +1257,8 @@
     "scripts/export-targets.mjs runs the frozen VIS-014 corpus plus the S4 chart-kinds sample in an isolated browser and writes an export report per deck"
    ],
    "notes": [
-    "CINE batch 1 (2026-10-20): CINE-001 declares one presentation target (src/targets/target-budget.mjs; hard minima unchanged, 24/18/14/10 pt targets reported); the PDF now pages tall scenes on the PowerPoint bands with the heading repeated, and an image-first page repeats the heading on its first band; markers in PowerPoint notes and the PDF appendix. PowerPoint and Keynote still not run. State unchanged."
+    "CINE batch 1 (2026-10-20): CINE-001 declares one presentation target (src/targets/target-budget.mjs; hard minima unchanged, 24/18/14/10 pt targets reported); the PDF now pages tall scenes on the PowerPoint bands with the heading repeated, and an image-first page repeats the heading on its first band; markers in PowerPoint notes and the PDF appendix. PowerPoint and Keynote still not run. State unchanged.",
+    "CINE batch 2 (2026-10-21): CINE-006 delivered sizes against the 24/18/14/10 pt targets; declared non-dense pages deliver 18 pt body in PowerPoint; SVG chart and diagram labels stay below the 14 pt label target (recorded). Hard minima unchanged. PowerPoint and Keynote still not run. State unchanged."
    ]
   },
   {

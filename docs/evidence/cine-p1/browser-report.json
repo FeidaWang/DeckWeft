@@ -1,0 +1,7296 @@
+{
+ "format": "deckweft-cine-p1-browser",
+ "version": 2,
+ "recordedAt": "2026-10-20",
+ "browser": "151.0.7922.34",
+ "renderer": "visual-art-direction.14",
+ "player": "semantic-player.7",
+ "isolation": "Isolated cached testing binary; ephemeral contexts with temporary profiles; installed apps and personal profiles untouched",
+ "target": {
+  "frame": {
+   "width": 1440,
+   "height": 810
+  },
+  "safeArea": {
+   "x": 64,
+   "y": 56
+  },
+  "grid": {
+   "columns": 12,
+   "gutter": 32
+  },
+  "candidateHeight": 900,
+  "typography": {
+   "minimum": {
+    "title": 18,
+    "body": 10,
+    "annotation": 6
+   },
+   "target": {
+    "title": 24,
+    "body": 18,
+    "label": 14,
+    "reference": 10
+   }
+  },
+  "overflow": "reflow-then-split"
+ },
+ "pages": [
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "composition": "image-left",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "ctx-image",
+      "role": "context"
+     }
+    ],
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 1,
+    "regions": 0,
+    "claims": 3
+   },
+   "mediaRoles": {
+    "ctx-image": "context"
+   },
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "right:top",
+     "density": 0.4475057074410265,
+     "imageRatio": 0.261008965568169,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "ctx-image",
+       "containerFraction": 0.2523086667158967,
+       "subjectFraction": 0.2523086667158967,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "soft": {
+    "subjectArea": {
+     "value": 0.2523086667158967,
+     "annotated": false,
+     "blockId": "ctx-image",
+     "containerFraction": 0.2523086667158967
+    },
+    "stripHeight": {
+     "value": 0,
+     "height": 26.59,
+     "budget": 48,
+     "items": 1
+    },
+    "groupingGapVariance": {
+     "value": 6762.28,
+     "gaps": [
+      0,
+      24,
+      185.2
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      824
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 0,
+     "titleRegionId": "r9f16d5d2e17430bf5444",
+     "figureRegionId": "r99705b8c282185c115f1"
+    },
+    "entryClarity": {
+     "value": false,
+     "entry": "left",
+     "focalCenterX": 0.7539333767361112
+    }
+   },
+   "score": 0.702309,
+   "penalties": {
+    "subjectArea": 0.158971,
+    "stripHeight": 0,
+    "groupingGapVariance": 1,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 1
+   },
+   "grayscale": {
+    "holds": true,
+    "primary": {
+     "regionId": "r9f16d5d2e17430bf5444",
+     "blockId": "ctx-title",
+     "weight": 0.079,
+     "contrast": 0.815
+    },
+    "strongest": "r9f16d5d2e17430bf5444",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": {
+    "height": 26.59375,
+    "items": 1
+   },
+   "images": [
+    {
+     "blockId": "ctx-image",
+     "mediaRole": "context",
+     "figure": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 446.359375
+     },
+     "crop": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 406.859375
+     },
+     "img": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 406.859375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "composition": "image-right",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-product",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "prod-image",
+      "role": "hero"
+     }
+    ],
+    "references": {
+     "mode": "compact"
+    },
+    "imageSlots": [
+     {
+      "id": "hero",
+      "blockId": "prod-image",
+      "brief": {
+       "role": "illustration",
+       "requiredWidth": 240,
+       "requiredHeight": 240,
+       "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+       },
+       "safeRegion": {
+        "x": 0.3,
+        "y": 0.3,
+        "width": 0.4,
+        "height": 0.4
+       },
+       "factual": false,
+       "sourceId": "",
+       "backend": "none",
+       "subjectBounds": {
+        "x": 0.3,
+        "y": 0.3,
+        "width": 0.4,
+        "height": 0.4
+       },
+       "protectedRegions": [
+        {
+         "x": 0.28,
+         "y": 0.28,
+         "width": 0.44,
+         "height": 0.44
+        }
+       ],
+       "contextRegion": {
+        "x": 0.1,
+        "y": 0.1,
+        "width": 0.8,
+        "height": 0.8
+       },
+       "visibleCaption": "The product in its field; the drawing is synthetic"
+      },
+      "display": "crop",
+      "aspect": 1
+     }
+    ],
+    "crops": [
+     {
+      "blockId": "prod-image",
+      "x": 0.2,
+      "y": 0.1,
+      "width": 0.6,
+      "height": 0.8
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "show-product",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 2,
+    "regions": 0,
+    "claims": 3
+   },
+   "mediaRoles": {
+    "prod-image": "hero"
+   },
+   "width": 1440,
+   "height": 819,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 818.484375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.39838871988540525,
+     "imageRatio": 0.27524942833739385,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "prod-image",
+       "containerFraction": 0.5543186720882729,
+       "subjectFraction": 0.18477289069609096,
+       "annotated": true
+      }
+     ]
+    }
+   },
+   "soft": {
+    "subjectArea": {
+     "value": 0.18477289069609096,
+     "annotated": true,
+     "blockId": "prod-image",
+     "containerFraction": 0.5543186720882729
+    },
+    "stripHeight": {
+     "value": 0,
+     "height": 26.59,
+     "budget": 48,
+     "items": 2
+    },
+    "groupingGapVariance": {
+     "value": 21852.59,
+     "gaps": [
+      0,
+      0,
+      341.39,
+      0
+     ]
+    },
+    "alignmentAxes": {
+     "value": 3,
+     "axes": [
+      48,
+      216,
+      624
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 0,
+     "titleRegionId": "r0b222c5e8cd5bba2d6ed",
+     "figureRegionId": "r0eb45b3ac91827232395"
+    },
+    "entryClarity": {
+     "value": true,
+     "entry": "left",
+     "focalCenterX": 0.21272786458333334
+    }
+   },
+   "score": 0.784773,
+   "penalties": {
+    "subjectArea": 0.38409,
+    "stripHeight": 0,
+    "groupingGapVariance": 1,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "r0eb45b3ac91827232395",
+     "blockId": "prod-image",
+     "weight": 0.008,
+     "contrast": 0.028
+    },
+    "strongest": "r0b222c5e8cd5bba2d6ed",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": {
+    "height": 26.59375,
+    "items": 2
+   },
+   "images": [
+    {
+     "blockId": "prod-image",
+     "mediaRole": "hero",
+     "figure": {
+      "x": 784,
+      "y": 136.390625,
+      "width": 560,
+      "height": 599.5
+     },
+     "crop": {
+      "x": 784,
+      "y": 136.390625,
+      "width": 560,
+      "height": 560
+     },
+     "img": {
+      "x": 597.34375,
+      "y": 66.390625,
+      "width": 933.328125,
+      "height": 700
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-product",
+     "entry": "center"
+    },
+    "imageSlots": [
+     {
+      "id": "evidence",
+      "blockId": "pc-image",
+      "brief": {
+       "role": "product-screenshot",
+       "requiredWidth": 240,
+       "requiredHeight": 240,
+       "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+       },
+       "safeRegion": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+       },
+       "factual": true,
+       "sourceId": "src-product",
+       "backend": "none"
+      },
+      "display": "contain",
+      "aspect": 1.3333333333333333
+     }
+    ],
+    "crops": [
+     {
+      "blockId": "pc-image",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "show-product",
+    "entry": "center",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 2,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "pc-image": "hero"
+   },
+   "width": 1440,
+   "height": 1043,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1043px)"
+    ],
+    "height": 1042.03125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.26839476569784626,
+     "imageRatio": 0.14706777920696507,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "pc-image",
+       "containerFraction": 0.14216551990006623,
+       "subjectFraction": 0.14216551990006623,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "soft": {
+    "subjectArea": {
+     "value": 0.14216551990006623,
+     "annotated": false,
+     "blockId": "pc-image",
+     "containerFraction": 0.14216551990006623
+    },
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 75,
+     "gaps": [
+      24,
+      24,
+      44,
+      24
+     ]
+    },
+    "alignmentAxes": {
+     "value": 1,
+     "axes": [
+      48
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 24,
+     "titleRegionId": "rd43568362d86ebc3a5f5",
+     "figureRegionId": "r695ab2ffd7bdd73546c4"
+    },
+    "entryClarity": {
+     "value": false,
+     "entry": "center",
+     "focalCenterX": 0.24861111111111112
+    }
+   },
+   "score": 0.664515,
+   "penalties": {
+    "subjectArea": 0.526115,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.216506,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0.06,
+    "entryClarity": 1
+   },
+   "grayscale": {
+    "holds": true,
+    "primary": {
+     "regionId": "rd43568362d86ebc3a5f5",
+     "blockId": "pc-title",
+     "weight": 0.057,
+     "contrast": 0.815
+    },
+    "strongest": "rd43568362d86ebc3a5f5",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [
+    {
+     "blockId": "pc-image",
+     "mediaRole": null,
+     "figure": {
+      "x": 429.328125,
+      "y": 323.390625,
+      "width": 533.328125,
+      "height": 436.484375
+     },
+     "crop": {
+      "x": 429.328125,
+      "y": 323.390625,
+      "width": 533.328125,
+      "height": 399.984375
+     },
+     "img": {
+      "x": 429.328125,
+      "y": 323.390625,
+      "width": 533.328125,
+      "height": 399.984375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-detail",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "det-hero",
+      "role": "hero"
+     },
+     {
+      "blockId": "det-locator",
+      "role": "supporting"
+     }
+    ],
+    "imageSlots": [
+     {
+      "id": "hero",
+      "blockId": "det-hero",
+      "brief": {
+       "role": "illustration",
+       "requiredWidth": 200,
+       "requiredHeight": 200,
+       "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+       },
+       "safeRegion": {
+        "x": 0.1,
+        "y": 0.35,
+        "width": 0.8,
+        "height": 0.3
+       },
+       "factual": false,
+       "sourceId": "",
+       "backend": "none",
+       "subjectBounds": {
+        "x": 0.1,
+        "y": 0.35,
+        "width": 0.8,
+        "height": 0.3
+       },
+       "protectedRegions": [
+        {
+         "x": 0.1,
+         "y": 0.35,
+         "width": 0.8,
+         "height": 0.3
+        }
+       ],
+       "visibleCaption": "Seam and latch",
+       "detailLocator": {
+        "blockId": "det-locator",
+        "region": {
+         "x": 0.3,
+         "y": 0.3,
+         "width": 0.4,
+         "height": 0.4
+        }
+       }
+      },
+      "display": "crop",
+      "aspect": 1
+     },
+     {
+      "id": "locator",
+      "blockId": "det-locator",
+      "brief": {
+       "role": "illustration",
+       "requiredWidth": 240,
+       "requiredHeight": 240,
+       "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+       },
+       "safeRegion": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+       },
+       "factual": false,
+       "sourceId": "",
+       "backend": "none",
+       "subjectBounds": {
+        "x": 0.3,
+        "y": 0.3,
+        "width": 0.4,
+        "height": 0.4
+       },
+       "visibleCaption": "Where the detail sits on the whole product"
+      },
+      "display": "contain",
+      "aspect": 1.3333333333333333
+     }
+    ],
+    "crops": [
+     {
+      "blockId": "det-hero",
+      "x": 0,
+      "y": 0.25,
+      "width": 1,
+      "height": 0.5
+     },
+     {
+      "blockId": "det-locator",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "show-detail",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "det-hero": "hero",
+    "det-locator": "supporting"
+   },
+   "width": 1440,
+   "height": 838,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 837.40625,
+    "features": {
+     "focus": "right:top",
+     "density": 0.48154839460686544,
+     "imageRatio": 0.3463462057608042,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "det-hero",
+       "containerFraction": 0.5201245578899794,
+       "subjectFraction": 0.24965978778719006,
+       "annotated": true
+      },
+      {
+       "blockId": "det-locator",
+       "containerFraction": 0.07473905329045437,
+       "subjectFraction": 0.011958248526472696,
+       "annotated": true
+      }
+     ]
+    }
+   },
+   "soft": {
+    "subjectArea": {
+     "value": 0.24965978778719006,
+     "annotated": true,
+     "blockId": "det-hero",
+     "containerFraction": 0.5201245578899794
+    },
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 128,
+     "gaps": [
+      0,
+      0,
+      24
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      824
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 0,
+     "titleRegionId": "rebcdfa477e718c95b156",
+     "figureRegionId": "ra57fded50d05f77f7cb2"
+    },
+    "entryClarity": {
+     "value": false,
+     "entry": "left",
+     "focalCenterX": 0.7539333767361112
+    }
+   },
+   "score": 0.771376,
+   "penalties": {
+    "subjectArea": 0.167801,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.282843,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 1
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "ra57fded50d05f77f7cb2",
+     "blockId": "det-hero",
+     "weight": 0.042,
+     "contrast": 0.156
+    },
+    "strongest": "rebcdfa477e718c95b156",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [
+    {
+     "blockId": "det-hero",
+     "mediaRole": "hero",
+     "figure": {
+      "x": 129.65625,
+      "y": 136.390625,
+      "width": 560,
+      "height": 596.5
+     },
+     "crop": {
+      "x": 129.65625,
+      "y": 136.390625,
+      "width": 560,
+      "height": 560
+     },
+     "img": {
+      "x": 129.65625,
+      "y": -143.609375,
+      "width": 560,
+      "height": 1120
+     }
+    },
+    {
+     "blockId": "det-locator",
+     "mediaRole": "supporting",
+     "figure": {
+      "x": 912.328125,
+      "y": 484.921875,
+      "width": 346.65625,
+      "height": 296.484375
+     },
+     "crop": {
+      "x": 912.328125,
+      "y": 484.921875,
+      "width": 346.65625,
+      "height": 259.984375
+     },
+     "img": {
+      "x": 912.328125,
+      "y": 484.921875,
+      "width": 346.65625,
+      "height": 259.984375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "mech-diagram",
+      "role": "mechanism"
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "mech-diagram": "mechanism"
+   },
+   "width": 1440,
+   "height": 1554,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1554px)"
+    ],
+    "height": 1553.9375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.5833453256857637,
+     "imageRatio": 0,
+     "labelMinPx": 20.799816625916872,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 277.1,
+     "gaps": [
+      0,
+      40.48,
+      16
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      720
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 16,
+     "titleRegionId": "r3176c370d8238eea7bee",
+     "figureRegionId": "rbe0bc37006adfc70d4a3"
+    },
+    "entryClarity": {
+     "value": true,
+     "entry": "left",
+     "focalCenterX": 0.25
+    }
+   },
+   "score": 0.954384,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.416158,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0.04,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "r3176c370d8238eea7bee",
+     "blockId": "mech-title",
+     "weight": 0.028,
+     "contrast": 0.815
+    },
+    "strongest": "rbe0bc37006adfc70d4a3",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [],
+   "diagrams": [
+    {
+     "box": {
+      "x": 176,
+      "y": 284.546875,
+      "width": 1040,
+      "height": 1063.390625
+     },
+     "drawn": {
+      "width": 1039.9908312958435,
+      "height": 1063.390625
+     },
+     "viewBox": [
+      800,
+      818
+     ]
+    }
+   ]
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "theme": "dark-data",
+   "declared": {
+    "intent": {
+     "purpose": "evidence",
+     "entry": "left"
+    },
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "evidence",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 12,
+    "regions": 0,
+    "claims": 5
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 881,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 880.71875,
+    "features": {
+     "focus": "left:top",
+     "density": 0.40722018656016296,
+     "imageRatio": 0,
+     "labelMinPx": 10.5,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": {
+     "value": 0,
+     "height": 46.19,
+     "budget": 48,
+     "items": 12
+    },
+    "groupingGapVariance": {
+     "value": 127.2,
+     "gaps": [
+      14,
+      0,
+      14,
+      0,
+      44.66,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0
+     ]
+    },
+    "alignmentAxes": {
+     "value": 11,
+     "axes": [
+      48,
+      200,
+      344,
+      360,
+      496,
+      512,
+      640,
+      720,
+      792,
+      952,
+      1104
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": null,
+    "entryClarity": {
+     "value": false,
+     "entry": "left",
+     "focalCenterX": 0.48333333333333334
+    }
+   },
+   "score": 0.721804,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.281957,
+    "alignmentAxes": 1,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 1
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "r7bb96525dffee03632c2",
+     "blockId": "ev-title",
+     "weight": 0.064,
+     "contrast": 0.88
+    },
+    "strongest": "ra774d9478eeb6da87b64",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": {
+    "height": 46.1875,
+    "items": 12
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "theme": "electric-violet",
+   "declared": {
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": true
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 0,
+    "regions": 1,
+    "claims": 2
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.20833103163150654,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 128,
+     "gaps": [
+      24,
+      0,
+      24
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      552
+     ]
+    },
+    "competingAccents": {
+     "value": 1,
+     "regionIds": [
+      "ra4e4b464adf61da11ecb"
+     ]
+    },
+    "titleFigureDistance": null,
+    "entryClarity": null
+   },
+   "score": 0.921716,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.282843,
+    "alignmentAxes": 0,
+    "competingAccents": 0.333333,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "rb52315c3f8c7df9e6532",
+     "blockId": "q-title",
+     "weight": 0.018,
+     "contrast": 0.885
+    },
+    "strongest": "ra4e4b464adf61da11ecb",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "theme": "electric-violet",
+   "declared": {
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": true
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 4,
+    "regions": 0,
+    "claims": 6
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 2104,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (2104px)"
+    ],
+    "height": 2103.984375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.34541081466987045,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": {
+     "value": 0,
+     "height": 26.59,
+     "budget": 48,
+     "items": 4
+    },
+    "groupingGapVariance": {
+     "value": 291.67,
+     "gaps": [
+      40,
+      24,
+      24,
+      0,
+      45.53,
+      11,
+      0,
+      0,
+      0
+     ]
+    },
+    "alignmentAxes": {
+     "value": 5,
+     "axes": [
+      48,
+      192,
+      360,
+      496,
+      728
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": null,
+    "entryClarity": null
+   },
+   "score": 0.907304,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.426959,
+    "alignmentAxes": 0.5,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": true,
+    "primary": {
+     "regionId": "rbdb15125fec621c7e4dc",
+     "blockId": "of-title",
+     "weight": 0.083,
+     "contrast": 0.885
+    },
+    "strongest": "rbdb15125fec621c7e4dc",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": {
+    "height": 26.59375,
+    "items": 4
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 1,
+    "claims": 0
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 855,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 854.75,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.2121007853092022,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 69535.05,
+     "gaps": [
+      0,
+      527.39
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      864
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": null,
+    "entryClarity": {
+     "value": true,
+     "entry": "left",
+     "focalCenterX": 0.29586588541666664
+    }
+   },
+   "score": 0.9,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 1,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": true,
+    "primary": {
+     "regionId": "r6484357a554f94651c73",
+     "blockId": "lh-title",
+     "weight": 0.301,
+     "contrast": 0.815
+    },
+    "strongest": "r6484357a554f94651c73",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "chapter",
+     "entry": "contextual"
+    }
+   },
+   "intent": {
+    "purpose": "chapter",
+    "entry": "contextual",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.17045624355263653,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 144,
+     "gaps": [
+      0,
+      24
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      768
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": null,
+    "entryClarity": {
+     "value": true,
+     "entry": "contextual",
+     "focalCenterX": 0.26362847222222224
+    }
+   },
+   "score": 0.97,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.3,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "rf680da5b7d8a244c64a3",
+     "blockId": "act-title",
+     "weight": 0.041,
+     "contrast": 0.815
+    },
+    "strongest": "rad1574c7128af0d2d5e2",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "composition": "image-left",
+   "width": 1024,
+   "height": 865,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 864.53125,
+    "features": {
+     "focus": "right:top",
+     "density": 0.36879578585213757,
+     "imageRatio": 0.1631111957863475,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "ctx-image",
+       "containerFraction": 0.15546535848386245,
+       "subjectFraction": 0.15546535848386245,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "composition": "image-right",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.43353496521403734,
+     "imageRatio": 0.30950820388593214,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "prod-image",
+       "containerFraction": 0.6145716996840489,
+       "subjectFraction": 0.6145716996840489,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "width": 1024,
+   "height": 1078,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1078px)"
+    ],
+    "height": 1077.1875,
+    "features": {
+     "focus": "left:top",
+     "density": 0.3489088830919438,
+     "imageRatio": 0.20290670123989676,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "pc-image",
+       "containerFraction": 0.1933954496192766,
+       "subjectFraction": 0.1933954496192766,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "width": 1024,
+   "height": 957,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (957px)"
+    ],
+    "height": 956.25,
+    "features": {
+     "focus": "right:top",
+     "density": 0.5172324461504205,
+     "imageRatio": 0.35873782723685443,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "det-hero",
+       "containerFraction": 0.49976471745110806,
+       "subjectFraction": 0.49976471745110806,
+       "annotated": false,
+       "note": "no subject annotation"
+      },
+      {
+       "blockId": "det-locator",
+       "containerFraction": 0.09203963285957287,
+       "subjectFraction": 0.09203963285957287,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "width": 1024,
+   "height": 1371,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1371px)"
+    ],
+    "height": 1370.5,
+    "features": {
+     "focus": "left:top",
+     "density": 0.6720576955281368,
+     "imageRatio": 0,
+     "labelMinPx": 17.599938875305625,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "width": 1024,
+   "height": 1446,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1446px)"
+    ],
+    "height": 1445.546875,
+    "features": {
+     "focus": "left:top",
+     "density": 0.45058986076720614,
+     "imageRatio": 0,
+     "labelMinPx": 10.5,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.2269543148829034,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "width": 1024,
+   "height": 2145,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (2145px)"
+    ],
+    "height": 2144.109375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.44434639693258954,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.23614885322093673,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.23981169264607524,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "composition": "image-left",
+   "width": 390,
+   "height": 709,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 708.046875,
+    "features": {
+     "focus": "center:bottom",
+     "density": 0.5579498478598528,
+     "imageRatio": 0.23825834542815674,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "ctx-image",
+       "containerFraction": 0.23825834542815674,
+       "subjectFraction": 0.23825834542815674,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "composition": "image-right",
+   "width": 390,
+   "height": 794,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 793.734375,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5965191291242862,
+     "imageRatio": 0.37186039208827554,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "prod-image",
+       "containerFraction": 0.7746948790380994,
+       "subjectFraction": 0.7746948790380994,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "width": 390,
+   "height": 751,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 750.5625,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5274755471857645,
+     "imageRatio": 0.2996829301101097,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "pc-image",
+       "containerFraction": 0.2996829301101097,
+       "subjectFraction": 0.2996829301101097,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "width": 390,
+   "height": 1060,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1059.03125,
+    "features": {
+     "focus": "center:bottom",
+     "density": 0.6176750894322415,
+     "imageRatio": 0.43586796799279093,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "det-hero",
+       "containerFraction": 0.5663811947148724,
+       "subjectFraction": 0.5663811947148724,
+       "annotated": false,
+       "note": "no subject annotation"
+      },
+      {
+       "blockId": "det-locator",
+       "containerFraction": 0.1526773706353548,
+       "subjectFraction": 0.1526773706353548,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "width": 390,
+   "height": 1184,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1183.671875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.9942923290161096,
+     "imageRatio": 0,
+     "labelMinPx": 12,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "width": 390,
+   "height": 1391,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1390.5,
+    "features": {
+     "focus": "center:top",
+     "density": 0.39229258273143536,
+     "imageRatio": 0,
+     "labelMinPx": 12.825,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "width": 390,
+   "height": 638,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 637.03125,
+    "features": {
+     "focus": "center:top",
+     "density": 0.574914812928058,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "width": 390,
+   "height": 2335,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 2334.234375,
+    "features": {
+     "focus": "center:top",
+     "density": 0.7581696141462543,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "width": 390,
+   "height": 618,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 617.5,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5824038461538461,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "width": 390,
+   "height": 523,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 522.546875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.563131298029483,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "composition": "image-left",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "ctx-image",
+      "role": "context"
+     }
+    ],
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 1,
+    "regions": 0,
+    "claims": 3
+   },
+   "mediaRoles": {
+    "ctx-image": "context"
+   },
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "right:top",
+     "density": 0.43451834773787273,
+     "imageRatio": 0.261008965568169,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "ctx-image",
+       "containerFraction": 0.2523086667158967,
+       "subjectFraction": 0.2523086667158967,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "soft": {
+    "subjectArea": {
+     "value": 0.2523086667158967,
+     "annotated": false,
+     "blockId": "ctx-image",
+     "containerFraction": 0.2523086667158967
+    },
+    "stripHeight": {
+     "value": 0,
+     "height": 26.59,
+     "budget": 48,
+     "items": 1
+    },
+    "groupingGapVariance": {
+     "value": 8164.73,
+     "gaps": [
+      0,
+      24,
+      202.55
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      824
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 0,
+     "titleRegionId": "r9f16d5d2e17430bf5444",
+     "figureRegionId": "r99705b8c282185c115f1"
+    },
+    "entryClarity": {
+     "value": false,
+     "entry": "left",
+     "focalCenterX": 0.7539333767361112
+    }
+   },
+   "score": 0.702309,
+   "penalties": {
+    "subjectArea": 0.158971,
+    "stripHeight": 0,
+    "groupingGapVariance": 1,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 1
+   },
+   "grayscale": {
+    "holds": true,
+    "primary": {
+     "regionId": "r9f16d5d2e17430bf5444",
+     "blockId": "ctx-title",
+     "weight": 0.088,
+     "contrast": 0.815
+    },
+    "strongest": "r9f16d5d2e17430bf5444",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": {
+    "height": 26.59375,
+    "items": 1
+   },
+   "images": [
+    {
+     "blockId": "ctx-image",
+     "mediaRole": "context",
+     "figure": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 446.359375
+     },
+     "crop": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 406.859375
+     },
+     "img": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 406.859375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "composition": "image-right",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-product",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "prod-image",
+      "role": "hero"
+     }
+    ],
+    "references": {
+     "mode": "compact"
+    },
+    "imageSlots": [
+     {
+      "id": "hero",
+      "blockId": "prod-image",
+      "brief": {
+       "role": "illustration",
+       "requiredWidth": 240,
+       "requiredHeight": 240,
+       "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+       },
+       "safeRegion": {
+        "x": 0.3,
+        "y": 0.3,
+        "width": 0.4,
+        "height": 0.4
+       },
+       "factual": false,
+       "sourceId": "",
+       "backend": "none",
+       "subjectBounds": {
+        "x": 0.3,
+        "y": 0.3,
+        "width": 0.4,
+        "height": 0.4
+       },
+       "protectedRegions": [
+        {
+         "x": 0.28,
+         "y": 0.28,
+         "width": 0.44,
+         "height": 0.44
+        }
+       ],
+       "contextRegion": {
+        "x": 0.1,
+        "y": 0.1,
+        "width": 0.8,
+        "height": 0.8
+       },
+       "visibleCaption": "The product in its field; the drawing is synthetic"
+      },
+      "display": "crop",
+      "aspect": 1
+     }
+    ],
+    "crops": [
+     {
+      "blockId": "prod-image",
+      "x": 0.2,
+      "y": 0.1,
+      "width": 0.6,
+      "height": 0.8
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "show-product",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 2,
+    "regions": 0,
+    "claims": 3
+   },
+   "mediaRoles": {
+    "prod-image": "hero"
+   },
+   "width": 1440,
+   "height": 819,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 818.484375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.3862913826079236,
+     "imageRatio": 0.27524942833739385,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "prod-image",
+       "containerFraction": 0.5543186720882729,
+       "subjectFraction": 0.18477289069609096,
+       "annotated": true
+      }
+     ]
+    }
+   },
+   "soft": {
+    "subjectArea": {
+     "value": 0.18477289069609096,
+     "annotated": true,
+     "blockId": "prod-image",
+     "containerFraction": 0.5543186720882729
+    },
+    "stripHeight": {
+     "value": 0,
+     "height": 26.59,
+     "budget": 48,
+     "items": 2
+    },
+    "groupingGapVariance": {
+     "value": 24068.35,
+     "gaps": [
+      0,
+      0,
+      358.28,
+      0
+     ]
+    },
+    "alignmentAxes": {
+     "value": 3,
+     "axes": [
+      48,
+      168,
+      624
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 0,
+     "titleRegionId": "r0b222c5e8cd5bba2d6ed",
+     "figureRegionId": "r0eb45b3ac91827232395"
+    },
+    "entryClarity": {
+     "value": true,
+     "entry": "left",
+     "focalCenterX": 0.21272786458333334
+    }
+   },
+   "score": 0.784773,
+   "penalties": {
+    "subjectArea": 0.38409,
+    "stripHeight": 0,
+    "groupingGapVariance": 1,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "r0eb45b3ac91827232395",
+     "blockId": "prod-image",
+     "weight": 0.008,
+     "contrast": 0.028
+    },
+    "strongest": "r0b222c5e8cd5bba2d6ed",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": {
+    "height": 26.59375,
+    "items": 2
+   },
+   "images": [
+    {
+     "blockId": "prod-image",
+     "mediaRole": "hero",
+     "figure": {
+      "x": 784,
+      "y": 136.390625,
+      "width": 560,
+      "height": 599.5
+     },
+     "crop": {
+      "x": 784,
+      "y": 136.390625,
+      "width": 560,
+      "height": 560
+     },
+     "img": {
+      "x": 597.34375,
+      "y": 66.390625,
+      "width": 933.328125,
+      "height": 700
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-product",
+     "entry": "center"
+    },
+    "imageSlots": [
+     {
+      "id": "evidence",
+      "blockId": "pc-image",
+      "brief": {
+       "role": "product-screenshot",
+       "requiredWidth": 240,
+       "requiredHeight": 240,
+       "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+       },
+       "safeRegion": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+       },
+       "factual": true,
+       "sourceId": "src-product",
+       "backend": "none"
+      },
+      "display": "contain",
+      "aspect": 1.3333333333333333
+     }
+    ],
+    "crops": [
+     {
+      "blockId": "pc-image",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "show-product",
+    "entry": "center",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 2,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "pc-image": "hero"
+   },
+   "width": 1440,
+   "height": 1030,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1030px)"
+    ],
+    "height": 1029.359375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.264761548556922,
+     "imageRatio": 0.14887824944690264,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "pc-image",
+       "containerFraction": 0.1439156411320059,
+       "subjectFraction": 0.1439156411320059,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "soft": {
+    "subjectArea": {
+     "value": 0.1439156411320059,
+     "annotated": false,
+     "blockId": "pc-image",
+     "containerFraction": 0.1439156411320059
+    },
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 75,
+     "gaps": [
+      24,
+      24,
+      44,
+      24
+     ]
+    },
+    "alignmentAxes": {
+     "value": 1,
+     "axes": [
+      48
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 24,
+     "titleRegionId": "rd43568362d86ebc3a5f5",
+     "figureRegionId": "r695ab2ffd7bdd73546c4"
+    },
+    "entryClarity": {
+     "value": false,
+     "entry": "center",
+     "focalCenterX": 0.24861111111111112
+    }
+   },
+   "score": 0.666265,
+   "penalties": {
+    "subjectArea": 0.520281,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.216506,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0.06,
+    "entryClarity": 1
+   },
+   "grayscale": {
+    "holds": true,
+    "primary": {
+     "regionId": "rd43568362d86ebc3a5f5",
+     "blockId": "pc-title",
+     "weight": 0.065,
+     "contrast": 0.815
+    },
+    "strongest": "rd43568362d86ebc3a5f5",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [
+    {
+     "blockId": "pc-image",
+     "mediaRole": null,
+     "figure": {
+      "x": 429.328125,
+      "y": 345.890625,
+      "width": 533.328125,
+      "height": 436.484375
+     },
+     "crop": {
+      "x": 429.328125,
+      "y": 345.890625,
+      "width": 533.328125,
+      "height": 399.984375
+     },
+     "img": {
+      "x": 429.328125,
+      "y": 345.890625,
+      "width": 533.328125,
+      "height": 399.984375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-detail",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "det-hero",
+      "role": "hero"
+     },
+     {
+      "blockId": "det-locator",
+      "role": "supporting"
+     }
+    ],
+    "imageSlots": [
+     {
+      "id": "hero",
+      "blockId": "det-hero",
+      "brief": {
+       "role": "illustration",
+       "requiredWidth": 200,
+       "requiredHeight": 200,
+       "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+       },
+       "safeRegion": {
+        "x": 0.1,
+        "y": 0.35,
+        "width": 0.8,
+        "height": 0.3
+       },
+       "factual": false,
+       "sourceId": "",
+       "backend": "none",
+       "subjectBounds": {
+        "x": 0.1,
+        "y": 0.35,
+        "width": 0.8,
+        "height": 0.3
+       },
+       "protectedRegions": [
+        {
+         "x": 0.1,
+         "y": 0.35,
+         "width": 0.8,
+         "height": 0.3
+        }
+       ],
+       "visibleCaption": "Seam and latch",
+       "detailLocator": {
+        "blockId": "det-locator",
+        "region": {
+         "x": 0.3,
+         "y": 0.3,
+         "width": 0.4,
+         "height": 0.4
+        }
+       }
+      },
+      "display": "crop",
+      "aspect": 1
+     },
+     {
+      "id": "locator",
+      "blockId": "det-locator",
+      "brief": {
+       "role": "illustration",
+       "requiredWidth": 240,
+       "requiredHeight": 240,
+       "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+       },
+       "safeRegion": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+       },
+       "factual": false,
+       "sourceId": "",
+       "backend": "none",
+       "subjectBounds": {
+        "x": 0.3,
+        "y": 0.3,
+        "width": 0.4,
+        "height": 0.4
+       },
+       "visibleCaption": "Where the detail sits on the whole product"
+      },
+      "display": "contain",
+      "aspect": 1.3333333333333333
+     }
+    ],
+    "crops": [
+     {
+      "blockId": "det-hero",
+      "x": 0,
+      "y": 0.25,
+      "width": 1,
+      "height": 0.5
+     },
+     {
+      "blockId": "det-locator",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "show-detail",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "det-hero": "hero",
+    "det-locator": "supporting"
+   },
+   "width": 1440,
+   "height": 819,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 818.0625,
+    "features": {
+     "focus": "right:top",
+     "density": 0.4795076835303543,
+     "imageRatio": 0.3545358421488376,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "det-hero",
+       "containerFraction": 0.5324233240804408,
+       "subjectFraction": 0.25556319555861157,
+       "annotated": true
+      },
+      {
+       "blockId": "det-locator",
+       "containerFraction": 0.07650631870365596,
+       "subjectFraction": 0.012241010992584952,
+       "annotated": true
+      }
+     ]
+    }
+   },
+   "soft": {
+    "subjectArea": {
+     "value": 0.25556319555861157,
+     "annotated": true,
+     "blockId": "det-hero",
+     "containerFraction": 0.5324233240804408
+    },
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 128,
+     "gaps": [
+      0,
+      0,
+      24
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      824
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 0,
+     "titleRegionId": "rebcdfa477e718c95b156",
+     "figureRegionId": "ra57fded50d05f77f7cb2"
+    },
+    "entryClarity": {
+     "value": false,
+     "entry": "left",
+     "focalCenterX": 0.7539333767361112
+    }
+   },
+   "score": 0.777279,
+   "penalties": {
+    "subjectArea": 0.148123,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.282843,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 1
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "ra57fded50d05f77f7cb2",
+     "blockId": "det-hero",
+     "weight": 0.043,
+     "contrast": 0.156
+    },
+    "strongest": "rebcdfa477e718c95b156",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [
+    {
+     "blockId": "det-hero",
+     "mediaRole": "hero",
+     "figure": {
+      "x": 129.65625,
+      "y": 136.390625,
+      "width": 560,
+      "height": 596.5
+     },
+     "crop": {
+      "x": 129.65625,
+      "y": 136.390625,
+      "width": 560,
+      "height": 560
+     },
+     "img": {
+      "x": 129.65625,
+      "y": -143.609375,
+      "width": 560,
+      "height": 1120
+     }
+    },
+    {
+     "blockId": "det-locator",
+     "mediaRole": "supporting",
+     "figure": {
+      "x": 912.328125,
+      "y": 465.578125,
+      "width": 346.65625,
+      "height": 296.484375
+     },
+     "crop": {
+      "x": 912.328125,
+      "y": 465.578125,
+      "width": 346.65625,
+      "height": 259.984375
+     },
+     "img": {
+      "x": 912.328125,
+      "y": 465.578125,
+      "width": 346.65625,
+      "height": 259.984375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "mech-diagram",
+      "role": "mechanism"
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "mech-diagram": "mechanism"
+   },
+   "width": 1440,
+   "height": 1509,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1509px)"
+    ],
+    "height": 1508.953125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.5763915347902206,
+     "imageRatio": 0,
+     "labelMinPx": 20.799816625916872,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 82.51,
+     "gaps": [
+      0,
+      21.39,
+      16
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      720
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": {
+     "value": 16,
+     "titleRegionId": "r3176c370d8238eea7bee",
+     "figureRegionId": "rbe0bc37006adfc70d4a3"
+    },
+    "entryClarity": {
+     "value": true,
+     "entry": "left",
+     "focalCenterX": 0.25
+    }
+   },
+   "score": 0.973291,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.227088,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0.04,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "r3176c370d8238eea7bee",
+     "blockId": "mech-title",
+     "weight": 0.018,
+     "contrast": 0.815
+    },
+    "strongest": "rbe0bc37006adfc70d4a3",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [],
+   "diagrams": [
+    {
+     "box": {
+      "x": 176,
+      "y": 238.5625,
+      "width": 1040,
+      "height": 1063.390625
+     },
+     "drawn": {
+      "width": 1039.9908312958435,
+      "height": 1063.390625
+     },
+     "viewBox": [
+      800,
+      818
+     ]
+    }
+   ]
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "theme": "dark-data",
+   "declared": {
+    "intent": {
+     "purpose": "evidence",
+     "entry": "left"
+    },
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "evidence",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 12,
+    "regions": 0,
+    "claims": 5
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 891,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 890.609375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.40425682243454863,
+     "imageRatio": 0,
+     "labelMinPx": 10.5,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": {
+     "value": 0,
+     "height": 46.19,
+     "budget": 48,
+     "items": 12
+    },
+    "groupingGapVariance": {
+     "value": 128.53,
+     "gaps": [
+      14,
+      0,
+      14,
+      0,
+      44.66,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    "alignmentAxes": {
+     "value": 13,
+     "axes": [
+      48,
+      152,
+      256,
+      360,
+      464,
+      576,
+      680,
+      720,
+      792,
+      904,
+      1008,
+      1120,
+      1224
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": null,
+    "entryClarity": {
+     "value": false,
+     "entry": "left",
+     "focalCenterX": 0.48333333333333334
+    }
+   },
+   "score": 0.721657,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.283428,
+    "alignmentAxes": 1,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 1
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "r7bb96525dffee03632c2",
+     "blockId": "ev-title",
+     "weight": 0.07,
+     "contrast": 0.88
+    },
+    "strongest": "ra774d9478eeb6da87b64",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": {
+    "height": 46.1875,
+    "items": 12
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "theme": "electric-violet",
+   "declared": {
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": true
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 0,
+    "regions": 1,
+    "claims": 2
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.20850070581480817,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 128,
+     "gaps": [
+      24,
+      0,
+      24
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      552
+     ]
+    },
+    "competingAccents": {
+     "value": 1,
+     "regionIds": [
+      "ra4e4b464adf61da11ecb"
+     ]
+    },
+    "titleFigureDistance": null,
+    "entryClarity": null
+   },
+   "score": 0.921716,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.282843,
+    "alignmentAxes": 0,
+    "competingAccents": 0.333333,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "rb52315c3f8c7df9e6532",
+     "blockId": "q-title",
+     "weight": 0.019,
+     "contrast": 0.885
+    },
+    "strongest": "ra4e4b464adf61da11ecb",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "theme": "electric-violet",
+   "declared": {
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": true
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 4,
+    "regions": 0,
+    "claims": 6
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 1798,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1798px)"
+    ],
+    "height": 1797.109375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.3423144664320396,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": {
+     "value": 0,
+     "height": 26.59,
+     "budget": 48,
+     "items": 4
+    },
+    "groupingGapVariance": {
+     "value": 196.44,
+     "gaps": [
+      40,
+      24,
+      24,
+      0,
+      24,
+      11,
+      0,
+      0,
+      0
+     ]
+    },
+    "alignmentAxes": {
+     "value": 5,
+     "axes": [
+      48,
+      168,
+      296,
+      416,
+      728
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": null,
+    "entryClarity": null
+   },
+   "score": 0.914961,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.350393,
+    "alignmentAxes": 0.5,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": true,
+    "primary": {
+     "regionId": "rbdb15125fec621c7e4dc",
+     "blockId": "of-title",
+     "weight": 0.107,
+     "contrast": 0.885
+    },
+    "strongest": "rbdb15125fec621c7e4dc",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": {
+    "height": 26.59375,
+    "items": 4
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 1,
+    "claims": 0
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 1238,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1238px)"
+    ],
+    "height": 1237.6875,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.1912612797024107,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 206897.62,
+     "gaps": [
+      0,
+      909.72
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      864
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": null,
+    "entryClarity": {
+     "value": true,
+     "entry": "left",
+     "focalCenterX": 0.29586588541666664
+    }
+   },
+   "score": 0.9,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 1,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": true,
+    "primary": {
+     "regionId": "r6484357a554f94651c73",
+     "blockId": "lh-title",
+     "weight": 0.345,
+     "contrast": 0.815
+    },
+    "strongest": "r6484357a554f94651c73",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "chapter",
+     "entry": "contextual"
+    }
+   },
+   "intent": {
+    "purpose": "chapter",
+    "entry": "contextual",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.17220783387919394,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "soft": {
+    "subjectArea": null,
+    "stripHeight": null,
+    "groupingGapVariance": {
+     "value": 144,
+     "gaps": [
+      0,
+      24
+     ]
+    },
+    "alignmentAxes": {
+     "value": 2,
+     "axes": [
+      48,
+      768
+     ]
+    },
+    "competingAccents": {
+     "value": 0,
+     "regionIds": []
+    },
+    "titleFigureDistance": null,
+    "entryClarity": {
+     "value": true,
+     "entry": "contextual",
+     "focalCenterX": 0.26362847222222224
+    }
+   },
+   "score": 0.97,
+   "penalties": {
+    "subjectArea": 0,
+    "stripHeight": 0,
+    "groupingGapVariance": 0.3,
+    "alignmentAxes": 0,
+    "competingAccents": 0,
+    "titleFigureDistance": 0,
+    "entryClarity": 0
+   },
+   "grayscale": {
+    "holds": false,
+    "primary": {
+     "regionId": "rf680da5b7d8a244c64a3",
+     "blockId": "act-title",
+     "weight": 0.047,
+     "contrast": 0.815
+    },
+    "strongest": "rad1574c7128af0d2d5e2",
+    "method": "luminance-only (grayscale) contrast of each region's dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking"
+   },
+   "strip": null,
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "composition": "image-left",
+   "width": 1024,
+   "height": 855,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 854.75,
+    "features": {
+     "focus": "right:top",
+     "density": 0.3633934965785686,
+     "imageRatio": 0.16497774317890113,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "ctx-image",
+       "containerFraction": 0.15724441146739013,
+       "subjectFraction": 0.15724441146739013,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "composition": "image-right",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.42128768238406555,
+     "imageRatio": 0.30950820388593214,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "prod-image",
+       "containerFraction": 0.6145716996840489,
+       "subjectFraction": 0.6145716996840489,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "width": 1024,
+   "height": 998,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (998px)"
+    ],
+    "height": 997.765625,
+    "features": {
+     "focus": "left:top",
+     "density": 0.3362590560291829,
+     "imageRatio": 0.21905802000530064,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "pc-image",
+       "containerFraction": 0.2087896753175522,
+       "subjectFraction": 0.2087896753175522,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "width": 1024,
+   "height": 829,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 828.3125,
+    "features": {
+     "focus": "right:top",
+     "density": 0.5380446083295748,
+     "imageRatio": 0.4141468917772484,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "det-hero",
+       "containerFraction": 0.5769561742248512,
+       "subjectFraction": 0.5769561742248512,
+       "annotated": false,
+       "note": "no subject annotation"
+      },
+      {
+       "blockId": "det-locator",
+       "containerFraction": 0.10625566911276427,
+       "subjectFraction": 0.10625566911276427,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "width": 1024,
+   "height": 1340,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1340px)"
+    ],
+    "height": 1339.96875,
+    "features": {
+     "focus": "left:top",
+     "density": 0.6644221214939944,
+     "imageRatio": 0,
+     "labelMinPx": 17.599938875305625,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "width": 1024,
+   "height": 1439,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1439px)"
+    ],
+    "height": 1438.1875,
+    "features": {
+     "focus": "left:top",
+     "density": 0.45220291831817694,
+     "imageRatio": 0,
+     "labelMinPx": 10.5,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.19696159926389206,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "width": 1024,
+   "height": 1834,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1834px)"
+    ],
+    "height": 1833.203125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.4317300656846786,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "width": 1024,
+   "height": 1066,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1066px)"
+    ],
+    "height": 1065.6875,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.2292458744900484,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.15449089292716556,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "composition": "image-left",
+   "width": 390,
+   "height": 648,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 647.21875,
+    "features": {
+     "focus": "center:bottom",
+     "density": 0.5505530939213523,
+     "imageRatio": 0.2606507875785071,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "ctx-image",
+       "containerFraction": 0.2606507875785071,
+       "subjectFraction": 0.2606507875785071,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "composition": "image-right",
+   "width": 390,
+   "height": 634,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 633.1875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.44500850655293855,
+     "imageRatio": 0.2145979109957632,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "prod-image",
+       "containerFraction": 0.44707291215841705,
+       "subjectFraction": 0.44707291215841705,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "width": 390,
+   "height": 707,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 706.96875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5019738251405139,
+     "imageRatio": 0.31816225148674426,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "pc-image",
+       "containerFraction": 0.31816225148674426,
+       "subjectFraction": 0.31816225148674426,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "width": 390,
+   "height": 860,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 859.71875,
+    "features": {
+     "focus": "center:bottom",
+     "density": 0.5138306448982178,
+     "imageRatio": 0.409742676356031,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "det-hero",
+       "containerFraction": 0.6976879178398571,
+       "subjectFraction": 0.6976879178398571,
+       "annotated": false,
+       "note": "no subject annotation"
+      },
+      {
+       "blockId": "det-locator",
+       "containerFraction": 0.060898717436102486,
+       "subjectFraction": 0.060898717436102486,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "width": 390,
+   "height": 1126,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1125.28125,
+    "features": {
+     "focus": "center:top",
+     "density": 0.9974237209928287,
+     "imageRatio": 0,
+     "labelMinPx": 12,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "width": 390,
+   "height": 1240,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1239.203125,
+    "features": {
+     "focus": "center:top",
+     "density": 0.411034994250014,
+     "imageRatio": 0,
+     "labelMinPx": 12.825,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "width": 390,
+   "height": 538,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 537.9375,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5261334691798268,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "width": 390,
+   "height": 1814,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1813.828125,
+    "features": {
+     "focus": "center:top",
+     "density": 0.7260944953024033,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "width": 390,
+   "height": 709,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 708.28125,
+    "features": {
+     "focus": "center:middle",
+     "density": 0.6179280150689813,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "width": 390,
+   "height": 486,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 485.34375,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5351257782202344,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  }
+ ],
+ "strips": [
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "width": 1440,
+   "height": 46.2,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "width": 1024,
+   "height": 65.8,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "width": 390,
+   "height": 24.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "width": 390,
+   "height": 44.2,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "width": 390,
+   "height": 142.2,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "width": 390,
+   "height": 63.8,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "width": 1440,
+   "height": 46.2,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "width": 1024,
+   "height": 46.2,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "width": 390,
+   "height": 24.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "width": 390,
+   "height": 24.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "width": 390,
+   "height": 103,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "width": 390,
+   "height": 44.2,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": null
+  }
+ ],
+ "subjects": [
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "blockId": "ctx-image",
+   "mediaRole": "context",
+   "imageBox": {
+    "x": 48,
+    "y": 136.390625,
+    "width": 723.328125,
+    "height": 406.859375
+   },
+   "subjectBounds": null,
+   "crop": null,
+   "containerFraction": 0.2523086667158967,
+   "subjectFraction": 0.2523086667158967,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "blockId": "prod-image",
+   "mediaRole": "hero",
+   "imageBox": {
+    "x": 597.34375,
+    "y": 66.390625,
+    "width": 933.328125,
+    "height": 700
+   },
+   "subjectBounds": {
+    "x": 0.3,
+    "y": 0.3,
+    "width": 0.4,
+    "height": 0.4
+   },
+   "crop": {
+    "blockId": "prod-image",
+    "x": 0.2,
+    "y": 0.1,
+    "width": 0.6,
+    "height": 0.8
+   },
+   "containerFraction": 0.5543186720882729,
+   "subjectFraction": 0.18477289069609096,
+   "annotated": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "blockId": "pc-image",
+   "mediaRole": null,
+   "imageBox": {
+    "x": 429.328125,
+    "y": 323.390625,
+    "width": 533.328125,
+    "height": 399.984375
+   },
+   "subjectBounds": null,
+   "crop": {
+    "blockId": "pc-image",
+    "x": 0,
+    "y": 0,
+    "width": 1,
+    "height": 1
+   },
+   "containerFraction": 0.14216551990006623,
+   "subjectFraction": 0.14216551990006623,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "blockId": "det-hero",
+   "mediaRole": "hero",
+   "imageBox": {
+    "x": 129.65625,
+    "y": -143.609375,
+    "width": 560,
+    "height": 1120
+   },
+   "subjectBounds": {
+    "x": 0.1,
+    "y": 0.35,
+    "width": 0.8,
+    "height": 0.3
+   },
+   "crop": {
+    "blockId": "det-hero",
+    "x": 0,
+    "y": 0.25,
+    "width": 1,
+    "height": 0.5
+   },
+   "containerFraction": 0.5201245578899794,
+   "subjectFraction": 0.24965978778719006,
+   "annotated": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "blockId": "det-locator",
+   "mediaRole": "supporting",
+   "imageBox": {
+    "x": 912.328125,
+    "y": 484.921875,
+    "width": 346.65625,
+    "height": 259.984375
+   },
+   "subjectBounds": {
+    "x": 0.3,
+    "y": 0.3,
+    "width": 0.4,
+    "height": 0.4
+   },
+   "crop": {
+    "blockId": "det-locator",
+    "x": 0,
+    "y": 0,
+    "width": 1,
+    "height": 1
+   },
+   "containerFraction": 0.07473905329045437,
+   "subjectFraction": 0.011958248526472696,
+   "annotated": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "blockId": "ctx-image",
+   "mediaRole": "context",
+   "imageBox": {
+    "x": 48,
+    "y": 136.390625,
+    "width": 723.328125,
+    "height": 406.859375
+   },
+   "subjectBounds": null,
+   "crop": null,
+   "containerFraction": 0.2523086667158967,
+   "subjectFraction": 0.2523086667158967,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "blockId": "prod-image",
+   "mediaRole": "hero",
+   "imageBox": {
+    "x": 597.34375,
+    "y": 66.390625,
+    "width": 933.328125,
+    "height": 700
+   },
+   "subjectBounds": {
+    "x": 0.3,
+    "y": 0.3,
+    "width": 0.4,
+    "height": 0.4
+   },
+   "crop": {
+    "blockId": "prod-image",
+    "x": 0.2,
+    "y": 0.1,
+    "width": 0.6,
+    "height": 0.8
+   },
+   "containerFraction": 0.5543186720882729,
+   "subjectFraction": 0.18477289069609096,
+   "annotated": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "blockId": "pc-image",
+   "mediaRole": null,
+   "imageBox": {
+    "x": 429.328125,
+    "y": 345.890625,
+    "width": 533.328125,
+    "height": 399.984375
+   },
+   "subjectBounds": null,
+   "crop": {
+    "blockId": "pc-image",
+    "x": 0,
+    "y": 0,
+    "width": 1,
+    "height": 1
+   },
+   "containerFraction": 0.1439156411320059,
+   "subjectFraction": 0.1439156411320059,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "blockId": "det-hero",
+   "mediaRole": "hero",
+   "imageBox": {
+    "x": 129.65625,
+    "y": -143.609375,
+    "width": 560,
+    "height": 1120
+   },
+   "subjectBounds": {
+    "x": 0.1,
+    "y": 0.35,
+    "width": 0.8,
+    "height": 0.3
+   },
+   "crop": {
+    "blockId": "det-hero",
+    "x": 0,
+    "y": 0.25,
+    "width": 1,
+    "height": 0.5
+   },
+   "containerFraction": 0.5324233240804408,
+   "subjectFraction": 0.25556319555861157,
+   "annotated": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "blockId": "det-locator",
+   "mediaRole": "supporting",
+   "imageBox": {
+    "x": 912.328125,
+    "y": 465.578125,
+    "width": 346.65625,
+    "height": 259.984375
+   },
+   "subjectBounds": {
+    "x": 0.3,
+    "y": 0.3,
+    "width": 0.4,
+    "height": 0.4
+   },
+   "crop": {
+    "blockId": "det-locator",
+    "x": 0,
+    "y": 0,
+    "width": 1,
+    "height": 1
+   },
+   "containerFraction": 0.07650631870365596,
+   "subjectFraction": 0.012241010992584952,
+   "annotated": true
+  }
+ ],
+ "media": [
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-cream-collage-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    440
+   ],
+   "sceneHeight": 952,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (952px)"
+   ],
+   "file": "cine-media-product-cream-collage-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-cream-collage-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-dark-data-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    440
+   ],
+   "sceneHeight": 951,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (951px)"
+   ],
+   "file": "cine-media-product-dark-data-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-dark-data-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    440
+   ],
+   "sceneHeight": 951,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (951px)"
+   ],
+   "file": "cine-media-product-electric-violet-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    596
+   ],
+   "sceneHeight": 831,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-silver-gray-editorial-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    436
+   ],
+   "sceneHeight": 1018,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1018px)"
+   ],
+   "file": "cine-media-product-silver-gray-editorial-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    596
+   ],
+   "sceneHeight": 831,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-silver-gray-editorial-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    594
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-fresh-report-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    434
+   ],
+   "sceneHeight": 907,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (907px)"
+   ],
+   "file": "cine-media-product-fresh-report-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    594
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-fresh-report-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 851,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-orange-launch-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    440
+   ],
+   "sceneHeight": 1027,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1027px)"
+   ],
+   "file": "cine-media-product-orange-launch-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 851,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-orange-launch-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "photo-split",
+   "drawn": [
+    950,
+    713
+   ],
+   "box": [
+    570,
+    610
+   ],
+   "sceneHeight": 841,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-photo-split.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "stage-hero",
+   "drawn": [
+    1290,
+    967
+   ],
+   "box": [
+    774,
+    813
+   ],
+   "sceneHeight": 1065,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1065px)"
+   ],
+   "file": "cine-media-product-orange-launch-stage-hero.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1571,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1571px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-rail",
+   "drawn": [
+    748,
+    765
+   ],
+   "box": [
+    748,
+    765
+   ],
+   "sceneHeight": 1083,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1083px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-key",
+   "drawn": [
+    748,
+    765
+   ],
+   "box": [
+    748,
+    765
+   ],
+   "sceneHeight": 1223,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1223px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1542,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1542px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1076,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1076px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1216,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1216px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1579,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1579px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-rail",
+   "drawn": [
+    738,
+    755
+   ],
+   "box": [
+    738,
+    755
+   ],
+   "sceneHeight": 1089,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1089px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-key",
+   "drawn": [
+    738,
+    755
+   ],
+   "box": [
+    738,
+    755
+   ],
+   "sceneHeight": 1169,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1169px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-key.png"
+  }
+ ],
+ "split": {
+  "regionBounds": [
+   {
+    "blockId": "of-title",
+    "y": 136.390625,
+    "height": 211
+   },
+   {
+    "blockId": "of-para-1",
+    "y": 387.390625,
+    "height": 387.359375
+   },
+   {
+    "blockId": "of-para-2",
+    "y": 798.75,
+    "height": 421.453125
+   },
+   {
+    "blockId": "of-para-3",
+    "y": 1244.203125,
+    "height": 387.359375
+   },
+   {
+    "blockId": "of-list-1",
+    "y": 1244.203125,
+    "height": 365.828125
+   },
+   {
+    "blockId": "of-list-2",
+    "y": 1655.5625,
+    "height": 365.828125
+   }
+  ],
+  "passes": [
+   {
+    "page": "overflow",
+    "changed": true,
+    "effects": [
+     "Page 8: splits this page into 2 pages after “The first paragraph describes the site in full.…” (paragraph, ending at 775 px of 754). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes."
+    ],
+    "kept": [
+     "Page 8: no content block ends inside the 754 px limit (“The first paragraph describes the site in full.…” ends at 775 px); the cut falls after it, so the first page still exceeds the limit and PowerPoint and PDF page it on the bands. Shorten that block to fit."
+    ]
+   },
+   {
+    "page": "overflow-2",
+    "changed": true,
+    "effects": [
+     "Page 9: splits this page into 2 pages after “The second paragraph lists what the team wanted…” (paragraph, ending at 809 px of 754). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes."
+    ],
+    "kept": [
+     "Page 9: no content block ends inside the 754 px limit (“The second paragraph lists what the team wanted…” ends at 809 px); the cut falls after it, so the first page still exceeds the limit and PowerPoint and PDF page it on the bands. Shorten that block to fit."
+    ]
+   },
+   {
+    "page": "overflow-2-2",
+    "changed": true,
+    "effects": [
+     "Page 10: splits this page into 2 pages after “Context first · Product second · Detail third ·…” (list, ending at 753 px of 754). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes."
+    ],
+    "kept": []
+   }
+  ],
+  "changed": true,
+  "pages": [
+   "overflow",
+   "overflow-2",
+   "overflow-2-2",
+   "overflow-2-2-2"
+  ],
+  "fits": [
+   {
+    "sceneId": "overflow",
+    "height": 858,
+    "fit": {
+     "ok": true,
+     "reasons": [],
+     "height": 857.34375,
+     "features": {
+      "focus": "left:top",
+      "density": 0.261798721219853,
+      "imageRatio": 0,
+      "labelMinPx": null,
+      "labelTargetPx": 21
+     }
+    }
+   },
+   {
+    "sceneId": "overflow-2",
+    "height": 892,
+    "fit": {
+     "ok": true,
+     "reasons": [],
+     "height": 891.4375,
+     "features": {
+      "focus": "left:top",
+      "density": 0.25958525270270427,
+      "imageRatio": 0,
+      "labelMinPx": null,
+      "labelTargetPx": 21
+     }
+    }
+   },
+   {
+    "sceneId": "overflow-2-2",
+    "height": 858,
+    "fit": {
+     "ok": true,
+     "reasons": [],
+     "height": 857.34375,
+     "features": {
+      "focus": "left:top",
+      "density": 0.3984710029332,
+      "imageRatio": 0,
+      "labelMinPx": null,
+      "labelTargetPx": 21
+     }
+    }
+   },
+   {
+    "sceneId": "overflow-2-2-2",
+    "height": 836,
+    "fit": {
+     "ok": true,
+     "reasons": [],
+     "height": 835.8125,
+     "features": {
+      "focus": "left:top",
+      "density": 0.2571717458264384,
+      "imageRatio": 0,
+      "labelMinPx": null,
+      "labelTargetPx": 21
+     }
+    }
+   }
+  ],
+  "files": [
+   "cine-en-overflow-split-1440.png",
+   "cine-en-overflow-2-split-1440.png",
+   "cine-en-overflow-2-2-split-1440.png",
+   "cine-en-overflow-2-2-2-split-1440.png"
+  ],
+  "blockIds": {
+   "overflow": [
+    "of-title",
+    "of-para-1",
+    "of-source-1",
+    "of-source-2",
+    "of-source-3",
+    "of-source-4"
+   ],
+   "overflow-2": [
+    "of-title",
+    "of-para-2",
+    "of-source-1",
+    "of-source-2"
+   ],
+   "overflow-2-2": [
+    "of-title",
+    "of-para-3",
+    "of-list-1",
+    "of-source-1",
+    "of-source-2"
+   ],
+   "overflow-2-2-2": [
+    "of-title",
+    "of-list-2",
+    "of-source-2"
+   ]
+  }
+ },
+ "grayscale": [
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "file": "cine-en-product-1440-grayscale.png"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "file": "cine-en-evidence-1440-grayscale.png"
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "file": "cine-en-detail-1440-grayscale.png"
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "file": "cine-en-mechanism-1440-grayscale.png"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "file": "cine-zh-CN-product-1440-grayscale.png"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "file": "cine-zh-CN-evidence-1440-grayscale.png"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "file": "cine-zh-CN-detail-1440-grayscale.png"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "file": "cine-zh-CN-mechanism-1440-grayscale.png"
+  }
+ ],
+ "weakest": {
+  "en": {
+   "sceneId": "product-center",
+   "viewport": null,
+   "score": 0.664515,
+   "reasons": [
+    "small subject",
+    "entry not where the intent says"
+   ]
+  },
+  "zh-CN": {
+   "sceneId": "product-center",
+   "viewport": null,
+   "score": 0.666265,
+   "reasons": [
+    "small subject",
+    "entry not where the intent says"
+   ]
+  }
+ },
+ "ranking": {
+  "sceneId": "product",
+  "files": [
+   "cine-en-product-candidate-image-left-1440.png",
+   "cine-en-product-candidate-image-strip-1440.png",
+   "cine-en-product-candidate-image-right-1440.png"
+  ],
+  "ranked": [
+   {
+    "candidate": 2,
+    "composition": "image-right",
+    "ok": true,
+    "reasons": [],
+    "height": 819,
+    "soft": {
+     "subjectArea": {
+      "value": 0.18477289069609096,
+      "annotated": true,
+      "blockId": "prod-image",
+      "containerFraction": 0.5543186720882729
+     },
+     "stripHeight": {
+      "value": 0,
+      "height": 26.59,
+      "budget": 48,
+      "items": 2
+     },
+     "groupingGapVariance": {
+      "value": 21852.59,
+      "gaps": [
+       0,
+       0,
+       341.39,
+       0
+      ]
+     },
+     "alignmentAxes": {
+      "value": 3,
+      "axes": [
+       48,
+       216,
+       624
+      ]
+     },
+     "competingAccents": {
+      "value": 0,
+      "regionIds": []
+     },
+     "titleFigureDistance": {
+      "value": 0,
+      "titleRegionId": "r0b222c5e8cd5bba2d6ed",
+      "figureRegionId": "r0eb45b3ac91827232395"
+     },
+     "entryClarity": {
+      "value": true,
+      "entry": "left",
+      "focalCenterX": 0.21272786458333334
+     }
+    },
+    "score": 0.784773,
+    "penalties": {
+     "subjectArea": 0.38409,
+     "stripHeight": 0,
+     "groupingGapVariance": 1,
+     "alignmentAxes": 0,
+     "competingAccents": 0,
+     "titleFigureDistance": 0,
+     "entryClarity": 0
+    },
+    "differences": []
+   },
+   {
+    "candidate": 0,
+    "composition": "image-left",
+    "ok": true,
+    "reasons": [],
+    "height": 819,
+    "soft": {
+     "subjectArea": {
+      "value": 0.18477289069609096,
+      "annotated": true,
+      "blockId": "prod-image",
+      "containerFraction": 0.5543186720882729
+     },
+     "stripHeight": {
+      "value": 0,
+      "height": 26.59,
+      "budget": 48,
+      "items": 2
+     },
+     "groupingGapVariance": {
+      "value": 21972.92,
+      "gaps": [
+       0,
+       24,
+       349.58,
+       0
+      ]
+     },
+     "alignmentAxes": {
+      "value": 3,
+      "axes": [
+       48,
+       216,
+       824
+      ]
+     },
+     "competingAccents": {
+      "value": 0,
+      "regionIds": []
+     },
+     "titleFigureDistance": {
+      "value": 0,
+      "titleRegionId": "r0b222c5e8cd5bba2d6ed",
+      "figureRegionId": "r0eb45b3ac91827232395"
+     },
+     "entryClarity": {
+      "value": false,
+      "entry": "left",
+      "focalCenterX": 0.7539333767361112
+     }
+    },
+    "score": 0.634773,
+    "penalties": {
+     "subjectArea": 0.38409,
+     "stripHeight": 0,
+     "groupingGapVariance": 1,
+     "alignmentAxes": 0,
+     "competingAccents": 0,
+     "titleFigureDistance": 0,
+     "entryClarity": 1
+    },
+    "differences": [
+     {
+      "feature": "composition",
+      "winner": "image-right",
+      "this": "image-left"
+     },
+     {
+      "feature": "groupingGapVariance",
+      "winner": 21852.59,
+      "this": 21972.92
+     },
+     {
+      "feature": "entryClarity",
+      "winner": true,
+      "this": false
+     }
+    ]
+   },
+   {
+    "candidate": 1,
+    "composition": "image-strip",
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (952px)"
+    ],
+    "height": 952,
+    "soft": {
+     "subjectArea": {
+      "value": 0.08108427382424951,
+      "annotated": true,
+      "blockId": "prod-image",
+      "containerFraction": 0.24325282147274857
+     },
+     "stripHeight": {
+      "value": 0,
+      "height": 26.59,
+      "budget": 48,
+      "items": 2
+     },
+     "groupingGapVariance": {
+      "value": 100.69,
+      "gaps": [
+       24,
+       24,
+       11,
+       0
+      ]
+     },
+     "alignmentAxes": {
+      "value": 2,
+      "axes": [
+       48,
+       216
+      ]
+     },
+     "competingAccents": {
+      "value": 0,
+      "regionIds": []
+     },
+     "titleFigureDistance": {
+      "value": 24,
+      "titleRegionId": "r0b222c5e8cd5bba2d6ed",
+      "figureRegionId": "r0eb45b3ac91827232395"
+     },
+     "entryClarity": {
+      "value": true,
+      "entry": "left",
+      "focalCenterX": 0.24861111111111112
+     }
+    },
+    "score": 0.749998,
+    "penalties": {
+     "subjectArea": 0.729719,
+     "stripHeight": 0,
+     "groupingGapVariance": 0.250861,
+     "alignmentAxes": 0,
+     "competingAccents": 0,
+     "titleFigureDistance": 0.06,
+     "entryClarity": 0
+    },
+    "differences": [
+     {
+      "feature": "composition",
+      "winner": "image-right",
+      "this": "image-strip"
+     },
+     {
+      "feature": "hardGate",
+      "winner": "passes",
+      "this": "Scene exceeds 900px presentation budget (952px)"
+     },
+     {
+      "feature": "height",
+      "winner": 819,
+      "this": 952
+     },
+     {
+      "feature": "subjectArea",
+      "winner": 0.18477289069609096,
+      "this": 0.08108427382424951
+     },
+     {
+      "feature": "groupingGapVariance",
+      "winner": 21852.59,
+      "this": 100.69
+     },
+     {
+      "feature": "alignmentAxes",
+      "winner": 3,
+      "this": 2
+     }
+    ]
+   }
+  ]
+ },
+ "typography": [
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "blockId": "ctx-image",
+   "component": "image",
+   "minTextPx": 12,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "blockId": "ctx-title",
+   "component": "heading",
+   "minTextPx": 66.5,
+   "maxTextPx": 95,
+   "pptxPtOfMax": 63.33,
+   "pptxPtOfMin": 44.33,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "blockId": "ctx-body",
+   "component": "paragraph",
+   "minTextPx": 18.9,
+   "maxTextPx": 27,
+   "pptxPtOfMax": 18,
+   "pptxPtOfMin": 12.6,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "blockId": "ctx-source",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "blockId": "prod-title",
+   "component": "heading",
+   "minTextPx": 52.5,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 35,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "blockId": "prod-image",
+   "component": "image",
+   "minTextPx": 12,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "blockId": "prod-callout",
+   "component": "callout",
+   "minTextPx": 19.6,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 13.07,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "blockId": "prod-source-1",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "blockId": "prod-source-2",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "blockId": "pc-title",
+   "component": "heading",
+   "minTextPx": 75,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 50,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "blockId": "pc-image",
+   "component": "image",
+   "minTextPx": 15,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 10,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "blockId": "pc-callout",
+   "component": "callout",
+   "minTextPx": 28,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 18.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "blockId": "pc-source-1",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "blockId": "pc-source-2",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "blockId": "det-hero",
+   "component": "image",
+   "minTextPx": 15,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 10,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "blockId": "det-locator",
+   "component": "image",
+   "minTextPx": 15,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 10,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "blockId": "det-title",
+   "component": "heading",
+   "minTextPx": 75,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 50,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "blockId": "det-body",
+   "component": "paragraph",
+   "minTextPx": 27,
+   "maxTextPx": 27,
+   "pptxPtOfMax": 18,
+   "pptxPtOfMin": 18,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "blockId": "mech-title",
+   "component": "heading",
+   "minTextPx": 54,
+   "maxTextPx": 54,
+   "pptxPtOfMax": 36,
+   "pptxPtOfMin": 36,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "blockId": "mech-body",
+   "component": "paragraph",
+   "minTextPx": 18,
+   "maxTextPx": 18,
+   "pptxPtOfMax": 12,
+   "pptxPtOfMin": 12,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "blockId": "mech-diagram",
+   "component": "diagram",
+   "minTextPx": 12,
+   "maxTextPx": 20.8,
+   "pptxPtOfMax": 13.87,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "blockId": "mech-list",
+   "component": "list",
+   "minTextPx": 16,
+   "maxTextPx": 16,
+   "pptxPtOfMax": 10.67,
+   "pptxPtOfMin": 10.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-title",
+   "component": "heading",
+   "minTextPx": 37.8,
+   "maxTextPx": 54,
+   "pptxPtOfMax": 36,
+   "pptxPtOfMin": 25.2,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-chart-a",
+   "component": "chart",
+   "minTextPx": 10.5,
+   "maxTextPx": 21,
+   "pptxPtOfMax": 14,
+   "pptxPtOfMin": 7,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-chart-b",
+   "component": "chart",
+   "minTextPx": 10.5,
+   "maxTextPx": 21,
+   "pptxPtOfMax": 14,
+   "pptxPtOfMin": 7,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-body",
+   "component": "paragraph",
+   "minTextPx": 12.6,
+   "maxTextPx": 18,
+   "pptxPtOfMax": 12,
+   "pptxPtOfMin": 8.4,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-qualifier",
+   "component": "callout",
+   "minTextPx": 19.6,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 13.07,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-01",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-02",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-03",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-04",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-05",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-06",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-07",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-08",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-09",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-10",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-11",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "blockId": "ev-source-12",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "blockId": "q-title",
+   "component": "heading",
+   "minTextPx": 25.9,
+   "maxTextPx": 37,
+   "pptxPtOfMax": 24.67,
+   "pptxPtOfMin": 17.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "blockId": "q-para",
+   "component": "paragraph",
+   "minTextPx": 18.9,
+   "maxTextPx": 27,
+   "pptxPtOfMax": 18,
+   "pptxPtOfMin": 12.6,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "blockId": "q-quote",
+   "component": "quote",
+   "minTextPx": 43.2,
+   "maxTextPx": 43.2,
+   "pptxPtOfMax": 28.8,
+   "pptxPtOfMin": 28.8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "blockId": "q-attrib",
+   "component": "citation",
+   "minTextPx": 16,
+   "maxTextPx": 16,
+   "pptxPtOfMax": 10.67,
+   "pptxPtOfMin": 10.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-title",
+   "component": "heading",
+   "minTextPx": 52.5,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 35,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-para-1",
+   "component": "paragraph",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-para-2",
+   "component": "paragraph",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-para-3",
+   "component": "paragraph",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-list-1",
+   "component": "list",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-list-2",
+   "component": "list",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-source-1",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-source-2",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-source-3",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "blockId": "of-source-4",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "blockId": "lh-title",
+   "component": "heading",
+   "minTextPx": 51,
+   "maxTextPx": 51,
+   "pptxPtOfMax": 34,
+   "pptxPtOfMin": 34,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "blockId": "lh-body",
+   "component": "paragraph",
+   "minTextPx": 28,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 18.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "blockId": "lh-source",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "blockId": "act-title",
+   "component": "heading",
+   "minTextPx": 75,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 50,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "blockId": "act-list",
+   "component": "list",
+   "minTextPx": 28,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 18.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "blockId": "act-callout",
+   "component": "callout",
+   "minTextPx": 28,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 18.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "blockId": "ctx-image",
+   "component": "image",
+   "minTextPx": 12,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "blockId": "ctx-title",
+   "component": "heading",
+   "minTextPx": 66.5,
+   "maxTextPx": 95,
+   "pptxPtOfMax": 63.33,
+   "pptxPtOfMin": 44.33,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "blockId": "ctx-body",
+   "component": "paragraph",
+   "minTextPx": 18.9,
+   "maxTextPx": 27,
+   "pptxPtOfMax": 18,
+   "pptxPtOfMin": 12.6,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "blockId": "ctx-source",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "blockId": "prod-title",
+   "component": "heading",
+   "minTextPx": 52.5,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 35,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "blockId": "prod-image",
+   "component": "image",
+   "minTextPx": 12,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "blockId": "prod-callout",
+   "component": "callout",
+   "minTextPx": 19.6,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 13.07,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "blockId": "prod-source-1",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "blockId": "prod-source-2",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "blockId": "pc-title",
+   "component": "heading",
+   "minTextPx": 75,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 50,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "blockId": "pc-image",
+   "component": "image",
+   "minTextPx": 15,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 10,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "blockId": "pc-callout",
+   "component": "callout",
+   "minTextPx": 28,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 18.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "blockId": "pc-source-1",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "blockId": "pc-source-2",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "blockId": "det-hero",
+   "component": "image",
+   "minTextPx": 15,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 10,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "blockId": "det-locator",
+   "component": "image",
+   "minTextPx": 15,
+   "maxTextPx": 15,
+   "pptxPtOfMax": 10,
+   "pptxPtOfMin": 10,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "blockId": "det-title",
+   "component": "heading",
+   "minTextPx": 75,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 50,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "blockId": "det-body",
+   "component": "paragraph",
+   "minTextPx": 27,
+   "maxTextPx": 27,
+   "pptxPtOfMax": 18,
+   "pptxPtOfMin": 18,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "blockId": "mech-title",
+   "component": "heading",
+   "minTextPx": 54,
+   "maxTextPx": 54,
+   "pptxPtOfMax": 36,
+   "pptxPtOfMin": 36,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "blockId": "mech-body",
+   "component": "paragraph",
+   "minTextPx": 18,
+   "maxTextPx": 18,
+   "pptxPtOfMax": 12,
+   "pptxPtOfMin": 12,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "blockId": "mech-diagram",
+   "component": "diagram",
+   "minTextPx": 12,
+   "maxTextPx": 20.8,
+   "pptxPtOfMax": 13.87,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "blockId": "mech-list",
+   "component": "list",
+   "minTextPx": 16,
+   "maxTextPx": 16,
+   "pptxPtOfMax": 10.67,
+   "pptxPtOfMin": 10.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-title",
+   "component": "heading",
+   "minTextPx": 37.8,
+   "maxTextPx": 54,
+   "pptxPtOfMax": 36,
+   "pptxPtOfMin": 25.2,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-chart-a",
+   "component": "chart",
+   "minTextPx": 10.5,
+   "maxTextPx": 21,
+   "pptxPtOfMax": 14,
+   "pptxPtOfMin": 7,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-chart-b",
+   "component": "chart",
+   "minTextPx": 10.5,
+   "maxTextPx": 21,
+   "pptxPtOfMax": 14,
+   "pptxPtOfMin": 7,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-body",
+   "component": "paragraph",
+   "minTextPx": 12.6,
+   "maxTextPx": 18,
+   "pptxPtOfMax": 12,
+   "pptxPtOfMin": 8.4,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-qualifier",
+   "component": "callout",
+   "minTextPx": 19.6,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 13.07,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-01",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-02",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-03",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-04",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-05",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-06",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-07",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-08",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-09",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-10",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-11",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "blockId": "ev-source-12",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "blockId": "q-title",
+   "component": "heading",
+   "minTextPx": 23.8,
+   "maxTextPx": 34,
+   "pptxPtOfMax": 22.67,
+   "pptxPtOfMin": 15.87,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "blockId": "q-para",
+   "component": "paragraph",
+   "minTextPx": 18.9,
+   "maxTextPx": 27,
+   "pptxPtOfMax": 18,
+   "pptxPtOfMin": 12.6,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "blockId": "q-quote",
+   "component": "quote",
+   "minTextPx": 43.2,
+   "maxTextPx": 43.2,
+   "pptxPtOfMax": 28.8,
+   "pptxPtOfMin": 28.8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "blockId": "q-attrib",
+   "component": "citation",
+   "minTextPx": 16,
+   "maxTextPx": 16,
+   "pptxPtOfMax": 10.67,
+   "pptxPtOfMin": 10.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-title",
+   "component": "heading",
+   "minTextPx": 52.5,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 35,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-para-1",
+   "component": "paragraph",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-para-2",
+   "component": "paragraph",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-para-3",
+   "component": "paragraph",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-list-1",
+   "component": "list",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-list-2",
+   "component": "list",
+   "minTextPx": 15.4,
+   "maxTextPx": 22,
+   "pptxPtOfMax": 14.67,
+   "pptxPtOfMin": 10.27,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-source-1",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-source-2",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-source-3",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "blockId": "of-source-4",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "blockId": "lh-title",
+   "component": "heading",
+   "minTextPx": 51,
+   "maxTextPx": 51,
+   "pptxPtOfMax": 34,
+   "pptxPtOfMin": 34,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "blockId": "lh-body",
+   "component": "paragraph",
+   "minTextPx": 28,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 18.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "blockId": "lh-source",
+   "component": "citation",
+   "minTextPx": 12,
+   "maxTextPx": 12,
+   "pptxPtOfMax": 8,
+   "pptxPtOfMin": 8,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "blockId": "act-title",
+   "component": "heading",
+   "minTextPx": 75,
+   "maxTextPx": 75,
+   "pptxPtOfMax": 50,
+   "pptxPtOfMin": 50,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "blockId": "act-list",
+   "component": "list",
+   "minTextPx": 28,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 18.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "blockId": "act-callout",
+   "component": "callout",
+   "minTextPx": 28,
+   "maxTextPx": 28,
+   "pptxPtOfMax": 18.67,
+   "pptxPtOfMin": 18.67,
+   "note": "pt at scale 1 (a page that fits, or a band of a paged page); the minimum of a text region is usually its claim marker"
+  }
+ ],
+ "captures": [
+  {
+   "file": "cine-en-context-1440.png",
+   "sha256": "c667d8d8c2e666f104f18fc2e286501a11c0b1185f89f57954cb75727354a8bc"
+  },
+  {
+   "file": "cine-en-product-1440.png",
+   "sha256": "4ae8d829ade5dad75d13e8503a5d434b46fe798f3f28636b6313b321b49bed75"
+  },
+  {
+   "file": "cine-en-product-center-1440.png",
+   "sha256": "4d691733f618219b9365366b643c5342369d61f691d55ab2b1f59941a6cb83ac"
+  },
+  {
+   "file": "cine-en-detail-1440.png",
+   "sha256": "9a626c4a95cad8dcaf36235fe3f26ab87600eb119ebedd0922a4d91177035fb9"
+  },
+  {
+   "file": "cine-en-mechanism-1440.png",
+   "sha256": "84b7ba38fb2ca0bf4aac57230f93beed7d904901eb4c705abdc860f735a8540a"
+  },
+  {
+   "file": "cine-en-evidence-1440.png",
+   "sha256": "b890ff373dccfd542f85eafa3c253a9ed47c9ec22298c0434b1415ca9cbce425"
+  },
+  {
+   "file": "cine-en-quote-1440.png",
+   "sha256": "080caeae73f6fb68d7ccacbda71b9d5e1f8e7fcb320889caa2fa4eb2764860d4"
+  },
+  {
+   "file": "cine-en-overflow-1440.png",
+   "sha256": "69d3ed90fed20b997d258eee1d8918cd5bdfbf9bd1806862422d779a653d92f0"
+  },
+  {
+   "file": "cine-en-long-heading-1440.png",
+   "sha256": "276dce6c77cab0e2b58caa15c31269794a15c80ce889869e6f51488fb7a84359"
+  },
+  {
+   "file": "cine-en-action-1440.png",
+   "sha256": "5e8f736bbd3179655232f3c0626d3453d79498145c8a1f351ba94f645ed3b58e"
+  },
+  {
+   "file": "cine-en-product-1440-grayscale.png",
+   "sha256": "e2ec97d8c96d1b8132ec5931bda66aab2a6d788d110b850145810e1ccf6e9ce6"
+  },
+  {
+   "file": "cine-en-evidence-1440-grayscale.png",
+   "sha256": "42991749b931714465524902e7961f2cce9a6efcb16faa5714193ddf4762dea3"
+  },
+  {
+   "file": "cine-en-detail-1440-grayscale.png",
+   "sha256": "2cd01397b24da2c4a759d094e3138a6a26f8d8d03451023eaacf716c10ab04eb"
+  },
+  {
+   "file": "cine-en-mechanism-1440-grayscale.png",
+   "sha256": "1ed9a60d60a9b62d854d9e635fa45f15789c607a38150e2088d07e508dbc644b"
+  },
+  {
+   "file": "cine-en-context-1024.png",
+   "sha256": "aa87c0472b8cf20346599744a5bc4bdca87f76f6ab86a21637742d9b8f439387"
+  },
+  {
+   "file": "cine-en-product-1024.png",
+   "sha256": "7095da2a1e6c077c6e5af6ec9dfa13f87a559e5e0390dae91f2b078d45b8834e"
+  },
+  {
+   "file": "cine-en-product-center-1024.png",
+   "sha256": "956d9bea24dc5da8a14fc0e6dc8038220d9566ebcd9efa3dcb19035aba0ed3ba"
+  },
+  {
+   "file": "cine-en-detail-1024.png",
+   "sha256": "3547ec6a191d7613cae41abe3c75dfb3dae8b1b1a3a3050eff9452f9b4955f34"
+  },
+  {
+   "file": "cine-en-mechanism-1024.png",
+   "sha256": "5ccf00e8f9d0917140f8768e1bb1d7e60e61e81bb5b92a7fc020a09c6b96d7a4"
+  },
+  {
+   "file": "cine-en-evidence-1024.png",
+   "sha256": "b5c075e88371a6a603fa47f68c3d0d02c49b7aeea808a01fa2a2315f0426dd5d"
+  },
+  {
+   "file": "cine-en-quote-1024.png",
+   "sha256": "d0e338f84c79407c82f4ba4b0922d7020ded930af8f43fa792a9fbb21cf2f9f2"
+  },
+  {
+   "file": "cine-en-overflow-1024.png",
+   "sha256": "3718c7192795cbfee49d707149dd9fa0bd5a4804b1f089a8544ffe22b86e464f"
+  },
+  {
+   "file": "cine-en-long-heading-1024.png",
+   "sha256": "cc875330ed9cc70870347fa7eb1896878347cd4e1ceedc9e879acb34ecddbf79"
+  },
+  {
+   "file": "cine-en-action-1024.png",
+   "sha256": "4d8d726542fdd09ea7ca6531af35cb9f2d283354350965b9a29075c4b5cadbf2"
+  },
+  {
+   "file": "cine-en-context-390.png",
+   "sha256": "96de16cbaea5269319c85bef921415a01069f0686516ef75c278745f97a76975"
+  },
+  {
+   "file": "cine-en-product-390.png",
+   "sha256": "6d1b98b029877dd522d24f705bb926461e21b33251b5cf54572ef261ae088f46"
+  },
+  {
+   "file": "cine-en-product-center-390.png",
+   "sha256": "e99d8fd19e396b10512b2874ae24fd3fb3f31c0c40cb7eafae56b1a1da7f3b06"
+  },
+  {
+   "file": "cine-en-detail-390.png",
+   "sha256": "9ed15526fb7ea3efb0232aa9dd16bd092d5db1baaf549423088ad8c77ea8a262"
+  },
+  {
+   "file": "cine-en-mechanism-390.png",
+   "sha256": "fd1f242c0b34174505960f9f4da7e57f1c6600474f8150f49367020cdb9b55f3"
+  },
+  {
+   "file": "cine-en-evidence-390.png",
+   "sha256": "f9952d120377dd1af8a2e40385caf29e778dbc812bd1ad6eb9952691dbb5d552"
+  },
+  {
+   "file": "cine-en-quote-390.png",
+   "sha256": "577a6e7941dc1ba87c2313265c7ea83dbbc9edc572b4612bc5280db3bcdae2b8"
+  },
+  {
+   "file": "cine-en-overflow-390.png",
+   "sha256": "9b0b24cd75d37a5351e037f2becc194c2e11f9e0f974a92b75bb0facaaa35a37"
+  },
+  {
+   "file": "cine-en-long-heading-390.png",
+   "sha256": "8972b6abbec7efe849990a9ad2b8a6c8ab54fce9f64fcf6d19e23f00e9e429e3"
+  },
+  {
+   "file": "cine-en-action-390.png",
+   "sha256": "90f97021c2a28976a8ee893a74aeac7d2b83dce0163f923ff826eea7da0f6bef"
+  },
+  {
+   "file": "cine-en-contact.jpg",
+   "sha256": "89e7e4feec954688358f55cd8db4a43d391efc5ff608e69e494c4fc574d4cbdd"
+  },
+  {
+   "file": "cine-en-contact-390.jpg",
+   "sha256": "4650d441dbe0d9d702088c3a1ad4c52b9439583c50ba545306f2b9ee480e67ac"
+  },
+  {
+   "file": "cine-en-overflow-split-1440.png",
+   "sha256": "19353111c018768deb6a013a59655d4ac04ced7f5b2fa1addd1a2007865af973"
+  },
+  {
+   "file": "cine-en-overflow-2-split-1440.png",
+   "sha256": "f4ded327512a67bdcc1d3554a18572af2aa4c822b762f63ad72ab7ac5d472da1"
+  },
+  {
+   "file": "cine-en-overflow-2-2-split-1440.png",
+   "sha256": "931e0f365f9cd7343c327720f919531df04a1f3286831dbf35a3d2fd1a473d34"
+  },
+  {
+   "file": "cine-en-overflow-2-2-2-split-1440.png",
+   "sha256": "9625cc0ba8171230733ba27bc5f2806ecd525897d799a31491fd81cf75d9e135"
+  },
+  {
+   "file": "cine-en-product-candidate-image-left-1440.png",
+   "sha256": "a4c2c7a3920f68aa4e728ee4188a3d4040c43df688da3f1e6c86103401e8af08"
+  },
+  {
+   "file": "cine-en-product-candidate-image-strip-1440.png",
+   "sha256": "23d67199b512a7164664246e05190e23c3c1f1d40e5a7163c1c0103cf310d733"
+  },
+  {
+   "file": "cine-en-product-candidate-image-right-1440.png",
+   "sha256": "4ae8d829ade5dad75d13e8503a5d434b46fe798f3f28636b6313b321b49bed75"
+  },
+  {
+   "file": "cine-zh-CN-context-1440.png",
+   "sha256": "00f0c51b18c9c788601dcf16a9d1c2b0e31565cc28f361099b5b1b99cf318054"
+  },
+  {
+   "file": "cine-zh-CN-product-1440.png",
+   "sha256": "5db24301a43f829816b62d3c2c143d6bfb3fc4dfec013df5019f1f59569db8e3"
+  },
+  {
+   "file": "cine-zh-CN-product-center-1440.png",
+   "sha256": "076158e3817d338a60cbafdacab69dc0a6ebc3940c98fd395ab454b1701f2d75"
+  },
+  {
+   "file": "cine-zh-CN-detail-1440.png",
+   "sha256": "e51cb288f77ad0de963800ef3d0cf52f3c0dc7254b1dac24684cf5e79eb41729"
+  },
+  {
+   "file": "cine-zh-CN-mechanism-1440.png",
+   "sha256": "f064ef361d424737aac9124966be4b835a1c5c03460c1aed5584bd2a0e4be674"
+  },
+  {
+   "file": "cine-zh-CN-evidence-1440.png",
+   "sha256": "8467b9f1feaa77e14ecaf69de5e0d6ade5b6b3d674f7c89edfb83774adf74e41"
+  },
+  {
+   "file": "cine-zh-CN-quote-1440.png",
+   "sha256": "bd338df3ece5f1605fb89ef88d1fac87296253d72aced4690a14f3928306bcee"
+  },
+  {
+   "file": "cine-zh-CN-overflow-1440.png",
+   "sha256": "c0f2f52c56eccf73ef177a04768fa95fce8b470f7e53e4c7b49a91f83020e4c2"
+  },
+  {
+   "file": "cine-zh-CN-long-heading-1440.png",
+   "sha256": "45c7afeb0cc5a24234d6b864568e5bd9ad59a7033478f07b16899a4af6d2a019"
+  },
+  {
+   "file": "cine-zh-CN-action-1440.png",
+   "sha256": "7fc91306b20ba02f57f20c208b9f7f6daa033124c0c832e0ea3b94a34fffa318"
+  },
+  {
+   "file": "cine-zh-CN-product-1440-grayscale.png",
+   "sha256": "e6417cc16d875b3be3893649c4e2af2d04d18398cc5cf46741a387cfd0323baa"
+  },
+  {
+   "file": "cine-zh-CN-evidence-1440-grayscale.png",
+   "sha256": "d4ad6b41b10e9cf437a86bb7b85ddbced8f3ab31da02381b70827659a2e4d053"
+  },
+  {
+   "file": "cine-zh-CN-detail-1440-grayscale.png",
+   "sha256": "d98fb405d8960507b8c8b3e6e636b7812b483aae802bd285c751461678b97a87"
+  },
+  {
+   "file": "cine-zh-CN-mechanism-1440-grayscale.png",
+   "sha256": "794440b310bb5f99ae7ca222c1574c670405cc493eb33ab5d0012a10aec5dd5a"
+  },
+  {
+   "file": "cine-zh-CN-context-1024.png",
+   "sha256": "6bd605c53a2b633431a45a745cc1f5a13afc7d13e9ff00580f881e1f48cb3705"
+  },
+  {
+   "file": "cine-zh-CN-product-1024.png",
+   "sha256": "7182d24829f8bf66175521057191741f575c78f32ebdfb97078236a6a9656d79"
+  },
+  {
+   "file": "cine-zh-CN-product-center-1024.png",
+   "sha256": "407589da29e7172fe96d7465941a87b7e2ce8529f1edfd2b85ed34885879c9ac"
+  },
+  {
+   "file": "cine-zh-CN-detail-1024.png",
+   "sha256": "98c95d3e15d386bf1dbb035d86bf3ac0b875febbb859eca72fbc58cd7ab61b1e"
+  },
+  {
+   "file": "cine-zh-CN-mechanism-1024.png",
+   "sha256": "08ee498336cf0837a69dc9d12020bd437c0e252738a9a484099301fd0032fa0d"
+  },
+  {
+   "file": "cine-zh-CN-evidence-1024.png",
+   "sha256": "469c7a469853c6097067415455e42504e2bd516f314591ebb97cfeaca893e168"
+  },
+  {
+   "file": "cine-zh-CN-quote-1024.png",
+   "sha256": "4ef822cbfd9b1b1a09ccfd05c952b85d1aa3b98ca8e5882a9d88cb62a26c1b1b"
+  },
+  {
+   "file": "cine-zh-CN-overflow-1024.png",
+   "sha256": "6d7b73534a2c6bf6c589444f43a1782e1e63c1260a26cefc8fbf15b80eade416"
+  },
+  {
+   "file": "cine-zh-CN-long-heading-1024.png",
+   "sha256": "dcdad4942b69c21aca49cc7491f20b35335c1862e8f66ed9d5ea3f203f8a2127"
+  },
+  {
+   "file": "cine-zh-CN-action-1024.png",
+   "sha256": "7b970679bf8e52db128b98ad9b5b92176fc761e488a526d0f3979064206745f6"
+  },
+  {
+   "file": "cine-zh-CN-context-390.png",
+   "sha256": "c58378147ea5aac1b5d06875b16552f68cc2884e49ef60d043c8a58617532a93"
+  },
+  {
+   "file": "cine-zh-CN-product-390.png",
+   "sha256": "71a4afd791f557de2239a87aca4e5dcd2f061e9516c0a18d6d3e914b9cbf3df2"
+  },
+  {
+   "file": "cine-zh-CN-product-center-390.png",
+   "sha256": "4654c52ecdfe64f8a389bdf81be10585db7f05b83ccbeda9f8b41735d93714ba"
+  },
+  {
+   "file": "cine-zh-CN-detail-390.png",
+   "sha256": "cf0c76547ef669984cf51d74a96bb4e7dbd4caaf2ec0b4cfd65193b6a199483b"
+  },
+  {
+   "file": "cine-zh-CN-mechanism-390.png",
+   "sha256": "62ef79fab8e64223f47dcd07c6222bff57581ea1e90836545402aed134a7c25e"
+  },
+  {
+   "file": "cine-zh-CN-evidence-390.png",
+   "sha256": "9c5665246d85edad419d2e0bb1659876219c9d54a32f3cee7fcc8cadca5566b9"
+  },
+  {
+   "file": "cine-zh-CN-quote-390.png",
+   "sha256": "536963d9b2cb0c1f7b6f95787b0b4d8893dd51211bcccf90ee8842b090701a54"
+  },
+  {
+   "file": "cine-zh-CN-overflow-390.png",
+   "sha256": "0ce6de42233064340e7ecf68bcd337548c824f675dc06dd3fd3c125f4bb98f83"
+  },
+  {
+   "file": "cine-zh-CN-long-heading-390.png",
+   "sha256": "a3436ced237d35acf4b113c25064fdc5b285b6f6a7c061983dfd8919caccc112"
+  },
+  {
+   "file": "cine-zh-CN-action-390.png",
+   "sha256": "ba60c4d7bd4faf4801070fd03ea8d289ee7a6882653f6d01e176986818ba1515"
+  },
+  {
+   "file": "cine-zh-CN-contact.jpg",
+   "sha256": "e75d609ff887d7092864217dbca491612eec8d8ec191e944e6712812acebf734"
+  },
+  {
+   "file": "cine-zh-CN-contact-390.jpg",
+   "sha256": "c8d3ded9888341a1e4c750f378248f07919ec7b7f844d76c47553598dc6dc59a"
+  },
+  {
+   "file": "cine-media-product-cream-collage-image-left.png",
+   "sha256": "a4c2c7a3920f68aa4e728ee4188a3d4040c43df688da3f1e6c86103401e8af08"
+  },
+  {
+   "file": "cine-media-product-cream-collage-image-strip.png",
+   "sha256": "52bc8e4235e1a94ce4744aecc0c3ac1913b9c139cdbfda961e44a40395beafcd"
+  },
+  {
+   "file": "cine-media-product-cream-collage-image-right.png",
+   "sha256": "4ae8d829ade5dad75d13e8503a5d434b46fe798f3f28636b6313b321b49bed75"
+  },
+  {
+   "file": "cine-media-product-dark-data-image-left.png",
+   "sha256": "003943b158471ce3eb42bb44dd9f7de7ecfbb769e32e9f0e07a79cc865371f72"
+  },
+  {
+   "file": "cine-media-product-dark-data-image-strip.png",
+   "sha256": "f26005ad321afbd27c8c061e1804ae4751f8fae7e8c2f2601afbbf40d6e41388"
+  },
+  {
+   "file": "cine-media-product-dark-data-image-right.png",
+   "sha256": "4580f561664f976a11f84cbc6d803a8db3971a6c5b2760001a2971384fe03699"
+  },
+  {
+   "file": "cine-media-product-electric-violet-image-left.png",
+   "sha256": "ef0d1b9c2c50978d4652e5d94a26c3be85f87700a7c55a8068cf6918e685a476"
+  },
+  {
+   "file": "cine-media-product-electric-violet-image-strip.png",
+   "sha256": "e3171ddbad7c1f0bf3f22776d6654355cee9a26795b47e5a43289855c9bbe9fd"
+  },
+  {
+   "file": "cine-media-product-electric-violet-image-right.png",
+   "sha256": "1749198f4ed81631784af269305027d67fef98bfe638ca984b3b7adf9275a72e"
+  },
+  {
+   "file": "cine-media-product-silver-gray-editorial-image-left.png",
+   "sha256": "38c1c2d8f0243d4d7662ce22024fd3e9a2171d65bd83804937c246aa39c2435d"
+  },
+  {
+   "file": "cine-media-product-silver-gray-editorial-image-strip.png",
+   "sha256": "51ab1aa81856cfaddc1b75e146336572efe86cf8a342c819fbd90a9057d8c8d7"
+  },
+  {
+   "file": "cine-media-product-silver-gray-editorial-image-right.png",
+   "sha256": "c5fef8169970e9e25f103ac15e742371ced1126119222c3c3328c5938fec0781"
+  },
+  {
+   "file": "cine-media-product-fresh-report-image-left.png",
+   "sha256": "49f29f1295f4fc49ce7ee627f11b805638ac7611c7f2b66bd12c9128fa0122d8"
+  },
+  {
+   "file": "cine-media-product-fresh-report-image-strip.png",
+   "sha256": "c534ca23fefed8341e7c7f4ad203c60fc26dac4d347cf780ca762d61c9d5d861"
+  },
+  {
+   "file": "cine-media-product-fresh-report-image-right.png",
+   "sha256": "90d7e631c79fa9ad66ab8ebe13eeafeb60f50ba940e7f39005bb9cb79017d5bd"
+  },
+  {
+   "file": "cine-media-product-orange-launch-image-left.png",
+   "sha256": "38c95355aa5ffa88fd1cbda83f74399ec61d403353f3f0c598a53662982acea1"
+  },
+  {
+   "file": "cine-media-product-orange-launch-image-strip.png",
+   "sha256": "6d21b915ac02990fe54d656d5971619dc4db599cf54251db4222767ae58cb83e"
+  },
+  {
+   "file": "cine-media-product-orange-launch-image-right.png",
+   "sha256": "6138c417d0a441d8a4899ea3f2da383505945337e30634886d498c85d6f5984b"
+  },
+  {
+   "file": "cine-media-product-electric-violet-photo-split.png",
+   "sha256": "2302708b7c1052f869532e6952fd51a4a88553e1be1af069bb6db260574c983a"
+  },
+  {
+   "file": "cine-media-product-orange-launch-stage-hero.png",
+   "sha256": "eb522a7ef0f8e5ca64a320cd0589548f3f8b3dfce0cb85277a0fe4eccd5c2525"
+  },
+  {
+   "file": "cine-media-mechanism-cream-collage-system-map-wide.png",
+   "sha256": "84b7ba38fb2ca0bf4aac57230f93beed7d904901eb4c705abdc860f735a8540a"
+  },
+  {
+   "file": "cine-media-mechanism-cream-collage-system-map-rail.png",
+   "sha256": "20b098a7a1f803ad90123b23992582a332285f884d02ba376b54b720352df61c"
+  },
+  {
+   "file": "cine-media-mechanism-cream-collage-system-map-key.png",
+   "sha256": "47348d5341e4007225da146e0117a0e944977f7b325e13cfca5a91374d371989"
+  },
+  {
+   "file": "cine-media-mechanism-dark-data-system-map-wide.png",
+   "sha256": "722c184e0f7c0606821bc7e19cebb9c3f88de502b6bd19c985f623bef45c96f3"
+  },
+  {
+   "file": "cine-media-mechanism-dark-data-system-map-rail.png",
+   "sha256": "aa52abcab1e615c6649f8898ad2130d571c08d39b974495e4fa95af7324b1dd4"
+  },
+  {
+   "file": "cine-media-mechanism-dark-data-system-map-key.png",
+   "sha256": "51702d2b650fe8762ca2be64d430bce46e515af15e53c7f9635b502ad731188e"
+  },
+  {
+   "file": "cine-media-mechanism-electric-violet-system-map-wide.png",
+   "sha256": "d78b114c79456535007a28b7c87672ebd7a6ce74a8ee33d03f2d15c4cb104116"
+  },
+  {
+   "file": "cine-media-mechanism-electric-violet-system-map-rail.png",
+   "sha256": "6e22a9c5dcb094a22bff9cca3e4ba7e7cae689e1ed439dd1b7793306d9947276"
+  },
+  {
+   "file": "cine-media-mechanism-electric-violet-system-map-key.png",
+   "sha256": "07e6b819bd46b745955fe60e0e7509cd6e545ee6e2f6add94e85e23f9bd36abc"
+  },
+  {
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-wide.png",
+   "sha256": "ed8286428a3fd9fb7754610d1df1c51473a1b2571b56f5c326ae21ad08cb141f"
+  },
+  {
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-rail.png",
+   "sha256": "7844ba894e68d6418eaec8a9ff89f6d0a4b807b5b49c435710201e5caba9d084"
+  },
+  {
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-key.png",
+   "sha256": "6cfbada0f922d19f1d771c079193f3773dd10c46f1ffdfceb8d0b7f6c787437d"
+  },
+  {
+   "file": "cine-media-mechanism-fresh-report-system-map-wide.png",
+   "sha256": "8c7c385ef00e579e1f25925feb77f81868904a0de05b33ce15c4dffcbb041bf5"
+  },
+  {
+   "file": "cine-media-mechanism-fresh-report-system-map-rail.png",
+   "sha256": "ea6f780c7441ebbdfa49a0899d558782c8624835c5375a079bae36a79f005d97"
+  },
+  {
+   "file": "cine-media-mechanism-fresh-report-system-map-key.png",
+   "sha256": "bec576ec6eb6435ced402e4b68b66543657270d38abaccf17340b9514d12497e"
+  },
+  {
+   "file": "cine-media-mechanism-orange-launch-system-map-wide.png",
+   "sha256": "936e4f86fe7615e74b0f1f4676d649fa5ec687d0613c410e165de0f0051eeea1"
+  },
+  {
+   "file": "cine-media-mechanism-orange-launch-system-map-rail.png",
+   "sha256": "19dad358383cd1300c175ff88ba21ff204a1e2fe51c2282c658f19642d8b3ecb"
+  },
+  {
+   "file": "cine-media-mechanism-orange-launch-system-map-key.png",
+   "sha256": "57f06f01981c6a76adf7dc6ad855f5ed1444a1030bc534c0255ef32ea0e71e16"
+  },
+  {
+   "file": "cine-media-contact.jpg",
+   "sha256": "ff6d27f28445b5837c31bfd73b32ff2a79074281d249dcf7b380bfa39194e971"
+  }
+ ],
+ "errors": [],
+ "externalRequests": []
+}

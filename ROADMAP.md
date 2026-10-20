@@ -2,6 +2,10 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## CINE batch 2 — cinematic composition P1 (CINE-005 to CINE-007), 2026-10-21
+
+Implemented locally on the continuation of the batch 1 branch, not merged. Authored subject annotations on the image slot brief (subject, protected and context regions, visible caption beside the alt, detail locator) that `safeCrop`, the exporters and the subject-fraction report respect; evidence screenshots stay whole. Six type roles per theme and declared pages at the role sizes (renderer `visual-art-direction.14`). The player (`semantic-player.7`) measures regions, images, the strip and a grayscale hierarchy; seven documented soft features, the weakest page and ranked candidates with stated differences. No task state changes; notes on VIS-006, VIS-007, VIS-010, VIS-014 and VIS-016. [Plan](docs/plans/cinematic-composition-batch-2.md) · [Evidence](docs/evidence/cine-p1/review.md).
+
 ## CINE batch 1 — cinematic composition P0 (CINE-001 to CINE-004), 2026-10-20
 
 Implemented locally on branch `claude/deckweft-design-roadmap-2d3d10`, not merged. One declared presentation target (`src/targets/target-budget.mjs`) read by the web candidate gate and both pagers; the PDF pages tall scenes on the PowerPoint bands; `fit-page` splits a page after a measured block. Three optional scene fields (`references`, `intent`, `media`) with byte-identical legacy markup (renderer `visual-art-direction.13`, player unchanged); compact source strip, claim markers and reference panel; inferred or declared page purpose and entry; media roles and the 5/7 and 7/5 grids. No task state changes: VIS-006, VIS-007, VIS-013 and VIS-016 carry notes. [Build map](docs/plans/cinematic-composition-build-map.md) · [Evidence](docs/evidence/cine-p0/review.md) · [Verification](docs/en/verification.md). Batch 2 is not authorized.

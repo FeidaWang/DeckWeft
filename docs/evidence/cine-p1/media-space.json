@@ -1,0 +1,780 @@
+{
+ "format": "deckweft-cine-media-sizes",
+ "version": 1,
+ "recordedAt": "2026-10-20",
+ "width": 1440,
+ "browser": "151.0.7922.34",
+ "renderer": "visual-art-direction.14",
+ "note": "drawn = the <img> box, or the diagram drawing inside its <svg> box (viewBox aspect), in CSS px at 1440 px; box = the figure or svg; fit = the candidate gate (900 px budget, no clip, no overflow, labels ≥ 10 px). The winner per family is the largest drawn area among variants that pass the gate (ties within 1 % go to image-right / system-map-wide).",
+ "winners": {
+  "image": {
+   "shared": "image-right",
+   "sharedDrawn": [
+    933,
+    700
+   ],
+   "sharedFits": "12 of 18",
+   "ties": [
+    "image-left",
+    "image-right"
+   ],
+   "byTheme": {
+    "electric-violet": {
+     "composition": "photo-split",
+     "drawn": [
+      950,
+      713
+     ]
+    }
+   }
+  },
+  "system-map": {
+   "shared": "system-map-wide",
+   "sharedDrawn": [
+    1040,
+    1063
+   ],
+   "sharedFits": "0 of 18",
+   "ties": [
+    "system-map-wide"
+   ],
+   "byTheme": {}
+  }
+ },
+ "rows": [
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-cream-collage-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    440
+   ],
+   "sceneHeight": 952,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (952px)"
+   ],
+   "file": "cine-media-product-cream-collage-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-cream-collage-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-dark-data-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    440
+   ],
+   "sceneHeight": 951,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (951px)"
+   ],
+   "file": "cine-media-product-dark-data-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-dark-data-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    440
+   ],
+   "sceneHeight": 951,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (951px)"
+   ],
+   "file": "cine-media-product-electric-violet-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    596
+   ],
+   "sceneHeight": 831,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-silver-gray-editorial-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    436
+   ],
+   "sceneHeight": 1018,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1018px)"
+   ],
+   "file": "cine-media-product-silver-gray-editorial-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    596
+   ],
+   "sceneHeight": 831,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-silver-gray-editorial-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    594
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-fresh-report-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    434
+   ],
+   "sceneHeight": 907,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (907px)"
+   ],
+   "file": "cine-media-product-fresh-report-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    594
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-fresh-report-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-left",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 851,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-orange-launch-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-strip",
+   "drawn": [
+    667,
+    500
+   ],
+   "box": [
+    400,
+    440
+   ],
+   "sceneHeight": 1027,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1027px)"
+   ],
+   "file": "cine-media-product-orange-launch-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-right",
+   "drawn": [
+    933,
+    700
+   ],
+   "box": [
+    560,
+    600
+   ],
+   "sceneHeight": 851,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-orange-launch-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "photo-split",
+   "drawn": [
+    950,
+    713
+   ],
+   "box": [
+    570,
+    610
+   ],
+   "sceneHeight": 841,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-photo-split.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "stage-hero",
+   "drawn": [
+    1290,
+    967
+   ],
+   "box": [
+    774,
+    813
+   ],
+   "sceneHeight": 1065,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1065px)"
+   ],
+   "file": "cine-media-product-orange-launch-stage-hero.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1571,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1571px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-rail",
+   "drawn": [
+    748,
+    765
+   ],
+   "box": [
+    748,
+    765
+   ],
+   "sceneHeight": 1083,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1083px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-key",
+   "drawn": [
+    748,
+    765
+   ],
+   "box": [
+    748,
+    765
+   ],
+   "sceneHeight": 1223,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1223px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1542,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1542px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1076,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1076px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1216,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1216px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1579,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1579px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-rail",
+   "drawn": [
+    738,
+    755
+   ],
+   "box": [
+    738,
+    755
+   ],
+   "sceneHeight": 1089,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1089px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-key",
+   "drawn": [
+    738,
+    755
+   ],
+   "box": [
+    738,
+    755
+   ],
+   "sceneHeight": 1169,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1169px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-key.png"
+  }
+ ]
+}

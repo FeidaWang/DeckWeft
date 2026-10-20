@@ -424,6 +424,8 @@ Then ask the user (in Chinese) before starting batch 2.
 
 ### Batch 2 (P1)
 
+Expanded into tasks in [cinematic-composition-batch-2.md](cinematic-composition-batch-2.md) (2026-10-21).
+
 **CINE-005 subject-aware framing.** Add `subjectBounds?`, `protectedRegions[]`, `contextRegion?`, `visibleCaption?`, `detailLocator?` to the asset brief (`schemas/asset-brief.schema.json`, `src/assets/brief.mjs`); `safeCrop` takes `protectedRegions` (union) as the floor and `contextRegion` as the ceiling; `blocks.mjs` prints `visibleCaption ?? alt` in `<figcaption>` while `alt` stays on `<img>`; evidence screenshots (`brief.role==='product-screenshot'` with `factual:true`) refuse destructive crops (`display:'contain'` forced, refusal code `PROTECTED_REGION`); a missing subject annotation yields `annotated:false` (Task 11) and the conservative full-image policy. Tests in `tests/assets-visual.test.mjs`; browser in `tests/browser_assets.mjs`.
 
 **CINE-006 typography and luminance hierarchy.** `theme-registry.mjs` declares six type roles with px per role per theme; `sceneDirection` emits `--label-size` and `--reference-size`; `contrast.mjs` adds a grayscale pass (luminance-only contrast between focal region and the rest); remove the per-citation border in expanded mode; raise body/label px where the delivered pt falls below the target and the composition has room (measured per theme, recorded). Acceptance: `typographyReport.target.status==='met'` on the corpus for body and label in PowerPoint; grayscale captures still show the primary subject.

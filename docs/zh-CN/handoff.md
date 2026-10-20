@@ -1,3 +1,11 @@
+截至 2026-10-21，CINE 批次 2（电影化构图 P1：CINE-005 主体感知取景、CINE-006 字号与明度层级、CINE-007 美学评估）已在批次 1 分支的延续上（从 `claude/deckweft-design-roadmap-2d3d10` 的 `a5b331c` 切出的工作树分支）**本地实现**，未合并、未推送。状态：本批次为 implemented-local；VIS-006、VIS-007、VIS-010、VIS-014 与 VIS-016 保持原状态并附注记。计划是[批次 2 计划（英文）](../plans/cinematic-composition-batch-2.md)（由[构建地图（英文）](../plans/cinematic-composition-build-map.md) §5 展开）；证据在 [cine-p1（英文）](../evidence/cine-p1/review.md)。它加入：
+
+- 图片槽位简报的五个可选字段（`subjectBounds`、`protectedRegions`、`contextRegion`、`visibleCaption`、`detailLocator`；[迁移](migration.md#主体标注字号角色与软性特征cine-批次-2)）：裁切保留保护区下限与场景区上限，证据截图整张显示（`PROTECTED_REGION`），图注是可见文字而替代文本原样保留，定位框标出细节位置；缺少标注时如实报告，不做臆测；
+- 每个主题包的六个字号角色，声明页的正文与导语升到角色字号（PowerPoint 中正文 18 pt），密集页除外；声明页写入 `--label-size` 与 `--reference-size`；一组引用只画一条分隔线；渲染器 `visual-art-direction.14`；
+- 播放器（`semantic-player.7`）测量每个区域的框与字号、每张图片的框、来源条高度与灰度层级；`checkRender`、回执与发布门中的七个有定义的软性特征与最弱页；带 A/B 规则并写明差异的 `rankCandidates`。
+
+证据中记录的已知限制：图表与图解的 SVG 标签由各自编译器绘制，仍低于 14 pt 的标签目标；自行固定段落字号的构图（证据、系统图、小多图）保持不变；工作室没有新简报字段的绘制控件（CINE-011）。PowerPoint 与 Keynote 已安装但未运行。本交接不授权批次 3（CINE-008 至 CINE-010）；由用户决定。
+
 截至 2026-10-20，CINE 批次 1（电影化构图 P0：CINE-001 目标预算、CINE-002 紧凑引用、CINE-003 视觉意图、CINE-004 主媒体区）已在分支 `claude/deckweft-design-roadmap-2d3d10`（叠加在 `main` 的 `be9921d` 上）**本地实现**，未合并、未推送。状态：本批次为 implemented-local；VIS-006、VIS-007、VIS-013 与 VIS-016 状态不变，只增加备注。计划见[构建地图](../plans/cinematic-composition-build-map.md)（其 §0 将[路线图文档](../../DeckWeft-Cinematic-Design-Roadmap-2026-10-19.md)与代码对齐）；证据见 [cine-p0](../evidence/cine-p0/review.md)。它新增：
 
 - 一个声明的演示目标（`src/targets/target-budget.mjs`：画幅、安全区、网格、不变的硬性字号下限与仅报告的目标值），网页候选门禁、PowerPoint 分页器与 PDF 分页器都从这里读取；PDF 现在按 PowerPoint 的分段对高页分页并重复标题；`fit-page` 在测量过的内容块之后拆页，而不是缩小页面；

@@ -4,6 +4,32 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## CINE batch 2 — cinematic composition P1, 2026-10-21
+
+State **implemented-local** for CINE-005 to CINE-007 on the continuation of the batch 1 branch (worktree branch cut from `claude/deckweft-design-roadmap-2d3d10` at `a5b331c`, not merged). No task state changes. [Evidence](../evidence/cine-p1/review.md) · [Plan](../plans/cinematic-composition-batch-2.md) · [Migration](migration.md#subject-annotations-type-roles-and-soft-features-cine-batch-2) · [Soft features](../visual-acceptance/review.md#soft-features-cine-007) · [Visual Studio](visual-studio.md#subject-annotations-in-the-image-slot-cine-batch-2).
+
+Commands (the isolated browser is the Playwright-cache Chrome for Testing 151.0.7922.34 with Playwright 1.61.1):
+
+```bash
+npm run verify
+CHROMIUM_PATH=… node --test tests/studio-export.test.mjs
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node tests/browser_cine.mjs --evidence
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node tests/browser_assets.mjs
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node scripts/export-targets.mjs --cine --out dist/export-targets-cine
+```
+
+Results:
+
+- `npm run verify` passed **573 tests** (567 pass, 5 skips: the register test needing `DECKWEFT_HANDOFF_DIR` and the four Studio export tests needing `CHROMIUM_PATH`; one wording test stays todo for single-entry step 3), plus types, source and link checks, packaging and demos. Node 24.14.0.
+  - New: `tests/cine-p1.test.mjs` (20 tests: the brief contract, subject-aware `safeCrop`, evidence screenshots, the annotated corpus in both languages and its seven negative cases, the subject fraction, the caption and locator markup, the render check's alt rule, the paged exports, `candidateFit` with annotated subjects, the type roles, the direction and markup of declared and legacy pages, the player, the soft features, the weakest page, the ranking, the A/B rule and the docs). Batch 1's `tests/cine-p0.test.mjs` moved its renderer pin to `.14`.
+  - With `CHROMIUM_PATH` set, `tests/studio-export.test.mjs` passed 5 of 5 alone.
+- The render baseline was re-recorded three times in their own commits: renderer `visual-art-direction.14` (the locator frame rule), the type-role stylesheet and the strip fix (stylesheet parts only), and player `semantic-player.7` (script parts); markup and content hashes identical on every entry; theme entries unchanged (the roles are read beside `resolveTheme`).
+- `tests/browser_cine.mjs` (isolated Chromium 151, Playwright 1.61.1, player .7): 60 page measurements at 1440, 1024 and 390 px in both languages, 118 captures, 0 page errors, 0 external requests. The product hero (its brief's `subjectBounds`) reports 55.0 % container and 18.3 % subject, `annotated: true`; the 12-source strip measures 46.2 of 48 px; the overflow page is cut into four fitting pages in three passes; the three product candidates rank image-right, image-left, image-strip (the last fails the 900 px gate at 952 px); the weakest page is `product-center` in both languages (score 0.66: small subject, declared centre entry against a left title). Pages over the 900 px budget at 1440 are the batch 1 set.
+- `node scripts/export-targets.mjs --cine`: 2 decks. PowerPoint editability, the independent inspection, the scene check and the typography minima pass on 2 of 2 (0 failures); PDF searchability passes in English and is partial in Chinese (the S7 limit); accessibility partial. Delivered body text meets the 18 pt target on 5 of 10 pages and is within 0.6 pt on detail and long-heading; mechanism, evidence (pinned 18 px compositions) and overflow (dense) are below; SVG chart and diagram labels (7.4–9.9 pt) stay below the 14 pt label target; strip tokens 7.4–8.3 pt below the 10 pt reference target by the strip-budget decision.
+- `tests/browser_assets.mjs`: ok, 13 checks (including the new `PROTECTED_REGION` refusal of an evidence-screenshot crop), 36 cases, 53 captures.
+- Viewed: both contact sheets at 1440 and 390 px, the media contact sheet, the product, detail (both languages), product-center and evidence pages, the four grayscale copies, the two candidate variants, the Quick Look render of the product slide and the product PDF page. The weakest page is `product-center`; second `evidence`.
+- PowerPoint and Keynote are installed and were **not run**; LibreOffice is not installed. Firefox, WebKit, screen readers, PDF/UA validators, the release gate and Claude were not run.
+
 ## CINE batch 1 — cinematic composition P0, 2026-10-20
 
 State **implemented-local** for CINE-001 to CINE-004 on branch `claude/deckweft-design-roadmap-2d3d10` (not merged). No task state changes. [Evidence](../evidence/cine-p0/review.md) · [Build map](../plans/cinematic-composition-build-map.md) · [Migration](migration.md#references-intent-and-media-cine-batch-1) · [Visual Studio](visual-studio.md#page-purpose-and-entry-cine-003).
