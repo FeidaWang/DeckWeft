@@ -281,3 +281,32 @@ test('CINE-007 docs: docs/visual-acceptance/review.md defines every SOFT_FEATURE
  const doc=await readFile(new URL('../docs/visual-acceptance/review.md',import.meta.url),'utf8');
  assert.ok(doc.includes('## Soft features (CINE-007)'));for(const k of Object.keys(SOFT_FEATURES))assert.ok(doc.includes('`'+k+'`'),k);assert.match(doc,/not eye tracking/);
 });
+
+// ---- Task 7: CINE-007 ranked candidates with stated differences; the release gate names the weakest page ----
+import {candidateProjects,chooseRhythm,rankCandidates} from '../src/design/rhythm.mjs';
+test('CINE-007 ranking: on the product page three measured candidates rank hard gates first (the over-budget image-strip last), then by weighted soft features, and each loser states what differs from the winner; chooseRhythm carries the ranking',async()=>{
+ const p=await cineProject('en',home),candidates=candidateProjects(p),i=p.plan.scenes.findIndex(s=>s.id==='product');
+ assert.deepEqual(candidates.map(c=>c.plan.scenes[i].composition),['image-left','image-strip','image-right']);
+ const soft=(subject,extra={})=>softFeatures({...playerCheck(),...extra},{pageWidth:1440,entry:'left',focalBlockId:'title',mediaBlockIds:['img'],subjects:[{blockId:'img',containerFraction:.3,subjectFraction:subject,annotated:true}]});
+ const fits=candidates.map((c,k)=>c.plan.scenes.map((s,j)=>{if(j!==i)return {ok:true,reasons:[],height:810,viewport:{width:1440,height:1000}};
+  return k===1?{ok:false,reasons:['Scene exceeds 900px presentation budget (1059px)'],height:1059,viewport:{width:1440,height:1000},soft:soft(.12)}:{ok:true,reasons:[],height:810,viewport:{width:1440,height:1000},soft:soft(k===2?.11:.08)};}));
+ const ranking=rankCandidates(p,candidates,fits),page=ranking[i];
+ assert.equal(ranking.length,p.plan.scenes.length);assert.equal(page.sceneId,'product');
+ assert.deepEqual(page.ranked.map(r=>[r.composition,r.ok]),[['image-right',true],['image-left',true],['image-strip',false]]);
+ assert.equal(page.ranked[0].candidate,2);assert.ok(page.ranked[0].score>page.ranked[1].score);assert.deepEqual(page.ranked[0].differences,[]);
+ const left=page.ranked[1];assert.ok(left.differences.some(d=>d.feature==='composition'&&d.winner==='image-right'&&d.this==='image-left'));assert.ok(left.differences.some(d=>d.feature==='subjectArea'&&Math.abs(d.winner-.11)<1e-9&&Math.abs(d.this-.08)<1e-9));
+ const strip=page.ranked[2];assert.ok(strip.differences.some(d=>d.feature==='hardGate'&&/900px/.test(d.this)));assert.ok(strip.differences.some(d=>d.feature==='height'&&d.this===1059));
+ // Ties keep the earlier candidate; a page with no soft features ranks by hard gates alone and says so.
+ const flat=fits.map(f=>f.map(x=>({ok:x.ok,reasons:x.reasons,height:x.height,viewport:x.viewport})));const plain=rankCandidates(p,candidates,flat)[i];
+ assert.deepEqual(plain.ranked.map(r=>r.composition),['image-left','image-right','image-strip']);assert.equal(plain.ranked[0].soft,null);
+ const chosen=chooseRhythm(p,candidates,fits);assert.equal(chosen.report.ranking.length,p.plan.scenes.length);assert.deepEqual(chosen.report.ranking[i].ranked.map(r=>r.composition),['image-right','image-left','image-strip']);
+ assert.equal(chosen.project.plan.scenes[i].composition,'image-right');assert.match(chosen.report.method,/hard gates first/);
+});
+test('CINE-007 A/B rule: rankCandidates refuses candidates whose document, assets or viewport differ (CANDIDATE_CONTENT)',async()=>{
+ const p=await cineProject('en',home),candidates=candidateProjects(p),fits=candidates.map(c=>c.plan.scenes.map(()=>({ok:true,reasons:[],viewport:{width:1440,height:1000}})));
+ assert.doesNotThrow(()=>rankCandidates(p,candidates,fits));
+ const other=structuredClone(fits);other[1][0].viewport={width:1024,height:1000};assert.throws(()=>rankCandidates(p,candidates,other),{code:'CANDIDATE_CONTENT'});
+ const edited=structuredClone(candidates);edited[0].document.blocks.find(b=>b.id==='prod-callout').text='changed';assert.throws(()=>rankCandidates(p,edited,fits),{code:'CANDIDATE_CONTENT'});
+ assert.throws(()=>rankCandidates(p,candidates.slice(0,2),fits.slice(0,2)),{code:'CANDIDATE_MEASUREMENT'});
+ const source=await readFile(new URL('../scripts/release-gate.mjs',import.meta.url),'utf8');assert.match(source,/weakestPage/);assert.match(source,/weakest:/);
+});

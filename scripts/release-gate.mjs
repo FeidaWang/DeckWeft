@@ -73,7 +73,9 @@ if(steps.has('quality')){
   const dir=path.join(out,'runs',d.name);await rm(dir,{recursive:true,force:true});
   const run=spawnSync(process.execPath,[path.join(root,'scripts/visual-verify.mjs'),'--project',path.join(projects,d.name+'.json'),'--home',home,'--out',dir],{encoding:'utf8',env:process.env});
   const r=JSON.parse(await readFile(path.join(dir,'report.json'),'utf8')),c=r.cases[0];
-  decks.push({deck:d.name,status:r.status,machineOk:!!r.machineOk,exit:run.status,browser:r.browser,issues:c?c.receipt.checks.issues.map(i=>({kind:i.kind,sceneId:i.sceneId,reason:i.reason})):[],traces:c?c.observation.traces.map(t=>({sceneId:t.sceneId,action:t.action,ok:t.ok})):[],repair:c?.repair?.spent||null,receipt:c?.receipt.id||null,captures:c?c.receipt.captures.filter(x=>x.reviewRequired).map(x=>x.file):[],errors:r.errors,externalRequests:r.externalRequests});
+  // CINE-007: the weakest page of the deck by the soft features (player .7 measurements), printed so it gets looked at, never averaged away.
+  const weakest=c?.observation&&c?.project?checkRender(c.project,[c.observation]).weakestPage:null;if(weakest)console.log('weakest:',d.name,weakest.sceneId,weakest.score,weakest.reasons.join('; ')||'no penalty at or above 0.5');
+  decks.push({deck:d.name,status:r.status,machineOk:!!r.machineOk,exit:run.status,browser:r.browser,weakestPage:weakest,issues:c?c.receipt.checks.issues.map(i=>({kind:i.kind,sceneId:i.sceneId,reason:i.reason})):[],traces:c?c.observation.traces.map(t=>({sceneId:t.sceneId,action:t.action,ok:t.ok})):[],repair:c?.repair?.spent||null,receipt:c?.receipt.id||null,captures:c?c.receipt.captures.filter(x=>x.reviewRequired).map(x=>x.file):[],errors:r.errors,externalRequests:r.externalRequests});
  }
  await report('quality',{decks,ok:decks.every(d=>d.machineOk)});
 }

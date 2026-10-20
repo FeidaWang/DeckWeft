@@ -5,6 +5,8 @@ import { compositions, families, inferFamily, assertComposition, describeCandida
 import { DeckError } from '../core/errors.mjs';
 import {TARGETS,PT_PER_PX} from '../targets/target-budget.mjs';
 import {subjectFraction} from './media.mjs';
+import {SOFT_WEIGHTS,SOFT_FEATURES,softScore} from '../quality/render-checks.mjs';
+export {SOFT_WEIGHTS,SOFT_FEATURES};
 /** The web pre-gate height, read from the declared presentation target (CINE-001). */
 export const CANDIDATE_HEIGHT = TARGETS.presentation.candidateHeight;
 export function candidateProjects(project,overrides={}) {
@@ -66,13 +68,44 @@ export function rhythmIssues(project){
  if(scenes.length>=minPages&&scenes.length<=maxPages&&used.length<minFamilies)issues.push({rule:'variety',families:used,required:minFamilies,author:scenes.some(s=>locked(s.id)),suggestions:scenes.filter(s=>!locked(s.id)).flatMap(s=>eligibleFamilies(project.document,s).filter(f=>!used.includes(f)).map(family=>({sceneId:s.id,family})))});
  return issues;
 }
-export function chooseRhythm(project,candidates,feasibility){
+/** The A/B rule (CINE-007): three candidates over the same document, assets, scene identity, theme, crops, focal bindings and viewport. */
+function assertComparable(project,candidates,feasibility){
  assertVisualProject(project);
  if(candidates.length!==3||feasibility.length!==3)throw new DeckError('CANDIDATE_MEASUREMENT','Measure all three candidate sets first.',422);
  for(const c of candidates){
   assertVisualProject(c);assertVisualLocks(project,c);
   if(JSON.stringify(c.document)!==JSON.stringify(project.document)||JSON.stringify(c.assets)!==JSON.stringify(project.assets)||c.plan.scenes.length!==project.plan.scenes.length||c.plan.scenes.some((s,i)=>JSON.stringify({...s,composition:''})!==JSON.stringify({...project.plan.scenes[i],composition:''})))throw new DeckError('CANDIDATE_CONTENT','Candidates must preserve content, assets, scene identity, order, theme, crops and focal bindings.',422);
  }
+ const viewports=new Set(feasibility.flat().map(f=>f?.viewport?JSON.stringify(f.viewport):null).filter(Boolean));
+ if(viewports.size>1)throw new DeckError('CANDIDATE_CONTENT','Compare candidates measured at one viewport; an A/B comparison keeps the corpus, assets, theme, viewport and targets the same.',422);
+}
+/** Tolerances under which two candidates' soft features count as the same. */
+const TOLERANCE={subjectArea:.02,stripHeight:4,groupingGapVariance:100,alignmentAxes:0,competingAccents:0,titleFigureDistance:24,entryClarity:0};
+/**
+ * CINE-007 ranking: per scene, the three candidates ordered by the hard gates first (candidateFit ok before not ok), then by the
+ * weighted soft score (SOFT_WEIGHTS over the measured soft features a fit carries as `soft`), ties keeping the earlier candidate.
+ * Each loser records what differs from the winner: the composition, every soft feature beyond its tolerance, the height, and
+ * the hard-gate reasons when it failed. A fit without soft features ranks by the hard gates alone (score 1, soft null).
+ */
+export function rankCandidates(project,candidates,feasibility){
+ assertComparable(project,candidates,feasibility);
+ return project.plan.scenes.map((scene,i)=>{
+  const rows=candidates.map((c,k)=>{const fit=feasibility[k][i]||{},soft=fit.soft||null,scored=soft?softScore(soft):{score:1,penalties:null};return {candidate:k,composition:c.plan.scenes[i].composition,ok:!!fit.ok,reasons:fit.reasons||[],height:fit.height??null,soft,score:scored.score,penalties:scored.penalties};});
+  const ranked=[...rows].sort((a,b)=>(b.ok-a.ok)||(b.score-a.score)||(a.candidate-b.candidate)),winner=ranked[0];
+  for(const row of ranked){
+   const differences=[];
+   if(row===winner){row.differences=differences;continue;}
+   if(row.composition!==winner.composition)differences.push({feature:'composition',winner:winner.composition,this:row.composition});
+   if(!row.ok)for(const reason of row.reasons)differences.push({feature:'hardGate',winner:winner.ok?'passes':'fails too',this:reason});
+   if(Number.isFinite(row.height)&&Number.isFinite(winner.height)&&Math.abs(row.height-winner.height)>8)differences.push({feature:'height',winner:winner.height,this:row.height});
+   if(row.soft&&winner.soft)for(const key of Object.keys(SOFT_FEATURES)){const a=winner.soft[key]?.value??null,b=row.soft[key]?.value??null;if(a===b)continue;if(typeof a==='number'&&typeof b==='number'&&Math.abs(a-b)<=TOLERANCE[key])continue;differences.push({feature:key,winner:a,this:b});}
+   row.differences=differences;
+  }
+  return {sceneId:scene.id,ranked};
+ });
+}
+export function chooseRhythm(project,candidates,feasibility){
+ assertComparable(project,candidates,feasibility);
  const rows=project.plan.scenes.map((s,i)=>candidates.map((p,k)=>({scene:p.plan.scenes[i],k,fit:feasibility[k][i],descriptor:{...describeCandidate(p.document,p.plan.scenes[i]),...feasibility[k][i]?.features}})).filter(c=>c.fit?.ok));
  const blocked=rows.flatMap((r,i)=>r.length?[]:[project.plan.scenes[i].id]);
  if(blocked.length)throw new DeckError('NO_FEASIBLE_CANDIDATE','No measured candidate fits: '+blocked.join(', ')+'. Preserve content and repair the layout.',422);
@@ -82,7 +115,7 @@ export function chooseRhythm(project,candidates,feasibility){
  const winner=states.sort((a,b)=>a.cost-b.cost)[0],copy=structuredClone(project);copy.plan.scenes=winner.path.map(c=>structuredClone(c.scene));
  if(JSON.stringify(copy.document)!==JSON.stringify(project.document)||JSON.stringify(copy.assets)!==JSON.stringify(project.assets))throw new DeckError('CANDIDATE_CONTENT','Candidates must preserve the semantic document and assets.',422);
  assertVisualLocks(project,copy);assertVisualProject(copy);
- const report={cost:winner.cost,method:'Dynamic programming across measured candidates; narrative suitability, adjacent repetition and the handoff rhythm rules; deterministic ties',rules:{limits:RHYTHM_RULES,issues:rhythmIssues(copy)},scenes:winner.path.map((c,i)=>({sceneId:c.scene.id,candidate:c.k,...c.descriptor,fit:c.fit,narrative:narrativeCost(c.scene,c.descriptor,i,rows.length),...(i?{transition:transitionCost(winner.path[i-1].descriptor,c.descriptor)}:{})}))};
+ const report={cost:winner.cost,method:'Dynamic programming across measured candidates; narrative suitability, adjacent repetition and the handoff rhythm rules; deterministic ties. Per page the candidates are also ranked hard gates first, then by the weighted soft features (CINE-007), with the differences from the winner stated',rules:{limits:RHYTHM_RULES,issues:rhythmIssues(copy)},ranking:rankCandidates(project,candidates,feasibility),scenes:winner.path.map((c,i)=>({sceneId:c.scene.id,candidate:c.k,...c.descriptor,fit:c.fit,narrative:narrativeCost(c.scene,c.descriptor,i,rows.length),...(i?{transition:transitionCost(winner.path[i-1].descriptor,c.descriptor)}:{})}))};
  copy.extensions.deckweftRhythm={version:1,basisHash:createHash('sha256').update(JSON.stringify({document:copy.document,plan:copy.plan,assets:copy.assets})).digest('hex'),...report};
  return {project:assertVisualProject(copy),report};
 }
