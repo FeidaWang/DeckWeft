@@ -23,6 +23,15 @@ import {chartKindsProject} from './chart-kinds.mjs';
 import {releaseProject} from './release-gate.mjs';
 import designPlanSchema from '../schemas/design-plan.schema.json' with {type:'json'};
 import presentationSchema from '../schemas/presentation-v3.schema.json' with {type:'json'};
+import webSceneSchema from '../schemas/web-scene.schema.json' with {type:'json'};
+import {WEB_RENDERER_VERSION} from '../src/scene/web/compile.mjs';
+import {artDirectionCSS} from '../src/render/web/art-direction.mjs';
+import {checkRender} from '../src/quality/render-checks.mjs';
+import {renderBaseline} from './render-baseline.mjs';
+/** Markup helpers: a balanced element slice, its text, and the regions of one scene section. */
+const element=(markup,open)=>{const at=markup.search(open);if(at<0)return null;const m=markup.slice(at).match(/^<(\w+)/),tag=m[1],re=new RegExp(`<${tag}(\\s[^>]*)?>|</${tag}>`,'g');re.lastIndex=markup.slice(at).indexOf('>')+1;let depth=1,x,rest=markup.slice(at);while(depth&&(x=re.exec(rest)))depth+=x[0][1]==='/'?-1:1;return depth?null:rest.slice(0,re.lastIndex);};
+const textOf=html=>html.replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'");
+const regionsOf=markup=>{const out=[],re=/<div id="(r[a-f0-9]+)" class="region" data-block-id="([^"]+)" data-component="([^"]+)"([^>]*)>/g;let m;while((m=re.exec(markup))){const html=element(markup.slice(m.index),/^<div/);out.push({nodeId:m[1],blockId:m[2],component:m[3],attrs:m[4],html,text:textOf(html),links:[...html.matchAll(/href="([^"]*)"/g)].map(x=>({href:x[1].replace(/&amp;/g,'&')})),images:[...html.matchAll(/<img /g)].map(()=>({ready:true}))});}return out;};
 const legacyProjects=async()=>[await familyProject('en',home),await familyProject('zh-CN',home),await evidenceProject('en'),await evidenceProject('zh-CN'),await blueprintProject('en'),await blueprintProject('zh-CN'),chartKindsProject('en'),await releaseProject('gallery','en',home),await releaseProject('gallery','zh-CN',home)];
 const applyNegative=(fixture,c)=>{const {document,plan,assets}=structuredClone(fixture),p={document,plan,assets};for(const [path,value]of Object.entries(c.set)){const keys=path.split('.');let o=p;for(const k of keys.slice(0,-1))o=o[/^\d+$/.test(k)?Number(k):k];o[keys.at(-1)]=structuredClone(value);}return p;};
 const negativeCases=async tag=>{const n=JSON.parse(await readFile(new URL('./fixtures/visual/cine.negative.json',import.meta.url),'utf8'));return n.cases.filter(c=>c.task===tag);};
@@ -235,4 +244,69 @@ test('CINE-002 contract: references.mode outside the enum, or a quote page whose
  // A references lock is accepted; every legacy fixture validates untouched.
  const locked=structuredClone(fixture);locked.document.authorOverrides.sceneLocks.push({sceneId:'quote',fields:['references']});createVisualProject(locked.document,locked.plan,{id:'locked',assets:locked.assets});
  for(const p of await legacyProjects()){assertReferences(p.document,p.plan.scenes[0]);for(const s of p.plan.scenes)assert.equal('references' in s,false);}
+});
+
+// ---- Task 5: CINE-002 compact source strip, reference panel and claim markers in the web renderer ----
+const sectionOf=(out,id)=>out.sceneMarkup[out.scenes.findIndex(s=>s.id===id)];
+test('CINE-002 web: the evidence page shows 12 markers in a strip under 48 px of CSS height budget, every exact citation text, a panel with 12 full titles and URLs, and no citation region inside .regions',async()=>{
+ assert.equal(WEB_RENDERER_VERSION,'visual-art-direction.13');
+ const p=await cineProject('en',home,{declared:['references']}),resources=await visualAssetResources(p,home),out=html(p,resources),ev=sectionOf(out,'evidence');
+ const regions=element(ev,/<div class="regions">/),strip=element(ev,/<footer class="source-strip"/),panel=element(ev,/<details class="reference-panel"/);
+ assert.ok(strip&&panel);assert.match(strip,/^<footer class="source-strip" aria-label="Sources">/);assert.ok(ev.indexOf(regions)<ev.indexOf(strip),'the strip follows the regions');
+ assert.equal((regions.match(/data-component="citation"/g)||[]).length,0);
+ const items=regionsOf(strip).filter(r=>r.component==='citation');assert.equal(items.length,12);
+ for(const [k,r] of items.entries()){assert.ok(r.attrs.includes('data-reference="compact"'));assert.ok(r.attrs.includes('data-text-role="caption"'));assert.equal(r.text,`[${5+k}] Illustrative source ${String(k+1).padStart(2,'0')}`);assert.equal(r.links[0].href,p.document.sources.find(s=>s.id===`src-ev-${String(k+1).padStart(2,'0')}`).url);}
+ assert.equal((panel.match(/<li id="evidence-ref-\d+">/g)||[]).length,12);assert.ok(panel.startsWith('<details class="reference-panel"><summary>Sources · 12</summary><ol>'));assert.equal(panel.includes('data-block-id'),false);
+ for(const src of p.document.sources.filter(s=>s.id.startsWith('src-ev-'))){assert.ok(panel.includes(src.title),src.id);assert.ok(panel.includes(`<a href="${src.url}" rel="noreferrer">${src.url}</a>`),src.id);}
+ const ids=[...ev.matchAll(/<li id="evidence-ref-(\d+)">/g)].map(m=>Number(m[1]));assert.deepEqual(ids,Array.from({length:12},(_,i)=>5+i));
+ // Back links from the panel to the claim regions that cite each source.
+ const claimRegion=out.scenes.find(s=>s.id==='evidence').regions.find(r=>r.blockId==='ev-chart-a').id;assert.ok(panel.includes(`<a href="#${claimRegion}">↩</a>`));
+ // The stylesheet declares the strip (height budget, no grid reflow) and the markers once.
+ for(const rule of ['.web-scene .source-strip{--strip-budget:48px;margin-top:auto;display:flex;flex-wrap:wrap;','.web-scene .source-strip .region[data-component=citation]{margin:0;padding:0;border:0;grid-column:auto','.reference-panel{','.web-scene .source-marker{font-size:.6em;vertical-align:super;color:var(--reference,inherit)'])assert.ok(artDirectionCSS.includes(rule),rule);
+ assert.equal(artDirectionCSS.includes('text-overflow:ellipsis'),false,'no clipping creates a fit');
+ assert.deepEqual(webSceneSchema.properties.regions.items.properties.reference.enum,['compact','expanded','subject']);
+ const zh=html(await cineProject('zh-CN',home,{declared:['references']}),resources);assert.ok(sectionOf(zh,'evidence').includes('<footer class="source-strip" aria-label="来源">'));assert.ok(sectionOf(zh,'evidence').includes('<summary>来源 · 12</summary>'));
+});
+test('CINE-002 web: long URLs do not appear in the strip; the strip region count equals the citations not attributing a quote',async()=>{
+ const p=await cineProject('en',home,{declared:['references']}),resources=await visualAssetResources(p,home),out=html(p,resources);
+ const strip=element(sectionOf(out,'evidence'),/<footer class="source-strip"/),items=regionsOf(strip);
+ for(const src of p.document.sources)assert.equal(items.some(r=>r.text.includes(src.url)),false);
+ for(const id of ['context','product','evidence','overflow','quote']){const scene=sceneOf(p,id),refs=sceneReferences(p.document,p.plan,scene),section=sectionOf(out,id),strip=element(section,/<footer class="source-strip"/);
+  assert.equal(strip?regionsOf(strip).length:0,refs.strip.length,id);assert.equal((element(section,/<div class="regions">/).match(/data-component="citation"/g)||[]).length,refs.regions.length,id);}
+ // Every citation region keeps its block id and exact text, in the strip or in the composition.
+ const quote=sectionOf(out,'quote');assert.equal(element(quote,/<footer class="source-strip"/),null,'a page with only an attribution has no strip');
+ const regs=regionsOf(sectionOf(out,'overflow'));assert.deepEqual(regs.filter(r=>r.component==='citation').map(r=>r.blockId),['of-source-1','of-source-2','of-source-3','of-source-4']);
+});
+test('CINE-002 web: claim markers match sceneReferences.claims; the quote page keeps its attribution beside the quote (data-reference absent)',async()=>{
+ const p=await cineProject('en',home,{declared:['references']}),resources=await visualAssetResources(p,home),out=html(p,resources);
+ for(const id of ['context','product','evidence','overflow','quote','long-heading']){const refs=sceneReferences(p.document,p.plan,sceneOf(p,id)),regs=regionsOf(element(sectionOf(out,id),/<div class="regions">/));
+  for(const r of regs){const claim=refs.claims.find(c=>c.blockId===r.blockId),marks=[...r.html.matchAll(/<sup class="source-marker">([^<]*)<\/sup>/g)].map(m=>m[1]);
+   if(claim)assert.deepEqual(marks,[claim.markers.map(n=>`[${n}]`).join('')],`${id}/${r.blockId}`);else assert.deepEqual(marks,[],`${id}/${r.blockId}`);}}
+ const q=regionsOf(element(sectionOf(out,'quote'),/<div class="regions">/)),attrib=q.find(r=>r.blockId==='q-attrib'),quote=q.find(r=>r.blockId==='q-quote');
+ assert.ok(attrib&&!attrib.attrs.includes('data-reference'));assert.equal(q.indexOf(attrib),q.indexOf(quote)+1,'the attribution follows its quotation');assert.equal(attrib.text,'Reviewer, illustrative interview · Illustrative interview · synthetic, not a real person');
+ // The chart marker sits in the chart notes line; the image marker in its caption; the heading marker inside the h2.
+ const ev=regionsOf(element(sectionOf(out,'evidence'),/<div class="regions">/));assert.match(ev.find(r=>r.blockId==='ev-chart-a').html,/<ul class="chart-notes">[\s\S]*<li class="source-marker-note"><sup class="source-marker">\[5\]<\/sup><\/li><\/ul>/);
+ assert.match(ev.find(r=>r.blockId==='ev-title').html,/ <sup class="source-marker">\[5\]<\/sup><\/h2>/);
+ const ctx=regionsOf(element(sectionOf(out,'context'),/<div class="regions">/));assert.match(ctx.find(r=>r.blockId==='ctx-image').html,/ <sup class="source-marker">\[1\]<\/sup><\/figcaption>/);
+ // Source-is-subject: every citation stays a region, flagged subject, no markers.
+ const subject=structuredClone(p);sceneOf(subject,'evidence').references={mode:'source-is-subject'};const sj=regionsOf(element(sectionOf(html(subject,resources),'evidence'),/<div class="regions">/));
+ assert.equal(sj.filter(r=>r.component==='citation'&&r.attrs.includes('data-reference="subject"')).length,12);assert.equal(sj.some(r=>r.html.includes('source-marker')),false);
+});
+test('CINE-002 web: checkRender passes text and source coverage on the compact corpus from a synthetic observation',async()=>{
+ for(const locale of ['en','zh-CN']){const p=await cineProject(locale,home,{declared:['references']}),resources=await visualAssetResources(p,home),out=html(p,resources);
+  const observation={viewport:{width:1440},fit:{viewport:{width:1440},checks:[]},fontStatus:'loaded',documentOverflow:false,sourceLinks:[...out.body.matchAll(/href="([^"]*)"/g)].map(m=>m[1].replace(/&amp;/g,'&')),dom:'',scenes:out.scenes.map((s,i)=>({sceneId:s.id,composition:s.composition,bounds:{x:0,y:0,width:1440,height:810},regions:regionsOf(out.sceneMarkup[i]),disclosed:[]}))};
+  const r=checkRender(p,[observation]);assert.deepEqual(r.issues.filter(i=>['text-coverage','source-coverage','coverage','missing-asset'].includes(i.kind)),[]);assert.equal(r.ok,true);
+  assert.equal(r.coverage.filter(c=>c.sources.length).every(c=>c.sources.every(s=>s.present&&s.rendered)),true);}
+});
+test('CINE-002 web: a legacy deck renders the same markup except the renderer version (tests/render-baseline.mjs parts: markup unchanged)',async()=>{
+ const baseline=JSON.parse(await readFile(new URL('./fixtures/visual/render-baseline.json',import.meta.url),'utf8')),current=await renderBaseline();
+ assert.equal(current.renderer,'visual-art-direction.13');
+ // The content view (markup without the stylesheet, the render hash and the scene source hashes, which carry the renderer version) is byte-identical on every recorded fixture and demo; the runtime data and the player too.
+ assert.deepEqual(current.content,baseline.content);
+ assert.deepEqual(Object.fromEntries(Object.entries(current.parts).map(([k,v])=>[k,v.data])),Object.fromEntries(Object.entries(baseline.parts).map(([k,v])=>[k,v.data])));
+ assert.deepEqual(current.player,baseline.player);
+ // The legacy corpus (no references field) has no strip, no panel and no marker in any page.
+ const p=await cineProject('en',home,{declared:[]}),out=html(p,await visualAssetResources(p,home));
+ for(const m of out.sceneMarkup){assert.equal(m.includes('source-strip'),false);assert.equal(m.includes('reference-panel'),false);assert.equal(m.includes('source-marker'),false);assert.equal(m.includes('data-reference'),false);}
+ assert.equal(out.scenes.some(s=>s.regions.some(r=>'reference' in r)),false);
 });

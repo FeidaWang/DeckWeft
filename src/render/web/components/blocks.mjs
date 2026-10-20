@@ -24,3 +24,17 @@ export function blockHTML(b, document, theme, {resources={},crop,slot,sceneId='s
   if (b.type === 'diagram') return diagram(b,document,theme,{sceneId});
   throw new DeckError('WEB_COMPONENT','This semantic component has no web renderer yet.');
 }
+/** CINE-002 claim markers: the display numbers of a claim's sources, appended inside the claim's own text element. */
+export const markerHTML=markers=>markers?.length?`<sup class="source-marker">${markers.map(n=>`[${n}]`).join('')}</sup>`:'';
+export function withMarkers(markup,type,markers){
+ const m=markerHTML(markers);if(!m)return markup;
+ const at=(pattern,replacement)=>{const i=markup.search(pattern);return i<0?null:markup.slice(0,i)+replacement+markup.slice(i);};
+ const placed=type==='heading'?at(/<\/h2>(?![\s\S]*<\/h2>)/,' '+m)
+  :['paragraph','callout'].includes(type)?at(/<\/p>(?![\s\S]*<\/p>)/,' '+m)
+  :type==='image'?at(/<\/figcaption><\/figure>(?![\s\S]*<\/figcaption><\/figure>)/,' '+m)
+  :type==='metric'?at(/<\/span><\/p>(?![\s\S]*<\/span><\/p>)/,' '+m)
+  :type==='list'?at(/<\/li><\/ul>(?![\s\S]*<\/li><\/ul>)/,' '+m)
+  :type==='chart'?(markup.includes('<ul class="chart-notes">')?markup.replace(/(<ul class="chart-notes">[\s\S]*?)<\/ul>/,`$1<li class="source-marker-note">${m}</li></ul>`):at(/<\/figure>(?![\s\S]*<\/figure>)/,`<ul class="chart-notes"><li class="source-marker-note">${m}</li></ul>`))
+  :null;
+ return placed??markup+`<p class="source-marker-line">${m}</p>`;
+}

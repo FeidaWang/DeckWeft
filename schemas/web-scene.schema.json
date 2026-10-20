@@ -121,6 +121,14 @@
               "annotation"
             ]
           },
+          "reference": {
+            "description": "CINE-002: where this citation is drawn. compact: in the page's source strip; expanded: a region in the composition (a quotation's attribution stays there in compact mode); subject: a region of a page whose sources are its subject.",
+            "enum": [
+              "compact",
+              "expanded",
+              "subject"
+            ]
+          },
           "crop": {
             "type": "object",
             "properties": {
