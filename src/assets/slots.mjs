@@ -1,13 +1,15 @@
 import {assertVisualProject,assertVisualLocks} from '../core/visual-project.mjs';
 import {defaultBrief,assertAssetBrief,assertAssetSuitability} from './brief.mjs';
-import {safeCrop,cropVariants} from './crop.mjs';
+import {safeCrop,cropVariants,isEvidenceBrief} from './crop.mjs';
 import {identifier} from '../core/model.mjs';
 import {DeckError} from '../core/errors.mjs';
 function target(project,sceneId,blockId){const scene=project.plan.scenes.find(s=>s.id===sceneId),block=project.document.blocks.find(b=>b.id===blockId&&b.type==='image');if(!scene||!block||!scene.blockIds.includes(blockId))throw new DeckError('IMAGE_SLOT','Choose an image block bound to this scene.',422);return {scene,block};}
 function writable(p,scene,blockId){const locks=p.document.authorOverrides.sceneLocks?.find(l=>l.sceneId===scene.id)?.fields||[];if(p.document.authorOverrides.lockedBlockIds.includes(blockId)||locks.includes('imageSlots')||locks.includes('crops'))throw new DeckError('AUTHOR_LOCK','Unlock this image or its scene crop/slot decisions explicitly before editing.',409);}
-export function slotFor(project,sceneId,blockId){const {scene,block}=target(project,sceneId,blockId),asset=project.assets.find(a=>a.id===block.assetId),existing=scene.imageSlots?.find(s=>s.blockId===blockId);if(existing)return structuredClone(existing);const crop=scene.crops?.find(c=>c.blockId===blockId)||{x:0,y:0,width:1,height:1};return {id:'hero',blockId,brief:{...defaultBrief(),requiredWidth:Math.max(1,Math.min(320,Math.floor(asset.width*crop.width))),requiredHeight:Math.max(1,Math.min(240,Math.floor(asset.height*crop.height))),safeRegion:{x:crop.x,y:crop.y,width:crop.width,height:crop.height},focalPoint:{x:crop.x+crop.width/2,y:crop.y+crop.height/2}},display:'crop',aspect:asset.width*crop.width/(asset.height*crop.height)};}
+export function slotFor(project,sceneId,blockId){const {scene,block}=target(project,sceneId,blockId),asset=project.assets.find(a=>a.id===block.assetId),existing=scene.imageSlots?.find(s=>s.blockId===blockId);if(existing)return structuredClone(existing);const crop=scene.crops?.find(c=>c.blockId===blockId)||{x:0,y:0,width:1,height:1};const evidence=block.factual===true;return {id:'hero',blockId,brief:{...defaultBrief(),...(evidence?{role:'product-screenshot',factual:true,sourceId:block.sourceIds[0]||''}:{}),requiredWidth:Math.max(1,Math.min(320,Math.floor(asset.width*crop.width))),requiredHeight:Math.max(1,Math.min(240,Math.floor(asset.height*crop.height))),safeRegion:{x:crop.x,y:crop.y,width:crop.width,height:crop.height},focalPoint:{x:crop.x+crop.width/2,y:crop.y+crop.height/2}},display:evidence?'contain':'crop',aspect:asset.width*crop.width/(asset.height*crop.height)};}
 export function configureSlot(project,sceneId,blockId,slot){
  const copy=structuredClone(assertVisualProject(project)),{scene,block}=target(copy,sceneId,blockId);writable(copy,scene,blockId);if(slot.blockId!==blockId)throw new DeckError('IMAGE_SLOT','Keep the slot bound to its selected block.',422);assertAssetBrief(slot.brief,copy.document);
+ // CINE-005: declaring an image as evidence (a factual product screenshot) means it is shown whole: the slot displays the complete original.
+ if(isEvidenceBrief(slot.brief))slot={...slot,display:'contain'};
  const shared=copy.plan.scenes.some(s=>s.id!==sceneId&&s.blockIds.includes(blockId));if(shared&&(slot.brief.factual!==!!block.factual||(slot.brief.sourceId&&!block.sourceIds.includes(slot.brief.sourceId))))throw new DeckError('SHARED_IMAGE','This content block is shared. Replace this slot with a dedicated image before changing its factual classification.',409);
  block.factual=slot.brief.factual;if(slot.brief.sourceId&&!block.sourceIds.includes(slot.brief.sourceId))block.sourceIds.push(slot.brief.sourceId);
  scene.imageSlots=(scene.imageSlots||[]).filter(s=>s.blockId!==blockId);scene.imageSlots.push(structuredClone(slot));
@@ -18,7 +20,7 @@ export function slotCandidates(project,sceneId,blockId){assertVisualProject(proj
 export function applySlotCrop(project,sceneId,blockId,{mode,aspect}){
  const copy=structuredClone(assertVisualProject(project)),{scene,block}=target(copy,sceneId,blockId);writable(copy,scene,blockId);const slot=slotFor(copy,sceneId,blockId),asset=copy.assets.find(a=>a.id===block.assetId);
  if(!['crop','contain'].includes(mode))throw new DeckError('IMAGE_SLOT','Choose crop or contain explicitly.',422);
- const result=mode==='contain'?{ok:true,crop:{x:0,y:0,width:1,height:1}}:safeCrop(asset,{...slot.brief,aspect});if(!result.ok)throw new DeckError('UNSAFE_CROP',result.reason,422);
+ const result=mode==='contain'?{ok:true,crop:{x:0,y:0,width:1,height:1}}:safeCrop(asset,{...slot.brief,aspect});if(!result.ok)throw new DeckError(isEvidenceBrief(slot.brief)?'PROTECTED_REGION':'UNSAFE_CROP',result.reason,422);
  slot.display=mode;slot.aspect=aspect;scene.imageSlots=(scene.imageSlots||[]).filter(s=>s.blockId!==blockId);scene.imageSlots.push(slot);scene.crops=(scene.crops||[]).filter(c=>c.blockId!==blockId);scene.crops.push({blockId,...result.crop});assertVisualLocks(project,copy);return assertVisualProject(copy);
 }
 export function attachSlotAsset(project,sceneId,blockId,asset,{sourceReference}={}){

@@ -40,13 +40,18 @@ export function assertMedia(document,scene){
  * and the subject fraction multiplies it by the protected (safe) region's share of the image. Without a subject annotation
  * the subject is the whole image and the report says so; a bounding-box proxy is never called eye tracking.
  */
-export function subjectFraction({pageWidth,pageHeight,imageBox,safeRegion=null}={}){
+/** The authored subject of an image on a page (CINE-005): the slot brief's subjectBounds, or null when nobody drew one. */
+export function subjectOf(scene,blockId){const b=scene.imageSlots?.find(s=>s.blockId===blockId)?.brief.subjectBounds;return b?{...b}:null;}
+export function subjectFraction({pageWidth,pageHeight,imageBox,safeRegion=null,subjectBounds=null,crop=null}={}){
  if(!(pageWidth>0&&pageHeight>0))throw new DeckError('MEDIA_MEASURE','Give the page width and height in px.',422);
  if(!imageBox||!(imageBox.width>=0&&imageBox.height>=0))throw new DeckError('MEDIA_MEASURE','Give the measured image box.',422);
  const clamp=v=>Math.min(1,Math.max(0,v));
  const containerFraction=clamp((imageBox.width*imageBox.height)/(pageWidth*pageHeight));
- const r=safeRegion&&['x','y','width','height'].every(k=>Number.isFinite(safeRegion[k]))?{x:clamp(safeRegion.x),y:clamp(safeRegion.y),width:clamp(safeRegion.width),height:clamp(safeRegion.height)}:null;
+ const given=subjectBounds||safeRegion,r=given&&['x','y','width','height'].every(k=>Number.isFinite(given[k]))?{x:clamp(given.x),y:clamp(given.y),width:clamp(given.width),height:clamp(given.height)}:null;
  const annotated=!!r&&!(r.x===0&&r.y===0&&r.width===1&&r.height===1);
- const share=annotated?clamp(Math.min(r.width,1-r.x))*clamp(Math.min(r.height,1-r.y)):1;
+ // The frame is the scene's crop (CINE-005) or the whole image; the subject counts only where it is visible inside that frame.
+ const frame=crop&&['x','y','width','height'].every(k=>Number.isFinite(crop[k]))&&crop.width>0&&crop.height>0?crop:{x:0,y:0,width:1,height:1};
+ const visible=r?Math.max(0,Math.min(r.x+r.width,frame.x+frame.width)-Math.max(r.x,frame.x))*Math.max(0,Math.min(r.y+r.height,frame.y+frame.height)-Math.max(r.y,frame.y)):0;
+ const share=annotated?visible/(frame.width*frame.height):1;
  return {containerFraction,subjectFraction:annotated?containerFraction*share:containerFraction,annotated,...(annotated?{}:{note:'no subject annotation'})};
 }

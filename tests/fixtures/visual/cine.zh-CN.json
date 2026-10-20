@@ -113,7 +113,7 @@
     ],
     "assetId": "asset_a4973b576097e6edb4a92398",
     "alt": "同一产品，有意居中展示",
-    "factual": false
+    "factual": true
    },
    {
     "id": "pc-callout",
@@ -1015,7 +1015,8 @@
    "license": "Generated test artwork; no third-party rights",
    "allowedUse": "DeckWeft test fixture",
    "alt": "A boxy product drawn in the centre of a white field",
-   "fallback": "A small boxy product centred on white."
+   "fallback": "A small boxy product centred on white.",
+   "origin": "original"
   },
   {
    "id": "asset_e5349b993df30bc438599e40",

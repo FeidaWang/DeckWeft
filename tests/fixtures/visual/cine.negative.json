@@ -295,6 +295,154 @@
      "prod-image": "hero"
     }
    }
+  },
+  {
+   "task": "CINE-005",
+   "why": "The subject lies inside the context region.",
+   "set": {
+    "plan.scenes.1.imageSlots.0.brief.subjectBounds": {
+     "x": 0,
+     "y": 0,
+     "width": 0.5,
+     "height": 0.5
+    }
+   },
+   "code": "SAFE_REGION"
+  },
+  {
+   "task": "CINE-005",
+   "why": "At most eight protected regions.",
+   "set": {
+    "plan.scenes.1.imageSlots.0.brief.protectedRegions": [
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     },
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     },
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     },
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     },
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     },
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     },
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     },
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     },
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.1,
+      "height": 0.1
+     }
+    ]
+   },
+   "code": "INVALID_DESIGN_PLAN"
+  },
+  {
+   "task": "CINE-005",
+   "why": "A crop never cuts a protected region.",
+   "set": {
+    "plan.scenes.1.crops": [
+     {
+      "blockId": "prod-image",
+      "x": 0.4,
+      "y": 0.4,
+      "width": 0.5,
+      "height": 0.5
+     }
+    ]
+   },
+   "code": "UNSAFE_CROP"
+  },
+  {
+   "task": "CINE-005",
+   "why": "A detail locator names another image of the page, not the detail itself.",
+   "set": {
+    "plan.scenes.3.imageSlots.0.brief.detailLocator": {
+     "blockId": "det-hero",
+     "region": {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.4,
+      "height": 0.4
+     }
+    }
+   },
+   "code": "IMAGE_SLOT"
+  },
+  {
+   "task": "CINE-005",
+   "why": "A detail locator is an image, not a paragraph.",
+   "set": {
+    "plan.scenes.3.imageSlots.0.brief.detailLocator": {
+     "blockId": "det-body",
+     "region": {
+      "x": 0.3,
+      "y": 0.3,
+      "width": 0.4,
+      "height": 0.4
+     }
+    }
+   },
+   "code": "IMAGE_SLOT"
+  },
+  {
+   "task": "CINE-005",
+   "why": "An evidence screenshot is shown whole.",
+   "set": {
+    "plan.scenes.2.crops": [
+     {
+      "blockId": "pc-image",
+      "x": 0.1,
+      "y": 0.1,
+      "width": 0.8,
+      "height": 0.8
+     }
+    ]
+   },
+   "code": "PROTECTED_REGION"
+  },
+  {
+   "task": "CINE-005",
+   "why": "A visible caption is at most 300 characters.",
+   "set": {
+    "plan.scenes.1.imageSlots.0.brief.visibleCaption": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "code": "INVALID_DESIGN_PLAN"
   }
  ]
 }
