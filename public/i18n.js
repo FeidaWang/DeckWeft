@@ -622,6 +622,15 @@ en:{
  "visual.interactions.explain":"Explain",
  "visual.interactions.diagramTheWhole":"Diagram · the whole",
  "visual.interactions.explore2":"Explore · {labels}",
+ "visual.workbench.draftsFromYourBriefUsingYour":"Drafts from your brief using your configured Codex host. Supplied sources remain protected.",
+ "visual.workbench.pasteTheActualWordsToArrange":"Paste the actual words to arrange. Use --- between pages. No research, rewriting or extra pages.",
+ "visual.workbench.captureActualImagesInspectThemThen":"Capture actual images, inspect them, then export the reviewed work.",
+ "visual.workbench.previewIsAvailableConfigureAnIsolated":"Preview is available. Configure an isolated capture browser to review images and export.",
+ "visual.workbench.generateOrUseASavedSource":"Generate or use a saved source first.",
+ "visual.workbench.saveEditorChangesAndReopenThe":"Save editor changes and reopen the workbench before continuing.",
+ "visual.workbench.preserveTheSelectedLocalSource":"Preserve the selected local source.",
+ "visual.workbench.openEveryImageInspectItThen":"Open every image, inspect it, then record your judgment and attestation.",
+ "visual.workbench.useExistingBoundData":"Use existing bound data",
 },
 zh:{
  "visual.directionToggle":"创作",
@@ -1243,6 +1252,15 @@ zh:{
  "visual.interactions.explain":"讲解",
  "visual.interactions.diagramTheWhole":"图解 · 整体",
  "visual.interactions.explore2":"探索 · {labels}",
+ "visual.workbench.draftsFromYourBriefUsingYour":"使用你配置的 Codex 根据需求起草，并保护所提供的来源。",
+ "visual.workbench.pasteTheActualWordsToArrange":"请提供需要排版的原文，用 --- 分页；不会研究、改写或增添页面。",
+ "visual.workbench.captureActualImagesInspectThemThen":"先截取实际画面并检查，再导出通过审阅的作品。",
+ "visual.workbench.previewIsAvailableConfigureAnIsolated":"可以预览；需配置隔离截图浏览器，才能检查画面并导出。",
+ "visual.workbench.generateOrUseASavedSource":"请先生成或选择已保存的来源。",
+ "visual.workbench.saveEditorChangesAndReopenThe":"请先保存编辑器修改，再重新打开工作台。",
+ "visual.workbench.preserveTheSelectedLocalSource":"保留所选本地来源。",
+ "visual.workbench.openEveryImageInspectItThen":"请打开并检查每张图片，再填写判断并确认已审阅。",
+ "visual.workbench.useExistingBoundData":"使用已有绑定数据",
 }
 };
 
