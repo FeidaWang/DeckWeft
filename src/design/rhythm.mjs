@@ -4,6 +4,7 @@ import { assertVisualProject, assertVisualLocks } from '../core/visual-project.m
 import { compositions, families, inferFamily, assertComposition, describeCandidate, eligibleFamilies } from './compositions.mjs';
 import { DeckError } from '../core/errors.mjs';
 import {TARGETS,PT_PER_PX} from '../targets/target-budget.mjs';
+import {subjectFraction} from './media.mjs';
 /** The web pre-gate height, read from the declared presentation target (CINE-001). */
 export const CANDIDATE_HEIGHT = TARGETS.presentation.candidateHeight;
 export function candidateProjects(project,overrides={}) {
@@ -28,7 +29,9 @@ export function candidateFit(check,viewport,{target=TARGETS.presentation}={}){
  if(!check)reasons.push('Missing current browser measurement');
  else{if(viewport.width>700&&check.components?.some(c=>c.scrollWidth>c.clientWidth+1||c.minTextPixels<10))reasons.push('Component requires scrolling or text is below 10px at presentation size');if(check.overflow.length)reasons.push('Region overflow');if(check.clipIssues.length)reasons.push('Clipped content');if(check.contrastIssues.length)reasons.push('Contrast failure');if(check.glyphs?.length)reasons.push('Missing glyph');if(check.text.some(t=>!t.inside))reasons.push('Text outside scene');if(check.fonts.some(f=>!f.loaded))reasons.push('Font not ready');if(viewport.width>700&&check.height>budget)reasons.push(`Scene exceeds ${budget}px presentation budget (${Math.ceil(check.height)}px)`);}
  const labels=(check?.components||[]).map(c=>c.minTextPixels).filter(v=>Number.isFinite(v));
- const features=check?{...(check.visualFeatures?{focus:check.visualFeatures.focus,density:check.visualFeatures.density,imageRatio:check.visualFeatures.imageRatio}:{}),labelMinPx:labels.length?Math.min(...labels):null,labelTargetPx:Math.round(target.typography.target.label/PT_PER_PX.pptx)}:null;
+ // CINE-004: per-image container and subject fractions when the runner supplies the measured image boxes (inspectRenderedPage regions) and any subject annotation.
+ const media=Array.isArray(check?.images)&&check.images.length?check.images.map(i=>({blockId:i.blockId,...subjectFraction({pageWidth:viewport.width,pageHeight:check.height,imageBox:i.box,safeRegion:i.safeRegion||null})})):null;
+ const features=check?{...(check.visualFeatures?{focus:check.visualFeatures.focus,density:check.visualFeatures.density,imageRatio:check.visualFeatures.imageRatio}:{}),labelMinPx:labels.length?Math.min(...labels):null,labelTargetPx:Math.round(target.typography.target.label/PT_PER_PX.pptx),...(media?{media}:{})}:null;
  return {ok:!reasons.length,reasons,height:check?.height,...(features?{features}:{})};
 }
 // Theme identity and source facts stay attached to stable scene ids, including after reordering.

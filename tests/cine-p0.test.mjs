@@ -19,7 +19,7 @@ import {startStudio} from '../src/services/server.mjs';
 import {createVisualProject} from '../src/core/visual-project.mjs';
 import {REFERENCE_MODES,referenceIndex,sceneReferences,assertReferences} from '../src/references/presentation.mjs';
 import {VISUAL_PURPOSES,ENTRIES,CENTERED_COMPOSITIONS,CONTEXTUAL_COMPOSITIONS,inferIntent,effectiveIntent,assertIntent,preferredVariant} from '../src/design/intent.mjs';
-import {MEDIA_ROLES,mediaRoles,assertMedia} from '../src/design/media.mjs';
+import {MEDIA_ROLES,mediaRoles,assertMedia,subjectFraction} from '../src/design/media.mjs';
 import {compositionCSS} from '../src/render/web/compositions.mjs';
 import {familyProject} from './families.mjs';
 import {evidenceProject} from './evidence-scene.mjs';
@@ -546,4 +546,26 @@ test('CINE-004 CSS: no 440 px, 570 px, 560 px or 640 px media cap remains for im
  assert.ok(compositionCSS.includes('.image-right .regions{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}'));assert.ok(compositionCSS.includes('.image-left .regions{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}'));
  // Photo split (a theme composition outside this task) keeps its own width.
  assert.ok(artDirectionCSS.includes('.web-scene.photo-split .web-image{width:min(100%,calc(570px * var(--image-aspect)))'));
+});
+
+// ---- Task 11: CINE-004 subject fraction and label-size report ----
+test('CINE-004 subject fraction: a 55 % container with a 20 % protected region is an 11 % subject; a full-image region reports annotated:false and equal fractions',()=>{
+ const page={pageWidth:1440,pageHeight:810},box={x:100,y:60,width:1440*.55,height:810};
+ const r=subjectFraction({...page,imageBox:box,safeRegion:{x:.4,y:.4,width:.4,height:.5}});
+ assert.ok(Math.abs(r.containerFraction-.55)<1e-9);assert.ok(Math.abs(r.subjectFraction-.11)<1e-9);assert.equal(r.annotated,true);
+ const full=subjectFraction({...page,imageBox:box,safeRegion:{x:0,y:0,width:1,height:1}});assert.equal(full.annotated,false);assert.equal(full.subjectFraction,full.containerFraction);
+ const none=subjectFraction({...page,imageBox:box});assert.equal(none.annotated,false);assert.equal(none.subjectFraction,none.containerFraction);assert.equal(none.note,'no subject annotation');
+ // A box larger than the page or a region outside the unit square is clamped, never negative or above 1.
+ const big=subjectFraction({...page,imageBox:{x:0,y:0,width:2000,height:1000},safeRegion:{x:.5,y:.5,width:1,height:1}});assert.equal(big.containerFraction,1);assert.ok(big.subjectFraction<=1&&big.subjectFraction>0);
+ assert.throws(()=>subjectFraction({pageWidth:0,pageHeight:810,imageBox:box}),/page/);
+});
+test('CINE-004 labels: candidateFit features report labelMinPx from the diagram and the 21 px target; a component under 10 px still fails as before',()=>{
+ const good={height:800,overflow:[],clipIssues:[],contrastIssues:[],text:[{inside:true}],fonts:[{loaded:true}],components:[{kind:'diagram',scrollWidth:10,clientWidth:10,minTextPixels:13},{kind:'chart',scrollWidth:10,clientWidth:10,minTextPixels:12}]};
+ const r=candidateFit(good,{width:1440});assert.equal(r.ok,true);assert.equal(r.features.labelMinPx,12);assert.equal(r.features.labelTargetPx,21);assert.equal('media' in r.features,false);
+ const small=candidateFit({...good,components:[{kind:'diagram',scrollWidth:10,clientWidth:10,minTextPixels:9}]},{width:1440});assert.equal(small.ok,false);assert.deepEqual(small.reasons,['Component requires scrolling or text is below 10px at presentation size']);
+ // With per-image boxes from the runner, the media feature reports container and subject fractions per image.
+ const withImages=candidateFit({...good,images:[{blockId:'prod-image',box:{x:720,y:100,width:792,height:445.5},safeRegion:{x:.3,y:.3,width:.4,height:.4}},{blockId:'det-locator',box:{x:0,y:0,width:144,height:81}}]},{width:1440});
+ assert.deepEqual(withImages.features.media.map(m=>[m.blockId,m.annotated]),[['prod-image',true],['det-locator',false]]);
+ const m=withImages.features.media[0];assert.ok(Math.abs(m.containerFraction-(792*445.5)/(1440*800))<1e-9);assert.ok(Math.abs(m.subjectFraction-m.containerFraction*.16)<1e-9);
+ assert.equal(withImages.features.media[1].subjectFraction,withImages.features.media[1].containerFraction);assert.equal(withImages.ok,true);assert.deepEqual(withImages.reasons,[]);
 });

@@ -35,3 +35,18 @@ export function assertMedia(document,scene){
  }
  return scene;
 }
+/**
+ * How much of a page an image's subject takes (CINE-004, spec §1.4): the container fraction is the image box over the page
+ * and the subject fraction multiplies it by the protected (safe) region's share of the image. Without a subject annotation
+ * the subject is the whole image and the report says so; a bounding-box proxy is never called eye tracking.
+ */
+export function subjectFraction({pageWidth,pageHeight,imageBox,safeRegion=null}={}){
+ if(!(pageWidth>0&&pageHeight>0))throw new DeckError('MEDIA_MEASURE','Give the page width and height in px.',422);
+ if(!imageBox||!(imageBox.width>=0&&imageBox.height>=0))throw new DeckError('MEDIA_MEASURE','Give the measured image box.',422);
+ const clamp=v=>Math.min(1,Math.max(0,v));
+ const containerFraction=clamp((imageBox.width*imageBox.height)/(pageWidth*pageHeight));
+ const r=safeRegion&&['x','y','width','height'].every(k=>Number.isFinite(safeRegion[k]))?{x:clamp(safeRegion.x),y:clamp(safeRegion.y),width:clamp(safeRegion.width),height:clamp(safeRegion.height)}:null;
+ const annotated=!!r&&!(r.x===0&&r.y===0&&r.width===1&&r.height===1);
+ const share=annotated?clamp(Math.min(r.width,1-r.x))*clamp(Math.min(r.height,1-r.y)):1;
+ return {containerFraction,subjectFraction:annotated?containerFraction*share:containerFraction,annotated,...(annotated?{}:{note:'no subject annotation'})};
+}
