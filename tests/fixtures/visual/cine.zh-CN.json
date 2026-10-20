@@ -1,0 +1,1034 @@
+{
+ "document": {
+  "format": "deckweft-presentation",
+  "schemaVersion": 3,
+  "id": "cine-zh-cn",
+  "title": "电影化构图语料（批次 1）",
+  "locale": "zh-CN",
+  "visualBrief": {
+   "audience": "评审 CINE 批次 1 的设计师与工程师",
+   "outputLanguage": "zh-CN",
+   "profile": {
+    "colorIntensity": "restrained",
+    "typographicContrast": "balanced",
+    "density": "comfortable",
+    "motionIntensity": "subtle",
+    "imageEmphasis": "large"
+   }
+  },
+  "blocks": [
+   {
+    "id": "ctx-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "循环从哪里开始"
+   },
+   {
+    "id": "ctx-image",
+    "type": "image",
+    "sourceIds": [
+     "src-field"
+    ],
+    "assetId": "asset_a09893f8f9f39da1c2accfc2",
+    "alt": "淡色天空下的开阔地面，从进入路径望向场地",
+    "factual": false
+   },
+   {
+    "id": "ctx-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "场地位于开阔地带，细节很少，不会与对象争夺注意。页面从左侧进入，让景观留有呼吸。"
+   },
+   {
+    "id": "ctx-source",
+    "type": "citation",
+    "sourceIds": [
+     "src-field"
+    ],
+    "sourceId": "src-field",
+    "text": "田野记录，合成"
+   },
+   {
+    "id": "prod-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-product"
+    ],
+    "text": "一个对象，放大呈现"
+   },
+   {
+    "id": "prod-image",
+    "type": "image",
+    "sourceIds": [
+     "src-product"
+    ],
+    "assetId": "asset_a4973b576097e6edb4a92398",
+    "alt": "产品：一个方正的对象，居于白色背景中央",
+    "factual": false
+   },
+   {
+    "id": "prod-callout",
+    "type": "callout",
+    "sourceIds": [
+     "src-product",
+     "src-lab"
+    ],
+    "text": "陈述在左；产品占十二列中的七列。"
+   },
+   {
+    "id": "prod-source-1",
+    "type": "citation",
+    "sourceIds": [
+     "src-product"
+    ],
+    "sourceId": "src-product",
+    "text": "产品说明，合成"
+   },
+   {
+    "id": "prod-source-2",
+    "type": "citation",
+    "sourceIds": [
+     "src-lab"
+    ],
+    "sourceId": "src-lab",
+    "text": "实验记录，合成"
+   },
+   {
+    "id": "pc-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-product"
+    ],
+    "text": "同一对象，有意居中"
+   },
+   {
+    "id": "pc-image",
+    "type": "image",
+    "sourceIds": [
+     "src-product"
+    ],
+    "assetId": "asset_a4973b576097e6edb4a92398",
+    "alt": "同一产品，有意居中展示",
+    "factual": false
+   },
+   {
+    "id": "pc-callout",
+    "type": "callout",
+    "sourceIds": [
+     "src-product",
+     "src-lab"
+    ],
+    "text": "居中主体是作者明确的选择，而非默认。"
+   },
+   {
+    "id": "pc-source-1",
+    "type": "citation",
+    "sourceIds": [
+     "src-product"
+    ],
+    "sourceId": "src-product",
+    "text": "产品说明，合成"
+   },
+   {
+    "id": "pc-source-2",
+    "type": "citation",
+    "sourceIds": [
+     "src-lab"
+    ],
+    "sourceId": "src-lab",
+    "text": "实验记录，合成"
+   },
+   {
+    "id": "det-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-product"
+    ],
+    "text": "更近：接缝与卡扣"
+   },
+   {
+    "id": "det-hero",
+    "type": "image",
+    "sourceIds": [
+     "src-product"
+    ],
+    "assetId": "asset_e5349b993df30bc438599e40",
+    "alt": "高幅产品的接缝与卡扣特写",
+    "factual": false
+   },
+   {
+    "id": "det-locator",
+    "type": "image",
+    "sourceIds": [
+     "src-product"
+    ],
+    "assetId": "asset_a4973b576097e6edb4a92398",
+    "alt": "定位图：整体产品，细节区域位于中央",
+    "factual": false
+   },
+   {
+    "id": "det-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-product"
+    ],
+    "text": "高幅图占左侧七列；右侧的小定位图说明该细节在整体上的位置。"
+   },
+   {
+    "id": "mech-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "text": "循环如何自我调节"
+   },
+   {
+    "id": "mech-diagram",
+    "type": "diagram",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "diagramType": "relationship",
+    "nodes": [
+     {
+      "id": "input",
+      "label": "输入（边界）",
+      "note": "物料从此进入"
+     },
+     {
+      "id": "sensor",
+      "label": "传感器"
+     },
+     {
+      "id": "controller",
+      "label": "控制器"
+     },
+     {
+      "id": "actuator",
+      "label": "执行器"
+     },
+     {
+      "id": "valve",
+      "label": "阀门"
+     },
+     {
+      "id": "output",
+      "label": "输出（边界）",
+      "note": "物料从此离开"
+     },
+     {
+      "id": "monitor",
+      "label": "监视器"
+     }
+    ],
+    "edges": [
+     {
+      "id": "e1",
+      "from": "input",
+      "to": "sensor"
+     },
+     {
+      "id": "e2",
+      "from": "sensor",
+      "to": "controller"
+     },
+     {
+      "id": "e3",
+      "from": "controller",
+      "to": "actuator"
+     },
+     {
+      "id": "e4",
+      "from": "actuator",
+      "to": "valve"
+     },
+     {
+      "id": "e5",
+      "from": "valve",
+      "to": "output"
+     },
+     {
+      "id": "e6",
+      "from": "monitor",
+      "to": "controller"
+     },
+     {
+      "id": "e7",
+      "from": "valve",
+      "to": "sensor",
+      "label": "反馈"
+     },
+     {
+      "id": "e8",
+      "from": "controller",
+      "to": "monitor"
+     },
+     {
+      "id": "e9",
+      "from": "sensor",
+      "to": "monitor"
+     }
+    ]
+   },
+   {
+    "id": "mech-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "text": "两个边界节点标出物料进出之处；监视器经控制器闭合回路。"
+   },
+   {
+    "id": "mech-list",
+    "type": "list",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "items": [
+     "输入与输出是边界",
+     "阀门向传感器反馈",
+     "监视器读取并上报"
+    ]
+   },
+   {
+    "id": "ev-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "text": "同一尺度的两个面板"
+   },
+   {
+    "id": "ev-chart-a",
+    "type": "chart",
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "datasetId": "ev-a",
+    "chartType": "line",
+    "axis": {
+     "policy": "fixed",
+     "min": 0,
+     "max": 100,
+     "scale": "linear"
+    },
+    "question": "设置 A 的读取时间如何变化？"
+   },
+   {
+    "id": "ev-chart-b",
+    "type": "chart",
+    "sourceIds": [
+     "src-ev-02"
+    ],
+    "datasetId": "ev-b",
+    "chartType": "line",
+    "axis": {
+     "policy": "fixed",
+     "min": 0,
+     "max": 100,
+     "scale": "linear"
+    },
+    "question": "设置 B 的读取时间如何变化？"
+   },
+   {
+    "id": "ev-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-ev-03"
+    ],
+    "text": "两个面板共用 0 到 100 的固定坐标轴，便于直接比较高度。"
+   },
+   {
+    "id": "ev-qualifier",
+    "type": "callout",
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "text": "示意，未经测量"
+   },
+   {
+    "id": "ev-source-01",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "sourceId": "src-ev-01",
+    "text": "示意来源 01"
+   },
+   {
+    "id": "ev-source-02",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-02"
+    ],
+    "sourceId": "src-ev-02",
+    "text": "示意来源 02"
+   },
+   {
+    "id": "ev-source-03",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-03"
+    ],
+    "sourceId": "src-ev-03",
+    "text": "示意来源 03"
+   },
+   {
+    "id": "ev-source-04",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-04"
+    ],
+    "sourceId": "src-ev-04",
+    "text": "示意来源 04"
+   },
+   {
+    "id": "ev-source-05",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-05"
+    ],
+    "sourceId": "src-ev-05",
+    "text": "示意来源 05"
+   },
+   {
+    "id": "ev-source-06",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-06"
+    ],
+    "sourceId": "src-ev-06",
+    "text": "示意来源 06"
+   },
+   {
+    "id": "ev-source-07",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-07"
+    ],
+    "sourceId": "src-ev-07",
+    "text": "示意来源 07"
+   },
+   {
+    "id": "ev-source-08",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-08"
+    ],
+    "sourceId": "src-ev-08",
+    "text": "示意来源 08"
+   },
+   {
+    "id": "ev-source-09",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-09"
+    ],
+    "sourceId": "src-ev-09",
+    "text": "示意来源 09"
+   },
+   {
+    "id": "ev-source-10",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-10"
+    ],
+    "sourceId": "src-ev-10",
+    "text": "示意来源 10"
+   },
+   {
+    "id": "ev-source-11",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-11"
+    ],
+    "sourceId": "src-ev-11",
+    "text": "示意来源 11"
+   },
+   {
+    "id": "ev-source-12",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-12"
+    ],
+    "sourceId": "src-ev-12",
+    "text": "示意来源 12"
+   },
+   {
+    "id": "q-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-interview"
+    ],
+    "text": "原话"
+   },
+   {
+    "id": "q-quote",
+    "type": "quote",
+    "sourceIds": [
+     "src-interview"
+    ],
+    "text": "我们不再缩小页面，而是开始追问这一页是为了什么。"
+   },
+   {
+    "id": "q-attrib",
+    "type": "citation",
+    "sourceIds": [
+     "src-interview"
+    ],
+    "sourceId": "src-interview",
+    "text": "评审人，示意访谈"
+   },
+   {
+    "id": "q-para",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-interview"
+    ],
+    "text": "转述留在段落中；出处紧挨引语。"
+   },
+   {
+    "id": "of-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "作者想放在一页上的全部内容"
+   },
+   {
+    "id": "of-para-1",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "第一段完整描述场地。它说出开阔的地面、淡色的天空与远处的山丘，并解释为何将对象放在那里。它记录了谁在哪一天带着哪些仪器到访，并声明本页所有数字均为合成。随后它描述进入路径、正午与黄昏的光线，以及为何从左侧拍摄。这些都未经测量。这一段的用途只是把页面撑高，让折页与拆分规则有事可做。"
+   },
+   {
+    "id": "of-para-2",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "第二段列出团队想展示的内容：处于环境中的整体对象、近距离的接缝与卡扣、调节流量的回路，以及在同一尺度上比较两种设置的两个面板。它说明这些内容后来各自获得一页，顺序从环境到产品、细节、机制再到证据，而结尾页要求三项具体行动而非总结。这一段仅为示意，所有描述都不代表真实测量或真实项目。"
+   },
+   {
+    "id": "of-para-3",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "第三段解释本页存在的目的：验证一条规则。比框架更高的页面从不整体缩小。导出器寻找没有元素跨越的一条线，在那里切开，并在续页重复标题。作者也可以把辅助文字移入折叠区，文字仍在页面、备注与附录中。无论哪种方式，文字都会保留，并以声明的最小字号保持可读。这一段同样只是示意内容。"
+   },
+   {
+    "id": "of-list-1",
+    "type": "list",
+    "sourceIds": [
+     "src-product"
+    ],
+    "items": [
+     "先环境",
+     "再产品",
+     "第三细节",
+     "第四机制",
+     "第五证据",
+     "最后行动",
+     "不加填充页",
+     "不整体缩小"
+    ]
+   },
+   {
+    "id": "of-list-2",
+    "type": "list",
+    "sourceIds": [
+     "src-product"
+    ],
+    "items": [
+     "先测量再判断",
+     "在无元素跨越处切开",
+     "重复标题",
+     "来源条留在最后一段",
+     "报告缩放",
+     "报告字号",
+     "打开文件",
+     "指出最弱的一页"
+    ]
+   },
+   {
+    "id": "of-source-1",
+    "type": "citation",
+    "sourceIds": [
+     "src-field"
+    ],
+    "sourceId": "src-field",
+    "text": "田野记录，合成"
+   },
+   {
+    "id": "of-source-2",
+    "type": "citation",
+    "sourceIds": [
+     "src-product"
+    ],
+    "sourceId": "src-product",
+    "text": "产品说明，合成"
+   },
+   {
+    "id": "of-source-3",
+    "type": "citation",
+    "sourceIds": [
+     "src-lab"
+    ],
+    "sourceId": "src-lab",
+    "text": "实验记录，合成"
+   },
+   {
+    "id": "of-source-4",
+    "type": "citation",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "sourceId": "src-mechanism",
+    "text": "机制草图，合成"
+   },
+   {
+    "id": "lh-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "一句足够长的标题，需要更低的字号层级：它说出对象的名称、所在的地点、所用的测量方法与仪器，以及一页在被拆成两页之前能够承载的全部内容的真正极限"
+   },
+   {
+    "id": "lh-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "长标题采用更低的字号层级；不截断任何内容。"
+   },
+   {
+    "id": "lh-source",
+    "type": "citation",
+    "sourceIds": [
+     "src-field"
+    ],
+    "sourceId": "src-field",
+    "text": "田野记录，合成"
+   },
+   {
+    "id": "act-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "接下来做什么"
+   },
+   {
+    "id": "act-list",
+    "type": "list",
+    "sourceIds": [
+     "src-field"
+    ],
+    "items": [
+     "在浏览器中测量三张图片",
+     "打开 PDF 与 PowerPoint 文件",
+     "指出最弱的一页"
+    ]
+   },
+   {
+    "id": "act-callout",
+    "type": "callout",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "这里的留白是有意为之。"
+   }
+  ],
+  "datasets": [
+   {
+    "id": "ev-a",
+    "unit": "min",
+    "synthetic": true,
+    "categories": [
+     "Q1",
+     "Q2",
+     "Q3",
+     "Q4"
+    ],
+    "categoryIds": [
+     "q1",
+     "q2",
+     "q3",
+     "q4"
+    ],
+    "series": [
+     {
+      "id": "ev-a-time",
+      "label": "设置 A 读取时间（示意）",
+      "values": [
+       72,
+       61,
+       48,
+       37
+      ]
+     }
+    ],
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "version": "cine-2026-10",
+    "definition": {
+     "sample": "synthetic, four quarters",
+     "normalized": false
+    }
+   },
+   {
+    "id": "ev-b",
+    "unit": "min",
+    "synthetic": true,
+    "categories": [
+     "Q1",
+     "Q2",
+     "Q3",
+     "Q4"
+    ],
+    "categoryIds": [
+     "q1",
+     "q2",
+     "q3",
+     "q4"
+    ],
+    "series": [
+     {
+      "id": "ev-b-time",
+      "label": "设置 B 读取时间（示意）",
+      "values": [
+       70,
+       66,
+       64,
+       59
+      ]
+     }
+    ],
+    "sourceIds": [
+     "src-ev-02"
+    ],
+    "version": "cine-2026-10",
+    "definition": {
+     "sample": "synthetic, four quarters",
+     "normalized": false
+    }
+   }
+  ],
+  "sources": [
+   {
+    "id": "src-field",
+    "title": "Illustrative field note · synthetic, not a real survey",
+    "url": "https://example.org/deckweft/cine/field-note"
+   },
+   {
+    "id": "src-product",
+    "title": "Illustrative product sheet · synthetic",
+    "url": "https://example.org/deckweft/cine/product-sheet"
+   },
+   {
+    "id": "src-lab",
+    "title": "Illustrative lab log · synthetic",
+    "url": "https://example.org/deckweft/cine/lab-log"
+   },
+   {
+    "id": "src-interview",
+    "title": "Illustrative interview · synthetic, not a real person",
+    "url": "https://example.org/deckweft/cine/interview"
+   },
+   {
+    "id": "src-mechanism",
+    "title": "Illustrative mechanism sketch · synthetic",
+    "url": "https://example.org/deckweft/cine/mechanism"
+   },
+   {
+    "id": "src-ev-01",
+    "title": "Illustrative source 01: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-01/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-01/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-02",
+    "title": "Illustrative source 02: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-02/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-02/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-03",
+    "title": "Illustrative source 03: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-03/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-03/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-04",
+    "title": "Illustrative source 04: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-04/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-04/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-05",
+    "title": "Illustrative source 05: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-05/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-05/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-06",
+    "title": "Illustrative source 06: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-06/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-06/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-07",
+    "title": "Illustrative source 07: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-07/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-07/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-08",
+    "title": "Illustrative source 08: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-08/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-08/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-09",
+    "title": "Illustrative source 09: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-09/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-09/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-10",
+    "title": "Illustrative source 10: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-10/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-10/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-11",
+    "title": "Illustrative source 11: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-11/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-11/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-12",
+    "title": "Illustrative source 12: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-12/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-12/appendix-tables-and-method-notes/version-2026-10"
+   }
+  ],
+  "authorOverrides": {
+   "lockedBlockIds": [],
+   "sceneLocks": [
+    {
+     "sceneId": "product-center",
+     "fields": [
+      "composition"
+     ]
+    }
+   ]
+  },
+  "migration": {}
+ },
+ "plan": {
+  "format": "deckweft-design-plan",
+  "version": 1,
+  "documentId": "cine-zh-cn",
+  "scenes": [
+   {
+    "id": "context",
+    "role": "opening",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "image-left",
+    "blockIds": [
+     "ctx-title",
+     "ctx-image",
+     "ctx-body",
+     "ctx-source"
+    ],
+    "focalBlockId": "ctx-title"
+   },
+   {
+    "id": "product",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "image-right",
+    "blockIds": [
+     "prod-title",
+     "prod-image",
+     "prod-callout",
+     "prod-source-1",
+     "prod-source-2"
+    ],
+    "focalBlockId": "prod-title"
+   },
+   {
+    "id": "product-center",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "image-strip",
+    "blockIds": [
+     "pc-title",
+     "pc-image",
+     "pc-callout",
+     "pc-source-1",
+     "pc-source-2"
+    ],
+    "focalBlockId": "pc-title"
+   },
+   {
+    "id": "detail",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "image-left",
+    "blockIds": [
+     "det-title",
+     "det-hero",
+     "det-locator",
+     "det-body"
+    ],
+    "focalBlockId": "det-title"
+   },
+   {
+    "id": "mechanism",
+    "role": "process",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "system-map-wide",
+    "blockIds": [
+     "mech-title",
+     "mech-diagram",
+     "mech-body",
+     "mech-list"
+    ],
+    "focalBlockId": "mech-title"
+   },
+   {
+    "id": "evidence",
+    "role": "evidence",
+    "theme": "dark-data",
+    "themeVersion": "1.0.0",
+    "composition": "small-multiples-row",
+    "blockIds": [
+     "ev-title",
+     "ev-chart-a",
+     "ev-chart-b",
+     "ev-body",
+     "ev-qualifier",
+     "ev-source-01",
+     "ev-source-02",
+     "ev-source-03",
+     "ev-source-04",
+     "ev-source-05",
+     "ev-source-06",
+     "ev-source-07",
+     "ev-source-08",
+     "ev-source-09",
+     "ev-source-10",
+     "ev-source-11",
+     "ev-source-12"
+    ],
+    "focalBlockId": "ev-title",
+    "contentStatus": "illustrative"
+   },
+   {
+    "id": "quote",
+    "role": "context",
+    "theme": "electric-violet",
+    "themeVersion": "1.0.0",
+    "composition": "quote-split",
+    "blockIds": [
+     "q-title",
+     "q-quote",
+     "q-attrib",
+     "q-para"
+    ],
+    "focalBlockId": "q-title"
+   },
+   {
+    "id": "overflow",
+    "role": "decision",
+    "theme": "electric-violet",
+    "themeVersion": "1.0.0",
+    "composition": "statement-banner",
+    "blockIds": [
+     "of-title",
+     "of-para-1",
+     "of-para-2",
+     "of-para-3",
+     "of-list-1",
+     "of-list-2",
+     "of-source-1",
+     "of-source-2",
+     "of-source-3",
+     "of-source-4"
+    ],
+    "focalBlockId": "of-title"
+   },
+   {
+    "id": "long-heading",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "statement-split",
+    "blockIds": [
+     "lh-title",
+     "lh-body",
+     "lh-source"
+    ],
+    "focalBlockId": "lh-title"
+   },
+   {
+    "id": "action",
+    "role": "closing",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "closing-split",
+    "blockIds": [
+     "act-title",
+     "act-list",
+     "act-callout"
+    ],
+    "focalBlockId": "act-title"
+   }
+  ]
+ },
+ "assets": [
+  {
+   "id": "asset_a09893f8f9f39da1c2accfc2",
+   "hash": "a09893f8f9f39da1c2accfc2ef2eb698086f57de5fe52b6763c62f6fc360070a",
+   "mime": "image/png",
+   "width": 1600,
+   "height": 900,
+   "path": "assets/a09893f8f9f39da1c2accfc2ef2eb698086f57de5fe52b6763c62f6fc360070a.png",
+   "provenance": "Synthetic landscape drawn by a script for the CINE batch 1 corpus (flat colour bands, no detail). Not a photograph.",
+   "license": "Generated test artwork; no third-party rights",
+   "allowedUse": "DeckWeft test fixture",
+   "alt": "A low-detail landscape: pale sky over distant hills and open ground",
+   "fallback": "A flat landscape drawing with a pale sky, hills and ground."
+  },
+  {
+   "id": "asset_a4973b576097e6edb4a92398",
+   "hash": "a4973b576097e6edb4a923987e388722b8902f248bdc8c998ff8482ed08f0430",
+   "mime": "image/png",
+   "width": 800,
+   "height": 600,
+   "path": "assets/a4973b576097e6edb4a923987e388722b8902f248bdc8c998ff8482ed08f0430.png",
+   "provenance": "Synthetic product drawing for the CINE batch 1 corpus: a boxy object inside the central 40 % × 40 % of a white field.",
+   "license": "Generated test artwork; no third-party rights",
+   "allowedUse": "DeckWeft test fixture",
+   "alt": "A boxy product drawn in the centre of a white field",
+   "fallback": "A small boxy product centred on white."
+  },
+  {
+   "id": "asset_e5349b993df30bc438599e40",
+   "hash": "e5349b993df30bc438599e408f7da66a840cf86a0185f0838e88033fa2a747da",
+   "mime": "image/png",
+   "width": 480,
+   "height": 960,
+   "path": "assets/e5349b993df30bc438599e408f7da66a840cf86a0185f0838e88033fa2a747da.png",
+   "provenance": "Synthetic tall product drawing (480 × 960) for the CINE batch 1 corpus.",
+   "license": "Generated test artwork; no third-party rights",
+   "allowedUse": "DeckWeft test fixture",
+   "alt": "A tall striped product standing on a pale ground",
+   "fallback": "A tall striped object on a pale background."
+  }
+ ]
+}

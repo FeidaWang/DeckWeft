@@ -21,6 +21,11 @@ export const LEVEL_FORMATS=['html','pdf','pptx'];
  * There is no switch to lower them; a tall scene is paged (compilePPTX paginate) instead. Measured on 2026-10-19 across the demo,
  * chart-kinds and blueprint decks: only scenes taller than the slide fail. */
 export const TYPOGRAPHY_MINIMUM_PT={title:18,body:10,annotation:6};
+/** CINE-001 (2026-10-20): the presentation target's typography by role, in points, reported against the delivered size and never
+ * enforced. Today's 19–22 px body text delivers 12.7–14.7 pt in PowerPoint, so the target is where CINE-006 recalibrates to; the
+ * hard minima above are unchanged. Roles: title (the scene heading), body (paragraph, list, callout, quote, metric label), label
+ * (chart and diagram text), reference (citation, image caption, page chrome). */
+export const TYPOGRAPHY_TARGET_PT={title:24,body:18,label:14,reference:10};
 const text=(pptx='native text box')=>({html:['L1','DOM text'],pdf:['L1','real, searchable text'],pptx:['L1',pptx]});
 /** The declaration, per component and format. Charts are resolved per kind and declaration by `outputLevel`. */
 export const COMPONENT_LEVELS={

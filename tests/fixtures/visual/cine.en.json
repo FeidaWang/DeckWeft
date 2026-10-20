@@ -1,0 +1,1034 @@
+{
+ "document": {
+  "format": "deckweft-presentation",
+  "schemaVersion": 3,
+  "id": "cine-en",
+  "title": "Cinematic composition corpus (batch 1)",
+  "locale": "en",
+  "visualBrief": {
+   "audience": "Designers and engineers reviewing CINE batch 1",
+   "outputLanguage": "en",
+   "profile": {
+    "colorIntensity": "restrained",
+    "typographicContrast": "balanced",
+    "density": "comfortable",
+    "motionIntensity": "subtle",
+    "imageEmphasis": "large"
+   }
+  },
+  "blocks": [
+   {
+    "id": "ctx-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "Where the loop starts"
+   },
+   {
+    "id": "ctx-image",
+    "type": "image",
+    "sourceIds": [
+     "src-field"
+    ],
+    "assetId": "asset_a09893f8f9f39da1c2accfc2",
+    "alt": "Open ground under a pale sky, the site seen from the approach path",
+    "factual": false
+   },
+   {
+    "id": "ctx-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "The site sits on open ground with little detail to compete with the object. The page enters from the left and lets the landscape breathe."
+   },
+   {
+    "id": "ctx-source",
+    "type": "citation",
+    "sourceIds": [
+     "src-field"
+    ],
+    "sourceId": "src-field",
+    "text": "Field note, synthetic"
+   },
+   {
+    "id": "prod-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-product"
+    ],
+    "text": "One object, held large"
+   },
+   {
+    "id": "prod-image",
+    "type": "image",
+    "sourceIds": [
+     "src-product"
+    ],
+    "assetId": "asset_a4973b576097e6edb4a92398",
+    "alt": "The product, a boxy object, centred on a white field",
+    "factual": false
+   },
+   {
+    "id": "prod-callout",
+    "type": "callout",
+    "sourceIds": [
+     "src-product",
+     "src-lab"
+    ],
+    "text": "The statement sits left; the product takes seven of twelve columns."
+   },
+   {
+    "id": "prod-source-1",
+    "type": "citation",
+    "sourceIds": [
+     "src-product"
+    ],
+    "sourceId": "src-product",
+    "text": "Product sheet, synthetic"
+   },
+   {
+    "id": "prod-source-2",
+    "type": "citation",
+    "sourceIds": [
+     "src-lab"
+    ],
+    "sourceId": "src-lab",
+    "text": "Lab log, synthetic"
+   },
+   {
+    "id": "pc-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-product"
+    ],
+    "text": "The same object, centred on purpose"
+   },
+   {
+    "id": "pc-image",
+    "type": "image",
+    "sourceIds": [
+     "src-product"
+    ],
+    "assetId": "asset_a4973b576097e6edb4a92398",
+    "alt": "The same product, shown centred by choice",
+    "factual": false
+   },
+   {
+    "id": "pc-callout",
+    "type": "callout",
+    "sourceIds": [
+     "src-product",
+     "src-lab"
+    ],
+    "text": "A centred hero is a choice the author states, not a default."
+   },
+   {
+    "id": "pc-source-1",
+    "type": "citation",
+    "sourceIds": [
+     "src-product"
+    ],
+    "sourceId": "src-product",
+    "text": "Product sheet, synthetic"
+   },
+   {
+    "id": "pc-source-2",
+    "type": "citation",
+    "sourceIds": [
+     "src-lab"
+    ],
+    "sourceId": "src-lab",
+    "text": "Lab log, synthetic"
+   },
+   {
+    "id": "det-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-product"
+    ],
+    "text": "Closer: the seam and the latch"
+   },
+   {
+    "id": "det-hero",
+    "type": "image",
+    "sourceIds": [
+     "src-product"
+    ],
+    "assetId": "asset_e5349b993df30bc438599e40",
+    "alt": "The seam and the latch of the tall product, up close",
+    "factual": false
+   },
+   {
+    "id": "det-locator",
+    "type": "image",
+    "sourceIds": [
+     "src-product"
+    ],
+    "assetId": "asset_a4973b576097e6edb4a92398",
+    "alt": "Locator: the whole product with the detail area at its centre",
+    "factual": false
+   },
+   {
+    "id": "det-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-product"
+    ],
+    "text": "The tall frame fills the left seven columns; the small locator at the right shows where the detail sits on the whole object."
+   },
+   {
+    "id": "mech-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "text": "How the loop regulates itself"
+   },
+   {
+    "id": "mech-diagram",
+    "type": "diagram",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "diagramType": "relationship",
+    "nodes": [
+     {
+      "id": "input",
+      "label": "Input (boundary)",
+      "note": "Material enters here"
+     },
+     {
+      "id": "sensor",
+      "label": "Sensor"
+     },
+     {
+      "id": "controller",
+      "label": "Controller"
+     },
+     {
+      "id": "actuator",
+      "label": "Actuator"
+     },
+     {
+      "id": "valve",
+      "label": "Valve"
+     },
+     {
+      "id": "output",
+      "label": "Output (boundary)",
+      "note": "Material leaves here"
+     },
+     {
+      "id": "monitor",
+      "label": "Monitor"
+     }
+    ],
+    "edges": [
+     {
+      "id": "e1",
+      "from": "input",
+      "to": "sensor"
+     },
+     {
+      "id": "e2",
+      "from": "sensor",
+      "to": "controller"
+     },
+     {
+      "id": "e3",
+      "from": "controller",
+      "to": "actuator"
+     },
+     {
+      "id": "e4",
+      "from": "actuator",
+      "to": "valve"
+     },
+     {
+      "id": "e5",
+      "from": "valve",
+      "to": "output"
+     },
+     {
+      "id": "e6",
+      "from": "monitor",
+      "to": "controller"
+     },
+     {
+      "id": "e7",
+      "from": "valve",
+      "to": "sensor",
+      "label": "feedback"
+     },
+     {
+      "id": "e8",
+      "from": "controller",
+      "to": "monitor"
+     },
+     {
+      "id": "e9",
+      "from": "sensor",
+      "to": "monitor"
+     }
+    ]
+   },
+   {
+    "id": "mech-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "text": "Two boundary nodes mark where material enters and leaves; the monitor closes the loop through the controller."
+   },
+   {
+    "id": "mech-list",
+    "type": "list",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "items": [
+     "Input and output are boundaries",
+     "The valve feeds back to the sensor",
+     "The monitor reads and reports"
+    ]
+   },
+   {
+    "id": "ev-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "text": "Two panels on one scale"
+   },
+   {
+    "id": "ev-chart-a",
+    "type": "chart",
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "datasetId": "ev-a",
+    "chartType": "line",
+    "axis": {
+     "policy": "fixed",
+     "min": 0,
+     "max": 100,
+     "scale": "linear"
+    },
+    "question": "How did reading time change under setting A?"
+   },
+   {
+    "id": "ev-chart-b",
+    "type": "chart",
+    "sourceIds": [
+     "src-ev-02"
+    ],
+    "datasetId": "ev-b",
+    "chartType": "line",
+    "axis": {
+     "policy": "fixed",
+     "min": 0,
+     "max": 100,
+     "scale": "linear"
+    },
+    "question": "How did reading time change under setting B?"
+   },
+   {
+    "id": "ev-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-ev-03"
+    ],
+    "text": "Both panels share a fixed axis from 0 to 100 so the eye compares heights directly."
+   },
+   {
+    "id": "ev-qualifier",
+    "type": "callout",
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "text": "Illustrative, not measured"
+   },
+   {
+    "id": "ev-source-01",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "sourceId": "src-ev-01",
+    "text": "Illustrative source 01"
+   },
+   {
+    "id": "ev-source-02",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-02"
+    ],
+    "sourceId": "src-ev-02",
+    "text": "Illustrative source 02"
+   },
+   {
+    "id": "ev-source-03",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-03"
+    ],
+    "sourceId": "src-ev-03",
+    "text": "Illustrative source 03"
+   },
+   {
+    "id": "ev-source-04",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-04"
+    ],
+    "sourceId": "src-ev-04",
+    "text": "Illustrative source 04"
+   },
+   {
+    "id": "ev-source-05",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-05"
+    ],
+    "sourceId": "src-ev-05",
+    "text": "Illustrative source 05"
+   },
+   {
+    "id": "ev-source-06",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-06"
+    ],
+    "sourceId": "src-ev-06",
+    "text": "Illustrative source 06"
+   },
+   {
+    "id": "ev-source-07",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-07"
+    ],
+    "sourceId": "src-ev-07",
+    "text": "Illustrative source 07"
+   },
+   {
+    "id": "ev-source-08",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-08"
+    ],
+    "sourceId": "src-ev-08",
+    "text": "Illustrative source 08"
+   },
+   {
+    "id": "ev-source-09",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-09"
+    ],
+    "sourceId": "src-ev-09",
+    "text": "Illustrative source 09"
+   },
+   {
+    "id": "ev-source-10",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-10"
+    ],
+    "sourceId": "src-ev-10",
+    "text": "Illustrative source 10"
+   },
+   {
+    "id": "ev-source-11",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-11"
+    ],
+    "sourceId": "src-ev-11",
+    "text": "Illustrative source 11"
+   },
+   {
+    "id": "ev-source-12",
+    "type": "citation",
+    "sourceIds": [
+     "src-ev-12"
+    ],
+    "sourceId": "src-ev-12",
+    "text": "Illustrative source 12"
+   },
+   {
+    "id": "q-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-interview"
+    ],
+    "text": "In their words"
+   },
+   {
+    "id": "q-quote",
+    "type": "quote",
+    "sourceIds": [
+     "src-interview"
+    ],
+    "text": "We stopped shrinking the page and started asking what the page was for."
+   },
+   {
+    "id": "q-attrib",
+    "type": "citation",
+    "sourceIds": [
+     "src-interview"
+    ],
+    "sourceId": "src-interview",
+    "text": "Reviewer, illustrative interview"
+   },
+   {
+    "id": "q-para",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-interview"
+    ],
+    "text": "The paraphrase stays in a paragraph; the attribution stays beside the quotation."
+   },
+   {
+    "id": "of-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "Everything the author wanted on one page"
+   },
+   {
+    "id": "of-para-1",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "The first paragraph describes the site in full. It names the open ground, the pale sky and the distant hills, and it explains why the object was placed where it was. It records who visited, on which day, with which instruments, and it states that every number on this page is synthetic. It then describes the approach path, the light at noon and the light at dusk, and the reason the photographs were taken from the left. None of this text is measured or real."
+   },
+   {
+    "id": "of-para-2",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "The second paragraph lists what the team wanted to show: the whole object in context, the seam and the latch up close, the loop that regulates the flow, and the two panels that compare the two settings on one scale. It explains that each of these later received a page of its own, that the sequence runs from context to product to detail to mechanism to evidence, and that the closing page asks for three concrete actions rather than a summary. This whole paragraph is illustrative only, as the page says."
+   },
+   {
+    "id": "of-para-3",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "The third paragraph explains the rule this page exists to exercise. A page taller than the frame is never shrunk as a whole. The exporter looks for a line no element crosses and cuts there, repeating the heading on the continuation. The author can also move supporting text behind the disclosure, where it remains on the page, in the notes and in the appendix. Either way the words survive on the page and the text stays readable at the declared minimum size."
+   },
+   {
+    "id": "of-list-1",
+    "type": "list",
+    "sourceIds": [
+     "src-product"
+    ],
+    "items": [
+     "Context first",
+     "Product second",
+     "Detail third",
+     "Mechanism fourth",
+     "Evidence fifth",
+     "Action last",
+     "No padding pages",
+     "No shrunk pages"
+    ]
+   },
+   {
+    "id": "of-list-2",
+    "type": "list",
+    "sourceIds": [
+     "src-product"
+    ],
+    "items": [
+     "Measure before judging",
+     "Cut where nothing crosses",
+     "Repeat the heading",
+     "Keep the strip on the last band",
+     "Report the scale",
+     "Report the typography",
+     "Open the files",
+     "Name the weakest page"
+    ]
+   },
+   {
+    "id": "of-source-1",
+    "type": "citation",
+    "sourceIds": [
+     "src-field"
+    ],
+    "sourceId": "src-field",
+    "text": "Field note, synthetic"
+   },
+   {
+    "id": "of-source-2",
+    "type": "citation",
+    "sourceIds": [
+     "src-product"
+    ],
+    "sourceId": "src-product",
+    "text": "Product sheet, synthetic"
+   },
+   {
+    "id": "of-source-3",
+    "type": "citation",
+    "sourceIds": [
+     "src-lab"
+    ],
+    "sourceId": "src-lab",
+    "text": "Lab log, synthetic"
+   },
+   {
+    "id": "of-source-4",
+    "type": "citation",
+    "sourceIds": [
+     "src-mechanism"
+    ],
+    "sourceId": "src-mechanism",
+    "text": "Mechanism sketch, synthetic"
+   },
+   {
+    "id": "lh-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "A headline long enough to need the lower type tier: it names the object, the place, the measurement and the limit of what one page can carry before it splits in two"
+   },
+   {
+    "id": "lh-body",
+    "type": "paragraph",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "A long headline takes a lower type tier; nothing is truncated."
+   },
+   {
+    "id": "lh-source",
+    "type": "citation",
+    "sourceIds": [
+     "src-field"
+    ],
+    "sourceId": "src-field",
+    "text": "Field note, synthetic"
+   },
+   {
+    "id": "act-title",
+    "type": "heading",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "What happens next"
+   },
+   {
+    "id": "act-list",
+    "type": "list",
+    "sourceIds": [
+     "src-field"
+    ],
+    "items": [
+     "Measure the three images in the browser",
+     "Open the PDF and the PowerPoint file",
+     "Name the weakest page"
+    ]
+   },
+   {
+    "id": "act-callout",
+    "type": "callout",
+    "sourceIds": [
+     "src-field"
+    ],
+    "text": "The whitespace here is intentional."
+   }
+  ],
+  "datasets": [
+   {
+    "id": "ev-a",
+    "unit": "min",
+    "synthetic": true,
+    "categories": [
+     "Q1",
+     "Q2",
+     "Q3",
+     "Q4"
+    ],
+    "categoryIds": [
+     "q1",
+     "q2",
+     "q3",
+     "q4"
+    ],
+    "series": [
+     {
+      "id": "ev-a-time",
+      "label": "Setting A reading time (illustrative)",
+      "values": [
+       72,
+       61,
+       48,
+       37
+      ]
+     }
+    ],
+    "sourceIds": [
+     "src-ev-01"
+    ],
+    "version": "cine-2026-10",
+    "definition": {
+     "sample": "synthetic, four quarters",
+     "normalized": false
+    }
+   },
+   {
+    "id": "ev-b",
+    "unit": "min",
+    "synthetic": true,
+    "categories": [
+     "Q1",
+     "Q2",
+     "Q3",
+     "Q4"
+    ],
+    "categoryIds": [
+     "q1",
+     "q2",
+     "q3",
+     "q4"
+    ],
+    "series": [
+     {
+      "id": "ev-b-time",
+      "label": "Setting B reading time (illustrative)",
+      "values": [
+       70,
+       66,
+       64,
+       59
+      ]
+     }
+    ],
+    "sourceIds": [
+     "src-ev-02"
+    ],
+    "version": "cine-2026-10",
+    "definition": {
+     "sample": "synthetic, four quarters",
+     "normalized": false
+    }
+   }
+  ],
+  "sources": [
+   {
+    "id": "src-field",
+    "title": "Illustrative field note · synthetic, not a real survey",
+    "url": "https://example.org/deckweft/cine/field-note"
+   },
+   {
+    "id": "src-product",
+    "title": "Illustrative product sheet · synthetic",
+    "url": "https://example.org/deckweft/cine/product-sheet"
+   },
+   {
+    "id": "src-lab",
+    "title": "Illustrative lab log · synthetic",
+    "url": "https://example.org/deckweft/cine/lab-log"
+   },
+   {
+    "id": "src-interview",
+    "title": "Illustrative interview · synthetic, not a real person",
+    "url": "https://example.org/deckweft/cine/interview"
+   },
+   {
+    "id": "src-mechanism",
+    "title": "Illustrative mechanism sketch · synthetic",
+    "url": "https://example.org/deckweft/cine/mechanism"
+   },
+   {
+    "id": "src-ev-01",
+    "title": "Illustrative source 01: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-01/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-01/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-02",
+    "title": "Illustrative source 02: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-02/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-02/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-03",
+    "title": "Illustrative source 03: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-03/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-03/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-04",
+    "title": "Illustrative source 04: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-04/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-04/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-05",
+    "title": "Illustrative source 05: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-05/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-05/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-06",
+    "title": "Illustrative source 06: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-06/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-06/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-07",
+    "title": "Illustrative source 07: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-07/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-07/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-08",
+    "title": "Illustrative source 08: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-08/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-08/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-09",
+    "title": "Illustrative source 09: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-09/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-09/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-10",
+    "title": "Illustrative source 10: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-10/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-10/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-11",
+    "title": "Illustrative source 11: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-11/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-11/appendix-tables-and-method-notes/version-2026-10"
+   },
+   {
+    "id": "src-ev-12",
+    "title": "Illustrative source 12: a synthetic technical report on measured reading time, label legibility and reference density across twelve presentation decks, prepared only for the DeckWeft cinematic composition corpus (not a real publication)",
+    "url": "https://example.org/deckweft/cine/illustrative-sources/report-12/measured-reading-time-and-label-legibility-across-twelve-presentation-decks/synthetic-only/section-12/appendix-tables-and-method-notes/version-2026-10"
+   }
+  ],
+  "authorOverrides": {
+   "lockedBlockIds": [],
+   "sceneLocks": [
+    {
+     "sceneId": "product-center",
+     "fields": [
+      "composition"
+     ]
+    }
+   ]
+  },
+  "migration": {}
+ },
+ "plan": {
+  "format": "deckweft-design-plan",
+  "version": 1,
+  "documentId": "cine-en",
+  "scenes": [
+   {
+    "id": "context",
+    "role": "opening",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "image-left",
+    "blockIds": [
+     "ctx-title",
+     "ctx-image",
+     "ctx-body",
+     "ctx-source"
+    ],
+    "focalBlockId": "ctx-title"
+   },
+   {
+    "id": "product",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "image-right",
+    "blockIds": [
+     "prod-title",
+     "prod-image",
+     "prod-callout",
+     "prod-source-1",
+     "prod-source-2"
+    ],
+    "focalBlockId": "prod-title"
+   },
+   {
+    "id": "product-center",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "image-strip",
+    "blockIds": [
+     "pc-title",
+     "pc-image",
+     "pc-callout",
+     "pc-source-1",
+     "pc-source-2"
+    ],
+    "focalBlockId": "pc-title"
+   },
+   {
+    "id": "detail",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "image-left",
+    "blockIds": [
+     "det-title",
+     "det-hero",
+     "det-locator",
+     "det-body"
+    ],
+    "focalBlockId": "det-title"
+   },
+   {
+    "id": "mechanism",
+    "role": "process",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "system-map-wide",
+    "blockIds": [
+     "mech-title",
+     "mech-diagram",
+     "mech-body",
+     "mech-list"
+    ],
+    "focalBlockId": "mech-title"
+   },
+   {
+    "id": "evidence",
+    "role": "evidence",
+    "theme": "dark-data",
+    "themeVersion": "1.0.0",
+    "composition": "small-multiples-row",
+    "blockIds": [
+     "ev-title",
+     "ev-chart-a",
+     "ev-chart-b",
+     "ev-body",
+     "ev-qualifier",
+     "ev-source-01",
+     "ev-source-02",
+     "ev-source-03",
+     "ev-source-04",
+     "ev-source-05",
+     "ev-source-06",
+     "ev-source-07",
+     "ev-source-08",
+     "ev-source-09",
+     "ev-source-10",
+     "ev-source-11",
+     "ev-source-12"
+    ],
+    "focalBlockId": "ev-title",
+    "contentStatus": "illustrative"
+   },
+   {
+    "id": "quote",
+    "role": "context",
+    "theme": "electric-violet",
+    "themeVersion": "1.0.0",
+    "composition": "quote-split",
+    "blockIds": [
+     "q-title",
+     "q-quote",
+     "q-attrib",
+     "q-para"
+    ],
+    "focalBlockId": "q-title"
+   },
+   {
+    "id": "overflow",
+    "role": "decision",
+    "theme": "electric-violet",
+    "themeVersion": "1.0.0",
+    "composition": "statement-banner",
+    "blockIds": [
+     "of-title",
+     "of-para-1",
+     "of-para-2",
+     "of-para-3",
+     "of-list-1",
+     "of-list-2",
+     "of-source-1",
+     "of-source-2",
+     "of-source-3",
+     "of-source-4"
+    ],
+    "focalBlockId": "of-title"
+   },
+   {
+    "id": "long-heading",
+    "role": "context",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "statement-split",
+    "blockIds": [
+     "lh-title",
+     "lh-body",
+     "lh-source"
+    ],
+    "focalBlockId": "lh-title"
+   },
+   {
+    "id": "action",
+    "role": "closing",
+    "theme": "cream-collage",
+    "themeVersion": "1.0.0",
+    "composition": "closing-split",
+    "blockIds": [
+     "act-title",
+     "act-list",
+     "act-callout"
+    ],
+    "focalBlockId": "act-title"
+   }
+  ]
+ },
+ "assets": [
+  {
+   "id": "asset_a09893f8f9f39da1c2accfc2",
+   "hash": "a09893f8f9f39da1c2accfc2ef2eb698086f57de5fe52b6763c62f6fc360070a",
+   "mime": "image/png",
+   "width": 1600,
+   "height": 900,
+   "path": "assets/a09893f8f9f39da1c2accfc2ef2eb698086f57de5fe52b6763c62f6fc360070a.png",
+   "provenance": "Synthetic landscape drawn by a script for the CINE batch 1 corpus (flat colour bands, no detail). Not a photograph.",
+   "license": "Generated test artwork; no third-party rights",
+   "allowedUse": "DeckWeft test fixture",
+   "alt": "A low-detail landscape: pale sky over distant hills and open ground",
+   "fallback": "A flat landscape drawing with a pale sky, hills and ground."
+  },
+  {
+   "id": "asset_a4973b576097e6edb4a92398",
+   "hash": "a4973b576097e6edb4a923987e388722b8902f248bdc8c998ff8482ed08f0430",
+   "mime": "image/png",
+   "width": 800,
+   "height": 600,
+   "path": "assets/a4973b576097e6edb4a923987e388722b8902f248bdc8c998ff8482ed08f0430.png",
+   "provenance": "Synthetic product drawing for the CINE batch 1 corpus: a boxy object inside the central 40 % × 40 % of a white field.",
+   "license": "Generated test artwork; no third-party rights",
+   "allowedUse": "DeckWeft test fixture",
+   "alt": "A boxy product drawn in the centre of a white field",
+   "fallback": "A small boxy product centred on white."
+  },
+  {
+   "id": "asset_e5349b993df30bc438599e40",
+   "hash": "e5349b993df30bc438599e408f7da66a840cf86a0185f0838e88033fa2a747da",
+   "mime": "image/png",
+   "width": 480,
+   "height": 960,
+   "path": "assets/e5349b993df30bc438599e408f7da66a840cf86a0185f0838e88033fa2a747da.png",
+   "provenance": "Synthetic tall product drawing (480 × 960) for the CINE batch 1 corpus.",
+   "license": "Generated test artwork; no third-party rights",
+   "allowedUse": "DeckWeft test fixture",
+   "alt": "A tall striped product standing on a pale ground",
+   "fallback": "A tall striped object on a pale background."
+  }
+ ]
+}

@@ -31,17 +31,18 @@ export function sceneElements(m){
 }
 /**
  * The bands a scene is cut into, or null when it is left whole. `strip` is the height reserved above a continuation band for the
- * repeated heading. Returns {bands, reason}: reason is 'fits' (no text below the minimum at the whole-scene fit), 'width-bound'
+ * repeated heading. `frame` is the page in output units and `unitsPerPt` the output unit per point: the PowerPoint slide in EMU by
+ * default; the PDF passes its 1440 × 810 px page with 4/3 px per point (CINE-001), so both targets cut at the same lines. Returns {bands, reason}: reason is 'fits' (no text below the minimum at the whole-scene fit), 'width-bound'
  * (too small even at the width fit, so paging cannot help), 'trimmed' (one band without trailing empty space) or 'paged'.
  */
-export function sceneBands(m,blocks,{titleBlockId=null,strip=0,minimums=TYPOGRAPHY_MINIMUM_PT}={}){
+export function sceneBands(m,blocks,{titleBlockId=null,strip=0,minimums=TYPOGRAPHY_MINIMUM_PT,frame=SLIDE,unitsPerPt=EMU_PER_PT}={}){
  const els=sceneElements(m),b=m.bounds;
  if(!els.length)return {bands:null,reason:'fits'};
- const need=Math.max(0,...els.filter(e=>e.fontSize>0).map(e=>{const type=blocks.get(e.blockId)?.type;const role=e.chrome?'annotation':textRoleOf(type,{title:e.blockId===titleBlockId&&type==='heading'});return minimums[role]*EMU_PER_PT/e.fontSize;}));
- const widthScale=SLIDE.width/b.width,fullScale=Math.min(widthScale,SLIDE.height/b.height);
+ const need=Math.max(0,...els.filter(e=>e.fontSize>0).map(e=>{const type=blocks.get(e.blockId)?.type;const role=e.chrome?'annotation':textRoleOf(type,{title:e.blockId===titleBlockId&&type==='heading'});return minimums[role]*unitsPerPt/e.fontSize;}));
+ const widthScale=frame.width/b.width,fullScale=Math.min(widthScale,frame.height/b.height);
  if(!need||fullScale>=need-1e-9)return {bands:null,reason:'fits'};
  if(widthScale<need)return {bands:null,reason:'width-bound'};
- const H=SLIDE.height/need,top=b.y,bottom=b.y+b.height;
+ const H=frame.height/need,top=b.y,bottom=b.y+b.height;
  const firstTop=Math.min(...els.map(e=>e.box.y)),lastEnd=Math.max(...els.map(e=>e.box.y+e.box.height)),pad=Math.max(0,firstTop-top);
  const crosses=c=>els.some(e=>e.box.y<c-0.5&&e.box.y+e.box.height>c+0.5);
  const ends=[...new Set(els.map(e=>Math.round(e.box.y+e.box.height)))].sort((p,q)=>p-q);
