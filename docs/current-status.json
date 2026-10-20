@@ -1,8 +1,8 @@
 {
   "format": "deckweft-current-status",
   "version": "0.1.0-alpha.2",
-  "playerVersion": "semantic-player.6",
-  "rendererVersion": "visual-art-direction.13",
+  "playerVersion": "semantic-player.7",
+  "rendererVersion": "visual-art-direction.14",
   "browserVersion": "151.0.7922.34",
   "automatedTests": {
     "command": "npm run verify",
