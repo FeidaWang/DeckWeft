@@ -38,6 +38,7 @@ The corpus (`tests/cine-corpus.mjs`, `tests/fixtures/visual/cine.en.json` and `c
 - Band cuts used the glyph box of a paragraph while its slide shape takes the line box, so a shape could fall outside its slide; cuts now use the shape box.
 - Claim markers at 0.6 em measured as 7 px runs inside body text and failed the typography gate on every compact page; markers are now `max(.7em, 12px)`, written as PowerPoint superscripts and audited at the annotation minimum.
 - Two images on an `image-left` page shared one grid cell; the second image now sits in the text column at the foot of the hero.
+- Found by the final review: `fit-page` threw when the cut fell after an image or chart (the block excerpt read `text`), a split side that lost its family's required block was refused instead of taking the composition its content implies, a 64-character page id could loop the continuation id forever, and `visual-space` hid a page's only paragraph; all four fixed with tests.
 
 ## Not run
 
