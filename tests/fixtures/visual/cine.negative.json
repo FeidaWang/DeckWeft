@@ -1,11 +1,226 @@
 {
  "negativeFixture": "CINE batch 1 contract additions that must be refused. Each case sets one or more paths on the legacy English corpus (tests/fixtures/visual/cine.en.json; scene index 6 is the quote page, 8 the long-heading page); createVisualProject must reject it with the named code (INVALID_DESIGN_PLAN unless stated). `task` names the contract: references (Task 4), intent (Task 7), media (Task 10).",
  "cases": [
-  {"task": "references", "why": "The reference mode is one of expanded, compact, source-is-subject.", "set": {"plan.scenes.6.references": {"mode": "tight"}}},
-  {"task": "references", "why": "The references object carries only a mode.", "set": {"plan.scenes.6.references": {"mode": "compact", "strip": true}}},
-  {"task": "references", "why": "The references object needs a mode.", "set": {"plan.scenes.6.references": {}}},
-  {"task": "references", "why": "references is an object, not a string.", "set": {"plan.scenes.6.references": "compact"}},
-  {"task": "references", "why": "In compact mode a quotation keeps its attributing citation on the page: a page with a quote whose source no citation of the page cites is refused.", "set": {"plan.scenes.8.blockIds": ["lh-title", "lh-body", "lh-source", "q-quote"], "plan.scenes.8.references": {"mode": "compact"}}},
-  {"task": "references", "why": "A scene lock names a known field.", "set": {"document.authorOverrides.sceneLocks": [{"sceneId": "quote", "fields": ["strip"]}]}, "code": "INVALID_PRESENTATION"}
+  {
+   "task": "references",
+   "why": "The reference mode is one of expanded, compact, source-is-subject.",
+   "set": {
+    "plan.scenes.6.references": {
+     "mode": "tight"
+    }
+   }
+  },
+  {
+   "task": "references",
+   "why": "The references object carries only a mode.",
+   "set": {
+    "plan.scenes.6.references": {
+     "mode": "compact",
+     "strip": true
+    }
+   }
+  },
+  {
+   "task": "references",
+   "why": "The references object needs a mode.",
+   "set": {
+    "plan.scenes.6.references": {}
+   }
+  },
+  {
+   "task": "references",
+   "why": "references is an object, not a string.",
+   "set": {
+    "plan.scenes.6.references": "compact"
+   }
+  },
+  {
+   "task": "references",
+   "why": "In compact mode a quotation keeps its attributing citation on the page: a page with a quote whose source no citation of the page cites is refused.",
+   "set": {
+    "plan.scenes.8.blockIds": [
+     "lh-title",
+     "lh-body",
+     "lh-source",
+     "q-quote"
+    ],
+    "plan.scenes.8.references": {
+     "mode": "compact"
+    }
+   }
+  },
+  {
+   "task": "references",
+   "why": "A scene lock names a known field.",
+   "set": {
+    "document.authorOverrides.sceneLocks": [
+     {
+      "sceneId": "quote",
+      "fields": [
+       "strip"
+      ]
+     }
+    ]
+   },
+   "code": "INVALID_PRESENTATION"
+  },
+  {
+   "task": "intent",
+   "why": "The purpose is one of the seven visual purposes.",
+   "set": {
+    "plan.scenes.1.intent": {
+     "purpose": "wow",
+     "entry": "left"
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "The entry is left, center or contextual.",
+   "set": {
+    "plan.scenes.1.intent": {
+     "purpose": "explain",
+     "entry": "right"
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "An intent needs both a purpose and an entry.",
+   "set": {
+    "plan.scenes.1.intent": {
+     "purpose": "explain"
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "The intent carries no other fields (the primary object is the existing focalBlockId).",
+   "set": {
+    "plan.scenes.1.intent": {
+     "purpose": "explain",
+     "entry": "left",
+     "primaryBlockId": "prod-image"
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "The focus group lists blocks of this page.",
+   "set": {
+    "plan.scenes.1.intent": {
+     "purpose": "explain",
+     "entry": "left",
+     "focusGroupBlockIds": [
+      "prod-title",
+      "ctx-image"
+     ]
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "The focus group contains the focal block.",
+   "set": {
+    "plan.scenes.1.intent": {
+     "purpose": "explain",
+     "entry": "left",
+     "focusGroupBlockIds": [
+      "prod-image",
+      "prod-callout"
+     ]
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "The focus group holds at most six blocks.",
+   "set": {
+    "plan.scenes.7.intent": {
+     "purpose": "explain",
+     "entry": "left",
+     "focusGroupBlockIds": [
+      "of-title",
+      "of-para-1",
+      "of-para-2",
+      "of-para-3",
+      "of-list-1",
+      "of-list-2",
+      "of-source-1"
+     ]
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "An empty region is a normalized rectangle inside the unit square.",
+   "set": {
+    "plan.scenes.1.intent": {
+     "purpose": "explain",
+     "entry": "left",
+     "emptyRegions": [
+      {
+       "x": 0.5,
+       "y": 0.5,
+       "width": 0.6,
+       "height": 0.2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "At most four empty regions are reported.",
+   "set": {
+    "plan.scenes.1.intent": {
+     "purpose": "explain",
+     "entry": "left",
+     "emptyRegions": [
+      {
+       "x": 0,
+       "y": 0,
+       "width": 0.1,
+       "height": 0.1
+      },
+      {
+       "x": 0.1,
+       "y": 0,
+       "width": 0.1,
+       "height": 0.1
+      },
+      {
+       "x": 0.2,
+       "y": 0,
+       "width": 0.1,
+       "height": 0.1
+      },
+      {
+       "x": 0.3,
+       "y": 0,
+       "width": 0.1,
+       "height": 0.1
+      },
+      {
+       "x": 0.4,
+       "y": 0,
+       "width": 0.1,
+       "height": 0.1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "task": "intent",
+   "why": "A citation cannot be the focal block once an intent is declared.",
+   "set": {
+    "plan.scenes.0.focalBlockId": "ctx-source",
+    "plan.scenes.0.intent": {
+     "purpose": "explain",
+     "entry": "left"
+    }
+   }
+  }
  ]
 }

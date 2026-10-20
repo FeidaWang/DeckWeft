@@ -1074,6 +1074,81 @@
               "mode"
             ],
             "additionalProperties": false
+          },
+          "intent": {
+            "type": "object",
+            "description": "CINE-003: what this page is for and where the eye enters. The primary object is focalBlockId. Absent means inferred from content and composition. focusGroupBlockIds are blocks of this page that belong with the focal block (it must be among them); emptyRegions are deliberate spaces, normalized to the 1440 × 810 frame, reported only in batch 1.",
+            "properties": {
+              "purpose": {
+                "enum": [
+                  "explain",
+                  "show-product",
+                  "show-detail",
+                  "compare",
+                  "evidence",
+                  "overview",
+                  "chapter"
+                ]
+              },
+              "entry": {
+                "enum": [
+                  "left",
+                  "center",
+                  "contextual"
+                ]
+              },
+              "focusGroupBlockIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "minItems": 1,
+                "maxItems": 6,
+                "uniqueItems": true
+              },
+              "emptyRegions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "width": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "height": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y",
+                    "width",
+                    "height"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 4
+              }
+            },
+            "required": [
+              "purpose",
+              "entry"
+            ],
+            "additionalProperties": false
           }
         },
         "required": [

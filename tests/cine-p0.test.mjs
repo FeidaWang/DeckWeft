@@ -16,6 +16,7 @@ import {planAuthorAction,AUTHOR_ACTIONS} from '../src/workbench/author-actions.m
 import {readFile} from 'node:fs/promises';
 import {createVisualProject} from '../src/core/visual-project.mjs';
 import {REFERENCE_MODES,referenceIndex,sceneReferences,assertReferences} from '../src/references/presentation.mjs';
+import {VISUAL_PURPOSES,ENTRIES,CENTERED_COMPOSITIONS,CONTEXTUAL_COMPOSITIONS,inferIntent,effectiveIntent,assertIntent,preferredVariant} from '../src/design/intent.mjs';
 import {familyProject} from './families.mjs';
 import {evidenceProject} from './evidence-scene.mjs';
 import {blueprintProject} from './blueprint-a.mjs';
@@ -363,4 +364,52 @@ test('CINE-001 regression: a paged image-first page whose heading is not in the 
  assert.equal(out.report.check.accessibility.status,'pass');
  const pdf=paged(p,'pdf',{resources}).out,pages=pdf.run.output.pages.filter(x=>x.sceneId==='detail');assert.equal(pages.length,parts.length);
  assert.ok(pages[0].strip>0,'the first PDF page reserves the strip because its band lacks the heading');
+});
+
+// ---- Task 7: CINE-003 visual intent contract and inference ----
+test('CINE-003 inference: every corpus page without an authored intent infers the purpose and entry in this table; every existing fixture infers without throwing',async()=>{
+ assert.deepEqual(VISUAL_PURPOSES,['explain','show-product','show-detail','compare','evidence','overview','chapter']);assert.deepEqual(ENTRIES,['left','center','contextual']);
+ assert.deepEqual(CENTERED_COMPOSITIONS,['statement-center','quote-center','closing-focus','small-multiples-center','stage-chapter','violet-chapter','diagonal-cover']);
+ assert.deepEqual(CONTEXTUAL_COMPOSITIONS,['chapter-low','chapter-index','chapter-margin','metric-band','stage-hero','process-stair','comparison-stack','atlas-cover','fieldnotes-cover']);
+ const p=await cineProject('en',home,{declared:[]}),n=p.plan.scenes.length;
+ const table={context:['chapter','left'],product:['show-product','left'],'product-center':['show-product','left'],detail:['show-product','left'],mechanism:['overview','left'],evidence:['evidence','left'],quote:['explain','left'],overflow:['explain','left'],'long-heading':['explain','left'],action:['chapter','left']};
+ for(const [i,s] of p.plan.scenes.entries()){const it=inferIntent(p.document,s,i,n);assert.deepEqual([it.purpose,it.entry],table[s.id],s.id);assert.equal(it.inferred,true);assert.deepEqual(effectiveIntent(p.document,p.plan,i),it);}
+ // Authored wins; an authored intent is reported as not inferred.
+ const authored=await cineProject('en',home,{declared:['intent']});
+ assert.deepEqual(effectiveIntent(authored.document,authored.plan,0),{purpose:'explain',entry:'left',inferred:false});assert.deepEqual(effectiveIntent(authored.document,authored.plan,2),{purpose:'show-product',entry:'center',inferred:false});
+ assert.deepEqual(effectiveIntent(authored.document,authored.plan,9),{purpose:'chapter',entry:'contextual',inferred:false});assert.equal(effectiveIntent(authored.document,authored.plan,6).inferred,true,'the quote page declares no intent');
+ // Composition-driven entries and the remaining purpose rules.
+ const centred=structuredClone(p);sceneOf(centred,'long-heading').composition='statement-center';assert.equal(inferIntent(centred.document,sceneOf(centred,'long-heading'),8,n).entry,'center');
+ const ctx=structuredClone(p);sceneOf(ctx,'action').composition='closing-focus';assert.equal(inferIntent(ctx.document,sceneOf(ctx,'action'),9,n).entry,'center');
+ const chapter=structuredClone(p);sceneOf(chapter,'long-heading').composition='chapter-low';sceneOf(chapter,'long-heading').blockIds=['lh-title','lh-body','lh-source'];assert.deepEqual([inferIntent(chapter.document,sceneOf(chapter,'long-heading'),8,n).purpose,inferIntent(chapter.document,sceneOf(chapter,'long-heading'),8,n).entry],['chapter','contextual']);
+ for(const q of await legacyProjects())for(const [i,s] of q.plan.scenes.entries()){const it=inferIntent(q.document,s,i,q.plan.scenes.length);assert.ok(VISUAL_PURPOSES.includes(it.purpose)&&ENTRIES.includes(it.entry),`${q.id}/${s.id}`);}
+ const g=(await legacyProjects())[7],by=Object.fromEntries(g.plan.scenes.map((s,i)=>[s.id,inferIntent(g.document,s,i,g.plan.scenes.length).purpose]));
+ assert.equal(by[g.plan.scenes[0].id],'chapter');assert.equal(by[g.plan.scenes.at(-1).id],'chapter');assert.equal(by['ev-photo'],'show-product');assert.equal(by['dd-trend'],'evidence');assert.equal(by['cc-timeline'],'explain');
+ const fam=(await legacyProjects())[0],fb=Object.fromEntries(fam.plan.scenes.map((s,i)=>[s.id,inferIntent(fam.document,s,i,fam.plan.scenes.length)]));assert.deepEqual([fb['before-after'].purpose,fb['system-map'].purpose,fb['chapter'].entry],['compare','overview','contextual']);
+});
+test('CINE-003 contract: focus group must contain the focal block; a citation focal block with a declared intent is refused; legacy fixtures validate',async()=>{
+ const intent=designPlanSchema.properties.scenes.items.properties.intent;assert.deepEqual(intent.required,['purpose','entry']);assert.deepEqual(intent.properties.purpose.enum,VISUAL_PURPOSES);assert.deepEqual(intent.properties.entry.enum,ENTRIES);assert.equal(intent.additionalProperties,false);
+ assert.equal(intent.properties.focusGroupBlockIds.maxItems,6);assert.equal(intent.properties.emptyRegions.maxItems,4);
+ const fixture=JSON.parse(await readFile(new URL('./fixtures/visual/cine.en.json',import.meta.url),'utf8')),ok=c=>{const b=applyNegative(fixture,c);return createVisualProject(b.document,b.plan,{id:'ok',assets:b.assets});};
+ ok({set:{'plan.scenes.1.intent':{purpose:'show-product',entry:'left',focusGroupBlockIds:['prod-title','prod-image'],emptyRegions:[{x:0,y:.7,width:1,height:.3}]}}});
+ for(const c of await negativeCases('intent')){const b=applyNegative(fixture,c);assert.throws(()=>createVisualProject(b.document,b.plan,{id:'negative',assets:b.assets}),e=>e.code===(c.code||'INVALID_DESIGN_PLAN'),c.why);}
+ assert.ok((await negativeCases('intent')).length>=7);
+ const p=await cineProject('en',home,{declared:['intent']});for(const s of p.plan.scenes)assertIntent(p.document,s);
+ // The focal block may be a citation only while no intent is declared.
+ const cite=structuredClone(fixture);cite.plan.scenes[0].focalBlockId='ctx-source';createVisualProject(cite.document,cite.plan,{id:'cite',assets:cite.assets});
+ cite.plan.scenes[0].intent={purpose:'explain',entry:'left'};assert.throws(()=>createVisualProject(cite.document,cite.plan,{id:'cite',assets:cite.assets}),e=>e.code==='INVALID_DESIGN_PLAN'&&/citation/.test(e.message));
+ const locked=structuredClone(fixture);locked.document.authorOverrides.sceneLocks.push({sceneId:'product','fields':['intent']});createVisualProject(locked.document,locked.plan,{id:'locked',assets:locked.assets});
+ for(const q of await legacyProjects())for(const s of q.plan.scenes){assert.equal('intent' in s,false);assertIntent(q.document,s);}
+});
+test('CINE-003 preferredVariant returns the mapped variant per purpose and family and null for unlisted families',()=>{
+ const t=(purpose,family)=>preferredVariant({purpose,entry:'left'},family);
+ assert.equal(t('explain','process'),'process-rail');assert.equal(t('explain','system-map'),'system-map-rail');assert.equal(t('explain','evidence'),'evidence-left');assert.equal(t('explain','statement'),'statement-split');assert.equal(t('explain','image'),'image-left');
+ assert.equal(t('show-product','image'),'image-right');assert.equal(t('show-product','metric'),'metric-right');assert.equal(t('show-product','statement'),'statement-split');
+ assert.equal(t('show-detail','image'),'image-left');assert.equal(t('show-detail','before-after'),'before-after-split');
+ assert.equal(t('compare','comparison'),'comparison-matrix');assert.equal(t('compare','before-after'),'before-after-split');assert.equal(t('compare','small-multiples'),'small-multiples-row');
+ assert.equal(t('evidence','evidence'),'evidence-left');assert.equal(t('evidence','small-multiples'),'small-multiples-row');assert.equal(t('evidence','metric'),'metric-left');
+ assert.equal(t('overview','system-map'),'system-map-wide');assert.equal(t('overview','process'),'process-line');
+ assert.equal(t('chapter','chapter'),'chapter-low');assert.equal(t('chapter','statement'),'statement-center');assert.equal(t('chapter','closing'),'closing-focus');assert.equal(t('chapter','quote'),'quote-center');
+ for(const [purpose,family] of [['explain','quote'],['show-product','chart'],['compare','image'],['evidence','chapter'],['overview','image'],['chapter','image'],['show-detail','evidence']])assert.equal(t(purpose,family),null,`${purpose}/${family}`);
+ assert.equal(preferredVariant(null,'image'),null);assert.equal(preferredVariant({purpose:'elsewhere',entry:'left'},'image'),null);
 });
