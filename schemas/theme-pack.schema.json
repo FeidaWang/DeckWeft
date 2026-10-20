@@ -88,6 +88,51 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 300
+        },
+        "roles": {
+          "description": "CINE-006: the six type roles in px at 1440 px (1 px = 2/3 pt in PowerPoint): title, lead, body, label, reference, numeric.",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 96
+            },
+            "lead": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 96
+            },
+            "body": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 96
+            },
+            "label": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 96
+            },
+            "reference": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 96
+            },
+            "numeric": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 96
+            }
+          },
+          "required": [
+            "title",
+            "lead",
+            "body",
+            "label",
+            "reference",
+            "numeric"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [

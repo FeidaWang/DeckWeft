@@ -17,7 +17,15 @@
     "bodyZh": "\"PingFang SC\", \"Noto Sans CJK SC\", \"Source Han Sans SC\", \"Microsoft YaHei\", sans-serif",
     "code": "Menlo, \"IBM Plex Mono\", Consolas, monospace",
     "displayScale": 0.92,
-    "numeric": "Menlo, \"IBM Plex Mono\", Consolas, monospace"
+    "numeric": "Menlo, \"IBM Plex Mono\", Consolas, monospace",
+    "roles": {
+      "title": 36,
+      "lead": 26,
+      "body": 25,
+      "label": 21,
+      "reference": 15,
+      "numeric": 25
+    }
   },
   "spacing": {
     "page": 48,

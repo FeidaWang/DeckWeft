@@ -17,7 +17,15 @@
     "bodyZh": "\"PingFang SC\", \"Noto Sans CJK SC\", \"Source Han Sans SC\", \"Microsoft YaHei\", sans-serif",
     "code": "Menlo, \"IBM Plex Mono\", Consolas, monospace",
     "displayScale": 1,
-    "numeric": "\"Charter\", \"Source Serif 4\", Georgia, serif"
+    "numeric": "\"Charter\", \"Source Serif 4\", Georgia, serif",
+    "roles": {
+      "title": 36,
+      "lead": 28,
+      "body": 27,
+      "label": 21,
+      "reference": 15,
+      "numeric": 27
+    }
   },
   "spacing": {
     "page": 56,

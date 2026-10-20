@@ -25,6 +25,14 @@ export function resolveTheme(id,version,locale,{profile=DEFAULT_PROFILE,colorMod
  const channels=palette.paper.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4),darkSurface=channels[0]*.2126+channels[1]*.7152+channels[2]*.0722<.18;
  return structuredClone({id,version,...palette,chart:darkSurface&&pack.modes.default!=='dark'?dark.chartColors:pack.chartColors,display:locale==='zh-CN'?pack.typography.displayZh:pack.typography.displayEn,body:locale==='zh-CN'?pack.typography.bodyZh:pack.typography.bodyEn,code:pack.typography.code,locale,page:profile.density==='compact'?32:pack.spacing.page,gap:pack.spacing.gap,displayScale:profile.typographicContrast==='balanced'?.85:pack.typography.displayScale,split:profile.imageEmphasis==='large'?pack.imageGrammar.split:.44,motion:profile.motionIntensity==='off'?{durationMs:0,effect:'none'}:pack.motion,colorIntensity:profile.colorIntensity,compositions:pack.compositions,rules:resolveScopedRules(pack,{role,mode:colorMode}),tokens:tokensOf(pack,locale)});
 }
+/** CINE-006: six type roles per pack, in px at 1440 px. Read beside resolveTheme() (whose output is unchanged) so recorded theme output stays byte-identical. */
+export const TYPE_ROLES=Object.freeze(['title','lead','body','label','reference','numeric']);
+const DEFAULT_TYPE_ROLES=Object.freeze({title:36,lead:28,body:27,label:21,reference:15,numeric:27});
+export function themeTypeRoles(id){
+ const pack=packs.find(p=>p.id===id);
+ if(!pack)throw new DeckError('THEME_VERSION','Choose an available theme.');
+ const roles=pack.typography.roles||DEFAULT_TYPE_ROLES;return Object.fromEntries(TYPE_ROLES.map(k=>[k,roles[k]]));
+}
 /** Handoff token roles with the defaults the current renderer already uses. resolveTheme() output is unchanged so existing HTML stays byte-identical. */
 export const TOKEN_DEFAULTS=Object.freeze({captionGap:14,motion:Object.freeze({distance:4,easing:'ease-out',delay:0,fallback:'instant'})});
 export function themeTokens(id,locale='en'){

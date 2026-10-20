@@ -1,4 +1,4 @@
-import {effectiveProfile,resolveTheme} from './theme-registry.mjs';
+import {effectiveProfile,resolveTheme,themeTypeRoles} from './theme-registry.mjs';
 import {compositions} from './compositions.mjs';
 import {visibleBlockIds} from './plan.mjs';
 import {effectiveIntent,preferredVariant} from './intent.mjs';
@@ -9,6 +9,15 @@ const S8_TYPE={
  'fresh-report':{weight:()=>600,leading:zh=>zh?1.16:1.05,tracking:zh=>zh?'-.02em':'-.03em',body:19,gutter:40,measure:visual=>visual?38:46},
  'orange-launch':{weight:zh=>zh?500:500,leading:zh=>zh?1.14:1.0,tracking:zh=>zh?'-.02em':'-.035em',body:21,gutter:56,measure:visual=>visual?36:34}
 };
+/** CINE-006: a page is dense when raising its body to the role size would only push it over the frame: more than four text blocks, a
+ * list over six items, or over 600 characters of body text. A dense page keeps today's size and is reported below the target. */
+const TEXT_TYPES=new Set(['paragraph','list','callout','quote']);
+export function denseText(blocks){
+ const text=blocks.filter(b=>TEXT_TYPES.has(b.type));
+ return text.length>4||text.some(b=>b.type==='list'&&b.items.length>6)||text.reduce((n,b)=>n+[...(b.type==='list'?b.items.join(' '):b.text||'')].length,0)>600;
+}
+/** A page that declares a batch 1 field (references, intent, media) takes the type roles; legacy pages keep their markup. */
+export const declaresCine=scene=>!!(scene.references||scene.intent||scene.media);
 /** Rendering direction, not a rewrite of the saved document or the author's plan. */
 export function sceneDirection(document,plan,index){
  const scene=plan.scenes[index],profile=effectiveProfile(document,scene,plan),blocks=visibleBlockIds(scene).map(id=>document.blocks.find(b=>b.id===id));
@@ -39,7 +48,11 @@ export function sceneDirection(document,plan,index){
  if(scene.theme==='orange-launch'&&Math.max(0,...(heading?.text||'').split(/\s+/).map(w=>[...w].length))>=14)headline=Math.min(headline,64);
  headline*=theme.displayScale;
  const readingHeadline=zh?Math.max(36,Math.min(48,Math.round(headline*.46))):Math.max(34,Math.min(58,Math.round(headline*.54)));
- return {readingHeadline,theme,beat,colorMode,sparse,intent,headline:Math.round(headline),headlineWeight:S8_TYPE[scene.theme]?.weight(zh)??(scene.theme==='cream-collage'?(zh?600:400):scene.theme==='electric-violet'?750:650),headlineLeading:S8_TYPE[scene.theme]?.leading(zh)??(zh?1.12:1.02),headlineTracking:S8_TYPE[scene.theme]?.tracking(zh)??(zh?'-.025em':scene.theme==='cream-collage'?'-.045em':'-.06em'),body:S8_TYPE[scene.theme]?.body??(profile.density==='compact'?20:22),lead:profile.density==='compact'?22:24,gutter:S8_TYPE[scene.theme]?.gutter??(profile.density==='compact'?32:56),measure:S8_TYPE[scene.theme]?.measure(visual)??(visual?42:36)};
+ // CINE-006: the theme's type roles. A declared page with room raises its body and lead to the role sizes; the label and
+ // reference sizes are named for every page and reach the markup only when the page declares a field.
+ const roles=themeTypeRoles(scene.theme),declared=declaresCine(scene),dense=denseText(blocks);
+ const baseBody=S8_TYPE[scene.theme]?.body??(profile.density==='compact'?20:22),baseLead=profile.density==='compact'?22:24;
+ return {readingHeadline,theme,beat,colorMode,sparse,intent,roles,declared,dense,label:roles.label,reference:roles.reference,headline:Math.round(headline),headlineWeight:S8_TYPE[scene.theme]?.weight(zh)??(scene.theme==='cream-collage'?(zh?600:400):scene.theme==='electric-violet'?750:650),headlineLeading:S8_TYPE[scene.theme]?.leading(zh)??(zh?1.12:1.02),headlineTracking:S8_TYPE[scene.theme]?.tracking(zh)??(zh?'-.025em':scene.theme==='cream-collage'?'-.045em':'-.06em'),body:declared&&!dense?Math.max(baseBody,roles.body):baseBody,lead:declared&&!dense?Math.max(baseLead,roles.lead):baseLead,gutter:S8_TYPE[scene.theme]?.gutter??(profile.density==='compact'?32:56),measure:S8_TYPE[scene.theme]?.measure(visual)??(visual?42:36)};
 }
 
 /** Prefer a deliberate entrance, readable proof and a quieter final statement. */

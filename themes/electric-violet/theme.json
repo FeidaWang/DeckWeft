@@ -23,7 +23,15 @@
     "bodyEn": "\"Avenir Next\", \"Segoe UI\", Arial, \"PingFang SC\", sans-serif",
     "bodyZh": "\"PingFang SC\", \"Microsoft YaHei\", sans-serif",
     "code": "Menlo, Consolas, monospace",
-    "displayScale": 1
+    "displayScale": 1,
+    "roles": {
+      "title": 36,
+      "lead": 28,
+      "body": 27,
+      "label": 21,
+      "reference": 15,
+      "numeric": 27
+    }
   },
   "imageGrammar": {
     "split": 0.56,

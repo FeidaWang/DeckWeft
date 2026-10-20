@@ -184,3 +184,39 @@ test('CINE-005 candidateFit: media entries with subjectBounds report annotated:t
  const [hero,other]=fit.features.media;assert.equal(hero.blockId,'prod-image');assert.equal(hero.annotated,true);assert.ok(Math.abs(hero.subjectFraction-hero.containerFraction*(.16/.48))<1e-9);
  assert.equal(other.annotated,false);assert.equal(other.note,'no subject annotation');assert.equal(other.subjectFraction,other.containerFraction);
 });
+
+// ---- Task 4: CINE-006 type roles, delivered sizes against the target, one border per citation run ----
+import {TYPE_ROLES,themeTypeRoles,themePacks} from '../src/design/theme-registry.mjs';
+import {sceneDirection} from '../src/design/art-direction.mjs';
+import {PT_PER_PX,TARGETS} from '../src/targets/target-budget.mjs';
+test('CINE-006 type roles: every pack declares six roles that deliver at least the 24/18/14/10 pt targets in PowerPoint except the recorded fresh-report body; themeTypeRoles throws for an unknown pack',()=>{
+ assert.deepEqual(TYPE_ROLES,['title','lead','body','label','reference','numeric']);
+ const target=TARGETS.presentation.typography.target,pt=px=>px*PT_PER_PX.pptx;
+ for(const pack of themePacks()){
+  const roles=themeTypeRoles(pack.id);assert.deepEqual(Object.keys(roles),TYPE_ROLES,pack.id);for(const k of TYPE_ROLES)assert.ok(Number.isInteger(roles[k])&&roles[k]>0,pack.id+' '+k);
+  assert.ok(pt(roles.title)>=target.title-1e-9,pack.id+' title');assert.ok(pt(roles.label)>=target.label-1e-9,pack.id+' label');assert.ok(pt(roles.reference)>=target.reference-1e-9,pack.id+' reference');
+  if(pack.id==='fresh-report')assert.ok(pt(roles.body)<target.body&&roles.body===25,'the atlas keeps its tight demi-bold body at 25 px (16.7 pt), a recorded theme decision');else assert.ok(pt(roles.body)>=target.body-1e-9,pack.id+' body');
+  assert.ok(roles.lead>=roles.body&&roles.title>roles.lead&&roles.body>roles.label&&roles.label>roles.reference,pack.id+' hierarchy');
+  assert.deepEqual(themeTypeRoles(pack.id),pack.typography.roles,'the pack declares its roles');
+ }
+ assert.throws(()=>themeTypeRoles('unknown'),{code:'THEME_VERSION'});
+});
+test('CINE-006 direction: a declared product page gets body 27 px and label/reference sizes; the same page without declared fields keeps 22 px; the dense overflow page keeps 22 px and is reported dense',async()=>{
+ const p=await cineProject('en',home),legacy=await cineProject('en',home,{declared:[]}),at=(q,id)=>sceneDirection(q.document,q.plan,q.plan.scenes.findIndex(s=>s.id===id));
+ const product=at(p,'product');assert.equal(product.declared,true);assert.equal(product.dense,false);assert.equal(product.body,27);assert.equal(product.lead,28);assert.equal(product.label,21);assert.equal(product.reference,15);assert.deepEqual(product.roles,themeTypeRoles('cream-collage'));
+ const before=at(legacy,'product');assert.equal(before.declared,false);assert.equal(before.body,22);assert.equal(before.lead,24);assert.equal(before.label,21);assert.equal(before.reference,15);
+ const overflow=at(p,'overflow');assert.equal(overflow.declared,true);assert.equal(overflow.dense,true);assert.equal(overflow.body,22);assert.equal(overflow.lead,24);
+ // Every other declared corpus page is raised: body at or above the 18 pt target in PowerPoint; the dense set is the overflow page alone.
+ const dense=p.plan.scenes.filter((s,i)=>sceneDirection(p.document,p.plan,i).dense).map(s=>s.id);assert.deepEqual(dense,['overflow']);
+ for(const [i,s]of p.plan.scenes.entries()){const d=sceneDirection(p.document,p.plan,i);if(!d.dense)assert.ok(d.body*PT_PER_PX.pptx>=18-1e-9,s.id);}
+ // The S8 themes keep their own body as the floor; the atlas is raised to its 25 px role.
+ const q=structuredClone(p);for(const s of q.plan.scenes)s.theme='fresh-report';assert.equal(at(q,'product').body,25);
+});
+test('CINE-006 markup: a declared page carries --label-size and --reference-size; a legacy page carries neither; the stylesheet consumes both with the previous literal fallbacks and a citation run has one border',async()=>{
+ const p=await cineProject('en',home),resources=await visualAssetResources(p,home),out=html(p,resources),section=id=>out.sceneMarkup[p.plan.scenes.findIndex(s=>s.id===id)].match(/<section [^>]*>/)[0];
+ assert.ok(section('product').includes('--body-size:27px;--lead-size:28px;'));assert.ok(section('product').includes('--label-size:21px;--reference-size:15px'));
+ assert.ok(section('overflow').includes('--body-size:22px;')&&section('overflow').includes('--label-size:21px'),'a dense declared page keeps its body size but still names the role sizes');
+ const legacy=await cineProject('en',home,{declared:[]}),lo=html(legacy,await visualAssetResources(legacy,home));
+ for(const m of lo.sceneMarkup){assert.ok(!m.includes('--label-size'));assert.ok(!m.includes('--reference-size'));assert.ok(m.includes('--body-size:22px;'));}
+ for(const rule of ['.web-scene .citation{font:400 var(--reference-size,12px)/1.6 var(--body)','.web-scene .web-image figcaption{font:400 var(--reference-size,12px)/1.5 var(--body)','.web-scene .source-strip .citation{font:400 var(--reference-size,12px)/1.3 var(--body)','.web-scene .reference-panel{font:400 var(--reference-size,12px)/1.3 var(--body)','.web-scene .chart-rows{font-size:var(--label-size,15px)}','.web-scene .legend{font-size:var(--label-size,14px)}','.web-scene .region[data-component=citation]+.region[data-component=citation]{border-top:0;margin-top:0;padding-top:6px}'])assert.ok(artDirectionCSS.includes(rule),rule);
+});
