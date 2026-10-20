@@ -41,7 +41,7 @@ function drawScenes(){
  $('#deckName').textContent=state.project.document.title;
  if(key!==sceneListKey){sceneListKey=key;$('#scenes').innerHTML=scenes.map((s,i)=>{const b=state.project.document.blocks.find(b=>b.id===s.focalBlockId),title=b?.text||b?.label||s.id,added=state.taskEvidence?.hostAuthored.pages.find(p=>p.sceneId===s.id);return `<button class="scene-button" data-scene="${x(s.id)}" aria-label="${x((i+1)+'. '+title+(added?' · '+t('visual.main.hostAdded')+' · '+added.lines.length+' · '+t('visual.main.unverified'):''))}"><span class="scene-thumb" aria-hidden="true"></span><span class="scene-caption"><span class="scene-number">${String(i+1).padStart(2,'0')}</span><b>${x(title)}</b>${added?`<em class="scene-flag host-authored-badge" data-host-authored-count="${added.lines.length}">${x(t('visual.main.hostAdded'))} · ${added.lines.length} · ${x(t('visual.main.unverified'))}</em>`:''}${(state.project.plan.chapters||[]).some(c=>c.startSceneId===s.id)?`<em class="scene-flag">${x(t('visual.main.chapter'))}</em>`:''}${s.contentStatus==='evidence-required'?`<em class="scene-flag evidence">${x(t('visual.main.evidenceRequired'))}</em>`:''}</span></button>`;}).join('');}
  for(const button of $('#scenes').querySelectorAll('[data-scene]'))button.setAttribute('aria-current',String(button.dataset.scene===state.active));
- $('#editSceneLabel').textContent=t('visual.main.page')+(position+1)+t('visual.main.of')+scenes.length+t('visual.main.text');
+ $('#editSceneLabel').textContent=t('visual.main.pageOf',{n:position+1,total:scenes.length});
  $('#sceneTitle').textContent=state.project.document.blocks.find(b=>b.id===scene()?.focalBlockId)?.text||scene()?.id||'';
  thumbnails();
 }
