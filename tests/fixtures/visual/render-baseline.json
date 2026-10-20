@@ -6,20 +6,20 @@
     "sha256": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4"
   },
   "entries": {
-    "wave-a.en.html": "9d80c3f991a0ac0a4b7fc8761fccb9b64e7c93d8ab3ebbe9a88239e45f9b997c",
+    "wave-a.en.html": "47f3a86342f15746fefb054c854e11d23bbab9e4a17d0ac783121ffe7df257a4",
     "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-    "wave-a.zh-CN.html": "1aaea0fd11d8055956740ef4dac33086f913937814c5c101b23eb72375030c8a",
+    "wave-a.zh-CN.html": "ce14a9eecc3f2cbbf972b82aa81dd9657ce46e90a287051b15b065e3170b1ac5",
     "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-    "visual-demo.en.html": "87c115c4e894c9f9eb5df0b71084ac33790ffc442ee2c855317289e80d644840",
-    "visual-demo.zh-CN.html": "c9d17cd517e8f5678dcc7f9f6998d1d5fbd7f416f2e64f4aa0fe3e5e96ce7a57",
-    "component-demo.en.html": "e799abb9b8c00a966c9bf0cd27fcbbd0d774e104e636a6af4abf138ce4165a74",
-    "component-demo.zh-CN.html": "2f7bc80bd2ccc77354de448628fc3ead9f10c7232da99faba6a4dec8c7ea3d40",
-    "interaction-demo.en.html": "802c585a864f9af5e4c965da63154f1cf9101d0a9927baf01ee4648d3eb08f6b",
-    "interaction-demo.zh-CN.html": "9a46f38d9f952569f7d228d01fddc16a41c541646ba0fbe9b23ad20fa56667f9",
-    "composition-demo.en.html": "3606f78c97652718a161f041446561cd56aca43f4b64a3451726dbf6b54ba296",
-    "composition-demo.zh-CN.html": "3be7ba278694a495d6a186e632f06661b635dad06e6114d9edb701ac07191e9d",
-    "families.en.html": "164e579787f19aa9b5b0cd3ee6293428e8d2493f7cbee6382a9bca37a925f9ea",
-    "families.zh-CN.html": "71d8a276ad10c3f5aa94c555dbd993be1dda6418293ef286103ce3965515aaf7",
+    "visual-demo.en.html": "82a522f95232656e64cdef7a63c225e0bc91985773ecf945818611cc08f25068",
+    "visual-demo.zh-CN.html": "3b5fe4850dcd9abb801002d8ff2dfb2ff2d5e7e722c1c0d31250979a3cee8367",
+    "component-demo.en.html": "294dd94b9839a50135a3b3bf9a8c9795000a577248feeab8c7604de7f3540e4b",
+    "component-demo.zh-CN.html": "043bb2feadd5222f42f9f99f72595f5a796ff73c35db3dbefe8d9adecd5f479e",
+    "interaction-demo.en.html": "b5b4217790e3ca2431bde1d69311f70956e30d33552a1451224169c978ea797d",
+    "interaction-demo.zh-CN.html": "07c1ab509c7c345753665efc132adbc0bc90972c1fafe0284d63a0d600566aea",
+    "composition-demo.en.html": "a3bc9baef9903fea5251a13bc27039723a5fd8b4ce9e53558b8d1947c4685279",
+    "composition-demo.zh-CN.html": "83f47b0d85b93ea07d6ba051d99622fe9bd34224a164fcb3bd27e6f0fd3ba3a7",
+    "families.en.html": "d048e40a01c462bb6f5133a23316558148e72a28417a9adda2843871f41736c0",
+    "families.zh-CN.html": "2b043b2208cfd7d039fcb9320c1e11c17e3706473d68bd4984868e0596d00567",
     "theme.cream-collage.en.default": "13606af1e69412b1ef7d8ccb28bc9f8fbf589428cc4230677a94e016048c726a",
     "theme.cream-collage.en.chapter": "c0dcfae4070a42477f4f6b846457501a8f3e3bc3ca1ebe85593c2165e3da9eb9",
     "theme.cream-collage.zh-CN.default": "c075e9c42a4d69de323645e3242773c5eea44d667f7c91403ae3eb27630ba029",
@@ -90,73 +90,73 @@
       "markup": "e5288e62fd0a33f6649b9df7d117dfa095a91073bd2249ab91ad2505bdf9d041",
       "data": "d7eb21c3534ab6b6c3b36a15ed5fb7bedaafbd7a5ef2fc55f22c5fd8079a15d1",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "wave-a.zh-CN.html": {
       "markup": "006715d6cf836db60f75effd8e71702f99c5e413f7f9fcfb9c898761a98f7381",
       "data": "dab714546da7d1751dec11d409d830e9cec6918992955dd30f36e1fec30f744c",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "visual-demo.en.html": {
       "markup": "0afa4c21c892da74210b954a3c0d511cd014033bf2129d94e2e4ea6f91697c0b",
       "data": "122f6b169c70c1bef4ac5db0c905badbee58ac90bbb1823ccc2cdc8ddadd6419",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "visual-demo.zh-CN.html": {
       "markup": "84a0a49c24c0ab27383585c47794ac8e4ae973cd27b5f428bab4eb3ed34ec016",
       "data": "e0aac96b2ac915e40dfe5371f322207b1a020b819b2a9782ad3bc063534d8245",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "component-demo.en.html": {
       "markup": "8e612e4898d708d00ebb5aad453e2c076739630f82aeb4276b6534d280373bf4",
       "data": "b5eb69de63f6d31aea9f858c9dcae492d596cb701fc74d79415fbd3e69894394",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "component-demo.zh-CN.html": {
       "markup": "6be4c904accc085ba2dfd10434d2431b89e85b99af1cee6ff36aa2b42fcebd65",
       "data": "f58aff60f9d494fda9a6bb8e04e77ec6b4d4b03bdf63998b39b61e9348b8559f",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "interaction-demo.en.html": {
       "markup": "08f387ae77406c1161352b537288271c521a259606bd70eb6ed2d6202afc19f6",
       "data": "78fda1fc13a296c0d608f850c15d465f18e540a1a6c7a1c495b1923184340c6e",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "interaction-demo.zh-CN.html": {
       "markup": "d1de63b056d69325efa0864c613474f8be8fd561a4e2e9207b309e6ec88e19bb",
       "data": "f99731756ea6241df62abddaa657ced61ce4246320dd53d3f620421a9eb0aca5",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "composition-demo.en.html": {
       "markup": "d85defeab2b704fb50970aaad095479cfd861c3b0ad920cf3e94d317e1a066bd",
       "data": "6c24595ade3cdfd1863cba36e3954dce883547de82ef9a347b2efea7ade84abb",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "composition-demo.zh-CN.html": {
       "markup": "d1ce5c4bd9307eaf4019a50e25fb4e7ddf628c2479e5af9a27ca18a56c3313d9",
       "data": "fb9bbee5d53414b80a40d06e289b3200f0b91927aec5ae1c192beced41a4e703",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "families.en.html": {
       "markup": "57bbc0d8ab06397c11c161636103b31638d74d1c3546e8d1f1b37b9c16124cde",
       "data": "2aeb9171e8b3f3536b3e80dd5a9d28e38007376ac38fddfbb3772b81bee01ad9",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     },
     "families.zh-CN.html": {
       "markup": "40338e9fe1a58559c0314c01b9c2745a238c6502c4899f3a107853b2a23fe3f5",
       "data": "ab9a5a3d6161d498b1b0cd22ec33aec3656c610e0c68e56db015c51d86a88063",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
+      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
     }
   },
   "playerHistory": [
@@ -186,6 +186,6 @@
     }
   ],
   "recordedAt": "2026-10-20",
-  "sourceCommit": "4671b52d1f99bda86509717dd23eddc37c3c1c18",
-  "note": "CINE-005 locator frame CSS; renderer .14"
+  "sourceCommit": "d67e6760d8ed6048cecd50ce7634afc12dacc24f",
+  "note": "CINE-006 type-role stylesheet"
 }
