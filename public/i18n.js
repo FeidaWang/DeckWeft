@@ -616,6 +616,12 @@ en:{
  "visual.author.textSizesBelowMinimum":"{count} text size(s) are below the presentable minimum; nothing was exported. {advice}",
  "visual.author.sizeAdvice.split":"Choose “Split into slides” to keep the text size, or accept the sizes below.",
  "visual.author.sizeAdvice.shorten":"Shorten or split the page, or accept the sizes below.",
+ "visual.interactions.partsInReadingOrder":"{labelsCount} parts in reading order: {labels}.",
+ "visual.interactions.showTheWhole":"Show the whole",
+ "visual.interactions.explore":"Explore {label}",
+ "visual.interactions.explain":"Explain",
+ "visual.interactions.diagramTheWhole":"Diagram · the whole",
+ "visual.interactions.explore2":"Explore · {labels}",
 },
 zh:{
  "visual.directionToggle":"创作",
@@ -1231,6 +1237,12 @@ zh:{
  "visual.author.textSizesBelowMinimum":"{count} 处文字低于可读下限，没有导出任何文件。{advice}",
  "visual.author.sizeAdvice.split":"选择“拆成多张幻灯片”以保持字号，或接受下方列出的字号。",
  "visual.author.sizeAdvice.shorten":"缩短或拆分该页，或接受下方列出的字号。",
+ "visual.interactions.partsInReadingOrder":"按阅读顺序共 {labelsCount} 个部分：{labels2}。",
+ "visual.interactions.showTheWhole":"显示整体",
+ "visual.interactions.explore":"查看“{label}”",
+ "visual.interactions.explain":"讲解",
+ "visual.interactions.diagramTheWhole":"图解 · 整体",
+ "visual.interactions.explore2":"探索 · {labels}",
 }
 };
 
@@ -1238,12 +1250,15 @@ let current='en';
 const side=locale=>locale==='zh-CN'||locale==='zh'?'zh':'en';
 export function setLocale(locale){current=side(locale)==='zh'?'zh-CN':'en';return current;}
 export function getLocale(){return current;}
-/** Looks `key` up in the current language, falls back to English, and fills `{name}` placeholders from `params`. */
-export function t(key,params){
-  const value=dict[side(current)][key]??dict.en[key];
+function lookup(language,key,params){
+  const value=dict[language][key]??dict.en[key];
   if(value===undefined)return key;
   return params?value.replace(/\{(\w+)\}/g,(whole,name)=>name in params?String(params[name]):whole):value;
 }
+/** Looks `key` up in the current language, falls back to English, and fills `{name}` placeholders from `params`. */
+export function t(key,params){return lookup(side(current),key,params);}
+/** A `t` fixed to one locale, for text that follows the deck's language instead of the interface language. */
+export function tFor(locale){const language=side(locale);return (key,params)=>lookup(language,key,params);}
 /** Sets the document language and fills every [data-i18n] text and [data-i18n-attr="attribute:key;…"] attribute under `root`. */
 export function applyLanguage(root,locale){
   setLocale(locale);

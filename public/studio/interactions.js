@@ -1,3 +1,4 @@
+import {tFor} from '../i18n.js';
 /** Explicit author action on the open project. No demo material or inferred facts. */
 export function addExplanatoryInteractions(project,sceneId,{newId=()=> 'i-'+crypto.randomUUID()}={}){
  const next=structuredClone(project),s=next.plan.scenes.find(s=>s.id===sceneId),d=next.document;
@@ -85,7 +86,7 @@ export function addBlueprintA(project,sceneId,{newId=()=> 'i-'+crypto.randomUUID
  const next=structuredClone(project),s=next.plan.scenes.find(s=>s.id===sceneId),d=next.document;
  if(!s)throw Error('Select an existing scene.');
  // Messages are English like the other Studio actions; generated labels follow the deck's language.
- const zh=d.locale==='zh-CN',t=(en,cn)=>zh?cn:en,locks=d.authorOverrides.sceneLocks?.find(l=>l.sceneId===s.id)?.fields||[];
+ const t=tFor(d.locale),locks=d.authorOverrides.sceneLocks?.find(l=>l.sceneId===s.id)?.fields||[];
  if(locks.some(f=>['interactions','cues','motion'].includes(f)))throw Error('Unlock this scene interaction plan first.');
  const blocks=s.blockIds.filter(id=>!s.disclosure?.blockIds.includes(id)).map(id=>d.blocks.find(b=>b.id===id)),diagrams=blocks.filter(b=>b.type==='diagram');
  if(diagrams.length!==1)throw Error('This page needs exactly one diagram on the page: its nodes become the parts.');
@@ -106,10 +107,10 @@ export function addBlueprintA(project,sceneId,{newId=()=> 'i-'+crypto.randomUUID
  const labels=steps.map(step=>b.nodes.find(n=>n.id===step.objectId).label.replace(/\n/g,' ')),name=labels.join(' → ');
  if(name.length>100)throw Error('Name the whole object explicitly in JSON; the part labels are too long to name it.');
  const wholeExplanationId=newId(),id=old?.id||newId();
- d.explanations.push({id:wholeExplanationId,label:name,text:t(`${labels.length} parts in reading order: ${labels.join(', ')}.`,`按阅读顺序共 ${labels.length} 个部分：${labels.join('、')}。`),sourceIds:[...(b.sourceIds||[])]});
+ d.explanations.push({id:wholeExplanationId,label:name,text:t('visual.interactions.partsInReadingOrder',{labelsCount:labels.length,labels:labels.join(', '),labels2:labels.join('、')}),sourceIds:[...(b.sourceIds||[])]});
  s.interactions=[{id,kind:'steps',blockId:b.id,steps,blueprint:{questionBlockId:question.id,answerBlockId:answer.id,wholeExplanationId}}];
- s.cues=[{id:newId(),event:'step.next',interactionId:id,label:t('Show the whole','显示整体')},...labels.map(label=>({id:newId(),event:'step.next',interactionId:id,label:t(`Explore ${label}`,`查看“${label}”`).slice(0,200)}))];
- s.keyStates=[{id:newId(),position:0,label:t('Explain','讲解')},{id:newId(),position:1,label:t('Diagram · the whole','图解 · 整体')},{id:newId(),position:2,label:t(`Explore · ${labels[0]}`,`探索 · ${labels[0]}`).slice(0,100)}];
+ s.cues=[{id:newId(),event:'step.next',interactionId:id,label:t('visual.interactions.showTheWhole')},...labels.map(label=>({id:newId(),event:'step.next',interactionId:id,label:t('visual.interactions.explore',{label}).slice(0,200)}))];
+ s.keyStates=[{id:newId(),position:0,label:t('visual.interactions.explain')},{id:newId(),position:1,label:t('visual.interactions.diagramTheWhole')},{id:newId(),position:2,label:t('visual.interactions.explore2',{labels:labels[0]}).slice(0,100)}];
  // The author chooses the static state. A static reduced-motion fallback cannot wait, so it gets the whole (Diagram) until then.
  if(s.motion?.reducedMotion==='static')s.staticState={keyStateId:s.keyStates[1].id};else delete s.staticState;
  return next;
