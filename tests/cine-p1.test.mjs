@@ -154,3 +154,33 @@ test('CINE batch 2: a legacy deck renders the same markup except the renderer ve
  // The content view strips the stylesheet and the hashes that carry the renderer version; the reader-visible markup is unchanged.
  assert.deepEqual(Object.fromEntries(Object.entries(current.parts).map(([k,v])=>[k,v.data])),Object.fromEntries(Object.entries(baseline.parts).map(([k,v])=>[k,v.data])));
 });
+
+// ---- Task 3: CINE-005 captions and alt in the paged exports; annotated subjects in the candidate report ----
+import {syntheticLayout} from './export-layout.mjs';
+import {candidateFit} from '../src/design/rhythm.mjs';
+import {targetFit} from '../src/targets/target-budget.mjs';
+/** Compiles one paged target from the synthetic layout (unit tests only; real runs measure a browser). */
+function paged(p,target,{resources={},layout,paginate}={}){
+ const h=html(p,resources),l=layout||syntheticLayout({...p,resources},h);
+ return {html:h,layout:l,out:exportDeck(p.document,target,{experimentalWeb:true,plan:p.plan,assetResources:resources,layout:l,rasters:{},...(paginate?{paginate}:{})})};
+}
+test('CINE-005 exports: with the synthetic layout the product page compiles the caption as real text in PowerPoint and PDF and the picture description is the alt; the typography report classes the caption as reference',async()=>{
+ const p=await cineProject('en',home),resources=await visualAssetResources(p,home),alt=p.document.blocks.find(b=>b.id==='prod-image').alt,caption=CINE_SLOTS.en.product;
+ const pptx=paged(p,'pptx',{resources}).out,slides=pptx.run.output.slides.filter(s=>s.sceneId==='product'),own=slides.flatMap(s=>s.elements.filter(x=>x.blockId==='prod-image'));
+ assert.ok(own.some(s=>s.kind==='picture'&&s.descr===alt),'the picture description is the alt');
+ assert.ok(own.some(s=>s.kind!=='picture'&&String(s.text).includes(caption)),'the caption is native slide text');
+ assert.ok(!own.some(s=>s.kind!=='picture'&&String(s.text).includes(alt)),'the alt is not duplicated as slide text');
+ assert.equal(pptx.report.check.sceneCheck.status,'pass');assert.equal(pptx.report.check.typography.status,'pass');
+ const pdf=paged(p,'pdf',{resources}).out,page=[...pdf.run.output.html.matchAll(/<div class="dw-page"[\s\S]*?(?=<div class="dw-page"|<section class="dw-notes")/g)].map(m=>m[0]).find(h=>h.includes('id="product"'));
+ assert.ok(page.includes(caption),'the PDF page carries the caption');assert.ok(page.includes(`alt="${alt}"`),'the PDF figure keeps the alt');
+ // The typography report classes the caption (the image block's text) as reference: 12 px is 8 pt in PowerPoint, above the 6 pt minimum and below the 10 pt target.
+ const {layout}=paged(p,'pptx',{resources}),m=layout.scenes[p.plan.scenes.findIndex(s=>s.id==='product')],fit=targetFit(m,blocksOf(p),{format:'pptx',titleBlockId:'prod-title',strip:60});
+ const caption12=fit.typography.flatMap(t=>t.target.below).find(r=>r.blockId==='prod-image');assert.ok(caption12,'the caption row');assert.equal(caption12.role,'reference');assert.equal(caption12.target,10);assert.ok(Math.abs(caption12.pt-8*fit.scale)<.05);assert.equal(fit.typography.every(t=>t.minimum.status==='pass'),true);
+});
+test('CINE-005 candidateFit: media entries with subjectBounds report annotated:true and the subject fraction; without them annotated:false',async()=>{
+ const p=await cineProject('en',home),product=p.plan.scenes.find(s=>s.id==='product'),crop=product.crops.find(c=>c.blockId==='prod-image');
+ const check={height:810,components:[],overflow:[],clipIssues:[],contrastIssues:[],glyphs:[],text:[],fonts:[],images:[{blockId:'prod-image',box:{x:700,y:100,width:600,height:600},subjectBounds:subjectOf(product,'prod-image'),crop},{blockId:'other',box:{x:0,y:0,width:300,height:300}}]};
+ const fit=candidateFit(check,{width:1440,height:1000});assert.equal(fit.ok,true);
+ const [hero,other]=fit.features.media;assert.equal(hero.blockId,'prod-image');assert.equal(hero.annotated,true);assert.ok(Math.abs(hero.subjectFraction-hero.containerFraction*(.16/.48))<1e-9);
+ assert.equal(other.annotated,false);assert.equal(other.note,'no subject annotation');assert.equal(other.subjectFraction,other.containerFraction);
+});

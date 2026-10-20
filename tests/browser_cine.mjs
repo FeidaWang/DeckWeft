@@ -14,7 +14,7 @@ import {VisualProjectStore} from '../src/services/visual-store.mjs';
 import {exportDeck} from '../src/render/export.mjs';
 import {visualAssetResources} from '../src/assets/visual.mjs';
 import {candidateFit} from '../src/design/rhythm.mjs';
-import {subjectFraction,mediaRoles} from '../src/design/media.mjs';
+import {subjectFraction,mediaRoles,subjectOf} from '../src/design/media.mjs';
 import {sceneReferences} from '../src/references/presentation.mjs';
 import {effectiveIntent} from '../src/design/intent.mjs';
 import {planAuthorAction} from '../src/workbench/author-actions.mjs';
@@ -52,11 +52,11 @@ try{
   await page.setViewportSize({width:1440,height:1000});const fit=await render(p,`cine-${locale}`),g=await geometry(),inspected=await page.evaluate(inspectRenderedPage);
   assert.equal(inspected.renderHash,fit.renderHash);
   for(const [i,s]of p.plan.scenes.entries()){
-   const check=fit.checks[i],geo=g[i],images=geo.images.map(im=>({blockId:im.blockId,box:im.img}));
+   const check=fit.checks[i],geo=g[i],cropOf=id=>s.crops?.find(c=>c.blockId===id)||null,images=geo.images.map(im=>({blockId:im.blockId,box:im.img,subjectBounds:subjectOf(s,im.blockId),crop:cropOf(im.blockId)}));
    const accepted=candidateFit({...check,images},fit.viewport),intent=effectiveIntent(p.document,p.plan,i),refs=sceneReferences(p.document,p.plan,s);
    report.pages.push({locale,sceneId:s.id,composition:s.composition,theme:s.theme,declared:CINE_SCENES[s.id]||{},intent,references:{mode:refs.mode,strip:refs.strip.length,regions:refs.regions.length,claims:refs.claims.length},mediaRoles:Object.fromEntries(mediaRoles(p.document,s)),width:1440,height:Math.ceil(check.height),fit:accepted,images:geo.images,diagrams:geo.diagrams});
    if(geo.strip)report.strips.push({locale,sceneId:s.id,width:1440,height:Math.round(geo.strip.box.height*10)/10,budget:geo.strip.budget,items:geo.strip.items,withinBudget:geo.strip.box.height<=(geo.strip.budget||48)+0.5});
-   for(const im of geo.images)report.subjects.push({locale,sceneId:s.id,blockId:im.blockId,mediaRole:im.mediaRole,imageBox:im.img,...subjectFraction({pageWidth:1440,pageHeight:check.height,imageBox:im.img,safeRegion:null})});
+   for(const im of geo.images)report.subjects.push({locale,sceneId:s.id,blockId:im.blockId,mediaRole:im.mediaRole,imageBox:im.img,subjectBounds:subjectOf(s,im.blockId),crop:cropOf(im.blockId),...subjectFraction({pageWidth:1440,pageHeight:check.height,imageBox:im.img,subjectBounds:subjectOf(s,im.blockId),crop:cropOf(im.blockId)})});
    const file=await capture(`cine-${locale}-${s.id}-1440.png`,page.locator('#'+s.id));cells.push({file,ok:accepted.ok,label:`${s.id} · ${s.composition} · ${accepted.ok?'passes':'FAILS: '+accepted.reasons.join('; ')} · ${Math.ceil(check.height)}px`});
   }
   // Grayscale copies: the primary subject must still read without colour (spec §8, a diagnostic signal, not eye tracking).
