@@ -1,5 +1,5 @@
 // Wording gate for the classic workbench (design guide section 12): the default interface never shows
-// engineering words. It reads the shipped HTML and the zh dictionary, so it needs no browser.
+// engineering words. It reads the shipped HTML (shell templates and index.html) and the zh dictionaries, so it needs no browser.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -62,21 +62,25 @@ export function zhDictionary(source){
   return Object.assign({},...literals.map(text=>new Function(`return (${text})`)()));
 }
 
-const index=read('public/index.html');
-const app=read('public/app.js');
+// Single entry: the shell markup lives in /*html*/ template strings in shell.js and the classic kind; the page keeps the
+// dialogs. The walk only needs HTML text, so it reads the templates and index.html joined, and both zh dictionaries.
+const templates=file=>[...read(file).matchAll(/\/\*html\*\/`([^`]*)`/g)].map(m=>m[1]).join('\n');
+const index=templates('public/shell.js')+templates('public/kinds/classic.js')+read('public/index.html');
+const app=read('public/shell.js')+read('public/kinds/classic.js');
+const PAGE='public/shell.js + public/kinds/classic.js + public/index.html',DICTIONARY='public/shell.js + public/kinds/classic.js';
 
 test('default classic interface has no engineering words',()=>{
-  const hits=scan('public/index.html',visibleText(index));
+  const hits=scan(PAGE,visibleText(index));
   assert.equal(hits.length,0,`${hits.length} hit(s):\n${report(hits)}`);
 });
 
 test('zh dictionary has no engineering words',()=>{
   const dictionary=zhDictionary(app),hits=[];
-  for(const [key,value] of Object.entries(dictionary))for(const rule of FORBIDDEN)if(rule.test(String(value)))hits.push({file:'public/app.js',element:`zh.${key}`,text:String(value),rule:String(rule)});
+  for(const [key,value] of Object.entries(dictionary))for(const rule of FORBIDDEN)if(rule.test(String(value)))hits.push({file:DICTIONARY,element:`zh.${key}`,text:String(value),rule:String(rule)});
   assert.equal(hits.length,0,`${hits.length} hit(s):\n${report(hits)}`);
 });
 
-test('zh dictionary keys equal the data-i18n keys in index.html',()=>{
+test('zh dictionary keys equal the data-i18n keys in the shell, the classic kind and index.html',()=>{
   const html=new Set([...index.matchAll(/data-i18n="([^"]+)"/g)].map(m=>m[1])),zh=new Set(Object.keys(zhDictionary(app)));
   assert.deepEqual([...html].filter(k=>!zh.has(k)).sort(),[],'data-i18n keys without a zh entry');
   assert.deepEqual([...zh].filter(k=>!html.has(k)).sort(),[],'zh entries without a data-i18n key');
