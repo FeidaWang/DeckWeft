@@ -24,9 +24,10 @@ const COUNTS=['total','passed','failed','skipped'];
 export function parseVerifyLog(text){
  for(const stage of STAGES)if(!new RegExp(`^> deckweft@\\S+ ${stage}$`,'m').test(text))throw Error(`The log has no stage ${stage}; record a complete npm run verify.`);
  const read=key=>{const found=[...text.matchAll(new RegExp(`^ℹ ${key} (\\d+)$`,'gm'))];if(found.length>1)throw Error('The log must hold exactly one test summary.');if(!found.length)throw Error(`The log has no "${key}" count.`);return Number(found[0][1]);};
- const counts={total:read('tests'),passed:read('pass'),failed:read('fail'),skipped:read('skipped')};
+ const counts={total:read('tests'),passed:read('pass'),failed:read('fail'),skipped:read('skipped')},todo=/^ℹ todo (\d+)$/m.exec(text)?.[1];
  if(counts.failed)throw Error(`The run failed ${counts.failed} test(s); record a passing run.`);
- if(counts.passed+counts.failed+counts.skipped!==counts.total)throw Error('The counts do not add up to the total.');
+ // A test marked todo (node --test) is neither passed, failed nor skipped; it still counts toward the total.
+ if(counts.passed+counts.failed+counts.skipped+Number(todo||0)!==counts.total)throw Error('The counts do not add up to the total.');
  return counts;
 }
 
