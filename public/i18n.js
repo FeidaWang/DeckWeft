@@ -699,6 +699,8 @@ en:{
  "classic.session.yourEditsAreStillHereSave":"Your edits are still here. Save them as a separate copy; the newer version stays unchanged.",
  "classic.session.saveAsASeparateCopy":"Save as a separate copy",
  "classic.session.keepEditing":"Keep editing",
+ "classic.historyCapacity.thisDeckKeepsEarlierVersionsOver":"This deck keeps {snapshots} earlier versions ({bytes}), over the suggested limit of {limit} versions or {size}. DeckWeft never deletes them by itself. To free space, restore any version you still want as a new copy, then move older numbered files out of {directory} (for example into an archive folder).",
+ "classic.historyCapacity.thisDeckKeepsEarlierVersionsClose":"This deck keeps {snapshots} earlier versions ({bytes}), close to the suggested limit of {limit} versions or {size}. DeckWeft never deletes them by itself. To free space, restore any version you still want as a new copy, then move older numbered files out of {directory} (for example into an archive folder).",
 },
 zh:{
  "visual.directionToggle":"创作",
@@ -1397,6 +1399,8 @@ zh:{
  "classic.session.yourEditsAreStillHereSave":"你的修改仍在这里。可另存为独立副本，较新版本保持不变。",
  "classic.session.saveAsASeparateCopy":"另存为独立副本",
  "classic.session.keepEditing":"继续编辑",
+ "classic.historyCapacity.thisDeckKeepsEarlierVersionsOver":"这份文稿保留了 {snapshots} 个历史版本（{bytes}），已超过建议上限 {limit} 个版本或 {size}。DeckWeft 不会自动删除它们。要释放空间，先把仍想保留的版本恢复为新副本，再把较早的编号文件从 {directory} 移出（例如移到归档文件夹）。",
+ "classic.historyCapacity.thisDeckKeepsEarlierVersionsClose":"这份文稿保留了 {snapshots} 个历史版本（{bytes}），接近建议上限 {limit} 个版本或 {size}。DeckWeft 不会自动删除它们。要释放空间，先把仍想保留的版本恢复为新副本，再把较早的编号文件从 {directory} 移出（例如移到归档文件夹）。",
 }
 };
 

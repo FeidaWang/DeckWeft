@@ -174,7 +174,7 @@ async function save({auto=false}={}){
     if(state.project.id===snapshot.id){state.project.revision=project.revision;if(counter===state.counter)state.dirty=false;}
     state.saveIssue=null;
     // From 80% of the suggested history size the banner explains cleanup; nothing is deleted.
-    await library();notice(historyCapacityNote(historyUsage,pick),'warning');return !state.dirty;
+    await library();notice(historyCapacityNote(historyUsage),'warning');return !state.dirty;
   }catch(error){
     if(error.code==='REVISION_CONFLICT'){state.saveIssue='conflict';if(!auto){try{if(await saveCopy())return true;}catch(copyError){onError(copyError);return false;}}notice(t('classic.app.anotherWindowSavedFirstYourEdits'));}
     else{state.saveIssue='failed';if(auto)notice(error.code==='AUTH_REQUIRED'?t('classic.app.notConnectedYourEditsRemainIn'):error.message||String(error));else onError(error);}

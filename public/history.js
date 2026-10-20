@@ -6,7 +6,7 @@ export function mountHistory(app){
   const dialog=$('#historyDialog');
   const error=message=>{$('#historyError').textContent=message||'';};
   function status(message){$('#historyStatus').textContent=message;}
-  function capacity(){const note=historyCapacityNote(usage,t);$('#historyCapacity').textContent=note;$('#historyCapacity').hidden=!note;}
+  function capacity(){const note=historyCapacityNote(usage);$('#historyCapacity').textContent=note;$('#historyCapacity').hidden=!note;}
   function sync(){
     $('#restoreSnapshot').disabled=!selected||loading||restoring||selected.unreadable;
     $('#historyOlder').disabled=loading||restoring||!nextBefore;$('#historyOlder').hidden=!nextBefore;

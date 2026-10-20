@@ -10,9 +10,10 @@ import { VisualProjectStore } from '../src/services/visual-store.mjs';
 import { createVisualDemo } from '../src/core/visual-demo.mjs';
 import { startStudio } from '../src/services/server.mjs';
 import { historyCapacityNote } from '../public/history-capacity.js';
+import { tFor } from '../public/i18n.js';
 import { temp } from './helpers.mjs';
 async function saves(s,n){let p=await s.save(createProject({title:'Version 1'}),{create:true});for(let i=2;i<=n;i++)p=await s.save({...p,title:`Version ${i}`},{expectedRevision:p.revision.number});return p;}
-const t=(en,zh)=>en,tz=(en,zh)=>zh;
+const t=tFor('en'),tz=tFor('zh-CN');
 
 test('§5 history: the suggested limits default to 500 snapshots or 200 MB',()=>{
  assert.deepEqual(HISTORY_LIMITS,{snapshots:500,bytes:200_000_000});
