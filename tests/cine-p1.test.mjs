@@ -220,3 +220,16 @@ test('CINE-006 markup: a declared page carries --label-size and --reference-size
  for(const m of lo.sceneMarkup){assert.ok(!m.includes('--label-size'));assert.ok(!m.includes('--reference-size'));assert.ok(m.includes('--body-size:22px;'));}
  for(const rule of ['.web-scene .citation{font:400 var(--reference-size,12px)/1.6 var(--body)','.web-scene .web-image figcaption{font:400 var(--reference-size,12px)/1.5 var(--body)','.web-scene .source-strip .citation{font:400 var(--reference-size,12px)/1.3 var(--body)','.web-scene .reference-panel{font:400 var(--reference-size,12px)/1.3 var(--body)','.web-scene .chart-rows{font-size:var(--label-size,15px)}','.web-scene .legend{font-size:var(--label-size,14px)}','.web-scene .region[data-component=citation]+.region[data-component=citation]{border-top:0;margin-top:0;padding-top:6px}'])assert.ok(artDirectionCSS.includes(rule),rule);
 });
+
+// ---- Task 5: CINE-006/007 player: grayscale hierarchy audit and per-region measurements; semantic-player.7 ----
+import {runtime,PLAYER_VERSION} from '../src/render/web/runtime.mjs';
+import {grayscaleScript} from '../src/render/web/contrast.mjs';
+test('CINE-007 player: the runtime declares semantic-player.7, carries auditGrayscale, and check() reports per-region minTextPx, per-image boxes and the strip height (string checks on the embedded player)',()=>{
+ assert.equal(PLAYER_VERSION,'semantic-player.7');assert.ok(runtime.includes("player:'semantic-player.7'"));
+ assert.ok(grayscaleScript.startsWith('function auditGrayscale(scene)'));assert.ok(runtime.includes(grayscaleScript),'the grayscale audit is embedded');
+ for(const field of ['regions:regionBoxes,','minTextPx:','maxTextPx:','images:imageBoxes,','strip,grayscale:auditGrayscale(scene)','grayscale:auditGrayscale(scene)','window.deckweftAuditScene=scene=>({contrastIssues:auditContrast(scene),clipIssues:[...auditClipping(scene),...auditComponentGeometry(scene)],glyphIssues:scanMissingGlyphs(scene),grayscale:auditGrayscale(scene)})'])assert.ok(runtime.includes(field),field);
+ // The player stays one parseable script (it runs under a CSP hash; a syntax error would break every exported page).
+ assert.doesNotThrow(()=>new Function(runtime));assert.doesNotThrow(()=>new Function(grayscaleScript));
+ // The audit names its method honestly and never claims eye tracking.
+ assert.match(grayscaleScript,/diagnostic/);assert.ok(!/eye[- ]tracking/i.test(grayscaleScript.replace(/not eye tracking/g,'')));
+});

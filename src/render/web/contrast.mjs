@@ -46,3 +46,20 @@ export const clippingScript = String.raw`function auditClipping(scene){
  }
  return issues;
 }`;
+/** CINE-006/007 (semantic-player.7): the grayscale hierarchy. Each region's dominant foreground (its first text colour, or a 32 × 32
+ * canvas sample of its image) is reduced to relative luminance and compared with the page, weighted by the region's share of the
+ * scene; the primary subject (the hero media region, else the focal block) should carry the strongest weight. A diagnostic, not eye tracking. */
+export const grayscaleScript = String.raw`function auditGrayscale(scene){
+ function rgb(value){const m=value.match(/^rgba?\(([^)]+)\)$/);if(!m)return null;const n=m[1].split(/[, /]+/).filter(Boolean).map(Number);return n.length>=3?{c:n.slice(0,3),a:n[3]??1}:null;}
+ function luminance(c){const a=c.map(v=>{v=v/255;return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4);});return a[0]*.2126+a[1]*.7152+a[2]*.0722;}
+ const round=v=>Math.round(v*1000)/1000,sb=scene.getBoundingClientRect(),page=rgb(getComputedStyle(scene).backgroundColor),pageL=luminance(page&&page.a>0?page.c:[255,255,255]);
+ const regions=[...scene.querySelectorAll('.regions > .region, .source-strip > .region')].map(r=>{
+  const img=r.querySelector('img'),box=(img?img.closest('.image-crop')||img:r).getBoundingClientRect();let lum=null,method='text colour';
+  if(img&&img.complete&&img.naturalWidth){try{const canvas=document.createElement('canvas');canvas.width=canvas.height=32;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,32,32);const d=ctx.getImageData(0,0,32,32).data;let sum=0;for(let i=0;i<d.length;i+=4)sum+=luminance([d[i],d[i+1],d[i+2]]);lum=sum/(d.length/4);method='image pixels (32 by 32 canvas sample)';}catch(e){method='image not sampled';}}
+  if(lum===null){const walker=document.createTreeWalker(r,NodeFilter.SHOW_TEXT);let node,el=null;while((node=walker.nextNode()))if(node.textContent.trim()&&!node.parentElement.closest('script,style')){el=node.parentElement;break;}const fg=rgb(getComputedStyle(el||r).color);lum=fg?luminance(fg.c):pageL;}
+  const area=Math.max(0,box.width*box.height)/Math.max(1,sb.width*sb.height),contrast=Math.abs(lum-pageL);
+  return {regionId:r.id,blockId:r.dataset.blockId,mediaRole:r.dataset.mediaRole||null,luminance:round(lum),contrast:round(contrast),area:round(area),weight:round(contrast*area),method};
+ });
+ const primary=regions.find(r=>r.mediaRole==='hero')||regions.find(r=>r.blockId===scene.dataset.focalBlock)||regions[0]||null,strongest=regions.reduce((a,b)=>!a||b.weight>a.weight?b:a,null);
+ return {method:'luminance-only (grayscale) contrast of each region\'s dominant foreground against the page, weighted by its share of the scene; a bounding-box diagnostic, not eye tracking',pageLuminance:round(pageL),primary:primary?{regionId:primary.regionId,blockId:primary.blockId,weight:primary.weight,contrast:primary.contrast}:null,strongest:strongest?strongest.regionId:null,holds:!!primary&&!!strongest&&primary.weight>=strongest.weight*.9,regions};
+}`;
