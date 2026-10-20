@@ -56,10 +56,10 @@ node bin/deckweft.mjs studio --open
 
 ## 大功能，用大白话说
 
-- **六个问题，三个方向。** 新建文稿时，DeckWeft 只问六个简单问题，然后把*同一份*内容做成三种不同风格给你挑，再开始生成。
-- **作者控制。** 每次修改都会先说清楚要做什么，再动手；撤销就能退回去。文字、数据、来源、构图可以分别锁定。[作者控制](docs/zh-CN/visual-studio.md#作者控制章节与分项锁定s9a) · [证据（英文）](docs/evidence/s9a-author-controls/review.md)
+- **三个方向。** 粘贴你要讲的话后点“排好”，或为已打开的文稿请求三个方向（少／中／多）。每个方向都是*同一份*内容的不同样子，选定之前不会应用任何内容。
+- **样子控件。** 一键修改（多留白、字大一点、别动这页）立即生效，撤销可退回。更细的作者动作、图片审阅和页面规划通过 API 与发布门使用，浏览器里没有。[样子控件](docs/zh-CN/visual-studio.md#样子控件章节与锁定s9a) · [证据](docs/evidence/s9a-author-controls/review.md)
 - **讲解 → 图解 → 探索。** 一页先提出问题，再展示整体，然后让观众逐个点开每个部分对照整体看。静态导出也会保留完整说明。[怎么用](docs/zh-CN/interactions.md#讲解--图解--探索蓝图-as9b) · [证据（英文）](docs/evidence/s9b-blueprint-a/review.md)
-- **提示词工作台。** 写下你想要的，看着它生成，单独改一页，查看真实截图，然后导出。语言、风格和锁定都会被记住。[工作台](docs/zh-CN/workbench.md) · [证据](docs/evidence/vis-013/review.md)
+- **提示词工作台。** 写下你想要的，看着它生成，单独改一页，然后带走。真实截图审阅通过 API 与发布门运行。语言、风格和锁定都会被记住。[工作台](docs/zh-CN/workbench.md) · [证据](docs/evidence/vis-013/review.md)
 - **先排故事，再做页面。** 先审阅故事提案；批准后另存为新副本，旧版本原样保留。[规划](docs/zh-CN/planning.md) · [证据](docs/evidence/mb-06-10/review.md)
 - **讲者模式。** 私密的讲者窗口（带备注和逐页提词器），加上独立的观众窗口。导出时默认不带私密备注，需要时再显式打开。[演讲](docs/zh-CN/presenting.md)
 - **帮手与素材。** 可选的图片请求、两个互不干扰的 worker、带平面备份的简单 3D 场景，以及给 Figma 和 After Effects 的交接文件。[素材与 worker](docs/zh-CN/media-workers.md) · [证据](docs/evidence/mb-11-15/review.md)
