@@ -701,6 +701,8 @@ en:{
  "classic.session.keepEditing":"Keep editing",
  "classic.historyCapacity.thisDeckKeepsEarlierVersionsOver":"This deck keeps {snapshots} earlier versions ({bytes}), over the suggested limit of {limit} versions or {size}. DeckWeft never deletes them by itself. To free space, restore any version you still want as a new copy, then move older numbered files out of {directory} (for example into an archive folder).",
  "classic.historyCapacity.thisDeckKeepsEarlierVersionsClose":"This deck keeps {snapshots} earlier versions ({bytes}), close to the suggested limit of {limit} versions or {size}. DeckWeft never deletes them by itself. To free space, restore any version you still want as a new copy, then move older numbered files out of {directory} (for example into an archive folder).",
+ "classic.preferences.yourSystemRequestsReducedMotionIt":"Your system requests reduced motion. It stays respected.",
+ "classic.preferences.appliesToPreviewsPresentationAndAudience":"Applies to previews, presentation and audience playback.",
 },
 zh:{
  "visual.directionToggle":"创作",
@@ -1401,6 +1403,8 @@ zh:{
  "classic.session.keepEditing":"继续编辑",
  "classic.historyCapacity.thisDeckKeepsEarlierVersionsOver":"这份文稿保留了 {snapshots} 个历史版本（{bytes}），已超过建议上限 {limit} 个版本或 {size}。DeckWeft 不会自动删除它们。要释放空间，先把仍想保留的版本恢复为新副本，再把较早的编号文件从 {directory} 移出（例如移到归档文件夹）。",
  "classic.historyCapacity.thisDeckKeepsEarlierVersionsClose":"这份文稿保留了 {snapshots} 个历史版本（{bytes}），接近建议上限 {limit} 个版本或 {size}。DeckWeft 不会自动删除它们。要释放空间，先把仍想保留的版本恢复为新副本，再把较早的编号文件从 {directory} 移出（例如移到归档文件夹）。",
+ "classic.preferences.yourSystemRequestsReducedMotionIt":"系统要求减弱动态效果，播放会遵循此偏好。",
+ "classic.preferences.appliesToPreviewsPresentationAndAudience":"作用于预览、讲者界面和观众播放。",
 }
 };
 

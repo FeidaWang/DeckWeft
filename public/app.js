@@ -355,7 +355,7 @@ mountAgentBridge({state,$,json,dialogs,onError,canLeave,activate,library,pitchMo
 import {mountStudioTools} from './studio-tools.js';
 mountStudioTools({state,$,dialogs,json,canLeave,activate,library});
 applyActions(document);
-mountPreferences({dialogs,$,locale:()=>state.locale});
+mountPreferences({dialogs,$});
 presenter=mountPresenter({state,$,json,dialogs,onError:error=>{if(['STALE_MEASUREMENT','MEASUREMENT_EXPIRED','MEASUREMENT_REQUIRED'].includes(error.code))schedulePreview();onError(error);}});
 try{localStorage.removeItem('deckweft.layouts.collapsed');}catch{} // the previews are always open now
 

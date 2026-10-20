@@ -1,3 +1,4 @@
+import {t} from './i18n.js';
 import {defaultPreferences,parsePreferences,effectivePreferences} from '/shared/preferences.mjs';
 const dark=matchMedia('(prefers-color-scheme:dark)'),reduced=matchMedia('(prefers-reduced-motion:reduce)');
 let preferences={...defaultPreferences};
@@ -12,13 +13,12 @@ function save(){try{localStorage.setItem('deckweft.preferences.v1',JSON.stringif
 dark.addEventListener('change',apply);reduced.addEventListener('change',apply);
 window.addEventListener('storage',e=>{if(e.key==='deckweft.preferences.v1'){try{preferences=e.newValue?parsePreferences(JSON.parse(e.newValue)):{...defaultPreferences};apply();}catch{}}});
 apply();
-export function mountPreferences({dialogs,$,locale}){
- const lang=()=>locale()==='zh-CN',text=(en,zh)=>lang()?zh:en;
+export function mountPreferences({dialogs,$}){
  function sync(){
   const effective=getPreferences();
   for(const button of document.querySelectorAll('button[data-appearance]'))button.setAttribute('aria-pressed',String(preferences.appearance===button.dataset.appearance));
   $('#playbackMotion').value=preferences.motion;$('#reduceMotion').checked=effective.motion!=='full';$('#reduceMotion').disabled=reduced.matches;
-  $('#systemMotionNote').textContent=reduced.matches?text('Your system requests reduced motion. It stays respected.','系统要求减弱动态效果，播放会遵循此偏好。'):text('Applies to previews, presentation and audience playback.','作用于预览、讲者界面和观众播放。');
+  $('#systemMotionNote').textContent=reduced.matches?t('classic.preferences.yourSystemRequestsReducedMotionIt'):t('classic.preferences.appliesToPreviewsPresentationAndAudience');
  }
  $('#openSettings').onclick=()=>{sync();dialogs.open($('#settingsDialog'),document.body.classList.contains('presenting')?$('#presenterSettings'):$('#openSettings'));};
  for(const button of document.querySelectorAll('button[data-appearance]'))button.onclick=()=>{preferences.appearance=button.dataset.appearance;save();sync();};
