@@ -7,8 +7,7 @@ export function renderProgress(root,record){
  output.textContent=t(labels[record.running?'running':record.status]||'visual.revisions.status.other');
  root.querySelector('#workbenchDiagnostics').textContent=record.error?.message||record.diagnostics?.at(-1)?.message||record.receipt?.review?.judgment||'';
  renderEvidence(root.querySelector('#workbenchEvidence'),record.evidence);
- root.querySelector('#workbenchReport').disabled=!!record.running||!record.project;
- root.querySelector('#workbenchExport').disabled=!record.canExport;root.querySelector('#workbenchLastValid').disabled=!record.hasLastValid;root.querySelector('#workbenchCancel').disabled=!record.running;
+ root.querySelector('#workbenchLastValid').disabled=!record.hasLastValid;root.querySelector('#workbenchCancel').disabled=!record.running;
  // S9b: the page plan of the drafted deck, the same for the local and the Codex path; DeckWeft asks instead of padding.
  const plan=record.pagePlan,box=root.querySelector('#workbenchPagePlan');box.replaceChildren();
  if(plan){const head=document.createElement('p');head.textContent=t('visual.revisions.pagePlan',{detail:t('visual.author.detail.'+plan.detail),draftedPages:plan.draftedPages,proposedPages:plan.proposedPages,target:plan.targetPages?t('visual.revisions.pagePlanTarget',{targetPages:plan.targetPages}):''});box.append(head);if(plan.questions.length){const list=document.createElement('ol');for(const q of plan.questions){const li=document.createElement('li');li.textContent=getLocale()==='zh-CN'?q.zh:q.en;list.append(li);}box.append(list);}}

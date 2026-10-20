@@ -1,3 +1,4 @@
 export const preferenceFields={uiLanguage:['en','zh-CN'],promptLanguage:['en','zh-CN'],outputLanguage:['en','zh-CN'],contentTone:['neutral','concise','formal'],visualStyle:['cream-collage','electric-violet','dark-data','silver-gray-editorial','fresh-report','orange-launch'],colorIntensity:['restrained','bold'],assetEmphasis:['balanced','large'],updatePreference:['manual','review-each-change']};
-export function readPreferences(root){return Object.fromEntries(Object.keys(preferenceFields).map(k=>[k,root.querySelector('[data-preference="'+k+'"]').value]));}
-export function writePreferences(root,value){for(const key of Object.keys(preferenceFields))if(value?.[key])root.querySelector('[data-preference="'+key+'"]').value=value[key];}
+// The drawer shows only the design choices; the languages come from the shell and the deck (`defaults`), the tone stays neutral.
+export function readPreferences(root,defaults={}){return Object.fromEntries(Object.keys(preferenceFields).map(k=>[k,root.querySelector('[data-preference="'+k+'"]')?.value??defaults[k]??preferenceFields[k][0]]));}
+export function writePreferences(root,value){for(const key of Object.keys(preferenceFields)){const field=root.querySelector('[data-preference="'+key+'"]');if(field&&value?.[key])field.value=value[key];}}

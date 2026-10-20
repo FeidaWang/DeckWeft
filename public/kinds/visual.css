@@ -1,0 +1,113 @@
+/* The visual deck kind on the shared shell (single entry step 3): only what the classic stylesheets do not already draw.
+   Loaded after styles.css, shell.css and workspace.css on /visual. Hard edges, the shell's four functional colours. */
+
+/* Canvas: a 1440 px web page scaled to the stage; a tall page scrolls inside the stage. */
+.kind-visual .stage{overflow:auto;align-items:safe center}
+.kind-visual #canvas{position:relative;flex:none;background:var(--canvas);overflow:hidden}
+.kind-visual #frameSpace{position:relative;overflow:hidden}
+.kind-visual #preview{position:absolute;top:0;left:0;border:0;display:block;transform-origin:top left;background:#fff}
+.kind-visual #emptyCanvas{max-width:52ch;text-align:center}
+
+/* Page strip: each thumbnail is the page itself, scaled. */
+.kind-visual #slideList .thumbnail>span:first-child{position:relative;overflow:hidden;background:var(--canvas)}
+.kind-visual #slideList .thumbnail iframe{position:absolute;top:0;left:0;border:0;pointer-events:none;transform-origin:top left;background:#fff}
+.kind-visual #slideList .thumbnail-mark{background:#fff2c9;color:#654500}
+
+/* Choices and directions: the same card; the picture is a scaled live page. */
+.kind-visual .candidate-picture{width:100%;aspect-ratio:16/10;background:var(--canvas)}
+.kind-visual .candidate-picture iframe,.candidate-window iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform-origin:top left;pointer-events:none;background:#fff}
+.candidate-window{position:relative;overflow:hidden;width:100%;background:var(--canvas)}
+.kind-visual .candidate-fit{margin:4px 0 0;font-size:11px;line-height:1.4;color:var(--muted)}
+.kind-visual .direction-card{flex-direction:column}
+#candidateDialog{width:min(1500px,96vw);max-width:96vw;max-height:94vh;padding:16px}
+#candidateDialog .dialog-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+#candidateDialog .dialog-head h2{margin:0;font-size:16px}
+
+/* Look: three buttons, colours, motion, image, directions. */
+.look-label{margin:16px 0 8px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.look-buttons{display:grid;gap:8px;margin:0 0 8px}
+.look-buttons button,.motion-controls button,.image-row>button,#entryDirections{width:100%;min-height:40px;border:1px solid var(--ink);border-radius:0;background:var(--white);text-align:left;justify-content:flex-start}
+.look-buttons [aria-pressed=true]{border:2px solid var(--look)}
+.kind-visual [data-zone=look] .theme-options{display:grid;grid-template-columns:repeat(3,56px);gap:8px}
+.swatches.visual-cream-collage{background:linear-gradient(90deg,#F5EBD9 0 34%,#1C2C3C 34% 66%,#BD4027 66%)}
+.swatches.visual-electric-violet{background:linear-gradient(90deg,#FAF9F5 0 34%,#1B1826 34% 66%,#5420E8 66%)}
+.swatches.visual-dark-data{background:linear-gradient(90deg,#112120 0 34%,#F1F4E9 34% 66%,#B9EF79 66%)}
+.swatches.visual-silver-gray-editorial{background:linear-gradient(90deg,#F3F0E8 0 34%,#24241F 34% 66%,#A8503A 66%)}
+.swatches.visual-fresh-report{background:linear-gradient(90deg,#FAFAF7 0 34%,#15211B 34% 66%,#286448 66%)}
+.swatches.visual-orange-launch{background:linear-gradient(90deg,#0C1017 0 34%,#F2F3EE 34% 66%,#A8D2EA 66%)}
+.motion-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.motion-row .look-label{margin:16px 0}
+#motionSwitch{min-width:64px;min-height:40px;border:1px solid var(--ink);border-radius:0;background:var(--white)}
+#motionSwitch[aria-checked=true]{background:var(--ink);color:var(--surface)}
+.motion-controls{display:grid;gap:8px}
+.motion-controls label{margin:8px 0 0}
+.image-row{display:grid;grid-template-columns:minmax(0,1fr) 40px;gap:8px;align-items:start}
+.image-info>summary{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--ink);font-weight:700;font-style:italic;cursor:pointer;list-style:none}
+.image-info>summary::-webkit-details-marker{display:none}
+.image-info[open]{grid-column:1 / -1}
+.image-info[open]>summary{border-width:2px;border-color:var(--look)}
+.detail-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 8px;border:1px solid var(--ink)}
+.detail-options button{min-height:40px;border:0;border-radius:0;background:var(--white)}
+.detail-options button+button{border-left:1px solid var(--ink)}
+.detail-options [aria-pressed=true]{background:var(--ink);color:var(--surface)}
+.direction-cards{margin-top:8px}
+.action-plan{border:1px solid var(--look);padding:8px 12px;margin:8px 0;font-size:12px;line-height:1.5}
+.action-plan h3{margin:0 0 4px;font-size:13px}
+.action-plan ul{padding-left:18px;margin:6px 0}
+.action-plan .kept li{color:var(--muted)}
+
+/* Words: one card per typed block of the page. */
+.field-card{border-top:1px solid var(--line);padding:8px 0 16px;margin:0}
+.field-card label{margin:8px 0 4px}
+.field-more>summary{font-size:11px;padding:8px 0;cursor:pointer}
+.data-editor{font:12px/1.5 Menlo,monospace;min-height:160px}
+.invalid{border-color:var(--alert)!important}
+.crop-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.crop-choice{padding:8px 0;border-top:1px solid var(--line)}
+#subjectCanvas{width:100%;height:auto;background:var(--canvas);margin-top:8px}
+.check{display:flex;align-items:center;gap:8px;line-height:1.5}
+.host-authored-lines{background:#fff8e4;border-left:3px solid #a27300;padding:8px 12px;margin:0 0 12px;overflow-wrap:anywhere;font-size:12px;line-height:1.6}
+.host-authored-lines p{margin:0}
+.host-authored-lines ul{padding-left:18px;margin:6px 0}
+.host-authored-lines li{white-space:pre-wrap}
+
+/* Drawer: the prompt workbench and the developer tools. */
+#promptWorkbench details{border-top:1px solid var(--line);padding:8px 0;margin:0}
+#promptWorkbench textarea{min-height:96px}
+.workbench-options,.workbench-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.workbench-profile{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.workbench-status{font-size:12px}
+#workbenchProgress{display:block;font-weight:600}
+#workbenchDiagnostics{white-space:pre-wrap;overflow-wrap:anywhere;max-height:180px;overflow:auto}
+#workbenchDiagnostics:empty,#workbenchCancel:disabled,#workbenchLastValid:disabled{display:none}
+#workbenchEvents{font:11px/1.5 monospace;white-space:pre-wrap}
+.scope-statement{min-height:1em}
+.more-drawer details>summary{padding:8px 0;font-size:12px;font-weight:600;cursor:pointer}
+.more-drawer .data-editor{min-height:120px}
+#rhythmReport{font-size:12px}#rhythmReport small{display:block}#rhythmReport ol{padding-left:20px}
+.page-plan{font-size:12px;margin:8px 0}
+.page-plan .units{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:6px 0}
+.page-plan .units li{border:1px solid var(--line);padding:2px 8px}
+.page-plan .units li.missing{border-color:var(--alert);font-weight:600}
+
+/* Dialogs of the visual kind. */
+.history-capacity{padding:10px 12px;border:1px solid #d8ae76;background:#faf0de;color:#684016;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.history-item{display:block;width:100%;text-align:left;margin:8px 0}
+#snapshot{min-height:250px;font:11px/1.5 Menlo,monospace}
+.kind-visual dialog .dialog-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+/* Take away, PowerPoint and PDF (F1): the yellow typography result stays yellow after the author's acceptance. */
+#exportStatus{margin:12px 0 0;padding:10px 12px;font-size:12px;line-height:1.6}
+#exportStatus:empty{display:none}
+#exportStatus[data-status=running]{background:#eef0e8;color:#535c4b}
+#exportStatus[data-status=pass]{background:#e6f1dc;color:#2f4a22}
+#exportStatus[data-status=fail],#exportStatus[data-status=accepted]{background:#fff6d6;color:#6b4d00;border-left:4px solid #e0b000}
+#exportStatus[data-status=error]{background:#fff0ed;color:#8e2a15}
+#exportTypography{margin:10px 0 0;padding-left:20px;font-size:12px;line-height:1.6;max-height:220px;overflow:auto}
+#exportAcceptField{margin-top:12px;font-size:12px}
+#exportRun{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+
+@media(max-width:680px){.kind-visual [data-zone=look] .theme-options{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.direction-explain{font-size:11px;line-height:1.45}
+.direction-explain>summary{padding:4px 0;cursor:pointer}
+.direction-explain dt{font-weight:600;margin-top:4px}.direction-explain dd{margin:0}

@@ -28,6 +28,8 @@ for(const file of ['preferences.js','actions.js','presenter.js','storyboard.js',
 staticFiles['/workspace.css']=['workspace.css','text/css; charset=utf-8'];
 // Single entry, step 0: the shared workbench shell and the classic deck kind.
 Object.assign(staticFiles,{'/shell.js':['shell.js','text/javascript; charset=utf-8'],'/shell.css':['shell.css','text/css; charset=utf-8'],'/kinds/classic.js':['kinds/classic.js','text/javascript; charset=utf-8']});
+// Single entry, step 3: the visual deck kind on the same shell.
+Object.assign(staticFiles,{'/kinds/visual.js':['kinds/visual.js','text/javascript; charset=utf-8'],'/kinds/visual.css':['kinds/visual.css','text/css; charset=utf-8']});
 // First run: "See an example first" opens the bundled welcome deck in the interface language.
 for(const file of ['welcome.deck.json','welcome.zh-CN.deck.json'])staticFiles['/examples/'+file]=['../examples/'+file,'application/json; charset=utf-8'];
 staticFiles['/shared/preferences.mjs']=['../src/core/preferences.mjs','text/javascript; charset=utf-8'];
