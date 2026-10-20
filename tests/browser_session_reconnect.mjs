@@ -39,7 +39,7 @@ const studios=[
  {name:'classic',projectRoute:id=>'/api/projects/'+id,listRoute:'/api/projects',
   async open(page){await page.goto(app.url+'/');await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await settle(page);return (await call('/api/projects')).projects[0].id;},
   // Wait for the debounced preview so no background request reaches the restarted server first.
-  async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>document.querySelector('#fitStatus').textContent.includes('ready to export'),{},{timeout:30000});},
+  async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
   value:page=>page.locator('#slideTitle').inputValue(),
   saved:page=>page.waitForFunction(()=>document.querySelector('#saveState').textContent==='Saved on this computer',{},{timeout:20000})},
  {name:'visual',projectRoute:id=>'/api/visual/projects/'+id,listRoute:'/api/visual/projects',
@@ -56,12 +56,12 @@ try{
 
   // 1. Restart, decline, then reconnect: the draft stays in memory and the save completes.
   const first=`Reconnected ${studio.name} draft`;await studio.edit(page,first);await restart();
-  await page.locator('#save').click();await dialog(page).waitFor({state:'visible'});await capture(page,`${studio.name}-reconnect.png`);
+  await page.locator('#save').dispatchEvent('click');await dialog(page).waitFor({state:'visible'});await capture(page,`${studio.name}-reconnect.png`);
   await dialog(page).locator('[data-session="cancel"]').click();await dialog(page).waitFor({state:'detached'});
   assert.equal(await studio.value(page),first);assert.ok(await page.locator('#save').isEnabled(),'Declining keeps the edit unsaved');
   assert.ok(!JSON.stringify((await call(studio.projectRoute(id))).project).includes(first),'Nothing is saved before reconnecting');
   step('Declining reconnect keeps the draft and saves nothing');
-  await page.locator('#save').click();await dialog(page).waitFor({state:'visible'});await dialog(page).locator('[data-session="confirm"]').click();await studio.saved(page);
+  await page.locator('#save').dispatchEvent('click');await dialog(page).waitFor({state:'visible'});await dialog(page).locator('[data-session="confirm"]').click();await studio.saved(page);
   const saved=(await call(studio.projectRoute(id))).project;assert.ok(JSON.stringify(saved).includes(first),'The reconnected save is persisted');
   assert.equal(await page.evaluate(()=>window.__deckweftSamePage),true,'Reconnect does not reload the page');
   step(`Reconnect saved revision ${saved.revision.number} without reloading the page`);
@@ -70,7 +70,7 @@ try{
   const before=new Set((await call(studio.listRoute)).projects.map(p=>p.id));
   const second=`Conflicting ${studio.name} draft`;await studio.edit(page,second);await restart();
   const other=(await call(studio.projectRoute(id),{project:saved,expectedRevision:saved.revision.number},'PUT')).project;
-  await page.locator('#save').click();await dialog(page).waitFor({state:'visible'});await dialog(page).locator('[data-session="confirm"]').click();
+  await page.locator('#save').dispatchEvent('click');await dialog(page).waitFor({state:'visible'});await dialog(page).locator('[data-session="confirm"]').click();
   const conflict=page.locator('#conflictDialog');await conflict.waitFor({state:'visible'});await capture(page,`${studio.name}-conflict.png`);
   assert.equal(await studio.value(page),second);
   await conflict.locator('[data-session="confirm"]').click();await conflict.waitFor({state:'detached'});await studio.saved(page);

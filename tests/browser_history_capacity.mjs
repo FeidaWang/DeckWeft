@@ -36,10 +36,10 @@ const snapshotFiles=async(kind,id)=>(await readdir(path.join(home,...(kind==='vi
 const studios=[
  {name:'classic',kind:'classic',projectRoute:id=>'/api/projects/'+id,
   async open(page){await page.goto(app.url+'/');await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await page.waitForLoadState('networkidle');return (await call('/api/projects')).projects[0].id;},
-  async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>document.querySelector('#fitStatus').textContent.includes('ready to export'),{},{timeout:30000});},
-  async save(page){await page.locator('#save').click();await page.waitForFunction(()=>document.querySelector('#saveState').textContent==='Saved on this computer',{},{timeout:20000});},
+  async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
+  async save(page){await page.waitForSelector('#saveState[data-state="saved"]',{timeout:20000});},
   saveNote:page=>page.locator('#issueBanner'),
-  async history(page){await page.locator('#openHistory').click();await page.locator('#historyDialog [data-revision]').first().waitFor();return page.locator('#historyCapacity');},
+  async history(page){await page.locator('#openMore').click();await page.locator('#openHistory').click();await page.locator('#historyDialog [data-revision]').first().waitFor();return page.locator('#historyCapacity');},
   close:page=>page.locator('#historyDialog [data-close]').first().click()},
  {name:'visual',kind:'visual',projectRoute:id=>'/api/visual/projects/'+id,
   async open(page){await page.goto(app.url+'/visual?project='+visualDemo.id);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');return visualDemo.id;},

@@ -11,11 +11,13 @@ import {historyCapacityNote} from './history-capacity.js';
 applyPitchMode(document);
 const $=selector=>document.querySelector(selector);
 const en=Object.fromEntries([...document.querySelectorAll('[data-i18n]')].map(el=>[el.dataset.i18n,el.textContent]));
-const zh={brandNote:'把想法，排成清晰的故事。',save:'保存',present:'演示',export:'导出 ↗',story:'你的故事',new:'新建',add:'+ 添加一页',import:'导入 JSON / 大纲',privacy:'保存在你的电脑，不会暗中上传。',workbench:'工作台',slides:'页面',edit:'编辑',exit:'退出演示',directionsTitle:'同一个故事，四种表达。',directionsNote:'选择排版，文字仍然由你决定。',auto:'自动布局',scoresNote:'分数估算排版适配度，不验证事实。按 1–4 比较。',content:'内容',design:'设计',sources:'来源',wordsFirst:'先把话说清楚。',wordsNote:'一张幻灯片，讲一个有用的想法。',eyebrow:'小标签',headline:'大标题',body:'补充说明',points:'关键要点 · 每行一条',metrics:'数字 · 数值 | 标签',notes:'讲者备注',duplicate:'复制',delete:'删除',quietDesign:'让想法成为主角。',designNote:'先有清晰结构，再考虑装饰。',theme:'颜色主题',paper:'温暖纸张',midnight:'午夜墨色',ocean:'宁静海洋',role:'这一页的任务',contentLocale:'文稿语言 / 字体偏好',localeNote:'切换这里不会翻译现有文字。',motion:'After Effects 入场方式',duration:'每页时长（秒）',motionNote:'HTML 可播放这些入场；PowerPoint 保持静态，AE 接收动效交接。',evidenceTitle:'告诉读者，依据在哪里。',evidenceNote:'保存一个网址，不等于验证了事实。',sourceTitle:'来源名称',sourceURL:'来源网址',addSource:'添加并关联到本页',preflight:'导出前检查',qualityNote:'文字由当前浏览器实测；演示软件仍可能替换字体，请检查导出文件。',footer:'DeckWeft · 本地优先的幻灯片工作台',noAPI:'不需要 API 密钥',newTitle:'你想表达什么？',outlineHelp:'先写标题，再写补充内容。单独一行 --- 表示新的一页。这里仅排列你的文字，不会调用 AI。',outline:'你的大纲',cancel:'取消',arrange:'整理我的大纲',takeDeck:'把你的故事带走。',exportNote:'PowerPoint 保留可编辑文字和形状；JSON 保留整个项目。',editable:'可编辑文字和形状',offline:'浏览器离线打开',backup:'保存完整备份',currentOnly:'仅当前页面',importLayers:'使用附带插件导入',aeImport:'使用附带 JSX 导入',handoffNote:'Figma 与 AE 交接为实验功能。这里不会上传到云端。'};
-Object.assign(zh,{history:'历史版本',historyTitle:'找回之前的好想法。',historyHelp:'像翻相册一样查看旧版本。恢复会新建一个副本，不会覆盖原文稿。',historyEmpty:'还没有旧版本。编辑并保存后，上一版就会出现在这里。',loadOlder:'更早的版本',restoreCopy:'恢复为新副本',openCopy:'打开恢复的副本',close:'关闭',previousPage:'上一页',nextPage:'下一页',refresh:'重试',leaveTitle:'先保护你的修改。',leaveHelp:'离开前，可以保存当前修改，或继续留在这里。',saveLeave:'保存并继续',discardLeave:'放弃修改并继续',keepEditing:'留在这里',drawerTitle:'编辑工具',localTitle:'文稿名称'});
-Object.assign(zh,{includeSpeakerNotes:'包含私密讲者备注和来源说明',publicExport:'视觉导出默认不含私密备注。项目 JSON 始终包含完整私密项目。',settings:'设置',compareLayouts:'比较布局',privatePresenter:'私密讲者界面',backEditor:'返回编辑',openAudience:'打开观众窗口',shareAudience:'只共享观众窗口，或使用扩展屏幕。',currentSlide:'当前页',nextSlide:'下一页',speakerScript:'讲者提词',readingOptions:'阅读设置',englishPace:'英文词 / 分钟',chinesePace:'中文字符 / 分钟',pauseLength:'每句停顿（秒）',scriptFont:'讲稿字号',scriptWidth:'侧栏宽度',dockSide:'侧栏位置',dockRight:'右侧',dockLeft:'左侧',calibrate:'用本页校准语速',resumeFollowing:'继续跟随',restartScript:'重置本页提词',appearanceAccess:'外观与无障碍',editorAppearance:'编辑器外观',system:'跟随系统',light:'浅色',dark:'深色',themeSeparate:'幻灯片保持原有配色。这些设置只改变工作区。',reduceMotion:'减弱动态效果',advancedPlayback:'高级播放设置',motionPolicy:'动画策略',fullMotion:'完整动态',reducedMotion:'减弱动态',noMotion:'关闭动画'});
+const zh={brandNote:'把想法，排成清晰的故事。',save:'保存',present:'演示',export:'带走',story:'你的故事',new:'新建',add:'+ 添加一页',import:'导入文稿',privacy:'保存在你的电脑，不会暗中上传。',workbench:'工作台',slides:'页面',edit:'编辑',exit:'退出演示',auto:'帮我选',content:'内容',design:'设计',sources:'来源',wordsFirst:'先把话说清楚。',wordsNote:'一张幻灯片，讲一个有用的想法。',eyebrow:'小标签',headline:'大标题',body:'补充说明',points:'要点',metrics:'数字',notes:'讲者备注',duplicate:'复制',delete:'删除',quietDesign:'让想法成为主角。',designNote:'先有清晰结构，再考虑装饰。',theme:'颜色主题',paper:'温暖纸张',midnight:'午夜墨色',ocean:'宁静海洋',role:'这一页的任务',contentLocale:'文稿语言 / 字体偏好',localeNote:'切换这里不会翻译现有文字。',motion:'After Effects 入场方式',duration:'每页时长（秒）',motionNote:'HTML 可播放这些入场；PowerPoint 保持静态，AE 接收动效交接。',evidenceTitle:'告诉读者，依据在哪里。',evidenceNote:'保存一个网址，不等于验证了事实。',sourceTitle:'来源名称',sourceURL:'来源网址',addSource:'添加并关联到本页',preflight:'导出前检查',qualityNote:'演示软件可能替换字体，请先检查文件。',footer:'DeckWeft',newTitle:'你想表达什么？',outlineHelp:'先写标题，再写补充内容。单独一行 --- 表示新的一页。这里仅排列你的文字，不会调用 AI。',outline:'你的大纲',cancel:'取消',arrange:'整理我的大纲',takeDeck:'把你的故事带走。',exportNote:'PowerPoint 保留可编辑文字；备份保留全部内容。',editable:'可编辑文字和形状',offline:'浏览器离线打开',backup:'保存完整备份',currentOnly:'仅当前页面',importLayers:'使用附带插件导入',aeImport:'使用附带 JSX 导入',handoffNote:'Figma 与 AE 交接为实验功能。这里不会上传到云端。'};
+Object.assign(zh,{history:'历史版本',historyTitle:'找回之前的好想法。',historyHelp:'像翻相册一样查看旧版本。恢复会新建一个副本，不会覆盖原文稿。',loadOlder:'更早的版本',restoreCopy:'恢复为新副本',openCopy:'打开恢复的副本',close:'关闭',previousPage:'上一页',nextPage:'下一页',refresh:'重试',leaveTitle:'先保护你的修改。',leaveHelp:'离开前，可以保存当前修改，或继续留在这里。',saveLeave:'保存并继续',discardLeave:'放弃修改并继续',keepEditing:'留在这里',drawerTitle:'编辑工具',localTitle:'文稿名称'});
+Object.assign(zh,{includeSpeakerNotes:'包含私密讲者备注和来源说明',publicExport:'私密备注默认不会导出，勾选后才包含；备份保留全部内容。',settings:'设置',privatePresenter:'私密讲者界面',backEditor:'返回编辑',openAudience:'打开观众窗口',shareAudience:'只共享观众窗口，或使用扩展屏幕。',currentSlide:'当前页',nextSlide:'下一页',speakerScript:'讲者提词',readingOptions:'阅读设置',englishPace:'英文词 / 分钟',chinesePace:'中文字符 / 分钟',pauseLength:'每句停顿（秒）',scriptFont:'讲稿字号',scriptWidth:'侧栏宽度',dockSide:'侧栏位置',dockRight:'右侧',dockLeft:'左侧',calibrate:'用本页校准语速',resumeFollowing:'继续跟随',restartScript:'重置本页提词',appearanceAccess:'外观与无障碍',editorAppearance:'编辑器外观',system:'跟随系统',light:'浅色',dark:'深色',themeSeparate:'幻灯片保持原有配色。这些设置只改变工作区。',reduceMotion:'减弱动态效果',advancedPlayback:'高级播放设置',motionPolicy:'动画策略',fullMotion:'完整动态',reducedMotion:'减弱动态',noMotion:'关闭动画'});
+Object.assign(zh,{moreIntro:'大多数人不需要打开这里。',zoneWords:'词',zoneLook:'样子',moreVersions:'之前的版本',moreAgent:'让助手帮我写',agentHelp:'让助手帮我写',morePresenting:'放映设置',moreLanguage:'语言',moreBackup:'备份与还原',moreDeveloper:'给开发者',planStory:'规划故事',rehearse:'排练'});
 const labels={en:{editorial:'Editorial split',spotlight:'Statement stage',grid:'Evidence grid',timeline:'Step by step'},'zh-CN':{editorial:'编辑分栏',spotlight:'主张聚焦',grid:'证据网格',timeline:'逐步展开'}};
-const state={token:'',project:null,active:'',preview:null,dirty:false,saving:false,operation:false,exporting:false,locale:'en',counter:0,previewState:'idle',composing:false};
+const state={token:'',project:null,active:'',preview:null,dirty:false,saving:false,operation:false,exporting:false,locale:'en',counter:0,previewState:'idle',composing:false,saveFailed:false,autoSaveBlocked:false};
+const moreDrawer=$('#moreDialog');
 const edits=new EditHistory(),dialogs=new DialogManager(document),textMeasurer=new BrowserTextMeasurer();
 let previewTimer,previewTicket=0,previewAbort,toastTimer,presenter;
 const t=(english,chinese)=>state.locale==='zh-CN'?chinese:english;
@@ -35,7 +37,10 @@ function slide(){return state.project?.slides.find(s=>s.id===state.active);}
 function ready(){return !!state.project&&!state.operation;}
 function updateStatus(){
   const p=state.project,i=p?.slides.findIndex(s=>s.id===state.active)??0,count=p?.slides.length||0;
-  $('#saveState').textContent=!p?t('Opening local library…','正在打开本地文稿…'):state.saving?t('Saving…','正在保存…'):state.dirty?t('Unsaved changes · ⌘/Ctrl S','尚未保存 · ⌘/Ctrl S'):t('Saved on this computer','已保存在本机');
+  const attention=state.saveFailed||state.previewState==='error'||(state.previewState==='ready'&&state.preview?.audit.ok===false);
+  const square=!p?'saving':attention?'attention':state.saving?'saving':state.dirty?'unsaved':'saved';
+  const words=!p?t('Opening local library…','正在打开本地文稿…'):state.saveFailed?t('Not saved — see the notice above','未能保存 — 请看上方提示'):state.previewState==='error'?t('Preview not updated — fix the fields','预览未更新，请修复字段'):attention?t('Layout needs attention','需要调整排版'):state.saving?t('Saving…','正在保存…'):state.dirty?t('Unsaved changes · ⌘/Ctrl S','尚未保存 · ⌘/Ctrl S'):t('Saved on this computer','已保存在本机');
+  $('#saveState').dataset.state=square;$('#saveState').title=words;$('#saveState .sr-only').textContent=words;
   $('#save').disabled=!ready()||state.saving||!state.dirty||state.composing;
   $('#undo').disabled=!ready()||!edits.past.length||state.composing;$('#redo').disabled=!ready()||!edits.future.length||state.composing;
   for(const id of ['newDeck','importButton','projectPicker','openHistory','openAgent','openStoryboard'])$('#'+id).disabled=!ready()||state.saving;
@@ -48,26 +53,31 @@ function updateStatus(){
   $('#canvas').setAttribute('aria-busy',String(state.previewState==='pending'));
   $('#canvas').classList.toggle('stale',state.previewState!=='ready');
   $('#candidates').setAttribute('aria-busy',String(state.previewState==='pending'));
-  $('#fitStatus').textContent=state.previewState==='pending'?t('Measuring text…','正在测量文字…'):state.previewState==='error'?t('Preview not updated — fix the fields','预览未更新，请修复字段'):state.preview?.audit.ok?t('✓ Browser-measured · ready to export','✓ 浏览器已实测 · 可以导出'):t('Layout needs attention','需要调整排版');
-  $('#fitStatus').classList.toggle('has-error',state.previewState==='error'||(state.previewState==='ready'&&!state.preview?.audit.ok));
 }
 function changed(mutator,{full=false,group=null}={}){
   if(!ready())return;const before=structuredClone(state.project),previousActive=state.active;mutator();
   if(state.project.schemaVersion===2){for(const s of state.project.slides){s.intent??={claim:s.content.title,audience:state.project.brief.audience,evidence:[],visualFamily:'comparison',assetIds:[],interaction:{kind:'none',initial:0,labels:[]}};if(s.intent.interaction.kind!=='none'){if(s.content.items.length){s.intent.interaction.labels=s.content.items.map((v,i)=>v.slice(0,85)||String(i+1));s.intent.interaction.initial=Math.min(s.intent.interaction.initial,s.content.items.length-1);}else s.intent.interaction={kind:'none',initial:0,labels:[]};}s.intent.evidence=s.intent.evidence.filter(e=>s.sourceIds.includes(e.sourceId));}}
   if(JSON.stringify(before)===JSON.stringify(state.project))return;
-  edits.capture(before,previousActive,group);state.dirty=true;state.counter++;updateStatus();if(full)renderEditor();if(!state.composing)schedulePreview();
+  edits.capture(before,previousActive,group);state.dirty=true;state.counter++;updateStatus();if(full)renderEditor();if(!state.composing)schedulePreview();scheduleSave();
 }
 function undo(redo=false){
   if(!ready()||state.composing)return;const next=edits.step(state.project,state.active,redo);if(!next)return;
   state.project=next.project;state.active=next.project.slides.some(s=>s.id===next.active)?next.active:next.project.slides[0].id;
-  state.dirty=true;state.counter++;renderEditor();schedulePreview();
+  state.dirty=true;state.counter++;renderEditor();schedulePreview();scheduleSave();
 }
+// Redo stays out of the way: holding Undo for 500 ms shows it, and it hides again 1 s after release. The release that ends a hold is not an Undo.
+let undoHeld=false,holdTimer=0,hideTimer=0;
+function showRedo(){clearTimeout(hideTimer);$('#redo').hidden=false;undoHeld=true;}
+function armRedoHide(){clearTimeout(holdTimer);clearTimeout(hideTimer);hideTimer=setTimeout(()=>{if($('#redo').matches(':hover')||$('#undo').matches(':hover'))return armRedoHide();$('#redo').hidden=true;undoHeld=false;},1000);}
+$('#undo').addEventListener('pointerdown',()=>{undoHeld=false;clearTimeout(holdTimer);holdTimer=setTimeout(showRedo,500);});
+for(const type of ['pointerup','pointercancel','pointerleave'])$('#undo').addEventListener(type,()=>{clearTimeout(holdTimer);if(!$('#redo').hidden)armRedoHide();});
+for(const type of ['pointerup','pointerleave','click'])$('#redo').addEventListener(type,()=>armRedoHide());
 function localize(){
   const workbenchLink=document.querySelector('.visual-studio-link');if(workbenchLink)workbenchLink.textContent=t('Visual Studio · Prompt workbench','Visual Studio · 提示词工作台');
   if(pitchMode)state.locale='en';
   document.documentElement.lang=state.locale;document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;el.textContent=state.locale==='zh-CN'?(zh[key]||en[key]):en[key];});
   $('#uiLanguage').textContent=state.locale==='zh-CN'?'English':'中文';
-  const accessible={undo:['Undo','撤销'],redo:['Redo','重做'],deckTitle:['Deck title','文稿名称'],moveUp:['Move slide up','上移一页'],moveDown:['Move slide down','下移一页'],uiLanguage:['Switch interface language','切换界面语言'],ratio:['Slide aspect ratio','页面比例'],projectPicker:['Local library','本地文稿库']};
+  const accessible={undo:['Undo','撤销'],redo:['Redo','重做'],deckTitle:['Deck title','文稿名称'],moveUp:['Move slide up','上移一页'],moveDown:['Move slide down','下移一页'],uiLanguage:['Switch interface language','切换界面语言'],openMore:['More','更多'],ratio:['Slide aspect ratio','页面比例'],projectPicker:['Local library','本地文稿库']};
   for(const [id,[english,chinese]]of Object.entries(accessible))$('#'+id).setAttribute('aria-label',t(english,chinese));
   const jobs=state.locale==='zh-CN'?['开启故事','解释背景','展示证据','解释过程','促成决策','结束故事']:['Open the story','Explain the context','Show evidence','Explain a process','Make a decision','Close the story'];
   [...$('#role').options].forEach((option,i)=>option.textContent=jobs[i]);
@@ -82,7 +92,7 @@ async function library(){
 }
 function activate(project){
   if(pitchMode&&!projectIsEnglish(project))throw new Error('Presentation mode opens English projects only. Use the standard Studio to open another language edition.');
-  cancelPreview();state.project=project;state.active=project.slides[0].id;state.dirty=false;edits.reset();state.counter++;state.preview=null;state.previewState='pending';notice('');clearFieldErrors();renderEditor();schedulePreview();
+  cancelPreview();clearTimeout(saveTimer);state.saveFailed=false;state.autoSaveBlocked=false;state.project=project;state.active=project.slides[0].id;state.dirty=false;edits.reset();state.counter++;state.preview=null;state.previewState='pending';notice('');clearFieldErrors();renderEditor();schedulePreview();
 }
 function renderEditor(){
   const p=state.project,s=slide();if(!p||!s)return;
@@ -132,8 +142,8 @@ function renderPreview(){
   const result=state.preview?.slides.find(r=>r.slideId===state.active);
   if(result){
     $('#canvas').innerHTML=result.svg;sizeCanvas();$('#layoutCaption').textContent=(p.schemaVersion===2?slide().intent.visualFamily:(labels[state.locale][result.selected]||result.selected))+' · '+t('editable text + shapes','可编辑文字和形状');
-    const choices=state.preview.choices||[];document.querySelector('[data-i18n="directionsNote"]').textContent=p.schemaVersion===2?t('Choose the visual family in Design. Each item stays editable.','在“设计”中选择视觉结构，每条内容保持可编辑。'):t('Choose a composition. Your words stay yours.','选择排版，文字仍然由你决定。');document.querySelector('[data-i18n="scoresNote"]').textContent=p.schemaVersion===2?t('Semantic structure uses the reviewed intent. The rule score measures layout fit.','语义结构来自已审阅意图，规则分数只衡量排版适配。'):t('Scores estimate layout fit, not factual accuracy. Press 1–4 to compare.','分数估算排版适配度，不验证事实。按 1–4 比较。');$('#directionsTitle').textContent=p.schemaVersion===2?t('Structure follows meaning.','让结构回应内容。'):t('One story. Four directions.','同一个故事，四种表达。');
-    $('#candidates').innerHTML=choices.map((c,i)=>`<button class="candidate ${result.selected===c.id?'selected':''}" data-layout="${c.id}" aria-label="${x(p.schemaVersion===2?c.label:(labels[state.locale][c.id]||c.id))}" aria-pressed="${result.selected===c.id}" title="${x(c.explanation)}"><span aria-hidden="true">${c.svg}</span><span class="candidate-label"><span>${i+1} · ${x(p.schemaVersion===2?c.label:(labels[state.locale][c.id]||c.id))}</span><b>${c.score}</b></span><span class="candidate-caption">${c.eligible?t('Rule fit / 100','规则适配 / 100'):t('Text needs space','文字需要更多空间')}</span></button>`).join('');
+    const choices=state.preview.choices||[];
+    $('#candidates').innerHTML=choices.map((c,i)=>`<button class="candidate ${result.selected===c.id?'selected':''}${c.eligible?'':' unfit'}" data-layout="${c.id}" aria-label="${x(p.schemaVersion===2?c.label:(labels[state.locale][c.id]||c.id))}" aria-pressed="${result.selected===c.id}" title="${x(c.explanation)}">${c.eligible?'':`<span class="unfit-reason">${t('Too much text to fit','文字太多，放不下')}</span>`}<span aria-hidden="true">${c.svg}</span><span class="candidate-label"><span>${i+1} · ${x(p.schemaVersion===2?c.label:(labels[state.locale][c.id]||c.id))}</span></span></button>`).join('');
     const audit=state.preview.audit,current=audit.issues.filter(i=>!i.slideId||i.slideId===state.active);
     $('#qualityCount').textContent=current.length?String(current.length):t('Clear','通过');
     $('#qualityIssues').innerHTML=current.length?current.map(i=>`<div class="quality-item ${i.severity}">${i.severity==='error'?'!':'○'} ${x(state.locale==='zh-CN'?(i.code==='SOURCE_NEEDED'?'这些数字尚未关联来源，请补充或在备注中说明是示例。':i.code==='TEXT_OVERFLOW'?'有文字超出边界，请缩短文字或换一种布局。':i.message):i.message)}</div>`).join(''):`<div class="quality-item good">✓ ${t('No layout blockers on this slide.','本页未发现排版阻塞。')}</div>`;
@@ -144,7 +154,7 @@ function renderPreview(){
 }
 function sizeCanvas(){const svg=$('#canvas svg');if(!svg)return;const [,,w,h]=svg.getAttribute('viewBox').split(' ').map(Number),stage=$('#stage'),style=getComputedStyle(stage),aw=stage.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight),ah=stage.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom),scale=Math.min(aw/w,ah/h);$('#canvas').style.width=`${Math.max(1,w*scale)}px`;$('#canvas').style.height=`${Math.max(1,h*scale)}px`;}
 document.addEventListener('compositionstart',()=>{if(!state.composing){state.composing=true;cancelPreview();state.previewState='pending';updateStatus();}});
-document.addEventListener('compositionend',()=>{if(state.composing){state.composing=false;edits.endGroup();schedulePreview();}});
+document.addEventListener('compositionend',()=>{if(state.composing){state.composing=false;edits.endGroup();schedulePreview();scheduleSave();}});
 document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cancel',event=>{if(state.composing)event.preventDefault();}));
 new ResizeObserver(sizeCanvas).observe($('#stage'));window.addEventListener('resize',()=>dialogs.resize(innerWidth));
 // After a 409 the author may keep the draft as a new deck through the import-as-copy route; the newer revision stays untouched.
@@ -154,15 +164,24 @@ async function saveCopy(){
   const imported=await json('/api/import',{project:draft}),saved=await json('/api/projects',{project:imported.project});
   activate(saved.project);selectSlide(active);await library();toast(t('Saved as a separate copy. The newer version was not changed.','已另存为独立副本，较新版本未改动。'));return true;
 }
-async function save(){
+// Autosave: 1200 ms after the last edit. A conflict never opens the copy dialog on its own; it stops autosave and the square turns red until a manual save or reopen.
+let saveTimer=0;
+function scheduleSave(){clearTimeout(saveTimer);if(state.composing||state.autoSaveBlocked||!state.dirty)return;saveTimer=setTimeout(()=>{if(!state.composing)save({auto:true});},1200);}
+async function save({auto=false}={}){
   if(!state.project||state.saving||state.composing)return false;if(!state.dirty)return true;
-  reconnect.offerAgain();state.saving=true;edits.endGroup();updateStatus();const snapshot=structuredClone(state.project),counter=state.counter;
+  clearTimeout(saveTimer);reconnect.offerAgain();state.saving=true;edits.endGroup();updateStatus();const snapshot=structuredClone(state.project),counter=state.counter;let failed=false;
   try{const {project,historyUsage}=await json(`/api/projects/${snapshot.id}`,{project:snapshot,expectedRevision:snapshot.revision.number},'PUT');
     if(state.project.id===snapshot.id){state.project.revision=project.revision;if(counter===state.counter)state.dirty=false;}
+    state.saveFailed=false;state.autoSaveBlocked=false;
     // From 80% of the suggested history size the banner explains cleanup; nothing is deleted.
     await library();notice(historyCapacityNote(historyUsage,t),'warning');return !state.dirty;
-  }catch(error){if(error.code==='REVISION_CONFLICT'){try{if(await saveCopy())return true;}catch(copyError){onError(copyError);return false;}}if(error.code==='REVISION_CONFLICT')notice(t('Another window saved first. Your edits are still here. Export Project JSON to keep a draft, then reopen or import it as a new copy.','另一窗口先保存了。你的修改仍在这里。先导出项目 JSON 保留草稿，再重新打开或导入为新副本。'));else onError(error);return false;
-  }finally{state.saving=false;updateStatus();}
+  }catch(error){failed=true;
+    if(error.code==='REVISION_CONFLICT'){
+      if(!auto){try{if(await saveCopy())return true;}catch(copyError){state.saveFailed=true;onError(copyError);return false;}}
+      state.saveFailed=true;state.autoSaveBlocked=true;notice(t('Another window saved first. Your edits are still here. Export Project JSON to keep a draft, then reopen or import it as a new copy.','另一窗口先保存了。你的修改仍在这里。先导出项目 JSON 保留草稿，再重新打开或导入为新副本。'));
+    }else{state.saveFailed=true;onError(error);}
+    return false;
+  }finally{state.saving=false;updateStatus();if(!failed)scheduleSave();}
 }
 function download(blob,name){const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);}
 async function exportFile(format){
@@ -214,7 +233,7 @@ function setTab(name,focus=false){
 for(const key of ['eyebrow','body','slideTitle','items','metrics','notes','deckTitle','deckTitleSmall']){
   const input=$('#'+key);
   input.addEventListener('compositionstart',()=>{edits.endGroup();state.composing=true;cancelPreview();state.previewState='pending';updateStatus();});
-  input.addEventListener('compositionend',()=>{state.composing=false;edits.endGroup();schedulePreview();});
+  input.addEventListener('compositionend',()=>{state.composing=false;edits.endGroup();schedulePreview();scheduleSave();});
   input.addEventListener('blur',()=>edits.endGroup());
   input.addEventListener('input',event=>changed(()=>{
     const value=event.target.value,s=slide();
@@ -227,10 +246,19 @@ for(const key of ['eyebrow','body','slideTitle','items','metrics','notes','deckT
 }
 $('#stageStyle').onchange=e=>changed(()=>{if(e.target.value==='cosmos-dots')state.project.extensions.deckweftShowcase={version:1,style:'cosmos-dots'};else delete state.project.extensions.deckweftShowcase;},{full:true});
 $('#ratio').onchange=e=>changed(()=>state.project.aspectRatio=e.target.value);$('#contentLocale').onchange=e=>changed(()=>state.project.locale=e.target.value);$('#role').onchange=e=>changed(()=>slide().role=e.target.value);$('#motion').onchange=e=>changed(()=>slide().motion.preset=e.target.value);$('#duration').onchange=e=>changed(()=>slide().motion.duration=Number(e.target.value));
-$('#save').onclick=save;$('#undo').onclick=()=>undo();$('#redo').onclick=()=>undo(true);$('#present').onclick=()=>present();$('#exitPresent').onclick=()=>present(true);
+$('#save').onclick=()=>save();$('#undo').onclick=event=>{if(undoHeld){undoHeld=false;event.preventDefault();return;}undo();};$('#redo').onclick=()=>undo(true);$('#present').onclick=()=>{if(!moreDrawer.open)return present();moreDrawer.addEventListener('close',()=>present(),{once:true});moreDrawer.close();}; // start after focus has returned, so the presenter keeps its own focus
+$('#exitPresent').onclick=()=>present(true);
 $('#openExport').onclick=()=>{updateStatus();dialogs.open($('#exportDialog'));};$('#newDeck').onclick=async()=>{dialogs.closeDrawer();if(await canLeave())dialogs.open($('#outlineDialog'),$('#newDeck'));};
 $('#autoLayout').onclick=()=>changed(()=>slide().design.layout='auto');
-$('#toggleStory').onclick=()=>dialogs.openDrawer('story');$('#toggleInspector').onclick=()=>dialogs.openDrawer('inspector');
+// On phones the page list is a fixed strip, and the two zone buttons open the one sheet on the Words or the Look section.
+const phone=matchMedia('(max-width:680px)');
+$('#toggleStory').onclick=()=>{if(phone.matches){setTab('content');dialogs.openDrawer('inspector',$('#toggleStory'));}else dialogs.openDrawer('story');};
+$('#toggleInspector').onclick=()=>{if(phone.matches)setTab('design');dialogs.openDrawer('inspector');};
+// Phone top band keeps brand, state square, More and Take away: the title and Undo move to the top of the More drawer (moved, never copied).
+const topSlots=['undo','redo','deckTitle'].map(id=>{const el=$('#'+id),marker=document.createComment('top-'+id);el.before(marker);return {el,marker};});
+function placeTopControls(){for(const {el,marker} of topSlots){if(phone.matches)$('#moreTop').append(el);else marker.after(el);}}
+function labelZones(){$('#toggleStory').setAttribute('aria-label',phone.matches?t('Words','词'):t('Slides','页面'));$('#toggleInspector').setAttribute('aria-label',phone.matches?t('Look','样子'):t('Edit','编辑'));}
+phone.addEventListener('change',()=>{placeTopControls();labelZones();});window.addEventListener('deckweft:locale',labelZones);placeTopControls();labelZones();
 $('#uiLanguage').onclick=()=>{if(state.composing||pitchMode)return;state.locale=state.locale==='en'?'zh-CN':'en';localize();};
 for(const [id,type]of Object.entries({addSlide:'add',duplicate:'duplicate',moveUp:'up',moveDown:'down',deleteSlide:'delete'}))$('#'+id).onclick=()=>slideAction(type);
 async function switchProject(id){
@@ -274,7 +302,11 @@ mountStudioTools({state,$,dialogs,json,canLeave,activate,library});
 applyActions(document);
 mountPreferences({dialogs,$,locale:()=>state.locale});
 presenter=mountPresenter({state,$,json,dialogs,onError:error=>{if(['STALE_MEASUREMENT','MEASUREMENT_EXPIRED','MEASUREMENT_REQUIRED'].includes(error.code))schedulePreview();onError(error);}});
-$('#toggleDirections').onclick=()=>{const collapsed=document.querySelector('.directions').classList.toggle('collapsed');$('#toggleDirections').setAttribute('aria-expanded',String(!collapsed));try{localStorage.setItem('deckweft.layouts.collapsed',String(collapsed));}catch{}requestAnimationFrame(sizeCanvas);};
-try{if(localStorage.getItem('deckweft.layouts.collapsed')==='true')$('#toggleDirections').click();}catch{}
+try{localStorage.removeItem('deckweft.layouts.collapsed');}catch{} // the previews are always open now
 
 mountStoryboard({state,$,json,dialogs,canLeave,activate,library,changed});
+// The assistant group only appears once a host agent is connected; checked each time the drawer opens (a startup call would race the session token).
+async function refreshAssistant(){try{const status=await json('/api/agent/status',undefined,'GET');$('#moreAgent').hidden=!status.connected;}catch{$('#moreAgent').hidden=true;}}
+// Items that open their own dialog or export dismiss the drawer first, so the drawer behaves like a menu and focus returns to #openMore.
+moreDrawer.addEventListener('click',event=>{const b=event.target.closest('button');if(b&&(['openHistory','openAgent','openRehearsal','openSettings','openStoryboard','importButton','newDeck'].includes(b.id)||b.dataset.export))moreDrawer.close();},true);
+$('#openMore').onclick=()=>{refreshAssistant();dialogs.open(moreDrawer,$('#openMore'));};
