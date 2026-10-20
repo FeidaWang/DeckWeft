@@ -7,6 +7,7 @@ import { validateSchema } from '../core/schema.mjs';
 import { assertPresentation } from '../core/blocks.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { assertChapters } from './chapters.mjs';
+import { assertReferences } from '../references/presentation.mjs';
 /** S9a: blocks behind a page disclosure stay in the scene and the document, but outside the composition. */
 export const visibleBlockIds=scene=>scene.disclosure?scene.blockIds.filter(id=>!scene.disclosure.blockIds.includes(id)):scene.blockIds;
 export const visibleScene=scene=>scene.disclosure?{...scene,blockIds:visibleBlockIds(scene)}:scene;
@@ -35,7 +36,7 @@ export function assertDesignPlan(document, plan) {
     if(scene.disclosure){const hidden=new Set(scene.disclosure.blockIds),targets=new Set([...(scene.interactions||[]).flatMap(i=>[i.blockId,i.otherBlockId,...(i.hotspots||[]).map(h=>h.annotationId)]),...scene.blockIds.map(id=>blocks.get(id)).filter(b=>b.type==='annotation').map(b=>b.target.blockId)]);
      if(scene.disclosure.blockIds.some(id=>!scene.blockIds.includes(id)||!DISCLOSURE_TYPES.includes(blocks.get(id)?.type)))fail('A page disclosure holds paragraph, list or callout blocks of the same page.');
      if(hidden.has(scene.focalBlockId)||hidden.has(scene.takeaway?.blockId)||[...hidden].some(id=>targets.has(id)))fail('The focal block, the takeaway and interaction or annotation targets stay on the page.');}
-    assertComposition(document,visibleScene(scene));assertImageSlots(document,scene);assertSceneSemantics(document,scene);
+    assertComposition(document,visibleScene(scene));assertImageSlots(document,scene);assertSceneSemantics(document,scene);assertReferences(document,visibleScene(scene));
     const kinds = visibleBlockIds(scene).map(id => blocks.get(id).type);
     if (scene.composition === 'diagonal-cover' && (scene.theme !== 'cream-collage' || !kinds.includes('heading') || !kinds.includes('metric'))) fail('Diagonal cover needs Cream Collage, a heading and a metric.');
     if (scene.composition === 'chart-with-evidence-rail' && (scene.theme !== 'dark-data' || !kinds.includes('chart') || !kinds.includes('heading'))) fail('Chart evidence needs Dark Data, a heading and a chart.');

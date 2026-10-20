@@ -13,6 +13,19 @@ import {cineProject,CINE_SCENES} from './cine-corpus.mjs';
 import {candidateFit,CANDIDATE_HEIGHT} from '../src/design/rhythm.mjs';
 import {splitScene} from '../src/design/split.mjs';
 import {planAuthorAction,AUTHOR_ACTIONS} from '../src/workbench/author-actions.mjs';
+import {readFile} from 'node:fs/promises';
+import {createVisualProject} from '../src/core/visual-project.mjs';
+import {REFERENCE_MODES,referenceIndex,sceneReferences,assertReferences} from '../src/references/presentation.mjs';
+import {familyProject} from './families.mjs';
+import {evidenceProject} from './evidence-scene.mjs';
+import {blueprintProject} from './blueprint-a.mjs';
+import {chartKindsProject} from './chart-kinds.mjs';
+import {releaseProject} from './release-gate.mjs';
+import designPlanSchema from '../schemas/design-plan.schema.json' with {type:'json'};
+import presentationSchema from '../schemas/presentation-v3.schema.json' with {type:'json'};
+const legacyProjects=async()=>[await familyProject('en',home),await familyProject('zh-CN',home),await evidenceProject('en'),await evidenceProject('zh-CN'),await blueprintProject('en'),await blueprintProject('zh-CN'),chartKindsProject('en'),await releaseProject('gallery','en',home),await releaseProject('gallery','zh-CN',home)];
+const applyNegative=(fixture,c)=>{const {document,plan,assets}=structuredClone(fixture),p={document,plan,assets};for(const [path,value]of Object.entries(c.set)){const keys=path.split('.');let o=p;for(const k of keys.slice(0,-1))o=o[/^\d+$/.test(k)?Number(k):k];o[keys.at(-1)]=structuredClone(value);}return p;};
+const negativeCases=async tag=>{const n=JSON.parse(await readFile(new URL('./fixtures/visual/cine.negative.json',import.meta.url),'utf8'));return n.cases.filter(c=>c.task===tag);};
 
 const home=await realpath(await mkdtemp(path.join(os.tmpdir(),'dw-cine-')));
 test.after(()=>rm(home,{recursive:true,force:true}));
@@ -179,4 +192,47 @@ test('CINE-001 candidateFit reports labelMinPx and the 21 px label target withou
  const v=candidateFit({...good,visualFeatures:{focus:.4,density:.5,imageRatio:0}},{width:1440});assert.deepEqual(v.features,{focus:.4,density:.5,imageRatio:0,labelMinPx:11,labelTargetPx:21});
  // A wider budget from another target.
  assert.equal(candidateFit({...good,height:901},{width:1440},{target:{...TARGETS.presentation,candidateHeight:1000}}).ok,true);
+});
+
+// ---- Task 4: CINE-002 reference presentation contract and markers ----
+const sceneOf=(p,id)=>p.plan.scenes.find(s=>s.id===id);
+test('CINE-002 markers: 1, 4 and 12 sources number by first appearance in deck order; the map is keyed by stable source id',async()=>{
+ const p=await cineProject('en',home,{declared:['references']}),index=referenceIndex(p.document,p.plan);
+ assert.equal(index.get('src-field'),1);assert.equal(index.get('src-product'),2);assert.equal(index.get('src-lab'),3);assert.equal(index.get('src-mechanism'),4);
+ for(let i=1;i<=12;i++)assert.equal(index.get(`src-ev-${String(i).padStart(2,'0')}`),4+i);assert.equal(index.get('src-interview'),17);
+ assert.equal(index.size,17);assert.deepEqual([...index.values()],[...index.values()].sort((a,b)=>a-b));
+ const markers=id=>sceneReferences(p.document,p.plan,sceneOf(p,id)).strip.map(s=>s.marker);
+ assert.deepEqual(markers('context'),[1]);assert.deepEqual(markers('overflow'),[1,2,3,4]);assert.deepEqual(markers('evidence'),Array.from({length:12},(_,i)=>5+i));
+ const zh=await cineProject('zh-CN',home,{declared:['references']});assert.deepEqual([...referenceIndex(zh.document,zh.plan)],[...index]);
+});
+test('CINE-002 sceneReferences: compact keeps the quote attribution as a region and sends the other citations to the strip; expanded keeps all; source-is-subject flags subject',async()=>{
+ assert.deepEqual(REFERENCE_MODES,['expanded','compact','source-is-subject']);
+ const p=await cineProject('en',home,{declared:['references']});
+ const q=sceneReferences(p.document,p.plan,sceneOf(p,'quote'));assert.equal(q.mode,'compact');assert.deepEqual(q.strip,[]);assert.deepEqual(q.regions,['q-attrib']);assert.equal(q.subject,false);
+ assert.deepEqual(q.claims,[{blockId:'q-title',markers:[17]},{blockId:'q-para',markers:[17]}],'the quotation itself is attributed by its citation, not by a marker');
+ const ev=sceneReferences(p.document,p.plan,sceneOf(p,'evidence'));assert.equal(ev.strip.length,12);assert.deepEqual(ev.regions,[]);
+ assert.deepEqual(ev.strip[0],{marker:5,blockId:'ev-source-01',sourceId:'src-ev-01',text:'Illustrative source 01',title:p.document.sources.find(s=>s.id==='src-ev-01').title,url:p.document.sources.find(s=>s.id==='src-ev-01').url});
+ assert.deepEqual(ev.claims.find(c=>c.blockId==='ev-chart-a'),{blockId:'ev-chart-a',markers:[5]});assert.deepEqual(ev.claims.find(c=>c.blockId==='ev-body'),{blockId:'ev-body',markers:[7]});
+ assert.deepEqual(ev.claims.map(c=>c.blockId),['ev-title','ev-chart-a','ev-chart-b','ev-body','ev-qualifier']);
+ const ctx=sceneReferences(p.document,p.plan,sceneOf(p,'context'));assert.deepEqual(ctx.claims.map(c=>[c.blockId,c.markers]),[['ctx-title',[1]],['ctx-image',[1]],['ctx-body',[1]]]);
+ // A page with several sources on one claim lists them in marker order.
+ const pr=sceneReferences(p.document,p.plan,sceneOf(p,'product'));assert.deepEqual(pr.claims.find(c=>c.blockId==='prod-callout').markers,[2,3]);assert.deepEqual(pr.strip.map(s=>s.blockId),['prod-source-1','prod-source-2']);
+ const legacy=await cineProject('en',home,{declared:[]}),ex=sceneReferences(legacy.document,legacy.plan,sceneOf(legacy,'evidence'));
+ assert.equal(ex.mode,'expanded');assert.deepEqual(ex.strip,[]);assert.equal(ex.regions.length,12);assert.deepEqual(ex.claims,[],'expanded pages carry no markers: today\'s rendering');
+ const subject=structuredClone(p);sceneOf(subject,'evidence').references={mode:'source-is-subject'};const sj=sceneReferences(subject.document,subject.plan,sceneOf(subject,'evidence'));
+ assert.equal(sj.mode,'source-is-subject');assert.equal(sj.subject,true);assert.deepEqual(sj.strip,[]);assert.equal(sj.regions.length,12);assert.deepEqual(sj.claims,[]);
+ for(const s of p.plan.scenes)assertReferences(p.document,s);
+});
+test('CINE-002 contract: references.mode outside the enum, or a quote page whose attribution would leave the page, is refused with INVALID_DESIGN_PLAN; legacy fixtures validate unchanged',async()=>{
+ const refs=designPlanSchema.properties.scenes.items.properties.references;assert.deepEqual(refs.properties.mode.enum,REFERENCE_MODES);assert.deepEqual(refs.required,['mode']);assert.equal(refs.additionalProperties,false);
+ const fields=presentationSchema.properties.authorOverrides.properties.sceneLocks.items.properties.fields.items.enum;assert.deepEqual(fields.slice(fields.indexOf('profile')),['profile','references','intent','media']);
+ const fixture=JSON.parse(await readFile(new URL('./fixtures/visual/cine.en.json',import.meta.url),'utf8'));
+ const bad=applyNegative(fixture,{set:{'plan.scenes.6.references':{mode:'tight'}}});assert.throws(()=>createVisualProject(bad.document,bad.plan,{id:'x',assets:bad.assets}),e=>e.code==='INVALID_DESIGN_PLAN');
+ const leave=applyNegative(fixture,{set:{'plan.scenes.8.blockIds':['lh-title','lh-body','lh-source','q-quote'],'plan.scenes.8.references':{mode:'compact'}}});
+ assert.throws(()=>createVisualProject(leave.document,leave.plan,{id:'x',assets:leave.assets}),e=>e.code==='INVALID_DESIGN_PLAN'&&/attribut/i.test(e.message));
+ const cases=await negativeCases('references');assert.ok(cases.length>=4);
+ for(const c of cases){const b=applyNegative(fixture,c);assert.throws(()=>createVisualProject(b.document,b.plan,{id:'negative',assets:b.assets}),e=>e.code===(c.code||'INVALID_DESIGN_PLAN'),c.why);}
+ // A references lock is accepted; every legacy fixture validates untouched.
+ const locked=structuredClone(fixture);locked.document.authorOverrides.sceneLocks.push({sceneId:'quote',fields:['references']});createVisualProject(locked.document,locked.plan,{id:'locked',assets:locked.assets});
+ for(const p of await legacyProjects()){assertReferences(p.document,p.plan.scenes[0]);for(const s of p.plan.scenes)assert.equal('references' in s,false);}
 });

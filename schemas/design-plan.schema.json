@@ -1057,6 +1057,23 @@
               "blockIds"
             ],
             "additionalProperties": false
+          },
+          "references": {
+            "type": "object",
+            "description": "CINE-002: how this page presents its citations. Absent means expanded (every citation a full-width region, today's rendering). compact moves citations to a source strip with claim markers, except a citation that attributes a quotation; source-is-subject keeps every citation as a region and gives the page to its sources. Canonical sources and claim bindings never change.",
+            "properties": {
+              "mode": {
+                "enum": [
+                  "expanded",
+                  "compact",
+                  "source-is-subject"
+                ]
+              }
+            },
+            "required": [
+              "mode"
+            ],
+            "additionalProperties": false
           }
         },
         "required": [

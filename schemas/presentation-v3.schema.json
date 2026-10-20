@@ -503,7 +503,10 @@
                     "interactions",
                     "cues",
                     "motion",
-                    "profile"
+                    "profile",
+                    "references",
+                    "intent",
+                    "media"
                   ]
                 },
                 "minItems": 1,
