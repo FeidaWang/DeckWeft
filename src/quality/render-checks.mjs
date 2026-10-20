@@ -124,14 +124,18 @@ export function weakestPage(pages){
  const w=[...scored].sort((a,b)=>a.score-b.score)[0];
  return {sceneId:w.sceneId,viewport:w.viewport,score:w.score,reasons:Object.entries(w.penalties).filter(([,v])=>v>=.5).map(([k])=>REASONS[k])};
 }
+/** The soft features of one scene from its player .7 check: the declared entry, the focal block, the media roles and the authored subjects come from the plan. */
+export function sceneFeatures(project,scene,check,{pageWidth=1440}={}){
+ if(!check||!Array.isArray(check.regions))return null;
+ const media=[...mediaRoles(project.document,scene).keys()];
+ const subjects=(check.images||[]).map(i=>({blockId:i.blockId,...subjectFraction({pageWidth,pageHeight:check.height,imageBox:i.box,subjectBounds:subjectOf(scene,i.blockId),crop:scene.crops?.find(c=>c.blockId===i.blockId)||null})}));
+ return softFeatures(check,{pageWidth,entry:scene.intent?.entry??null,focalBlockId:scene.focalBlockId,mediaBlockIds:media,subjects});
+}
 /** The soft features of every scene whose fit check carries the player .7 fields, in one observation. */
 function observedFeatures(project,o){
  const out=[];
  for(const scene of project.plan.scenes){
-  const check=o.fit?.checks?.find(c=>c.sceneId===scene.id);if(!check||!Array.isArray(check.regions))continue;
-  const pageWidth=o.viewport?.width||1440,media=[...mediaRoles(project.document,scene).keys()];
-  const subjects=(check.images||[]).map(i=>({blockId:i.blockId,...subjectFraction({pageWidth,pageHeight:check.height,imageBox:i.box,subjectBounds:subjectOf(scene,i.blockId),crop:scene.crops?.find(c=>c.blockId===i.blockId)||null})}));
-  const features=softFeatures(check,{pageWidth,entry:scene.intent?.entry??null,focalBlockId:scene.focalBlockId,mediaBlockIds:media,subjects});
+  const features=sceneFeatures(project,scene,o.fit?.checks?.find(c=>c.sceneId===scene.id),{pageWidth:o.viewport?.width||1440});if(!features)continue;
   out.push({viewport:o.viewport,sceneId:scene.id,features,...softScore(features)});
  }
  return out;

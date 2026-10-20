@@ -1,3 +1,6 @@
+// CINE batch 2 extends it (docs/plans/cinematic-composition-batch-2.md, Task 8): the player .7 measurements (per-region text sizes, image
+// boxes, strip height, grayscale hierarchy), the seven soft features and the weakest page per language, the three ranked candidates of
+// the product page with their differences, the annotated subject fractions, grayscale copies of four pages; evidence in docs/evidence/cine-p1.
 // CINE batch 1 browser evidence (docs/plans/cinematic-composition-build-map.md, Task 12): the ten-page corpus in both languages
 // at 1440, 1024 and 390 px, the candidate gate per page (with the label and media features), the subject fraction of the three
 // images, the source strip's measured height against its 48 px budget, grayscale copies of the product and evidence pages, the
@@ -13,7 +16,9 @@ import {startStudio} from '../src/services/server.mjs';
 import {VisualProjectStore} from '../src/services/visual-store.mjs';
 import {exportDeck} from '../src/render/export.mjs';
 import {visualAssetResources} from '../src/assets/visual.mjs';
-import {candidateFit} from '../src/design/rhythm.mjs';
+import {candidateFit,candidateProjects,rankCandidates} from '../src/design/rhythm.mjs';
+import {sceneFeatures,softScore,weakestPage} from '../src/quality/render-checks.mjs';
+import {PT_PER_PX} from '../src/targets/target-budget.mjs';
 import {subjectFraction,mediaRoles,subjectOf} from '../src/design/media.mjs';
 import {sceneReferences} from '../src/references/presentation.mjs';
 import {effectiveIntent} from '../src/design/intent.mjs';
@@ -24,13 +29,13 @@ import {PLAYER_VERSION} from '../src/render/web/runtime.mjs';
 import {TARGETS} from '../src/targets/target-budget.mjs';
 import {assertVisualProject} from '../src/core/visual-project.mjs';
 import {cineProject,CINE_SCENES} from './cine-corpus.mjs';
-const root=fileURLToPath(new URL('../',import.meta.url)),out=path.join(root,'dist/visual-cine/acceptance'),evidence=path.join(root,'docs/evidence/cine-p0');await mkdir(out,{recursive:true});await mkdir(evidence,{recursive:true});
+const root=fileURLToPath(new URL('../',import.meta.url)),out=path.join(root,'dist/visual-cine/acceptance'),evidence=path.join(root,'docs/evidence/cine-p1');await mkdir(out,{recursive:true});await mkdir(evidence,{recursive:true});
 const writeEvidence=process.argv.includes('--evidence');
 if(!process.env.CHROMIUM_PATH)throw Error('Set CHROMIUM_PATH to an isolated testing binary outside Applications.');
 const executablePath=await realpath(process.env.CHROMIUM_PATH);if(/[\\/]Applications[\\/]/i.test(executablePath)||/[\\/]Applications[\\/]/i.test(process.env.CHROMIUM_PATH))throw Error('Installed browsers are read-only.');
 const module=process.env.PLAYWRIGHT_MODULE||'playwright',{chromium}=await import(path.isAbsolute(module)?pathToFileURL(module).href:module);
 const home=await realpath(await mkdtemp(path.join(os.tmpdir(),'dw-cine-browser-'))),store=await new VisualProjectStore(home).init(),app=await startStudio({home,port:0}),browser=await chromium.launch({executablePath,headless:true});
-const report={format:'deckweft-cine-p0-browser',version:1,recordedAt:new Date().toISOString().slice(0,10),browser:browser.version(),renderer:WEB_RENDERER_VERSION,player:PLAYER_VERSION,isolation:'Isolated cached testing binary; ephemeral contexts with temporary profiles; installed apps and personal profiles untouched',target:TARGETS.presentation,pages:[],strips:[],subjects:[],media:[],split:null,grayscale:[],captures:[],errors:[],externalRequests:[]},hash=b=>createHash('sha256').update(b).digest('hex');
+const report={format:'deckweft-cine-p1-browser',version:2,recordedAt:new Date().toISOString().slice(0,10),browser:browser.version(),renderer:WEB_RENDERER_VERSION,player:PLAYER_VERSION,isolation:'Isolated cached testing binary; ephemeral contexts with temporary profiles; installed apps and personal profiles untouched',target:TARGETS.presentation,pages:[],strips:[],subjects:[],media:[],split:null,grayscale:[],weakest:{},ranking:null,typography:[],captures:[],errors:[],externalRequests:[]},hash=b=>createHash('sha256').update(b).digest('hex');
 const context=await browser.newContext({viewport:{width:1440,height:1000},deviceScaleFactor:1,reducedMotion:'reduce'}),routes=new Map();
 await context.route('**/*',async route=>{const url=route.request().url();if(routes.has(url))await route.fulfill({status:200,contentType:'text/html',body:routes.get(url)});else if(url.startsWith(app.url+'/')||url.startsWith('data:'))await route.continue();else{report.externalRequests.push(url);await route.abort();}});
 const page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
@@ -54,13 +59,18 @@ try{
   for(const [i,s]of p.plan.scenes.entries()){
    const check=fit.checks[i],geo=g[i],cropOf=id=>s.crops?.find(c=>c.blockId===id)||null,images=geo.images.map(im=>({blockId:im.blockId,box:im.img,subjectBounds:subjectOf(s,im.blockId),crop:cropOf(im.blockId)}));
    const accepted=candidateFit({...check,images},fit.viewport),intent=effectiveIntent(p.document,p.plan,i),refs=sceneReferences(p.document,p.plan,s);
-   report.pages.push({locale,sceneId:s.id,composition:s.composition,theme:s.theme,declared:CINE_SCENES[s.id]||{},intent,references:{mode:refs.mode,strip:refs.strip.length,regions:refs.regions.length,claims:refs.claims.length},mediaRoles:Object.fromEntries(mediaRoles(p.document,s)),width:1440,height:Math.ceil(check.height),fit:accepted,images:geo.images,diagrams:geo.diagrams});
+   // CINE-007: the soft features from the player .7 check (regions, images, strip, grayscale) and the delivered text sizes per region.
+   const soft=sceneFeatures(p,s,check,{pageWidth:1440}),scored=soft?softScore(soft):null;
+   const grayscale=check.grayscale?{holds:check.grayscale.holds,primary:check.grayscale.primary,strongest:check.grayscale.strongest,method:check.grayscale.method}:null;
+   for(const r of check.regions||[])if(Number.isFinite(r.minTextPx))report.typography.push({locale,sceneId:s.id,blockId:r.blockId,minTextPx:r.minTextPx,maxTextPx:r.maxTextPx,pptxPtAtFit:Math.round(r.minTextPx*PT_PER_PX.pptx*Math.min(1,810/check.height)*100)/100,fits:check.height<=810.5});
+   report.pages.push({locale,sceneId:s.id,composition:s.composition,theme:s.theme,declared:CINE_SCENES[s.id]||{},intent,references:{mode:refs.mode,strip:refs.strip.length,regions:refs.regions.length,claims:refs.claims.length},mediaRoles:Object.fromEntries(mediaRoles(p.document,s)),width:1440,height:Math.ceil(check.height),fit:accepted,soft,score:scored?.score??null,penalties:scored?.penalties??null,grayscale,strip:check.strip||null,images:geo.images,diagrams:geo.diagrams});
    if(geo.strip)report.strips.push({locale,sceneId:s.id,width:1440,height:Math.round(geo.strip.box.height*10)/10,budget:geo.strip.budget,items:geo.strip.items,withinBudget:geo.strip.box.height<=(geo.strip.budget||48)+0.5});
    for(const im of geo.images)report.subjects.push({locale,sceneId:s.id,blockId:im.blockId,mediaRole:im.mediaRole,imageBox:im.img,subjectBounds:subjectOf(s,im.blockId),crop:cropOf(im.blockId),...subjectFraction({pageWidth:1440,pageHeight:check.height,imageBox:im.img,subjectBounds:subjectOf(s,im.blockId),crop:cropOf(im.blockId)})});
    const file=await capture(`cine-${locale}-${s.id}-1440.png`,page.locator('#'+s.id));cells.push({file,ok:accepted.ok,label:`${s.id} · ${s.composition} · ${accepted.ok?'passes':'FAILS: '+accepted.reasons.join('; ')} · ${Math.ceil(check.height)}px`});
   }
+  report.weakest[locale]=weakestPage(report.pages.filter(x=>x.locale===locale&&x.width===1440&&x.soft).map(x=>({sceneId:x.sceneId,features:x.soft})));
   // Grayscale copies: the primary subject must still read without colour (spec §8, a diagnostic signal, not eye tracking).
-  await page.addStyleTag({content:'html{filter:grayscale(1)}'});for(const id of ['product','evidence'])report.grayscale.push({locale,sceneId:id,file:await capture(`cine-${locale}-${id}-1440-grayscale.png`,page.locator('#'+id))});
+  await page.addStyleTag({content:'html{filter:grayscale(1)}'});for(const id of ['product','evidence','detail','mechanism'])report.grayscale.push({locale,sceneId:id,file:await capture(`cine-${locale}-${id}-1440-grayscale.png`,page.locator('#'+id))});
   await page.evaluate(()=>{for(const st of document.querySelectorAll('style'))if(st.textContent.includes('grayscale(1)'))st.remove();});
   for(const width of [1024,390]){
    const f=await resize(width),rows=await geometry();
@@ -84,6 +94,10 @@ try{
    const fits=after?ids.map(id=>{const i=current.plan.scenes.findIndex(s=>s.id===id);return {sceneId:id,height:Math.ceil(after.checks[i].height),fit:candidateFit(after.checks[i],after.viewport)};}):null;
    const files=[];if(after)for(const id of ids)files.push(await capture(`cine-en-${id}-split-1440.png`,page.locator('#'+id)));
    report.split={regionBounds,passes,changed:current!==p,pages:ids,fits,files,blockIds:Object.fromEntries(ids.map(id=>[id,current.plan.scenes.find(s=>s.id===id).blockIds]))};
+   // CINE-007 A/B: the three candidate variants of the product page (same corpus, assets, theme, viewport, targets), measured and ranked.
+   const candidates=candidateProjects(p),pi=p.plan.scenes.findIndex(s=>s.id==='product'),candidateFits=[],files2=[];
+   for(const [k,q]of candidates.entries()){const f=await render(q,'cine-en-candidate-'+k),g2=await geometry();candidateFits.push(q.plan.scenes.map((s,j)=>{const c=f.checks[j];if(j!==pi)return {ok:true,reasons:[],height:Math.ceil(c.height),viewport:f.viewport};const cropOf=id=>s.crops?.find(v=>v.blockId===id)||null,images=g2[j].images.map(im=>({blockId:im.blockId,box:im.img,subjectBounds:subjectOf(s,im.blockId),crop:cropOf(im.blockId)}));return {...candidateFit({...c,images},f.viewport),height:Math.ceil(c.height),viewport:f.viewport,soft:sceneFeatures(q,s,c,{pageWidth:1440})};}));files2.push(await capture(`cine-en-product-candidate-${q.plan.scenes[pi].composition}-1440.png`,page.locator('#product')));}
+   const ranked=rankCandidates(p,candidates,candidateFits)[pi];report.ranking={sceneId:'product',files:files2,ranked:ranked.ranked};
   }
  }
  // Media variants on the product (image family and the two theme heroes) and mechanism (system-map) pages, at 1440 px.
@@ -114,5 +128,5 @@ try{
  assert.deepEqual(report.errors,[]);assert.deepEqual(report.externalRequests,[]);
  await writeFile(path.join(out,'report.json'),JSON.stringify(report,null,1)+'\n');
  if(writeEvidence){await writeFile(path.join(evidence,'media-space.json'),JSON.stringify(media,null,1)+'\n');await writeFile(path.join(evidence,'browser-report.json'),JSON.stringify(report,null,1)+'\n');for(const f of report.captures.filter(c=>c.file.endsWith('.jpg')))await copyFile(path.join(out,f.file),path.join(evidence,f.file));}
- console.log(JSON.stringify({browser:report.browser,pages:report.pages.length,failing:report.pages.filter(x=>!x.fit.ok).map(x=>`${x.locale}/${x.sceneId}@${x.width}: ${x.fit.reasons.join('; ')}`),strips:report.strips.filter(s=>s.width===1440).map(s=>`${s.locale}/${s.sceneId}: ${s.height}px of ${s.budget}`),winners:media.winners,media:report.media.map(r=>`${r.page} ${r.theme} ${r.composition}: ${r.drawn?.join('×')} ${r.fit?'fits':'FAILS: '+(r.reasons||[]).join('; ')}${r.refused?' refused':''}`),split:report.split&&{changed:report.split.changed,passes:report.split.passes.length,pages:report.split.pages,fits:report.split.fits?.map(f=>`${f.sceneId}:${f.height}px ${f.fit.ok?'ok':f.fit.reasons.join('; ')}`)},out},null,1));
+ console.log(JSON.stringify({browser:report.browser,player:PLAYER_VERSION,pages:report.pages.length,weakest:report.weakest,ranking:report.ranking?.ranked.map(r=>`${r.composition}: ${r.ok?'ok':'FAILS'} score ${r.score} differs ${r.differences.map(d=>d.feature).join(',')||'-'}`),grayscaleHolds:report.pages.filter(x=>x.width===1440&&x.grayscale).map(x=>`${x.locale}/${x.sceneId}: ${x.grayscale.holds}`),subjects:report.subjects.map(s=>`${s.locale}/${s.sceneId}/${s.blockId}: container ${(s.containerFraction*100).toFixed(1)}% subject ${(s.subjectFraction*100).toFixed(1)}% ${s.annotated?'annotated':'no annotation'}`),failing:report.pages.filter(x=>!x.fit.ok).map(x=>`${x.locale}/${x.sceneId}@${x.width}: ${x.fit.reasons.join('; ')}`),strips:report.strips.filter(s=>s.width===1440).map(s=>`${s.locale}/${s.sceneId}: ${s.height}px of ${s.budget}`),winners:media.winners,media:report.media.map(r=>`${r.page} ${r.theme} ${r.composition}: ${r.drawn?.join('×')} ${r.fit?'fits':'FAILS: '+(r.reasons||[]).join('; ')}${r.refused?' refused':''}`),split:report.split&&{changed:report.split.changed,passes:report.split.passes.length,pages:report.split.pages,fits:report.split.fits?.map(f=>`${f.sceneId}:${f.height}px ${f.fit.ok?'ok':f.fit.reasons.join('; ')}`)},out},null,1));
 }finally{await context.close();await browser.close();await app.close();await rm(home,{recursive:true,force:true});}
