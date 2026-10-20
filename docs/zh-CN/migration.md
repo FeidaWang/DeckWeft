@@ -84,3 +84,22 @@ const next=separateLocks(project);
 - `planPages()` 生成的页数规划带有 `basis` 哈希和所用选项；`applyPagePlan()` 对其他版本的文稿一律拒绝（`PAGE_PLAN_STALE`），并重新推导要拆分或标记的页面。
 
 旧示例与反例由 `node --test tests/s9a-author-controls.test.mjs` 检查：`wave-a.*`、`families.en` 与 `evidence-scene.zh-CN` 原样加载，`tests/fixtures/visual/s9a.negative.json` 中的每个反例都被拒绝。
+
+## 来源呈现、页面意图与媒体角色（CINE 批次 1）
+
+无需迁移。CINE 批次 1（2026-10-20，`docs/plans/cinematic-composition-build-map.md`）为 `schemas/design-plan.schema.json` 的场景新增三个可选字段。没有这些字段的项目照旧验证和渲染：每个已记录的样例与演示的标记在样式表与渲染器版本（`visual-art-direction.13`）之外逐字节相同，见 `docs/evidence/cine-p0/baseline-diff.json`。
+
+- `references: {mode}` —— 本页如何呈现引用。缺省即 `expanded`：每条引用都是通栏区域，即现有渲染。`compact` 把引用移到页脚的来源条，用来源的显示编号标记每个论点，并加一个默认折叠的参考面板列出全部来源；为引语署名的引用留在引语旁。`source-is-subject` 保留所有引用区域并标记本页。编号在每次渲染时按整套顺序重新计算；稳定键是来源 id。规范来源、引用文字与论点绑定不变。只有声明了模式的页面，其 PowerPoint 备注与 PDF 附录才列出编号。
+- `intent: {purpose, entry, focusGroupBlockIds?, emptyRegions?}` —— 本页的用途（`explain`、`show-product`、`show-detail`、`compare`、`evidence`、`overview`、`chapter`）与视线入口（`left`、`center`、`contextual`）。缺省即“推断”：用途与入口按内容、构图和页面在整套中的位置得出，标记不变。声明的意图会在页面 section 上写入 `data-purpose` 与 `data-entry`，决定短文字页是居中留白还是结构化排布，并引导节奏中同一类别的版式偏好。主对象就是现有的 `focalBlockId`；声明意图后，引用不能作为焦点块。
+- `media: [{blockId, role}]` —— 每张图片或图解的角色（`hero`、`mechanism`、`context`、`supporting`）。未声明的条目取构图默认值（图片页的第一张图片为主体，前后对比的两张图都是主体，图解为机制图，其他图片为辅助）。声明后区域带 `data-media-role`；辅助图片按 260 px 绘制，环境图片占满其栏。
+
+`authorOverrides.sceneLocks[].fields` 接受 `references`、`intent` 与 `media`。新的作者动作是 `fit-page`、`set-intent` 与 `visual-space`（见[视觉工作室](visual-studio.md#页面用途与入口cine-003)）；PDF 导出现在按与 PowerPoint 相同的分段对高页分页（见[验证记录](verification.md)）。
+
+恢复方法：
+
+- `INVALID_DESIGN_PLAN … Choose a reference mode`、`… Quotation … needs an attributing citation on this page`（compact 模式）。
+- `INVALID_DESIGN_PLAN … Choose a visual purpose`、`… The focus group must contain the focal block`、`… A citation cannot be the focal block of a page with a declared intent`、`… An empty region is a rectangle normalized to the page frame`。
+- `INVALID_DESIGN_PLAN … A media role names an image or diagram of this page`、`… Give … one media role`。
+- `splitScene()` / `fit-page` 的 `SCENE_SPLIT`：切分会让某页只剩标题、让要点离开其论点页，或把注释与其目标分开；`AUTHOR_LOCK`：本页的 `blockIds` 已锁定。
+
+旧样例与 `tests/fixtures/visual/cine.negative.json` 的每个用例由 `node --test tests/cine-p0.test.mjs` 检查。

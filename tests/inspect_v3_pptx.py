@@ -105,10 +105,15 @@ def main():
         missing = []
         if args.expect:
             expected = json.load(open(args.expect))
-            if len(expected) != len(slides):
-                failures.append('slide count %d vs %d scenes' % (len(slides), len(expected)))
-            for e, s in zip(expected, slides):
-                lost = [t for t in e['strings'] if norm(t) not in s['pool']]
+            # CINE-001: a paged scene owns consecutive slides (`parts` per scene, from the export's pagination); its strings may sit on any of them.
+            parts = [int(e.get('parts') or 1) for e in expected]
+            if sum(parts) != len(slides):
+                failures.append('slide count %d vs %d scenes (%d parts)' % (len(slides), len(expected), sum(parts)))
+            at = 0
+            for e, n in zip(expected, parts):
+                pool = ''.join(s['pool'] for s in slides[at:at + n])
+                at += n
+                lost = [t for t in e['strings'] if norm(t) not in pool]
                 if lost:
                     missing.append({'sceneId': e['sceneId'], 'missing': lost[:10]})
         for s in slides:

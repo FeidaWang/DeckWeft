@@ -4,6 +4,31 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## CINE 批次 1 电影化构图 P0，2026-10-20
+
+CINE-001 至 CINE-004 在分支 `claude/deckweft-design-roadmap-2d3d10` 上的状态为 **implemented-local**（未合并）：一个声明的演示目标、三个可选场景字段 `references`、`intent`、`media`、紧凑来源条与编号、页面意图与媒体角色。任务状态不变。[证据（英文）](../evidence/cine-p0/review.md) · [构建地图](../plans/cinematic-composition-build-map.md) · [迁移](migration.md#来源呈现页面意图与媒体角色cine-批次-1) · [视觉工作室](visual-studio.md#页面用途与入口cine-003)。
+
+命令（隔离浏览器为 Playwright 缓存中的 Chrome for Testing 151.0.7922.34，Playwright 1.61.1）：
+
+```bash
+npm run verify
+CHROMIUM_PATH=… node --test tests/studio-export.test.mjs
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node tests/browser_cine.mjs --evidence
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node scripts/export-targets.mjs --cine --out dist/export-targets-cine
+node tests/render-baseline-diff.mjs <be9921d 的检出目录> docs/evidence/cine-p0/baseline-diff.json
+```
+
+结果：
+
+- `npm run verify` 通过 **550 个测试**（545 通过，5 个跳过：需要 `DECKWEFT_HANDOFF_DIR` 的登记表测试、需要 `CHROMIUM_PATH` 的三个工作室导出测试，以及另一个受浏览器限制的用例），并通过类型、源码与链接检查、打包和演示。Node 24.14.0。
+  - 新增 `tests/cine-p0.test.mjs`（38 个测试：双语语料、目标预算与字号报告、PDF 分段、fit-page 与声明的拆页、引用契约、编号、来源条、参考面板、导出与重排稳定性、意图契约、推断、排布、标记与节奏偏好、经工作室 API 的 set-intent 与 visual-space 动作、媒体角色、媒体网格、主体占比，以及文档）。`tests/fixtures/visual/cine.negative.json` 的 22 个用例全部被拒绝。
+  - 设置 `CHROMIUM_PATH` 后，单独运行 `tests/studio-export.test.mjs` 通过 5/5。
+- 渲染基线为渲染器 `visual-art-direction.13` 重新记录（仅样式表部分变化；38 个条目的内容哈希全部相同；播放器 `semantic-player.6` 不变）。与 `be9921d` 的对比显示 12 个 HTML 条目中没有任何可见文字、数值、锚点、数据表或标题变化。
+- `tests/browser_cine.mjs`（隔离 Chromium 151，Playwright 1.61.1）：中英文在 1440、1024、390 px 下共 60 次页面测量、111 张截图、0 个页面错误、0 个外部请求。12 条来源的来源条在 1440 px 下高 46.2 px（预算 48 px）；溢出页经三次 `fit-page`（按测量边界）切成四页，均在预算内；六个主题下 38 次媒体版式测量得出 `LARGEST_MEDIA`（image-right；Luminous Stage 用 stage-hero；系统关系图用 system-map-wide）。1440 px 下超过 900 px 预算的页面：中英文的 product-center、mechanism、overflow（拆页前），以及中文的 long-heading；原因记录在证据中。
+- `node scripts/export-targets.mjs --cine`：2 份文稿。PowerPoint 可编辑性、独立检查、页面检查与字号结果在 2/2 上通过；PDF 可搜索性英文通过、中文部分通过（部首码位，S7 已知限制）；无障碍部分通过（Chromium 的分组图形）。高页被分页：英文 3 页、中文 4 页，标题在续页以单行或按 18 pt 下限换行重复。
+- 已查看：1440 与 390 px 的两份联络表、媒体联络表、product、product-center、detail、mechanism、evidence 与 overflow 的截图、灰度副本、证据页幻灯片与溢出页续页的 Quick Look 渲染和 PDF 页面，以及中文长标题幻灯片。最弱的一页是 `mechanism`（图解自身的连线布局）；其次是中文 `long-heading`（标题 12ch 栏宽）。
+- PowerPoint 与 Keynote 已安装但**未运行**；LibreOffice 未安装。Firefox、WebKit、屏幕阅读器、PDF/UA 验证器与 Claude 均未运行。
+
 ## S11 S1–S10 合并就绪检查（本地），2026-10-19
 
 对 `d584d76` 的状态为 **LocalVerified**。[证据（英文）](../evidence/s11-merge-readiness/review.md) · [对齐计划 §20（英文）](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19) · [合并计划](../plans/design-handoff-merge-to-main.md#readiness-s11-2026-10-19)。

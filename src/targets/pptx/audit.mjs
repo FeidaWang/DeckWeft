@@ -86,7 +86,7 @@ export function inspectPackage(bytes){
    const runs=all(el,'a:rPr'),chartRel=kind==='chart'?first(el,'c:chart')?.attrs['r:id']:null,picRel=kind==='picture'?first(el,'a:blip')?.attrs['r:embed']:null;
    shapes.push({id:+c.attrs.id,name:c.attrs.name,descr:c.attrs.descr||'',decorative:all(c,'adec:decorative').some(d=>d.attrs.val==='1'),title:all(el,'p:ph').some(p=>p.attrs.type==='title'),kind,
     box:off&&ext?{x:+off.attrs.x,y:+off.attrs.y,width:+ext.attrs.cx,height:+ext.attrs.cy}:null,text:kind==='table'?all(el,'a:tc').map(textOf).join('\n'):textOf(el),
-    langs:[...new Set(runs.map(r=>r.attrs.lang).filter(Boolean))],runsWithoutLang:runs.filter(r=>!r.attrs.lang).length,sizes:runs.map(r=>+r.attrs.sz).filter(Boolean),colors:runs.map(r=>first(r,'a:srgbClr')?.attrs.val).filter(Boolean),
+    langs:[...new Set(runs.map(r=>r.attrs.lang).filter(Boolean))],runsWithoutLang:runs.filter(r=>!r.attrs.lang).length,sizes:runs.filter(r=>!(+r.attrs.baseline>0)).map(r=>+r.attrs.sz).filter(Boolean),superscriptSizes:runs.filter(r=>+r.attrs.baseline>0).map(r=>+r.attrs.sz).filter(Boolean),colors:runs.map(r=>first(r,'a:srgbClr')?.attrs.val).filter(Boolean),
     links:all(el,'a:hlinkClick').map(h=>r.find(x=>x.id===h.attrs['r:id'])||{missing:h.attrs['r:id']}),chart:chartRel?r.find(x=>x.id===chartRel)?.target:null,image:picRel?r.find(x=>x.id===picRel)?.target:null});
   }
   const notesName=r.find(x=>x.type==='notesSlide')?.target,bg=first(tree,'p:bg');
@@ -170,7 +170,7 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
  // Contrast is computed by the compiler against what lies under each text box; the package colours are the measured web colours.
  const low=compiled.slides.flatMap(s=>s.elements.filter(e=>e.contrast&&e.contrast.ratio+.01<e.contrast.required).map(e=>({sceneId:s.sceneId,name:e.name,...e.contrast})));
  if(low.length)fail(access,'text contrast',{items:low});
- const sizes=pkg.slides.flatMap(s=>s.shapes.filter(x=>!x.decorative).flatMap(x=>x.sizes)),smallest=sizes.length?Math.min(...sizes)/100:null;
+ const sizes=pkg.slides.flatMap(s=>s.shapes.filter(x=>!x.decorative).flatMap(x=>[...x.sizes,...(x.superscriptSizes||[])])),smallest=sizes.length?Math.min(...sizes)/100:null;
  if(smallest!==null&&smallest<7)editNotes.push(`Smallest text is ${smallest} pt after fitting the scene to the slide.`);
  const typography={...typographyCheck(pkg,blocks,plan,TYPOGRAPHY_MINIMUM_PT,slideScene),pagination:compiled.pagination||[]};
  const status=list=>list.length?'fail':'pass';
@@ -202,8 +202,10 @@ export function textRole(shape,blocks,composition){
 export function typographyCheck(pkg,blocks,plan,minimums=TYPOGRAPHY_MINIMUM_PT,sceneOf=i=>plan.scenes[i]?.id){
  const failures=[];
  pkg.slides.forEach((slide,i)=>{const sceneId=sceneOf(i)??slide.name,composition=plan.scenes.find(sc=>sc.id===sceneId)?.composition;
-  for(const s of slide.shapes){if(s.decorative||!s.sizes?.length)continue;const role=textRole(s,blocks,composition),actualPt=Math.min(...s.sizes)/100,requiredPt=minimums[role];
-   if(actualPt+1e-9<requiredPt)failures.push({sceneId,name:s.name,role,actualPt,requiredPt});}
+  for(const s of slide.shapes){if(s.decorative)continue;
+   if(s.sizes?.length){const role=textRole(s,blocks,composition),actualPt=Math.min(...s.sizes)/100,requiredPt=minimums[role];if(actualPt+1e-9<requiredPt)failures.push({sceneId,name:s.name,role,actualPt,requiredPt});}
+   // CINE-002: a superscript run is a reference mark (a claim marker), held to the annotation minimum whatever block it sits in.
+   if(s.superscriptSizes?.length){const actualPt=Math.min(...s.superscriptSizes)/100,requiredPt=minimums.annotation;if(actualPt+1e-9<requiredPt)failures.push({sceneId,name:s.name,role:'annotation',superscript:true,actualPt,requiredPt});}}
  });
  return {status:failures.length?'fail':'pass',failures,minimums:{...minimums},scope:'Run sizes after the uniform scene-to-slide fit, by role. Pass does not prove projection legibility, font availability or PowerPoint/Keynote rendering. Split or re-page a failing scene; the thresholds are not adjustable.'};
 }

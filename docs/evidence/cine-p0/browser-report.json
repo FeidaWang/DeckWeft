@@ -1,0 +1,3825 @@
+{
+ "format": "deckweft-cine-p0-browser",
+ "version": 1,
+ "recordedAt": "2026-10-20",
+ "browser": "151.0.7922.34",
+ "renderer": "visual-art-direction.13",
+ "player": "semantic-player.6",
+ "isolation": "Isolated cached testing binary; ephemeral contexts with temporary profiles; installed apps and personal profiles untouched",
+ "target": {
+  "frame": {
+   "width": 1440,
+   "height": 810
+  },
+  "safeArea": {
+   "x": 64,
+   "y": 56
+  },
+  "grid": {
+   "columns": 12,
+   "gutter": 32
+  },
+  "candidateHeight": 900,
+  "typography": {
+   "minimum": {
+    "title": 18,
+    "body": 10,
+    "annotation": 6
+   },
+   "target": {
+    "title": 24,
+    "body": 18,
+    "label": 14,
+    "reference": 10
+   }
+  },
+  "overflow": "reflow-then-split"
+ },
+ "pages": [
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "composition": "image-left",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "ctx-image",
+      "role": "context"
+     }
+    ],
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 1,
+    "regions": 0,
+    "claims": 3
+   },
+   "mediaRoles": {
+    "ctx-image": "context"
+   },
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "right:top",
+     "density": 0.4260437689454095,
+     "imageRatio": 0.261008965568169,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "ctx-image",
+       "containerFraction": 0.2523086667158967,
+       "subjectFraction": 0.2523086667158967,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "images": [
+    {
+     "blockId": "ctx-image",
+     "mediaRole": "context",
+     "figure": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 443.859375
+     },
+     "crop": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 406.859375
+     },
+     "img": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 406.859375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "composition": "image-right",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-product",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "prod-image",
+      "role": "hero"
+     }
+    ],
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "show-product",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 2,
+    "regions": 0,
+    "claims": 3
+   },
+   "mediaRoles": {
+    "prod-image": "hero"
+   },
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.46480759357719265,
+     "imageRatio": 0.34803283700067406,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "prod-image",
+       "containerFraction": 0.33643174243398494,
+       "subjectFraction": 0.33643174243398494,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "images": [
+    {
+     "blockId": "prod-image",
+     "mediaRole": "hero",
+     "figure": {
+      "x": 620.65625,
+      "y": 136.390625,
+      "width": 723.34375,
+      "height": 579.5
+     },
+     "crop": {
+      "x": 620.65625,
+      "y": 136.390625,
+      "width": 723.34375,
+      "height": 542.5
+     },
+     "img": {
+      "x": 620.65625,
+      "y": 136.390625,
+      "width": 723.34375,
+      "height": 542.5
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-product",
+     "entry": "center"
+    }
+   },
+   "intent": {
+    "purpose": "show-product",
+    "entry": "center",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 2,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "pc-image": "hero"
+   },
+   "width": 1440,
+   "height": 1059,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1059px)"
+    ],
+    "height": 1058.125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.25712398915958673,
+     "imageRatio": 0.14483092432534703,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "pc-image",
+       "containerFraction": 0.14000322684783545,
+       "subjectFraction": 0.14000322684783545,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "images": [
+    {
+     "blockId": "pc-image",
+     "mediaRole": null,
+     "figure": {
+      "x": 429.328125,
+      "y": 323.390625,
+      "width": 533.328125,
+      "height": 431.984375
+     },
+     "crop": {
+      "x": 429.328125,
+      "y": 323.390625,
+      "width": 533.328125,
+      "height": 399.984375
+     },
+     "img": {
+      "x": 429.328125,
+      "y": 323.390625,
+      "width": 533.328125,
+      "height": 399.984375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-detail",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "det-hero",
+      "role": "hero"
+     },
+     {
+      "blockId": "det-locator",
+      "role": "supporting"
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "show-detail",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "det-hero": "hero",
+    "det-locator": "supporting"
+   },
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "right:top",
+     "density": 0.34292221967930725,
+     "imageRatio": 0.21899851753946162,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "det-hero",
+       "containerFraction": 0.13443072702331962,
+       "subjectFraction": 0.13443072702331962,
+       "annotated": false,
+       "note": "no subject annotation"
+      },
+      {
+       "blockId": "det-locator",
+       "containerFraction": 0.07726783993149328,
+       "subjectFraction": 0.07726783993149328,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "images": [
+    {
+     "blockId": "det-hero",
+     "mediaRole": "hero",
+     "figure": {
+      "x": 269.65625,
+      "y": 136.390625,
+      "width": 280,
+      "height": 592
+     },
+     "crop": {
+      "x": 269.65625,
+      "y": 136.390625,
+      "width": 280,
+      "height": 560
+     },
+     "img": {
+      "x": 269.65625,
+      "y": 136.390625,
+      "width": 280,
+      "height": 560
+     }
+    },
+    {
+     "blockId": "det-locator",
+     "mediaRole": "supporting",
+     "figure": {
+      "x": 912.328125,
+      "y": 461.671875,
+      "width": 346.65625,
+      "height": 291.984375
+     },
+     "crop": {
+      "x": 912.328125,
+      "y": 461.671875,
+      "width": 346.65625,
+      "height": 259.984375
+     },
+     "img": {
+      "x": 912.328125,
+      "y": 461.671875,
+      "width": 346.65625,
+      "height": 259.984375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "mech-diagram",
+      "role": "mechanism"
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "mech-diagram": "mechanism"
+   },
+   "width": 1440,
+   "height": 1554,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1554px)"
+    ],
+    "height": 1553.9375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.5833453256857637,
+     "imageRatio": 0,
+     "labelMinPx": 20.799816625916872,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": [
+    {
+     "box": {
+      "x": 176,
+      "y": 284.546875,
+      "width": 1040,
+      "height": 1063.390625
+     },
+     "drawn": {
+      "width": 1039.9908312958435,
+      "height": 1063.390625
+     },
+     "viewBox": [
+      800,
+      818
+     ]
+    }
+   ]
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "theme": "dark-data",
+   "declared": {
+    "intent": {
+     "purpose": "evidence",
+     "entry": "left"
+    },
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "evidence",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 12,
+    "regions": 0,
+    "claims": 5
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 868,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 867.8125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.40860356134092546,
+     "imageRatio": 0,
+     "labelMinPx": 10.5,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "theme": "electric-violet",
+   "declared": {
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": true
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 0,
+    "regions": 1,
+    "claims": 2
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.18654018340930206,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "theme": "electric-violet",
+   "declared": {
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": true
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 4,
+    "regions": 0,
+    "claims": 6
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 2104,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (2104px)"
+    ],
+    "height": 2103.984375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.34541081466987045,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 1,
+    "claims": 0
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 855,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 854.75,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.20502618705793962,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "chapter",
+     "entry": "contextual"
+    }
+   },
+   "intent": {
+    "purpose": "chapter",
+    "entry": "contextual",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.14690911282338673,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "composition": "image-left",
+   "width": 1024,
+   "height": 826,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 825.109375,
+    "features": {
+     "focus": "right:top",
+     "density": 0.36879310542031035,
+     "imageRatio": 0.17090428281967554,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "composition": "image-right",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.3491207991358578,
+     "imageRatio": 0.23212626460495567,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "width": 1024,
+   "height": 1094,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1094px)"
+    ],
+    "height": 1093.28125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.3338498652800117,
+     "imageRatio": 0.19991979396139037,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "width": 1024,
+   "height": 879,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 878.90625,
+    "features": {
+     "focus": "right:top",
+     "density": 0.4308392332650273,
+     "imageRatio": 0.2878545235655738,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "width": 1024,
+   "height": 1371,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1371px)"
+    ],
+    "height": 1370.5,
+    "features": {
+     "focus": "left:top",
+     "density": 0.6720576955281368,
+     "imageRatio": 0,
+     "labelMinPx": 17.599938875305625,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "width": 1024,
+   "height": 1415,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1415px)"
+    ],
+    "height": 1414.203125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.4564868671384958,
+     "imageRatio": 0,
+     "labelMinPx": 10.5,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.20075677139415019,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "width": 1024,
+   "height": 2145,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (2145px)"
+    ],
+    "height": 2144.109375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.44434639693258954,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.2284702433045879,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.20723276422033907,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "composition": "image-left",
+   "width": 390,
+   "height": 702,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 701.046875,
+    "features": {
+     "focus": "center:bottom",
+     "density": 0.5635210144598308,
+     "imageRatio": 0.2406373709647831,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "composition": "image-right",
+   "width": 390,
+   "height": 676,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 675.40625,
+    "features": {
+     "focus": "center:top",
+     "density": 0.516762553208717,
+     "imageRatio": 0.2527446199580737,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "width": 390,
+   "height": 766,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 765.0625,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5174784614127805,
+     "imageRatio": 0.2940031294577492,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "width": 390,
+   "height": 1415,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1415,
+    "features": {
+     "focus": "center:bottom",
+     "density": 0.699648699403144,
+     "imageRatio": 0.5635784357445411,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "width": 390,
+   "height": 1184,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1183.671875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.9942923290161096,
+     "imageRatio": 0,
+     "labelMinPx": 12,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "width": 390,
+   "height": 1301,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1300.6875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.4193803940516541,
+     "imageRatio": 0,
+     "labelMinPx": 12.825,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "width": 390,
+   "height": 570,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 569.171875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5389079528920856,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "width": 390,
+   "height": 2335,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 2334.234375,
+    "features": {
+     "focus": "center:top",
+     "density": 0.7581696141462543,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "width": 390,
+   "height": 618,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 617.5,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5824038461538461,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "en",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "width": 390,
+   "height": 497,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 496.53125,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5470489985815054,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "composition": "image-left",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "ctx-image",
+      "role": "context"
+     }
+    ],
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 1,
+    "regions": 0,
+    "claims": 3
+   },
+   "mediaRoles": {
+    "ctx-image": "context"
+   },
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "right:top",
+     "density": 0.4054125495002306,
+     "imageRatio": 0.261008965568169,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "ctx-image",
+       "containerFraction": 0.2523086667158967,
+       "subjectFraction": 0.2523086667158967,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "images": [
+    {
+     "blockId": "ctx-image",
+     "mediaRole": "context",
+     "figure": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 443.859375
+     },
+     "crop": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 406.859375
+     },
+     "img": {
+      "x": 48,
+      "y": 136.390625,
+      "width": 723.328125,
+      "height": 406.859375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "composition": "image-right",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-product",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "prod-image",
+      "role": "hero"
+     }
+    ],
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "show-product",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 2,
+    "regions": 0,
+    "claims": 3
+   },
+   "mediaRoles": {
+    "prod-image": "hero"
+   },
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.4556042451020825,
+     "imageRatio": 0.34803283700067406,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "prod-image",
+       "containerFraction": 0.33643174243398494,
+       "subjectFraction": 0.33643174243398494,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "images": [
+    {
+     "blockId": "prod-image",
+     "mediaRole": "hero",
+     "figure": {
+      "x": 620.65625,
+      "y": 136.390625,
+      "width": 723.34375,
+      "height": 579.5
+     },
+     "crop": {
+      "x": 620.65625,
+      "y": 136.390625,
+      "width": 723.34375,
+      "height": 542.5
+     },
+     "img": {
+      "x": 620.65625,
+      "y": 136.390625,
+      "width": 723.34375,
+      "height": 542.5
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-product",
+     "entry": "center"
+    }
+   },
+   "intent": {
+    "purpose": "show-product",
+    "entry": "center",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 2,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "pc-image": "hero"
+   },
+   "width": 1440,
+   "height": 1051,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1051px)"
+    ],
+    "height": 1050.65625,
+    "features": {
+     "focus": "left:top",
+     "density": 0.2550889025113593,
+     "imageRatio": 0.14586047701306476,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "pc-image",
+       "containerFraction": 0.14099846111262926,
+       "subjectFraction": 0.14099846111262926,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "images": [
+    {
+     "blockId": "pc-image",
+     "mediaRole": null,
+     "figure": {
+      "x": 429.328125,
+      "y": 345.890625,
+      "width": 533.328125,
+      "height": 431.984375
+     },
+     "crop": {
+      "x": 429.328125,
+      "y": 345.890625,
+      "width": 533.328125,
+      "height": 399.984375
+     },
+     "img": {
+      "x": 429.328125,
+      "y": 345.890625,
+      "width": 533.328125,
+      "height": 399.984375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "show-detail",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "det-hero",
+      "role": "hero"
+     },
+     {
+      "blockId": "det-locator",
+      "role": "supporting"
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "show-detail",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "det-hero": "hero",
+    "det-locator": "supporting"
+   },
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "right:top",
+     "density": 0.3356028169643055,
+     "imageRatio": 0.21899851753946162,
+     "labelMinPx": null,
+     "labelTargetPx": 21,
+     "media": [
+      {
+       "blockId": "det-hero",
+       "containerFraction": 0.13443072702331962,
+       "subjectFraction": 0.13443072702331962,
+       "annotated": false,
+       "note": "no subject annotation"
+      },
+      {
+       "blockId": "det-locator",
+       "containerFraction": 0.07726783993149328,
+       "subjectFraction": 0.07726783993149328,
+       "annotated": false,
+       "note": "no subject annotation"
+      }
+     ]
+    }
+   },
+   "images": [
+    {
+     "blockId": "det-hero",
+     "mediaRole": "hero",
+     "figure": {
+      "x": 269.65625,
+      "y": 136.390625,
+      "width": 280,
+      "height": 592
+     },
+     "crop": {
+      "x": 269.65625,
+      "y": 136.390625,
+      "width": 280,
+      "height": 560
+     },
+     "img": {
+      "x": 269.65625,
+      "y": 136.390625,
+      "width": 280,
+      "height": 560
+     }
+    },
+    {
+     "blockId": "det-locator",
+     "mediaRole": "supporting",
+     "figure": {
+      "x": 912.328125,
+      "y": 450.078125,
+      "width": 346.65625,
+      "height": 291.984375
+     },
+     "crop": {
+      "x": 912.328125,
+      "y": 450.078125,
+      "width": 346.65625,
+      "height": 259.984375
+     },
+     "img": {
+      "x": 912.328125,
+      "y": 450.078125,
+      "width": 346.65625,
+      "height": 259.984375
+     }
+    }
+   ],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    },
+    "media": [
+     {
+      "blockId": "mech-diagram",
+      "role": "mechanism"
+     }
+    ]
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {
+    "mech-diagram": "mechanism"
+   },
+   "width": 1440,
+   "height": 1509,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1509px)"
+    ],
+    "height": 1508.953125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.5763915347902206,
+     "imageRatio": 0,
+     "labelMinPx": 20.799816625916872,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": [
+    {
+     "box": {
+      "x": 176,
+      "y": 238.5625,
+      "width": 1040,
+      "height": 1063.390625
+     },
+     "drawn": {
+      "width": 1039.9908312958435,
+      "height": 1063.390625
+     },
+     "viewBox": [
+      800,
+      818
+     ]
+    }
+   ]
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "theme": "dark-data",
+   "declared": {
+    "intent": {
+     "purpose": "evidence",
+     "entry": "left"
+    },
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "evidence",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 12,
+    "regions": 0,
+    "claims": 5
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 879,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 878.703125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.4047556140816401,
+     "imageRatio": 0,
+     "labelMinPx": 10.5,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "theme": "electric-violet",
+   "declared": {
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": true
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 0,
+    "regions": 1,
+    "claims": 2
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.18962078156734472,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "theme": "electric-violet",
+   "declared": {
+    "references": {
+     "mode": "compact"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": true
+   },
+   "references": {
+    "mode": "compact",
+    "strip": 4,
+    "regions": 0,
+    "claims": 6
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 1798,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1798px)"
+    ],
+    "height": 1797.109375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.3423144664320396,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "explain",
+     "entry": "left"
+    }
+   },
+   "intent": {
+    "purpose": "explain",
+    "entry": "left",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 1,
+    "claims": 0
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 1238,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1238px)"
+    ],
+    "height": 1237.6875,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.18699745513920957,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "theme": "cream-collage",
+   "declared": {
+    "intent": {
+     "purpose": "chapter",
+     "entry": "contextual"
+    }
+   },
+   "intent": {
+    "purpose": "chapter",
+    "entry": "contextual",
+    "inferred": false
+   },
+   "references": {
+    "mode": "expanded",
+    "strip": 0,
+    "regions": 0,
+    "claims": 0
+   },
+   "mediaRoles": {},
+   "width": 1440,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.1497768245657505,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   },
+   "images": [],
+   "diagrams": []
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "composition": "image-left",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "right:top",
+     "density": 0.3540769733366419,
+     "imageRatio": 0.17409225429897005,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "composition": "image-right",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:top",
+     "density": 0.33830510170154304,
+     "imageRatio": 0.23212626460495567,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "width": 1024,
+   "height": 1020,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1020px)"
+    ],
+    "height": 1019.0625,
+    "features": {
+     "focus": "left:top",
+     "density": 0.3229001348505657,
+     "imageRatio": 0.21448003654520828,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "right:top",
+     "density": 0.413412076899504,
+     "imageRatio": 0.31234214796611737,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "width": 1024,
+   "height": 1340,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1340px)"
+    ],
+    "height": 1339.96875,
+    "features": {
+     "focus": "left:top",
+     "density": 0.6644221214939944,
+     "imageRatio": 0,
+     "labelMinPx": 17.599938875305625,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "width": 1024,
+   "height": 1409,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1409px)"
+    ],
+    "height": 1408.84375,
+    "features": {
+     "focus": "left:top",
+     "density": 0.45719263266650617,
+     "imageRatio": 0,
+     "labelMinPx": 10.5,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.19119869649856588,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "width": 1024,
+   "height": 1834,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1834px)"
+    ],
+    "height": 1833.203125,
+    "features": {
+     "focus": "left:top",
+     "density": 0.4317300656846786,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "width": 1024,
+   "height": 1066,
+   "fit": {
+    "ok": false,
+    "reasons": [
+     "Scene exceeds 900px presentation budget (1066px)"
+    ],
+    "height": 1065.6875,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.21304840234975522,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "width": 1024,
+   "height": 810,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 810,
+    "features": {
+     "focus": "left:middle",
+     "density": 0.1431439422687715,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "composition": "image-left",
+   "width": 390,
+   "height": 645,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 644.71875,
+    "features": {
+     "focus": "center:bottom",
+     "density": 0.5526879515391948,
+     "imageRatio": 0.2616615026677554,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "composition": "image-right",
+   "width": 390,
+   "height": 586,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 585.875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.44959032061710513,
+     "imageRatio": 0.20057285277096223,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "composition": "image-strip",
+   "width": 390,
+   "height": 722,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 721.46875,
+    "features": {
+     "focus": "center:top",
+     "density": 0.4918852101249121,
+     "imageRatio": 0.31176786136720297,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "composition": "image-left",
+   "width": 390,
+   "height": 1222,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1221.96875,
+    "features": {
+     "focus": "center:bottom",
+     "density": 0.629584457091298,
+     "imageRatio": 0.55635314229284,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "mechanism",
+   "composition": "system-map-wide",
+   "width": 390,
+   "height": 1126,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1125.28125,
+    "features": {
+     "focus": "center:top",
+     "density": 0.9974237209928287,
+     "imageRatio": 0,
+     "labelMinPx": 12,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "composition": "small-multiples-row",
+   "width": 390,
+   "height": 1210,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1209.390625,
+    "features": {
+     "focus": "center:top",
+     "density": 0.4211673538969052,
+     "imageRatio": 0,
+     "labelMinPx": 12.825,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "quote",
+   "composition": "quote-split",
+   "width": 390,
+   "height": 522,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 521.265625,
+    "features": {
+     "focus": "center:top",
+     "density": 0.5149140059904126,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "composition": "statement-banner",
+   "width": 390,
+   "height": 1814,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 1813.828125,
+    "features": {
+     "focus": "center:top",
+     "density": 0.7260944953024033,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "long-heading",
+   "composition": "statement-split",
+   "width": 390,
+   "height": 709,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 708.28125,
+    "features": {
+     "focus": "center:middle",
+     "density": 0.6179280150689813,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "action",
+   "composition": "closing-split",
+   "width": 390,
+   "height": 434,
+   "fit": {
+    "ok": true,
+    "reasons": [],
+    "height": 433.34375,
+    "features": {
+     "focus": "center:top",
+     "density": 0.4924985161229482,
+     "imageRatio": 0,
+     "labelMinPx": null,
+     "labelTargetPx": 21
+    }
+   }
+  }
+ ],
+ "strips": [
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "width": 1440,
+   "height": 46.2,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": true
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "width": 1024,
+   "height": 65.8,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "width": 390,
+   "height": 24.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "width": 390,
+   "height": 44.2,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "width": 390,
+   "height": 142.2,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": null
+  },
+  {
+   "locale": "en",
+   "sceneId": "overflow",
+   "width": 390,
+   "height": 63.8,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "width": 1440,
+   "height": 46.2,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "width": 1440,
+   "height": 26.6,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": true
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "width": 1024,
+   "height": 46.2,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "width": 1024,
+   "height": 26.6,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "width": 390,
+   "height": 24.6,
+   "budget": 48,
+   "items": 1,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "width": 390,
+   "height": 24.6,
+   "budget": 48,
+   "items": 2,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "width": 390,
+   "height": 103,
+   "budget": 48,
+   "items": 12,
+   "withinBudget": null
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "overflow",
+   "width": 390,
+   "height": 44.2,
+   "budget": 48,
+   "items": 4,
+   "withinBudget": null
+  }
+ ],
+ "subjects": [
+  {
+   "locale": "en",
+   "sceneId": "context",
+   "blockId": "ctx-image",
+   "mediaRole": "context",
+   "imageBox": {
+    "x": 48,
+    "y": 136.390625,
+    "width": 723.328125,
+    "height": 406.859375
+   },
+   "containerFraction": 0.2523086667158967,
+   "subjectFraction": 0.2523086667158967,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "blockId": "prod-image",
+   "mediaRole": "hero",
+   "imageBox": {
+    "x": 620.65625,
+    "y": 136.390625,
+    "width": 723.34375,
+    "height": 542.5
+   },
+   "containerFraction": 0.33643174243398494,
+   "subjectFraction": 0.33643174243398494,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "en",
+   "sceneId": "product-center",
+   "blockId": "pc-image",
+   "mediaRole": null,
+   "imageBox": {
+    "x": 429.328125,
+    "y": 323.390625,
+    "width": 533.328125,
+    "height": 399.984375
+   },
+   "containerFraction": 0.14000322684783545,
+   "subjectFraction": 0.14000322684783545,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "blockId": "det-hero",
+   "mediaRole": "hero",
+   "imageBox": {
+    "x": 269.65625,
+    "y": 136.390625,
+    "width": 280,
+    "height": 560
+   },
+   "containerFraction": 0.13443072702331962,
+   "subjectFraction": 0.13443072702331962,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "en",
+   "sceneId": "detail",
+   "blockId": "det-locator",
+   "mediaRole": "supporting",
+   "imageBox": {
+    "x": 912.328125,
+    "y": 461.671875,
+    "width": 346.65625,
+    "height": 259.984375
+   },
+   "containerFraction": 0.07726783993149328,
+   "subjectFraction": 0.07726783993149328,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "context",
+   "blockId": "ctx-image",
+   "mediaRole": "context",
+   "imageBox": {
+    "x": 48,
+    "y": 136.390625,
+    "width": 723.328125,
+    "height": 406.859375
+   },
+   "containerFraction": 0.2523086667158967,
+   "subjectFraction": 0.2523086667158967,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "blockId": "prod-image",
+   "mediaRole": "hero",
+   "imageBox": {
+    "x": 620.65625,
+    "y": 136.390625,
+    "width": 723.34375,
+    "height": 542.5
+   },
+   "containerFraction": 0.33643174243398494,
+   "subjectFraction": 0.33643174243398494,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product-center",
+   "blockId": "pc-image",
+   "mediaRole": null,
+   "imageBox": {
+    "x": 429.328125,
+    "y": 345.890625,
+    "width": 533.328125,
+    "height": 399.984375
+   },
+   "containerFraction": 0.14099846111262926,
+   "subjectFraction": 0.14099846111262926,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "blockId": "det-hero",
+   "mediaRole": "hero",
+   "imageBox": {
+    "x": 269.65625,
+    "y": 136.390625,
+    "width": 280,
+    "height": 560
+   },
+   "containerFraction": 0.13443072702331962,
+   "subjectFraction": 0.13443072702331962,
+   "annotated": false,
+   "note": "no subject annotation"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "detail",
+   "blockId": "det-locator",
+   "mediaRole": "supporting",
+   "imageBox": {
+    "x": 912.328125,
+    "y": 450.078125,
+    "width": 346.65625,
+    "height": 259.984375
+   },
+   "containerFraction": 0.07726783993149328,
+   "subjectFraction": 0.07726783993149328,
+   "annotated": false,
+   "note": "no subject annotation"
+  }
+ ],
+ "media": [
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-left",
+   "drawn": [
+    723,
+    542
+   ],
+   "box": [
+    723,
+    579
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-cream-collage-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-strip",
+   "drawn": [
+    533,
+    400
+   ],
+   "box": [
+    533,
+    437
+   ],
+   "sceneHeight": 939,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (939px)"
+   ],
+   "file": "cine-media-product-cream-collage-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "cream-collage",
+   "composition": "image-right",
+   "drawn": [
+    723,
+    543
+   ],
+   "box": [
+    723,
+    580
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-cream-collage-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-left",
+   "drawn": [
+    723,
+    542
+   ],
+   "box": [
+    723,
+    579
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-dark-data-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-strip",
+   "drawn": [
+    533,
+    400
+   ],
+   "box": [
+    533,
+    437
+   ],
+   "sceneHeight": 938,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (938px)"
+   ],
+   "file": "cine-media-product-dark-data-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "dark-data",
+   "composition": "image-right",
+   "drawn": [
+    723,
+    543
+   ],
+   "box": [
+    723,
+    580
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-dark-data-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-left",
+   "drawn": [
+    723,
+    542
+   ],
+   "box": [
+    723,
+    579
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-strip",
+   "drawn": [
+    533,
+    400
+   ],
+   "box": [
+    533,
+    437
+   ],
+   "sceneHeight": 938,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (938px)"
+   ],
+   "file": "cine-media-product-electric-violet-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "image-right",
+   "drawn": [
+    723,
+    543
+   ],
+   "box": [
+    723,
+    580
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-left",
+   "drawn": [
+    700,
+    525
+   ],
+   "box": [
+    700,
+    558
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-silver-gray-editorial-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-strip",
+   "drawn": [
+    533,
+    400
+   ],
+   "box": [
+    533,
+    433
+   ],
+   "sceneHeight": 1004,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1004px)"
+   ],
+   "file": "cine-media-product-silver-gray-editorial-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "silver-gray-editorial",
+   "composition": "image-right",
+   "drawn": [
+    700,
+    525
+   ],
+   "box": [
+    700,
+    558
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-silver-gray-editorial-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-left",
+   "drawn": [
+    733,
+    549
+   ],
+   "box": [
+    733,
+    580
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-fresh-report-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-strip",
+   "drawn": [
+    533,
+    400
+   ],
+   "box": [
+    533,
+    431
+   ],
+   "sceneHeight": 898,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-fresh-report-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "fresh-report",
+   "composition": "image-right",
+   "drawn": [
+    733,
+    549
+   ],
+   "box": [
+    733,
+    580
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-fresh-report-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-left",
+   "drawn": [
+    695,
+    521
+   ],
+   "box": [
+    695,
+    558
+   ],
+   "sceneHeight": 819,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-orange-launch-image-left.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-strip",
+   "drawn": [
+    533,
+    400
+   ],
+   "box": [
+    533,
+    437
+   ],
+   "sceneHeight": 1013,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1013px)"
+   ],
+   "file": "cine-media-product-orange-launch-image-strip.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "image-right",
+   "drawn": [
+    695,
+    522
+   ],
+   "box": [
+    695,
+    559
+   ],
+   "sceneHeight": 816,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-orange-launch-image-right.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "electric-violet",
+   "composition": "photo-split",
+   "drawn": [
+    706,
+    529
+   ],
+   "box": [
+    706,
+    566
+   ],
+   "sceneHeight": 810,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-electric-violet-photo-split.png"
+  },
+  {
+   "page": "product",
+   "family": "image",
+   "theme": "orange-launch",
+   "composition": "stage-hero",
+   "drawn": [
+    774,
+    580
+   ],
+   "box": [
+    774,
+    617
+   ],
+   "sceneHeight": 871,
+   "fit": true,
+   "reasons": [],
+   "file": "cine-media-product-orange-launch-stage-hero.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "cream-collage",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-cream-collage-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "dark-data",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-dark-data-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1554,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1554px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1092,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1092px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "electric-violet",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1228,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1228px)"
+   ],
+   "file": "cine-media-mechanism-electric-violet-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1571,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1571px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-rail",
+   "drawn": [
+    748,
+    765
+   ],
+   "box": [
+    748,
+    765
+   ],
+   "sceneHeight": 1083,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1083px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "silver-gray-editorial",
+   "composition": "system-map-key",
+   "drawn": [
+    748,
+    765
+   ],
+   "box": [
+    748,
+    765
+   ],
+   "sceneHeight": 1223,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1223px)"
+   ],
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1542,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1542px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-rail",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1076,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1076px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "fresh-report",
+   "composition": "system-map-key",
+   "drawn": [
+    768,
+    785
+   ],
+   "box": [
+    768,
+    785
+   ],
+   "sceneHeight": 1216,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1216px)"
+   ],
+   "file": "cine-media-mechanism-fresh-report-system-map-key.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-wide",
+   "drawn": [
+    1040,
+    1063
+   ],
+   "box": [
+    1040,
+    1063
+   ],
+   "sceneHeight": 1579,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1579px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-wide.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-rail",
+   "drawn": [
+    738,
+    755
+   ],
+   "box": [
+    738,
+    755
+   ],
+   "sceneHeight": 1089,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1089px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-rail.png"
+  },
+  {
+   "page": "mechanism",
+   "family": "system-map",
+   "theme": "orange-launch",
+   "composition": "system-map-key",
+   "drawn": [
+    738,
+    755
+   ],
+   "box": [
+    738,
+    755
+   ],
+   "sceneHeight": 1169,
+   "fit": false,
+   "reasons": [
+    "Scene exceeds 900px presentation budget (1169px)"
+   ],
+   "file": "cine-media-mechanism-orange-launch-system-map-key.png"
+  }
+ ],
+ "split": {
+  "regionBounds": [
+   {
+    "blockId": "of-title",
+    "y": 136.390625,
+    "height": 211
+   },
+   {
+    "blockId": "of-para-1",
+    "y": 387.390625,
+    "height": 387.359375
+   },
+   {
+    "blockId": "of-para-2",
+    "y": 798.75,
+    "height": 421.453125
+   },
+   {
+    "blockId": "of-para-3",
+    "y": 1244.203125,
+    "height": 387.359375
+   },
+   {
+    "blockId": "of-list-1",
+    "y": 1244.203125,
+    "height": 365.828125
+   },
+   {
+    "blockId": "of-list-2",
+    "y": 1655.5625,
+    "height": 365.828125
+   }
+  ],
+  "passes": [
+   {
+    "page": "overflow",
+    "changed": true,
+    "effects": [
+     "Page 8: splits this page into 2 pages after “The first paragraph describes the site in full.…” (paragraph, ending at 775 px of 754). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes."
+    ],
+    "kept": [
+     "Page 8: no content block ends inside the 754 px limit (“The first paragraph describes the site in full.…” ends at 775 px); the cut falls after it, so the first page still exceeds the limit and PowerPoint and PDF page it on the bands. Shorten that block to fit."
+    ]
+   },
+   {
+    "page": "overflow-2",
+    "changed": true,
+    "effects": [
+     "Page 9: splits this page into 2 pages after “The second paragraph lists what the team wanted…” (paragraph, ending at 809 px of 754). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes."
+    ],
+    "kept": [
+     "Page 9: no content block ends inside the 754 px limit (“The second paragraph lists what the team wanted…” ends at 809 px); the cut falls after it, so the first page still exceeds the limit and PowerPoint and PDF page it on the bands. Shorten that block to fit."
+    ]
+   },
+   {
+    "page": "overflow-2-2",
+    "changed": true,
+    "effects": [
+     "Page 10: splits this page into 2 pages after “Context first · Product second · Detail third ·…” (list, ending at 753 px of 754). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes."
+    ],
+    "kept": []
+   }
+  ],
+  "changed": true,
+  "pages": [
+   "overflow",
+   "overflow-2",
+   "overflow-2-2",
+   "overflow-2-2-2"
+  ],
+  "fits": [
+   {
+    "sceneId": "overflow",
+    "height": 858,
+    "fit": {
+     "ok": true,
+     "reasons": [],
+     "height": 857.34375,
+     "features": {
+      "focus": "left:top",
+      "density": 0.261798721219853,
+      "imageRatio": 0,
+      "labelMinPx": null,
+      "labelTargetPx": 21
+     }
+    }
+   },
+   {
+    "sceneId": "overflow-2",
+    "height": 892,
+    "fit": {
+     "ok": true,
+     "reasons": [],
+     "height": 891.4375,
+     "features": {
+      "focus": "left:top",
+      "density": 0.25958525270270427,
+      "imageRatio": 0,
+      "labelMinPx": null,
+      "labelTargetPx": 21
+     }
+    }
+   },
+   {
+    "sceneId": "overflow-2-2",
+    "height": 858,
+    "fit": {
+     "ok": true,
+     "reasons": [],
+     "height": 857.34375,
+     "features": {
+      "focus": "left:top",
+      "density": 0.3984710029332,
+      "imageRatio": 0,
+      "labelMinPx": null,
+      "labelTargetPx": 21
+     }
+    }
+   },
+   {
+    "sceneId": "overflow-2-2-2",
+    "height": 836,
+    "fit": {
+     "ok": true,
+     "reasons": [],
+     "height": 835.8125,
+     "features": {
+      "focus": "left:top",
+      "density": 0.2571717458264384,
+      "imageRatio": 0,
+      "labelMinPx": null,
+      "labelTargetPx": 21
+     }
+    }
+   }
+  ],
+  "files": [
+   "cine-en-overflow-split-1440.png",
+   "cine-en-overflow-2-split-1440.png",
+   "cine-en-overflow-2-2-split-1440.png",
+   "cine-en-overflow-2-2-2-split-1440.png"
+  ],
+  "blockIds": {
+   "overflow": [
+    "of-title",
+    "of-para-1",
+    "of-source-1",
+    "of-source-2",
+    "of-source-3",
+    "of-source-4"
+   ],
+   "overflow-2": [
+    "of-title",
+    "of-para-2",
+    "of-source-1",
+    "of-source-2"
+   ],
+   "overflow-2-2": [
+    "of-title",
+    "of-para-3",
+    "of-list-1",
+    "of-source-1",
+    "of-source-2"
+   ],
+   "overflow-2-2-2": [
+    "of-title",
+    "of-list-2",
+    "of-source-2"
+   ]
+  }
+ },
+ "grayscale": [
+  {
+   "locale": "en",
+   "sceneId": "product",
+   "file": "cine-en-product-1440-grayscale.png"
+  },
+  {
+   "locale": "en",
+   "sceneId": "evidence",
+   "file": "cine-en-evidence-1440-grayscale.png"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "product",
+   "file": "cine-zh-CN-product-1440-grayscale.png"
+  },
+  {
+   "locale": "zh-CN",
+   "sceneId": "evidence",
+   "file": "cine-zh-CN-evidence-1440-grayscale.png"
+  }
+ ],
+ "captures": [
+  {
+   "file": "cine-en-context-1440.png",
+   "sha256": "92b84c8f392b9e9e3706d3b52c7f5191e03fa67fc348ebe3e3edebcecf8f49da"
+  },
+  {
+   "file": "cine-en-product-1440.png",
+   "sha256": "bdc12280d3a82af34ec24ae12dc155c0820ac46c7a753b422063303c564b9d18"
+  },
+  {
+   "file": "cine-en-product-center-1440.png",
+   "sha256": "e6d05df34d45ce87d557ac03f6a048b833dc5bd24ccb16647722fec02ca47147"
+  },
+  {
+   "file": "cine-en-detail-1440.png",
+   "sha256": "7ca7f7f17a53dd5f5e4105b08a707f768077673f27a57befa08d5b8967e81a13"
+  },
+  {
+   "file": "cine-en-mechanism-1440.png",
+   "sha256": "7876c69466cf28889a22936e81ba35589098c17030fb97d13c21b14c13e54667"
+  },
+  {
+   "file": "cine-en-evidence-1440.png",
+   "sha256": "b1203823f4df2e3e6570666fa994ca1a473b48169af333baa1c954f9312b122b"
+  },
+  {
+   "file": "cine-en-quote-1440.png",
+   "sha256": "f0e883eb037714891a834bbd1bc4ef803f72e2654497110dce52db6c109649a0"
+  },
+  {
+   "file": "cine-en-overflow-1440.png",
+   "sha256": "596b22fe021ec1a4b92c2b0207820dd60014fe020c143e7f0bab2ee9fa23409e"
+  },
+  {
+   "file": "cine-en-long-heading-1440.png",
+   "sha256": "1663b100f20ded6b4b2f93e760b414925704f7aaabdbc5d8961bcadfc86ec0b3"
+  },
+  {
+   "file": "cine-en-action-1440.png",
+   "sha256": "620803e03d8568cc834e21b63c3f38d05bff885f363ac781718472dd784ab544"
+  },
+  {
+   "file": "cine-en-product-1440-grayscale.png",
+   "sha256": "88bb4a4a36538da87c17af1fc51f3f335b729bc9e50100b3f43bf60db0ab52aa"
+  },
+  {
+   "file": "cine-en-evidence-1440-grayscale.png",
+   "sha256": "4ca22d3404beaf2111acda7c321de7e5201f1aeee2d9b23f7885d473237d173b"
+  },
+  {
+   "file": "cine-en-context-1024.png",
+   "sha256": "4927265b841360690476f01721b120e60884f0891043813e32edbff688c4eeb2"
+  },
+  {
+   "file": "cine-en-product-1024.png",
+   "sha256": "82abc0b8b40e0b7c3bcebf0f4187772334acffe010e539dd123f32a658da4b15"
+  },
+  {
+   "file": "cine-en-product-center-1024.png",
+   "sha256": "d32196a87c531ec976579507152f95d4ac76d7619f4471cb4e3d2ea49d0af7c7"
+  },
+  {
+   "file": "cine-en-detail-1024.png",
+   "sha256": "361b972de3b24e5e907bc9ea09888ed93ba78d23e30b6ca5191e222a9eaf517c"
+  },
+  {
+   "file": "cine-en-mechanism-1024.png",
+   "sha256": "ba4695ef2695dc9b92c156ad408dd9d805e9b465f472da9726a05441085312d3"
+  },
+  {
+   "file": "cine-en-evidence-1024.png",
+   "sha256": "aab7e46e24905a4501d74bbda3b2c58f331fafc79691746068e48584c96f0b10"
+  },
+  {
+   "file": "cine-en-quote-1024.png",
+   "sha256": "cfb83bdd2b0695af86f4c6f6a16be84e920525392fb4a2708bcbcf0ff35a97ce"
+  },
+  {
+   "file": "cine-en-overflow-1024.png",
+   "sha256": "3718c7192795cbfee49d707149dd9fa0bd5a4804b1f089a8544ffe22b86e464f"
+  },
+  {
+   "file": "cine-en-long-heading-1024.png",
+   "sha256": "7e7f518085934a075c20cf60de759dff0dfcc6debedee95bfe83d9141a3b3e5d"
+  },
+  {
+   "file": "cine-en-action-1024.png",
+   "sha256": "388d3f3973562e9415ee5dbf72be45cfddb912d3faa7f432f5885eb47eb93d8b"
+  },
+  {
+   "file": "cine-en-context-390.png",
+   "sha256": "564e0f77cae5cfb6d9fcd8bf462e0f2bff696b553f5097100e168506ced40e8b"
+  },
+  {
+   "file": "cine-en-product-390.png",
+   "sha256": "f73cf4f859aabdc35aee797bb4d842da42277e18692e52f400d0d59b76def086"
+  },
+  {
+   "file": "cine-en-product-center-390.png",
+   "sha256": "43fb537e642ba06fb66ee379615f14307d1e2a1c392d3cb4cc8d1b0d715da4c5"
+  },
+  {
+   "file": "cine-en-detail-390.png",
+   "sha256": "c3e7494834cbdc43a3ed111254f176ae39a02f1387ae03e5a2c97d2ba6b3d246"
+  },
+  {
+   "file": "cine-en-mechanism-390.png",
+   "sha256": "5f52b83e3eb929eda4140f8b15775480aa03594329d7dfc7c855830e1a3458c3"
+  },
+  {
+   "file": "cine-en-evidence-390.png",
+   "sha256": "363b7ee5eb4516f8a6ad1aac267e2d1ee327d2a60acbde795898017bacc6ebb0"
+  },
+  {
+   "file": "cine-en-quote-390.png",
+   "sha256": "87151caa0294105698f749bd8d6c9e189ab3d0a2b530d388fe8880607b59423a"
+  },
+  {
+   "file": "cine-en-overflow-390.png",
+   "sha256": "11c0230ea708aff0c8f83380686d584c693aac5768c1855445a08b7c5411177f"
+  },
+  {
+   "file": "cine-en-long-heading-390.png",
+   "sha256": "2fe3f030aba481c06c8c8572f114bdff489f864c698eb67367bf3a1c8a5bc3c6"
+  },
+  {
+   "file": "cine-en-action-390.png",
+   "sha256": "efd3d17e43ce9de40603f18fb63ad47ad3550f6607c2cebd7af9a4ea42fda797"
+  },
+  {
+   "file": "cine-en-contact.jpg",
+   "sha256": "8a87028f20f3e3594d3f30fe1fc43c23be6f19757442115346584b70bfe8e182"
+  },
+  {
+   "file": "cine-en-contact-390.jpg",
+   "sha256": "545c9d8104afde989068d41da49fd97ce415fdf321595fc46d2435ec3ba94ebc"
+  },
+  {
+   "file": "cine-en-overflow-split-1440.png",
+   "sha256": "07bbe7fe6009e64407d8c43542c8c8a66207c79379828106f765809fd79f30b2"
+  },
+  {
+   "file": "cine-en-overflow-2-split-1440.png",
+   "sha256": "7f63ab3a9089cfd89a11ffe116d57ba4647520a47193c4be3e3989fe23f26605"
+  },
+  {
+   "file": "cine-en-overflow-2-2-split-1440.png",
+   "sha256": "6ea4ed0082abcd9261a8755c8ef7980c97a288153fb2d9f5a8f303b66e359847"
+  },
+  {
+   "file": "cine-en-overflow-2-2-2-split-1440.png",
+   "sha256": "5e3b5f5b939e9b925ec2e679715f663c974e2eccc27d4172e8e45ed851c1e5a6"
+  },
+  {
+   "file": "cine-zh-CN-context-1440.png",
+   "sha256": "172a9303b28d112d8c40971762d1f6381acfb0b31a9cc34f377d574f4e4657ae"
+  },
+  {
+   "file": "cine-zh-CN-product-1440.png",
+   "sha256": "9696e3a8c13fa19e0d06226a7551962104fa55f6c193983c6eaeee45e3a99353"
+  },
+  {
+   "file": "cine-zh-CN-product-center-1440.png",
+   "sha256": "a16faaec2c420c0667fa09752c7037b13f6cbf1bd688a2c90aa30fc9c6f66d67"
+  },
+  {
+   "file": "cine-zh-CN-detail-1440.png",
+   "sha256": "874a89e26e94fab3d8c44d94aea5ea532113cdd49f258d9254e1c20dbcfdab31"
+  },
+  {
+   "file": "cine-zh-CN-mechanism-1440.png",
+   "sha256": "ae1ce2192be83fced2ab25e3340cd24e449f362cf9bc76ccd8809e09e656377c"
+  },
+  {
+   "file": "cine-zh-CN-evidence-1440.png",
+   "sha256": "74848f264fc60bf3481a346c90ae81eff1267e7f913eea44f322e5909a8184b8"
+  },
+  {
+   "file": "cine-zh-CN-quote-1440.png",
+   "sha256": "17c789f6325d80d2b61194b96ee3416cb5e8102ef170f57c9a01832db6ea689b"
+  },
+  {
+   "file": "cine-zh-CN-overflow-1440.png",
+   "sha256": "1045ec1ced7153cca23f29b7b1099639cf74c5e6fd1e80f50aae2b7a8e651c3e"
+  },
+  {
+   "file": "cine-zh-CN-long-heading-1440.png",
+   "sha256": "efbf8111dc5842a617eed038482be13fbf1cb00e227c163005162ea2c58c649d"
+  },
+  {
+   "file": "cine-zh-CN-action-1440.png",
+   "sha256": "3fb2bab4099375c70def07e1997678d93802b83fc3c549b2ea9527e7ee5f36ee"
+  },
+  {
+   "file": "cine-zh-CN-product-1440-grayscale.png",
+   "sha256": "f00be30a388110cd0cfa663e168bfb67b9a4ec10cc814dc7088996bb649a4823"
+  },
+  {
+   "file": "cine-zh-CN-evidence-1440-grayscale.png",
+   "sha256": "677b646b038d89a0f5c1c80a31b06fda613c5352ce2ecbb7acd9a3668bf9f4d0"
+  },
+  {
+   "file": "cine-zh-CN-context-1024.png",
+   "sha256": "114a0307cf6e0fa586248321f8921f8d66c67a9886176e6c82e2afb25fa5168a"
+  },
+  {
+   "file": "cine-zh-CN-product-1024.png",
+   "sha256": "465bca1eeb07da81b67f3b46ad8f55740a9b674f8e205e08aab362f1102fd401"
+  },
+  {
+   "file": "cine-zh-CN-product-center-1024.png",
+   "sha256": "c1d0c6ff7854cf6ea572d35da96bbc54947773188d830c83a7089083375c0012"
+  },
+  {
+   "file": "cine-zh-CN-detail-1024.png",
+   "sha256": "3ccd60e4d7d1907dd27ae283fee46659615d5ddb34841825a9b9e88e459c85d3"
+  },
+  {
+   "file": "cine-zh-CN-mechanism-1024.png",
+   "sha256": "dcea098cfe3cbdd525961c41e6eb5259034eed93995b272fe592eca3326e49d9"
+  },
+  {
+   "file": "cine-zh-CN-evidence-1024.png",
+   "sha256": "031ea48131b53102fc572ae8f1c3a7790f065ce6bd098cfd1f0f02defd4a949f"
+  },
+  {
+   "file": "cine-zh-CN-quote-1024.png",
+   "sha256": "4b94652018914c9bb4f7724ac781e3d7245b8fff363b94741d6fbcb7d68c380c"
+  },
+  {
+   "file": "cine-zh-CN-overflow-1024.png",
+   "sha256": "857f0fa169567f66d1e323ebbb73a6f52e6246c811970bd9589eb6255bbe3e8e"
+  },
+  {
+   "file": "cine-zh-CN-long-heading-1024.png",
+   "sha256": "ba00cf708534c93243c8b3d762bc1200dc43cc611a2992da48d6717688bdf148"
+  },
+  {
+   "file": "cine-zh-CN-action-1024.png",
+   "sha256": "4da532af2a150b865b059f1cdcb88d23da40665b0e524cbd5b96dabee9a82b15"
+  },
+  {
+   "file": "cine-zh-CN-context-390.png",
+   "sha256": "f7d63907075e31d4cec358ac7d4643ac8ed7cc713acacb07aeef1ed92587941d"
+  },
+  {
+   "file": "cine-zh-CN-product-390.png",
+   "sha256": "45fa747a5ae18c2d3ae7976e15930ec982fa489cc58e6f606d09b9a4654e6206"
+  },
+  {
+   "file": "cine-zh-CN-product-center-390.png",
+   "sha256": "af63d676d274198c3da85bfa76c07c13edb3a73d41b6605aa52463dca432a87a"
+  },
+  {
+   "file": "cine-zh-CN-detail-390.png",
+   "sha256": "4ec70841ddb4feb771ef72af17f0c5985ee26a7534906efc18cd0c0aa278c951"
+  },
+  {
+   "file": "cine-zh-CN-mechanism-390.png",
+   "sha256": "62ef79fab8e64223f47dcd07c6222bff57581ea1e90836545402aed134a7c25e"
+  },
+  {
+   "file": "cine-zh-CN-evidence-390.png",
+   "sha256": "eee2020758e21dafc261a07ecac301360dfcf5a7bb5d5c0da61f098528533035"
+  },
+  {
+   "file": "cine-zh-CN-quote-390.png",
+   "sha256": "4f960bf19f25c86d0a93a1ca8d3b24f99f14d702f7040caef716778574643232"
+  },
+  {
+   "file": "cine-zh-CN-overflow-390.png",
+   "sha256": "318dcaba3247eb20f51d06214ceb9f07ea244c7bf0a79a3bd9eb9398f764de3e"
+  },
+  {
+   "file": "cine-zh-CN-long-heading-390.png",
+   "sha256": "a05a9c32e1f7301a130c7fb66d311c227211b1cebec845cbe1bfa08c9e6e1432"
+  },
+  {
+   "file": "cine-zh-CN-action-390.png",
+   "sha256": "380bb3a56227db5c00d6e5c29caf7c67f678093256ca2f6ccb00ce3821968634"
+  },
+  {
+   "file": "cine-zh-CN-contact.jpg",
+   "sha256": "52e1400ce5fb0a0a2f2fc85f542268c7f40130dadbafa897e3d6511e905d936f"
+  },
+  {
+   "file": "cine-zh-CN-contact-390.jpg",
+   "sha256": "d380d0de818a9f817ef4bf0af8db932c24f813e56e44c566c9be2945df6c1fe7"
+  },
+  {
+   "file": "cine-media-product-cream-collage-image-left.png",
+   "sha256": "0c2215b9b344a83b766e99fedd47b78b488364c5696c6f8e132f99a4a2f24db3"
+  },
+  {
+   "file": "cine-media-product-cream-collage-image-strip.png",
+   "sha256": "4e9ba1278bf73fa586ee40c99db735d85fe29731308f23d9c9dc5a999e481b43"
+  },
+  {
+   "file": "cine-media-product-cream-collage-image-right.png",
+   "sha256": "bdc12280d3a82af34ec24ae12dc155c0820ac46c7a753b422063303c564b9d18"
+  },
+  {
+   "file": "cine-media-product-dark-data-image-left.png",
+   "sha256": "ed5e46cd587fe53db2661ee30f2d3cefa9d3ba0e21397e7be5a0cf5b84a2926a"
+  },
+  {
+   "file": "cine-media-product-dark-data-image-strip.png",
+   "sha256": "039564b2a0043225178b6389390ccb7a47ff088ca70cb594b3992b089adccf38"
+  },
+  {
+   "file": "cine-media-product-dark-data-image-right.png",
+   "sha256": "1455298858f317a40e963d300fe6d2acdd595c58286c2441e7885ac3aa9c524b"
+  },
+  {
+   "file": "cine-media-product-electric-violet-image-left.png",
+   "sha256": "33b1e918105c490ba0977b4b99103b7790ad7c781125333a4d2e387c7c0fa5b2"
+  },
+  {
+   "file": "cine-media-product-electric-violet-image-strip.png",
+   "sha256": "aee579a1b17b5d5a8e6142347920a6170582e1a097fc7ad25e719e9fb424ce3c"
+  },
+  {
+   "file": "cine-media-product-electric-violet-image-right.png",
+   "sha256": "8361b338c678906ae615810b2a065f61f3d449b311759a8651b74c874908cc7c"
+  },
+  {
+   "file": "cine-media-product-silver-gray-editorial-image-left.png",
+   "sha256": "79497f3bd5bada4988bae7755033994faeb913ea7b968c2457737ade6dd7a376"
+  },
+  {
+   "file": "cine-media-product-silver-gray-editorial-image-strip.png",
+   "sha256": "d4f3996577e270d0e886d4670a8fcf5676e57e025e2356a76ff6f2499608fb2f"
+  },
+  {
+   "file": "cine-media-product-silver-gray-editorial-image-right.png",
+   "sha256": "1f6f7d7b84e4ab20bf2a2ae4a4137dee186252fa9c6eda53fa73fdae0ba6c014"
+  },
+  {
+   "file": "cine-media-product-fresh-report-image-left.png",
+   "sha256": "39994043b48fcedcd60ee0df0e6a8ff8e0b6994fe5ab12e76ae982e550070b9b"
+  },
+  {
+   "file": "cine-media-product-fresh-report-image-strip.png",
+   "sha256": "6bca03a90c04f0d9716d1f74478de68ad1ce5d404314d2da3107da4ff208116f"
+  },
+  {
+   "file": "cine-media-product-fresh-report-image-right.png",
+   "sha256": "660a24a29b6c23b3731e0db605b9ff1eb0d735fce9233e1e72fdb6c2db5dbaaa"
+  },
+  {
+   "file": "cine-media-product-orange-launch-image-left.png",
+   "sha256": "7d3dc28769db74ec3806c8fd2fd7ab5784db77212dfac4cf83d654de354e2c0c"
+  },
+  {
+   "file": "cine-media-product-orange-launch-image-strip.png",
+   "sha256": "477243e0b7dbecb5e20d384459f79cf9f7d7a5003aa40a0f987e6f5e0c559361"
+  },
+  {
+   "file": "cine-media-product-orange-launch-image-right.png",
+   "sha256": "9fb91bc7e3721f58f37df150b071af4946085089fe477d319533677906b339b9"
+  },
+  {
+   "file": "cine-media-product-electric-violet-photo-split.png",
+   "sha256": "785f483210bd0ca1fb33f70003db767b03b4e8aeb3b0ec780dde3a0670140a35"
+  },
+  {
+   "file": "cine-media-product-orange-launch-stage-hero.png",
+   "sha256": "e89a8b6f20a11e56346b2c9c88b1a2a639d03f5ad0eb2d8c9f892fd379e8e6b8"
+  },
+  {
+   "file": "cine-media-mechanism-cream-collage-system-map-wide.png",
+   "sha256": "7876c69466cf28889a22936e81ba35589098c17030fb97d13c21b14c13e54667"
+  },
+  {
+   "file": "cine-media-mechanism-cream-collage-system-map-rail.png",
+   "sha256": "17fffc99b2ae4e0d7da3328db51a9f0c234d673ee1493a89902472e936606928"
+  },
+  {
+   "file": "cine-media-mechanism-cream-collage-system-map-key.png",
+   "sha256": "9cc1a7ec96e2d3e6989a4be03252150665f7c54c3f764e7eebe29d031819563c"
+  },
+  {
+   "file": "cine-media-mechanism-dark-data-system-map-wide.png",
+   "sha256": "f653916b2e5a1ad2646386f8fccf4b8fbbbe2990df5966fe933441755e400d22"
+  },
+  {
+   "file": "cine-media-mechanism-dark-data-system-map-rail.png",
+   "sha256": "c5c974390c151e0a5f6d9050743925076f4596882766f0d59ba6155f32abaf9c"
+  },
+  {
+   "file": "cine-media-mechanism-dark-data-system-map-key.png",
+   "sha256": "f3e194b10f151a8f7bd9d0462b0e72573d57f9fef1c4879331c17f2b8f6fea9e"
+  },
+  {
+   "file": "cine-media-mechanism-electric-violet-system-map-wide.png",
+   "sha256": "55e9da887c35b644838f7689050c61bcc3db11bf4b7f4a56cce59f8ed22d614f"
+  },
+  {
+   "file": "cine-media-mechanism-electric-violet-system-map-rail.png",
+   "sha256": "4a4a734eba966b02f116056bcfc46e441f3565e12ee8b84f8cff05fee837f246"
+  },
+  {
+   "file": "cine-media-mechanism-electric-violet-system-map-key.png",
+   "sha256": "2ee7e16f8f47b72e97637832dcf730c0aed86844308a000c8481ba8f18a5a221"
+  },
+  {
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-wide.png",
+   "sha256": "7139bed21f38a58e4a6a13546b263aa9d0764bf42ba3f2ef3154b5730cf74632"
+  },
+  {
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-rail.png",
+   "sha256": "1f0d75a92a7e317a1d5f9040cb0e3c1e921628e04700c83164e42430145c1fb9"
+  },
+  {
+   "file": "cine-media-mechanism-silver-gray-editorial-system-map-key.png",
+   "sha256": "190ece332939f26119cc902fd3b9125735b042dc447268e23a91741b51b15583"
+  },
+  {
+   "file": "cine-media-mechanism-fresh-report-system-map-wide.png",
+   "sha256": "0ac3def95d51acd2230ce445c6af3e6a0c7a9548f776132cc80cdd77fa2dc6dc"
+  },
+  {
+   "file": "cine-media-mechanism-fresh-report-system-map-rail.png",
+   "sha256": "bf7a1a39093dc921cde045234269a07499ff7f5d8eefe89fccc17ec1e26a756f"
+  },
+  {
+   "file": "cine-media-mechanism-fresh-report-system-map-key.png",
+   "sha256": "74b7a9eb47ce2e25cb3720c8e70347e78decd88d79a2230ab8cc3fb9cae0e2b4"
+  },
+  {
+   "file": "cine-media-mechanism-orange-launch-system-map-wide.png",
+   "sha256": "5145c23098e50f6564417c465ec303f724210d46496bd2e13b74727316d0cc66"
+  },
+  {
+   "file": "cine-media-mechanism-orange-launch-system-map-rail.png",
+   "sha256": "376a02e3fc6218390d379d946a0f452981902a4bb6301536d4751b00758260ba"
+  },
+  {
+   "file": "cine-media-mechanism-orange-launch-system-map-key.png",
+   "sha256": "9ee5f641f6839d2908b4c4305f6084e9c1fc9afdb14d9c9cda271c879d210952"
+  },
+  {
+   "file": "cine-media-contact.jpg",
+   "sha256": "fd448bf50aac48312508e083f001c0427ec8facda7edcc5b024f29549cab9fc7"
+  }
+ ],
+ "errors": [],
+ "externalRequests": []
+}

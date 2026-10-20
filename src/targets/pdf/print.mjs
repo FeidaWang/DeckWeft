@@ -8,7 +8,7 @@
  */
 import {expectedBlockText} from '../pptx/audit.mjs';
 import {targetFit,PT_PER_PX} from '../target-budget.mjs';
-import {bandStrip} from '../pptx/paginate.mjs';
+import {bandStrip,continuationTitle} from '../pptx/paginate.mjs';
 const x=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 export const PDF_PAGE={width:1440,height:810};
 const PRINT_CSS=`@page{size:${PDF_PAGE.width}px ${PDF_PAGE.height}px;margin:0}html,body{margin:0;padding:0;background:#fff}.dw-page{position:relative;width:${PDF_PAGE.width}px;height:${PDF_PAGE.height}px;overflow:hidden;contain:strict;break-inside:avoid;break-after:page;page-break-after:always}.dw-fit{position:absolute;left:0;top:0;transform-origin:0 0}.dw-fit>.web-scene{margin:0}.dw-strip{position:absolute;overflow:hidden}.dw-strip-fit{position:absolute;left:0;top:0;transform-origin:0 0}.dw-strip .web-scene{margin:0;min-height:0;padding-top:12px;padding-bottom:0}.dw-strip .folio{display:none}.dw-strip .regions{display:block;min-height:0}.dw-notes{break-before:page;page-break-before:always;box-sizing:border-box;width:${PDF_PAGE.width}px;min-height:${PDF_PAGE.height}px;padding:56px 72px;background:#fff;color:#171717;font:15px/1.5 "Avenir Next",Arial,"PingFang SC",sans-serif}.dw-notes h2{font-size:22px;margin:0 0 16px}.dw-notes h3{font-size:16px;margin:20px 0 6px}.dw-notes ul{margin:0;padding-left:20px}.dw-notes li{margin:2px 0}.dw-notes a{color:inherit}`;
@@ -45,7 +45,7 @@ export function pdfPrintJob({document,plan,html,layout,delivery,paginate='auto'}
  const pages=[],pagination=[];
  plan.scenes.forEach((s,i)=>{
   const m=layout.scenes[i],derived=html.scenes[i],titleBlock=derived.readingOrder.map(rid=>derived.regions.find(r=>r.id===rid).blockId).find(id=>blocks.get(id)?.type==='heading')||null;
-  const headingStyle=m.regions.find(r=>r.blockId===titleBlock)?.texts[0]?.style||{fontSize:28,lineHeight:34},strip=Math.round((headingStyle.lineHeight||headingStyle.fontSize*1.2)+24);
+  const headingStyle=m.regions.find(r=>r.blockId===titleBlock)?.texts[0]?.style||{fontSize:28,lineHeight:34},titleText=(blocks.get(titleBlock)?.text||s.id).replace(/\n/g,' '),strip=Math.round(continuationTitle(m,{titleBlockId:titleBlock,text:`${titleText} (00/00)`,style:headingStyle}).height+24);
   const fit=paginate==='none'?null:targetFit(m,blocks,{format:'pdf',titleBlockId:titleBlock,strip});
   const bands=fit?.bands||[null],parts=bands.length,reason=fit?fit.reason||fit.status:'off';
   if(parts>1)pagination.push({sceneId:s.id,parts,reason});
@@ -53,19 +53,22 @@ export function pdfPrintJob({document,plan,html,layout,delivery,paginate='auto'}
    const stripHere=bandStrip(m,band,{titleBlockId:titleBlock,strip}),top=band?band.y-stripHere:m.bounds.y,h=band?band.height+stripHere:m.bounds.height,w=m.bounds.width;
    const scale=Math.min(PDF_PAGE.width/w,PDF_PAGE.height/h);
    pages.push({sceneId:s.id,part:part+1,parts,reason,scale:Math.round(scale*10000)/10000,offset:[(PDF_PAGE.width-w*scale)/2,(PDF_PAGE.height-h*scale)/2],width:w,height:h,top:top-m.bounds.y,strip:stripHere,
-    clip:band?{y:band.y,height:band.height}:{y:m.bounds.y,height:m.bounds.height},overHeight:!!fit?.typography[part]?.overHeight,typography:fit?fit.typography[part]:null,titleBlockId:titleBlock,index:i,background:m.background?.hex||'FFFFFF'});
+    clip:band?{y:band.y,height:band.height}:{y:m.bounds.y,height:m.bounds.height},overHeight:!!fit?.typography[part]?.overHeight,typography:fit?fit.typography[part]:null,titleBlockId:titleBlock,index:i,sceneHeight:m.bounds.height,titleStyle:stripHere?continuationTitle(m,{titleBlockId:titleBlock,text:`${titleText} (${part+1}/${parts})`,style:headingStyle}):null,background:m.background?.hex||'FFFFFF'});
   });
  });
  const page=p=>{
-  const markup=closedDisclosures(html.sceneMarkup[p.index]),tx=`translate(${p.offset[0]}px,${p.offset[1]-p.top*p.scale}px) scale(${p.scale})`;
+  // A band page clips the scene to its band (in scene px, before the transform), so nothing of the neighbouring bands shows around the strip.
+  const markup=closedDisclosures(html.sceneMarkup[p.index]),tx=`translate(${p.offset[0]}px,${p.offset[1]-p.top*p.scale}px) scale(${p.scale})`,clip=p.parts>1?`;clip-path:inset(${p.top}px 0 ${Math.max(0,p.sceneHeight-p.top-p.height)}px 0)`:'';
   let strip='';
   if(p.strip){
    // The heading repeats in a strip above the band, as the PowerPoint continuation slide does, with its part number.
    const section=markup.match(/^<section[^>]*>/)[0],region=p.titleBlockId?regionMarkup(markup,p.titleBlockId):null,label=`(${p.part}/${p.parts})`;
-   const heading=region?region.replace(/<\/h2>/,` <span class="dw-part">${label}</span></h2>`):`<div class="region" data-component="heading"><h2>${x(p.sceneId)} ${label}</h2></div>`;
-   strip=`<div class="dw-strip" style="left:${p.offset[0]}px;top:${p.offset[1]}px;width:${p.width*p.scale}px;height:${p.strip*p.scale}px;background:#${p.background}"><div class="dw-strip-fit" style="width:${p.width}px;transform:scale(${p.scale})">${section}<div class="regions">${heading}</div></section></div></div>`;
+   const h2=`<h2 style="font-size:${p.titleStyle.fontSize}px;line-height:${p.titleStyle.lineHeight}px;max-width:none;white-space:${p.titleStyle.lines>1?'normal':'nowrap'};margin:0"`;
+   const heading=region?region.replace(/<h2\b[^>]*>/,h2+'>').replace(/<\/h2>/,` <span class="dw-part">${label}</span></h2>`):`<div class="region" data-component="heading">${h2}>${x(p.sceneId)} ${label}</h2></div>`;
+   // The strip box starts two px above the band's clip so no antialiased seam of the neighbouring band shows at its edge.
+   strip=`<div class="dw-strip" style="left:${p.offset[0]}px;top:${p.offset[1]-2}px;width:${p.width*p.scale}px;height:${p.strip*p.scale+2}px;background:#${p.background}"><div class="dw-strip-fit" style="width:${p.width}px;transform:translate(0,2px) scale(${p.scale})">${section}<div class="regions">${heading}</div></section></div></div>`;
   }
-  return `<div class="dw-page" style="background:#${p.background}"><div class="dw-fit" style="width:${p.width}px;transform:${tx}">${markup}</div>${strip}</div>`;
+  return `<div class="dw-page" style="background:#${p.background}"><div class="dw-fit" style="width:${p.width}px;transform:${tx}${clip}">${markup}</div>${strip}</div>`;
  };
  const appendix=plan.scenes.map((s,i)=>{const r=delivery.reveal[i],it=delivery.frozen[i].interactions,mo=delivery.motion[i];
   if(!r.notes.length&&!r.sources.length&&!it.length)return null;
@@ -74,7 +77,7 @@ export function pdfPrintJob({document,plan,html,layout,delivery,paginate='auto'}
  }).filter(Boolean);
  const csp="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; script-src 'none'";
  const doc=`<!doctype html><html lang="${x(document.locale)}"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>${x(document.title)}</title><style>${css}${PRINT_CSS}</style></head><body data-render-hash="${html.renderHash}">${pages.map(page).join('')}${appendix.map(a=>a.html).join('')}</body></html>`;
- const out=pages.map(({index,top,titleBlockId,...p})=>p);
+ const out=pages.map(({index,top,titleBlockId,sceneHeight,titleStyle,...p})=>p);
  return {html:doc,page:PDF_PAGE,pages:out,pagination,appendix:appendix.map(a=>({sceneId:a.sceneId})),expected:pdfExpectations(document,plan,out)};
 }
 

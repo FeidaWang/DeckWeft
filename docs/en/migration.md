@@ -90,3 +90,22 @@ Lock rules for the new fields:
 - A page plan from `planPages()` carries a `basis` hash and its options; `applyPagePlan()` refuses it for any other version of the deck (`PAGE_PLAN_STALE`) and re-derives what it splits or marks.
 
 Legacy fixtures and the negative fixture are checked by `node --test tests/s9a-author-controls.test.mjs`: `wave-a.*`, `families.en` and `evidence-scene.zh-CN` load unchanged, and every case in `tests/fixtures/visual/s9a.negative.json` is refused.
+
+## References, intent and media (CINE batch 1)
+
+Nothing to migrate. CINE batch 1 (2026-10-20, `docs/plans/cinematic-composition-build-map.md`) adds three optional fields to a scene of `schemas/design-plan.schema.json`. A project without them validates and renders as before: the markup of every recorded fixture and demo is byte-identical apart from the stylesheet and the renderer version (`visual-art-direction.13`), as `docs/evidence/cine-p0/baseline-diff.json` records.
+
+- `references: {mode}` — how the page presents its citations. Absent means `expanded`: every citation is a full-width region, today's rendering. `compact` moves the citations to a source strip at the foot of the page, numbers each claim with the display markers of its sources and adds a closed reference panel with every source in full; a citation that attributes a quotation stays beside the quotation. `source-is-subject` keeps every citation as a region and flags the page. Markers are recomputed on every render in deck order; the stable key is the source id. Canonical sources, citation texts and claim bindings never change. PowerPoint notes and the PDF appendix list the markers only for a page that declares a mode.
+- `intent: {purpose, entry, focusGroupBlockIds?, emptyRegions?}` — what the page is for (`explain`, `show-product`, `show-detail`, `compare`, `evidence`, `overview`, `chapter`) and where the eye enters (`left`, `center`, `contextual`). Absent means `inferred`: the purpose and entry are read from the content, the composition and the page's place in the deck, and nothing in the markup changes. A declared intent writes `data-purpose` and `data-entry` on the page's section, decides whether a short text page is open (centred) or structured, and steers the family's variant preference in the rhythm. The primary object is the existing `focalBlockId`; a citation cannot be the focal block once an intent is declared.
+- `media: [{blockId, role}]` — the role of each image or diagram (`hero`, `mechanism`, `context`, `supporting`). Absent entries take the composition's defaults (the first image of an image page is the hero, both before/after images are heroes, diagrams are mechanisms, other images supporting). A declared list writes `data-media-role` on the regions; a supporting image is drawn at 260 px, a context image fills its column.
+
+`authorOverrides.sceneLocks[].fields` accepts `references`, `intent` and `media`. The new author actions are `fit-page`, `set-intent` and `visual-space` ([Visual Studio](visual-studio.md#page-purpose-and-entry-cine-003)); the PDF export now pages a tall scene on the same bands as PowerPoint ([verification](verification.md)).
+
+Recovery:
+
+- `INVALID_DESIGN_PLAN … Choose a reference mode`, `… Quotation … needs an attributing citation on this page` (compact mode).
+- `INVALID_DESIGN_PLAN … Choose a visual purpose`, `… The focus group must contain the focal block`, `… A citation cannot be the focal block of a page with a declared intent`, `… An empty region is a rectangle normalized to the page frame`.
+- `INVALID_DESIGN_PLAN … A media role names an image or diagram of this page`, `… Give … one media role`.
+- `SCENE_SPLIT` from `splitScene()` / `fit-page`: the cut would leave a page with only a heading, move the takeaway away from its claim, or separate an annotation from its target; `AUTHOR_LOCK`: the page's `blockIds` are locked.
+
+Legacy fixtures and every case of `tests/fixtures/visual/cine.negative.json` are checked by `node --test tests/cine-p0.test.mjs`.

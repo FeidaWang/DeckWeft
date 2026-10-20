@@ -4,6 +4,31 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## CINE batch 1 — cinematic composition P0, 2026-10-20
+
+State **implemented-local** for CINE-001 to CINE-004 on branch `claude/deckweft-design-roadmap-2d3d10` (not merged). No task state changes. [Evidence](../evidence/cine-p0/review.md) · [Build map](../plans/cinematic-composition-build-map.md) · [Migration](migration.md#references-intent-and-media-cine-batch-1) · [Visual Studio](visual-studio.md#page-purpose-and-entry-cine-003).
+
+Commands (the isolated browser is the Playwright-cache Chrome for Testing 151.0.7922.34 with Playwright 1.61.1):
+
+```bash
+npm run verify
+CHROMIUM_PATH=… node --test tests/studio-export.test.mjs
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node tests/browser_cine.mjs --evidence
+CHROMIUM_PATH=… PLAYWRIGHT_MODULE=…/playwright/index.mjs node scripts/export-targets.mjs --cine --out dist/export-targets-cine
+node tests/render-baseline-diff.mjs <checkout of be9921d> docs/evidence/cine-p0/baseline-diff.json
+```
+
+Results:
+
+- `npm run verify` passed **550 tests** (545 pass, 5 skips: the register test needing `DECKWEFT_HANDOFF_DIR`, the three Studio export tests needing `CHROMIUM_PATH`, and one more browser-gated case), plus types, source and link checks, packaging and demos. Node 24.14.0.
+  - New: `tests/cine-p0.test.mjs` (38 tests: the corpus in both languages, the target budget and typography report, PDF bands, fit-page and the stated split, the reference contract, markers, strip, panel, exports and reorder stability, the intent contract, inference, direction, markup and rhythm preference, the set-intent and visual-space actions through the Studio API, media roles, the media grids, the subject fraction, and the docs). Every case of `tests/fixtures/visual/cine.negative.json` (22) is refused.
+  - With `CHROMIUM_PATH` set, `tests/studio-export.test.mjs` passed 5 of 5 alone.
+- The render baseline was re-recorded for renderer `visual-art-direction.13` (stylesheet parts only; content hashes identical on all 38 entries; player `semantic-player.6` unchanged). The diff against `be9921d` shows no visible word, value, anchor, data table or title changed in any of the 12 HTML entries.
+- `tests/browser_cine.mjs` (isolated Chromium 151, Playwright 1.61.1): 60 page measurements at 1440, 1024 and 390 px in English and Chinese, 111 captures, 0 page errors, 0 external requests. The 12-source strip measures 46.2 px of its 48 px budget at 1440; the overflow page is cut into four fitting pages by three `fit-page` passes from measured bounds; 38 media-variant measurements across the six themes give `LARGEST_MEDIA` (image-right; stage-hero in Luminous Stage; system-map-wide). Pages over the 900 px budget at 1440: product-center, mechanism and overflow (before the split) in both languages, and the Chinese long-heading page; recorded in the evidence with the reasons.
+- `node scripts/export-targets.mjs --cine`: 2 decks. PowerPoint editability, the independent inspection, the scene check and the typography result pass on 2 of 2; PDF searchability passes in English and is partial in Chinese (radical code points, the S7 limit); accessibility partial (Chromium grouping figures). Tall pages are paged: 3 scenes in English, 4 in Chinese, with the heading repeated at one line or wrapped at the 18 pt floor.
+- Viewed: both contact sheets at 1440 and 390 px, the media contact sheet, the product, product-center, detail, mechanism, evidence and overflow captures, the grayscale copies, the Quick Look renders of the evidence slide, the overflow continuation slides and PDF pages, and the Chinese long-heading slides. The weakest page is `mechanism` (the diagram's own edge routing); second the Chinese `long-heading` page (a 12ch headline measure).
+- PowerPoint and Keynote are installed and were **not run**; LibreOffice is not installed. Firefox, WebKit, screen readers, PDF/UA validators and Claude were not run.
+
 ## S11 — merge readiness for S1–S10 (local), 2026-10-19
 
 State **LocalVerified** for the tip `d584d76`. [Evidence](../evidence/s11-merge-readiness/review.md) · [Alignment §20](../plans/design-handoff-alignment.md#20-s11-decisions-and-result--merge-readiness-2026-10-19) · [Merge plan](../plans/design-handoff-merge-to-main.md#readiness-s11-2026-10-19).

@@ -9,6 +9,7 @@ import {splitSmallMultiples} from '../design/rhythm.mjs';
 import {splitScene} from '../design/split.mjs';
 import {TARGETS} from '../targets/target-budget.mjs';
 import {VISUAL_PURPOSES,ENTRIES,effectiveIntent,preferredVariant} from '../design/intent.mjs';
+import {mediaRoles,MEDIA_ROLES} from '../design/media.mjs';
 import {startChapter,removeChapter,setChapterProfile,chapterOf,chapterRuns} from '../design/chapters.mjs';
 import {pageKind,tokenDrift,assertDesignProfile} from '../design/design-profile.mjs';
 import {separateLocks} from '../core/adapters/locks.mjs';
@@ -29,7 +30,8 @@ export const AUTHOR_ACTIONS=Object.freeze({
  'lock':{levels:['deck','chapter','page','object'],changes:['locks']},
  'unlock':{levels:['deck','chapter','page','object'],changes:['locks']},
  'fit-page':{levels:['page'],changes:['page disclosure','page split']},
- 'set-intent':{levels:['page'],changes:['intent','composition']}
+ 'set-intent':{levels:['page'],changes:['intent','composition']},
+ 'visual-space':{levels:['page','object'],changes:['composition','media role','page disclosure']}
 });
 const fail=(message,code='AUTHOR_ACTION',status=422)=>{throw new DeckError(code,message,status);};
 const THEME_LABELS={'diagonal-cover':['Diagonal cover with a large number','斜切封面与大数字'],'chart-with-evidence-rail':['Chart with an evidence rail','图表与证据栏'],'reading-flow':['Reading flow','阅读流'],'photo-split':['Large photo split','大幅图片分栏'],'violet-chapter':['Full-colour chapter','满版色章节页'],'fieldnotes-cover':['Fieldnotes cover','田野笔记封面'],'fieldnotes-thesis':['Two-column thesis with margin notes','双栏论点与边注'],'fieldnotes-figure':['Narrow reading column, wide figure','窄正文、宽图'],'fieldnotes-method':['Method text with a margin note','方法说明与边注'],'fieldnotes-closing':['Fieldnotes closing','田野笔记结尾'],'atlas-cover':['Kicker, headline and contents index','引题、标题与目录'],'atlas-section':['Numbered section opener','编号章节页'],'atlas-figure':['Single-chart conclusion','单图结论'],'atlas-panels':['Two to four panels on one scale','同一尺度的 2–4 个面板'],'atlas-appendix':['Table, limits and sources','表格、局限与来源'],'atlas-closing':['Atlas closing','研究图集结尾'],'stage-hero':['One large object, title in the calm area','单一大物件与安静区标题'],'stage-chapter':['Stage chapter','舞台章节页'],'stage-figure':['Chart on a panel','面板上的图表'],'stage-metric':['Large number on the stage','舞台大数字'],'stage-closing':['Stage closing','舞台结尾']};
@@ -42,6 +44,13 @@ const FIELDNOTES={opening:'fieldnotes-cover',chart:'fieldnotes-figure',text:'fie
  * chart-space-measurements.json): the full-width evidence-top caps the plot height (700 × 350 px), the side layouts draw it at
  * 780 × 390, atlas-figure at 865 × 433 and fieldnotes-figure at 834 × 417; stage-figure (774 × 387) is not larger than a side layout. */
 const LARGEST_PLOT={'fresh-report':'atlas-figure','silver-gray-editorial':'fieldnotes-figure'},SIDE=['evidence-left','evidence-right','chart-with-evidence-rail'];
+/** CINE-004: the layout that draws the primary media largest, measured at 1440 px in isolated Chromium 151 on the corpus
+ * (docs/evidence/cine-p0/media-space.json). Image family: image-left and image-right both draw the hero at 723 × 543 px in the
+ * shared themes (a tie; image-right is the show-product variant), image-strip at 533 × 400; the stage's own hero draws it at
+ * 774 × 580 in Luminous Stage. System maps: system-map-wide draws the diagram at its natural 1040 px width (the rail and key
+ * variants at 768 × 785); none of the three keeps the corpus mechanism page under the 900 px budget, so the diagram's own
+ * routing height is the limit there, not the composition. */
+export const LARGEST_MEDIA=Object.freeze({image:'image-right','system-map':'system-map-wide',byTheme:Object.freeze({'orange-launch':Object.freeze({image:'stage-hero'})})});
 const QUALIFIER=/\b(only|except|unless|assum\w*|estimat\w*|approximately|at least|at most|up to|excluding|limited to|synthetic|illustrative|hypothetical|preliminary|caveat\w*|not (?:yet )?(?:measured|verified|tested|run|reviewed))\b|仅|除外|除非|假设|估计|约|至少|至多|不包括|仅限|合成|示意|虚构|初步|未(?:经)?(?:测量|验证|测试|运行|审阅)/i,NUMBER=/\d/;
 const sceneOf=(p,id)=>p.plan.scenes.find(s=>s.id===id),pageOf=(p,id)=>p.plan.scenes.findIndex(s=>s.id===id)+1,blockOf=(p,id)=>p.document.blocks.find(b=>b.id===id);
 const sceneLock=(p,id)=>p.document.authorOverrides.sceneLocks?.find(l=>l.sceneId===id)?.fields||[];
@@ -201,8 +210,11 @@ const ACT={
   }
   const visible=visibleBlockIds(s),ends=new Map(bounds.map(b=>[b.blockId,b.y+b.height])),inside=visible.filter(b=>ends.has(b)&&ends.get(b)<=limit),over=visible.filter(b=>ends.has(b)&&ends.get(b)>limit);
   if(!over.length){c.keep(id,`every block ends inside the ${frame.frame.height} px page (${limit} px under the safe area); the page fits.`,`每个内容块都在 ${frame.frame.height} px 页面内结束（安全区内 ${limit} px）；本页已适配。`);return;}
-  const after=[...inside].reverse().find(b=>!['citation'].includes(blockOf(p,b).type));
-  if(!after){c.keep(id,'no block ends inside the page; the first block alone exceeds it. Shorten it or choose a composition that fits.','没有内容块在页面内结束；第一个内容块就已超出。请精简它或选择合适的构图。');return;}
+  let after=[...inside].reverse().find(b=>!['heading','citation'].includes(blockOf(p,b).type));
+  // No content block ends inside the page: the first content block alone reaches past the limit. The cut falls after it so
+  // both pages keep content; the first page still exceeds the limit and the exporters page it on the bands.
+  if(!after){const first=visible.find(b=>!['heading','citation'].includes(blockOf(p,b).type));if(!first){c.keep(id,'the page has no content block to cut after.','本页没有可供切分的内容块。');return;}
+   after=first;c.keep(id,`no content block ends inside the ${limit} px limit (“${excerpt(blockOf(p,first))}” ends at ${Math.round(ends.get(first)??0)} px); the cut falls after it, so the first page still exceeds the limit and PowerPoint and PDF page it on the bands. Shorten that block to fit.`,`没有内容块在 ${limit} px 限制内结束（“${excerpt(blockOf(p,first))}”结束于 ${Math.round(ends.get(first)??0)} px）；在其后切分，因此第一页仍超出限制，PowerPoint 与 PDF 会按分段分页。请精简该内容块。`);}
   try{const before=p.plan.scenes.length;c.p=splitScene(p,id,{afterBlockId:after});const cut=blockOf(p,after),pages=c.p.plan.scenes.length-before+1;
    c.effect(id,`splits this page into ${pages} pages after “${excerpt(cut)}” (${cut.type}, ending at ${Math.round(ends.get(after))} px of ${limit}). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes.`,`在“${excerpt(cut)}”（${cut.type}，结束于 ${Math.round(ends.get(after))} px / ${limit}）之后将本页拆为 ${pages} 页。标题在续页重复；引用随引用它们的内容块；文字、数据与来源不变。`);}
   catch(e){if(e.code==='AUTHOR_LOCK')throw e;c.keep(id,`the page is not split: ${e.message}`,`本页未拆分：${e.message}`);}
@@ -219,6 +231,29 @@ const ACT={
   c.effect(id,`purpose ${purpose}, entry ${entry} (was ${before}). No text, data or source changes.`,`用途 ${purpose}，入口 ${entry}（原为 ${before}）。文字、数据与来源不变。`);
   const family=compositions.find(v=>v.id===s.composition)?.family||inferFamily(p.document,{...s,blockIds:visibleBlockIds(s)}),target=preferredVariant(s.intent,family);
   if(target&&target!==s.composition)setComposition(c,id,target,[`the ${family} family's ${purpose} layout`,`${family} 类别中用于 ${purpose} 的版式`]);
+ },
+ /** CINE-004: give the page's primary image or diagram the room it needs — the layout that draws it largest, the hero (or
+  * mechanism) role stated, and supporting text behind the disclosure. At object level the chosen image becomes the hero. */
+ 'visual-space'(c){
+  const {p,scope}=c;
+  for(const id of scope.sceneIds){
+   const s=sceneOf(p,id),roles=mediaRoles(p.document,s),visible=visibleBlockIds(s).filter(b=>roles.has(b));
+   if(!visible.length){c.keep(id,'no image or diagram on this page.','本页没有图片或图解。');continue;}
+   if(scope.level==='object'&&!s.blockIds.includes(scope.id))continue;
+   const diagram=visible.find(b=>blockOf(p,b).type==='diagram'),chosen=scope.level==='object'?scope.id:(visible.find(b=>roles.get(b)==='hero')||visible.find(b=>blockOf(p,b).type==='image')||diagram),family=blockOf(p,chosen).type==='diagram'?'system-map':'image';
+   const target=family==='image'?(LARGEST_MEDIA.byTheme[s.theme]?.image||LARGEST_MEDIA.image):LARGEST_MEDIA['system-map'];
+   const before=c.effects.length;
+   if(target!==s.composition)setComposition(c,id,target,family==='image'?['this layout draws the primary image largest at 1440 px (measured)','此版式在 1440 px 下绘制的主图最大（已测量）']:['the wide system map draws the diagram at its natural width','宽幅系统关系图按图解的自然宽度绘制']);
+   // The role: the chosen block becomes the hero (a diagram the mechanism); a former hero becomes supporting. A media lock keeps the roles.
+   const want=blockOf(p,chosen).type==='diagram'?'mechanism':'hero',next=new Map([...mediaRoles(p.document,s)]);
+   for(const [b,r] of next)if(b!==chosen&&r==='hero'&&want==='hero')next.set(b,'supporting');next.set(chosen,want);
+   const changed=[...next].filter(([b,r])=>r!==roles.get(b)||(s.media||[]).some(m=>m.blockId===b)===false&&b===chosen);
+   if(changed.length){if(sceneLock(p,id).includes('media'))c.keep(id,'media locked; roles kept.','媒体角色已锁定，保持不变。');
+    else{const media=[...next].filter(([b])=>b===chosen||(s.media||[]).some(m=>m.blockId===b)||next.get(b)!==roles.get(b)).sort(([a],[b])=>(a===chosen?0:1)-(b===chosen?0:1)).map(([blockId,role])=>({blockId,role}));s.media=media;
+     c.effect(id,`media role: ${chosen} is the ${want}${changed.filter(([b])=>b!==chosen).map(([b,r])=>`; ${b} → ${r}`).join('')}. Assets, crops, alt text and sources stay.`,`媒体角色：${chosen} 为${want==='hero'?'主体':'机制图'}${changed.filter(([b])=>b!==chosen).map(([b,r])=>`；${b} → ${r}`).join('')}。素材、裁切、替代文字与来源不变。`);}}
+   const moved=disclose(c,id,movable(p,s));
+   if(c.effects.length===before&&!moved&&!c.kept.some(k=>k.sceneId===id))c.keep(id,'the visual already has the largest measured layout and its role; no supporting text can move.','该视觉已采用测量中最大的版式并已声明角色；没有可移走的辅助文字。');
+  }
  },
  'lock'(c,options){lockAction(c,options,true);},
  'unlock'(c,options){lockAction(c,options,false);}
@@ -244,6 +279,7 @@ export function planAuthorAction(project,{action,level,id,options}={}){
  const scope=resolveScope(input,{level,id}),c=context(input,scope);
  if(action==='chart-space'&&level==='object'&&blockOf(input,id).type!=='chart')fail('Choose a chart.');
  if(action==='reduce-text'&&level==='object'&&!DISCLOSURE_TYPES.includes(blockOf(input,id).type))fail('Choose a paragraph, list or callout.');
+ if(action==='visual-space'&&level==='object'&&!['image','diagram'].includes(blockOf(input,id).type))fail('Choose an image or a diagram.');
  ACT[action](c,options);
  // An unlock after the stated separation is checked against the separated deck: the migration released nothing, the unlock is explicit.
  const next=assertVisualProject(c.p);assertVisualLocks(c.migrated||input,next);

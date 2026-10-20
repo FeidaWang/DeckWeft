@@ -1,3 +1,13 @@
+截至 2026-10-20，CINE 批次 1（电影化构图 P0：CINE-001 目标预算、CINE-002 紧凑引用、CINE-003 视觉意图、CINE-004 主媒体区）已在分支 `claude/deckweft-design-roadmap-2d3d10`（叠加在 `main` 的 `be9921d` 上）**本地实现**，未合并、未推送。状态：本批次为 implemented-local；VIS-006、VIS-007、VIS-013 与 VIS-016 状态不变，只增加备注。计划见[构建地图](../plans/cinematic-composition-build-map.md)（其 §0 将[路线图文档](../../DeckWeft-Cinematic-Design-Roadmap-2026-10-19.md)与代码对齐）；证据见 [cine-p0](../evidence/cine-p0/review.md)。它新增：
+
+- 一个声明的演示目标（`src/targets/target-budget.mjs`：画幅、安全区、网格、不变的硬性字号下限与仅报告的目标值），网页候选门禁、PowerPoint 分页器与 PDF 分页器都从这里读取；PDF 现在按 PowerPoint 的分段对高页分页并重复标题；`fit-page` 在测量过的内容块之后拆页，而不是缩小页面；
+- 三个可选场景字段 `references`、`intent`、`media`（见[迁移](migration.md#来源呈现页面意图与媒体角色cine-批次-1)）；没有这些字段的页面标记逐字节相同（渲染器 `visual-art-direction.13`，播放器不变）；
+- 网页上的紧凑来源条、论点编号与参考面板，PowerPoint 备注与 PDF 附录中的编号，重排后保持稳定；
+- 推断或声明的页面用途与入口、各类别按用途的版式偏好，以及 `set-intent` 的工作室控件；
+- 媒体角色、5/7 与 7/5 图片网格、260 px 辅助图片、放宽的系统关系图宽度、主体占比与标签字号报告，以及 `visual-space` 的工作室按钮。
+
+证据中记录的已知限制：语料的机制页在三种系统关系图版式下都超过 900 px 的网页预算，原因是图解自身的连线布局；中文长标题页超出预算，是因为 `statement-split` 给标题 12ch（六个汉字）的栏宽；溢出页需要两次声明的切分。PowerPoint 与 Keynote 已安装但未运行，因此不声称其验收。本交接不授权批次 2（CINE-005 至 CINE-007）；由用户决定。
+
 截至 2026-10-19，S11（S1–S10 的合并就绪检查）已完成，并通过拉取请求 #2 合并进 `main`（merge commit `20457eb`）。它建在分支 `claude/s11-merge-readiness-61283b` 上，叠加在 S10（`d584d76`）之上；该远端分支已删除。状态 **LocalVerified**；`main` 上的 Verify 在 Ubuntu、macOS、Windows 上都通过。S11 做了：
 
 - 冻结 `d584d76`，用干净归档验证（`npm ci`、`npm run verify`：475 个测试，471 通过，4 个受环境或浏览器限制而跳过），并在隔离的 Chrome for Testing 151 中重跑全部 18 个浏览器脚本和发布门禁；记录的数字均可复现（[证据，英文](../evidence/s11-merge-readiness/review.md)）；

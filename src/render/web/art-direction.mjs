@@ -122,6 +122,9 @@ export const artDirectionCSS = `
 .web-scene.image-right .web-image{width:min(100%,calc(560px * var(--image-aspect)));max-width:none;margin-left:auto}
 .web-scene.image-strip .regions{align-content:center}
 .web-scene.image-strip .web-image{width:min(100%,calc(400px * var(--image-aspect)));max-width:760px}
+/* A second image of an image-left or image-right page (a locator beside a detail) sits in the text column at the foot of the hero's span instead of the hero's own cell. */
+.web-scene.image-left .region[data-component=image]~.region[data-component=image]{grid-column:2;grid-row:3 / span 6;align-self:end}
+.web-scene.image-right .region[data-component=image]~.region[data-component=image]{grid-column:1;grid-row:3 / span 6;align-self:end}
 .web-scene .region[data-media-role=supporting] .web-image{width:min(100%,calc(260px * var(--image-aspect)))}
 .web-scene .region[data-media-role=context] .web-image{width:100%;max-width:none}
 .web-scene.image-left .region[data-component=callout] p,.web-scene.photo-split .region[data-component=callout] p{font-size:13px;line-height:1.6;font-weight:500;letter-spacing:.04em;border-top:1px solid currentColor;padding-top:20px}
@@ -195,15 +198,17 @@ export const artDirectionCSS = `
 /* CINE-002 compact references. The strip is a flex row of citation regions at the foot of the page (48 px ≈ 6 % of 810 is the
    budget the browser evidence measures against, not a clip: nothing here hides text, so the fit audit stays honest); the panel
    is a closed disclosure with every source in full; a marker is a superscript on the claim. The strip never reflows the grid. */
-.web-scene .source-strip{--strip-budget:48px;margin-top:auto;display:flex;flex-wrap:wrap;gap:6px 24px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 35%,transparent)}
+.web-scene .source-strip{--strip-budget:48px;margin-top:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 20px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 35%,transparent)}
 .web-scene .source-strip .region[data-component=citation]{margin:0;padding:0;border:0;grid-column:auto;min-width:0}
-.web-scene .source-strip .citation{font:400 12px/1.4 var(--body);max-width:32ch;margin:0}
+.web-scene .source-strip .citation{font:400 12px/1.3 var(--body);max-width:32ch;margin:0}
 .web-scene .source-strip .citation a{text-decoration:none}
-.web-scene .reference-panel{flex-basis:100%;font:400 12px/1.5 var(--body);margin:0}
-.web-scene .reference-panel summary{cursor:pointer}
+.web-scene .reference-panel{font:400 12px/1.3 var(--body);margin:0;min-width:0}
+.web-scene .reference-panel[open]{flex-basis:100%}
+.web-scene .reference-panel summary{cursor:pointer;min-height:0;padding:0;margin:0;font:inherit;line-height:1.3}
 .web-scene .reference-panel ol{margin:6px 0 0;padding-left:1.4em;max-width:none}
 .web-scene .reference-panel li{overflow-wrap:anywhere}
-.web-scene .source-marker{font-size:.6em;vertical-align:super;color:var(--reference,inherit);letter-spacing:0}
+/* A marker is a superscript reference mark: never below 12 px (the caption size) and 0.7 of its claim's size, so it meets the annotation minimum wherever its claim meets the body minimum. */
+.web-scene .source-marker{font-size:max(.7em,12px);vertical-align:super;color:var(--reference,inherit);letter-spacing:0}
 .web-scene .source-marker-line{font:400 12px/1.4 var(--body);margin:4px 0 0}
 .web-scene .chart-notes .source-marker-note .source-marker{font-size:1em;vertical-align:baseline}
 @media(max-width:700px){.web-scene .source-strip{gap:4px 16px;padding-top:8px}.web-scene .source-strip .citation{max-width:100%}}

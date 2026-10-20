@@ -12,7 +12,7 @@ import {syntheticLayout} from './export-layout.mjs';
 import {cineProject,CINE_SCENES} from './cine-corpus.mjs';
 import {candidateFit,CANDIDATE_HEIGHT,moveScene} from '../src/design/rhythm.mjs';
 import {splitScene} from '../src/design/split.mjs';
-import {planAuthorAction,AUTHOR_ACTIONS} from '../src/workbench/author-actions.mjs';
+import {planAuthorAction,AUTHOR_ACTIONS,LARGEST_MEDIA} from '../src/workbench/author-actions.mjs';
 import {readFile} from 'node:fs/promises';
 import {temp} from './helpers.mjs';
 import {startStudio} from '../src/services/server.mjs';
@@ -269,7 +269,7 @@ test('CINE-002 web: the evidence page shows 12 markers in a strip under 48 px of
  // Back links from the panel to the claim regions that cite each source.
  const claimRegion=out.scenes.find(s=>s.id==='evidence').regions.find(r=>r.blockId==='ev-chart-a').id;assert.ok(panel.includes(`<a href="#${claimRegion}">↩</a>`));
  // The stylesheet declares the strip (height budget, no grid reflow) and the markers once.
- for(const rule of ['.web-scene .source-strip{--strip-budget:48px;margin-top:auto;display:flex;flex-wrap:wrap;','.web-scene .source-strip .region[data-component=citation]{margin:0;padding:0;border:0;grid-column:auto','.reference-panel{','.web-scene .source-marker{font-size:.6em;vertical-align:super;color:var(--reference,inherit)'])assert.ok(artDirectionCSS.includes(rule),rule);
+ for(const rule of ['.web-scene .source-strip{--strip-budget:48px;margin-top:auto;display:flex;flex-wrap:wrap;','.web-scene .source-strip .region[data-component=citation]{margin:0;padding:0;border:0;grid-column:auto','.reference-panel{','.web-scene .source-marker{font-size:max(.7em,12px);vertical-align:super;color:var(--reference,inherit)'])assert.ok(artDirectionCSS.includes(rule),rule);
  assert.equal(artDirectionCSS.includes('text-overflow:ellipsis'),false,'no clipping creates a fit');
  assert.deepEqual(webSceneSchema.properties.regions.items.properties.reference.enum,['compact','expanded','subject']);
  const zh=html(await cineProject('zh-CN',home,{declared:['references']}),resources);assert.ok(sectionOf(zh,'evidence').includes('<footer class="source-strip" aria-label="来源">'));assert.ok(sectionOf(zh,'evidence').includes('<summary>来源 · 12</summary>'));
@@ -495,7 +495,7 @@ test('CINE-003 set-intent: plans the intent and the preferred variant, keeps a c
  // The Studio carries the two controls and their strings in both languages.
  const visual=await readFile(new URL('../public/kinds/visual.js',import.meta.url),'utf8'),i18n=await readFile(new URL('../public/i18n.js',import.meta.url),'utf8'),author=await readFile(new URL('../public/studio/author.js',import.meta.url),'utf8');
  assert.ok(visual.includes('id="pagePurpose"')&&visual.includes('id="pageEntry"'));assert.ok(author.includes("'set-intent'"));
- for(const k of ['"visual.look.purpose"','"visual.look.entry"','"visual.look.purpose.show-product"','"visual.look.entry.contextual"','"visual.look.auto"'])assert.equal((i18n.match(new RegExp(k,'g'))||[]).length,2,k);
+ for(const k of ['"visual.look.purpose"','"visual.look.entry"','"visual.look.purpose.showProduct"','"visual.look.entry.contextual"','"visual.look.auto"'])assert.equal((i18n.match(new RegExp(k,'g'))||[]).length,2,k);
  for(const f of ['docs/en/visual-studio.md','docs/zh-CN/visual-studio.md']){const d=await readFile(new URL('../'+f,import.meta.url),'utf8');assert.ok(d.includes('set-intent'),f);}
 });
 
@@ -568,4 +568,55 @@ test('CINE-004 labels: candidateFit features report labelMinPx from the diagram 
  assert.deepEqual(withImages.features.media.map(m=>[m.blockId,m.annotated]),[['prod-image',true],['det-locator',false]]);
  const m=withImages.features.media[0];assert.ok(Math.abs(m.containerFraction-(792*445.5)/(1440*800))<1e-9);assert.ok(Math.abs(m.subjectFraction-m.containerFraction*.16)<1e-9);
  assert.equal(withImages.features.media[1].subjectFraction,withImages.features.media[1].containerFraction);assert.equal(withImages.ok,true);assert.deepEqual(withImages.reasons,[]);
+});
+
+// ---- Task 12: CINE-004 visual-space action, Studio button, browser evidence and docs ----
+test('CINE-004 visual-space: on the product page it chooses the measured largest media variant, sets the hero role, moves movable text behind the disclosure, keeps locks and facts; on the mechanism page it chooses system-map-wide; the Studio API applies it',async t=>{
+ assert.deepEqual(AUTHOR_ACTIONS['visual-space'],{levels:['page','object'],changes:['composition','media role','page disclosure']});
+ assert.ok(typeof LARGEST_MEDIA.image==='string'&&LARGEST_MEDIA['system-map']==='system-map-wide',JSON.stringify(LARGEST_MEDIA));
+ const measured=JSON.parse(await readFile(new URL('../docs/evidence/cine-p0/media-space.json',import.meta.url),'utf8'));assert.equal(measured.format,'deckweft-cine-media-sizes');
+ assert.equal(measured.winners.image.shared,LARGEST_MEDIA.image,'the constant is the measured winner');assert.equal(measured.winners['system-map'].shared,LARGEST_MEDIA['system-map']);
+ assert.deepEqual(Object.fromEntries(Object.entries(measured.winners.image.byTheme).map(([t,w])=>[t,{image:w.composition}])),LARGEST_MEDIA.byTheme);assert.deepEqual(measured.winners['system-map'].byTheme,{});
+ assert.ok(measured.rows.length>=30&&measured.rows.every(r=>r.refused||(r.drawn&&typeof r.fit==='boolean')));
+ const p=await cineProject('en',home,{declared:[]}),before=factsOf(p);
+ // product: image-right today; the largest image variant, the hero role; a callout never moves by itself.
+ const prod=planAuthorAction(p,{action:'visual-space',level:'page',id:'product'}),ps=sceneOf(prod.project,'product');
+ assert.equal(ps.composition,LARGEST_MEDIA.image);assert.deepEqual(ps.media,[{blockId:'prod-image',role:'hero'}]);assert.equal('disclosure' in ps,false);assert.equal(factsOf(prod.project),before);
+ // Luminous Stage has its own hero layout that draws the image larger.
+ const stage=structuredClone(p);for(const s of stage.plan.scenes)s.theme='orange-launch';assert.equal(sceneOf(planAuthorAction(stage,{action:'visual-space',level:'page',id:'product'}).project,'product').composition,'stage-hero');
+ assert.ok(prod.effects.some(e=>/hero/.test(e.en)&&/主体/.test(e.zh)));
+ // detail: the supporting locator stays small; the paragraph moves behind the disclosure.
+ const det=planAuthorAction(p,{action:'visual-space',level:'page',id:'detail'}),ds=sceneOf(det.project,'detail');
+ assert.equal(ds.composition,LARGEST_MEDIA.image);assert.deepEqual(ds.media,[{blockId:'det-hero',role:'hero'}]);assert.deepEqual(ds.disclosure,{blockIds:['det-body']});assert.equal(factsOf(det.project),before);
+ // object level: the chosen image becomes the hero and the former hero supporting.
+ const obj=planAuthorAction(p,{action:'visual-space',level:'object',id:'det-locator'}),os=sceneOf(obj.project,'detail');
+ assert.deepEqual(os.media,[{blockId:'det-locator',role:'hero'},{blockId:'det-hero',role:'supporting'}]);
+ assert.throws(()=>planAuthorAction(p,{action:'visual-space',level:'object',id:'det-body'}),e=>e.code==='AUTHOR_ACTION');
+ // mechanism: system-map-wide and the mechanism role; the paragraph and list move behind the disclosure.
+ const mech=planAuthorAction(p,{action:'visual-space',level:'page',id:'mechanism'}),ms=sceneOf(mech.project,'mechanism');
+ assert.equal(ms.composition,'system-map-wide');assert.deepEqual(ms.media,[{blockId:'mech-diagram',role:'mechanism'}]);assert.deepEqual(ms.disclosure.blockIds.sort(),['mech-body','mech-list']);
+ // Locks: a composition lock keeps the layout (product-center); a media lock keeps the roles; a page without media says so.
+ const pc=planAuthorAction(p,{action:'visual-space',level:'page',id:'product-center'});assert.equal(sceneOf(pc.project,'product-center').composition,'image-strip');assert.ok(pc.kept.some(k=>/composition locked/.test(k.en)));assert.deepEqual(sceneOf(pc.project,'product-center').media,[{blockId:'pc-image',role:'hero'}]);
+ const ml=structuredClone(p);ml.document.authorOverrides.sceneLocks.push({sceneId:'product','fields':['media']});const kept=planAuthorAction(ml,{action:'visual-space',level:'page',id:'product'});assert.ok(kept.kept.some(k=>/media locked/.test(k.en)));assert.equal('media' in sceneOf(kept.project||ml,'product'),false);
+ const none=planAuthorAction(p,{action:'visual-space',level:'page',id:'overflow'});assert.equal(none.changed,false);assert.ok(none.kept.some(k=>/no image or diagram/.test(k.en)));
+ // Already at the largest layout with the hero declared and nothing to move: said so.
+ const again=planAuthorAction(prod.project,{action:'visual-space',level:'page',id:'product'});assert.equal(again.changed,false);assert.ok(again.kept.length>=1);
+ // Studio API: the action is planned for the corpus deck and the Studio carries the button.
+ const studioHome=await temp(t),app=await startStudio({home:studioHome,port:0,seed:false});t.after(()=>app.close());
+ const {token}=await(await fetch(app.url+'/api/session')).json(),headers={Authorization:'Bearer '+token,'Content-Type':'application/json'};
+ const r=await(await fetch(app.url+'/api/visual/author-action',{method:'POST',headers,body:JSON.stringify({project:p,action:'visual-space',level:'page',id:'mechanism'})})).json();
+ assert.equal(r.format,'deckweft-author-action');assert.equal(r.project.plan.scenes.find(s=>s.id==='mechanism').composition,'system-map-wide');
+ const visual=await readFile(new URL('../public/kinds/visual.js',import.meta.url),'utf8'),i18n=await readFile(new URL('../public/i18n.js',import.meta.url),'utf8'),author=await readFile(new URL('../public/studio/author.js',import.meta.url),'utf8');
+ assert.ok(visual.includes('id="visualSpace"')&&visual.includes('data-author-action="visual-space"'));assert.ok(author.includes("'visual-space'"));
+ assert.equal((i18n.match(/"visual.look.visualSpace":"Give the visual more space"/g)||[]).length,1);assert.equal((i18n.match(/"visual.look.visualSpace":"给视觉更多空间"/g)||[]).length,1);
+});
+test('CINE batch 1 docs: migration, verification and visual-studio pages mention the three fields in English and Chinese (string check)',async()=>{
+ for(const f of ['docs/en/migration.md','docs/zh-CN/migration.md','docs/en/verification.md','docs/zh-CN/verification.md','docs/en/visual-studio.md','docs/zh-CN/visual-studio.md']){
+  const d=await readFile(new URL('../'+f,import.meta.url),'utf8');for(const word of ['references','intent','media','CINE'])assert.ok(d.includes(word),`${f}: ${word}`);}
+ for(const f of ['docs/en/handoff.md','docs/zh-CN/handoff.md']){const d=await readFile(new URL('../'+f,import.meta.url),'utf8');assert.ok(d.slice(0,2500).includes('CINE'),f);assert.ok(/[Bb]atch 2|批次 2/.test(d),f);}
+ const roadmap=JSON.parse(await readFile(new URL('../roadmap.json',import.meta.url),'utf8'));
+ for(const id of ['VIS-006','VIS-007','VIS-013','VIS-016']){const task=roadmap.tasks.find(t=>t.id===id);assert.ok(task.notes?.some(n=>/CINE/.test(n)),id);}
+ assert.deepEqual(roadmap.tasks.filter(t=>t.id.startsWith('CINE')),[],'no new task ids');
+ const md=await readFile(new URL('../ROADMAP.md',import.meta.url),'utf8');assert.ok(md.includes('CINE-001'));
+ const review=await readFile(new URL('../docs/evidence/cine-p0/review.md',import.meta.url),'utf8');for(const w of ['product-center','evidence','overflow','mechanism','weakest','PowerPoint','Keynote'])assert.ok(review.includes(w),w);
 });

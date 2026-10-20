@@ -2,6 +2,10 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## CINE batch 1 — cinematic composition P0 (CINE-001 to CINE-004), 2026-10-20
+
+Implemented locally on branch `claude/deckweft-design-roadmap-2d3d10`, not merged. One declared presentation target (`src/targets/target-budget.mjs`) read by the web candidate gate and both pagers; the PDF pages tall scenes on the PowerPoint bands; `fit-page` splits a page after a measured block. Three optional scene fields (`references`, `intent`, `media`) with byte-identical legacy markup (renderer `visual-art-direction.13`, player unchanged); compact source strip, claim markers and reference panel; inferred or declared page purpose and entry; media roles and the 5/7 and 7/5 grids. No task state changes: VIS-006, VIS-007, VIS-013 and VIS-016 carry notes. [Build map](docs/plans/cinematic-composition-build-map.md) · [Evidence](docs/evidence/cine-p0/review.md) · [Verification](docs/en/verification.md). Batch 2 is not authorized.
+
 ## S11 — merge readiness for S1–S10, 2026-10-19
 
 S11 checks the stack without publishing it. It changed no runtime code, schema or task state; three test selectors were fixed. State **LocalVerified**.

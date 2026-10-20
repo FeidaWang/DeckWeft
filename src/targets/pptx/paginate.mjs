@@ -13,11 +13,19 @@ const ANNOTATION=new Set(['citation','chart','table','diagram','image']);
 /** The typography role of a text run by the block it belongs to: the slide title, an annotation, or body text. */
 export const textRoleOf=(blockType,{title=false}={})=>title?'title':ANNOTATION.has(blockType)?'annotation':'body';
 const centre=b=>b.y+b.height/2;
+/** The vertical box a text part's slide shape takes (compile.mjs textBoxes): the first line starts half a leading above the glyphs
+ * and the box is lines × line height. Bands are cut against this box, so a cut never lands inside a shape's half-leading. */
+export function textShapeBox(p){
+ const lh=p.style?.lineHeight||(p.style?.fontSize||16)*1.2,lines=Math.max(1,p.lines||1),glyph=Math.max(1,p.box.height-(lines-1)*lh),top=p.box.y-(lh-glyph)/2;
+ return {x:p.box.x,y:Math.min(top,p.box.y),width:p.box.width,height:Math.max(lines*lh,p.box.y+p.box.height-Math.min(top,p.box.y))};
+}
 /** Every measured element of a scene with its box and, for text, its font size in page pixels. Decor is background and is clipped per band instead. */
 export function sceneElements(m){
  const out=[];
  for(const r of m.regions){
-  for(const t of r.texts)out.push({box:t.box,fontSize:t.style.fontSize,blockId:r.blockId,kind:'text'});
+  // A text part's band box is its content box (lines × line height), the box its slide shape takes; the glyph box alone lets a
+  // cut land inside the shape's half-leading and leave the shape outside its slide.
+  for(const t of r.texts)out.push({box:textShapeBox(t),fontSize:t.style.fontSize,blockId:r.blockId,kind:'text'});
   for(const b of r.boxes)out.push({box:b.box,blockId:r.blockId,kind:'box'});
   for(const s of r.shapes)out.push({box:s.box,blockId:r.blockId,kind:'shape'});
   if(r.image)out.push({box:r.image.box,blockId:r.blockId,kind:'image'});
@@ -76,6 +84,17 @@ export function titleCentreOf(m,titleBlockId){const t=titleBlockId?m.regions.fin
 export function bandStrip(m,band,{titleBlockId=null,strip=0}={}){
  if(!band||!strip)return 0;const c=titleCentreOf(m,titleBlockId);
  return c!==null&&c>=band.y-0.5&&c<band.y+band.height+0.5?0:strip;
+}
+/** The one-line heading a continuation band repeats: the measured heading style, shrunk only as far as one line needs
+ * (CJK glyphs count 1 em, others 0.58 em), never below 18 px, inside the page's text column. */
+export function continuationTitle(whole,{titleBlockId=null,text='',style={}}={}){
+ const own=whole.regions.find(r=>r.blockId===titleBlockId)?.bounds,pad=own?Math.max(0,own.x-whole.bounds.x):Math.max(0,Math.min(...whole.regions.map(r=>r.bounds.x))-whole.bounds.x)||48;
+ const width=Math.max(1,whole.bounds.width-2*pad),units=[...text].reduce((n,ch)=>n+(/[\u2E80-\u9FFF\uF900-\uFAFF\uFF00-\uFFEF]/.test(ch)?1:0.58),0);
+ // One line when it fits at the heading's size; otherwise shrink to the title floor (27 px ≈ 18 pt at the width fit) and wrap, three lines at most.
+ const floor=27;let fontSize=Math.min(style.fontSize||28,width/Math.max(1,units)),lines=1;
+ if(fontSize<floor){fontSize=floor;lines=Math.max(1,Math.min(3,Math.ceil(units*floor/width)));}
+ const lineHeight=Math.round(fontSize*1.15);
+ return {x:whole.bounds.x+pad,width,fontSize:Math.round(fontSize*100)/100,lineHeight,lines,height:lines*lineHeight};
 }
 /** The measured layout of one band: the same scene with only the elements whose centre lies in the band, decor clipped to it. */
 export function bandLayout(m,band,{strip=0,first=true}={}){

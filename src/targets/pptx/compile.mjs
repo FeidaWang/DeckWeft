@@ -12,7 +12,7 @@ import {pptxChartPlan,layoutReceipts,PPTX_IMAGE_TYPES} from './fallbacks.mjs';
 import {sceneFrame,esc,solid,paragraph,textBody,textShape,presetShape,pathShape,gradFill,picture,connector,chartFrame,tableFrame,ALIGN,typefaces} from './ooxml.mjs';
 import {chartXML,workbook} from './chart.mjs';
 import {packagePPTX} from './package.mjs';
-import {sceneBands,bandLayout,bandStrip} from './paginate.mjs';
+import {sceneBands,bandLayout,bandStrip,continuationTitle} from './paginate.mjs';
 import {contrast} from './audit.mjs';
 import {createHash} from 'node:crypto';
 
@@ -49,7 +49,8 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
   const title=titleBlock?blocks.get(titleBlock).text.replace(/\n/g,' '):scene.id;
   // F1: a scene taller than the slide is cut into bands (paginate.mjs); every band is compiled exactly like a whole scene.
   const headingStyle=whole.regions.find(r=>r.blockId===titleBlock)?.texts[0]?.style||{fontFamily:'Arial, sans-serif',fontSize:28,fontWeight:600,italic:false,lineHeight:34,letterSpacing:0,color:{hex:'171717',alpha:1},align:'start',transform:'none',measureId:null};
-  const strip=Math.round((headingStyle.lineHeight||headingStyle.fontSize*1.2)+24);
+  // The strip reserved above a continuation band holds the repeated heading at its continuation size (one line, or wrapped at the title floor).
+  const strip=Math.round(continuationTitle(whole,{titleBlockId:titleBlock,text:`${title} (00/00)`,style:headingStyle}).height+24);
   const paged=paginate==='none'?{bands:null,reason:'off'}:sceneBands(whole,blocks,{titleBlockId:titleBlock,strip});
   const bands=paged.bands||[null],parts=bands.length;if(parts>1)pagination.push({sceneId:scene.id,parts,reason:paged.reason});
   bands.forEach((band,part)=>{
@@ -202,7 +203,7 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
   decorations(m.chrome.boxes,{blockId:null,prefix:'chrome'});textBoxes(m.chrome.texts,{blockId:null,decorative:true,prefix:'chrome'});
   // A band without the heading's text repeats the heading in the strip above it: every continuation slide, and a first slide of an image-first page (CINE-001).
   // The repeat is named under `continuation/`, not the heading's block id, so the audit judges the reading order by the heading's own place.
-  if(band&&stripHere&&!m.regions.find(r=>r.blockId===titleBlock)?.texts.length){const lh=headingStyle.lineHeight||headingStyle.fontSize*1.2,pad=Math.max(0,Math.min(...whole.regions.map(r=>r.bounds.x))-whole.bounds.x)||48,tb={x:whole.bounds.x+pad,y:m.bounds.y+12,width:whole.bounds.width-2*pad,height:lh},tp={box:tb,content:{...tb},lines:1,style:{...headingStyle,align:'start'},runs:[{text:`${title} (${part+1}/${parts})`,style:headingStyle}]};textBoxes([tp],{blockId:titleBlock||null,titlePart:tp,prefix:'continuation'});}
+  if(band&&stripHere&&!m.regions.find(r=>r.blockId===titleBlock)?.texts.length){const text=`${title} (${part+1}/${parts})`,ct=continuationTitle(whole,{titleBlockId:titleBlock,text,style:headingStyle}),style={...headingStyle,fontSize:ct.fontSize,lineHeight:ct.lineHeight,align:'start'},tb={x:ct.x,y:m.bounds.y+12,width:ct.width,height:ct.height},tp={box:tb,content:{...tb},lines:ct.lines,style,runs:[{text,style}]};textBoxes([tp],{blockId:titleBlock||null,titlePart:tp,prefix:'continuation'});}
   for(const blockId of order){
    const region=m.regions.find(r=>r.blockId===blockId),block=blocks.get(blockId);if(!region)continue;
    decorations(region.boxes,{blockId,prefix:blockId});

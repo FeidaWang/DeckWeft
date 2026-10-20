@@ -37,7 +37,7 @@ export function runProps(style,{f,lang,platform,link}){
  const spc=style.letterSpacing?Math.max(-400000,Math.min(400000,Math.round(f.pt(style.letterSpacing)*100))):0;
  // A face whose name already carries its weight (Avenir Next Demi Bold) is not bolded again.
  const named=/\b(demi ?bold|semi ?bold|bold|heavy|black|medium)\b/i.test(latin);
- return `<a:rPr lang="${lang}" sz="${sz}"${style.fontWeight>=600&&!named?' b="1"':''}${style.italic?' i="1"':''}${style.underline?' u="sng"':''}${spc?` spc="${spc}"`:''}${style.transform==='uppercase'?' cap="all"':''} dirty="0">${solid(style.color)}<a:latin typeface="${esc(latin)}"/><a:ea typeface="${esc(ea)}"/><a:cs typeface="${esc(latin)}"/>${link?`<a:hlinkClick r:id="${link}"/>`:''}</a:rPr>`;
+ return `<a:rPr lang="${lang}" sz="${sz}"${style.fontWeight>=600&&!named?' b="1"':''}${style.italic?' i="1"':''}${style.underline?' u="sng"':''}${spc?` spc="${spc}"`:''}${style.transform==='uppercase'?' cap="all"':''}${style.superscript?' baseline="30000"':''} dirty="0">${solid(style.color)}<a:latin typeface="${esc(latin)}"/><a:ea typeface="${esc(ea)}"/><a:cs typeface="${esc(latin)}"/>${link?`<a:hlinkClick r:id="${link}"/>`:''}</a:rPr>`;
 }
 /** One paragraph of runs; newlines inside a run become line breaks. */
 export function paragraph(runs,{f,lang,fonts,links={},align='l',lineHeight=null,spaceBefore=0,bullet=null}){

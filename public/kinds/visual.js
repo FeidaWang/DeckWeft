@@ -40,12 +40,13 @@ const swatches=THEMES.map(swatch).join(''),themeOptions=THEMES.map(v=>'<option v
 const look=/*html*/`
       <div class="look-buttons" role="group" data-i18n-attr="aria-label:visual.look.buttons">
         <button id="moreSpace" type="button" data-author-action="more-editorial" data-i18n="visual.look.moreSpace">More space</button>
+        <button id="visualSpace" type="button" data-author-action="visual-space" data-i18n="visual.look.visualSpace">Give the visual more space</button>
         <button id="largerType" type="button" aria-pressed="false" data-i18n="visual.look.largerType">Larger type</button>
         <button id="keepPage" type="button" aria-pressed="false" data-i18n="visual.look.keepPage">Leave this page</button>
       </div>
       <div class="look-intent" role="group" data-i18n-attr="aria-label:visual.look.intent">
-        <label><span data-i18n="visual.look.purpose">Page purpose</span> <select id="pagePurpose"><option value="" data-i18n="visual.look.auto">Automatic</option>${['explain','show-product','show-detail','compare','evidence','overview','chapter'].map(v=>`<option value="${v}" data-i18n="visual.look.purpose.${v}"></option>`).join('')}</select></label>
-        <label><span data-i18n="visual.look.entry">Entry</span> <select id="pageEntry"><option value="" data-i18n="visual.look.auto">Automatic</option>${['left','center','contextual'].map(v=>`<option value="${v}" data-i18n="visual.look.entry.${v}"></option>`).join('')}</select></label>
+        <label><span data-i18n="visual.look.purpose">Page purpose</span> <select id="pagePurpose"><option value="" data-i18n="visual.look.auto">Automatic</option><option value="explain" data-i18n="visual.look.purpose.explain">Explain</option><option value="show-product" data-i18n="visual.look.purpose.showProduct">Show the product</option><option value="show-detail" data-i18n="visual.look.purpose.showDetail">Show the detail</option><option value="compare" data-i18n="visual.look.purpose.compare">Compare</option><option value="evidence" data-i18n="visual.look.purpose.evidence">Evidence</option><option value="overview" data-i18n="visual.look.purpose.overview">Overview</option><option value="chapter" data-i18n="visual.look.purpose.chapter">Chapter</option></select></label>
+        <label><span data-i18n="visual.look.entry">Entry</span> <select id="pageEntry"><option value="" data-i18n="visual.look.auto">Automatic</option><option value="left" data-i18n="visual.look.entry.left">Left</option><option value="center" data-i18n="visual.look.entry.center">Centre</option><option value="contextual" data-i18n="visual.look.entry.contextual">Where the composition points</option></select></label>
       </div>
       <section id="actionPlan" class="action-plan" hidden aria-live="polite"><h3 id="actionTitle"></h3><p id="actionScope"></p><ul id="actionEffects"></ul><ul id="actionKept" class="kept"></ul></section>
       <p id="themeLabel" class="look-label" data-i18n="visual.look.colours">Colours</p>
