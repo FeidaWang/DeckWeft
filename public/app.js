@@ -350,7 +350,7 @@ async function boot(){updateStatus();state.token=(await(await fetch('/api/sessio
 setTab('content');boot().catch(onError);
 // History UI is a separate, read-only workflow until an explicit restore-as-copy.
 import { mountHistory } from './history.js';
-mountHistory({state,$,t:pick,x,json,dialogs,toast,onError,measurePreview,library,switchProject,activate,updateStatus});
+mountHistory({state,$,x,json,dialogs,toast,onError,measurePreview,library,switchProject,activate,updateStatus});
 mountAgentBridge({state,$,json,dialogs,onError,canLeave,activate,library,pitchMode});
 import {mountStudioTools} from './studio-tools.js';
 mountStudioTools({state,$,dialogs,json,canLeave,activate,library});
