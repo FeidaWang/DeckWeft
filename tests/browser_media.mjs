@@ -41,12 +41,13 @@ for(const width of [390,1024,1440]){await page.setViewportSize({width,height:100
 assert.ok(requests.every(u=>u.startsWith(htmlUrl+'/')));results.checks.push('Standalone HTML makes no remote requests');
 await page.setViewportSize({width:1440,height:1000});await page.goto(studio.url);await page.waitForFunction(()=>document.querySelector('#canvas svg'));
 
-await page.locator('#projectPicker').selectOption('mb_media_demo');await page.waitForFunction(()=>document.querySelector('#canvas svg')?.textContent.includes('Local art, a clear story'));
+// The library picker is hidden until the drawer (M5); choose the deck through the DOM.
+await page.locator('#projectPicker').evaluate(el=>{el.value='mb_media_demo';el.dispatchEvent(new Event('change',{bubbles:true}));});await page.waitForFunction(()=>document.querySelector('#canvas svg')?.textContent.includes('Local art, a clear story'));
 await page.screenshot({path:out+'/studio-image.png',fullPage:true});
 
 const design=page.getByRole('tab',{name:'Design',exact:true});if(await design.count())await design.click();else await page.getByRole('button',{name:'Design',exact:true}).click();
 await page.locator('#spatialRecipe').selectOption('orbit');await page.waitForSelector('#canvas .three-scene-layer');await page.waitForFunction(()=>document.querySelector('#canvas .three-scene-layer')?.dataset.frames>2);await page.screenshot({path:out+'/studio-orbit.png',fullPage:true});results.checks.push('Studio lazily loads local 3D adapter after selecting a recipe');
-await page.getByRole('button',{name:'Save',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#save').disabled);await page.reload();await page.waitForSelector('#canvas .three-scene-layer');results.checks.push('Saved spatial recipe reopens offline from local storage');
+await page.waitForSelector('#saveState[data-state="saved"]',{state:'attached'});await page.reload();await page.waitForSelector('#canvas .three-scene-layer');results.checks.push('Saved spatial recipe reopens offline from local storage');
 await page.locator('#openAgent').click();await page.waitForSelector('#agentDialog[open]');assert.ok(await page.locator('#agentWorker').count());await page.locator('#agentDialog [data-close]').click();
 await page.locator('#openExport').click();await page.waitForSelector('#exportDialog[open]');assert.ok(await page.locator('[data-export="figma"]').isEnabled());const download=page.waitForEvent('download');await page.locator('[data-export="pptx"]').click();const file=await download;await file.saveAs(path.join(artifacts,'browser-measured.pptx'));results.checks.push('Browser-measured PPTX export succeeds with static 3D fallback');
 if(await page.locator('#exportDialog').isVisible())await page.locator('#exportDialog [data-close]').click();await page.getByRole('tab',{name:'Design',exact:true}).click();await page.getByText('Local image and rights',{exact:true}).click();
@@ -56,7 +57,7 @@ const clipboard=await page.evaluate(()=>navigator.clipboard.readText()),task=JSO
 // Original output from the earlier actual tool call is supplied here; no new provider call is made.
 await new ImageJobs(home).complete(task.id,original);
 await page.locator('#imageCheck').click();await page.waitForFunction(()=>document.querySelector('#imageStatus').textContent.includes('Image attached'));await page.waitForSelector('#canvas image[data-role="illustration"]');assert.equal(await page.locator('#canvas .three-scene-layer').count(),0);await page.screenshot({path:out+'/studio-generated-image.png',fullPage:true});
-await page.getByRole('button',{name:'Save',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#save').disabled);await page.reload();await page.waitForSelector('#canvas image[data-role="illustration"]');
+await page.waitForSelector('#saveState[data-state="saved"]',{state:'attached'});await page.reload();await page.waitForSelector('#canvas image[data-role="illustration"]');
 await page.locator('#openExport').click();await page.waitForSelector('#exportDialog[open]');for(const format of ['html','pptx','figma','motion']){assert.ok(await page.locator(`[data-export="${format}"]`).isEnabled());const promise=page.waitForEvent('download');await page.locator(`[data-export="${format}"]`).click();const d=await promise;await d.saveAs(path.join(artifacts,'reviewed-image.')+({html:'html',pptx:'pptx',figma:'figma.json',motion:'motion.json'}[format]));if(!await page.locator('#exportDialog').isVisible())await page.locator('#openExport').click();}
 
 results.checks.push('UI prompt consent, one journal dispatch, original generated PNG completion, attachment, save/reload and four measured media exports');

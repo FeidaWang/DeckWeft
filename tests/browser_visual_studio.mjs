@@ -35,7 +35,7 @@ async function capture(page,name){await page.screenshot({path:path.join(out,name
 let standalone,activePage;
 try{
  const page=await context.newPage();activePage=page;page.on('pageerror',e=>report.errors.push(e.message));
- await page.goto(app.url+'/');await page.locator('.visual-studio-link').click();await ready(page);report.checks.push('Classic Studio links directly to the live visual editor');
+ await page.goto(app.url+'/');await page.locator('.visual-studio-link').dispatchEvent('click');await ready(page);report.checks.push('Classic Studio links directly to the live visual editor');
  await page.locator('#library').selectOption(examples[0].id);await ready(page);
  assert.equal(await page.locator('.host-authored-badge').count(),0);assert.equal(await page.locator('#hostAuthoredLines').isVisible(),false);
  await page.locator('[data-scene="violet"]').click();await page.frameLocator('#preview').locator('#violet').waitFor({state:'visible'});

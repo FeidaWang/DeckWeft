@@ -34,18 +34,25 @@ await context.route('**/*',async route=>{const url=route.request().url();if(url.
 async function capture(page,name){await page.screenshot({path:path.join(out,name)});report.captures.push({file:name,hash:hash(await readFile(path.join(out,name)))});}
 const settle=page=>page.waitForLoadState('networkidle');
 const dialog=page=>page.locator('#sessionDialog');
-// Each studio says how to open it, edit one field, and tell that a save finished.
+// Each studio says how to open it, edit one field, start or await a save, and tell that a save finished.
+// The classic studio autosaves 1.2 s after an edit: hold() keeps that PUT until the restart (and any other writer) is done,
+// so it reaches the restarted server; ⌘/Ctrl S is its explicit save. Visual Studio still saves on its Save button.
 const studios=[
  {name:'classic',projectRoute:id=>'/api/projects/'+id,listRoute:'/api/projects',
   async open(page){await page.goto(app.url+'/');await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await settle(page);return (await call('/api/projects')).projects[0].id;},
   // Wait for the debounced preview so no background request reaches the restarted server first.
   async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>document.querySelector('#fitStatus').textContent.includes('ready to export'),{},{timeout:30000});},
   value:page=>page.locator('#slideTitle').inputValue(),
-  saved:page=>page.waitForFunction(()=>document.querySelector('#saveState').textContent==='Saved on this computer',{},{timeout:20000})},
+  autosaves:true,
+  async hold(page){let open;const gate=new Promise(resolve=>{open=resolve;});await page.unrouteAll({behavior:'wait'});await page.route(url=>url.pathname.startsWith('/api/projects/'),async route=>{if(route.request().method()==='PUT')await gate;await route.continue();});return open;},
+  save:page=>page.keyboard.press('ControlOrMeta+s'),
+  unsaved:async page=>{await page.waitForSelector('#saveState[data-state="attention"]',{state:'attached'});return true;},
+  saved:page=>page.waitForSelector('#saveState[data-state="saved"]',{state:'attached',timeout:20000})},
  {name:'visual',projectRoute:id=>'/api/visual/projects/'+id,listRoute:'/api/visual/projects',
   async open(page){await page.goto(app.url+'/visual?project='+visualDemo.id);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');return visualDemo.id;},
   async edit(page,text){await page.locator('#title').fill(text);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});},
   value:page=>page.locator('#title').inputValue(),
+  autosaves:false,hold:async()=>()=>{},save:page=>page.locator('#save').click(),unsaved:page=>page.locator('#save').isEnabled(),
   saved:page=>page.waitForFunction(()=>/^(Saved on this computer|Saved as a separate copy)/.test(document.querySelector('#message').textContent),{},{timeout:20000})}
 ];
 try{
@@ -55,22 +62,24 @@ try{
   const step=text=>report.checks.push(`${studio.name}: ${text}`);
 
   // 1. Restart, decline, then reconnect: the draft stays in memory and the save completes.
-  const first=`Reconnected ${studio.name} draft`;await studio.edit(page,first);await restart();
-  await page.locator('#save').click();await dialog(page).waitFor({state:'visible'});await capture(page,`${studio.name}-reconnect.png`);
+  const first=`Reconnected ${studio.name} draft`;const release=await studio.hold(page);await studio.edit(page,first);await restart();release();
+  if(!studio.autosaves)await studio.save(page);await dialog(page).waitFor({state:'visible'});await capture(page,`${studio.name}-reconnect.png`);
   await dialog(page).locator('[data-session="cancel"]').click();await dialog(page).waitFor({state:'detached'});
-  assert.equal(await studio.value(page),first);assert.ok(await page.locator('#save').isEnabled(),'Declining keeps the edit unsaved');
+  assert.equal(await studio.value(page),first);assert.ok(await studio.unsaved(page),'Declining keeps the edit unsaved');
   assert.ok(!JSON.stringify((await call(studio.projectRoute(id))).project).includes(first),'Nothing is saved before reconnecting');
   step('Declining reconnect keeps the draft and saves nothing');
-  await page.locator('#save').click();await dialog(page).waitFor({state:'visible'});await dialog(page).locator('[data-session="confirm"]').click();await studio.saved(page);
+  await studio.save(page);await dialog(page).waitFor({state:'visible'});await dialog(page).locator('[data-session="confirm"]').click();await studio.saved(page);
   const saved=(await call(studio.projectRoute(id))).project;assert.ok(JSON.stringify(saved).includes(first),'The reconnected save is persisted');
   assert.equal(await page.evaluate(()=>window.__deckweftSamePage),true,'Reconnect does not reload the page');
   step(`Reconnect saved revision ${saved.revision.number} without reloading the page`);
 
   // 2. Another writer saves during the restart: the save gets 409 and the draft becomes a separate copy.
   const before=new Set((await call(studio.listRoute)).projects.map(p=>p.id));
-  const second=`Conflicting ${studio.name} draft`;await studio.edit(page,second);await restart();
-  const other=(await call(studio.projectRoute(id),{project:saved,expectedRevision:saved.revision.number},'PUT')).project;
-  await page.locator('#save').click();await dialog(page).waitFor({state:'visible'});await dialog(page).locator('[data-session="confirm"]').click();
+  const second=`Conflicting ${studio.name} draft`;const release2=await studio.hold(page);await studio.edit(page,second);await restart();
+  const other=(await call(studio.projectRoute(id),{project:saved,expectedRevision:saved.revision.number},'PUT')).project;release2();
+  if(!studio.autosaves)await studio.save(page);await dialog(page).waitFor({state:'visible'});await dialog(page).locator('[data-session="confirm"]').click();
+  // The classic autosave meets the 409 without opening a dialog (red square, banner); ⌘/Ctrl S then offers the copy.
+  if(studio.autosaves){await page.waitForSelector('#saveState[data-state="attention"]',{state:'attached'});assert.equal(await page.locator('#conflictDialog').count(),0);await studio.save(page);}
   const conflict=page.locator('#conflictDialog');await conflict.waitFor({state:'visible'});await capture(page,`${studio.name}-conflict.png`);
   assert.equal(await studio.value(page),second);
   await conflict.locator('[data-session="confirm"]').click();await conflict.waitFor({state:'detached'});await studio.saved(page);
