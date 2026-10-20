@@ -19,7 +19,7 @@ const edits=new EditHistory(),dialogs=new DialogManager(document),textMeasurer=n
 let previewTimer,previewTicket=0,previewAbort,toastTimer,presenter,saveTimer;
 const pick=(english,chinese)=>state.locale==='zh-CN'?chinese:english;
 const x=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const reconnect=sessionRecovery({t:pick,setToken:token=>{state.token=token;}});
+const reconnect=sessionRecovery({setToken:token=>{state.token=token;}});
 // A 401 is answered before the request is handled, so one retry after reconnecting cannot repeat a change.
 async function api(url,data,method='POST',signal,retry=true){
   const response=await fetch(url,{method,signal,headers:{Authorization:`Bearer ${state.token}`,...(data===undefined?{}:{'Content-Type':'application/json'})},...(data===undefined?{}:{body:JSON.stringify(data)})});
@@ -155,7 +155,7 @@ document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('can
 new ResizeObserver(sizeCanvas).observe($('#stage'));window.addEventListener('resize',()=>dialogs.resize(innerWidth));
 // After a 409 the author may keep the draft as a new deck through the import-as-copy route; the newer revision stays untouched.
 async function saveCopy(){
-  if(!await askSaveCopy(pick))return false;
+  if(!await askSaveCopy())return false;
   const draft=structuredClone(state.project),active=state.active;
   const imported=await json('/api/import',{project:draft}),saved=await json('/api/projects',{project:imported.project});
   activate(saved.project);selectSlide(active);await library();toast(t('classic.app.savedAsASeparateCopyThe'));return true;

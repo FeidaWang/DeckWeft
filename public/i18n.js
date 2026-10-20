@@ -689,6 +689,16 @@ en:{
  "classic.motion.rise":"Gentle rise",
  "visual.main.cuePositionNotExplored":"The preview shows cue position {at}{state}, not an explored selection. Change the chart or step in the preview first, or move Cue position to 0; the opening is unchanged.",
  "visual.main.staticStateNote":" (the static state)",
+ "classic.session.notConnectedYourEditsRemainIn":"Not connected. Your edits remain in this window; choose Save to reconnect.",
+ "classic.session.theLocalStudioRestarted":"The local studio restarted.",
+ "classic.session.reconnectAndKeepYourCurrentEdits":"Reconnect and keep your current edits? Nothing is saved until the save finishes; a newer saved version is never overwritten.",
+ "classic.session.reconnectAndKeepEdits":"Reconnect and keep edits",
+ "classic.session.notNow":"Not now",
+ "classic.session.theStudioIsNotAnsweringYet":"The studio is not answering yet. Your edits remain here; try Save again.",
+ "classic.session.aNewerVersionWasSavedElsewhere":"A newer version was saved elsewhere.",
+ "classic.session.yourEditsAreStillHereSave":"Your edits are still here. Save them as a separate copy; the newer version stays unchanged.",
+ "classic.session.saveAsASeparateCopy":"Save as a separate copy",
+ "classic.session.keepEditing":"Keep editing",
 },
 zh:{
  "visual.directionToggle":"创作",
@@ -1377,6 +1387,16 @@ zh:{
  "classic.motion.rise":"轻微上移",
  "visual.main.cuePositionNotExplored":"预览停在提示位置 {at}{state}，不是探索后的选择。请先在预览中调整图表或步骤，或把提示位置移到 0；开场状态未改变。",
  "visual.main.staticStateNote":"（静态状态）",
+ "classic.session.notConnectedYourEditsRemainIn":"尚未连接。修改仍保留在此窗口；点击保存即可重新连接。",
+ "classic.session.theLocalStudioRestarted":"本地工作室已重新启动。",
+ "classic.session.reconnectAndKeepYourCurrentEdits":"重新连接并保留当前修改？保存完成前不会写入；已保存的较新版本不会被覆盖。",
+ "classic.session.reconnectAndKeepEdits":"重新连接并保留修改",
+ "classic.session.notNow":"暂不",
+ "classic.session.theStudioIsNotAnsweringYet":"工作室暂未响应。修改仍保留在这里，请再次保存。",
+ "classic.session.aNewerVersionWasSavedElsewhere":"其他位置已保存了较新版本。",
+ "classic.session.yourEditsAreStillHereSave":"你的修改仍在这里。可另存为独立副本，较新版本保持不变。",
+ "classic.session.saveAsASeparateCopy":"另存为独立副本",
+ "classic.session.keepEditing":"继续编辑",
 }
 };
 
