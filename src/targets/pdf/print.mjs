@@ -99,7 +99,7 @@ export function checkPrintJob(job,{plan}){
 /** What a reader must be able to find in the PDF text for each scene (same list as the web and PowerPoint checks). */
 export function pdfExpectations(document,plan,pages=null){
  const blocks=new Map(document.blocks.map(b=>[b.id,b]));
- return plan.scenes.map((s,i)=>({sceneId:s.id,pageIndexes:pages?pages.flatMap((p,k)=>p.sceneId===s.id?[k]:[]):[i],strings:[...new Set(s.blockIds.flatMap(id=>expectedBlockText(blocks.get(id),document)).filter(Boolean))]}));
+ return plan.scenes.map((s,i)=>({sceneId:s.id,pageIndexes:pages?pages.flatMap((p,k)=>p.sceneId===s.id?[k]:[]):[i],strings:[...new Set(s.blockIds.flatMap(id=>expectedBlockText(blocks.get(id),document,s)).filter(Boolean))]}));
 }
 const norm=s=>String(s).normalize('NFKC').replace(/\s+/g,'');
 /** Text extractors return right-to-left runs (Arabic-Indic digits, Arabic, Hebrew) in visual order; both orders are accepted. */

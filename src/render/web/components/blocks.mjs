@@ -5,10 +5,14 @@ import { DeckError } from '../../../core/errors.mjs';
 import { x } from './escape.mjs';
 import { chart } from './chart.mjs';
 import { cjkBreaksHTML } from './cjk.mjs';
-export function blockHTML(b, document, theme, {resources={},crop,slot,sceneId='scene'}={}) {
+export function blockHTML(b, document, theme, {resources={},crop,slot,locator,sceneId='scene'}={}) {
   if(b.type==='image'){
     const r=resources[b.assetId],c=crop||{x:0,y:0,width:1,height:1};
-    return `<figure class="web-image" style="--image-aspect:${slot?.display==='contain'?slot.aspect:(r.width*c.width)/(r.height*c.height)}"><div class="image-crop" style="aspect-ratio:${slot?.display==='contain'?slot.aspect:(r.width*c.width)/(r.height*c.height)}"><img src="${x(r.dataURL)}" alt="${x(b.alt)}" style="${slot?.display==='contain'?'object-fit:contain;width:100%;height:100%;left:0;top:0':`width:${100/c.width}%;height:${100/c.height}%;left:${-c.x/c.width*100}%;top:${-c.y/c.height*100}%`}"></div><figcaption>${x(b.alt)}</figcaption></figure>`;
+    // CINE-005: the visible caption is the slot's, when authored; the alt stays the block's description on <img>. A locator
+    // (an image another slot points at) draws the detail's rect as a frame inside its crop; the frame is decoration, not text.
+    const caption=slot?.brief?.visibleCaption??b.alt,pct=v=>`${Math.round(v*10000)/100}%`;
+    const frame=locator?`<span class="locator-frame" style="left:${pct(locator.region.x)};top:${pct(locator.region.y)};width:${pct(locator.region.width)};height:${pct(locator.region.height)}" aria-hidden="true"></span>`:'';
+    return `<figure class="web-image"${locator?` data-locator-for="${x(locator.forBlockId)}"`:''} style="--image-aspect:${slot?.display==='contain'?slot.aspect:(r.width*c.width)/(r.height*c.height)}"><div class="image-crop" style="aspect-ratio:${slot?.display==='contain'?slot.aspect:(r.width*c.width)/(r.height*c.height)}"><img src="${x(r.dataURL)}" alt="${x(b.alt)}" style="${slot?.display==='contain'?'object-fit:contain;width:100%;height:100%;left:0;top:0':`width:${100/c.width}%;height:${100/c.height}%;left:${-c.x/c.width*100}%;top:${-c.y/c.height*100}%`}">${frame}</div><figcaption>${x(caption)}</figcaption></figure>`;
   }
   if (b.type === 'heading') return `<h2>${cjkBreaksHTML(b.text,document.locale)}</h2>`;
   if (b.type === 'callout') return `<p>${cjkBreaksHTML(b.text,document.locale)}</p>`;

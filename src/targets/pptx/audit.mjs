@@ -57,8 +57,9 @@ const lum=hex=>{const c=[0,2,4].map(i=>parseInt(hex.slice(i,i+2),16)/255).map(v=
 export const contrast=(a,b)=>{const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);};
 
 /** The text a reader must find for one block; it mirrors the web render check (src/quality/render-checks.mjs). */
-export function expectedBlockText(block,document){
- if(block.type==='image')return [block.alt];
+export function expectedBlockText(block,document,scene){
+ // CINE-005: the visible caption is the slide text an image carries; the alt is the picture description (descr), checked in the same pool.
+ if(block.type==='image')return [scene?.imageSlots?.find(s=>s.blockId===block.id)?.brief.visibleCaption??block.alt];
  if(block.type==='metric')return [new Intl.NumberFormat(document.locale,{maximumSignificantDigits:21}).format(block.value),block.unit,block.label];
  if(block.type==='table')return [...block.columns,...block.rows.flat()];
  if(block.type==='list')return block.items;
@@ -134,10 +135,12 @@ export function auditPPTX({bytes,document,plan,scenes,compiled,levels}){
    // Text coverage: slide text, table cells, chart caches, alt text and the notes all count; nothing may be lost.
    const chartText=own.filter(s=>s.chart).flatMap(s=>{const c=pkg.charts[s.chart];return c?c.series.flatMap(x=>[x.name,...x.categories.map(p=>p.value),...x.values.map(p=>p.value)]):[];});
    const pool=norm([...own.map(s=>s.text+' '+s.descr),...chartText,slide.notes].join(' '));
-   const missing=expectedBlockText(block,document).filter(t=>t!==''&&!pool.includes(norm(t)));
+   const missing=expectedBlockText(block,document,sp).filter(t=>t!==''&&!pool.includes(norm(t)));
    if(missing.length)fail(scene,'text coverage',{sceneId:sp.id,blockId,missing:missing.slice(0,10)});
    // Editability: a block declared L1 is native objects; only image blocks and L3 elements are pictures.
    const pics=own.filter(s=>s.kind==='picture');
+   // CINE-005: the picture description is the block's alt even when a visible caption is the slide text.
+   if(block.type==='image'&&pics.length&&!pics.some(s=>norm(s.descr||'')===norm(block.alt)))fail(scene,'alt text',{sceneId:sp.id,blockId,descr:pics.map(s=>s.descr)});
    if(level==='L1'&&block.type!=='image'&&pics.length)fail(edit,'L1 without pictures',{sceneId:sp.id,blockId,pictures:pics.map(p=>p.name)});
    if(level==='L3'&&!receipts.some(r=>r.blockId===blockId&&r.code==='PPTX_CHART_IMAGE'))fail(edit,'L3 has a receipt',{sceneId:sp.id,blockId});
    if(block.type==='chart'&&level==='L1'){const frame=own.find(s=>s.kind==='chart'||s.kind==='table');if(!frame)fail(edit,'native chart',{sceneId:sp.id,blockId});

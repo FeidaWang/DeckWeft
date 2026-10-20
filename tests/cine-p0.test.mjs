@@ -256,7 +256,7 @@ test('CINE-002 contract: references.mode outside the enum, or a quote page whose
 // ---- Task 5: CINE-002 compact source strip, reference panel and claim markers in the web renderer ----
 const sectionOf=(out,id)=>out.sceneMarkup[out.scenes.findIndex(s=>s.id===id)];
 test('CINE-002 web: the evidence page shows 12 markers in a strip under 48 px of CSS height budget, every exact citation text, a panel with 12 full titles and URLs, and no citation region inside .regions',async()=>{
- assert.equal(WEB_RENDERER_VERSION,'visual-art-direction.13');
+ assert.equal(WEB_RENDERER_VERSION,'visual-art-direction.14');
  const p=await cineProject('en',home,{declared:['references']}),resources=await visualAssetResources(p,home),out=html(p,resources),ev=sectionOf(out,'evidence');
  const regions=element(ev,/<div class="regions">/),strip=element(ev,/<footer class="source-strip"/),panel=element(ev,/<details class="reference-panel"/);
  assert.ok(strip&&panel);assert.match(strip,/^<footer class="source-strip" aria-label="Sources">/);assert.ok(ev.indexOf(regions)<ev.indexOf(strip),'the strip follows the regions');
@@ -307,7 +307,7 @@ test('CINE-002 web: checkRender passes text and source coverage on the compact c
 });
 test('CINE-002 web: a legacy deck renders the same markup except the renderer version (tests/render-baseline.mjs parts: markup unchanged)',async()=>{
  const baseline=JSON.parse(await readFile(new URL('./fixtures/visual/render-baseline.json',import.meta.url),'utf8')),current=await renderBaseline();
- assert.equal(current.renderer,'visual-art-direction.13');
+ assert.equal(current.renderer,'visual-art-direction.14');
  // The content view (markup without the stylesheet, the render hash and the scene source hashes, which carry the renderer version) is byte-identical on every recorded fixture and demo; the runtime data and the player too.
  assert.deepEqual(current.content,baseline.content);
  assert.deepEqual(Object.fromEntries(Object.entries(current.parts).map(([k,v])=>[k,v.data])),Object.fromEntries(Object.entries(baseline.parts).map(([k,v])=>[k,v.data])));

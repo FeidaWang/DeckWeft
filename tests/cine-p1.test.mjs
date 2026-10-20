@@ -10,7 +10,11 @@ import {assertAssetBrief,defaultBrief,assertImageSlots} from '../src/assets/brie
 import {safeCrop,cropFloor,cropCeiling,isEvidenceBrief,contains} from '../src/assets/crop.mjs';
 import {applySlotCrop,slotFor} from '../src/assets/slots.mjs';
 import {subjectFraction,subjectOf} from '../src/design/media.mjs';
-import {cineProject,cineFixture,cineScenes,CINE_SCENES,CINE_FIELDS} from './cine-corpus.mjs';
+import {cineProject,cineFixture,cineScenes,CINE_SCENES,CINE_FIELDS,CINE_SLOTS} from './cine-corpus.mjs';
+import {checkRender} from '../src/quality/render-checks.mjs';
+import {renderBaseline} from './render-baseline.mjs';
+import {WEB_RENDERER_VERSION} from '../src/scene/web/compile.mjs';
+import {artDirectionCSS} from '../src/render/web/art-direction.mjs';
 /**
  * CINE batch 2 (docs/plans/cinematic-composition-batch-2.md): CINE-005 subject-aware framing, CINE-006 typography and
  * luminance hierarchy, CINE-007 aesthetic evaluation, on the batch 1 corpus (tests/cine-corpus.mjs).
@@ -22,6 +26,12 @@ const blocksOf=p=>new Map(p.document.blocks.map(b=>[b.id,b]));
 const applyNegative=(fixture,c)=>{const {document,plan,assets}=structuredClone(fixture),p={document,plan,assets};for(const [path,value]of Object.entries(c.set)){const keys=path.split('.');let o=p;for(const k of keys.slice(0,-1))o=o[/^\d+$/.test(k)?Number(k):k];o[keys.at(-1)]=structuredClone(value);}return p;};
 const negativeCases=async tag=>{const n=JSON.parse(await readFile(new URL('./fixtures/visual/cine.negative.json',import.meta.url),'utf8'));return n.cases.filter(c=>c.task===tag);};
 const FULL={x:0,y:0,width:1,height:1};
+/** Markup helpers (as in cine-p0): a balanced element slice, its text, and the regions of one scene section with their images' alt. */
+const element=(markup,open)=>{const at=markup.search(open);if(at<0)return null;const m=markup.slice(at).match(/^<(\w+)/),tag=m[1],re=new RegExp(`<${tag}(\\s[^>]*)?>|</${tag}>`,'g');re.lastIndex=markup.slice(at).indexOf('>')+1;let depth=1,x,rest=markup.slice(at);while(depth&&(x=re.exec(rest)))depth+=x[0][1]==='/'?-1:1;return depth?null:rest.slice(0,re.lastIndex);};
+const unescape=s=>s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'");
+const textOf=html=>unescape(html.replace(/<[^>]+>/g,''));
+const regionsOf=markup=>{const out=[],re=/<div id="(r[a-f0-9]+)" class="region" data-block-id="([^"]+)" data-component="([^"]+)"([^>]*)>/g;let m;while((m=re.exec(markup))){const html=element(markup.slice(m.index),/^<div/);out.push({nodeId:m[1],blockId:m[2],component:m[3],attrs:m[4],html,text:textOf(html),links:[...html.matchAll(/href="([^"]*)"/g)].map(x=>({href:unescape(x[1])})),images:[...html.matchAll(/<img [^>]*alt="([^"]*)"/g)].map(x=>({ready:true,alt:unescape(x[1])}))});}return out;};
+const observationOf=(p,out)=>({viewport:{width:1440},fit:{viewport:{width:1440},checks:[]},fontStatus:'loaded',documentOverflow:false,sourceLinks:[...out.body.matchAll(/href="([^"]*)"/g)].map(m=>unescape(m[1])),dom:'',scenes:out.scenes.map((s,i)=>({sceneId:s.id,composition:s.composition,bounds:{x:0,y:0,width:1440,height:810},regions:regionsOf(out.sceneMarkup[i]),disclosed:[]}))});
 const productBrief=()=>({...defaultBrief(),requiredWidth:240,requiredHeight:240,focalPoint:{x:.5,y:.5},safeRegion:{x:.3,y:.3,width:.4,height:.4},subjectBounds:{x:.3,y:.3,width:.4,height:.4},protectedRegions:[{x:.28,y:.28,width:.44,height:.44}],contextRegion:{x:.1,y:.1,width:.8,height:.8},visibleCaption:'The product in its field; the drawing is synthetic'});
 
 // ---- Task 1: CINE-005 brief contract, subject-aware safeCrop, evidence screenshots, corpus annotations ----
@@ -104,4 +114,43 @@ test('CINE-005 subject fraction: the product hero with its 40 % × 40 % subject 
  const whole=subjectFraction({...page,imageBox:box,subjectBounds:{x:.3,y:.3,width:.4,height:.4}});assert.ok(Math.abs(whole.subjectFraction-whole.containerFraction*.16)<1e-9);
  const none=subjectFraction({...page,imageBox:box,crop:{x:.2,y:.1,width:.6,height:.8}});assert.equal(none.annotated,false);assert.equal(none.note,'no subject annotation');assert.equal(none.subjectFraction,none.containerFraction);
  const full=subjectFraction({...page,imageBox:box,subjectBounds:FULL});assert.equal(full.annotated,false);
+});
+
+// ---- Task 2: CINE-005 visible caption, locator frame and alt preservation in the web renderer; renderer .14 ----
+test('CINE-005 web: the product page prints the visible caption in <figcaption> and keeps the alt on <img>; the detail page draws the locator frame on the locator image at the declared rect; pages without slots render as before',async()=>{
+ for(const locale of ['en','zh-CN']){
+  const p=await cineProject(locale,home),resources=await visualAssetResources(p,home),out=html(p,resources),at=id=>out.sceneMarkup[p.plan.scenes.findIndex(s=>s.id===id)],block=id=>p.document.blocks.find(b=>b.id===id);
+  const product=regionsOf(at('product')).find(r=>r.blockId==='prod-image');
+  assert.ok(product.html.includes(`<figcaption>${CINE_SLOTS[locale].product} <sup class="source-marker">`),'the caption is the figcaption (followed by the page\'s claim markers)');
+  assert.deepEqual(product.images,[{ready:true,alt:block('prod-image').alt}],'the alt stays on the image');
+  assert.ok(!product.html.includes(block('prod-image').alt.replace(/&/g,'&amp;')+'</figcaption>'),'the alt is not printed as the caption');
+  const detail=regionsOf(at('detail')),hero=detail.find(r=>r.blockId==='det-hero'),locator=detail.find(r=>r.blockId==='det-locator');
+  assert.ok(hero.html.includes(`<figcaption>${CINE_SLOTS[locale].detail}</figcaption>`));assert.ok(!hero.html.includes('locator-frame'),'the detail itself carries no frame');
+  assert.ok(locator.html.includes('<figure class="web-image" data-locator-for="det-hero"'),'the locator figure names the detail it locates');
+  assert.ok(locator.html.includes('<span class="locator-frame" style="left:30%;top:30%;width:40%;height:40%" aria-hidden="true"></span></div><figcaption>'),'the frame is drawn inside the crop at the declared rect, before the caption');
+  assert.deepEqual(locator.images,[{ready:true,alt:block('det-locator').alt}]);
+  const context=regionsOf(at('context')).find(r=>r.blockId==='ctx-image');
+  assert.ok(context.html.includes(`<figcaption>${block('ctx-image').alt} <sup`),'without a slot the alt is the caption, as before');assert.ok(!context.html.includes('locator-frame'));
+  const legacy=await cineProject(locale,home,{declared:[]}),lo=html(legacy,await visualAssetResources(legacy,home));
+  assert.ok(!lo.sceneMarkup.join('').includes('locator-frame')&&!lo.body.includes('data-locator-for'),'legacy markup carries no frame (the stylesheet rule is the only mention)');
+  assert.equal(lo.scenes.every(s=>s.regions.every(r=>!('locator' in r))),true);
+  assert.ok(out.scenes.find(s=>s.id==='detail').regions.find(r=>r.blockId==='det-locator').locator.forBlockId==='det-hero');
+ }
+ assert.ok(artDirectionCSS.includes('.web-scene .image-crop .locator-frame{position:absolute;'));
+});
+test('CINE-005 checks: checkRender from a synthetic observation passes text coverage with the caption and fails when the observed alt differs from the block alt',async()=>{
+ const p=await cineProject('en',home),resources=await visualAssetResources(p,home),out=html(p,resources),observation=observationOf(p,out);
+ const r=checkRender(p,[observation]);assert.deepEqual(r.issues.filter(i=>['text-coverage','source-coverage','coverage','missing-asset'].includes(i.kind)),[]);assert.equal(r.ok,true);
+ // The observed page carries each image's alt; a page whose <img> lost or changed it fails text coverage by name.
+ const tampered=structuredClone(observation),scene=tampered.scenes.find(s=>s.sceneId==='product'),region=scene.regions.find(r=>r.blockId==='prod-image');region.images[0].alt='A different description';
+ const bad=checkRender(p,[tampered]),issue=bad.issues.find(i=>i.kind==='text-coverage'&&i.blockId==='prod-image');assert.ok(issue,'alt change is a text-coverage issue');assert.match(issue.reason,/alt/i);assert.equal(bad.ok,false);
+ // An observation without alt information (older runners, synthetic observations) is not penalized.
+ const silent=structuredClone(observation);for(const s of silent.scenes)for(const q of s.regions)for(const im of q.images)delete im.alt;assert.equal(checkRender(p,[silent]).ok,true);
+});
+test('CINE batch 2: a legacy deck renders the same markup except the renderer version (render-baseline parts: markup unchanged, renderer .14)',async()=>{
+ const baseline=JSON.parse(await readFile(new URL('./fixtures/visual/render-baseline.json',import.meta.url),'utf8')),current=await renderBaseline();
+ assert.equal(WEB_RENDERER_VERSION,'visual-art-direction.14');assert.equal(current.renderer,'visual-art-direction.14');
+ assert.deepEqual(current.content,baseline.content);
+ // The content view strips the stylesheet and the hashes that carry the renderer version; the reader-visible markup is unchanged.
+ assert.deepEqual(Object.fromEntries(Object.entries(current.parts).map(([k,v])=>[k,v.data])),Object.fromEntries(Object.entries(baseline.parts).map(([k,v])=>[k,v.data])));
 });
