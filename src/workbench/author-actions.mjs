@@ -6,6 +6,8 @@ import {THEME_COMPOSITIONS,visibleBlockIds,DISCLOSURE_TYPES} from '../design/pla
 import {themePacks,effectiveProfile,DEFAULT_PROFILE} from '../design/theme-registry.mjs';
 import {applySceneTheme} from '../design/profile.mjs';
 import {splitSmallMultiples} from '../design/rhythm.mjs';
+import {splitScene} from '../design/split.mjs';
+import {TARGETS} from '../targets/target-budget.mjs';
 import {startChapter,removeChapter,setChapterProfile,chapterOf,chapterRuns} from '../design/chapters.mjs';
 import {pageKind,tokenDrift,assertDesignProfile} from '../design/design-profile.mjs';
 import {separateLocks} from '../core/adapters/locks.mjs';
@@ -24,7 +26,8 @@ export const AUTHOR_ACTIONS=Object.freeze({
  'start-chapter':{levels:['page'],changes:['chapters']},
  'remove-chapter':{levels:['chapter'],changes:['chapters']},
  'lock':{levels:['deck','chapter','page','object'],changes:['locks']},
- 'unlock':{levels:['deck','chapter','page','object'],changes:['locks']}
+ 'unlock':{levels:['deck','chapter','page','object'],changes:['locks']},
+ 'fit-page':{levels:['page'],changes:['page disclosure','page split']}
 });
 const fail=(message,code='AUTHOR_ACTION',status=422)=>{throw new DeckError(code,message,status);};
 const THEME_LABELS={'diagonal-cover':['Diagonal cover with a large number','斜切封面与大数字'],'chart-with-evidence-rail':['Chart with an evidence rail','图表与证据栏'],'reading-flow':['Reading flow','阅读流'],'photo-split':['Large photo split','大幅图片分栏'],'violet-chapter':['Full-colour chapter','满版色章节页'],'fieldnotes-cover':['Fieldnotes cover','田野笔记封面'],'fieldnotes-thesis':['Two-column thesis with margin notes','双栏论点与边注'],'fieldnotes-figure':['Narrow reading column, wide figure','窄正文、宽图'],'fieldnotes-method':['Method text with a margin note','方法说明与边注'],'fieldnotes-closing':['Fieldnotes closing','田野笔记结尾'],'atlas-cover':['Kicker, headline and contents index','引题、标题与目录'],'atlas-section':['Numbered section opener','编号章节页'],'atlas-figure':['Single-chart conclusion','单图结论'],'atlas-panels':['Two to four panels on one scale','同一尺度的 2–4 个面板'],'atlas-appendix':['Table, limits and sources','表格、局限与来源'],'atlas-closing':['Atlas closing','研究图集结尾'],'stage-hero':['One large object, title in the calm area','单一大物件与安静区标题'],'stage-chapter':['Stage chapter','舞台章节页'],'stage-figure':['Chart on a panel','面板上的图表'],'stage-metric':['Large number on the stage','舞台大数字'],'stage-closing':['Stage closing','舞台结尾']};
@@ -183,6 +186,25 @@ const ACT={
   c.effect(c.scope.id,`starts a chapter: pages ${pageList(c.p.plan,after.sceneIds)}${before?`, split from the chapter that started on page ${pageOf(c.p,before.startSceneId)}, keeping its profile so nothing renders differently`:''}.`,`开始新章节：第 ${pageList(c.p.plan,after.sceneIds,true)} 页${before?`，从第 ${pageOf(c.p,before.startSceneId)} 页开始的章节拆出，并沿用其配置，画面不变`:''}。`);},
  'remove-chapter'(c){const ch=chapterRuns(c.p.plan).find(x=>x.id===c.scope.id);c.p.plan=removeChapter(c.p.plan,c.scope.id);const prev=chapterOf(c.p.plan,ch.startSceneId);if(ch.profile)followLocked(c,ch.sceneIds.filter(id=>!sceneOf(c.p,id).profile));
   c.effect(null,`Removes the chapter on pages ${pageList(c.p.plan,ch.sceneIds)}${ch.profile?'; its chapter profile is dropped':''}. ${prev?`They join the chapter that starts on page ${pageOf(c.p,prev.startSceneId)}.`:'They belong to no chapter and follow the deck.'}`,`移除第 ${pageList(c.p.plan,ch.sceneIds,true)} 页的章节${ch.profile?'，其章节配置一并移除':''}。${prev?`这些页面并入从第 ${pageOf(c.p,prev.startSceneId)} 页开始的章节。`:'这些页面不再属于任何章节，沿用整套配置。'}`);},
+ /** CINE-001: a page that exceeds the presentation target is resolved by disclosure first, then by a stated split after the last
+  * block that ends inside the page (`regionBounds` from a browser measurement, y from the top of the page). Never by shrinking. */
+ 'fit-page'(c,options){
+  const {p}=c,id=c.scope.sceneIds[0],s=sceneOf(p,id),zh=p.document.locale==='zh-CN',frame=TARGETS.presentation,limit=frame.frame.height-frame.safeArea.y;
+  if(sceneLock(p,id).includes('blockIds'))fail(`Page ${pageOf(p,id)} (${id}) has its blocks locked; unlock it before fitting it.`,'AUTHOR_LOCK',409);
+  const bounds=Array.isArray(options?.regionBounds)?options.regionBounds.filter(b=>b&&typeof b.blockId==='string'&&Number.isFinite(b.y)&&Number.isFinite(b.height)):null;
+  if(!bounds){
+   const found=movable(p,s),moved=disclose(c,id,found.slice(1));
+   if(!moved&&!c.kept.length)c.keep(id,'nothing more can move behind the disclosure.','没有更多内容可以移入折叠区。');
+   c.keep(id,`a split needs a browser measurement of this page (regionBounds); without one the page is not cut.`,`拆页需要本页的浏览器测量结果（regionBounds）；没有测量不会切分。`);return;
+  }
+  const visible=visibleBlockIds(s),ends=new Map(bounds.map(b=>[b.blockId,b.y+b.height])),inside=visible.filter(b=>ends.has(b)&&ends.get(b)<=limit),over=visible.filter(b=>ends.has(b)&&ends.get(b)>limit);
+  if(!over.length){c.keep(id,`every block ends inside the ${frame.frame.height} px page (${limit} px under the safe area); the page fits.`,`每个内容块都在 ${frame.frame.height} px 页面内结束（安全区内 ${limit} px）；本页已适配。`);return;}
+  const after=[...inside].reverse().find(b=>!['citation'].includes(blockOf(p,b).type));
+  if(!after){c.keep(id,'no block ends inside the page; the first block alone exceeds it. Shorten it or choose a composition that fits.','没有内容块在页面内结束；第一个内容块就已超出。请精简它或选择合适的构图。');return;}
+  try{const before=p.plan.scenes.length;c.p=splitScene(p,id,{afterBlockId:after});const cut=blockOf(p,after),pages=c.p.plan.scenes.length-before+1;
+   c.effect(id,`splits this page into ${pages} pages after “${excerpt(cut)}” (${cut.type}, ending at ${Math.round(ends.get(after))} px of ${limit}). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes.`,`在“${excerpt(cut)}”（${cut.type}，结束于 ${Math.round(ends.get(after))} px / ${limit}）之后将本页拆为 ${pages} 页。标题在续页重复；引用随引用它们的内容块；文字、数据与来源不变。`);}
+  catch(e){if(e.code==='AUTHOR_LOCK')throw e;c.keep(id,`the page is not split: ${e.message}`,`本页未拆分：${e.message}`);}
+ },
  'lock'(c,options){lockAction(c,options,true);},
  'unlock'(c,options){lockAction(c,options,false);}
 };

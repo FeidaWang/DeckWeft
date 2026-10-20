@@ -10,6 +10,9 @@ import {TARGETS,PT_PER_PX,typographyRole,typographyReport,targetFit} from '../sr
 import {sceneBands} from '../src/targets/pptx/paginate.mjs';
 import {syntheticLayout} from './export-layout.mjs';
 import {cineProject,CINE_SCENES} from './cine-corpus.mjs';
+import {candidateFit,CANDIDATE_HEIGHT} from '../src/design/rhythm.mjs';
+import {splitScene} from '../src/design/split.mjs';
+import {planAuthorAction,AUTHOR_ACTIONS} from '../src/workbench/author-actions.mjs';
 
 const home=await realpath(await mkdtemp(path.join(os.tmpdir(),'dw-cine-')));
 test.after(()=>rm(home,{recursive:true,force:true}));
@@ -120,4 +123,60 @@ test('CINE-001 PDF: paginate:"none" keeps one page per scene (today\'s behaviour
  // Parts out of order are refused too.
  const {out:auto}=paged(p,'pdf',{resources}),gap=structuredClone(auto.run.output);gap.pages=gap.pages.filter(x=>!(x.sceneId==='overflow'&&x.part===1));
  const g=(await import('../src/targets/pdf/print.mjs')).checkPrintJob(gap,{plan:p.plan});assert.equal(g.status,'fail');assert.ok(g.failures.some(f=>f.check==='parts'&&f.sceneId==='overflow'));
+});
+
+// ---- Task 3: CINE-001 candidate gate reads the target; fit-page action with a stated split ----
+const factsOf=p=>JSON.stringify({document:p.document,assets:p.assets});
+/** Region bounds of the overflow page as a browser would report them, measured from the top of the page. */
+const OVERFLOW_BOUNDS=[['of-title',0,120],['of-para-1',140,260],['of-para-2',420,280],['of-para-3',720,280],['of-list-1',1020,300],['of-list-2',1340,300],['of-source-1',1660,30],['of-source-2',1700,30],['of-source-3',1740,30],['of-source-4',1780,30]].map(([blockId,y,height])=>({blockId,y,height}));
+test('CINE-001 fit-page: with measured bounds the overflow page is split after the last block ending above 754 px (810 − 56); facts, sources and locks unchanged; heading shared',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),before=factsOf(p);
+ assert.deepEqual(AUTHOR_ACTIONS['fit-page'],{levels:['page'],changes:['page disclosure','page split']});
+ const plan=planAuthorAction(p,{action:'fit-page',level:'page',id:'overflow',options:{regionBounds:OVERFLOW_BOUNDS}}),next=plan.project;
+ assert.equal(plan.changed,true);assert.equal(next.plan.scenes.length,11);
+ const i=next.plan.scenes.findIndex(s=>s.id==='overflow'),a=next.plan.scenes[i],b=next.plan.scenes[i+1];
+ assert.equal(b.id,'overflow-2');
+ assert.deepEqual(a.blockIds,['of-title','of-para-1','of-para-2','of-source-1','of-source-2','of-source-3','of-source-4']);
+ assert.deepEqual(b.blockIds,['of-title','of-para-3','of-list-1','of-list-2','of-source-1','of-source-2'],'moved blocks take the citations of the sources they cite; the heading is shared');
+ for(const k of ['theme','themeVersion','composition','role','profile'])assert.equal(b[k],a[k]);assert.equal(b.focalBlockId,'of-title');
+ assert.equal(factsOf(next),before,'no text, data, source or asset changes');assert.deepEqual(next.document.authorOverrides,p.document.authorOverrides);
+ assert.match(plan.effects[0].en,/2 pages/);assert.match(plan.effects[0].en,/The second paragraph lists/);assert.match(plan.effects[0].zh,/2 页/);
+ assert.equal(plan.scopeStatement.en.includes('page split'),true);
+});
+test('CINE-001 fit-page: without bounds it moves movable supporting text behind the disclosure (reuses the S9a rule) and says that a split needs a measurement',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),before=factsOf(p),plan=planAuthorAction(p,{action:'fit-page',level:'page',id:'overflow'});
+ assert.equal(plan.project.plan.scenes.length,10,'no split without a measurement');
+ const s=plan.project.plan.scenes.find(s=>s.id==='overflow');assert.ok(s.disclosure.blockIds.length>=1);assert.ok(s.disclosure.blockIds.every(id=>['of-para-2','of-para-3','of-list-1','of-list-2'].includes(id)));
+ assert.ok(plan.kept.some(k=>/measure/i.test(k.en)&&/测量/.test(k.zh)),'the plan says a split needs a measurement');
+ assert.equal(factsOf(plan.project),before);
+ // The same page with its text already disclosed and no bounds: nothing more to do, said so.
+ const again=planAuthorAction(plan.project,{action:'fit-page',level:'page',id:'overflow'});assert.equal(again.changed,false);assert.ok(again.kept.length>=1);
+});
+test('CINE-001 fit-page refuses a blockIds-locked page by name and a split that would strip one side to a heading',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),locked=structuredClone(p);locked.document.authorOverrides.sceneLocks.push({sceneId:'overflow',fields:['blockIds']});
+ assert.throws(()=>planAuthorAction(locked,{action:'fit-page',level:'page',id:'overflow',options:{regionBounds:OVERFLOW_BOUNDS}}),e=>e.code==='AUTHOR_LOCK'&&/overflow/.test(e.message));
+ assert.throws(()=>splitScene(locked,'overflow',{afterBlockId:'of-para-2'}),e=>e.code==='AUTHOR_LOCK');
+ assert.throws(()=>splitScene(p,'overflow',{afterBlockId:'of-title'}),e=>e.code==='SCENE_SPLIT');
+ assert.throws(()=>splitScene(p,'overflow',{afterBlockId:'of-list-2'}),e=>e.code==='SCENE_SPLIT','only citations would move');
+ assert.throws(()=>splitScene(p,'overflow',{afterBlockId:'of-source-4'}),e=>e.code==='SCENE_SPLIT');
+ assert.throws(()=>splitScene(p,'nowhere',{afterBlockId:'of-para-2'}),e=>e.code==='SCENE_SPLIT');
+ // Every block ends inside the page: nothing to split, the action says so instead of inventing a cut.
+ const fits=planAuthorAction(p,{action:'fit-page',level:'page',id:'action',options:{regionBounds:[{blockId:'act-title',y:0,height:100},{blockId:'act-list',y:120,height:200},{blockId:'act-callout',y:340,height:80}]}});
+ assert.equal(fits.changed,false);assert.ok(fits.kept.some(k=>/fits|inside/i.test(k.en)));
+ // The takeaway stays with its claim: a cut that would move it to the continuation is refused.
+ const t=structuredClone(p),s=t.plan.scenes.find(s=>s.id==='overflow');s.takeaway={blockId:'of-para-3'};
+ assert.throws(()=>splitScene(t,'overflow',{afterBlockId:'of-para-2'}),e=>e.code==='SCENE_SPLIT');
+ assert.equal(splitScene(t,'overflow',{afterBlockId:'of-para-3'}).plan.scenes.length,11);
+});
+test('CINE-001 candidateFit reports labelMinPx and the 21 px label target without changing today\'s ok/reasons',()=>{
+ assert.equal(CANDIDATE_HEIGHT,TARGETS.presentation.candidateHeight);
+ const good={height:800,overflow:[],clipIssues:[],contrastIssues:[],text:[{inside:true}],fonts:[{loaded:true}],components:[{scrollWidth:10,clientWidth:10,minTextPixels:14},{scrollWidth:10,clientWidth:10,minTextPixels:11}]};
+ const r=candidateFit(good,{width:1440});assert.equal(r.ok,true);assert.deepEqual(r.reasons,[]);assert.equal(r.features.labelMinPx,11);assert.equal(r.features.labelTargetPx,21);
+ const tall=candidateFit({...good,height:901},{width:1440});assert.equal(tall.ok,false);assert.deepEqual(tall.reasons,['Scene exceeds 900px presentation budget (901px)']);
+ const small=candidateFit({...good,components:[{scrollWidth:10,clientWidth:10,minTextPixels:9}]},{width:1440});assert.equal(small.ok,false);assert.match(small.reasons[0],/below 10px/);assert.equal(small.features.labelMinPx,9);
+ const none=candidateFit({...good,components:[]},{width:1440});assert.equal(none.features.labelMinPx,null);
+ // The visual features of a measured check stay where they were.
+ const v=candidateFit({...good,visualFeatures:{focus:.4,density:.5,imageRatio:0}},{width:1440});assert.deepEqual(v.features,{focus:.4,density:.5,imageRatio:0,labelMinPx:11,labelTargetPx:21});
+ // A wider budget from another target.
+ assert.equal(candidateFit({...good,height:901},{width:1440},{target:{...TARGETS.presentation,candidateHeight:1000}}).ok,true);
 });

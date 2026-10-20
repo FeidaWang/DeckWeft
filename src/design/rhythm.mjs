@@ -3,7 +3,9 @@ import { createHash } from 'node:crypto';
 import { assertVisualProject, assertVisualLocks } from '../core/visual-project.mjs';
 import { compositions, families, inferFamily, assertComposition, describeCandidate, eligibleFamilies } from './compositions.mjs';
 import { DeckError } from '../core/errors.mjs';
-export const CANDIDATE_HEIGHT = 900;
+import {TARGETS,PT_PER_PX} from '../targets/target-budget.mjs';
+/** The web pre-gate height, read from the declared presentation target (CINE-001). */
+export const CANDIDATE_HEIGHT = TARGETS.presentation.candidateHeight;
 export function candidateProjects(project,overrides={}) {
  assertVisualProject(project);
  if(!overrides||typeof overrides!=='object'||Array.isArray(overrides))throw new DeckError('CANDIDATE_FAMILY','Supply scene ids mapped to family names.',422);
@@ -19,11 +21,15 @@ export function candidateProjects(project,overrides={}) {
   assertVisualLocks(project,copy);return assertVisualProject(copy);
  });
 }
-export function candidateFit(check,viewport){
- const reasons=[];
+/** The feasibility of one measured candidate. The height budget and the label target come from the declared target (CINE-001);
+ * `features.labelMinPx` is the smallest drawn chart or diagram label and `labelTargetPx` the 14 pt label target in page px. */
+export function candidateFit(check,viewport,{target=TARGETS.presentation}={}){
+ const reasons=[],budget=target.candidateHeight;
  if(!check)reasons.push('Missing current browser measurement');
- else{if(viewport.width>700&&check.components?.some(c=>c.scrollWidth>c.clientWidth+1||c.minTextPixels<10))reasons.push('Component requires scrolling or text is below 10px at presentation size');if(check.overflow.length)reasons.push('Region overflow');if(check.clipIssues.length)reasons.push('Clipped content');if(check.contrastIssues.length)reasons.push('Contrast failure');if(check.glyphs?.length)reasons.push('Missing glyph');if(check.text.some(t=>!t.inside))reasons.push('Text outside scene');if(check.fonts.some(f=>!f.loaded))reasons.push('Font not ready');if(viewport.width>700&&check.height>CANDIDATE_HEIGHT)reasons.push(`Scene exceeds ${CANDIDATE_HEIGHT}px presentation budget (${Math.ceil(check.height)}px)`);}
- return {ok:!reasons.length,reasons,height:check?.height,...(check?.visualFeatures?{features:{focus:check.visualFeatures.focus,density:check.visualFeatures.density,imageRatio:check.visualFeatures.imageRatio}}:{})};
+ else{if(viewport.width>700&&check.components?.some(c=>c.scrollWidth>c.clientWidth+1||c.minTextPixels<10))reasons.push('Component requires scrolling or text is below 10px at presentation size');if(check.overflow.length)reasons.push('Region overflow');if(check.clipIssues.length)reasons.push('Clipped content');if(check.contrastIssues.length)reasons.push('Contrast failure');if(check.glyphs?.length)reasons.push('Missing glyph');if(check.text.some(t=>!t.inside))reasons.push('Text outside scene');if(check.fonts.some(f=>!f.loaded))reasons.push('Font not ready');if(viewport.width>700&&check.height>budget)reasons.push(`Scene exceeds ${budget}px presentation budget (${Math.ceil(check.height)}px)`);}
+ const labels=(check?.components||[]).map(c=>c.minTextPixels).filter(v=>Number.isFinite(v));
+ const features=check?{...(check.visualFeatures?{focus:check.visualFeatures.focus,density:check.visualFeatures.density,imageRatio:check.visualFeatures.imageRatio}:{}),labelMinPx:labels.length?Math.min(...labels):null,labelTargetPx:Math.round(target.typography.target.label/PT_PER_PX.pptx)}:null;
+ return {ok:!reasons.length,reasons,height:check?.height,...(features?{features}:{})};
 }
 // Theme identity and source facts stay attached to stable scene ids, including after reordering.
 export function moveScene(project,sceneId,offset){
