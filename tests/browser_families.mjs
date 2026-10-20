@@ -1,4 +1,4 @@
-import {revealStudio} from './studio-controls.mjs';
+import {revealStudio,closeStudio} from './studio-controls.mjs';
 // Optional real-browser QA for the S3 families; uses an isolated preinstalled test binary only.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -90,21 +90,23 @@ try{
  // Direct-loopback Studio: the family control offers the new families; compare, choose, save and reopen.
  const project=await familyProject('en',store.home),saved=await store.save(project,{create:true});editor=await context.newPage();editor.on('pageerror',e=>report.errors.push(e.message));await editor.setViewportSize({width:1920,height:1100});
  await editor.goto(app.url+'/visual?project='+saved.id+'&scene=quote');const ready=()=>editor.waitForFunction(()=>!document.querySelector('#exportHTML').disabled);await ready();
- await revealStudio(editor,'edit');await editor.locator('#designTab').click();
+ // Single entry step 3: the composition family is a developer setting in More; the choices lead Look and measure themselves.
+ const storedWhen=async test=>{for(let k=0;k<120;k++){const s=await store.get(saved.id);if(test(s))return s;await new Promise(r=>setTimeout(r,250));}throw Error('autosave did not land');};
+ for(const gone of ['#designTab','#compare','.candidate-card','[data-select-candidate]'])assert.equal(await editor.locator(gone).count(),0,gone);
  const options=await editor.locator('#family option').evaluateAll(o=>o.map(v=>({value:v.value,disabled:v.disabled,selected:v.selected})));
  for(const family of S3_FAMILIES)assert.ok(options.some(o=>o.value===family),family);
  assert.equal(options.find(o=>o.selected).value,'quote');assert.deepEqual(options.filter(o=>!o.disabled).map(o=>o.value).sort(),['chapter','quote','statement']);
- await revealStudio(editor,'compositions');await editor.locator('#compare').click();await editor.waitForFunction(()=>!document.querySelector('#rhythm').disabled,null,{timeout:120000});
- assert.equal(await editor.locator('.candidate-card').count(),3);const titles=await editor.locator('.candidate-card h3').allTextContents();assert.ok(titles.every(t=>/quote|verbatim/i.test(t)),JSON.stringify(titles));
- await editor.locator('.candidate-panel:not(.directions-panel)').scrollIntoViewIfNeeded();await capture(editor,'studio-quote-candidates.png');
- await editor.locator('[data-inspect-candidate="2"]').click();await editor.locator('#candidateDialog').waitFor({state:'visible'});await editor.frameLocator('#largeCandidate').locator('#quote').waitFor({state:'visible'});await capture(editor,'studio-quote-large.png');await editor.locator('#candidateClose').click();
- await editor.locator('[data-select-candidate="2"]:enabled').click();await ready();await editor.locator('#save').click();await ready();await editor.reload();await ready();
+ await revealStudio(editor,'compositions');await editor.waitForFunction(()=>!document.querySelector('#rhythm').disabled,null,{timeout:120000});
+ assert.equal(await editor.locator('#candidates .candidate').count(),3);const titles=await editor.locator('#candidates .candidate-label span').allTextContents();assert.ok(titles.every(t=>/quote|verbatim/i.test(t)),JSON.stringify(titles));
+ await editor.locator('[data-zone=look] .directions').scrollIntoViewIfNeeded();await capture(editor,'studio-quote-candidates.png');
+ await editor.locator('[data-inspect-layout="2"]').click();await editor.locator('#candidateDialog').waitFor({state:'visible'});await editor.frameLocator('#largeCandidate').locator('#quote').waitFor({state:'visible'});await capture(editor,'studio-quote-large.png');await editor.locator('#candidateClose').click();
+ await editor.locator('#candidates .candidate[data-layout="2"]:enabled').click();await ready();await storedWhen(s=>s.plan.scenes.find(v=>v.id==='quote').composition==='quote-band');await editor.reload();await ready();
  assert.equal((await store.get(saved.id)).plan.scenes.find(s=>s.id==='quote').composition,'quote-band');report.studio.push('Quote family: three measured candidates, larger view, quote-band selected, saved and reopened');
  // An author's family choice wins: the quotation page becomes a chapter opener when the author says so.
- await revealStudio(editor,'edit');await editor.locator('#designTab').click();await editor.locator('#family').selectOption('chapter');await revealStudio(editor,'compositions');await editor.locator('#compare').click();await editor.waitForFunction(()=>!document.querySelector('#rhythm').disabled,null,{timeout:120000});
- const chapterTitles=await editor.locator('.candidate-card h3').allTextContents();assert.ok(chapterTitles.some(t=>/headline/i.test(t)),JSON.stringify(chapterTitles));
- await editor.locator('[data-select-candidate]:enabled').first().click();await ready();assert.match((await editor.locator('#composition').textContent()),/chapter-/);await capture(editor,'studio-author-family.png');
- await revealStudio(editor,'compositions');await editor.locator('#compare').click();await editor.waitForFunction(()=>!document.querySelector('#rhythm').disabled,null,{timeout:120000});await editor.locator('#rhythm').click();await ready();await editor.locator('#rhythmReport').scrollIntoViewIfNeeded();assert.ok((await editor.locator('#rhythmReport').textContent()).includes('Story rhythm cost'));await capture(editor,'studio-rhythm.png');
+ await revealStudio(editor,'developer');await editor.locator('#family').selectOption('chapter');await closeStudio(editor);await revealStudio(editor,'compositions');await editor.waitForFunction(()=>!document.querySelector('#rhythm').disabled,null,{timeout:120000});
+ const chapterTitles=await editor.locator('#candidates .candidate-label span').allTextContents();assert.ok(chapterTitles.some(t=>/headline/i.test(t)),JSON.stringify(chapterTitles));
+ await editor.locator('#candidates .candidate:enabled').first().click();await ready();assert.match((await editor.locator('#composition').textContent()),/chapter-/);await capture(editor,'studio-author-family.png');
+ await revealStudio(editor,'compositions');await editor.waitForFunction(()=>!document.querySelector('#rhythm').disabled,null,{timeout:120000});await editor.locator('#rhythm').click();await ready();assert.ok((await editor.locator('#rhythmReport').textContent()).includes('Story rhythm cost'));await revealStudio(editor,'developer');await editor.locator('#rhythmReport').scrollIntoViewIfNeeded();await capture(editor,'studio-rhythm.png');await closeStudio(editor);
  const kept=(await editor.evaluate(()=>document.querySelector('#composition').textContent));report.studio.push('Author family override chapter applied to the quote page and kept through deck rhythm: '+kept);
  assert.deepEqual(report.errors,[]);assert.deepEqual(report.externalRequests,[]);report.ok=true;
 }catch(e){report.ok=false;report.failure=e.stack;await capture(editor||page,'failure.png').catch(()=>{});process.exitCode=1;}

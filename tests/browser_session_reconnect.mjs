@@ -36,7 +36,7 @@ const settle=page=>page.waitForLoadState('networkidle');
 const dialog=page=>page.locator('#sessionDialog');
 // Each studio says how to open it, edit one field, start or await a save, and tell that a save finished.
 // The classic studio autosaves 1.2 s after an edit: hold() keeps that PUT until the restart (and any other writer) is done,
-// so it reaches the restarted server; ⌘/Ctrl S is its explicit save. Visual Studio still saves on its Save button.
+// so it reaches the restarted server; ⌘/Ctrl S is its explicit save. Since single entry step 3 Visual Studio does the same.
 const studios=[
  {name:'classic',projectRoute:id=>'/api/projects/'+id,listRoute:'/api/projects',
   async open(page){await page.goto(app.url+'/');await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await settle(page);return (await call('/api/projects')).projects[0].id;},
@@ -48,12 +48,16 @@ const studios=[
   save:page=>page.keyboard.press('ControlOrMeta+s'),
   unsaved:async page=>{await page.waitForSelector('#saveState[data-state="attention"]',{state:'attached'});return true;},
   saved:page=>page.waitForSelector('#saveState[data-state="saved"]',{state:'attached',timeout:20000})},
+ // Single entry step 3: Visual Studio shares the shell, so it autosaves and recovers exactly like classic.
  {name:'visual',projectRoute:id=>'/api/visual/projects/'+id,listRoute:'/api/visual/projects',
-  async open(page){await page.goto(app.url+'/visual?project='+visualDemo.id);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');return visualDemo.id;},
-  async edit(page,text){await page.locator('#title').fill(text);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});},
-  value:page=>page.locator('#title').inputValue(),
-  autosaves:false,hold:async()=>()=>{},save:page=>page.locator('#save').click(),unsaved:page=>page.locator('#save').isEnabled(),
-  saved:page=>page.waitForFunction(()=>/^(Saved on this computer|Saved as a separate copy)/.test(document.querySelector('#message').textContent),{},{timeout:20000})}
+  async open(page){await page.goto(app.url+'/visual?project='+visualDemo.id);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');await settle(page);return visualDemo.id;},
+  async edit(page,text){await page.locator('#deckTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
+  value:page=>page.locator('#deckTitle').inputValue(),
+  autosaves:true,
+  async hold(page){let open;const gate=new Promise(resolve=>{open=resolve;});await page.unrouteAll({behavior:'wait'});await page.route(url=>url.pathname.startsWith('/api/visual/projects/'),async route=>{if(route.request().method()==='PUT')await gate;await route.continue();});return open;},
+  save:page=>page.keyboard.press('ControlOrMeta+s'),
+  unsaved:async page=>{await page.waitForSelector('#saveState[data-state="attention"]',{state:'attached'});return true;},
+  saved:page=>page.waitForSelector('#saveState[data-state="saved"]',{state:'attached',timeout:20000})}
 ];
 try{
  for(const studio of studios){

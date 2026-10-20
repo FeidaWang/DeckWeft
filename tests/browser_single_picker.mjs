@@ -58,7 +58,8 @@ try{
  await page.locator('#projectPicker').selectOption('visual:'+visual.id);
  await page.waitForURL(url=>url.pathname==='/visual'&&url.searchParams.get('project')===visual.id);
  await page.waitForFunction(()=>document.querySelector('#sceneTitle')?.textContent.length>0);
- assert.equal(await page.locator('#library').inputValue(),visual.id,'Visual Studio opened the chosen deck');
+ // Single entry step 3: Visual Studio shares the shell, so its drawer has the same typed deck list.
+ assert.equal(await page.locator('#library').count(),0);assert.equal(await page.locator('#projectPicker').inputValue(),visual.id,'Visual Studio opened the chosen deck');
  step('choosing a visual deck opens /visual?project=<id> on that deck');
 
  // 4. back in the workbench: a classic deck switches in place (no navigation), then the visual one is chosen again.

@@ -10,7 +10,7 @@ import {startStudio} from '../src/services/server.mjs';
 import {VisualProjectStore} from '../src/services/visual-store.mjs';
 import {seekInteractionState} from '../src/motion/timeline.mjs';
 import {compileCues} from '../src/motion/cues.mjs';
-import {revealStudio} from './studio-controls.mjs';
+import {revealStudio,closeStudio} from './studio-controls.mjs';
 import {evidenceProject,semanticView,declaredExportLevels} from './evidence-scene.mjs';
 if(!process.env.CHROMIUM_PATH||!process.env.PLAYWRIGHT_MODULE)throw Error('Set CHROMIUM_PATH (isolated testing binary outside Applications) and PLAYWRIGHT_MODULE.');
 const binary=await realpath(process.env.CHROMIUM_PATH);if(/[\\/]Applications[\\/]/i.test(binary)||/[\\/]Applications[\\/]/i.test(process.env.CHROMIUM_PATH))throw Error('Installed browsers are read-only.');
@@ -52,19 +52,21 @@ async function staticContent(page){
 try{
  for(const locale of ['en','zh-CN']){
   const zh=locale==='zh-CN',source=await evidenceProject(locale),studioContext=await context({viewport:{width:1600,height:1100},acceptDownloads:true}),studio=await studioContext.newPage();studio.setDefaultTimeout(20000);studio.on('pageerror',e=>report.errors.push(locale+' studio: '+e.message));
-  const measured=()=>studio.waitForFunction(()=>!document.querySelector('#exportHTML').disabled&&document.querySelector('#fit').textContent.startsWith('✓'));
-  const save=async()=>{await studio.locator('#save').click();await studio.waitForFunction(()=>document.querySelector('#save').disabled);await measured();};
+  // Single entry step 3: the canvas says when the preview of these exact edits is measured; autosave and ⌘/Ctrl S replace Save.
+  const measured=()=>studio.waitForFunction(()=>{const c=document.querySelector('#canvas');return !document.querySelector('#exportHTML').disabled&&c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale');});
+  const save=async()=>{await studio.keyboard.press('Control+s');await studio.waitForFunction(()=>document.querySelector('#saveState').dataset.state==='saved');await measured();};
   // 1. Import data: the visual JSON envelope through the Studio file import (validated and copied to a new local id).
   const projectFile=path.join(out,locale+'-import.visual.json');await writeFile(projectFile,JSON.stringify(source,null,2)+'\n');
   await studio.goto(app.url+'/visual?ui='+locale);await studio.waitForFunction(()=>document.querySelector('#uiLanguage'));await revealStudio(studio,'library');
-  await studio.locator('#projectFile').setInputFiles(projectFile);await studio.waitForFunction(title=>document.querySelector('#deckName').textContent===title,source.document.title);await measured();
-  const id=await studio.locator('#library').inputValue(),imported=await store.get(id);
+  await studio.locator('#projectFile').setInputFiles(projectFile);await studio.waitForFunction(title=>document.querySelector('#deckTitle').value===title,source.document.title);await closeStudio(studio);await measured();
+  for(const gone of ['#library','#deckName','#designTab','#contentTab','#theme','#lockInteractions','#fit'])assert.equal(await studio.locator(gone).count(),0,gone);
+  const id=await studio.locator('#projectPicker').inputValue(),imported=await store.get(id);
   assert.notEqual(id,source.id);assert.deepEqual(imported.document.blocks,source.document.blocks);assert.deepEqual(imported.document.datasets,source.document.datasets);assert.deepEqual(imported.plan.scenes,source.plan.scenes);assert.equal(imported.extensions.deckweftImport.sourceId,source.id);
   stage(locale,'import data',{route:'Studio #projectFile → POST /api/visual/import',projectId:id,blocks:imported.document.blocks.length,datasets:imported.document.datasets.map(d=>({id:d.id,synthetic:d.synthetic,categories:d.categories.length,unit:d.unit})),contentStatus:imported.plan.scenes[0].contentStatus,valuesUnchanged:true});
   // 2. Choose theme: two existing packs through the Studio theme control; the semantic document must not move.
   await revealStudio(studio,'edit');const before=semanticView(imported),themes={};
   for(const theme of ['cream-collage','dark-data']){
-   await studio.locator('#designTab').click();await studio.locator('#theme').selectOption(theme);await measured();await save();
+   await revealStudio(studio,'compositions');await studio.locator(`[data-zone=look] [data-theme="${theme}"]`).click();await measured();await save();
    const saved=await store.get(id),scene=saved.plan.scenes[0];assert.deepEqual(semanticView(saved),before);assert.equal(scene.theme,theme);
    const artifact=await studio.locator('#preview').getAttribute('src'),view=await (await context({viewport:{width:1440,height:1000}})).newPage();view.on('pageerror',e=>report.errors.push(locale+' preview: '+e.message));
    await ready(view,app.url+artifact.split('#')[0]);await capture(view.locator('#evidence'),`${locale}-theme-${theme}-1440.png`);
@@ -102,19 +104,20 @@ try{
   stage(locale,'pause and seek',{playingTimers:playing.resources.timers,paused:{position:paused.position,timers:paused.resources.timers},seekPosition:sought.position,rapidNavigation:left});
   await present.context().close();
   // 6. Freeze the author's static state in Studio, beside "Use current chart / step as opening"; cue and motion locks refuse it.
-  await studio.locator('#contentTab').click();const disclosure=studio.locator('details').filter({has:studio.locator('#staticState')});if(!await disclosure.evaluate(n=>n.open))await disclosure.locator(':scope > summary').click();
+  // The still-picture choice sits behind "Let this page move", which is on for a page that already has interactions.
+  await revealStudio(studio,'compositions');assert.equal(await studio.locator('#motionSwitch').getAttribute('aria-checked'),'true');await studio.locator('#motionControls').waitFor({state:'visible'});
   assert.deepEqual(await studio.locator('#staticState option').evaluateAll(o=>o.map(n=>n.value)),['','opening','structure-first','complete']);
-  await studio.locator('#lockInteractions').check();await studio.waitForFunction(()=>document.querySelector('#staticState').disabled);await save();
+  await studio.locator('#keepPage').click();await studio.waitForFunction(()=>document.querySelector('#staticState').disabled&&document.querySelector('#keepPage').getAttribute('aria-pressed')==='true');await save();
   const refused=await studio.evaluate(async id=>{const token=(await(await fetch('/api/session')).json()).token,headers={Authorization:'Bearer '+token,'Content-Type':'application/json'},{project}=await(await fetch('/api/visual/projects/'+id,{headers})).json();project.plan.scenes[0].staticState={keyStateId:'structure-first'};const r=await fetch('/api/visual/projects/'+id,{method:'PUT',headers,body:JSON.stringify({project,expectedRevision:project.revision.number})});return {status:r.status,code:(await r.json()).error?.code};},id);
   assert.deepEqual(refused,{status:409,code:'AUTHOR_LOCK'});
-  await studio.locator('#lockInteractions').uncheck();await studio.waitForFunction(()=>!document.querySelector('#staticState').disabled);
+  await studio.locator('#keepPage').click();await studio.waitForFunction(()=>!document.querySelector('#staticState').disabled);
   await studio.locator('#staticState').selectOption('structure-first');await measured();await save();
   const frozen=await store.get(id);assert.deepEqual(frozen.plan.scenes[0].staticState,{keyStateId:'structure-first'});assert.deepEqual(frozen.document.authorOverrides.sceneLocks??[],[]);
   for(const key of ['title','blocks','datasets','sources','rules'])assert.deepEqual(frozen.document[key],imported.document[key],key);
   await studio.locator('#staticState').scrollIntoViewIfNeeded();await capture(studio,`${locale}-studio-static-state.png`,{fullPage:true});
   stage(locale,'freeze static state',{picker:'#staticState',chosen:'structure-first',position:1,lockedPickerDisabled:true,lockedServerSave:refused,saved:frozen.plan.scenes[0].staticState});
   // 7. Export HTML through the existing review gate: measured preview ticket → /measure → /export.
-  const download=studio.waitForEvent('download');await studio.locator('#exportHTML').click();const file=path.join(out,locale+'-export.html');await (await download).saveAs(file);
+  const download=studio.waitForEvent('download');await revealStudio(studio,'file');await studio.locator('#exportHTML').click();const file=path.join(out,locale+'-export.html');await (await download).saveAs(file);
   const exported=await readFile(file,'utf8'),preview=await (await fetch(app.url+(await studio.locator('#preview').getAttribute('src')).split('#')[0])).text();
   assert.equal(exported,preview,'the download is the measured preview');assert.ok(exported.includes('createCueClock'));assert.ok(exported.includes('"staticState":{"keyStateId":"structure-first","position":1,"reducedMotion":"static"}'));
   stage(locale,'export html',{gate:'preview ticket measured in this browser, POST /api/visual/export',bytes:Buffer.byteLength(exported),sha256:hash(exported),renderHash:exported.match(/deckweft-render-hash" content="([^"]+)"/)[1]});

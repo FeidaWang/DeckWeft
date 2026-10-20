@@ -11,7 +11,7 @@ import {startStudio} from '../src/services/server.mjs';
 import {VisualProjectStore} from '../src/services/visual-store.mjs';
 import {createVisualProject} from '../src/core/visual-project.mjs';
 import {readZip} from '../src/targets/pptx/audit.mjs';
-import {revealStudio,studioExport,closeExportDialog} from './studio-controls.mjs';
+import {revealStudio,studioExport,closeExportDialog,closeStudio,saveNow} from './studio-controls.mjs';
 import {blueprintFixture} from './blueprint-a.mjs';
 const {values:a}=parseArgs({options:{out:{type:'string'},widths:{type:'string'}}}),out=path.resolve(a.out||'dist/s9b-blueprint-a'),shots=path.join(out,'studio');
 await rm(path.join(out,'library'),{recursive:true,force:true});await mkdir(path.join(out,'library'),{recursive:true});await rm(shots,{recursive:true,force:true});await mkdir(shots,{recursive:true});await mkdir(path.join(out,'exports'),{recursive:true});
@@ -28,12 +28,14 @@ async function open(width,id){
  await context.route('**/*',r=>{const u=r.request().url();if(u.startsWith(app.url+'/')||u.startsWith('data:')||u.startsWith('blob:'))return r.continue();external.push(u);return r.abort();});
  await page.goto(app.url+'/visual?project='+id);await page.waitForFunction(()=>document.querySelector('#sceneTitle')?.textContent.length>0);return {context,page};
 }
-const measured=page=>page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled&&document.querySelector('#fit').textContent.startsWith('✓'),{},{timeout:90000});
+// Single entry step 3: the canvas says when these exact edits are measured; autosave and ⌘/Ctrl S replace Save.
+const measured=page=>page.waitForFunction(()=>{const c=document.querySelector('#canvas');return !document.querySelector('#exportHTML').disabled&&c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale');},{},{timeout:90000});
 // Save is disabled while a preview is being measured; wait for the measurement first.
-const save=async page=>{await measured(page);await revealStudio(page,'file');if(await page.locator('#save').isDisabled())return;await page.locator('#save').click();await page.waitForFunction(()=>/Saved on this computer|已保存在本机/.test(document.querySelector('#message').textContent)&&document.querySelector('#save').disabled);};
+const save=async page=>{await measured(page);if(await page.locator('#save').isDisabled())return;await saveNow(page);};
 async function shot(page,name){await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(300);const file=path.join(shots,name+'.png');await page.screenshot({path:file});return path.relative(out,file);}
 const interactionPlan=async page=>JSON.parse(await page.locator('#interactionJSON').inputValue());
-const openInteractions=async page=>{await revealStudio(page,'edit');await page.locator('#contentTab').click();const d=page.locator('details').filter({has:page.locator('#enableBlueprint')});if(!await d.evaluate(n=>n.open))await d.locator(':scope > summary').click();};
+// The blueprint, the transition and the still picture open from "Let this page move" in Look.
+const openInteractions=async page=>{await revealStudio(page,'compositions');if(await page.locator('#motionControls').isHidden())await page.locator('#motionSwitch').click();await page.locator('#motionControls').waitFor({state:'visible'});};
 async function exportFile(page,id,ext,{refused,paginate}={}){
  const waiting=page.waitForEvent('download',{timeout:180000});waiting.catch(()=>{});
  const r=await studioExport(page,id,{paginate});
@@ -46,17 +48,18 @@ const artifacts={};
 try{
  const en=await plainDeck('en'),zh=await plainDeck('zh-CN');
  // 1440: the whole author path in English.
- let {context,page}=await open(widths[0],en.id);await measured(page);await page.locator('[data-scene="pipeline"]').first().click();await openInteractions(page);
+ let {context,page}=await open(widths[0],en.id);await measured(page);await page.locator('#slideList [data-slide="pipeline"]').click();for(const gone of ['#contentTab','#lockInteractions','#nextScene','#fit','#message'])assert.equal(await page.locator(gone).count(),0,gone);await openInteractions(page);
  assert.equal(await page.locator('#blueprintStatic').isHidden(),true);artifacts.before=await shot(page,'1440-1-before');
- await page.locator('#lockInteractions').check();await page.waitForFunction(()=>document.querySelector('#enableBlueprint').disabled);record(widths[0],'scene interaction lock disables the action',{disabled:true});
- await page.locator('#lockInteractions').uncheck();await page.waitForFunction(()=>!document.querySelector('#enableBlueprint').disabled);
+ await page.locator('#keepPage').click();await page.waitForFunction(()=>document.querySelector('#enableBlueprint').disabled&&document.querySelector('#keepPage').getAttribute('aria-pressed')==='true');record(widths[0],'page lock disables the action',{disabled:true});
+ await page.locator('#keepPage').click();await page.waitForFunction(()=>!document.querySelector('#enableBlueprint').disabled);
  await page.locator('#enableBlueprint').click();await measured(page);let plan=await interactionPlan(page);
  assert.equal(plan.interactions[0].blueprint.questionBlockId,'pipeline-question');assert.equal(plan.cues.length,5);
  const hint=await page.locator('#blueprintStatic').textContent();assert.match(hint,/refuse this page until you choose its static state/);
  const preview=page.frameLocator('#preview');await preview.locator('#pipeline [data-blueprint-stage="explain"], #pipeline[data-blueprint-stage="explain"]').first().waitFor();
  record(widths[0],'Make this page Explain → Diagram → Explore',{blueprint:plan.interactions[0].blueprint,cues:plan.cues.length,keyStates:(await page.locator('#staticState option').allTextContents()),hint,shot:artifacts.made=await shot(page,'1440-2-made')});
- await revealStudio(page,'file');await page.locator('#undo').click();await measured(page);assert.equal((await interactionPlan(page)).interactions.length,0,'Undo removes it');
- await page.locator('#redo').click();await measured(page);assert.ok((await interactionPlan(page)).interactions[0].blueprint,'Redo restores it');record(widths[0],'Undo, Redo',{undo:'no interaction',redo:'blueprint'});
+ await closeStudio(page);await page.locator('#undo').click();await measured(page);assert.equal((await interactionPlan(page)).interactions.length,0,'Undo removes it');
+ // Redo: ⌘/Ctrl Shift Z (the band shows Redo on a long press of Undo).
+ await page.locator('#undo').focus();await page.keyboard.press('Control+Shift+z');await measured(page);assert.ok((await interactionPlan(page)).interactions[0].blueprint,'Redo restores it');record(widths[0],'Undo, Redo',{undo:'no interaction',redo:'blueprint'});
  await save(page);await measured(page);
  // The preview is the player: it opens on Explain, and Next stage reaches Diagram.
  // The Studio frame is a scaled, read-only view (no pointer input), so the button is activated directly, as assistive technology would.
@@ -100,8 +103,8 @@ try{
  for(const width of widths.slice(1)){
   ({context,page}=await open(width,zh.id));await measured(page);const question=(await store.get(zh.id)).document.blocks.find(b=>b.id==='pipeline-question').text;
   // The narrow layout hides the page list; the Studio's Next page control selects the second page.
-  while((await page.locator('#sceneTitle').textContent())!==question){await page.locator('#nextScene').click();await page.waitForTimeout(200);}await openInteractions(page);
-  if(!(await interactionPlan(page)).interactions.length){await page.locator('#enableBlueprint').click();await measured(page);await save(page);await measured(page);}
+  const pipelineScene=(await store.get(zh.id)).plan.scenes.find(s=>s.blockIds.includes('pipeline-question')).id;await page.locator(`#slideList [data-slide="${pipelineScene}"]`).click();await page.waitForFunction(q=>document.querySelector('#sceneTitle').textContent===q,question);await openInteractions(page);
+  if(!(await interactionPlan(page)).interactions.length){await page.locator('#enableBlueprint').click();await measured(page);await save(page);await measured(page);await openInteractions(page);}
   const opts=await page.locator('#staticState option').evaluateAll(o=>o.map(n=>({value:n.value,text:n.textContent})));await page.locator('#staticState').selectOption(opts.find(o=>/图解/.test(o.text)).value);await measured(page);
   const zhHint=await page.locator('#blueprintStatic').textContent();assert.match(zhHint,/Static state: 图解/);await page.locator('#blueprintStatic').scrollIntoViewIfNeeded();
   record(width,'zh-CN blueprint page and static state in the Studio',{hint:zhHint,shot:artifacts['studio-'+width]=await shot(page,`${width}-zh-CN-static`)});await measured(page);if(await page.locator('#save').isEnabled())await save(page);await context.close();

@@ -82,26 +82,28 @@ try{
   const zh=locale==='zh-CN';
   // 1. Gate (C5): Studio measures the opening and every declared static state before HTML export; the download is that measured preview.
   const studioContext=await context({viewport:{width:1600,height:1100},acceptDownloads:true}),studio=await studioContext.newPage();studio.setDefaultTimeout(30000);studio.on('pageerror',e=>report.errors.push(locale+' studio: '+e.message));
-  const measured=()=>studio.waitForFunction(()=>!document.querySelector('#exportHTML').disabled&&document.querySelector('#fit').textContent.startsWith('✓'));
+  // Single entry step 3: the canvas says when these exact edits are measured; Take away holds the export buttons.
+  const measured=()=>studio.waitForFunction(()=>{const c=document.querySelector('#canvas');return !document.querySelector('#exportHTML').disabled&&c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale');});
   const files={};
   for(const [name,project] of [['demo',await demoProject(locale)],['evidence',await evidenceProject(locale,{staticState:'structure-first'})]]){
    const saved=await store.save(project,{create:true}),fits=[];studio.on('console',()=>{});
    await studio.goto(app.url+'/visual?project='+saved.id+'&ui='+locale);await measured();
    const preview=(await studio.locator('#preview').getAttribute('src')).split('#')[0],fit=await studio.frameLocator('#preview').locator('body').evaluate(()=>window.deckweftFit);
    assert.equal(fit.ok,true);assert.equal(fit.player,PLAYER_VERSION);assert.deepEqual(fit.states.map(s=>[s.sceneId,s.keyStateId,s.position]),project.plan.scenes.filter(s=>s.staticState).map(s=>[s.id,s.staticState.keyStateId,s.keyStates.find(k=>k.id===s.staticState.keyStateId).position]));
-   const download=studio.waitForEvent('download');await studio.locator('#exportHTML').click();const file=path.join(out,`${locale}-${name}.html`);await (await download).saveAs(file);
+   const download=studio.waitForEvent('download');await revealStudio(studio,'file');await studio.locator('#exportHTML').click();const file=path.join(out,`${locale}-${name}.html`);await (await download).saveAs(file);
    const exported=await readFile(file,'utf8');assert.equal(exported,await (await fetch(app.url+preview)).text(),'the download is the measured preview');files[name]={file,url:pathToFileURL(file).href,project:saved};
    log('gate',locale,{project:name,measuredStates:fit.states.map(s=>({sceneId:s.sceneId,keyStateId:s.keyStateId,position:s.position,overflow:s.overflow.length,clip:s.clipIssues.length,contrast:s.contrastIssues.length})),ok:fit.ok,viewport:fit.viewport,bytes:Buffer.byteLength(exported),sha256:hash(exported)});
   }
   // 2. Studio opening guard (C20): the preview opens on the static state; copying it without exploring is refused.
-  await studio.goto(app.url+'/visual?project='+files.evidence.project.id+'&scene=evidence&ui='+locale);await measured();await revealStudio(studio,'edit');await studio.locator('#contentTab').click();
-  const disclosure=studio.locator('details').filter({has:studio.locator('#useInteractionOpening')});if(!await disclosure.evaluate(n=>n.open))await disclosure.locator(':scope > summary').click();
+  await studio.goto(app.url+'/visual?project='+files.evidence.project.id+'&scene=evidence&ui='+locale);await measured();assert.equal(await studio.locator('#contentTab').count(),0);
+  // "Use current chart / step as opening" sits behind "Let this page move", which is on for a page with interactions.
+  await revealStudio(studio,'compositions');assert.equal(await studio.locator('#motionSwitch').getAttribute('aria-checked'),'true');await studio.locator('#motionControls').waitFor({state:'visible'});
   const frame=studio.frameLocator('#preview'),previewSnap=()=>frame.locator('body').evaluate(()=>window.deckweftInteractions.snapshot().find(s=>s.sceneId==='evidence'));
-  assert.equal((await previewSnap()).position,1);await studio.locator('#useInteractionOpening').click();await studio.waitForFunction(()=>document.querySelector('#message').classList.contains('error'));
-  const refused=await studio.locator('#message').textContent();assert.match(refused,zh?/提示位置 1（静态状态）/:/cue position 1 \(the static state\)/);
-  assert.equal(await studio.locator('#save').isDisabled(),true,'nothing changed');await studio.locator('#message').scrollIntoViewIfNeeded();await capture(studio,`${locale}-studio-opening-refused.png`);
+  assert.equal((await previewSnap()).position,1);await studio.locator('#useInteractionOpening').click();await studio.waitForFunction(()=>!document.querySelector('#issueBanner').hidden);
+  const refused=await studio.locator('#issueBanner').textContent();assert.match(refused,zh?/提示位置 1（静态状态）/:/cue position 1 \(the static state\)/);
+  assert.equal(await studio.locator('#save').isDisabled(),true,'nothing changed');await studio.locator('#issueBanner').scrollIntoViewIfNeeded();await capture(studio,`${locale}-studio-opening-refused.png`);
   await frame.locator('#evidence select[data-range="toId"]').selectOption('template');assert.equal((await previewSnap()).exploring,true);await studio.locator('#useInteractionOpening').click();await studio.waitForFunction(()=>!document.querySelector('#save').disabled);
-  const accepted=await studio.locator('#message').textContent();
+  const accepted=await studio.locator('#toastRegion').textContent();
   log('studio',locale,{opensAt:1,refusedWithoutExploring:refused,afterExploringToTemplate:accepted,saveEnabled:true});
   await studioContext.close();
   // 2b. Before/after on the evidence scene: a focused chart mark with ArrowRight (C14) and the explanation line (C4).

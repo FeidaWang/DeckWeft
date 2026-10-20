@@ -1,5 +1,7 @@
-// S9a author controls in the real Studio UI: six-question entry and three measured directions, planned author actions with
-// stated effects, undo/redo, chapters, separate locks, page planning, design profiles and the PowerPoint/PDF export menu.
+// S9a author controls in the real Studio UI, on the shared shell since single entry step 3: three measured directions at a chosen
+// detail, the Look buttons with stated effects, undo/redo, chapters from the page menu, one page lock, saved looks and the
+// PowerPoint/PDF part of Take away. Actions that left the browser (reduce text, chart space, keep layout, page planning) are
+// planned through the same API with the same stated effects.
 // Isolated browser only (outside /Applications, temporary profile); every non-loopback request is refused and recorded.
 // Usage: CHROMIUM_PATH=/isolated/chrome PLAYWRIGHT_MODULE=/abs/playwright/index.mjs node tests/browser_author_controls.mjs [--out dist/s9a-author-controls]
 import assert from 'node:assert/strict';
@@ -10,7 +12,7 @@ import {parseArgs} from 'node:util';
 import {startStudio} from '../src/services/server.mjs';
 import {VisualProjectStore} from '../src/services/visual-store.mjs';
 import {createCompositionDemo} from '../src/core/composition-demo.mjs';
-import {revealStudio,studioExport,closeExportDialog} from './studio-controls.mjs';
+import {revealStudio,studioExport,closeExportDialog,closeStudio,saved as squareSaved} from './studio-controls.mjs';
 const {values:a}=parseArgs({options:{out:{type:'string'},widths:{type:'string'}}}),out=path.resolve(a.out||'dist/s9a-author-controls'),shots=path.join(out,'shots');
 await rm(path.join(out,'library'),{recursive:true,force:true});await mkdir(path.join(out,'library'),{recursive:true});await mkdir(shots,{recursive:true});
 const home=await realpath(path.join(out,'library')),binary=await realpath(process.env.CHROMIUM_PATH||'');assert.ok(!/\/Applications\//i.test(binary),'Use an isolated browser outside /Applications.');
@@ -30,113 +32,129 @@ async function open(width,query){
  await page.goto(app.url+'/visual'+query);await page.waitForFunction(()=>document.querySelector('#sceneTitle')?.textContent.length>0||!document.querySelector('#emptyCanvas')?.hidden);
  return {context,page};
 }
-const saveDeck=async page=>{await page.locator('#save').click();await page.waitForFunction(()=>/Saved on this computer|已保存在本机/.test(document.querySelector('#message').textContent)&&document.querySelector('#save').disabled);};
-const measured=page=>page.waitForFunction(()=>/✓/.test(document.querySelector('#fit')?.textContent||''),{},{timeout:60000});
+// Single entry step 3: autosave and the state square replace Save; the canvas says when the preview of these exact edits is measured.
+const measured=page=>page.waitForFunction(()=>{const c=document.querySelector('#canvas');return c?.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale');},{},{timeout:60000});
 const settle=async page=>{await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(150);};
 async function shot(page,name,target){await settle(page);const file=path.join(shots,name+'.png');if(target)await page.locator(target).screenshot({path:file});else await page.screenshot({path:file,fullPage:false});return path.relative(out,file);}
-async function action(page,width,{level,object,act,kind,expect}){
- await revealStudio(page,'edit');if(!await page.locator('#authorControls').evaluate(n=>n.open))await page.locator('#authorControls > summary').click();
- if(!await page.locator('#actionLevel').isVisible())record(width,'author controls not visible after disclosure',await page.locator('#actionLevel').evaluate(n=>({ancestors:[n,...(function*(e){while(e=e.parentElement)yield e;})(n)].filter(e=>e.id).map(e=>({id:e.id,hidden:e.hidden,open:e.open,display:getComputedStyle(e).display}))})));
- if(level)await page.locator('#actionLevel').selectOption(level);if(object)await page.locator('#actionObject').selectOption(object);if(kind)await page.locator('#lockKind').selectOption(kind);
- await page.locator(`[data-author-action="${act}"]`).click();await page.locator('#actionPlan').waitFor({state:'visible'});
- const plan={scope:await page.locator('#actionScope').textContent(),effects:await page.locator('#actionEffects li').allTextContents(),kept:await page.locator('#actionKept li').allTextContents(),applyEnabled:await page.locator('#actionApply').isEnabled()};
- if(expect)assert.match([plan.scope,...plan.effects,...plan.kept].join(' '),expect,act);
- return plan;
-}
+// The stated effect of a Look button, shown after it applied.
+async function note(page,expect){await page.locator('#actionPlan').waitFor({state:'visible'});const plan={title:await page.locator('#actionTitle').textContent(),scope:await page.locator('#actionScope').textContent(),effects:await page.locator('#actionEffects li').allTextContents(),kept:await page.locator('#actionKept li').allTextContents()};if(expect)assert.match([plan.scope,...plan.effects,...plan.kept].join(' '),expect,plan.title);return plan;}
+// The author actions that left the browser are still planned through the API, with the same stated effect.
+const planned=async(project,action,level,id,options={})=>{const r=await api('author-action',{project,action,level,id,options});assert.ok(!r.error,JSON.stringify(r.error));return r;};
+const statement=p=>[p.scopeStatement.en,...p.effects.map(v=>v.en),...p.kept.map(v=>v.en)].join(' ');
+const current=async id=>(await api('projects/'+id)).project;
+// Autosave lands 1.2 s after an edit: poll the saved deck until it shows the change.
+async function savedWhen(id,test,timeout=30000){const end=Date.now()+timeout;for(;;){const p=await current(id);if(test(p))return p;if(Date.now()>end)throw Error('autosave did not land');await new Promise(r=>setTimeout(r,250));}}
 const widths=(a.widths||'1440,1024,390').split(',').map(Number),artifacts={};
 try{
  for(const width of widths){
   if(width!==widths[0])deckA=await fresh();
-  // 1. Default entry: six questions, three measured directions of the same text.
-  {const {context,page}=await open(width,'?project='+deckA.id);
-   await revealStudio(page,'create');await page.locator('#workbenchPrompt').fill(TEXT.en);await page.locator('#entryAudience').fill('Release reviewers');await page.locator('#entryOutput').selectOption('pptx');
-   await page.locator('#entryDirections').click();await page.waitForFunction(()=>document.querySelectorAll('.direction-card').length===3&&[...document.querySelectorAll('.direction-card .candidate-fit')].every(n=>!/Measuring/.test(n.textContent)),{},{timeout:90000});
-   const cards=await page.locator('.direction-card').evaluateAll(cards=>cards.map(c=>({title:c.querySelector('h3').textContent,fit:c.querySelector('.candidate-fit').textContent,use:!c.querySelector('[data-use-direction]').disabled,explain:[...c.querySelectorAll('dd')].map(d=>d.textContent)})));
+  // 1. Three measured directions of the open deck, at the chosen detail. The six questions left with the first-run paste box.
+  // Directions are applied to a copy of their own, so the actions below start from the untouched six-family deck.
+  {const deckDir=await fresh(),{context,page}=await open(width,'?project='+deckDir.id);await measured(page);
+   for(const gone of ['#entryFields','#entryAudience','#entryOutput','#entryBasis','#entryStyle','#entryMotion','#closeDirection','#workbench-uiLanguage','#workbench-promptLanguage','#workbench-contentTone'])assert.equal(await page.locator(gone).count(),0,gone);
+   await revealStudio(page,'compositions');await page.locator('[data-detail="detailed"]').click();
+   await page.waitForFunction(()=>document.querySelectorAll('.direction-card').length===3&&[...document.querySelectorAll('.direction-card .candidate-fit')].every(n=>!/Measuring/.test(n.textContent)),{},{timeout:90000});
+   const cards=await page.locator('.direction-card').evaluateAll(cards=>cards.map(c=>({title:c.querySelector('.candidate-label span').textContent,fit:c.querySelector('.candidate-fit').textContent,use:!c.querySelector('[data-use-direction]').disabled,explain:[...c.querySelectorAll('dd')].map(d=>d.textContent)})));
    assert.equal(cards.length,3);assert.equal(new Set(cards.map(c=>c.explain[1])).size,3,'type differs');
    const facts=await page.locator('#directionFacts').textContent(),plan=await page.locator('#entryPagePlan').textContent();
-   if(width<1000&&await page.locator('#closeDirection').isVisible())await page.locator('#closeDirection').click();
    await page.locator('#directionsPanel').scrollIntoViewIfNeeded();const panel=await shot(page,`directions-${width}`,'#directionsPanel'),each=[];
    // Each card on screen before its capture: off-screen iframes are not painted in a tall element screenshot.
    for(let k=0;k<3;k++){const card=page.locator(`[data-direction="${k}"]`);await card.scrollIntoViewIfNeeded();await page.waitForTimeout(400);each.push(await shot(page,`direction-${k+1}-${width}`,`[data-direction="${k}"]`));}
    record(width,'entry: three directions measured',{cards,facts,plan,shot:panel,cardShots:each});
    if(width===1440){
-    // Expand direction 2 to the deck through the workbench, then check the deck has its design and the same words.
-    const chosen=cards[1].title;await page.locator('[data-use-direction="1"]').click();
-    await page.waitForFunction(()=>['browser-capture','exported','actual-image-review','review-required'].includes(document.querySelector('#workbenchProgress').dataset.status),{},{timeout:120000});
-    const list=(await api('projects')).projects,made=list.find(p=>p.id!==deckA.id&&p.id!==deckB.id&&/exports drift/.test(p.title)),project=(await api('projects/'+made.id)).project;artifacts.generated=made.id;
-    assert.ok(project.extensions.deckweftDirection);assert.ok(chosen.includes(project.extensions.deckweftDirection.theme));
-    await measured(page);await page.locator('#frameSpace').scrollIntoViewIfNeeded();record(width,'entry: direction expanded to the deck',{chosen,theme:project.extensions.deckweftDirection.theme,pages:project.plan.scenes.map(s=>s.composition),shot:await shot(page,`expanded-${width}`,'#frameSpace')});
+    // Apply direction 2 to the deck: every page takes its design and the words stay.
+    const chosen=cards[1].title,before=await current(deckDir.id);await page.locator('[data-use-direction="1"]').click();await measured(page);
+    const project=await savedWhen(deckDir.id,p=>!!p.extensions.deckweftDirection);await squareSaved(page);assert.ok(project.extensions.deckweftDirection);assert.ok(chosen.includes(project.extensions.deckweftDirection.theme));
+    assert.deepEqual(project.document.blocks.map(b=>b.text??null),before.document.blocks.map(b=>b.text??null),'the same words');
+    await page.locator('#frameSpace').scrollIntoViewIfNeeded();record(width,'entry: direction applied to the deck',{chosen,theme:project.extensions.deckweftDirection.theme,pages:project.plan.scenes.map(s=>s.composition),shot:await shot(page,`expanded-${width}`,'#frameSpace')});
    }
    await context.close();}
-  // 2. Author actions on the six-family deck: plan → statement → apply → undo/redo.
-  {const {context,page}=await open(width,'?project='+deckA.id+'&scene=chapter');await measured(page);
-   const reduce=await action(page,width,{level:'object',object:'chapter-body',act:'reduce-text',expect:/behind “More detail”[\s\S]*PowerPoint notes/});
-   record(width,'reduce text: effect stated before apply',{...reduce,shot:await shot(page,`plan-reduce-${width}`,'#authorControls')});
-   await page.locator('#actionApply').click();await measured(page);await page.frameLocator('#preview').locator('.scene-disclosure').first().waitFor();
+  // 2. Author actions on the six-family deck. Reduce text left the browser: planned and applied through the API, then seen in the preview.
+  {let base=await current(deckA.id);const reduce=await planned(base,'reduce-text','object','chapter-body');assert.match(statement(reduce),/behind “More detail”[\s\S]*PowerPoint notes/);
+   base=(await api('projects/'+deckA.id,{project:reduce.project,expectedRevision:base.revision.number},'PUT')).project;record(width,'reduce text (API): effect stated before apply',{scope:reduce.scopeStatement.en,effects:reduce.effects.map(v=>v.en)});
+   const {context,page}=await open(width,'?project='+deckA.id+'&scene=chapter');await measured(page);
+   for(const gone of ['#authorControls','#actionLevel','#actionObject','#lockKind','#actionApply','#actionCancel','#replaceFields','#planPages','#planMark','#planSplit','#pagePlan','#planDetail','#planTarget','[data-author-action="reduce-text"]','[data-author-action="chart-space"]','[data-author-action="keep-layout"]','[data-author-action="quieter"]','[data-author-action="replace-visual"]','[data-author-action="lock"]','[data-author-action="unlock"]','[data-author-action="start-chapter"]','[data-author-action="remove-chapter"]','[data-author-action="apply-profile"]'])assert.equal(await page.locator(gone).count(),0,gone);
+   await page.frameLocator('#preview').locator('.scene-disclosure').first().waitFor();
    const summary=await page.frameLocator('#preview').locator('.scene-disclosure summary').first().textContent();record(width,'reduce text: applied; disclosure in preview',{summary,shot:await shot(page,`applied-reduce-${width}`,'#frameSpace')});
-   await revealStudio(page,'file');await page.locator('#undo').click();await measured(page);assert.equal(await page.frameLocator('#preview').locator('.scene-disclosure').count(),0,'undo removes the disclosure');
-   await revealStudio(page,'file');await page.locator('#redo').click();await measured(page);assert.equal(await page.frameLocator('#preview').locator('.scene-disclosure').count(),1,'redo restores it');
-   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);record(width,'reduce text: undo and redo',{horizontalOverflowPx:overflow});if(width===390)assert.ok(overflow<=1,'no horizontal page scroll at 390 px');
+   // More space: one button, applied at once with its stated effect; Undo and Redo in the band restore and repeat it. Page 6 takes it.
+   const sectionClass=()=>page.frameLocator('#preview').locator('section#process').getAttribute('class');
+   await page.locator('#slideList [data-slide="process"]').click();await measured(page);await revealStudio(page,'compositions');const beforeSpace=await sectionClass();await page.locator('#moreSpace').click();const space=await note(page);await measured(page);const afterSpace=await sectionClass();
+   record(width,'more space: effect stated after it applied',{...space,beforeSpace,afterSpace,shot:await shot(page,`plan-more-space-${width}`,'[data-zone=look]')});
+   assert.notEqual(afterSpace,beforeSpace,'more space changes the page');
+   // Below 1050 px Look is a sheet over the page; close it to reach Undo in the band. On a phone Undo and Redo sit at the top of More.
+   const band=async id=>{await closeStudio(page);if(!await page.locator(id).isVisible())await revealStudio(page,'library');await page.locator(id).click();await closeStudio(page);};
+   await band('#undo');await measured(page);assert.equal(await sectionClass(),beforeSpace,'undo restores the layout');
+   if(await page.locator('#redo').isHidden()&&await page.locator('#undo').isVisible()){await page.locator('#undo').hover();await page.mouse.down();await page.waitForTimeout(600);await page.mouse.up();}
+   await band('#redo');await measured(page);assert.equal(await sectionClass(),afterSpace,'redo repeats it');
+   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);record(width,'more space: undo and redo',{horizontalOverflowPx:overflow});if(width===390)assert.ok(overflow<=1,'no horizontal page scroll at 390 px');
    if(width===1440){
-    // Give the chart more space: in Research Atlas the theme's figure layout draws the plot largest (measured); undo returns the side layout.
-    await page.locator('[data-scene="evidence"]').first().click();await measured(page);await revealStudio(page,'edit');await page.locator('#designTab').click();await page.locator('#theme').selectOption('fresh-report');await measured(page);
-    const space=await action(page,width,{level:'page',act:'chart-space',expect:/figure layout draws the plot largest/});await page.locator('#actionApply').click();await measured(page);
+    // Give the chart more space (API): in Research Atlas the theme's figure layout draws the plot largest (measured); the preview shows it.
+    await page.locator('#slideList [data-slide="evidence"]').click();await measured(page);await revealStudio(page,'compositions');await page.locator('[data-zone=look] [data-theme="fresh-report"]').click();await measured(page);
+    let deck=await savedWhen(deckA.id,p=>p.plan.scenes.find(s=>s.id==='evidence').theme==='fresh-report');await squareSaved(page);const space=await planned(deck,'chart-space','page','evidence');assert.match(statement(space),/figure layout draws the plot largest/);
+    deck=(await api('projects/'+deckA.id,{project:space.project,expectedRevision:deck.revision.number},'PUT')).project;await page.reload();await measured(page);await page.locator('#slideList [data-slide="evidence"]').click();await measured(page);
     assert.match(await page.frameLocator('#preview').locator('section#evidence').getAttribute('class'),/atlas-figure/);const plotAfter=await page.frameLocator('#preview').locator('section#evidence .chart-plot svg').first().boundingBox();
-    record(width,'chart space: largest measured layout for the theme',{effects:space.effects,plot:plotAfter,shot:await shot(page,`chart-space-${width}`,'#frameSpace')});
-    // Keep this layout on a theme-own composition: a theme change is refused by name. On a shared composition the geometry survives.
-    const keep=await action(page,width,{level:'page',act:'keep-layout',expect:/this theme's own composition|本主题专属/});await page.locator('#actionApply').click();await measured(page);
-    await page.locator('#designTab').click();await page.locator('#theme').selectOption('dark-data');await page.waitForFunction(()=>document.querySelector('#message').classList.contains('error'));const refusal=await page.locator('#message').textContent();
-    await page.locator('[data-scene="collage"]').first().click();await measured(page);await action(page,width,{level:'page',act:'keep-layout',expect:/shared composition/});await page.locator('#actionApply').click();await measured(page);
-    await page.locator('#designTab').click();await page.locator('#theme').selectOption('orange-launch');await measured(page);const collage=await page.frameLocator('#preview').locator('section#collage').getAttribute('class');assert.match(collage,/metric-left/);
-    record(width,'keep layout: theme-own layout refuses a theme change; shared layout survives it',{keep:keep.effects,refusal,collage,shot:await shot(page,`keep-layout-${width}`,'#frameSpace')});
-    await page.locator('[data-scene="evidence"]').first().click();await measured(page);
-    const lock=await action(page,width,{level:'object',object:'data-chart',act:'lock',kind:'data',expect:/Separates text, data and source locks first[\s\S]*Locks data: adoption-quarterly/});await page.locator('#actionApply').click();
-    record(width,'separate data lock (explicit migration stated)',{effects:lock.effects,summary:await page.locator('#lockSummary').textContent()});
-    await page.locator('[data-scene="comparison"]').first().click();await measured(page);
-    const chapter=await action(page,width,{act:'start-chapter',expect:/starts a chapter: pages 5–6/});await page.locator('#actionApply').click();await measured(page);
-    const editorial=await action(page,width,{level:'chapter',act:'more-editorial',expect:/Chapter from page 5/});await page.locator('#actionApply').click();await measured(page);
-    record(width,'chapter started and chapter-level More editorial',{chapter:chapter.effects,editorial:editorial.effects,flags:await page.locator('#scenes .scene-flag').allTextContents(),shot:await shot(page,`chapter-${width}`,'.scene-panel')});
-    await saveDeck(page);
-    const saved=(await api('projects/'+deckA.id)).project;assert.equal(saved.document.authorOverrides.lockMode,'separate');assert.deepEqual(saved.plan.chapters.map(c=>c.startSceneId),['comparison']);assert.ok(saved.plan.scenes.find(s=>s.id==='chapter').disclosure);
-    // Profile: promote the saved design (author acceptance), reload, apply to the Chinese deck, export all four formats.
-    await revealStudio(page,'edit');await page.locator('#profileName').fill('Six-family editorial');await page.locator('#profileAttest').check();await page.locator('#profileSave').click();
-    await page.waitForFunction(()=>document.querySelectorAll('#profileList option').length>0);record(width,'profile saved',{message:await page.locator('#message').textContent()});
+    record(width,'chart space (API): largest measured layout for the theme',{effects:space.effects.map(v=>v.en),plot:plotAfter,shot:await shot(page,`chart-space-${width}`,'#frameSpace')});
+    // Keep this layout (API): a theme-own composition refuses a theme change by name; a shared composition keeps its geometry.
+    const keep=await planned(deck,'keep-layout','page','evidence');assert.match(statement(keep),/this theme's own composition/);
+    const refused=await api('theme',{project:keep.project,sceneId:'evidence',theme:'dark-data'});assert.ok(refused.error?.message,'theme change refused');
+    const keepShared=await planned(keep.project,'keep-layout','page','collage');assert.match(statement(keepShared),/shared composition/);
+    const themed=await api('theme',{project:keepShared.project,sceneId:'collage',theme:'orange-launch'});assert.match(themed.project.plan.scenes.find(s=>s.id==='collage').composition,/metric-left/);
+    record(width,'keep layout (API): theme-own layout refuses a theme change; shared layout survives it',{keep:keep.effects.map(v=>v.en),refusal:refused.error.message,collage:themed.project.plan.scenes.find(s=>s.id==='collage').composition});
+    // Lock this page: the four author locks in one button, data lock included (explicit separation stated); the colours lock too.
+    const lock=await (async()=>{await revealStudio(page,'compositions');await page.locator('#keepPage').click();return note(page,/Separates text, data and source locks first[\s\S]*Locks data: adoption-quarterly/);})();
+    assert.equal(await page.locator('#keepPage').getAttribute('aria-pressed'),'true');assert.ok(await page.locator('[data-zone=look] [data-theme="dark-data"]').isDisabled());
+    record(width,'lock this page: separate data lock (explicit migration stated)',{effects:lock.effects,summary:await page.locator('#lockSummary').textContent()});
+    // A chapter starts from the page menu of the strip.
+    await page.locator('#slideList [data-slide="comparison"]').click();await measured(page);await page.locator('#slideList [data-slide="comparison"]').click({button:'right'});await page.locator('#pageMenu').waitFor({state:'visible'});await page.locator('#pageMenu [role=menuitem]').first().click();
+    const chapter=await note(page,/starts a chapter: pages 5–6/);await measured(page);
+    deck=await savedWhen(deckA.id,p=>(p.plan.chapters||[]).some(c=>c.startSceneId==='comparison')&&p.document.authorOverrides.lockMode==='separate');await squareSaved(page);const chapterId=deck.plan.chapters.find(c=>c.startSceneId==='comparison').id,editorial=await planned(deck,'more-editorial','chapter',chapterId);assert.match(statement(editorial),/Chapter from page 5/);
+    record(width,'chapter started from the page menu; chapter-level More editorial (API)',{chapter:chapter.effects,editorial:editorial.effects.map(v=>v.en),flags:await page.locator('#slideList .thumbnail-mark:not([hidden])').allTextContents(),shot:await shot(page,`chapter-${width}`,'.page-strip')});
+    assert.ok((await page.locator('#slideList .thumbnail-mark:not([hidden])').allTextContents()).some(t=>/Chapter/.test(t)),'the chapter shows on the strip');
+    const saved=await current(deckA.id);assert.equal(saved.document.authorOverrides.lockMode,'separate');assert.deepEqual(saved.plan.chapters.map(c=>c.startSceneId),['comparison']);assert.ok(saved.plan.scenes.find(s=>s.id==='chapter').disclosure);
+    // Save this look: promote the saved design (author acceptance), reload, apply to the Chinese deck, export all four formats.
+    await revealStudio(page,'library');await page.locator('#saveLook > summary').click();await page.locator('#profileName').fill('Six-family editorial');await page.locator('#profileAttest').check();await page.locator('#profileSave').click();
+    await page.waitForFunction(()=>document.querySelectorAll('#profileList option').length>0);record(width,'profile saved',{message:await page.locator('#toastRegion').textContent()});
     // History restore as a copy keeps chapters, disclosure and the separate locks: supersede the saved revision, then restore it.
     const next=structuredClone(saved);next.plan.scenes[0].colorMode='default';const resaved=(await api('projects/'+deckA.id,{project:next,expectedRevision:saved.revision.number},'PUT')).project;assert.equal(resaved.revision.number,saved.revision.number+1);
     const snap=await api('projects/'+deckA.id+'/history/'+saved.revision.number),restored=(await api('projects/'+deckA.id+'/history/'+saved.revision.number+'/restore',{mode:'copy',snapshotHash:snap.sha256,requestId:'s9a-browser-restore-0001'})).project;
     assert.deepEqual(restored.plan.chapters,saved.plan.chapters);assert.deepEqual(restored.document.authorOverrides,saved.document.authorOverrides);assert.deepEqual(restored.plan.scenes.map(s=>s.disclosure||null),saved.plan.scenes.map(s=>s.disclosure||null));
     record(width,'saved; history restore-as-copy keeps chapters, disclosure and locks',{restored:restored.id,revision:saved.revision.number});
     await context.close();
-    const second=await open(width,'?project='+deckB.id);await measured(second.page);await revealStudio(second.page,'edit');if(!await second.page.locator('#authorControls').evaluate(n=>n.open))await second.page.locator('#authorControls > summary').click();
+    const second=await open(width,'?project='+deckB.id);await measured(second.page);await revealStudio(second.page,'library');await second.page.locator('#saveLook > summary').click();
     await second.page.waitForFunction(()=>document.querySelectorAll('#profileList option').length>0,{},{timeout:10000});assert.equal(await second.page.locator('#profileList option').count(),1,'profile listed after reload');
-    const applied=await action(second.page,width,{level:'deck',act:'apply-profile'});await second.page.locator('#actionApply').click();await measured(second.page);
-    await saveDeck(second.page);await measured(second.page);
-    const after=(await api('projects/'+deckB.id)).project;record(width,'profile applied to the zh-CN deck',{effects:applied.effects.slice(0,6),kept:applied.kept,themes:[...new Set(after.plan.scenes.map(s=>s.theme))],shot:await shot(second.page,`profile-applied-${width}`,'#frameSpace')});
-    for(const [id,ext] of [['#exportHTML','html'],['#exportPPTX','pptx'],['#exportPDF','pdf'],['#exportJSON','json']]){
-     await second.page.waitForFunction(s=>!document.querySelector(s).disabled,id);const before=await second.page.locator('#message').textContent(),waiting=second.page.waitForEvent('download',{timeout:120000});
-     // PowerPoint and PDF go through the export dialog (F1): paging auto by default, then Export.
-     if(ext==='pptx'||ext==='pdf'){const r=await studioExport(second.page,id);if(r.status!=='pass')throw Error(`${ext} export refused (${r.status}): ${r.text}`);record(width,'export dialog '+ext,{status:r.status,paginateVisible:r.paginateVisible});await closeExportDialog(second.page);}else await second.page.locator(id).click();
-     const download=await Promise.race([waiting,second.page.waitForFunction(b=>document.querySelector('#message').classList.contains('error')&&document.querySelector('#message').textContent!==b,before,{timeout:120000}).then(async()=>{throw Error(ext+' export refused: '+await second.page.locator('#message').textContent());})]);
+    const beforeProfile=await current(deckB.id);await second.page.locator('#profileApply').click();const applied=await note(second.page);await closeStudio(second.page);await measured(second.page);
+    const after=await savedWhen(deckB.id,p=>p.revision.number>beforeProfile.revision.number);await squareSaved(second.page);await measured(second.page);record(width,'profile applied to the zh-CN deck',{effects:applied.effects.slice(0,6),kept:applied.kept,themes:[...new Set(after.plan.scenes.map(s=>s.theme))],shot:await shot(second.page,`profile-applied-${width}`,'#frameSpace')});
+    for(const [id,ext] of [['#exportHTML','html'],['#exportPPTX','pptx'],['#exportPDF','pdf'],['[data-export="json"]','json']]){
+     await second.page.waitForFunction(s=>!document.querySelector(s).disabled,id);const before=await second.page.locator('#issueBanner').textContent(),waiting=second.page.waitForEvent('download',{timeout:120000});
+     // PowerPoint and PDF go through the Take away dialog's F1 part: paging auto by default, then Export. HTML runs at once; the backup is in the drawer.
+     if(ext==='pptx'||ext==='pdf'){const r=await studioExport(second.page,id);if(r.status!=='pass')throw Error(`${ext} export refused (${r.status}): ${r.text}`);record(width,'export dialog '+ext,{status:r.status,paginateVisible:r.paginateVisible});await closeExportDialog(second.page);}
+     else if(ext==='html'){await revealStudio(second.page,'file');await second.page.locator(id).click();}
+     else{await revealStudio(second.page,'library');await second.page.locator('#moreDialog '+id).click();}
+     const download=await Promise.race([waiting,second.page.waitForFunction(b=>!document.querySelector('#issueBanner').hidden&&document.querySelector('#issueBanner').textContent!==b,before,{timeout:120000}).then(async()=>{throw Error(ext+' export refused: '+await second.page.locator('#issueBanner').textContent());})]);
      const file=path.join(out,'exports','profile-applied-zh-CN.'+ext);await mkdir(path.dirname(file),{recursive:true});await download.saveAs(file);const bytes=await readFile(file);
      assert.ok(ext==='pptx'?bytes.subarray(0,2).toString()==='PK':ext==='pdf'?bytes.subarray(0,4).toString()==='%PDF':bytes.length>100);
-     record(width,'export '+ext,{bytes:bytes.length,message:await second.page.locator('#message').textContent()});}
+     record(width,'export '+ext,{bytes:bytes.length,message:await second.page.locator('#toastRegion').textContent()});await closeStudio(second.page);}
+    await revealStudio(second.page,'library');if(!await second.page.locator('#saveLook').evaluate(n=>n.open))await second.page.locator('#saveLook > summary').click();
     const [exported]=await Promise.all([second.page.waitForEvent('download'),second.page.locator('#profileExport').click()]),pfile=path.join(out,'exports','profile.design-profile.json');await exported.saveAs(pfile);
     await second.page.locator('#profileImport').setInputFiles(pfile);await second.page.waitForFunction(()=>document.querySelectorAll('#profileList option').length===2);
     record(width,'profile exported and imported as a copy',{profiles:await second.page.locator('#profileList option').allTextContents()});
     await second.context.close();
    }else await context.close();}
-  // 3. Pages from the argument on the expanded text deck: questions, evidence-required mark, export refused.
-  if(width===1440&&artifacts.generated){const {context,page}=await open(width,'?project='+artifacts.generated);await measured(page);
-   await revealStudio(page,'edit');if(!await page.locator('#authorControls').evaluate(n=>n.open))await page.locator('#authorControls > summary').click();
-   await page.locator('#planDetail').selectOption('detailed');await page.locator('#planTarget').fill('9');await page.locator('#planPages').click();await page.locator('#pagePlan').waitFor({state:'visible'});
-   const questions=await page.locator('#pagePlan .plan-questions li').allTextContents();assert.ok(questions.some(q=>/will not (pad|invent)/i.test(q)||/不会/.test(q)),'the planner asks instead of padding');
-   record(width,'page plan asks for material instead of padding',{questions,shot:await shot(page,`page-plan-${width}`,'#authorControls')});
-   if(await page.locator('#planMark').isEnabled()){await page.locator('#planMark').click();await measured(page);await page.waitForFunction(()=>document.querySelectorAll('#scenes .scene-flag.evidence').length>0&&[...document.querySelectorAll('#scenes .scene-thumb')].every(n=>n.children.length),{},{timeout:15000}).catch(()=>{});const flags=await page.evaluate(()=>document.querySelectorAll('#scenes .scene-flag.evidence').length);
-    await saveDeck(page);
-    const marked=(await api('projects/'+artifacts.generated)).project,refused=await api('export',{project:marked,format:'html'});assert.equal(refused.error?.code,'EVIDENCE_REQUIRED');
-    record(width,'evidence-required marked; final export refused by name',{flags,pages:marked.plan.scenes.filter(s=>s.contentStatus==='evidence-required').map(s=>s.id),refusal:refused.error.message,shot:await shot(page,`evidence-required-${width}`,'.scene-panel')});}
+  // 3. Pages from the argument left the browser: the API plans a deck made from pasted text, asks instead of padding, marks the
+  // evidence-required pages (shown on the strip) and the final export is refused by name.
+  if(width===1440){
+   const made=await api('directions',{answers:{topic:TEXT.en,detail:'detailed'},locale:'en'}),created=(await api('import',{project:made.base})).project;artifacts.generated=created.id;
+   const pagePlan=await api('page-plan',{project:created,detail:'detailed',targetPages:9});assert.ok(!pagePlan.error,JSON.stringify(pagePlan.error));
+   const questions=pagePlan.questions.map(q=>q.en);assert.ok(pagePlan.questions.some(q=>/will not (pad|invent)/i.test(q.en)||/不会/.test(q.zh)),'the planner asks instead of padding');
+   record(width,'page plan (API) asks for material instead of padding',{questions});
+   if(pagePlan.evidenceRequired.length){const applied=await api('page-plan/apply',{project:created,plan:pagePlan,mark:true});assert.ok(!applied.error,JSON.stringify(applied.error));
+    const marked=(await api('projects/'+created.id,{project:applied.project,expectedRevision:created.revision.number},'PUT')).project,refused=await api('export',{project:marked,format:'html'});assert.equal(refused.error?.code,'EVIDENCE_REQUIRED');
+    const {context,page}=await open(width,'?project='+created.id);await page.waitForFunction(()=>[...document.querySelectorAll('#slideList .thumbnail-mark')].some(n=>!n.hidden&&/Evidence required/i.test(n.textContent)),{},{timeout:15000});
+    const flags=await page.evaluate(()=>[...document.querySelectorAll('#slideList .thumbnail-mark')].filter(n=>!n.hidden&&/Evidence required/i.test(n.textContent)).length);
+    record(width,'evidence-required marked; final export refused by name',{flags,pages:marked.plan.scenes.filter(s=>s.contentStatus==='evidence-required').map(s=>s.id),refusal:refused.error.message,shot:await shot(page,`evidence-required-${width}`,'.page-strip')});
+    await context.close();}
    else record(width,'no page to mark',{});
-   await context.close();}
+  }
  }
  record(0,'done',{errors:errors.length,external:external.length});
 }catch(e){record(0,'failed',{message:e.message,stack:e.stack?.split('\n').slice(0,4)});process.exitCode=1;}

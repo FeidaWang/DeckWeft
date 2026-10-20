@@ -44,10 +44,11 @@ const studios=[
   close:page=>page.locator('#historyDialog [data-close]').first().click()},
  {name:'visual',kind:'visual',projectRoute:id=>'/api/visual/projects/'+id,
   async open(page){await page.goto(app.url+'/visual?project='+visualDemo.id);await page.waitForFunction(()=>!document.querySelector('#exportHTML').disabled,{},{timeout:30000});await revealStudio(page,'edit');return visualDemo.id;},
-  async edit(page,text){await page.locator('#title').fill(text);await page.waitForFunction(()=>!document.querySelector('#save').disabled,{},{timeout:30000});},
-  async save(page){await page.locator('#save').click();await page.waitForFunction(()=>document.querySelector('#message').textContent.startsWith('Saved on this computer'),{},{timeout:20000});},
-  saveNote:page=>page.locator('#message'),
-  async history(page){await revealStudio(page,'file');await page.locator('#history').click();await page.locator('#historyDialog [data-revision]').first().waitFor();return page.locator('#historyCapacity');},
+  // Single entry step 3: Visual Studio shares the shell, so it autosaves and explains cleanup in the same banner as classic.
+  async edit(page,text){await page.locator('#deckTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
+  async save(page){await page.waitForSelector('#saveState[data-state="saved"]',{state:'attached',timeout:20000});},
+  saveNote:page=>page.locator('#issueBanner'),
+  async history(page){await revealStudio(page,'library');await page.locator('#openHistory').click();await page.locator('#historyDialog [data-revision]').first().waitFor();return page.locator('#historyCapacity');},
   close:page=>page.locator('#historyClose').click()}
 ];
 try{
