@@ -1,10 +1,12 @@
-// Wording gate for the classic workbench (design guide section 12): the default interface never shows
-// engineering words. It reads the shipped HTML and the zh dictionary, so it needs no browser.
+// Wording gate (design guide section 12): the default interface never shows engineering words. It reads the shipped
+// HTML and the one dictionary in public/i18n.js, so it needs no browser.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
+import {readdirSync} from 'node:fs';
+import {dict} from '../public/i18n.js';
 
 const root=path.join(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=file=>readFileSync(path.join(root,file),'utf8');
@@ -47,39 +49,55 @@ function scan(file,nodes){
 }
 const report=hits=>hits.map(h=>`${h.file} ${h.element} "${h.text}" (${h.rule})`).join('\n');
 
-/** The zh dictionary is built from `const zh={...}` plus any number of `Object.assign(zh,{...})`. */
-export function zhDictionary(source){
-  const literals=[];
-  const open=/(?:const zh=|Object\.assign\(zh,)\{/g;let m;
-  while((m=open.exec(source))){
-    let depth=0,i=m.index+m[0].length-1,quote='';
-    for(;i<source.length;i++){const c=source[i];
-      if(quote){if(c==='\\')i++;else if(c===quote)quote='';continue;}
-      if(c==="'"||c==='"'||c==='`'){quote=c;continue;}
-      if(c==='{')depth++;else if(c==='}'&&--depth===0)break;}
-    literals.push(source.slice(source.indexOf('{',m.index),i+1));
-  }
-  return Object.assign({},...literals.map(text=>new Function(`return (${text})`)()));
-}
-
-const index=read('public/index.html');
-const app=read('public/app.js');
+const index=read('public/index.html'),visual=read('public/studio/visual.html');
 
 test('default classic interface has no engineering words',()=>{
   const hits=scan('public/index.html',visibleText(index));
   assert.equal(hits.length,0,`${hits.length} hit(s):\n${report(hits)}`);
 });
 
-test('zh dictionary has no engineering words',()=>{
-  const dictionary=zhDictionary(app),hits=[];
-  for(const [key,value] of Object.entries(dictionary))for(const rule of FORBIDDEN)if(rule.test(String(value)))hits.push({file:'public/app.js',element:`zh.${key}`,text:String(value),rule:String(rule)});
+const keysIn=html=>[...html.matchAll(/data-i18n="([^"]+)"/g)].map(m=>m[1]).concat([...html.matchAll(/data-i18n-attr="([^"]+)"/g)].flatMap(m=>m[1].split(';').map(pair=>pair.slice(pair.indexOf(':')+1).trim())));
+const sources=['public',  'public/studio'].flatMap(dir=>readdirSync(path.join(root,dir)).filter(f=>f.endsWith('.js')&&f!=='i18n.js').map(f=>`${dir}/${f}`));
+const wordingHits=include=>{
+  const hits=[];
+  for(const language of ['en','zh'])for(const [key,value] of Object.entries(dict[language]))if(include(key))for(const rule of FORBIDDEN)if(rule.test(String(value)))hits.push({file:'public/i18n.js',element:`${language}.${key}`,text:String(value),rule:String(rule)});
+  return hits;
+};
+const pageKeys=new Set(keysIn(index));
+
+test('the dictionary has the same keys in English and Chinese',()=>{
+  const en=Object.keys(dict.en),zh=new Set(Object.keys(dict.zh));
+  assert.deepEqual(en.filter(k=>!zh.has(k)).sort(),[],'keys without a zh value');
+  assert.deepEqual([...zh].filter(k=>!(k in dict.en)).sort(),[],'keys without an en value');
+  for(const language of ['en','zh'])for(const [key,value] of Object.entries(dict[language]))assert.equal(typeof value,'string',`${language}.${key}`);
+});
+
+test('every data-i18n and data-i18n-attr key in both pages is in the dictionary',()=>{
+  for(const [file,html] of [['public/index.html',index],['public/studio/visual.html',visual]])
+    assert.deepEqual(keysIn(html).filter(k=>!(k in dict.en)).sort(),[],`${file}: keys without a dictionary entry`);
+  assert.ok(keysIn(index).every(k=>k.startsWith('classic.')),'index.html uses classic.* keys');
+  assert.ok(keysIn(visual).every(k=>k.startsWith('visual.')),'visual.html uses visual.* keys');
+});
+
+test('every dictionary key is used by a page or a module',()=>{
+  // A key counts as used when its whole string appears in a page or script; a quoted literal ending in "." covers keys built from it.
+  const text=[index,visual,...sources.map(read)].join('\n');
+  const exact=new Set([...text.matchAll(/(?:classic|visual)\.[\w.]*/g)].map(m=>m[0])),prefixes=[...text.matchAll(/['"`]((?:classic|visual)\.[\w.]*\.)['"`]/g)].map(m=>m[1]);
+  const unused=Object.keys(dict.en).filter(key=>!exact.has(key)&&!prefixes.some(prefix=>key.startsWith(prefix)));
+  assert.deepEqual(unused.sort(),[],'dictionary keys that no page or module references');
+});
+
+test('dictionary values shown by the classic page have no engineering words in English or Chinese',()=>{
+  const hits=wordingHits(key=>pageKeys.has(key));
   assert.equal(hits.length,0,`${hits.length} hit(s):\n${report(hits)}`);
 });
 
-test('zh dictionary keys equal the data-i18n keys in index.html',()=>{
-  const html=new Set([...index.matchAll(/data-i18n="([^"]+)"/g)].map(m=>m[1])),zh=new Set(Object.keys(zhDictionary(app)));
-  assert.deepEqual([...html].filter(k=>!zh.has(k)).sort(),[],'data-i18n keys without a zh entry');
-  assert.deepEqual([...zh].filter(k=>!html.has(k)).sort(),[],'zh entries without a data-i18n key');
+// Runtime messages of the classic page (status, errors, dialogs) and every Visual Studio string were never under this gate.
+// The hits are recorded, not enforced: step 3 rewords them.
+test('other dictionary wording (recorded, not enforced until step 3)',{todo:'step 3 rewrites the remaining wording'},()=>{
+  const hits=wordingHits(key=>!pageKeys.has(key));
+  console.log(`classic runtime strings: ${hits.filter(h=>h.element.includes('.classic.')).length} hit(s); visual.* strings: ${hits.filter(h=>h.element.includes('.visual.')).length} hit(s)`);
+  assert.equal(hits.length,0,report(hits));
 });
 
 test('elements retired by the shell redesign are gone from the document',()=>{
@@ -92,9 +110,8 @@ test('elements retired by the shell redesign are gone from the document',()=>{
   assert.ok(ids.includes('save'),'#save stays for the keyboard shortcut');
 });
 
-// Visual Studio is the M9 job: its count is recorded, not enforced.
-test('Visual Studio page wording (recorded, not enforced until M9)',{todo:'M9 merges the Visual Studio entry'},()=>{
-  const hits=scan('public/studio/visual.html',visibleText(read('public/studio/visual.html')));
+test('Visual Studio page wording',()=>{
+  const hits=scan('public/studio/visual.html',visibleText(visual));
   console.log(`visual.html: ${hits.length} hit(s)`);
-  assert.equal(hits.length,0);
+  assert.equal(hits.length,0,`${hits.length} hit(s):\n${report(hits)}`);
 });
