@@ -1,7 +1,7 @@
 // The visual deck kind (v3 projects through /api/visual/*): the adapter that plugs Visual Studio into shell.js. The shell
 // owns the band, the strip, the first run, the zones, the drawer and the Take away dialog; this file owns the measured web
 // preview, the typed Words fields, the Look controls (choices, three buttons, colours, motion, image, directions), saving,
-// exports and the visual dialogs in studio/visual.html. Single entry step 3 (docs/zh-CN/single-entry.md §3).
+// exports and the visual dialogs (dialogMarkup, below). Single entry step 3 (docs/zh-CN/single-entry.md §3).
 import {addExplanatoryInteractions,useInteractionOpening,useStaticState,addBlueprintA} from '../studio/interactions.js';
 import {mountWorkbench} from '../studio/workbench.js';
 import {mountAuthor} from '../studio/author.js';

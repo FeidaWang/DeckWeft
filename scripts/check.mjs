@@ -30,7 +30,7 @@ for(const file of files.filter(f=>f.startsWith('schemas/')&&f.endsWith('.schema.
 for(const file of files.filter(f=>f.startsWith('examples/')&&f.endsWith('.deck.json')))try{assertProject(JSON.parse(await readFile(path.join(root,file),'utf8')));}catch(e){failures.push(`${file}: ${e.message}`);}
 const roadmap=JSON.parse(await readFile(path.join(root,'roadmap.json'),'utf8')),ids=new Set(roadmap.tasks.map(t=>t.id));
 for(const task of roadmap.tasks)for(const id of task.dependsOn)if(!ids.has(id))failures.push(`Missing task dependency ${id}`);
-const active=['README.md','README.zh-CN.md','package.json','public/index.html','public/app.js','public/shell.js','public/kinds/classic.js','public/kinds/visual.js','public/studio/visual.html','public/styles.css','plugin.json','.codex-plugin/plugin.json','.claude-plugin/plugin.json'];
+const active=['README.md','README.zh-CN.md','package.json','public/index.html','public/app.js','public/shell.js','public/kinds/classic.js','public/kinds/visual.js','public/styles.css','plugin.json','.codex-plugin/plugin.json','.claude-plugin/plugin.json'];
 // The opt-in bridge names an explicitly requested current model. Keep the legacy
 // identity check everywhere else, including any other standalone Astra branding.
 for(const file of active)if(/open[- ]deck|astra|kimi/i.test((await readFile(path.join(root,file),'utf8')).replaceAll('GPT-6 Astra','').replaceAll('gpt-6-astra','').replaceAll('astra-evaluation.md','')))failures.push(`${file}: legacy branding on an active surface.`);

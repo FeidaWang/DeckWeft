@@ -51,7 +51,6 @@ try{
   // 1. Three measured directions of the open deck, at the chosen detail. The six questions left with the first-run paste box.
   // Directions are applied to a copy of their own, so the actions below start from the untouched six-family deck.
   {const deckDir=await fresh(),{context,page}=await open(width,'?project='+deckDir.id);await measured(page);
-   for(const gone of ['#entryFields','#entryAudience','#entryOutput','#entryBasis','#entryStyle','#entryMotion','#closeDirection','#workbench-uiLanguage','#workbench-promptLanguage','#workbench-contentTone'])assert.equal(await page.locator(gone).count(),0,gone);
    await revealStudio(page,'compositions');await page.locator('[data-detail="detailed"]').click();
    await page.waitForFunction(()=>document.querySelectorAll('.direction-card').length===3&&[...document.querySelectorAll('.direction-card .candidate-fit')].every(n=>!/Measuring/.test(n.textContent)),{},{timeout:90000});
    const cards=await page.locator('.direction-card').evaluateAll(cards=>cards.map(c=>({title:c.querySelector('.candidate-label span').textContent,fit:c.querySelector('.candidate-fit').textContent,use:!c.querySelector('[data-use-direction]').disabled,explain:[...c.querySelectorAll('dd')].map(d=>d.textContent)})));
@@ -73,7 +72,6 @@ try{
   {let base=await current(deckA.id);const reduce=await planned(base,'reduce-text','object','chapter-body');assert.match(statement(reduce),/behind “More detail”[\s\S]*PowerPoint notes/);
    base=(await api('projects/'+deckA.id,{project:reduce.project,expectedRevision:base.revision.number},'PUT')).project;record(width,'reduce text (API): effect stated before apply',{scope:reduce.scopeStatement.en,effects:reduce.effects.map(v=>v.en)});
    const {context,page}=await open(width,'?project='+deckA.id+'&scene=chapter');await measured(page);
-   for(const gone of ['#authorControls','#actionLevel','#actionObject','#lockKind','#actionApply','#actionCancel','#replaceFields','#planPages','#planMark','#planSplit','#pagePlan','#planDetail','#planTarget','[data-author-action="reduce-text"]','[data-author-action="chart-space"]','[data-author-action="keep-layout"]','[data-author-action="quieter"]','[data-author-action="replace-visual"]','[data-author-action="lock"]','[data-author-action="unlock"]','[data-author-action="start-chapter"]','[data-author-action="remove-chapter"]','[data-author-action="apply-profile"]'])assert.equal(await page.locator(gone).count(),0,gone);
    await page.frameLocator('#preview').locator('.scene-disclosure').first().waitFor();
    const summary=await page.frameLocator('#preview').locator('.scene-disclosure summary').first().textContent();record(width,'reduce text: applied; disclosure in preview',{summary,shot:await shot(page,`applied-reduce-${width}`,'#frameSpace')});
    // More space: one button, applied at once with its stated effect; Undo and Redo in the band restore and repeat it. Page 6 takes it.

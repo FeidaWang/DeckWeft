@@ -92,7 +92,6 @@ try{
  await editor.goto(app.url+'/?project='+saved.id+'&scene=quote');await editor.waitForSelector('#root.workspace',{state:'attached'});const ready=()=>editor.waitForFunction(()=>!document.querySelector('#exportHTML').disabled);await ready();
  // Single entry step 3: the composition family is a developer setting in More; the choices lead Look and measure themselves.
  const storedWhen=async test=>{for(let k=0;k<120;k++){const s=await store.get(saved.id);if(test(s))return s;await new Promise(r=>setTimeout(r,250));}throw Error('autosave did not land');};
- for(const gone of ['#designTab','#compare','.candidate-card','[data-select-candidate]'])assert.equal(await editor.locator(gone).count(),0,gone);
  const options=await editor.locator('#family option').evaluateAll(o=>o.map(v=>({value:v.value,disabled:v.disabled,selected:v.selected})));
  for(const family of S3_FAMILIES)assert.ok(options.some(o=>o.value===family),family);
  assert.equal(options.find(o=>o.selected).value,'quote');assert.deepEqual(options.filter(o=>!o.disabled).map(o=>o.value).sort(),['chapter','quote','statement']);

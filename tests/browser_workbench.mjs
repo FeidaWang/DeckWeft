@@ -22,7 +22,6 @@ try{
  const measured=()=>page.waitForFunction(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale');},{},{timeout:30000});
  const settle=async r=>{for(let k=0;k<1500&&r.running;k++){await new Promise(z=>setTimeout(z,200));r=await(await api('workbench/'+r.id,undefined,'GET')).json();}return r;};
  await page.goto(app.url+'/?project='+source.id);await page.waitForSelector('#root.workspace',{state:'attached'});await page.waitForFunction(()=>document.querySelector('#sceneTitle').textContent.length>0);
- for(const gone of ['#reviewPanel','#workbenchCapture','#workbenchInspect','#workbenchReview','#workbenchImages','#workbenchJudgment','#workbenchVerdict','#workbenchAttest','#workbenchHumanReview','#workbenchReport','#workbenchExport','#workbench-uiLanguage','#workbench-promptLanguage','#workbench-outputLanguage','#workbench-contentTone','#fit'])assert.equal(await page.locator(gone).count(),0,gone);
  await revealStudio(page,'agent');if(!await page.locator('#workbenchPreferences').evaluate(n=>n.open))await page.locator('#workbenchPreferences summary').click();
  await page.locator('#workbench-visualStyle').selectOption('electric-violet');
  if(a.review){

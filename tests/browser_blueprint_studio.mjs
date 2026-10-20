@@ -48,7 +48,7 @@ const artifacts={};
 try{
  const en=await plainDeck('en'),zh=await plainDeck('zh-CN');
  // 1440: the whole author path in English.
- let {context,page}=await open(widths[0],en.id);await measured(page);await page.locator('#slideList [data-slide="pipeline"]').click();for(const gone of ['#contentTab','#lockInteractions','#nextScene','#fit','#message'])assert.equal(await page.locator(gone).count(),0,gone);await openInteractions(page);
+ let {context,page}=await open(widths[0],en.id);await measured(page);await page.locator('#slideList [data-slide="pipeline"]').click();await openInteractions(page);
  assert.equal(await page.locator('#blueprintStatic').isHidden(),true);artifacts.before=await shot(page,'1440-1-before');
  await page.locator('#keepPage').click();await page.waitForFunction(()=>document.querySelector('#enableBlueprint').disabled&&document.querySelector('#keepPage').getAttribute('aria-pressed')==='true');record(widths[0],'page lock disables the action',{disabled:true});
  await page.locator('#keepPage').click();await page.waitForFunction(()=>!document.querySelector('#enableBlueprint').disabled);

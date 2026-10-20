@@ -34,7 +34,7 @@ Object.assign(staticFiles,{'/kinds/visual.js':['kinds/visual.js','text/javascrip
 for(const file of ['welcome.deck.json','welcome.zh-CN.deck.json'])staticFiles['/examples/'+file]=['../examples/'+file,'application/json; charset=utf-8'];
 staticFiles['/shared/preferences.mjs']=['../src/core/preferences.mjs','text/javascript; charset=utf-8'];
 staticFiles['/shared/clock.mjs']=['../src/presentation/clock.mjs','text/javascript; charset=utf-8'];
-for(const file of ['visual.js','visual.css','interactions.js','assets.js','workbench.js','prompt.js','profile.js','revisions.js','author.js','evidence.js'])staticFiles['/studio/'+file]=['studio/'+file,file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8'];
+for(const file of ['interactions.js','assets.js','workbench.js','prompt.js','profile.js','revisions.js','author.js','evidence.js'])staticFiles['/studio/'+file]=['studio/'+file,file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8'];
 staticFiles['/visual']='/'; // Single entry: Visual Studio is served from /; the old address redirects, keeping the query.
 const secureHeaders={
   'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',

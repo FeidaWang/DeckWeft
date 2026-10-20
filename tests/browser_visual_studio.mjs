@@ -39,7 +39,9 @@ try{
  await openDeck(page,examples[0].id);await ready(page);
  assert.equal(await page.locator('#slideList .thumbnail-mark:not([hidden])').count(),0);assert.equal(await page.locator('#hostAuthoredLines').isVisible(),false);
  // Single entry step 3: the editor is the shared shell; the old toolbar, tabs, per-field locks and preview width are gone.
- for(const gone of ['#library','#designTab','#contentTab','#lockScene','#theme','#viewport','#history','#backup','#legacy','#migrate','[data-lock]','#message'])assert.equal(await page.locator(gone).count(),0,gone);
+ // Single entry step 5: the three JSON editors (interactions and cues, explanations, sources and anchors) sit in More · For developers, in one folded disclosure.
+ for(const id of ['#interactionJSON','#explanationJSON','#sourceJSON'])assert.equal(await page.locator('#moreDialog [data-section=developer] details[data-developer] '+id).count(),1,id+' is in the developer drawer');
+ assert.equal(await page.locator('#moreDialog [data-section=developer] details[data-developer]').first().evaluate(n=>n.open),false,'the data editors start folded');
  await page.locator('#slideList [data-slide="violet"]').click();await page.frameLocator('#preview').locator('#violet').waitFor({state:'visible'});
  await revealStudio(page,'compositions');await capture(page,'studio-violet-en.png');
  const swatch=id=>page.locator(`[data-zone=look] [data-theme="${id}"]`);
