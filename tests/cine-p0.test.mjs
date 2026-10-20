@@ -587,14 +587,14 @@ test('CINE-004 visual-space: on the product page it chooses the measured largest
  assert.ok(prod.effects.some(e=>/hero/.test(e.en)&&/主体/.test(e.zh)));
  // detail: the supporting locator stays small; the paragraph moves behind the disclosure.
  const det=planAuthorAction(p,{action:'visual-space',level:'page',id:'detail'}),ds=sceneOf(det.project,'detail');
- assert.equal(ds.composition,LARGEST_MEDIA.image);assert.deepEqual(ds.media,[{blockId:'det-hero',role:'hero'}]);assert.deepEqual(ds.disclosure,{blockIds:['det-body']});assert.equal(factsOf(det.project),before);
+ assert.equal(ds.composition,LARGEST_MEDIA.image);assert.deepEqual(ds.media,[{blockId:'det-hero',role:'hero'}]);assert.equal('disclosure' in ds,false,'the only paragraph stays as the explanation');assert.equal(factsOf(det.project),before);
  // object level: the chosen image becomes the hero and the former hero supporting.
  const obj=planAuthorAction(p,{action:'visual-space',level:'object',id:'det-locator'}),os=sceneOf(obj.project,'detail');
  assert.deepEqual(os.media,[{blockId:'det-locator',role:'hero'},{blockId:'det-hero',role:'supporting'}]);
  assert.throws(()=>planAuthorAction(p,{action:'visual-space',level:'object',id:'det-body'}),e=>e.code==='AUTHOR_ACTION');
  // mechanism: system-map-wide and the mechanism role; the paragraph and list move behind the disclosure.
  const mech=planAuthorAction(p,{action:'visual-space',level:'page',id:'mechanism'}),ms=sceneOf(mech.project,'mechanism');
- assert.equal(ms.composition,'system-map-wide');assert.deepEqual(ms.media,[{blockId:'mech-diagram',role:'mechanism'}]);assert.deepEqual(ms.disclosure.blockIds.sort(),['mech-body','mech-list']);
+ assert.equal(ms.composition,'system-map-wide');assert.deepEqual(ms.media,[{blockId:'mech-diagram',role:'mechanism'}]);assert.deepEqual(ms.disclosure.blockIds,['mech-list']);
  // Locks: a composition lock keeps the layout (product-center); a media lock keeps the roles; a page without media says so.
  const pc=planAuthorAction(p,{action:'visual-space',level:'page',id:'product-center'});assert.equal(sceneOf(pc.project,'product-center').composition,'image-strip');assert.ok(pc.kept.some(k=>/composition locked/.test(k.en)));assert.deepEqual(sceneOf(pc.project,'product-center').media,[{blockId:'pc-image',role:'hero'}]);
  const ml=structuredClone(p);ml.document.authorOverrides.sceneLocks.push({sceneId:'product','fields':['media']});const kept=planAuthorAction(ml,{action:'visual-space',level:'page',id:'product'});assert.ok(kept.kept.some(k=>/media locked/.test(k.en)));assert.equal('media' in sceneOf(kept.project||ml,'product'),false);
@@ -619,4 +619,29 @@ test('CINE batch 1 docs: migration, verification and visual-studio pages mention
  assert.deepEqual(roadmap.tasks.filter(t=>t.id.startsWith('CINE')),[],'no new task ids');
  const md=await readFile(new URL('../ROADMAP.md',import.meta.url),'utf8');assert.ok(md.includes('CINE-001'));
  const review=await readFile(new URL('../docs/evidence/cine-p0/review.md',import.meta.url),'utf8');for(const w of ['product-center','evidence','overflow','mechanism','weakest','PowerPoint','Keynote'])assert.ok(review.includes(w),w);
+});
+
+// ---- Final review fix pass ----
+test('CINE-001 fit-page cuts after an image or a chart without throwing, and names the block in plain words',async()=>{
+ const p=await cineProject('en',home,{declared:[]});
+ // product: the hero image ends past the limit, so the cut falls after it (the first content block) and the plan says so.
+ const plan=planAuthorAction(p,{action:'fit-page',level:'page',id:'product',options:{regionBounds:[{blockId:'prod-title',y:0,height:200},{blockId:'prod-image',y:220,height:600},{blockId:'prod-callout',y:840,height:120},{blockId:'prod-source-1',y:980,height:30},{blockId:'prod-source-2',y:1020,height:30}]}});
+ assert.equal(plan.changed,true);assert.deepEqual(plan.project.plan.scenes.map(s=>s.id).filter(id=>id.startsWith('product')),['product','product-2','product-center']);
+ assert.ok(plan.effects.some(e=>/The product, a boxy object/.test(e.en)),'the image is named by its alternative text');
+ // evidence: a cut after the first chart.
+ const ev=planAuthorAction(p,{action:'fit-page',level:'page',id:'evidence',options:{regionBounds:[{blockId:'ev-title',y:0,height:120},{blockId:'ev-chart-a',y:140,height:500},{blockId:'ev-chart-b',y:140,height:500},{blockId:'ev-body',y:780,height:60},{blockId:'ev-qualifier',y:860,height:40}]}});
+ assert.equal(ev.changed,true);assert.ok(ev.effects.some(e=>/after “How did reading time change under setting B\?” \(chart/.test(e.en)),'the last block ending inside the limit is chart B');
+ assert.equal(sceneOf(ev.project,'evidence-2').composition,'statement-split','a continuation without a chart leaves the small-multiples family');assert.ok(ev.effects.some(e=>/evidence-2 takes/.test(e.en)));
+});
+test('CINE-001 splitScene refuses, never hangs, when the page id leaves no room for a continuation suffix',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),long='o'.repeat(64),q=structuredClone(p);sceneOf(q,'overflow').id=long;
+ const once=splitScene(q,long,{afterBlockId:'of-para-1'}),cont=once.plan.scenes.find(s=>s.id!==long&&s.id.startsWith('oooo')).id,twice=splitScene(once,cont,{afterBlockId:'of-para-2'});
+ assert.equal(cont,'o'.repeat(62)+'-2');
+ const ids=twice.plan.scenes.map(s=>s.id).filter(id=>id.startsWith('oooo'));assert.equal(ids.length,3);assert.equal(new Set(ids).size,3);for(const id of ids)assert.ok(id.length<=64);
+});
+test('CINE-004 visual-space keeps the first supporting text block on the page as its explanation (the S9a rule)',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),ctx=planAuthorAction(p,{action:'visual-space',level:'page',id:'context'});
+ assert.equal('disclosure' in sceneOf(ctx.project||p,'context'),false,'the only paragraph stays beside the image');
+ const mech=planAuthorAction(p,{action:'visual-space',level:'page',id:'mechanism'});assert.deepEqual(sceneOf(mech.project,'mechanism').disclosure.blockIds,['mech-list'],'the paragraph stays, the list moves');
+ const det=planAuthorAction(p,{action:'visual-space',level:'page',id:'detail'});assert.equal('disclosure' in sceneOf(det.project,'detail'),false);
 });

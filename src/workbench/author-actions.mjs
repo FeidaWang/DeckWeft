@@ -54,7 +54,8 @@ export const LARGEST_MEDIA=Object.freeze({image:'image-right','system-map':'syst
 const QUALIFIER=/\b(only|except|unless|assum\w*|estimat\w*|approximately|at least|at most|up to|excluding|limited to|synthetic|illustrative|hypothetical|preliminary|caveat\w*|not (?:yet )?(?:measured|verified|tested|run|reviewed))\b|仅|除外|除非|假设|估计|约|至少|至多|不包括|仅限|合成|示意|虚构|初步|未(?:经)?(?:测量|验证|测试|运行|审阅)/i,NUMBER=/\d/;
 const sceneOf=(p,id)=>p.plan.scenes.find(s=>s.id===id),pageOf=(p,id)=>p.plan.scenes.findIndex(s=>s.id===id)+1,blockOf=(p,id)=>p.document.blocks.find(b=>b.id===id);
 const sceneLock=(p,id)=>p.document.authorOverrides.sceneLocks?.find(l=>l.sceneId===id)?.fields||[];
-const excerpt=b=>{const t=(b.type==='list'?b.items.join(' · '):b.text).replace(/\s+/g,' ');return [...t].length>48?[...t].slice(0,47).join('')+'…':t;};
+/** A few words that name a block of any type: its text, its items, an image's alternative text, a metric's label, a chart's question, a table's columns, a diagram's first node, else its type. */
+const excerpt=b=>{const t=String(b.type==='list'?b.items.join(' · '):b.text??b.alt??b.label??b.question??b.columns?.join(' · ')??b.nodes?.[0]?.label??b.chartType??b.type).replace(/\s+/g,' ');return [...t].length>48?[...t].slice(0,47).join('')+'…':t;};
 /** A candidate composition fits when the whole project still validates with it: theme pack, content contract and assets. */
 function fits(p,sceneId,composition){
  const pack=themePacks().find(t=>t.id===sceneOf(p,sceneId).theme);if(!pack.compositions.includes(composition))return false;
@@ -215,8 +216,9 @@ const ACT={
   // both pages keep content; the first page still exceeds the limit and the exporters page it on the bands.
   if(!after){const first=visible.find(b=>!['heading','citation'].includes(blockOf(p,b).type));if(!first){c.keep(id,'the page has no content block to cut after.','本页没有可供切分的内容块。');return;}
    after=first;c.keep(id,`no content block ends inside the ${limit} px limit (“${excerpt(blockOf(p,first))}” ends at ${Math.round(ends.get(first)??0)} px); the cut falls after it, so the first page still exceeds the limit and PowerPoint and PDF page it on the bands. Shorten that block to fit.`,`没有内容块在 ${limit} px 限制内结束（“${excerpt(blockOf(p,first))}”结束于 ${Math.round(ends.get(first)??0)} px）；在其后切分，因此第一页仍超出限制，PowerPoint 与 PDF 会按分段分页。请精简该内容块。`);}
-  try{const before=p.plan.scenes.length;c.p=splitScene(p,id,{afterBlockId:after});const cut=blockOf(p,after),pages=c.p.plan.scenes.length-before+1;
-   c.effect(id,`splits this page into ${pages} pages after “${excerpt(cut)}” (${cut.type}, ending at ${Math.round(ends.get(after))} px of ${limit}). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes.`,`在“${excerpt(cut)}”（${cut.type}，结束于 ${Math.round(ends.get(after))} px / ${limit}）之后将本页拆为 ${pages} 页。标题在续页重复；引用随引用它们的内容块；文字、数据与来源不变。`);}
+  try{const before=p.plan.scenes.length;c.p=splitScene(p,id,{afterBlockId:after});const cut=blockOf(p,after),pages=c.p.plan.scenes.length-before+1,parts=c.p.plan.scenes.slice(c.p.plan.scenes.findIndex(v=>v.id===id),c.p.plan.scenes.findIndex(v=>v.id===id)+pages);
+   c.effect(id,`splits this page into ${pages} pages after “${excerpt(cut)}” (${cut.type}, ending at ${Math.round(ends.get(after))} px of ${limit}). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes.`,`在“${excerpt(cut)}”（${cut.type}，结束于 ${Math.round(ends.get(after))} px / ${limit}）之后将本页拆为 ${pages} 页。标题在续页重复；引用随引用它们的内容块；文字、数据与来源不变。`);
+   for(const part of parts)if(part.composition!==s.composition)c.effect(id,`${part.id} takes ${compositionLabel(part.composition)[0]}: its content no longer holds what ${compositionLabel(s.composition)[0]} needs.`,`${part.id} 改用 ${compositionLabel(part.composition)[1]}：其内容已不再满足 ${compositionLabel(s.composition)[1]} 的需要。`);}
   catch(e){if(e.code==='AUTHOR_LOCK')throw e;c.keep(id,`the page is not split: ${e.message}`,`本页未拆分：${e.message}`);}
  },
  /** CINE-003: the author states what a page is for and where the eye enters; the family's preferred variant for that purpose
@@ -251,7 +253,8 @@ const ACT={
    if(changed.length){if(sceneLock(p,id).includes('media'))c.keep(id,'media locked; roles kept.','媒体角色已锁定，保持不变。');
     else{const media=[...next].filter(([b])=>b===chosen||(s.media||[]).some(m=>m.blockId===b)||next.get(b)!==roles.get(b)).sort(([a],[b])=>(a===chosen?0:1)-(b===chosen?0:1)).map(([blockId,role])=>({blockId,role}));s.media=media;
      c.effect(id,`media role: ${chosen} is the ${want}${changed.filter(([b])=>b!==chosen).map(([b,r])=>`; ${b} → ${r}`).join('')}. Assets, crops, alt text and sources stay.`,`媒体角色：${chosen} 为${want==='hero'?'主体':'机制图'}${changed.filter(([b])=>b!==chosen).map(([b,r])=>`；${b} → ${r}`).join('')}。素材、裁切、替代文字与来源不变。`);}}
-   const moved=disclose(c,id,movable(p,s));
+   // The S9a rule: the first supporting block stays on the page as its explanation; the rest moves behind the disclosure.
+   const moved=disclose(c,id,movable(p,s).slice(1));
    if(c.effects.length===before&&!moved&&!c.kept.some(k=>k.sceneId===id))c.keep(id,'the visual already has the largest measured layout and its role; no supporting text can move.','该视觉已采用测量中最大的版式并已声明角色；没有可移走的辅助文字。');
   }
  },

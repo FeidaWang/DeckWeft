@@ -6,6 +6,7 @@
  */
 import {DeckError} from '../core/errors.mjs';
 import {assertVisualProject,assertVisualLocks} from '../core/visual-project.mjs';
+import {assertComposition,inferFamily,families} from './compositions.mjs';
 const fail=message=>{throw new DeckError('SCENE_SPLIT',message,422);};
 /** The sources a block cites directly or through its dataset. */
 const citedSources=(document,b)=>new Set([...(b.sourceIds||[]),...(b.sourceId?[b.sourceId]:[]),...(b.datasetId?document.datasets.find(d=>d.id===b.datasetId)?.sourceIds||[]:[])]);
@@ -24,7 +25,8 @@ export function splitScene(project,sceneId,{afterBlockId}={}){
  if(moved.some(b=>b.type==='annotation'&&!moved.some(t=>t.id===b.target.blockId))||kept.some(b=>b.type==='annotation'&&!kept.some(t=>t.id===b.target.blockId)))fail('An annotation stays on the page of its target; cut elsewhere.');
  const citations=blocks.filter(b=>b.type==='citation'),movedSources=new Set(moved.flatMap(b=>[...citedSources(copy.document,b)]));
  const shared=citations.filter(c=>movedSources.has(c.sourceId)).map(c=>c.id);
- const ids=new Set(scenes.map(s=>s.id));let n=2,nextId;do nextId=`${sceneId}-${n++}`.slice(0,64);while(ids.has(nextId));
+ // The continuation id keeps the 64-character limit by trimming the base, never the suffix, so a long id cannot repeat itself.
+ const ids=new Set(scenes.map(s=>s.id));let n=2,nextId;do{const suffix=`-${n++}`;nextId=sceneId.slice(0,64-suffix.length)+suffix;if(n>1000)fail('No free continuation id is left for this page; rename it.');}while(ids.has(nextId));
  const keep=list=>list.filter(id=>!moved.some(b=>b.id===id));
  const page={...structuredClone(scene),id:nextId,blockIds:[heading.id,...moved.map(b=>b.id),...shared],focalBlockId:heading.id};
  delete page.takeaway;
@@ -35,6 +37,9 @@ export function splitScene(project,sceneId,{afterBlockId}={}){
  for(const key of ['crops','imageSlots','media'])if(scene[key])scene[key]=scene[key].filter(v=>scene.blockIds.includes(v.blockId));
  if(scene.intent?.focusGroupBlockIds){scene.intent.focusGroupBlockIds=keep(scene.intent.focusGroupBlockIds);if(!scene.intent.focusGroupBlockIds.length)delete scene.intent.focusGroupBlockIds;}
  if(scene.disclosure){scene.disclosure={blockIds:keep(scene.disclosure.blockIds)};if(!scene.disclosure.blockIds.length)delete scene.disclosure;}
+ // A side that loses its family's required block (the image of an image page, the chart of an evidence page) takes the first
+ // variant of the family its remaining content implies; a side that still meets its family contract keeps the composition.
+ for(const side of [scene,page]){try{assertComposition(copy.document,side);}catch{const family=inferFamily(copy.document,{...side,composition:''});side.composition=families[family].variants[0][0];}}
  scenes.splice(index+1,0,page);
  assertVisualLocks(project,copy);
  if(JSON.stringify(copy.document)!==JSON.stringify(project.document))fail('Splitting a page never changes the semantic document.');
