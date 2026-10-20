@@ -43,6 +43,10 @@ const look=/*html*/`
         <button id="largerType" type="button" aria-pressed="false" data-i18n="visual.look.largerType">Larger type</button>
         <button id="keepPage" type="button" aria-pressed="false" data-i18n="visual.look.keepPage">Leave this page</button>
       </div>
+      <div class="look-intent" role="group" data-i18n-attr="aria-label:visual.look.intent">
+        <label><span data-i18n="visual.look.purpose">Page purpose</span> <select id="pagePurpose"><option value="" data-i18n="visual.look.auto">Automatic</option>${['explain','show-product','show-detail','compare','evidence','overview','chapter'].map(v=>`<option value="${v}" data-i18n="visual.look.purpose.${v}"></option>`).join('')}</select></label>
+        <label><span data-i18n="visual.look.entry">Entry</span> <select id="pageEntry"><option value="" data-i18n="visual.look.auto">Automatic</option>${['left','center','contextual'].map(v=>`<option value="${v}" data-i18n="visual.look.entry.${v}"></option>`).join('')}</select></label>
+      </div>
       <section id="actionPlan" class="action-plan" hidden aria-live="polite"><h3 id="actionTitle"></h3><p id="actionScope"></p><ul id="actionEffects"></ul><ul id="actionKept" class="kept"></ul></section>
       <p id="themeLabel" class="look-label" data-i18n="visual.look.colours">Colours</p>
       <div class="theme-options" role="group" aria-labelledby="themeLabel">${swatches}</div>

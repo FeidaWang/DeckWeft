@@ -53,6 +53,9 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
   if(plan.changed)apply(plan.project);showPlan(title,plan);return plan;
  }
  $('#moreSpace').onclick=()=>act('more-editorial',{level:'page',id:state.active},$('#moreSpace').textContent).catch(error);
+ // CINE-003: Page purpose and Entry post one planned set-intent; Automatic clears the declaration so the page is inferred again.
+ const setIntent=()=>{const purpose=$('#pagePurpose').value||null,entry=$('#pageEntry').value||undefined;return act('set-intent',{level:'page',id:state.active,options:purpose?{purpose,...(entry?{entry}:{})}:{purpose:null}},t('visual.look.purpose')).catch(err=>{error(err);drawControls();});};
+ $('#pagePurpose').onchange=setIntent;$('#pageEntry').onchange=()=>{if($('#pagePurpose').value)setIntent();};
  // Lock this page: the four author locks (data, sources, text, composition) through the same planned action, plus the page's
  // theme and motion, so nothing on it changes until it is released. Pressed again, the same five come off.
  async function keepPage(){
@@ -77,7 +80,8 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
  const excerpt=b=>{const v=b.text||b.label||b.alt||(b.items||[]).join(' · ')||b.chartType||'';return [...v].length>34?[...v].slice(0,33).join('')+'…':v;};
  function drawControls(){
   workbench.scopeStatement?.();
-  const p=state.project,s=page();if(!p||!s)return;const ch=chapterOf(s.id),objects=s.blockIds.map(id=>p.document.blocks.find(b=>b.id===id));
+  const p=state.project,s=page();if(!p||!s)return;
+  $('#pagePurpose').value=s.intent?.purpose||'';$('#pageEntry').value=s.intent?.entry||'';$('#pageEntry').disabled=!s.intent;for(const el of [$('#pagePurpose'),$('#pageEntry')])el.toggleAttribute('data-locked',sceneLock(s).includes('intent'));const ch=chapterOf(s.id),objects=s.blockIds.map(id=>p.document.blocks.find(b=>b.id===id));
   const o=p.document.authorOverrides,locks=[[o.lockedBlockIds.filter(id=>s.blockIds.includes(id)).length,'text'],[(o.lockedDatasetIds||[]).filter(d=>objects.some(b=>b.datasetId===d)).length,'data'],[(o.lockedSourceIds||[]).filter(v=>objects.some(b=>b.sourceIds.includes(v))).length,'sources'],[sceneLock(s).includes('composition')?1:0,'composition']];
   $('#lockSummary').textContent=t('visual.author.thisPageLocks',{locks:locks.map(l=>t('visual.author.lockItem',{count:l[0],word:t('visual.author.lock.'+l[1])})).join(t('visual.author.listJoiner')),mode:t(o.lockMode==='separate'?'visual.author.lockMode.separate':'visual.author.lockMode.combined'),chapter:ch?t('visual.author.chapterId',{id:ch.id}):''})+(objects.length?' · '+objects.map(b=>b.type+' '+excerpt(b)).join(' · '):'');
  }

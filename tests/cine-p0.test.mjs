@@ -14,6 +14,8 @@ import {candidateFit,CANDIDATE_HEIGHT,moveScene} from '../src/design/rhythm.mjs'
 import {splitScene} from '../src/design/split.mjs';
 import {planAuthorAction,AUTHOR_ACTIONS} from '../src/workbench/author-actions.mjs';
 import {readFile} from 'node:fs/promises';
+import {temp} from './helpers.mjs';
+import {startStudio} from '../src/services/server.mjs';
 import {createVisualProject} from '../src/core/visual-project.mjs';
 import {REFERENCE_MODES,referenceIndex,sceneReferences,assertReferences} from '../src/references/presentation.mjs';
 import {VISUAL_PURPOSES,ENTRIES,CENTERED_COMPOSITIONS,CONTEXTUAL_COMPOSITIONS,inferIntent,effectiveIntent,assertIntent,preferredVariant} from '../src/design/intent.mjs';
@@ -450,4 +452,47 @@ test('CINE-003 rhythm: with intent show-product the image family prefers image-r
  const S6=(family,phase)=>({statement:phase==='closing'?'statement-center':phase==='opening'?'statement-split':'statement-banner',evidence:'evidence-top',metric:phase==='opening'?'metric-left':'metric-band',image:phase==='closing'?'image-strip':'image-left',comparison:'comparison-matrix',process:phase==='closing'?'process-line':'process-rail',chapter:phase==='opening'?'chapter-index':'chapter-low','before-after':'before-after-split','system-map':'system-map-wide','small-multiples':'small-multiples-row',quote:phase==='opening'||phase==='closing'?'quote-center':'quote-split',closing:phase==='closing'?'closing-focus':'closing-split'})[family];
  for(const q of await legacyProjects())for(const [i,s] of q.plan.scenes.entries()){const n=q.plan.scenes.length,phase=i===0?'opening':i===n-1?'closing':s.role,family=describeCandidate(q.document,s).family;
   for(const v of allCompositions.filter(c=>c.family===family)){const r=narrativeCost(s,{family,id:v.id},i,n);assert.equal(r.phase,phase);assert.equal(r.preferred,S6(family,phase)||v.id);assert.equal(r.cost,S6(family,phase)&&v.id!==S6(family,phase)?3:0,`${q.id}/${s.id}/${v.id}`);}}
+});
+
+// ---- Task 9: CINE-003 set-intent action and Studio control ----
+test('CINE-003 set-intent: plans the intent and the preferred variant, keeps a composition lock and an intent lock, changes no text, data or sources, and the Studio API applies it through the normal edit path',async t=>{
+ assert.deepEqual(AUTHOR_ACTIONS['set-intent'],{levels:['page'],changes:['intent','composition']});
+ const p=await cineProject('en',home,{declared:[]}),before=factsOf(p);
+ // detail is image-left; show-product prefers image-right, which fits its content.
+ const plan=planAuthorAction(p,{action:'set-intent',level:'page',id:'detail',options:{purpose:'show-product',entry:'left'}});
+ assert.equal(plan.changed,true);const s=sceneOf(plan.project,'detail');assert.deepEqual(s.intent,{purpose:'show-product',entry:'left'});assert.equal(s.composition,'image-right');
+ assert.match(plan.effects[0].en,/purpose show-product, entry left/);assert.match(plan.effects[0].zh,/用途/);assert.ok(plan.effects.some(e=>/composition .* → /.test(e.en)));assert.equal(factsOf(plan.project),before);
+ assert.equal(plan.scopeStatement.en.includes('intent'),true);
+ // show-detail already prefers image-left: the intent is set, the composition stays, one effect.
+ const same=planAuthorAction(p,{action:'set-intent',level:'page',id:'detail',options:{purpose:'show-detail',entry:'left'}});assert.equal(sceneOf(same.project,'detail').composition,'image-left');assert.equal(same.effects.length,1);
+ // Without an entry the inferred entry of the composition is written (image-left → left).
+ assert.deepEqual(sceneOf(planAuthorAction(p,{action:'set-intent',level:'page',id:'detail',options:{purpose:'explain'}}).project,'detail').intent,{purpose:'explain',entry:'left'});
+ // product-center has a composition lock: the intent is set, the composition is kept and the plan says so.
+ const locked=planAuthorAction(p,{action:'set-intent',level:'page',id:'product-center',options:{purpose:'show-product',entry:'center'}});
+ assert.deepEqual(sceneOf(locked.project,'product-center').intent,{purpose:'show-product',entry:'center'});assert.equal(sceneOf(locked.project,'product-center').composition,'image-strip');assert.ok(locked.kept.some(k=>/composition locked/.test(k.en)));
+ // An intent lock keeps the intent.
+ const il=structuredClone(p);il.document.authorOverrides.sceneLocks.push({sceneId:'detail',fields:['intent']});const kept=planAuthorAction(il,{action:'set-intent',level:'page',id:'detail',options:{purpose:'show-product',entry:'left'}});
+ assert.equal(kept.changed,false);assert.ok(kept.kept.some(k=>/intent locked/.test(k.en)&&/已锁定/.test(k.zh)));
+ // Clearing returns the page to inference and never changes the composition.
+ const cleared=planAuthorAction(plan.project,{action:'set-intent',level:'page',id:'detail',options:{purpose:null}});assert.equal('intent' in sceneOf(cleared.project,'detail'),false);assert.equal(sceneOf(cleared.project,'detail').composition,'image-right');
+ assert.equal(planAuthorAction(p,{action:'set-intent',level:'page',id:'detail',options:{purpose:null}}).changed,false);
+ // A page whose focal block is a citation is refused by name; an unknown purpose or a deck scope too.
+ const cite=structuredClone(p);sceneOf(cite,'context').focalBlockId='ctx-source';assert.throws(()=>planAuthorAction(cite,{action:'set-intent',level:'page',id:'context',options:{purpose:'explain',entry:'left'}}),e=>e.code==='INVALID_DESIGN_PLAN'&&/citation/.test(e.message));
+ assert.throws(()=>planAuthorAction(p,{action:'set-intent',level:'page',id:'detail',options:{purpose:'wow',entry:'left'}}),e=>e.code==='AUTHOR_ACTION');
+ assert.throws(()=>planAuthorAction(p,{action:'set-intent',level:'deck',id:null,options:{purpose:'explain',entry:'left'}}),e=>e.code==='TOOL_SCOPE');
+ // Studio API: the plan comes back from the author-action route and the project saves through the normal project path.
+ const studioHome=await temp(t),app=await startStudio({home:studioHome,port:0,seed:false});t.after(()=>app.close());
+ const {token}=await(await fetch(app.url+'/api/session')).json(),headers={Authorization:'Bearer '+token,'Content-Type':'application/json'},call=(path,data,method=data?'POST':'GET')=>fetch(app.url+path,{method,headers,...(data?{body:JSON.stringify(data)}:{})});
+ const demoRes=await call('/api/visual/demo',{locale:'en'});assert.equal(demoRes.status,201,'the demo deck is created in the store');const demo=(await demoRes.json()).project;
+ const r=await(await call('/api/visual/author-action',{project:demo,action:'set-intent',level:'page',id:demo.plan.scenes[0].id,options:{purpose:'chapter',entry:'center'}})).json();
+ assert.equal(r.format,'deckweft-author-action');assert.deepEqual(r.project.plan.scenes[0].intent,{purpose:'chapter',entry:'center'});
+ // The normal edit path: the planned project is saved as the next revision and read back with its intent.
+ const put=await call('/api/visual/projects/'+demo.id,{project:r.project,expectedRevision:demo.revision.number},'PUT');assert.equal(put.status,200,(await put.clone().text()).slice(0,300));const saved=(await put.json()).project;
+ assert.deepEqual(saved.plan.scenes[0].intent,{purpose:'chapter',entry:'center'});assert.equal(saved.revision.number,demo.revision.number+1);
+ const read=(await(await call('/api/visual/projects/'+demo.id)).json()).project;assert.deepEqual(read.plan.scenes[0].intent,{purpose:'chapter',entry:'center'});
+ // The Studio carries the two controls and their strings in both languages.
+ const visual=await readFile(new URL('../public/kinds/visual.js',import.meta.url),'utf8'),i18n=await readFile(new URL('../public/i18n.js',import.meta.url),'utf8'),author=await readFile(new URL('../public/studio/author.js',import.meta.url),'utf8');
+ assert.ok(visual.includes('id="pagePurpose"')&&visual.includes('id="pageEntry"'));assert.ok(author.includes("'set-intent'"));
+ for(const k of ['"visual.look.purpose"','"visual.look.entry"','"visual.look.purpose.show-product"','"visual.look.entry.contextual"','"visual.look.auto"'])assert.equal((i18n.match(new RegExp(k,'g'))||[]).length,2,k);
+ for(const f of ['docs/en/visual-studio.md','docs/zh-CN/visual-studio.md']){const d=await readFile(new URL('../'+f,import.meta.url),'utf8');assert.ok(d.includes('set-intent'),f);}
 });

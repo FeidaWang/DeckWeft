@@ -8,6 +8,7 @@ import {applySceneTheme} from '../design/profile.mjs';
 import {splitSmallMultiples} from '../design/rhythm.mjs';
 import {splitScene} from '../design/split.mjs';
 import {TARGETS} from '../targets/target-budget.mjs';
+import {VISUAL_PURPOSES,ENTRIES,effectiveIntent,preferredVariant} from '../design/intent.mjs';
 import {startChapter,removeChapter,setChapterProfile,chapterOf,chapterRuns} from '../design/chapters.mjs';
 import {pageKind,tokenDrift,assertDesignProfile} from '../design/design-profile.mjs';
 import {separateLocks} from '../core/adapters/locks.mjs';
@@ -27,7 +28,8 @@ export const AUTHOR_ACTIONS=Object.freeze({
  'remove-chapter':{levels:['chapter'],changes:['chapters']},
  'lock':{levels:['deck','chapter','page','object'],changes:['locks']},
  'unlock':{levels:['deck','chapter','page','object'],changes:['locks']},
- 'fit-page':{levels:['page'],changes:['page disclosure','page split']}
+ 'fit-page':{levels:['page'],changes:['page disclosure','page split']},
+ 'set-intent':{levels:['page'],changes:['intent','composition']}
 });
 const fail=(message,code='AUTHOR_ACTION',status=422)=>{throw new DeckError(code,message,status);};
 const THEME_LABELS={'diagonal-cover':['Diagonal cover with a large number','斜切封面与大数字'],'chart-with-evidence-rail':['Chart with an evidence rail','图表与证据栏'],'reading-flow':['Reading flow','阅读流'],'photo-split':['Large photo split','大幅图片分栏'],'violet-chapter':['Full-colour chapter','满版色章节页'],'fieldnotes-cover':['Fieldnotes cover','田野笔记封面'],'fieldnotes-thesis':['Two-column thesis with margin notes','双栏论点与边注'],'fieldnotes-figure':['Narrow reading column, wide figure','窄正文、宽图'],'fieldnotes-method':['Method text with a margin note','方法说明与边注'],'fieldnotes-closing':['Fieldnotes closing','田野笔记结尾'],'atlas-cover':['Kicker, headline and contents index','引题、标题与目录'],'atlas-section':['Numbered section opener','编号章节页'],'atlas-figure':['Single-chart conclusion','单图结论'],'atlas-panels':['Two to four panels on one scale','同一尺度的 2–4 个面板'],'atlas-appendix':['Table, limits and sources','表格、局限与来源'],'atlas-closing':['Atlas closing','研究图集结尾'],'stage-hero':['One large object, title in the calm area','单一大物件与安静区标题'],'stage-chapter':['Stage chapter','舞台章节页'],'stage-figure':['Chart on a panel','面板上的图表'],'stage-metric':['Large number on the stage','舞台大数字'],'stage-closing':['Stage closing','舞台结尾']};
@@ -204,6 +206,19 @@ const ACT={
   try{const before=p.plan.scenes.length;c.p=splitScene(p,id,{afterBlockId:after});const cut=blockOf(p,after),pages=c.p.plan.scenes.length-before+1;
    c.effect(id,`splits this page into ${pages} pages after “${excerpt(cut)}” (${cut.type}, ending at ${Math.round(ends.get(after))} px of ${limit}). The heading repeats on the continuation; citations follow the blocks that cite them; no text, data or source changes.`,`在“${excerpt(cut)}”（${cut.type}，结束于 ${Math.round(ends.get(after))} px / ${limit}）之后将本页拆为 ${pages} 页。标题在续页重复；引用随引用它们的内容块；文字、数据与来源不变。`);}
   catch(e){if(e.code==='AUTHOR_LOCK')throw e;c.keep(id,`the page is not split: ${e.message}`,`本页未拆分：${e.message}`);}
+ },
+ /** CINE-003: the author states what a page is for and where the eye enters; the family's preferred variant for that purpose
+  * follows when it fits and the composition is unlocked. `purpose: null` clears the declaration (inference again). */
+ 'set-intent'(c,options){
+  const {p}=c,id=c.scope.sceneIds[0],s=sceneOf(p,id),index=p.plan.scenes.indexOf(s),purpose=options?.purpose??null;
+  if(sceneLock(p,id).includes('intent')){c.keep(id,'intent locked; kept.','意图已锁定，保持不变。');return;}
+  if(purpose===null||purpose===''){if(!s.intent){c.keep(id,'no declared intent to clear; the page is inferred.','本页没有声明的意图可清除；按推断处理。');return;}delete s.intent;c.effect(id,'clears the declared intent: purpose and entry are inferred from the content again. The composition stays.','清除声明的意图：用途与入口重新按内容推断。构图保持不变。');return;}
+  if(!VISUAL_PURPOSES.includes(purpose))fail(`Choose a visual purpose: ${VISUAL_PURPOSES.join(', ')}.`);
+  const entry=options?.entry?options.entry:effectiveIntent(p.document,p.plan,index).entry;if(!ENTRIES.includes(entry))fail(`Choose an entry: ${ENTRIES.join(', ')}.`);
+  const before=s.intent?`${s.intent.purpose}/${s.intent.entry}`:'inferred';s.intent={...(s.intent||{}),purpose,entry};
+  c.effect(id,`purpose ${purpose}, entry ${entry} (was ${before}). No text, data or source changes.`,`用途 ${purpose}，入口 ${entry}（原为 ${before}）。文字、数据与来源不变。`);
+  const family=compositions.find(v=>v.id===s.composition)?.family||inferFamily(p.document,{...s,blockIds:visibleBlockIds(s)}),target=preferredVariant(s.intent,family);
+  if(target&&target!==s.composition)setComposition(c,id,target,[`the ${family} family's ${purpose} layout`,`${family} 类别中用于 ${purpose} 的版式`]);
  },
  'lock'(c,options){lockAction(c,options,true);},
  'unlock'(c,options){lockAction(c,options,false);}

@@ -215,6 +215,16 @@ The S9a author actions used to sit in an **Author controls** panel with a scope 
 
 **Moved to the API.** These S9a actions have no browser control any more; `POST /api/visual/author-action` still runs them, with the same plan, scope statement and lock checks: reduce text, give the chart more space (including splitting a page of more than two panels), make quieter, keep this layout, replace the visual, lock and unlock one kind, start and remove a chapter, and apply a profile. So do the image review (capture, review, report and reviewed export of a workbench deck) and page planning (`POST /api/visual/page-plan` and `/page-plan/apply`); see [the workbench manual](workbench.md#image-review-and-page-planning-api-only). `tests/browser_author_controls.mjs` and `tests/browser_workbench.mjs` call each of them.
 
+### Page purpose and entry (CINE-003)
+
+Under the **Look** buttons, two selects state what the open page is for and where the eye enters. Both start at *Automatic*: the page's purpose and entry are then inferred from its content and composition and nothing is written to the plan.
+
+1. Choose a **Page purpose** (*Explain*, *Show the product*, *Show the detail*, *Compare*, *Evidence*, *Overview*, *Chapter*). Expected: the plan box says *purpose …, entry …*; when the page's family has a preferred layout for that purpose (an image page with *Show the product* → headline → text left / image right), the composition changes to it and the box names the old and new layout. A composition lock keeps the layout and says so. Text, data and sources never change. **Undo** takes it back.
+2. Choose an **Entry** (*Left*, *Centre*, *Where the composition points*). Expected: a short text page with a left entry starts at the top of the page instead of centring; a centred entry keeps the open, centred space. The page's section carries `data-purpose` and `data-entry`; a page left at *Automatic* carries neither and renders as before.
+3. Choose *Automatic* under **Page purpose**. Expected: the declaration is cleared and the page is inferred again; the composition stays as it is.
+
+The API action is `set-intent` (`POST /api/visual/author-action`, level `page`, options `{purpose, entry}`; `purpose: null` clears). An `intent` lock (`sceneLocks[].fields`) keeps the declaration; a page whose focal block is a citation refuses a declared intent.
+
 ### Take away
 
 1. Press **Take away** in the top band. Expected: the dialog *Take your story with you.* lists **Present**, **HTML**, **PowerPoint** and **PDF**. Present and HTML stay greyed out until the page has been measured.
