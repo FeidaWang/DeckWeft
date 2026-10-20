@@ -140,3 +140,24 @@ button:active:not(:disabled){background:var(--panel)!important;color:var(--ink)!
   .page-strip button,.page-strip .thumbnail{min-height:44px}
 }
 .more-drawer #present{font-size:13px!important;width:100%;min-width:0}
+/* Single entry, step 3: the layout choices lead the Look zone for every kind (design guide §9: three layouts, then colours). */
+[data-zone=look] .directions{padding:0;margin:0 0 16px;border-top:0;background:transparent;max-height:none;overflow:visible}
+[data-zone=look] .directions-heading{margin:0 0 8px;justify-content:flex-start}
+[data-zone=look] .directions-heading:not(:has(button)){display:none}
+[data-zone=look] .candidate-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.candidate-cell{position:relative;display:flex;min-width:0}
+.candidate-cell>.candidate{flex:1;min-width:0}
+.candidate-picture{display:block;position:relative;overflow:hidden}
+.candidate-inspect{position:absolute;top:6px;right:6px;z-index:2;width:28px;height:28px;min-width:28px;min-height:28px;padding:0!important;border:1px solid var(--ink);border-radius:0;background:var(--white);font-size:13px!important;line-height:1}
+.candidate-inspect::before{content:none}
+/* A kind's optional small label on a thumbnail (thumbnails()[].mark), for example lines a host added. */
+#slideList .thumbnail-mark{position:absolute;right:0;bottom:0;max-width:100%;padding:2px 6px;background:var(--surface);color:var(--ink);font-size:11px;line-height:1.4;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+/* The page menu (right-click a thumbnail): one column of plain items, hard edges, no animation. */
+.page-menu{position:fixed;z-index:80;display:grid;min-width:200px;padding:4px;border:1px solid var(--ink);background:var(--white)}
+.page-menu button{justify-content:flex-start;width:100%;min-height:40px;border:0;border-radius:0;background:transparent;text-align:left}
+.page-menu button::before{content:none}
+/* A kind that draws web pages in an iframe gets the same colour matching as the SVG canvas. */
+#canvas.zone-words iframe{outline:3px solid var(--words);outline-offset:-3px}
+#canvas.zone-look iframe{outline:3px solid var(--look);outline-offset:-3px}
+.take-away .export-options [aria-pressed=true]{border:2px solid var(--look)}
+@media(max-width:680px){[data-zone=look] .candidate-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

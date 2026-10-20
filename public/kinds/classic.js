@@ -44,6 +44,26 @@ const look=/*html*/`
                 <label for="motion" data-i18n="classic.motion">After Effects entrance</label><select id="motion"><option value="none" data-i18n="classic.motion.none">None</option><option value="fade" data-i18n="classic.motion.fade">Soft fade</option><option value="rise" data-i18n="classic.motion.rise">Gentle rise</option></select><label for="duration" data-i18n="classic.duration">Slide duration in seconds</label><input type="number" id="duration" min="2" max="60" step="1"><p class="hint" data-i18n="classic.motionNote">HTML replays these entrances. PowerPoint stays static; AE receives a motion handoff.</p></div>
       </div>
 `;
+// The classic controls in the shell's slots: aspect ratio, presenting, page actions, the hidden tabs and quality panel,
+// the drawer's classic items and the export dialog's private-notes option.
+const toolbar=/*html*/`<label class="sr-only" for="ratio">Slide aspect ratio</label><select id="ratio" data-i18n-attr="aria-label:classic.app.slideAspectRatio"><option>16:9</option><option>4:3</option><option>1:1</option><option>9:16</option></select>`;
+const toolbarEnd=/*html*/`<button id="exitPresent" data-i18n="classic.exit">Exit presentation</button>`;
+const choiceActions=/*html*/`<button id="autoLayout" class="small" data-i18n="classic.auto">Choose for me</button>`;
+const pageActions=/*html*/`<button id="duplicate" data-i18n="classic.duplicate">Duplicate</button><button id="moveUp" data-i18n-attr="aria-label:classic.app.moveSlideUp" aria-label="Move slide up">↑</button><button id="moveDown" data-i18n-attr="aria-label:classic.app.moveSlideDown" aria-label="Move slide down">↓</button><button id="deleteSlide" class="danger" data-i18n="classic.delete">Delete</button>`;
+const inspectorHead=/*html*/`
+    <!-- M3: two zones, Words and Look, replace the three tabs. The old tabs keep their ids, hidden. -->
+    <div class="inspector-tabs" role="tablist" aria-label="Inspector" hidden><button role="tab" id="tab-content" tabindex="0" aria-selected="true" aria-controls="contentPanel" data-tab="content" data-i18n="classic.content">Content</button><button role="tab" id="tab-design" tabindex="-1" aria-selected="false" aria-controls="designPanel" data-tab="design" data-i18n="classic.design">Design</button><button role="tab" id="tab-sources" tabindex="-1" aria-selected="false" aria-controls="sourcesPanel" data-tab="sources" data-i18n="classic.sources">Sources</button></div>`;
+const inspectorTail=/*html*/`<section class="quality-panel" hidden><div class="quality-header"><h2 data-i18n="classic.preflight">Before you export</h2><span id="qualityCount"></span></div><div id="qualityIssues"></div><p class="hint" id="measurementNote"></p><p class="hint" data-i18n="classic.qualityNote">Other apps may swap fonts. Check the file before presenting.</p></section>`;
+const exportBefore=/*html*/`<p data-i18n="classic.exportNote">PowerPoint keeps text editable. A backup keeps everything.</p><label class="export-notes"><input id="exportNotes" type="checkbox"><span data-i18n="classic.includeSpeakerNotes">Include private speaker notes and source annotations</span></label><p class="hint" data-i18n="classic.publicExport">Private notes stay out of exports unless you include them. Backups keep everything.</p>`;
+const exportAfter=/*html*/`<p id="mediaExportNote" class="hint" hidden>Images remain separate media objects. Figma / AE handoffs embed PNG bytes; live 3D and interactions use static fallbacks. JSON backups need the assets folder. Figma images must be at most 4096 pixels per side.</p><p class="hint" data-i18n="classic.handoffNote">Figma and AE handoffs are experimental. No cloud upload is made here.</p>`;
+const drawer={
+  agent:/*html*/`<button id="openAgent" data-icon="sparkles" data-i18n="classic.agentHelp" aria-label="Let the assistant write for me" title="Let the assistant write for me">Let the assistant write for me</button>`,
+  presenting:/*html*/`<button id="present" data-i18n="classic.present">Present</button><button id="openRehearsal" data-i18n="classic.rehearse" data-icon="timer" aria-label="Rehearse and time the deck" title="Rehearse and time the deck">Rehearse</button>`,
+  language:/*html*/`<label for="contentLocale" data-i18n="classic.contentLocale">Deck language / font preference</label><select id="contentLocale"><option value="en">English</option><option value="zh-CN">简体中文</option></select><p class="hint" data-i18n="classic.localeNote">This does not translate existing words.</p>`,
+  backup:/*html*/`<label for="projectPicker" data-i18n="classic.app.localLibrary">Local library</label><select id="projectPicker" data-i18n-attr="aria-label:classic.app.localLibrary" class="project-picker"></select><button id="makeCopy" data-i18n="classic.shell.makeCopy">Make a new-version copy</button><button id="newDeck" data-i18n="classic.new">New deck</button><button id="importButton" data-i18n="classic.import" data-icon="upload" aria-label="Import a deck" title="Import a deck">Import a deck</button><input type="file" id="fileInput" accept=".json,.md,.txt" hidden>`,
+  developer:/*html*/`<button id="openSettings" data-i18n="classic.settings" title="Appearance and accessibility">Settings</button><button id="openStoryboard" data-i18n="classic.planStory" data-icon="workflow" aria-label="Plan narrative and visuals" title="Plan narrative and visuals">Plan story</button><a class="visual-studio-link" href="/visual" data-i18n="classic.app.visualStudioPromptWorkbench">Visual Studio · Prompt workbench</a>`
+};
+const parts=()=>({toolbar,toolbarEnd,choiceActions,pageActions,inspectorHead,inspectorTail,canvas:'<p>Opening your deck…</p>',exportBefore,exportAfter,drawer});
 
 // A 401 is answered before the request is handled, so one retry after reconnecting cannot repeat a change.
 async function api(url,data,method='POST',signal,retry=true){
@@ -219,8 +239,9 @@ async function exportFile(format){
   }catch(error){if(['STALE_MEASUREMENT','MEASUREMENT_EXPIRED'].includes(error.code)){schedulePreview();$('#exportDialog').close();}onError(error);
   }finally{state.exporting=false;updateStatus();}
 }
-// Classic has no PDF: Take away offers the formats of the classic export dialog and the drawer's backup.
-function exports(){updateStatus();return Object.fromEntries(['html','pptx','svg','json','motion','figma'].map(format=>[format,exportable(format)?()=>exportFile(format):null]));}
+// Classic has no PDF: Take away offers PowerPoint, HTML, the current slide as SVG and the two handoffs; json is the drawer's backup.
+const formats={pptx:['PowerPoint','classic.editable'],html:['HTML','classic.offline'],svg:['SVG','classic.currentOnly'],figma:['Figma handoff','classic.importLayers'],motion:['After Effects handoff','classic.aeImport'],json:['Project JSON','shell.backup']};
+function exports(){return Object.fromEntries(Object.entries(formats).map(([format,[label,note]])=>[format,{label,note:t(note),disabled:!exportable(format),run:()=>exportFile(format)}]));}
 let leavePromise=null;
 async function canLeave(){
   if(state.saving||state.composing)return false;if(!state.dirty)return true;
@@ -375,7 +396,7 @@ function mount(s){
 
 /** @type {import('../shell.js').Adapter & {open:()=>Promise<void>}} */
 export const classicAdapter={
-  fields:()=>fields,look:()=>look,candidates,thumbnails,save:()=>save(),exports,onChange:fn=>{changeListeners.push(fn);},
+  fields:()=>fields,look:()=>look,parts,candidates,thumbnails,save:()=>save(),exports,onChange:fn=>{changeListeners.push(fn);},
   undo:()=>undo(),redo:()=>undo(true),firstRun,
   mount,select:selectSlide,reorder,add:()=>slideAction('add'),choose:id=>{if(state.previewState==='ready')changed(()=>slide().design.layout=id);},
   editable:()=>ready()&&!state.composing,example,blocks,setToken:token=>{state.token=token;},
