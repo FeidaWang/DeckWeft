@@ -8,6 +8,7 @@
  */
 import {expectedBlockText} from '../pptx/audit.mjs';
 import {targetFit,PT_PER_PX} from '../target-budget.mjs';
+import {bandStrip} from '../pptx/paginate.mjs';
 const x=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 export const PDF_PAGE={width:1440,height:810};
 const PRINT_CSS=`@page{size:${PDF_PAGE.width}px ${PDF_PAGE.height}px;margin:0}html,body{margin:0;padding:0;background:#fff}.dw-page{position:relative;width:${PDF_PAGE.width}px;height:${PDF_PAGE.height}px;overflow:hidden;contain:strict;break-inside:avoid;break-after:page;page-break-after:always}.dw-fit{position:absolute;left:0;top:0;transform-origin:0 0}.dw-fit>.web-scene{margin:0}.dw-strip{position:absolute;overflow:hidden}.dw-strip-fit{position:absolute;left:0;top:0;transform-origin:0 0}.dw-strip .web-scene{margin:0;min-height:0;padding-top:12px;padding-bottom:0}.dw-strip .folio{display:none}.dw-strip .regions{display:block;min-height:0}.dw-notes{break-before:page;page-break-before:always;box-sizing:border-box;width:${PDF_PAGE.width}px;min-height:${PDF_PAGE.height}px;padding:56px 72px;background:#fff;color:#171717;font:15px/1.5 "Avenir Next",Arial,"PingFang SC",sans-serif}.dw-notes h2{font-size:22px;margin:0 0 16px}.dw-notes h3{font-size:16px;margin:20px 0 6px}.dw-notes ul{margin:0;padding-left:20px}.dw-notes li{margin:2px 0}.dw-notes a{color:inherit}`;
@@ -49,9 +50,9 @@ export function pdfPrintJob({document,plan,html,layout,delivery,paginate='auto'}
   const bands=fit?.bands||[null],parts=bands.length,reason=fit?fit.reason||fit.status:'off';
   if(parts>1)pagination.push({sceneId:s.id,parts,reason});
   bands.forEach((band,part)=>{
-   const top=band?band.y-(part?strip:0):m.bounds.y,h=band?band.height+(part?strip:0):m.bounds.height,w=m.bounds.width;
+   const stripHere=bandStrip(m,band,{titleBlockId:titleBlock,strip}),top=band?band.y-stripHere:m.bounds.y,h=band?band.height+stripHere:m.bounds.height,w=m.bounds.width;
    const scale=Math.min(PDF_PAGE.width/w,PDF_PAGE.height/h);
-   pages.push({sceneId:s.id,part:part+1,parts,reason,scale:Math.round(scale*10000)/10000,offset:[(PDF_PAGE.width-w*scale)/2,(PDF_PAGE.height-h*scale)/2],width:w,height:h,top:top-m.bounds.y,strip:part?strip:0,
+   pages.push({sceneId:s.id,part:part+1,parts,reason,scale:Math.round(scale*10000)/10000,offset:[(PDF_PAGE.width-w*scale)/2,(PDF_PAGE.height-h*scale)/2],width:w,height:h,top:top-m.bounds.y,strip:stripHere,
     clip:band?{y:band.y,height:band.height}:{y:m.bounds.y,height:m.bounds.height},overHeight:!!fit?.typography[part]?.overHeight,typography:fit?fit.typography[part]:null,titleBlockId:titleBlock,index:i,background:m.background?.hex||'FFFFFF'});
   });
  });
@@ -69,7 +70,7 @@ export function pdfPrintJob({document,plan,html,layout,delivery,paginate='auto'}
  const appendix=plan.scenes.map((s,i)=>{const r=delivery.reveal[i],it=delivery.frozen[i].interactions,mo=delivery.motion[i];
   if(!r.notes.length&&!r.sources.length&&!it.length)return null;
   const heading=`${String(i+1).padStart(2,'0')} · ${s.id}`;
-  return {sceneId:s.id,html:`<section class="dw-notes" aria-label="${x((zh?'注释 ':'Notes ')+heading)}"><h2>${x((zh?'注释 · ':'Notes · ')+heading)}</h2>${it.length||mo.cuesNotPlayed?`<h3>${zh?'静态呈现':'Static delivery'}</h3><ul>${it.map(v=>`<li>${x(v.kind)}: ${x(v.delivery)}</li>`).join('')}${mo.cuesNotPlayed?`<li>${x(zh?`动效未播放（${mo.cuesNotPlayed} 个提示）。`:`Motion not played (${mo.cuesNotPlayed} cue${mo.cuesNotPlayed===1?'':'s'}).`)}</li>`:''}</ul>`:''}${r.notes.map(n=>`<h3>${x(n.title)}</h3><ul>${n.lines.map(l=>`<li>${x(l)}</li>`).join('')}</ul>`).join('')}${r.sources.length?`<h3>${zh?'来源':'Sources'}</h3><ul>${r.sources.map(v=>`<li>${x(v.title)} — <a href="${x(v.url)}">${x(v.url)}</a></li>`).join('')}</ul>`:''}</section>`};
+  return {sceneId:s.id,html:`<section class="dw-notes" aria-label="${x((zh?'注释 ':'Notes ')+heading)}"><h2>${x((zh?'注释 · ':'Notes · ')+heading)}</h2>${it.length||mo.cuesNotPlayed?`<h3>${zh?'静态呈现':'Static delivery'}</h3><ul>${it.map(v=>`<li>${x(v.kind)}: ${x(v.delivery)}</li>`).join('')}${mo.cuesNotPlayed?`<li>${x(zh?`动效未播放（${mo.cuesNotPlayed} 个提示）。`:`Motion not played (${mo.cuesNotPlayed} cue${mo.cuesNotPlayed===1?'':'s'}).`)}</li>`:''}</ul>`:''}${r.notes.map(n=>`<h3>${x(n.title)}</h3><ul>${n.lines.map(l=>`<li>${x(l)}</li>`).join('')}</ul>`).join('')}${r.sources.length?`<h3>${zh?'来源':'Sources'}</h3><ul>${r.sources.map(v=>`<li>${s.references?`[${v.marker}] ${v.citations.length?x(v.citations.join(' / '))+' · ':''}`:''}${x(v.title)} — <a href="${x(v.url)}">${x(v.url)}</a></li>`).join('')}</ul>`:''}</section>`};
  }).filter(Boolean);
  const csp="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; script-src 'none'";
  const doc=`<!doctype html><html lang="${x(document.locale)}"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>${x(document.title)}</title><style>${css}${PRINT_CSS}</style></head><body data-render-hash="${html.renderHash}">${pages.map(page).join('')}${appendix.map(a=>a.html).join('')}</body></html>`;

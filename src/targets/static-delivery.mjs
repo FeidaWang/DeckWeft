@@ -8,6 +8,7 @@ import {selectedDataset} from '../motion/timeline.mjs';
 import {staticStatePosition} from '../design/scene-semantics.mjs';
 import {SERIES_FOCUS_KINDS} from '../components/charts/semantics.mjs';
 import {chartFacts,chartText} from '../components/charts/model.mjs';
+import {referenceIndex} from '../references/presentation.mjs';
 
 /** The handoff's static delivery rules and where each applies in the v3 vocabulary. */
 export const STATIC_DELIVERY_RULES=[
@@ -71,7 +72,7 @@ export function stopMotion(plan){
  * appendix (PDF), with its text here.
  */
 export function revealRequired(document,plan,frozen){
- const blocks=new Map(document.blocks.map(b=>[b.id,b])),zh=document.locale==='zh-CN',t=chartText(document.locale);
+ const blocks=new Map(document.blocks.map(b=>[b.id,b])),zh=document.locale==='zh-CN',t=chartText(document.locale),markers=referenceIndex(document,plan);
  return plan.scenes.map((scene,i)=>{
   const sourceIds=new Set(),notes=[];
   for(const id of scene.blockIds){const b=blocks.get(id);for(const s of [...(b.sourceIds||[]),...(b.sourceId?[b.sourceId]:[])])sourceIds.add(s);
@@ -86,7 +87,8 @@ export function revealRequired(document,plan,frozen){
   if(scene.disclosure)notes.push({kind:'disclosure',title:zh?'更多细节（网页中折叠）':'More detail (closed on the web page)',lines:scene.blockIds.filter(id=>scene.disclosure.blockIds.includes(id)).map(id=>blocks.get(id)).flatMap(b=>b.type==='list'?b.items:b.text.split('\n'))});
   if(steps.length)notes.push({kind:'explanations',title:zh?'全部讲解（按提示顺序）':'All authored explanations, in cue order',lines:steps});
   for(const it of frozen[i].interactions)if(it.kind==='image-compare'&&it.state&&it.state.tabId!=='both'){const hidden=blocks.get(it.state.tabId==='first'?(scene.interactions.find(s=>s.id===it.id).otherBlockId):it.blockId);notes.push({blockId:hidden.id,kind:'hidden-image',title:zh?'未在页面上的原始图片':'Original image not on the page',lines:[hidden.alt]});}
-  const sources=[...sourceIds].map(id=>document.sources.find(s=>s.id===id)).filter(Boolean).map(s=>({id:s.id,title:s.title,url:s.url}));
+  // CINE-002: the display marker of each source (deck order of first appearance) and the exact citation texts of this page that cite it.
+  const sources=[...sourceIds].map(id=>document.sources.find(s=>s.id===id)).filter(Boolean).map(s=>({id:s.id,title:s.title,url:s.url,marker:markers.get(s.id)??null,citations:scene.blockIds.map(id=>blocks.get(id)).filter(b=>b.type==='citation'&&b.sourceId===s.id).map(b=>b.text)}));
   return {sceneId:scene.id,sources,notes};
  });
 }

@@ -10,7 +10,7 @@ import {TARGETS,PT_PER_PX,typographyRole,typographyReport,targetFit} from '../sr
 import {sceneBands} from '../src/targets/pptx/paginate.mjs';
 import {syntheticLayout} from './export-layout.mjs';
 import {cineProject,CINE_SCENES} from './cine-corpus.mjs';
-import {candidateFit,CANDIDATE_HEIGHT} from '../src/design/rhythm.mjs';
+import {candidateFit,CANDIDATE_HEIGHT,moveScene} from '../src/design/rhythm.mjs';
 import {splitScene} from '../src/design/split.mjs';
 import {planAuthorAction,AUTHOR_ACTIONS} from '../src/workbench/author-actions.mjs';
 import {readFile} from 'node:fs/promises';
@@ -309,4 +309,58 @@ test('CINE-002 web: a legacy deck renders the same markup except the renderer ve
  const p=await cineProject('en',home,{declared:[]}),out=html(p,await visualAssetResources(p,home));
  for(const m of out.sceneMarkup){assert.equal(m.includes('source-strip'),false);assert.equal(m.includes('reference-panel'),false);assert.equal(m.includes('source-marker'),false);assert.equal(m.includes('data-reference'),false);}
  assert.equal(out.scenes.some(s=>s.regions.some(r=>'reference' in r)),false);
+});
+
+// ---- Task 6: CINE-002 markers in PowerPoint notes and the PDF appendix; reorder stability ----
+const evSources=p=>p.document.sources.filter(s=>s.id.startsWith('src-ev-'));
+test('CINE-002 exports: PowerPoint notes and the PDF appendix of the evidence page list all 12 markers with exact text, title and URL; the PDF page text contains every citation text',async()=>{
+ const p=await cineProject('en',home,{declared:['references']}),resources=await visualAssetResources(p,home);
+ const pptx=paged(p,'pptx',{resources}).out,pdf=paged(p,'pdf',{resources}).out;
+ const reveal=pptx.report.delivery.reveal.find(r=>r.sceneId==='evidence');
+ assert.deepEqual(reveal.sources.map(s=>[s.id,s.marker,s.citations]),evSources(p).map((s,i)=>[s.id,5+i,[`Illustrative source ${String(i+1).padStart(2,'0')}`]]));
+ const notes=pptx.run.output.slides.filter(s=>s.sceneId==='evidence').flatMap(s=>s.notes);
+ for(const [i,src] of evSources(p).entries())assert.ok(notes.includes(`· [${5+i}] Illustrative source ${String(i+1).padStart(2,'0')} — ${src.title} — ${src.url}`),src.id);
+ const appendix=element(pdf.run.output.html,/<section class="dw-notes" aria-label="Notes 06 · evidence"/);assert.ok(appendix);
+ for(const [i,src] of evSources(p).entries())assert.ok(appendix.includes(`<li>[${5+i}] Illustrative source ${String(i+1).padStart(2,'0')} · ${src.title} — <a href="${src.url}">${src.url}</a></li>`),src.id);
+ const pages=[...pdf.run.output.html.matchAll(/<div class="dw-page"[\s\S]*?(?=<div class="dw-page"|<section class="dw-notes")/g)].map(m=>m[0]).filter(h=>h.includes('id="evidence"'));
+ assert.ok(pages.length>=1);const text=textOf(pages.join(''));for(let i=1;i<=12;i++)assert.ok(text.includes(`Illustrative source ${String(i).padStart(2,'0')}`));
+ assert.equal(pdf.report.check.status,'pass');assert.equal(pptx.report.check.sceneCheck.status,'pass');
+ // A legacy deck keeps today's note and appendix lines: no marker words are added to a page without a references field.
+ const legacy=await cineProject('en',home,{declared:[]}),lp=paged(legacy,'pptx',{resources}).out,ln=lp.run.output.slides.filter(s=>s.sceneId==='evidence').flatMap(s=>s.notes);
+ assert.ok(ln.includes(`· ${evSources(p)[0].title} — ${evSources(p)[0].url}`));assert.equal(ln.some(l=>/^· \[\d+\]/.test(l)),false);
+ const la=element(paged(legacy,'pdf',{resources}).out.run.output.html,/<section class="dw-notes" aria-label="Notes 06 · evidence"/);assert.equal(/<li>\[\d+\]/.test(la),false);
+ assert.equal(lp.report.delivery.reveal.find(r=>r.sceneId==='evidence').sources[0].marker,5,'the reveal data still carries the marker');
+});
+test('CINE-002 reorder: after moveScene(evidence ↑) markers renumber by deck order, source ids and claim bindings are unchanged, and a reload of the saved project reproduces the same strip',async()=>{
+ const p=await cineProject('en',home,{declared:['references']}),before=sceneReferences(p.document,p.plan,sceneOf(p,'evidence'));
+ const moved=moveScene(p,'evidence',-1);assert.deepEqual(moved.plan.scenes.map(s=>s.id).slice(3,6),['detail','evidence','mechanism']);
+ const index=referenceIndex(moved.document,moved.plan),after=sceneReferences(moved.document,moved.plan,sceneOf(moved,'evidence'));
+ assert.deepEqual(after.strip.map(s=>s.marker),Array.from({length:12},(_,i)=>4+i));assert.equal(index.get('src-mechanism'),16);assert.equal(index.get('src-interview'),17);
+ assert.deepEqual(after.strip.map(s=>[s.blockId,s.sourceId,s.text]),before.strip.map(s=>[s.blockId,s.sourceId,s.text]));
+ assert.deepEqual(after.claims.map(c=>c.blockId),before.claims.map(c=>c.blockId));assert.deepEqual(after.claims.map(c=>c.markers.map(n=>n+1)),before.claims.map(c=>c.markers),'every marker of the moved page is one lower; bindings are the same');
+ assert.deepEqual(moved.document.sources,p.document.sources);assert.deepEqual(moved.document.blocks,p.document.blocks);
+ const reloaded=createVisualProject(JSON.parse(JSON.stringify(moved.document)),JSON.parse(JSON.stringify(moved.plan)),{assets:moved.assets,id:moved.id});
+ assert.deepEqual(sceneReferences(reloaded.document,reloaded.plan,sceneOf(reloaded,'evidence')),after);
+ const resources=await visualAssetResources(moved,home),out=html(moved,resources),strip=element(sectionOf(out,'evidence'),/<footer class="source-strip"/);
+ assert.deepEqual(regionsOf(strip).map(r=>r.text),after.strip.map(s=>`[${s.marker}] ${s.text}`));
+ const mech=regionsOf(element(sectionOf(out,'mechanism'),/<div class="regions">/));assert.equal(mech.some(r=>r.html.includes('source-marker')),false,'a page without a references field carries no markers after the move');
+});
+test('CINE-002 review focus: a compact page whose only citation attributes a quotation exports the attribution with the quote, not in the strip',async()=>{
+ const p=await cineProject('en',home,{declared:['references']}),resources=await visualAssetResources(p,home),pptx=paged(p,'pptx',{resources}).out,pdf=paged(p,'pdf',{resources}).out;
+ const slide=pptx.run.output.slides.find(s=>s.sceneId==='quote'),attrib=slide.elements.filter(e=>e.blockId==='q-attrib'&&e.kind==='text'),quote=slide.elements.find(e=>e.blockId==='q-quote');
+ assert.equal(attrib.length,1);assert.equal(attrib[0].text,'Reviewer, illustrative interview');assert.ok(attrib[0].box.y>=quote.box.y+quote.box.height-1,'the attribution sits under its quotation');
+ const reveal=pptx.report.delivery.reveal.find(r=>r.sceneId==='quote');assert.deepEqual(reveal.sources.map(s=>[s.id,s.marker,s.citations]),[['src-interview',17,['Reviewer, illustrative interview']]]);
+ assert.ok(slide.notes.includes(`· [17] Reviewer, illustrative interview — ${p.document.sources.find(s=>s.id==='src-interview').title} — https://example.org/deckweft/cine/interview`));
+ const page=[...pdf.run.output.html.matchAll(/<div class="dw-page"[\s\S]*?(?=<div class="dw-page"|<section class="dw-notes")/g)].map(m=>m[0]).find(h=>h.includes('id="quote"'));
+ assert.equal(page.includes('source-strip'),false);const regs=regionsOf(element(page,/<div class="regions">/));assert.equal(regs.findIndex(r=>r.blockId==='q-attrib'),regs.findIndex(r=>r.blockId==='q-quote')+1);
+});
+test('CINE-001 regression: a paged image-first page whose heading is not in the first band repeats the heading on that band too, so every part has a slide title',async()=>{
+ const p=await cineProject('en',home,{declared:[]}),resources=await visualAssetResources(p,home),{out,layout}=paged(p,'pptx',{resources});
+ const parts=out.run.output.slides.filter(s=>s.sceneId==='detail');assert.ok(parts.length>=2,'the synthetic image-left page is paged');
+ const k=p.plan.scenes.findIndex(s=>s.id==='detail'),title=layout.scenes[k].regions.find(r=>r.blockId==='det-title').texts[0];
+ assert.ok(title.box.y>parts[0].elements.filter(e=>e.kind==='picture')[0].box.y,'the heading follows the first image in the measured order');
+ for(const part of parts){const titles=part.elements.filter(e=>e.kind==='title');assert.equal(titles.length,1,`part ${part.part} has one title`);assert.ok(titles[0].text.startsWith('Closer: the seam and the latch'));}
+ assert.equal(out.report.check.accessibility.status,'pass');
+ const pdf=paged(p,'pdf',{resources}).out,pages=pdf.run.output.pages.filter(x=>x.sceneId==='detail');assert.equal(pages.length,parts.length);
+ assert.ok(pages[0].strip>0,'the first PDF page reserves the strip because its band lacks the heading');
 });

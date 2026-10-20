@@ -12,7 +12,7 @@ import {pptxChartPlan,layoutReceipts,PPTX_IMAGE_TYPES} from './fallbacks.mjs';
 import {sceneFrame,esc,solid,paragraph,textBody,textShape,presetShape,pathShape,gradFill,picture,connector,chartFrame,tableFrame,ALIGN,typefaces} from './ooxml.mjs';
 import {chartXML,workbook} from './chart.mjs';
 import {packagePPTX} from './package.mjs';
-import {sceneBands,bandLayout} from './paginate.mjs';
+import {sceneBands,bandLayout,bandStrip} from './paginate.mjs';
 import {contrast} from './audit.mjs';
 import {createHash} from 'node:crypto';
 
@@ -53,7 +53,7 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
   const paged=paginate==='none'?{bands:null,reason:'off'}:sceneBands(whole,blocks,{titleBlockId:titleBlock,strip});
   const bands=paged.bands||[null],parts=bands.length;if(parts>1)pagination.push({sceneId:scene.id,parts,reason:paged.reason});
   bands.forEach((band,part)=>{
-  const m=band?bandLayout(whole,band,{strip:part?strip:0,first:part===0}):whole,f=sceneFrame(m.bounds),shapes=[],rels=[],links=Object.create(null),notes=[],elements=[];
+  const stripHere=bandStrip(whole,band,{titleBlockId:titleBlock,strip}),m=band?bandLayout(whole,band,{strip:stripHere,first:part===0}):whole,f=sceneFrame(m.bounds),shapes=[],rels=[],links=Object.create(null),notes=[],elements=[];
   let nextId=2,relId=3;const id=()=>nextId++,rel=(type,target,external)=>{const r='rId'+(relId++);rels.push([r,type,target,external]);return r;};
   const record=(e)=>{elements.push(e);return e;};
   const push=(xml,e)=>{if(!xml)return;shapes.push(xml);record(e);};
@@ -200,8 +200,9 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
   for(const d of m.decor){if(d.unsupported)continue;const commands=d.clip?clipPath(d.commands,d.clip):d.commands,name=`decor/${d.id||elements.length+1}`;
    push(pathShape({id:nextId,name,f,commands,fill:d.fill?.gradient?null:d.fill,gradient:d.fill?.gradient?{...d.fill.gradient,alpha:d.fill.alpha}:null,stroke:null,decorative:true}),{shapeId:id(),name,blockId:null,kind:'shape',decorative:true,box:d.box});}
   decorations(m.chrome.boxes,{blockId:null,prefix:'chrome'});textBoxes(m.chrome.texts,{blockId:null,decorative:true,prefix:'chrome'});
-  // A continuation slide repeats the heading in the reserved strip above its band, unless the heading itself lies in this band.
-  if(part>0&&!m.regions.find(r=>r.blockId===titleBlock)?.texts.length){const lh=headingStyle.lineHeight||headingStyle.fontSize*1.2,pad=Math.max(0,Math.min(...whole.regions.map(r=>r.bounds.x))-whole.bounds.x)||48,tb={x:whole.bounds.x+pad,y:m.bounds.y+12,width:whole.bounds.width-2*pad,height:lh},tp={box:tb,content:{...tb},lines:1,style:{...headingStyle,align:'start'},runs:[{text:`${title} (${part+1}/${parts})`,style:headingStyle}]};textBoxes([tp],{blockId:titleBlock||null,titlePart:tp,prefix:titleBlock||'continuation'});}
+  // A band without the heading's text repeats the heading in the strip above it: every continuation slide, and a first slide of an image-first page (CINE-001).
+  // The repeat is named under `continuation/`, not the heading's block id, so the audit judges the reading order by the heading's own place.
+  if(band&&stripHere&&!m.regions.find(r=>r.blockId===titleBlock)?.texts.length){const lh=headingStyle.lineHeight||headingStyle.fontSize*1.2,pad=Math.max(0,Math.min(...whole.regions.map(r=>r.bounds.x))-whole.bounds.x)||48,tb={x:whole.bounds.x+pad,y:m.bounds.y+12,width:whole.bounds.width-2*pad,height:lh},tp={box:tb,content:{...tb},lines:1,style:{...headingStyle,align:'start'},runs:[{text:`${title} (${part+1}/${parts})`,style:headingStyle}]};textBoxes([tp],{blockId:titleBlock||null,titlePart:tp,prefix:'continuation'});}
   for(const blockId of order){
    const region=m.regions.find(r=>r.blockId===blockId),block=blocks.get(blockId);if(!region)continue;
    decorations(region.boxes,{blockId,prefix:blockId});
@@ -234,7 +235,8 @@ export function compilePPTX({document,plan,scenes,layout,delivery,resources={},r
   for(const it of delivery.frozen[index].interactions)notes.push(`${it.kind}: ${it.delivery}`);
   if(mo.cuesNotPlayed)notes.push(zh?`动效未播放（${mo.cuesNotPlayed} 个提示）；本页为静态状态。`:`Motion is not played (${mo.cuesNotPlayed} cue${mo.cuesNotPlayed===1?'':'s'}); this slide shows the static state.`);
   for(const n of rv.notes){notes.push(`${n.title}${zh?'：':':'}`);for(const l of n.lines)notes.push('· '+l);}
-  if(rv.sources.length){notes.push(zh?'来源：':'Sources:');for(const s of rv.sources)notes.push(`· ${s.title} — ${s.url}`);}
+  // CINE-002: a page that declares a reference mode lists its sources by display marker with the exact citation text; a legacy page keeps today's lines.
+  if(rv.sources.length){notes.push(zh?'来源：':'Sources:');for(const s of rv.sources)notes.push(scene.references?`· [${s.marker}] ${s.citations.length?s.citations.join(' / ')+' — ':''}${s.title} — ${s.url}`:`· ${s.title} — ${s.url}`);}
   slides.push({name:parts>1?`${title} (${part+1}/${parts})`:title,background:solid(m.background||{hex:'FFFFFF',alpha:1}),shapes,rels,notes});
   records.push({sceneId:scene.id,title,part:part+1,parts,scale:Math.round(f.ratio*1000)/1000,elements,notes});
   });

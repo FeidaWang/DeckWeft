@@ -49,10 +49,14 @@ export function sceneBands(m,blocks,{titleBlockId=null,strip=0,minimums=TYPOGRAP
  // Bands follow the content: each starts just above the next unplaced element. The cut is the line no element crosses that
  // keeps the remaining bands even, preferring a line between blocks over one inside a block.
  const spansBlock=c=>els.some(e=>e.blockId&&e.box.y+e.box.height<=c+0.5&&els.some(o=>o.blockId===e.blockId&&o.box.y>=c-0.5));
+ // The first band keeps the full height only when the heading's text lands in it; an image-first page (CINE-001) whose heading
+ // follows the picture reserves the strip on its first band too, so every part can carry the title.
+ const titleCentre=titleCentreOf(m,titleBlockId);
  const bands=[];let cursor=top;
  for(let guard=0;guard<200;guard++){
   const pending=els.filter(e=>e.box.y+e.box.height>cursor+0.5);if(!pending.length)break;
-  const start=Math.max(cursor,Math.min(...pending.map(e=>e.box.y))-pad),room=bands.length?H-strip:H,limit=start+room;
+  const start0=Math.max(cursor,Math.min(...pending.map(e=>e.box.y))-pad),titleInFirst=titleCentre!==null&&titleCentre>=start0-0.5&&titleCentre<start0+H-strip;
+  const start=start0,room=bands.length||!titleInFirst?H-strip:H,limit=start+room;
   if(lastEnd+pad<=limit+0.5){bands.push({y:start,height:Math.min(bottom,lastEnd+pad)-start});break;}
   const remaining=lastEnd+pad-start,target=start+remaining/Math.ceil(remaining/room);
   const valid=ends.filter(c=>c>start+1&&c<=limit&&!crosses(c)),nearest=list=>list.length?list.reduce((a,c)=>Math.abs(c-target)<Math.abs(a-target)?c:a):null;
@@ -65,6 +69,13 @@ export function sceneBands(m,blocks,{titleBlockId=null,strip=0,minimums=TYPOGRAP
  if(bands.length>1)return {bands,reason:'paged',budget:H};
  if(bands.length===1&&bands[0].height<b.height-1)return {bands,reason:'trimmed',budget:H};
  return {bands:null,reason:'fits'};
+}
+/** The vertical centre of the heading's first measured text, or null when the scene has no measured heading text. */
+export function titleCentreOf(m,titleBlockId){const t=titleBlockId?m.regions.find(r=>r.blockId===titleBlockId)?.texts?.[0]:null;return t?centre(t.box):null;}
+/** The strip a band needs above it: the reserved height when the heading's text does not lie in the band, else 0. */
+export function bandStrip(m,band,{titleBlockId=null,strip=0}={}){
+ if(!band||!strip)return 0;const c=titleCentreOf(m,titleBlockId);
+ return c!==null&&c>=band.y-0.5&&c<band.y+band.height+0.5?0:strip;
 }
 /** The measured layout of one band: the same scene with only the elements whose centre lies in the band, decor clipped to it. */
 export function bandLayout(m,band,{strip=0,first=true}={}){
