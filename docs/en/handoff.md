@@ -37,7 +37,7 @@ S9b (blueprint A, Explain → Diagram → Explore, DWD-210) is **done** as of 20
 - a Studio action through the normal edit path;
 - a page-count plan for the Codex draft path (fake-host tests and one live Codex CLI run: no padding).
 
-Renderer `visual-art-direction.12`, player `semantic-player.6`. The six answers and the decisions are in [alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19); see also the [evidence](../evidence/s9b-blueprint-a/review.md). S10 followed (above).
+Renderer `visual-art-direction.12`, player unchanged (`semantic-player.7` since CINE batch 2). The six answers and the decisions are in [alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19); see also the [evidence](../evidence/s9b-blueprint-a/review.md). S10 followed (above).
 
 S9a (author controls, DWD-200) is **done** as of 2026-10-19 and merged into `main`. It was built on branch `claude/design-handoff-alignment-review-978a91`, stacked on the S1–S8 branch `claude/design-handoff-alignment-19703c`; both branches are deleted. VIS-013 stays implemented-local and VIS-015 stays partial. What S9a adds:
 
@@ -72,7 +72,7 @@ S6 (VIS-014 visual release gate) is **partial** as of 2026-10-19 and merged into
 - the layered chart-focus rule
 - Claude deferred
 
-Run the gate with `node scripts/release-gate.mjs` ([manual](../visual-acceptance/README.md)). Embedded player changes still bump `PLAYER_VERSION` (now `semantic-player.6`) and re-record the baseline in their own commit.
+Run the gate with `node scripts/release-gate.mjs` ([manual](../visual-acceptance/README.md)). Embedded player changes still bump `PLAYER_VERSION` (now `semantic-player.7`) and re-record the baseline in their own commit.
 
 Open after S6: missing-glyph detection, the 390 px heatmap scroll, CJK heading breaks, payload size, and author calibration of the [scored review](../visual-acceptance/review.md) (74–77, below 80). S7 followed (above).
 

@@ -37,7 +37,7 @@
 - 经正常编辑路径的 Studio 操作；
 - Codex 草稿路径的页数规划（模拟宿主测试，加一次真实 Codex CLI 运行：没有填充）。
 
-渲染器 `visual-art-direction.12`，播放器 `semantic-player.6`。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。S10 随后完成（见上）。
+渲染器 `visual-art-direction.12`，播放器未变（CINE 批次 2 起为 `semantic-player.7`）。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。S10 随后完成（见上）。
 
 截至 2026-10-19，S9a（作者控制，DWD-200）已完成并合并进 `main`。它建在分支 `claude/design-handoff-alignment-review-978a91` 上，叠加在 S1–S8 分支 `claude/design-handoff-alignment-19703c` 之上；两个分支都已删除。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。S9a 新增：
 
@@ -72,7 +72,7 @@ S8（T01–T03，VIS-015）已完成并合并进 `main`，状态为 partial（[�
 - 分层图表聚焦规则
 - Claude 继续 deferred
 
-用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.6`），并在单独的提交中重录基线。
+用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.7`），并在单独的提交中重录基线。
 
 S6 之后仍未完成：缺字形检测、390 px 热力图横向滚动、中文标题在词中断行、页面体积，以及作者对[评分审阅](../visual-acceptance/review.md)（74–77，低于 80）的校准。随后进行了 S7（见上文）。
 
