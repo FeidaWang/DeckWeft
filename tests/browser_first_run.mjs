@@ -19,7 +19,7 @@ async function fresh(){const home=await realpath(await mkdtemp(path.join(os.tmpd
  const context=await browser.newContext({viewport:{width:1440,height:900},deviceScaleFactor:1});
  await context.route('**/*',async route=>{const url=route.request().url();if(url.startsWith(app.url+'/')||url.startsWith('data:')||url.startsWith('blob:'))await route.continue();else{report.externalRequests.push(url);await route.abort();}});
  const page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));await page.goto(app.url+'/');await page.locator('#firstRun').waitFor();return page;}
-const ready=page=>page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});
+const ready=page=>page.waitForFunction(()=>(()=>{const e=document.querySelector('#exportHTML');return !!e&&!e.disabled&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});
 const step=text=>{report.checks.push(text);console.log('PASS:',text);};
 try{
  // 1. Paste three blank-line-separated paragraphs and Arrange: three pages, measured choices, the form is gone.
@@ -32,17 +32,17 @@ try{
  await page.locator('#firstRun textarea').fill('Why we are here\nThe plan in one sentence.\n\nWhat changes\nThree steps, one owner each.\n\n\nWhat we need\nA decision by Friday.');
  const started=Date.now();await page.locator('#firstRun button[type=submit]').click();
  await page.waitForFunction(()=>document.querySelectorAll('#slideList .thumbnail').length===3,{},{timeout:10000});await ready(page);const seconds=(Date.now()-started)/1000;
- assert.equal(await page.locator('#firstRun').count(),0);assert.ok(await page.locator('#canvas svg').isVisible());assert.ok(await page.locator('#candidates .candidate').count()>=3);
- assert.equal(await page.locator('#slideTitle').inputValue(),'Why we are here');
+ assert.equal(await page.locator('#firstRun').count(),0);assert.ok(await page.locator('#preview').isVisible());await page.waitForFunction(()=>document.querySelectorAll('#candidates .candidate').length>=3,{},{timeout:20000}); // the three choices are compared after the page is measured
+ assert.equal(await page.locator('#fields textarea').first().inputValue(),'Why we are here');
  step(`three pasted paragraphs became 3 pages with measured choices in ${seconds.toFixed(2)} s; the form is removed`);
  await page.context().close();
- // 2. The example link loads the welcome deck in the interface language.
+ // 2. The example link loads the visual example deck in the interface language (the empty library opens the visual kind).
  page=await fresh();await page.locator('#uiLanguage').dispatchEvent('click');
  assert.equal((await page.locator('#firstRun button[type=submit]').textContent()).trim(),'排好');
  assert.equal(await page.locator('#firstRun textarea').getAttribute('placeholder'),'把你要讲的话贴在这里。每一页之间空一行。');
- await page.locator('#firstRun [data-example]').click();await page.waitForFunction(()=>document.querySelectorAll('#slideList .thumbnail').length===6,{},{timeout:10000});await ready(page);
- assert.ok((await page.locator('#slideTitle').inputValue()).includes('好想法'));assert.equal(await page.locator('#firstRun').count(),0);
- step('Chinese interface: 排好, Chinese placeholder, and 先看个例子 loads welcome.zh-CN.deck.json');
+ await page.locator('#firstRun [data-example]').click();await page.waitForFunction(()=>document.querySelectorAll('#slideList .thumbnail').length===4,{},{timeout:10000});await ready(page);
+ assert.ok(/[\u4e00-\u9fff]/.test(await page.locator('#fields textarea').first().inputValue()));assert.equal(await page.locator('#firstRun').count(),0);
+ step('Chinese interface: 排好, Chinese placeholder, and 先看个例子 loads the Chinese visual example');
  await page.context().close();
  // 3. A .md file dropped on the stage goes through the existing file handler.
  page=await fresh();
@@ -52,7 +52,7 @@ try{
  assert.ok(await page.locator('#stage').evaluate(e=>e.classList.contains('drop-ready')&&getComputedStyle(e).outlineStyle==='dashed'&&getComputedStyle(e).outlineWidth==='2px'&&getComputedStyle(e).outlineColor==='rgb(255, 212, 0)'),'2 px yellow dashed outline while dragging over');
  await page.locator('#stage').dispatchEvent('drop',{dataTransfer:transfer});
  await page.waitForFunction(()=>document.querySelectorAll('#slideList .thumbnail').length===2,{},{timeout:10000});await ready(page);
- assert.equal(await page.locator('#slideTitle').inputValue(),'Dropped first page');assert.ok(!(await page.locator('#stage').evaluate(e=>e.classList.contains('drop-ready'))));
+ assert.ok((await page.locator('#fields textarea').first().inputValue()).includes('Dropped first page'));assert.ok(!(await page.locator('#stage').evaluate(e=>e.classList.contains('drop-ready'))));
  step('a dropped .md file starts a two-page deck through the file handler; the dashed outline clears');
  await page.context().close();
  assert.deepEqual(report.errors,[]);assert.deepEqual(report.externalRequests,[]);report.ok=true;console.log(`First run passed: ${report.checks.length} checks.`);

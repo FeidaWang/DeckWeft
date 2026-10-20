@@ -328,6 +328,11 @@ function drawAssetFields(){const p=state.project,s=scene(),images=p.document.blo
 async function mutateAsset(route,data){const counter=state.counter,sceneId=state.active,project=state.project;state.measured=false;state.render=null;status();try{const r=await json('/api/visual/'+route,{project,sceneId,blockId:currentImage()?.id,...data});if(counter!==state.counter||sceneId!==state.active)throw Error(t('visual.main.thePageOrEditsChangedRetry'));if(!changed(()=>state.project=r.project,{fields:true}))schedulePreview();return true;}catch(e){error(e);schedulePreview();return false;}}
 // An image dropped on the canvas goes to the import dialog for this page's image; a deck file is imported as a copy.
 function dropFile(file){
+  // A text or Markdown file starts a new deck, like pasted words (the first-run box and the classic page do the same).
+  if(/\.(md|txt)$/i.test(file.name)){
+    if(file.size>1_900_000){message(t('classic.app.useAFileSmallerThan1'),true);return true;}
+    leave().then(ok=>ok&&file.text()).then(text=>text&&firstRun(text.replace(/\r\n?/g,'\n').trim())).then(failed=>{if(failed)message(failed,true);});return true;
+  }
   if(/\.json$/i.test(file.name)){const files=new DataTransfer();files.items.add(file);$('#projectFile').files=files.files;$('#projectFile').dispatchEvent(new Event('change'));return true;}
   if(!/^image\/(png|jpeg|webp)$/.test(file.type)||!state.project)return false;
   if($('#sourceImport').disabled){message(t('visual.look.noImageSlot'),true);return true;}
@@ -355,8 +360,10 @@ function toggleMotion(){
 }
 
 // ---- The first run: pasted words become a deck here, without a model; the three directions follow ----
+// A blank line starts a new page, as the paste box says; the arranger itself splits pages on --- lines.
+const pagesOf=text=>text.replace(/\n[ \t]*\n\s*/g,'\n---\n');
 async function firstRun(text){
-  try{const r=await json('/api/visual/directions',{answers:{topic:text,detail:state.detail},locale:state.ui});const {project}=await json('/api/visual/import',{project:r.base});activate(project);await libraries();author.showDirections().catch(()=>{});return '';}
+  try{const r=await json('/api/visual/directions',{answers:{topic:pagesOf(text),detail:state.detail},locale:state.ui});const {project}=await json('/api/visual/import',{project:r.base});activate(project);await libraries();author.showDirections().catch(()=>{});return '';}
   catch(e){return e.message;}
 }
 async function example(){try{activate((await json('/api/visual/demo',{locale:state.ui})).project);await libraries();return '';}catch(e){return e.message;}}

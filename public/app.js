@@ -24,8 +24,9 @@ async function deckKind(id){
     const [legacy,visual]=await Promise.all([fetch('/api/projects',{headers}),fetch('/api/visual/projects',{headers})]).then(rs=>Promise.all(rs.map(r=>r.ok?r.json():{projects:[]})));
     const items=[...(legacy.projects||[]).map(p=>({...p,kind:'classic'})),...(visual.projects||[]).map(p=>({...p,kind:'visual'}))].sort((a,b)=>(b.updatedAt||'').localeCompare(a.updatedAt||''));
     const found=items.find(p=>p.id===id&&!p.unreadable)||items.find(p=>!p.unreadable);
-    return found?{kind:found.kind,id:found.id}:{kind:'classic',id:undefined};
-  }catch{return {kind:'classic',id:undefined};}
+    // An empty library opens the visual kind's first-run box: a new deck is a visual (v3) one.
+    return found?{kind:found.kind,id:found.id}:{kind:'visual',id:undefined};
+  }catch{return {kind:'visual',id:undefined};}
 }
 function setStylesheet(kind,on){
   const href=kinds[kind].css;if(!href)return;
