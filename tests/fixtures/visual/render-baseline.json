@@ -6,20 +6,20 @@
     "sha256": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc"
   },
   "entries": {
-    "wave-a.en.html": "759033e9ed54e4a3292983ad353fb8f906afe9b14135cdbcd8d16590c604366a",
+    "wave-a.en.html": "1fe7b9abee1d7ddf5f56989eca28555bdf45f1d505892e2e8a8a8dec852f5113",
     "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-    "wave-a.zh-CN.html": "d6a046dc94714c0450c029fb553f034a91923f40c21d4c3ac6cba85d49d73dfd",
+    "wave-a.zh-CN.html": "1047d31f6625cdd598132940b8cf5f871500d113942079b7cf4a96fd330dbb40",
     "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-    "visual-demo.en.html": "0de019a9c16896a253b803065c18c584bdcf861014613cdbf7913740004e43e5",
-    "visual-demo.zh-CN.html": "48bd5733de7f0553e250e97541ff5f038c1330efcd87ea315d19cc856e646053",
-    "component-demo.en.html": "d4c692c574319d09f59f9dacd619e5685dfb06cccde991a1ef3e067c0dbbace2",
-    "component-demo.zh-CN.html": "74cbfdc0bb98ca3a77d3b7c8993637fc3d56666b9733223f4bb211755d7fb9e0",
-    "interaction-demo.en.html": "7ea25cfbedd103ccca910a61b626549e789b80e96cc44c5e29430f6af8978558",
-    "interaction-demo.zh-CN.html": "1782b8cbad0e8c91a320e506f9f4f77f990da66534b92e4ad6a8fe3e18cb7ad3",
-    "composition-demo.en.html": "603529457fd4746ef7394081c7c5b6beb7057adf8efbb21a2b4633ae40c286fb",
-    "composition-demo.zh-CN.html": "22aa1e878d041314d04013aad86736b72b0f257e6fb3c8a177bfd877fa8def4e",
-    "families.en.html": "c30e5ef82278f63f9fcf90b7c4c65803e66be2efb1f555eb5f5b466d4ef3c9e3",
-    "families.zh-CN.html": "a2926d01247735ddb6c9dd3cf92e1b0796f55eabebef7bf22baef85afe5edf04",
+    "visual-demo.en.html": "a8a38853f94221361ba3b3bb432a86e10c1ca35ccbc7836ed61b183018165860",
+    "visual-demo.zh-CN.html": "86a2732d3d378719639cb02783cceb8e02eea61c5dd8db728784b4e644237116",
+    "component-demo.en.html": "04f11f686517f89276bcb072a2f25829561f72099ab3fd033bd57260de00c14e",
+    "component-demo.zh-CN.html": "aaef28d3f3260586afed2e8845d71ae193c6a461f7bd545eb1000da855ceaa0f",
+    "interaction-demo.en.html": "827260681a0d3b834c63a3756ee9ac804e72070a98e6c3ff918d122a1ea05d7f",
+    "interaction-demo.zh-CN.html": "ece32dc1f4625c74fc66b0f4e28cd5a0be365c933b516df80e8ccb11611fd666",
+    "composition-demo.en.html": "9f840b2a9c734c49eda8648c5bdafa2ed1b0682b3e720eaed6a6ecee9376d994",
+    "composition-demo.zh-CN.html": "6926e36daa0560239f29c6c44d741f6431b9999b6c3db3664ddef25890b4718f",
+    "families.en.html": "5f1cb541bbff6039ccacdbbf18b2657537d5a6aa8bc82bd217d6a34e1fe2a50d",
+    "families.zh-CN.html": "ef436dac45368ee0cb654298ebdaab22280d995c819072d6ee1b7dcd88800053",
     "theme.cream-collage.en.default": "13606af1e69412b1ef7d8ccb28bc9f8fbf589428cc4230677a94e016048c726a",
     "theme.cream-collage.en.chapter": "c0dcfae4070a42477f4f6b846457501a8f3e3bc3ca1ebe85593c2165e3da9eb9",
     "theme.cream-collage.zh-CN.default": "c075e9c42a4d69de323645e3242773c5eea44d667f7c91403ae3eb27630ba029",
@@ -90,73 +90,73 @@
       "markup": "e5288e62fd0a33f6649b9df7d117dfa095a91073bd2249ab91ad2505bdf9d041",
       "data": "d7eb21c3534ab6b6c3b36a15ed5fb7bedaafbd7a5ef2fc55f22c5fd8079a15d1",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "wave-a.zh-CN.html": {
       "markup": "006715d6cf836db60f75effd8e71702f99c5e413f7f9fcfb9c898761a98f7381",
       "data": "dab714546da7d1751dec11d409d830e9cec6918992955dd30f36e1fec30f744c",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "visual-demo.en.html": {
       "markup": "0afa4c21c892da74210b954a3c0d511cd014033bf2129d94e2e4ea6f91697c0b",
       "data": "122f6b169c70c1bef4ac5db0c905badbee58ac90bbb1823ccc2cdc8ddadd6419",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "visual-demo.zh-CN.html": {
       "markup": "84a0a49c24c0ab27383585c47794ac8e4ae973cd27b5f428bab4eb3ed34ec016",
       "data": "e0aac96b2ac915e40dfe5371f322207b1a020b819b2a9782ad3bc063534d8245",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "component-demo.en.html": {
       "markup": "8e612e4898d708d00ebb5aad453e2c076739630f82aeb4276b6534d280373bf4",
       "data": "b5eb69de63f6d31aea9f858c9dcae492d596cb701fc74d79415fbd3e69894394",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "component-demo.zh-CN.html": {
       "markup": "6be4c904accc085ba2dfd10434d2431b89e85b99af1cee6ff36aa2b42fcebd65",
       "data": "f58aff60f9d494fda9a6bb8e04e77ec6b4d4b03bdf63998b39b61e9348b8559f",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "interaction-demo.en.html": {
       "markup": "08f387ae77406c1161352b537288271c521a259606bd70eb6ed2d6202afc19f6",
       "data": "78fda1fc13a296c0d608f850c15d465f18e540a1a6c7a1c495b1923184340c6e",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "interaction-demo.zh-CN.html": {
       "markup": "d1de63b056d69325efa0864c613474f8be8fd561a4e2e9207b309e6ec88e19bb",
       "data": "f99731756ea6241df62abddaa657ced61ce4246320dd53d3f620421a9eb0aca5",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "composition-demo.en.html": {
       "markup": "d85defeab2b704fb50970aaad095479cfd861c3b0ad920cf3e94d317e1a066bd",
       "data": "6c24595ade3cdfd1863cba36e3954dce883547de82ef9a347b2efea7ade84abb",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "composition-demo.zh-CN.html": {
       "markup": "d1ce5c4bd9307eaf4019a50e25fb4e7ddf628c2479e5af9a27ca18a56c3313d9",
       "data": "fb9bbee5d53414b80a40d06e289b3200f0b91927aec5ae1c192beced41a4e703",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "families.en.html": {
       "markup": "57bbc0d8ab06397c11c161636103b31638d74d1c3546e8d1f1b37b9c16124cde",
       "data": "2aeb9171e8b3f3536b3e80dd5a9d28e38007376ac38fddfbb3772b81bee01ad9",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     },
     "families.zh-CN.html": {
       "markup": "40338e9fe1a58559c0314c01b9c2745a238c6502c4899f3a107853b2a23fe3f5",
       "data": "ab9a5a3d6161d498b1b0cd22ec33aec3656c610e0c68e56db015c51d86a88063",
       "script": "55b03b94864e199cd9593e1657af10683d3f440bb52f8a1487f9e072862aa6fc",
-      "style": "5e55f512302466670b50e50623e3b055d390cdb7bfd56eb1963aeddb116ac8aa"
+      "style": "bbcfefc51fb375e992ec39ad8500de1774e4295370f70e83f360be2ad4ea1c4a"
     }
   },
   "playerHistory": [
@@ -190,6 +190,6 @@
     }
   ],
   "recordedAt": "2026-10-20",
-  "sourceCommit": "054530f7757aa089efe6438fe4da56b6bf8968cf",
-  "note": "player semantic-player.7"
+  "sourceCommit": "bd925e9f6eaef0ec37c004b95883b6e5bbb65603",
+  "note": "CINE-006 strip tokens kept at 12 px; one border per citation run scoped to the grid"
 }
