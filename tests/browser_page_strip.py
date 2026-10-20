@@ -9,7 +9,7 @@ def main():
   with studio_browser(args.mode,viewport={'width':1440,'height':900}) as h:
     p=h['page']
     # Function predicates: the studio CSP has no 'unsafe-eval'.
-    def ready():p.wait_for_function("() => document.querySelector('#fitStatus').textContent.includes('ready to export')",timeout=30000)
+    def ready():p.wait_for_function("(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})()",timeout=30000)
     def saved():p.wait_for_selector('#saveState[data-state="saved"]',state='attached',timeout=15000)
     def order():return p.eval_on_selector_all('#slideList .thumbnail','els=>els.map(e=>e.dataset.slide)')
     token=json.loads(api(h['server'],'/api/session')[1])['token']

@@ -9,7 +9,7 @@ def autosave(mode):
   with studio_browser(mode) as h:
     p=h['page']
     # Function predicates: the studio CSP has no 'unsafe-eval', and Playwright evals bare expression strings.
-    p.wait_for_function("() => document.querySelector('#fitStatus').textContent.includes('ready to export')",timeout=30000)
+    p.wait_for_function("(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})()",timeout=30000)
     token=json.loads(api(h['server'],'/api/session')[1])['token']
     def revision():return json.loads(api(h['server'],'/api/projects/'+p.locator('#projectPicker').input_value(),token=token)[1])['project']['revision']['number']
     before=revision();p.locator('#slideTitle').focus();p.keyboard.press('End')

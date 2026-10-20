@@ -19,7 +19,7 @@ async function fresh(){const home=await realpath(await mkdtemp(path.join(os.tmpd
  const context=await browser.newContext({viewport:{width:1440,height:900},deviceScaleFactor:1});
  await context.route('**/*',async route=>{const url=route.request().url();if(url.startsWith(app.url+'/')||url.startsWith('data:')||url.startsWith('blob:'))await route.continue();else{report.externalRequests.push(url);await route.abort();}});
  const page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));await page.goto(app.url+'/');await page.locator('#firstRun').waitFor();return page;}
-const ready=page=>page.waitForFunction(()=>/ready to export|可以导出/.test(document.querySelector('#fitStatus').textContent),{},{timeout:30000});
+const ready=page=>page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});
 const step=text=>{report.checks.push(text);console.log('PASS:',text);};
 try{
  // 1. Paste three blank-line-separated paragraphs and Arrange: three pages, measured choices, the form is gone.

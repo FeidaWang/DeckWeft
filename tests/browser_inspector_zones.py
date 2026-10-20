@@ -11,7 +11,7 @@ def main():
   with studio_browser(args.mode,viewport={'width':1440,'height':900}) as h:
     p=h['page']
     # Function predicates: the studio CSP has no 'unsafe-eval'.
-    def ready():p.wait_for_function("() => document.querySelector('#fitStatus').textContent.includes('ready to export') || document.querySelector('#fitStatus').textContent.includes('可以导出')",timeout=30000)
+    def ready():p.wait_for_function("(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})()",timeout=30000)
     def style(selector,prop):return p.eval_on_selector(selector,f'e=>getComputedStyle(e).{prop}')
     ready()
     zones=p.eval_on_selector_all('.inspector [data-zone]','els=>els.map(e=>[e.dataset.zone,e.querySelector("h2.zone-label").innerText.trim()])')

@@ -46,12 +46,12 @@ export class DialogManager {
     }
   }
   open(dialog,origin=this.document.activeElement){if(dialog.open)return;this.origins.set(dialog,origin);dialog.showModal();}
-  returnFocus(dialog){let el=this.origins.get(dialog);if(el?.isConnected&&!el.getClientRects().length){if(el.closest('.story-panel'))el=this.document.querySelector('#toggleStory');else if(el.closest('.inspector'))el=this.document.querySelector('#toggleInspector');}if(el?.isConnected&&!el.disabled&&el.getClientRects().length)el.focus({preventScroll:true});}
-  openDrawer(kind){
+  returnFocus(dialog){let el=this.origins.get(dialog);if(el?.isConnected&&!el.getClientRects().length){if(el.closest('#moreDialog'))el=this.document.querySelector('#openMore');else if(el.closest('.story-panel'))el=this.document.querySelector('#toggleStory');else if(el.closest('.inspector'))el=this.document.querySelector('#toggleInspector');}if(el?.isConnected&&!el.disabled&&el.getClientRects().length)el.focus({preventScroll:true});}
+  openDrawer(kind,origin){
     const dialog=this.document.querySelector('#drawerDialog');
     if(this.drawer){dialog.close();this.restoreDrawer();}
     const selector=kind==='story'?'.story-panel':'.inspector',panel=this.document.querySelector(selector);
-    const trigger=this.document.querySelector(kind==='story'?'#toggleStory':'#toggleInspector');
+    const trigger=origin||this.document.querySelector(kind==='story'?'#toggleStory':'#toggleInspector');
     const placeholder=this.document.createComment(`drawer-${kind}`);panel.replaceWith(placeholder);
     this.document.querySelector('#drawerContent').append(panel);this.drawer={kind,panel,placeholder,trigger};
     dialog.dataset.side=kind;trigger.setAttribute('aria-expanded','true');this.open(dialog,trigger);

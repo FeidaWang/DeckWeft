@@ -8,7 +8,7 @@ def main():
  with studio_browser(args.mode) as h:
   p=h['page']
   # Function predicates: the studio CSP has no 'unsafe-eval'.
-  def ready():p.wait_for_function("() => document.querySelector('#fitStatus').textContent.includes('ready to export') || document.querySelector('#fitStatus').textContent.includes('可以导出')",timeout=30000)
+  def ready():p.wait_for_function("(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})()",timeout=30000)
   ready();p.screenshot(path=str(out/'studio-desktop.png'))
   p.locator('#fileInput').set_input_files(ROOT/'examples/welcome.zh-CN.deck.json')
   p.wait_for_function("() => document.querySelector('#slideTitle').value.includes('好想法')");ready();p.locator('#uiLanguage').dispatch_event('click')  # hidden until the drawer (M5)

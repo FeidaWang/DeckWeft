@@ -41,7 +41,7 @@ const studios=[
  {name:'classic',projectRoute:id=>'/api/projects/'+id,listRoute:'/api/projects',
   async open(page){await page.goto(app.url+'/');await page.waitForFunction(()=>document.querySelector('#slideTitle')?.value);await settle(page);return (await call('/api/projects')).projects[0].id;},
   // Wait for the debounced preview so no background request reaches the restarted server first.
-  async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>document.querySelector('#fitStatus').textContent.includes('ready to export'),{},{timeout:30000});},
+  async edit(page,text){await page.locator('#slideTitle').fill(text);await page.waitForFunction(()=>(()=>{const c=document.querySelector('#canvas');return c.getAttribute('aria-busy')==='false'&&!c.classList.contains('stale')&&document.querySelector('#saveState').dataset.state!=='attention';})(),{},{timeout:30000});},
   value:page=>page.locator('#slideTitle').inputValue(),
   autosaves:true,
   async hold(page){let open;const gate=new Promise(resolve=>{open=resolve;});await page.unrouteAll({behavior:'wait'});await page.route(url=>url.pathname.startsWith('/api/projects/'),async route=>{if(route.request().method()==='PUT')await gate;await route.continue();});return open;},

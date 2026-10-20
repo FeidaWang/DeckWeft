@@ -155,3 +155,77 @@ button:active:not(:disabled){background:var(--panel)!important;color:var(--ink)!
 .first-run-error{margin:0;color:var(--danger);font-size:13px}.first-run-error:empty{display:none}
 /* Files dragged over the stage: a 2 px dashed yellow line (Words), no animation. */
 #stage.drop-ready{outline:2px dashed var(--words);outline-offset:-8px}
+/* Merged from classic-topbar (M4 candidates, M5 More drawer, M8 phone). */
+:root{--disabled:#9a988f;--ground:#f2f1ec}
+.visual-studio-link{white-space:normal;text-align:center}
+/* Layout candidates (design guide §8): a fit state instead of a score; equal cards, 1 px ink hairline, 2 px look border when chosen. */
+.directions [hidden]{display:none!important}
+.candidate-grid{align-items:stretch}
+.candidate{position:relative;display:flex;flex-direction:column;height:100%;border:2px solid transparent;outline:1px solid var(--ink);outline-offset:-1px;background:var(--white)}
+.candidate.selected{border-color:var(--look);outline:0;background:var(--white)}
+.candidate:focus-visible{outline:3px solid var(--look);outline-offset:2px}
+.candidate.unfit>:not(.unfit-reason){opacity:.45;filter:grayscale(1)}
+.unfit-reason{position:absolute;z-index:1;top:0;left:0;right:0;padding:4px 8px;background:var(--ink);color:#fff;font-size:11px;line-height:1.4;text-align:left}
+.topbar #openMore{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;min-width:40px;padding:0;border:1px solid transparent;border-radius:var(--radius);background:transparent}
+.topbar #openMore:hover{border-color:var(--ink)}
+.topbar #openMore svg{display:block;pointer-events:none}
+.more-drawer{position:fixed;top:0;right:0;left:auto;margin:0;width:min(320px,100vw);max-width:100vw;height:100dvh;max-height:100dvh;padding:16px;border:1px solid var(--ink);border-radius:0;background:var(--panel);overflow:auto}
+.more-drawer:not([open]){display:none}
+.more-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
+.more-head p{margin:0;font-size:13px;line-height:1.5;color:var(--ink)}
+.more-section{border-top:1px solid var(--ink);padding:16px 0 8px;display:flex;flex-direction:column;gap:8px}
+.more-section[hidden]{display:none}
+.more-section h3{margin:0;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.more-drawer button,.more-drawer .visual-studio-link{display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;min-width:0;height:40px;padding:0 16px!important;font-size:13px!important;text-align:left}
+.more-drawer .more-head button{width:auto;flex:none}
+.more-drawer .icon-button{width:100%;min-width:0}
+.more-drawer button.more-json{height:auto;min-height:40px;padding:8px 16px!important;flex-direction:column;align-items:flex-start;gap:0}
+.more-drawer .visual-studio-link{border:1px solid var(--ink);color:var(--ink);text-decoration:none;background:var(--white)}
+.more-drawer label{margin:0}
+.more-drawer select{width:100%}
+.more-drawer .hint{margin:0}
+@media(max-width:340px){.topbar .brand>span:not(.brand-mark){display:none}.topbar .brand{min-width:0}}
+@media(max-width:680px){
+  .zone-d{display:none}
+  .topbar{height:56px;padding:0 8px;gap:8px}
+  .topbar .brand{min-width:0;font-size:18px}.topbar .brand small{display:none}
+  .topbar .deck-heading{flex:none;margin-left:auto;min-width:0}.topbar .deck-heading .state-square{margin:0 8px}
+  .topbar .top-actions{margin-left:0;gap:8px}
+  .topbar #openMore,.topbar #openExport.take{height:44px;min-height:44px}.topbar #openMore{width:44px;min-width:44px}
+  .statusbar{display:none}
+  .workspace{display:block;height:calc(100dvh - 56px - 140px);min-height:0}
+  .canvas-column{height:100%;overflow-y:auto}
+  body:not(.presenting) .canvas-toolbar{height:0;min-height:0;padding:0;border:0;overflow:visible}
+  body:not(.presenting) .canvas-toolbar>div:first-child,body:not(.presenting) #ratio{display:none}
+  .stage{flex:none;height:calc(100dvh - 56px - 140px);padding:16px}
+  .story-panel{display:flex;flex-direction:row;align-items:center;gap:8px;position:fixed;left:0;right:0;top:auto;bottom:0;width:auto;height:96px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));border:0;border-top:1px solid var(--ink);background:var(--panel);z-index:20}
+  .story-panel .panel-header,.story-panel .privacy-note,.story-panel .mobile-title{display:none}
+  .story-panel .slide-list{flex:1;flex-direction:row;gap:8px;min-width:0;height:80px;padding:0;overflow-x:auto;overflow-y:hidden}
+  .story-panel .thumbnail{flex:none;width:142px;height:80px;min-height:44px;padding:0;border:1px solid var(--ink)}
+  .story-panel .thumbnail.active{border:2px solid var(--ink)}
+  .story-panel .thumbnail svg{width:100%;height:100%;border-radius:0}
+  .story-panel .thumbnail-meta{display:none}
+  .story-panel .story-tools{flex:none}.story-panel .story-tools button{width:44px;min-height:44px;padding:0}
+  #drawerContent .story-panel{position:static;display:flex;flex-direction:column;height:100%;padding:18px;border:0}
+  #toggleStory,#toggleInspector{position:fixed;bottom:96px;z-index:20;display:flex;align-items:center;justify-content:center;gap:8px;width:50%;height:44px;min-height:44px;padding:0;border:0;border-top:1px solid var(--ink);border-radius:0;background:var(--ground);color:var(--ink);font-size:13px!important}
+  #toggleStory{left:0;border-right:1px solid var(--ink)}#toggleInspector{right:0}
+  #toggleStory::before,#toggleInspector::before{display:none}
+  .presenting #toggleStory,.presenting #toggleInspector,.presenting .story-panel{display:none}
+  #drawerDialog[data-side=inspector]{top:auto;bottom:0;left:0;right:0;margin:0;width:100vw;max-width:100vw;height:70dvh;max-height:70dvh;border:0;border-top:1px solid var(--ink);border-radius:0}
+  button,.file-button,.icon-button,.thumbnail,.small,.directions .direction-actions button,html button[data-action-shape],.story-tools button,.presenter-header button,.presenter-controls button,.script-heading button,.script-footer button,.history-navigation button{min-height:44px}
+  .more-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}.more-top:empty{display:none}
+  .more-top #deckTitle{flex:1 1 100%;min-height:44px;background:var(--white);border:1px solid var(--ink);padding:0 8px}
+  .more-top #undo,.more-top #redo{width:44px;height:44px;min-width:44px}
+}
+/* The tool rail moved into the More drawer, so the workspace has no rail column: page strip + canvas, then the Words / Look panel. */
+.workspace{grid-template-columns:minmax(0,1fr) 320px}
+@media(max-width:1050px){.workspace{grid-template-columns:minmax(0,1fr)}}
+/* Phone (M8) on the page-strip layout: strip on top, the canvas fills the rest, and one full-width Edit bar at the bottom opens the Words / Look sheet. */
+@media(max-width:680px){
+  .workspace{height:calc(100dvh - 56px - 56px)}
+  .canvas-column{display:flex;flex-direction:column;overflow:hidden}
+  .stage{flex:1;height:auto;min-height:0;padding:16px}
+  body:not(.presenting) #toggleInspector{position:fixed;left:0;right:0;bottom:0;width:100%;height:56px;min-height:44px;border:0;border-top:1px solid var(--ink);border-radius:0;background:var(--panel);font-weight:600;z-index:20}
+  .page-strip button,.page-strip .thumbnail{min-height:44px}
+}
+.more-drawer #present{font-size:13px!important;width:100%;min-width:0}
