@@ -1,25 +1,25 @@
 {
   "format": "deckweft-render-baseline",
-  "renderer": "visual-art-direction.13",
+  "renderer": "visual-art-direction.14",
   "player": {
     "version": "semantic-player.6",
     "sha256": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4"
   },
   "entries": {
-    "wave-a.en.html": "b927a694c6d5033c4fa92235983c4cf281fe851747f3ce570f1a11175b64b553",
+    "wave-a.en.html": "9d80c3f991a0ac0a4b7fc8761fccb9b64e7c93d8ab3ebbe9a88239e45f9b997c",
     "wave-a.en.json": "641bf5778b89a8394a301044f040c26ec4df526c5d4de1f5124ef5f4180a278a",
-    "wave-a.zh-CN.html": "79d05a3c4ac87ee06ed5fa91ca9c1de1954da3c629002f052426f5a482172233",
+    "wave-a.zh-CN.html": "1aaea0fd11d8055956740ef4dac33086f913937814c5c101b23eb72375030c8a",
     "wave-a.zh-CN.json": "1dd5e8204e4d1a27637e106894c3086e368cf1b869ce15b270a33b9ff7a71b00",
-    "visual-demo.en.html": "e87a33d84e7f9b6f5823e65f6e34ab1eda196964fa59e62238d01c8eb76880a7",
-    "visual-demo.zh-CN.html": "d431ac04832a9be342717ce731942d673a02f390e3475a1ff6fc8a01aad093af",
-    "component-demo.en.html": "f9912f4552fa2d0f37cf1f2c7ddc3b25022ffc2700afb4c0bd9b3e1e2cab0648",
-    "component-demo.zh-CN.html": "5041c19bba21053b3d94a0db71464e9147e517d51fca3110c7dc72ca3b75841f",
-    "interaction-demo.en.html": "b77aaad5342215a2e53989824ad0c3eb80837d93a398f8867199487f1502bfa9",
-    "interaction-demo.zh-CN.html": "e213a27b6e94ec0ac2c63002b96c89d18000a8129c8c3b33ba4eee2e9f7ac93d",
-    "composition-demo.en.html": "f859b33c00c8a964bbc79cf03d0ac9df30a4165e59aefc266045ee66453452b5",
-    "composition-demo.zh-CN.html": "416bab2b47b5ddc90683371a6fcf9ad49c91615257279f43365f20ea7647203e",
-    "families.en.html": "db0a21cac5181faa74206b20ec8ac7ea022a3c74578b54be3d1cf805812938f2",
-    "families.zh-CN.html": "0d5b5504643418f0b3f53a9707b15fb190ee4960fc212a81757fa34350cc981f",
+    "visual-demo.en.html": "87c115c4e894c9f9eb5df0b71084ac33790ffc442ee2c855317289e80d644840",
+    "visual-demo.zh-CN.html": "c9d17cd517e8f5678dcc7f9f6998d1d5fbd7f416f2e64f4aa0fe3e5e96ce7a57",
+    "component-demo.en.html": "e799abb9b8c00a966c9bf0cd27fcbbd0d774e104e636a6af4abf138ce4165a74",
+    "component-demo.zh-CN.html": "2f7bc80bd2ccc77354de448628fc3ead9f10c7232da99faba6a4dec8c7ea3d40",
+    "interaction-demo.en.html": "802c585a864f9af5e4c965da63154f1cf9101d0a9927baf01ee4648d3eb08f6b",
+    "interaction-demo.zh-CN.html": "9a46f38d9f952569f7d228d01fddc16a41c541646ba0fbe9b23ad20fa56667f9",
+    "composition-demo.en.html": "3606f78c97652718a161f041446561cd56aca43f4b64a3451726dbf6b54ba296",
+    "composition-demo.zh-CN.html": "3be7ba278694a495d6a186e632f06661b635dad06e6114d9edb701ac07191e9d",
+    "families.en.html": "164e579787f19aa9b5b0cd3ee6293428e8d2493f7cbee6382a9bca37a925f9ea",
+    "families.zh-CN.html": "71d8a276ad10c3f5aa94c555dbd993be1dda6418293ef286103ce3965515aaf7",
     "theme.cream-collage.en.default": "13606af1e69412b1ef7d8ccb28bc9f8fbf589428cc4230677a94e016048c726a",
     "theme.cream-collage.en.chapter": "c0dcfae4070a42477f4f6b846457501a8f3e3bc3ca1ebe85593c2165e3da9eb9",
     "theme.cream-collage.zh-CN.default": "c075e9c42a4d69de323645e3242773c5eea44d667f7c91403ae3eb27630ba029",
@@ -87,76 +87,76 @@
   },
   "parts": {
     "wave-a.en.html": {
-      "markup": "b3f000ea23efc73b0ac7b06bfc59d94da2917816d963d8ca7b9aa130a291eeb6",
+      "markup": "e5288e62fd0a33f6649b9df7d117dfa095a91073bd2249ab91ad2505bdf9d041",
       "data": "d7eb21c3534ab6b6c3b36a15ed5fb7bedaafbd7a5ef2fc55f22c5fd8079a15d1",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "wave-a.zh-CN.html": {
-      "markup": "c3e35d3f8c19b5a15cfd8129e905dbf39c0746133e63ccc47a6e87f7ddfacdee",
+      "markup": "006715d6cf836db60f75effd8e71702f99c5e413f7f9fcfb9c898761a98f7381",
       "data": "dab714546da7d1751dec11d409d830e9cec6918992955dd30f36e1fec30f744c",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "visual-demo.en.html": {
-      "markup": "114fe735dce5562e6c5d1bccbe430330ab12603b7cdd1c18fd70f289c065c1df",
+      "markup": "0afa4c21c892da74210b954a3c0d511cd014033bf2129d94e2e4ea6f91697c0b",
       "data": "122f6b169c70c1bef4ac5db0c905badbee58ac90bbb1823ccc2cdc8ddadd6419",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "visual-demo.zh-CN.html": {
-      "markup": "fb7fe18dcfdb2f15458284956dce1d199fbc83c584974413e7034b1e1007b325",
+      "markup": "84a0a49c24c0ab27383585c47794ac8e4ae973cd27b5f428bab4eb3ed34ec016",
       "data": "e0aac96b2ac915e40dfe5371f322207b1a020b819b2a9782ad3bc063534d8245",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "component-demo.en.html": {
-      "markup": "fdd911028d82c92cbad6a23be517a2af407b85d055a5d3206365a6189bf91714",
+      "markup": "8e612e4898d708d00ebb5aad453e2c076739630f82aeb4276b6534d280373bf4",
       "data": "b5eb69de63f6d31aea9f858c9dcae492d596cb701fc74d79415fbd3e69894394",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "component-demo.zh-CN.html": {
-      "markup": "4895aacdd2d34984185525724416a2a9a05f82c6574328dfa0e28f9c410a1777",
+      "markup": "6be4c904accc085ba2dfd10434d2431b89e85b99af1cee6ff36aa2b42fcebd65",
       "data": "f58aff60f9d494fda9a6bb8e04e77ec6b4d4b03bdf63998b39b61e9348b8559f",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "interaction-demo.en.html": {
-      "markup": "42d456712a77c7d6957e20da34046c44f9d729ef42aeb77fdf61482057d6e7a7",
+      "markup": "08f387ae77406c1161352b537288271c521a259606bd70eb6ed2d6202afc19f6",
       "data": "78fda1fc13a296c0d608f850c15d465f18e540a1a6c7a1c495b1923184340c6e",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "interaction-demo.zh-CN.html": {
-      "markup": "a3505046cffafd0d3ba4c5bd4e8a265543b2440991f930ac6093e341e63d46a2",
+      "markup": "d1de63b056d69325efa0864c613474f8be8fd561a4e2e9207b309e6ec88e19bb",
       "data": "f99731756ea6241df62abddaa657ced61ce4246320dd53d3f620421a9eb0aca5",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "composition-demo.en.html": {
-      "markup": "e12e0e92150950b9d56adfcd6e521a211620232ffac7d6187a841c35361dfe7a",
+      "markup": "d85defeab2b704fb50970aaad095479cfd861c3b0ad920cf3e94d317e1a066bd",
       "data": "6c24595ade3cdfd1863cba36e3954dce883547de82ef9a347b2efea7ade84abb",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "composition-demo.zh-CN.html": {
-      "markup": "89670ab3dd8b9e3de1bdc5d1a565d91ff34e6409349a62a762d0809d912af12a",
+      "markup": "d1ce5c4bd9307eaf4019a50e25fb4e7ddf628c2479e5af9a27ca18a56c3313d9",
       "data": "fb9bbee5d53414b80a40d06e289b3200f0b91927aec5ae1c192beced41a4e703",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "families.en.html": {
-      "markup": "7ce01d9818aace64a428e18fea0bf94dd08d946b654b16123d8c7bae982bd5a5",
+      "markup": "57bbc0d8ab06397c11c161636103b31638d74d1c3546e8d1f1b37b9c16124cde",
       "data": "2aeb9171e8b3f3536b3e80dd5a9d28e38007376ac38fddfbb3772b81bee01ad9",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     },
     "families.zh-CN.html": {
-      "markup": "8bce7ea447d48e453bd4b9b59e9b4f03873b3d8166501aaa642bc293e91e7fc0",
+      "markup": "40338e9fe1a58559c0314c01b9c2745a238c6502c4899f3a107853b2a23fe3f5",
       "data": "ab9a5a3d6161d498b1b0cd22ec33aec3656c610e0c68e56db015c51d86a88063",
       "script": "bfb7f4d1433ffee7e4637b2e8b41f04d770351f89bf5942d02a8af235d97b4d4",
-      "style": "f0ef373265934415382f9907b2cd77103066f0bc5ea0a884494e8b7d7bf06b51"
+      "style": "41835d68a6bfb32f4e423052910a7e85da35695688183704b11ac623b1093ea9"
     }
   },
   "playerHistory": [
@@ -186,6 +186,6 @@
     }
   ],
   "recordedAt": "2026-10-20",
-  "sourceCommit": "b5fc5c6",
-  "note": "CINE batch 1 final: renderer visual-art-direction.13 (CINE-002 strip, panel and marker rules with the marker at max(.7em,12px); CINE-003 entry rule; CINE-004 7/5 and 5/7 image grids, 560 px hero, 260 px supporting, context and second-image rules, 1040/800 px system maps). Player semantic-player.6 unchanged. No visible word or value changed in any entry (docs/evidence/cine-p0/baseline-diff.json against be9921d)."
+  "sourceCommit": "4671b52d1f99bda86509717dd23eddc37c3c1c18",
+  "note": "CINE-005 locator frame CSS; renderer .14"
 }
