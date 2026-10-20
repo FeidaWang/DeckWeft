@@ -638,10 +638,8 @@ en:{
  "classic.app.unsavedChanges":"Unsaved changes",
  "classic.app.savedOnThisComputer":"Saved on this computer",
  "classic.app.pasteWhatYouWantToSay":"Paste what you want to say here. Leave a blank line between pages.",
- "classic.app.visualStudioPromptWorkbench":"Visual Studio · Prompt workbench",
  "classic.app.needsRepair":" · needs repair",
  "classic.app.noSourcesYetAddOneBelow":"No sources yet. Add one below.",
- "classic.app.slide":"Slide",
  "classic.app.editableTextShapes":"editable text + shapes",
  "classic.app.tooMuchTextToFit":"Too much text to fit",
  "classic.app.clear":"Clear",
@@ -785,6 +783,8 @@ en:{
  "visual.revisions.status.other":"Review the operation details",
  "visual.revisions.pagePlan":"Page plan ({detail}): {draftedPages} page(s) drafted; the material supports {proposedPages}{target}.",
  "visual.revisions.pagePlanTarget":"; target {targetPages}",
+ "classic.shell.slide":"Slide",
+ "classic.app.visualStudioPromptWorkbench":"Visual Studio · Prompt workbench",
 },
 zh:{
  "visual.directionToggle":"创作",
@@ -1422,10 +1422,8 @@ zh:{
  "classic.app.unsavedChanges":"尚未保存",
  "classic.app.savedOnThisComputer":"已保存在本机",
  "classic.app.pasteWhatYouWantToSay":"把你要讲的话贴在这里。每一页之间空一行。",
- "classic.app.visualStudioPromptWorkbench":"Visual Studio · 提示词工作台",
  "classic.app.needsRepair":" · 需要修复",
  "classic.app.noSourcesYetAddOneBelow":"还没有来源，在下方添加。",
- "classic.app.slide":"页面",
  "classic.app.editableTextShapes":"可编辑文字和形状",
  "classic.app.tooMuchTextToFit":"文字太多，放不下",
  "classic.app.clear":"通过",
@@ -1569,6 +1567,8 @@ zh:{
  "visual.revisions.status.other":"请查看操作详情",
  "visual.revisions.pagePlan":"页面规划（{detail}）：已起草 {draftedPages} 页；材料可支撑 {proposedPages} 页{target}。",
  "visual.revisions.pagePlanTarget":"；目标 {targetPages} 页",
+ "classic.shell.slide":"页面",
+ "classic.app.visualStudioPromptWorkbench":"Visual Studio · 提示词工作台",
 }
 };
 

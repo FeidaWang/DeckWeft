@@ -49,15 +49,19 @@ function scan(file,nodes){
 }
 const report=hits=>hits.map(h=>`${h.file} ${h.element} "${h.text}" (${h.rule})`).join('\n');
 
-const index=read('public/index.html'),visual=read('public/studio/visual.html');
+// Single entry: the shell markup lives in /*html*/ template strings in shell.js and the classic kind; the page keeps the
+// dialogs. The walk only needs HTML text, so it reads the templates and index.html joined.
+const templates=file=>[...read(file).matchAll(/\/\*html\*\/`([^`]*)`/g)].map(m=>m[1]).join('\n');
+const PAGE='public/shell.js + public/kinds/classic.js + public/index.html';
+const index=templates('public/shell.js')+templates('public/kinds/classic.js')+read('public/index.html'),visual=read('public/studio/visual.html');
 
 test('default classic interface has no engineering words',()=>{
-  const hits=scan('public/index.html',visibleText(index));
+  const hits=scan(PAGE,visibleText(index));
   assert.equal(hits.length,0,`${hits.length} hit(s):\n${report(hits)}`);
 });
 
 const keysIn=html=>[...html.matchAll(/data-i18n="([^"]+)"/g)].map(m=>m[1]).concat([...html.matchAll(/data-i18n-attr="([^"]+)"/g)].flatMap(m=>m[1].split(';').map(pair=>pair.slice(pair.indexOf(':')+1).trim())));
-const sources=['public',  'public/studio'].flatMap(dir=>readdirSync(path.join(root,dir)).filter(f=>f.endsWith('.js')&&f!=='i18n.js').map(f=>`${dir}/${f}`));
+const sources=['public','public/studio','public/kinds'].flatMap(dir=>readdirSync(path.join(root,dir)).filter(f=>f.endsWith('.js')&&f!=='i18n.js').map(f=>`${dir}/${f}`));
 const wordingHits=include=>{
   const hits=[];
   for(const language of ['en','zh'])for(const [key,value] of Object.entries(dict[language]))if(include(key))for(const rule of FORBIDDEN)if(rule.test(String(value)))hits.push({file:'public/i18n.js',element:`${language}.${key}`,text:String(value),rule:String(rule)});
@@ -73,7 +77,7 @@ test('the dictionary has the same keys in English and Chinese',()=>{
 });
 
 test('every data-i18n and data-i18n-attr key in both pages is in the dictionary',()=>{
-  for(const [file,html] of [['public/index.html',index],['public/studio/visual.html',visual]])
+  for(const [file,html] of [[PAGE,index],['public/studio/visual.html',visual]])
     assert.deepEqual(keysIn(html).filter(k=>!(k in dict.en)).sort(),[],`${file}: keys without a dictionary entry`);
   assert.ok(keysIn(index).every(k=>k.startsWith('classic.')),'index.html uses classic.* keys');
   assert.ok(keysIn(visual).every(k=>k.startsWith('visual.')),'visual.html uses visual.* keys');

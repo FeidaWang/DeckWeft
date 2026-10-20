@@ -26,6 +26,8 @@ for(const icon of ['undo-2','redo-2','save','play','download','plus','upload','h
 Object.assign(staticFiles,{'/three-scene.js':['three-scene.js','text/javascript; charset=utf-8'],'/three-dots.js':['three-dots.js','text/javascript; charset=utf-8'],'/studio-tools.js':['studio-tools.js','text/javascript; charset=utf-8'],'/shared/speech.mjs':['../src/core/speech.mjs','text/javascript; charset=utf-8'],'/showcase.deck.json':['../examples/devday-melbourne.deck.json','application/json; charset=utf-8']});
 for(const file of ['preferences.js','actions.js','presenter.js','storyboard.js','session.js','history-capacity.js','i18n.js'])staticFiles['/'+file]=[file,'text/javascript; charset=utf-8'];
 staticFiles['/workspace.css']=['workspace.css','text/css; charset=utf-8'];
+// Single entry, step 0: the shared workbench shell and the classic deck kind.
+Object.assign(staticFiles,{'/shell.js':['shell.js','text/javascript; charset=utf-8'],'/shell.css':['shell.css','text/css; charset=utf-8'],'/kinds/classic.js':['kinds/classic.js','text/javascript; charset=utf-8']});
 // First run: "See an example first" opens the bundled welcome deck in the interface language.
 for(const file of ['welcome.deck.json','welcome.zh-CN.deck.json'])staticFiles['/examples/'+file]=['../examples/'+file,'application/json; charset=utf-8'];
 staticFiles['/shared/preferences.mjs']=['../src/core/preferences.mjs','text/javascript; charset=utf-8'];
