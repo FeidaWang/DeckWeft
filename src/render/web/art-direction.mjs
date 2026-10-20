@@ -20,8 +20,9 @@ const s3ArtDirectionCSS=`
 .web-scene.before-after-triptych .region[data-component=paragraph]{border-top:1px solid currentColor;padding-top:14px}
 .web-scene${MAP} .regions{align-content:center;row-gap:16px;column-gap:48px}
 .web-scene${MAP} h2{max-width:20ch}
-.web-scene.system-map-wide .semantic-diagram svg{max-width:560px;margin:0 auto}
-.web-scene.system-map-key .semantic-diagram svg{max-width:640px;margin-left:auto}
+/* CINE-004: a mechanism diagram takes 65–80 % of the 1312 px content width. */
+.web-scene.system-map-wide .semantic-diagram svg{max-width:1040px;margin:0 auto}
+.web-scene.system-map-key .semantic-diagram svg{max-width:800px;margin-left:auto}
 .web-scene.system-map-wide .region[data-component=list] ul{columns:3;column-gap:40px;max-width:none}.web-scene.system-map-wide .region[data-component=list] li{break-inside:avoid}
 .web-scene${MAP} .region[data-component=paragraph] p{font-size:18px;max-width:42ch}
 .web-scene${MAP} .region[data-component=list] ul{font-size:16px;line-height:1.5}
@@ -108,13 +109,21 @@ export const artDirectionCSS = `
 .web-scene.reading-flow .regions{max-width:1020px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:28px;justify-content:center}
 .web-scene.reading-flow .region{max-width:100%;margin:0}
 .web-scene.reading-flow .region[data-component=paragraph] p{max-width:54ch}
-.web-scene.image-left .regions{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-content:center}
-.web-scene.image-left .web-image{width:min(100%,calc(570px * var(--image-aspect)));max-width:none;margin:auto}
+/* CINE-004 primary media area. Content width 1440 − 2 × 64 = 1312 px; 7 of 12 columns with 32 px gutters ≈ 747 px; the height
+   under the folio ≈ 618 px, so a hero box of 560 px height fits inside the 810 px frame. image-right: the statement leads in
+   the 5-column side and the product takes the 7-column side (5/7); image-left: the hero takes 7 columns and the text 5 (7/5).
+   A supporting image (a locator) stays at 260 px; a context image fills its column. */
+.web-scene.image-left .regions{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-content:center}
+.web-scene.image-left .web-image{width:min(100%,calc(560px * var(--image-aspect)));max-width:none;margin:auto}
 .web-scene.image-left [data-component=heading]{align-self:end}
-.web-scene.image-right .web-image{width:min(100%,calc(440px * var(--image-aspect)));max-width:none}
-.web-scene.image-right .regions{align-content:center}
+.web-scene.image-right .regions{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-content:center}
+.web-scene.image-right [data-component=heading]{grid-column:1}
+.web-scene.image-right [data-component=image]{grid-column:2;grid-row:1 / span 8;align-self:center}
+.web-scene.image-right .web-image{width:min(100%,calc(560px * var(--image-aspect)));max-width:none;margin-left:auto}
 .web-scene.image-strip .regions{align-content:center}
-.web-scene.image-strip .web-image{width:min(100%,calc(320px * var(--image-aspect)));max-width:600px}
+.web-scene.image-strip .web-image{width:min(100%,calc(400px * var(--image-aspect)));max-width:760px}
+.web-scene .region[data-media-role=supporting] .web-image{width:min(100%,calc(260px * var(--image-aspect)))}
+.web-scene .region[data-media-role=context] .web-image{width:100%;max-width:none}
 .web-scene.image-left .region[data-component=callout] p,.web-scene.photo-split .region[data-component=callout] p{font-size:13px;line-height:1.6;font-weight:500;letter-spacing:.04em;border-top:1px solid currentColor;padding-top:20px}
 .web-scene.photo-split .regions{align-content:center}.web-scene.photo-split .web-image{width:min(100%,calc(570px * var(--image-aspect)));margin:auto}
 .web-scene.violet-chapter .regions{max-width:1160px;min-height:560px}

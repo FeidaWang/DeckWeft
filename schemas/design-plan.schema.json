@@ -1149,6 +1149,33 @@
               "entry"
             ],
             "additionalProperties": false
+          },
+          "media": {
+            "type": "array",
+            "description": "CINE-004: the role of each image or diagram of this page (hero, mechanism, context, supporting). Absent entries take the composition's defaults. Roles never change assets, crops, alt text or sources.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "blockId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+                },
+                "role": {
+                  "enum": [
+                    "hero",
+                    "mechanism",
+                    "context",
+                    "supporting"
+                  ]
+                }
+              },
+              "required": [
+                "blockId",
+                "role"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 20
           }
         },
         "required": [

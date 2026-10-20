@@ -129,6 +129,15 @@
               "subject"
             ]
           },
+          "mediaRole": {
+            "description": "CINE-004: the role of this image or diagram on the page, present when the page declares media roles.",
+            "enum": [
+              "hero",
+              "mechanism",
+              "context",
+              "supporting"
+            ]
+          },
           "crop": {
             "type": "object",
             "properties": {

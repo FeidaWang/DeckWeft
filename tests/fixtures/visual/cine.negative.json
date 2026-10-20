@@ -221,6 +221,80 @@
      "entry": "left"
     }
    }
+  },
+  {
+   "task": "media",
+   "why": "A media role is one of hero, mechanism, context, supporting.",
+   "set": {
+    "plan.scenes.1.media": [
+     {
+      "blockId": "prod-image",
+      "role": "star"
+     }
+    ]
+   }
+  },
+  {
+   "task": "media",
+   "why": "A media role names a block of this page.",
+   "set": {
+    "plan.scenes.1.media": [
+     {
+      "blockId": "ctx-image",
+      "role": "hero"
+     }
+    ]
+   }
+  },
+  {
+   "task": "media",
+   "why": "A media role names an image or diagram, not a paragraph or callout.",
+   "set": {
+    "plan.scenes.1.media": [
+     {
+      "blockId": "prod-callout",
+      "role": "hero"
+     }
+    ]
+   }
+  },
+  {
+   "task": "media",
+   "why": "Each block has one media role.",
+   "set": {
+    "plan.scenes.3.media": [
+     {
+      "blockId": "det-hero",
+      "role": "hero"
+     },
+     {
+      "blockId": "det-hero",
+      "role": "supporting"
+     }
+    ]
+   }
+  },
+  {
+   "task": "media",
+   "why": "A media entry carries only blockId and role.",
+   "set": {
+    "plan.scenes.1.media": [
+     {
+      "blockId": "prod-image",
+      "role": "hero",
+      "size": "large"
+     }
+    ]
+   }
+  },
+  {
+   "task": "media",
+   "why": "media is an array of entries.",
+   "set": {
+    "plan.scenes.1.media": {
+     "prod-image": "hero"
+    }
+   }
   }
  ]
 }

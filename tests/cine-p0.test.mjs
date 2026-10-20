@@ -19,6 +19,8 @@ import {startStudio} from '../src/services/server.mjs';
 import {createVisualProject} from '../src/core/visual-project.mjs';
 import {REFERENCE_MODES,referenceIndex,sceneReferences,assertReferences} from '../src/references/presentation.mjs';
 import {VISUAL_PURPOSES,ENTRIES,CENTERED_COMPOSITIONS,CONTEXTUAL_COMPOSITIONS,inferIntent,effectiveIntent,assertIntent,preferredVariant} from '../src/design/intent.mjs';
+import {MEDIA_ROLES,mediaRoles,assertMedia} from '../src/design/media.mjs';
+import {compositionCSS} from '../src/render/web/compositions.mjs';
 import {familyProject} from './families.mjs';
 import {evidenceProject} from './evidence-scene.mjs';
 import {blueprintProject} from './blueprint-a.mjs';
@@ -495,4 +497,53 @@ test('CINE-003 set-intent: plans the intent and the preferred variant, keeps a c
  assert.ok(visual.includes('id="pagePurpose"')&&visual.includes('id="pageEntry"'));assert.ok(author.includes("'set-intent'"));
  for(const k of ['"visual.look.purpose"','"visual.look.entry"','"visual.look.purpose.show-product"','"visual.look.entry.contextual"','"visual.look.auto"'])assert.equal((i18n.match(new RegExp(k,'g'))||[]).length,2,k);
  for(const f of ['docs/en/visual-studio.md','docs/zh-CN/visual-studio.md']){const d=await readFile(new URL('../'+f,import.meta.url),'utf8');assert.ok(d.includes('set-intent'),f);}
+});
+
+// ---- Task 10: CINE-004 media roles and the primary media grids ----
+test('CINE-004 media roles: defaults per composition and authored override; a role on a paragraph is refused; legacy fixtures validate',async()=>{
+ assert.deepEqual(MEDIA_ROLES,['hero','mechanism','context','supporting']);
+ const p=await cineProject('en',home,{declared:[]}),roles=id=>Object.fromEntries(mediaRoles(p.document,sceneOf(p,id)));
+ assert.deepEqual(roles('product'),{'prod-image':'hero'});assert.deepEqual(roles('product-center'),{'pc-image':'hero'});assert.deepEqual(roles('context'),{'ctx-image':'hero'});
+ assert.deepEqual(roles('detail'),{'det-hero':'hero','det-locator':'supporting'});assert.deepEqual(roles('mechanism'),{'mech-diagram':'mechanism'});assert.deepEqual(roles('evidence'),{});
+ const fam=await familyProject('en',home);assert.deepEqual(Object.fromEntries(mediaRoles(fam.document,sceneOf(fam,'before-after'))),{'pair-before':'hero','pair-after':'hero'});
+ // An image on a page of another family is supporting; a stage hero's or a photo split's first image is the hero.
+ const other=structuredClone(p);sceneOf(other,'long-heading').blockIds.push('ctx-image');assert.deepEqual(Object.fromEntries(mediaRoles(other.document,sceneOf(other,'long-heading'))),{'ctx-image':'supporting'});
+ for(const [composition,theme] of [['photo-split','electric-violet'],['stage-hero','orange-launch'],['atlas-cover','fresh-report']]){const q=structuredClone(p),s=sceneOf(q,'product');s.composition=composition;s.theme=theme;assert.equal(mediaRoles(q.document,s).get('prod-image'),'hero',composition);}
+ // Authored entries win; the rest keep their defaults.
+ const declared=await cineProject('en',home,{declared:['media']});assert.deepEqual(Object.fromEntries(mediaRoles(declared.document,sceneOf(declared,'context'))),{'ctx-image':'context'});
+ const partial=structuredClone(p);sceneOf(partial,'detail').media=[{blockId:'det-locator',role:'context'}];assert.deepEqual(Object.fromEntries(mediaRoles(partial.document,sceneOf(partial,'detail'))),{'det-hero':'hero','det-locator':'context'});
+ for(const s of declared.plan.scenes)assertMedia(declared.document,s);
+ const media=designPlanSchema.properties.scenes.items.properties.media;assert.equal(media.maxItems,20);assert.deepEqual(media.items.required,['blockId','role']);assert.deepEqual(media.items.properties.role.enum,MEDIA_ROLES);assert.equal(media.items.additionalProperties,false);
+ const fixture=JSON.parse(await readFile(new URL('./fixtures/visual/cine.en.json',import.meta.url),'utf8'));
+ const cases=await negativeCases('media');assert.ok(cases.length>=5);
+ for(const c of cases){const b=applyNegative(fixture,c);assert.throws(()=>createVisualProject(b.document,b.plan,{id:'negative',assets:b.assets}),e=>e.code===(c.code||'INVALID_DESIGN_PLAN'),c.why);}
+ const para=structuredClone(fixture);para.plan.scenes[1].media=[{blockId:'prod-callout',role:'hero'}];assert.throws(()=>createVisualProject(para.document,para.plan,{id:'x',assets:para.assets}),e=>e.code==='INVALID_DESIGN_PLAN'&&/image or diagram/.test(e.message));
+ const locked=structuredClone(fixture);locked.document.authorOverrides.sceneLocks.push({sceneId:'detail',fields:['media']});createVisualProject(locked.document,locked.plan,{id:'locked',assets:locked.assets});
+ for(const q of await legacyProjects())for(const s of q.plan.scenes){assert.equal('media' in s,false);assertMedia(q.document,s);for(const r of mediaRoles(q.document,s).values())assert.ok(MEDIA_ROLES.includes(r));}
+});
+test('CINE-004 markup: regions carry data-media-role; the product page image sits in the 7-column side; the detail page shows a hero and a supporting locator',async()=>{
+ const p=await cineProject('en',home,{declared:['media']}),resources=await visualAssetResources(p,home),out=html(p,resources);
+ const roleOf=(id,blockId)=>regionsOf(element(sectionOf(out,id),/<div class="regions">/)).find(r=>r.blockId===blockId).attrs.match(/ data-media-role="([^"]+)"/)?.[1]??null;
+ assert.equal(roleOf('product','prod-image'),'hero');assert.equal(roleOf('context','ctx-image'),'context');assert.equal(roleOf('detail','det-hero'),'hero');assert.equal(roleOf('detail','det-locator'),'supporting');assert.equal(roleOf('mechanism','mech-diagram'),'mechanism');
+ assert.equal(roleOf('product','prod-callout'),null,'text regions carry no media role');
+ assert.deepEqual(webSceneSchema.properties.regions.items.properties.mediaRole.enum,MEDIA_ROLES);assert.equal(out.scenes.find(s=>s.id==='detail').regions.find(r=>r.blockId==='det-locator').mediaRole,'supporting');
+ // Declared pages only: a page without a media field renders as before (no attribute, no region field), so legacy markup is unchanged.
+ assert.equal(roleOf('product-center','pc-image'),null);assert.equal('mediaRole' in out.scenes.find(s=>s.id==='product-center').regions.find(r=>r.blockId==='pc-image'),false);
+ const legacy=html(await cineProject('en',home,{declared:[]}),resources);for(const m of legacy.sceneMarkup)assert.equal(m.includes('data-media-role'),false);
+ // The 5/7 product grid: the heading leads in column 1, the image takes the 7-column side from the first row; the 7/5 detail grid; the supporting locator cap.
+ for(const rule of ['.web-scene.image-right .regions{grid-template-columns:minmax(0,5fr) minmax(0,7fr)','.web-scene.image-right [data-component=heading]{grid-column:1}','.web-scene.image-right [data-component=image]{grid-column:2;grid-row:1 / span 8;align-self:center}','.web-scene.image-right .web-image{width:min(100%,calc(560px * var(--image-aspect)));max-width:none;margin-left:auto}',
+  '.web-scene.image-left .regions{grid-template-columns:minmax(0,7fr) minmax(0,5fr)','.web-scene.image-left .web-image{width:min(100%,calc(560px * var(--image-aspect)))','.web-scene .region[data-media-role=supporting] .web-image{width:min(100%,calc(260px * var(--image-aspect)))}','.web-scene .region[data-media-role=context] .web-image{width:100%;max-width:none}',
+  '.web-scene.image-strip .web-image{width:min(100%,calc(400px * var(--image-aspect)));max-width:760px}','.web-scene.system-map-wide .semantic-diagram svg{max-width:1040px','.web-scene.system-map-key .semantic-diagram svg{max-width:800px','1440 − 2 × 64 = 1312 px'])assert.ok(artDirectionCSS.includes(rule),rule);
+});
+test('CINE-004 CSS: no 440 px, 570 px, 560 px or 640 px media cap remains for image-left, image-right, image-strip or system maps (string check on the stylesheet)',()=>{
+ const rule=(css,selector)=>{const i=css.indexOf(selector);assert.ok(i>=0,selector);return css.slice(i,css.indexOf('}',i)+1);};
+ assert.equal(/570px/.test(rule(artDirectionCSS,'.web-scene.image-left .web-image{')),false);assert.equal(/440px/.test(rule(artDirectionCSS,'.web-scene.image-right .web-image{')),false);
+ assert.equal(/320px|600px/.test(rule(artDirectionCSS,'.web-scene.image-strip .web-image{')),false);
+ assert.equal(/560px/.test(rule(artDirectionCSS,'.web-scene.system-map-wide .semantic-diagram svg{')),false);assert.equal(/640px/.test(rule(artDirectionCSS,'.web-scene.system-map-key .semantic-diagram svg{')),false);
+ assert.equal(/1\.08fr/.test(rule(artDirectionCSS,'.web-scene.image-left .regions{')),false);
+ // The composition sheet no longer caps the image family at 400, 500 or 460 px either.
+ assert.equal(compositionCSS.includes('.image-left .web-image{max-width:500px}'),false);assert.equal(compositionCSS.includes('.image-right .web-image{max-width:400px}'),false);assert.equal(compositionCSS.includes('max-width:460px'),false);
+ assert.ok(compositionCSS.includes('.image-right .regions{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}'));assert.ok(compositionCSS.includes('.image-left .regions{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}'));
+ // Photo split (a theme composition outside this task) keeps its own width.
+ assert.ok(artDirectionCSS.includes('.web-scene.photo-split .web-image{width:min(100%,calc(570px * var(--image-aspect)))'));
 });
