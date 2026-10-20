@@ -218,7 +218,7 @@ test('CINE-006 markup: a declared page carries --label-size and --reference-size
  assert.ok(section('overflow').includes('--body-size:22px;')&&section('overflow').includes('--label-size:21px'),'a dense declared page keeps its body size but still names the role sizes');
  const legacy=await cineProject('en',home,{declared:[]}),lo=html(legacy,await visualAssetResources(legacy,home));
  for(const m of lo.sceneMarkup){assert.ok(!m.includes('--label-size'));assert.ok(!m.includes('--reference-size'));assert.ok(m.includes('--body-size:22px;'));}
- for(const rule of ['.web-scene .citation{font:400 var(--reference-size,12px)/1.6 var(--body)','.web-scene .web-image figcaption{font:400 var(--reference-size,12px)/1.5 var(--body)','.web-scene .source-strip .citation{font:400 var(--reference-size,12px)/1.3 var(--body)','.web-scene .reference-panel{font:400 var(--reference-size,12px)/1.3 var(--body)','.web-scene .chart-rows{font-size:var(--label-size,15px)}','.web-scene .legend{font-size:var(--label-size,14px)}','.web-scene .region[data-component=citation]+.region[data-component=citation]{border-top:0;margin-top:0;padding-top:6px}'])assert.ok(artDirectionCSS.includes(rule),rule);
+ for(const rule of ['.web-scene .citation{font:400 var(--reference-size,12px)/1.6 var(--body)','.web-scene .web-image figcaption{font:400 var(--reference-size,12px)/1.5 var(--body)','.web-scene .source-strip .citation{font:400 12px/1.3 var(--body)','.web-scene .reference-panel{font:400 12px/1.3 var(--body)','.web-scene .chart-rows{font-size:var(--label-size,15px)}','.web-scene .legend{font-size:var(--label-size,14px)}','.web-scene .regions>.region[data-component=citation]+.region[data-component=citation]{border-top:0;margin-top:0;padding-top:6px}'])assert.ok(artDirectionCSS.includes(rule),rule);
 });
 
 // ---- Task 5: CINE-006/007 player: grayscale hierarchy audit and per-region measurements; semantic-player.7 ----
@@ -309,4 +309,18 @@ test('CINE-007 A/B rule: rankCandidates refuses candidates whose document, asset
  const edited=structuredClone(candidates);edited[0].document.blocks.find(b=>b.id==='prod-callout').text='changed';assert.throws(()=>rankCandidates(p,edited,fits),{code:'CANDIDATE_CONTENT'});
  assert.throws(()=>rankCandidates(p,candidates.slice(0,2),fits.slice(0,2)),{code:'CANDIDATE_MEASUREMENT'});
  const source=await readFile(new URL('../scripts/release-gate.mjs',import.meta.url),'utf8');assert.match(source,/weakestPage/);assert.match(source,/weakest:/);
+});
+
+// ---- Task 8: docs ----
+test('CINE batch 2 docs: migration, verification and visual-studio pages mention subjectBounds, the type roles and the soft features in English and Chinese',async()=>{
+ const read=f=>readFile(new URL('../docs/'+f,import.meta.url),'utf8');
+ for(const locale of ['en','zh-CN']){
+  const migration=await read(locale+'/migration.md'),verification=await read(locale+'/verification.md'),studio=await read(locale+'/visual-studio.md'),handoff=await read(locale+'/handoff.md');
+  for(const term of ['subjectBounds','protectedRegions','contextRegion','visibleCaption','detailLocator','PROTECTED_REGION','typography.roles','--label-size','semantic-player.7','visual-art-direction.14'])assert.ok(migration.includes(term),locale+' migration '+term);
+  for(const term of ['cine-p1','subjectBounds','semantic-player.7','visual-art-direction.14'])assert.ok(verification.includes(term),locale+' verification '+term);
+  for(const term of ['subjectBounds','visibleCaption','detailLocator','PROTECTED_REGION'])assert.ok(studio.includes(term),locale+' visual-studio '+term);
+  for(const term of ['CINE-005','CINE-006','CINE-007','cine-p1'])assert.ok(handoff.includes(term),locale+' handoff '+term);
+ }
+ const roadmap=JSON.parse(await readFile(new URL('../roadmap.json',import.meta.url),'utf8')),tasks=Array.isArray(roadmap)?roadmap:roadmap.tasks;
+ for(const id of ['VIS-006','VIS-007','VIS-010','VIS-014','VIS-016'])assert.ok(tasks.find(t=>t.id===id).notes.some(n=>n.includes('CINE batch 2')),id);
 });

@@ -109,3 +109,24 @@ Recovery:
 - `SCENE_SPLIT` from `splitScene()` / `fit-page`: the cut would leave a page with only a heading, move the takeaway away from its claim, or separate an annotation from its target; `AUTHOR_LOCK`: the page's `blockIds` are locked.
 
 Legacy fixtures and every case of `tests/fixtures/visual/cine.negative.json` are checked by `node --test tests/cine-p0.test.mjs`.
+
+## Subject annotations, type roles and soft features (CINE batch 2)
+
+Nothing to migrate. CINE batch 2 (2026-10-21, [plan](../plans/cinematic-composition-batch-2.md)) adds optional fields to the image slot brief (`schemas/asset-brief.schema.json`, copied into the design-plan and web-scene contracts) and type roles to the theme packs. A project without them validates and renders as before: legacy markup and content hashes are unchanged; the stylesheet is renderer `visual-art-direction.14` and the player `semantic-player.7` (both re-recorded in `tests/fixtures/visual/render-baseline.json`).
+
+- `imageSlots[].brief.subjectBounds` — the drawn subject, a rectangle normalized to the original image. It is what the subject-fraction report calls annotated; without it the report says "no subject annotation" and treats the whole image as the subject (the conservative policy; nothing is detected).
+- `protectedRegions[]` (max 8) and `contextRegion` — the crop floor and ceiling. `safeCrop` keeps every protected region and the existing `safeRegion` inside the crop and never extends the crop beyond the context region; when the floor cannot fit the asked aspect the crop is refused with `PROTECTED_REGION` and `contain` is the stated alternative. `focalPoint` and `safeRegion` stay required and authoritative.
+- `visibleCaption` (≤ 300 characters) — the visible figcaption. The block's `alt` stays on `<img>`, is the PowerPoint picture description and is checked on the page; the caption is the slide and PDF text.
+- `detailLocator: {blockId, region}` — another image of the same page that shows the whole object, and where this detail sits in it. The locator figure carries `data-locator-for` and draws the rectangle as a frame inside its crop.
+- An evidence screenshot (brief `role: "product-screenshot"` with `factual: true`) is shown whole: every crop is refused with `PROTECTED_REGION`, `configureSlot` sets `display: "contain"`, and a saved plan whose evidence crop is not the full image is refused by name.
+- Theme packs declare `typography.roles` (`title`, `lead`, `body`, `label`, `reference`, `numeric` in px at 1440 px; 1 px = 2/3 pt in PowerPoint). A page that declares `references`, `intent` or `media` takes the roles: its body and lead rise to the role sizes unless the page is dense (more than four text blocks, a list over six items, or over 250 measure units of body text, a CJK glyph counting two), and its section names `--label-size` and `--reference-size`; a page without a declared field keeps today's sizes. Compositions that pin their paragraph size (evidence, system map, small multiples) keep it; chart and diagram SVG labels are drawn by their compilers and are not resized.
+- Measurements and diagnostics: the player reports every region's box and text-size range, every image's box, the source strip's height and a grayscale hierarchy audit; `checkRender` adds seven soft features and the weakest page ([definitions](../visual-acceptance/review.md#soft-features-cine-007)); `rankCandidates` orders the three candidates of a page hard gates first, then by the weighted soft features, and states the differences. None of it changes a saved project.
+
+Recovery:
+
+- `SAFE_REGION … The context region must contain the safe region, the subject and every protected region.`
+- `PROTECTED_REGION … The protected subject cannot fit this crop. Use contain …` or `… Evidence screenshots are shown whole.`
+- `IMAGE_SLOT … A detail locator names another image of this page.`
+- `CANDIDATE_CONTENT … Compare candidates measured at one viewport …` (the A/B rule).
+
+Legacy fixtures and every case of `tests/fixtures/visual/cine.negative.json` tagged `CINE-005` are checked by `node --test tests/cine-p1.test.mjs`.

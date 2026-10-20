@@ -200,9 +200,9 @@ export const artDirectionCSS = `
    is a closed disclosure with every source in full; a marker is a superscript on the claim. The strip never reflows the grid. */
 .web-scene .source-strip{--strip-budget:48px;margin-top:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 20px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 35%,transparent)}
 .web-scene .source-strip .region[data-component=citation]{margin:0;padding:0;border:0;grid-column:auto;min-width:0}
-.web-scene .source-strip .citation{font:400 var(--reference-size,12px)/1.3 var(--body);max-width:32ch;margin:0}
+.web-scene .source-strip .citation{font:400 12px/1.3 var(--body);max-width:32ch;margin:0}
 .web-scene .source-strip .citation a{text-decoration:none}
-.web-scene .reference-panel{font:400 var(--reference-size,12px)/1.3 var(--body);margin:0;min-width:0}
+.web-scene .reference-panel{font:400 12px/1.3 var(--body);margin:0;min-width:0}
 .web-scene .reference-panel[open]{flex-basis:100%}
 .web-scene .reference-panel summary{cursor:pointer;min-height:0;padding:0;margin:0;font:inherit;line-height:1.3}
 .web-scene .reference-panel ol{margin:6px 0 0;padding-left:1.4em;max-width:none}
@@ -214,11 +214,13 @@ export const artDirectionCSS = `
 @media(max-width:700px){.web-scene .source-strip{gap:4px 16px;padding-top:8px}.web-scene .source-strip .citation{max-width:100%}}
 /* CINE-006 type roles. A declared page names --label-size and --reference-size (document.mjs); the fallbacks hold the values these
    rules had before, so a legacy page renders as it did. SVG chart and diagram text is drawn by its compiler at its own scale
-   and is not resized here (the recorded label limit). A run of expanded citations carries one rule, not one per citation. */
+   and is not resized here (the recorded label limit). The compact strip and its panel keep their 12 px tokens: at the reference
+   role a 12-source strip measures 66 px against its 48 px budget (measured 2026-10-21), so the budget wins there and the
+   evidence records the tokens below the 10 pt target. A run of expanded citations carries one rule, not one per citation. */
 .web-scene .chart-rows{font-size:var(--label-size,15px)}
 .web-scene .legend{font-size:var(--label-size,14px)}
 .web-scene .chart-notes{font-size:var(--reference-size,13px)}
-.web-scene .region[data-component=citation]+.region[data-component=citation]{border-top:0;margin-top:0;padding-top:6px}
+.web-scene .regions>.region[data-component=citation]+.region[data-component=citation]{border-top:0;margin-top:0;padding-top:6px}
 /* CINE-005: the locator frame marks where a detail sits on the whole object; drawn inside the locator's crop, never over text. */
 .web-scene .image-crop .locator-frame{position:absolute;border:2px solid var(--accent);box-shadow:0 0 0 2px var(--paper);pointer-events:none}
 /* CINE-003: a declared left entry starts its regions at the top whatever the composition's own alignment; [data-space=open] is unchanged. */

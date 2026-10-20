@@ -10,11 +10,15 @@ const S8_TYPE={
  'orange-launch':{weight:zh=>zh?500:500,leading:zh=>zh?1.14:1.0,tracking:zh=>zh?'-.02em':'-.035em',body:21,gutter:56,measure:visual=>visual?36:34}
 };
 /** CINE-006: a page is dense when raising its body to the role size would only push it over the frame: more than four text blocks, a
- * list over six items, or over 600 characters of body text. A dense page keeps today's size and is reported below the target. */
+ * list over six items, or over 250 measure units of body text (a CJK glyph counts two: it is about twice as wide as a Latin letter).
+ * Measured on the corpus (2026-10-21): one 80-word paragraph at 27 px already runs past the 754 px cut, so a page that holds one
+ * stays at today's size. A dense page keeps today's size and is reported below the target. */
 const TEXT_TYPES=new Set(['paragraph','list','callout','quote']);
+export const DENSE_TEXT_UNITS=250;
+const measure=text=>[...text].reduce((n,ch)=>n+(/[\u2E80-\u9FFF\uF900-\uFAFF\uFF00-\uFFEF]/.test(ch)?2:1),0);
 export function denseText(blocks){
  const text=blocks.filter(b=>TEXT_TYPES.has(b.type));
- return text.length>4||text.some(b=>b.type==='list'&&b.items.length>6)||text.reduce((n,b)=>n+[...(b.type==='list'?b.items.join(' '):b.text||'')].length,0)>600;
+ return text.length>4||text.some(b=>b.type==='list'&&b.items.length>6)||text.reduce((n,b)=>n+measure(b.type==='list'?b.items.join(' '):b.text||''),0)>DENSE_TEXT_UNITS;
 }
 /** A page that declares a batch 1 field (references, intent, media) takes the type roles; legacy pages keep their markup. */
 export const declaresCine=scene=>!!(scene.references||scene.intent||scene.media);
