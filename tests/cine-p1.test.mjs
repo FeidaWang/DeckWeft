@@ -233,3 +233,51 @@ test('CINE-007 player: the runtime declares semantic-player.7, carries auditGray
  // The audit names its method honestly and never claims eye tracking.
  assert.match(grayscaleScript,/diagnostic/);assert.ok(!/eye[- ]tracking/i.test(grayscaleScript.replace(/not eye tracking/g,'')));
 });
+
+// ---- Task 6: CINE-007 soft features with documented definitions; the weakest page ----
+import {SOFT_FEATURES,SOFT_WEIGHTS,softFeatures,softScore,weakestPage} from '../src/quality/render-checks.mjs';
+import {createQualityReceipt} from '../src/quality/visual-review.mjs';
+const playerCheck=()=>({sceneId:'s',height:810,regions:[{regionId:'r1',blockId:'title',box:{x:64,y:56,width:600,height:100},minTextPx:48,maxTextPx:64},{regionId:'r2',blockId:'para',box:{x:64,y:200,width:600,height:120},minTextPx:22,maxTextPx:22},{regionId:'r3',blockId:'img',box:{x:700,y:56,width:600,height:600},minTextPx:12,maxTextPx:12}],images:[{regionId:'r3',blockId:'img',box:{x:700,y:56,width:600,height:600}}],strip:{height:60,items:12},grayscale:{holds:true,primary:{regionId:'r3'},strongest:'r3'},components:[],overflow:[],clipIssues:[],contrastIssues:[],glyphs:[],text:[],fonts:[]});
+test('CINE-007 soft features: from a synthetic player .7 check the seven features compute as defined (subject area, strip height over budget, grouping gap variance, alignment axes, competing accents, title-figure distance, entry clarity); an undeclared entry gives entryClarity null',()=>{
+ assert.deepEqual(Object.keys(SOFT_FEATURES),['subjectArea','stripHeight','groupingGapVariance','alignmentAxes','competingAccents','titleFigureDistance','entryClarity']);
+ for(const [k,d]of Object.entries(SOFT_FEATURES)){assert.ok(d.definition&&d.unit&&['higher','lower','none'].includes(d.better),k);assert.ok(d.exceptions,k+' names its exceptions');}
+ assert.deepEqual(Object.keys(SOFT_WEIGHTS),Object.keys(SOFT_FEATURES));assert.ok(Math.abs(Object.values(SOFT_WEIGHTS).reduce((a,b)=>a+b,0)-1)<1e-9,'weights sum to one');
+ const f=softFeatures(playerCheck(),{pageWidth:1440,entry:'left',focalBlockId:'title',mediaBlockIds:['img'],subjects:[{blockId:'img',containerFraction:360000/(1440*810),subjectFraction:.1,annotated:true}]});
+ assert.deepEqual(f.subjectArea,{value:.1,annotated:true,blockId:'img',containerFraction:360000/(1440*810)});
+ assert.deepEqual(f.stripHeight,{value:12,height:60,budget:48,items:12});
+ assert.deepEqual(f.groupingGapVariance,{value:484,gaps:[44,0]});
+ assert.deepEqual(f.alignmentAxes,{value:2,axes:[64,704]},'edges rounded to 8 px');
+ assert.deepEqual(f.competingAccents,{value:0,regionIds:[]});
+ assert.deepEqual(f.titleFigureDistance,{value:0,titleRegionId:'r1',figureRegionId:'r3'});
+ assert.deepEqual(f.entryClarity,{value:true,entry:'left',focalCenterX:364/1440});
+ // A competing accent: a region whose smallest text is at least the focal region's largest; a centred entry on a left-placed focal block fails.
+ const loud=playerCheck();loud.regions[1].minTextPx=72;loud.regions[1].maxTextPx=72;
+ const g=softFeatures(loud,{pageWidth:1440,entry:'center',focalBlockId:'title',mediaBlockIds:[]});
+ assert.deepEqual(g.competingAccents,{value:1,regionIds:['r2']});assert.deepEqual(g.entryClarity,{value:false,entry:'center',focalCenterX:364/1440});
+ assert.equal(g.titleFigureDistance.value,0,'without declared media the first image is the figure');assert.equal(g.subjectArea.annotated,false);assert.ok(Math.abs(g.subjectArea.value-360000/(1440*810))<1e-9,'without a subject the container is the subject');
+ assert.equal(softFeatures(playerCheck(),{pageWidth:1440,focalBlockId:'title'}).entryClarity,null);
+ const noStrip=playerCheck();noStrip.strip=null;noStrip.images=[];assert.equal(softFeatures(noStrip,{pageWidth:1440,focalBlockId:'title'}).stripHeight,null);assert.equal(softFeatures(noStrip,{pageWidth:1440,focalBlockId:'title'}).titleFigureDistance,null);
+ // Scores: in [0,1], higher is better; with the same subject the loud, mis-entered page scores lower than the quiet one.
+ const h=softFeatures(loud,{pageWidth:1440,entry:'center',focalBlockId:'title',mediaBlockIds:['img'],subjects:[{blockId:'img',containerFraction:360000/(1440*810),subjectFraction:.1,annotated:true}]});
+ assert.ok(softScore(f).score>softScore(h).score);assert.ok(Math.abs(softScore(h).score-(softScore(f).score-SOFT_WEIGHTS.competingAccents/3-SOFT_WEIGHTS.entryClarity))<1e-6,'one accent of three and a failed entry');assert.ok(softScore(f).score<=1&&softScore(g).score>=0);assert.deepEqual(Object.keys(softScore(f).penalties),Object.keys(SOFT_FEATURES));
+});
+test('CINE-007 weakest page: the page with the lowest score is named with its reasons; checkRender carries features and the receipt names the weakest page; a check without the player .7 fields yields no features and no error',async()=>{
+ const quiet={sceneId:'quiet',features:softFeatures(playerCheck(),{pageWidth:1440,entry:'left',focalBlockId:'title',mediaBlockIds:['img']})};
+ const loudCheck=playerCheck();for(const k of [1,2]){loudCheck.regions[k].minTextPx=72;loudCheck.regions[k].maxTextPx=72;}loudCheck.strip.height=120;
+ const loud={sceneId:'loud',features:softFeatures(loudCheck,{pageWidth:1440,entry:'center',focalBlockId:'title',mediaBlockIds:['img']})};
+ const w=weakestPage([quiet,loud]);assert.equal(w.sceneId,'loud');assert.ok(w.score<softScore(quiet.features).score);assert.ok(w.reasons.some(r=>/strip/i.test(r))&&w.reasons.some(r=>/accent/i.test(r)));
+ assert.equal(weakestPage([]),null);
+ // Through checkRender: the corpus product page with a player .7 fit check gets features; the legacy observation without them gets none.
+ const p=await cineProject('en',home),resources=await visualAssetResources(p,home),out=html(p,resources),observation=observationOf(p,out);
+ const i=p.plan.scenes.findIndex(s=>s.id==='product'),check={...playerCheck(),sceneId:'product',regions:[{regionId:'a',blockId:'prod-title',box:{x:64,y:56,width:500,height:120},minTextPx:60,maxTextPx:60},{regionId:'b',blockId:'prod-image',box:{x:640,y:56,width:700,height:540},minTextPx:15,maxTextPx:15},{regionId:'c',blockId:'prod-callout',box:{x:64,y:220,width:500,height:80},minTextPx:28,maxTextPx:28}],images:[{regionId:'b',blockId:'prod-image',box:{x:660,y:60,width:600,height:450}}]};
+ observation.fit.checks=p.plan.scenes.map((s,k)=>k===i?check:{sceneId:s.id,height:810,components:[],overflow:[],clipIssues:[],contrastIssues:[],glyphs:[],text:[],fonts:[]});
+ const r=checkRender(p,[observation]);assert.equal(r.ok,true);assert.equal(r.features.length,1);assert.equal(r.features[0].sceneId,'product');
+ assert.equal(r.features[0].features.subjectArea.annotated,true,'the authored subject reaches the feature');assert.equal(r.features[0].features.entryClarity.entry,'left');assert.ok(r.features[0].score>0);
+ assert.deepEqual(r.weakestPage.sceneId,'product');
+ const receipt=createQualityReceipt(p,observation,r,[{file:'x.png',sha256:'0'}]);assert.equal(receipt.weakestPage.sceneId,'product');
+ const legacy=checkRender(p,[observationOf(p,out)]);assert.deepEqual(legacy.features,[]);assert.equal(legacy.weakestPage,null);assert.equal(legacy.ok,true);
+});
+test('CINE-007 docs: docs/visual-acceptance/review.md defines every SOFT_FEATURES key (string check)',async()=>{
+ const doc=await readFile(new URL('../docs/visual-acceptance/review.md',import.meta.url),'utf8');
+ assert.ok(doc.includes('## Soft features (CINE-007)'));for(const k of Object.keys(SOFT_FEATURES))assert.ok(doc.includes('`'+k+'`'),k);assert.match(doc,/not eye tracking/);
+});

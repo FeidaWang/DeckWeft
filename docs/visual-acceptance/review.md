@@ -40,3 +40,19 @@ The Codex prompt-to-artifact deck (five text-only pages in Cream Collage) passes
 ## Images viewed for this review
 
 Contact sheets of all eight decks at 1440 px (`../evidence/vis-014/*-contact.png`), two 390 px sheets, the case captures, the three legacy sheets, the Chromium/Firefox/WebKit standalone captures, the host before/after pages, and individual 1024 and 1440 px captures of the cover, timeline, process and before/after pages taken while fixing them.
+
+## Soft features (CINE-007)
+
+Added 2026-10-21 (CINE batch 2, `src/quality/render-checks.mjs`, `SOFT_FEATURES`). The player (`semantic-player.7`) measures every region's box and text-size range, every image's box and the source strip's height; `checkRender` turns them into the seven features below for each measured page and names the weakest page (the lowest weighted score, `weakestPage`). They are bounding-box diagnostics with stated units and exceptions: signals for a reviewer, never a certification, and not eye tracking. Hard gates (content and source coverage, safe crops, typography minima, geometry, contrast, readable labels, working links, current evidence, target fit) stay in `candidateFit` and the render checks; a soft feature never fails a page.
+
+| Feature | Definition | Unit | Better | Exceptions |
+|---|---|---|---|---|
+| `subjectArea` | The largest visible subject on the page as a fraction of the page: the authored subject inside its crop (`annotated:true`), else the image container itself. | fraction of the page | higher | A context landscape or a chapter page may intend a small or absent subject; judge against the declared purpose. |
+| `stripHeight` | How far the compact source strip exceeds its 48 px budget at presentation width. | px over budget | lower | A source-is-subject page has no strip; narrow widths wrap the strip by design. |
+| `groupingGapVariance` | The variance of the vertical gaps between consecutive regions in reading order (a negative gap, from side-by-side regions, counts as 0). | px² | lower | A deliberate pause (a chapter, a closing) can hold one large gap; two-column pages report their column breaks as zero gaps. |
+| `alignmentAxes` | The number of distinct left edges the regions start on, rounded to 8 px. | count | lower | Grids and small multiples use several axes; three or fewer is a starting point, not a rule. |
+| `competingAccents` | Regions other than the focal block whose smallest text is at least as large as the focal block's largest text. | count | lower | A metric page shows its number larger than its heading on purpose; a quote page sets the quotation above its paraphrase. |
+| `titleFigureDistance` | The vertical distance from the bottom of the focal (title) region to the top of the first declared media region (or the first image), clamped at zero. | px | lower | Side-by-side layouts report zero; a page without media reports null. |
+| `entryClarity` | Whether the focal region's centre lies where the declared entry says the eye starts: the left 40 % for `left`, the middle fifth for `center`, anywhere for `contextual`. | boolean | — | Null when the page declares no intent; an inferred entry is never scored. |
+
+Score: `1 − Σ weight × penalty` with the starting weights `SOFT_WEIGHTS` (subject area .3, competing accents .15, entry clarity .15, the rest .1 each); each penalty is the feature normalized to 0–1 (subject area reaches 0 at 30 % of the page, strip height at 48 px over, grouping at a 40 px standard deviation, axes at seven, accents at three, title distance at 400 px). The weights were set on the batch 1 corpus and are calibration inputs, not findings; the candidate ranking (`rankCandidates`) applies the hard gates first and these weights second, and records why each of the three candidates differs.

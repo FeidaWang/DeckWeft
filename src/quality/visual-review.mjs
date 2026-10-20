@@ -2,7 +2,7 @@ import {contentHash} from '../scene/web/compile.mjs';
 import {qualityBasis} from './render-checks.mjs';
 export function createQualityReceipt(project,observation,checks,captures) {
  const basis=qualityBasis(project,observation);
- return {format:'deckweft-quality-receipt',version:1,basis,captures,checks,review:null,status:checks.ok?'awaiting-visual-review':'failed',id:contentHash({basis,captures,checks})};
+ return {format:'deckweft-quality-receipt',version:1,basis,captures,checks,weakestPage:checks.weakestPage||null,review:null,status:checks.ok?'awaiting-visual-review':'failed',id:contentHash({basis,captures,checks})};
 }
 export function receiptCurrent(receipt,project,observation,captures=receipt.captures) {
  return receipt.basis===qualityBasis(project,observation)&&receipt.id===contentHash({basis:receipt.basis,captures,checks:receipt.checks});
