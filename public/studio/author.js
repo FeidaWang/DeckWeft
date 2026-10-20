@@ -102,7 +102,7 @@ export function mountAuthor({state,json,api,apply,download,error,message,x,workb
  function typographyList(failures){const ul=$('#exportTypography'),shown=failures.slice(0,40);
   ul.innerHTML=shown.map(f=>`<li>${x(t('visual.author.pagePtNeedsPt',{page:f.sceneId,role:f.role in roleWord?t(roleWord[f.role]):f.role,actualPt:f.actualPt,requiredPt:f.requiredPt,name:f.name}))}</li>`).join('')+(failures.length>shown.length?`<li>${x(t('visual.author.andMore',{failuresCount:failures.length-shown.length}))}</li>`:'');
   ul.hidden=!failures.length;}
- function openExport(format){renderEvidence($('#exportEvidence'),state.taskEvidence,pick);exportFormat=format;$('#exportTitle').textContent=format==='pptx'?t('visual.author.exportPowerpoint'):t('visual.author.exportPdf');$('#exportPaginateField').hidden=format!=='pptx';exportStatus('idle','');typographyList([]);$('#exportAcceptField').hidden=true;$('#exportAccept').checked=false;$('#exportRun').disabled=false;$('#exportDialog').showModal();}
+ function openExport(format){renderEvidence($('#exportEvidence'),state.taskEvidence);exportFormat=format;$('#exportTitle').textContent=format==='pptx'?t('visual.author.exportPowerpoint'):t('visual.author.exportPdf');$('#exportPaginateField').hidden=format!=='pptx';exportStatus('idle','');typographyList([]);$('#exportAcceptField').hidden=true;$('#exportAccept').checked=false;$('#exportRun').disabled=false;$('#exportDialog').showModal();}
  async function runExport(){
   const format=exportFormat,paginate=$('#exportPaginate').value,accept=!$('#exportAcceptField').hidden&&$('#exportAccept').checked,name=format==='pptx'?'PowerPoint':'PDF';
   $('#exportRun').disabled=true;exportStatus('running',t('visual.author.measuringTheStaticSceneAndCompiling'));
