@@ -209,6 +209,6 @@ $('#useInteractionOpening').onclick=()=>{
 addEventListener('message',e=>{
  const r=openingRequest;if(!r||e.source!==$('#preview').contentWindow||e.data?.type!=='deckweft:opening'||e.data.id!==r.id)return;
  openingRequest=null;if(state.counter!==r.counter||state.active!==r.sceneId||state.render?.renderHash!==r.renderHash||e.data.renderHash!==r.renderHash||e.data.sceneId!==r.sceneId)return;
- const at=e.data.position,fixed=at===e.data.staticPosition;if(Number.isSafeInteger(at)&&at!==0&&e.data.exploring===false){error(new Error(t(`The preview shows cue position ${at}${fixed?' (the static state)':''}, not an explored selection. Change the chart or step in the preview first, or move Cue position to 0; the opening is unchanged.`,`预览停在提示位置 ${at}${fixed?'（静态状态）':''}，不是探索后的选择。请先在预览中调整图表或步骤，或把提示位置移到 0；开场状态未改变。`)));return;}
+ const at=e.data.position,fixed=at===e.data.staticPosition;if(Number.isSafeInteger(at)&&at!==0&&e.data.exploring===false){error(new Error(t('visual.main.cuePositionNotExplored',{at,state:fixed?t('visual.main.staticStateNote'):''})));return;}
  try{const next=useInteractionOpening(state.project,r.sceneId,e.data.state,{position:e.data.position,exploring:e.data.exploring,staticPosition:e.data.staticPosition});changed(()=>{state.project=next;},{fields:true});message(t('visual.main.openingViewAppliedSaveAndExport'));}catch(err){error(err);}
 });

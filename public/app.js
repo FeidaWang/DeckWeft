@@ -8,21 +8,18 @@ import {applyActions} from './actions.js';
 import {mountPresenter} from './presenter.js';
 import {sessionRecovery,askSaveCopy} from './session.js';
 import {historyCapacityNote} from './history-capacity.js';
+import {t,applyLanguage} from './i18n.js';
 applyPitchMode(document);
 const $=selector=>document.querySelector(selector);
-const en=Object.fromEntries([...document.querySelectorAll('[data-i18n]')].map(el=>[el.dataset.i18n,el.textContent]));
-const zh={brandNote:'把想法，排成清晰的故事。',save:'保存',present:'演示',export:'带走',story:'你的故事',new:'新建',import:'导入 JSON / 大纲',privacy:'保存在你的电脑，不会暗中上传。',workbench:'工作台',slides:'页面',edit:'编辑',exit:'退出演示',auto:'自动布局',content:'内容',design:'设计',sources:'来源',wordsFirst:'先把话说清楚。',wordsNote:'一张幻灯片，讲一个有用的想法。',eyebrow:'小字',headline:'标题',body:'说明',points:'要点',metrics:'数字',zoneWords:'词',zoneLook:'样子',firstRunArrange:'排好',seeExample:'先看个例子',firstRunLabel:'你要讲的话',notes:'讲者备注',duplicate:'复制',delete:'删除',quietDesign:'让想法成为主角。',designNote:'先有清晰结构，再考虑装饰。',theme:'颜色主题',paper:'温暖纸张',midnight:'午夜墨色',ocean:'宁静海洋',role:'这一页的任务',contentLocale:'文稿语言 / 字体偏好',localeNote:'切换这里不会翻译现有文字。',motion:'After Effects 入场方式',duration:'每页时长（秒）',motionNote:'HTML 可播放这些入场；PowerPoint 保持静态，AE 接收动效交接。',evidenceTitle:'告诉读者，依据在哪里。',evidenceNote:'保存一个网址，不等于验证了事实。',sourceTitle:'来源名称',sourceURL:'来源网址',addSource:'添加并关联到本页',preflight:'导出前检查',qualityNote:'文字由当前浏览器实测；演示软件仍可能替换字体，请检查导出文件。',footer:'DeckWeft · 本地优先的幻灯片工作台',newTitle:'你想表达什么？',outlineHelp:'先写标题，再写补充内容。单独一行 --- 表示新的一页。这里仅排列你的文字，不会调用 AI。',outline:'你的大纲',cancel:'取消',arrange:'整理我的大纲',takeDeck:'把你的故事带走。',exportNote:'PowerPoint 保留可编辑文字和形状；JSON 保留整个项目。',editable:'可编辑文字和形状',offline:'浏览器离线打开',backup:'保存完整备份',currentOnly:'仅当前页面',importLayers:'使用附带插件导入',aeImport:'使用附带 JSX 导入',handoffNote:'Figma 与 AE 交接为实验功能。这里不会上传到云端。'};
-Object.assign(zh,{history:'历史版本',historyTitle:'找回之前的好想法。',historyHelp:'像翻相册一样查看旧版本。恢复会新建一个副本，不会覆盖原文稿。',loadOlder:'更早的版本',restoreCopy:'恢复为新副本',openCopy:'打开恢复的副本',close:'关闭',previousPage:'上一页',nextPage:'下一页',refresh:'重试',leaveTitle:'先保护你的修改。',leaveHelp:'离开前，可以保存当前修改，或继续留在这里。',saveLeave:'保存并继续',discardLeave:'放弃修改并继续',keepEditing:'留在这里',drawerTitle:'编辑工具',localTitle:'文稿名称'});
-Object.assign(zh,{includeSpeakerNotes:'包含私密讲者备注和来源说明',publicExport:'视觉导出默认不含私密备注。项目 JSON 始终包含完整私密项目。',settings:'设置',privatePresenter:'私密讲者界面',backEditor:'返回编辑',openAudience:'打开观众窗口',shareAudience:'只共享观众窗口，或使用扩展屏幕。',currentSlide:'当前页',nextSlide:'下一页',speakerScript:'讲者提词',readingOptions:'阅读设置',englishPace:'英文词 / 分钟',chinesePace:'中文字符 / 分钟',pauseLength:'每句停顿（秒）',scriptFont:'讲稿字号',scriptWidth:'侧栏宽度',dockSide:'侧栏位置',dockRight:'右侧',dockLeft:'左侧',calibrate:'用本页校准语速',resumeFollowing:'继续跟随',restartScript:'重置本页提词',appearanceAccess:'外观与无障碍',editorAppearance:'编辑器外观',system:'跟随系统',light:'浅色',dark:'深色',themeSeparate:'幻灯片保持原有配色。这些设置只改变工作区。',reduceMotion:'减弱动态效果',advancedPlayback:'高级播放设置',motionPolicy:'动画策略',fullMotion:'完整动态',reducedMotion:'减弱动态',noMotion:'关闭动画'});
-Object.assign(zh,{"export":"带走","import":"导入文稿","auto":"帮我选","points":"要点","metrics":"数字","qualityNote":"演示软件可能替换字体，请先检查文件。","footer":"DeckWeft","exportNote":"PowerPoint 保留可编辑文字；备份保留全部内容。","publicExport":"私密备注默认不会导出，勾选后才包含；备份保留全部内容。","moreIntro":"大多数人不需要打开这里。","zoneWords":"词","zoneLook":"样子","moreVersions":"之前的版本","moreAgent":"让助手帮我写","agentHelp":"让助手帮我写","morePresenting":"放映设置","moreLanguage":"语言","moreBackup":"备份与还原","moreDeveloper":"给开发者","planStory":"规划故事","rehearse":"排练"});
-const labels={en:{editorial:'Editorial split',spotlight:'Statement stage',grid:'Evidence grid',timeline:'Step by step'},'zh-CN':{editorial:'编辑分栏',spotlight:'主张聚焦',grid:'证据网格',timeline:'逐步展开'}};
+const labels={editorial:'classic.family.editorial',spotlight:'classic.family.spotlight',grid:'classic.family.grid',timeline:'classic.family.timeline'};
+const familyLabel=id=>labels[id]?t(labels[id]):id;
 const state={token:'',project:null,active:'',preview:null,dirty:false,saving:false,operation:false,exporting:false,locale:'en',counter:0,previewState:'idle',composing:false,saveIssue:null,firstRun:false};
 const moreDrawer=$('#moreDialog');
 const edits=new EditHistory(),dialogs=new DialogManager(document),textMeasurer=new BrowserTextMeasurer();
 let previewTimer,previewTicket=0,previewAbort,toastTimer,presenter,saveTimer;
-const t=(english,chinese)=>state.locale==='zh-CN'?chinese:english;
+const pick=(english,chinese)=>state.locale==='zh-CN'?chinese:english;
 const x=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const reconnect=sessionRecovery({t,setToken:token=>{state.token=token;}});
+const reconnect=sessionRecovery({t:pick,setToken:token=>{state.token=token;}});
 // A 401 is answered before the request is handled, so one retry after reconnecting cannot repeat a change.
 async function api(url,data,method='POST',signal,retry=true){
   const response=await fetch(url,{method,signal,headers:{Authorization:`Bearer ${state.token}`,...(data===undefined?{}:{'Content-Type':'application/json'})},...(data===undefined?{}:{body:JSON.stringify(data)})});
@@ -32,7 +29,7 @@ async function api(url,data,method='POST',signal,retry=true){
 async function json(url,data,method='POST',signal){return(await api(url,data,method,signal)).json();}
 function toast(message){clearTimeout(toastTimer);$('#toastRegion').textContent=message;$('#toastRegion').classList.add('visible');toastTimer=setTimeout(()=>{$('#toastRegion').textContent='';$('#toastRegion').classList.remove('visible');},6500);}
 function notice(message,tone){$('#issueBanner').hidden=!message;$('#issueBanner').textContent=message||'';$('#issueBanner').classList.toggle('warning',tone==='warning');}
-function onError(error){if(error.name==='AbortError')return;const message=error.code==='AUTH_REQUIRED'?t('Not connected. Your edits remain in this window; press ⌘/Ctrl S to reconnect.','尚未连接。修改仍保留在此窗口；按 ⌘/Ctrl S 即可重新连接。'):error.message||String(error);notice(message);toast(message);}
+function onError(error){if(error.name==='AbortError')return;const message=error.code==='AUTH_REQUIRED'?t('classic.app.notConnectedYourEditsRemainIn'):error.message||String(error);notice(message);toast(message);}
 function slide(){return state.project?.slides.find(s=>s.id===state.active);}
 function ready(){return !!state.project&&!state.operation;}
 function updateStatus(){
@@ -40,7 +37,7 @@ function updateStatus(){
   // The state square: saving, attention (a save failed, a conflict, an invalid field or a layout problem), unsaved, saved.
   const attention=!!state.saveIssue||state.previewState==='error'||state.preview?.audit.ok===false;
   const saveState=!p&&state.firstRun?'unsaved':!p||state.saving?'saving':attention?'attention':state.dirty?'unsaved':'saved';
-  const saveLabel=!p&&state.firstRun?t('No deck yet','还没有文稿'):!p?t('Opening local library…','正在打开本地文稿…'):state.saving?t('Saving…','正在保存…'):state.saveIssue==='conflict'?t('Unsaved changes · another window saved first','尚未保存 · 另一窗口先保存了'):attention?(state.dirty?t('Unsaved changes · needs a look','尚未保存 · 要看一眼'):t('Saved on this computer · needs a look','已保存在本机 · 要看一眼')):state.dirty?t('Unsaved changes','尚未保存'):t('Saved on this computer','已保存在本机');
+  const saveLabel=!p&&state.firstRun?t('classic.app.noDeckYet'):!p?t('classic.app.openingLocalLibrary'):state.saving?t('classic.app.saving'):state.saveIssue==='conflict'?t('classic.app.unsavedChangesAnotherWindowSavedFirst'):attention?(state.dirty?t('classic.app.unsavedChangesNeedsALook'):t('classic.app.savedOnThisComputerNeedsA')):state.dirty?t('classic.app.unsavedChanges'):t('classic.app.savedOnThisComputer');
   const square=$('#saveState'),spoken=square.querySelector('.sr-only');square.dataset.state=saveState;square.title=saveLabel;if(spoken.textContent!==saveLabel)spoken.textContent=saveLabel;
   $('#save').disabled=!ready()||state.saving||!state.dirty||state.composing;
   $('#undo').disabled=!ready()||!edits.past.length||state.composing;$('#redo').disabled=!ready()||!edits.future.length||state.composing;syncRedo();
@@ -72,23 +69,19 @@ function undo(redo=false){
   state.project=next.project;state.active=next.project.slides.some(s=>s.id===next.active)?next.active:next.project.slides[0].id;
   state.dirty=true;state.counter++;renderEditor();schedulePreview();scheduleSave();
 }
-function localize(){
-  $('#firstRunText')?.setAttribute('placeholder',t('Paste what you want to say here. Leave a blank line between pages.','把你要讲的话贴在这里。每一页之间空一行。'));
-  const workbenchLink=document.querySelector('.visual-studio-link');if(workbenchLink)workbenchLink.textContent=t('Visual Studio · Prompt workbench','Visual Studio · 提示词工作台');
+// Repaints everything the dictionary does not own: the editor and preview, then tells the other modules.
+function languageChanged(){
   if(pitchMode)state.locale='en';
-  document.documentElement.lang=state.locale;document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;el.textContent=state.locale==='zh-CN'?(zh[key]||en[key]):en[key];});
-  $('#uiLanguage').textContent=state.locale==='zh-CN'?'English':'中文';
-  const accessible={undo:['Undo','撤销'],redo:['Redo','重做'],addSlide:['Add a slide','添加一页'],deckTitle:['Deck title','文稿名称'],moveUp:['Move slide up','上移一页'],moveDown:['Move slide down','下移一页'],uiLanguage:['Switch interface language','切换界面语言'],openMore:['More','更多'],ratio:['Slide aspect ratio','页面比例'],projectPicker:['Local library','本地文稿库']};
-  for(const [id,[english,chinese]]of Object.entries(accessible))$('#'+id).setAttribute('aria-label',t(english,chinese));
-  const jobs=state.locale==='zh-CN'?['开启故事','解释背景','展示证据','解释过程','促成决策','结束故事']:['Open the story','Explain the context','Show evidence','Explain a process','Make a decision','Close the story'];
-  [...$('#role').options].forEach((option,i)=>option.textContent=jobs[i]);
-  const motionLabels=state.locale==='zh-CN'?['无','柔和淡入','轻微上移']:['None','Soft fade','Gentle rise'];[...$('#motion').options].forEach((option,i)=>option.textContent=motionLabels[i]);
+  applyLanguage(document,state.locale);
   if(state.project){renderEditor();renderPreview();}window.dispatchEvent(new Event('deckweft:locale'));
 }
+// The layout engine's messages are English; the two the interface knows how to say in Chinese come from the dictionary.
+const qualityKeys={SOURCE_NEEDED:'classic.quality.sourceNeeded',TEXT_OVERFLOW:'classic.quality.textOverflow'};
+const qualityMessage=issue=>state.locale==='zh-CN'&&qualityKeys[issue.code]?t(qualityKeys[issue.code]):issue.message;
 async function library(){
   let {projects}=await json('/api/projects',undefined,'GET');
   if(pitchMode){const english=[];for(const project of projects){if(project.unreadable)continue;const full=(await json(`/api/projects/${project.id}`,undefined,'GET')).project;if(projectIsEnglish(full))english.push(project);}projects=english;}
-  $('#projectPicker').innerHTML=projects.map(p=>`<option value="${x(p.id)}" ${p.unreadable?'disabled':''}>${x(p.title)}${p.unreadable?t(' · needs repair',' · 需要修复'):''}</option>`).join('');
+  $('#projectPicker').innerHTML=projects.map(p=>`<option value="${x(p.id)}" ${p.unreadable?'disabled':''}>${x(p.title)}${p.unreadable?t('classic.app.needsRepair'):''}</option>`).join('');
   if(state.project)$('#projectPicker').value=state.project.id;return projects;
 }
 function activate(project){
@@ -105,7 +98,7 @@ function renderEditor(){
   $('#items').value=s.content.items.join('\n');$('#metrics').value=s.content.metrics.map(m=>`${m.value} | ${m.label}`).join('\n');$('#notes').value=s.notes;
   $('#stageStyle').disabled=p.schemaVersion===2;$('#autoLayout').hidden=p.schemaVersion===2;$('#stageStyle').value=p.extensions?.deckweftShowcase?.style==='cosmos-dots'?'cosmos-dots':'studio';$('#role').value=s.role;$('#motion').value=s.motion.preset;$('#duration').value=s.motion.duration;
   document.querySelectorAll('[data-theme]').forEach(el=>{el.classList.toggle('selected',el.dataset.theme===p.theme);el.setAttribute('aria-pressed',String(el.dataset.theme===p.theme));});
-  $('#sourceList').innerHTML=p.sources.map(source=>`<label class="source-option"><input type="checkbox" data-source="${x(source.id)}" ${s.sourceIds.includes(source.id)?'checked':''}><span>${x(source.title)}<br><small>${x(source.url)}</small></span></label>`).join('')||`<p class="hint">${t('No sources yet. Add one below.','还没有来源，在下方添加。')}</p>`;
+  $('#sourceList').innerHTML=p.sources.map(source=>`<label class="source-option"><input type="checkbox" data-source="${x(source.id)}" ${s.sourceIds.includes(source.id)?'checked':''}><span>${x(source.title)}<br><small>${x(source.url)}</small></span></label>`).join('')||`<p class="hint">${t('classic.app.noSourcesYetAddOneBelow')}</p>`;
   updateStatus();renderPreview();
 }
 function cancelPreview(){clearTimeout(previewTimer);previewTicket++;previewAbort?.abort();}
@@ -141,18 +134,18 @@ function restoreDynamicFocus(previous){
 }
 function renderPreview(){
   const p=state.project;if(!p)return;const focused=document.activeElement;
-  $('#slideList').innerHTML=p.slides.map((s,i)=>{const result=state.preview?.slides.find(r=>r.slideId===s.id);return `<button class="thumbnail ${s.id===state.active?'active':''}" draggable="true" data-slide="${x(s.id)}" aria-label="${x(t('Slide','页面')+' '+(i+1)+': '+s.content.title)}" aria-current="${s.id===state.active?'true':'false'}"><span aria-hidden="true">${result?.svg||'<div class="placeholder">…</div>'}</span><span class="thumbnail-meta"><span>${String(i+1).padStart(2,'0')}</span><span>${x(s.content.title)}</span></span></button>`}).join('');
+  $('#slideList').innerHTML=p.slides.map((s,i)=>{const result=state.preview?.slides.find(r=>r.slideId===s.id);return `<button class="thumbnail ${s.id===state.active?'active':''}" draggable="true" data-slide="${x(s.id)}" aria-label="${x(t('classic.app.slide')+' '+(i+1)+': '+s.content.title)}" aria-current="${s.id===state.active?'true':'false'}"><span aria-hidden="true">${result?.svg||'<div class="placeholder">…</div>'}</span><span class="thumbnail-meta"><span>${String(i+1).padStart(2,'0')}</span><span>${x(s.content.title)}</span></span></button>`}).join('');
   const result=state.preview?.slides.find(r=>r.slideId===state.active);
   if(result){
-    $('#canvas').innerHTML=result.svg;sizeCanvas();$('#layoutCaption').textContent=(p.schemaVersion===2?slide().intent.visualFamily:(labels[state.locale][result.selected]||result.selected))+' · '+t('editable text + shapes','可编辑文字和形状');
+    $('#canvas').innerHTML=result.svg;sizeCanvas();$('#layoutCaption').textContent=(p.schemaVersion===2?slide().intent.visualFamily:familyLabel(result.selected))+' · '+t('classic.app.editableTextShapes');
     const choices=state.preview.choices||[];
-    $('#candidates').innerHTML=choices.map((c,i)=>`<button class="candidate ${result.selected===c.id?'selected':''}${c.eligible?'':' unfit'}" data-layout="${c.id}" aria-label="${x(p.schemaVersion===2?c.label:(labels[state.locale][c.id]||c.id))}" aria-pressed="${result.selected===c.id}" title="${x(c.explanation)}">${c.eligible?'':`<span class="unfit-reason">${t('Too much text to fit','文字太多，放不下')}</span>`}<span aria-hidden="true">${c.svg}</span><span class="candidate-label"><span>${i+1} · ${x(p.schemaVersion===2?c.label:(labels[state.locale][c.id]||c.id))}</span></span></button>`).join('');
+    $('#candidates').innerHTML=choices.map((c,i)=>`<button class="candidate ${result.selected===c.id?'selected':''}${c.eligible?'':' unfit'}" data-layout="${c.id}" aria-label="${x(p.schemaVersion===2?c.label:familyLabel(c.id))}" aria-pressed="${result.selected===c.id}" title="${x(c.explanation)}">${c.eligible?'':`<span class="unfit-reason">${t('classic.app.tooMuchTextToFit')}</span>`}<span aria-hidden="true">${c.svg}</span><span class="candidate-label"><span>${i+1} · ${x(p.schemaVersion===2?c.label:familyLabel(c.id))}</span></span></button>`).join('');
     const audit=state.preview.audit,current=audit.issues.filter(i=>!i.slideId||i.slideId===state.active);
-    $('#qualityCount').textContent=current.length?String(current.length):t('Clear','通过');
-    $('#qualityIssues').innerHTML=current.length?current.map(i=>`<div class="quality-item ${i.severity}">${i.severity==='error'?'!':'○'} ${x(state.locale==='zh-CN'?(i.code==='SOURCE_NEEDED'?'这些数字尚未关联来源，请补充或在备注中说明是示例。':i.code==='TEXT_OVERFLOW'?'有文字超出边界，请缩短文字或换一种布局。':i.message):i.message)}</div>`).join(''):`<div class="quality-item good">✓ ${t('No layout blockers on this slide.','本页未发现排版阻塞。')}</div>`;
+    $('#qualityCount').textContent=current.length?String(current.length):t('classic.app.clear');
+    $('#qualityIssues').innerHTML=current.length?current.map(i=>`<div class="quality-item ${i.severity}">${i.severity==='error'?'!':'○'} ${x(qualityMessage(i))}</div>`).join(''):`<div class="quality-item good">✓ ${t('classic.app.noLayoutBlockersOnThisSlide')}</div>`;
     const fonts=Object.entries(state.preview.measurement?.fontProbes||{}).filter(([,ok])=>ok).map(([name])=>name);
-    $('#measurementNote').textContent=t('Browser measurement. Local fonts detected: ','浏览器实测。检测到的本地字体：')+(fonts.join(', ')||t('none confirmed; browser fallback used.','未确认，使用浏览器后备字体。'));
-  }else{$('#canvas').innerHTML=`<p>${t('Measuring your slide…','正在测量页面…')}</p>`;$('#candidates').replaceChildren();}
+    $('#measurementNote').textContent=t('classic.app.browserMeasurementLocalFontsDetected')+(fonts.join(', ')||t('classic.app.noneConfirmedBrowserFallbackUsed'));
+  }else{$('#canvas').innerHTML=`<p>${t('classic.app.measuringYourSlide')}</p>`;$('#candidates').replaceChildren();}
   updateStatus();restoreDynamicFocus(focused);markZone();window.dispatchEvent(new Event('deckweft:preview'));
 }
 function sizeCanvas(){const svg=$('#canvas svg');if(!svg)return;const [,,w,h]=svg.getAttribute('viewBox').split(' ').map(Number),stage=$('#stage'),style=getComputedStyle(stage),aw=stage.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight),ah=stage.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom),scale=Math.min(aw/w,ah/h);$('#canvas').style.width=`${Math.max(1,w*scale)}px`;$('#canvas').style.height=`${Math.max(1,h*scale)}px`;}
@@ -162,10 +155,10 @@ document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('can
 new ResizeObserver(sizeCanvas).observe($('#stage'));window.addEventListener('resize',()=>dialogs.resize(innerWidth));
 // After a 409 the author may keep the draft as a new deck through the import-as-copy route; the newer revision stays untouched.
 async function saveCopy(){
-  if(!await askSaveCopy(t))return false;
+  if(!await askSaveCopy(pick))return false;
   const draft=structuredClone(state.project),active=state.active;
   const imported=await json('/api/import',{project:draft}),saved=await json('/api/projects',{project:imported.project});
-  activate(saved.project);selectSlide(active);await library();toast(t('Saved as a separate copy. The newer version was not changed.','已另存为独立副本，较新版本未改动。'));return true;
+  activate(saved.project);selectSlide(active);await library();toast(t('classic.app.savedAsASeparateCopyThe'));return true;
 }
 // Autosave 1.2 s after the last edit. It waits out IME composition and invalid fields (the preview already shows those),
 // and pauses after a revision conflict: ⌘/Ctrl S then offers the separate copy, so no dialog opens while someone types.
@@ -181,10 +174,10 @@ async function save({auto=false}={}){
     if(state.project.id===snapshot.id){state.project.revision=project.revision;if(counter===state.counter)state.dirty=false;}
     state.saveIssue=null;
     // From 80% of the suggested history size the banner explains cleanup; nothing is deleted.
-    await library();notice(historyCapacityNote(historyUsage,t),'warning');return !state.dirty;
+    await library();notice(historyCapacityNote(historyUsage,pick),'warning');return !state.dirty;
   }catch(error){
-    if(error.code==='REVISION_CONFLICT'){state.saveIssue='conflict';if(!auto){try{if(await saveCopy())return true;}catch(copyError){onError(copyError);return false;}}notice(t('Another window saved first. Your edits are still here. Export Project JSON to keep a draft, then reopen or import it as a new copy.','另一窗口先保存了。你的修改仍在这里。先导出项目 JSON 保留草稿，再重新打开或导入为新副本。'));}
-    else{state.saveIssue='failed';if(auto)notice(error.code==='AUTH_REQUIRED'?t('Not connected. Your edits remain in this window; press ⌘/Ctrl S to reconnect.','尚未连接。修改仍保留在此窗口；按 ⌘/Ctrl S 即可重新连接。'):error.message||String(error));else onError(error);}
+    if(error.code==='REVISION_CONFLICT'){state.saveIssue='conflict';if(!auto){try{if(await saveCopy())return true;}catch(copyError){onError(copyError);return false;}}notice(t('classic.app.anotherWindowSavedFirstYourEdits'));}
+    else{state.saveIssue='failed';if(auto)notice(error.code==='AUTH_REQUIRED'?t('classic.app.notConnectedYourEditsRemainIn'):error.message||String(error));else onError(error);}
     return false;
   }finally{state.saving=false;updateStatus();if(state.dirty&&!state.saveIssue)scheduleSave();}
 }
@@ -195,7 +188,7 @@ async function exportFile(format){
     // Always allow a raw draft backup, even when a field is temporarily invalid.
     const blob=format==='json'?new Blob([JSON.stringify(snapshot,null,2)+'\n'],{type:'application/json'}):await(await api(`/api/export/${format}`,{project:snapshot,slideIndex:snapshot.slides.findIndex(s=>s.id===state.active),renderTicket:state.preview?.renderTicket,requireMeasured:true,includeNotes:$('#exportNotes').checked,motion:getPreferences().motion})).blob();
     const extension={json:'deck.json',motion:'motion.json',figma:'figma.json'}[format]||format;
-    download(blob,`${snapshot.title.replace(/[^\p{L}\p{N}_-]+/gu,'-').slice(0,70)||'deckweft'}.${extension}`);$('#exportDialog').close();toast(format==='json'?t('Draft backup created. Invalid fields still need repair before re-import.','已备份草稿。无效字段仍需修复后才能重新导入。'):t('Export created from the measured preview. Check it in your presentation app.','已按实测预览导出。请在演示软件中检查文件。'));
+    download(blob,`${snapshot.title.replace(/[^\p{L}\p{N}_-]+/gu,'-').slice(0,70)||'deckweft'}.${extension}`);$('#exportDialog').close();toast(format==='json'?t('classic.app.draftBackupCreatedInvalidFieldsStill'):t('classic.app.exportCreatedFromTheMeasuredPreview'));
   }catch(error){if(['STALE_MEASUREMENT','MEASUREMENT_EXPIRED'].includes(error.code)){schedulePreview();$('#exportDialog').close();}onError(error);
   }finally{state.exporting=false;updateStatus();}
 }
@@ -212,7 +205,7 @@ async function canLeave(){
     const cancelClick=()=>done(false),discardClick=()=>done(true);
     const closed=()=>{if(!dialog.open)done(false);}; // Ignore a queued close from a previous opening.
     const cancel=event=>{event.preventDefault();if(!state.composing&&!state.saving)done(false);};
-    const saveClick=async()=>{busy(true);const ok=await save();busy(false);if(ok)done(true);else $('#leaveError').textContent=t('Saving did not finish. Keep editing or export a draft backup.','保存未完成。请继续编辑或导出草稿备份。');};
+    const saveClick=async()=>{busy(true);const ok=await save();busy(false);if(ok)done(true);else $('#leaveError').textContent=t('classic.app.savingDidNotFinishKeepEditing');};
     keep.addEventListener('click',cancelClick);discard.addEventListener('click',discardClick);saveButton.addEventListener('click',saveClick);dialog.addEventListener('cancel',cancel);dialog.addEventListener('close',closed);
   });
   return leavePromise;
@@ -221,7 +214,7 @@ function selectSlide(id){if(!ready()||state.composing||state.active===id||!state
 function present(exit=false){
   if(exit)presenter?.stop();else presenter?.start();
 }
-function freshSlide(){return {id:'slide_'+crypto.randomUUID().replaceAll('-','').slice(0,16),role:'context',content:{eyebrow:'',title:t('A clear idea','一个清晰的想法'),body:'',items:[],metrics:[]},design:{layout:'auto'},motion:{preset:'none',duration:6},notes:'',sourceIds:[]};}
+function freshSlide(){return {id:'slide_'+crypto.randomUUID().replaceAll('-','').slice(0,16),role:'context',content:{eyebrow:'',title:t('classic.app.aClearIdea'),body:'',items:[],metrics:[]},design:{layout:'auto'},motion:{preset:'none',duration:6},notes:'',sourceIds:[]};}
 function slideAction(type){
   if(!ready()||state.composing)return;const i=state.project.slides.findIndex(s=>s.id===state.active);if(!validSlideAction(type,i,state.project.slides.length))return;
   changed(()=>{const p=state.project;
@@ -281,7 +274,7 @@ const phone=matchMedia('(max-width:680px)');
 const topSlots=['undo','redo','deckTitle'].map(id=>{const el=$('#'+id),marker=document.createComment('top-'+id);el.before(marker);return {el,marker};});
 function placeTopControls(){for(const {el,marker} of topSlots){if(phone.matches)$('#moreTop').append(el);else marker.after(el);}}
 phone.addEventListener('change',placeTopControls);placeTopControls();
-$('#uiLanguage').onclick=()=>{if(state.composing||pitchMode)return;state.locale=state.locale==='en'?'zh-CN':'en';localize();};
+$('#uiLanguage').onclick=()=>{if(state.composing||pitchMode)return;state.locale=state.locale==='en'?'zh-CN':'en';languageChanged();};
 for(const [id,type]of Object.entries({addSlide:'add',duplicate:'duplicate',moveUp:'up',moveDown:'down',deleteSlide:'delete'}))$('#'+id).onclick=()=>slideAction(type);
 // Page strip: drag a thumbnail to reorder. A 2 px line marks where it lands; the drop goes through changed(),
 // so undo and autosave follow. The insert point is before the first thumbnail whose middle lies right of the pointer.
@@ -305,9 +298,9 @@ $('#outlineForm').onsubmit=async event=>{event.preventDefault();if(state.operati
 $('#importButton').onclick=async()=>{dialogs.closeDrawer();if(await canLeave())$('#fileInput').click();};
 $('#fileInput').onchange=async event=>{
   const file=event.target.files[0];if(!file||state.operation)return;state.operation=true;updateStatus();
-  try{if(file.size>1_900_000)throw new Error(t('Use a file smaller than 1.9 MB.','请选择小于 1.9 MB 的文件。'));const text=await file.text(),data=file.name.toLowerCase().endsWith('.json')?{project:JSON.parse(text)}:{outline:text};const imported=await json('/api/import',data),saved=await json('/api/projects',{project:imported.project});activate(saved.project);await library();if(imported.warnings.length)toast(imported.warnings.join(' '));}catch(error){onError(error);}finally{event.target.value='';state.operation=false;updateStatus();}
+  try{if(file.size>1_900_000)throw new Error(t('classic.app.useAFileSmallerThan1'));const text=await file.text(),data=file.name.toLowerCase().endsWith('.json')?{project:JSON.parse(text)}:{outline:text};const imported=await json('/api/import',data),saved=await json('/api/projects',{project:imported.project});activate(saved.project);await library();if(imported.warnings.length)toast(imported.warnings.join(' '));}catch(error){onError(error);}finally{event.target.value='';state.operation=false;updateStatus();}
 };
-$('#addSource').onclick=()=>{try{const title=$('#sourceTitle').value.trim(),url=$('#sourceURL').value.trim(),parsed=new URL(url);if(!title||!['https:','http:'].includes(parsed.protocol)||parsed.username||parsed.password)throw Error(t('Add a name and a normal HTTP(S) URL.','请填写来源名称和正常的 HTTP(S) 网址。'));changed(()=>{const id='src_'+crypto.randomUUID().replaceAll('-','').slice(0,16);state.project.sources.push({id,title,url});slide().sourceIds.push(id);},{full:true});$('#sourceTitle').value='';$('#sourceURL').value='';}catch(error){onError(error);}};
+$('#addSource').onclick=()=>{try{const title=$('#sourceTitle').value.trim(),url=$('#sourceURL').value.trim(),parsed=new URL(url);if(!title||!['https:','http:'].includes(parsed.protocol)||parsed.username||parsed.password)throw Error(t('classic.app.addANameAndANormal'));changed(()=>{const id='src_'+crypto.randomUUID().replaceAll('-','').slice(0,16);state.project.sources.push({id,title,url});slide().sourceIds.push(id);},{full:true});$('#sourceTitle').value='';$('#sourceURL').value='';}catch(error){onError(error);}};
 document.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button||button.disabled)return;
   if(button.dataset.slide)selectSlide(button.dataset.slide);if(button.dataset.layout&&state.previewState==='ready')changed(()=>slide().design.layout=button.dataset.layout);
@@ -349,7 +342,7 @@ $('#stage').addEventListener('dragleave',event=>{if(!$('#stage').contains(event.
 $('#stage').addEventListener('drop',async event=>{
   if(!droppable(event))return;event.preventDefault();$('#stage').classList.remove('drop-ready');
   const file=event.dataTransfer.files[0];if(!file||state.operation)return;
-  if(!/\.(json|md|txt)$/i.test(file.name)){toast(t('Drop a .json, .md or .txt file.','请拖入 .json、.md 或 .txt 文件。'));return;}
+  if(!/\.(json|md|txt)$/i.test(file.name)){toast(t('classic.app.dropAJsonMdOrTxt'));return;}
   if(state.project&&!await canLeave())return;
   const files=new DataTransfer();files.items.add(file);$('#fileInput').files=files.files;$('#fileInput').dispatchEvent(new Event('change'));
 });
@@ -357,7 +350,7 @@ async function boot(){updateStatus();state.token=(await(await fetch('/api/sessio
 setTab('content');boot().catch(onError);
 // History UI is a separate, read-only workflow until an explicit restore-as-copy.
 import { mountHistory } from './history.js';
-mountHistory({state,$,t,x,json,dialogs,toast,onError,measurePreview,library,switchProject,activate,updateStatus});
+mountHistory({state,$,t:pick,x,json,dialogs,toast,onError,measurePreview,library,switchProject,activate,updateStatus});
 mountAgentBridge({state,$,json,dialogs,onError,canLeave,activate,library,pitchMode});
 import {mountStudioTools} from './studio-tools.js';
 mountStudioTools({state,$,dialogs,json,canLeave,activate,library});
