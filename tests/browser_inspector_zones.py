@@ -39,12 +39,13 @@ def main():
     assert 'zone-look' in p.locator('#canvas').get_attribute('class') and style('#canvas svg','outlineColor')==LOOK
     assert p.locator('[data-theme="midnight"]').get_attribute('aria-pressed')=='true'
     print('PASS: a swatch changes the theme and outlines the slide in blue',flush=True)
-    # Tab order: the five words fields, Sources, then the theme swatches.
+    # Tab order: the five words fields, Sources, then Look: Choose for me, the four layout cards (single entry step 3 moved
+    # them to the top of Look), then the theme swatches.
     p.locator('#eyebrow').focus();seen=['eyebrow']
-    for _ in range(9):
-      p.keyboard.press('Tab');seen.append(p.evaluate("(()=>{const e=document.activeElement;return e.id||e.dataset.theme||e.tagName.toLowerCase()})()"))
-    assert seen==['eyebrow','slideTitle','body','items','metrics','summary','signal','paper','midnight','ocean'],seen
-    print('PASS: Tab order: Small text, Title, Explanation, Points, Numbers, Sources, four swatches',flush=True)
+    for _ in range(14):
+      p.keyboard.press('Tab');seen.append(p.evaluate("(()=>{const e=document.activeElement;return e.id||e.dataset.theme||e.dataset.layout&&'layout'||e.tagName.toLowerCase()})()"))
+    assert seen==['eyebrow','slideTitle','body','items','metrics','summary','autoLayout','layout','layout','layout','layout','signal','paper','midnight','ocean'],seen
+    print('PASS: Tab order: Small text, Title, Explanation, Points, Numbers, Sources, Choose for me, four layouts, four swatches',flush=True)
     p.locator('#uiLanguage').dispatch_event('click');ready()
     zh=p.eval_on_selector_all('.inspector [data-zone] h2.zone-label','els=>els.map(e=>e.innerText.trim())')
     zl=p.eval_on_selector_all('[data-zone=words] label','els=>els.filter(e=>e.getClientRects().length).map(e=>e.textContent.trim())')[:5]

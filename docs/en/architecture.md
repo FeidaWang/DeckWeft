@@ -89,7 +89,7 @@ English is the source language. Chinese docs, sample content, and UI labels are 
 
 ## Interaction modules
 
-`public/interaction.js` owns bounded edit history, IME-aware keyboard decisions and native dialogs with explicit Tab wrapping/focus return. `public/history.js` owns the read-only history workflow. `public/shell.js` owns the shared workbench shell (top band, page strip, first run, Words / Look zones, More drawer, state square) and talks to a deck kind only through the adapter documented at its top; `public/app.js` mounts it with `public/kinds/classic.js`. The classic kind guards preview responses by generation, content counter and slide id; save responses update the revision but cannot clear later edits. Leave-confirmation handlers are scoped per opening to avoid queued-close races.
+`public/interaction.js` owns bounded edit history, IME-aware keyboard decisions and native dialogs with explicit Tab wrapping/focus return. `public/history.js` owns the read-only history workflow. `public/shell.js` owns the shared workbench shell (top band, page strip, first run, Words / Look zones, More drawer, state square) and talks to a deck kind only through the adapter documented at its top; `public/app.js` mounts it with `public/kinds/classic.js`, and `public/studio/visual.js` mounts the same shell with `public/kinds/visual.js` for v3 decks (single entry step 3). The classic kind guards preview responses by generation, content counter and slide id; save responses update the revision but cannot clear later edits. Leave-confirmation handlers are scoped per opening to avoid queued-close races.
 
 ## Version 3 handoff fields (S1, 2026-10-19)
 
