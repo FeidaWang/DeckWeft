@@ -11,24 +11,36 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "7fe6106f14856391a35a0f96dceaffd0e645b0f5",
+    "commit": "3ca4d205a71b5b00aaa601bf0b3e3d347c43082e",
     "worktreeClean": true,
-    "log": "docs/evidence/astra-second-verification/verify-7fe6106.txt",
-    "total": 495,
-    "passed": 490,
+    "log": "docs/evidence/cine-p0/verify.txt",
+    "total": 550,
+    "passed": 544,
     "failed": 0,
     "skipped": 5,
-    "skippedReason": "environment- or browser-gated (CHROMIUM_PATH, DECKWEFT_HANDOFF_DIR); the fifth skip is the F1 Studio export acceptance test",
+    "skippedReason": "environment- or browser-gated (CHROMIUM_PATH, DECKWEFT_HANDOFF_DIR); one wording test is marked todo (single-entry step 3) and is neither passed nor skipped",
     "environment": {
       "os": "macOS arm64",
       "node": "v24.14.0"
     },
-    "browserVersion": "149.0.7827.55",
+    "browserVersion": "151.0.7922.34",
     "finalRun": "passed",
     "recordedBy": "scripts/status-summary.mjs --record; npm run check compares these fields with docs/current-status.json",
     "supersedes": "history[0]"
   },
   "history": [
+    {
+      "record": "automatedTests",
+      "commit": "7fe6106f14856391a35a0f96dceaffd0e645b0f5",
+      "date": "2026-10-19",
+      "total": 495,
+      "passed": 490,
+      "failed": 0,
+      "skipped": 5,
+      "log": "docs/evidence/astra-second-verification/verify-7fe6106.txt",
+      "note": "Astra second verification round, renderer visual-art-direction.12.",
+      "supersededBy": "automatedTests"
+    },
     {
       "record": "automatedTests",
       "commit": "27bf9480c61142fd0b364873a6ab4fd54c12a77f",
