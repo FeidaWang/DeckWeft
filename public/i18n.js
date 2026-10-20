@@ -785,6 +785,10 @@ en:{
  "visual.revisions.pagePlanTarget":"; target {targetPages}",
  "classic.shell.slide":"Slide",
  "classic.app.visualStudioPromptWorkbench":"Visual Studio · Prompt workbench",
+ "classic.shell.makeCopy":"Make a new-version copy",
+ "classic.shell.kindClassic":"Classic",
+ "classic.shell.kindVisual":"Visual",
+ "classic.shell.pickerItem":"{title} ({kind})",
 },
 zh:{
  "visual.directionToggle":"创作",
@@ -1569,6 +1573,10 @@ zh:{
  "visual.revisions.pagePlanTarget":"；目标 {targetPages} 页",
  "classic.shell.slide":"页面",
  "classic.app.visualStudioPromptWorkbench":"Visual Studio · 提示词工作台",
+ "classic.shell.makeCopy":"做一份新版副本",
+ "classic.shell.kindClassic":"经典",
+ "classic.shell.kindVisual":"视觉",
+ "classic.shell.pickerItem":"{title}（{kind}）",
 }
 };
 

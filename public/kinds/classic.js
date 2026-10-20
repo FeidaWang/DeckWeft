@@ -62,7 +62,7 @@ function updateStatus(){
   const saveState=!p&&state.firstRun?'unsaved':!p||state.saving?'saving':attention?'attention':state.dirty?'unsaved':'saved';
   const saveLabel=!p&&state.firstRun?t('classic.app.noDeckYet'):!p?t('classic.app.openingLocalLibrary'):state.saving?t('classic.app.saving'):state.saveIssue==='conflict'?t('classic.app.unsavedChangesAnotherWindowSavedFirst'):attention?(state.dirty?t('classic.app.unsavedChangesNeedsALook'):t('classic.app.savedOnThisComputerNeedsA')):state.dirty?t('classic.app.unsavedChanges'):t('classic.app.savedOnThisComputer');
   shell.status({state:saveState,label:saveLabel,save:ready()&&!state.saving&&state.dirty&&!state.composing,undo:ready()&&!!edits.past.length&&!state.composing,redo:ready()&&!!edits.future.length&&!state.composing});
-  for(const id of ['newDeck','importButton','projectPicker','openHistory','openAgent','openStoryboard'])$('#'+id).disabled=!ready()||state.saving;
+  for(const id of ['newDeck','importButton','projectPicker','makeCopy','openHistory','openAgent','openStoryboard'])$('#'+id).disabled=!ready()||state.saving;
   for(const [id,kind]of Object.entries({addSlide:'add',duplicate:'duplicate',moveUp:'up',moveDown:'down',deleteSlide:'delete'}))$('#'+id).disabled=!ready()||!validSlideAction(kind,i,count)||state.composing;
   for(const id of ['openExport','present','ratio','autoLayout'])$('#'+id).disabled=!ready()||state.composing;
   $('#present').disabled||=state.previewState!=='ready'||!state.preview?.audit.ok;
@@ -90,16 +90,28 @@ function undo(redo=false){
 // The shell has switched its own words; these are the classic ones.
 function localize(locale){
   state.locale=pitchMode?'en':locale;
+  paintPicker();
   if(state.project){renderEditor();renderPreview();}
 }
 // The layout engine's messages are English; the two the interface knows how to say in Chinese come from the dictionary.
 const qualityKeys={SOURCE_NEEDED:'classic.quality.sourceNeeded',TEXT_OVERFLOW:'classic.quality.textOverflow'};
 const qualityMessage=issue=>state.locale==='zh-CN'&&qualityKeys[issue.code]?t(qualityKeys[issue.code]):issue.message;
+// One list for the whole library: classic decks from /api/projects and visual decks from /api/visual/projects, newest first,
+// each marked with its type. Reading the list never converts anything; only the Make a new-version copy button does.
+let libraryItems=[];
+// Repainted on a language change too, so the type marks follow the interface language.
+function paintPicker(){
+  const label=p=>t('classic.shell.pickerItem',{title:p.title,kind:t(p.kind==='visual'?'classic.shell.kindVisual':'classic.shell.kindClassic')})+(p.unreadable?t('classic.app.needsRepair'):'');
+  $('#projectPicker').innerHTML=libraryItems.map(p=>`<option value="${p.kind==='visual'?'visual:':''}${x(p.id)}" ${p.unreadable?'disabled':''}>${x(label(p))}</option>`).join('');
+  if(state.project)$('#projectPicker').value=state.project.id;
+}
 async function library(){
-  let {projects}=await json('/api/projects',undefined,'GET');
+  const [legacy,visual]=await Promise.all([json('/api/projects',undefined,'GET'),pitchMode?{projects:[]}:json('/api/visual/projects',undefined,'GET').catch(()=>({projects:[]}))]);
+  let {projects}=legacy;
   if(pitchMode){const english=[];for(const project of projects){if(project.unreadable)continue;const full=(await json(`/api/projects/${project.id}`,undefined,'GET')).project;if(projectIsEnglish(full))english.push(project);}projects=english;}
-  $('#projectPicker').innerHTML=projects.map(p=>`<option value="${x(p.id)}" ${p.unreadable?'disabled':''}>${x(p.title)}${p.unreadable?t('classic.app.needsRepair'):''}</option>`).join('');
-  if(state.project)$('#projectPicker').value=state.project.id;return projects;
+  libraryItems=[...projects.map(p=>({...p,kind:'classic'})),...visual.projects.map(p=>({...p,kind:'visual'}))].sort((a,b)=>(b.updatedAt||'').localeCompare(a.updatedAt||''));
+  paintPicker();
+  return projects;
 }
 function activate(project){
   if(pitchMode&&!projectIsEnglish(project))throw new Error('Presentation mode opens English projects only. Use the standard Studio to open another language edition.');
@@ -248,6 +260,20 @@ function setTab(){}
 // Words fields and the canvas blocks they draw. Renderer node ids are <slide id>_<role>_<n>.
 const zoneBlocks={eyebrow:['eyebrow'],slideTitle:['title'],body:['body'],items:['item'],metrics:['metric-value','metric-label']};
 function blocks(field,svg){const roles=zoneBlocks[field];if(!roles)return null;return {name:roles[0],nodes:[...svg.querySelectorAll('[data-node]')].filter(n=>roles.some(r=>n.dataset.node.startsWith(`${state.active}_${r}_`)))};}
+// A visual deck opens in Visual Studio; nothing is converted. Ids never contain ':', so the prefix is unambiguous.
+async function openVisual(id){
+  if(!ready()||state.saving)return;
+  if(!await canLeave()){$('#projectPicker').value=state.project.id;return;}
+  location.assign('/visual?project='+encodeURIComponent(id));
+}
+// The one place a classic deck becomes a visual one: a separate copy through the existing migrate route; the original stays.
+async function makeNewVersionCopy(){
+  if(!ready()||state.saving||!state.project)return;
+  if(state.dirty&&!await save())return;
+  state.operation=true;updateStatus();
+  try{const {project}=await json('/api/visual/migrate',{projectId:state.project.id});location.assign('/visual?project='+encodeURIComponent(project.id));}
+  catch(error){state.operation=false;updateStatus();onError(error);}
+}
 async function switchProject(id){
   if(!ready()||state.saving)return false;if(!await canLeave()){$('#projectPicker').value=state.project.id;return false;}
   state.operation=true;updateStatus();
@@ -297,7 +323,8 @@ function mount(s){
   $('#newDeck').onclick=async()=>{dialogs.closeDrawer();if(await canLeave())dialogs.open($('#outlineDialog'),$('#newDeck'));};
   $('#autoLayout').onclick=()=>changed(()=>slide().design.layout='auto');
   for(const [id,type]of Object.entries({duplicate:'duplicate',moveUp:'up',moveDown:'down',deleteSlide:'delete'}))$('#'+id).onclick=()=>slideAction(type);
-  $('#projectPicker').onchange=e=>switchProject(e.target.value);
+  $('#projectPicker').onchange=e=>{const value=e.target.value;if(value.startsWith('visual:'))openVisual(value.slice(7));else switchProject(value);};
+  $('#makeCopy').onclick=makeNewVersionCopy;
   $('#outlineForm').onsubmit=async event=>{event.preventDefault();if(state.operation)return;state.operation=true;$('#arrangeOutline').disabled=true;updateStatus();try{const imported=await json('/api/import',{outline:$('#outline').value,locale:state.project?.locale||(state.locale==='zh-CN'?'zh-CN':'en')});const saved=await json('/api/projects',{project:imported.project});activate(saved.project);await library();$('#outlineDialog').close();}catch(error){$('#outlineError').textContent=error.message;}finally{state.operation=false;$('#arrangeOutline').disabled=false;updateStatus();}};
   $('#importButton').onclick=async()=>{dialogs.closeDrawer();if(await canLeave())$('#fileInput').click();};
   $('#fileInput').onchange=async event=>{
