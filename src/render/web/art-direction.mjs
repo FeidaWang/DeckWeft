@@ -198,4 +198,6 @@ export const artDirectionCSS = `
 .web-scene .source-marker-line{font:400 12px/1.4 var(--body);margin:4px 0 0}
 .web-scene .chart-notes .source-marker-note .source-marker{font-size:1em;vertical-align:baseline}
 @media(max-width:700px){.web-scene .source-strip{gap:4px 16px;padding-top:8px}.web-scene .source-strip .citation{max-width:100%}}
+/* CINE-003: a declared left entry starts its regions at the top whatever the composition's own alignment; [data-space=open] is unchanged. */
+.web-scene[data-entry=left] .regions{align-content:start}
 `;

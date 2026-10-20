@@ -27,6 +27,8 @@ import presentationSchema from '../schemas/presentation-v3.schema.json' with {ty
 import webSceneSchema from '../schemas/web-scene.schema.json' with {type:'json'};
 import {WEB_RENDERER_VERSION} from '../src/scene/web/compile.mjs';
 import {artDirectionCSS} from '../src/render/web/art-direction.mjs';
+import {sceneDirection,narrativeCost} from '../src/design/art-direction.mjs';
+import {describeCandidate,compositions as allCompositions} from '../src/design/compositions.mjs';
 import {checkRender} from '../src/quality/render-checks.mjs';
 import {renderBaseline} from './render-baseline.mjs';
 /** Markup helpers: a balanced element slice, its text, and the regions of one scene section. */
@@ -412,4 +414,40 @@ test('CINE-003 preferredVariant returns the mapped variant per purpose and famil
  assert.equal(t('chapter','chapter'),'chapter-low');assert.equal(t('chapter','statement'),'statement-center');assert.equal(t('chapter','closing'),'closing-focus');assert.equal(t('chapter','quote'),'quote-center');
  for(const [purpose,family] of [['explain','quote'],['show-product','chart'],['compare','image'],['evidence','chapter'],['overview','image'],['chapter','image'],['show-detail','evidence']])assert.equal(t(purpose,family),null,`${purpose}/${family}`);
  assert.equal(preferredVariant(null,'image'),null);assert.equal(preferredVariant({purpose:'elsewhere',entry:'left'},'image'),null);
+});
+
+// ---- Task 8: CINE-003 intent in art direction, markup and rhythm preference ----
+test('CINE-003 direction: a six-block text page with a left entry is data-space=structured; the same page with entry center is open; an image page is never open',async()=>{
+ const legacy=await cineProject('en',home,{declared:[]}),i=legacy.plan.scenes.findIndex(s=>s.id==='long-heading');
+ assert.equal(sceneDirection(legacy.document,legacy.plan,i).sparse,true,'today: a short text page without a declared intent is open');
+ assert.deepEqual(sceneDirection(legacy.document,legacy.plan,i).intent,{purpose:'explain',entry:'left',inferred:true});
+ const left=structuredClone(legacy);sceneOf(left,'long-heading').intent={purpose:'explain',entry:'left'};assert.equal(sceneDirection(left.document,left.plan,i).sparse,false);
+ const centre=structuredClone(legacy);sceneOf(centre,'long-heading').intent={purpose:'explain',entry:'center'};assert.equal(sceneDirection(centre.document,centre.plan,i).sparse,true);
+ // Six text blocks: heading, three paragraphs, two lists — structured on the left, open in the centre, in both languages.
+ for(const locale of ['en','zh-CN']){const q=await cineProject(locale,home,{declared:[]}),s=sceneOf(q,'overflow');s.blockIds=['of-title','of-para-1','of-para-2','of-para-3','of-list-1','of-list-2'];s.intent={purpose:'explain',entry:'left'};const k=q.plan.scenes.indexOf(s);
+  q.plan.scenes.push({...structuredClone(s),id:'overflow-centre',composition:'statement-center',intent:{purpose:'chapter',entry:'center'}});
+  assert.equal(sceneDirection(q.document,q.plan,k).sparse,false);assert.equal(sceneDirection(q.document,q.plan,q.plan.scenes.length-1).sparse,true);}
+ const image=structuredClone(legacy);sceneOf(image,'context').intent={purpose:'show-product',entry:'center'};assert.equal(sceneDirection(image.document,image.plan,0).sparse,false,'an image page is never open');
+ const resources=await visualAssetResources(legacy,home),out=html(centre,resources);assert.ok(sectionOf(out,'long-heading').includes(' data-space="open"'));assert.ok(sectionOf(html(left,resources),'long-heading').includes(' data-space="structured"'));
+ assert.ok(artDirectionCSS.includes('.web-scene[data-entry=left] .regions{align-content:start}'));assert.ok(artDirectionCSS.lastIndexOf('.web-scene[data-entry=left] .regions{align-content:start}')>artDirectionCSS.lastIndexOf('.web-scene.closing-focus'),'placed after every composition rule');
+ assert.ok(artDirectionCSS.includes('.web-scene[data-space=open] .regions{align-content:center;min-height:500px}'),'[data-space=open] unchanged');
+});
+test('CINE-003 markup: sections carry data-purpose and data-entry; the corpus has at least one left, one center and one contextual page',async()=>{
+ const p=await cineProject('en',home,{declared:['intent']}),resources=await visualAssetResources(p,home),out=html(p,resources);
+ const attrs=out.sceneMarkup.map(m=>({purpose:m.match(/ data-purpose="([^"]+)"/)?.[1]??null,entry:m.match(/ data-entry="([^"]+)"/)?.[1]??null}));
+ assert.deepEqual(attrs[0],{purpose:'explain',entry:'left'});assert.deepEqual(attrs[2],{purpose:'show-product',entry:'center'});assert.deepEqual(attrs[9],{purpose:'chapter',entry:'contextual'});
+ for(const e of ['left','center','contextual'])assert.ok(attrs.some(a=>a.entry===e),e);
+ assert.deepEqual(attrs[6],{purpose:null,entry:null},'a page without a declared intent carries no attribute, so legacy markup is unchanged');
+ const legacy=html(await cineProject('en',home,{declared:[]}),resources);for(const m of legacy.sceneMarkup)assert.equal(/data-purpose|data-entry/.test(m),false);
+});
+test('CINE-003 rhythm: with intent show-product the image family prefers image-right (cost 0) and image-left costs 3; without intent the S6 phase table is unchanged for every existing fixture',async()=>{
+ const scene={id:'x',role:'context',intent:{purpose:'show-product',entry:'left'}},d=id=>({family:'image',id});
+ assert.equal(narrativeCost(scene,d('image-right'),1,10).cost,0);assert.equal(narrativeCost(scene,d('image-right'),1,10).preferred,'image-right');assert.equal(narrativeCost(scene,d('image-left'),1,10).cost,3);
+ assert.equal(narrativeCost({...scene,intent:{purpose:'show-detail',entry:'left'}},d('image-left'),1,10).cost,0);
+ // A family the purpose has no preference for keeps the S6 phase preference.
+ assert.equal(narrativeCost({...scene,intent:{purpose:'show-product',entry:'left'}},{family:'quote',id:'quote-split'},1,10).preferred,'quote-split');
+ // The S6 phase table, as it stands, for every scene of every legacy fixture and every variant of its family.
+ const S6=(family,phase)=>({statement:phase==='closing'?'statement-center':phase==='opening'?'statement-split':'statement-banner',evidence:'evidence-top',metric:phase==='opening'?'metric-left':'metric-band',image:phase==='closing'?'image-strip':'image-left',comparison:'comparison-matrix',process:phase==='closing'?'process-line':'process-rail',chapter:phase==='opening'?'chapter-index':'chapter-low','before-after':'before-after-split','system-map':'system-map-wide','small-multiples':'small-multiples-row',quote:phase==='opening'||phase==='closing'?'quote-center':'quote-split',closing:phase==='closing'?'closing-focus':'closing-split'})[family];
+ for(const q of await legacyProjects())for(const [i,s] of q.plan.scenes.entries()){const n=q.plan.scenes.length,phase=i===0?'opening':i===n-1?'closing':s.role,family=describeCandidate(q.document,s).family;
+  for(const v of allCompositions.filter(c=>c.family===family)){const r=narrativeCost(s,{family,id:v.id},i,n);assert.equal(r.phase,phase);assert.equal(r.preferred,S6(family,phase)||v.id);assert.equal(r.cost,S6(family,phase)&&v.id!==S6(family,phase)?3:0,`${q.id}/${s.id}/${v.id}`);}}
 });

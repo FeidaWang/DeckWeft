@@ -1,6 +1,7 @@
 import {effectiveProfile,resolveTheme} from './theme-registry.mjs';
 import {compositions} from './compositions.mjs';
 import {visibleBlockIds} from './plan.mjs';
+import {effectiveIntent,preferredVariant} from './intent.mjs';
 
 /** S8 theme type roles (alignment §16). Fieldnotes: light serif, generous measure. Atlas: demi-bold, tight, narrow measure beside figures. Stage: medium geometric, open leading. */
 const S8_TYPE={
@@ -13,7 +14,9 @@ export function sceneDirection(document,plan,index){
  const scene=plan.scenes[index],profile=effectiveProfile(document,scene,plan),blocks=visibleBlockIds(scene).map(id=>document.blocks.find(b=>b.id===id));
  const has=type=>blocks.some(b=>b.type===type),heading=blocks.find(b=>b.id===scene.focalBlockId&&b.type==='heading')||blocks.find(b=>b.type==='heading');
  const beat=index===0?'opening':index===plan.scenes.length-1?'closing':has('chart')?'evidence':has('table')?'comparison':has('image')?'image':has('metric')?'metric':scene.role;
- const visual=has('chart')||has('table')||has('diagram')||has('code'),sparse=!visual&&blocks.length<=6;
+ // CINE-003: a declared intent decides whether a short page is open space: only a centred entry without an image centres its
+ // regions; a left or contextual entry is structured. Pages without a declared intent keep today's rule (byte-identical markup).
+ const intent=effectiveIntent(document,plan,index),visual=has('chart')||has('table')||has('diagram')||has('code'),sparse=!visual&&blocks.length<=6&&(!scene.intent||(scene.intent.entry==='center'&&!has('image')));
  const colorMode=scene.colorMode??(scene.composition==='violet-chapter'?'chapter':'default');
  const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{profile,role:scene.role,colorMode});
  const zh=document.locale==='zh-CN',length=[...(heading?.text||'')].length;
@@ -36,7 +39,7 @@ export function sceneDirection(document,plan,index){
  if(scene.theme==='orange-launch'&&Math.max(0,...(heading?.text||'').split(/\s+/).map(w=>[...w].length))>=14)headline=Math.min(headline,64);
  headline*=theme.displayScale;
  const readingHeadline=zh?Math.max(36,Math.min(48,Math.round(headline*.46))):Math.max(34,Math.min(58,Math.round(headline*.54)));
- return {readingHeadline,theme,beat,colorMode,sparse,headline:Math.round(headline),headlineWeight:S8_TYPE[scene.theme]?.weight(zh)??(scene.theme==='cream-collage'?(zh?600:400):scene.theme==='electric-violet'?750:650),headlineLeading:S8_TYPE[scene.theme]?.leading(zh)??(zh?1.12:1.02),headlineTracking:S8_TYPE[scene.theme]?.tracking(zh)??(zh?'-.025em':scene.theme==='cream-collage'?'-.045em':'-.06em'),body:S8_TYPE[scene.theme]?.body??(profile.density==='compact'?20:22),lead:profile.density==='compact'?22:24,gutter:S8_TYPE[scene.theme]?.gutter??(profile.density==='compact'?32:56),measure:S8_TYPE[scene.theme]?.measure(visual)??(visual?42:36)};
+ return {readingHeadline,theme,beat,colorMode,sparse,intent,headline:Math.round(headline),headlineWeight:S8_TYPE[scene.theme]?.weight(zh)??(scene.theme==='cream-collage'?(zh?600:400):scene.theme==='electric-violet'?750:650),headlineLeading:S8_TYPE[scene.theme]?.leading(zh)??(zh?1.12:1.02),headlineTracking:S8_TYPE[scene.theme]?.tracking(zh)??(zh?'-.025em':scene.theme==='cream-collage'?'-.045em':'-.06em'),body:S8_TYPE[scene.theme]?.body??(profile.density==='compact'?20:22),lead:profile.density==='compact'?22:24,gutter:S8_TYPE[scene.theme]?.gutter??(profile.density==='compact'?32:56),measure:S8_TYPE[scene.theme]?.measure(visual)??(visual?42:36)};
 }
 
 /** Prefer a deliberate entrance, readable proof and a quieter final statement. */
@@ -55,5 +58,7 @@ export function narrativeCost(scene,descriptor,index,total){
  if(family==='small-multiples')preferred='small-multiples-row';
  if(family==='quote')preferred=phase==='opening'||phase==='closing'?'quote-center':'quote-split';
  if(family==='closing')preferred=phase==='closing'?'closing-focus':'closing-split';
+ // CINE-003: an authored intent steers the variant within the family; a family the purpose has no preference for keeps the phase rule.
+ if(scene.intent)preferred=preferredVariant(scene.intent,family)??preferred;
  return {phase,preferred:preferred||id,cost:preferred&&id!==preferred?3:0};
 }
