@@ -20,8 +20,8 @@ node tests/render-baseline-diff.mjs <be9921d 的检出目录> docs/evidence/cine
 
 结果：
 
-- `npm run verify` 通过 **550 个测试**（544 通过，5 个跳过：需要 `DECKWEFT_HANDOFF_DIR` 的登记表测试与需要 `CHROMIUM_PATH` 的四个工作室导出测试；一个措辞测试为单入口第 3 步标记的 todo），并通过类型、源码与链接检查、打包和演示。Node 24.14.0。
-  - 新增 `tests/cine-p0.test.mjs`（37 个测试：双语语料、目标预算与字号报告、PDF 分段、fit-page 与声明的拆页、引用契约、编号、来源条、参考面板、导出与重排稳定性、意图契约、推断、排布、标记与节奏偏好、经工作室 API 的 set-intent 与 visual-space 动作、媒体角色、媒体网格、主体占比，以及文档）。`tests/fixtures/visual/cine.negative.json` 的 22 个用例全部被拒绝。
+- `npm run verify` 通过 **553 个测试**（547 通过，5 个跳过：需要 `DECKWEFT_HANDOFF_DIR` 的登记表测试与需要 `CHROMIUM_PATH` 的四个工作室导出测试；一个措辞测试为单入口第 3 步标记的 todo），并通过类型、源码与链接检查、打包和演示。Node 24.14.0。
+  - 新增 `tests/cine-p0.test.mjs`（40 个测试，其中 3 个来自最终评审的修复：双语语料、目标预算与字号报告、PDF 分段、fit-page 与声明的拆页、引用契约、编号、来源条、参考面板、导出与重排稳定性、意图契约、推断、排布、标记与节奏偏好、经工作室 API 的 set-intent 与 visual-space 动作、媒体角色、媒体网格、主体占比，以及文档）。`tests/fixtures/visual/cine.negative.json` 的 22 个用例全部被拒绝。
   - 设置 `CHROMIUM_PATH` 后，单独运行 `tests/studio-export.test.mjs` 通过 5/5。
 - 渲染基线为渲染器 `visual-art-direction.13` 重新记录（仅样式表部分变化；38 个条目的内容哈希全部相同；播放器 `semantic-player.6` 不变）。与 `be9921d` 的对比显示 12 个 HTML 条目中没有任何可见文字、数值、锚点、数据表或标题变化。
 - `tests/browser_cine.mjs`（隔离 Chromium 151，Playwright 1.61.1）：中英文在 1440、1024、390 px 下共 60 次页面测量、111 张截图、0 个页面错误、0 个外部请求。12 条来源的来源条在 1440 px 下高 46.2 px（预算 48 px）；溢出页经三次 `fit-page`（按测量边界）切成四页，均在预算内；六个主题下 38 次媒体版式测量得出 `LARGEST_MEDIA`（image-right；Luminous Stage 用 stage-hero；系统关系图用 system-map-wide）。1440 px 下超过 900 px 预算的页面：中英文的 product-center、mechanism、overflow（拆页前），以及中文的 long-heading；原因记录在证据中。
