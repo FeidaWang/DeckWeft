@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-022",
+  "phase": 2,
+  "state": "accepted",
+  "scope": "browser",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作",
+    "browser": "Chrome for Testing 151.0.7922.34 (isolated)"
+  },
+  "sourceCommit": "69ddbca8aada1b6dbd97d81c9788082a274d6e1f",
+  "checks": [
+    {
+      "command": "node --test tests/dwi-022.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "src/planning/story-review.mjs",
+        "public/studio/story.js"
+      ]
+    },
+    {
+      "command": "node tests/browser_dwi_story.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-02/dwi-022/browser/report.json",
+        "docs/evidence/dwi/phase-02/dwi-022/browser/story-edited.png",
+        "docs/evidence/dwi/phase-02/dwi-022/browser/story-deck.png",
+        "docs/evidence/dwi/phase-02/dwi-022/browser/story-refused.png"
+      ]
+    }
+  ],
+  "limitations": [
+    "Deterministic section/heading outline; no summarisation.",
+    "Firefox, WebKit, screen reader and touch not run."
+  ],
+  "changedFiles": [
+    "src/planning/story-review.mjs",
+    "src/services/visual-api.mjs",
+    "public/studio/story.js",
+    "public/kinds/visual.js",
+    "public/kinds/visual.css",
+    "public/i18n.js",
+    "tests/dwi-022.test.mjs",
+    "tests/browser_dwi_story.mjs",
+    "docs/en/workbench.md",
+    "docs/zh-CN/workbench.md"
+  ]
+}
