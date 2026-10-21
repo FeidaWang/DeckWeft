@@ -1,3 +1,13 @@
+截至 2026-10-22，DWI 工作包（`workpacks/wes-instrument` v1.1：电影配色与仪器式工作台）的阶段 00–06 已在分支 `claude/read-work-package-00-06-256b3e`（基于 `05643c6`）上**本地实现**，未合并、未推送。工作在 Claude Code（`claude-opus-5-5`）中完成；工作包要求的 Codex Sol 模型路由未被使用，已记为偏离。请从[阶段 06 报告](../evidence/dwi/phase-06/report.md)开始，它列出每个任务的状态（已验收、已实现、阻塞或计划中）及证据。新增内容：
+
+- 22 套电影配色作为不可变登记，含浅色、深色、舞台三种角色色，并在**电影配色**选择器中附证据说明（渲染器 `visual-art-direction.15`）；
+- 多个文本/Markdown 文件导入，含哈希与行定位；保留不一致数字的论点账本；生成页面前的**审阅故事**；严格的代理内容交接；
+- 阅读与讲述模式策略（自定进度与舞台）、限定语位置、证据面积、图示比例声明（渲染器 `.16`），以及原生 PowerPoint 导出的内容数量核对；
+- 页面旋钮与可选的合成提示音；在有文稿之前“带走”保持不可用；
+- `scripts/release-candidate.mjs`：两次构建结果一致、泄漏扫描，以及禁网条件下的离线安装。
+
+尚未完成、本交接也未授权：在 PowerPoint 与 Keynote 中打开导出文件（[检查清单](../evidence/dwi/phase-06/dwi-061/checklist.md)）、真实的 Codex 或 Claude 运行、新手研究、Kimi 对比、电影取帧与研究审计。由你决定。
+
 截至 2026-10-21，CINE 批次 2（电影化构图 P1：CINE-005 主体感知取景、CINE-006 字号与明度层级、CINE-007 美学评估）已在批次 1 分支的延续上（从 `claude/deckweft-design-roadmap-2d3d10` 的 `a5b331c` 切出的工作树分支）**本地实现**，未合并、未推送。状态：本批次为 implemented-local；VIS-006、VIS-007、VIS-010、VIS-014 与 VIS-016 保持原状态并附注记。计划是[批次 2 计划（英文）](../plans/cinematic-composition-batch-2.md)（由[构建地图（英文）](../plans/cinematic-composition-build-map.md) §5 展开）；证据在 [cine-p1（英文）](../evidence/cine-p1/review.md)。它加入：
 
 - 图片槽位简报的五个可选字段（`subjectBounds`、`protectedRegions`、`contextRegion`、`visibleCaption`、`detailLocator`；[迁移](migration.md#主体标注字号角色与软性特征cine-批次-2)）：裁切保留保护区下限与场景区上限，证据截图整张显示（`PROTECTED_REGION`），图注是可见文字而替代文本原样保留，定位框标出细节位置；缺少标注时如实报告，不做臆测；

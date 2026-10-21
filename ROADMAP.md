@@ -2,6 +2,16 @@
 
 [简体中文](docs/zh-CN/roadmap.md) · [Machine-readable tasks](roadmap.json) · [Verification](docs/en/verification.md)
 
+## DWI — cinematic colour and instrument workbench (workpack phases 00–06), 2026-10-22
+
+Implemented locally on branch `claude/read-work-package-00-06-256b3e` from `workpacks/wes-instrument` (v1.1), not merged and not pushed. Renderer `visual-art-direction.16`, player unchanged (`semantic-player.7`). Task states and evidence per phase are in [docs/evidence/dwi](docs/evidence/dwi/phase-06/report.md); this section changes no `roadmap.json` task state.
+
+- **Phases 00–03 (P0).** Baseline and reuse map; six-page bilingual vertical-slice fixture; 22 community film palettes (wesanderson, MIT) as an immutable registry with derived light, dark and stage role tokens; multi-file text/Markdown intake with hashes and locators; claim ledger with unresolved contradictions; **Review the story** before composition; strict agent content handoff; reading and delivery policy; diagram scale statements; content-count checks of native PowerPoint export.
+- **Phase 04 (P1/P2).** One next action per state; the page dial (keyboard, buttons, pointer; stable ids); an optional synthesized tick, off by default.
+- **Phases 05–06.** Handoff route in the packaged skill; Kimi, film-frame sampling and the research audit recorded as blocked or planned; 66 palette modes render-checked; an offline, reproducible release candidate with a capability matrix.
+
+Open: PowerPoint and Keynote checks (the user's), live host runs, the novice study, the workflow page's evidence share (0.35 against the 0.45 default), PDF/DOCX intake.
+
 ## CINE batch 2 — cinematic composition P1 (CINE-005 to CINE-007), 2026-10-21
 
 Implemented locally on the continuation of the batch 1 branch, not merged. Authored subject annotations on the image slot brief (subject, protected and context regions, visible caption beside the alt, detail locator) that `safeCrop`, the exporters and the subject-fraction report respect; evidence screenshots stay whole. Six type roles per theme and declared pages at the role sizes (renderer `visual-art-direction.14`). The player (`semantic-player.7`) measures regions, images, the strip and a grayscale hierarchy; seven documented soft features, the weakest page and ranked candidates with stated differences. No task state changes; notes on VIS-006, VIS-007, VIS-010, VIS-014 and VIS-016. [Plan](docs/plans/cinematic-composition-batch-2.md) · [Evidence](docs/evidence/cine-p1/review.md).

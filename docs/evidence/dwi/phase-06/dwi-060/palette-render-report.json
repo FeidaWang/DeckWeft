@@ -1,0 +1,711 @@
+{
+ "browser": "151.0.7922.34",
+ "decks": [
+  {
+   "palette": "BottleRocket1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "BottleRocket1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "BottleRocket1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "BottleRocket2",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "BottleRocket2",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "BottleRocket2",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Rushmore1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Rushmore1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Rushmore1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Royal1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Royal1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Royal1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Royal2",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Royal2",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Royal2",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Zissou1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Zissou1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Zissou1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Darjeeling1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Darjeeling1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Darjeeling1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Darjeeling2",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Darjeeling2",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Darjeeling2",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Chevalier1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Chevalier1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Chevalier1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "FantasticFox1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "FantasticFox1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "FantasticFox1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise2",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise2",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise2",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise3",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise3",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise3",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Cavalcanti1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Cavalcanti1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Cavalcanti1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "GrandBudapest1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "GrandBudapest1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "GrandBudapest1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "GrandBudapest2",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "GrandBudapest2",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "GrandBudapest2",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "IsleofDogs1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "IsleofDogs1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "IsleofDogs1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "IsleofDogs2",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "IsleofDogs2",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "IsleofDogs2",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "FrenchDispatch",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "FrenchDispatch",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "FrenchDispatch",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity1",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity1",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity1",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity2",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity2",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity2",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity3",
+   "mode": "light",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity3",
+   "mode": "dark",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity3",
+   "mode": "stage",
+   "locale": "en",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "BottleRocket1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "BottleRocket2",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Rushmore1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Royal1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Royal2",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Zissou1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Darjeeling1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Darjeeling2",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Chevalier1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "FantasticFox1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise2",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Moonrise3",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "Cavalcanti1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "GrandBudapest1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "GrandBudapest2",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "IsleofDogs1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "IsleofDogs2",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "FrenchDispatch",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity1",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity2",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  },
+  {
+   "palette": "AsteroidCity3",
+   "mode": "light",
+   "locale": "zh-CN",
+   "issues": 0,
+   "kinds": {},
+   "warnings": 0
+  }
+ ],
+ "external": [],
+ "errors": []
+}
