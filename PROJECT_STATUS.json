@@ -11,11 +11,11 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "141e12471f16110ae30a20df9d7d5bf45fa77e99",
+    "commit": "2b5c8b59ff6a0014257fa42ec9859b638ccc268b",
     "worktreeClean": true,
-    "log": "docs/evidence/cine-p1/verify-141e124.txt",
-    "total": 573,
-    "passed": 567,
+    "log": "docs/evidence/dwi/phase-01/verify-2b5c8b5.txt",
+    "total": 618,
+    "passed": 612,
     "failed": 0,
     "skipped": 5,
     "skippedReason": "environment- or browser-gated (CHROMIUM_PATH, DECKWEFT_HANDOFF_DIR); one wording test is marked todo (single-entry step 3) and is neither passed nor skipped",
@@ -26,9 +26,22 @@
     "browserVersion": "151.0.7922.34",
     "finalRun": "passed",
     "recordedBy": "scripts/status-summary.mjs --record; npm run check compares these fields with docs/current-status.json",
-    "supersedes": "history[0]"
+    "supersedes": "history[0]",
+    "note": "DWI Phase 01 (palette registry and semantic role tokens; renderer visual-art-direction.15, player semantic-player.7)."
   },
   "history": [
+    {
+      "record": "automatedTests",
+      "commit": "141e12471f16110ae30a20df9d7d5bf45fa77e99",
+      "date": "2026-10-21",
+      "total": 573,
+      "passed": 567,
+      "failed": 0,
+      "skipped": 5,
+      "log": "docs/evidence/cine-p1/verify-141e124.txt",
+      "note": "CINE batch 2 (renderer visual-art-direction.14, player semantic-player.7).",
+      "supersededBy": "automatedTests"
+    },
     {
       "record": "automatedTests",
       "commit": "ad8ef8b3ba356cee8242e5fe83242f1eef8f32e7",

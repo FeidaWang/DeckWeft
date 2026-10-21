@@ -287,3 +287,20 @@ The image slot accepts the batch 2 brief fields through the normal slot path (`P
 - `SAFE_REGION`: the context region must contain the safe region, the subject and every protected region; enlarge it or move the regions.
 - `IMAGE_SLOT … A detail locator names another image of this page`: the locator must be a different image block bound to the same page.
 - `PROTECTED_REGION`: choose *contain*, or loosen the protected regions explicitly; nothing is cropped through a protected region.
+
+## Film palettes (DWI-010 to DWI-013)
+
+A page can take its colours from one of 22 community film palettes instead of its theme's colours. The theme keeps its typography, spacing and compositions. The palette data comes from the wesanderson library by Karthik Ram (MIT); it is not an official film colour standard and no film frame was sampled ([notice](../../NOTICE.md)).
+
+1. Open **Look** and find **Film palette** under **Colours**. Choose a film. Expected: the page redraws with derived colours; a **Light / Dark / Stage** list and **About this palette** appear.
+2. Choose **Dark** or **Stage**. Expected: dark draws light text on a dark canvas; stage draws on white with body text at 7:1 or more.
+3. Open **About this palette**. Expected: the source swatches, the film and year, "not an official film colour standard", and, for 16 palettes, the screenshot comparison (swatch count, exact matches, largest ΔE76). When a colour was darkened or lightened for readability, the note says so; the source swatches never change.
+4. Choose **None, theme colours** or press **Undo**. Expected: the page returns to its theme colours; nothing else changed.
+
+Text and values, sources, locks and the other pages never change with a palette. Status colours (positive, caution, negative, info) stay the same in every palette. A palette's colours never become a magnitude scale: charts keep dash, marker, direct labels and the data table. HTML, PowerPoint and PDF draw the same derived colours. The scene field is `palette: {id, registryVersion, mode}` in the design plan ([schema](../../schemas/design-plan.schema.json)); absent, a page renders exactly as before.
+
+### If something goes wrong
+
+- The picker is greyed out: the page's colours are locked (**Lock this page** or a theme lock). Unlock first.
+- `PALETTE_REFERENCE … is an alias`: a saved plan names `Rushmore`; use `Rushmore1`. Nothing is rewritten for you.
+- `PALETTE_REFERENCE … registry version`: the deck was saved with a palette registry this build does not have; choose a palette again.
