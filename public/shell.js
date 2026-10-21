@@ -6,6 +6,8 @@ import {DialogManager} from './interaction.js';
 import {sessionRecovery,askSaveCopy} from './session.js';
 import {historyCapacityNote} from './history-capacity.js';
 import {t,applyLanguage} from './i18n.js';
+import {mountSlideDial} from './components/slide-dial.js';
+import {createDetentAudio} from './components/interaction-audio.js';
 
 /**
  * The adapter interface. `scene` is the id of the active page, the thumbnail marked `active`.
@@ -91,7 +93,7 @@ const workspaceMarkup=/*html*/`
   </aside>
   <section class="canvas-column" aria-label="Slide workspace">
     <nav class="page-strip" aria-label="Pages"><div class="slide-list" id="slideList"></div><button id="addSlide" data-i18n-attr="aria-label:shell.addASlide" aria-label="Add a slide">+</button></nav>
-    <div class="canvas-toolbar"><div><span class="eyebrow" data-i18n="shell.workbench">WORKBENCH</span><span id="pageCount" class="muted"></span></div><div class="toolbar-actions"><button id="toggleStory" aria-expanded="false" aria-controls="drawerDialog" class="compact-only" data-i18n="shell.slides" hidden>Slides</button><span data-slot="toolbar"></span><button id="toggleInspector" aria-expanded="false" aria-controls="drawerDialog" class="compact-only" data-i18n="shell.edit">Edit</button><span data-slot="toolbarEnd"></span></div></div>
+    <div class="canvas-toolbar"><div><span class="eyebrow" data-i18n="shell.workbench">WORKBENCH</span><span id="pageCount" class="muted"></span><div id="slideDial" hidden></div><label class="dial-sound" hidden><input type="checkbox" id="dialSound"><span data-i18n="shell.dialSound">Tick</span></label></div><div class="toolbar-actions"><button id="toggleStory" aria-expanded="false" aria-controls="drawerDialog" class="compact-only" data-i18n="shell.slides" hidden>Slides</button><span data-slot="toolbar"></span><button id="toggleInspector" aria-expanded="false" aria-controls="drawerDialog" class="compact-only" data-i18n="shell.edit">Edit</button><span data-slot="toolbarEnd"></span></div></div>
     <div id="issueBanner" class="issue-banner" role="alert" hidden></div><div class="stage" id="stage"><form id="firstRun" class="first-run-form" hidden><label class="sr-only" for="firstRunText" data-i18n="shell.firstRunLabel">What you want to say</label><textarea id="firstRunText" data-i18n-attr="placeholder:shell.pasteWhatYouWantToSay" maxlength="100000" required placeholder="Paste what you want to say here. Leave a blank line between pages."></textarea><p id="firstRunError" class="first-run-error" role="alert"></p><div class="first-run-actions"><button type="submit" data-i18n="shell.firstRunArrange">Arrange</button><button type="button" class="link-button" data-example data-i18n="shell.seeExample">See an example first</button></div></form><div id="canvas" class="slide-canvas" aria-live="off"><span data-slot="canvas"></span></div></div>
     <div class="canvas-caption"><span id="layoutCaption" hidden></span><span id="fitStatus" hidden class="fit-status"></span></div>
   </section>
@@ -216,7 +218,14 @@ export function mountShell(adapter,root){
     const cards=new Map([...grid.children].filter(n=>n.dataset.key).map(n=>[n.dataset.key,n]));
     place(grid,adapter.candidates(scene).map((c,i)=>card(c,i,cards.get(String(c.id)))));
     syncExports();markZone();
+    // DWI-041: the dial shows the same position as the page count, so the count is hidden while the dial is shown (one gauge).
+    dial.update(pages);$('#pageCount').hidden=pages.length>0;root.querySelector('.dial-sound').hidden=pages.length<2;
   }
+  // DWI-041/042: the dial selects through the kind; its optional tick needs the visible preference and a gesture to unlock audio.
+  const audio=createDetentAudio(),sound=$('#dialSound');sound.checked=audio.enabled;
+  const dial=mountSlideDial($('#slideDial'),{select:id=>adapter.select(id),onStep:()=>audio.tick(),label:()=>t('shell.dialLabel'),previous:()=>t('shell.dialPrevious'),next:()=>t('shell.dialNext')});
+  sound.addEventListener('change',()=>{audio.setEnabled(sound.checked);if(sound.checked)audio.unlock();});
+  for(const type of ['pointerdown','keydown'])$('#slideDial').addEventListener(type,()=>audio.unlock());
   $('#slideList').addEventListener('click',event=>{const button=event.target.closest('button[data-slide]');if(button&&!button.disabled)adapter.select(button.dataset.slide);});
   $('#candidates').addEventListener('click',event=>{
     const inspect=event.target.closest('button[data-inspect-layout]');if(inspect){adapter.inspect?.(inspect.dataset.inspectLayout);return;}
@@ -276,8 +285,8 @@ export function mountShell(adapter,root){
   window.addEventListener('resize',()=>{if(alive())dialogs.resize(innerWidth);});
 
   // First run (design guide §10): an empty library shows one paste box on the stage instead of an empty workbench.
-  function showFirstRun(){document.body.classList.add('first-run');$('#canvas').hidden=true;$('#firstRun').hidden=false;$('#firstRunText').focus();}
-  function closeFirstRun(){$('#firstRun')?.remove();$('#canvas').hidden=false;document.body.classList.remove('first-run');}
+  function showFirstRun(){document.body.classList.add('first-run');$('#canvas').hidden=true;$('#firstRun').hidden=false;$('#firstRunText').focus();syncExports();}
+  function closeFirstRun(){$('#firstRun')?.remove();$('#canvas').hidden=false;document.body.classList.remove('first-run');syncExports();}
   const firstRunError=message=>{if(message&&$('#firstRun'))$('#firstRunError').textContent=message;};
   $('#firstRun').onsubmit=async event=>{
     event.preventDefault();const text=$('#firstRunText').value.replace(/\r\n?/g,'\n').trim();if(!text)return;
@@ -309,6 +318,8 @@ export function mountShell(adapter,root){
       if('pressed' in entry)b.setAttribute('aria-pressed',String(!!entry.pressed));
     }
     for(const b of document.querySelectorAll('[data-export]')){const entry=offered[b.dataset.export];if(!entry&&b.closest('#exportFormats'))b.remove();else b.disabled=!entry||!!entry.disabled;}
+    // DWI-040: with no deck (the first run showing) Take away waits, so Arrange is the one next action; with a deck, the dialog says which formats are ready.
+    const firstRun=$('#firstRun');$('#openExport').disabled=(!!firstRun&&!firstRun.hidden)||!document.querySelector('#slideList [data-slide]');
   }
   $('#openExport').onclick=()=>{syncExports();adapter.exportOpened?.();dialogs.open($('#exportDialog'));};
   document.addEventListener('click',event=>{

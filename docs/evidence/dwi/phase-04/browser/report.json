@@ -1,0 +1,63 @@
+{
+  "browser": "151.0.7922.34",
+  "checks": [
+    "empty library: one next action (Arrange); no dial",
+    "open deck: one next action (Take away), one position gauge (the dial “1 / 4”; the page count is hidden), no meters, no duplicate ids",
+    "dial by keyboard: ArrowRight, End (no wrap), Home; focus stays on the dial",
+    "the next and previous buttons are the non-gesture route",
+    "a pointer drag to the end opens the last page once the input settles",
+    "the mouse wheel over the page does not turn pages",
+    "moving the open page down keeps it selected (now 3 / N); moving it back up returns it to 2 / N",
+    "arrow keys while editing a field move the caret, not the page",
+    "tick off by default; the preference persists; 20 rapid detents in an automated session make no sound",
+    "focus returns to Take away and to More after Escape",
+    "restore as copy opens a new deck, the source deck is unchanged, and focus returns to More",
+    "classic deck: deleting the open page lands on its neighbour and the dial shows N−1 pages",
+    "one page: the dial shows 1 / 1 and movement is disabled",
+    "1366×768, 1920×1080 and 200 % zoom: the scene stays 1440 px wide inside and is scaled; Take away and Undo stay on screen",
+    "no page errors and no external requests"
+  ],
+  "measurements": {
+    "emptyNextActions": [
+      "Arrange"
+    ],
+    "historyOpenAttempts": 1,
+    "historyItems": 1,
+    "snapshotOpenAttempts": 2,
+    "exportDialogActions": [],
+    "1366x768": {
+      "frameLayoutWidth": 1440,
+      "frameShownWidth": 710,
+      "takeAway": true,
+      "undo": true,
+      "dial": true,
+      "edit": null
+    },
+    "1920x1080": {
+      "frameLayoutWidth": 1440,
+      "frameShownWidth": 1210,
+      "takeAway": true,
+      "undo": true,
+      "dial": true,
+      "edit": null
+    },
+    "200pct-of-1366x768": {
+      "frameLayoutWidth": 1440,
+      "frameShownWidth": 349,
+      "takeAway": true,
+      "undo": true,
+      "dial": true,
+      "edit": true
+    }
+  },
+  "errors": [],
+  "externalRequests": [],
+  "screenshots": [
+    "state-empty.png",
+    "state-deck.png",
+    "state-export.png",
+    "viewport-1366x768.png",
+    "viewport-1920x1080.png",
+    "viewport-200pct-of-1366x768.png"
+  ]
+}

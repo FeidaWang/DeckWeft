@@ -108,3 +108,16 @@ An agent you run yourself can hand content over instead of files: `POST /api/vis
 - *Choose one or more text or Markdown files first*: the review needs at least one readable file.
 - *Together the text is longer than 12,000 characters*: shorten the files or make two decks; nothing is cut for you.
 - `HANDOFF_UNKNOWN_FIELD`: the handoff names a field this version does not have; remove it.
+
+## The page dial and its tick (DWI-040 to DWI-043)
+
+1. Open a deck. Expected: beside **WORKBENCH** the dial shows `1 / N` with **‹** and **›** on either side; the separate page count is hidden so there is one position display.
+2. Click the dial and press the arrow keys, **Home** or **End**, or drag its knob. Expected: one page per step; the last page does not wrap to the first; the page opens when you let go. The **‹** and **›** buttons do the same without dragging.
+3. While you type in a field, the arrow keys move the caret and never turn the page. The mouse wheel never turns pages.
+4. Tick **Tick** to hear a short, quiet click per page step. Expected: off until you tick it; the choice is remembered on this computer; nothing sounds in a hidden tab, while presenting or in automated tests. The page number always shows the step, so the sound is never the only signal.
+5. With no deck open, **Take away** is unavailable and **Arrange** is the one thing to do.
+
+### If something goes wrong
+
+- The dial is greyed out: the deck has one page.
+- No sound after ticking **Tick**: click the dial once (browsers allow sound only after a click or key press), and check the tab is visible.

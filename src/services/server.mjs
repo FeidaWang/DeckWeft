@@ -27,6 +27,7 @@ for(const icon of ['undo-2','redo-2','save','play','download','plus','upload','h
 Object.assign(staticFiles,{'/three-scene.js':['three-scene.js','text/javascript; charset=utf-8'],'/three-dots.js':['three-dots.js','text/javascript; charset=utf-8'],'/studio-tools.js':['studio-tools.js','text/javascript; charset=utf-8'],'/shared/speech.mjs':['../src/core/speech.mjs','text/javascript; charset=utf-8'],'/showcase.deck.json':['../examples/devday-melbourne.deck.json','application/json; charset=utf-8']});
 for(const file of ['preferences.js','actions.js','presenter.js','storyboard.js','session.js','history-capacity.js','i18n.js'])staticFiles['/'+file]=[file,'text/javascript; charset=utf-8'];
 staticFiles['/workspace.css']=['workspace.css','text/css; charset=utf-8'];
+for(const file of ['slide-dial.js','interaction-audio.js'])staticFiles['/components/'+file]=['components/'+file,'text/javascript; charset=utf-8'];
 // Single entry, step 0: the shared workbench shell and the classic deck kind.
 Object.assign(staticFiles,{'/shell.js':['shell.js','text/javascript; charset=utf-8'],'/shell.css':['shell.css','text/css; charset=utf-8'],'/kinds/classic.js':['kinds/classic.js','text/javascript; charset=utf-8']});
 // Single entry, step 3: the visual deck kind on the same shell.
