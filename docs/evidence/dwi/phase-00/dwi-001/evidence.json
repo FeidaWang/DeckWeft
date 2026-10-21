@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-001",
+  "phase": 0,
+  "state": "accepted",
+  "scope": "local-code",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作"
+  },
+  "sourceCommit": "1d207eb7427bf9ee9d4a490527e7bbb24cef9cbb",
+  "checks": [
+    {
+      "command": "node bin/deckweft.mjs doctor --host both",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-00/dwi-001/doctor-host-both.json"
+      ]
+    },
+    {
+      "command": "codex --help; claude --help",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-00/dwi-001/codex-help.txt",
+        "docs/evidence/dwi/phase-00/dwi-001/claude-help.txt"
+      ]
+    },
+    {
+      "command": "node --test tests/dwi-001.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-00/dwi-001/host-capabilities.json"
+      ]
+    }
+  ],
+  "limitations": [
+    "Authentication not probed.",
+    "DeckWeft skill not installed in either host.",
+    "This is an inventory, not host acceptance: no DeckWeft task ran in either host (DWI-050)."
+  ],
+  "changedFiles": [
+    "tests/dwi-001.test.mjs",
+    "docs/evidence/dwi/phase-00/dwi-001/host-capabilities.json"
+  ]
+}

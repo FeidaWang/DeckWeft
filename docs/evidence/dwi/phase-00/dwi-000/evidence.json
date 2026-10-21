@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-000",
+  "phase": 0,
+  "state": "accepted",
+  "scope": "local-code",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作"
+  },
+  "sourceCommit": "1d207eb7427bf9ee9d4a490527e7bbb24cef9cbb",
+  "checks": [
+    {
+      "command": "node workpacks/wes-instrument/scripts/inspect-repo.mjs .",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-00/inspect-repo.json"
+      ]
+    },
+    {
+      "command": "npm run verify (baseline 05643c6)",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-00/verify-baseline.txt"
+      ],
+      "note": "573 tests, 567 pass, 5 skipped, 1 todo"
+    },
+    {
+      "command": "node --test tests/dwi-000.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-00/dwi-000/reuse-map.json"
+      ]
+    }
+  ],
+  "limitations": [
+    "The map is a planning record; later phases may revise a disposition with evidence."
+  ],
+  "changedFiles": [
+    "tests/dwi-000.test.mjs",
+    "docs/evidence/dwi/phase-00/dwi-000/reuse-map.json"
+  ]
+}
