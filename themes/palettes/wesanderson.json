@@ -1,0 +1,2203 @@
+{
+ "format": "deckweft-palette-registry",
+ "registryId": "wesanderson",
+ "registryVersion": 1,
+ "attribution": "Hex values from the wesanderson R package by Karthik Ram (github.com/karthik/wesanderson, R/colors.R, Git blob ddcf7fb12888a658b8b3f80117ea933dcc0a0f16; MIT + file LICENSE). The package credits a community palette collection. These are not official film colour standards and no film frame was sampled.",
+ "licence": "MIT (wesanderson 0.3.7)",
+ "colorSpace": "sRGB; CIELAB D65 2-degree derived",
+ "scope": "22 distinct community-library discrete palettes; 16 have screenshot samples; not all film colors",
+ "aliases": {
+  "Rushmore": "Rushmore1"
+ },
+ "excludedLibraryEntries": [
+  {
+   "id": "Zissou1Continuous",
+   "reason": "continuous interpolation path is not an independent film-verified palette"
+  }
+ ],
+ "palettes": [
+  {
+   "id": "BottleRocket1",
+   "film": {
+    "id": "bottle-rocket",
+    "title": "Bottle Rocket",
+    "year": 1996,
+    "kind": "feature"
+   },
+   "category": "earth",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#A42820",
+     "rgb": [
+      164,
+      40,
+      32
+     ],
+     "labD65": [
+      36.961131,
+      49.688946,
+      35.681263
+     ]
+    },
+    {
+     "hex": "#5F5647",
+     "rgb": [
+      95,
+      86,
+      71
+     ],
+     "labD65": [
+      37.010589,
+      0.949248,
+      10.080796
+     ]
+    },
+    {
+     "hex": "#9B110E",
+     "rgb": [
+      155,
+      17,
+      14
+     ],
+     "labD65": [
+      32.708419,
+      52.839025,
+      40.511816
+     ]
+    },
+    {
+     "hex": "#3F5151",
+     "rgb": [
+      63,
+      81,
+      81
+     ],
+     "labD65": [
+      32.996081,
+      -6.961004,
+      -2.309045
+     ]
+    },
+    {
+     "hex": "#4E2A1E",
+     "rgb": [
+      78,
+      42,
+      30
+     ],
+     "labD65": [
+      21.467826,
+      15.333019,
+      15.03699
+     ]
+    },
+    {
+     "hex": "#550307",
+     "rgb": [
+      85,
+      3,
+      7
+     ],
+     "labD65": [
+      15.552249,
+      35.233704,
+      21.258803
+     ]
+    },
+    {
+     "hex": "#0C1707",
+     "rgb": [
+      12,
+      23,
+      7
+     ],
+     "labD65": [
+      6.379762,
+      -7.166303,
+      6.549152
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "BottleRocket2",
+   "film": {
+    "id": "bottle-rocket",
+    "title": "Bottle Rocket",
+    "year": 1996,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#FAD510",
+     "rgb": [
+      250,
+      213,
+      16
+     ],
+     "labD65": [
+      85.983281,
+      -2.904991,
+      84.788396
+     ]
+    },
+    {
+     "hex": "#CB2314",
+     "rgb": [
+      203,
+      35,
+      20
+     ],
+     "labD65": [
+      44.165936,
+      62.550225,
+      50.79146
+     ]
+    },
+    {
+     "hex": "#273046",
+     "rgb": [
+      39,
+      48,
+      70
+     ],
+     "labD65": [
+      19.992922,
+      2.851859,
+      -14.935686
+     ]
+    },
+    {
+     "hex": "#354823",
+     "rgb": [
+      53,
+      72,
+      35
+     ],
+     "labD65": [
+      28.148632,
+      -15.099414,
+      19.74405
+     ]
+    },
+    {
+     "hex": "#1E1E1E",
+     "rgb": [
+      30,
+      30,
+      30
+     ],
+     "labD65": [
+      11.263611,
+      -4e-06,
+      2e-06
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Rushmore1",
+   "film": {
+    "id": "rushmore",
+    "title": "Rushmore",
+    "year": 1998,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#E1BD6D",
+     "rgb": [
+      225,
+      189,
+      109
+     ],
+     "labD65": [
+      78.17488,
+      3.042275,
+      44.915546
+     ]
+    },
+    {
+     "hex": "#EABE94",
+     "rgb": [
+      234,
+      190,
+      148
+     ],
+     "labD65": [
+      79.875047,
+      10.091737,
+      27.171695
+     ]
+    },
+    {
+     "hex": "#0B775E",
+     "rgb": [
+      11,
+      119,
+      94
+     ],
+     "labD65": [
+      44.335745,
+      -34.265949,
+      5.944917
+     ]
+    },
+    {
+     "hex": "#35274A",
+     "rgb": [
+      53,
+      39,
+      74
+     ],
+     "labD65": [
+      18.809989,
+      15.178347,
+      -19.403244
+     ]
+    },
+    {
+     "hex": "#F2300F",
+     "rgb": [
+      242,
+      48,
+      15
+     ],
+     "labD65": [
+      52.984455,
+      70.238107,
+      61.92059
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Royal1",
+   "film": {
+    "id": "royal-tenenbaums",
+    "title": "The Royal Tenenbaums",
+    "year": 2001,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#899DA4",
+     "rgb": [
+      137,
+      157,
+      164
+     ],
+     "labD65": [
+      63.435283,
+      -5.505666,
+      -6.020683
+     ]
+    },
+    {
+     "hex": "#C93312",
+     "rgb": [
+      201,
+      51,
+      18
+     ],
+     "labD65": [
+      45.404497,
+      57.314777,
+      52.246082
+     ]
+    },
+    {
+     "hex": "#FAEFD1",
+     "rgb": [
+      250,
+      239,
+      209
+     ],
+     "labD65": [
+      94.594548,
+      -1.103174,
+      15.852841
+     ]
+    },
+    {
+     "hex": "#DC863B",
+     "rgb": [
+      220,
+      134,
+      59
+     ],
+     "labD65": [
+      63.823931,
+      26.945506,
+      52.549882
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Royal2",
+   "film": {
+    "id": "royal-tenenbaums",
+    "title": "The Royal Tenenbaums",
+    "year": 2001,
+    "kind": "feature"
+   },
+   "category": "pastel",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#9A8822",
+     "rgb": [
+      154,
+      136,
+      34
+     ],
+     "labD65": [
+      56.678639,
+      -4.331527,
+      53.310958
+     ]
+    },
+    {
+     "hex": "#F5CDB4",
+     "rgb": [
+      245,
+      205,
+      180
+     ],
+     "labD65": [
+      85.186324,
+      10.443315,
+      17.713727
+     ]
+    },
+    {
+     "hex": "#F8AFA8",
+     "rgb": [
+      248,
+      175,
+      168
+     ],
+     "labD65": [
+      78.138391,
+      25.780468,
+      14.292163
+     ]
+    },
+    {
+     "hex": "#FDDDA0",
+     "rgb": [
+      253,
+      221,
+      160
+     ],
+     "labD65": [
+      89.456866,
+      2.733858,
+      34.044356
+     ]
+    },
+    {
+     "hex": "#74A089",
+     "rgb": [
+      116,
+      160,
+      137
+     ],
+     "labD65": [
+      62.219327,
+      -19.867156,
+      7.224783
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Zissou1",
+   "film": {
+    "id": "life-aquatic",
+    "title": "The Life Aquatic with Steve Zissou",
+    "year": 2004,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#3B9AB2",
+     "rgb": [
+      59,
+      154,
+      178
+     ],
+     "labD65": [
+      59.2078,
+      -20.031912,
+      -20.666759
+     ]
+    },
+    {
+     "hex": "#78B7C5",
+     "rgb": [
+      120,
+      183,
+      197
+     ],
+     "labD65": [
+      70.794302,
+      -16.573728,
+      -13.468389
+     ]
+    },
+    {
+     "hex": "#EBCC2A",
+     "rgb": [
+      235,
+      204,
+      42
+     ],
+     "labD65": [
+      82.388514,
+      -4.23735,
+      76.477024
+     ]
+    },
+    {
+     "hex": "#E1AF00",
+     "rgb": [
+      225,
+      175,
+      0
+     ],
+     "labD65": [
+      73.978792,
+      5.81461,
+      76.709277
+     ]
+    },
+    {
+     "hex": "#F21A00",
+     "rgb": [
+      242,
+      26,
+      0
+     ],
+     "labD65": [
+      51.40764,
+      74.507165,
+      64.89824
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Darjeeling1",
+   "film": {
+    "id": "darjeeling-limited",
+    "title": "The Darjeeling Limited",
+    "year": 2007,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#FF0000",
+     "rgb": [
+      255,
+      0,
+      0
+     ],
+     "labD65": [
+      53.240794,
+      80.09246,
+      67.203197
+     ]
+    },
+    {
+     "hex": "#00A08A",
+     "rgb": [
+      0,
+      160,
+      138
+     ],
+     "labD65": [
+      58.950507,
+      -40.49145,
+      1.525969
+     ]
+    },
+    {
+     "hex": "#F2AD00",
+     "rgb": [
+      242,
+      173,
+      0
+     ],
+     "labD65": [
+      75.307306,
+      14.230713,
+      78.476998
+     ]
+    },
+    {
+     "hex": "#F98400",
+     "rgb": [
+      249,
+      132,
+      0
+     ],
+     "labD65": [
+      67.012154,
+      38.480303,
+      73.559996
+     ]
+    },
+    {
+     "hex": "#5BBCD6",
+     "rgb": [
+      91,
+      188,
+      214
+     ],
+     "labD65": [
+      71.583674,
+      -21.088361,
+      -21.68884
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Darjeeling2",
+   "film": {
+    "id": "darjeeling-limited",
+    "title": "The Darjeeling Limited",
+    "year": 2007,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#ECCBAE",
+     "rgb": [
+      236,
+      203,
+      174
+     ],
+     "labD65": [
+      83.758606,
+      7.310288,
+      18.771332
+     ]
+    },
+    {
+     "hex": "#046C9A",
+     "rgb": [
+      4,
+      108,
+      154
+     ],
+     "labD65": [
+      42.887312,
+      -8.381301,
+      -32.12857
+     ]
+    },
+    {
+     "hex": "#D69C4E",
+     "rgb": [
+      214,
+      156,
+      78
+     ],
+     "labD65": [
+      68.479667,
+      13.647593,
+      48.444846
+     ]
+    },
+    {
+     "hex": "#ABDDDE",
+     "rgb": [
+      171,
+      221,
+      222
+     ],
+     "labD65": [
+      84.813703,
+      -15.795289,
+      -5.763426
+     ]
+    },
+    {
+     "hex": "#000000",
+     "rgb": [
+      0,
+      0,
+      0
+     ],
+     "labD65": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Chevalier1",
+   "film": {
+    "id": "hotel-chevalier",
+    "title": "Hotel Chevalier",
+    "year": 2007,
+    "kind": "short"
+   },
+   "category": "pastel",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#446455",
+     "rgb": [
+      68,
+      100,
+      85
+     ],
+     "labD65": [
+      39.578363,
+      -15.265025,
+      4.803897
+     ]
+    },
+    {
+     "hex": "#FDD262",
+     "rgb": [
+      253,
+      210,
+      98
+     ],
+     "labD65": [
+      85.937122,
+      2.847538,
+      59.856998
+     ]
+    },
+    {
+     "hex": "#D3DDDC",
+     "rgb": [
+      211,
+      221,
+      220
+     ],
+     "labD65": [
+      87.35298,
+      -3.53856,
+      -0.675317
+     ]
+    },
+    {
+     "hex": "#C7B19C",
+     "rgb": [
+      199,
+      177,
+      156
+     ],
+     "labD65": [
+      73.537699,
+      4.555102,
+      13.641087
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "FantasticFox1",
+   "film": {
+    "id": "fantastic-mr-fox",
+    "title": "Fantastic Mr. Fox",
+    "year": 2009,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#DD8D29",
+     "rgb": [
+      221,
+      141,
+      41
+     ],
+     "labD65": [
+      65.425018,
+      22.933502,
+      61.508065
+     ]
+    },
+    {
+     "hex": "#E2D200",
+     "rgb": [
+      226,
+      210,
+      0
+     ],
+     "labD65": [
+      83.053828,
+      -11.786358,
+      83.173246
+     ]
+    },
+    {
+     "hex": "#46ACC8",
+     "rgb": [
+      70,
+      172,
+      200
+     ],
+     "labD65": [
+      65.728652,
+      -20.780917,
+      -22.987116
+     ]
+    },
+    {
+     "hex": "#E58601",
+     "rgb": [
+      229,
+      134,
+      1
+     ],
+     "labD65": [
+      64.735695,
+      29.323586,
+      70.644181
+     ]
+    },
+    {
+     "hex": "#B40F20",
+     "rgb": [
+      180,
+      15,
+      32
+     ],
+     "labD65": [
+      38.114748,
+      60.409543,
+      37.919087
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Moonrise1",
+   "film": {
+    "id": "moonrise-kingdom",
+    "title": "Moonrise Kingdom",
+    "year": 2012,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#F3DF6C",
+     "rgb": [
+      243,
+      223,
+      108
+     ],
+     "labD65": [
+      88.407342,
+      -7.136321,
+      57.906604
+     ]
+    },
+    {
+     "hex": "#CEAB07",
+     "rgb": [
+      206,
+      171,
+      7
+     ],
+     "labD65": [
+      71.053598,
+      -0.357632,
+      72.945623
+     ]
+    },
+    {
+     "hex": "#D5D5D3",
+     "rgb": [
+      213,
+      213,
+      211
+     ],
+     "labD65": [
+      85.219252,
+      -0.360431,
+      0.985668
+     ]
+    },
+    {
+     "hex": "#24281A",
+     "rgb": [
+      36,
+      40,
+      26
+     ],
+     "labD65": [
+      15.314346,
+      -4.917617,
+      8.649071
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Moonrise2",
+   "film": {
+    "id": "moonrise-kingdom",
+    "title": "Moonrise Kingdom",
+    "year": 2012,
+    "kind": "feature"
+   },
+   "category": "earth",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#798E87",
+     "rgb": [
+      121,
+      142,
+      135
+     ],
+     "labD65": [
+      57.230707,
+      -8.979291,
+      1.204854
+     ]
+    },
+    {
+     "hex": "#C27D38",
+     "rgb": [
+      194,
+      125,
+      56
+     ],
+     "labD65": [
+      58.438225,
+      20.701023,
+      47.295572
+     ]
+    },
+    {
+     "hex": "#CCC591",
+     "rgb": [
+      204,
+      197,
+      145
+     ],
+     "labD65": [
+      78.934721,
+      -5.629983,
+      27.029756
+     ]
+    },
+    {
+     "hex": "#29211F",
+     "rgb": [
+      41,
+      33,
+      31
+     ],
+     "labD65": [
+      13.579857,
+      3.404463,
+      2.776925
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Moonrise3",
+   "film": {
+    "id": "moonrise-kingdom",
+    "title": "Moonrise Kingdom",
+    "year": 2012,
+    "kind": "feature"
+   },
+   "category": "pastel",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#85D4E3",
+     "rgb": [
+      133,
+      212,
+      227
+     ],
+     "labD65": [
+      80.52494,
+      -20.453884,
+      -15.019543
+     ]
+    },
+    {
+     "hex": "#F4B5BD",
+     "rgb": [
+      244,
+      181,
+      189
+     ],
+     "labD65": [
+      79.589956,
+      23.967069,
+      4.936884
+     ]
+    },
+    {
+     "hex": "#9C964A",
+     "rgb": [
+      156,
+      150,
+      74
+     ],
+     "labD65": [
+      61.111885,
+      -8.415074,
+      40.412905
+     ]
+    },
+    {
+     "hex": "#CDC08C",
+     "rgb": [
+      205,
+      192,
+      140
+     ],
+     "labD65": [
+      77.622294,
+      -3.279933,
+      27.914805
+     ]
+    },
+    {
+     "hex": "#FAD77B",
+     "rgb": [
+      250,
+      215,
+      123
+     ],
+     "labD65": [
+      87.172228,
+      0.94924,
+      49.544045
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "Cavalcanti1",
+   "film": {
+    "id": "castello-cavalcanti",
+    "title": "Castello Cavalcanti",
+    "year": 2013,
+    "kind": "short"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#D8B70A",
+     "rgb": [
+      216,
+      183,
+      10
+     ],
+     "labD65": [
+      75.133286,
+      -2.225494,
+      76.025401
+     ]
+    },
+    {
+     "hex": "#02401B",
+     "rgb": [
+      2,
+      64,
+      27
+     ],
+     "labD65": [
+      22.856637,
+      -28.168744,
+      17.463832
+     ]
+    },
+    {
+     "hex": "#A2A475",
+     "rgb": [
+      162,
+      164,
+      117
+     ],
+     "labD65": [
+      66.149268,
+      -8.49281,
+      24.22722
+     ]
+    },
+    {
+     "hex": "#81A88D",
+     "rgb": [
+      129,
+      168,
+      141
+     ],
+     "labD65": [
+      65.431765,
+      -18.852812,
+      9.676787
+     ]
+    },
+    {
+     "hex": "#972D15",
+     "rgb": [
+      151,
+      45,
+      21
+     ],
+     "labD65": [
+      35.027887,
+      43.087308,
+      38.750798
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "GrandBudapest1",
+   "film": {
+    "id": "grand-budapest",
+    "title": "The Grand Budapest Hotel",
+    "year": 2014,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#F1BB7B",
+     "rgb": [
+      241,
+      187,
+      123
+     ],
+     "labD65": [
+      79.428506,
+      11.849219,
+      39.746162
+     ]
+    },
+    {
+     "hex": "#FD6467",
+     "rgb": [
+      253,
+      100,
+      103
+     ],
+     "labD65": [
+      62.492836,
+      58.503075,
+      29.121151
+     ]
+    },
+    {
+     "hex": "#5B1A18",
+     "rgb": [
+      91,
+      26,
+      24
+     ],
+     "labD65": [
+      20.161949,
+      29.573447,
+      17.922029
+     ]
+    },
+    {
+     "hex": "#D67236",
+     "rgb": [
+      214,
+      114,
+      54
+     ],
+     "labD65": [
+      58.603284,
+      34.818442,
+      49.232344
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "GrandBudapest2",
+   "film": {
+    "id": "grand-budapest",
+    "title": "The Grand Budapest Hotel",
+    "year": 2014,
+    "kind": "feature"
+   },
+   "category": "pastel",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#E6A0C4",
+     "rgb": [
+      230,
+      160,
+      196
+     ],
+     "labD65": [
+      73.51492,
+      31.239841,
+      -7.955364
+     ]
+    },
+    {
+     "hex": "#C6CDF7",
+     "rgb": [
+      198,
+      205,
+      247
+     ],
+     "labD65": [
+      83.116511,
+      6.182528,
+      -21.391094
+     ]
+    },
+    {
+     "hex": "#D8A499",
+     "rgb": [
+      216,
+      164,
+      153
+     ],
+     "labD65": [
+      71.860813,
+      17.642729,
+      13.156907
+     ]
+    },
+    {
+     "hex": "#7294D4",
+     "rgb": [
+      114,
+      148,
+      212
+     ],
+     "labD65": [
+      61.22811,
+      5.302801,
+      -36.468362
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "IsleofDogs1",
+   "film": {
+    "id": "isle-of-dogs",
+    "title": "Isle of Dogs",
+    "year": 2018,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#9986A5",
+     "rgb": [
+      153,
+      134,
+      165
+     ],
+     "labD65": [
+      58.545501,
+      13.157957,
+      -13.768178
+     ]
+    },
+    {
+     "hex": "#79402E",
+     "rgb": [
+      121,
+      64,
+      46
+     ],
+     "labD65": [
+      33.836835,
+      22.888846,
+      21.870641
+     ]
+    },
+    {
+     "hex": "#CCBA72",
+     "rgb": [
+      204,
+      186,
+      114
+     ],
+     "labD65": [
+      75.558033,
+      -3.513134,
+      38.728981
+     ]
+    },
+    {
+     "hex": "#0F0D0E",
+     "rgb": [
+      15,
+      13,
+      14
+     ],
+     "labD65": [
+      3.803931,
+      0.816093,
+      -0.228903
+     ]
+    },
+    {
+     "hex": "#D9D0D3",
+     "rgb": [
+      217,
+      208,
+      211
+     ],
+     "labD65": [
+      84.260128,
+      3.627347,
+      -0.376588
+     ]
+    },
+    {
+     "hex": "#8D8680",
+     "rgb": [
+      141,
+      134,
+      128
+     ],
+     "labD65": [
+      56.358795,
+      1.506704,
+      4.162415
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "IsleofDogs2",
+   "film": {
+    "id": "isle-of-dogs",
+    "title": "Isle of Dogs",
+    "year": 2018,
+    "kind": "feature"
+   },
+   "category": "earth",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#EAD3BF",
+     "rgb": [
+      234,
+      211,
+      191
+     ],
+     "labD65": [
+      85.928447,
+      4.820553,
+      12.810327
+     ]
+    },
+    {
+     "hex": "#AA9486",
+     "rgb": [
+      170,
+      148,
+      134
+     ],
+     "labD65": [
+      62.884019,
+      5.889349,
+      10.415415
+     ]
+    },
+    {
+     "hex": "#B6854D",
+     "rgb": [
+      182,
+      133,
+      77
+     ],
+     "labD65": [
+      59.212439,
+      12.493251,
+      37.232079
+     ]
+    },
+    {
+     "hex": "#39312F",
+     "rgb": [
+      57,
+      49,
+      47
+     ],
+     "labD65": [
+      21.101106,
+      3.175912,
+      2.593071
+     ]
+    },
+    {
+     "hex": "#1C1718",
+     "rgb": [
+      28,
+      23,
+      24
+     ],
+     "labD65": [
+      8.355944,
+      2.726858,
+      0.213189
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "FrenchDispatch",
+   "film": {
+    "id": "french-dispatch",
+    "title": "The French Dispatch",
+    "year": 2021,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#90D4CC",
+     "rgb": [
+      144,
+      212,
+      204
+     ],
+     "labD65": [
+      80.389084,
+      -23.076425,
+      -2.875176
+     ]
+    },
+    {
+     "hex": "#BD3027",
+     "rgb": [
+      189,
+      48,
+      39
+     ],
+     "labD65": [
+      42.887625,
+      55.07413,
+      39.400324
+     ]
+    },
+    {
+     "hex": "#B0AFA2",
+     "rgb": [
+      176,
+      175,
+      162
+     ],
+     "labD65": [
+      71.213533,
+      -1.991879,
+      6.790094
+     ]
+    },
+    {
+     "hex": "#7FC0C6",
+     "rgb": [
+      127,
+      192,
+      198
+     ],
+     "labD65": [
+      73.730817,
+      -19.103314,
+      -9.585542
+     ]
+    },
+    {
+     "hex": "#9D9C85",
+     "rgb": [
+      157,
+      156,
+      133
+     ],
+     "labD65": [
+      63.867346,
+      -3.723618,
+      12.201031
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "AsteroidCity1",
+   "film": {
+    "id": "asteroid-city",
+    "title": "Asteroid City",
+    "year": 2023,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#0A9F9D",
+     "rgb": [
+      10,
+      159,
+      157
+     ],
+     "labD65": [
+      59.244231,
+      -34.008956,
+      -8.793906
+     ]
+    },
+    {
+     "hex": "#CEB175",
+     "rgb": [
+      206,
+      177,
+      117
+     ],
+     "labD65": [
+      73.449657,
+      2.364143,
+      34.530908
+     ]
+    },
+    {
+     "hex": "#E54E21",
+     "rgb": [
+      229,
+      78,
+      33
+     ],
+     "labD65": [
+      54.261664,
+      56.606112,
+      55.393107
+     ]
+    },
+    {
+     "hex": "#6C8645",
+     "rgb": [
+      108,
+      134,
+      69
+     ],
+     "labD65": [
+      52.584006,
+      -20.794286,
+      31.820414
+     ]
+    },
+    {
+     "hex": "#C18748",
+     "rgb": [
+      193,
+      135,
+      72
+     ],
+     "labD65": [
+      60.901336,
+      15.739917,
+      42.121835
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "AsteroidCity2",
+   "film": {
+    "id": "asteroid-city",
+    "title": "Asteroid City",
+    "year": 2023,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#C52E19",
+     "rgb": [
+      197,
+      46,
+      25
+     ],
+     "labD65": [
+      44.086885,
+      57.828711,
+      48.080608
+     ]
+    },
+    {
+     "hex": "#AC9765",
+     "rgb": [
+      172,
+      151,
+      101
+     ],
+     "labD65": [
+      63.21429,
+      0.608859,
+      29.192999
+     ]
+    },
+    {
+     "hex": "#54D8B1",
+     "rgb": [
+      84,
+      216,
+      177
+     ],
+     "labD65": [
+      78.559092,
+      -45.337303,
+      8.59192
+     ]
+    },
+    {
+     "hex": "#B67C3B",
+     "rgb": [
+      182,
+      124,
+      59
+     ],
+     "labD65": [
+      56.76081,
+      16.233753,
+      43.600632
+     ]
+    },
+    {
+     "hex": "#175149",
+     "rgb": [
+      23,
+      81,
+      73
+     ],
+     "labD65": [
+      30.753896,
+      -20.672996,
+      -0.74546
+     ]
+    },
+    {
+     "hex": "#AF4E24",
+     "rgb": [
+      175,
+      78,
+      36
+     ],
+     "labD65": [
+      45.210577,
+      37.103276,
+      42.472703
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  },
+  {
+   "id": "AsteroidCity3",
+   "film": {
+    "id": "asteroid-city",
+    "title": "Asteroid City",
+    "year": 2023,
+    "kind": "feature"
+   },
+   "category": "mixed",
+   "source": {
+    "type": "community-palette-library",
+    "sourceId": "SRC-WES",
+    "path": "R/colors.R",
+    "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+    "evidence": "library-values-verified",
+    "filmFrameVerified": false,
+    "frameTimestamp": null,
+    "officialPalette": false
+   },
+   "colors": [
+    {
+     "hex": "#FBA72A",
+     "rgb": [
+      251,
+      167,
+      42
+     ],
+     "labD65": [
+      75.025661,
+      21.826848,
+      70.893277
+     ]
+    },
+    {
+     "hex": "#D3D4D8",
+     "rgb": [
+      211,
+      212,
+      216
+     ],
+     "labD65": [
+      84.942117,
+      0.393398,
+      -2.089854
+     ]
+    },
+    {
+     "hex": "#CB7A5C",
+     "rgb": [
+      203,
+      122,
+      92
+     ],
+     "labD65": [
+      59.33491,
+      28.545953,
+      29.803629
+     ]
+    },
+    {
+     "hex": "#5785C1",
+     "rgb": [
+      87,
+      133,
+      193
+     ],
+     "labD65": [
+      54.709764,
+      1.933643,
+      -36.060938
+     ]
+    }
+   ],
+   "recommendedUse": {
+    "goodFor": [
+     "editorial",
+     "comparison",
+     "chart",
+     "process",
+     "mechanism"
+    ],
+    "constraints": [
+     "Do not use raw palette colors as automatic foreground/background pairs.",
+     "Keep chart values, units and component identities unchanged.",
+     "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+    ]
+   }
+  }
+ ]
+}

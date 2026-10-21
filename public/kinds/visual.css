@@ -29,6 +29,8 @@
 .look-buttons button,.motion-controls button,.image-row>button,#entryDirections{width:100%;min-height:40px;border:1px solid var(--ink);border-radius:0;background:var(--white);text-align:left;justify-content:flex-start}
 .look-buttons [aria-pressed=true]{border:2px solid var(--look)}
 .kind-visual [data-zone=look] .theme-options{display:grid;grid-template-columns:repeat(3,56px);gap:8px}
+.kind-visual [data-zone=look] .palette-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;align-items:end}.kind-visual [data-zone=look] .palette-row label{grid-column:1 / -1;margin:12px 0 0}
+.kind-visual .palette-evidence{font-size:11px;line-height:1.5}.kind-visual .palette-evidence p{margin:6px 0 0;color:var(--muted)}.kind-visual .palette-swatches{display:flex;gap:2px;margin-top:6px}.kind-visual .palette-swatches span{width:18px;height:12px;border:1px solid var(--line)}
 .swatches.visual-cream-collage{background:linear-gradient(90deg,#F5EBD9 0 34%,#1C2C3C 34% 66%,#BD4027 66%)}
 .swatches.visual-electric-violet{background:linear-gradient(90deg,#FAF9F5 0 34%,#1B1826 34% 66%,#5420E8 66%)}
 .swatches.visual-dark-data{background:linear-gradient(90deg,#112120 0 34%,#F1F4E9 34% 66%,#B9EF79 66%)}

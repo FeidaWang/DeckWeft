@@ -5,6 +5,7 @@ import { assertSceneSemantics } from './scene-semantics.mjs';
 import schema from '../../schemas/design-plan.schema.json' with { type: 'json' };
 import { validateSchema } from '../core/schema.mjs';
 import { assertPresentation } from '../core/blocks.mjs';
+import { assertPaletteReference } from './palette-registry.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { assertChapters } from './chapters.mjs';
 import { assertReferences } from '../references/presentation.mjs';
@@ -40,6 +41,7 @@ export function assertDesignPlan(document, plan) {
      if(hidden.has(scene.focalBlockId)||hidden.has(scene.takeaway?.blockId)||[...hidden].some(id=>targets.has(id)))fail('The focal block, the takeaway and interaction or annotation targets stay on the page.');}
     assertComposition(document,visibleScene(scene));assertImageSlots(document,scene);assertSceneSemantics(document,scene);assertReferences(document,visibleScene(scene));assertIntent(document,scene);assertMedia(document,scene);
     const kinds = visibleBlockIds(scene).map(id => blocks.get(id).type);
+    if (scene.palette) assertPaletteReference(scene.palette);
     if (scene.composition === 'diagonal-cover' && (scene.theme !== 'cream-collage' || !kinds.includes('heading') || !kinds.includes('metric'))) fail('Diagonal cover needs Cream Collage, a heading and a metric.');
     if (scene.composition === 'chart-with-evidence-rail' && (scene.theme !== 'dark-data' || !kinds.includes('chart') || !kinds.includes('heading'))) fail('Chart evidence needs Dark Data, a heading and a chart.');
     if(scene.crops){

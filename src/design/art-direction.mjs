@@ -31,7 +31,7 @@ export function sceneDirection(document,plan,index){
  // regions; a left or contextual entry is structured. Pages without a declared intent keep today's rule (byte-identical markup).
  const intent=effectiveIntent(document,plan,index),visual=has('chart')||has('table')||has('diagram')||has('code'),sparse=!visual&&blocks.length<=6&&(!scene.intent||(scene.intent.entry==='center'&&!has('image')));
  const colorMode=scene.colorMode??(scene.composition==='violet-chapter'?'chapter':'default');
- const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{profile,role:scene.role,colorMode});
+ const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{profile,role:scene.role,colorMode,palette:scene.palette});
  const zh=document.locale==='zh-CN',length=[...(heading?.text||'')].length;
  let headline=has('chart')?64:has('table')||has('diagram')||has('code')?72:has('metric')?(zh?76:96):beat==='opening'||beat==='closing'?112:88;
  // S3 families set their own tier: a chapter is a pause, a quotation carries its page, paired evidence needs the height.

@@ -103,7 +103,12 @@ export function dwiSlicePlan(locale){
   scene('brief','closing','reading-flow',['brief-title','brief-body','brief-list','brief-cite'],'brief-title',{contentStatus:'illustrative'})
  ]};
 }
-export const dwiSliceProject=(locale,options={})=>createVisualProject(dwiSliceDocument(locale),dwiSlicePlan(locale),{assets:[],id:`dwi-slice-${locale.toLowerCase()}`,...options});
+/** DWI-011: one palette and mode per page, covering light, dark and stage, for the palette variant of the measured export run. */
+export const DWI_PALETTES=Object.freeze({assertion:{id:'Darjeeling2',registryVersion:1,mode:'light'},comparison:{id:'Royal1',registryVersion:1,mode:'dark'},chart:{id:'Zissou1',registryVersion:1,mode:'stage'},workflow:{id:'Moonrise2',registryVersion:1,mode:'light'},mechanism:{id:'GrandBudapest1',registryVersion:1,mode:'dark'},brief:{id:'IsleofDogs1',registryVersion:1,mode:'stage'}});
+export function dwiSliceProject(locale,{palettes=false,...options}={}){
+ const plan=dwiSlicePlan(locale);if(palettes)for(const s of plan.scenes)s.palette={...DWI_PALETTES[s.id]};
+ return createVisualProject(dwiSliceDocument(locale),plan,{assets:[],id:`dwi-slice-${locale.toLowerCase()}${palettes?'-palette':''}`,...options});
+}
 /** What every later DWI task must preserve on this fixture, per locale. */
 export const DWI_INVARIANTS=Object.freeze({
  lockedBlockIds:['as-claim','cmp-table'],lockedDatasetIds:['review-time'],lockedSourceIds:['src-review'],sceneLocks:[{sceneId:'mechanism',fields:['composition']}],

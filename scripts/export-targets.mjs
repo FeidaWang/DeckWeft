@@ -42,8 +42,8 @@ const S8_DECKS=LOCALES.flatMap(locale=>[...S8_THEMES.flatMap(theme=>[{name:`gall
 const S9_DECKS=LOCALES.flatMap(locale=>BLUEPRINT_THEMES.map(theme=>({name:`blueprint-${theme}-${locale}`,kind:'s9-blueprint',locale,theme})));
 // --cine (CINE batch 1): the ten-page cinematic composition corpus with its declared references, intent and media fields, both languages.
 const CINE_DECKS=LOCALES.map(locale=>({name:`cine-${locale}`,kind:'cine',locale}));
-// --dwi (DWI-003): the six-page vertical slice (tests/dwi-slice.mjs), both languages.
-const DWI_DECKS=LOCALES.map(locale=>({name:`dwi-slice-${locale}`,kind:'dwi',locale}));
+// --dwi (DWI-003, DWI-011): the six-page vertical slice (tests/dwi-slice.mjs), both languages, with and without one palette per page.
+const DWI_DECKS=[...LOCALES.map(locale=>({name:`dwi-slice-${locale}`,kind:'dwi',locale})),...LOCALES.map(locale=>({name:`dwi-slice-palette-${locale}`,kind:'dwi',locale,palettes:true}))];
 const DECKS=(args.dwi?DWI_DECKS:args.cine?CINE_DECKS:args.s9?S9_DECKS:args.s8?S8_DECKS:[...LOCALES.flatMap(locale=>[{name:`gallery-${locale}`,kind:'gallery',locale},...THEMES.map(theme=>({name:`story-${theme}-${locale}`,kind:'story',locale,theme}))]),...(args.supplementary?[{name:'chart-kinds-en',kind:'supplementary',locale:'en'}]:[])]).filter(d=>!args.decks||args.decks.split(',').includes(d.name));
 await mkdir(home,{recursive:true});
 
@@ -107,7 +107,7 @@ async function sheet(rows,file,title){
 const summary=[];
 for(const d of DECKS){
  const dir=path.join(out,'decks',d.name);await rm(dir,{recursive:true,force:true});await mkdir(dir,{recursive:true});
- const p=d.kind==='dwi'?await dwiSliceProject(d.locale):d.kind==='cine'?await cineProject(d.locale,home):d.kind==='s9-blueprint'?await blueprintProject(d.locale,{theme:d.theme}):d.kind==='supplementary'?chartKindsProject(d.locale):d.kind==='s8-gallery'?await (async()=>{let g=await releaseProject('gallery',d.locale,home);for(const sc of g.plan.scenes)g=applySceneTheme(g,sc.id,d.theme);return g;})():d.kind==='s8-story'?await s8Project('story',d.locale,home,d.theme):['fieldnotes','atlas','stage'].includes(d.kind)?await s8Project(d.kind,d.locale,home):await releaseProject(d.kind,d.locale,home,d.theme);
+ const p=d.kind==='dwi'?await dwiSliceProject(d.locale,{palettes:!!d.palettes}):d.kind==='cine'?await cineProject(d.locale,home):d.kind==='s9-blueprint'?await blueprintProject(d.locale,{theme:d.theme}):d.kind==='supplementary'?chartKindsProject(d.locale):d.kind==='s8-gallery'?await (async()=>{let g=await releaseProject('gallery',d.locale,home);for(const sc of g.plan.scenes)g=applySceneTheme(g,sc.id,d.theme);return g;})():d.kind==='s8-story'?await s8Project('story',d.locale,home,d.theme):['fieldnotes','atlas','stage'].includes(d.kind)?await s8Project(d.kind,d.locale,home):await releaseProject(d.kind,d.locale,home,d.theme);
  const resources=await visualAssetResources(p,home),opts={experimentalWeb:true,plan:p.plan,assetResources:resources};
  const html=exportDeck(p.document,'html',opts),staticFile=path.join(dir,'static.html');await writeFile(staticFile,html.body);await writeFile(path.join(dir,'project.json'),JSON.stringify(p,null,1));
  // Measure (after fonts and images), confirm the drawn fonts, capture each scene and every element delivered as an image.

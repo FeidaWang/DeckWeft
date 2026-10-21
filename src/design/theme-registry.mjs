@@ -9,6 +9,7 @@ import { validateSchema } from '../core/schema.mjs';
 import { resolveScopedRules } from './rules.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { chapterOf } from './chapters.mjs';
+import { applyPalette } from './semantic-colors.mjs';
 export const DEFAULT_PROFILE={colorIntensity:'bold',typographicContrast:'expressive',density:'comfortable',motionIntensity:'off',imageEmphasis:'large'};
 // S8 (alignment §16): the three handoff art directions join the three VIS-014 themes; the first three are never changed.
 const packs=[cream,dark,violet,fieldnotes,atlas,stage];
@@ -16,14 +17,15 @@ for(const p of packs)if(!validateSchema(p,schema).ok)throw Error('Invalid packag
 export const themePacks=()=>structuredClone(packs);
 /** Most specific wins: page profile, then its chapter's profile (S9a, needs the plan), then the deck profile, then the defaults. */
 export const effectiveProfile=(document,scene,plan)=>({...DEFAULT_PROFILE,...document.visualBrief?.profile,...(plan?chapterOf(plan,scene.id)?.profile:undefined),...scene.profile});
-export function resolveTheme(id,version,locale,{profile=DEFAULT_PROFILE,colorMode='default',role='context'}={}) {
+/** DWI-011: `palette` (a scene's {id, registryVersion, mode}) replaces the pack's colours with derived role tokens; absent, the output is unchanged. */
+export function resolveTheme(id,version,locale,{profile=DEFAULT_PROFILE,colorMode='default',role='context',palette:paletteRef=null}={}) {
  const pack=packs.find(p=>p.id===id);
  if(!pack||version!==pack.version||!['en','zh-CN'].includes(locale))throw new DeckError('THEME_VERSION','Choose an available versioned theme and locale.');
  const palette={...pack.palette};
  if(colorMode==='chapter'&&pack.modes.chapter==='violet')Object.assign(palette,{paper:palette.accent,ink:'#FFFFFF',accent:'#FFFFFF',secondary:'#121212'});
  if(profile.colorIntensity==='restrained'&&id==='electric-violet')Object.assign(palette,{paper:'#F5F2FF',ink:'#28115C',accent:'#5114F6'});
  const channels=palette.paper.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4),darkSurface=channels[0]*.2126+channels[1]*.7152+channels[2]*.0722<.18;
- return structuredClone({id,version,...palette,chart:darkSurface&&pack.modes.default!=='dark'?dark.chartColors:pack.chartColors,display:locale==='zh-CN'?pack.typography.displayZh:pack.typography.displayEn,body:locale==='zh-CN'?pack.typography.bodyZh:pack.typography.bodyEn,code:pack.typography.code,locale,page:profile.density==='compact'?32:pack.spacing.page,gap:pack.spacing.gap,displayScale:profile.typographicContrast==='balanced'?.85:pack.typography.displayScale,split:profile.imageEmphasis==='large'?pack.imageGrammar.split:.44,motion:profile.motionIntensity==='off'?{durationMs:0,effect:'none'}:pack.motion,colorIntensity:profile.colorIntensity,compositions:pack.compositions,rules:resolveScopedRules(pack,{role,mode:colorMode}),tokens:tokensOf(pack,locale)});
+ return applyPalette(structuredClone({id,version,...palette,chart:darkSurface&&pack.modes.default!=='dark'?dark.chartColors:pack.chartColors,display:locale==='zh-CN'?pack.typography.displayZh:pack.typography.displayEn,body:locale==='zh-CN'?pack.typography.bodyZh:pack.typography.bodyEn,code:pack.typography.code,locale,page:profile.density==='compact'?32:pack.spacing.page,gap:pack.spacing.gap,displayScale:profile.typographicContrast==='balanced'?.85:pack.typography.displayScale,split:profile.imageEmphasis==='large'?pack.imageGrammar.split:.44,motion:profile.motionIntensity==='off'?{durationMs:0,effect:'none'}:pack.motion,colorIntensity:profile.colorIntensity,compositions:pack.compositions,rules:resolveScopedRules(pack,{role,mode:colorMode}),tokens:tokensOf(pack,locale)}),paletteRef);
 }
 /** CINE-006: six type roles per pack, in px at 1440 px. Read beside resolveTheme() (whose output is unchanged) so recorded theme output stays byte-identical. */
 export const TYPE_ROLES=Object.freeze(['title','lead','body','label','reference','numeric']);

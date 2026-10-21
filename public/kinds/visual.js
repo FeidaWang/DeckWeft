@@ -51,6 +51,8 @@ const look=/*html*/`
       <section id="actionPlan" class="action-plan" hidden aria-live="polite"><h3 id="actionTitle"></h3><p id="actionScope"></p><ul id="actionEffects"></ul><ul id="actionKept" class="kept"></ul></section>
       <p id="themeLabel" class="look-label" data-i18n="visual.look.colours">Colours</p>
       <div class="theme-options" role="group" aria-labelledby="themeLabel">${swatches}</div>
+      <div class="palette-row"><label for="paletteSelect" data-i18n="visual.look.palette">Film palette</label><select id="paletteSelect"><option value="" data-i18n="visual.look.paletteNone">None, theme colours</option></select><select id="paletteMode" data-i18n-attr="aria-label:visual.look.paletteMode" hidden><option value="light" data-i18n="visual.look.paletteLight">Light</option><option value="dark" data-i18n="visual.look.paletteDark">Dark</option><option value="stage" data-i18n="visual.look.paletteStage">Stage</option></select></div>
+      <details id="paletteEvidence" class="palette-evidence" hidden><summary data-i18n="visual.look.paletteAbout">About this palette</summary><div id="paletteSwatches" class="palette-swatches" aria-hidden="true"></div><p id="paletteEvidenceText"></p></details>
       <div class="motion-row"><span id="motionLabel" class="look-label" data-i18n="visual.look.motion">Let this page move</span><button id="motionSwitch" type="button" role="switch" aria-checked="false" aria-labelledby="motionLabel"><span data-i18n="visual.look.off">Off</span></button></div>
       <div id="motionControls" class="motion-controls" hidden>
         <button id="enableInteractions" type="button" data-i18n="visual.enableInteractions">Add explanations to this page</button>
@@ -282,9 +284,25 @@ function drawEditor(){
 function draw(){drawScenes();drawEditor();status();}
 // ---- Look: the three buttons, colours, motion and image ----
 function pageKept(s=scene()){const f=sceneLock(s);return f.includes('composition')&&f.includes('theme');}
+// DWI-013: one palette choice beside the theme colours; the evidence note says what the palette is and is not.
+let paletteCatalogue=null;
+async function loadPalettes(){try{paletteCatalogue=await json('/api/visual/palettes',undefined,'GET');const select=$('#paletteSelect');for(const p of paletteCatalogue.palettes){const o=document.createElement('option');o.value=p.id;o.textContent=`${p.film.title} · ${p.id}`;select.append(o);}if(state.project)drawLook();}catch(err){error(err);}}
+function drawPalette(s,locks){
+ const select=$('#paletteSelect'),mode=$('#paletteMode'),details=$('#paletteEvidence'),entry=paletteCatalogue?.palettes.find(p=>p.id===s.palette?.id);
+ select.value=s.palette?.id||'';select.disabled=locks.includes('theme')||!paletteCatalogue;mode.hidden=!s.palette;mode.value=s.palette?.mode||'light';mode.disabled=select.disabled;details.hidden=!entry;
+ if(!entry)return;
+ $('#paletteSwatches').innerHTML=entry.colors.map(c=>`<span style="background:${x(c)}"></span>`).join('');
+ const shot=entry.evidence.screenshot,preview=entry.preview[s.palette.mode];
+ $('#paletteEvidenceText').textContent=[t('visual.look.paletteSource',{film:entry.film.title,year:entry.film.year}),t('visual.look.paletteNotOfficial'),shot?t('visual.look.paletteScreenshot',{samples:shot.samples,exact:shot.exactMatches,delta:shot.maxDeltaE76.toFixed(1)}):t('visual.look.paletteNoScreenshot'),preview.adjusted?t('visual.look.paletteAdjusted'):''].filter(Boolean).join(' ');
+}
+async function choosePalette(){
+ if(!state.project)return;const id=$('#paletteSelect').value,counter=state.counter;state.measured=false;state.render=null;status();
+ try{const {project}=await json('/api/visual/palette',{project:state.project,sceneId:state.active,palette:id?{id,registryVersion:paletteCatalogue.registry.version,mode:$('#paletteMode').value||'light'}:null});if(counter!==state.counter)throw new Error(t('visual.main.editsChangedWhileTheThemeWas'));changed(()=>state.project=project,{fields:true});}catch(err){error(err);drawEditor();schedulePreview();}
+}
 function drawLook(){
   const p=state.project,s=scene(),locks=sceneLock(s);
   for(const b of document.querySelectorAll('[data-zone=look] [data-theme]')){b.classList.toggle('selected',b.dataset.theme===s.theme);b.setAttribute('aria-pressed',String(b.dataset.theme===s.theme));b.disabled=locks.includes('theme');}
+  drawPalette(s,locks);
   $('#largerType').setAttribute('aria-pressed',String(profile().typographicContrast==='expressive'));
   $('#keepPage').setAttribute('aria-pressed',String(pageKept(s)));$('#moreSpace').disabled=locks.includes('composition');
   const moving=!!(s.interactions?.length||s.motion?.policy==='subtle'),interactionLocked=locks.some(f=>['interactions','cues','motion'].includes(f)),on=moving||motionOpened.has(s.id);
@@ -386,6 +404,7 @@ function mount(s){
   $('#explanationFields').addEventListener('change',e=>{const n=e.target;if(!n.dataset.explanation)return;if(!n.value.trim()){error(new Error(t('visual.main.anExplanationCannotBeEmpty')));drawInteractionFields();return;}changed(()=>{state.project.document.explanations.find(v=>v.id===n.dataset.explanation)[n.dataset.noteField]=n.value;},{fields:true});});
   // Look
   document.querySelector('[data-zone=look] .theme-options').addEventListener('click',async e=>{const b=e.target.closest('[data-theme]');if(!b||b.disabled||!state.project)return;const counter=state.counter;state.measured=false;state.render=null;status();try{const {project}=await json('/api/visual/theme',{project:state.project,sceneId:state.active,theme:b.dataset.theme});if(counter!==state.counter)throw new Error(t('visual.main.editsChangedWhileTheThemeWas'));changed(()=>state.project=project,{fields:true});}catch(err){error(err);drawEditor();schedulePreview();}});
+  $('#paletteSelect').addEventListener('change',choosePalette);$('#paletteMode').addEventListener('change',choosePalette);loadPalettes();
   $('#largerType').onclick=()=>changed(()=>{const d=state.project.document;d.visualBrief??={audience:'',outputLanguage:d.locale,profile:profile()};d.visualBrief.profile.typographicContrast=profile().typographicContrast==='expressive'?'balanced':'expressive';},{fields:true});
   $('#motionSwitch').onclick=toggleMotion;
   $('#enableInteractions').onclick=()=>{try{if(state.drafts.size)throw Error(t('visual.main.repairUnappliedEditsFirst'));const next=addExplanatoryInteractions(state.project,state.active);changed(()=>{state.project=next;},{fields:true});}catch(e){error(e);}};

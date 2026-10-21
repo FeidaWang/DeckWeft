@@ -12,7 +12,7 @@ export function compileInteractionRuntime(document,plan,resources={}){
    const b=blocks.get(spec.blockId),panelId=objectAnchor(scene.id,'interaction:'+spec.id,'panel');let detail={block:b,panelId};
    if(spec.kind==='chart-select'){
     const d=document.datasets.find(d=>d.id===b.datasetId),anchors={};for(const id of d.categoryIds)for(const s of ['',...d.series.map(s=>s.id)])anchors[JSON.stringify([id,s])]=objectAnchor(scene.id,b.id,id,s);
-    detail={...detail,dataset:d,anchors,theme:resolveTheme(scene.theme,scene.themeVersion,document.locale,{role:scene.role,profile:effectiveProfile(document,scene,plan),colorMode:scene.colorMode||(scene.composition==='violet-chapter'?'chapter':'default')})};
+    detail={...detail,dataset:d,anchors,theme:resolveTheme(scene.theme,scene.themeVersion,document.locale,{palette:scene.palette,role:scene.role,profile:effectiveProfile(document,scene,plan),colorMode:scene.colorMode||(scene.composition==='violet-chapter'?'chapter':'default')})};
    }else if(spec.kind==='steps')detail.anchors=Object.fromEntries(b.type==='diagram'?[...b.nodes,...b.edges.filter(e=>e.id)].map(v=>[v.id,objectAnchor(scene.id,b.id,v.id)]):[]);
    else if(spec.kind==='image-hotspots'){
     detail.annotations=Object.fromEntries(spec.hotspots.map(h=>[h.annotationId,blocks.get(h.annotationId)]));detail.positions=hotspotPositions(scene,spec,b,resources);
@@ -20,7 +20,7 @@ export function compileInteractionRuntime(document,plan,resources={}){
    components[spec.id]=detail;
   }
   // S9a: the page's effective profile (page › chapter › deck), so a chapter or page motion choice reaches the player; the deck switch still wins.
-  const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{profile:effectiveProfile(document,scene,plan)});
+  const theme=resolveTheme(scene.theme,scene.themeVersion,document.locale,{palette:scene.palette,profile:effectiveProfile(document,scene,plan)});
   return {id:scene.id,interactions:compiled.interactions,cues:compiled.cues,motion:document.visualBrief?.profile.motionIntensity==='off'?{policy:'off',durationMs:0}:scene.motion||{policy:theme.motion.durationMs?'subtle':'off',durationMs:theme.motion.durationMs},components,...(scene.staticState?{staticState:{keyStateId:scene.staticState.keyStateId,position:staticStatePosition(scene),reducedMotion:scene.motion?.reducedMotion||theme.tokens?.motion.fallback||'instant'}}:{}),...(blueprintSpec(scene)&&scene.keyStates?{blueprintKeyStates:scene.keyStates.map(k=>({id:k.id,position:k.position}))}:{})};
  })};
 }

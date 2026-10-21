@@ -25,7 +25,8 @@ import { visualAssetResources } from '../assets/visual.mjs';
 import { assetResources,registerAsset } from '../assets/registry.mjs';
 import { contentHash } from '../scene/web/compile.mjs';
 import { themePacks } from '../design/theme-registry.mjs';
-import { applySceneTheme } from '../design/profile.mjs';
+import { applySceneTheme, applyScenePalette } from '../design/profile.mjs';
+import { paletteCatalogue } from '../design/semantic-colors.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { createVisualTask } from '../agent/director.mjs';
 import { planDirections, entryAnswers } from '../workbench/directions.mjs';
@@ -155,6 +156,8 @@ export async function createVisualService({home,legacyStore,body,send,browserPat
     if(i<0||!a||!a.candidateFit[i].ok)throw new DeckError('NO_FEASIBLE_CANDIDATE','Choose a candidate that passes the browser layout checks.',422);
     const project=structuredClone(base);project.plan.scenes[i]=structuredClone(a.project.plan.scenes[i]);send(res,200,{project:assertVisualProject(project)});return true;
    }
+   if(route==='palettes'&&method==='GET'){send(res,200,paletteCatalogue());return true;}
+   if(route==='palette'&&method==='POST'){const data=await body(req);send(res,200,{project:applyScenePalette(data.project,data.sceneId,data.palette??null)});return true;}
    if(route==='theme'&&method==='POST'){const data=await body(req);send(res,200,{project:applySceneTheme(data.project,data.sceneId,data.theme)});return true;}
    if(route==='assets'&&method==='POST'){const data=await body(req);if(typeof data.base64!=='string'||data.base64.length>1750000||!/^[A-Za-z0-9+/]+={0,2}$/.test(data.base64))throw new DeckError('ASSET_SIZE','Choose a PNG smaller than 1.3 MB for browser import.',422);send(res,201,{asset:await registerAsset(store.home,Buffer.from(data.base64,'base64'),data.metadata)});return true;}
    if(route==='preview'&&method==='POST'){

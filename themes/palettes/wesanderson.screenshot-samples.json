@@ -1,0 +1,1098 @@
+{
+ "format": "deckweft-palette-screenshot-samples",
+ "registryId": "wesanderson",
+ "registryVersion": 1,
+ "evidence": "screenshot-sample-only",
+ "image": {
+  "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+  "provenance": "User-provided labelled colour strip (not a film frame); the image itself is not distributed.",
+  "sampling": "7x7 px modal RGB at the recorded crop, sRGB interpretation",
+  "metric": "CIE76 against the library value; not CIEDE2000"
+ },
+ "rows": [
+  {
+   "paletteId": "BottleRocket1",
+   "row": 1,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      37,
+      23,
+      44,
+      30
+     ],
+     "sampleHex": "#91191A",
+     "libraryHex": "#A42820",
+     "exactMatch": false,
+     "deltaE76": 6.786877
+    },
+    {
+     "index": 1,
+     "roi": [
+      95,
+      23,
+      102,
+      30
+     ],
+     "sampleHex": "#4D453A",
+     "libraryHex": "#5F5647",
+     "exactMatch": false,
+     "deltaE76": 7.581184
+    },
+    {
+     "index": 2,
+     "roi": [
+      155,
+      23,
+      162,
+      30
+     ],
+     "sampleHex": "#88010F",
+     "libraryHex": "#9B110E",
+     "exactMatch": false,
+     "deltaE76": 8.578904
+    },
+    {
+     "index": 3,
+     "roi": [
+      213,
+      23,
+      220,
+      30
+     ],
+     "sampleHex": "#334142",
+     "libraryHex": "#3F5151",
+     "exactMatch": false,
+     "deltaE76": 6.802379
+    },
+    {
+     "index": 4,
+     "roi": [
+      273,
+      23,
+      280,
+      30
+     ],
+     "sampleHex": "#3C1F17",
+     "libraryHex": "#4E2A1E",
+     "exactMatch": false,
+     "deltaE76": 7.272544
+    },
+    {
+     "index": 5,
+     "roi": [
+      331,
+      23,
+      338,
+      30
+     ],
+     "sampleHex": "#430009",
+     "libraryHex": "#550307",
+     "exactMatch": false,
+     "deltaE76": 10.384264
+    },
+    {
+     "index": 6,
+     "roi": [
+      391,
+      23,
+      398,
+      30
+     ],
+     "sampleHex": "#0D1309",
+     "libraryHex": "#0C1707",
+     "exactMatch": false,
+     "deltaE76": 4.363201
+    }
+   ]
+  },
+  {
+   "paletteId": "BottleRocket2",
+   "row": 2,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      67,
+      55,
+      74
+     ],
+     "sampleHex": "#F7CE10",
+     "libraryHex": "#FAD510",
+     "exactMatch": false,
+     "deltaE76": 3.468191
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      67,
+      138,
+      74
+     ],
+     "sampleHex": "#BE0D13",
+     "libraryHex": "#CB2314",
+     "exactMatch": false,
+     "deltaE76": 5.586399
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      67,
+      220,
+      74
+     ],
+     "sampleHex": "#1C2336",
+     "libraryHex": "#273046",
+     "exactMatch": false,
+     "deltaE76": 6.277695
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      67,
+      303,
+      74
+     ],
+     "sampleHex": "#28381B",
+     "libraryHex": "#354823",
+     "exactMatch": false,
+     "deltaE76": 8.001552
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      67,
+      386,
+      74
+     ],
+     "sampleHex": "#171717",
+     "libraryHex": "#1E1E1E",
+     "exactMatch": false,
+     "deltaE76": 3.524055
+    }
+   ]
+  },
+  {
+   "paletteId": "Rushmore1",
+   "row": 3,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      110,
+      55,
+      117
+     ],
+     "sampleHex": "#DAB05A",
+     "libraryHex": "#E1BD6D",
+     "exactMatch": false,
+     "deltaE76": 6.381845
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      110,
+      138,
+      117
+     ],
+     "sampleHex": "#E4B182",
+     "libraryHex": "#EABE94",
+     "exactMatch": false,
+     "deltaE76": 6.233975
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      110,
+      220,
+      117
+     ],
+     "sampleHex": "#12664C",
+     "libraryHex": "#0B775E",
+     "exactMatch": false,
+     "deltaE76": 7.373011
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      110,
+      303,
+      117
+     ],
+     "sampleHex": "#291C3A",
+     "libraryHex": "#35274A",
+     "exactMatch": false,
+     "deltaE76": 6.111462
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      110,
+      386,
+      117
+     ],
+     "sampleHex": "#EC160E",
+     "libraryHex": "#F2300F",
+     "exactMatch": false,
+     "deltaE76": 4.930587
+    }
+   ]
+  },
+  {
+   "paletteId": "Royal1",
+   "row": 4,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      59,
+      154,
+      66,
+      161
+     ],
+     "sampleHex": "#788C95",
+     "libraryHex": "#899DA4",
+     "exactMatch": false,
+     "deltaE76": 6.555329
+    },
+    {
+     "index": 1,
+     "roi": [
+      162,
+      154,
+      169,
+      161
+     ],
+     "sampleHex": "#BB1F10",
+     "libraryHex": "#C93312",
+     "exactMatch": false,
+     "deltaE76": 6.427249
+    },
+    {
+     "index": 2,
+     "roi": [
+      265,
+      154,
+      272,
+      161
+     ],
+     "sampleHex": "#F8ECC6",
+     "libraryHex": "#FAEFD1",
+     "exactMatch": false,
+     "deltaE76": 4.291888
+    },
+    {
+     "index": 3,
+     "roi": [
+      368,
+      154,
+      375,
+      161
+     ],
+     "sampleHex": "#D3722E",
+     "libraryHex": "#DC863B",
+     "exactMatch": false,
+     "deltaE76": 8.534566
+    }
+   ]
+  },
+  {
+   "paletteId": "Royal2",
+   "row": 5,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      197,
+      55,
+      204
+     ],
+     "sampleHex": "#87761A",
+     "libraryHex": "#9A8822",
+     "exactMatch": false,
+     "deltaE76": 8.203691
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      197,
+      138,
+      204
+     ],
+     "sampleHex": "#F1C2A6",
+     "libraryHex": "#F5CDB4",
+     "exactMatch": false,
+     "deltaE76": 4.943891
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      197,
+      220,
+      204
+     ],
+     "sampleHex": "#F49C98",
+     "libraryHex": "#F8AFA8",
+     "exactMatch": false,
+     "deltaE76": 8.454627
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      197,
+      303,
+      204
+     ],
+     "sampleHex": "#FCD68F",
+     "libraryHex": "#FDDDA0",
+     "exactMatch": false,
+     "deltaE76": 6.401347
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      197,
+      386,
+      204
+     ],
+     "sampleHex": "#629076",
+     "libraryHex": "#74A089",
+     "exactMatch": false,
+     "deltaE76": 6.692364
+    }
+   ]
+  },
+  {
+   "paletteId": "Zissou1",
+   "row": 6,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      241,
+      55,
+      248
+     ],
+     "sampleHex": "#3188A3",
+     "libraryHex": "#3B9AB2",
+     "exactMatch": false,
+     "deltaE76": 7.231634
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      241,
+      138,
+      248
+     ],
+     "sampleHex": "#67A9B9",
+     "libraryHex": "#78B7C5",
+     "exactMatch": false,
+     "deltaE76": 5.401633
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      241,
+      220,
+      248
+     ],
+     "sampleHex": "#E5C421",
+     "libraryHex": "#EBCC2A",
+     "exactMatch": false,
+     "deltaE76": 2.942361
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      241,
+      303,
+      248
+     ],
+     "sampleHex": "#D8A108",
+     "libraryHex": "#E1AF00",
+     "exactMatch": false,
+     "deltaE76": 7.254199
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      241,
+      386,
+      248
+     ],
+     "sampleHex": "#EC0005",
+     "libraryHex": "#F21A00",
+     "exactMatch": false,
+     "deltaE76": 3.74279
+    }
+   ]
+  },
+  {
+   "paletteId": "Darjeeling1",
+   "row": 7,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      284,
+      55,
+      291
+     ],
+     "sampleHex": "#FB0007",
+     "libraryHex": "#FF0000",
+     "exactMatch": false,
+     "deltaE76": 2.8411
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      284,
+      138,
+      291
+     ],
+     "sampleHex": "#129176",
+     "libraryHex": "#00A08A",
+     "exactMatch": false,
+     "deltaE76": 6.764684
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      284,
+      220,
+      291
+     ],
+     "sampleHex": "#EF9D0B",
+     "libraryHex": "#F2AD00",
+     "exactMatch": false,
+     "deltaE76": 9.352299
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      284,
+      303,
+      291
+     ],
+     "sampleHex": "#F46F08",
+     "libraryHex": "#F98400",
+     "exactMatch": false,
+     "deltaE76": 10.735498
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      284,
+      386,
+      291
+     ],
+     "sampleHex": "#4CADCE",
+     "libraryHex": "#5BBCD6",
+     "exactMatch": false,
+     "deltaE76": 6.789128
+    }
+   ]
+  },
+  {
+   "paletteId": "Darjeeling2",
+   "row": 8,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      328,
+      55,
+      335
+     ],
+     "sampleHex": "#E7BEA0",
+     "libraryHex": "#ECCBAE",
+     "exactMatch": false,
+     "deltaE76": 5.35812
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      328,
+      138,
+      335
+     ],
+     "sampleHex": "#0E578A",
+     "libraryHex": "#046C9A",
+     "exactMatch": false,
+     "deltaE76": 10.505444
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      328,
+      220,
+      335
+     ],
+     "sampleHex": "#CA8B3E",
+     "libraryHex": "#D69C4E",
+     "exactMatch": false,
+     "deltaE76": 6.548414
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      328,
+      303,
+      335
+     ],
+     "sampleHex": "#9CD6D7",
+     "libraryHex": "#ABDDDE",
+     "exactMatch": false,
+     "deltaE76": 3.860766
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      328,
+      386,
+      335
+     ],
+     "sampleHex": "#000000",
+     "libraryHex": "#000000",
+     "exactMatch": true,
+     "deltaE76": 0.0
+    }
+   ]
+  },
+  {
+   "paletteId": "Chevalier1",
+   "row": 9,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      59,
+      372,
+      66,
+      379
+     ],
+     "sampleHex": "#375144",
+     "libraryHex": "#446455",
+     "exactMatch": false,
+     "deltaE76": 7.832013
+    },
+    {
+     "index": 1,
+     "roi": [
+      162,
+      372,
+      169,
+      379
+     ],
+     "sampleHex": "#FBCA51",
+     "libraryHex": "#FDD262",
+     "exactMatch": false,
+     "deltaE76": 5.796302
+    },
+    {
+     "index": 2,
+     "roi": [
+      265,
+      372,
+      272,
+      379
+     ],
+     "sampleHex": "#C9D4D6",
+     "libraryHex": "#D3DDDC",
+     "exactMatch": false,
+     "deltaE76": 3.583012
+    },
+    {
+     "index": 3,
+     "roi": [
+      368,
+      372,
+      375,
+      379
+     ],
+     "sampleHex": "#BAA28A",
+     "libraryHex": "#C7B19C",
+     "exactMatch": false,
+     "deltaE76": 5.83914
+    }
+   ]
+  },
+  {
+   "paletteId": "FantasticFox1",
+   "row": 10,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      415,
+      55,
+      422
+     ],
+     "sampleHex": "#D47920",
+     "libraryHex": "#DD8D29",
+     "exactMatch": false,
+     "deltaE76": 9.056461
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      415,
+      138,
+      422
+     ],
+     "sampleHex": "#DDCC0A",
+     "libraryHex": "#E2D200",
+     "exactMatch": false,
+     "deltaE76": 3.390654
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      415,
+      220,
+      422
+     ],
+     "sampleHex": "#399CBC",
+     "libraryHex": "#46ACC8",
+     "exactMatch": false,
+     "deltaE76": 6.451296
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      415,
+      303,
+      422
+     ],
+     "sampleHex": "#DE7108",
+     "libraryHex": "#E58601",
+     "exactMatch": false,
+     "deltaE76": 10.98182
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      415,
+      386,
+      422
+     ],
+     "sampleHex": "#A30119",
+     "libraryHex": "#B40F20",
+     "exactMatch": false,
+     "deltaE76": 5.433497
+    }
+   ]
+  },
+  {
+   "paletteId": "Moonrise1",
+   "row": 11,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      59,
+      459,
+      66,
+      466
+     ],
+     "sampleHex": "#EFDA5B",
+     "libraryHex": "#F3DF6C",
+     "exactMatch": false,
+     "deltaE76": 5.704504
+    },
+    {
+     "index": 1,
+     "roi": [
+      162,
+      459,
+      169,
+      466
+     ],
+     "sampleHex": "#C29E0C",
+     "libraryHex": "#CEAB07",
+     "exactMatch": false,
+     "deltaE76": 6.635185
+    },
+    {
+     "index": 2,
+     "roi": [
+      265,
+      459,
+      272,
+      466
+     ],
+     "sampleHex": "#CBCBC9",
+     "libraryHex": "#D5D5D3",
+     "exactMatch": false,
+     "deltaE76": 3.585076
+    },
+    {
+     "index": 3,
+     "roi": [
+      368,
+      459,
+      375,
+      466
+     ],
+     "sampleHex": "#1B1E15",
+     "libraryHex": "#24281A",
+     "exactMatch": false,
+     "deltaE76": 5.670269
+    }
+   ]
+  },
+  {
+   "paletteId": "Moonrise2",
+   "row": 12,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      59,
+      502,
+      66,
+      509
+     ],
+     "sampleHex": "#677C75",
+     "libraryHex": "#798E87",
+     "exactMatch": false,
+     "deltaE76": 7.038421
+    },
+    {
+     "index": 1,
+     "roi": [
+      162,
+      502,
+      169,
+      509
+     ],
+     "sampleHex": "#B4682E",
+     "libraryHex": "#C27D38",
+     "exactMatch": false,
+     "deltaE76": 8.990659
+    },
+    {
+     "index": 2,
+     "roi": [
+      265,
+      502,
+      272,
+      509
+     ],
+     "sampleHex": "#C0BA7E",
+     "libraryHex": "#CCC591",
+     "exactMatch": false,
+     "deltaE76": 6.107644
+    },
+    {
+     "index": 3,
+     "roi": [
+      368,
+      502,
+      375,
+      509
+     ],
+     "sampleHex": "#1F1A17",
+     "libraryHex": "#29211F",
+     "exactMatch": false,
+     "deltaE76": 4.173455
+    }
+   ]
+  },
+  {
+   "paletteId": "Moonrise3",
+   "row": 13,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      546,
+      55,
+      553
+     ],
+     "sampleHex": "#75CBDC",
+     "libraryHex": "#85D4E3",
+     "exactMatch": false,
+     "deltaE76": 3.91939
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      546,
+      138,
+      553
+     ],
+     "sampleHex": "#F1A3B0",
+     "libraryHex": "#F4B5BD",
+     "exactMatch": false,
+     "deltaE76": 8.147705
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      546,
+      220,
+      553
+     ],
+     "sampleHex": "#8A873A",
+     "libraryHex": "#9C964A",
+     "exactMatch": false,
+     "deltaE76": 6.13733
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      546,
+      303,
+      553
+     ],
+     "sampleHex": "#C4B479",
+     "libraryHex": "#CDC08C",
+     "exactMatch": false,
+     "deltaE76": 6.025644
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      546,
+      386,
+      553
+     ],
+     "sampleHex": "#F7D067",
+     "libraryHex": "#FAD77B",
+     "exactMatch": false,
+     "deltaE76": 7.156091
+    }
+   ]
+  },
+  {
+   "paletteId": "Cavalcanti1",
+   "row": 14,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      48,
+      590,
+      55,
+      597
+     ],
+     "sampleHex": "#CDAB0C",
+     "libraryHex": "#D8B70A",
+     "exactMatch": false,
+     "deltaE76": 5.822943
+    },
+    {
+     "index": 1,
+     "roi": [
+      131,
+      590,
+      138,
+      597
+     ],
+     "sampleHex": "#073216",
+     "libraryHex": "#02401B",
+     "exactMatch": false,
+     "deltaE76": 8.961003
+    },
+    {
+     "index": 2,
+     "roi": [
+      213,
+      590,
+      220,
+      597
+     ],
+     "sampleHex": "#929462",
+     "libraryHex": "#A2A475",
+     "exactMatch": false,
+     "deltaE76": 6.446397
+    },
+    {
+     "index": 3,
+     "roi": [
+      296,
+      590,
+      303,
+      597
+     ],
+     "sampleHex": "#71987D",
+     "libraryHex": "#81A88D",
+     "exactMatch": false,
+     "deltaE76": 6.058838
+    },
+    {
+     "index": 4,
+     "roi": [
+      379,
+      590,
+      386,
+      597
+     ],
+     "sampleHex": "#851D10",
+     "libraryHex": "#972D15",
+     "exactMatch": false,
+     "deltaE76": 7.09828
+    }
+   ]
+  },
+  {
+   "paletteId": "GrandBudapest1",
+   "row": 15,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      59,
+      633,
+      66,
+      640
+     ],
+     "sampleHex": "#EDAC68",
+     "libraryHex": "#F1BB7B",
+     "exactMatch": false,
+     "deltaE76": 7.646414
+    },
+    {
+     "index": 1,
+     "roi": [
+      162,
+      633,
+      169,
+      640
+     ],
+     "sampleHex": "#F94B55",
+     "libraryHex": "#FD6467",
+     "exactMatch": false,
+     "deltaE76": 9.831482
+    },
+    {
+     "index": 2,
+     "roi": [
+      265,
+      633,
+      272,
+      640
+     ],
+     "sampleHex": "#491112",
+     "libraryHex": "#5B1A18",
+     "exactMatch": false,
+     "deltaE76": 7.154108
+    },
+    {
+     "index": 3,
+     "roi": [
+      368,
+      633,
+      375,
+      640
+     ],
+     "sampleHex": "#CB5D2A",
+     "libraryHex": "#D67236",
+     "exactMatch": false,
+     "deltaE76": 8.447879
+    }
+   ]
+  },
+  {
+   "paletteId": "GrandBudapest2",
+   "row": 16,
+   "samples": [
+    {
+     "index": 0,
+     "roi": [
+      59,
+      677,
+      66,
+      684
+     ],
+     "sampleHex": "#DE8BB7",
+     "libraryHex": "#E6A0C4",
+     "exactMatch": false,
+     "deltaE76": 8.867537
+    },
+    {
+     "index": 1,
+     "roi": [
+      162,
+      677,
+      169,
+      684
+     ],
+     "sampleHex": "#BABFF6",
+     "libraryHex": "#C6CDF7",
+     "exactMatch": false,
+     "deltaE76": 8.576555
+    },
+    {
+     "index": 2,
+     "roi": [
+      265,
+      677,
+      272,
+      684
+     ],
+     "sampleHex": "#CE9287",
+     "libraryHex": "#D8A499",
+     "exactMatch": false,
+     "deltaE76": 7.011646
+    },
+    {
+     "index": 3,
+     "roi": [
+      368,
+      677,
+      375,
+      684
+     ],
+     "sampleHex": "#5F7FCA",
+     "libraryHex": "#7294D4",
+     "exactMatch": false,
+     "deltaE76": 10.62867
+    }
+   ]
+  }
+ ]
+}
