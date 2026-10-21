@@ -64,11 +64,23 @@ try{
  // No wheel hijack: wheel over the canvas and the strip does not turn the page.
  await page.locator('#slideList [data-slide]').nth(1).click();await measured();
  await page.mouse.move(600,500);await page.mouse.wheel(0,600);await page.waitForTimeout(300);assert.equal(await active(),ids[1]);
- step('the mouse wheel over the page does not turn pages');
+ // The studio itself does not scroll: a wheel over the page must not carry the top band (Undo, the title) off screen.
+ assert.equal(await page.evaluate(()=>scrollY),0,'the document does not scroll');assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight),true,'nothing overflows the window');
+ step('the mouse wheel over the page does not turn pages or scroll the studio');
  // Reorder keeps the selection by id.
  await page.locator('#moveDown').click();await measured();assert.equal(await active(),ids[1]);assert.equal(await page.locator('.dial-value').textContent(),`3 / ${n}`);
  await page.locator('#moveUp').click();await measured();assert.equal(await active(),ids[1]);assert.equal(await page.locator('.dial-value').textContent(),`2 / ${n}`);
  step('moving the open page down keeps it selected (now 3 / N); moving it back up returns it to 2 / N');
+ // Undo and Redo take a page move back and forth like any other edit.
+ const strip=()=>page.evaluate(()=>[...document.querySelectorAll('#slideList [data-slide]')].map(e=>e.dataset.slide));
+ const moved=[ids[0],ids[2],ids[1],...ids.slice(3)];
+ await page.locator('#moveDown').click();await measured();assert.deepEqual(await strip(),moved);
+ await page.locator('#undo').click();await measured();assert.deepEqual(await strip(),ids,'Undo restores the order');assert.equal(await active(),ids[1]);assert.equal(await page.locator('.dial-value').textContent(),`2 / ${n}`);
+ await page.keyboard.press(process.platform==='darwin'?'Meta+Shift+z':'Control+Shift+z');await measured();assert.deepEqual(await strip(),moved,'Redo moves it again');assert.equal(await page.locator('.dial-value').textContent(),`3 / ${n}`);
+ await page.locator('#undo').click();await measured();assert.deepEqual(await strip(),ids);
+ await page.waitForFunction(()=>document.querySelector('#saveState')?.dataset.state==='saved',{},{timeout:30000});
+ assert.deepEqual((await call('/api/visual/projects/'+demo.id,undefined,'GET')).project.plan.scenes.map(s=>s.id),ids,'autosave stores the restored order');
+ step('Undo after Move down restores the order (2 / N); Redo moves the page down again; Undo once more, and autosave stores that order');
  // Typing in a field never turns the page.
  const field=page.locator('#fields textarea, #fields input[type=text]').first();await field.click();const before=await active();await page.keyboard.press('ArrowRight');await page.keyboard.press('End');await page.waitForTimeout(200);assert.equal(await active(),before);
  step('arrow keys while editing a field move the caret, not the page');

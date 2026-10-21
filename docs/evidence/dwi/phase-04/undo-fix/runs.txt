@@ -1,0 +1,22 @@
+browser_dwi_workbench.mjs, isolated Chrome for Testing 151.0.7922.34, Node 24.14.0, 2026-10-22, one run at a time.
+"passes" counts PASS lines out of 16 (15 on the unchanged runner). The Undo step is step 8.
+
+Fixed runner (this change)
+ trial      exit  passes  Undo step  stopped at
+ single      0     16      pass      -
+ batch A-1   0     16      pass      -
+ batch A-2   1     11      pass      #openMore click timed out (30 s) while opening the history drawer
+ batch A-3   1      9      pass      #dialSound uncheck timed out (30 s) after the 20 rapid detents
+ batch B-1   1      9      pass      #dialSound uncheck timed out (30 s)
+ batch B-2   1      9      pass      #dialSound uncheck timed out (30 s)
+ batch B-3   1      9      pass      #dialSound uncheck timed out (30 s)
+ tally-1     1     11      pass      both tries of the history-dialog click lost (finding 4)
+ tally-2     0     16      pass      -   (report.json in this folder)
+ tally-3     0     16      pass      -
+ tally-4     0     16      pass      -
+ tally-5     0     16      pass      -
+
+Unchanged runner and stylesheet (HEAD 50f2d33, detached copy), run right after batch B
+ base-1      1      8      n/a       #dialSound uncheck timed out (30 s)
+ base-2      1      8      n/a       #dialSound uncheck timed out (30 s)
+ base-3      1      8      n/a       #dialSound uncheck timed out (30 s)

@@ -9,6 +9,12 @@ test('keyboard: the dial by keys alone, typing never turns a page, focus returns
  has(/dial by keyboard: ArrowRight, End \(no wrap\), Home; focus stays on the dial/);has(/arrow keys while editing a field move the caret, not the page/);
  has(/focus returns to Take away and to More after Escape/);has(/focus returns to More/);
 });
+const undoFix=JSON.parse(await readFile(new URL('../docs/evidence/dwi/phase-04/undo-fix/report.json',import.meta.url),'utf8'));
+const hasFixed=re=>assert.ok(undoFix.checks.some(c=>re.test(c)),String(re));
+test('recovery: Undo after a page move restores the order and autosaves it; the wheel never scrolls the studio (Phase 04 finding 3)',()=>{
+ hasFixed(/Undo after Move down restores the order \(2 \/ N\); Redo moves the page down again; Undo once more, and autosave stores that order/);hasFixed(/does not turn pages or scroll the studio/);
+ assert.equal(undoFix.checks.length,16);assert.deepEqual(undoFix.errors,[]);assert.deepEqual(undoFix.externalRequests,[]);
+});
 test('recovery: restore as copy leaves the source deck unchanged; page deletion lands on a neighbour',()=>{
  has(/restore as copy opens a new deck, the source deck is unchanged/);has(/deleting the open page lands on its neighbour/);
  assert.ok([1,2].includes(report.measurements.historyOpenAttempts),'at most one bounded retry of the drawer click');

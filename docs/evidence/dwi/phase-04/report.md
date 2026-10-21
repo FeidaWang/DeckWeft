@@ -26,9 +26,10 @@ The 15 steps: empty library with one next action; open deck with one next action
 
 1. **Fixed:** **Take away** was enabled in the empty first run, giving two primary actions.
 2. **Open — export dialog:** **Present** and **HTML** are offered with equal weight and no recommended choice, and the dialog shows an engineering line (“Host-added lines … Review attestation: unattested · verdict …”) a novice cannot act on. Which format to recommend is a product decision; not changed.
-3. **Open — undo of page moves:** in a visual deck, **Undo** after **Move down** did not restore the order in this run; the dial followed the actual order. Moving back up works. Not changed here.
+3. **Fixed 2026-10-22 — Undo after a page move** ([evidence](undo-fix/report.md)). Page moves were already in the edit history (**Move down** calls `changed()`, so Undo, Redo and autosave follow). What failed was the Undo click itself: the studio document scrolled when it should not, a wheel over the page carried **Undo** off screen, and the click after scrolling it back reached the preview frame instead. The inspector scroll box now contains its visually hidden labels, so the document no longer scrolls. The runner now has a 16th step for Undo, Redo and the autosaved order.
 4. **Flaky input after a dialog opens over the preview:** about one run in three, the first click or key press right after the drawer or the history dialog opens is lost (the preview is an out-of-process frame; recorded earlier in single-entry step 3). The runner retries those two actions once and records the attempts; an author would simply press again, but the loss itself is real.
 5. The tick was not heard: automated sessions are silent by design. Its rate limiting and gating are unit-tested with a fake audio context.
+6. **Open, found 2026-10-22 — the studio and the preview can echo page selections forever** ([evidence](undo-fix/report.md#the-tick-step-hang)). After rapid alternating dial detents, each stale `deckweft:scene` report from the preview reselects a page, which posts another `deckweft:select`. The loop keeps the main thread busy, so the next click times out. The unchanged runner now fails this way at the tick step. Not changed here.
 
 ## Not run
 
