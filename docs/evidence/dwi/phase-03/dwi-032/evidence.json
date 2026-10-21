@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-032",
+  "phase": 3,
+  "state": "implemented",
+  "scope": "browser",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作",
+    "browser": "Chrome for Testing 151.0.7922.34 (isolated)"
+  },
+  "sourceCommit": "ac81cf45ad06c5b226314d2414e5b8241acd52c3",
+  "checks": [
+    {
+      "command": "node --test tests/dwi-032.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "tests/dwi-032.test.mjs"
+      ]
+    },
+    {
+      "command": "node docs/evidence/dwi/phase-03/dwi-032/evidence-share.mjs",
+      "status": "fail",
+      "exitCode": null,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-03/dwi-032/evidence-share.json"
+      ],
+      "note": "The script ran (exit 0); the measured workflow page (0.346) and mechanism page (0.697) fall outside the 45-65 % default band, so the space criterion is not met."
+    }
+  ],
+  "limitations": [
+    "Process diagrams are drawn at natural width; enlarging them changes every existing deck with a diagram and needs a separately announced change."
+  ],
+  "changedFiles": [
+    "src/design/attention-policy.mjs",
+    "tests/dwi-032.test.mjs"
+  ]
+}

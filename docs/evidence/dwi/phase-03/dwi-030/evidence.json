@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-030",
+  "phase": 3,
+  "state": "accepted",
+  "scope": "local-code",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作"
+  },
+  "sourceCommit": "ac81cf45ad06c5b226314d2414e5b8241acd52c3",
+  "checks": [
+    {
+      "command": "node --test tests/dwi-030.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "src/design/attention-policy.mjs",
+        "tests/dwi-030.test.mjs"
+      ]
+    },
+    {
+      "command": "npm run verify",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-03/verify-ac0807e.txt"
+      ]
+    }
+  ],
+  "limitations": [
+    "Delivery thresholds are product defaults, not measured legibility results.",
+    "Stage delivery is a ranking parameter, not a saved deck setting."
+  ],
+  "changedFiles": [
+    "src/design/attention-policy.mjs",
+    "tests/dwi-030.test.mjs"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-034",
+  "phase": 3,
+  "state": "accepted",
+  "scope": "browser",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作",
+    "browser": "Chrome for Testing 151.0.7922.34 (isolated)"
+  },
+  "sourceCommit": "ac81cf45ad06c5b226314d2414e5b8241acd52c3",
+  "checks": [
+    {
+      "command": "node --test tests/dwi-034.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "tests/dwi-034.test.mjs"
+      ]
+    },
+    {
+      "command": "node scripts/export-targets.mjs --dwi",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-03/dwi-034/export-targets/exports.json",
+        "docs/evidence/dwi/phase-03/dwi-034/export-targets/dwi-slice-en-sheet.jpg",
+        "docs/evidence/dwi/phase-03/dwi-034/export-targets/dwi-slice-zh-CN-sheet.jpg"
+      ]
+    }
+  ],
+  "limitations": [
+    "The reports keep the typography failure (5.97 pt chart annotations) and zh-CN PDF search partial.",
+    "PowerPoint and Keynote were not opened (DWI-061)."
+  ],
+  "changedFiles": [
+    "tests/dwi-034.test.mjs",
+    "scripts/export-targets.mjs"
+  ]
+}
