@@ -1,6 +1,7 @@
 import registry from '../../themes/palettes/wesanderson.json' with { type: 'json' };
 import screenshots from '../../themes/palettes/wesanderson.screenshot-samples.json' with { type: 'json' };
 import schema from '../../schemas/palette-registry.schema.json' with { type: 'json' };
+import frameSchema from '../../schemas/film-frame-record.schema.json' with { type: 'json' };
 import { validateSchema } from '../core/schema.mjs';
 import { DeckError } from '../core/errors.mjs';
 /**
@@ -42,4 +43,18 @@ export function assertPaletteReference(ref){
  if(ref.registryVersion!==registry.registryVersion)fail(`Palette registry version ${ref.registryVersion} is not available; this build has version ${registry.registryVersion}.`);
  if(!PALETTE_MODES.includes(ref.mode))fail('Palette mode is light, dark or stage.');
  return ref;
+}
+/**
+ * DWI-052: a film-frame palette record (schemas/film-frame-record.schema.json). Only permitted media qualifies; the edition,
+ * transfer function, timestamps, frame hashes and the clustering seed are required so the sampling can be repeated. An
+ * independently reviewed record names its reviewer. No such record exists in this repository: no licensed frame has been sampled.
+ */
+export function assertFilmFrameRecord(record){
+ const r=validateSchema(record,frameSchema);if(!r.ok)throw new DeckError('FRAME_RECORD','Use the deckweft-film-frame-record version 1 contract.',400,r.errors);
+ const fail=m=>{throw new DeckError('FRAME_RECORD',m);};
+ if(new Set(record.frames.map(f=>f.timestamp)).size!==record.frames.length)fail('Each sampled frame has its own timestamp.');
+ if(new Set(record.frames.map(f=>f.frameSha256)).size!==record.frames.length)fail('Each sampled frame has its own hash.');
+ if(record.result.evidence==='independently-reviewed-frame'&&!record.result.reviewer)fail('An independently reviewed record names its reviewer.');
+ if(record.result.colors.length>record.method.k)fail('A record cannot report more colours than its clusters.');
+ return record;
 }

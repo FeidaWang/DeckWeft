@@ -82,3 +82,17 @@ requires every current capture's pixels and hash-matching findings; a PNG path i
 not a review. Keep failed candidates/checkpoints and the last valid artifact.
 Do not declare final HTML accepted until the shared current quality receipt passes.
 Host adapters add no image backend, browser, fonts or native v3 exporter.
+
+## Content handoff from an agent (DWI-023, DWI-050)
+
+When the person asks you to research or collect material for a deck, hand it over
+as data, not as a deck: send a `deckweft-content-handoff` version 1 body
+(`schemas/agent-handoff.schema.json`) to the running Studio at
+`POST /api/visual/story/handoff`. Put content in `blocks`, each with its
+`sourceId`, a `locator` and an honest `contentStatus` (sourced, illustrative or
+evidence-required); list sources in `documents` with a SHA-256 of what you read
+and an HTTP(S) `url` when there is one. `declaredCapabilities` says what you
+used; it grants nothing. Never put keys, tokens, passwords or cookies in a
+handoff: one credential-shaped field or value refuses it. The person reviews the
+outline in **Review the story** before any page is composed. There is no Slides
+or Spaces API behind this route.
