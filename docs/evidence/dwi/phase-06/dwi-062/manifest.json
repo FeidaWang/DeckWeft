@@ -1,0 +1,64 @@
+{
+  "format": "deckweft-release-candidate",
+  "version": 1,
+  "package": "0.1.0-alpha.2",
+  "sourceCommit": "ed746a03f25c82d5c0dc6b07c2813f87ab54d0a2",
+  "worktreeClean": true,
+  "dirtyPaths": [],
+  "node": "v24.14.0",
+  "platform": "darwin 27.0.0",
+  "archive": {
+    "name": "deckweft-plugin-0.1.0-alpha.2.zip",
+    "sha256": "c34acf7da8e99e01bcf0ae690f7d64c2d327e65cf754fdc03a3c0ff9b32f21e4",
+    "bytes": 7086728,
+    "entries": 311
+  },
+  "reproducible": true,
+  "leakScan": {
+    "entries": 311,
+    "findings": []
+  },
+  "offline": {
+    "networkDenied": "macOS sandbox-exec (deny network*)",
+    "steps": [
+      {
+        "argv": "new --out deck.deck.json",
+        "status": 0,
+        "stdout": "Wrote /private/var/folders/mf/spqyb9593h75f1n4s5br659w0000gn/T/deckweft-rc-work-4o9YCf/deck.deck.json\n",
+        "stderr": ""
+      },
+      {
+        "argv": "check deck.deck.json",
+        "status": 0,
+        "stdout": "{\n  \"ok\": true,\n  \"errors\": 0,\n  \"warnings\": 0,\n  \"issues\": [],\n  \"checks\": {\n    \"primaryTextContrast\": 13.34,\n    \"layoutScoring\": \"deterministic heuristic\",\n    \"textMeasurement\": \"offline estimate\"\n  },\n  \"notice\": \"Layout fit is not a fact check. Fonts may wrap differently in PowerPoint, Figma, and After Effects.\"\n}\n\n",
+        "stderr": ""
+      },
+      {
+        "argv": "export deck.deck.json --format html --out deck.html",
+        "status": 0,
+        "stdout": "Wrote /private/var/folders/mf/spqyb9593h75f1n4s5br659w0000gn/T/deckweft-rc-work-4o9YCf/deck.html\n",
+        "stderr": ""
+      },
+      {
+        "argv": "export deck.deck.json --format pptx --out deck.pptx",
+        "status": 0,
+        "stdout": "Wrote /private/var/folders/mf/spqyb9593h75f1n4s5br659w0000gn/T/deckweft-rc-work-4o9YCf/deck.pptx\n",
+        "stderr": ""
+      },
+      {
+        "argv": "doctor",
+        "status": 0,
+        "stdout": "{\n  \"application\": \"DeckWeft\",\n  \"version\": \"0.1.0-alpha.2\",\n  \"node\": \"v24.14.0\",\n  \"nodeSupported\": true,\n  \"hosts\": {\n    \"codex\": {\n      \"found\": true,\n      \"version\": \"codex-cli 0.160.0\",\n      \"authenticated\": \"not checked\"\n    },\n    \"claude\": {\n      \"found\": true,\n      \"version\": \"2.1.288 (Claude Code)\",\n      \"authenticated\": \"not checked\"\n    }\n  },\n  \"networkRequired\": false,\n  \"des",
+        "stderr": ""
+      }
+    ],
+    "outputs": {
+      "deck.deck.json": "214009ff653007800556e94e0b51366d3b670b3022278a6d54531333c94070f1",
+      "deck.html": "7de76934cd197ef718f47a4b60d2b1e1cb4ea1bfae52f45bd5cd983a585aec69",
+      "deck.pptx": "c9c2fbae0399eef0c937a6c1cc5096868acc198ee065363c9b81064cbee6ee7f"
+    },
+    "passed": true
+  },
+  "published": false,
+  "note": "A local release candidate. Nothing was pushed, tagged, uploaded or published."
+}

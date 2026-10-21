@@ -1,0 +1,123 @@
+{
+  "format": "deckweft-capability-matrix",
+  "version": 1,
+  "states": {
+    "verified": "checked with evidence in this release",
+    "implemented": "built and unit-tested; a named check is still open",
+    "blocked": "needs the user, an application run or permission",
+    "not-run": "not attempted",
+    "disabled": "deliberately off in this build"
+  },
+  "rows": [
+    {
+      "capability": "HTML export (v3)",
+      "state": "verified",
+      "evidence": "docs/evidence/dwi/phase-03/dwi-034/export-targets/exports.json"
+    },
+    {
+      "capability": "PowerPoint package: native text, tables, charts, connectors, notes",
+      "state": "verified",
+      "evidence": "tests/dwi-034.test.mjs; docs/evidence/dwi/phase-03/dwi-034/export-targets/"
+    },
+    {
+      "capability": "PowerPoint application check",
+      "state": "blocked",
+      "evidence": "docs/evidence/dwi/phase-06/dwi-061/checklist.md",
+      "note": "PowerPoint 16.114 installed; only the user opens it."
+    },
+    {
+      "capability": "Keynote application check",
+      "state": "blocked",
+      "evidence": "docs/evidence/dwi/phase-06/dwi-061/checklist.md",
+      "note": "Keynote 14.5 installed; only the user opens it."
+    },
+    {
+      "capability": "PDF export",
+      "state": "verified",
+      "evidence": "docs/evidence/dwi/phase-03/dwi-034/export-targets/",
+      "note": "Chinese search partial (CJK radical code points)."
+    },
+    {
+      "capability": "Film palettes (22) in light, dark and stage",
+      "state": "verified",
+      "evidence": "docs/evidence/dwi/phase-06/dwi-060/"
+    },
+    {
+      "capability": "Film-frame palette provenance",
+      "state": "blocked",
+      "evidence": "docs/evidence/dwi/phase-05/report.md",
+      "note": "No licensed frame sampled."
+    },
+    {
+      "capability": "Text and Markdown intake",
+      "state": "verified",
+      "evidence": "docs/evidence/dwi/phase-02/dwi-022/browser/report.json"
+    },
+    {
+      "capability": "PDF and DOCX intake",
+      "state": "disabled",
+      "evidence": "docs/evidence/dwi/phase-02/report.md",
+      "note": "No parser dependency reviewed for offline packaging."
+    },
+    {
+      "capability": "Story review before composition",
+      "state": "verified",
+      "evidence": "docs/evidence/dwi/phase-02/dwi-022/browser/report.json"
+    },
+    {
+      "capability": "Agent content handoff",
+      "state": "implemented",
+      "evidence": "tests/dwi-023.test.mjs; tests/dwi-050.test.mjs",
+      "note": "No real agent sent one."
+    },
+    {
+      "capability": "Codex CLI host run for DWI",
+      "state": "not-run",
+      "evidence": "docs/evidence/dwi/phase-00/dwi-001/host-capabilities.json",
+      "note": "codex-cli 0.160.0 installed; a live run needs the user's approval."
+    },
+    {
+      "capability": "Claude Code host run for DWI",
+      "state": "not-run",
+      "evidence": "docs/evidence/dwi/phase-00/dwi-001/host-capabilities.json",
+      "note": "2.1.288 installed; sign-in stays deferred."
+    },
+    {
+      "capability": "Codex Slides or Spaces API",
+      "state": "disabled",
+      "evidence": "docs/evidence/dwi/phase-00/dwi-002/rights.json",
+      "note": "No documented interface; nothing is built against one."
+    },
+    {
+      "capability": "Kimi exporter comparison",
+      "state": "blocked",
+      "evidence": "docs/evidence/dwi/phase-05/dwi-051/feasibility.md"
+    },
+    {
+      "capability": "Slide dial (keyboard, buttons, pointer)",
+      "state": "verified",
+      "evidence": "docs/evidence/dwi/phase-04/browser/report.json"
+    },
+    {
+      "capability": "Detent tick",
+      "state": "implemented",
+      "evidence": "tests/dwi-042.test.mjs",
+      "note": "Silent in automated sessions by design; not heard in this release check."
+    },
+    {
+      "capability": "Screen reader, touch and forced colours",
+      "state": "not-run"
+    },
+    {
+      "capability": "Novice study",
+      "state": "blocked",
+      "evidence": "docs/evidence/dwi/phase-06/report.md",
+      "note": "Needs participants."
+    },
+    {
+      "capability": "Offline install from the archive",
+      "state": "verified",
+      "evidence": "docs/evidence/dwi/phase-06/dwi-062/manifest.json"
+    }
+  ]
+}
