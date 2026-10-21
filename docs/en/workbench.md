@@ -90,3 +90,21 @@ For a host draft, the thumbnail on the page strip is marked **Host added · unve
 4. **Save a recovery file** downloads the full local recovery record, including original source and private archival material. Keep it private. **More → Backup and restore → Last accepted HTML** explicitly downloads the previous accepted artifact after a failed attempt; the current candidate is not promoted. **More → Earlier versions** restores a saved revision as a copy.
 
 References can remain public in the audience HTML. Archived private speaker notes, checkpoints, prompts and host receipts are not rendered there. Project/checkpoint exports retain archival data for recovery, so they are not audience documents.
+
+## Add material, review the story, make slides (DWI-020 to DWI-023)
+
+1. Open **More** and **Write with a prompt**. Under **Optional local text / Markdown source**, choose one or more `.txt` or `.md` files (up to 12 files, 256 KB each, 1 MB and 12,000 characters together). Expected: nothing happens until you choose an action.
+2. Choose **Review the story first**. Expected: **Review the story** opens. Nothing is composed yet. Each page shows its heading, its points with the file and line they came from, and a label: *From your files*, *Numbers need a source* or *Files disagree*.
+3. Read the red list: statements that disagree between files show both values and where each came from. Nothing is averaged or chosen; correct the source file if one is wrong.
+4. Rename a heading, untick points or pages you do not want, fill **Who is it for?** and **What should they know or decide afterwards?**, and pick one of the three directions.
+5. Choose **Make slides**. Expected: a new deck opens. The deck that was open stays in your library unchanged. Pages with numbers are marked evidence-required, because a local file is not a web source.
+
+Files that are not read are listed at the top of the review with what to do: PDF, Word and PowerPoint files, images (no OCR runs), encrypted or non-UTF-8 files. Text that looks like an instruction to an assistant is kept as material and never followed. Links in the files are kept as text; nothing is downloaded.
+
+An agent you run yourself can hand content over instead of files: `POST /api/visual/story/handoff` with a `deckweft-content-handoff` version 1 body ([schema](../../schemas/agent-handoff.schema.json)). It carries content, sources and the capabilities the agent declares; a handoff with a credential-shaped field or value is refused, and declared capabilities grant nothing. Its outline goes through the same review.
+
+### If something goes wrong
+
+- *Choose one or more text or Markdown files first*: the review needs at least one readable file.
+- *Together the text is longer than 12,000 characters*: shorten the files or make two decks; nothing is cut for you.
+- `HANDOFF_UNKNOWN_FIELD`: the handoff names a field this version does not have; remove it.

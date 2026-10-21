@@ -12,6 +12,7 @@ import { DeckError } from '../core/errors.mjs';
 import { VERSION,createProject,fromOutline,identifier } from '../core/model.mjs';
 import { assertProject } from '../core/validate.mjs';
 import { importProject } from '../core/migrate.mjs';
+import { intakeRequest } from './document-intake.mjs';
 import { resolveScenes,auditProject } from '../layout/engine.mjs';
 import { compileSlide } from '../layout/scene.mjs';
 import { sceneToSVG } from '../render/svg.mjs';
@@ -34,7 +35,7 @@ Object.assign(staticFiles,{'/kinds/visual.js':['kinds/visual.js','text/javascrip
 for(const file of ['welcome.deck.json','welcome.zh-CN.deck.json'])staticFiles['/examples/'+file]=['../examples/'+file,'application/json; charset=utf-8'];
 staticFiles['/shared/preferences.mjs']=['../src/core/preferences.mjs','text/javascript; charset=utf-8'];
 staticFiles['/shared/clock.mjs']=['../src/presentation/clock.mjs','text/javascript; charset=utf-8'];
-for(const file of ['interactions.js','assets.js','workbench.js','prompt.js','profile.js','revisions.js','author.js','evidence.js'])staticFiles['/studio/'+file]=['studio/'+file,file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8'];
+for(const file of ['interactions.js','assets.js','workbench.js','prompt.js','profile.js','revisions.js','author.js','evidence.js','story.js'])staticFiles['/studio/'+file]=['studio/'+file,file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8'];
 staticFiles['/visual']='/'; // Single entry: Visual Studio is served from /; the old address redirects, keeping the query.
 const secureHeaders={
   'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',
@@ -156,6 +157,8 @@ export async function startStudio({port=4179,home,seed=true,captureBrowser,workb
           const data=await body(req);const p=data.project?assertProject(data.project):createProject(data.options||{});
           return send(res,201,{project:await store.save(p,{create:true})});
         }
+        // DWI-020: several local text/Markdown documents into one bounded source with per-document hashes and line locators.
+        if(method==='POST'&&url.pathname==='/api/intake')return send(res,200,intakeRequest(await body(req)));
         if(method==='POST'&&url.pathname==='/api/import'){
           const data=await body(req);const imported=typeof data.outline==='string'?{project:fromOutline(data.outline,{locale:data.locale||'en'}),warnings:[]}:importProject(data.project);
           imported.project.id=identifier();imported.project.revision.number=0;

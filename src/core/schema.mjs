@@ -8,7 +8,12 @@ export function validateSchema(value, schema) {
     if (depth > 30) { issue(path, 'Nesting is too deep.'); return; }
     if (rule.oneOf) {
       const matches = rule.oneOf.filter(branch => validateSchema(v, { ...branch, $defs: schema.$defs }).ok);
-      if (matches.length !== 1) issue(path, 'Use exactly one supported block contract.');
+      if (matches.length !== 1) {
+        issue(path, 'Use exactly one supported block contract.');
+        // DWI-023: name the field to repair, from the branch whose `type` constant matches the value's type.
+        const branch = v && typeof v === 'object' && rule.oneOf.map(b => b.$ref ? schema.$defs[b.$ref.split('/').at(-1)] : b).find(b => b?.properties?.type?.const !== undefined && b.properties.type.const === v.type);
+        if (branch && matches.length === 0) for (const e of validateSchema(v, { ...branch, $defs: schema.$defs }).errors) issue(path + e.path.slice(1), e.message);
+      }
       return;
     }
     if (rule.$ref) rule = schema.$defs[rule.$ref.split('/').at(-1)];

@@ -113,3 +113,21 @@
 .direction-explain{font-size:11px;line-height:1.45}
 .direction-explain>summary{padding:4px 0;cursor:pointer}
 .direction-explain dt{font-weight:600;margin-top:4px}.direction-explain dd{margin:0}
+/* DWI-022: the story review dialog. */
+#storyDialog{width:min(720px,calc(100vw - 32px))}
+#storyDialog .story-pages{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px;max-height:46vh;overflow:auto}
+#storyDialog .story-page{border:1px solid var(--line);padding:10px 12px}
+#storyDialog .story-page-head{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
+#storyDialog .story-heading{font-weight:600}
+#storyDialog .story-status{font-size:11px;padding:2px 6px;border:1px solid currentColor;white-space:nowrap}
+#storyDialog .story-status.contradiction{color:var(--danger)}
+#storyDialog .story-points{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:4px}
+#storyDialog .story-points small{display:block;color:var(--muted);margin-left:26px}
+#storyDialog .story-conflicts{font-size:12px;color:var(--danger)}
+#storyDialog .story-directions{border:0;padding:0;margin:12px 0 0;display:flex;gap:16px;flex-wrap:wrap}
+@media(max-width:680px){#storyDialog .story-page-head{grid-template-columns:1fr}}
+#storyDialog .story-refused{color:var(--danger);font-size:12px;margin:8px 0;padding-left:18px}
+#storyDialog label.check{display:flex;gap:8px;align-items:flex-start;justify-content:flex-start;text-align:left;margin:0;font-weight:400;font-size:13px}
+#storyDialog label.check input{width:auto;flex:none;margin:3px 0 0}
+#storyDialog .story-keep{font-size:12px;white-space:nowrap}
+#storyDialog .story-points small{margin-left:22px;font-size:11px}

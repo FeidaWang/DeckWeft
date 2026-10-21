@@ -1,0 +1,18 @@
+{
+  "browser": "151.0.7922.34",
+  "checks": [
+    "a PDF next to a Markdown file is listed in the review with its recovery, not dropped",
+    "the outline shows three pages with locators, the contradiction with both values and sources, and three directions",
+    "Make slides opens a new two-page deck: renamed heading, dropped point and page absent, audience and outcome kept, pages marked evidence-required",
+    "the deck that was open is unchanged in the library",
+    "no page errors and no external requests"
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "screenshots": [
+    "story-refused.png",
+    "story-review.png",
+    "story-edited.png",
+    "story-deck.png"
+  ]
+}

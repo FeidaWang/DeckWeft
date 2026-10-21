@@ -27,6 +27,9 @@ import { contentHash } from '../scene/web/compile.mjs';
 import { themePacks } from '../design/theme-registry.mjs';
 import { applySceneTheme, applyScenePalette } from '../design/profile.mjs';
 import { paletteCatalogue } from '../design/semantic-colors.mjs';
+import { intakeRequest } from './document-intake.mjs';
+import { handoffToIntake } from '../adapters/agent-handoff.mjs';
+import { proposeStoryReview,editStoryReview,approveStoryReview } from '../planning/story-review.mjs';
 import { DeckError } from '../core/errors.mjs';
 import { createVisualTask } from '../agent/director.mjs';
 import { planDirections, entryAnswers } from '../workbench/directions.mjs';
@@ -156,6 +159,11 @@ export async function createVisualService({home,legacyStore,body,send,browserPat
     if(i<0||!a||!a.candidateFit[i].ok)throw new DeckError('NO_FEASIBLE_CANDIDATE','Choose a candidate that passes the browser layout checks.',422);
     const project=structuredClone(base);project.plan.scenes[i]=structuredClone(a.project.plan.scenes[i]);send(res,200,{project:assertVisualProject(project)});return true;
    }
+   // DWI-022: review the story before composition; approval saves a new deck and leaves any open deck as it was.
+   if(route==='story/propose'&&method==='POST'){const data=await body(req);send(res,200,{review:proposeStoryReview(intakeRequest(data),{audience:data.audience,outcome:data.outcome,locale:data.locale||'en'})});return true;}
+   if(route==='story/handoff'&&method==='POST'){const data=await body(req);send(res,200,{review:proposeStoryReview(handoffToIntake(data.handoff),{audience:data.audience,outcome:data.outcome,locale:data.locale||'en'})});return true;}
+   if(route==='story/edit'&&method==='POST'){const data=await body(req);send(res,200,{review:editStoryReview(data.review,data.edits||{})});return true;}
+   if(route==='story/approve'&&method==='POST'){const data=await body(req);const r=approveStoryReview(data.review,{direction:data.direction??0});send(res,201,{project:await store.save(r.project,{create:true}),review:r.review});return true;}
    if(route==='palettes'&&method==='GET'){send(res,200,paletteCatalogue());return true;}
    if(route==='palette'&&method==='POST'){const data=await body(req);send(res,200,{project:applyScenePalette(data.project,data.sceneId,data.palette??null)});return true;}
    if(route==='theme'&&method==='POST'){const data=await body(req);send(res,200,{project:applySceneTheme(data.project,data.sceneId,data.theme)});return true;}

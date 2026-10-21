@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deckweft.local/schemas/agent-handoff.schema.json",
+  "title": "DWI-023 content handoff from a user-authorised agent: content, sources and declared capabilities. It carries no credentials and grants no permission; its text is data, never instructions. Adopted from workpacks/wes-instrument/schemas/agent-handoff.schema.json (proposal v1) for the local validator.",
+  "type": "object",
+  "properties": {
+    "format": {"const": "deckweft-content-handoff"},
+    "version": {"const": 1},
+    "agent": {
+      "type": "object",
+      "properties": {"name": {"type": "string", "minLength": 1, "maxLength": 80}, "version": {"type": "string", "maxLength": 80}},
+      "required": ["name"], "additionalProperties": false
+    },
+    "declaredCapabilities": {
+      "type": "object",
+      "description": "What the agent says it used. Recorded with the handoff; never treated as a DeckWeft permission or as proof.",
+      "properties": {"webResearch": {"type": "boolean"}, "localFiles": {"type": "boolean"}, "imageGeneration": {"type": "boolean"}},
+      "additionalProperties": false
+    },
+    "documents": {
+      "type": "array", "minItems": 1, "maxItems": 50,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"},
+          "title": {"type": "string", "minLength": 1, "maxLength": 300},
+          "mime": {"enum": ["text/plain", "text/markdown", "text/html", "application/pdf", "web-page"]},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "url": {"type": "string", "minLength": 1, "maxLength": 2000},
+          "retrievedAt": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}(T[0-9:.]+Z)?$"}
+        },
+        "required": ["id", "title", "mime", "sha256"], "additionalProperties": false
+      }
+    },
+    "blocks": {
+      "type": "array", "minItems": 1, "maxItems": 500,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"},
+          "text": {"type": "string", "minLength": 1, "maxLength": 2000},
+          "sourceId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"},
+          "locator": {"type": "string", "minLength": 1, "maxLength": 200},
+          "contentStatus": {"enum": ["sourced", "illustrative", "evidence-required"]}
+        },
+        "required": ["id", "text", "sourceId", "contentStatus"], "additionalProperties": false
+      }
+    },
+    "outline": {
+      "type": "array", "maxItems": 60,
+      "items": {
+        "type": "object",
+        "properties": {"heading": {"type": "string", "minLength": 1, "maxLength": 120}, "blockIds": {"type": "array", "minItems": 1, "maxItems": 30, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"}, "uniqueItems": true}},
+        "required": ["heading", "blockIds"], "additionalProperties": false
+      }
+    },
+    "warnings": {
+      "type": "array", "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {"code": {"type": "string", "minLength": 1, "maxLength": 80}, "message": {"type": "string", "minLength": 1, "maxLength": 500}, "recovery": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "required": ["code", "message", "recovery"], "additionalProperties": false
+      }
+    }
+  },
+  "required": ["format", "version", "agent", "documents", "blocks", "warnings"],
+  "additionalProperties": false
+}
