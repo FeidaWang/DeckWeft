@@ -1,0 +1,14 @@
+{
+  "scope": "workpack-only",
+  "passed": true,
+  "schemaDefinitions": [
+    "schemas/agent-handoff.schema.json",
+    "schemas/evidence.schema.json",
+    "schemas/model-routing.schema.json",
+    "schemas/palette.schema.json"
+  ],
+  "paletteDocumentValidated": true,
+  "modelRoutingObjectsValidated": 29,
+  "validator": "jsonschema 4.26.0",
+  "actualHostBindingChecked": false
+}

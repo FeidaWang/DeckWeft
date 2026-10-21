@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deckweft:workpack:model-routing:v1",
+  "title": "Advisory per-task model/effort assignment; not host authorisation",
+  "type": "object",
+  "required": [
+    "profileId",
+    "buildEffort",
+    "reviewEffort",
+    "escalationEffort",
+    "reason",
+    "escalationTrigger",
+    "automaticModelSwitch",
+    "automaticEffortChange",
+    "maxTargetedRepairAttemptsBeforeCheckpoint",
+    "reviewMode",
+    "taskPrompt"
+  ],
+  "properties": {
+    "profileId": {
+      "const": "sol-approved"
+    },
+    "buildEffort": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "reviewEffort": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ]
+    },
+    "escalationEffort": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "escalationTrigger": {
+      "type": "string",
+      "minLength": 1
+    },
+    "automaticModelSwitch": {
+      "const": false
+    },
+    "automaticEffortChange": {
+      "const": false
+    },
+    "maxTargetedRepairAttemptsBeforeCheckpoint": {
+      "const": 2
+    },
+    "reviewMode": {
+      "const": "same-approved-model-separate-pass"
+    },
+    "taskPrompt": {
+      "type": "string",
+      "pattern": "^prompts/tasks/DWI-[0-9]{3}\\.md$"
+    }
+  },
+  "additionalProperties": false,
+  "$comment": "Validate each TASKS.json task.modelRouting. Ordering, profile binding and prompt consistency are checked by lib/model-routing.mjs and the workpack validator. This never proves actual model selection."
+}

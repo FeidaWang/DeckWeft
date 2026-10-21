@@ -1,0 +1,190 @@
+{
+  "scopeComplete": false,
+  "libraryCoverage": [
+    {
+      "filmId": "bottle-rocket",
+      "title": "Bottle Rocket",
+      "year": 1996,
+      "kind": "feature",
+      "paletteIds": [
+        "BottleRocket1",
+        "BottleRocket2"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "rushmore",
+      "title": "Rushmore",
+      "year": 1998,
+      "kind": "feature",
+      "paletteIds": [
+        "Rushmore1"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "royal-tenenbaums",
+      "title": "The Royal Tenenbaums",
+      "year": 2001,
+      "kind": "feature",
+      "paletteIds": [
+        "Royal1",
+        "Royal2"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "life-aquatic",
+      "title": "The Life Aquatic with Steve Zissou",
+      "year": 2004,
+      "kind": "feature",
+      "paletteIds": [
+        "Zissou1"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "darjeeling-limited",
+      "title": "The Darjeeling Limited",
+      "year": 2007,
+      "kind": "feature",
+      "paletteIds": [
+        "Darjeeling1",
+        "Darjeeling2"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "hotel-chevalier",
+      "title": "Hotel Chevalier",
+      "year": 2007,
+      "kind": "short",
+      "paletteIds": [
+        "Chevalier1"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "fantastic-mr-fox",
+      "title": "Fantastic Mr. Fox",
+      "year": 2009,
+      "kind": "feature",
+      "paletteIds": [
+        "FantasticFox1"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "moonrise-kingdom",
+      "title": "Moonrise Kingdom",
+      "year": 2012,
+      "kind": "feature",
+      "paletteIds": [
+        "Moonrise1",
+        "Moonrise2",
+        "Moonrise3"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "castello-cavalcanti",
+      "title": "Castello Cavalcanti",
+      "year": 2013,
+      "kind": "short",
+      "paletteIds": [
+        "Cavalcanti1"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "grand-budapest",
+      "title": "The Grand Budapest Hotel",
+      "year": 2014,
+      "kind": "feature",
+      "paletteIds": [
+        "GrandBudapest1",
+        "GrandBudapest2"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "isle-of-dogs",
+      "title": "Isle of Dogs",
+      "year": 2018,
+      "kind": "feature",
+      "paletteIds": [
+        "IsleofDogs1",
+        "IsleofDogs2"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "french-dispatch",
+      "title": "The French Dispatch",
+      "year": 2021,
+      "kind": "feature",
+      "paletteIds": [
+        "FrenchDispatch"
+      ],
+      "frameVerification": "not-started"
+    },
+    {
+      "filmId": "asteroid-city",
+      "title": "Asteroid City",
+      "year": 2023,
+      "kind": "feature",
+      "paletteIds": [
+        "AsteroidCity1",
+        "AsteroidCity2",
+        "AsteroidCity3"
+      ],
+      "frameVerification": "not-started"
+    }
+  ],
+  "unresolvedFilmScope": [
+    "The Phoenician Scheme (verify current primary-source filmography and obtain permitted source images)",
+    "The Wonderful Story of Henry Sugar and the other 2023 Dahl shorts",
+    "Bottle Rocket short and commercials: define whether these are in scope",
+    "Any later released film as of audit date; do not claim complete without dated primary sources"
+  ],
+  "teenageEngineering": {
+    "catalogueReviewed": "https://teenage.engineering/products",
+    "catalogueOnly": [
+      "EP series",
+      "APC-2",
+      "EP-133 K.O. II",
+      "riddim n ting",
+      "OP-XY",
+      "EP-1320 medieval",
+      "pocket operators",
+      "OB-4",
+      "CM-15",
+      "TX-6",
+      "field accessories",
+      "choir",
+      "field desk",
+      "computer-1",
+      "grip car",
+      "ortho remote",
+      "OD-11",
+      "OP-Z",
+      "pocket operator modular",
+      "original OP-1",
+      "PO-80"
+    ],
+    "allProductsAndHistoricCollaborationsReviewed": false,
+    "selectedPagesReviewed": [
+      "field system",
+      "OP-1 field",
+      "TP-7"
+    ]
+  },
+  "literature": {
+    "reviewType": "targeted correction and implementation research, not a systematic review",
+    "recentPrimaryPapersLocated": [
+      2024,
+      2025
+    ],
+    "completeThrough2026": false
+  }
+}

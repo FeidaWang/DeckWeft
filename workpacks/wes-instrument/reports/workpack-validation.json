@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "scope": "workpack-only",
+  "passed": true,
+  "errors": [],
+  "counts": {
+    "palettes": 22,
+    "modes": 66,
+    "rolePairs": 1320,
+    "screenshotRows": 16,
+    "screenshotSamples": 76,
+    "tasks": 29,
+    "phases": 7,
+    "sources": 28,
+    "modelRoutes": 29,
+    "buildEffortCounts": {
+      "low": 1,
+      "medium": 10,
+      "high": 18,
+      "xhigh": 0
+    }
+  },
+  "contrast": {
+    "minimumTextRatio": 4.758839837921164,
+    "minimumGraphicRatio": 14.613838883789823,
+    "roundingAppliedBeforeThreshold": false
+  },
+  "limitations": [
+    "Not a full JSON Schema implementation.",
+    "No rendered UI, assistive-technology, host or Office application acceptance.",
+    "Screenshot pixels are replayed separately by the optional Python script.",
+    "No complete filmography, TE catalogue or current literature review."
+  ]
+}

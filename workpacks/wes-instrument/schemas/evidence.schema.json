@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deckweft:workpack:evidence:v1",
+  "title": "Scoped execution evidence, not an automatic release certificate",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "taskId",
+    "phase",
+    "state",
+    "scope",
+    "environment",
+    "sourceCommit",
+    "checks",
+    "limitations"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "taskId": {
+      "type": "string",
+      "pattern": "^DWI-[0-9]{3}$"
+    },
+    "phase": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 6
+    },
+    "state": {
+      "enum": [
+        "planned",
+        "implemented",
+        "blocked",
+        "accepted"
+      ]
+    },
+    "scope": {
+      "enum": [
+        "local-code",
+        "browser",
+        "host",
+        "office"
+      ]
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "node",
+        "os"
+      ],
+      "properties": {
+        "node": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "host": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hostVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "sourceCommit": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "command",
+          "status",
+          "exitCode",
+          "artifactPaths"
+        ],
+        "properties": {
+          "command": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "fail",
+              "skipped",
+              "not-run"
+            ]
+          },
+          "exitCode": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "artifactPaths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "changedFiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$comment": "Accepted records require actual passing checks and a source commit. Workpack checks do not accept application tasks. Schema shape alone cannot establish artifact truth; see lib/validation.mjs and manual review."
+}

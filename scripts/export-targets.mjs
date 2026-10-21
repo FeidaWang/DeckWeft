@@ -16,6 +16,7 @@ import {chartKindsProject} from '../tests/chart-kinds.mjs';
 import {S8_THEMES,s8Project} from '../tests/s8-themes.mjs';
 import {BLUEPRINT_THEMES,blueprintProject} from '../tests/blueprint-a.mjs';
 import {cineProject} from '../tests/cine-corpus.mjs';
+import {dwiSliceProject} from '../tests/dwi-slice.mjs';
 import {applySceneTheme} from '../src/design/profile.mjs';
 import {visualAssetResources} from '../src/assets/visual.mjs';
 import {exportDeck} from '../src/render/export.mjs';
@@ -30,8 +31,8 @@ import {WEB_RENDERER_VERSION} from '../src/scene/web/compile.mjs';
 import {PLAYER_VERSION} from '../src/render/web/runtime.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
-const {values:args}=parseArgs({options:{out:{type:'string'},decks:{type:'string'},supplementary:{type:'boolean',default:true},quicklook:{type:'boolean',default:true},s8:{type:'boolean',default:false},s9:{type:'boolean',default:false},cine:{type:'boolean',default:false},paginate:{type:'string',default:'auto'},help:{type:'boolean'}}});
-if(args.help){console.log('Usage: CHROMIUM_PATH=/isolated/browser PLAYWRIGHT_MODULE=/abs/playwright/index.mjs node scripts/export-targets.mjs [--cine] [--out dist/export-targets] [--decks gallery-en,story-dark-data-zh-CN] [--no-supplementary] [--no-quicklook] [--paginate auto|none]\n--paginate auto (default) pages a scene whose text would fall under the typography minimum; none keeps every scene whole and records the failures (F1).\nThen view sheet-*.jpg and record the review. PowerPoint and Keynote checks stay with the user (report.applicationChecks).');process.exit(0);}
+const {values:args}=parseArgs({options:{out:{type:'string'},decks:{type:'string'},supplementary:{type:'boolean',default:true},quicklook:{type:'boolean',default:true},s8:{type:'boolean',default:false},s9:{type:'boolean',default:false},cine:{type:'boolean',default:false},dwi:{type:'boolean',default:false},paginate:{type:'string',default:'auto'},help:{type:'boolean'}}});
+if(args.help){console.log('Usage: CHROMIUM_PATH=/isolated/browser PLAYWRIGHT_MODULE=/abs/playwright/index.mjs node scripts/export-targets.mjs [--cine|--dwi] [--out dist/export-targets] [--decks gallery-en,story-dark-data-zh-CN] [--no-supplementary] [--no-quicklook] [--paginate auto|none]\n--paginate auto (default) pages a scene whose text would fall under the typography minimum; none keeps every scene whole and records the failures (F1).\nThen view sheet-*.jpg and record the review. PowerPoint and Keynote checks stay with the user (report.applicationChecks).');process.exit(0);}
 // F1: the paging switch of the evidence run. Failures are recorded, never accepted here; acceptance belongs to the author in the Studio.
 if(!['auto','none'].includes(args.paginate))throw Error(`--paginate takes auto or none, not ${JSON.stringify(args.paginate)}.`);
 const out=path.resolve(args.out||path.join(root,'dist/export-targets')),home=path.join(out,'home'),hash=b=>createHash('sha256').update(b).digest('hex');
@@ -41,7 +42,9 @@ const S8_DECKS=LOCALES.flatMap(locale=>[...S8_THEMES.flatMap(theme=>[{name:`gall
 const S9_DECKS=LOCALES.flatMap(locale=>BLUEPRINT_THEMES.map(theme=>({name:`blueprint-${theme}-${locale}`,kind:'s9-blueprint',locale,theme})));
 // --cine (CINE batch 1): the ten-page cinematic composition corpus with its declared references, intent and media fields, both languages.
 const CINE_DECKS=LOCALES.map(locale=>({name:`cine-${locale}`,kind:'cine',locale}));
-const DECKS=(args.cine?CINE_DECKS:args.s9?S9_DECKS:args.s8?S8_DECKS:[...LOCALES.flatMap(locale=>[{name:`gallery-${locale}`,kind:'gallery',locale},...THEMES.map(theme=>({name:`story-${theme}-${locale}`,kind:'story',locale,theme}))]),...(args.supplementary?[{name:'chart-kinds-en',kind:'supplementary',locale:'en'}]:[])]).filter(d=>!args.decks||args.decks.split(',').includes(d.name));
+// --dwi (DWI-003): the six-page vertical slice (tests/dwi-slice.mjs), both languages.
+const DWI_DECKS=LOCALES.map(locale=>({name:`dwi-slice-${locale}`,kind:'dwi',locale}));
+const DECKS=(args.dwi?DWI_DECKS:args.cine?CINE_DECKS:args.s9?S9_DECKS:args.s8?S8_DECKS:[...LOCALES.flatMap(locale=>[{name:`gallery-${locale}`,kind:'gallery',locale},...THEMES.map(theme=>({name:`story-${theme}-${locale}`,kind:'story',locale,theme}))]),...(args.supplementary?[{name:'chart-kinds-en',kind:'supplementary',locale:'en'}]:[])]).filter(d=>!args.decks||args.decks.split(',').includes(d.name));
 await mkdir(home,{recursive:true});
 
 if(!process.env.CHROMIUM_PATH)throw Error('Set CHROMIUM_PATH to an isolated test browser outside /Applications.');
@@ -104,7 +107,7 @@ async function sheet(rows,file,title){
 const summary=[];
 for(const d of DECKS){
  const dir=path.join(out,'decks',d.name);await rm(dir,{recursive:true,force:true});await mkdir(dir,{recursive:true});
- const p=d.kind==='cine'?await cineProject(d.locale,home):d.kind==='s9-blueprint'?await blueprintProject(d.locale,{theme:d.theme}):d.kind==='supplementary'?chartKindsProject(d.locale):d.kind==='s8-gallery'?await (async()=>{let g=await releaseProject('gallery',d.locale,home);for(const sc of g.plan.scenes)g=applySceneTheme(g,sc.id,d.theme);return g;})():d.kind==='s8-story'?await s8Project('story',d.locale,home,d.theme):['fieldnotes','atlas','stage'].includes(d.kind)?await s8Project(d.kind,d.locale,home):await releaseProject(d.kind,d.locale,home,d.theme);
+ const p=d.kind==='dwi'?await dwiSliceProject(d.locale):d.kind==='cine'?await cineProject(d.locale,home):d.kind==='s9-blueprint'?await blueprintProject(d.locale,{theme:d.theme}):d.kind==='supplementary'?chartKindsProject(d.locale):d.kind==='s8-gallery'?await (async()=>{let g=await releaseProject('gallery',d.locale,home);for(const sc of g.plan.scenes)g=applySceneTheme(g,sc.id,d.theme);return g;})():d.kind==='s8-story'?await s8Project('story',d.locale,home,d.theme):['fieldnotes','atlas','stage'].includes(d.kind)?await s8Project(d.kind,d.locale,home):await releaseProject(d.kind,d.locale,home,d.theme);
  const resources=await visualAssetResources(p,home),opts={experimentalWeb:true,plan:p.plan,assetResources:resources};
  const html=exportDeck(p.document,'html',opts),staticFile=path.join(dir,'static.html');await writeFile(staticFile,html.body);await writeFile(path.join(dir,'project.json'),JSON.stringify(p,null,1));
  // Measure (after fonts and images), confirm the drawn fonts, capture each scene and every element delivered as an image.

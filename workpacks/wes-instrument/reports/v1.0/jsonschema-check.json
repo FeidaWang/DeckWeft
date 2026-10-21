@@ -1,0 +1,11 @@
+{
+  "scope": "JSON-Schema-shape-and-palette-data-only",
+  "library": "jsonschema",
+  "version": "4.26.0",
+  "schemaDialect": "2020-12",
+  "schemasChecked": 3,
+  "paletteDataValid": true,
+  "passed": true,
+  "runtimeDependencyAdded": false,
+  "note": "Optional preparation check with an already installed library; no library install required by npm run verify."
+}

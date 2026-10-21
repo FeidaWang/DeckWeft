@@ -1,0 +1,1119 @@
+{
+  "schemaVersion": 1,
+  "queuePolicy": "Dependency-first, then P0/P1/P2; phase prompts are review boundaries, not permission to skip gates.",
+  "applicationTasksExecutedDuringWorkpackCreation": false,
+  "tasks": [
+    {
+      "id": "DWI-000",
+      "phase": 0,
+      "priority": "P0",
+      "title": "Record and reconcile the current repository",
+      "dependsOn": [],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "AGENTS.md",
+        "package.json",
+        "ROADMAP.md",
+        "PROJECT_STATUS.json"
+      ],
+      "implementation": "Read current contracts and create a conflict/reuse map. The recorded commit is a reference, not a required reset target.",
+      "acceptance": [
+        "Record git HEAD, dirty files, Node version and existing scripts.",
+        "Map earlier CINE/VIS/S work to reuse, extend or unnecessary; do not overwrite user edits.",
+        "Run available baseline checks and record failures without relabelling skipped checks."
+      ],
+      "testFile": "tests/dwi-000.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-00/dwi-000",
+      "phasePrompt": "prompts/PHASE_00.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Resolve a changing repository baseline and overlapping CINE/VIS/S contracts before editing.",
+        "escalationTrigger": "A minimal conflict map still contains incompatible schema or exporter assumptions after two distinct, evidenced analyses.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-000.md"
+      }
+    },
+    {
+      "id": "DWI-001",
+      "phase": 0,
+      "priority": "P0",
+      "title": "Inventory real host capabilities",
+      "dependsOn": [
+        "DWI-000"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "docs/en/host-acceptance.md",
+        "docs/en/compatibility.md"
+      ],
+      "implementation": "Probe documented local capabilities without modifying host settings; unavailable clients become explicit blockers for host-only tests.",
+      "acceptance": [
+        "Record actual Codex/Claude versions only when available.",
+        "Keep local tests, installation, enablement and real invocation as separate states.",
+        "Do not use an undocumented Slides command or infer account entitlements."
+      ],
+      "testFile": "tests/dwi-001.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-00/dwi-001",
+      "phasePrompt": "prompts/PHASE_00.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "medium",
+        "escalationEffort": "high",
+        "reason": "The work is bounded capability inspection rather than new architecture.",
+        "escalationTrigger": "Observed version/help output contradicts the documented capability contract; unavailable binaries are blockers, not a reason to increase effort.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-001.md"
+      }
+    },
+    {
+      "id": "DWI-002",
+      "phase": 0,
+      "priority": "P0",
+      "title": "Adopt corrected evidence and rights rules",
+      "dependsOn": [
+        "DWI-000"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "RESEARCH_AUDIT.md",
+        "data/source-register.json",
+        "data/coverage.json"
+      ],
+      "implementation": "Resolve research conflicts before code generation. Preserve screenshot/library/frame distinctions and the partial corpus label.",
+      "acceptance": [
+        "Original reports remain non-normative.",
+        "No example Lab values or unsupported API calls enter production code.",
+        "Every planned imported asset has a provenance/licence disposition."
+      ],
+      "testFile": "tests/dwi-002.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-00/dwi-002",
+      "phasePrompt": "prompts/PHASE_00.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Keep source evidence, inferred design rules and asset rights distinct.",
+        "escalationTrigger": "Sources disagree or rights remain uncertain: preserve the unresolved finding and obtain primary evidence; do not solve missing evidence by escalating effort.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-002.md"
+      }
+    },
+    {
+      "id": "DWI-003",
+      "phase": 0,
+      "priority": "P0",
+      "title": "Capture regression fixtures",
+      "dependsOn": [
+        "DWI-000"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "tests",
+        "examples",
+        "docs/evidence/dwi/phase-00"
+      ],
+      "implementation": "Use existing harnesses; a baseline image without the underlying project and command is insufficient.",
+      "acceptance": [
+        "Create six representative slide fixtures using current supported contracts.",
+        "Capture current exports and measured render paths.",
+        "Locks, source links, values and notes have explicit invariants."
+      ],
+      "testFile": "tests/dwi-003.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-00/dwi-003",
+      "phasePrompt": "prompts/PHASE_00.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "medium",
+        "escalationEffort": "high",
+        "reason": "Freeze representative fixtures and exact content invariants using the existing harness.",
+        "escalationTrigger": "A fixture cannot reproduce the same source/lock invariants across current pipelines; isolate that mismatch before changing the harness.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-003.md"
+      }
+    },
+    {
+      "id": "DWI-010",
+      "phase": 1,
+      "priority": "P0",
+      "title": "Integrate immutable palette registry",
+      "dependsOn": [
+        "DWI-002",
+        "DWI-003"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/design",
+        "schemas",
+        "tests/dwi-palette.test.mjs"
+      ],
+      "implementation": "Map PALETTES.json into the current theme registry; add a versioned palette schema without weakening existing project validation.",
+      "acceptance": [
+        "22 unique seed palette IDs; Rushmore remains an alias, not a duplicate.",
+        "Library values and screenshot samples remain separate.",
+        "Film timestamps stay null until a real frame record exists."
+      ],
+      "testFile": "tests/dwi-010.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-01/dwi-010",
+      "phasePrompt": "prompts/PHASE_01.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Registry integration is constrained by immutable seed data and the existing theme contract.",
+        "escalationTrigger": "An explicit schema migration changes old saved projects or creates conflicting palette identities.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-010.md"
+      }
+    },
+    {
+      "id": "DWI-011",
+      "phase": 1,
+      "priority": "P0",
+      "title": "Resolve semantic light dark and stage tokens",
+      "dependsOn": [
+        "DWI-010"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/design",
+        "src/render",
+        "tests/dwi-color-roles.test.mjs"
+      ],
+      "implementation": "Use the supplied color functions as reference; account for actual backgrounds, alpha blending and exports.",
+      "acceptance": [
+        "Derived roles never overwrite source RGBs.",
+        "Normal text pairs meet 4.5:1 without rounding; meaningful strokes meet 3:1 where required.",
+        "Stage body policy targets 7:1; status colours stay semantic and independent of the movie theme."
+      ],
+      "testFile": "tests/dwi-011.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-01/dwi-011",
+      "phasePrompt": "prompts/PHASE_01.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Colour roles, composited backgrounds and multiple exporters must agree numerically.",
+        "escalationTrigger": "A reproducible alpha, transfer-function or export discrepancy survives two distinct fixes with numeric test vectors.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-011.md"
+      }
+    },
+    {
+      "id": "DWI-012",
+      "phase": 1,
+      "priority": "P0",
+      "title": "Make chart and diagram roles accessible",
+      "dependsOn": [
+        "DWI-011"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/components/charts",
+        "src/design",
+        "tests/dwi-diagram-colors.test.mjs"
+      ],
+      "implementation": "Direct labels, strokes, patterns and a readable data table provide redundant information channels.",
+      "acceptance": [
+        "No colour-only series/part identity.",
+        "Adjacency checks cover marks, arrows and callout boundaries.",
+        "Categorical swatches are never silently used as a sequential magnitude scale."
+      ],
+      "testFile": "tests/dwi-012.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-01/dwi-012",
+      "phasePrompt": "prompts/PHASE_01.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Chart and diagram identities must survive colour, label, pattern and output changes.",
+        "escalationTrigger": "Accessible redundant encodings conflict with native export: split by component and test the contract rather than using unbounded retries.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-012.md"
+      }
+    },
+    {
+      "id": "DWI-013",
+      "phase": 1,
+      "priority": "P1",
+      "title": "Expose palette evidence in one picker",
+      "dependsOn": [
+        "DWI-011"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "public/shell.js",
+        "public/kinds/visual.js"
+      ],
+      "implementation": "Use small metadata in the picker and an expandable evidence view; movie provenance does not belong as a giant on-slide logo.",
+      "acceptance": [
+        "One theme/palette picker, not a second competing design panel.",
+        "Show community-derived status without crowding the slide.",
+        "Switching a palette preserves content, locks and undo."
+      ],
+      "testFile": "tests/dwi-013.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-01/dwi-013",
+      "phasePrompt": "prompts/PHASE_01.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "medium",
+        "escalationEffort": "high",
+        "reason": "A single picker and its evidence disclosure reuse known shell patterns.",
+        "escalationTrigger": "Changing a palette unexpectedly alters locks, undo or author-selected composition.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-013.md"
+      }
+    },
+    {
+      "id": "DWI-020",
+      "phase": 2,
+      "priority": "P0",
+      "title": "Add bounded multiple-document intake",
+      "dependsOn": [
+        "DWI-003",
+        "DWI-010"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/services",
+        "src/core",
+        "tests/dwi-intake.test.mjs"
+      ],
+      "implementation": "Reuse existing importers; distinguish supported parsing from desired future formats. Preserve duplicates and source ordering.",
+      "acceptance": [
+        "Text and Markdown work offline with per-document hashes and locators.",
+        "PDF/DOCX adapters are enabled only after local parser/dependency review.",
+        "Encrypted, scanned or malformed documents yield explicit recovery and never silently vanish."
+      ],
+      "testFile": "tests/dwi-020.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-02/dwi-020",
+      "phasePrompt": "prompts/PHASE_02.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Untrusted documents, parser boundaries and multiple source locators create data-loss and security risks.",
+        "escalationTrigger": "A small malicious/malformed fixture demonstrates unresolved parser isolation, resource-bound or source-loss behaviour after two targeted attempts.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-020.md"
+      }
+    },
+    {
+      "id": "DWI-021",
+      "phase": 2,
+      "priority": "P0",
+      "title": "Build claim source and contradiction records",
+      "dependsOn": [
+        "DWI-020"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/core",
+        "schemas",
+        "tests/dwi-provenance.test.mjs"
+      ],
+      "implementation": "Map onto existing sources/contentStatus/takeaway fields; add fields only through a tested explicit migration.",
+      "acceptance": [
+        "Every factual claim is source-linked or evidence-required.",
+        "Contradictory numbers stay distinct with their attribution.",
+        "No imported text is executed as instructions."
+      ],
+      "testFile": "tests/dwi-021.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-02/dwi-021",
+      "phasePrompt": "prompts/PHASE_02.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Claim identity, contradictory values and source locators must survive explicit migrations.",
+        "escalationTrigger": "A minimal round-trip fixture still loses or misbinds claims/sources after two hypothesis-driven attempts.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-021.md"
+      }
+    },
+    {
+      "id": "DWI-022",
+      "phase": 2,
+      "priority": "P0",
+      "title": "Review story before composition",
+      "dependsOn": [
+        "DWI-021"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "public/shell.js",
+        "src/core",
+        "tests/dwi-story-review.test.mjs"
+      ],
+      "implementation": "Provide deterministic local outlining for pasted material; allow an explicitly supplied agent outline without hidden AI calls.",
+      "acceptance": [
+        "The novice can review audience, outcome and a concise outline.",
+        "Approving a new plan preserves the prior project/copy.",
+        "At most three visible style directions; no required prompt syntax."
+      ],
+      "testFile": "tests/dwi-022.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-02/dwi-022",
+      "phasePrompt": "prompts/PHASE_02.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "The reviewed outline is a bounded local workflow with preserved project copies.",
+        "escalationTrigger": "Accepting an outline changes existing source/lock semantics or requires a new planning contract.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-022.md"
+      }
+    },
+    {
+      "id": "DWI-023",
+      "phase": 2,
+      "priority": "P0",
+      "title": "Validate agent handoffs and project migrations",
+      "dependsOn": [
+        "DWI-021",
+        "DWI-001"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/plugin",
+        "schemas",
+        "tests/dwi-handoff.test.mjs"
+      ],
+      "implementation": "Do not treat a code-generation agent session as an API key or permission to bypass local security.",
+      "acceptance": [
+        "Handoffs contain content, sources and declared capabilities, not credentials.",
+        "Unknown schema fields fail with a repair path.",
+        "Classic and visual/v3 inputs keep their contracts and round-trip invariants."
+      ],
+      "testFile": "tests/dwi-023.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-02/dwi-023",
+      "phasePrompt": "prompts/PHASE_02.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Agent handoffs cross trust and project-version boundaries.",
+        "escalationTrigger": "A reproducible privilege, unknown-field or version-migration failure survives two isolated repairs.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-023.md"
+      }
+    },
+    {
+      "id": "DWI-030",
+      "phase": 3,
+      "priority": "P0",
+      "title": "Implement task-aware layout candidate policy",
+      "dependsOn": [
+        "DWI-011",
+        "DWI-022"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/layout",
+        "src/design",
+        "tests/dwi-reading-policy.test.mjs"
+      ],
+      "implementation": "Reuse the existing candidate engine; preserve its measured text and grapheme constraints.",
+      "acceptance": [
+        "Reject overflow and unreadable type before aesthetic scoring.",
+        "Six layout families have explicit logical reading order.",
+        "No mandatory F/Z or golden-ratio rule; self-paced and stage modes differ."
+      ],
+      "testFile": "tests/dwi-030.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-03/dwi-030",
+      "phasePrompt": "prompts/PHASE_03.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Measured typography, layout feasibility and target-specific geometry form a coupled constraint problem.",
+        "escalationTrigger": "A fixed fixture cannot meet content, typography and geometry invariants after two documented candidate-policy fixes.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-030.md"
+      }
+    },
+    {
+      "id": "DWI-031",
+      "phase": 3,
+      "priority": "P0",
+      "title": "Separate claim citations from full references",
+      "dependsOn": [
+        "DWI-021",
+        "DWI-030"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/design",
+        "src/render",
+        "tests/dwi-sources.test.mjs"
+      ],
+      "implementation": "Reduce citation clutter without deleting provenance; keep hyperlinks and export metadata where supported.",
+      "acceptance": [
+        "Readable compact source keys remain near claims.",
+        "Full source metadata appears in an appendix/source view.",
+        "Warnings and essential qualifiers are never hidden as tiny footnotes."
+      ],
+      "testFile": "tests/dwi-031.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-03/dwi-031",
+      "phasePrompt": "prompts/PHASE_03.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Compact source display can reuse the existing references layer but needs strong fidelity review.",
+        "escalationTrigger": "Reordering, disclosure or export breaks a claim-to-source link or hides an essential qualifier.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-031.md"
+      }
+    },
+    {
+      "id": "DWI-032",
+      "phase": 3,
+      "priority": "P0",
+      "title": "Protect dominant images and truthful charts",
+      "dependsOn": [
+        "DWI-012",
+        "DWI-030"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/components/charts/semantics.mjs",
+        "src/design"
+      ],
+      "implementation": "Use crop/placement and surrounding surfaces for integration rather than modifying image meaning.",
+      "acceptance": [
+        "Figure-led slides allocate meaningful space to evidence.",
+        "Numeric values, axis policies, intervals and nulls survive layout/theme changes.",
+        "No default recolouring of evidence or colour-critical photos."
+      ],
+      "testFile": "tests/dwi-032.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-03/dwi-032",
+      "phasePrompt": "prompts/PHASE_03.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Subject framing and chart semantics must preserve data and protected regions.",
+        "escalationTrigger": "Theme or geometry changes alter values, nulls, scales or protected subject bounds: split and repair the affected invariant.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-032.md"
+      }
+    },
+    {
+      "id": "DWI-033",
+      "phase": 3,
+      "priority": "P0",
+      "title": "Compose readable workflows and mechanism figures",
+      "dependsOn": [
+        "DWI-012",
+        "DWI-030"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/design/scene-semantics.mjs",
+        "src/render",
+        "tests/dwi-mechanisms.test.mjs"
+      ],
+      "implementation": "Prefer editable vector/shape geometry; explain any per-asset fallback instead of hiding whole-slide rasterization.",
+      "acceptance": [
+        "Stable part IDs, attached labels and directed edges.",
+        "Illustrations identify not-to-scale or unverified physical properties.",
+        "Step reveals have a complete, meaningful static export state."
+      ],
+      "testFile": "tests/dwi-033.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-03/dwi-033",
+      "phasePrompt": "prompts/PHASE_03.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Graph identity, labels, connectors and final static states must map to editable output.",
+        "escalationTrigger": "A minimal mechanism graph exposes unresolved label/edge identity or editable-export mismatch after two targeted repairs.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-033.md"
+      }
+    },
+    {
+      "id": "DWI-034",
+      "phase": 3,
+      "priority": "P0",
+      "title": "Export the first complete native vertical slice",
+      "dependsOn": [
+        "DWI-031",
+        "DWI-032",
+        "DWI-033"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/render",
+        "tests/dwi-export-fidelity.test.mjs"
+      ],
+      "implementation": "Create a six-page fixture deck and compare content counts/values, not just whether a PPTX zip opens.",
+      "acceptance": [
+        "Preview and export use the same semantic scene.",
+        "Native text, shapes and supported chart/diagram objects are checked structurally.",
+        "Unsupported export behaviours are disclosed; original source project remains recoverable."
+      ],
+      "testFile": "tests/dwi-034.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-03/dwi-034",
+      "phasePrompt": "prompts/PHASE_03.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Preview, semantic scenes and native OOXML must preserve object editability and meaning.",
+        "escalationTrigger": "A six-page fixture still differs structurally or visually between targets after two isolated fixes and a minimised reproducer.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-034.md"
+      }
+    },
+    {
+      "id": "DWI-040",
+      "phase": 4,
+      "priority": "P1",
+      "title": "Simplify the existing workbench shell",
+      "dependsOn": [
+        "DWI-034",
+        "DWI-013"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "public/shell.js",
+        "public/app.js",
+        "public/kinds"
+      ],
+      "implementation": "Keep current shell adapters; expose Words/Look/detail controls only where useful.",
+      "acceptance": [
+        "One obvious next action in empty/import/review/export states.",
+        "No duplicate toolbars or dead gauges.",
+        "Viewport fit does not change slide coordinates or hide primary controls."
+      ],
+      "testFile": "tests/dwi-040.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-04/dwi-040",
+      "phasePrompt": "prompts/PHASE_04.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Refine the existing shell rather than redesigning application architecture.",
+        "escalationTrigger": "Novice simplification removes a required state, recovery control or keyboard path.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-040.md"
+      }
+    },
+    {
+      "id": "DWI-041",
+      "phase": 4,
+      "priority": "P1",
+      "title": "Add accessible bounded slide dial",
+      "dependsOn": [
+        "DWI-040"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "public/components/slide-dial.js",
+        "public/interaction.js",
+        "tests/dwi-dial.test.mjs"
+      ],
+      "implementation": "Use a native input foundation; visual metal is decoration over real semantics. Store active slide by stable ID.",
+      "acceptance": [
+        "0/1/N slide cases, reorder and current-slide deletion are safe.",
+        "Arrow/Home/End and visible alternatives work without a rotation gesture.",
+        "No global wheel/arrow hijack, IME interference or loss of focus."
+      ],
+      "testFile": "tests/dwi-041.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-04/dwi-041",
+      "phasePrompt": "prompts/PHASE_04.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Slide identity, drag/keyboard/touch input, IME and focus interact as a state machine.",
+        "escalationTrigger": "A deterministic event trace still jumps to the wrong slide or loses focus after two isolated fixes.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-041.md"
+      }
+    },
+    {
+      "id": "DWI-042",
+      "phase": 4,
+      "priority": "P2",
+      "title": "Add quiet original detent feedback",
+      "dependsOn": [
+        "DWI-041"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "public/components/interaction-audio.js",
+        "tests/dwi-audio.test.mjs"
+      ],
+      "implementation": "Synthesize a short original tick; no TE sound files or promised physical haptics.",
+      "acceptance": [
+        "Off by default and enabled only with a visible preference/user gesture.",
+        "No backlog of sounds during rapid scrubbing; background/presenter output is quiet.",
+        "Reduced motion and no-audio paths retain complete state feedback."
+      ],
+      "testFile": "tests/dwi-042.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-04/dwi-042",
+      "phasePrompt": "prompts/PHASE_04.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "medium",
+        "escalationEffort": "high",
+        "reason": "A small original tick and explicit opt-in have a bounded local implementation.",
+        "escalationTrigger": "A deterministic trace reveals audio backlog, a background/presenter leak or failure to respect the preference.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-042.md"
+      }
+    },
+    {
+      "id": "DWI-043",
+      "phase": 4,
+      "priority": "P1",
+      "title": "Test complete keyboard touch and recovery flows",
+      "dependsOn": [
+        "DWI-041"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "public/interaction.js",
+        "public/history.js",
+        "docs/evidence/dwi/phase-04"
+      ],
+      "implementation": "Test existing shell controls as well as the new dial; audit the whole task, not just a component.",
+      "acceptance": [
+        "Focus returns correctly after drawers/dialogs.",
+        "Saved-state conflicts and restore-as-copy remain intact.",
+        "Screen-reader/touch results are recorded separately from unit tests."
+      ],
+      "testFile": "tests/dwi-043.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-04/dwi-043",
+      "phasePrompt": "prompts/PHASE_04.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Recovery, history and whole-workflow input checks span several existing components.",
+        "escalationTrigger": "A saved-state/reorder/restore event trace still loses data or focus after two targeted repairs.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-043.md"
+      }
+    },
+    {
+      "id": "DWI-050",
+      "phase": 5,
+      "priority": "P1",
+      "title": "Integrate only documented host capabilities",
+      "dependsOn": [
+        "DWI-023",
+        "DWI-034"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "src/plugin",
+        "docs/en/host-acceptance.md"
+      ],
+      "implementation": "Use official skills/handoff contracts and existing plugin packaging; refuse guessed Slides API stubs.",
+      "acceptance": [
+        "Record actual invocation in each available host with version.",
+        "Unavailable Spaces internal implementation is not a mandatory dependency.",
+        "Local generation stays useful with no host research capability."
+      ],
+      "testFile": "tests/dwi-050.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-05/dwi-050",
+      "phasePrompt": "prompts/PHASE_05.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "xhigh",
+        "reason": "Host adapters need documented interfaces and strict permission/usage boundaries.",
+        "escalationTrigger": "Actual authorised host output conflicts with the handoff contract after two isolated fixes; missing access or quota is a blocker, not a trigger.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-050.md"
+      }
+    },
+    {
+      "id": "DWI-051",
+      "phase": 5,
+      "priority": "P2",
+      "title": "Evaluate Kimi compatibility as an isolated option",
+      "dependsOn": [
+        "DWI-034",
+        "DWI-002"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "integrations",
+        "docs/evidence/dwi/phase-05"
+      ],
+      "implementation": "A negative feasibility result is acceptable; retain DeckWeft native export rather than adding a silent cloud fallback.",
+      "acceptance": [
+        "Document remote writer/resource requirements and licences.",
+        "No automatic pip/browser install or remote load in the default path.",
+        "Compare editable fidelity and content preservation on a permitted fixture."
+      ],
+      "testFile": "tests/dwi-051.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-05/dwi-051",
+      "phasePrompt": "prompts/PHASE_05.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Compatibility and remote resource/licence constraints need a bounded feasibility decision.",
+        "escalationTrigger": "A proprietary or unavailable dependency is required: record a negative feasibility result; do not escalate or install it to force success.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-051.md"
+      }
+    },
+    {
+      "id": "DWI-052",
+      "phase": 5,
+      "priority": "P2",
+      "title": "Extend film palette provenance deliberately",
+      "dependsOn": [
+        "DWI-010",
+        "DWI-002"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "data/coverage.json",
+        "schemas",
+        "docs/evidence/dwi/phase-05"
+      ],
+      "implementation": "Do not promise every possible colour combination. Define a corpus/version and cluster representative scene palettes with explicit coverage.",
+      "acceptance": [
+        "Verify dated filmography and define feature/short/ad scope.",
+        "Only permitted media is sampled; record edition, timestamp, transfer function and frame hash.",
+        "Scene and neutral/skin/subtitle handling, cluster seed, weighting and deduplication are reproducible."
+      ],
+      "testFile": "tests/dwi-052.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-05/dwi-052",
+      "phasePrompt": "prompts/PHASE_05.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Corpus, edition, transfer function, clustering and provenance need a reproducible method.",
+        "escalationTrigger": "Evidence or permitted footage is missing: mark the corpus partial; revisit the method only when actual data reveals a reproducibility defect.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-052.md"
+      }
+    },
+    {
+      "id": "DWI-053",
+      "phase": 5,
+      "priority": "P2",
+      "title": "Complete product and recent-study coverage audit",
+      "dependsOn": [
+        "DWI-002",
+        "DWI-040"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "data/coverage.json",
+        "SOURCES.md",
+        "docs/evidence/dwi/phase-05"
+      ],
+      "implementation": "Extend the targeted source review into a documented search protocol; do not relabel this package as an exhaustive survey.",
+      "acceptance": [
+        "Review all catalogue links and historical-product scope, marking unavailable material.",
+        "Search current primary studies; record methods, samples, outcomes and access limits.",
+        "Separate attention, comprehension, preference and persuasion; no fabricated effect sizes."
+      ],
+      "testFile": "tests/dwi-053.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-05/dwi-053",
+      "phasePrompt": "prompts/PHASE_05.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Compare primary evidence without confusing attention, comprehension, preference and persuasion.",
+        "escalationTrigger": "Papers or catalogue records are incomplete or conflicting: obtain primary material and retain limits; reasoning cannot replace unavailable sources.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-053.md"
+      }
+    },
+    {
+      "id": "DWI-060",
+      "phase": 6,
+      "priority": "P1",
+      "title": "Run cross-mode visual and novice acceptance",
+      "dependsOn": [
+        "DWI-034",
+        "DWI-043"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "tests",
+        "docs/evidence/dwi/phase-06"
+      ],
+      "implementation": "Use TEST_PLAN.md; recruit a suitable sample and predefine task outcomes rather than inventing study results.",
+      "acceptance": [
+        "All seed palettes and output modes have representative render checks.",
+        "Formative novices complete input/edit/export/recover tasks.",
+        "Comprehension and preference are reported separately with limitations."
+      ],
+      "testFile": "tests/dwi-060.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-06/dwi-060",
+      "phasePrompt": "prompts/PHASE_06.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "high",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Acceptance combines broad visual results with separately recorded novice task outcomes.",
+        "escalationTrigger": "A cross-mode result fails the preregistered criterion: minimise the failing case and route it to its owning implementation task.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-060.md"
+      }
+    },
+    {
+      "id": "DWI-061",
+      "phase": 6,
+      "priority": "P1",
+      "title": "Open exports in real target applications",
+      "dependsOn": [
+        "DWI-034",
+        "DWI-050"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "docs/en/compatibility.md",
+        "docs/evidence/dwi/phase-06"
+      ],
+      "implementation": "A local-only alpha may ship with documented limitations; never mark unavailable applications passed.",
+      "acceptance": [
+        "Record PowerPoint/Keynote version and actual object-edit tests where available.",
+        "Real host invocation is recorded or explicitly blocked.",
+        "Structural OOXML tests do not substitute for rendering/application evidence."
+      ],
+      "testFile": "tests/dwi-061.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-06/dwi-061",
+      "phasePrompt": "prompts/PHASE_06.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Run prescribed application-open and edit checks and capture concrete evidence.",
+        "escalationTrigger": "The real application fails a fixture: capture the version/file/result and return the defect to DWI-034; a missing application is blocked.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-061.md"
+      }
+    },
+    {
+      "id": "DWI-062",
+      "phase": 6,
+      "priority": "P1",
+      "title": "Package reproducible offline release candidate",
+      "dependsOn": [
+        "DWI-060",
+        "DWI-061"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "scripts/build.mjs",
+        "dist",
+        "docs/evidence/dwi/phase-06"
+      ],
+      "implementation": "Build from source, not patched dist. Publication and repository push still require explicit user instruction.",
+      "acceptance": [
+        "Fresh offline install/start/export succeeds on documented environment.",
+        "No user inputs, secrets, fonts or unlicensed assets leak into distribution.",
+        "Manifest, checksums, test logs and capability matrix accompany the archive."
+      ],
+      "testFile": "tests/dwi-062.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-06/dwi-062",
+      "phasePrompt": "prompts/PHASE_06.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "medium",
+        "reviewEffort": "high",
+        "escalationEffort": "high",
+        "reason": "Packaging is mostly deterministic but requires a careful privacy and reproducibility review.",
+        "escalationTrigger": "A fresh install fails, archive contents leak private material or byte provenance is unclear: isolate the packaging cause.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-062.md"
+      }
+    },
+    {
+      "id": "DWI-063",
+      "phase": 6,
+      "priority": "P1",
+      "title": "Close the handoff with truthful status",
+      "dependsOn": [
+        "DWI-062"
+      ],
+      "status": "planned",
+      "pathsToInspectOrPropose": [
+        "PROJECT_STATUS.json",
+        "ROADMAP.md",
+        "docs/en/handoff.md"
+      ],
+      "implementation": "Provide completed/blocked/unstarted separation and the exact next executable task. Do not claim all original scope is complete.",
+      "acceptance": [
+        "Each task links its evidence or named blocker.",
+        "Optional research/adapters are reported as partial when unfinished.",
+        "The user receives an actual artifact path, not a background-task claim."
+      ],
+      "testFile": "tests/dwi-063.test.mjs",
+      "evidenceDirectory": "docs/evidence/dwi/phase-06/dwi-063",
+      "phasePrompt": "prompts/PHASE_06.md",
+      "pathStatus": "mixture of inspected existing locations and explicit proposed additions; resolve in phase 00",
+      "modelRouting": {
+        "profileId": "sol-approved",
+        "buildEffort": "low",
+        "reviewEffort": "medium",
+        "escalationEffort": "medium",
+        "reason": "Summarise already verified artefacts and task states without changing application code.",
+        "escalationTrigger": "The final status disagrees with logs or dependencies: raise to Medium to reconcile evidence, never infer success.",
+        "automaticModelSwitch": false,
+        "automaticEffortChange": false,
+        "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+        "reviewMode": "same-approved-model-separate-pass",
+        "taskPrompt": "prompts/tasks/DWI-063.md"
+      }
+    }
+  ],
+  "workpackVersion": "1.1.0",
+  "modelPolicyFile": "MODEL_POLICY.json",
+  "modelRoutingNote": "Advisory task-level settings, not host configuration or permission to spend. No application task was executed by this revision."
+}

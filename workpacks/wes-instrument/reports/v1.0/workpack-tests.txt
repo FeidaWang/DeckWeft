@@ -1,0 +1,402 @@
+
+> deckweft-cinematic-workpack@1.0.0 verify
+> npm test && npm run check
+
+
+> deckweft-cinematic-workpack@1.0.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: six-digit RGB parsing and round trip
+ok 1 - six-digit RGB parsing and round trip
+  ---
+  duration_ms: 3.953972
+  type: 'test'
+  ...
+# Subtest: invalid hex inputs are rejected
+ok 2 - invalid hex inputs are rejected
+  ---
+  duration_ms: 0.573981
+  type: 'test'
+  ...
+# Subtest: invalid RGB channels are rejected
+ok 3 - invalid RGB channels are rejected
+  ---
+  duration_ms: 0.915161
+  type: 'test'
+  ...
+# Subtest: sRGB transfer curve uses the linear low segment
+ok 4 - sRGB transfer curve uses the linear low segment
+  ---
+  duration_ms: 0.607607
+  type: 'test'
+  ...
+# Subtest: known luminance endpoints and primaries
+ok 5 - known luminance endpoints and primaries
+  ---
+  duration_ms: 0.311023
+  type: 'test'
+  ...
+# Subtest: black-white contrast is 21 and same-colour contrast is 1
+ok 6 - black-white contrast is 21 and same-colour contrast is 1
+  ---
+  duration_ms: 0.332283
+  type: 'test'
+  ...
+# Subtest: contrast is symmetric
+ok 7 - contrast is symmetric
+  ---
+  duration_ms: 0.421998
+  type: 'test'
+  ...
+# Subtest: contrast thresholds are not rounded upwards
+ok 8 - contrast thresholds are not rounded upwards
+  ---
+  duration_ms: 0.225202
+  type: 'test'
+  ...
+# Subtest: D65 Lab agrees with known black, white and red references
+ok 9 - D65 Lab agrees with known black, white and red references
+  ---
+  duration_ms: 0.679171
+  type: 'test'
+  ...
+# Subtest: CIE76 is Euclidean, not CIEDE2000
+ok 10 - CIE76 is Euclidean, not CIEDE2000
+  ---
+  duration_ms: 0.47269
+  type: 'test'
+  ...
+# Subtest: mixing preserves endpoints and uses deterministic half-even rounding
+ok 11 - mixing preserves endpoints and uses deterministic half-even rounding
+  ---
+  duration_ms: 0.377671
+  type: 'test'
+  ...
+# Subtest: best text selection is deterministic and has input guards
+ok 12 - best text selection is deterministic and has input guards
+  ---
+  duration_ms: 0.615151
+  type: 'test'
+  ...
+# Subtest: derived roles do not mutate source colours
+ok 13 - derived roles do not mutate source colours
+  ---
+  duration_ms: 0.791699
+  type: 'test'
+  ...
+# Subtest: derivation rejects unknown modes and missing colours
+ok 14 - derivation rejects unknown modes and missing colours
+  ---
+  duration_ms: 0.168184
+  type: 'test'
+  ...
+# Subtest: palette BottleRocket1: raw values, Lab, derived roles and provenance
+ok 15 - palette BottleRocket1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 6.911443
+  type: 'test'
+  ...
+# Subtest: palette BottleRocket2: raw values, Lab, derived roles and provenance
+ok 16 - palette BottleRocket2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 2.768447
+  type: 'test'
+  ...
+# Subtest: palette Rushmore1: raw values, Lab, derived roles and provenance
+ok 17 - palette Rushmore1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.209761
+  type: 'test'
+  ...
+# Subtest: palette Royal1: raw values, Lab, derived roles and provenance
+ok 18 - palette Royal1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.837276
+  type: 'test'
+  ...
+# Subtest: palette Royal2: raw values, Lab, derived roles and provenance
+ok 19 - palette Royal2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.78756
+  type: 'test'
+  ...
+# Subtest: palette Zissou1: raw values, Lab, derived roles and provenance
+ok 20 - palette Zissou1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 3.775591
+  type: 'test'
+  ...
+# Subtest: palette Darjeeling1: raw values, Lab, derived roles and provenance
+ok 21 - palette Darjeeling1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.59204
+  type: 'test'
+  ...
+# Subtest: palette Darjeeling2: raw values, Lab, derived roles and provenance
+ok 22 - palette Darjeeling2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.492017
+  type: 'test'
+  ...
+# Subtest: palette Chevalier1: raw values, Lab, derived roles and provenance
+ok 23 - palette Chevalier1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.180081
+  type: 'test'
+  ...
+# Subtest: palette FantasticFox1: raw values, Lab, derived roles and provenance
+ok 24 - palette FantasticFox1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 5.055176
+  type: 'test'
+  ...
+# Subtest: palette Moonrise1: raw values, Lab, derived roles and provenance
+ok 25 - palette Moonrise1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 2.074249
+  type: 'test'
+  ...
+# Subtest: palette Moonrise2: raw values, Lab, derived roles and provenance
+ok 26 - palette Moonrise2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 3.621023
+  type: 'test'
+  ...
+# Subtest: palette Moonrise3: raw values, Lab, derived roles and provenance
+ok 27 - palette Moonrise3: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 2.186765
+  type: 'test'
+  ...
+# Subtest: palette Cavalcanti1: raw values, Lab, derived roles and provenance
+ok 28 - palette Cavalcanti1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.880598
+  type: 'test'
+  ...
+# Subtest: palette GrandBudapest1: raw values, Lab, derived roles and provenance
+ok 29 - palette GrandBudapest1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.868381
+  type: 'test'
+  ...
+# Subtest: palette GrandBudapest2: raw values, Lab, derived roles and provenance
+ok 30 - palette GrandBudapest2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.645738
+  type: 'test'
+  ...
+# Subtest: palette IsleofDogs1: raw values, Lab, derived roles and provenance
+ok 31 - palette IsleofDogs1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.906121
+  type: 'test'
+  ...
+# Subtest: palette IsleofDogs2: raw values, Lab, derived roles and provenance
+ok 32 - palette IsleofDogs2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.020437
+  type: 'test'
+  ...
+# Subtest: palette FrenchDispatch: raw values, Lab, derived roles and provenance
+ok 33 - palette FrenchDispatch: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 2.666116
+  type: 'test'
+  ...
+# Subtest: palette AsteroidCity1: raw values, Lab, derived roles and provenance
+ok 34 - palette AsteroidCity1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.067404
+  type: 'test'
+  ...
+# Subtest: palette AsteroidCity2: raw values, Lab, derived roles and provenance
+ok 35 - palette AsteroidCity2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.363777
+  type: 'test'
+  ...
+# Subtest: palette AsteroidCity3: raw values, Lab, derived roles and provenance
+ok 36 - palette AsteroidCity3: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.563162
+  type: 'test'
+  ...
+# Subtest: entire workpack validates with all required files
+ok 37 - entire workpack validates with all required files
+  ---
+  duration_ms: 45.404834
+  type: 'test'
+  ...
+# Subtest: bad colour and an invented official verification are rejected
+ok 38 - bad colour and an invented official verification are rejected
+  ---
+  duration_ms: 13.061713
+  type: 'test'
+  ...
+# Subtest: low contrast role edits are rejected
+ok 39 - low contrast role edits are rejected
+  ---
+  duration_ms: 12.118762
+  type: 'test'
+  ...
+# Subtest: invalid and cyclic aliases are not accepted
+ok 40 - invalid and cyclic aliases are not accepted
+  ---
+  duration_ms: 13.066421
+  type: 'test'
+  ...
+# Subtest: all 29 tasks form seven phases with a valid dependency graph
+ok 41 - all 29 tasks form seven phases with a valid dependency graph
+  ---
+  duration_ms: 0.718951
+  type: 'test'
+  ...
+# Subtest: missing task dependencies and cycles are rejected
+ok 42 - missing task dependencies and cycles are rejected
+  ---
+  duration_ms: 1.138682
+  type: 'test'
+  ...
+# Subtest: task path traversal and duplicates are rejected
+ok 43 - task path traversal and duplicates are rejected
+  ---
+  duration_ms: 1.349477
+  type: 'test'
+  ...
+# Subtest: schema documents are local JSON and declare their purpose
+ok 44 - schema documents are local JSON and declare their purpose
+  ---
+  duration_ms: 1.300939
+  type: 'test'
+  ...
+# Subtest: safe artifact paths are bounded and platform-independent
+ok 45 - safe artifact paths are bounded and platform-independent
+  ---
+  duration_ms: 0.297946
+  type: 'test'
+  ...
+# Subtest: well-formed scoped evidence validates without implying global acceptance
+ok 46 - well-formed scoped evidence validates without implying global acceptance
+  ---
+  duration_ms: 0.504004
+  type: 'test'
+  ...
+# Subtest: accepted evidence rejects skipped checks
+ok 47 - accepted evidence rejects skipped checks
+  ---
+  duration_ms: 0.783993
+  type: 'test'
+  ...
+# Subtest: accepted host evidence requires actual host identity/version
+ok 48 - accepted host evidence requires actual host identity/version
+  ---
+  duration_ms: 0.471348
+  type: 'test'
+  ...
+# Subtest: evidence cannot call nonzero exit codes a pass or omit artifacts
+ok 49 - evidence cannot call nonzero exit codes a pass or omit artifacts
+  ---
+  duration_ms: 0.316811
+  type: 'test'
+  ...
+# Subtest: malformed evidence does not turn into a passing record
+ok 50 - malformed evidence does not turn into a passing record
+  ---
+  duration_ms: 0.234474
+  type: 'test'
+  ...
+# Subtest: inspector reads a synthetic checkout without running its scripts
+ok 51 - inspector reads a synthetic checkout without running its scripts
+  ---
+  duration_ms: 96.40081
+  type: 'test'
+  ...
+# Subtest: inspector reports unavailable git/package metadata without simulated success
+ok 52 - inspector reports unavailable git/package metadata without simulated success
+  ---
+  duration_ms: 10.627986
+  type: 'test'
+  ...
+# Subtest: inspector rejects an absent path
+ok 53 - inspector rejects an absent path
+  ---
+  duration_ms: 0.492999
+  type: 'test'
+  ...
+# Subtest: empty and one-slide states are safe
+ok 54 - empty and one-slide states are safe
+  ---
+  duration_ms: 3.764972
+  type: 'test'
+  ...
+# Subtest: selection survives reordering by stable ID
+ok 55 - selection survives reordering by stable ID
+  ---
+  duration_ms: 0.986544
+  type: 'test'
+  ...
+# Subtest: deleted selection falls back to a bounded previous index
+ok 56 - deleted selection falls back to a bounded previous index
+  ---
+  duration_ms: 0.333339
+  type: 'test'
+  ...
+# Subtest: navigation clamps and does not wrap
+ok 57 - navigation clamps and does not wrap
+  ---
+  duration_ms: 0.125482
+  type: 'test'
+  ...
+# Subtest: duplicate IDs and fractional deltas are invalid
+ok 58 - duplicate IDs and fractional deltas are invalid
+  ---
+  duration_ms: 0.311416
+  type: 'test'
+  ...
+# Subtest: keyboard arrows, Home and End map to the current state
+ok 59 - keyboard arrows, Home and End map to the current state
+  ---
+  duration_ms: 0.180275
+  type: 'test'
+  ...
+# Subtest: IME and editable controls do not trigger navigation
+ok 60 - IME and editable controls do not trigger navigation
+  ---
+  duration_ms: 0.15586
+  type: 'test'
+  ...
+# Subtest: invalid keyboard navigation states fail explicitly
+ok 61 - invalid keyboard navigation states fail explicitly
+  ---
+  duration_ms: 0.112147
+  type: 'test'
+  ...
+# Subtest: ticks are silent by default, in presentation, and in hidden tabs
+ok 62 - ticks are silent by default, in presentation, and in hidden tabs
+  ---
+  duration_ms: 0.454356
+  type: 'test'
+  ...
+# Subtest: tick rate limiter suppresses rather than queues events
+ok 63 - tick rate limiter suppresses rather than queues events
+  ---
+  duration_ms: 0.436566
+  type: 'test'
+  ...
+1..63
+# tests 63
+# suites 0
+# pass 63
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 315.816794
+
+> deckweft-cinematic-workpack@1.0.0 check
+> node scripts/validate-workpack.mjs
+
+PASS — workpack checks only
+{"palettes":22,"modes":66,"rolePairs":1320,"screenshotRows":16,"screenshotSamples":76,"tasks":29,"phases":7,"sources":24}

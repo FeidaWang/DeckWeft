@@ -1,0 +1,476 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-21",
+  "reviewType": "targeted source audit; not exhaustive",
+  "sources": [
+    {
+      "id": "SRC-DW-AGENTS",
+      "title": "DeckWeft contributor instructions",
+      "url": "https://github.com/FeidaWang/DeckWeft/blob/05643c614cf7d981227b0a14be02a2d65eda15c3/AGENTS.md",
+      "kind": "repository",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "file-read",
+      "verifiedFindings": [
+        "Node 22+, ESM; preserve runtime dependency and local-first boundaries.",
+        "Keep source, layout, rendering, storage and packaging separate; evidence is required for acceptance."
+      ],
+      "limitations": [
+        "Repository code was not executed in this workpack creation."
+      ],
+      "locator": {
+        "commit": "05643c614cf7d981227b0a14be02a2d65eda15c3",
+        "gitBlobSha": "5d67e83830b079fcec2f3f70fa68e1440d423307"
+      }
+    },
+    {
+      "id": "SRC-DW-PKG",
+      "title": "DeckWeft package metadata",
+      "url": "https://github.com/FeidaWang/DeckWeft/blob/05643c614cf7d981227b0a14be02a2d65eda15c3/package.json",
+      "kind": "repository",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "file-read",
+      "verifiedFindings": [
+        "Version 0.1.0-alpha.2, private package, Node >=22.0.0, MIT declaration.",
+        "verify chains types, test, check, build and demo."
+      ],
+      "limitations": [
+        "A declared script is not a record that it passed."
+      ],
+      "locator": {
+        "commit": "05643c614cf7d981227b0a14be02a2d65eda15c3",
+        "gitBlobSha": "48236a3310f89e7a0069284fda8c545ad5adc169"
+      }
+    },
+    {
+      "id": "SRC-DW-README",
+      "title": "DeckWeft scope and limitations",
+      "url": "https://github.com/FeidaWang/DeckWeft/blob/05643c614cf7d981227b0a14be02a2d65eda15c3/README.md",
+      "kind": "repository",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "file-read",
+      "verifiedFindings": [
+        "Existing Studio and agent workflows should be reused.",
+        "README distinguishes structural native-chart checks from real Office acceptance."
+      ],
+      "limitations": [
+        "Feature claims remain upstream claims unless independently tested."
+      ],
+      "locator": {
+        "commit": "05643c614cf7d981227b0a14be02a2d65eda15c3",
+        "gitBlobSha": "8916c88d61b7cad64bfe90bb5516be59194cd8de"
+      }
+    },
+    {
+      "id": "SRC-DW-ARCH",
+      "title": "DeckWeft architecture",
+      "url": "https://github.com/FeidaWang/DeckWeft/blob/05643c614cf7d981227b0a14be02a2d65eda15c3/docs/en/architecture.md",
+      "kind": "repository",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "partial-file-read",
+      "verifiedFindings": [
+        "Describes classic and v3 contracts, shared scenes, local storage and browser measurement.",
+        "Identifies shell/kind modules and semantic chart/static-state fields."
+      ],
+      "limitations": [
+        "Tool output was truncated; only surfaced sections were inspected.",
+        "Current implementation symbols must be resolved in Phase 00."
+      ],
+      "locator": {
+        "commit": "05643c614cf7d981227b0a14be02a2d65eda15c3"
+      }
+    },
+    {
+      "id": "SRC-KIMI-PKG",
+      "title": "open-kimi-ppt-skill package metadata",
+      "url": "https://github.com/acnlie/open-kimi-ppt-skill/blob/c32890fe0985bdf668f2722fed30f1010bdf24c9/package.json",
+      "kind": "repository",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "file-read",
+      "verifiedFindings": [
+        "Version 1.2.0, MIT declaration, Node >=18, self-described unofficial reverse-engineered skill."
+      ],
+      "limitations": [
+        "No licence conclusion about remote proprietary components."
+      ],
+      "locator": {
+        "commit": "c32890fe0985bdf668f2722fed30f1010bdf24c9",
+        "gitBlobSha": "fb70cdd30ac38e8ce7aad2c2ad520ef4574c478d"
+      }
+    },
+    {
+      "id": "SRC-KIMI-EXPORT",
+      "title": "open-kimi-ppt-skill exporter entry",
+      "url": "https://github.com/acnlie/open-kimi-ppt-skill/blob/c32890fe0985bdf668f2722fed30f1010bdf24c9/skills/open-kimi-ppt/scripts/export_pptx.py",
+      "kind": "repository",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "partial-file-read",
+      "verifiedFindings": [
+        "Uses a local SDK host and browser-side writer; remote referenced resources may still be fetched.",
+        "The inspected entry can install PyYAML automatically."
+      ],
+      "limitations": [
+        "Only first 160 lines were read; exporter was not run.",
+        "Not an approved default offline dependency."
+      ],
+      "locator": {
+        "commit": "c32890fe0985bdf668f2722fed30f1010bdf24c9",
+        "gitBlobSha": "3d32e294c6a13645913e556ba231af42e7ef6a98",
+        "lines": [
+          1,
+          160
+        ]
+      }
+    },
+    {
+      "id": "SRC-WES",
+      "title": "wesanderson palette definitions",
+      "url": "https://github.com/karthik/wesanderson/blob/master/R/colors.R",
+      "kind": "repository",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "file-read",
+      "verifiedFindings": [
+        "Contains 22 distinct discrete palettes plus a Rushmore alias and a Zissou interpolation entry.",
+        "Documentation credits a community palette collection, not an official film colour standard."
+      ],
+      "limitations": [
+        "No licensed film-frame timecodes were verified.",
+        "The Git blob hash identifies file content; it is not a repository commit hash."
+      ],
+      "locator": {
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "immutableBlobUrl": "https://api.github.com/repos/karthik/wesanderson/git/blobs/ddcf7fb12888a658b8b3f80117ea933dcc0a0f16"
+      }
+    },
+    {
+      "id": "SRC-WES-META",
+      "title": "wesanderson package metadata",
+      "url": "https://github.com/karthik/wesanderson/blob/master/DESCRIPTION",
+      "kind": "repository",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "file-read",
+      "verifiedFindings": [
+        "Version 0.3.7 metadata, authorship attribution and MIT + file LICENSE declaration."
+      ],
+      "limitations": [
+        "Package metadata does not establish movie image rights."
+      ],
+      "locator": {
+        "gitBlobSha": "9ff54083ad494ec6998cec865cf5082842711dd5"
+      }
+    },
+    {
+      "id": "SRC-TE-CATALOG",
+      "title": "Teenage Engineering product catalogue",
+      "url": "https://teenage.engineering/products",
+      "kind": "manufacturer",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "page-read",
+      "verifiedFindings": [
+        "Product-family index used to create the research coverage queue."
+      ],
+      "limitations": [
+        "A catalogue index is not a full examination of every current, discontinued or collaboration product."
+      ]
+    },
+    {
+      "id": "SRC-TE-FIELD",
+      "title": "Teenage Engineering field system",
+      "url": "https://teenage.engineering/products/field-system",
+      "kind": "manufacturer",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "page-or-search-excerpt",
+      "verifiedFindings": [
+        "Reference for a coherent portable instrument family."
+      ],
+      "limitations": [
+        "The workbench design is an interpretation; no affiliation or claim of copied proprietary geometry."
+      ]
+    },
+    {
+      "id": "SRC-TE-OP1",
+      "title": "Teenage Engineering OP-1 field",
+      "url": "https://teenage.engineering/products/op-1",
+      "kind": "manufacturer",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "page-or-search-excerpt",
+      "verifiedFindings": [
+        "Reference for restrained aluminium construction and a compact instrument interface."
+      ],
+      "limitations": [
+        "Only surfaced product description reviewed, not a complete physical usability study."
+      ]
+    },
+    {
+      "id": "SRC-TE-TP7",
+      "title": "Teenage Engineering TP-7",
+      "url": "https://teenage.engineering/products/tp-7",
+      "kind": "manufacturer",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "page-read",
+      "verifiedFindings": [
+        "Reel interaction provides a functional navigation/scrubbing reference."
+      ],
+      "limitations": [
+        "No product sound recording or visual asset is bundled.",
+        "A dial is a proposed progressive enhancement, not a required control."
+      ]
+    },
+    {
+      "id": "SRC-WCAG-TEXT",
+      "title": "WCAG 2.2 Understanding Contrast (Minimum)",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "kind": "standard",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "page-read",
+      "verifiedFindings": [
+        "Normal text requires 4.5:1; qualifying large text requires 3:1.",
+        "Do not round a failing result up to the threshold."
+      ],
+      "limitations": [
+        "Checking selected pairs alone is not WCAG conformance."
+      ]
+    },
+    {
+      "id": "SRC-WCAG-NONTEXT",
+      "title": "WCAG 2.2 Understanding Non-text Contrast",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+      "kind": "standard",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "page-read",
+      "verifiedFindings": [
+        "Meaningful graphical and component boundaries need appropriate contrast, commonly 3:1 against adjacent colours."
+      ],
+      "limitations": [
+        "Which marks are essential and which backgrounds are adjacent must be tested in context."
+      ]
+    },
+    {
+      "id": "SRC-ARIA-SLIDER",
+      "title": "WAI-ARIA APG Slider Pattern",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/",
+      "kind": "standard-guidance",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "page-read",
+      "verifiedFindings": [
+        "Keyboard and value semantics inform a dial implemented as a slider.",
+        "Touch assistive-technology support needs real testing."
+      ],
+      "limitations": [
+        "A numeric slide index is not evidence of complete screen-reader compatibility."
+      ]
+    },
+    {
+      "id": "SRC-OAI-SKILLS",
+      "title": "OpenAI plugin skills concepts",
+      "url": "https://developers.openai.com/plugins/concepts/skills",
+      "kind": "official-documentation",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "search-excerpt",
+      "verifiedFindings": [
+        "Skills are a documented extension mechanism; inspect host capabilities before choosing an adapter."
+      ],
+      "limitations": [
+        "Does not establish a public command called openai slides generate or disclose proprietary Slides internals."
+      ]
+    },
+    {
+      "id": "SRC-OAI-WORKFLOW",
+      "title": "OpenAI Codex workflow overview",
+      "url": "https://openai.com/index/codex-for-every-role-tool-workflow/",
+      "kind": "official-product-page",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "search-excerpt",
+      "verifiedFindings": [
+        "Product material describes workflow capabilities."
+      ],
+      "limitations": [
+        "A product description is not an inspected implementation or public API contract.",
+        "No Spaces Slides source snapshot was recovered."
+      ]
+    },
+    {
+      "id": "SRC-AE2013",
+      "title": "Garner & Alley (2013): How the Design of Presentation Slides Affects Audience Comprehension of a Technical Presentation",
+      "url": "https://pure.psu.edu/en/publications/how-the-design-of-presentation-slides-affects-audience-comprehens/",
+      "kind": "primary-research",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "abstract-or-index",
+      "verifiedFindings": [
+        "A technical-presentation study compared assertion-evidence and conventional slide approaches in an engineering-student sample."
+      ],
+      "limitations": [
+        "Context-specific evidence, not proof of universally optimal reading order or persuasion."
+      ],
+      "locator": {
+        "publication": "International Journal of Engineering Education 29(6), 1564–1579",
+        "year": 2013
+      }
+    },
+    {
+      "id": "SRC-COLOR2024",
+      "title": "Meusel, Scheller, Rey & Schneider (2024): background colour cues in learning",
+      "url": "https://link.springer.com/article/10.1007/s10639-024-12460-1",
+      "kind": "primary-research",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "publisher-page",
+      "verifiedFindings": [
+        "The reported learning task cautions against assuming that background colour cueing alone guarantees a benefit."
+      ],
+      "limitations": [
+        "Task, participant and floor/ceiling limits matter; not a live-presentation optimisation result."
+      ],
+      "locator": {
+        "doi": "10.1007/s10639-024-12460-1",
+        "year": 2024
+      }
+    },
+    {
+      "id": "SRC-SIGNAL2024",
+      "title": "Conrad & Obermaier: text-image signalling in geography learning",
+      "url": "https://zgd-journal.de/index.php/zgd/en/article/view/486",
+      "kind": "primary-research",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "abstract-or-index",
+      "verifiedFindings": [
+        "School geography text-image signalling offers a context-specific lead for label/evidence proximity."
+      ],
+      "limitations": [
+        "Do not extrapolate a school-learning abstract into a universal adult pitch rule."
+      ],
+      "locator": {
+        "doi": "10.60511/52486",
+        "year": 2024
+      }
+    },
+    {
+      "id": "SRC-HIGHLIGHT2025",
+      "title": "Sun & Nembhard: The Effect of Highlighting on Cognitive Load and Visual Attention in Multimedia Learning",
+      "url": "https://www.tandfonline.com/doi/full/10.1080/10447318.2025.2478274",
+      "kind": "primary-research",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "search-excerpt-fulltext-blocked",
+      "verifiedFindings": [
+        "A 2025 research lead involving highlighting and attention measurement was located."
+      ],
+      "limitations": [
+        "Full-text access returned HTTP 403; no effect-size, sample-size or outcome claim is made here."
+      ],
+      "locator": {
+        "doi": "10.1080/10447318.2025.2478274",
+        "year": 2025
+      }
+    },
+    {
+      "id": "INPUT-EXEC",
+      "title": "Recovered workpack-description report",
+      "url": null,
+      "kind": "user-provided-or-recovered-file",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "full-file-read",
+      "verifiedFindings": [
+        "Retained as non-normative input."
+      ],
+      "limitations": [
+        "Not an independently verified technical specification or official movie source."
+      ],
+      "locator": {
+        "localPath": "inputs/original-executive-report.txt",
+        "sha256": "44670c5e5fffc66bf390c22f422865df6d81f290592eedf9efe4bc82ebe024d4"
+      }
+    },
+    {
+      "id": "INPUT-PALETTE",
+      "title": "Recovered palette overview report",
+      "url": null,
+      "kind": "user-provided-or-recovered-file",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "full-file-read",
+      "verifiedFindings": [
+        "Retained as non-normative input."
+      ],
+      "limitations": [
+        "Not an independently verified technical specification or official movie source."
+      ],
+      "locator": {
+        "localPath": "inputs/original-palette-report.txt",
+        "sha256": "27e818bab2d27eec795f790edf13d7c4e1017f3b95637997ef884ac2b33f3748"
+      }
+    },
+    {
+      "id": "INPUT-SCREENSHOT",
+      "title": "User-supplied palette screenshot",
+      "url": null,
+      "kind": "user-provided-or-recovered-file",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "full-file-read",
+      "verifiedFindings": [
+        "Retained as non-normative input."
+      ],
+      "limitations": [
+        "Not an independently verified technical specification or official movie source."
+      ],
+      "locator": {
+        "localPath": "inputs/palette-screenshot.png",
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba"
+      }
+    },
+    {
+      "id": "SRC-MODEL-CATALOG",
+      "title": "OpenAI API model catalogue",
+      "url": "https://developers.openai.com/api/docs/models",
+      "kind": "official-documentation",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "targeted-web-read",
+      "verifiedFindings": [
+        "Catalogue identifies GPT-6.1 Sol as a balance of intelligence and cost."
+      ],
+      "limitations": [
+        "API catalogue entries do not establish availability in this user's Codex picker, subscription or installed CLI."
+      ]
+    },
+    {
+      "id": "SRC-MODEL-EFFORT",
+      "title": "OpenAI reasoning effort guidance",
+      "url": "https://developers.openai.com/api/docs/guides/reasoning",
+      "kind": "official-documentation",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "targeted-web-read",
+      "verifiedFindings": [
+        "Effort availability is model-dependent; higher effort can use more tokens and take longer.",
+        "xhigh should be evaluated for a justified benefit rather than used indiscriminately."
+      ],
+      "limitations": [
+        "No per-task DeckWeft benchmark was performed; all routing decisions are project recommendations."
+      ]
+    },
+    {
+      "id": "SRC-CODEX-MODELS",
+      "title": "Codex model and effort selection",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "kind": "official-documentation",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "targeted-web-read",
+      "verifiedFindings": [
+        "Interactive CLI exposes /model for model and effort selection; interface controls vary by client."
+      ],
+      "limitations": [
+        "The retrieved Codex guide still illustrated GPT-5.6 models while the API catalogue listed newer models.",
+        "No client or account was inspected; bind only an actually visible user-approved model."
+      ]
+    },
+    {
+      "id": "SRC-CODEX-EFFORT-CONFIG",
+      "title": "Codex configuration reference",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "kind": "official-documentation",
+      "checkedOn": "2026-10-21",
+      "accessLevel": "targeted-web-read",
+      "verifiedFindings": [
+        "Documents model_reasoning_effort; xhigh support is model-dependent."
+      ],
+      "limitations": [
+        "A Markdown instruction does not itself set this configuration; no host configuration was changed."
+      ]
+    }
+  ]
+}

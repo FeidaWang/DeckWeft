@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "version": "1.1.0",
+  "preparedOn": "2026-10-21",
+  "workpack": {
+    "state": "created-and-validated",
+    "nodeTests": {
+      "pass": 108,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "counts": {
+      "palettes": 22,
+      "modes": 66,
+      "rolePairs": 1320,
+      "screenshotRows": 16,
+      "screenshotSamples": 76,
+      "tasks": 29,
+      "phases": 7,
+      "sources": 28,
+      "modelRoutes": 29,
+      "buildEffortCounts": {
+        "low": 1,
+        "medium": 10,
+        "high": 18,
+        "xhigh": 0
+      }
+    },
+    "staticCatalogueBrowserCheck": "Historical v1.0 evidence retained unchanged; not rerun in v1.1 (catalogue bytes unchanged).",
+    "screenshotPixelReplay": "Historical v1.0 76-sample replay; source/audit bytes unchanged, not rerun in v1.1.",
+    "modelRouting": {
+      "state": "29-recommendations-created-and-validated",
+      "actualModelBindingsVerified": false,
+      "modelInvocationsPerformed": false,
+      "hostConfigurationChanged": false,
+      "comparativeBenchmarkPerformed": false
+    }
+  },
+  "application": {
+    "state": "not-integrated-by-this-delivery",
+    "repositoryModified": false,
+    "repositoryPushed": false,
+    "deployed": false,
+    "realCodexHostTest": "not-run",
+    "realClaudeHostTest": "not-run",
+    "powerPointTest": "not-run",
+    "keynoteTest": "not-run"
+  },
+  "research": {
+    "state": "corrected-targeted-baseline-with-explicit-gaps",
+    "allFilmFramesVerified": false,
+    "allTEProductsReviewed": false,
+    "systematicReviewThrough2026": false,
+    "privateSlidesCodeInspected": false
+  },
+  "nextAction": "Review MODEL_ROUTING.zh-CN.md, select an actually available user-approved Sol model and DWI-000 High effort in the host, then execute prompts/START.md. These files do not switch host settings."
+}

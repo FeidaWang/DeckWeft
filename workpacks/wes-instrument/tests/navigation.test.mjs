@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {reconcileSelection,navigate,keyDelta,shouldTick} from '../lib/navigation.mjs';
+test('empty and one-slide states are safe',()=>{assert.deepEqual(navigate([],null,1),{id:null,index:-1,count:0});assert.deepEqual(navigate(['a'],'a',1),{id:'a',index:0,count:1});});
+test('selection survives reordering by stable ID',()=>{assert.deepEqual(reconcileSelection(['c','a','b'],'b',0),{id:'b',index:2,count:3});});
+test('deleted selection falls back to a bounded previous index',()=>{assert.equal(reconcileSelection(['a','b'],'missing',100).id,'b');assert.equal(reconcileSelection(['a','b'],'missing',-3).id,'a');});
+test('navigation clamps and does not wrap',()=>{assert.equal(navigate(['a','b'],'a',-1).id,'a');assert.equal(navigate(['a','b'],'b',1).id,'b');assert.equal(navigate(['a','b'],'a',1).id,'b');});
+test('duplicate IDs and fractional deltas are invalid',()=>{assert.throws(()=>navigate(['a','a'],'a',1));assert.throws(()=>navigate(['a'],'a',.5));});
+test('keyboard arrows, Home and End map to the current state',()=>{const state={count:20,index:5};assert.equal(keyDelta('ArrowRight',state),1);assert.equal(keyDelta('Home',state),-5);assert.equal(keyDelta('End',state),14);assert.equal(keyDelta('PageDown',state),10);assert.equal(keyDelta('Escape',state),null);});
+test('IME and editable controls do not trigger navigation',()=>{assert.equal(keyDelta('ArrowRight',{count:5,index:1,composing:true}),null);assert.equal(keyDelta('ArrowRight',{count:5,index:1,editable:true}),null);assert.equal(keyDelta('End',{count:1,index:0}),null);});
+test('invalid keyboard navigation states fail explicitly',()=>{assert.throws(()=>keyDelta('Home',{count:-1,index:0}));assert.throws(()=>keyDelta('Home',{count:0,index:0}));});
+test('ticks are silent by default, in presentation, and in hidden tabs',()=>{const base={nowMs:500,enabled:true,unlocked:true,changed:true};assert.equal(shouldTick({nowMs:1}),false);assert.equal(shouldTick(base),true);assert.equal(shouldTick({...base,presenting:true}),false);assert.equal(shouldTick({...base,visible:false}),false);assert.equal(shouldTick({...base,unlocked:false}),false);});
+test('tick rate limiter suppresses rather than queues events',()=>{const base={nowMs:500,lastTickMs:480,enabled:true,unlocked:true,changed:true};assert.equal(shouldTick(base),false);assert.equal(shouldTick({...base,lastTickMs:450}),true);assert.equal(shouldTick({...base,lastTickMs:600}),false);assert.throws(()=>shouldTick({nowMs:NaN}));});

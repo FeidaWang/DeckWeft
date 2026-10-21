@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deckweft:workpack:palette:v1",
+  "title": "Workpack community-palette seed (not a film-frame schema)",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "palettes",
+    "derivation",
+    "aliases",
+    "excludedLibraryEntries"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "generatedOn": {
+      "type": "string",
+      "format": "date"
+    },
+    "colorSpace": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "aliases": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "excludedLibraryEntries": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "palettes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "film",
+          "category",
+          "source",
+          "colors",
+          "recommendedUse",
+          "derivedModes",
+          "screenshot"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+          },
+          "film": {
+            "type": "object",
+            "required": [
+              "id",
+              "title",
+              "year",
+              "kind"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "year": {
+                "type": "integer"
+              },
+              "kind": {
+                "enum": [
+                  "feature",
+                  "short"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "category": {
+            "enum": [
+              "earth",
+              "mixed",
+              "pastel"
+            ]
+          },
+          "source": {
+            "type": "object",
+            "required": [
+              "sourceId",
+              "gitBlobSha",
+              "evidence",
+              "filmFrameVerified",
+              "frameTimestamp",
+              "officialPalette"
+            ],
+            "properties": {
+              "type": {
+                "const": "community-palette-library"
+              },
+              "sourceId": {
+                "const": "SRC-WES"
+              },
+              "path": {
+                "const": "R/colors.R"
+              },
+              "gitBlobSha": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              },
+              "evidence": {
+                "const": "library-values-verified"
+              },
+              "filmFrameVerified": {
+                "const": false
+              },
+              "frameTimestamp": {
+                "type": "null"
+              },
+              "officialPalette": {
+                "const": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "colors": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "hex",
+                "rgb",
+                "labD65"
+              ],
+              "properties": {
+                "hex": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-F]{6}$"
+                },
+                "rgb": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "labD65": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "recommendedUse": {
+            "type": "object"
+          },
+          "derivedModes": {
+            "type": "object",
+            "required": [
+              "light",
+              "dark",
+              "stage"
+            ],
+            "properties": {
+              "light": {
+                "type": "object",
+                "required": [
+                  "canvas",
+                  "surface",
+                  "text",
+                  "mutedText",
+                  "accent",
+                  "onAccent",
+                  "link",
+                  "focusRing",
+                  "essentialStroke",
+                  "referenceText",
+                  "diagramFill",
+                  "diagramText",
+                  "diagramConnector",
+                  "missingMark",
+                  "seriesOutlines",
+                  "series",
+                  "semanticPolicy"
+                ],
+                "properties": {
+                  "canvas": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "surface": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "text": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "mutedText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "accent": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "onAccent": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "link": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "focusRing": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "essentialStroke": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "referenceText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramFill": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramConnector": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "missingMark": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "seriesOutlines": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "series": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^#[0-9A-F]{6}$"
+                    }
+                  },
+                  "semanticPolicy": {
+                    "const": "source-colors-not-semantic-status"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "dark": {
+                "type": "object",
+                "required": [
+                  "canvas",
+                  "surface",
+                  "text",
+                  "mutedText",
+                  "accent",
+                  "onAccent",
+                  "link",
+                  "focusRing",
+                  "essentialStroke",
+                  "referenceText",
+                  "diagramFill",
+                  "diagramText",
+                  "diagramConnector",
+                  "missingMark",
+                  "seriesOutlines",
+                  "series",
+                  "semanticPolicy"
+                ],
+                "properties": {
+                  "canvas": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "surface": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "text": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "mutedText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "accent": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "onAccent": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "link": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "focusRing": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "essentialStroke": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "referenceText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramFill": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramConnector": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "missingMark": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "seriesOutlines": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "series": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^#[0-9A-F]{6}$"
+                    }
+                  },
+                  "semanticPolicy": {
+                    "const": "source-colors-not-semantic-status"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "stage": {
+                "type": "object",
+                "required": [
+                  "canvas",
+                  "surface",
+                  "text",
+                  "mutedText",
+                  "accent",
+                  "onAccent",
+                  "link",
+                  "focusRing",
+                  "essentialStroke",
+                  "referenceText",
+                  "diagramFill",
+                  "diagramText",
+                  "diagramConnector",
+                  "missingMark",
+                  "seriesOutlines",
+                  "series",
+                  "semanticPolicy"
+                ],
+                "properties": {
+                  "canvas": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "surface": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "text": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "mutedText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "accent": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "onAccent": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "link": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "focusRing": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "essentialStroke": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "referenceText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramFill": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramText": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "diagramConnector": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "missingMark": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "seriesOutlines": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-F]{6}$"
+                  },
+                  "series": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^#[0-9A-F]{6}$"
+                    }
+                  },
+                  "semanticPolicy": {
+                    "const": "source-colors-not-semantic-status"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "screenshot": {
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "derivation": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "implementation"
+      ],
+      "properties": {
+        "id": {
+          "const": "semantic-role-mapping"
+        },
+        "version": {
+          "const": 1
+        },
+        "implementation": {
+          "const": "lib/color.mjs#deriveMode"
+        },
+        "neutralStrategy": {
+          "type": "string"
+        },
+        "comparisonMetric": {
+          "type": "string"
+        },
+        "profileAssumption": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$comment": "This seed contract deliberately prohibits claiming licensed frame verification; a richer reviewed source contract needs a future schema version. The supplied JS validator is a bounded field/semantic validator, not a full JSON Schema implementation."
+}

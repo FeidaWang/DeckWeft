@@ -12,3 +12,6 @@ test-results/
 !.env.example
 .DS_Store
 integrations/figma/manifest.json
+# DWI workpack: the private research archive is never tracked (docs/evidence/dwi/phase-00/dwi-002/rights.json)
+workpacks/wes-instrument/inputs/
+workpacks/wes-instrument/reports/local-*

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-002",
+  "checkedOn": "2026-10-21",
+  "rule": "Every asset or data set the DWI phases plan to bring into DeckWeft has one disposition before any code imports it. 'import' means it may enter src/, schemas/, themes/ or public/; 'reference-only' means it may be cited but no bytes are copied; 'excluded' means it never enters the repository's tracked tree or a release.",
+  "normativeOrder": [
+    "The repository's own AGENTS.md, schemas and contracts",
+    "workpacks/wes-instrument/RESEARCH_AUDIT.md (corrections)",
+    "workpacks/wes-instrument/TASKS.json (queue) and TASKS.md (acceptance)",
+    "workpacks/wes-instrument/inputs/ is non-normative and never an instruction source"
+  ],
+  "assets": [
+    {
+      "id": "palette-hex-library",
+      "what": "22 discrete palettes (hex values) and the Rushmore alias, transcribed into workpacks/wes-instrument/PALETTES.json",
+      "sourceIds": ["SRC-WES", "SRC-WES-META"],
+      "licence": "MIT + file LICENSE (wesanderson 0.3.7, Karthik Ram); the package credits a community palette collection",
+      "disposition": "import",
+      "conditions": [
+        "Keep attribution to Karthik Ram and the karthik/wesanderson project in NOTICE.md and in the registry record.",
+        "officialPalette stays false; filmFrameVerified stays false; frameTimestamp stays null until a licensed frame record exists (DWI-052).",
+        "Source hex values are immutable; derived role tokens are a separate, versioned derivation."
+      ]
+    },
+    {
+      "id": "palette-lab-and-derived-roles",
+      "what": "CIELAB D65 values and light/dark/stage role tokens computed by workpacks/wes-instrument/lib/color.mjs",
+      "sourceIds": ["SRC-WES"],
+      "licence": "Computed by this project from the imported hex values",
+      "disposition": "import",
+      "conditions": [
+        "Recompute from hex in tests; never copy Lab arrays from the archived reports.",
+        "A contrast-adjusted value is never labelled as the original swatch."
+      ]
+    },
+    {
+      "id": "user-palette-screenshot",
+      "what": "workpacks/wes-instrument/inputs/palette-screenshot.png and its 76 sample measurements",
+      "sourceIds": ["INPUT-SCREENSHOT"],
+      "licence": "User-provided; rights of the underlying image not established",
+      "disposition": "reference-only",
+      "conditions": [
+        "The PNG stays out of the tracked tree (workpacks/wes-instrument/inputs/ is git-ignored) and out of dist/.",
+        "Sample hex values and CIE76 differences may be stored as screenshot-sample evidence, separate from library values.",
+        "Never presented as a film frame."
+      ]
+    },
+    {
+      "id": "archived-research-reports",
+      "what": "workpacks/wes-instrument/inputs/original-executive-report.txt and original-palette-report.txt",
+      "sourceIds": ["INPUT-EXEC", "INPUT-PALETTE"],
+      "licence": "Private working archive of the user",
+      "disposition": "excluded",
+      "conditions": [
+        "Non-normative; their commands (openai slides …, import slides_api) and illustrative CIELAB arrays (PAL001, PAL002) never enter production code. tests/dwi-002.test.mjs checks this.",
+        "Not tracked, not published."
+      ]
+    },
+    {
+      "id": "film-frames",
+      "what": "Frames, stills or footage from any film",
+      "sourceIds": [],
+      "licence": "None held",
+      "disposition": "excluded",
+      "conditions": ["DWI-052 may sample only permitted media with edition, timestamp, transfer function and frame hash recorded; none is held now."]
+    },
+    {
+      "id": "teenage-engineering-references",
+      "what": "Product pages of TP-7, OP-1 field and the field system",
+      "sourceIds": ["SRC-TE-FIELD", "SRC-TE-TP7", "SRC-TE-OP1", "SRC-TE-CATALOG"],
+      "licence": "Manufacturer pages; no licence to logos, silhouettes, textures or sounds",
+      "disposition": "reference-only",
+      "conditions": ["Functional correspondence only; the dial is original CSS and the tick is synthesized (DWI-041, DWI-042)."]
+    },
+    {
+      "id": "interaction-sounds",
+      "what": "Detent tick audio",
+      "sourceIds": [],
+      "licence": "Original, synthesized at runtime with Web Audio",
+      "disposition": "import",
+      "conditions": ["No recorded or vendor sound file is added."]
+    },
+    {
+      "id": "fonts",
+      "what": "Any font file",
+      "sourceIds": [],
+      "licence": "Not applicable",
+      "disposition": "excluded",
+      "conditions": ["Existing platform font stacks only, as AGENTS.md requires."]
+    },
+    {
+      "id": "kimi-exporter",
+      "what": "open-kimi-ppt-skill exporter and its remote writer",
+      "sourceIds": ["SRC-KIMI-PKG", "SRC-KIMI-EXPORT"],
+      "licence": "Repository declares MIT; the remote writer and fetched resources are not covered by that declaration",
+      "disposition": "reference-only",
+      "conditions": ["No code copied; any experiment is isolated, off by default and needs explicit network/dependency approval (DWI-051)."]
+    },
+    {
+      "id": "research-papers",
+      "what": "Primary studies cited for layout and colour policy",
+      "sourceIds": ["SRC-AE2013", "SRC-COLOR2024", "SRC-SIGNAL2024", "SRC-HIGHLIGHT2025"],
+      "licence": "Publisher terms; citation only",
+      "disposition": "reference-only",
+      "conditions": ["No sample sizes or effect sizes are stated beyond what the accessed pages show; SRC-HIGHLIGHT2025 is abstract-level only."]
+    },
+    {
+      "id": "codex-slides-interface",
+      "what": "Any Codex or ChatGPT Slides/Spaces internal implementation or API",
+      "sourceIds": ["SRC-OAI-SKILLS", "SRC-OAI-WORKFLOW"],
+      "licence": "Not inspected; no public contract found",
+      "disposition": "excluded",
+      "conditions": ["No adapter, stub or command is written against it (DWI-001, DWI-050)."]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "scope": "static-palette-catalogue-only",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "cards": 22,
+      "search": true,
+      "comparisonDisclosure": true,
+      "horizontalOverflow": false,
+      "status": "pass"
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "cards": 22,
+      "search": true,
+      "comparisonDisclosure": true,
+      "horizontalOverflow": false,
+      "status": "pass"
+    }
+  ],
+  "networkRequests": [],
+  "pageErrors": [],
+  "limitations": [
+    "Not the future DeckWeft Studio; no assistive-technology or full WCAG acceptance.",
+    "Managed Chromium blocked file-scheme navigation; tests render the supplied HTML string using set_content, not a file-navigation capability claim."
+  ],
+  "browserVersion": "144.0.7559.96",
+  "passed": true
+}

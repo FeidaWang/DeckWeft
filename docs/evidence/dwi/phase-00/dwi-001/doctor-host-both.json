@@ -1,0 +1,65 @@
+{
+  "application": "DeckWeft",
+  "version": "0.1.0-alpha.2",
+  "hosts": [
+    {
+      "format": "deckweft-host-capabilities",
+      "version": 1,
+      "host": "codex",
+      "surface": "local-cli",
+      "checkedAt": "2026-10-21T12:43:09.661Z",
+      "workspaceHash": "5f070546000450ec54e24d05701b5d6be6faaf3b230b4732333c5a8de30983ee",
+      "configurationFingerprint": "8e4652fa618253608fc36bf175f764908ee6f9ed27eb16b0a6175d88af54df58",
+      "available": true,
+      "cliVersion": "codex-cli 0.160.0",
+      "authentication": {
+        "status": "unknown",
+        "evidence": "not-probed"
+      },
+      "billingRoute": "unknown; existing host configuration is retained",
+      "structuredOutput": "advertised",
+      "imageInput": "advertised-not-delivery-verified",
+      "permissionMode": null,
+      "writableScope": "read-only child; parent applies validated local tools",
+      "renderer": "shared local renderer; actual capture is supplied separately",
+      "domDiagnostics": "requires explicit browser capture callback",
+      "imageBackend": "unknown; no generation request",
+      "timeout": {
+        "supported": true,
+        "maximumMs": 600000
+      },
+      "ready": true,
+      "id": "f57f34e18c0e00b8c74cc3a570bf76c69c27dbb0739caac25326a842ecf11678"
+    },
+    {
+      "format": "deckweft-host-capabilities",
+      "version": 1,
+      "host": "claude-code",
+      "surface": "local-cli",
+      "checkedAt": "2026-10-21T12:43:09.699Z",
+      "workspaceHash": "5f070546000450ec54e24d05701b5d6be6faaf3b230b4732333c5a8de30983ee",
+      "configurationFingerprint": "211b8783cedcb9dcaa3497fd3cae5dfcc9f2e1057b0e03670213e37622eac099",
+      "available": true,
+      "cliVersion": "2.1.288 (Claude Code)",
+      "authentication": {
+        "status": "unknown",
+        "evidence": "not-probed"
+      },
+      "billingRoute": "unknown; existing host configuration is retained",
+      "structuredOutput": "advertised",
+      "imageInput": "advertised-not-delivery-verified",
+      "permissionMode": "manual",
+      "writableScope": "built-in tools disabled; parent applies validated local tools",
+      "renderer": "shared local renderer; actual capture is supplied separately",
+      "domDiagnostics": "requires explicit browser capture callback",
+      "imageBackend": "unknown; no generation request",
+      "timeout": {
+        "supported": true,
+        "maximumMs": 600000
+      },
+      "ready": true,
+      "id": "ed717d9f095a7c8cae02a3182cc3c6eccb4d8b3d634d0126241970a9886245cb"
+    }
+  ]
+}
+

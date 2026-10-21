@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-only-checkout-inventory",
+  "root": "<repo>",
+  "nodeVersion": "v24.14.0",
+  "git": {
+    "head": {
+      "exitCode": 0,
+      "stdout": "05643c614cf7d981227b0a14be02a2d65eda15c3",
+      "error": null
+    },
+    "status": {
+      "exitCode": 0,
+      "stdout": "?? docs/evidence/dwi/\n?? workpacks/",
+      "error": null
+    }
+  },
+  "package": {
+    "name": "deckweft",
+    "version": "0.1.0-alpha.2",
+    "type": "module",
+    "engines": {
+      "node": ">=22.0.0"
+    },
+    "scripts": {
+      "start": "node bin/deckweft.mjs studio --open",
+      "test": "node --test tests/*.test.mjs",
+      "check": "node scripts/check.mjs",
+      "build": "node scripts/build.mjs",
+      "demo": "node scripts/demo.mjs",
+      "types": "node scripts/types.mjs",
+      "verify": "npm run types && npm test && npm run check && npm run build && npm run demo",
+      "doctor": "node bin/deckweft.mjs doctor",
+      "visual:baseline": "node scripts/capture-visual-baseline.mjs",
+      "visual:render": "node scripts/render-visual.mjs",
+      "visual:capture": "node scripts/capture-visual.mjs",
+      "visual:preview": "node scripts/preview-visual.mjs",
+      "studio:visual-demo": "node scripts/preview-visual-studio.mjs",
+      "studio:compositions": "node scripts/preview-visual-studio.mjs --compositions",
+      "studio:assets": "node scripts/preview-visual-studio.mjs --assets",
+      "studio:components": "node scripts/preview-visual-studio.mjs --components",
+      "studio:interactions": "node scripts/preview-visual-studio.mjs --interactions",
+      "visual:verify": "node scripts/visual-verify.mjs",
+      "visual:review": "node scripts/visual-verify.mjs --serve",
+      "deck:create": "node scripts/deck-task.mjs",
+      "deck:task": "node scripts/deck-task.mjs",
+      "deck:verify": "node tests/browser_visual_task.mjs",
+      "deck:review": "node scripts/visual-verify.mjs --serve --out dist/visual-task",
+      "host:visual": "node scripts/host-visual-acceptance.mjs",
+      "export:targets": "node scripts/export-targets.mjs",
+      "status:record": "node scripts/status-summary.mjs --record",
+      "status:check": "node scripts/status-summary.mjs --check"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "typescript": "5.9.3"
+    }
+  },
+  "packageError": null,
+  "paths": [
+    {
+      "path": "AGENTS.md",
+      "exists": true
+    },
+    {
+      "path": "package.json",
+      "exists": true
+    },
+    {
+      "path": "README.md",
+      "exists": true
+    },
+    {
+      "path": "ROADMAP.md",
+      "exists": true
+    },
+    {
+      "path": "PROJECT_STATUS.json",
+      "exists": true
+    },
+    {
+      "path": "schemas/project.schema.json",
+      "exists": true
+    },
+    {
+      "path": "src/core",
+      "exists": true
+    },
+    {
+      "path": "src/layout",
+      "exists": true
+    },
+    {
+      "path": "src/render",
+      "exists": true
+    },
+    {
+      "path": "src/services",
+      "exists": true
+    },
+    {
+      "path": "src/plugin",
+      "exists": true
+    },
+    {
+      "path": "public/shell.js",
+      "exists": true
+    },
+    {
+      "path": "public/app.js",
+      "exists": true
+    },
+    {
+      "path": "public/interaction.js",
+      "exists": true
+    },
+    {
+      "path": "public/history.js",
+      "exists": true
+    }
+  ],
+  "applicationTestsRun": false,
+  "networkUsed": false,
+  "filesWritten": false,
+  "nextAction": "Read repository instructions and inspect scripts. Resolve baseline failures before application edits."
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-21",
+  "inspectionMethod": "GitHub connector reads; selected source content only",
+  "repositories": [
+    {
+      "id": "DeckWeft",
+      "repository": "FeidaWang/DeckWeft",
+      "branch": "main",
+      "commit": "05643c614cf7d981227b0a14be02a2d65eda15c3",
+      "commitDate": "2026-10-20T23:39:06Z",
+      "tree": "281bf760a446f242153a008b02f03a245b8e8885",
+      "sourceIds": [
+        "SRC-DW-AGENTS",
+        "SRC-DW-PKG",
+        "SRC-DW-README",
+        "SRC-DW-ARCH"
+      ],
+      "runtime": "Node.js >=22, ESM",
+      "applicationExecutedHere": false,
+      "completeSourceAudit": false,
+      "observedScripts": [
+        "verify",
+        "test",
+        "check",
+        "build",
+        "types",
+        "demo",
+        "visual:verify",
+        "host:visual",
+        "export:targets"
+      ],
+      "knownDocumentedPaths": [
+        "schemas/project.schema.json",
+        "src/core",
+        "src/layout",
+        "src/render",
+        "src/services",
+        "src/plugin",
+        "src/design/scene-semantics.mjs",
+        "src/components/charts/semantics.mjs",
+        "public/shell.js",
+        "public/app.js",
+        "public/kinds/classic.js",
+        "public/kinds/visual.js",
+        "public/interaction.js",
+        "public/history.js"
+      ],
+      "limitations": [
+        "The upstream commit message reports test results; these were not rerun here.",
+        "The architecture tool output was truncated.",
+        "No current local checkout was available for full integration tests."
+      ]
+    },
+    {
+      "id": "open-kimi-ppt-skill",
+      "repository": "acnlie/open-kimi-ppt-skill",
+      "branch": "main",
+      "commit": "c32890fe0985bdf668f2722fed30f1010bdf24c9",
+      "sourceIds": [
+        "SRC-KIMI-PKG",
+        "SRC-KIMI-EXPORT"
+      ],
+      "applicationExecutedHere": false,
+      "completeSourceAudit": false,
+      "limitations": [
+        "Only selected package metadata and the beginning of the exporter were read.",
+        "Remote dependencies were not installed or invoked."
+      ]
+    }
+  ]
+}

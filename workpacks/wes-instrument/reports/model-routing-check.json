@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "scope": "workpack-routing-records-only",
+  "passed": true,
+  "routes": 29,
+  "buildEffortCounts": {
+    "low": 1,
+    "medium": 10,
+    "high": 18,
+    "xhigh": 0
+  },
+  "taskPrompts": 29,
+  "phasePrompts": 7,
+  "originalTaskContractsPreserved": true,
+  "originalTaskStatesPreserved": true,
+  "preservedFiles": [
+    "PALETTES.json",
+    "palette-catalog.html",
+    "data/library-values.json",
+    "data/screenshot-audit.json",
+    "inputs/palette-screenshot.png",
+    "inputs/original-executive-report.txt",
+    "inputs/original-palette-report.txt",
+    "lib/color.mjs",
+    "lib/navigation.mjs",
+    "reports/catalogue-desktop.png",
+    "reports/catalogue-mobile.png"
+  ],
+  "originalV1ModelRoutingAudit": [
+    {
+      "path": "AGENTS.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "DESIGN_SYSTEM.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "MASTER_PLAN.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "README.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "TASKS.json",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "TASKS.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "prompts/PHASE_00.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "prompts/PHASE_01.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "prompts/PHASE_02.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "prompts/PHASE_03.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "prompts/PHASE_04.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "prompts/PHASE_05.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "prompts/PHASE_06.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    },
+    {
+      "path": "prompts/START.md",
+      "hadModelRoutingKey": false,
+      "hadReasoningEffortSetting": false,
+      "hadNamedEffortLabels": false
+    }
+  ],
+  "actualModelCallPerformed": false,
+  "hostSettingsChanged": false,
+  "comparativeModelBenchmarkPerformed": false,
+  "note": "Shape and recommendation consistency are tested; no actual model-selection or application execution claim."
+}

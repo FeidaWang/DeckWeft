@@ -1,0 +1,672 @@
+
+> deckweft-cinematic-workpack@1.1.0 verify
+> npm test && npm run check
+
+
+> deckweft-cinematic-workpack@1.1.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: six-digit RGB parsing and round trip
+ok 1 - six-digit RGB parsing and round trip
+  ---
+  duration_ms: 3.886786
+  type: 'test'
+  ...
+# Subtest: invalid hex inputs are rejected
+ok 2 - invalid hex inputs are rejected
+  ---
+  duration_ms: 0.777479
+  type: 'test'
+  ...
+# Subtest: invalid RGB channels are rejected
+ok 3 - invalid RGB channels are rejected
+  ---
+  duration_ms: 0.221623
+  type: 'test'
+  ...
+# Subtest: sRGB transfer curve uses the linear low segment
+ok 4 - sRGB transfer curve uses the linear low segment
+  ---
+  duration_ms: 0.454023
+  type: 'test'
+  ...
+# Subtest: known luminance endpoints and primaries
+ok 5 - known luminance endpoints and primaries
+  ---
+  duration_ms: 0.478099
+  type: 'test'
+  ...
+# Subtest: black-white contrast is 21 and same-colour contrast is 1
+ok 6 - black-white contrast is 21 and same-colour contrast is 1
+  ---
+  duration_ms: 0.316707
+  type: 'test'
+  ...
+# Subtest: contrast is symmetric
+ok 7 - contrast is symmetric
+  ---
+  duration_ms: 0.333562
+  type: 'test'
+  ...
+# Subtest: contrast thresholds are not rounded upwards
+ok 8 - contrast thresholds are not rounded upwards
+  ---
+  duration_ms: 0.225449
+  type: 'test'
+  ...
+# Subtest: D65 Lab agrees with known black, white and red references
+ok 9 - D65 Lab agrees with known black, white and red references
+  ---
+  duration_ms: 0.720995
+  type: 'test'
+  ...
+# Subtest: CIE76 is Euclidean, not CIEDE2000
+ok 10 - CIE76 is Euclidean, not CIEDE2000
+  ---
+  duration_ms: 0.560203
+  type: 'test'
+  ...
+# Subtest: mixing preserves endpoints and uses deterministic half-even rounding
+ok 11 - mixing preserves endpoints and uses deterministic half-even rounding
+  ---
+  duration_ms: 0.365409
+  type: 'test'
+  ...
+# Subtest: best text selection is deterministic and has input guards
+ok 12 - best text selection is deterministic and has input guards
+  ---
+  duration_ms: 0.281914
+  type: 'test'
+  ...
+# Subtest: derived roles do not mutate source colours
+ok 13 - derived roles do not mutate source colours
+  ---
+  duration_ms: 0.978351
+  type: 'test'
+  ...
+# Subtest: derivation rejects unknown modes and missing colours
+ok 14 - derivation rejects unknown modes and missing colours
+  ---
+  duration_ms: 0.164467
+  type: 'test'
+  ...
+# Subtest: palette BottleRocket1: raw values, Lab, derived roles and provenance
+ok 15 - palette BottleRocket1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 7.911539
+  type: 'test'
+  ...
+# Subtest: palette BottleRocket2: raw values, Lab, derived roles and provenance
+ok 16 - palette BottleRocket2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.573537
+  type: 'test'
+  ...
+# Subtest: palette Rushmore1: raw values, Lab, derived roles and provenance
+ok 17 - palette Rushmore1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.975471
+  type: 'test'
+  ...
+# Subtest: palette Royal1: raw values, Lab, derived roles and provenance
+ok 18 - palette Royal1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.681319
+  type: 'test'
+  ...
+# Subtest: palette Royal2: raw values, Lab, derived roles and provenance
+ok 19 - palette Royal2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 2.689736
+  type: 'test'
+  ...
+# Subtest: palette Zissou1: raw values, Lab, derived roles and provenance
+ok 20 - palette Zissou1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 3.76291
+  type: 'test'
+  ...
+# Subtest: palette Darjeeling1: raw values, Lab, derived roles and provenance
+ok 21 - palette Darjeeling1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.77144
+  type: 'test'
+  ...
+# Subtest: palette Darjeeling2: raw values, Lab, derived roles and provenance
+ok 22 - palette Darjeeling2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.547454
+  type: 'test'
+  ...
+# Subtest: palette Chevalier1: raw values, Lab, derived roles and provenance
+ok 23 - palette Chevalier1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.92403
+  type: 'test'
+  ...
+# Subtest: palette FantasticFox1: raw values, Lab, derived roles and provenance
+ok 24 - palette FantasticFox1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 2.123224
+  type: 'test'
+  ...
+# Subtest: palette Moonrise1: raw values, Lab, derived roles and provenance
+ok 25 - palette Moonrise1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.9281
+  type: 'test'
+  ...
+# Subtest: palette Moonrise2: raw values, Lab, derived roles and provenance
+ok 26 - palette Moonrise2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 2.4
+  type: 'test'
+  ...
+# Subtest: palette Moonrise3: raw values, Lab, derived roles and provenance
+ok 27 - palette Moonrise3: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.722287
+  type: 'test'
+  ...
+# Subtest: palette Cavalcanti1: raw values, Lab, derived roles and provenance
+ok 28 - palette Cavalcanti1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.59831
+  type: 'test'
+  ...
+# Subtest: palette GrandBudapest1: raw values, Lab, derived roles and provenance
+ok 29 - palette GrandBudapest1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.519041
+  type: 'test'
+  ...
+# Subtest: palette GrandBudapest2: raw values, Lab, derived roles and provenance
+ok 30 - palette GrandBudapest2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.490597
+  type: 'test'
+  ...
+# Subtest: palette IsleofDogs1: raw values, Lab, derived roles and provenance
+ok 31 - palette IsleofDogs1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.614894
+  type: 'test'
+  ...
+# Subtest: palette IsleofDogs2: raw values, Lab, derived roles and provenance
+ok 32 - palette IsleofDogs2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.420983
+  type: 'test'
+  ...
+# Subtest: palette FrenchDispatch: raw values, Lab, derived roles and provenance
+ok 33 - palette FrenchDispatch: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 1.022839
+  type: 'test'
+  ...
+# Subtest: palette AsteroidCity1: raw values, Lab, derived roles and provenance
+ok 34 - palette AsteroidCity1: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.569427
+  type: 'test'
+  ...
+# Subtest: palette AsteroidCity2: raw values, Lab, derived roles and provenance
+ok 35 - palette AsteroidCity2: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.856008
+  type: 'test'
+  ...
+# Subtest: palette AsteroidCity3: raw values, Lab, derived roles and provenance
+ok 36 - palette AsteroidCity3: raw values, Lab, derived roles and provenance
+  ---
+  duration_ms: 0.463307
+  type: 'test'
+  ...
+# Subtest: entire workpack validates with all required files
+ok 37 - entire workpack validates with all required files
+  ---
+  duration_ms: 35.313694
+  type: 'test'
+  ...
+# Subtest: bad colour and an invented official verification are rejected
+ok 38 - bad colour and an invented official verification are rejected
+  ---
+  duration_ms: 6.666616
+  type: 'test'
+  ...
+# Subtest: low contrast role edits are rejected
+ok 39 - low contrast role edits are rejected
+  ---
+  duration_ms: 13.322528
+  type: 'test'
+  ...
+# Subtest: invalid and cyclic aliases are not accepted
+ok 40 - invalid and cyclic aliases are not accepted
+  ---
+  duration_ms: 7.234641
+  type: 'test'
+  ...
+# Subtest: all 29 tasks form seven phases with a valid dependency graph
+ok 41 - all 29 tasks form seven phases with a valid dependency graph
+  ---
+  duration_ms: 0.406602
+  type: 'test'
+  ...
+# Subtest: missing task dependencies and cycles are rejected
+ok 42 - missing task dependencies and cycles are rejected
+  ---
+  duration_ms: 0.447984
+  type: 'test'
+  ...
+# Subtest: task path traversal and duplicates are rejected
+ok 43 - task path traversal and duplicates are rejected
+  ---
+  duration_ms: 0.993344
+  type: 'test'
+  ...
+# Subtest: schema documents are local JSON and declare their purpose
+ok 44 - schema documents are local JSON and declare their purpose
+  ---
+  duration_ms: 0.663899
+  type: 'test'
+  ...
+# Subtest: safe artifact paths are bounded and platform-independent
+ok 45 - safe artifact paths are bounded and platform-independent
+  ---
+  duration_ms: 0.197698
+  type: 'test'
+  ...
+# Subtest: well-formed scoped evidence validates without implying global acceptance
+ok 46 - well-formed scoped evidence validates without implying global acceptance
+  ---
+  duration_ms: 0.348594
+  type: 'test'
+  ...
+# Subtest: accepted evidence rejects skipped checks
+ok 47 - accepted evidence rejects skipped checks
+  ---
+  duration_ms: 0.348965
+  type: 'test'
+  ...
+# Subtest: accepted host evidence requires actual host identity/version
+ok 48 - accepted host evidence requires actual host identity/version
+  ---
+  duration_ms: 0.331449
+  type: 'test'
+  ...
+# Subtest: evidence cannot call nonzero exit codes a pass or omit artifacts
+ok 49 - evidence cannot call nonzero exit codes a pass or omit artifacts
+  ---
+  duration_ms: 0.222705
+  type: 'test'
+  ...
+# Subtest: malformed evidence does not turn into a passing record
+ok 50 - malformed evidence does not turn into a passing record
+  ---
+  duration_ms: 0.243256
+  type: 'test'
+  ...
+# Subtest: inspector reads a synthetic checkout without running its scripts
+ok 51 - inspector reads a synthetic checkout without running its scripts
+  ---
+  duration_ms: 49.325944
+  type: 'test'
+  ...
+# Subtest: inspector reports unavailable git/package metadata without simulated success
+ok 52 - inspector reports unavailable git/package metadata without simulated success
+  ---
+  duration_ms: 8.120864
+  type: 'test'
+  ...
+# Subtest: inspector rejects an absent path
+ok 53 - inspector rejects an absent path
+  ---
+  duration_ms: 2.673551
+  type: 'test'
+  ...
+# Subtest: routing DWI-000: explicit build/review/ceiling and concrete task prompt
+ok 54 - routing DWI-000: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 3.766245
+  type: 'test'
+  ...
+# Subtest: routing DWI-001: explicit build/review/ceiling and concrete task prompt
+ok 55 - routing DWI-001: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 1.218913
+  type: 'test'
+  ...
+# Subtest: routing DWI-002: explicit build/review/ceiling and concrete task prompt
+ok 56 - routing DWI-002: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.424609
+  type: 'test'
+  ...
+# Subtest: routing DWI-003: explicit build/review/ceiling and concrete task prompt
+ok 57 - routing DWI-003: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.502706
+  type: 'test'
+  ...
+# Subtest: routing DWI-010: explicit build/review/ceiling and concrete task prompt
+ok 58 - routing DWI-010: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.602006
+  type: 'test'
+  ...
+# Subtest: routing DWI-011: explicit build/review/ceiling and concrete task prompt
+ok 59 - routing DWI-011: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 2.575754
+  type: 'test'
+  ...
+# Subtest: routing DWI-012: explicit build/review/ceiling and concrete task prompt
+ok 60 - routing DWI-012: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.66523
+  type: 'test'
+  ...
+# Subtest: routing DWI-013: explicit build/review/ceiling and concrete task prompt
+ok 61 - routing DWI-013: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.198158
+  type: 'test'
+  ...
+# Subtest: routing DWI-020: explicit build/review/ceiling and concrete task prompt
+ok 62 - routing DWI-020: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.642717
+  type: 'test'
+  ...
+# Subtest: routing DWI-021: explicit build/review/ceiling and concrete task prompt
+ok 63 - routing DWI-021: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.896779
+  type: 'test'
+  ...
+# Subtest: routing DWI-022: explicit build/review/ceiling and concrete task prompt
+ok 64 - routing DWI-022: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.50542
+  type: 'test'
+  ...
+# Subtest: routing DWI-023: explicit build/review/ceiling and concrete task prompt
+ok 65 - routing DWI-023: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.167652
+  type: 'test'
+  ...
+# Subtest: routing DWI-030: explicit build/review/ceiling and concrete task prompt
+ok 66 - routing DWI-030: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.162584
+  type: 'test'
+  ...
+# Subtest: routing DWI-031: explicit build/review/ceiling and concrete task prompt
+ok 67 - routing DWI-031: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.160161
+  type: 'test'
+  ...
+# Subtest: routing DWI-032: explicit build/review/ceiling and concrete task prompt
+ok 68 - routing DWI-032: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.236896
+  type: 'test'
+  ...
+# Subtest: routing DWI-033: explicit build/review/ceiling and concrete task prompt
+ok 69 - routing DWI-033: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.159269
+  type: 'test'
+  ...
+# Subtest: routing DWI-034: explicit build/review/ceiling and concrete task prompt
+ok 70 - routing DWI-034: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.139039
+  type: 'test'
+  ...
+# Subtest: routing DWI-040: explicit build/review/ceiling and concrete task prompt
+ok 71 - routing DWI-040: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.373191
+  type: 'test'
+  ...
+# Subtest: routing DWI-041: explicit build/review/ceiling and concrete task prompt
+ok 72 - routing DWI-041: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.657899
+  type: 'test'
+  ...
+# Subtest: routing DWI-042: explicit build/review/ceiling and concrete task prompt
+ok 73 - routing DWI-042: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.3458
+  type: 'test'
+  ...
+# Subtest: routing DWI-043: explicit build/review/ceiling and concrete task prompt
+ok 74 - routing DWI-043: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.819102
+  type: 'test'
+  ...
+# Subtest: routing DWI-050: explicit build/review/ceiling and concrete task prompt
+ok 75 - routing DWI-050: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.430097
+  type: 'test'
+  ...
+# Subtest: routing DWI-051: explicit build/review/ceiling and concrete task prompt
+ok 76 - routing DWI-051: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.421674
+  type: 'test'
+  ...
+# Subtest: routing DWI-052: explicit build/review/ceiling and concrete task prompt
+ok 77 - routing DWI-052: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.363597
+  type: 'test'
+  ...
+# Subtest: routing DWI-053: explicit build/review/ceiling and concrete task prompt
+ok 78 - routing DWI-053: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.464879
+  type: 'test'
+  ...
+# Subtest: routing DWI-060: explicit build/review/ceiling and concrete task prompt
+ok 79 - routing DWI-060: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.40528
+  type: 'test'
+  ...
+# Subtest: routing DWI-061: explicit build/review/ceiling and concrete task prompt
+ok 80 - routing DWI-061: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.544599
+  type: 'test'
+  ...
+# Subtest: routing DWI-062: explicit build/review/ceiling and concrete task prompt
+ok 81 - routing DWI-062: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.336857
+  type: 'test'
+  ...
+# Subtest: routing DWI-063: explicit build/review/ceiling and concrete task prompt
+ok 82 - routing DWI-063: explicit build/review/ceiling and concrete task prompt
+  ---
+  duration_ms: 0.342004
+  type: 'test'
+  ...
+# Subtest: all 29 routes have bounded medium/high defaults and only one low closing task
+ok 83 - all 29 routes have bounded medium/high defaults and only one low closing task
+  ---
+  duration_ms: 1.182698
+  type: 'test'
+  ...
+# Subtest: missing routes and unknown profiles fail validation
+ok 84 - missing routes and unknown profiles fail validation
+  ---
+  duration_ms: 1.15688
+  type: 'test'
+  ...
+# Subtest: default Extra High, Max and Ultra are not silently accepted
+ok 85 - default Extra High, Max and Ultra are not silently accepted
+  ---
+  duration_ms: 2.036603
+  type: 'test'
+  ...
+# Subtest: automatic model switching, paid fallback and extra-agent policies are rejected
+ok 86 - automatic model switching, paid fallback and extra-agent policies are rejected
+  ---
+  duration_ms: 2.137564
+  type: 'test'
+  ...
+# Subtest: actual host model cannot be fabricated in the shipped policy
+ok 87 - actual host model cannot be fabricated in the shipped policy
+  ---
+  duration_ms: 0.929148
+  type: 'test'
+  ...
+# Subtest: protected Astra substitution is not permitted
+ok 88 - protected Astra substitution is not permitted
+  ---
+  duration_ms: 0.975848
+  type: 'test'
+  ...
+# Subtest: review and escalation cannot silently drop below build effort
+ok 89 - review and escalation cannot silently drop below build effort
+  ---
+  duration_ms: 1.398203
+  type: 'test'
+  ...
+# Subtest: automatic per-task escalation and unbounded attempts fail
+ok 90 - automatic per-task escalation and unbounded attempts fail
+  ---
+  duration_ms: 0.965592
+  type: 'test'
+  ...
+# Subtest: task prompt path traversal and mismatched IDs fail
+ok 91 - task prompt path traversal and mismatched IDs fail
+  ---
+  duration_ms: 2.733051
+  type: 'test'
+  ...
+# Subtest: task-specific reasons and escalation triggers cannot be omitted
+ok 92 - task-specific reasons and escalation triggers cannot be omitted
+  ---
+  duration_ms: 1.161157
+  type: 'test'
+  ...
+# Subtest: separate review cannot be mislabelled independent or automatic
+ok 93 - separate review cannot be mislabelled independent or automatic
+  ---
+  duration_ms: 1.63578
+  type: 'test'
+  ...
+# Subtest: invalid IDs and absent tasks never silently select another route
+ok 94 - invalid IDs and absent tasks never silently select another route
+  ---
+  duration_ms: 0.693443
+  type: 'test'
+  ...
+# Subtest: print-only profile command returns explicit non-execution and no host changes
+ok 95 - print-only profile command returns explicit non-execution and no host changes
+  ---
+  duration_ms: 0.916478
+  type: 'test'
+  ...
+# Subtest: route output is a defensive copy
+ok 96 - route output is a defensive copy
+  ---
+  duration_ms: 0.276466
+  type: 'test'
+  ...
+# Subtest: malformed policies/queues are errors rather than exceptions or success
+ok 97 - malformed policies/queues are errors rather than exceptions or success
+  ---
+  duration_ms: 0.308574
+  type: 'test'
+  ...
+# Subtest: phase prompt mismatch is detected in a temporary copy
+ok 98 - phase prompt mismatch is detected in a temporary copy
+  ---
+  duration_ms: 54.682585
+  type: 'test'
+  ...
+# Subtest: empty and one-slide states are safe
+ok 99 - empty and one-slide states are safe
+  ---
+  duration_ms: 2.886271
+  type: 'test'
+  ...
+# Subtest: selection survives reordering by stable ID
+ok 100 - selection survives reordering by stable ID
+  ---
+  duration_ms: 0.208734
+  type: 'test'
+  ...
+# Subtest: deleted selection falls back to a bounded previous index
+ok 101 - deleted selection falls back to a bounded previous index
+  ---
+  duration_ms: 0.124898
+  type: 'test'
+  ...
+# Subtest: navigation clamps and does not wrap
+ok 102 - navigation clamps and does not wrap
+  ---
+  duration_ms: 0.105309
+  type: 'test'
+  ...
+# Subtest: duplicate IDs and fractional deltas are invalid
+ok 103 - duplicate IDs and fractional deltas are invalid
+  ---
+  duration_ms: 0.380523
+  type: 'test'
+  ...
+# Subtest: keyboard arrows, Home and End map to the current state
+ok 104 - keyboard arrows, Home and End map to the current state
+  ---
+  duration_ms: 0.463897
+  type: 'test'
+  ...
+# Subtest: IME and editable controls do not trigger navigation
+ok 105 - IME and editable controls do not trigger navigation
+  ---
+  duration_ms: 0.202545
+  type: 'test'
+  ...
+# Subtest: invalid keyboard navigation states fail explicitly
+ok 106 - invalid keyboard navigation states fail explicitly
+  ---
+  duration_ms: 0.15248
+  type: 'test'
+  ...
+# Subtest: ticks are silent by default, in presentation, and in hidden tabs
+ok 107 - ticks are silent by default, in presentation, and in hidden tabs
+  ---
+  duration_ms: 0.327813
+  type: 'test'
+  ...
+# Subtest: tick rate limiter suppresses rather than queues events
+ok 108 - tick rate limiter suppresses rather than queues events
+  ---
+  duration_ms: 0.56537
+  type: 'test'
+  ...
+1..108
+# tests 108
+# suites 0
+# pass 108
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 328.79759
+
+> deckweft-cinematic-workpack@1.1.0 check
+> node scripts/validate-workpack.mjs
+
+PASS — workpack checks only
+{"palettes":22,"modes":66,"rolePairs":1320,"screenshotRows":16,"screenshotSamples":76,"tasks":29,"phases":7,"sources":28,"modelRoutes":29,"buildEffortCounts":{"low":1,"medium":10,"high":18,"xhigh":0}}

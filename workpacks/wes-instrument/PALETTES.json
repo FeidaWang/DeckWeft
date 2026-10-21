@@ -1,0 +1,4999 @@
+{
+  "schemaVersion": 1,
+  "generatedOn": "2026-10-21",
+  "colorSpace": "sRGB; CIELAB D65 2-degree derived",
+  "scope": "22 distinct community-library discrete palettes; 16 have screenshot samples; not all film colors",
+  "aliases": {
+    "Rushmore": "Rushmore1"
+  },
+  "excludedLibraryEntries": [
+    {
+      "id": "Zissou1Continuous",
+      "reason": "continuous interpolation path is not an independent film-verified palette"
+    }
+  ],
+  "palettes": [
+    {
+      "id": "BottleRocket1",
+      "film": {
+        "id": "bottle-rocket",
+        "title": "Bottle Rocket",
+        "year": 1996,
+        "kind": "feature"
+      },
+      "category": "earth",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#A42820",
+          "rgb": [
+            164,
+            40,
+            32
+          ],
+          "labD65": [
+            36.961131,
+            49.688946,
+            35.681263
+          ]
+        },
+        {
+          "hex": "#5F5647",
+          "rgb": [
+            95,
+            86,
+            71
+          ],
+          "labD65": [
+            37.010589,
+            0.949248,
+            10.080796
+          ]
+        },
+        {
+          "hex": "#9B110E",
+          "rgb": [
+            155,
+            17,
+            14
+          ],
+          "labD65": [
+            32.708419,
+            52.839025,
+            40.511816
+          ]
+        },
+        {
+          "hex": "#3F5151",
+          "rgb": [
+            63,
+            81,
+            81
+          ],
+          "labD65": [
+            32.996081,
+            -6.961004,
+            -2.309045
+          ]
+        },
+        {
+          "hex": "#4E2A1E",
+          "rgb": [
+            78,
+            42,
+            30
+          ],
+          "labD65": [
+            21.467826,
+            15.333019,
+            15.03699
+          ]
+        },
+        {
+          "hex": "#550307",
+          "rgb": [
+            85,
+            3,
+            7
+          ],
+          "labD65": [
+            15.552249,
+            35.233704,
+            21.258803
+          ]
+        },
+        {
+          "hex": "#0C1707",
+          "rgb": [
+            12,
+            23,
+            7
+          ],
+          "labD65": [
+            6.379762,
+            -7.166303,
+            6.549152
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FCF7F7",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#A42820",
+          "onAccent": "#FFFFFF",
+          "link": "#0C1707",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#A42820",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#A42820",
+            "#5F5647",
+            "#9B110E",
+            "#3F5151",
+            "#4E2A1E",
+            "#550307",
+            "#0C1707"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#A42820",
+          "onAccent": "#FFFFFF",
+          "link": "#FAFAF7",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#A42820",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#A42820",
+            "#5F5647",
+            "#9B110E",
+            "#3F5151",
+            "#4E2A1E",
+            "#550307",
+            "#0C1707"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#A42820",
+          "onAccent": "#FFFFFF",
+          "link": "#0C1707",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#A42820",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#A42820",
+            "#5F5647",
+            "#9B110E",
+            "#3F5151",
+            "#4E2A1E",
+            "#550307",
+            "#0C1707"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 1,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              37,
+              23,
+              44,
+              30
+            ],
+            "sampleHex": "#91191A",
+            "libraryHex": "#A42820",
+            "exactMatch": false,
+            "deltaE76": 6.786877
+          },
+          {
+            "index": 1,
+            "roi": [
+              95,
+              23,
+              102,
+              30
+            ],
+            "sampleHex": "#4D453A",
+            "libraryHex": "#5F5647",
+            "exactMatch": false,
+            "deltaE76": 7.581184
+          },
+          {
+            "index": 2,
+            "roi": [
+              155,
+              23,
+              162,
+              30
+            ],
+            "sampleHex": "#88010F",
+            "libraryHex": "#9B110E",
+            "exactMatch": false,
+            "deltaE76": 8.578904
+          },
+          {
+            "index": 3,
+            "roi": [
+              213,
+              23,
+              220,
+              30
+            ],
+            "sampleHex": "#334142",
+            "libraryHex": "#3F5151",
+            "exactMatch": false,
+            "deltaE76": 6.802379
+          },
+          {
+            "index": 4,
+            "roi": [
+              273,
+              23,
+              280,
+              30
+            ],
+            "sampleHex": "#3C1F17",
+            "libraryHex": "#4E2A1E",
+            "exactMatch": false,
+            "deltaE76": 7.272544
+          },
+          {
+            "index": 5,
+            "roi": [
+              331,
+              23,
+              338,
+              30
+            ],
+            "sampleHex": "#430009",
+            "libraryHex": "#550307",
+            "exactMatch": false,
+            "deltaE76": 10.384264
+          },
+          {
+            "index": 6,
+            "roi": [
+              391,
+              23,
+              398,
+              30
+            ],
+            "sampleHex": "#0D1309",
+            "libraryHex": "#0C1707",
+            "exactMatch": false,
+            "deltaE76": 4.363201
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "BottleRocket2",
+      "film": {
+        "id": "bottle-rocket",
+        "title": "Bottle Rocket",
+        "year": 1996,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#FAD510",
+          "rgb": [
+            250,
+            213,
+            16
+          ],
+          "labD65": [
+            85.983281,
+            -2.904991,
+            84.788396
+          ]
+        },
+        {
+          "hex": "#CB2314",
+          "rgb": [
+            203,
+            35,
+            20
+          ],
+          "labD65": [
+            44.165936,
+            62.550225,
+            50.79146
+          ]
+        },
+        {
+          "hex": "#273046",
+          "rgb": [
+            39,
+            48,
+            70
+          ],
+          "labD65": [
+            19.992922,
+            2.851859,
+            -14.935686
+          ]
+        },
+        {
+          "hex": "#354823",
+          "rgb": [
+            53,
+            72,
+            35
+          ],
+          "labD65": [
+            28.148632,
+            -15.099414,
+            19.74405
+          ]
+        },
+        {
+          "hex": "#1E1E1E",
+          "rgb": [
+            30,
+            30,
+            30
+          ],
+          "labD65": [
+            11.263611,
+            -4e-06,
+            2e-06
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FFFEF7",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#FAD510",
+          "onAccent": "#101010",
+          "link": "#1E1E1E",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#FAD510",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#FAD510",
+            "#CB2314",
+            "#273046",
+            "#354823",
+            "#1E1E1E"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#FAD510",
+          "onAccent": "#101010",
+          "link": "#FAD510",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#FAD510",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#FAD510",
+            "#CB2314",
+            "#273046",
+            "#354823",
+            "#1E1E1E"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#FAD510",
+          "onAccent": "#101010",
+          "link": "#1E1E1E",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#FAD510",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#FAD510",
+            "#CB2314",
+            "#273046",
+            "#354823",
+            "#1E1E1E"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 2,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              67,
+              55,
+              74
+            ],
+            "sampleHex": "#F7CE10",
+            "libraryHex": "#FAD510",
+            "exactMatch": false,
+            "deltaE76": 3.468191
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              67,
+              138,
+              74
+            ],
+            "sampleHex": "#BE0D13",
+            "libraryHex": "#CB2314",
+            "exactMatch": false,
+            "deltaE76": 5.586399
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              67,
+              220,
+              74
+            ],
+            "sampleHex": "#1C2336",
+            "libraryHex": "#273046",
+            "exactMatch": false,
+            "deltaE76": 6.277695
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              67,
+              303,
+              74
+            ],
+            "sampleHex": "#28381B",
+            "libraryHex": "#354823",
+            "exactMatch": false,
+            "deltaE76": 8.001552
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              67,
+              386,
+              74
+            ],
+            "sampleHex": "#171717",
+            "libraryHex": "#1E1E1E",
+            "exactMatch": false,
+            "deltaE76": 3.524055
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Rushmore1",
+      "film": {
+        "id": "rushmore",
+        "title": "Rushmore",
+        "year": 1998,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#E1BD6D",
+          "rgb": [
+            225,
+            189,
+            109
+          ],
+          "labD65": [
+            78.17488,
+            3.042275,
+            44.915546
+          ]
+        },
+        {
+          "hex": "#EABE94",
+          "rgb": [
+            234,
+            190,
+            148
+          ],
+          "labD65": [
+            79.875047,
+            10.091737,
+            27.171695
+          ]
+        },
+        {
+          "hex": "#0B775E",
+          "rgb": [
+            11,
+            119,
+            94
+          ],
+          "labD65": [
+            44.335745,
+            -34.265949,
+            5.944917
+          ]
+        },
+        {
+          "hex": "#35274A",
+          "rgb": [
+            53,
+            39,
+            74
+          ],
+          "labD65": [
+            18.809989,
+            15.178347,
+            -19.403244
+          ]
+        },
+        {
+          "hex": "#F2300F",
+          "rgb": [
+            242,
+            48,
+            15
+          ],
+          "labD65": [
+            52.984455,
+            70.238107,
+            61.92059
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FEFDFA",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#E1BD6D",
+          "onAccent": "#101010",
+          "link": "#35274A",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#E1BD6D",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#E1BD6D",
+            "#EABE94",
+            "#0B775E",
+            "#35274A",
+            "#F2300F"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#E1BD6D",
+          "onAccent": "#101010",
+          "link": "#EABE94",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#E1BD6D",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#E1BD6D",
+            "#EABE94",
+            "#0B775E",
+            "#35274A",
+            "#F2300F"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#E1BD6D",
+          "onAccent": "#101010",
+          "link": "#35274A",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#E1BD6D",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#E1BD6D",
+            "#EABE94",
+            "#0B775E",
+            "#35274A",
+            "#F2300F"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 3,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              110,
+              55,
+              117
+            ],
+            "sampleHex": "#DAB05A",
+            "libraryHex": "#E1BD6D",
+            "exactMatch": false,
+            "deltaE76": 6.381845
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              110,
+              138,
+              117
+            ],
+            "sampleHex": "#E4B182",
+            "libraryHex": "#EABE94",
+            "exactMatch": false,
+            "deltaE76": 6.233975
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              110,
+              220,
+              117
+            ],
+            "sampleHex": "#12664C",
+            "libraryHex": "#0B775E",
+            "exactMatch": false,
+            "deltaE76": 7.373011
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              110,
+              303,
+              117
+            ],
+            "sampleHex": "#291C3A",
+            "libraryHex": "#35274A",
+            "exactMatch": false,
+            "deltaE76": 6.111462
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              110,
+              386,
+              117
+            ],
+            "sampleHex": "#EC160E",
+            "libraryHex": "#F2300F",
+            "exactMatch": false,
+            "deltaE76": 4.930587
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Royal1",
+      "film": {
+        "id": "royal-tenenbaums",
+        "title": "The Royal Tenenbaums",
+        "year": 2001,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#899DA4",
+          "rgb": [
+            137,
+            157,
+            164
+          ],
+          "labD65": [
+            63.435283,
+            -5.505666,
+            -6.020683
+          ]
+        },
+        {
+          "hex": "#C93312",
+          "rgb": [
+            201,
+            51,
+            18
+          ],
+          "labD65": [
+            45.404497,
+            57.314777,
+            52.246082
+          ]
+        },
+        {
+          "hex": "#FAEFD1",
+          "rgb": [
+            250,
+            239,
+            209
+          ],
+          "labD65": [
+            94.594548,
+            -1.103174,
+            15.852841
+          ]
+        },
+        {
+          "hex": "#DC863B",
+          "rgb": [
+            220,
+            134,
+            59
+          ],
+          "labD65": [
+            63.823931,
+            26.945506,
+            52.549882
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FBFCFC",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#899DA4",
+          "onAccent": "#101010",
+          "link": "#C93312",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#899DA4",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#899DA4",
+            "#C93312",
+            "#FAEFD1",
+            "#DC863B"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#899DA4",
+          "onAccent": "#101010",
+          "link": "#FAEFD1",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#899DA4",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#899DA4",
+            "#C93312",
+            "#FAEFD1",
+            "#DC863B"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#899DA4",
+          "onAccent": "#101010",
+          "link": "#C93312",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#899DA4",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#899DA4",
+            "#C93312",
+            "#FAEFD1",
+            "#DC863B"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 4,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              59,
+              154,
+              66,
+              161
+            ],
+            "sampleHex": "#788C95",
+            "libraryHex": "#899DA4",
+            "exactMatch": false,
+            "deltaE76": 6.555329
+          },
+          {
+            "index": 1,
+            "roi": [
+              162,
+              154,
+              169,
+              161
+            ],
+            "sampleHex": "#BB1F10",
+            "libraryHex": "#C93312",
+            "exactMatch": false,
+            "deltaE76": 6.427249
+          },
+          {
+            "index": 2,
+            "roi": [
+              265,
+              154,
+              272,
+              161
+            ],
+            "sampleHex": "#F8ECC6",
+            "libraryHex": "#FAEFD1",
+            "exactMatch": false,
+            "deltaE76": 4.291888
+          },
+          {
+            "index": 3,
+            "roi": [
+              368,
+              154,
+              375,
+              161
+            ],
+            "sampleHex": "#D3722E",
+            "libraryHex": "#DC863B",
+            "exactMatch": false,
+            "deltaE76": 8.534566
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Royal2",
+      "film": {
+        "id": "royal-tenenbaums",
+        "title": "The Royal Tenenbaums",
+        "year": 2001,
+        "kind": "feature"
+      },
+      "category": "pastel",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#9A8822",
+          "rgb": [
+            154,
+            136,
+            34
+          ],
+          "labD65": [
+            56.678639,
+            -4.331527,
+            53.310958
+          ]
+        },
+        {
+          "hex": "#F5CDB4",
+          "rgb": [
+            245,
+            205,
+            180
+          ],
+          "labD65": [
+            85.186324,
+            10.443315,
+            17.713727
+          ]
+        },
+        {
+          "hex": "#F8AFA8",
+          "rgb": [
+            248,
+            175,
+            168
+          ],
+          "labD65": [
+            78.138391,
+            25.780468,
+            14.292163
+          ]
+        },
+        {
+          "hex": "#FDDDA0",
+          "rgb": [
+            253,
+            221,
+            160
+          ],
+          "labD65": [
+            89.456866,
+            2.733858,
+            34.044356
+          ]
+        },
+        {
+          "hex": "#74A089",
+          "rgb": [
+            116,
+            160,
+            137
+          ],
+          "labD65": [
+            62.219327,
+            -19.867156,
+            7.224783
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FBFBF7",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#9A8822",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#9A8822",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#9A8822",
+            "#F5CDB4",
+            "#F8AFA8",
+            "#FDDDA0",
+            "#74A089"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#9A8822",
+          "onAccent": "#101010",
+          "link": "#FDDDA0",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#9A8822",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#9A8822",
+            "#F5CDB4",
+            "#F8AFA8",
+            "#FDDDA0",
+            "#74A089"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#9A8822",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#9A8822",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#9A8822",
+            "#F5CDB4",
+            "#F8AFA8",
+            "#FDDDA0",
+            "#74A089"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 5,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              197,
+              55,
+              204
+            ],
+            "sampleHex": "#87761A",
+            "libraryHex": "#9A8822",
+            "exactMatch": false,
+            "deltaE76": 8.203691
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              197,
+              138,
+              204
+            ],
+            "sampleHex": "#F1C2A6",
+            "libraryHex": "#F5CDB4",
+            "exactMatch": false,
+            "deltaE76": 4.943891
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              197,
+              220,
+              204
+            ],
+            "sampleHex": "#F49C98",
+            "libraryHex": "#F8AFA8",
+            "exactMatch": false,
+            "deltaE76": 8.454627
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              197,
+              303,
+              204
+            ],
+            "sampleHex": "#FCD68F",
+            "libraryHex": "#FDDDA0",
+            "exactMatch": false,
+            "deltaE76": 6.401347
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              197,
+              386,
+              204
+            ],
+            "sampleHex": "#629076",
+            "libraryHex": "#74A089",
+            "exactMatch": false,
+            "deltaE76": 6.692364
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Zissou1",
+      "film": {
+        "id": "life-aquatic",
+        "title": "The Life Aquatic with Steve Zissou",
+        "year": 2004,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#3B9AB2",
+          "rgb": [
+            59,
+            154,
+            178
+          ],
+          "labD65": [
+            59.2078,
+            -20.031912,
+            -20.666759
+          ]
+        },
+        {
+          "hex": "#78B7C5",
+          "rgb": [
+            120,
+            183,
+            197
+          ],
+          "labD65": [
+            70.794302,
+            -16.573728,
+            -13.468389
+          ]
+        },
+        {
+          "hex": "#EBCC2A",
+          "rgb": [
+            235,
+            204,
+            42
+          ],
+          "labD65": [
+            82.388514,
+            -4.23735,
+            76.477024
+          ]
+        },
+        {
+          "hex": "#E1AF00",
+          "rgb": [
+            225,
+            175,
+            0
+          ],
+          "labD65": [
+            73.978792,
+            5.81461,
+            76.709277
+          ]
+        },
+        {
+          "hex": "#F21A00",
+          "rgb": [
+            242,
+            26,
+            0
+          ],
+          "labD65": [
+            51.40764,
+            74.507165,
+            64.89824
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#F8FBFC",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#3B9AB2",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#3B9AB2",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#3B9AB2",
+            "#78B7C5",
+            "#EBCC2A",
+            "#E1AF00",
+            "#F21A00"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#3B9AB2",
+          "onAccent": "#101010",
+          "link": "#EBCC2A",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#3B9AB2",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#3B9AB2",
+            "#78B7C5",
+            "#EBCC2A",
+            "#E1AF00",
+            "#F21A00"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#3B9AB2",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#3B9AB2",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#3B9AB2",
+            "#78B7C5",
+            "#EBCC2A",
+            "#E1AF00",
+            "#F21A00"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 6,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              241,
+              55,
+              248
+            ],
+            "sampleHex": "#3188A3",
+            "libraryHex": "#3B9AB2",
+            "exactMatch": false,
+            "deltaE76": 7.231634
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              241,
+              138,
+              248
+            ],
+            "sampleHex": "#67A9B9",
+            "libraryHex": "#78B7C5",
+            "exactMatch": false,
+            "deltaE76": 5.401633
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              241,
+              220,
+              248
+            ],
+            "sampleHex": "#E5C421",
+            "libraryHex": "#EBCC2A",
+            "exactMatch": false,
+            "deltaE76": 2.942361
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              241,
+              303,
+              248
+            ],
+            "sampleHex": "#D8A108",
+            "libraryHex": "#E1AF00",
+            "exactMatch": false,
+            "deltaE76": 7.254199
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              241,
+              386,
+              248
+            ],
+            "sampleHex": "#EC0005",
+            "libraryHex": "#F21A00",
+            "exactMatch": false,
+            "deltaE76": 3.74279
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Darjeeling1",
+      "film": {
+        "id": "darjeeling-limited",
+        "title": "The Darjeeling Limited",
+        "year": 2007,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#FF0000",
+          "rgb": [
+            255,
+            0,
+            0
+          ],
+          "labD65": [
+            53.240794,
+            80.09246,
+            67.203197
+          ]
+        },
+        {
+          "hex": "#00A08A",
+          "rgb": [
+            0,
+            160,
+            138
+          ],
+          "labD65": [
+            58.950507,
+            -40.49145,
+            1.525969
+          ]
+        },
+        {
+          "hex": "#F2AD00",
+          "rgb": [
+            242,
+            173,
+            0
+          ],
+          "labD65": [
+            75.307306,
+            14.230713,
+            78.476998
+          ]
+        },
+        {
+          "hex": "#F98400",
+          "rgb": [
+            249,
+            132,
+            0
+          ],
+          "labD65": [
+            67.012154,
+            38.480303,
+            73.559996
+          ]
+        },
+        {
+          "hex": "#5BBCD6",
+          "rgb": [
+            91,
+            188,
+            214
+          ],
+          "labD65": [
+            71.583674,
+            -21.088361,
+            -21.68884
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FFF6F6",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#FF0000",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#FF0000",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#FF0000",
+            "#00A08A",
+            "#F2AD00",
+            "#F98400",
+            "#5BBCD6"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#FF0000",
+          "onAccent": "#101010",
+          "link": "#F2AD00",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#FF0000",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#FF0000",
+            "#00A08A",
+            "#F2AD00",
+            "#F98400",
+            "#5BBCD6"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#FF0000",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#FF0000",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#FF0000",
+            "#00A08A",
+            "#F2AD00",
+            "#F98400",
+            "#5BBCD6"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 7,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              284,
+              55,
+              291
+            ],
+            "sampleHex": "#FB0007",
+            "libraryHex": "#FF0000",
+            "exactMatch": false,
+            "deltaE76": 2.8411
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              284,
+              138,
+              291
+            ],
+            "sampleHex": "#129176",
+            "libraryHex": "#00A08A",
+            "exactMatch": false,
+            "deltaE76": 6.764684
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              284,
+              220,
+              291
+            ],
+            "sampleHex": "#EF9D0B",
+            "libraryHex": "#F2AD00",
+            "exactMatch": false,
+            "deltaE76": 9.352299
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              284,
+              303,
+              291
+            ],
+            "sampleHex": "#F46F08",
+            "libraryHex": "#F98400",
+            "exactMatch": false,
+            "deltaE76": 10.735498
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              284,
+              386,
+              291
+            ],
+            "sampleHex": "#4CADCE",
+            "libraryHex": "#5BBCD6",
+            "exactMatch": false,
+            "deltaE76": 6.789128
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Darjeeling2",
+      "film": {
+        "id": "darjeeling-limited",
+        "title": "The Darjeeling Limited",
+        "year": 2007,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#ECCBAE",
+          "rgb": [
+            236,
+            203,
+            174
+          ],
+          "labD65": [
+            83.758606,
+            7.310288,
+            18.771332
+          ]
+        },
+        {
+          "hex": "#046C9A",
+          "rgb": [
+            4,
+            108,
+            154
+          ],
+          "labD65": [
+            42.887312,
+            -8.381301,
+            -32.12857
+          ]
+        },
+        {
+          "hex": "#D69C4E",
+          "rgb": [
+            214,
+            156,
+            78
+          ],
+          "labD65": [
+            68.479667,
+            13.647593,
+            48.444846
+          ]
+        },
+        {
+          "hex": "#ABDDDE",
+          "rgb": [
+            171,
+            221,
+            222
+          ],
+          "labD65": [
+            84.813703,
+            -15.795289,
+            -5.763426
+          ]
+        },
+        {
+          "hex": "#000000",
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "labD65": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FEFDFC",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#ECCBAE",
+          "onAccent": "#101010",
+          "link": "#000000",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#ECCBAE",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#ECCBAE",
+            "#046C9A",
+            "#D69C4E",
+            "#ABDDDE",
+            "#000000"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#ECCBAE",
+          "onAccent": "#101010",
+          "link": "#ABDDDE",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#ECCBAE",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#ECCBAE",
+            "#046C9A",
+            "#D69C4E",
+            "#ABDDDE",
+            "#000000"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#ECCBAE",
+          "onAccent": "#101010",
+          "link": "#000000",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#ECCBAE",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#ECCBAE",
+            "#046C9A",
+            "#D69C4E",
+            "#ABDDDE",
+            "#000000"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 8,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              328,
+              55,
+              335
+            ],
+            "sampleHex": "#E7BEA0",
+            "libraryHex": "#ECCBAE",
+            "exactMatch": false,
+            "deltaE76": 5.35812
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              328,
+              138,
+              335
+            ],
+            "sampleHex": "#0E578A",
+            "libraryHex": "#046C9A",
+            "exactMatch": false,
+            "deltaE76": 10.505444
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              328,
+              220,
+              335
+            ],
+            "sampleHex": "#CA8B3E",
+            "libraryHex": "#D69C4E",
+            "exactMatch": false,
+            "deltaE76": 6.548414
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              328,
+              303,
+              335
+            ],
+            "sampleHex": "#9CD6D7",
+            "libraryHex": "#ABDDDE",
+            "exactMatch": false,
+            "deltaE76": 3.860766
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              328,
+              386,
+              335
+            ],
+            "sampleHex": "#000000",
+            "libraryHex": "#000000",
+            "exactMatch": true,
+            "deltaE76": 0.0
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Chevalier1",
+      "film": {
+        "id": "hotel-chevalier",
+        "title": "Hotel Chevalier",
+        "year": 2007,
+        "kind": "short"
+      },
+      "category": "pastel",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#446455",
+          "rgb": [
+            68,
+            100,
+            85
+          ],
+          "labD65": [
+            39.578363,
+            -15.265025,
+            4.803897
+          ]
+        },
+        {
+          "hex": "#FDD262",
+          "rgb": [
+            253,
+            210,
+            98
+          ],
+          "labD65": [
+            85.937122,
+            2.847538,
+            59.856998
+          ]
+        },
+        {
+          "hex": "#D3DDDC",
+          "rgb": [
+            211,
+            221,
+            220
+          ],
+          "labD65": [
+            87.35298,
+            -3.53856,
+            -0.675317
+          ]
+        },
+        {
+          "hex": "#C7B19C",
+          "rgb": [
+            199,
+            177,
+            156
+          ],
+          "labD65": [
+            73.537699,
+            4.555102,
+            13.641087
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#F8FAF9",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#446455",
+          "onAccent": "#FFFFFF",
+          "link": "#446455",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#446455",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#446455",
+            "#FDD262",
+            "#D3DDDC",
+            "#C7B19C"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#446455",
+          "onAccent": "#FFFFFF",
+          "link": "#D3DDDC",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#446455",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#446455",
+            "#FDD262",
+            "#D3DDDC",
+            "#C7B19C"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#446455",
+          "onAccent": "#FFFFFF",
+          "link": "#446455",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#446455",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#446455",
+            "#FDD262",
+            "#D3DDDC",
+            "#C7B19C"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 9,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              59,
+              372,
+              66,
+              379
+            ],
+            "sampleHex": "#375144",
+            "libraryHex": "#446455",
+            "exactMatch": false,
+            "deltaE76": 7.832013
+          },
+          {
+            "index": 1,
+            "roi": [
+              162,
+              372,
+              169,
+              379
+            ],
+            "sampleHex": "#FBCA51",
+            "libraryHex": "#FDD262",
+            "exactMatch": false,
+            "deltaE76": 5.796302
+          },
+          {
+            "index": 2,
+            "roi": [
+              265,
+              372,
+              272,
+              379
+            ],
+            "sampleHex": "#C9D4D6",
+            "libraryHex": "#D3DDDC",
+            "exactMatch": false,
+            "deltaE76": 3.583012
+          },
+          {
+            "index": 3,
+            "roi": [
+              368,
+              372,
+              375,
+              379
+            ],
+            "sampleHex": "#BAA28A",
+            "libraryHex": "#C7B19C",
+            "exactMatch": false,
+            "deltaE76": 5.83914
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "FantasticFox1",
+      "film": {
+        "id": "fantastic-mr-fox",
+        "title": "Fantastic Mr. Fox",
+        "year": 2009,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#DD8D29",
+          "rgb": [
+            221,
+            141,
+            41
+          ],
+          "labD65": [
+            65.425018,
+            22.933502,
+            61.508065
+          ]
+        },
+        {
+          "hex": "#E2D200",
+          "rgb": [
+            226,
+            210,
+            0
+          ],
+          "labD65": [
+            83.053828,
+            -11.786358,
+            83.173246
+          ]
+        },
+        {
+          "hex": "#46ACC8",
+          "rgb": [
+            70,
+            172,
+            200
+          ],
+          "labD65": [
+            65.728652,
+            -20.780917,
+            -22.987116
+          ]
+        },
+        {
+          "hex": "#E58601",
+          "rgb": [
+            229,
+            134,
+            1
+          ],
+          "labD65": [
+            64.735695,
+            29.323586,
+            70.644181
+          ]
+        },
+        {
+          "hex": "#B40F20",
+          "rgb": [
+            180,
+            15,
+            32
+          ],
+          "labD65": [
+            38.114748,
+            60.409543,
+            37.919087
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FEFBF8",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#DD8D29",
+          "onAccent": "#101010",
+          "link": "#B40F20",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#DD8D29",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#DD8D29",
+            "#E2D200",
+            "#46ACC8",
+            "#E58601",
+            "#B40F20"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#DD8D29",
+          "onAccent": "#101010",
+          "link": "#E2D200",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#DD8D29",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#DD8D29",
+            "#E2D200",
+            "#46ACC8",
+            "#E58601",
+            "#B40F20"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#DD8D29",
+          "onAccent": "#101010",
+          "link": "#B40F20",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#DD8D29",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#DD8D29",
+            "#E2D200",
+            "#46ACC8",
+            "#E58601",
+            "#B40F20"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 10,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              415,
+              55,
+              422
+            ],
+            "sampleHex": "#D47920",
+            "libraryHex": "#DD8D29",
+            "exactMatch": false,
+            "deltaE76": 9.056461
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              415,
+              138,
+              422
+            ],
+            "sampleHex": "#DDCC0A",
+            "libraryHex": "#E2D200",
+            "exactMatch": false,
+            "deltaE76": 3.390654
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              415,
+              220,
+              422
+            ],
+            "sampleHex": "#399CBC",
+            "libraryHex": "#46ACC8",
+            "exactMatch": false,
+            "deltaE76": 6.451296
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              415,
+              303,
+              422
+            ],
+            "sampleHex": "#DE7108",
+            "libraryHex": "#E58601",
+            "exactMatch": false,
+            "deltaE76": 10.98182
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              415,
+              386,
+              422
+            ],
+            "sampleHex": "#A30119",
+            "libraryHex": "#B40F20",
+            "exactMatch": false,
+            "deltaE76": 5.433497
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Moonrise1",
+      "film": {
+        "id": "moonrise-kingdom",
+        "title": "Moonrise Kingdom",
+        "year": 2012,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#F3DF6C",
+          "rgb": [
+            243,
+            223,
+            108
+          ],
+          "labD65": [
+            88.407342,
+            -7.136321,
+            57.906604
+          ]
+        },
+        {
+          "hex": "#CEAB07",
+          "rgb": [
+            206,
+            171,
+            7
+          ],
+          "labD65": [
+            71.053598,
+            -0.357632,
+            72.945623
+          ]
+        },
+        {
+          "hex": "#D5D5D3",
+          "rgb": [
+            213,
+            213,
+            211
+          ],
+          "labD65": [
+            85.219252,
+            -0.360431,
+            0.985668
+          ]
+        },
+        {
+          "hex": "#24281A",
+          "rgb": [
+            36,
+            40,
+            26
+          ],
+          "labD65": [
+            15.314346,
+            -4.917617,
+            8.649071
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FFFEFA",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#F3DF6C",
+          "onAccent": "#101010",
+          "link": "#24281A",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#F3DF6C",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#F3DF6C",
+            "#CEAB07",
+            "#D5D5D3",
+            "#24281A"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#F3DF6C",
+          "onAccent": "#101010",
+          "link": "#F3DF6C",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#F3DF6C",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#F3DF6C",
+            "#CEAB07",
+            "#D5D5D3",
+            "#24281A"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#F3DF6C",
+          "onAccent": "#101010",
+          "link": "#24281A",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#F3DF6C",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#F3DF6C",
+            "#CEAB07",
+            "#D5D5D3",
+            "#24281A"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 11,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              59,
+              459,
+              66,
+              466
+            ],
+            "sampleHex": "#EFDA5B",
+            "libraryHex": "#F3DF6C",
+            "exactMatch": false,
+            "deltaE76": 5.704504
+          },
+          {
+            "index": 1,
+            "roi": [
+              162,
+              459,
+              169,
+              466
+            ],
+            "sampleHex": "#C29E0C",
+            "libraryHex": "#CEAB07",
+            "exactMatch": false,
+            "deltaE76": 6.635185
+          },
+          {
+            "index": 2,
+            "roi": [
+              265,
+              459,
+              272,
+              466
+            ],
+            "sampleHex": "#CBCBC9",
+            "libraryHex": "#D5D5D3",
+            "exactMatch": false,
+            "deltaE76": 3.585076
+          },
+          {
+            "index": 3,
+            "roi": [
+              368,
+              459,
+              375,
+              466
+            ],
+            "sampleHex": "#1B1E15",
+            "libraryHex": "#24281A",
+            "exactMatch": false,
+            "deltaE76": 5.670269
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Moonrise2",
+      "film": {
+        "id": "moonrise-kingdom",
+        "title": "Moonrise Kingdom",
+        "year": 2012,
+        "kind": "feature"
+      },
+      "category": "earth",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#798E87",
+          "rgb": [
+            121,
+            142,
+            135
+          ],
+          "labD65": [
+            57.230707,
+            -8.979291,
+            1.204854
+          ]
+        },
+        {
+          "hex": "#C27D38",
+          "rgb": [
+            194,
+            125,
+            56
+          ],
+          "labD65": [
+            58.438225,
+            20.701023,
+            47.295572
+          ]
+        },
+        {
+          "hex": "#CCC591",
+          "rgb": [
+            204,
+            197,
+            145
+          ],
+          "labD65": [
+            78.934721,
+            -5.629983,
+            27.029756
+          ]
+        },
+        {
+          "hex": "#29211F",
+          "rgb": [
+            41,
+            33,
+            31
+          ],
+          "labD65": [
+            13.579857,
+            3.404463,
+            2.776925
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FAFBFB",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#798E87",
+          "onAccent": "#101010",
+          "link": "#29211F",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#798E87",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#798E87",
+            "#C27D38",
+            "#CCC591",
+            "#29211F"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#798E87",
+          "onAccent": "#101010",
+          "link": "#CCC591",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#798E87",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#798E87",
+            "#C27D38",
+            "#CCC591",
+            "#29211F"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#798E87",
+          "onAccent": "#101010",
+          "link": "#29211F",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#798E87",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#798E87",
+            "#C27D38",
+            "#CCC591",
+            "#29211F"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 12,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              59,
+              502,
+              66,
+              509
+            ],
+            "sampleHex": "#677C75",
+            "libraryHex": "#798E87",
+            "exactMatch": false,
+            "deltaE76": 7.038421
+          },
+          {
+            "index": 1,
+            "roi": [
+              162,
+              502,
+              169,
+              509
+            ],
+            "sampleHex": "#B4682E",
+            "libraryHex": "#C27D38",
+            "exactMatch": false,
+            "deltaE76": 8.990659
+          },
+          {
+            "index": 2,
+            "roi": [
+              265,
+              502,
+              272,
+              509
+            ],
+            "sampleHex": "#C0BA7E",
+            "libraryHex": "#CCC591",
+            "exactMatch": false,
+            "deltaE76": 6.107644
+          },
+          {
+            "index": 3,
+            "roi": [
+              368,
+              502,
+              375,
+              509
+            ],
+            "sampleHex": "#1F1A17",
+            "libraryHex": "#29211F",
+            "exactMatch": false,
+            "deltaE76": 4.173455
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Moonrise3",
+      "film": {
+        "id": "moonrise-kingdom",
+        "title": "Moonrise Kingdom",
+        "year": 2012,
+        "kind": "feature"
+      },
+      "category": "pastel",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#85D4E3",
+          "rgb": [
+            133,
+            212,
+            227
+          ],
+          "labD65": [
+            80.52494,
+            -20.453884,
+            -15.019543
+          ]
+        },
+        {
+          "hex": "#F4B5BD",
+          "rgb": [
+            244,
+            181,
+            189
+          ],
+          "labD65": [
+            79.589956,
+            23.967069,
+            4.936884
+          ]
+        },
+        {
+          "hex": "#9C964A",
+          "rgb": [
+            156,
+            150,
+            74
+          ],
+          "labD65": [
+            61.111885,
+            -8.415074,
+            40.412905
+          ]
+        },
+        {
+          "hex": "#CDC08C",
+          "rgb": [
+            205,
+            192,
+            140
+          ],
+          "labD65": [
+            77.622294,
+            -3.279933,
+            27.914805
+          ]
+        },
+        {
+          "hex": "#FAD77B",
+          "rgb": [
+            250,
+            215,
+            123
+          ],
+          "labD65": [
+            87.172228,
+            0.94924,
+            49.544045
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FBFDFE",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#85D4E3",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#85D4E3",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#85D4E3",
+            "#F4B5BD",
+            "#9C964A",
+            "#CDC08C",
+            "#FAD77B"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#85D4E3",
+          "onAccent": "#101010",
+          "link": "#FAD77B",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#85D4E3",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#85D4E3",
+            "#F4B5BD",
+            "#9C964A",
+            "#CDC08C",
+            "#FAD77B"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#85D4E3",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#85D4E3",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#85D4E3",
+            "#F4B5BD",
+            "#9C964A",
+            "#CDC08C",
+            "#FAD77B"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 13,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              546,
+              55,
+              553
+            ],
+            "sampleHex": "#75CBDC",
+            "libraryHex": "#85D4E3",
+            "exactMatch": false,
+            "deltaE76": 3.91939
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              546,
+              138,
+              553
+            ],
+            "sampleHex": "#F1A3B0",
+            "libraryHex": "#F4B5BD",
+            "exactMatch": false,
+            "deltaE76": 8.147705
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              546,
+              220,
+              553
+            ],
+            "sampleHex": "#8A873A",
+            "libraryHex": "#9C964A",
+            "exactMatch": false,
+            "deltaE76": 6.13733
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              546,
+              303,
+              553
+            ],
+            "sampleHex": "#C4B479",
+            "libraryHex": "#CDC08C",
+            "exactMatch": false,
+            "deltaE76": 6.025644
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              546,
+              386,
+              553
+            ],
+            "sampleHex": "#F7D067",
+            "libraryHex": "#FAD77B",
+            "exactMatch": false,
+            "deltaE76": 7.156091
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "Cavalcanti1",
+      "film": {
+        "id": "castello-cavalcanti",
+        "title": "Castello Cavalcanti",
+        "year": 2013,
+        "kind": "short"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#D8B70A",
+          "rgb": [
+            216,
+            183,
+            10
+          ],
+          "labD65": [
+            75.133286,
+            -2.225494,
+            76.025401
+          ]
+        },
+        {
+          "hex": "#02401B",
+          "rgb": [
+            2,
+            64,
+            27
+          ],
+          "labD65": [
+            22.856637,
+            -28.168744,
+            17.463832
+          ]
+        },
+        {
+          "hex": "#A2A475",
+          "rgb": [
+            162,
+            164,
+            117
+          ],
+          "labD65": [
+            66.149268,
+            -8.49281,
+            24.22722
+          ]
+        },
+        {
+          "hex": "#81A88D",
+          "rgb": [
+            129,
+            168,
+            141
+          ],
+          "labD65": [
+            65.431765,
+            -18.852812,
+            9.676787
+          ]
+        },
+        {
+          "hex": "#972D15",
+          "rgb": [
+            151,
+            45,
+            21
+          ],
+          "labD65": [
+            35.027887,
+            43.087308,
+            38.750798
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FEFCF6",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#D8B70A",
+          "onAccent": "#101010",
+          "link": "#02401B",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#D8B70A",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#D8B70A",
+            "#02401B",
+            "#A2A475",
+            "#81A88D",
+            "#972D15"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#D8B70A",
+          "onAccent": "#101010",
+          "link": "#D8B70A",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#D8B70A",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#D8B70A",
+            "#02401B",
+            "#A2A475",
+            "#81A88D",
+            "#972D15"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#D8B70A",
+          "onAccent": "#101010",
+          "link": "#02401B",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#D8B70A",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#D8B70A",
+            "#02401B",
+            "#A2A475",
+            "#81A88D",
+            "#972D15"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 14,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              48,
+              590,
+              55,
+              597
+            ],
+            "sampleHex": "#CDAB0C",
+            "libraryHex": "#D8B70A",
+            "exactMatch": false,
+            "deltaE76": 5.822943
+          },
+          {
+            "index": 1,
+            "roi": [
+              131,
+              590,
+              138,
+              597
+            ],
+            "sampleHex": "#073216",
+            "libraryHex": "#02401B",
+            "exactMatch": false,
+            "deltaE76": 8.961003
+          },
+          {
+            "index": 2,
+            "roi": [
+              213,
+              590,
+              220,
+              597
+            ],
+            "sampleHex": "#929462",
+            "libraryHex": "#A2A475",
+            "exactMatch": false,
+            "deltaE76": 6.446397
+          },
+          {
+            "index": 3,
+            "roi": [
+              296,
+              590,
+              303,
+              597
+            ],
+            "sampleHex": "#71987D",
+            "libraryHex": "#81A88D",
+            "exactMatch": false,
+            "deltaE76": 6.058838
+          },
+          {
+            "index": 4,
+            "roi": [
+              379,
+              590,
+              386,
+              597
+            ],
+            "sampleHex": "#851D10",
+            "libraryHex": "#972D15",
+            "exactMatch": false,
+            "deltaE76": 7.09828
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "GrandBudapest1",
+      "film": {
+        "id": "grand-budapest",
+        "title": "The Grand Budapest Hotel",
+        "year": 2014,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#F1BB7B",
+          "rgb": [
+            241,
+            187,
+            123
+          ],
+          "labD65": [
+            79.428506,
+            11.849219,
+            39.746162
+          ]
+        },
+        {
+          "hex": "#FD6467",
+          "rgb": [
+            253,
+            100,
+            103
+          ],
+          "labD65": [
+            62.492836,
+            58.503075,
+            29.121151
+          ]
+        },
+        {
+          "hex": "#5B1A18",
+          "rgb": [
+            91,
+            26,
+            24
+          ],
+          "labD65": [
+            20.161949,
+            29.573447,
+            17.922029
+          ]
+        },
+        {
+          "hex": "#D67236",
+          "rgb": [
+            214,
+            114,
+            54
+          ],
+          "labD65": [
+            58.603284,
+            34.818442,
+            49.232344
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FFFDFA",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#F1BB7B",
+          "onAccent": "#101010",
+          "link": "#5B1A18",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#F1BB7B",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#F1BB7B",
+            "#FD6467",
+            "#5B1A18",
+            "#D67236"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#F1BB7B",
+          "onAccent": "#101010",
+          "link": "#F1BB7B",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#F1BB7B",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#F1BB7B",
+            "#FD6467",
+            "#5B1A18",
+            "#D67236"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#F1BB7B",
+          "onAccent": "#101010",
+          "link": "#5B1A18",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#F1BB7B",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#F1BB7B",
+            "#FD6467",
+            "#5B1A18",
+            "#D67236"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 15,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              59,
+              633,
+              66,
+              640
+            ],
+            "sampleHex": "#EDAC68",
+            "libraryHex": "#F1BB7B",
+            "exactMatch": false,
+            "deltaE76": 7.646414
+          },
+          {
+            "index": 1,
+            "roi": [
+              162,
+              633,
+              169,
+              640
+            ],
+            "sampleHex": "#F94B55",
+            "libraryHex": "#FD6467",
+            "exactMatch": false,
+            "deltaE76": 9.831482
+          },
+          {
+            "index": 2,
+            "roi": [
+              265,
+              633,
+              272,
+              640
+            ],
+            "sampleHex": "#491112",
+            "libraryHex": "#5B1A18",
+            "exactMatch": false,
+            "deltaE76": 7.154108
+          },
+          {
+            "index": 3,
+            "roi": [
+              368,
+              633,
+              375,
+              640
+            ],
+            "sampleHex": "#CB5D2A",
+            "libraryHex": "#D67236",
+            "exactMatch": false,
+            "deltaE76": 8.447879
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "GrandBudapest2",
+      "film": {
+        "id": "grand-budapest",
+        "title": "The Grand Budapest Hotel",
+        "year": 2014,
+        "kind": "feature"
+      },
+      "category": "pastel",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#E6A0C4",
+          "rgb": [
+            230,
+            160,
+            196
+          ],
+          "labD65": [
+            73.51492,
+            31.239841,
+            -7.955364
+          ]
+        },
+        {
+          "hex": "#C6CDF7",
+          "rgb": [
+            198,
+            205,
+            247
+          ],
+          "labD65": [
+            83.116511,
+            6.182528,
+            -21.391094
+          ]
+        },
+        {
+          "hex": "#D8A499",
+          "rgb": [
+            216,
+            164,
+            153
+          ],
+          "labD65": [
+            71.860813,
+            17.642729,
+            13.156907
+          ]
+        },
+        {
+          "hex": "#7294D4",
+          "rgb": [
+            114,
+            148,
+            212
+          ],
+          "labD65": [
+            61.22811,
+            5.302801,
+            -36.468362
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FEFCFD",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#E6A0C4",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#E6A0C4",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#E6A0C4",
+            "#C6CDF7",
+            "#D8A499",
+            "#7294D4"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#E6A0C4",
+          "onAccent": "#101010",
+          "link": "#C6CDF7",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#E6A0C4",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#E6A0C4",
+            "#C6CDF7",
+            "#D8A499",
+            "#7294D4"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#E6A0C4",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#E6A0C4",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#E6A0C4",
+            "#C6CDF7",
+            "#D8A499",
+            "#7294D4"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": {
+        "sha256": "4eba587e7000b5d7c181c3493063b61279809026df69a5dc2efaf3d0cfc972ba",
+        "row": 16,
+        "samples": [
+          {
+            "index": 0,
+            "roi": [
+              59,
+              677,
+              66,
+              684
+            ],
+            "sampleHex": "#DE8BB7",
+            "libraryHex": "#E6A0C4",
+            "exactMatch": false,
+            "deltaE76": 8.867537
+          },
+          {
+            "index": 1,
+            "roi": [
+              162,
+              677,
+              169,
+              684
+            ],
+            "sampleHex": "#BABFF6",
+            "libraryHex": "#C6CDF7",
+            "exactMatch": false,
+            "deltaE76": 8.576555
+          },
+          {
+            "index": 2,
+            "roi": [
+              265,
+              677,
+              272,
+              684
+            ],
+            "sampleHex": "#CE9287",
+            "libraryHex": "#D8A499",
+            "exactMatch": false,
+            "deltaE76": 7.011646
+          },
+          {
+            "index": 3,
+            "roi": [
+              368,
+              677,
+              375,
+              684
+            ],
+            "sampleHex": "#5F7FCA",
+            "libraryHex": "#7294D4",
+            "exactMatch": false,
+            "deltaE76": 10.62867
+          }
+        ],
+        "verdict": "label-and-order-correspondence; colors-not-byte-identical"
+      }
+    },
+    {
+      "id": "IsleofDogs1",
+      "film": {
+        "id": "isle-of-dogs",
+        "title": "Isle of Dogs",
+        "year": 2018,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#9986A5",
+          "rgb": [
+            153,
+            134,
+            165
+          ],
+          "labD65": [
+            58.545501,
+            13.157957,
+            -13.768178
+          ]
+        },
+        {
+          "hex": "#79402E",
+          "rgb": [
+            121,
+            64,
+            46
+          ],
+          "labD65": [
+            33.836835,
+            22.888846,
+            21.870641
+          ]
+        },
+        {
+          "hex": "#CCBA72",
+          "rgb": [
+            204,
+            186,
+            114
+          ],
+          "labD65": [
+            75.558033,
+            -3.513134,
+            38.728981
+          ]
+        },
+        {
+          "hex": "#0F0D0E",
+          "rgb": [
+            15,
+            13,
+            14
+          ],
+          "labD65": [
+            3.803931,
+            0.816093,
+            -0.228903
+          ]
+        },
+        {
+          "hex": "#D9D0D3",
+          "rgb": [
+            217,
+            208,
+            211
+          ],
+          "labD65": [
+            84.260128,
+            3.627347,
+            -0.376588
+          ]
+        },
+        {
+          "hex": "#8D8680",
+          "rgb": [
+            141,
+            134,
+            128
+          ],
+          "labD65": [
+            56.358795,
+            1.506704,
+            4.162415
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FBFBFC",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#9986A5",
+          "onAccent": "#101010",
+          "link": "#0F0D0E",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#9986A5",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#9986A5",
+            "#79402E",
+            "#CCBA72",
+            "#0F0D0E",
+            "#D9D0D3",
+            "#8D8680"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#9986A5",
+          "onAccent": "#101010",
+          "link": "#D9D0D3",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#9986A5",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#9986A5",
+            "#79402E",
+            "#CCBA72",
+            "#0F0D0E",
+            "#D9D0D3",
+            "#8D8680"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#9986A5",
+          "onAccent": "#101010",
+          "link": "#0F0D0E",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#9986A5",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#9986A5",
+            "#79402E",
+            "#CCBA72",
+            "#0F0D0E",
+            "#D9D0D3",
+            "#8D8680"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": null
+    },
+    {
+      "id": "IsleofDogs2",
+      "film": {
+        "id": "isle-of-dogs",
+        "title": "Isle of Dogs",
+        "year": 2018,
+        "kind": "feature"
+      },
+      "category": "earth",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#EAD3BF",
+          "rgb": [
+            234,
+            211,
+            191
+          ],
+          "labD65": [
+            85.928447,
+            4.820553,
+            12.810327
+          ]
+        },
+        {
+          "hex": "#AA9486",
+          "rgb": [
+            170,
+            148,
+            134
+          ],
+          "labD65": [
+            62.884019,
+            5.889349,
+            10.415415
+          ]
+        },
+        {
+          "hex": "#B6854D",
+          "rgb": [
+            182,
+            133,
+            77
+          ],
+          "labD65": [
+            59.212439,
+            12.493251,
+            37.232079
+          ]
+        },
+        {
+          "hex": "#39312F",
+          "rgb": [
+            57,
+            49,
+            47
+          ],
+          "labD65": [
+            21.101106,
+            3.175912,
+            2.593071
+          ]
+        },
+        {
+          "hex": "#1C1718",
+          "rgb": [
+            28,
+            23,
+            24
+          ],
+          "labD65": [
+            8.355944,
+            2.726858,
+            0.213189
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FEFDFD",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#EAD3BF",
+          "onAccent": "#101010",
+          "link": "#1C1718",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#EAD3BF",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#EAD3BF",
+            "#AA9486",
+            "#B6854D",
+            "#39312F",
+            "#1C1718"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#EAD3BF",
+          "onAccent": "#101010",
+          "link": "#EAD3BF",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#EAD3BF",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#EAD3BF",
+            "#AA9486",
+            "#B6854D",
+            "#39312F",
+            "#1C1718"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#EAD3BF",
+          "onAccent": "#101010",
+          "link": "#1C1718",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#EAD3BF",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#EAD3BF",
+            "#AA9486",
+            "#B6854D",
+            "#39312F",
+            "#1C1718"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": null
+    },
+    {
+      "id": "FrenchDispatch",
+      "film": {
+        "id": "french-dispatch",
+        "title": "The French Dispatch",
+        "year": 2021,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#90D4CC",
+          "rgb": [
+            144,
+            212,
+            204
+          ],
+          "labD65": [
+            80.389084,
+            -23.076425,
+            -2.875176
+          ]
+        },
+        {
+          "hex": "#BD3027",
+          "rgb": [
+            189,
+            48,
+            39
+          ],
+          "labD65": [
+            42.887625,
+            55.07413,
+            39.400324
+          ]
+        },
+        {
+          "hex": "#B0AFA2",
+          "rgb": [
+            176,
+            175,
+            162
+          ],
+          "labD65": [
+            71.213533,
+            -1.991879,
+            6.790094
+          ]
+        },
+        {
+          "hex": "#7FC0C6",
+          "rgb": [
+            127,
+            192,
+            198
+          ],
+          "labD65": [
+            73.730817,
+            -19.103314,
+            -9.585542
+          ]
+        },
+        {
+          "hex": "#9D9C85",
+          "rgb": [
+            157,
+            156,
+            133
+          ],
+          "labD65": [
+            63.867346,
+            -3.723618,
+            12.201031
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FBFDFD",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#90D4CC",
+          "onAccent": "#101010",
+          "link": "#BD3027",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#90D4CC",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#90D4CC",
+            "#BD3027",
+            "#B0AFA2",
+            "#7FC0C6",
+            "#9D9C85"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#90D4CC",
+          "onAccent": "#101010",
+          "link": "#90D4CC",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#90D4CC",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#90D4CC",
+            "#BD3027",
+            "#B0AFA2",
+            "#7FC0C6",
+            "#9D9C85"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#90D4CC",
+          "onAccent": "#101010",
+          "link": "#BD3027",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#90D4CC",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#90D4CC",
+            "#BD3027",
+            "#B0AFA2",
+            "#7FC0C6",
+            "#9D9C85"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": null
+    },
+    {
+      "id": "AsteroidCity1",
+      "film": {
+        "id": "asteroid-city",
+        "title": "Asteroid City",
+        "year": 2023,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#0A9F9D",
+          "rgb": [
+            10,
+            159,
+            157
+          ],
+          "labD65": [
+            59.244231,
+            -34.008956,
+            -8.793906
+          ]
+        },
+        {
+          "hex": "#CEB175",
+          "rgb": [
+            206,
+            177,
+            117
+          ],
+          "labD65": [
+            73.449657,
+            2.364143,
+            34.530908
+          ]
+        },
+        {
+          "hex": "#E54E21",
+          "rgb": [
+            229,
+            78,
+            33
+          ],
+          "labD65": [
+            54.261664,
+            56.606112,
+            55.393107
+          ]
+        },
+        {
+          "hex": "#6C8645",
+          "rgb": [
+            108,
+            134,
+            69
+          ],
+          "labD65": [
+            52.584006,
+            -20.794286,
+            31.820414
+          ]
+        },
+        {
+          "hex": "#C18748",
+          "rgb": [
+            193,
+            135,
+            72
+          ],
+          "labD65": [
+            60.901336,
+            15.739917,
+            42.121835
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#F6FCFC",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#0A9F9D",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#0A9F9D",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#0A9F9D",
+            "#CEB175",
+            "#E54E21",
+            "#6C8645",
+            "#C18748"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#0A9F9D",
+          "onAccent": "#101010",
+          "link": "#CEB175",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#0A9F9D",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#0A9F9D",
+            "#CEB175",
+            "#E54E21",
+            "#6C8645",
+            "#C18748"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#0A9F9D",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#0A9F9D",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#0A9F9D",
+            "#CEB175",
+            "#E54E21",
+            "#6C8645",
+            "#C18748"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": null
+    },
+    {
+      "id": "AsteroidCity2",
+      "film": {
+        "id": "asteroid-city",
+        "title": "Asteroid City",
+        "year": 2023,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#C52E19",
+          "rgb": [
+            197,
+            46,
+            25
+          ],
+          "labD65": [
+            44.086885,
+            57.828711,
+            48.080608
+          ]
+        },
+        {
+          "hex": "#AC9765",
+          "rgb": [
+            172,
+            151,
+            101
+          ],
+          "labD65": [
+            63.21429,
+            0.608859,
+            29.192999
+          ]
+        },
+        {
+          "hex": "#54D8B1",
+          "rgb": [
+            84,
+            216,
+            177
+          ],
+          "labD65": [
+            78.559092,
+            -45.337303,
+            8.59192
+          ]
+        },
+        {
+          "hex": "#B67C3B",
+          "rgb": [
+            182,
+            124,
+            59
+          ],
+          "labD65": [
+            56.76081,
+            16.233753,
+            43.600632
+          ]
+        },
+        {
+          "hex": "#175149",
+          "rgb": [
+            23,
+            81,
+            73
+          ],
+          "labD65": [
+            30.753896,
+            -20.672996,
+            -0.74546
+          ]
+        },
+        {
+          "hex": "#AF4E24",
+          "rgb": [
+            175,
+            78,
+            36
+          ],
+          "labD65": [
+            45.210577,
+            37.103276,
+            42.472703
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FDF8F7",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#C52E19",
+          "onAccent": "#FFFFFF",
+          "link": "#175149",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#C52E19",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#C52E19",
+            "#AC9765",
+            "#54D8B1",
+            "#B67C3B",
+            "#175149",
+            "#AF4E24"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#C52E19",
+          "onAccent": "#FFFFFF",
+          "link": "#54D8B1",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#C52E19",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#C52E19",
+            "#AC9765",
+            "#54D8B1",
+            "#B67C3B",
+            "#175149",
+            "#AF4E24"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#C52E19",
+          "onAccent": "#FFFFFF",
+          "link": "#175149",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#C52E19",
+          "diagramText": "#FFFFFF",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#C52E19",
+            "#AC9765",
+            "#54D8B1",
+            "#B67C3B",
+            "#175149",
+            "#AF4E24"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": null
+    },
+    {
+      "id": "AsteroidCity3",
+      "film": {
+        "id": "asteroid-city",
+        "title": "Asteroid City",
+        "year": 2023,
+        "kind": "feature"
+      },
+      "category": "mixed",
+      "source": {
+        "type": "community-palette-library",
+        "sourceId": "SRC-WES",
+        "path": "R/colors.R",
+        "gitBlobSha": "ddcf7fb12888a658b8b3f80117ea933dcc0a0f16",
+        "evidence": "library-values-verified",
+        "filmFrameVerified": false,
+        "frameTimestamp": null,
+        "officialPalette": false
+      },
+      "colors": [
+        {
+          "hex": "#FBA72A",
+          "rgb": [
+            251,
+            167,
+            42
+          ],
+          "labD65": [
+            75.025661,
+            21.826848,
+            70.893277
+          ]
+        },
+        {
+          "hex": "#D3D4D8",
+          "rgb": [
+            211,
+            212,
+            216
+          ],
+          "labD65": [
+            84.942117,
+            0.393398,
+            -2.089854
+          ]
+        },
+        {
+          "hex": "#CB7A5C",
+          "rgb": [
+            203,
+            122,
+            92
+          ],
+          "labD65": [
+            59.33491,
+            28.545953,
+            29.803629
+          ]
+        },
+        {
+          "hex": "#5785C1",
+          "rgb": [
+            87,
+            133,
+            193
+          ],
+          "labD65": [
+            54.709764,
+            1.933643,
+            -36.060938
+          ]
+        }
+      ],
+      "recommendedUse": {
+        "goodFor": [
+          "editorial",
+          "comparison",
+          "chart",
+          "process",
+          "mechanism"
+        ],
+        "constraints": [
+          "Do not use raw palette colors as automatic foreground/background pairs.",
+          "Keep chart values, units and component identities unchanged.",
+          "Do not recolor scientific, medical, product-accuracy or evidential imagery by default."
+        ]
+      },
+      "derivedModes": {
+        "light": {
+          "canvas": "#FFFCF8",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#FBA72A",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#FBA72A",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#FBA72A",
+            "#D3D4D8",
+            "#CB7A5C",
+            "#5785C1"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "dark": {
+          "canvas": "#151716",
+          "surface": "#232624",
+          "text": "#FAFAF7",
+          "mutedText": "#C5C8C5",
+          "accent": "#FBA72A",
+          "onAccent": "#101010",
+          "link": "#D3D4D8",
+          "focusRing": "#FAFAF7",
+          "essentialStroke": "#FAFAF7",
+          "referenceText": "#FAFAF7",
+          "diagramFill": "#FBA72A",
+          "diagramText": "#101010",
+          "diagramConnector": "#FAFAF7",
+          "missingMark": "#FAFAF7",
+          "series": [
+            "#FBA72A",
+            "#D3D4D8",
+            "#CB7A5C",
+            "#5785C1"
+          ],
+          "seriesOutlines": "#FAFAF7",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        },
+        "stage": {
+          "canvas": "#FFFFFF",
+          "surface": "#FFFFFF",
+          "text": "#171917",
+          "mutedText": "#4B504B",
+          "accent": "#FBA72A",
+          "onAccent": "#101010",
+          "link": "#171917",
+          "focusRing": "#171917",
+          "essentialStroke": "#171917",
+          "referenceText": "#171917",
+          "diagramFill": "#FBA72A",
+          "diagramText": "#101010",
+          "diagramConnector": "#171917",
+          "missingMark": "#171917",
+          "series": [
+            "#FBA72A",
+            "#D3D4D8",
+            "#CB7A5C",
+            "#5785C1"
+          ],
+          "seriesOutlines": "#171917",
+          "semanticPolicy": "source-colors-not-semantic-status"
+        }
+      },
+      "screenshot": null
+    }
+  ],
+  "derivation": {
+    "id": "semantic-role-mapping",
+    "version": 1,
+    "implementation": "lib/color.mjs#deriveMode",
+    "neutralStrategy": "independent application neutrals; raw source colours are preserved",
+    "comparisonMetric": "CIE76 for screenshot differences; not CIEDE2000",
+    "profileAssumption": "sRGB for the supplied screenshot and hex library values; no recovered film mastering profile"
+  }
+}

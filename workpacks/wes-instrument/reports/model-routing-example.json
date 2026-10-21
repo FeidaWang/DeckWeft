@@ -1,0 +1,40 @@
+{
+  "taskId": "DWI-034",
+  "title": "Export the first complete native vertical slice",
+  "phase": 3,
+  "taskState": "planned",
+  "kind": "recommendation-only",
+  "profile": {
+    "id": "sol-approved",
+    "recommendedModelLabel": "GPT-6.1 Sol",
+    "candidateModelId": "gpt-6.1-sol",
+    "actualModelId": null,
+    "hostBindingVerified": false,
+    "bindingRule": "Use only an actually available, explicitly user-approved Codex model. GPT-6.1 Sol is a conditional recommendation, not a verified account capability. If absent, the user must choose an available Sol version or another approved model; never fall back to API authentication.",
+    "modelFamily": "Sol",
+    "automaticSubstitution": false,
+    "sourceIds": [
+      "SRC-MODEL-CATALOG",
+      "SRC-CODEX-MODELS"
+    ]
+  },
+  "profileId": "sol-approved",
+  "buildEffort": "high",
+  "reviewEffort": "high",
+  "escalationEffort": "xhigh",
+  "reason": "Preview, semantic scenes and native OOXML must preserve object editability and meaning.",
+  "escalationTrigger": "A six-page fixture still differs structurally or visually between targets after two isolated fixes and a minimised reproducer.",
+  "automaticModelSwitch": false,
+  "automaticEffortChange": false,
+  "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+  "reviewMode": "same-approved-model-separate-pass",
+  "taskPrompt": "prompts/tasks/DWI-034.md",
+  "actualModelId": null,
+  "actualEffort": null,
+  "hostSettingsVerified": false,
+  "modelInvocationPerformed": false,
+  "hostSettingsChanged": false,
+  "automaticEscalation": false,
+  "permissionToSpendGranted": false,
+  "requiredAction": "The user must select or approve the actual supported model/effort in Codex. This output does not launch it."
+}

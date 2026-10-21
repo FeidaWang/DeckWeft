@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-000",
+  "checkedOn": "2026-10-21",
+  "sourceCommit": "05643c614cf7d981227b0a14be02a2d65eda15c3",
+  "dispositions": {
+    "reuse": "an existing module already meets the acceptance; the task adds a regression test and evidence only",
+    "extend": "an existing module is the home; the task adds to it without a parallel implementation",
+    "new": "no equivalent exists; the task adds a module at the stated path",
+    "blocked": "needs something this environment or the user has not provided (people, licensed media, an application run, a public API)"
+  },
+  "tasks": [
+    {"id": "DWI-000", "disposition": "new", "existing": ["AGENTS.md", "ROADMAP.md", "PROJECT_STATUS.json", "roadmap.json"], "plan": "This map, the baseline verify log and the inspector output."},
+    {"id": "DWI-001", "disposition": "reuse", "existing": ["src/hosts/capabilities.mjs", "src/cli.mjs", "src/qa/hosts.mjs", "docs/en/host-acceptance.md"], "plan": "Record probeHost receipts for both CLIs; keep installed/skill/auth/invoked/exported apart."},
+    {"id": "DWI-002", "disposition": "new", "existing": ["NOTICE.md"], "plan": "Rights dispositions per planned asset; a test that report examples never reach production code."},
+    {"id": "DWI-003", "disposition": "extend", "existing": ["tests/cine-corpus.mjs", "tests/export-layout.mjs", "scripts/export-targets.mjs", "src/targets/pptx/audit.mjs"], "plan": "tests/dwi-slice.mjs six-page fixture in both languages; export-targets --dwi for the measured path."},
+    {"id": "DWI-010", "disposition": "new", "existing": ["src/design/theme-registry.mjs", "schemas/theme-pack.schema.json"], "plan": "src/design/palette-registry.mjs and schemas/palette-registry.schema.json beside the theme packs; theme ids stay a closed enum, palettes are referenced separately."},
+    {"id": "DWI-011", "disposition": "new", "existing": ["src/render/web/contrast.mjs", "src/targets/pptx/compile.mjs", "src/layout/text.mjs"], "plan": "src/design/semantic-colors.mjs resolves light/dark/stage role tokens with composited-background contrast; exporters read the same tokens."},
+    {"id": "DWI-012", "disposition": "extend", "existing": ["src/components/charts/render.mjs", "src/components/diagrams/render.mjs", "tests/chart-renderer.test.mjs"], "plan": "Charts already have dash+marker, direct labels and a data table; add adjacency checks for palette series and diagram strokes, and refuse categorical palettes as magnitude scales."},
+    {"id": "DWI-013", "disposition": "extend", "existing": ["public/kinds/visual.js", "public/shell.js", "src/design/profile.mjs"], "plan": "One palette choice inside the existing Look controls with an expandable evidence note; no second design panel."},
+    {"id": "DWI-020", "disposition": "new", "existing": ["src/core/model.mjs#fromOutline", "public/studio/prompt.js", "src/hosts/tasks.mjs", "src/services/server.mjs"], "plan": "src/services/document-intake.mjs: several .txt/.md files, per-document sha256 and line locators, explicit refusals for PDF/DOCX/PPTX and binary input."},
+    {"id": "DWI-021", "disposition": "extend", "existing": ["src/design/scene-semantics.mjs", "src/references/presentation.mjs", "src/planning/argument-units.mjs"], "plan": "Claim records over existing sources/contentStatus; contradiction detection is new."},
+    {"id": "DWI-022", "disposition": "extend", "existing": ["src/workbench/directions.mjs", "src/planning/argument-units.mjs", "public/studio/author.js"], "plan": "Three directions exist; add an outline-review record that approves a plan and keeps the prior project as a copy."},
+    {"id": "DWI-023", "disposition": "extend", "existing": ["src/adapters/handoff.mjs", "src/core/schema.mjs", "schemas/host-response.schema.json", "tests/handoff-contracts.test.mjs"], "plan": "An agent-handoff contract validated strictly; refuse credential-shaped fields; round-trip classic and v3."},
+    {"id": "DWI-030", "disposition": "extend", "existing": ["src/design/compositions.mjs#compositionOrder", "src/design/rhythm.mjs#rankCandidates", "src/design/intent.mjs"], "plan": "Reading order and candidate ranking exist; add delivery modes (self-paced/stage) and a hard-gate-first policy over the six families."},
+    {"id": "DWI-031", "disposition": "reuse", "existing": ["src/references/presentation.mjs", "src/render/web/document.mjs", "tests/cine-p0.test.mjs"], "plan": "CINE-002 compact strip, claim markers and appendix already separate citations from references; add a qualifier-visibility check."},
+    {"id": "DWI-032", "disposition": "extend", "existing": ["src/assets/crop.mjs", "src/components/charts/semantics.mjs", "src/design/media.mjs"], "plan": "Charts keep nulls/denominators; check that palette and mode changes leave values and protected regions unchanged."},
+    {"id": "DWI-033", "disposition": "extend", "existing": ["src/components/diagrams/render.mjs", "src/motion/blueprint.mjs", "src/design/scene-semantics.mjs"], "plan": "Stable part ids and directed edges exist; add a not-to-scale declaration and edge-identity checks through PowerPoint connectors."},
+    {"id": "DWI-034", "disposition": "extend", "existing": ["src/targets/pptx/compile.mjs", "src/targets/export-order.mjs", "src/targets/pptx/audit.mjs"], "plan": "Six-page fixture through the export order with content-count comparisons per target."},
+    {"id": "DWI-040", "disposition": "extend", "existing": ["public/shell.js", "public/app.js", "public/kinds/visual.js", "public/kinds/classic.js"], "plan": "One next action per workflow state on the existing shell."},
+    {"id": "DWI-041", "disposition": "new", "existing": ["public/kinds/visual.js (page strip keys)", "public/interaction.js#keyboardAction"], "plan": "public/components/slide-dial.js over a native range input, selection by stable slide id."},
+    {"id": "DWI-042", "disposition": "new", "existing": [], "plan": "public/components/interaction-audio.js, synthesized tick, off by default."},
+    {"id": "DWI-043", "disposition": "extend", "existing": ["public/interaction.js#DialogManager", "public/history.js", "src/services/store.mjs#restoreAsCopy"], "plan": "Whole-flow keyboard and recovery test in the isolated browser."},
+    {"id": "DWI-050", "disposition": "extend", "existing": ["src/plugin/packager.mjs", "src/hosts/tasks.mjs", "docs/en/host-acceptance.md"], "plan": "Only documented skill/CLI routes; a real host run needs the user's authorisation."},
+    {"id": "DWI-051", "disposition": "blocked", "existing": [], "plan": "A feasibility record only: running the Kimi exporter needs network and dependency installs the user has not approved."},
+    {"id": "DWI-052", "disposition": "blocked", "existing": [], "plan": "Needs licensed film media; method and schema can be written, no frame can be sampled."},
+    {"id": "DWI-053", "disposition": "blocked", "existing": ["workpacks/wes-instrument/SOURCES.md"], "plan": "Needs a web search protocol run with the user's approval for network research."},
+    {"id": "DWI-060", "disposition": "blocked", "existing": ["scripts/release-gate.mjs", "scripts/visual-verify.mjs"], "plan": "Render checks can run; the novice study needs participants."},
+    {"id": "DWI-061", "disposition": "blocked", "existing": ["src/targets/pptx/compatibility-report.mjs"], "plan": "PowerPoint 16.114 and Keynote 14.5 are installed; opening them is the user's check under the standing rule."},
+    {"id": "DWI-062", "disposition": "extend", "existing": ["scripts/build.mjs", "src/plugin/packager.mjs"], "plan": "Add a manifest and checksums beside the existing reproducible build; no publication."},
+    {"id": "DWI-063", "disposition": "extend", "existing": ["PROJECT_STATUS.json", "ROADMAP.md", "docs/en/handoff.md"], "plan": "Truthful status per task with evidence links."}
+  ],
+  "conflicts": [
+    {"id": "C-DWI-1", "workpack": "light/dark/stage palette modes", "repository": "'stage' already names the orange-launch art direction and theme packs carry modes.default/chapter", "resolution": "Palette modes live only in the palette registry and are called application modes; theme pack ids and modes are unchanged."},
+    {"id": "C-DWI-2", "workpack": "PaletteReference persisted in the project", "repository": "theme ids are a closed enum in four schemas; legacy decks must stay byte-identical", "resolution": "An optional scene field added through the schema with no migration needed for existing projects (absent = today's rendering); renderer version bumps only when a palette is declared."},
+    {"id": "C-DWI-3", "workpack": "evidence.schema.json has additionalProperties:false and no model fields", "repository": "MODEL_ROUTING.md asks for requested/observed model per task", "resolution": "Model fields go under environment (additionalProperties allowed)."},
+    {"id": "C-DWI-4", "workpack": "TASKS.json is the queue", "repository": "roadmap.json and PROJECT_STATUS.json are the repository's task records", "resolution": "DWI tasks stay in the workpack queue and docs/evidence/dwi; ROADMAP.md gets a dated section; roadmap.json task states change only with evidence."},
+    {"id": "C-DWI-5", "workpack": "TEST_PLAN asks for 16:9 and 4:3", "repository": "the presentation target is 16:9 only (src/targets/target-budget.mjs)", "resolution": "4:3 is recorded as unsupported, not tested."},
+    {"id": "C-DWI-6", "workpack": "multi-document intake", "repository": "one supplied text of at most 12,000 characters per host task", "resolution": "Intake joins documents into one bounded source with per-document locators; the 12,000-character task limit stays."},
+    {"id": "C-DWI-7", "workpack": "model routing to a Codex Sol model", "repository": "no model routing; this session is Claude Code", "resolution": "Recorded as a departure in each phase report; no host configuration changed."}
+  ]
+}

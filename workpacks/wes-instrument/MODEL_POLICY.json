@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "workpackVersion": "1.1.0",
+  "kind": "advisory-only",
+  "automaticModelInvocation": false,
+  "automaticModelSwitch": false,
+  "automaticEffortChange": false,
+  "paidApiFallbackAllowed": false,
+  "parallelAgentsAllowed": false,
+  "permissionToSpendGrantedByThisFile": false,
+  "defaultEffort": "medium",
+  "allowedEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh"
+  ],
+  "xhighDefaultAllowed": false,
+  "maxOrUltraDefaultAllowed": false,
+  "protectedUsage": [
+    "Astra coding allocation",
+    "API credits",
+    "any additional session or model usage not explicitly authorised by the user"
+  ],
+  "profiles": [
+    {
+      "id": "sol-approved",
+      "recommendedModelLabel": "GPT-6.1 Sol",
+      "candidateModelId": "gpt-6.1-sol",
+      "actualModelId": null,
+      "hostBindingVerified": false,
+      "bindingRule": "Use only an actually available, explicitly user-approved Codex model. GPT-6.1 Sol is a conditional recommendation, not a verified account capability. If absent, the user must choose an available Sol version or another approved model; never fall back to API authentication.",
+      "modelFamily": "Sol",
+      "automaticSubstitution": false,
+      "sourceIds": [
+        "SRC-MODEL-CATALOG",
+        "SRC-CODEX-MODELS"
+      ]
+    }
+  ],
+  "escalationPolicy": {
+    "automatic": false,
+    "maxTargetedRepairAttemptsBeforeCheckpoint": 2,
+    "requires": [
+      "a minimised reproducer or a precise unresolved contract conflict",
+      "two distinct hypothesis-driven attempts where repair is possible",
+      "specific failed invariant and concrete artefact/log path",
+      "actual host support for the proposed setting",
+      "explicit user approval for the change and its usage"
+    ],
+    "nonTriggers": [
+      "missing source or licensed media",
+      "missing PowerPoint/Keynote/browser/CLI",
+      "missing permission, login or quota",
+      "network outage or unsupported private API"
+    ],
+    "ifUnsupported": "Keep an explicitly approved supported setting, decompose the task and record the difference; do not silently upgrade the model or claim xhigh execution."
+  },
+  "reviewPolicy": {
+    "mode": "same-approved-model-separate-pass",
+    "automaticExtraSession": false,
+    "requiresEvidence": true,
+    "independentReviewClaimAllowed": false
+  },
+  "sourceIds": [
+    "SRC-MODEL-CATALOG",
+    "SRC-MODEL-EFFORT",
+    "SRC-CODEX-MODELS",
+    "SRC-CODEX-EFFORT-CONFIG"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-001",
+  "checkedAt": "2026-10-21T12:43:09Z",
+  "sourceCommit": "05643c614cf7d981227b0a14be02a2d65eda15c3",
+  "method": "Read-only probes: `<cli> --version`, `<cli> --help`, `node bin/deckweft.mjs doctor` and `node bin/deckweft.mjs doctor --host both` (the existing src/hosts/capabilities.mjs probeHost, authentication not probed). No login, no model request, no configuration change. Skill locations were checked for existence only.",
+  "states": ["installed", "skillInstalled", "authenticated", "invokedForDwi", "exportedForDwi"],
+  "stateMeaning": {
+    "installed": "the executable answered --version in this environment",
+    "skillInstalled": "a DeckWeft skill directory exists where the host looks for it",
+    "authenticated": "a login status probe succeeded; 'not-probed' when it was not run",
+    "invokedForDwi": "the host ran a DeckWeft task for a DWI phase, with a receipt",
+    "exportedForDwi": "that run produced an export that was opened and inspected"
+  },
+  "hosts": [
+    {
+      "hostName": "codex-cli",
+      "checkedVersion": "codex-cli 0.160.0",
+      "executable": "~/.local/bin/codex",
+      "installed": true,
+      "skillInstalled": false,
+      "authenticated": "not-probed",
+      "invokedForDwi": false,
+      "exportedForDwi": false,
+      "localFiles": true,
+      "sourceLookup": "unavailable",
+      "slides": "not-detected",
+      "slidesNote": "`codex --help` lists no slides command; no documented Slides or Spaces API was found. Nothing is built against one.",
+      "priorEvidence": "docs/evidence/dw-020 (Codex CLI 0.160.0 skill route, 2026-10-17) and docs/evidence/vis-012 (v3 draft and revision). Those receipts certify their own commits, not this one.",
+      "evidencePaths": ["docs/evidence/dwi/phase-00/dwi-001/codex-help.txt", "docs/evidence/dwi/phase-00/dwi-001/doctor-host-both.json"]
+    },
+    {
+      "hostName": "claude-code-cli",
+      "checkedVersion": "2.1.288 (Claude Code)",
+      "executable": "~/.local/bin/claude",
+      "installed": true,
+      "skillInstalled": false,
+      "authenticated": "not-probed",
+      "invokedForDwi": false,
+      "exportedForDwi": false,
+      "localFiles": true,
+      "sourceLookup": "unavailable",
+      "slides": "not-detected",
+      "slidesNote": "`claude --help` lists no slides command.",
+      "priorEvidence": "docs/evidence/vis-012: version/help probes only; the Claude login and live task stay deferred.",
+      "evidencePaths": ["docs/evidence/dwi/phase-00/dwi-001/claude-help.txt", "docs/evidence/dwi/phase-00/dwi-001/doctor-host-both.json"]
+    },
+    {
+      "hostName": "claude-code-desktop-session",
+      "checkedVersion": null,
+      "installed": true,
+      "skillInstalled": false,
+      "authenticated": "in-use",
+      "invokedForDwi": false,
+      "exportedForDwi": false,
+      "localFiles": true,
+      "sourceLookup": "unavailable",
+      "slides": "not-detected",
+      "slidesNote": "This DWI implementation session itself runs in the Claude desktop app (Code tab). It edits the repository; it is not a DeckWeft host invocation and certifies nothing about the host loop.",
+      "evidencePaths": []
+    }
+  ],
+  "applications": [
+    {"name": "Microsoft PowerPoint", "path": "/Applications/Microsoft PowerPoint.app", "version": "16.114", "installed": true, "openedForDwi": false},
+    {"name": "Keynote", "path": "/Applications/Keynote.app", "version": "14.5", "installed": true, "openedForDwi": false},
+    {"name": "Chrome for Testing (isolated)", "path": "~/Library/Caches/ms-playwright/chromium-1234", "version": "151 (recorded in CINE batch 1)", "installed": true, "openedForDwi": false},
+    {"name": "Firefox (Playwright)", "path": "~/Library/Caches/ms-playwright/firefox-1538", "version": null, "installed": true, "openedForDwi": false},
+    {"name": "WebKit (Playwright)", "path": "~/Library/Caches/ms-playwright/webkit-2336", "version": null, "installed": true, "openedForDwi": false}
+  ],
+  "modelRouting": {
+    "requestedProfile": "sol-approved (a Codex Sol model approved by the user)",
+    "observedHost": "Claude desktop app, Code tab",
+    "observedModel": "claude-opus-5-5 (stated by the host's system context)",
+    "observedEffort": null,
+    "departure": "The workpack routes every task to a Codex Sol model. The user started this work in a Claude Code session with the instruction to read the workpack and work through phases 00–06; no Sol model, Astra quota, API key or extra agent was used. Effort is not observable from inside the session."
+  },
+  "limitations": [
+    "Authentication was not probed for either CLI, so no host run is claimed.",
+    "No DeckWeft skill is installed in this worktree's host locations; DWI-050 must install or package it before any real host acceptance.",
+    "PowerPoint and Keynote are installed; installation is not an export check."
+  ]
+}
