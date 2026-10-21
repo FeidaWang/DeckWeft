@@ -1,0 +1,106 @@
+{
+ "format": "deckweft-s7-exports",
+ "version": 1,
+ "environment": {
+  "node": "v24.14.0",
+  "platform": "darwin 27.0.0",
+  "browser": "Chromium 151.0.7922.34 (isolated, Playwright cache)",
+  "playwright": "1.61.1",
+  "renderer": "visual-art-direction.15",
+  "player": "semantic-player.7",
+  "python": "Python 3.9.6",
+  "quickLook": true
+ },
+ "paginate": "auto",
+ "applications": {
+  "powerpoint": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "keynote": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "libreoffice": {
+   "state": "not installed"
+  },
+  "quickLook": {
+   "state": "rendered",
+   "detail": "macOS Quick Look (qlmanage, OfficeImport) drew each slide and PDF page as an independent reference render. It is neither PowerPoint nor Keynote."
+  }
+ },
+ "decks": [
+  {
+   "deck": "dwi-slice-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "fail",
+   "typography": "fail",
+   "typographyFailures": 2,
+   "pagination": 2,
+   "visualFidelity": "partial",
+   "receipts": 11,
+   "levels": {
+    "L1": 27,
+    "L2": 0,
+    "L3": 1
+   },
+   "external": []
+  },
+  {
+   "deck": "dwi-slice-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "fail",
+   "typography": "fail",
+   "typographyFailures": 2,
+   "pagination": 3,
+   "visualFidelity": "partial",
+   "receipts": 10,
+   "levels": {
+    "L1": 27,
+    "L2": 0,
+    "L3": 1
+   },
+   "external": []
+  },
+  {
+   "deck": "dwi-slice-palette-en",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "pass",
+   "accessibility": "fail",
+   "typography": "fail",
+   "typographyFailures": 2,
+   "pagination": 2,
+   "visualFidelity": "partial",
+   "receipts": 11,
+   "levels": {
+    "L1": 27,
+    "L2": 0,
+    "L3": 1
+   },
+   "external": []
+  },
+  {
+   "deck": "dwi-slice-palette-zh-CN",
+   "pptxEditability": "pass",
+   "sceneCheck": "pass",
+   "pdfSearchability": "partial",
+   "accessibility": "fail",
+   "typography": "fail",
+   "typographyFailures": 2,
+   "pagination": 3,
+   "visualFidelity": "partial",
+   "receipts": 10,
+   "levels": {
+    "L1": 27,
+    "L2": 0,
+    "L3": 1
+   },
+   "external": []
+  }
+ ]
+}

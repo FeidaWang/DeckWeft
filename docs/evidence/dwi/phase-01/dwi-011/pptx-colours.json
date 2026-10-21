@@ -1,0 +1,356 @@
+{
+ "source": "dist/dwi-export-targets (scripts/export-targets.mjs --dwi, isolated Chrome for Testing 151)",
+ "decks": {
+  "en": [
+   {
+    "slide": 1,
+    "scene": "assertion",
+    "palette": "Darjeeling2/light",
+    "background": "FEFDFC",
+    "canvas": "FEFDFC",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false,
+     "series4": false
+    }
+   },
+   {
+    "slide": 2,
+    "scene": "assertion",
+    "palette": "Darjeeling2/light",
+    "background": "FEFDFC",
+    "canvas": "FEFDFC",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": true,
+     "secondary": false,
+     "mutedText": true,
+     "series0": true,
+     "series1": true,
+     "series2": false,
+     "series3": false,
+     "series4": true
+    }
+   },
+   {
+    "slide": 3,
+    "scene": "comparison",
+    "palette": "Royal1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 4,
+    "scene": "chart",
+    "palette": "Zissou1/stage",
+    "background": "FFFFFF",
+    "canvas": "FFFFFF",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": true,
+     "series1": false,
+     "series2": false
+    }
+   },
+   {
+    "slide": 5,
+    "scene": "workflow",
+    "palette": "Moonrise2/light",
+    "background": "FAFBFB",
+    "canvas": "FAFBFB",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": true,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 6,
+    "scene": "mechanism",
+    "palette": "GrandBudapest1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": true,
+     "secondary": false,
+     "mutedText": true,
+     "series0": true,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 7,
+    "scene": "mechanism",
+    "palette": "GrandBudapest1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": true,
+     "secondary": false,
+     "mutedText": false,
+     "series0": true,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 8,
+    "scene": "mechanism",
+    "palette": "GrandBudapest1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": false,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 9,
+    "scene": "brief",
+    "palette": "IsleofDogs1/stage",
+    "background": "FFFFFF",
+    "canvas": "FFFFFF",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false,
+     "series4": false
+    }
+   }
+  ],
+  "zh-CN": [
+   {
+    "slide": 1,
+    "scene": "assertion",
+    "palette": "Darjeeling2/light",
+    "background": "FEFDFC",
+    "canvas": "FEFDFC",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false,
+     "series4": false
+    }
+   },
+   {
+    "slide": 2,
+    "scene": "assertion",
+    "palette": "Darjeeling2/light",
+    "background": "FEFDFC",
+    "canvas": "FEFDFC",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": true,
+     "secondary": false,
+     "mutedText": true,
+     "series0": true,
+     "series1": true,
+     "series2": false,
+     "series3": false,
+     "series4": true
+    }
+   },
+   {
+    "slide": 3,
+    "scene": "comparison",
+    "palette": "Royal1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 4,
+    "scene": "comparison",
+    "palette": "Royal1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 5,
+    "scene": "chart",
+    "palette": "Zissou1/stage",
+    "background": "FFFFFF",
+    "canvas": "FFFFFF",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": true,
+     "series1": false,
+     "series2": false
+    }
+   },
+   {
+    "slide": 6,
+    "scene": "workflow",
+    "palette": "Moonrise2/light",
+    "background": "FAFBFB",
+    "canvas": "FAFBFB",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": true,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 7,
+    "scene": "mechanism",
+    "palette": "GrandBudapest1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": true,
+     "secondary": false,
+     "mutedText": true,
+     "series0": true,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 8,
+    "scene": "mechanism",
+    "palette": "GrandBudapest1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": true,
+     "secondary": false,
+     "mutedText": false,
+     "series0": true,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 9,
+    "scene": "mechanism",
+    "palette": "GrandBudapest1/dark",
+    "background": "151716",
+    "canvas": "151716",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": false,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false
+    }
+   },
+   {
+    "slide": 10,
+    "scene": "brief",
+    "palette": "IsleofDogs1/stage",
+    "background": "FFFFFF",
+    "canvas": "FFFFFF",
+    "backgroundMatches": true,
+    "rolesPresent": {
+     "text": true,
+     "accent": false,
+     "secondary": false,
+     "mutedText": true,
+     "series0": false,
+     "series1": false,
+     "series2": false,
+     "series3": false,
+     "series4": false
+    }
+   }
+  ]
+ },
+ "pass": true
+}

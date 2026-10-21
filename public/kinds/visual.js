@@ -291,7 +291,8 @@ function drawPalette(s,locks){
  const select=$('#paletteSelect'),mode=$('#paletteMode'),details=$('#paletteEvidence'),entry=paletteCatalogue?.palettes.find(p=>p.id===s.palette?.id);
  select.value=s.palette?.id||'';select.disabled=locks.includes('theme')||!paletteCatalogue;mode.hidden=!s.palette;mode.value=s.palette?.mode||'light';mode.disabled=select.disabled;details.hidden=!entry;
  if(!entry)return;
- $('#paletteSwatches').innerHTML=entry.colors.map(c=>`<span style="background:${x(c)}"></span>`).join('');
+ // The Studio CSP refuses inline style attributes; CSSOM assignment is allowed.
+ $('#paletteSwatches').replaceChildren(...entry.colors.map(c=>{const n=document.createElement('span');n.style.backgroundColor=c;n.title=c;return n;}));
  const shot=entry.evidence.screenshot,preview=entry.preview[s.palette.mode];
  $('#paletteEvidenceText').textContent=[t('visual.look.paletteSource',{film:entry.film.title,year:entry.film.year}),t('visual.look.paletteNotOfficial'),shot?t('visual.look.paletteScreenshot',{samples:shot.samples,exact:shot.exactMatches,delta:shot.maxDeltaE76.toFixed(1)}):t('visual.look.paletteNoScreenshot'),preview.adjusted?t('visual.look.paletteAdjusted'):''].filter(Boolean).join(' ');
 }

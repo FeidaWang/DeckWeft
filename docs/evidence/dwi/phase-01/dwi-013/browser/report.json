@@ -1,0 +1,22 @@
+{
+  "browser": "151.0.7922.34",
+  "checks": [
+    "the picker lists 22 palettes after “None, theme colours”; no evidence note or mode until one is chosen",
+    "choosing Darjeeling2 shows the light mode and a compact note: film, community source, not official, screenshot comparison 5 swatches / 1 exact",
+    "the saved project holds the palette on page 1 only; blocks and the other five pages are unchanged",
+    "switching the mode to stage is saved",
+    "two undos remove the mode change and the palette; the saved page has no palette again",
+    "keyboard alone chose a palette (Moonrise1)",
+    "Leave this page (composition and theme locked) disables the palette picker",
+    "no page errors and no external requests"
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "screenshots": [
+    "look-before.png",
+    "look-darjeeling2-light.png",
+    "studio-darjeeling2-light.png",
+    "studio-darjeeling2-stage.png",
+    "look-locked.png"
+  ]
+}
