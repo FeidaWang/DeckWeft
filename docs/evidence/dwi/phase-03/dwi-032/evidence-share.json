@@ -51,7 +51,7 @@
     "sceneId": "mechanism",
     "family": "mechanism",
     "figureLed": true,
-    "share": 0.703,
+    "share": 0.697,
     "evidence": [
      "mech-diagram"
     ],
@@ -112,7 +112,7 @@
     "sceneId": "mechanism",
     "family": "mechanism",
     "figureLed": true,
-    "share": 0.697,
+    "share": 0.692,
     "evidence": [
      "mech-diagram"
     ],
@@ -173,7 +173,7 @@
     "sceneId": "mechanism",
     "family": "mechanism",
     "figureLed": true,
-    "share": 0.703,
+    "share": 0.697,
     "evidence": [
      "mech-diagram"
     ],
@@ -234,7 +234,7 @@
     "sceneId": "mechanism",
     "family": "mechanism",
     "figureLed": true,
-    "share": 0.697,
+    "share": 0.692,
     "evidence": [
      "mech-diagram"
     ],
