@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-011",
+  "phase": 1,
+  "state": "accepted",
+  "scope": "browser",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作",
+    "browser": "Chrome for Testing 151.0.7922.34 (isolated)"
+  },
+  "sourceCommit": "1499d63173668e320184cfb1a11b6eb5d9355508",
+  "checks": [
+    {
+      "command": "node --test tests/dwi-011.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "src/design/semantic-colors.mjs"
+      ]
+    },
+    {
+      "command": "node scripts/export-targets.mjs --dwi",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-01/dwi-011/export-targets/exports.json",
+        "docs/evidence/dwi/phase-01/dwi-011/export-targets/dwi-slice-palette-en-sheet.jpg",
+        "docs/evidence/dwi/phase-01/dwi-011/export-targets/dwi-slice-palette-zh-CN-sheet.jpg"
+      ]
+    },
+    {
+      "command": "node docs/evidence/dwi/phase-01/dwi-011/pptx-colours.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-01/dwi-011/pptx-colours.json"
+      ]
+    },
+    {
+      "command": "node tests/render-baseline.mjs --write (own commit 10265b0)",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "tests/fixtures/visual/render-baseline.json"
+      ]
+    }
+  ],
+  "limitations": [
+    "Forced-colours mode and screen readers not run.",
+    "Derivation thresholds are product defaults, not perceptual measurements."
+  ],
+  "changedFiles": [
+    "src/design/semantic-colors.mjs",
+    "src/design/theme-registry.mjs",
+    "src/design/art-direction.mjs",
+    "src/motion/web.mjs",
+    "src/render/web/document.mjs",
+    "src/scene/web/compile.mjs",
+    "tests/dwi-011.test.mjs"
+  ]
+}

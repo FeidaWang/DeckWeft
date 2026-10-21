@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-013",
+  "phase": 1,
+  "state": "accepted",
+  "scope": "browser",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作",
+    "browser": "Chrome for Testing 151.0.7922.34 (isolated)"
+  },
+  "sourceCommit": "1499d63173668e320184cfb1a11b6eb5d9355508",
+  "checks": [
+    {
+      "command": "node --test tests/dwi-013.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "public/kinds/visual.js",
+        "src/design/profile.mjs",
+        "src/services/visual-api.mjs"
+      ]
+    },
+    {
+      "command": "node tests/browser_dwi_palette.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-01/dwi-013/browser/report.json",
+        "docs/evidence/dwi/phase-01/dwi-013/browser/look-darjeeling2-light.png",
+        "docs/evidence/dwi/phase-01/dwi-013/browser/studio-darjeeling2-stage.png",
+        "docs/evidence/dwi/phase-01/dwi-013/browser/look-locked.png"
+      ]
+    }
+  ],
+  "limitations": [
+    "Firefox, WebKit and screen readers not run.",
+    "Classic decks have no palette picker."
+  ],
+  "changedFiles": [
+    "public/kinds/visual.js",
+    "public/kinds/visual.css",
+    "public/i18n.js",
+    "src/design/profile.mjs",
+    "src/services/visual-api.mjs",
+    "tests/dwi-013.test.mjs",
+    "tests/browser_dwi_palette.mjs",
+    "docs/en/visual-studio.md",
+    "docs/zh-CN/visual-studio.md"
+  ]
+}
