@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-040",
+  "phase": 4,
+  "state": "implemented",
+  "scope": "browser",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作",
+    "browser": "Chrome for Testing 151.0.7922.34 (isolated)"
+  },
+  "sourceCommit": "d0f6052cab379c0e746be2880f336118003083bd",
+  "checks": [
+    {
+      "command": "node tests/browser_dwi_workbench.mjs (three runs)",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-04/browser/report.json",
+        "docs/evidence/dwi/phase-04/browser/three-runs.txt",
+        "docs/evidence/dwi/phase-04/browser/state-empty.png",
+        "docs/evidence/dwi/phase-04/browser/state-deck.png"
+      ]
+    },
+    {
+      "command": "node --test tests/dwi-040.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "tests/dwi-040.test.mjs"
+      ]
+    },
+    {
+      "command": "npm run verify",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-06/verify-d0f6052.txt"
+      ]
+    }
+  ],
+  "limitations": [
+    "The Take away dialog offers Present and HTML with equal weight and shows an engineering status line; a product decision."
+  ],
+  "changedFiles": [
+    "public/shell.js",
+    "tests/dwi-040.test.mjs"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-041",
+  "phase": 4,
+  "state": "accepted",
+  "scope": "browser",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作",
+    "browser": "Chrome for Testing 151.0.7922.34 (isolated)"
+  },
+  "sourceCommit": "d0f6052cab379c0e746be2880f336118003083bd",
+  "checks": [
+    {
+      "command": "node --test tests/dwi-041.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "public/components/slide-dial.js"
+      ]
+    },
+    {
+      "command": "node tests/browser_dwi_workbench.mjs (three runs)",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-04/browser/report.json",
+        "docs/evidence/dwi/phase-04/browser/viewport-200pct-of-1366x768.png"
+      ]
+    }
+  ],
+  "limitations": [
+    "Firefox, WebKit and touch devices not run."
+  ],
+  "changedFiles": [
+    "public/components/slide-dial.js",
+    "public/shell.js",
+    "public/shell.css",
+    "public/i18n.js",
+    "src/services/server.mjs"
+  ]
+}

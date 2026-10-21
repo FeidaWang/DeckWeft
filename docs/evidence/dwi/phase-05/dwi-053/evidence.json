@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-053",
+  "phase": 5,
+  "state": "planned",
+  "scope": "local-code",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作"
+  },
+  "sourceCommit": "d0f6052cab379c0e746be2880f336118003083bd",
+  "checks": [
+    {
+      "command": "search protocol execution",
+      "status": "not-run",
+      "exitCode": null,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-05/dwi-053/protocol.md"
+      ]
+    }
+  ],
+  "limitations": [
+    "Protocol only; coverage stays scopeComplete false."
+  ],
+  "changedFiles": [
+    "docs/evidence/dwi/phase-05/dwi-053/protocol.md"
+  ]
+}

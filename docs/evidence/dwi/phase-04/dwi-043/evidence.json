@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-043",
+  "phase": 4,
+  "state": "implemented",
+  "scope": "browser",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作",
+    "browser": "Chrome for Testing 151.0.7922.34 (isolated)"
+  },
+  "sourceCommit": "d0f6052cab379c0e746be2880f336118003083bd",
+  "checks": [
+    {
+      "command": "node tests/browser_dwi_workbench.mjs (three runs)",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-04/browser/report.json"
+      ]
+    },
+    {
+      "command": "node tests/browser_session_reconnect.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-04/dwi-043/browser_session_reconnect.log"
+      ]
+    },
+    {
+      "command": "node tests/browser_history_capacity.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-04/dwi-043/browser_history_capacity.log"
+      ]
+    },
+    {
+      "command": "node tests/browser_task_recovery.mjs",
+      "status": "not-run",
+      "exitCode": null,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-04/dwi-043/browser_task_recovery.log"
+      ],
+      "note": "Exited 1 before testing: needs dist/visual-task from npm run deck:verify."
+    },
+    {
+      "command": "screen reader and touch",
+      "status": "not-run",
+      "exitCode": null,
+      "artifactPaths": []
+    }
+  ],
+  "limitations": [
+    "About one run in three loses the first input after a dialog opens over the preview; the runner retries once."
+  ],
+  "changedFiles": [
+    "tests/browser_dwi_workbench.mjs",
+    "tests/dwi-043.test.mjs"
+  ]
+}

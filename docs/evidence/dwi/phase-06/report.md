@@ -55,3 +55,7 @@ Counts: 19 accepted, 5 implemented, 4 blocked, 1 planned.
 4. Which format the Take away dialog should recommend, and whether its engineering status line should move out of the dialog.
 5. Whether to approve the Kimi comparison, film-frame sampling (needs licensed media) or the research audit.
 6. Whether and how to merge or push this branch.
+
+## Final verification
+
+`npm run verify` at `d0f6052` (exit 0): 690 tests, 684 pass, 0 fail, 5 skipped (the existing `CHROMIUM_PATH` and `DECKWEFT_HANDOFF_DIR` gates), 1 todo — [log](verify-d0f6052.txt), recorded with `status-summary --record`; `status:check` agrees. The baseline at `05643c6` was 573 tests, 567 pass.

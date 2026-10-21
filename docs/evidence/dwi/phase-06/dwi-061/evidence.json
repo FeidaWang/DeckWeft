@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-061",
+  "phase": 6,
+  "state": "blocked",
+  "scope": "office",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Microsoft PowerPoint / Keynote",
+    "hostVersion": "16.114 / 14.5 (installed, not opened)",
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作"
+  },
+  "sourceCommit": "d0f6052cab379c0e746be2880f336118003083bd",
+  "checks": [
+    {
+      "command": "open exports in PowerPoint and Keynote",
+      "status": "not-run",
+      "exitCode": null,
+      "artifactPaths": [
+        "docs/evidence/dwi/phase-06/dwi-061/checklist.md"
+      ],
+      "note": "Only the user opens these applications."
+    }
+  ],
+  "limitations": [
+    "Structural OOXML checks do not substitute for application results."
+  ],
+  "changedFiles": [
+    "docs/evidence/dwi/phase-06/dwi-061/checklist.md"
+  ]
+}

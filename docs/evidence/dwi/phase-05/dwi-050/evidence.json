@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "taskId": "DWI-050",
+  "phase": 5,
+  "state": "blocked",
+  "scope": "local-code",
+  "environment": {
+    "node": "v24.14.0",
+    "os": "darwin 27.0.0 (macOS 27.0.1)",
+    "host": "Claude desktop app, Code tab",
+    "hostVersion": null,
+    "requestedModel": "sol-approved (workpack MODEL_POLICY.json)",
+    "observedModel": "claude-opus-5-5 (host system context)",
+    "observedEffort": null,
+    "modelObservationSource": "host system context; effort not observable in session",
+    "userApproval": "user message 2026-10-21: 阅读工作包然后从00-06开始工作"
+  },
+  "sourceCommit": "d0f6052cab379c0e746be2880f336118003083bd",
+  "checks": [
+    {
+      "command": "node --test tests/dwi-050.test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "artifactPaths": [
+        "skills/deck/SKILL.md"
+      ]
+    },
+    {
+      "command": "live Codex or Claude handoff run",
+      "status": "not-run",
+      "exitCode": null,
+      "artifactPaths": [],
+      "note": "Needs the user's go-ahead (allowance); Claude sign-in deferred."
+    }
+  ],
+  "limitations": [
+    "No real host sent a handoff."
+  ],
+  "changedFiles": [
+    "skills/deck/SKILL.md",
+    "tests/dwi-050.test.mjs"
+  ]
+}
