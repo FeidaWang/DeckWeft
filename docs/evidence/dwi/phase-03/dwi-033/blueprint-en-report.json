@@ -1,0 +1,619 @@
+{
+ "format": "deckweft-export-report",
+ "version": 1,
+ "deck": "blueprint-silver-gray-editorial-en",
+ "locale": "en",
+ "title": "From page to file: the four parts of the DeckWeft export pipeline",
+ "environment": {
+  "node": "v24.14.0",
+  "platform": "darwin 27.0.0",
+  "browser": "Chromium 151.0.7922.34 (isolated, Playwright cache)",
+  "playwright": "1.61.1",
+  "renderer": "visual-art-direction.16",
+  "player": "semantic-player.7",
+  "python": "Python 3.9.6",
+  "quickLook": true
+ },
+ "levels": [
+  {
+   "blockId": "intro-title",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "intro-body",
+   "component": "paragraph",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "pipeline-question",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "pipeline-answer",
+   "component": "paragraph",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  },
+  {
+   "blockId": "pipeline-diagram",
+   "component": "process",
+   "web": "L1",
+   "pdf": "L2",
+   "pptx": "L1",
+   "pptxRepresentation": "native shapes, connectors and text"
+  },
+  {
+   "blockId": "pipeline-source",
+   "component": "citation",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text with a hyperlink to the source"
+  },
+  {
+   "blockId": "close-title",
+   "component": "heading",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box (slide title placeholder for the scene title)"
+  },
+  {
+   "blockId": "close-body",
+   "component": "paragraph",
+   "web": "L1",
+   "pdf": "L1",
+   "pptx": "L1",
+   "pptxRepresentation": "native text box"
+  }
+ ],
+ "levelCounts": {
+  "web": {
+   "L1": 8,
+   "L2": 0,
+   "L3": 0
+  },
+  "pdf": {
+   "L1": 7,
+   "L2": 1,
+   "L3": 0
+  },
+  "pptx": {
+   "L1": 8,
+   "L2": 0,
+   "L3": 0
+  }
+ },
+ "exportOrder": {
+  "pptx": [
+   {
+    "stage": "ready",
+    "assets": 0,
+    "fonts": [
+     "Charter",
+     "Gill Sans",
+     "Seravek"
+    ],
+    "images": 0
+   },
+   {
+    "stage": "static-state",
+    "declared": [
+     {
+      "sceneId": "pipeline",
+      "keyStateId": "diagram",
+      "position": 1
+     }
+    ],
+    "blueprints": [
+     {
+      "sceneId": "pipeline",
+      "keyStateId": "diagram",
+      "stage": "diagram",
+      "stepId": null,
+      "parts": 4,
+      "explanations": 5
+     }
+    ]
+   },
+   {
+    "stage": "freeze",
+    "charts": 0,
+    "frozenCharts": [],
+    "interactions": 1
+   },
+   {
+    "stage": "stop-motion",
+    "scenesWithMotion": 1,
+    "cuesNotPlayed": 5
+   },
+   {
+    "stage": "reveal",
+    "sources": 3,
+    "notes": 2
+   },
+   {
+    "stage": "render",
+    "bytes": 21700,
+    "slides": 4,
+    "paged": 1,
+    "charts": 0,
+    "media": 0,
+    "receipts": 7
+   },
+   {
+    "stage": "check",
+    "editability": "pass",
+    "sceneCheck": "pass",
+    "accessibility": "pass",
+    "typography": "pass"
+   }
+  ],
+  "pdf": [
+   {
+    "stage": "ready",
+    "assets": 0,
+    "fonts": [
+     "Charter",
+     "Gill Sans",
+     "Seravek"
+    ],
+    "images": 0
+   },
+   {
+    "stage": "static-state",
+    "declared": [
+     {
+      "sceneId": "pipeline",
+      "keyStateId": "diagram",
+      "position": 1
+     }
+    ],
+    "blueprints": [
+     {
+      "sceneId": "pipeline",
+      "keyStateId": "diagram",
+      "stage": "diagram",
+      "stepId": null,
+      "parts": 4,
+      "explanations": 5
+     }
+    ]
+   },
+   {
+    "stage": "freeze",
+    "charts": 0,
+    "frozenCharts": [],
+    "interactions": 1
+   },
+   {
+    "stage": "stop-motion",
+    "scenesWithMotion": 1,
+    "cuesNotPlayed": 5
+   },
+   {
+    "stage": "reveal",
+    "sources": 3,
+    "notes": 2
+   },
+   {
+    "stage": "render",
+    "pages": 3,
+    "paged": 0,
+    "appendixPages": 3,
+    "bytes": 100487
+   },
+   {
+    "stage": "check",
+    "status": "pass"
+   }
+  ]
+ },
+ "receipts": [
+  {
+   "code": "PPTX_TEXT_BALANCE",
+   "count": 3,
+   "reason": "PowerPoint does not balance lines.",
+   "delivered": "The measured line breaks are written as line breaks; the text stays editable.",
+   "elements": [
+    {
+     "sceneId": "intro",
+     "blockId": "intro-title",
+     "element": "balanced line breaks (4 lines)"
+    },
+    {
+     "sceneId": "pipeline",
+     "blockId": "pipeline-question",
+     "element": "balanced line breaks (2 lines)"
+    },
+    {
+     "sceneId": "close",
+     "blockId": "close-title",
+     "element": "balanced line breaks (3 lines)"
+    }
+   ]
+  },
+  {
+   "code": "PPTX_DISCLOSURE",
+   "count": 2,
+   "reason": "A slide has no disclosure control.",
+   "delivered": null,
+   "elements": [
+    {
+     "sceneId": "pipeline",
+     "blockId": "pipeline-diagram",
+     "element": "“Relationships and node notes” disclosure",
+     "delivered": "Its content is in the slide notes."
+    },
+    {
+     "sceneId": "pipeline",
+     "blockId": null,
+     "element": "“All authored explanations and cue order” disclosure",
+     "delivered": "The explanations are in the slide notes in cue order."
+    }
+   ]
+  },
+  {
+   "code": "PPTX_INTERACTION_STATIC",
+   "count": 1,
+   "reason": "Slides are not interactive in this compiler.",
+   "delivered": "Blueprint A at diagram: the whole object with every part numbered and every explanation as text on the page.",
+   "elements": [
+    {
+     "sceneId": "pipeline",
+     "blockId": "pipeline-diagram",
+     "element": "steps interaction pipeline-parts"
+    }
+   ]
+  },
+  {
+   "code": "PPTX_MOTION_NOT_COMPILED",
+   "count": 1,
+   "reason": "No animation, transition or timing is compiled.",
+   "delivered": "The slide shows the static state.",
+   "elements": [
+    {
+     "sceneId": "pipeline",
+     "blockId": null,
+     "element": "motion (subtle, 5 cues)"
+    }
+   ]
+  }
+ ],
+ "results": {
+  "pptxEditability": {
+   "status": "pass",
+   "compiler": {
+    "status": "pass",
+    "failures": [],
+    "counts": {
+     "text": 22,
+     "title": 4,
+     "table": 0,
+     "chart": 0,
+     "connector": 9,
+     "shape": 0,
+     "picture": 0,
+     "l3Picture": 0,
+     "decorative": 12,
+     "receipts": 7,
+     "charts": 0
+    },
+    "notes": []
+   },
+   "independent": {
+    "status": "pass",
+    "failures": [],
+    "missingText": [],
+    "chartsChecked": 0
+   },
+   "sceneCheck": {
+    "status": "pass",
+    "failures": []
+   }
+  },
+  "pdfSearchability": {
+   "status": "pass",
+   "pageCount": 6,
+   "scenes": [
+    {
+     "sceneId": "intro",
+     "expected": 2,
+     "onPage": 2,
+     "inNotes": 0,
+     "radical": [],
+     "missing": []
+    },
+    {
+     "sceneId": "pipeline",
+     "expected": 7,
+     "onPage": 7,
+     "inNotes": 0,
+     "radical": [],
+     "missing": []
+    },
+    {
+     "sceneId": "close",
+     "expected": 2,
+     "onPage": 2,
+     "inNotes": 0,
+     "radical": [],
+     "missing": []
+    }
+   ],
+   "failures": [],
+   "radicalCodePoints": null,
+   "printGeometry": {
+    "status": "pass",
+    "mismatches": []
+   }
+  },
+  "accessibility": {
+   "status": "partial",
+   "pptx": {
+    "status": "pass",
+    "failures": [],
+    "smallestTextPt": 7.17,
+    "scope": "Package checks only: slide titles, alt text, decorative marking, reading order, language, links, notes and contrast. No screen reader or PowerPoint Accessibility Checker was run."
+   },
+   "pdf": {
+    "status": "partial",
+    "failures": [],
+    "limits": [
+     {
+      "check": "grouping figures without /Alt",
+      "count": 1,
+      "note": "Chromium maps each HTML <figure> to a /Figure that wraps the tagged image or chart; the inner figure has the alternative text."
+     }
+    ],
+    "scope": "Structure checks on the PDF bytes. No screen reader or PDF/UA validator was run.",
+    "facts": {
+     "tagged": true,
+     "marked": true,
+     "lang": "en",
+     "title": "From page to file: the four parts of the DeckWeft export pipeline",
+     "figures": 1,
+     "figuresWithAlt": 1,
+     "groupingFigures": 1
+    }
+   },
+   "notTested": [
+    "screen readers",
+    "PowerPoint Accessibility Checker",
+    "PDF/UA validation"
+   ]
+  },
+  "visualFidelity": {
+   "status": "partial",
+   "reason": "Reference renders by macOS Quick Look only; PowerPoint and Keynote were not run. Metrics are advisory; the contact sheets were viewed.",
+   "renderer": "qlmanage (OfficeImport)",
+   "slides": [
+    {
+     "sceneId": "intro",
+     "pptx": {
+      "meanAbsDiff": 5.3,
+      "changedShare": 0.043
+     },
+     "pdf": {
+      "meanAbsDiff": 2.5,
+      "changedShare": 0.01
+     }
+    },
+    {
+     "sceneId": "pipeline",
+     "pptx": {
+      "meanAbsDiff": 10.9,
+      "changedShare": 0.083
+     },
+     "pdf": {
+      "meanAbsDiff": 7.9,
+      "changedShare": 0.06
+     }
+    },
+    {
+     "sceneId": "close",
+     "pptx": {
+      "meanAbsDiff": 11.8,
+      "changedShare": 0.096
+     },
+     "pdf": {
+      "meanAbsDiff": 1.6,
+      "changedShare": 0.006
+     }
+    }
+   ],
+   "sheets": [
+    "decks/blueprint-silver-gray-editorial-en/sheet-1.jpg"
+   ]
+  },
+  "typography": {
+   "status": "pass",
+   "failures": [],
+   "minimums": {
+    "title": 18,
+    "body": 10,
+    "annotation": 6
+   },
+   "scope": "Run sizes after the uniform scene-to-slide fit, by role. Pass does not prove projection legibility, font availability or PowerPoint/Keynote rendering. Split or re-page a failing scene; the thresholds are not adjustable.",
+   "pagination": [
+    {
+     "sceneId": "pipeline",
+     "parts": 2,
+     "reason": "paged"
+    }
+   ]
+  }
+ },
+ "evidence": {
+  "hostAuthored": {
+   "total": null,
+   "pages": [],
+   "unlocated": 0
+  },
+  "review": {
+   "attestation": "unattested",
+   "verdict": null,
+   "controls": null
+  }
+ },
+ "pagination": [
+  {
+   "sceneId": "pipeline",
+   "parts": 2,
+   "reason": "paged"
+  }
+ ],
+ "delivery": [
+  {
+   "sceneId": "intro",
+   "staticState": null,
+   "interactions": [],
+   "motion": {
+    "sceneId": "intro",
+    "policy": "none",
+    "cuesNotPlayed": 0,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": null
+   }
+  },
+  {
+   "sceneId": "pipeline",
+   "staticState": "diagram",
+   "interactions": [
+    {
+     "id": "pipeline-parts",
+     "kind": "steps",
+     "rule": "staged-reveal",
+     "delivered": "Blueprint A at diagram: the whole object with every part numbered and every explanation as text on the page."
+    }
+   ],
+   "motion": {
+    "sceneId": "pipeline",
+    "policy": "subtle",
+    "cuesNotPlayed": 5,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": "instant"
+   }
+  },
+  {
+   "sceneId": "close",
+   "staticState": null,
+   "interactions": [],
+   "motion": {
+    "sceneId": "close",
+    "policy": "none",
+    "cuesNotPlayed": 0,
+    "durationMs": 0,
+    "loops": 0,
+    "random": 0,
+    "reducedMotion": null
+   }
+  }
+ ],
+ "fonts": {
+  "used": [
+   "Charter",
+   "Gill Sans",
+   "Seravek"
+  ],
+  "embedded": false,
+  "note": "Fonts are referenced by name, never embedded or redistributed. A machine without them substitutes another face."
+ },
+ "files": {
+  "pptxBytes": 21700,
+  "slides": 4,
+  "charts": 0,
+  "pictures": 0,
+  "pdfPages": 6,
+  "sha256": {
+   "pptx": "7fa40158b0389ad0ccc2c204dedc11b8309a4242b8c6002993082bdc9b5b23df",
+   "pdf": "af41ef0b4a24b44b766e8843370f04882f310473b88c0cc0eb94efc633dedef6"
+  }
+ },
+ "applications": {
+  "powerpoint": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "keynote": {
+   "state": "installed, not run",
+   "detail": "Only the user runs it; see applicationChecks."
+  },
+  "libreoffice": {
+   "state": "not installed"
+  },
+  "quickLook": {
+   "state": "rendered",
+   "detail": "macOS Quick Look (qlmanage, OfficeImport) drew each slide and PDF page as an independent reference render. It is neither PowerPoint nor Keynote."
+  }
+ },
+ "applicationChecks": [
+  {
+   "id": "open",
+   "check": "Open every .pptx in PowerPoint and in Keynote: no repair prompt, no import warning, every slide present.",
+   "quickLook": "Quick Look rendered every slide; it is not PowerPoint or Keynote."
+  },
+  {
+   "id": "edit-data",
+   "check": "Use Edit Data on each native chart: the embedded workbook opens and holds the values the chart shows.",
+   "quickLook": "Not testable; the workbook was parsed independently and equals the chart caches."
+  },
+  {
+   "id": "focus-colours",
+   "check": "Ranked and grouped bars: the focused category is solid and the others pale with an outline (per-point fills).",
+   "quickLook": "Quick Look ignores per-point fills and draws every bar solid."
+  },
+  {
+   "id": "chart-details",
+   "check": "Native charts: markers, dashes, value labels, end labels, first/last time labels and the value-axis steps.",
+   "quickLook": "Quick Look ignores markers, dashes, data labels, label skipping and the axis step."
+  },
+  {
+   "id": "gaps",
+   "check": "Charts with a missing value are images (L3) in this release. Before compiling them natively: in PowerPoint and Keynote a missing value must stay a gap on its own category, never zero, and later values must keep their categories.",
+   "quickLook": "Quick Look moves later values onto earlier categories when a point is omitted, and draws #N/A as zero."
+  },
+  {
+   "id": "text-fit",
+   "check": "Headings and paragraphs wrap as on the web; negative letter-spacing is applied.",
+   "quickLook": "Quick Look ignores negative letter-spacing and wraps some 5–6 pt chrome text despite wrap=\"none\"."
+  },
+  {
+   "id": "fonts",
+   "check": "The fonts listed in the report are installed; otherwise the application substitutes them and line breaks change. Fonts are not embedded.",
+   "quickLook": "Rendered with this Mac’s fonts."
+  },
+  {
+   "id": "freeform-colour",
+   "check": "Free-form decorative shapes have the same colour as rectangles of the same value.",
+   "quickLook": "Quick Look draws free-form shapes slightly lighter than the stored colour."
+  },
+  {
+   "id": "accessibility",
+   "check": "Run PowerPoint’s Accessibility Checker and a screen reader: slide titles, alt text, reading order, decorative marks, table headers.",
+   "quickLook": "Not testable."
+  },
+  {
+   "id": "keynote-objects",
+   "check": "Keynote: charts, tables, connectors and notes import as editable objects.",
+   "quickLook": "Not testable."
+  }
+ ]
+}

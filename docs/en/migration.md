@@ -130,3 +130,13 @@ Recovery:
 - `CANDIDATE_CONTENT … Compare candidates measured at one viewport …` (the A/B rule).
 
 Legacy fixtures and every case of `tests/fixtures/visual/cine.negative.json` tagged `CINE-005` are checked by `node --test tests/cine-p1.test.mjs`.
+
+## Palettes, diagram scale and intake records (DWI phases 01–03)
+
+No migration is needed: each field is optional and absent means today's rendering.
+
+- `plan.scenes[].palette: {id, registryVersion, mode}` (DWI-010/011): a source palette from `themes/palettes/wesanderson.json`; canonical ids only (`Rushmore1`, not the alias `Rushmore`). Renderer `visual-art-direction.15`.
+- `blocks[].scale` on a diagram (DWI-033): `not-to-scale`, `unverified` or `to-scale`; the statement is page text in every export. Renderer `visual-art-direction.16`.
+- `project.extensions.deckweftIntake` (DWI-021/022): the claim ledger and reviewed outline of a deck made through **Review the story**; checked by `assertClaimLedger`. `extensions` already accepted any object, so the schema is unchanged.
+
+Expected: an existing deck loads, renders and exports exactly as before (render baseline content views unchanged). Recovery: remove the field to return a page to its theme colours or to drop the scale statement.

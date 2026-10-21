@@ -1290,6 +1290,14 @@
             "sequence",
             "process"
           ]
+        },
+        "scale": {
+          "description": "DWI-033: what the drawing claims about physical scale. Absent means nothing is stated (today's rendering). not-to-scale and unverified are shown on the page and in every export.",
+          "enum": [
+            "not-to-scale",
+            "unverified",
+            "to-scale"
+          ]
         }
       },
       "required": [

@@ -22,7 +22,7 @@ const T={
   flowTitle:'From material to an editable deck in five steps',flow:['Add material','Review story','Make slides','Check exports','Hand off'],flowEdges:['sources kept','outline approved','measured scene','content compared'],
   flowNote:'A failed check returns to Make slides; the reviewed project is never overwritten.',flowCite:'Pipeline spec, synthetic',
   mechTitle:'How one semantic scene reaches every export',mechNote:'Each exporter reads the same measured scene.',mechNodes:['Document','Design plan','Measured scene','HTML','PowerPoint','PDF'],
-  mechKey:['Document: facts, values and sources','Design plan: order, composition and locks','Measured scene: one geometry for all outputs'],notToScale:'Schematic, not to scale.',mechCite:'Mechanism sketch, synthetic',
+  mechKey:['Document: facts, values and sources','Design plan: order, composition and locks','Measured scene: one geometry for all outputs'],arrows:'Arrows point from what is read to what it feeds.',mechCite:'Mechanism sketch, synthetic',
   briefTitle:'What the vertical slice must keep',briefBody:'The slice is accepted only when the six pages export with the same text, numbers and source links they were authored with. Visual polish never excuses a lost qualifier or a changed value.',
   briefList:['Every factual claim keeps its source key','Nulls stay missing, never zero','Locked blocks stay as written','Notes carry sources and full data'],briefCite:'Pipeline spec, synthetic'
  },
@@ -39,7 +39,7 @@ const T={
   flowTitle:'从材料到可编辑幻灯片的五个步骤',flow:['添加材料','审阅故事','生成幻灯片','检查导出','交付'],flowEdges:['保留来源','大纲已批准','已测量场景','内容已比对'],
   flowNote:'检查失败时回到“生成幻灯片”；已审阅的项目不会被覆盖。',flowCite:'流程规格，合成',
   mechTitle:'一个语义场景如何到达每种导出',mechNote:'每个导出器读取同一个已测量场景。',mechNodes:['文档','设计计划','已测量场景','HTML','PowerPoint','PDF'],
-  mechKey:['文档：事实、数值与来源','设计计划：顺序、版式与锁定','已测量场景：所有输出共用一套几何'],notToScale:'示意图，非比例。',mechCite:'机制草图，合成',
+  mechKey:['文档：事实、数值与来源','设计计划：顺序、版式与锁定','已测量场景：所有输出共用一套几何'],arrows:'箭头从被读取的一方指向它所供给的一方。',mechCite:'机制草图，合成',
   briefTitle:'纵向切片必须保留的内容',briefBody:'只有当六页导出后的文字、数字和来源链接与创作时完全一致，切片才算通过。视觉润色绝不能成为丢失限定语或改动数值的理由。',
   briefList:['每条事实论点保留来源键','缺失值保持缺失，绝不为零','锁定块保持原样','备注包含来源与完整数据'],briefCite:'流程规格，合成'
  }
@@ -78,8 +78,8 @@ export function dwiSliceDocument(locale){
   {id:'flow-cite',type:'citation',sourceIds:['src-spec'],sourceId:'src-spec',text:t.flowCite},
   {id:'mech-title',type:'heading',sourceIds:['src-sketch'],text:t.mechTitle},
   {id:'mech-note',type:'paragraph',sourceIds:['src-sketch'],text:t.mechNote},
-  {id:'mech-scale',type:'callout',sourceIds:['src-sketch'],text:t.notToScale},
-  {id:'mech-diagram',type:'diagram',sourceIds:['src-sketch'],diagramType:'relationship',nodes:mechIds.map((id,i)=>({id,label:t.mechNodes[i]})),edges:[['document','scene'],['plan','scene'],['scene','html'],['scene','pptx'],['scene','pdf']].map(([from,to])=>({id:`m-${from}-${to}`,from,to}))},
+  {id:'mech-arrows',type:'callout',sourceIds:['src-sketch'],text:t.arrows},
+  {id:'mech-diagram',type:'diagram',sourceIds:['src-sketch'],diagramType:'relationship',scale:'not-to-scale',nodes:mechIds.map((id,i)=>({id,label:t.mechNodes[i]})),edges:[['document','scene'],['plan','scene'],['scene','html'],['scene','pptx'],['scene','pdf']].map(([from,to])=>({id:`m-${from}-${to}`,from,to}))},
   {id:'mech-key',type:'list',sourceIds:['src-sketch'],items:[...t.mechKey]},
   {id:'mech-cite',type:'citation',sourceIds:['src-sketch'],sourceId:'src-sketch',text:t.mechCite},
   {id:'brief-title',type:'heading',sourceIds:['src-spec'],text:t.briefTitle},
@@ -99,7 +99,7 @@ export function dwiSlicePlan(locale){
   scene('comparison','evidence','comparison-matrix',['cmp-title','cmp-table','cmp-conclusion','cmp-cite'],'cmp-table',{contentStatus:'illustrative'}),
   scene('chart','evidence','small-multiples-row',['sm-title','sm-a','sm-b','sm-note','sm-cite'],'sm-a',{contentStatus:'illustrative'}),
   scene('workflow','process','process-line',['flow-title','flow-diagram','flow-note','flow-cite'],'flow-diagram',{contentStatus:'illustrative'}),
-  scene('mechanism','process','system-map-wide',['mech-title','mech-note','mech-scale','mech-diagram','mech-key','mech-cite'],'mech-diagram',{contentStatus:'illustrative'}),
+  scene('mechanism','process','system-map-wide',['mech-title','mech-note','mech-arrows','mech-diagram','mech-key','mech-cite'],'mech-diagram',{contentStatus:'illustrative'}),
   scene('brief','closing','reading-flow',['brief-title','brief-body','brief-list','brief-cite'],'brief-title',{contentStatus:'illustrative'})
  ]};
 }
@@ -115,6 +115,7 @@ export const DWI_INVARIANTS=Object.freeze({
  nulls:[{datasetId:'review-time',seriesId:'checked',categoryId:'r3'}],
  units:{'review-time':'min','team-a':'defects per 100 slides','team-b':'defects per 100 slides'},
  sharedScale:{blockIds:['sm-a','sm-b'],axis:{policy:'fixed',min:0,max:40}},
- notToScaleBlockId:'mech-scale',
+ // DWI-033 (Phase 03): the scale statement moved from a callout into the diagram's declared scale.
+ notToScale:{blockId:'mech-diagram',scale:'not-to-scale'},
  claimSources:{'as-claim':['src-review'],'cmp-conclusion':['src-bench'],'sm-note':['src-bench'],'flow-note':['src-spec'],'mech-note':['src-sketch'],'brief-body':['src-spec']}
 });

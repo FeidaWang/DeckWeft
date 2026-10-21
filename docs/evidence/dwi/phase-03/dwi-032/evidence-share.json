@@ -1,0 +1,253 @@
+{
+ "source": "dist/dwi-export-targets/decks/*/layout.json (Chrome for Testing 151, 1440 px)",
+ "band": {
+  "min": 0.45,
+  "max": 0.65
+ },
+ "decks": {
+  "dwi-slice-en": [
+   {
+    "sceneId": "assertion",
+    "family": "assertion-evidence",
+    "figureLed": true,
+    "share": 0.456,
+    "evidence": [
+     "as-chart"
+    ],
+    "inBand": true
+   },
+   {
+    "sceneId": "comparison",
+    "family": "paired-comparison",
+    "figureLed": false,
+    "share": 0.483,
+    "evidence": [
+     "cmp-table"
+    ],
+    "inBand": null
+   },
+   {
+    "sceneId": "chart",
+    "family": "evidence-chart",
+    "figureLed": true,
+    "share": 0.575,
+    "evidence": [
+     "sm-a",
+     "sm-b"
+    ],
+    "inBand": true
+   },
+   {
+    "sceneId": "workflow",
+    "family": "workflow",
+    "figureLed": true,
+    "share": 0.346,
+    "evidence": [
+     "flow-diagram"
+    ],
+    "inBand": false
+   },
+   {
+    "sceneId": "mechanism",
+    "family": "mechanism",
+    "figureLed": true,
+    "share": 0.703,
+    "evidence": [
+     "mech-diagram"
+    ],
+    "inBand": false
+   },
+   {
+    "sceneId": "brief",
+    "family": "reading-brief",
+    "figureLed": false,
+    "share": 0,
+    "evidence": [],
+    "inBand": null
+   }
+  ],
+  "dwi-slice-zh-CN": [
+   {
+    "sceneId": "assertion",
+    "family": "assertion-evidence",
+    "figureLed": true,
+    "share": 0.484,
+    "evidence": [
+     "as-chart"
+    ],
+    "inBand": true
+   },
+   {
+    "sceneId": "comparison",
+    "family": "paired-comparison",
+    "figureLed": false,
+    "share": 0.487,
+    "evidence": [
+     "cmp-table"
+    ],
+    "inBand": null
+   },
+   {
+    "sceneId": "chart",
+    "family": "evidence-chart",
+    "figureLed": true,
+    "share": 0.596,
+    "evidence": [
+     "sm-a",
+     "sm-b"
+    ],
+    "inBand": true
+   },
+   {
+    "sceneId": "workflow",
+    "family": "workflow",
+    "figureLed": true,
+    "share": 0.35,
+    "evidence": [
+     "flow-diagram"
+    ],
+    "inBand": false
+   },
+   {
+    "sceneId": "mechanism",
+    "family": "mechanism",
+    "figureLed": true,
+    "share": 0.697,
+    "evidence": [
+     "mech-diagram"
+    ],
+    "inBand": false
+   },
+   {
+    "sceneId": "brief",
+    "family": "reading-brief",
+    "figureLed": false,
+    "share": 0,
+    "evidence": [],
+    "inBand": null
+   }
+  ],
+  "dwi-slice-palette-en": [
+   {
+    "sceneId": "assertion",
+    "family": "assertion-evidence",
+    "figureLed": true,
+    "share": 0.456,
+    "evidence": [
+     "as-chart"
+    ],
+    "inBand": true
+   },
+   {
+    "sceneId": "comparison",
+    "family": "paired-comparison",
+    "figureLed": false,
+    "share": 0.483,
+    "evidence": [
+     "cmp-table"
+    ],
+    "inBand": null
+   },
+   {
+    "sceneId": "chart",
+    "family": "evidence-chart",
+    "figureLed": true,
+    "share": 0.575,
+    "evidence": [
+     "sm-a",
+     "sm-b"
+    ],
+    "inBand": true
+   },
+   {
+    "sceneId": "workflow",
+    "family": "workflow",
+    "figureLed": true,
+    "share": 0.346,
+    "evidence": [
+     "flow-diagram"
+    ],
+    "inBand": false
+   },
+   {
+    "sceneId": "mechanism",
+    "family": "mechanism",
+    "figureLed": true,
+    "share": 0.703,
+    "evidence": [
+     "mech-diagram"
+    ],
+    "inBand": false
+   },
+   {
+    "sceneId": "brief",
+    "family": "reading-brief",
+    "figureLed": false,
+    "share": 0,
+    "evidence": [],
+    "inBand": null
+   }
+  ],
+  "dwi-slice-palette-zh-CN": [
+   {
+    "sceneId": "assertion",
+    "family": "assertion-evidence",
+    "figureLed": true,
+    "share": 0.484,
+    "evidence": [
+     "as-chart"
+    ],
+    "inBand": true
+   },
+   {
+    "sceneId": "comparison",
+    "family": "paired-comparison",
+    "figureLed": false,
+    "share": 0.487,
+    "evidence": [
+     "cmp-table"
+    ],
+    "inBand": null
+   },
+   {
+    "sceneId": "chart",
+    "family": "evidence-chart",
+    "figureLed": true,
+    "share": 0.596,
+    "evidence": [
+     "sm-a",
+     "sm-b"
+    ],
+    "inBand": true
+   },
+   {
+    "sceneId": "workflow",
+    "family": "workflow",
+    "figureLed": true,
+    "share": 0.35,
+    "evidence": [
+     "flow-diagram"
+    ],
+    "inBand": false
+   },
+   {
+    "sceneId": "mechanism",
+    "family": "mechanism",
+    "figureLed": true,
+    "share": 0.697,
+    "evidence": [
+     "mech-diagram"
+    ],
+    "inBand": false
+   },
+   {
+    "sceneId": "brief",
+    "family": "reading-brief",
+    "figureLed": false,
+    "share": 0,
+    "evidence": [],
+    "inBand": null
+   }
+  ]
+ }
+}

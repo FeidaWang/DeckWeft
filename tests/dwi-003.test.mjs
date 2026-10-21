@@ -6,6 +6,7 @@ import {presentationCapabilities} from '../src/targets/capabilities.mjs';
 import {readZip,auditPPTX,inspectPackage} from '../src/targets/pptx/audit.mjs';
 import {compositions,compositionOrder} from '../src/design/compositions.mjs';
 import {syntheticLayout} from './export-layout.mjs';
+import {SCALE} from '../src/components/diagrams/render.mjs';
 import {DWI_LOCALES,DWI_SCENES,DWI_VALUES,DWI_INVARIANTS,dwiSliceProject,dwiSliceDocument} from './dwi-slice.mjs';
 /**
  * DWI-003 (workpacks/wes-instrument/TASKS.md): the six-page vertical slice in both languages, its exports through the current
@@ -65,7 +66,8 @@ test('HTML keeps every block’s text, the missing value and the not-to-scale st
    const texts=b.type==='list'?b.items:b.type==='table'?[...b.columns,...b.rows.flat()]:b.type==='diagram'?b.nodes.map(n=>n.label):'text' in b?[b.text]:[];
    for(const t of texts)assert.ok(body.includes(plain(t))||body.includes(t),`${l} ${b.id}: ${t}`);
   }
-  assert.ok(body.includes(plain(dwiSliceDocument(l).blocks.find(b=>b.id===DWI_INVARIANTS.notToScaleBlockId).text)));
+  assert.equal(dwiSliceDocument(l).blocks.find(b=>b.id===DWI_INVARIANTS.notToScale.blockId).scale,DWI_INVARIANTS.notToScale.scale);
+  assert.ok(body.includes(SCALE[DWI_INVARIANTS.notToScale.scale][l==='zh-CN'?1:0]),'the scale statement is page text');
  }
 });
 

@@ -124,3 +124,13 @@ const next=separateLocks(project);
 - `CANDIDATE_CONTENT … Compare candidates measured at one viewport …`（A/B 规则）。
 
 旧版夹具与 `tests/fixtures/visual/cine.negative.json` 中标记为 `CINE-005` 的每个用例由 `node --test tests/cine-p1.test.mjs` 检查。
+
+## 配色、图示比例与导入记录（DWI 阶段 01–03）
+
+无需迁移：每个字段都是可选的，不声明即保持现有渲染。
+
+- `plan.scenes[].palette: {id, registryVersion, mode}`（DWI-010/011）：来自 `themes/palettes/wesanderson.json` 的源配色；只接受规范 id（`Rushmore1`，不接受别名 `Rushmore`）。渲染器 `visual-art-direction.15`。
+- 图示块的 `blocks[].scale`（DWI-033）：`not-to-scale`、`unverified` 或 `to-scale`；该声明在所有导出中都是页面文字。渲染器 `visual-art-direction.16`。
+- `project.extensions.deckweftIntake`（DWI-021/022）：通过**审阅故事**生成的文稿所带的论点账本与已审阅大纲，由 `assertClaimLedger` 检查。`extensions` 本就接受任意对象，因此模式未变。
+
+预期：现有文稿的加载、渲染和导出与以前完全相同（渲染基线的内容视图不变）。恢复：删除该字段即可让页面回到主题配色或去掉比例声明。
