@@ -19,7 +19,7 @@ test('every slide of every web export carries exactly one DeckWeft watermark, wh
 });
 
 test('the watermark is the Figma-exported mark itself, outlined and in currentColor, and no document field reaches it',async()=>{
- const svg=(await readFile(new URL('../public/brand/deckweft-watermark.svg',import.meta.url),'utf8')).trim();
+ const svg=(await readFile(new URL('../public/brand/deckweft-watermark.svg',import.meta.url),'utf8')).replace(/\r\n?/g,'\n').trim();
  assert.equal(WATERMARK_SVG,svg.replace('<svg ','<svg class="dw-watermark-mark" aria-hidden="true" focusable="false" '));
  assert.ok(!/<text|id=|#[0-9A-Fa-f]{6}/.test(svg),'no live text, no ids that would repeat per slide, no fixed colour');
  assert.equal(watermarkHTML.length,0,'the watermark takes no arguments, so nothing in a deck can change or remove it');

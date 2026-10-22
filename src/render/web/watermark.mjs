@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
  * a plain-weave mark and the wordmark, outlined to paths, in currentColor. The renderer draws it on every slide from this file
  * alone. No document, plan, theme, profile or export option reaches it, so no deck can remove or hide it.
  */
-const svg=readFileSync(new URL('../../../public/brand/deckweft-watermark.svg',import.meta.url),'utf8').trim();
+// Line endings are normalised so a checkout that converted the file to CRLF renders the same bytes.
+const svg=readFileSync(new URL('../../../public/brand/deckweft-watermark.svg',import.meta.url),'utf8').replace(/\r\n?/g,'\n').trim();
 export const WATERMARK_SVG=svg.replace('<svg ','<svg class="dw-watermark-mark" aria-hidden="true" focusable="false" ');
 export const watermarkHTML=()=>`<div class="dw-watermark" aria-hidden="true">${WATERMARK_SVG}</div>`;

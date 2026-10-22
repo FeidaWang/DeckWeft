@@ -11,3 +11,4 @@
 *.png binary
 *.zip binary
 *.pptx binary
+*.svg text eol=lf
