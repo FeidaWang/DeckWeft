@@ -1,0 +1,507 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "model-comparison-en",
+    "title": "GPT-6 Astra and Claude Opus 5.5, side by side",
+    "locale": "en",
+    "blocks": [
+      {
+        "id": "cover-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Two launch pages.\nOne careful comparison."
+      },
+      {
+        "id": "cover-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "GPT-6 Astra (OpenAI) and Claude Opus 5.5 (Anthropic) each published benchmark tables. This deck lines up only the numbers both pages report and says where they differ."
+      },
+      {
+        "id": "cover-note",
+        "type": "callout",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "MODEL COMPARISON · FIGURES AS SELF-REPORTED"
+      },
+      {
+        "id": "cover-source",
+        "type": "citation",
+        "sourceIds": [
+          "openai-astra"
+        ],
+        "sourceId": "openai-astra",
+        "text": "Vendor launch pages, read 2026-10-23. Not an independent evaluation."
+      },
+      {
+        "id": "bench-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Five shared benchmarks.\nNo clean sweep."
+      },
+      {
+        "id": "bench-chart",
+        "type": "chart",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "datasetId": "shared-benchmarks",
+        "chartType": "grouped-bar",
+        "axis": {
+          "policy": "zero"
+        },
+        "question": "Which model scores higher on each shared benchmark?",
+        "takeaway": "Opus 5.5 leads on Terminal-Bench 4.0, FrontierCode and Humanity’s Last Exam; Astra leads on AutomationBench and Terminal-Bench-Science."
+      },
+      {
+        "id": "bench-call",
+        "type": "callout",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Opus 5.5 is ahead on three of five; Astra on two."
+      },
+      {
+        "id": "bench-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Each pair uses the figure both vendors publish. Effort levels and harnesses differ, so small gaps are not conclusions. Exact values are in the table below the chart."
+      },
+      {
+        "id": "bench-source",
+        "type": "citation",
+        "sourceIds": [
+          "anthropic-opus55"
+        ],
+        "sourceId": "anthropic-opus55",
+        "text": "OpenAI and Anthropic launch pages, read 2026-10-23 · unit: %"
+      },
+      {
+        "id": "price-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "What it costs\nper million tokens."
+      },
+      {
+        "id": "price-table",
+        "type": "table",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "columns": [
+          "Price per 1M tokens",
+          "GPT-6 Astra",
+          "Claude Opus 5.5"
+        ],
+        "rows": [
+          [
+            "Input",
+            "$10",
+            "$4"
+          ],
+          [
+            "Output",
+            "$50",
+            "$20"
+          ],
+          [
+            "Fast mode (input / output)",
+            "Up to 2× speed at 2× the standard price",
+            "Up to 2.5× speed, $8 / $40"
+          ]
+        ]
+      },
+      {
+        "id": "price-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Anthropic also states that on FrontierCode at default effort Opus 5.5 beats Astra at roughly 20% of the cost per task, and matches it on Terminal-Bench 4.0 at about 40%. Those are Anthropic’s own measurements."
+      },
+      {
+        "id": "price-source",
+        "type": "citation",
+        "sourceIds": [
+          "anthropic-opus55"
+        ],
+        "sourceId": "anthropic-opus55",
+        "text": "OpenAI and Anthropic launch pages, read 2026-10-23"
+      },
+      {
+        "id": "lead-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Where each page\nstays silent."
+      },
+      {
+        "id": "lead-table",
+        "type": "table",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "columns": [
+          "Benchmark",
+          "GPT-6 Astra",
+          "Claude Opus 5.5"
+        ],
+        "rows": [
+          [
+            "ARC-AGI-3",
+            "99.9%",
+            "not reported"
+          ],
+          [
+            "FrontierMath Tier 4 (v2)",
+            "97.6%",
+            "not reported"
+          ],
+          [
+            "ExploitBench",
+            "100.0%",
+            "not reported"
+          ],
+          [
+            "GDPval-AA v2.1 (Elo)",
+            "1542",
+            "1846"
+          ],
+          [
+            "CursorBench 4.0",
+            "not reported",
+            "57.8%"
+          ],
+          [
+            "OSWorld 2.1 (partial score)",
+            "not reported",
+            "81.8%"
+          ],
+          [
+            "Chartography (with tools)",
+            "not reported",
+            "89.0%"
+          ]
+        ]
+      },
+      {
+        "id": "lead-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "A dash is not a loss. Each vendor publishes the benchmarks it leads on or chose to run; a missing cell means that page did not report it."
+      },
+      {
+        "id": "lead-source",
+        "type": "citation",
+        "sourceIds": [
+          "openai-astra"
+        ],
+        "sourceId": "openai-astra",
+        "text": "OpenAI and Anthropic launch pages, read 2026-10-23"
+      },
+      {
+        "id": "safe-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Safety claims,\nnot a safety score."
+      },
+      {
+        "id": "safe-oa",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra"
+        ],
+        "text": "OpenAI: on an internal computer-use safety benchmark Astra scores 2.4% (lower is better) against 22.0% for GPT-5.6 Sol; it reports 0% out-of-scope actions where Sol had 48%."
+      },
+      {
+        "id": "safe-an",
+        "type": "paragraph",
+        "sourceIds": [
+          "anthropic-opus55"
+        ],
+        "text": "Anthropic: Opus 5.5 scores best of any recent Claude model on its automated behavioral audit and attempted to cross containment boundaries about 85% less often than Opus 5; it ties Fable 5.1 for the lowest prompt-injection success rate on a Gray Swan benchmark."
+      },
+      {
+        "id": "safe-call",
+        "type": "callout",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Different tests, different baselines. These numbers cannot be compared with each other."
+      },
+      {
+        "id": "safe-source",
+        "type": "citation",
+        "sourceIds": [
+          "openai-astra"
+        ],
+        "sourceId": "openai-astra",
+        "text": "OpenAI and Anthropic launch pages, read 2026-10-23"
+      },
+      {
+        "id": "end-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "How to read\nthis comparison."
+      },
+      {
+        "id": "end-list",
+        "type": "list",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "items": [
+          "Every figure is vendor-reported; neither page is an independent evaluation.",
+          "Harness, effort level and footnotes differ between pages; compare gaps of a few points with care.",
+          "A missing value means the page did not report it, not that the model fails.",
+          "Anthropic itself notes that the real-world gap between its models is narrower than benchmark margins suggest."
+        ]
+      },
+      {
+        "id": "end-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Check the source pages before relying on any number here."
+      },
+      {
+        "id": "end-source",
+        "type": "citation",
+        "sourceIds": [
+          "anthropic-opus55"
+        ],
+        "sourceId": "anthropic-opus55",
+        "text": "Sources: openai.com/zh-Hans-CN/index/gpt-6-astra · anthropic.com/claude-opus-5-5"
+      }
+    ],
+    "datasets": [
+      {
+        "id": "shared-benchmarks",
+        "synthetic": false,
+        "unit": "%",
+        "categories": [
+          "Terminal-Bench 4.0",
+          "FrontierCode v1.1 Main",
+          "AutomationBench",
+          "Humanity’s Last Exam (tools)",
+          "Terminal-Bench-Science 0.1"
+        ],
+        "categoryIds": [
+          "tb4",
+          "fc",
+          "ab",
+          "hle",
+          "tbs"
+        ],
+        "series": [
+          {
+            "id": "astra",
+            "label": "GPT-6 Astra",
+            "values": [
+              57.9,
+              53.3,
+              41.4,
+              57.2,
+              64.6
+            ]
+          },
+          {
+            "id": "opus55",
+            "label": "Claude Opus 5.5",
+            "values": [
+              66.4,
+              54.4,
+              40.0,
+              67.7,
+              58.7
+            ]
+          }
+        ],
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "qualifiers": [
+          {
+            "seriesId": "opus55",
+            "categoryId": "tb4",
+            "label": "1",
+            "note": "Opus 5.5 at xhigh effort, Astra at high effort; each model’s highest score."
+          },
+          {
+            "seriesId": "opus55",
+            "categoryId": "ab",
+            "label": "2",
+            "note": "Run and reported by Zapier; Opus 5.5 figure from early access, with safeguard interventions counted as failures."
+          },
+          {
+            "seriesId": "astra",
+            "categoryId": "tbs",
+            "label": "3",
+            "note": "Astra figure as reported by OpenAI."
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "openai-astra",
+        "title": "OpenAI — GPT-6 Astra: A new generation of intelligence",
+        "url": "https://openai.com/zh-Hans-CN/index/gpt-6-astra/"
+      },
+      {
+        "id": "anthropic-opus55",
+        "title": "Anthropic — Introducing Claude Opus 5.5",
+        "url": "https://www.anthropic.com/claude-opus-5-5"
+      }
+    ],
+    "authorOverrides": {
+      "lockedBlockIds": [],
+      "sceneLocks": []
+    },
+    "migration": {},
+    "visualBrief": {
+      "audience": "Technical decision makers",
+      "outputLanguage": "en",
+      "profile": {
+        "colorIntensity": "restrained",
+        "typographicContrast": "expressive",
+        "density": "comfortable",
+        "motionIntensity": "off",
+        "imageEmphasis": "balanced"
+      }
+    }
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "model-comparison-en",
+    "scenes": [
+      {
+        "id": "cover",
+        "role": "opening",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "fieldnotes-cover",
+        "blockIds": [
+          "cover-title",
+          "cover-body",
+          "cover-note",
+          "cover-source"
+        ],
+        "focalBlockId": "cover-title"
+      },
+      {
+        "id": "benchmarks",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": [
+          "bench-title",
+          "bench-chart",
+          "bench-call",
+          "bench-body",
+          "bench-source"
+        ],
+        "focalBlockId": "bench-title"
+      },
+      {
+        "id": "price",
+        "role": "context",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "comparison-matrix",
+        "blockIds": [
+          "price-title",
+          "price-table",
+          "price-body",
+          "price-source"
+        ],
+        "focalBlockId": "price-title"
+      },
+      {
+        "id": "silence",
+        "role": "context",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "comparison-rail",
+        "blockIds": [
+          "lead-title",
+          "lead-table",
+          "lead-body",
+          "lead-source"
+        ],
+        "focalBlockId": "lead-title"
+      },
+      {
+        "id": "safety",
+        "role": "context",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "statement-banner",
+        "blockIds": [
+          "safe-title",
+          "safe-oa",
+          "safe-an",
+          "safe-call",
+          "safe-source"
+        ],
+        "focalBlockId": "safe-title"
+      },
+      {
+        "id": "reading",
+        "role": "closing",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "closing-split",
+        "blockIds": [
+          "end-title",
+          "end-list",
+          "end-body",
+          "end-source"
+        ],
+        "focalBlockId": "end-title"
+      }
+    ]
+  },
+  "assets": []
+}

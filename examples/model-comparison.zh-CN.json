@@ -1,0 +1,507 @@
+{
+  "document": {
+    "format": "deckweft-presentation",
+    "schemaVersion": 3,
+    "id": "model-comparison-zh-CN",
+    "title": "GPT-6 Astra 与 Claude Opus 5.5 并排对比",
+    "locale": "zh-CN",
+    "blocks": [
+      {
+        "id": "cover-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "两张发布页。\n一次克制的对比。"
+      },
+      {
+        "id": "cover-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "OpenAI 的 GPT-6 Astra 与 Anthropic 的 Claude Opus 5.5 各自公布了基准表。这份演示稿只并排两页都报告的数字，并说明它们的差异。"
+      },
+      {
+        "id": "cover-note",
+        "type": "callout",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "模型对比 · 数据均为厂商自报"
+      },
+      {
+        "id": "cover-source",
+        "type": "citation",
+        "sourceIds": [
+          "openai-astra"
+        ],
+        "sourceId": "openai-astra",
+        "text": "厂商发布页，2026-10-23 阅读。不是独立评测。"
+      },
+      {
+        "id": "bench-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "五项共同基准。\n没有全胜。"
+      },
+      {
+        "id": "bench-chart",
+        "type": "chart",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "datasetId": "shared-benchmarks",
+        "chartType": "grouped-bar",
+        "axis": {
+          "policy": "zero"
+        },
+        "question": "每项共同基准上，哪个模型得分更高？",
+        "takeaway": "Opus 5.5 在 Terminal-Bench 4.0、FrontierCode 与 Humanity’s Last Exam 上领先；Astra 在 AutomationBench 与 Terminal-Bench-Science 上领先。"
+      },
+      {
+        "id": "bench-call",
+        "type": "callout",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Opus 5.5 领先三项，Astra 领先两项。"
+      },
+      {
+        "id": "bench-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "每组数字取自两家都公布的成绩。推理强度和测试框架不同，几个百分点的差距不能当结论。精确数值在图表下方的表格中。"
+      },
+      {
+        "id": "bench-source",
+        "type": "citation",
+        "sourceIds": [
+          "anthropic-opus55"
+        ],
+        "sourceId": "anthropic-opus55",
+        "text": "OpenAI 与 Anthropic 发布页，2026-10-23 阅读 · 单位：%"
+      },
+      {
+        "id": "price-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "每百万 token\n的价格。"
+      },
+      {
+        "id": "price-table",
+        "type": "table",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "columns": [
+          "每百万 token 价格",
+          "GPT-6 Astra",
+          "Claude Opus 5.5"
+        ],
+        "rows": [
+          [
+            "输入",
+            "$10",
+            "$4"
+          ],
+          [
+            "输出",
+            "$50",
+            "$20"
+          ],
+          [
+            "快速模式（输入 / 输出）",
+            "速度最高 2 倍，价格为标准的 2 倍",
+            "速度最高 2.5 倍，$8 / $40"
+          ]
+        ]
+      },
+      {
+        "id": "price-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "Anthropic 还称，在默认强度下，Opus 5.5 在 FrontierCode 上以约 20% 的单任务成本超过 Astra，在 Terminal-Bench 4.0 上以约 40% 的成本持平。这是 Anthropic 自己的测量。"
+      },
+      {
+        "id": "price-source",
+        "type": "citation",
+        "sourceIds": [
+          "anthropic-opus55"
+        ],
+        "sourceId": "anthropic-opus55",
+        "text": "OpenAI 与 Anthropic 发布页，2026-10-23 阅读"
+      },
+      {
+        "id": "lead-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "各页\n没有报告的部分。"
+      },
+      {
+        "id": "lead-table",
+        "type": "table",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "columns": [
+          "基准",
+          "GPT-6 Astra",
+          "Claude Opus 5.5"
+        ],
+        "rows": [
+          [
+            "ARC-AGI-3",
+            "99.9%",
+            "未报告"
+          ],
+          [
+            "FrontierMath Tier 4 (v2)",
+            "97.6%",
+            "未报告"
+          ],
+          [
+            "ExploitBench",
+            "100.0%",
+            "未报告"
+          ],
+          [
+            "GDPval-AA v2.1（Elo）",
+            "1542",
+            "1846"
+          ],
+          [
+            "CursorBench 4.0",
+            "未报告",
+            "57.8%"
+          ],
+          [
+            "OSWorld 2.1（部分得分）",
+            "未报告",
+            "81.8%"
+          ],
+          [
+            "Chartography（含工具）",
+            "未报告",
+            "89.0%"
+          ]
+        ]
+      },
+      {
+        "id": "lead-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "空白不代表落后。各家公布的是自己领先或选择运行的基准；“未报告”只表示该页没有给出。"
+      },
+      {
+        "id": "lead-source",
+        "type": "citation",
+        "sourceIds": [
+          "openai-astra"
+        ],
+        "sourceId": "openai-astra",
+        "text": "OpenAI 与 Anthropic 发布页，2026-10-23 阅读"
+      },
+      {
+        "id": "safe-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "安全是各自的\n说法，不是评分。"
+      },
+      {
+        "id": "safe-oa",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra"
+        ],
+        "text": "OpenAI：在内部计算机操作安全性基准上，Astra 为 2.4%（越低越好），GPT-5.6 Sol 为 22.0%；超出授权范围的比例为 0%，Sol 为 48%。"
+      },
+      {
+        "id": "safe-an",
+        "type": "paragraph",
+        "sourceIds": [
+          "anthropic-opus55"
+        ],
+        "text": "Anthropic：Opus 5.5 在自动行为审计中优于近期所有 Claude 模型，尝试越过隔离边界的次数比 Opus 5 少约 85%；在 Gray Swan 基准上与 Fable 5.1 并列最低的提示注入成功率。"
+      },
+      {
+        "id": "safe-call",
+        "type": "callout",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "测试不同，基线不同，这些数字不能互相比较。"
+      },
+      {
+        "id": "safe-source",
+        "type": "citation",
+        "sourceIds": [
+          "openai-astra"
+        ],
+        "sourceId": "openai-astra",
+        "text": "OpenAI 与 Anthropic 发布页，2026-10-23 阅读"
+      },
+      {
+        "id": "end-title",
+        "type": "heading",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "如何阅读\n这份对比。"
+      },
+      {
+        "id": "end-list",
+        "type": "list",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "items": [
+          "所有数字均为厂商自报，两页都不是独立评测。",
+          "两页的测试框架、推理强度和脚注不同，几个点的差距要谨慎对待。",
+          "缺失的值表示该页没有报告，不表示模型做不到。",
+          "Anthropic 自己也指出，其模型在真实使用中的差距比基准分数显示的更小。"
+        ]
+      },
+      {
+        "id": "end-body",
+        "type": "paragraph",
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "text": "引用任何数字之前，请先核对来源页面。"
+      },
+      {
+        "id": "end-source",
+        "type": "citation",
+        "sourceIds": [
+          "anthropic-opus55"
+        ],
+        "sourceId": "anthropic-opus55",
+        "text": "来源：openai.com/zh-Hans-CN/index/gpt-6-astra · anthropic.com/claude-opus-5-5"
+      }
+    ],
+    "datasets": [
+      {
+        "id": "shared-benchmarks",
+        "synthetic": false,
+        "unit": "%",
+        "categories": [
+          "Terminal-Bench 4.0",
+          "FrontierCode v1.1 主项",
+          "AutomationBench",
+          "Humanity’s Last Exam（含工具）",
+          "Terminal-Bench-Science 0.1"
+        ],
+        "categoryIds": [
+          "tb4",
+          "fc",
+          "ab",
+          "hle",
+          "tbs"
+        ],
+        "series": [
+          {
+            "id": "astra",
+            "label": "GPT-6 Astra",
+            "values": [
+              57.9,
+              53.3,
+              41.4,
+              57.2,
+              64.6
+            ]
+          },
+          {
+            "id": "opus55",
+            "label": "Claude Opus 5.5",
+            "values": [
+              66.4,
+              54.4,
+              40.0,
+              67.7,
+              58.7
+            ]
+          }
+        ],
+        "sourceIds": [
+          "openai-astra",
+          "anthropic-opus55"
+        ],
+        "qualifiers": [
+          {
+            "seriesId": "opus55",
+            "categoryId": "tb4",
+            "label": "1",
+            "note": "Opus 5.5 为 xhigh 强度，Astra 为 high 强度；均为各自最高分。"
+          },
+          {
+            "seriesId": "opus55",
+            "categoryId": "ab",
+            "label": "2",
+            "note": "由 Zapier 运行并发布；Opus 5.5 成绩来自早期访问，安全防护介入时按失败计。"
+          },
+          {
+            "seriesId": "astra",
+            "categoryId": "tbs",
+            "label": "3",
+            "note": "Astra 成绩为 OpenAI 所报告。"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "openai-astra",
+        "title": "OpenAI — GPT-6 Astra：新一代智能",
+        "url": "https://openai.com/zh-Hans-CN/index/gpt-6-astra/"
+      },
+      {
+        "id": "anthropic-opus55",
+        "title": "Anthropic — Introducing Claude Opus 5.5",
+        "url": "https://www.anthropic.com/claude-opus-5-5"
+      }
+    ],
+    "authorOverrides": {
+      "lockedBlockIds": [],
+      "sceneLocks": []
+    },
+    "migration": {},
+    "visualBrief": {
+      "audience": "技术决策者",
+      "outputLanguage": "zh-CN",
+      "profile": {
+        "colorIntensity": "restrained",
+        "typographicContrast": "expressive",
+        "density": "comfortable",
+        "motionIntensity": "off",
+        "imageEmphasis": "balanced"
+      }
+    }
+  },
+  "plan": {
+    "format": "deckweft-design-plan",
+    "version": 1,
+    "documentId": "model-comparison-zh-CN",
+    "scenes": [
+      {
+        "id": "cover",
+        "role": "opening",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "fieldnotes-cover",
+        "blockIds": [
+          "cover-title",
+          "cover-body",
+          "cover-note",
+          "cover-source"
+        ],
+        "focalBlockId": "cover-title"
+      },
+      {
+        "id": "benchmarks",
+        "role": "evidence",
+        "theme": "dark-data",
+        "themeVersion": "1.0.0",
+        "composition": "chart-with-evidence-rail",
+        "blockIds": [
+          "bench-title",
+          "bench-chart",
+          "bench-call",
+          "bench-body",
+          "bench-source"
+        ],
+        "focalBlockId": "bench-title"
+      },
+      {
+        "id": "price",
+        "role": "context",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "comparison-matrix",
+        "blockIds": [
+          "price-title",
+          "price-table",
+          "price-body",
+          "price-source"
+        ],
+        "focalBlockId": "price-title"
+      },
+      {
+        "id": "silence",
+        "role": "context",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "comparison-rail",
+        "blockIds": [
+          "lead-title",
+          "lead-table",
+          "lead-body",
+          "lead-source"
+        ],
+        "focalBlockId": "lead-title"
+      },
+      {
+        "id": "safety",
+        "role": "context",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "statement-banner",
+        "blockIds": [
+          "safe-title",
+          "safe-oa",
+          "safe-an",
+          "safe-call",
+          "safe-source"
+        ],
+        "focalBlockId": "safe-title"
+      },
+      {
+        "id": "reading",
+        "role": "closing",
+        "theme": "silver-gray-editorial",
+        "themeVersion": "1.0.0",
+        "composition": "closing-split",
+        "blockIds": [
+          "end-title",
+          "end-list",
+          "end-body",
+          "end-source"
+        ],
+        "focalBlockId": "end-title"
+      }
+    ]
+  },
+  "assets": []
+}

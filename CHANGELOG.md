@@ -1,5 +1,9 @@
 # Changelog
 
+## Model comparison demo — 2026-10-23
+
+Added `npm run comparison:render`: a six-page English and Simplified Chinese deck that sets GPT-6 Astra beside Claude Opus 5.5 using only figures from the two launch pages (read 2026-10-23), all marked vendor-reported. It uses existing themes, compositions and the grouped-bar chart; no renderer, player, schema or theme change. Sources: `examples/model-comparison.{en,zh-CN}.json`, `scripts/render-comparison.mjs`, `tests/model-comparison.test.mjs`.
+
 ## DW-020 follow-up — 2026-10-17
 
 Verified an authenticated Codex CLI standalone project-skill task on macOS with trace review, independent HTML/PPTX export comparisons, native-text package inspection and all three slides rendered and visually inspected in LibreOffice. Claude Code validation passes; its authentication is unavailable and sign-in was deferred by the user. Codex native desktop activation and remote CI remain untested, so DW-020 stays blocked overall.

@@ -23,6 +23,7 @@
     "doctor": "node bin/deckweft.mjs doctor",
     "visual:baseline": "node scripts/capture-visual-baseline.mjs",
     "visual:render": "node scripts/render-visual.mjs",
+    "comparison:render": "node scripts/render-comparison.mjs",
     "visual:capture": "node scripts/capture-visual.mjs",
     "visual:preview": "node scripts/preview-visual.mjs",
     "studio:visual-demo": "node scripts/preview-visual-studio.mjs",
