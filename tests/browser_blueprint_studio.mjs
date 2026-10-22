@@ -18,7 +18,9 @@ await rm(path.join(out,'library'),{recursive:true,force:true});await mkdir(path.
 const home=await realpath(path.join(out,'library')),binary=await realpath(process.env.CHROMIUM_PATH||'');assert.ok(!/\/Applications\//i.test(binary),'Use an isolated browser outside /Applications.');
 const {chromium}=await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE).href),store=await new VisualProjectStore(home).init();
 // The author's deck before S9b: the same pages, the diagram page without any interaction.
-async function plainDeck(locale){const {document,plan}=await blueprintFixture(locale),s=plan.scenes[1];for(const k of ['interactions','cues','keyStates','staticState'])delete s[k];document.explanations=[];return store.save(createVisualProject(document,plan,{id:`s9b-studio-${locale}`}),{create:true});}
+// Player .9 removed the stage and part controls, so the page is shorter; this copy lengthens its paragraph so the whole-page (paginate
+// none) PowerPoint export still squeezes the part numbers under the typography minimum and the F1 acceptance path is exercised.
+async function plainDeck(locale){const {document,plan}=await blueprintFixture(locale),s=plan.scenes[1],para=document.blocks.find(b=>s.blockIds.includes(b.id)&&b.type==='paragraph');para.text=[para.text,para.text,para.text].join(' ');for(const k of ['interactions','cues','keyStates','staticState'])delete s[k];document.explanations=[];return store.save(createVisualProject(document,plan,{id:`s9b-studio-${locale}`}),{create:true});}
 const app=await startStudio({home,port:0,captureBrowser:binary}),browser=await chromium.launch({executablePath:binary,headless:true});
 const trace=[],errors=[],external=[],started=Date.now(),widths=(a.widths||'1440,1024,390').split(',').map(Number);
 const record=(width,step,detail={})=>{trace.push({width,step,ms:Date.now()-started,...detail});console.log(width,step,JSON.stringify(detail).slice(0,220));};
@@ -63,7 +65,7 @@ try{
  await save(page);await measured(page);
  // The preview is the player: it opens on Explain, and Next stage reaches Diagram.
  // The Studio frame is a scaled, read-only view (no pointer input), so the button is activated directly, as assistive technology would.
- await preview.locator('#pipeline [data-cue-next]').evaluate(b=>b.click());await preview.locator('#pipeline[data-blueprint-stage="diagram"]').waitFor();record(widths[0],'preview player: Next stage → Diagram',{shot:artifacts.preview=await shot(page,'1440-3-preview-diagram')});
+ await preview.locator('#pipeline').evaluate(()=>window.deckweftInteractions.next('pipeline'));await preview.locator('#pipeline[data-blueprint-stage="diagram"]').waitFor();record(widths[0],'preview player: Next stage → Diagram',{shot:artifacts.preview=await shot(page,'1440-3-preview-diagram')});
  // Paged exports refuse while the static state is missing, then at Explain.
  const missing=await exportFile(page,'#exportPPTX','pptx',{refused:/static state/i});record(widths[0],'PowerPoint refused without a static state',{message:missing});
  await openInteractions(page);const options=await page.locator('#staticState option').evaluateAll(o=>o.map(n=>({value:n.value,text:n.textContent})));
@@ -72,7 +74,7 @@ try{
  await openInteractions(page);await page.locator('#staticState').selectOption(options.find(o=>/Diagram/.test(o.text)).value);await measured(page);await save(page);await measured(page);
  assert.match(await page.locator('#blueprintStatic').textContent(),/Static state: Diagram/);artifacts.chosen=await shot(page,'1440-4-static-diagram');
  const {file:pptx,dialog:pagedDialog}=await exportFile(page,'#exportPPTX','pptx'),{file:pdf}=await exportFile(page,'#exportPDF','pdf');
- // Since F1 (2026-10-19) the tall blueprint page is paged (auto) into two slides; the explanations are text on one of its slides (between the opening and closing pages).
+ // Since F1 (2026-10-19) the tall blueprint page is paged (auto) into two slides (this copy's lengthened paragraph keeps it tall); the explanations are text on one of its slides (between the opening and closing pages).
  const files=readZip(await readFile(pptx)),names=[...files.keys()].filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).sort((a,b)=>a.length-b.length||a.localeCompare(b)),xml=names.slice(1,-1).map(n=>files.get(n).toString('utf8')).join('\n'),saved=await store.get(en.id);
  const explanations=saved.document.explanations,onSlide=explanations.filter(e=>xml.includes(e.text.replace(/&/g,'&amp;')));
  assert.equal(onSlide.length,explanations.length,'every explanation is text on a slide of the blueprint page');assert.equal(names.length,4,'opening, the two parts of the blueprint page, closing');assert.equal((await readFile(pdf)).subarray(0,4).toString(),'%PDF');

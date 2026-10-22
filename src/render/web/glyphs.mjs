@@ -20,7 +20,7 @@ export function scanMissingGlyphs(root){
  for(const region of root.querySelectorAll('.region')){
   const seen=new Set(),missing=[],fonts=new Set(),walker=document.createTreeWalker(region,NodeFilter.SHOW_TEXT);let node;
   while((node=walker.nextNode())){
-   const el=node.parentElement;if(!el||el.closest('script,style,title')||!node.textContent.trim())continue;
+   const el=node.parentElement;if(!el||el.closest('script,style,title,.dw-sr,details:not(.scene-disclosure)')||!node.textContent.trim())continue;
    const s=getComputedStyle(el),font=`${s.fontStyle} ${s.fontWeight} 24px ${s.fontFamily}`,ref=reference(font);
    for(const piece of pieces(node.textContent)){if(skip.test(piece)||seen.has(font+'\u0000'+piece))continue;seen.add(font+'\u0000'+piece);if(key(font,piece)===ref){missing.push(piece);fonts.add(s.fontFamily);}}
   }

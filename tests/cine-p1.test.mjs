@@ -149,7 +149,7 @@ test('CINE-005 checks: checkRender from a synthetic observation passes text cove
 });
 test('CINE batch 2: a legacy deck renders the same markup except the renderer version (render-baseline parts: markup unchanged, renderer .14)',async()=>{
  const baseline=JSON.parse(await readFile(new URL('./fixtures/visual/render-baseline.json',import.meta.url),'utf8')),current=await renderBaseline();
- assert.equal(WEB_RENDERER_VERSION,'visual-art-direction.17');assert.equal(current.renderer,'visual-art-direction.17');
+ assert.equal(WEB_RENDERER_VERSION,'visual-art-direction.18');assert.equal(current.renderer,'visual-art-direction.18');
  assert.deepEqual(current.content,baseline.content);
  // The content view strips the stylesheet and the hashes that carry the renderer version; the reader-visible markup is unchanged.
  assert.deepEqual(Object.fromEntries(Object.entries(current.parts).map(([k,v])=>[k,v.data])),Object.fromEntries(Object.entries(baseline.parts).map(([k,v])=>[k,v.data])));
@@ -225,7 +225,7 @@ test('CINE-006 markup: a declared page carries --label-size and --reference-size
 import {runtime,PLAYER_VERSION} from '../src/render/web/runtime.mjs';
 import {grayscaleScript} from '../src/render/web/contrast.mjs';
 test('CINE-007 player: the runtime declares semantic-player.7, carries auditGrayscale, and check() reports per-region minTextPx, per-image boxes and the strip height (string checks on the embedded player)',()=>{
- assert.equal(PLAYER_VERSION,'semantic-player.8');assert.ok(runtime.includes("player:'semantic-player.8'"));
+ assert.equal(PLAYER_VERSION,'semantic-player.9');assert.ok(runtime.includes("player:'semantic-player.9'"));
  assert.ok(grayscaleScript.startsWith('function auditGrayscale(scene)'));assert.ok(runtime.includes(grayscaleScript),'the grayscale audit is embedded');
  for(const field of ['regions:regionBoxes,','minTextPx:','maxTextPx:','images:imageBoxes,','strip,grayscale:auditGrayscale(scene)','grayscale:auditGrayscale(scene)','window.deckweftAuditScene=scene=>({contrastIssues:auditContrast(scene),clipIssues:[...auditClipping(scene),...auditComponentGeometry(scene)],glyphIssues:scanMissingGlyphs(scene),grayscale:auditGrayscale(scene)})'])assert.ok(runtime.includes(field),field);
  // The player stays one parseable script (it runs under a CSP hash; a syntax error would break every exported page).

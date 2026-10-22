@@ -58,9 +58,8 @@ export function mountSemanticInteractions(config){
    if(blueprint)button(t('Skip to the complete explanation','跳到完整说明'),'cueSkip',()=>api.skip());
    const label=document.createElement('label'),seek=document.createElement('input'),count=document.createElement('output');seek.type='range';seek.min=0;seek.max=data.cues.length;seek.step=1;seek.dataset.cuePosition='';count.dataset.cueCount='';label.append(document.createTextNode(t('Cue position ','提示位置 ')),seek);timeline.append(label,count);seek.addEventListener('input',()=>api.seek(Number(seek.value)));
    if(fixed?.reducedMotion==='static'){const note=document.createElement('span');note.className='interaction-status';note.dataset.staticFallback='';note.hidden=true;note.textContent=t('Reduced motion: the static state is shown and cues do not play.','已减少动态效果：显示静态状态，不自动播放提示。');timeline.append(note);}
-   // Chart selection alone has no cue to replay or seek: the timeline stays in the page (its state hooks) but is not shown.
-   if(!data.cues.length)timeline.hidden=true;
-   scene.querySelector('.folio').after(timeline);
+   // The slide carries no controls: the cue clock is driven by clicks and page keys (advance / retreat), so the timeline keeps its
+   // state hooks but is never put on the page.
    const fallback=document.createElement('details');fallback.className='interaction-transcript';const summary=document.createElement('summary');summary.textContent=t('All authored explanations and cue order','全部作者说明与提示顺序');fallback.append(summary);for(const spec of data.interactions){if(spec.kind==='steps')for(const step of spec.steps){const p=document.createElement('p');p.textContent=step.label+': '+step.text;fallback.append(p);}}const list=document.createElement('ol');for(const cue of data.cues){const li=document.createElement('li');li.textContent=cue.label||({'data.filter':t('Change chart selection','调整图表选择'),'data.focus':t('Focus one series','聚焦一个系列'),'tab.select':t('Compare images','比较图片'),'step.next':t('Next explanation','下一步说明'),'annotation.reveal':t('Reveal annotation','显示注释')})[cue.event];list.append(li);}fallback.append(list);if(!scene.querySelector('.interaction-transcript')&&(data.cues.length||data.interactions.some(spec=>spec.kind==='steps')))scene.append(fallback);
   }
   const live=()=>{if(!state.active||document.hidden)throw Error('Enter this scene before playing cues.');};
@@ -85,6 +84,7 @@ export function mountSemanticInteractions(config){
    measureAt(position){const live=[...scene.querySelectorAll('[aria-live],[role=status]')].map(n=>({node:n,value:n.getAttribute('aria-live')}));for(const {node}of live)node.setAttribute('aria-live','off');const saved={value:state.value,position:state.position,exploring:state.exploring,live};show(position);return saved;},
    showAt:show,
    restoreMeasurement(saved){state.value=saved.value;state.position=saved.position;state.exploring=saved.exploring;draw();for(const {node,value}of saved.live){if(value===null)node.removeAttribute('aria-live');else node.setAttribute('aria-live',value);}},
+   cueCount:()=>data.cues.length,
    reduceMotion(){resources.cancelAnimations();clock.setReduced(reduced());draw();},stop(){reset();},register(release){if(typeof release!=='function')throw Error('Resource cleanup must be a function.');if(!state.active||document.hidden||suspended){release();return ()=>{};}return resources.register(release);}
   };
   controllers.set(data.id,api);
@@ -106,6 +106,12 @@ export function mountSemanticInteractions(config){
   pause(sceneId){controller(sceneId).pause();},
   seek(sceneId,position){controller(sceneId).seek(position);},
   next(sceneId){controller(sceneId).next();},
+  /** Click-to-build: plays the page's next cue; false when it has none left (or no cues), so the caller can turn the page. */
+  advance(sceneId){const c=controllers.get(sceneId);if(!c||c.snapshot().position>=c.cueCount())return false;c.next();return true;},
+  /** One cue back; false at the opening. */
+  retreat(sceneId){const c=controllers.get(sceneId);if(!c||c.snapshot().position<=0)return false;c.previous();return true;},
+  /** Back to the authored opening without playing. */
+  begin(sceneId){controllers.get(sceneId)?.replay();},
   previous(sceneId){controller(sceneId).previous();},
   dispatch(sceneId,event){controller(sceneId).dispatch(event);},
   snapshot(){return [...controllers.values()].map(c=>c.snapshot());},
@@ -119,6 +125,9 @@ export function mountSemanticInteractions(config){
   endMeasurement(){measurementDepth=Math.max(0,measurementDepth-1);if(!measurementDepth&&measurementSaved){for(const [id,s]of measurementSaved)controllers.get(id).restoreMeasurement(s);measurementSaved=null;if(measurementFocus?.node&&!measurementFocus.node.isConnected){const n=measurementFocus.id?document.getElementById(measurementFocus.id):measurementFocus.chartRegion?.querySelector('.chart-current-view summary');n?.focus({preventScroll:true});}measurementFocus=null;}},
   dispose(){suspended=true;for(const c of controllers.values()){c.activate(false);c.stop();}}
  };
+ // Data tables, relationship lists and transcripts are for screen readers only: kept open (so they are read) and out of the tab order.
+ const readable=root=>{for(const d of root.querySelectorAll('.web-scene details:not(.scene-disclosure)')){d.open=true;const s=d.querySelector(':scope > summary');if(s)s.tabIndex=-1;}};
+ readable(document);new MutationObserver(records=>{for(const r of records)for(const n of r.addedNodes)if(n.nodeType===1)readable(n.matches?.('details')?n.parentElement||n:n);}).observe(document.body,{childList:true,subtree:true});
  document.addEventListener('visibilitychange',()=>{if(document.hidden)for(const c of controllers.values()){c.activate(false);c.stop();}});
  addEventListener('pagehide',()=>{suspended=true;for(const c of controllers.values()){c.activate(false);c.stop();}});addEventListener('pageshow',()=>{suspended=false;document.dispatchEvent(new Event('deckweft:resume'));});
  window.deckweftInteractions=api;return api;

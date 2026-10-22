@@ -32,7 +32,7 @@ async function page(options,name){const p=await (await context(options)).newPage
 async function settle(p){await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await p.evaluate(()=>Promise.all(document.getAnimations({subtree:true}).map(a=>a.finished.catch(()=>{}))));}
 // An element is scrolled into view first: in reading view, entering the viewport starts the scene's entry motion, which must finish before the capture.
 async function capture(target,name,{settled=true,...options}={}){const p=target.page?target.page():target;if(target.page)await target.scrollIntoViewIfNeeded();if(settled){await p.waitForTimeout(50);await settle(p);}const file=path.join(out,name);await target.screenshot({path:file,animations:'disabled',...options});report.captures.push({file:name,sha256:hash(await readFile(file))});}
-async function ready(p,url){await p.goto(url);await p.waitForFunction(()=>['true','failed'].includes(document.body.dataset.ready));assert.equal(await p.evaluate(()=>document.body.dataset.ready),'true',await p.locator('#status').textContent());}
+async function ready(p,url){await p.goto(url);await p.waitForFunction(()=>['true','failed'].includes(document.body.dataset.ready));assert.equal(await p.evaluate(()=>document.body.dataset.ready),'true','the player did not finish measuring');}
 const snap=(p,id)=>p.evaluate(id=>window.deckweftInteractions.snapshot().find(s=>s.sceneId===id),id);
 const pageLabel=p=>p.locator('#page').textContent();
 const viewport=width=>({width,height:width===390?844:1000});
@@ -50,7 +50,7 @@ async function demoProject(locale){
 async function keyboardTrace(p,sceneId,locale,width){
  await p.evaluate(id=>{location.hash='scene='+id;},sceneId);await p.waitForFunction(id=>document.getElementById(id).classList.contains('active'),sceneId);const start=await pageLabel(p),origin=(await snap(p,sceneId)).position;
  const targets=await p.evaluate(id=>{
-  const scene=document.getElementById(id),visible=n=>n.getClientRects().length&&!n.closest('[hidden]')&&(!n.closest('details:not([open])')||n.matches('summary'));
+  const scene=document.getElementById(id),visible=n=>n.getClientRects().length&&!n.closest('[hidden]')&&!n.closest('.dw-sr,.web-scene details:not(.scene-disclosure)')&&(!n.closest('details:not([open])')||n.matches('summary'));
   const marks=[...scene.querySelectorAll('.chart-current-view g[tabindex][data-series-id]')].filter(visible).slice(0,3).map(g=>({selector:`#${id} .chart-current-view g[data-object-id="${g.dataset.objectId}"][data-series-id="${g.dataset.seriesId}"]`,tag:'g',label:'chart mark '+g.dataset.objectId+' · '+g.dataset.seriesId}));
   // Elements the chart view redraws are found again by structure; every other control keeps a trace marker.
   const controls=[...scene.querySelectorAll('input,select,button,summary,a[href^="#"],[tabindex]:not(g),[role=tab]')].filter(n=>visible(n)&&!n.disabled).map((n,i)=>{const redrawn=n.closest('.chart-current-view');if(!redrawn)n.dataset.trace=id+'-'+i;return {selector:redrawn?`#${id} .chart-current-view ${n.tagName.toLowerCase()}`:`[data-trace="${id}-${i}"]`,tag:n.tagName.toLowerCase(),label:(n.getAttribute('aria-label')||n.textContent||n.type||'').trim().replace(/\s+/g,' ').slice(0,50)};});
@@ -66,9 +66,11 @@ async function keyboardTrace(p,sceneId,locale,width){
   assert.equal(label,start,`${locale} ${width} ${sceneId}: ${key} on ${target.label} turned the page`);
   if(await p.evaluate(id=>!document.getElementById(id).classList.contains('active'),sceneId))throw Error('The scene left the stage on '+key+' / '+target.label);
  }
- // Positive control: with nothing focused the same key does turn the page, so the guard is not simply off.
+ // Positive control: with nothing focused the same key does turn the page, so the guard is not simply off. Player .9: a page key
+ // first plays the page's remaining cues (click-to-build), so the key is pressed until the page turns, and back the same way.
  const [n,total]=start.split(' / ').map(Number),[away,home]=n<total?['ArrowRight','ArrowLeft']:['ArrowLeft','ArrowRight'];
- await p.evaluate(()=>{document.activeElement?.blur();});await p.keyboard.press(away);const moved=await pageLabel(p);await p.keyboard.press(home);const back=await pageLabel(p);
+ const pressUntil=async(key,done)=>{for(let i=0;i<16;i++){await p.keyboard.press(key);const l=await pageLabel(p);if(done(l))return l;}return pageLabel(p);};
+ await p.evaluate(()=>{document.activeElement?.blur();});const moved=await pressUntil(away,l=>l!==start);const back=await pressUntil(home,l=>l===start);
  assert.notEqual(moved,start,away+' with nothing focused turns the page');assert.equal(back,start);
  return {sceneId,page:start,startPosition:origin,targets:targets.length,presses:presses.filter(x=>!x.skipped).length,skipped:presses.filter(x=>x.skipped).length,parameterChanges:presses.filter(x=>x.parameterChanged).length,pageChanges:0,marks:targets.filter(x=>x.tag==='g').length,positiveControl:{[away]:moved,[home]:back},detail:presses.map(x=>[x.label,x.key,x.parameterChanged?'parameter changed':'parameter unchanged',x.skipped||'page '+x.page].join(' | '))};
 }
@@ -102,7 +104,7 @@ try{
   assert.equal((await previewSnap()).position,1);await studio.locator('#useInteractionOpening').click();await studio.waitForFunction(()=>!document.querySelector('#issueBanner').hidden);
   const refused=await studio.locator('#issueBanner').textContent();assert.match(refused,zh?/提示位置 1（静态状态）/:/cue position 1 \(the static state\)/);
   assert.equal(await studio.locator('#save').isDisabled(),true,'nothing changed');await studio.locator('#issueBanner').scrollIntoViewIfNeeded();await capture(studio,`${locale}-studio-opening-refused.png`);
-  await frame.locator('#evidence select[data-range="toId"]').selectOption('template');assert.equal((await previewSnap()).exploring,true);await studio.locator('#useInteractionOpening').click();await studio.waitForFunction(()=>!document.querySelector('#save').disabled);
+  await frame.locator('#evidence').evaluate(()=>{const cfg=JSON.parse(document.getElementById('dw-runtime-data').textContent).scenes.find(s=>s.id==='evidence'),i=cfg.interactions.findIndex(x=>x.kind==='chart-select'),st=window.deckweftInteractions.snapshot().find(s=>s.sceneId==='evidence').state[i];window.deckweftInteractions.dispatch('evidence',{event:'data.filter',interactionId:cfg.interactions[i].id,seriesIds:st.seriesIds,fromId:st.fromId,toId:'template'});});assert.equal((await previewSnap()).exploring,true);await studio.locator('#useInteractionOpening').click();await studio.waitForFunction(()=>!document.querySelector('#save').disabled);
   const accepted=await studio.locator('#toastRegion').textContent();
   log('studio',locale,{opensAt:1,refusedWithoutExploring:refused,afterExploringToTemplate:accepted,saveEnabled:true});
   await studioContext.close();
@@ -124,28 +126,29 @@ try{
   // 4. Motion primitives with motion on, then reduced motion: the same actions animate with the named frames, or not at all.
   const motion=await page({viewport:viewport(1440)},locale+' motion');await ready(motion,files.demo.url+'#scene=component-line');
   const seen={};const act=async(sceneId,label,fn)=>{await motion.evaluate(id=>{location.hash='scene='+id;},sceneId);await motion.waitForFunction(id=>document.getElementById(id).classList.contains('active'),sceneId);await settle(motion);await fn();const live=await liveAnimations(motion);for(const a of live){assert.ok(framesMatch(a),JSON.stringify(a));assert.ok(a.duration+a.delay<=400,JSON.stringify(a));seen[a.id]=(seen[a.id]||0)+1;}report.primitives.push({locale,sceneId,action:label,animations:live.map(a=>({primitive:a.id,duration:a.duration,delay:a.delay,framesMatchRegistry:true}))});await settle(motion);};
-  await act('component-line','focus Reviewed',()=>motion.locator('#component-line .chart-series-switch button[data-select-series="reviewed"]').click());
-  await act('component-line','hide Local',()=>motion.locator('#component-line input[data-series="local"]').uncheck());
-  await act('component-line','show Local again',()=>motion.locator('#component-line input[data-series="local"]').check());
-  await act('component-process','select a step',()=>motion.locator('#component-process [data-step-id]').nth(2).click());
-  await act('image-comparison','select the second image',()=>motion.locator('#image-comparison [data-tab-id="second"]').click());
-  await act('violet','open a hotspot',()=>motion.locator('#violet [data-hotspot-id="source"]').click());
-  await act('component-code','replay (scene entry)',()=>motion.locator('#component-code [data-cue-replay]').click());
+  const ev=(id,e)=>motion.evaluate(([s,v])=>window.deckweftInteractions.dispatch(s,v),[id,e]);
+  await act('component-line','focus Reviewed',()=>ev('component-line',{event:'data.focus',interactionId:'select-line',seriesId:'reviewed'}));
+  await act('component-line','hide Local',()=>ev('component-line',{event:'data.filter',interactionId:'select-line',seriesIds:['reviewed'],fromId:'alpha',toId:'delta'}));
+  await act('component-line','show Local again',()=>ev('component-line',{event:'data.filter',interactionId:'select-line',seriesIds:['local','reviewed'],fromId:'alpha',toId:'delta'}));
+  await act('component-process','select a step',()=>ev('component-process',{event:'step.select',interactionId:'explain-process',stepId:'save'}));
+  await act('image-comparison','select the second image',()=>ev('image-comparison',{event:'tab.select',interactionId:'compare-crops',tabId:'second'}));
+  await act('violet','open a hotspot',()=>ev('violet',{event:'annotation.reveal',interactionId:'image-details',hotspotId:'source'}));
+  await act('component-code','replay (scene entry)',()=>motion.evaluate(()=>window.deckweftInteractions.restart('component-code')));
   for(const name of Object.keys(MOTION_PRIMITIVES))assert.ok(seen[name],`${locale}: ${name} was not observed`);assert.deepEqual(Object.keys(seen).filter(k=>!MOTION_PRIMITIVES[k]),[]);
   report.primitives.push({locale,summary:seen});
   // 5. Fast paging: replay, then rapid Next/Previous across scenes while cue timers and animations are pending.
-  await motion.evaluate(()=>{location.hash='scene=component-line';});await motion.waitForFunction(()=>document.getElementById('component-line').classList.contains('active'));await motion.locator('#component-line [data-cue-replay]').click();await motion.evaluate(()=>window.deckweftInteractions.registerResource('component-line',()=>{window.__released=(window.__released||0)+1;}));
+  await motion.evaluate(()=>{location.hash='scene=component-line';});await motion.waitForFunction(()=>document.getElementById('component-line').classList.contains('active'));await motion.evaluate(()=>window.deckweftInteractions.restart('component-line'));await motion.evaluate(()=>window.deckweftInteractions.registerResource('component-line',()=>{window.__released=(window.__released||0)+1;}));
   const flip=id=>motion.evaluate(id=>document.getElementById(id).click(),id);
   for(let i=0;i<8;i++){await flip('next');await flip('next');await flip('previous');}
   for(let i=0;i<6;i++)await flip('previous');
-  await motion.evaluate(()=>{location.hash='scene=component-code';});await motion.waitForFunction(()=>document.getElementById('component-code').classList.contains('active'));await motion.locator('#component-code [data-cue-replay]').click();await flip('next');await flip('previous');await flip('next');
+  await motion.evaluate(()=>{location.hash='scene=component-code';});await motion.waitForFunction(()=>document.getElementById('component-code').classList.contains('active'));await motion.evaluate(()=>window.deckweftInteractions.restart('component-code'));await flip('next');await flip('previous');await flip('next');
   await motion.waitForTimeout(400);const left=await motion.evaluate(()=>({timers:window.__dwPendingTimers,animations:document.getAnimations({subtree:true}).length,released:window.__released||0,scenes:window.deckweftInteractions.snapshot().filter(s=>s.playing||s.resources.timers||s.resources.animations||s.resources.registered).map(s=>s.sceneId)}));
   assert.deepEqual(left,{timers:0,animations:0,released:1,scenes:[]});log('fastPaging',locale,left);await motion.context().close();
   for(const width of [1440,390]){
    const reduced=await page({viewport:viewport(width),reducedMotion:'reduce'},locale+' reduced '+width);await ready(reduced,files.demo.url+'#scene=component-line');
    const frozen=await snap(reduced,'component-line');assert.equal(frozen.frozen,true);assert.equal(frozen.position,1);assert.equal(frozen.state[0].focusSeriesId,'reviewed');
-   const replay=reduced.locator('#component-line [data-cue-replay]');assert.equal(await replay.isDisabled(),true);assert.equal(await reduced.locator('#component-line [data-static-fallback]').isVisible(),true);
-   const trace=[];for(const [label,fn] of [['next cue',()=>reduced.locator('#component-line [data-cue-next]').click()],['previous cue',()=>reduced.locator('#component-line [data-cue-previous]').click()],['slider End',async()=>{await reduced.locator('#component-line [data-cue-position]').focus();await reduced.keyboard.press('End');}],['focus Local',()=>reduced.locator('#component-line .chart-series-switch button[data-select-series="local"]').click()],['play (refused)',()=>reduced.evaluate(()=>window.deckweftInteractions.play('component-line'))],['step',async()=>{await reduced.evaluate(()=>{location.hash='scene=component-process';});await reduced.locator('#component-process [data-step-id]').nth(0).click();}],['tab',async()=>{await reduced.evaluate(()=>{location.hash='scene=image-comparison';});await reduced.locator('#image-comparison [data-tab-id="first"]').click();}]]){
+   assert.equal(await reduced.locator('#component-line .semantic-timeline').count(),0,'no cue timeline on the slide');const api=(f,...a)=>reduced.evaluate(([fn,args])=>window.deckweftInteractions[fn](...args),[f,a]),cueCount=await reduced.evaluate(()=>JSON.parse(document.getElementById('dw-runtime-data').textContent).scenes.find(s=>s.id==='component-line').cues.length);
+   const trace=[];for(const [label,fn] of [['next cue',()=>api('next','component-line')],['previous cue',()=>api('previous','component-line')],['seek to the end',()=>api('seek','component-line',cueCount)],['focus Local',()=>api('dispatch','component-line',{event:'data.focus',interactionId:'select-line',seriesId:'local'})],['play (refused)',()=>reduced.evaluate(()=>window.deckweftInteractions.play('component-line'))],['step',async()=>{await reduced.evaluate(()=>{location.hash='scene=component-process';});await api('dispatch','component-process',{event:'step.select',interactionId:'explain-process',stepId:'submit'});}],['tab',async()=>{await reduced.evaluate(()=>{location.hash='scene=image-comparison';});await api('dispatch','image-comparison',{event:'tab.select',interactionId:'compare-crops',tabId:'first'});}]]){
     await fn();const s=await reduced.evaluate(()=>({animations:document.getAnimations({subtree:true}).length,scenes:window.deckweftInteractions.snapshot().map(s=>s.resources.animations).reduce((a,b)=>a+b,0)}));trace.push({action:label,...s,line:await snap(reduced,'component-line').then(v=>({position:v.position,playing:v.playing,exploring:v.exploring}))});assert.equal(s.animations,0,label);assert.equal(s.scenes,0,label);
    }
    assert.equal(trace.find(t=>t.action==='play (refused)').line.playing,false);
@@ -159,7 +162,7 @@ try{
    const js=await page({viewport:viewport(width)},locale+' reading '+width);await ready(js,files.demo.url);
    const views={};for(const [id,position] of Object.entries(STATIC_SCENES)){const s=await snap(js,id);assert.equal(s.position,position,id);assert.deepEqual(s.state,expected[id],id);views[id]={position:s.position,statementVisible:await js.locator(`#${id} .static-state-note`).first().isVisible()};assert.equal(views[id].statementVisible,true,id);}
    const fit=await js.evaluate(()=>window.deckweftFit);assert.equal(fit.ok,true);assert.equal(fit.viewport.width,width);assert.equal(fit.states.length,Object.keys(STATIC_SCENES).length);
-   if(width===1440){await capture(js.locator('#component-line'),`${locale}-focus-1440.png`);await js.locator('#component-line input[data-series="local"]').uncheck();await capture(js.locator('#component-line'),`${locale}-hide-1440.png`);}
+   if(width===1440){await capture(js.locator('#component-line'),`${locale}-focus-1440.png`);await js.evaluate(()=>window.deckweftInteractions.dispatch('component-line',{event:'data.filter',interactionId:'select-line',seriesIds:['reviewed'],fromId:'alpha',toId:'delta'}));await capture(js.locator('#component-line'),`${locale}-hide-1440.png`);}
    await js.context().close();
    const nojs=await page({viewport:viewport(width),javaScriptEnabled:false},locale+' nojs '+width);await nojs.goto(files.demo.url);
    const content=await nojs.evaluate(()=>{const text=id=>document.querySelector(`#${id} .static-state-note`)?.textContent||null;return {line:{statement:text('component-line'),legend:[...document.querySelectorAll('#component-line .chart .legend li')].map(n=>n.textContent),swatches:[...document.querySelectorAll('#component-line .chart .legend li svg.legend-key path')].map(n=>n.getAttribute('stroke'))},process:{statement:text('component-process'),targets:[...document.querySelectorAll('#component-process .semantic-step-target')].map(n=>n.dataset.objectId)},code:{statement:text('component-code'),lines:[...document.querySelectorAll('#component-code .semantic-step-target')].map(n=>n.dataset.line)},comparison:{statement:text('image-comparison'),wrapped:[...document.querySelectorAll('#image-comparison details[data-static-wrapper] > summary')].map(n=>n.textContent),openImages:[...document.querySelectorAll('#image-comparison .web-image')].filter(n=>!n.closest('details')).length},hotspots:{statement:text('violet'),markers:document.querySelectorAll('#violet .static-hotspot').length,open:document.querySelectorAll('#violet .static-hotspot[data-active]').length},horizontalPageScroll:document.documentElement.scrollWidth>document.documentElement.clientWidth+1};});

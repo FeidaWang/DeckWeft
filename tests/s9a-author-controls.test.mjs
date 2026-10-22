@@ -56,7 +56,7 @@ test('S9a page disclosure: moved text stays in the web page, the PowerPoint note
  assert.deepEqual(next.document,project.document,'reduce text never edits the document');
  assert.deepEqual(sceneOf(next,'chapter').disclosure,{blockIds:['chapter-body']});
  const html=exportDeck(next.document,'html',{plan:next.plan,experimentalWeb:true,assetResources}).body,text=project.document.blocks.find(b=>b.id==='chapter-body').text;
- assert.match(html,/<details class="scene-disclosure" data-disclosure="chapter"><summary>More detail · 1 item<\/summary>/);assert.ok(html.includes(text.split('\n')[0]));
+ assert.match(html,/<details class="scene-disclosure" data-disclosure="chapter" open><summary>More detail · 1 item<\/summary>/);assert.ok(html.includes(text.split('\n')[0]));
  const scenes=exportDeck(next.document,'html',{plan:next.plan,experimentalWeb:true,assetResources}).scenes;assert.ok(!scenes.find(s=>s.id==='chapter').regions.some(r=>r.blockId==='chapter-body'),'disclosed text is outside the composition');
  const states=staticStates(next.document,next.plan),notes=revealRequired(next.document,next.plan,freezeViews(next.document,next.plan,states)).find(s=>s.sceneId==='chapter').notes.find(n=>n.kind==='disclosure');
  assert.deepEqual(notes.lines,text.split('\n'));

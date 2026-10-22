@@ -4,6 +4,19 @@
 
 准备日期：2026-10-16。下面是这份源码实际观察到的结果，不是所有电脑都能通过的保证。原始日志保留运行环境的真实时间戳；alpha.1 的证据单独保存在 `docs/evidence/alpha.1/`。
 
+## 渲染器 .18／播放器 .9 — 水印与不带控件的幻灯片，2026-10-22
+
+渲染器 `visual-art-direction.18`，播放器 `semantic-player.9`。
+
+- 每页幻灯片都带 DeckWeft 水印：在 Figma 中设计的平纹编织标志与字标（[文件](https://www.figma.com/design/8P2CALkQHYO3eSY1jELaaW)，组件 `DeckWeft/Watermark`），导出为轮廓化的 `public/brand/deckweft-watermark.svg`（`currentColor`），以 20% 不透明度绘制在右下角，`aria-hidden`，不可交互。它只来自 `src/render/web/watermark.mjs`，任何文档、方案、主题、档案或导出字段都触及不到。`tests/watermark-chrome.test.mjs` 检查全部 12 个基线导出的每一页都恰好有一个水印。
+- 模板删除页顶一行（`DeckWeft / 主题名 · 01 / 06`）和状态行。
+- 幻灯片上不再有任何控件：图表范围、显示／隐藏与聚焦控件、步骤按钮、图片标签、热点标记、蓝图部件按钮和提示时间轴都不放到页面上。点击（或 →、空格、Page Down）播放本页下一个提示，播完后翻页；← 或 Page Up 回退；边缘的半透明按键静态翻页。阅读视图中点击某页即推进该页。
+- 数据表、关系列表、选择说明和讲解文字记录仅供读屏（保持展开、不进入 Tab 顺序）；对比度、裁切、字形和字号测量跳过它们。页面折叠直接展开显示。
+
+`render-baseline.json` 在单独的提交中重新记录。`tests/render-baseline-diff.mjs` 与上一提交对比：12 个条目的锚点和数据表完全相同；唯一删去的可见文字和数值来自页顶那一行（`DeckWeft`、主题名、页码）。
+
+在此树上用 Playwright 缓存的 Chrome for Testing 151.0.7922.34 运行浏览器测试，改为用提示发送的同一事件驱动选择，并断言幻灯片上没有控件：`browser_interactions`（新增点击推进：两次点击播完两个提示，第三次翻页，← 返回）、`browser_evidence_scene`、`browser_motion_state`、`browser_blueprint_a`（每个阶段和部件都由点击到达，最后一个部件后的点击翻页）、`browser_blueprint_studio`（其副本加长蓝图段落，使整页 PowerPoint 导出仍会走排版接受流程）、`browser_explanatory_authoring`、`browser_interaction_visual_parity`、`browser_quality_states`、`browser_chart_kinds`、`browser_cine`、`browser_author_controls`、`browser_prompt_generation` 全部通过。`scripts/visual-verify.mjs` 与 `tests/browser_quality_failure.mjs` 在图片对比替代文字检查上失败，与上一提交（`402c00f`）完全相同；`scripts/release-gate.mjs` 与 `scripts/s9b-blueprint.mjs` 已更新并通过语法检查，但未运行。[验证日志](../evidence/renderer-18/verify.txt)。
+
 ## 渲染器 .17／播放器 .8 — 页面外框与对比图修复，2026-10-22
 
 在制作 Opus 5.5 与 GPT-6 Astra 对比演示时发现。渲染器 `visual-art-direction.17`，播放器 `semantic-player.8`。

@@ -50,20 +50,22 @@ if(args.review){
  async function load(project,name){const resources=await visualAssetResources(project,home),output=exportDeck(project.document,'html',{experimentalWeb:true,plan:project.plan,assetResources:resources});await writeFile(path.join(out,name+'.html'),output.body);routes.set('/'+name+'.html',output.body);await page.goto(origin+'/'+name+'.html');await page.waitForFunction(()=>document.body.dataset.ready==='true');await page.evaluate(()=>document.fonts.ready);return output;}
  async function shot(file,locator=page){if(locator===page){await page.evaluate(()=>scrollTo(0,0));await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));}await locator.screenshot({path:path.join(out,file),animations:'disabled',...(locator===page?{fullPage:true}:{})});return {file,sha256:hash(await readFile(path.join(out,file)))};}
  async function action(sceneId,blockId,actionName,act,test){const before=await page.evaluate(()=>window.deckweftInteractions.snapshot());let error=null;try{await act();}catch(e){error=e.message;}const after=await page.evaluate(()=>window.deckweftInteractions.snapshot());const ok=!error&&await test();return {sceneId,blockId,action:actionName,before,after,ok,error};}
+ // Player .9: the slides carry no controls, so each interaction is driven by the same event an authored cue sends, then checked on the page.
+ const stateOf=(sceneId,specId)=>page.evaluate(([id,sid])=>{const cfg=JSON.parse(document.getElementById('dw-runtime-data').textContent).scenes.find(s=>s.id===id),i=cfg.interactions.findIndex(x=>x.id===sid);return window.deckweftInteractions.snapshot().find(s=>s.sceneId===id).state[i];},[sceneId,specId]);
  async function exercise(project){const traces=[];
   for(const scene of project.plan.scenes)for(const spec of scene.interactions||[]){
-   const root=page.locator('#'+scene.id+' [data-block-id="'+spec.blockId+'"]');
+   const root=page.locator('#'+scene.id+' [data-block-id="'+spec.blockId+'"]'),send=event=>page.evaluate(([id,e])=>window.deckweftInteractions.dispatch(id,e),[scene.id,{interactionId:spec.id,...event}]);
    if(spec.kind==='chart-select'){
     const block=project.document.blocks.find(b=>b.id===spec.blockId),data=project.document.datasets.find(d=>d.id===block.datasetId),category=data.categoryIds[Math.min(2,data.categoryIds.length-1)],remaining=data.categoryIds.length-data.categoryIds.indexOf(category);
-    traces.push(await action(scene.id,spec.blockId,'select actual chart category '+category,()=>root.locator('[data-range="fromId"]').selectOption(category),async()=>{const state=await page.evaluate(id=>window.deckweftInteractions.snapshot().find(s=>s.sceneId===id).state,scene.id);return state.find(s=>s.id===spec.id||s.fromId===category)?.fromId===category&&await root.locator('.chart-current-view tbody tr').count()===remaining&&await root.locator('.full-source-data tbody tr').count()===data.categoryIds.length;}));
+    traces.push(await action(scene.id,spec.blockId,'select chart category '+category+' (cue event)',async()=>{const v=await stateOf(scene.id,spec.id);await send({event:'data.filter',seriesIds:v.seriesIds,fromId:category,toId:v.toId});},async()=>{const state=await page.evaluate(id=>window.deckweftInteractions.snapshot().find(s=>s.sceneId===id).state,scene.id);return state.find(s=>s.id===spec.id||s.fromId===category)?.fromId===category&&await root.locator('.chart-current-view tbody tr').count()===remaining&&await root.locator('.full-source-data tbody tr').count()===data.categoryIds.length;}));
    }else if(spec.kind==='steps'){
     const step=spec.steps[Math.min(1,spec.steps.length-1)],note=project.document.explanations.find(e=>e.id===step.explanationId);
-    traces.push(await action(scene.id,spec.blockId,'keyboard select explanation '+step.id,()=>root.locator('[data-step-id="'+step.id+'"]').press('Enter'),async()=>await root.locator('[data-step-id="'+step.id+'"]').getAttribute('aria-pressed')==='true'&&(await root.locator('.step-explanation').textContent()).includes(note.text)));
+    traces.push(await action(scene.id,spec.blockId,'select explanation '+step.id+' (cue event)',()=>send({event:'step.select',stepId:step.id}),async()=>(await stateOf(scene.id,spec.id)).stepId===step.id&&(await root.locator('.step-explanation').textContent()).includes(note.text)));
    }else if(spec.kind==='image-compare'){
-    traces.push(await action(scene.id,spec.blockId,'touch first crop then keyboard second',async()=>{await root.locator('[data-tab-id="first"]').tap();await root.locator('[data-tab-id="first"]').press('ArrowRight');},async()=>await root.locator('.compare-panel').getAttribute('data-tab')==='second'&&await root.locator('.compare-panel .web-image:visible').count()===1));
+    traces.push(await action(scene.id,spec.blockId,'show the second crop (cue event)',()=>send({event:'tab.select',tabId:'second'}),async()=>await root.locator('.compare-panel').getAttribute('data-tab')==='second'&&await root.locator('.compare-panel .web-image:visible').count()===1));
    }else if(spec.kind==='image-hotspots'){
-    const spot=spec.hotspots[0],control=page.locator('#'+scene.id+' [data-hotspot-id="'+spot.id+'"]'),note=project.document.blocks.find(b=>b.id===spot.annotationId);
-    traces.push(await action(scene.id,spec.blockId,'touch reveal original-image context',()=>control.tap(),async()=>await control.getAttribute('aria-expanded')==='true'&&(await page.locator('#'+scene.id+' .hotspot-explanation').textContent()).includes(note.text)));
+    const spot=spec.hotspots[0],note=project.document.blocks.find(b=>b.id===spot.annotationId);
+    traces.push(await action(scene.id,spec.blockId,'reveal original-image context (cue event)',()=>send({event:'annotation.reveal',hotspotId:spot.id}),async()=>(await stateOf(scene.id,spec.id)).hotspotId===spot.id&&(await page.locator('#'+scene.id+' .hotspot-explanation').textContent()).includes(note.text)));
    }
   }
   const replayScene=project.plan.scenes.find(s=>s.cues?.length&&s.interactions?.some(i=>i.kind==='steps'));
@@ -98,8 +100,8 @@ if(args.review){
    await page.locator('#collage .region h2').evaluate(n=>{n.style.height='1px';n.style.overflow='hidden';});
    await page.locator('#component-code .region h2').evaluate(n=>{n.style.color='rgb(255,255,255)';n.style.background='rgb(255,255,255)';});
    await page.locator('#violet img').first().evaluate(n=>{n.src='data:image/png;base64,AA==';});
-   await page.locator('[data-block-id="component-code"] [data-step-id="difference"]').evaluate(n=>n.addEventListener('click',e=>e.stopImmediatePropagation(),{capture:true}));
-   const trace=await action('component-code','component-code','injected dead explanation button',()=>page.locator('[data-block-id="component-code"] [data-step-id="difference"]').click(),()=>page.locator('[data-block-id="component-code"] [data-step-id="difference"]').getAttribute('aria-pressed').then(v=>v==='true'));
+   await page.evaluate(()=>{window.deckweftInteractions.dispatch=()=>{};});
+   const trace=await action('component-code','component-code','injected dead explanation step',()=>page.evaluate(()=>window.deckweftInteractions.dispatch('component-code',{event:'step.select',interactionId:'explain-code',stepId:'difference'})),()=>stateOf('component-code','explain-code').then(v=>v.stepId==='difference'));
    const faultObservation=await observe(),faults=checkRender(p,[faultObservation],{traces:[trace]});
    for(const kind of ['clipping','contrast','missing-asset','repeated-composition','broken-interaction'])assert.ok(faults.issues.some(i=>i.kind===kind),'Undetected injection: '+kind);
    const faultImages=[];for(const id of ['collage','component-code','violet'])faultImages.push(await shot('fault-'+id+'.png',page.locator('#'+id)));

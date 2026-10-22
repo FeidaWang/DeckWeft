@@ -7,7 +7,7 @@ export const contrastScript = String.raw`function auditContrast(scene){
  const issues=[],page=rgb(getComputedStyle(scene).backgroundColor)?.c||[255,255,255],paths=[...scene.querySelectorAll('.decor path')].reverse();
  for(const region of scene.querySelectorAll('.region')){
   const walker=document.createTreeWalker(region,NodeFilter.SHOW_TEXT);let node;let failed=false;
-  while((node=walker.nextNode())&&!failed){if(!node.textContent.trim())continue;const el=node.parentElement;if(!el||el.closest('script,style'))continue;const style=getComputedStyle(el),fg=rgb(style.color);if(!fg)continue;
+  while((node=walker.nextNode())&&!failed){if(!node.textContent.trim())continue;const el=node.parentElement;if(!el||el.closest('script,style,.dw-sr,details:not(.scene-disclosure)'))continue;const style=getComputedStyle(el),fg=rgb(style.color);if(!fg)continue;
    const range=document.createRange();range.selectNodeContents(node);const rects=[...range.getClientRects()].filter(r=>r.width>.1&&r.height>.1);const size=parseFloat(style.fontSize),threshold=size>=24||(size>=18.66&&Number(style.fontWeight)>=700)?3:4.5;
    for(const rect of rects){if(failed)break;for(const px of [rect.left+Math.min(1,rect.width/2),rect.left+rect.width/2,rect.right-Math.min(1,rect.width/2)]){
     const py=rect.top+rect.height/2;let backgrounds=[page];
@@ -27,7 +27,7 @@ export const clippingScript = String.raw`function auditClipping(scene){
  const issues=[];
  for(const region of scene.querySelectorAll('.region')){
   const walker=document.createTreeWalker(region,NodeFilter.SHOW_TEXT);let node;let failed=false;
-  while((node=walker.nextNode())&&!failed){if(!node.textContent.trim())continue;const range=document.createRange();range.selectNodeContents(node);const rects=[...range.getClientRects()].filter(r=>r.width>.1&&r.height>.1);
+  while((node=walker.nextNode())&&!failed){if(!node.textContent.trim()||node.parentElement?.closest('.dw-sr,details:not(.scene-disclosure)'))continue;const range=document.createRange();range.selectNodeContents(node);const rects=[...range.getClientRects()].filter(r=>r.width>.1&&r.height>.1);
    for(let a=node.parentElement;a&&a!==scene;a=a.parentElement){const style=getComputedStyle(a),clipX=['hidden','clip'].includes(style.overflowX),clipY=['hidden','clip'].includes(style.overflowY);if(!clipX&&!clipY)continue;const box=a.getBoundingClientRect();if(rects.some(r=>clipX&&(r.left<box.left-1||r.right>box.right+1)||clipY&&(r.top<box.top-1||r.bottom>box.bottom+1))){issues.push({regionId:region.id,element:a.tagName,text:node.textContent.slice(0,80)});failed=true;break;}}
   }
  }
@@ -35,7 +35,7 @@ export const clippingScript = String.raw`function auditClipping(scene){
  for(const figure of scene.querySelectorAll('.chart')){
   const region=figure.closest('.region'),boxes=[];
   for(const label of figure.querySelectorAll('[data-conclusion-label]')){
-   if(label.closest('details:not([open])'))continue;
+   if(label.closest('details:not([open]),.dw-sr,details:not(.scene-disclosure)'))continue;
    const style=getComputedStyle(label),rects=[...label.getClientRects()].filter(r=>r.width>.1&&r.height>.1),text=label.textContent.slice(0,80);
    if(!rects.length||style.visibility==='hidden'||Number(style.opacity)===0){issues.push({regionId:region?.id,element:'conclusion label',text,reason:'Conclusion label is not displayed'});continue;}
    let failed=false;
@@ -56,7 +56,7 @@ export const grayscaleScript = String.raw`function auditGrayscale(scene){
  const regions=[...scene.querySelectorAll('.regions > .region, .source-strip > .region')].map(r=>{
   const img=r.querySelector('img'),box=(img?img.closest('.image-crop')||img:r).getBoundingClientRect();let lum=null,method='text colour';
   if(img&&img.complete&&img.naturalWidth){try{const canvas=document.createElement('canvas');canvas.width=canvas.height=32;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,32,32);const d=ctx.getImageData(0,0,32,32).data;let sum=0;for(let i=0;i<d.length;i+=4)sum+=luminance([d[i],d[i+1],d[i+2]]);lum=sum/(d.length/4);method='image pixels (32 by 32 canvas sample)';}catch(e){method='image not sampled';}}
-  if(lum===null){const walker=document.createTreeWalker(r,NodeFilter.SHOW_TEXT);let node,el=null;while((node=walker.nextNode()))if(node.textContent.trim()&&!node.parentElement.closest('script,style')){el=node.parentElement;break;}const fg=rgb(getComputedStyle(el||r).color);lum=fg?luminance(fg.c):pageL;}
+  if(lum===null){const walker=document.createTreeWalker(r,NodeFilter.SHOW_TEXT);let node,el=null;while((node=walker.nextNode()))if(node.textContent.trim()&&!node.parentElement.closest('script,style,.dw-sr,details:not(.scene-disclosure)')){el=node.parentElement;break;}const fg=rgb(getComputedStyle(el||r).color);lum=fg?luminance(fg.c):pageL;}
   const area=Math.max(0,box.width*box.height)/Math.max(1,sb.width*sb.height),contrast=Math.abs(lum-pageL);
   return {regionId:r.id,blockId:r.dataset.blockId,mediaRole:r.dataset.mediaRole||null,luminance:round(lum),contrast:round(contrast),area:round(area),weight:round(contrast*area),method};
  });

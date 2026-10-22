@@ -2,6 +2,18 @@
 
 [简体中文](../zh-CN/interactions.md) · [Components](components.md) · [Evidence](../evidence/vis-009/review.md)
 
+## Slides without controls (player .9, 2026-10-22)
+
+The exported web deck carries no buttons, menus, checkboxes, sliders or disclosures on its slides. Interaction works like PowerPoint:
+
+1. Press the title key (**Present**). Click anywhere on the slide, or press Right, Space or Page Down: the page plays its next authored cue (a chart selection or focus, the next step, the other image, the next annotation) with its motion. When the page has played every cue, the same click turns to the next page, which enters with its own motion.
+2. Left or Page Up steps one cue back; at the page's opening it returns to the previous page.
+3. The two translucent white keys at the left and right edges turn the page without playing its builds; the page keeps the state it was left in. They are also reachable with Tab.
+4. In reading view (not presenting), a click on a page plays that page's next cue; after its last cue the next click replays it from the opening.
+5. Authors set what each click shows with the page's cues (**More → For developers → Data editors → Authored interactions, cue order and motion · JSON**); the controls listed further down this page are authoring concepts, and on the slide they are driven by those cues.
+
+Data tables, relationship lists, chart selection statements and the transcript of explanations stay in the page for screen readers only: open, out of the tab order, and skipped by the layout measurements. A page disclosure (**More detail**) is shown open. Reduced motion follows the system setting. Every slide carries the DeckWeft watermark (bottom right, translucent, never interactive); no deck setting removes it.
+
 ## Apply to an existing work
 
 1. Open your saved work in Visual Studio. Choose a page, switch on **Look → Let this page move**, then press **Add explanations to this page**. This adds selection controls to existing charts and steps to existing diagrams; it creates no new deck or page. Existing interactions stay intact. Locked content must be unlocked explicitly first.
@@ -69,7 +81,7 @@ A chart keeps separate pieces of state: dataset, metric, shown series, focused s
 
    Durations stay within 400 ms (FadeIn and SlideSmall within 220 ms). The handoff's proposed 450–800 ms for mask, series and annotation reveals is not adopted.
 3. In presentation view, ArrowLeft/ArrowRight turn the page only when no control has focus. Expected: with a slider, select, checkbox, button, link, disclosure, tab, scrollable code block or chart mark focused, arrow keys, Home/End, Space and Enter change that control or do nothing; the page number stays. Keys with Alt, Ctrl, Cmd or Shift never turn the page.
-4. Recovery: if the page does not turn, move focus off the control first (Tab past it, or click empty page space), then press the arrow key, or click the right or left half of the slide; a translucent key shows the direction. The two keys are also reachable with Tab.
+4. Recovery: if the page does not turn, move focus off the control first (Tab past it, or click empty page space), then press the arrow key, or use the translucent keys at the left and right edges (also reachable with Tab). Since player .9 a click on the slide plays the page's remaining cues before it turns the page.
 
 ## Explain → Diagram → Explore (blueprint A, S9b)
 
@@ -85,7 +97,7 @@ One page explains one object in three stages. It is a `steps` interaction over a
 1. Open the exported HTML and go to the blueprint page. Expected: the page opens on **Explain** even when its static state is Diagram; the stage pills read *Explain · Diagram · Explore* with *Explain* marked and the count reads *Explain · 0 / n*.
 2. Choose **Next stage**. Expected: the diagram appears with numbered parts, the panel names the whole object and lists the reading order. Each further **Next stage** explores the next part in reading order; the last part stays.
 3. Select a part: click it on the diagram, or click its numbered button. Expected: the part is marked, the other parts stay visible (lighter outline), the panel reads *Part k of n · …* with the whole object and the parts before and after it. The count starts with *Exploring ·*. **Show whole** returns to Diagram, never to Explain.
-4. **Restore rule (A, per-page memory).** Turn the page by clicking the right half of the slide and come back by clicking the left half, or with the arrow keys. Expected: the page shows the same stage and part you left, still marked *Exploring*. The memory lasts while the document is open; **reload** opens the page on Explain again. Leaving the page stops its cue timer and animations, and keeps the selection.
+4. **Restore rule (A, per-page memory).** Turn the page with the translucent right key and come back with the left key. Expected: the page shows the same stage and part you left, still marked *Exploring*. The memory lasts while the document is open; **reload** opens the page on Explain again. Leaving the page stops its cue timer and animations, and keeps the selection.
 5. **Keyboard.** Tab to a part on the diagram or to a part button. Arrow keys (left/right and up/down), Home, End, Enter and Space change the part. Enter or Space on **Next stage**, **Previous stage**, **Show whole**, **Skip** and **Replay from Explain**, and the arrow keys, Home and End on the cue slider, change the stage. Expected: none of these ever turns the page. With nothing focused (click empty page space), ArrowRight and ArrowLeft turn the page as before.
 6. **Skip to the complete explanation** jumps to the author's static state (Diagram when none is declared).
 7. **Reduced motion.** With the system reduced-motion setting on, every stage changes instantly and Next / Previous still reach every stage. With `"reducedMotion": "static"` the page opens on its static state, **Replay** is disabled and a notice says cues do not play; Next, Previous and the slider still reach Explain and every part.

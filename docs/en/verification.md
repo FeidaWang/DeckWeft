@@ -4,6 +4,19 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## Renderer .18 / player .9 — watermark and slides without controls, 2026-10-22
+
+Renderer `visual-art-direction.18`, player `semantic-player.9`.
+
+- Every slide carries the DeckWeft watermark: a plain-weave mark and wordmark designed in Figma ([file](https://www.figma.com/design/8P2CALkQHYO3eSY1jELaaW), component `DeckWeft/Watermark`), exported outlined to `public/brand/deckweft-watermark.svg` in `currentColor`, drawn bottom right at 20 % opacity, `aria-hidden`, never interactive. It comes from `src/render/web/watermark.mjs` alone; no document, plan, theme, profile or export field reaches it. `tests/watermark-chrome.test.mjs` checks one watermark on every slide of all twelve baseline exports.
+- The folio line (`DeckWeft / theme name · 01 / 06`) and the status line are removed from the template.
+- The slides carry no controls: chart range, show/hide and focus controls, step buttons, image tabs, hotspot markers, blueprint part buttons and the cue timeline are never put on the page. A click (or Right, Space, Page Down) plays the page's next cue, then turns the page; Left or Page Up steps back; the translucent edge keys turn pages statically. In reading view a click builds the clicked page.
+- Data tables, relationship lists, selection statements and the explanation transcript are screen-reader only (open, out of the tab order); the contrast, clipping, glyph and text-size measurements skip them. A page disclosure renders open.
+
+`render-baseline.json` was re-recorded in its own commit. `tests/render-baseline-diff.mjs` against the previous commit: anchors and data tables are identical in all twelve entries; the only removed visible words and values are the folio's (`DeckWeft`, theme names, page numbers).
+
+Browser runners on this tree (Playwright-cache Chrome for Testing 151.0.7922.34), rewritten to drive selections through the same events a cue sends and to assert that no control is on a slide: `browser_interactions` (now also click-to-build: two clicks play both cues, the third turns the page, Left returns), `browser_evidence_scene`, `browser_motion_state`, `browser_blueprint_a` (every stage and part by click, the click after the last part turns the page), `browser_blueprint_studio` (its copy lengthens the blueprint paragraph so the whole-page PowerPoint export still exercises the typography acceptance), `browser_explanatory_authoring`, `browser_interaction_visual_parity`, `browser_quality_states`, `browser_chart_kinds`, `browser_cine`, `browser_author_controls` and `browser_prompt_generation` pass. `scripts/visual-verify.mjs` and `tests/browser_quality_failure.mjs` fail on an image-comparison alt-text check exactly as they do on the previous commit (`402c00f`); `scripts/release-gate.mjs` and `scripts/s9b-blueprint.mjs` were updated and syntax-checked but not run. [Verify log](../evidence/renderer-18/verify.txt).
+
 ## Renderer .17 / player .8 — deck chrome and comparison fixes, 2026-10-22
 
 Found while building an Opus 5.5 / GPT-6 Astra comparison deck. Renderer `visual-art-direction.17`, player `semantic-player.8`.

@@ -24,7 +24,7 @@ const timerProbe=()=>{const live=new Set(),st=setTimeout,ct=clearTimeout,si=setI
 async function context(options={}){const c=await browser.newContext({deviceScaleFactor:1,...options});await c.addInitScript(timerProbe);await c.route('**/*',r=>{const url=r.request().url();if(url.startsWith(app.url+'/')||/^(data|blob|file):/.test(url))return r.continue();report.external.push(url);return r.abort();});return c;}
 async function settle(page){await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.evaluate(()=>Promise.all(document.getAnimations({subtree:true}).map(a=>a.finished.catch(()=>{}))));}
 async function capture(target,name,{settled=true,...options}={}){const page=target.page?target.page():target;if(settled)await settle(page);const file=path.join(out,name);await target.screenshot({path:file,animations:'disabled',...options});report.captures.push({file:name,sha256:hash(await readFile(file))});}
-async function ready(page,url){await page.goto(url);await page.waitForFunction(()=>['true','failed'].includes(document.body.dataset.ready));assert.equal(await page.evaluate(()=>document.body.dataset.ready),'true',await page.locator('#status').textContent());}
+async function ready(page,url){await page.goto(url);await page.waitForFunction(()=>['true','failed'].includes(document.body.dataset.ready));assert.equal(await page.evaluate(()=>document.body.dataset.ready),'true','the player did not finish measuring');}
 const snapshot=page=>page.evaluate(()=>window.deckweftInteractions.snapshot().find(s=>s.sceneId==='evidence'));
 const pageLabel=page=>page.locator('#page').textContent();
 async function pending(page){await page.waitForTimeout(400);return page.evaluate(()=>({timers:window.__dwPendingTimers,scenes:window.deckweftInteractions.snapshot().map(s=>({sceneId:s.sceneId,playing:s.playing,...s.resources})),animations:document.getAnimations({subtree:true}).length}));}
@@ -80,27 +80,29 @@ try{
   const artifact=(await studio.locator('#preview').getAttribute('src')).split('#')[0],present=await (await context({viewport:{width:1440,height:1000}})).newPage();present.on('pageerror',e=>report.errors.push(locale+' present: '+e.message));
   await ready(present,app.url+artifact+'#scene=evidence');assert.equal(await pageLabel(present),'01 / 02');
   const specs=compileCues(source.document,source.plan.scenes[0]),focus=[];
-  // Layered focus rule (S6): a single-series chart offers no series focus or show/hide controls; its emphasis is the declared category focus.
-  focus.push({input:'series controls on a single-series chart',page:await pageLabel(present),state:(await snapshot(present)).state[0],hidden:await present.locator('#evidence .chart-series-switch').isHidden()&&await present.locator('#evidence .chart-series-visibility').isHidden()});
-  await present.locator('#evidence select[data-range="toId"]').selectOption('data-first');
-  focus.push({input:'pointer selection of the To category',page:await pageLabel(present),state:(await snapshot(present)).state[0],bars:await present.locator('#evidence .chart-current-view .chart-mark rect').count()});
-  await present.locator('#evidence select[data-range="toId"]').focus();await present.keyboard.press('ArrowDown');await present.keyboard.press('ArrowRight');await present.keyboard.press('ArrowLeft');
-  focus.push({input:'keyboard ArrowDown/ArrowRight/ArrowLeft on the To category',page:await pageLabel(present),state:(await snapshot(present)).state[0],bars:await present.locator('#evidence .chart-current-view .chart-mark rect').count()});
-  await present.locator('#evidence select[data-range="fromId"]').focus();await present.keyboard.press('Enter');await present.keyboard.press('Tab');await present.keyboard.press('ArrowRight');
-  focus.push({input:'keyboard Enter/Tab/ArrowRight on the range controls',page:await pageLabel(present),state:(await snapshot(present)).state[0],focused:await present.evaluate(()=>document.activeElement.textContent)});
-  assert.ok(focus.every(f=>f.page==='01 / 02'),'keyboard and pointer focus changes never advance the page');assert.deepEqual(focus[1].state.toId,'data-first');assert.equal(focus[1].bars,3);assert.equal(focus[2].state.toId,'template');
-  // S4 draws the declared category focus; with no series controls the reader's focus stays empty, so the declared focus is what both views draw.
-  assert.equal(focus[0].hidden,true);assert.equal(focus[0].state.focusSeriesId,null);const focusRows=await present.locator('#evidence .chart-current-view .chart-row').evaluateAll(rows=>rows.map(r=>r.dataset.focus));assert.deepEqual(focusRows,['true',...Array(focusRows.length-1).fill('false')]);report.conflicts.push({id:'C1',observed:'Fixed in S6 (layered rule): the declared category focus (Claim first) is drawn in both views; a single-series chart offers no series controls',locale});
+  // Player .9: the slide carries no controls; the declared category focus is the emphasis, and a selection is a cue or a dispatched event.
+  assert.equal(await present.locator('#evidence :is(select,input,button,.semantic-timeline,.chart-series-switch,.chart-series-visibility)').count(),0,'no controls on the slide');
+  const chartSpec=specs.interactions.find(i=>i.kind==='chart-select'),opening=(await snapshot(present)).state[0];
+  focus.push({input:'no controls on the slide',page:await pageLabel(present),state:opening});
+  const select=toId=>present.evaluate(([id,s,to])=>window.deckweftInteractions.dispatch('evidence',{event:'data.filter',interactionId:id,seriesIds:s.seriesIds,fromId:s.fromId,toId:to}),[chartSpec.id,opening,toId]);
+  await select('data-first');
+  focus.push({input:'selection of the To category',page:await pageLabel(present),state:(await snapshot(present)).state[0],bars:await present.locator('#evidence .chart-current-view .chart-mark rect').count()});
+  await select(opening.toId);
+  focus.push({input:'selection back to the full range',page:await pageLabel(present),state:(await snapshot(present)).state[0],bars:await present.locator('#evidence .chart-current-view .chart-mark rect').count()});
+  assert.ok(focus.every(f=>f.page==='01 / 02'),'a selection never advances the page');assert.deepEqual(focus[1].state.toId,'data-first');assert.equal(focus[1].bars,3);assert.equal(focus[2].state.toId,opening.toId);
+  // S4 draws the declared category focus; the reader's series focus stays empty, so the declared focus is what both views draw.
+  assert.equal(focus[0].state.focusSeriesId,null);const focusRows=await present.locator('#evidence .chart-current-view .chart-row').evaluateAll(rows=>rows.map(r=>r.dataset.focus));assert.deepEqual(focusRows,['true',...Array(focusRows.length-1).fill('false')]);report.conflicts.push({id:'C1',observed:'Fixed in S6 (layered rule): the declared category focus (Claim first) is drawn in both views; the slide carries no series controls',locale});
   stage(locale,'switch legend focus',{focus});
-  const timeline=present.locator('#evidence .semantic-timeline'),replay=timeline.locator('button').nth(0),pause=timeline.locator('[data-cue-pause]'),seek=timeline.locator('[data-cue-position]');
-  await replay.click();const playing=await snapshot(present);assert.equal(playing.playing,true);assert.equal(playing.resources.timers,1);
-  await present.waitForFunction(()=>window.deckweftInteractions.snapshot().find(s=>s.sceneId==='evidence').position===1,null,{timeout:3000});await pause.click();const paused=await snapshot(present);
+  const call=(fn,...a)=>present.evaluate(([f,args])=>window.deckweftInteractions[f]('evidence',...args),[fn,a]);
+  await call('restart');const playing=await snapshot(present);assert.equal(playing.playing,true);assert.equal(playing.resources.timers,1);
+  await present.waitForFunction(()=>window.deckweftInteractions.snapshot().find(s=>s.sceneId==='evidence').position===1,null,{timeout:3000});await call('pause');const paused=await snapshot(present);
   assert.equal(paused.playing,false);assert.equal(paused.position,1);assert.equal(paused.resources.timers,0);
-  await seek.focus();await present.keyboard.press('ArrowRight');const sought=await snapshot(present);assert.equal(sought.position,2);assert.deepEqual(sought.state,seekInteractionState(specs.interactions,specs.cues,2));assert.equal(await pageLabel(present),'01 / 02');
-  await present.keyboard.press('Home');assert.equal((await snapshot(present)).position,0);
+  // Click-to-build: while the page has a cue left, the page key plays it instead of turning the page.
+  await present.keyboard.press('ArrowRight');const sought=await snapshot(present);assert.equal(sought.position,2);assert.deepEqual(sought.state,seekInteractionState(specs.interactions,specs.cues,2));assert.equal(await pageLabel(present),'01 / 02');
+  await call('seek',0);assert.equal((await snapshot(present)).position,0);
   // Rapid next/previous while a cue timer is pending: every scene-owned timer and animation must be cancelled.
-  await replay.click();for(let i=0;i<6;i++){await present.locator('#next').click();await present.locator('#previous').click();}
-  await replay.click();await timeline.locator('[data-cue-next]').click();await seek.focus();await present.keyboard.press('ArrowLeft');await present.keyboard.press('ArrowLeft');await replay.click();await present.locator('#next').click();
+  await call('restart');for(let i=0;i<6;i++){await present.locator('#next').click();await present.locator('#previous').click();}
+  await call('restart');await call('next');await present.keyboard.press('ArrowLeft');await present.keyboard.press('ArrowLeft');await call('restart');await present.locator('#next').click();
   const left=await pending(present);assert.equal(left.timers,0,JSON.stringify(left));assert.ok(left.scenes.every(s=>!s.playing&&s.timers===0&&s.animations===0&&s.registered===0));assert.equal(left.animations,0);assert.equal(await pageLabel(present),'02 / 02');
   stage(locale,'pause and seek',{playingTimers:playing.resources.timers,paused:{position:paused.position,timers:paused.resources.timers},seekPosition:sought.position,rapidNavigation:left});
   await present.context().close();
@@ -131,7 +133,7 @@ try{
    await capture(reading,`${locale}-reading-${width}.png`,{fullPage:true});await reading.context().close();
    const presentation=await (await context({viewport:{width,height:width===390?844:1000}})).newPage();presentation.on('pageerror',e=>report.errors.push(locale+' presentation: '+e.message));await ready(presentation,url+'#scene=evidence');
    assert.equal((await snapshot(presentation)).position,1);await capture(presentation,`${locale}-present-${width}.png`);
-   await presentation.locator('#evidence .semantic-timeline button').nth(0).click();const replayed=await snapshot(presentation);assert.equal(replayed.position,0);
+   await presentation.evaluate(()=>window.deckweftInteractions.restart('evidence'));const replayed=await snapshot(presentation);assert.equal(replayed.position,0);
    await presentation.waitForFunction(()=>{const s=window.deckweftInteractions.snapshot().find(s=>s.sceneId==='evidence');return s.position===2&&!s.playing;},null,{timeout:4000});
    views[`present-${width}`]={startPosition:1,replayStart:replayed.position,replayEnd:2,pending:await pending(presentation)};assert.equal(views[`present-${width}`].pending.timers,0);await presentation.context().close();
    const noJS=await (await context({viewport:{width,height:width===390?844:1000},javaScriptEnabled:false})).newPage();await noJS.goto(url);
@@ -150,12 +152,12 @@ try{
   stage(locale,'conclusion-label gate',{width:390,injected:'.chart-rows{min-width:600px} inside an overflow-x:auto view',issues:audit.broken.length,reasons:[...new Set(audit.broken)],afterRemoval:audit.restored});
   // Reduced motion: the static fallback is shown and cues do not play, from the OS setting at load or when it changes. The page has no toggle of its own.
   const reduced=await (await context({viewport:{width:1440,height:1000},reducedMotion:'reduce'})).newPage();reduced.on('pageerror',e=>report.errors.push(locale+' reduced: '+e.message));await ready(reduced,url+'#scene=evidence');
-  const replayButton=reduced.locator('#evidence .semantic-timeline button').nth(0);assert.equal(await replayButton.isDisabled(),true);assert.equal(await reduced.locator('#evidence [data-static-fallback]').isVisible(),true);
+  assert.equal(await reduced.locator('#evidence .semantic-timeline').count(),0,'no cue timeline on the slide');
   await reduced.evaluate(()=>window.deckweftInteractions.play('evidence'));const still=await snapshot(reduced);assert.equal(still.position,1);assert.equal(still.playing,false);
   await capture(reduced,`${locale}-reduced-1440.png`);const reducedPending=await pending(reduced);assert.equal(reducedPending.timers,0);await reduced.context().close();
-  const toggled=await (await context({viewport:{width:1440,height:1000}})).newPage();await ready(toggled,url+'#scene=evidence');await toggled.locator('#evidence .semantic-timeline button').nth(0).click();assert.equal((await snapshot(toggled)).playing,true);
-  assert.equal(await toggled.locator('#semantic-motion').count(),0);await toggled.emulateMedia({reducedMotion:'reduce'});await toggled.waitForFunction(()=>document.body.classList.contains('semantic-reduced'));const user=await snapshot(toggled);assert.equal(user.playing,false);assert.equal(user.position,1);assert.equal(await toggled.locator('#evidence .semantic-timeline button').nth(0).isDisabled(),true);
-  await toggled.emulateMedia({reducedMotion:'no-preference'});await toggled.waitForFunction(()=>!document.body.classList.contains('semantic-reduced'));assert.equal(await toggled.locator('#evidence .semantic-timeline button').nth(0).isDisabled(),false);const toggledPending=await pending(toggled);await toggled.context().close();
+  const toggled=await (await context({viewport:{width:1440,height:1000}})).newPage();await ready(toggled,url+'#scene=evidence');await toggled.evaluate(()=>window.deckweftInteractions.restart('evidence'));assert.equal((await snapshot(toggled)).playing,true);
+  assert.equal(await toggled.locator('#semantic-motion').count(),0);await toggled.emulateMedia({reducedMotion:'reduce'});await toggled.waitForFunction(()=>document.body.classList.contains('semantic-reduced'));const user=await snapshot(toggled);assert.equal(user.playing,false);assert.equal(user.position,1);
+  await toggled.emulateMedia({reducedMotion:'no-preference'});await toggled.waitForFunction(()=>!document.body.classList.contains('semantic-reduced'));const toggledPending=await pending(toggled);await toggled.context().close();
   stage(locale,'static state and reduced motion',{views,reducedMotion:{system:{position:still.position,playing:still.playing,replayDisabled:true,pending:reducedPending},systemChange:{position:user.position,playing:user.playing,pending:toggledPending}}});
   // 9. Declared PPTX / PDF level per component; no export code is added.
   const levels=declaredExportLevels(frozen.document,frozen.plan);stage(locale,'declared pptx/pdf levels',levels);

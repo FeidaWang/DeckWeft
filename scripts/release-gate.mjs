@@ -133,7 +133,7 @@ if(steps.has('cases')){
  {
   const p=await load('story-dark-data-en'),file=await write('reload',p),{page,context}=await open(file);
   const snap=()=>page.evaluate(()=>window.deckweftInteractions.snapshot().map(s=>({sceneId:s.sceneId,position:s.position,state:s.state})));const before=await snap();
-  await page.locator('#st-evidence [data-range="fromId"]').selectOption('evidence');await page.locator('#st-process [data-step-id="e2"]').click();await page.locator('#st-pair [data-tab-id="second"]').click();const explored=await snap();
+  const send=(sceneId,event)=>page.evaluate(([id,e])=>{const cfg=JSON.parse(document.getElementById('dw-runtime-data').textContent).scenes.find(s=>s.id===id),kind={'data.filter':'chart-select','step.select':'steps','tab.select':'image-compare','annotation.reveal':'image-hotspots'}[e.event],spec=cfg.interactions.find(x=>x.kind===kind),i=cfg.interactions.indexOf(spec),v=window.deckweftInteractions.snapshot().find(s=>s.sceneId===id).state[i];window.deckweftInteractions.dispatch(id,{interactionId:spec.id,...(e.event==='data.filter'?{seriesIds:v.seriesIds,toId:v.toId}:{}),...e});},[sceneId,event]);await send('st-evidence',{event:'data.filter',fromId:'evidence'});await send('st-process',{event:'step.select',stepId:'e2'});await send('st-pair',{event:'tab.select',tabId:'second'});const explored=await snap();
   await page.reload();await page.waitForFunction(()=>document.body.dataset.ready==='true');const after=await snap(),storage=await page.evaluate(()=>({local:localStorage.length,session:sessionStorage.length}));await context.close();
   record({id:'reload',locale:'en',page:'story 3, 5, 6 (dark-data)',state:'explored → reload',reproduction:'Change the chart range, select step 2 and the second image, then reload.',observed:{changed:JSON.stringify(explored)!==JSON.stringify(before),restored:JSON.stringify(after)===JSON.stringify(before),storage},passed:JSON.stringify(explored)!==JSON.stringify(before)&&JSON.stringify(after)===JSON.stringify(before)&&storage.local===0,fix:'None needed: the authored opening returns; nothing is stored.'});
  }
@@ -141,7 +141,7 @@ if(steps.has('cases')){
  const timerProbe=()=>{const live=new Set(),st=setTimeout,ct=clearTimeout;window.setTimeout=function(fn,ms,...rest){const id=st.call(window,function(){live.delete(id);return typeof fn==='function'?fn.apply(this,arguments):undefined;},ms,...rest);live.add(id);return id;};window.clearTimeout=id=>{live.delete(id);return ct.call(window,id);};Object.defineProperty(window,'__dwPendingTimers',{get:()=>live.size});};
  {
   const p=await load('story-dark-data-en'),file=await write('rapid-paging',p),{page,context}=await open(file,{reducedMotion:'no-preference',init:timerProbe});
-  await page.evaluate(()=>{location.hash='scene=st-evidence';});await page.waitForFunction(()=>document.getElementById('st-evidence').classList.contains('active'));await page.locator('#st-evidence [data-cue-replay]').click();
+  await page.evaluate(()=>{location.hash='scene=st-evidence';});await page.waitForFunction(()=>document.getElementById('st-evidence').classList.contains('active'));await page.evaluate(()=>window.deckweftInteractions.restart('st-evidence'));
   const flip=id=>page.evaluate(id=>document.getElementById(id).click(),id);for(let i=0;i<10;i++){await flip('next');await flip('next');await flip('previous');}for(let i=0;i<12;i++)await flip('previous');
   await page.waitForTimeout(500);const observed=await page.evaluate(()=>({page:document.getElementById('page').textContent,timers:window.__dwPendingTimers,animations:document.getAnimations({subtree:true}).length,busy:window.deckweftInteractions.snapshot().filter(s=>s.playing||s.resources.timers||s.resources.animations).map(s=>s.sceneId)}));await context.close();
   record({id:'rapid-paging',locale:'en',page:'story (dark-data), from page 3',state:'replaying',reproduction:'Replay page 3, then press Next/Next/Previous ten times and Previous twelve times without waiting.',observed,passed:observed.page==='1 / 8'&&observed.timers===0&&observed.animations===0&&!observed.busy.length,fix:'None needed.'});
@@ -216,8 +216,9 @@ if(steps.has('standalone')){
     try{
      await page.goto(pathToFileURL(path.join(outside,d.name+'.html')).href);await page.waitForFunction(()=>document.body.dataset.ready==='true');
      const images=await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode().then(()=>i.naturalWidth>0,()=>false))));
-     if(d.kind==='story'){await page.locator('#st-process [data-step-id="e3"]').click();interaction=await page.locator('#st-process [data-step-id="e3"]').getAttribute('aria-pressed');}
-     else{await page.locator('#ev-case [data-hotspot-id="thread"]').click();interaction=await page.locator('#ev-case [data-hotspot-id="thread"]').getAttribute('aria-expanded');}
+     const pick=(id,e,key)=>page.evaluate(([s,ev,k])=>{const cfg=JSON.parse(document.getElementById('dw-runtime-data').textContent).scenes.find(x=>x.id===s),i=cfg.interactions.findIndex(x=>x.kind===(ev.event==='step.select'?'steps':'image-hotspots'));window.deckweftInteractions.dispatch(s,{interactionId:cfg.interactions[i].id,...ev});return String(window.deckweftInteractions.snapshot().find(x=>x.sceneId===s).state[i][k]===ev[k]);},[id,e,key]);
+      if(d.kind==='story'){interaction=await pick('st-process',{event:'step.select',stepId:'e3'},'stepId');}
+     else{interaction=await pick('ev-case',{event:'annotation.reveal',hotspotId:'thread'},'hotspotId');}
      if(d.name==='gallery-en'||d.name==='story-electric-violet-zh-CN')await page.screenshot({path:path.join(out,`standalone-${engine}-${d.name}.png`),animations:'disabled'});
      ok=images.every(Boolean)&&interaction==='true'&&!external.length&&!errors.length;result.decks.find(x=>x.deck===d.name).images=images.length;
     }catch(e){error=e.message.split('\n')[0];}

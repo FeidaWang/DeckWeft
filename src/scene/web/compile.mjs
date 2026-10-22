@@ -18,7 +18,10 @@ import { assertWebScene } from './validate.mjs';
 // single chain is drawn in layers with connectors that never cross a node; a dataset series may declare its identity colour; the transcript
 // disclosure is omitted when a page has no authored explanation or cue; the page chrome is an instrument bar (title key, page readout, monospaced
 // status) and the header no longer carries Previous / Next or a motion toggle.
-export const WEB_RENDERER_VERSION = 'visual-art-direction.17';
+// .18: every slide carries the DeckWeft watermark (Figma-designed, outlined, aria-hidden, not reachable from any deck field); the folio line
+// (DeckWeft / theme name) and the status line are removed; data tables, relationship lists and transcripts are screen-reader only; a page
+// disclosure renders open.
+export const WEB_RENDERER_VERSION = 'visual-art-direction.18';
 export const contentHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function compileWebScenes(document,plan){
  assertDesignPlan(document,plan);

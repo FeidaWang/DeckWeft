@@ -39,9 +39,7 @@ try{
    for(const p of [a,b]){await p.setViewportSize({width,height:1000});await p.waitForFunction(w=>window.deckweftFit?.viewport.width===w,width);assert.equal(await p.evaluate(()=>window.deckweftFit.ok),true,name+'/'+width);}
    for(const scene of project.plan.scenes){assert.equal(await a.locator('#'+scene.id).innerHTML(),await b.locator('#'+scene.id).innerHTML());const prefix=name+'-'+width+'-'+scene.id,previewHash=await capture(a,scene.id,prefix+'-preview.png'),exportHash=await capture(b,scene.id,prefix+'-export.png');await compare(previewHash,exportHash,prefix);}
    for(const p of [a,b]){
-    await p.locator('#component-line .chart-series-switch button').nth(2).click();
-    await p.locator('#component-process [data-step-id="revise"]').click();
-    await p.locator('#image-comparison [data-tab-id="second"]').click();
+    await p.evaluate(()=>{const d=window.deckweftInteractions;d.dispatch('component-line',{event:'data.focus',interactionId:'select-line',seriesId:'reviewed'});d.dispatch('component-process',{event:'step.select',interactionId:'explain-process',stepId:'revise'});d.dispatch('image-comparison',{event:'tab.select',interactionId:'compare-crops',tabId:'second'});});
    }
    for(const id of ['component-line','component-process','image-comparison']){assert.equal(await a.locator('#'+id).innerHTML(),await b.locator('#'+id).innerHTML());assert.deepEqual(await a.evaluate(id=>window.deckweftInteractions.snapshot().find(s=>s.sceneId===id).state,id),await b.evaluate(id=>window.deckweftInteractions.snapshot().find(s=>s.sceneId===id).state,id));const prefix=name+'-'+width+'-'+id+'-selected',previewHash=await capture(a,id,prefix+'-preview.png'),exportHash=await capture(b,id,prefix+'-export.png');await compare(previewHash,exportHash,prefix);}
   }

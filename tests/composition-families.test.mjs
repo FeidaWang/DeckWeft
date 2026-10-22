@@ -1,3 +1,4 @@
+import {watermarkHTML} from '../src/render/web/watermark.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import os from 'node:os';
@@ -89,7 +90,8 @@ test('S3: verbatim quote, paraphrase and attribution stay separate; the before/a
  assert.ok(quote.includes(`<blockquote>${words}</blockquote>`));assert.ok(quote.includes(`<p>${paraphrase}</p>`));assert.equal((quote.match(/<blockquote>/g)||[]).length,1,'paraphrase is never set as a quotation');
  const regions=[...quote.matchAll(/data-block-id="([^"]+)"/g)].map(m=>m[1]);assert.deepEqual(regions,['quote-title','quote-paraphrase','quote-words','quote-attribution'],'split path: claim, paraphrase, then the quote with its attribution directly under it');
  for(const label of ['content:"Before · baseline"','content:"After"','content:"之前 · 基线"','content:"之后"'])assert.ok(body.includes(label),label);
- const pair=body.slice(body.indexOf('<section id="before-after"'),body.indexOf('</section>',body.indexOf('<section id="before-after"')));
+ // The DeckWeft watermark is decorative and aria-hidden on every slide; the check is about the two images.
+ const pair=body.slice(body.indexOf('<section id="before-after"'),body.indexOf('</section>',body.indexOf('<section id="before-after"'))).replace(watermarkHTML(),'');
  for(const id of ['pair-before','pair-after'])assert.ok(pair.includes(`<figcaption>${p.document.blocks.find(b=>b.id===id).alt}</figcaption>`),id);
  assert.ok(!/hidden|aria-hidden|data-tab/.test(pair),'no state hides either image in the static page');
  assert.ok(body.includes('.web-scene blockquote{font-family:var(--display);border-left:3px solid var(--accent);padding-left:20px}'),'verbatim quotation keeps a distinct treatment outside the quote family too');

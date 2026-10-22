@@ -11,7 +11,7 @@ This is the first experimental slice of the 2026-10-18 visual-first roadmap. The
 1. Use Node.js 22 or newer in the repository root.
 2. Run `npm run visual:preview`.
 3. Open the printed `http://127.0.0.1:…/` URL. Choose English or Simplified Chinese.
-4. Read both scenes. Press the title key (**Present**), then click the right half of the slide to move forward or the left half to go back; a translucent key shows the direction, and the arrow keys work too. Press the title key again (**Reading view**) to show both again.
+4. Read both scenes. Press the title key (**Present**), then click anywhere on the slide: each click plays the page's next step and, after the last one, turns the page. Left steps back; the translucent keys at the edges turn pages without playing the steps. Press the title key again (**Reading view**) to show both again.
 5. Open **View all data** on the chart. Expect six periods, with final values 78 and 45. All numbers are explicitly synthetic.
 6. Press `Ctrl+C` in the terminal to stop the local preview.
 
