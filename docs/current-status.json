@@ -6,11 +6,11 @@
   "browserVersion": "151.0.7922.34",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "ae3da11a2461e9014a8be2f6fc1ab138ac7b86d9",
+    "commit": "5b6d00a88d9e9480fa9e801ec09fa4886a086442",
     "worktreeClean": true,
-    "log": "docs/evidence/renderer-17/verify.txt",
-    "total": 694,
-    "passed": 692,
+    "log": "docs/evidence/renderer-18/verify.txt",
+    "total": 697,
+    "passed": 695,
     "failed": 0,
     "skipped": 1
   },

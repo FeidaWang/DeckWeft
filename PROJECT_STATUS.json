@@ -11,11 +11,11 @@
   "verification": "docs/en/verification.md",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "ae3da11a2461e9014a8be2f6fc1ab138ac7b86d9",
+    "commit": "5b6d00a88d9e9480fa9e801ec09fa4886a086442",
     "worktreeClean": true,
-    "log": "docs/evidence/renderer-17/verify.txt",
-    "total": 694,
-    "passed": 692,
+    "log": "docs/evidence/renderer-18/verify.txt",
+    "total": 697,
+    "passed": 695,
     "failed": 0,
     "skipped": 1,
     "skippedReason": "environment-gated (DECKWEFT_HANDOFF_DIR); CHROMIUM_PATH was set, so the browser-gated tests ran; one wording test is marked todo (single-entry step 3) and is neither passed nor skipped",
@@ -27,9 +27,21 @@
     "finalRun": "passed",
     "recordedBy": "scripts/status-summary.mjs --record; npm run check compares these fields with docs/current-status.json",
     "supersedes": "history[0]",
-    "note": "Renderer visual-art-direction.17 / player semantic-player.8: metric width cap, layered diagrams, series identity colours, title present key with click-to-page, no motion toggle or empty transcript."
+    "note": "Renderer visual-art-direction.18 / player semantic-player.9: DeckWeft watermark on every slide, no folio or status line, slides without controls (click-to-build), screen-reader-only data and transcripts."
   },
   "history": [
+    {
+      "record": "automatedTests",
+      "commit": "ae3da11a2461e9014a8be2f6fc1ab138ac7b86d9",
+      "date": "2026-10-22",
+      "total": 694,
+      "passed": 692,
+      "failed": 0,
+      "skipped": 1,
+      "log": "docs/evidence/renderer-17/verify.txt",
+      "note": "Renderer visual-art-direction.17 / player semantic-player.8: metric width cap, layered diagrams, series identity colours, title present key with click-to-page, no motion toggle or empty transcript.",
+      "supersededBy": "automatedTests"
+    },
     {
       "record": "automatedTests",
       "commit": "d0f6052cab379c0e746be2880f336118003083bd",
