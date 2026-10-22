@@ -1,11 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
 import {baselineBodies} from './render-baseline-diff.mjs';
 import {WATERMARK_SVG,watermarkHTML} from '../src/render/web/watermark.mjs';
 import {runtime} from '../src/render/web/runtime.mjs';
 
-const root=new URL('../',import.meta.url).pathname;
+const root=fileURLToPath(new URL('../',import.meta.url));
 
 test('every slide of every web export carries exactly one DeckWeft watermark, whatever the theme, palette or locale',async()=>{
  const bodies=await baselineBodies(root);
