@@ -1,8 +1,8 @@
 {
   "project": "DeckWeft",
   "version": "0.1.0-alpha.2",
-  "playerVersion": "semantic-player.7",
-  "rendererVersion": "visual-art-direction.16",
+  "playerVersion": "semantic-player.8",
+  "rendererVersion": "visual-art-direction.17",
   "status": "local-alpha-host-release-gate-blocked",
   "preparedDate": "2026-10-18",
   "sourceLanguage": "en",
