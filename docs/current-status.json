@@ -6,13 +6,13 @@
   "browserVersion": "151.0.7922.34",
   "automatedTests": {
     "command": "npm run verify",
-    "commit": "d0f6052cab379c0e746be2880f336118003083bd",
+    "commit": "ae3da11a2461e9014a8be2f6fc1ab138ac7b86d9",
     "worktreeClean": true,
-    "log": "docs/evidence/dwi/phase-06/verify-d0f6052.txt",
-    "total": 690,
-    "passed": 684,
+    "log": "docs/evidence/renderer-17/verify.txt",
+    "total": 694,
+    "passed": 692,
     "failed": 0,
-    "skipped": 5
+    "skipped": 1
   },
   "openAcceptanceGates": [
     "VIS-012 Claude authenticated artifact/image delivery deferred; Codex recorded separately",
