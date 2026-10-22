@@ -7,6 +7,7 @@ test-results/
 .agents/skills/deckweft/
 .claude/skills/deckweft/
 *.log
+!docs/evidence/**/*.log
 .env
 .env.*
 !.env.example
