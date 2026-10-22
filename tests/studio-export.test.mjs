@@ -71,7 +71,8 @@ test('Studio export refuses what the export order refuses, and stops when cancel
 });
 
 test('F1: Studio export whole (paginate none) refuses a tall page by its text sizes; the author’s acceptance exports it, recorded with its time, still as a failed result',{skip},async()=>{
- const {blueprintProject}=await import('./blueprint-a.mjs'),p=await blueprintProject('en',{theme:'silver-gray-editorial'}),slides=r=>[...readZip(r.body).keys()].filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).length;
+ // Player .9 removed the stage and part controls, so the page is shorter; lengthening its paragraph keeps it tall enough for the refusal.
+ const {blueprintProject}=await import('./blueprint-a.mjs'),p=await blueprintProject('en',{theme:'silver-gray-editorial'}),pipeline=p.plan.scenes.find(s=>s.id==='pipeline'),para=p.document.blocks.find(b=>pipeline.blockIds.includes(b.id)&&b.type==='paragraph');para.text=[para.text,para.text,para.text].join(' ');const slides=r=>[...readZip(r.body).keys()].filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).length;
  await assert.rejects(studioTargetExport({browserPath,project:p,resources:{},format:'pptx',paginate:'none'}),e=>e.code==='EXPORT_CHECK_FAILED'&&e.status===422&&e.details.some(d=>d.check==='typography'&&d.failures.some(f=>f.sceneId==='pipeline'&&f.actualPt<f.requiredPt)));
  await assert.rejects(studioTargetExport({browserPath,project:p,resources:{},format:'pptx',paginate:'none',acceptTypography:{by:'host',at:new Date().toISOString()}}),{code:'EXPORT_ACCEPTANCE'});
  const at=new Date().toISOString(),whole=await studioTargetExport({browserPath,project:p,resources:{},format:'pptx',paginate:'none',acceptTypography:{by:'author',at}}),t=whole.report.check.typography;
