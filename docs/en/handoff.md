@@ -12,7 +12,7 @@ CINE batch 2 (cinematic composition P1: CINE-005 subject-aware framing, CINE-006
 
 - five optional image-slot brief fields (`subjectBounds`, `protectedRegions`, `contextRegion`, `visibleCaption`, `detailLocator`; [migration](migration.md#subject-annotations-type-roles-and-soft-features-cine-batch-2)): crops keep the protected floor and the context ceiling, an evidence screenshot is shown whole (`PROTECTED_REGION`), the caption is visible text beside an untouched alt, a locator frame marks the detail; a missing annotation is reported, never invented;
 - six type roles per theme pack and a declared page's body and lead at the role sizes (18 pt body in PowerPoint) unless the page is dense; `--label-size` and `--reference-size` on declared pages; one border per citation run; renderer `visual-art-direction.14`;
-- the player (`semantic-player.7`) measures every region's box and text sizes, every image's box, the strip height and a grayscale hierarchy; seven documented soft features and the weakest page in `checkRender`, the receipt and the release gate; `rankCandidates` with the A/B rule and stated differences.
+- the player (`semantic-player.8`) measures every region's box and text sizes, every image's box, the strip height and a grayscale hierarchy; seven documented soft features and the weakest page in `checkRender`, the receipt and the release gate; `rankCandidates` with the A/B rule and stated differences.
 
 Known limits recorded in the evidence: SVG chart and diagram labels are drawn by their compilers and stay below the 14 pt label target; compositions that pin their paragraph size (evidence, system map, small multiples) keep it; the Studio has no drawing control for the new brief fields (CINE-011). PowerPoint and Keynote are installed and were not run. Batch 3 (CINE-008 to CINE-010) is not authorized by this handoff; the user decides.
 
@@ -55,7 +55,7 @@ S9b (blueprint A, Explain → Diagram → Explore, DWD-210) is **done** as of 20
 - a Studio action through the normal edit path;
 - a page-count plan for the Codex draft path (fake-host tests and one live Codex CLI run: no padding).
 
-Renderer `visual-art-direction.12`, player unchanged (`semantic-player.7` since CINE batch 2). The six answers and the decisions are in [alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19); see also the [evidence](../evidence/s9b-blueprint-a/review.md). S10 followed (above).
+Renderer `visual-art-direction.12`, player unchanged at the time (the CINE batch 2 player; now `semantic-player.8`). The six answers and the decisions are in [alignment §18](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19); see also the [evidence](../evidence/s9b-blueprint-a/review.md). S10 followed (above).
 
 S9a (author controls, DWD-200) is **done** as of 2026-10-19 and merged into `main`. It was built on branch `claude/design-handoff-alignment-review-978a91`, stacked on the S1–S8 branch `claude/design-handoff-alignment-19703c`; both branches are deleted. VIS-013 stays implemented-local and VIS-015 stays partial. What S9a adds:
 
@@ -90,7 +90,7 @@ S6 (VIS-014 visual release gate) is **partial** as of 2026-10-19 and merged into
 - the layered chart-focus rule
 - Claude deferred
 
-Run the gate with `node scripts/release-gate.mjs` ([manual](../visual-acceptance/README.md)). Embedded player changes still bump `PLAYER_VERSION` (now `semantic-player.7`) and re-record the baseline in their own commit.
+Run the gate with `node scripts/release-gate.mjs` ([manual](../visual-acceptance/README.md)). Embedded player changes still bump `PLAYER_VERSION` (now `semantic-player.8`) and re-record the baseline in their own commit.
 
 Open after S6: missing-glyph detection, the 390 px heatmap scroll, CJK heading breaks, payload size, and author calibration of the [scored review](../visual-acceptance/review.md) (74–77, below 80). S7 followed (above).
 

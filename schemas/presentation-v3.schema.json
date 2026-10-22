@@ -110,6 +110,10 @@
                   "type": "string",
                   "maxLength": 200
                 },
+                "color": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
                 "values": {
                   "type": "array",
                   "items": {

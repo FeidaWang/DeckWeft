@@ -118,7 +118,7 @@ try{
    for(const id of ['component-line','component-heatmap','component-process','component-code','image-comparison','violet'])log('keyboard',locale,{width,file:'demo',...await keyboardTrace(p,id,locale,width)});
    await ready(p,files.evidence.url+'#scene=evidence');log('keyboard',locale,{width,file:'evidence',...await keyboardTrace(p,'evidence',locale,width)});
    // A focused chart mark (reachable through annotation anchors) with ArrowRight pressed: the page stays 1 / 2.
-   await p.evaluate(()=>document.querySelector('#evidence .chart-current-view .chart-mark[tabindex]').focus());await p.keyboard.press('ArrowRight');assert.equal(await pageLabel(p),'1 / 2');
+   await p.evaluate(()=>document.querySelector('#evidence .chart-current-view .chart-mark[tabindex]').focus());await p.keyboard.press('ArrowRight');assert.equal(await pageLabel(p),'01 / 02');
    await capture(p,`${locale}-keyboard-mark-${width}.png`);await p.context().close();
   }
   // 4. Motion primitives with motion on, then reduced motion: the same actions animate with the named frames, or not at all.

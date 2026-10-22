@@ -4,6 +4,20 @@
 
 Prepared 2026-10-16. These are observed local results, not a promise that every host, font or browser works. Raw timestamps retain the environment clock. The alpha.1 evidence is archived separately under `docs/evidence/alpha.1/`.
 
+## Renderer .17 / player .8 — deck chrome and comparison fixes, 2026-10-22
+
+Found while building an Opus 5.5 / GPT-6 Astra comparison deck. Renderer `visual-art-direction.17`, player `semantic-player.8`.
+
+- A metric value is capped to its own width by character count (`data-metric-length`, container units): a four-character figure such as 66.4 no longer leaves the diagonal-cover panel. Short figures are unchanged where they had room; at narrow widths a two-digit cover number is about 13% smaller.
+- An acyclic diagram that is not a single chain is drawn in layers left to right: fan-out and fan-in share one trunk, connectors run only between columns and never cross a node, and each label sits on the stretch only its connector uses. Graphs with a cycle keep the grid layout. A diagram step no longer draws a box outline around the highlighted connector.
+- A dataset series may declare `color` (an identity colour, fitted to 3:1 on the paper); without it output is unchanged.
+- The transcript disclosure and the cue timeline are omitted on pages with no authored explanation or cue (chart selection alone).
+- Page chrome: the title is the present key (title plus an orange cap; pressed it shows Reading view), the page readout is a monospaced `01 / 06` window, the status line is monospaced. Header Previous / Next and the **Reduce motion** toggle are removed: a click on the right or left half of the slide pages forward or back behind a translucent white direction key (shown near the edges and on each turn; links, controls, chart marks and diagram parts keep their own clicks), the keys stay reachable with Tab and the arrow keys still turn pages. Reduced motion follows the system setting, also when it changes while the page is open. Nothing animates outside the motion registry.
+
+`render-baseline.json` was re-recorded in its own commit. All 12 entries change (embedded stylesheet and player); `tests/render-baseline-diff.mjs` against the previous commit reports identical anchors, data tables, visible values, visible words and titles for every entry. Two existing diagrams (composition demo, S3 families) now use the layered layout and were inspected in the browser.
+
+Browser runners run on this tree with the Playwright-cache Chrome for Testing: `browser_interactions`, `browser_evidence_scene`, `browser_motion_state`, `browser_blueprint_a` and `browser_prompt_generation` all pass; the runners now expect the zero-padded page readout and use the system reduced-motion setting instead of the removed toggle. [Verify log](../evidence/renderer-17/verify.txt).
+
 ## CINE batch 2 — cinematic composition P1, 2026-10-21
 
 State **implemented-local** for CINE-005 to CINE-007 on the continuation of the batch 1 branch (worktree branch cut from `claude/deckweft-design-roadmap-2d3d10` at `a5b331c`, not merged). No task state changes. [Evidence](../evidence/cine-p1/review.md) · [Plan](../plans/cinematic-composition-batch-2.md) · [Migration](migration.md#subject-annotations-type-roles-and-soft-features-cine-batch-2) · [Soft features](../visual-acceptance/review.md#soft-features-cine-007) · [Visual Studio](visual-studio.md#subject-annotations-in-the-image-slot-cine-batch-2).

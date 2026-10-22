@@ -2,6 +2,7 @@ import {x} from '../render/web/components/escape.mjs';
 import {compileCues} from './cues.mjs';
 import {objectAnchor} from '../components/annotations/identity.mjs';
 import {resolveTheme,effectiveProfile} from '../design/theme-registry.mjs';
+import {seriesColorTheme} from '../design/semantic-colors.mjs';
 import {staticStatePosition} from '../design/scene-semantics.mjs';
 import {blueprintSpec} from './blueprint.mjs';
 export function compileInteractionRuntime(document,plan,resources={}){
@@ -12,7 +13,7 @@ export function compileInteractionRuntime(document,plan,resources={}){
    const b=blocks.get(spec.blockId),panelId=objectAnchor(scene.id,'interaction:'+spec.id,'panel');let detail={block:b,panelId};
    if(spec.kind==='chart-select'){
     const d=document.datasets.find(d=>d.id===b.datasetId),anchors={};for(const id of d.categoryIds)for(const s of ['',...d.series.map(s=>s.id)])anchors[JSON.stringify([id,s])]=objectAnchor(scene.id,b.id,id,s);
-    detail={...detail,dataset:d,anchors,theme:resolveTheme(scene.theme,scene.themeVersion,document.locale,{palette:scene.palette,role:scene.role,profile:effectiveProfile(document,scene,plan),colorMode:scene.colorMode||(scene.composition==='violet-chapter'?'chapter':'default')})};
+    detail={...detail,dataset:d,anchors,theme:seriesColorTheme(resolveTheme(scene.theme,scene.themeVersion,document.locale,{palette:scene.palette,role:scene.role,profile:effectiveProfile(document,scene,plan),colorMode:scene.colorMode||(scene.composition==='violet-chapter'?'chapter':'default')}),d)};
    }else if(spec.kind==='steps')detail.anchors=Object.fromEntries(b.type==='diagram'?[...b.nodes,...b.edges.filter(e=>e.id)].map(v=>[v.id,objectAnchor(scene.id,b.id,v.id)]):[]);
    else if(spec.kind==='image-hotspots'){
     detail.annotations=Object.fromEntries(spec.hotspots.map(h=>[h.annotationId,blocks.get(h.annotationId)]));detail.positions=hotspotPositions(scene,spec,b,resources);
@@ -33,7 +34,9 @@ export function hotspotPositions(scene,spec,block,resources={}){
 export const inertJSON=value=>JSON.stringify(value).replace(/[<>&\u2028\u2029]/g,c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0'));
 
 export function interactionTranscript(scene,document){
- if(!scene.interactions?.length&&!scene.cues?.length)return '';
+ // Chart selection alone has no authored text to transcribe: an empty disclosure is noise, so it is omitted.
+ const steps=(scene.interactions||[]).flatMap(i=>[...(i.blueprint?[{explanationId:i.blueprint.wholeExplanationId}]:[]),...(i.steps||[])]);
+ if(!steps.length&&!scene.cues?.length)return '';
  const zh=document.locale==='zh-CN',labels={'data.filter':zh?'调整图表选择':'Change chart selection','data.focus':zh?'聚焦一个系列':'Focus one series','tab.select':zh?'比较图片':'Compare images','step.next':zh?'下一步说明':'Next explanation','annotation.reveal':zh?'显示注释':'Reveal annotation'};
- return `<details class="interaction-transcript"><summary>${zh?'全部作者说明与提示顺序':'All authored explanations and cue order'}</summary>${(scene.interactions||[]).flatMap(i=>[...(i.blueprint?[{explanationId:i.blueprint.wholeExplanationId}]:[]),...(i.steps||[])]).map(s=>document.explanations.find(n=>n.id===s.explanationId)).map(s=>`<p><strong>${x(s.label)}</strong> · ${x(s.text)}</p>`).join('')}<ol>${(scene.cues||[]).map(c=>`<li>${x(c.label||labels[c.event])}</li>`).join('')}</ol></details>`;
+ return `<details class="interaction-transcript"><summary>${zh?'全部作者说明与提示顺序':'All authored explanations and cue order'}</summary>${steps.map(s=>document.explanations.find(n=>n.id===s.explanationId)).map(s=>`<p><strong>${x(s.label)}</strong> · ${x(s.text)}</p>`).join('')}<ol>${(scene.cues||[]).map(c=>`<li>${x(c.label||labels[c.event])}</li>`).join('')}</ol></details>`;
 }

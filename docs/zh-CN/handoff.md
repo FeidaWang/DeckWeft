@@ -12,7 +12,7 @@
 
 - 图片槽位简报的五个可选字段（`subjectBounds`、`protectedRegions`、`contextRegion`、`visibleCaption`、`detailLocator`；[迁移](migration.md#主体标注字号角色与软性特征cine-批次-2)）：裁切保留保护区下限与场景区上限，证据截图整张显示（`PROTECTED_REGION`），图注是可见文字而替代文本原样保留，定位框标出细节位置；缺少标注时如实报告，不做臆测；
 - 每个主题包的六个字号角色，声明页的正文与导语升到角色字号（PowerPoint 中正文 18 pt），密集页除外；声明页写入 `--label-size` 与 `--reference-size`；一组引用只画一条分隔线；渲染器 `visual-art-direction.14`；
-- 播放器（`semantic-player.7`）测量每个区域的框与字号、每张图片的框、来源条高度与灰度层级；`checkRender`、回执与发布门中的七个有定义的软性特征与最弱页；带 A/B 规则并写明差异的 `rankCandidates`。
+- 播放器（`semantic-player.8`）测量每个区域的框与字号、每张图片的框、来源条高度与灰度层级；`checkRender`、回执与发布门中的七个有定义的软性特征与最弱页；带 A/B 规则并写明差异的 `rankCandidates`。
 
 证据中记录的已知限制：图表与图解的 SVG 标签由各自编译器绘制，仍低于 14 pt 的标签目标；自行固定段落字号的构图（证据、系统图、小多图）保持不变；工作室没有新简报字段的绘制控件（CINE-011）。PowerPoint 与 Keynote 已安装但未运行。本交接不授权批次 3（CINE-008 至 CINE-010）；由用户决定。
 
@@ -55,7 +55,7 @@
 - 经正常编辑路径的 Studio 操作；
 - Codex 草稿路径的页数规划（模拟宿主测试，加一次真实 Codex CLI 运行：没有填充）。
 
-渲染器 `visual-art-direction.12`，播放器未变（CINE 批次 2 起为 `semantic-player.7`）。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。S10 随后完成（见上）。
+渲染器 `visual-art-direction.12`，播放器当时未变（CINE 批次 2 的播放器，现为 `semantic-player.8`）。六个问题的答案与各项决定见[对齐计划 §18（英文）](../plans/design-handoff-alignment.md#18-s9b-decisions-and-result--blueprint-a-2026-10-19)，另见[证据（英文）](../evidence/s9b-blueprint-a/review.md)。S10 随后完成（见上）。
 
 截至 2026-10-19，S9a（作者控制，DWD-200）已完成并合并进 `main`。它建在分支 `claude/design-handoff-alignment-review-978a91` 上，叠加在 S1–S8 分支 `claude/design-handoff-alignment-19703c` 之上；两个分支都已删除。VIS-013 仍为 implemented-local，VIS-015 仍为 partial。S9a 新增：
 
@@ -90,7 +90,7 @@ S8（T01–T03，VIS-015）已完成并合并进 `main`，状态为 partial（[�
 - 分层图表聚焦规则
 - Claude 继续 deferred
 
-用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.7`），并在单独的提交中重录基线。
+用 `node scripts/release-gate.mjs` 运行发布门（[手册](visual-acceptance.md)）。内嵌播放器的改动仍需提升 `PLAYER_VERSION`（当前为 `semantic-player.8`），并在单独的提交中重录基线。
 
 S6 之后仍未完成：缺字形检测、390 px 热力图横向滚动、中文标题在词中断行、页面体积，以及作者对[评分审阅](../visual-acceptance/review.md)（74–77，低于 80）的校准。随后进行了 S7（见上文）。
 

@@ -109,6 +109,17 @@ export function applyPalette(theme,ref){
   tokens:{...theme.tokens,palette:{...theme.tokens.palette,reference:r.referenceText,missing:r.missingMark},declared:{...theme.tokens.declared,reference:true,missing:true}},
   palette:{id:r.paletteId,registryVersion:r.registryVersion,mode:r.mode,derivation:r.derivation}};
 }
+/**
+ * A chart's theme when its dataset declares series colours (an identity colour such as a brand, the same in every theme): each
+ * declared colour replaces the theme's colour at that series' position, fitted to 3:1 on the paper like palette series. Without a
+ * declared colour the theme is returned unchanged (existing decks stay byte-identical).
+ */
+export function seriesColorTheme(theme,dataset){
+ if(!dataset?.series?.some(s=>s.color))return theme;
+ const chart=[...theme.chart],ground=hexRe.test(theme.paper)&&hexRe.test(theme.ink);
+ dataset.series.forEach((s,j)=>{if(s.color&&j<chart.length)chart[j]=ground?fit(s.color.toUpperCase(),[theme.paper],GRAPHIC_MIN,theme.ink,j).hex:s.color.toUpperCase();});
+ return {...theme,chart};
+}
 /** DWI-013: what the picker shows — film, source swatches, the evidence that exists and the derived colours per mode. */
 export function paletteCatalogue(){
  return {registry:{...PALETTE_REGISTRY},modes:[...PALETTE_MODES],derivation:{...ROLE_DERIVATION},palettes:paletteIds().map(id=>{const p=paletteRecord(id),e=paletteEvidence(id);

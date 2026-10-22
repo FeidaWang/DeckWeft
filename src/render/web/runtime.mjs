@@ -3,7 +3,10 @@ import { contrastScript, clippingScript, grayscaleScript } from './contrast.mjs'
 import { glyphScript } from './glyphs.mjs';
 /** Identity of the embedded player bytes (this runtime plus the interaction bundle, including the chart renderer). Bump it with every change to those bytes and re-record tests/fixtures/visual/render-baseline.json in its own commit. */
 // .7 (CINE batch 2): the grayscale hierarchy audit; check() reports per-region boxes and text sizes, per-image boxes and the source strip height.
-export const PLAYER_VERSION = 'semantic-player.7';
+// .8: a page whose interactions have no cue hides the cue timeline and adds no empty transcript disclosure; the title is the present key; a
+// click on the right or left half of the slide pages forward or back behind a translucent direction key (no header Previous / Next);
+// reduced motion follows the system setting only (no page toggle).
+export const PLAYER_VERSION = 'semantic-player.8';
 export const runtime = `(() => {
  ${interactionBundle}
  ${contrastScript}
@@ -14,13 +17,24 @@ export const runtime = `(() => {
 
  window.deckweftAuditScene=scene=>({contrastIssues:auditContrast(scene),clipIssues:[...auditClipping(scene),...auditComponentGeometry(scene)],glyphIssues:scanMissingGlyphs(scene),grayscale:auditGrayscale(scene)});
  if(parent!==window)document.body.classList.add('preview');
- const scenes=[...document.querySelectorAll('.web-scene')], present=document.querySelector('#present'),prev=document.querySelector('#previous'),next=document.querySelector('#next'),page=document.querySelector('#page'),status=document.querySelector('#status');
+ const scenes=[...document.querySelectorAll('.web-scene')],page=document.querySelector('#page'),status=document.querySelector('#status'),zh=document.documentElement.lang==='zh-CN';
+ // The title is the presentation key: one control built around it, like a hardware key with its own cap. It exists only with JavaScript.
+ const title=document.querySelector('.deck-title'),titleText=title.querySelector('.deck-title-text'),present=document.createElement('button'),cap=document.createElement('span'),glyph=document.createElement('span'),keyLabel=document.createElement('span');
+ present.type='button';present.id='present';present.className='present-key';cap.className='present-cap';glyph.className='present-glyph';glyph.setAttribute('aria-hidden','true');keyLabel.className='present-label';cap.append(glyph,keyLabel);present.append(titleText,cap);title.append(present);
+ // PowerPoint-style paging: a click on the right or left half of the slide moves forward or back, and a translucent key shows the direction.
+ const navKey=(id,label,d)=>{const b=document.createElement('button');b.type='button';b.id=id;b.className='stage-nav '+id;b.hidden=true;b.setAttribute('aria-label',label);b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+d+'" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';document.body.append(b);return b;};
+ const prev=navKey('previous',zh?'上一页':'Previous slide','M15 5l-7 7 7 7'),next=navKey('next',zh?'下一页':'Next slide','M9 5l7 7-7 7');
  const semantic=mountSemanticInteractions(JSON.parse(document.getElementById('dw-runtime-data').textContent));
  let publishedScene=null;
- const requested=new URLSearchParams(location.hash.slice(1)).get('scene');let index=Math.max(0,scenes.findIndex(s=>s.id===requested)),playing=!!requested; const zh=document.documentElement.lang==='zh-CN';
- function update(){semantic.updateVisibility(playing,scenes[index]?.id);document.body.classList.toggle('playing',playing);scenes.forEach((s,i)=>s.classList.toggle('active',i===index));prev.hidden=next.hidden=page.hidden=!playing;prev.disabled=index===0;next.disabled=index===scenes.length-1;page.textContent=(index+1)+' / '+scenes.length;present.textContent=playing?(zh?'阅读视图':'Reading view'):(zh?'演示视图':'Present');present.setAttribute('aria-pressed',String(playing));if(parent!==window&&playing&&publishedScene!==scenes[index]?.id){publishedScene=scenes[index]?.id;parent.postMessage({type:'deckweft:scene',sceneId:publishedScene,renderHash:document.body.dataset.renderHash},'*');}}
- present.hidden=false;present.addEventListener('click',()=>{playing=!playing;update();});prev.addEventListener('click',()=>{index=Math.max(0,index-1);update();});next.addEventListener('click',()=>{index=Math.min(scenes.length-1,index+1);update();});
+ const requested=new URLSearchParams(location.hash.slice(1)).get('scene');let index=Math.max(0,scenes.findIndex(s=>s.id===requested)),playing=!!requested;
+ function update(){semantic.updateVisibility(playing,scenes[index]?.id);document.body.classList.toggle('playing',playing);scenes.forEach((s,i)=>s.classList.toggle('active',i===index));prev.hidden=next.hidden=page.hidden=!playing;if(!playing)for(const b of [prev,next])b.classList.remove('show','pulse');prev.disabled=index===0;next.disabled=index===scenes.length-1;page.textContent=String(index+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');keyLabel.textContent=playing?(zh?'阅读视图':'Reading view'):(zh?'演示视图':'Present');present.setAttribute('aria-pressed',String(playing));present.setAttribute('aria-label',titleText.textContent+' · '+keyLabel.textContent);if(parent!==window&&playing&&publishedScene!==scenes[index]?.id){publishedScene=scenes[index]?.id;parent.postMessage({type:'deckweft:scene',sceneId:publishedScene,renderHash:document.body.dataset.renderHash},'*');}}
+ present.addEventListener('click',()=>{playing=!playing;update();});prev.addEventListener('click',()=>{index=Math.max(0,index-1);update();});next.addEventListener('click',()=>{index=Math.min(scenes.length-1,index+1);update();});
  document.addEventListener('keydown',e=>{if(!playing||!turnsPage(e))return;if(e.key==='Escape'){playing=false;update();present.focus();}if(e.key==='ArrowRight')next.click();if(e.key==='ArrowLeft')prev.click();});
+ // Only a plain click on the slide pages: links, controls, chart marks and diagram parts keep their own behaviour, and a text selection never pages.
+ const ownClick='a,button,input,select,textarea,summary,label,[role=button],[tabindex],[data-object-id]',pageable=()=>playing&&parent===window;
+ const flash=b=>{b.classList.add('pulse');clearTimeout(b.flashTimer);b.flashTimer=setTimeout(()=>b.classList.remove('pulse'),420);};
+ document.addEventListener('pointermove',e=>{if(!pageable()||e.pointerType==='touch')return;const edge=innerWidth*.22;prev.classList.toggle('show',e.clientX<edge);next.classList.toggle('show',e.clientX>innerWidth-edge);});
+ document.querySelector('main').addEventListener('click',e=>{if(!pageable()||e.button!==0||e.defaultPrevented||e.target.closest(ownClick)||String(getSelection()))return;const b=e.clientX<innerWidth/2?prev:next;if(b.disabled)return;flash(b);b.click();});
  const narrow=matchMedia('(max-width:700px)');narrow.addEventListener('change',()=>{if(narrow.matches&&parent===window){playing=false;update();}});update();
  async function measure(){await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode()));
  for(const svg of document.querySelectorAll('[data-responsive-diagram]'))for(const element of [svg,...svg.querySelectorAll('*')])for(const name of ['viewBox','transform','d']){const value=element.getAttribute('data-'+(innerWidth<=700?'narrow':'wide')+'-'+name.toLowerCase());if(value!==null)element.setAttribute(name,value);}

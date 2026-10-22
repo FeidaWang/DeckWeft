@@ -1,6 +1,6 @@
 export function mountSemanticInteractions(config){
- const system=matchMedia('(prefers-reduced-motion:reduce)'),controllers=new Map(),events=[];let userReduced=false,suspended=false,measurementDepth=0,serial=0,measurementSaved=null,measurementFocus=null;
- const language=config.locale==='zh-CN',t=(en,zh)=>language?zh:en,reduced=()=>system.matches||userReduced;
+ const system=matchMedia('(prefers-reduced-motion:reduce)'),controllers=new Map(),events=[];let suspended=false,measurementDepth=0,serial=0,measurementSaved=null,measurementFocus=null;
+ const language=config.locale==='zh-CN',t=(en,zh)=>language?zh:en,reduced=()=>system.matches;
  // The key states the review gate measures besides the opening: the static state, and every key state of a blueprint A page.
  const measuredStates=scene=>{const out=scene.staticState?[{sceneId:scene.id,keyStateId:scene.staticState.keyStateId,position:scene.staticState.position}]:[];for(const k of scene.blueprintKeyStates||[])if(!out.some(o=>o.keyStateId===k.id))out.push({sceneId:scene.id,keyStateId:k.id,position:k.position});return out;};
  for(const data of config.scenes){
@@ -58,8 +58,10 @@ export function mountSemanticInteractions(config){
    if(blueprint)button(t('Skip to the complete explanation','跳到完整说明'),'cueSkip',()=>api.skip());
    const label=document.createElement('label'),seek=document.createElement('input'),count=document.createElement('output');seek.type='range';seek.min=0;seek.max=data.cues.length;seek.step=1;seek.dataset.cuePosition='';count.dataset.cueCount='';label.append(document.createTextNode(t('Cue position ','提示位置 ')),seek);timeline.append(label,count);seek.addEventListener('input',()=>api.seek(Number(seek.value)));
    if(fixed?.reducedMotion==='static'){const note=document.createElement('span');note.className='interaction-status';note.dataset.staticFallback='';note.hidden=true;note.textContent=t('Reduced motion: the static state is shown and cues do not play.','已减少动态效果：显示静态状态，不自动播放提示。');timeline.append(note);}
+   // Chart selection alone has no cue to replay or seek: the timeline stays in the page (its state hooks) but is not shown.
+   if(!data.cues.length)timeline.hidden=true;
    scene.querySelector('.folio').after(timeline);
-   const fallback=document.createElement('details');fallback.className='interaction-transcript';const summary=document.createElement('summary');summary.textContent=t('All authored explanations and cue order','全部作者说明与提示顺序');fallback.append(summary);for(const spec of data.interactions){if(spec.kind==='steps')for(const step of spec.steps){const p=document.createElement('p');p.textContent=step.label+': '+step.text;fallback.append(p);}}const list=document.createElement('ol');for(const cue of data.cues){const li=document.createElement('li');li.textContent=cue.label||({'data.filter':t('Change chart selection','调整图表选择'),'data.focus':t('Focus one series','聚焦一个系列'),'tab.select':t('Compare images','比较图片'),'step.next':t('Next explanation','下一步说明'),'annotation.reveal':t('Reveal annotation','显示注释')})[cue.event];list.append(li);}fallback.append(list);if(!scene.querySelector('.interaction-transcript'))scene.append(fallback);
+   const fallback=document.createElement('details');fallback.className='interaction-transcript';const summary=document.createElement('summary');summary.textContent=t('All authored explanations and cue order','全部作者说明与提示顺序');fallback.append(summary);for(const spec of data.interactions){if(spec.kind==='steps')for(const step of spec.steps){const p=document.createElement('p');p.textContent=step.label+': '+step.text;fallback.append(p);}}const list=document.createElement('ol');for(const cue of data.cues){const li=document.createElement('li');li.textContent=cue.label||({'data.filter':t('Change chart selection','调整图表选择'),'data.focus':t('Focus one series','聚焦一个系列'),'tab.select':t('Compare images','比较图片'),'step.next':t('Next explanation','下一步说明'),'annotation.reveal':t('Reveal annotation','显示注释')})[cue.event];list.append(li);}fallback.append(list);if(!scene.querySelector('.interaction-transcript')&&(data.cues.length||data.interactions.some(spec=>spec.kind==='steps')))scene.append(fallback);
   }
   const live=()=>{if(!state.active||document.hidden)throw Error('Enter this scene before playing cues.');};
   const atBoundary=position=>{if(!Number.isSafeInteger(position)||position<0||position>data.cues.length)throw Error('Seek to an existing cue boundary.');return position;};
@@ -91,9 +93,9 @@ export function mountSemanticInteractions(config){
   if(fixed?.position&&!blueprint)clock.seek(fixed.position,'static');
   draw();
  }
- const motion=document.createElement('button');motion.type='button';motion.id='semantic-motion';motion.textContent=t('Reduce motion','减少动态效果');document.querySelector('header nav').append(motion);
- function applyReduction(){const r=reduced();document.body.classList.toggle('semantic-reduced',r);motion.setAttribute('aria-pressed',String(r));motion.disabled=system.matches;for(const c of controllers.values())c.reduceMotion();}
- motion.addEventListener('click',()=>{userReduced=!userReduced;applyReduction();});system.addEventListener('change',applyReduction);applyReduction();
+ // Reduced motion follows the reader's system setting; the page carries no separate toggle.
+ function applyReduction(){const r=reduced();document.body.classList.toggle('semantic-reduced',r);for(const c of controllers.values())c.reduceMotion();}
+ system.addEventListener('change',applyReduction);applyReduction();
  document.addEventListener('click',e=>{const a=e.target.closest('.semantic-annotation a');if(!a?.hash)return;const target=document.getElementById(decodeURIComponent(a.hash.slice(1)));if(target?.closest('.full-source-data'))target.closest('details').open=true;});
  const controller=id=>{const c=controllers.get(id);if(!c)throw Error('Unknown scene identity.');return c;};
  const api={

@@ -14,7 +14,11 @@ import { assertWebScene } from './validate.mjs';
 // .4 (S4): chart() and its CSS draw new kinds, rows and declarations; every chart's drawing changed, so scene source hashes must not claim the .3 renderer.
 // .15 (DWI-011): a scene may declare a source palette; its derived role colours replace the theme pack's and the section names the palette. Pages without one render the same markup.
 // .16 (DWI-033): a diagram may declare its scale; the statement is page text inside its figure. Diagrams without it render the same markup.
-export const WEB_RENDERER_VERSION = 'visual-art-direction.16';
+// .17: a metric's value is capped to its own width by character count (a long figure no longer leaves its panel); an acyclic diagram that is not a
+// single chain is drawn in layers with connectors that never cross a node; a dataset series may declare its identity colour; the transcript
+// disclosure is omitted when a page has no authored explanation or cue; the page chrome is an instrument bar (title key, page readout, monospaced
+// status) and the header no longer carries Previous / Next or a motion toggle.
+export const WEB_RENDERER_VERSION = 'visual-art-direction.17';
 export const contentHash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function compileWebScenes(document,plan){
  assertDesignPlan(document,plan);

@@ -45,20 +45,20 @@ try{
    const tag=`${run.locale}-${width}`,images={};
    // 1. Opening: a blueprint page opens on Explain even though its static state is Diagram.
    let {context,page}=await open(file,width);let s=await look(page);
-   assert.equal(s.page,'2 / 3');expectState(s,'explain',null,'opening');images.explain=await shot(page,`${tag}-1-explain`);record(run,width,'opens on Explain',s);
+   assert.equal(s.page,'02 / 03');expectState(s,'explain',null,'opening');images.explain=await shot(page,`${tag}-1-explain`);record(run,width,'opens on Explain',s);
    const fit=await page.evaluate(()=>({ok:window.deckweftFit.ok,states:window.deckweftFit.states.map(x=>({keyStateId:x.keyStateId,overflow:x.overflow.length,clip:x.clipIssues.length,contrast:x.contrastIssues.length,glyphs:x.glyphs.length}))}));
    assert.equal(fit.ok,true,'fit audit');record(run,width,'fit audit: opening and every key state',fit);
    await page.locator('#pipeline [data-cue-next]').click();s=await look(page);expectState(s,'diagram',null,'Next stage');images.diagram=await shot(page,`${tag}-2-diagram`);record(run,width,'Next stage → Diagram',s);
    // 2. Restore rule A: select a part on the diagram, turn the page, come back.
    await page.locator('#pipeline g[data-part="step-repair"]').click();s=await look(page);expectState(s,'explore','step-repair','select part');assert.equal(s.exploring,true);images.explore=await shot(page,`${tag}-3-explore-repair`);record(run,width,'select Repair on the diagram',s);
-   await page.locator('#next').click();assert.equal((await look(page)).page,'3 / 3');await page.locator('#previous').click();s=await look(page);
-   assert.equal(s.page,'2 / 3');expectState(s,'explore','step-repair','restored after Next/Previous page');assert.equal(s.exploring,true);assert.deepEqual(s.pressed,['step-repair']);images.restored=await shot(page,`${tag}-4-restored`);record(run,width,'Next page, Previous page: the same stage and part',s);
-   await page.locator('#pipeline .folio').click();await page.keyboard.press('ArrowRight');assert.equal((await look(page)).page,'3 / 3');await page.keyboard.press('ArrowLeft');s=await look(page);
+   await page.locator('#next').click();assert.equal((await look(page)).page,'03 / 03');await page.locator('#previous').click();s=await look(page);
+   assert.equal(s.page,'02 / 03');expectState(s,'explore','step-repair','restored after Next/Previous page');assert.equal(s.exploring,true);assert.deepEqual(s.pressed,['step-repair']);images.restored=await shot(page,`${tag}-4-restored`);record(run,width,'Next page, Previous page: the same stage and part',s);
+   await page.locator('#pipeline .folio').click();await page.keyboard.press('ArrowRight');assert.equal((await look(page)).page,'03 / 03');await page.keyboard.press('ArrowLeft');s=await look(page);
    expectState(s,'explore','step-repair','restored after arrow-key pages');record(run,width,'ArrowRight, ArrowLeft with nothing focused: pages turn, the part is restored',s);
    await page.reload();await page.waitForFunction(()=>document.body.dataset.ready==='true');s=await look(page);expectState(s,'explain',null,'reload');assert.equal(s.exploring,false);record(run,width,'reload resets to Explain',s);
    // 3. Keyboard isolation: part selection and Explore controls never turn the page.
    await page.locator('#pipeline [data-cue-next]').click();const keys=[];
-   const press=async(selector,key,stage,stepId)=>{const target=page.locator(selector).first();await target.focus();await page.keyboard.press(key);const after=await look(page);assert.equal(after.page,'2 / 3',`${selector} ${key} must not turn the page`);if(stage)expectState(after,stage,stepId,`${selector} ${key}`);keys.push({target:selector,key,page:after.page,stage:after.stage,stepId:after.stepId,position:after.position});};
+   const press=async(selector,key,stage,stepId)=>{const target=page.locator(selector).first();await target.focus();await page.keyboard.press(key);const after=await look(page);assert.equal(after.page,'02 / 03',`${selector} ${key} must not turn the page`);if(stage)expectState(after,stage,stepId,`${selector} ${key}`);keys.push({target:selector,key,page:after.page,stage:after.stage,stepId:after.stepId,position:after.position});};
    await press('#pipeline g[data-part="step-measure"]','Enter','explore','step-measure');
    await press('#pipeline g[data-part="step-measure"]','ArrowRight','explore','step-repair');
    await press('#pipeline g[data-part="step-repair"]','End','explore','step-export');
@@ -75,7 +75,7 @@ try{
    await press('#pipeline [data-cue-position]','Home','explain',null);
    await press('#pipeline [data-cue-skip]','Enter','diagram',null);
    await press('#pipeline [data-cue-replay]','Space');
-   await page.locator('#pipeline .folio').click();await page.keyboard.press('ArrowRight');const control=await look(page);assert.equal(control.page,'3 / 3','control: ArrowRight with nothing focused turns the page');
+   await page.locator('#pipeline .folio').click();await page.keyboard.press('ArrowRight');const control=await look(page);assert.equal(control.page,'03 / 03','control: ArrowRight with nothing focused turns the page');
    keys.push({target:'nothing focused (control)',key:'ArrowRight',page:control.page});record(run,width,'keyboard isolation',{keys:keys.length,control:control.page});await context.close();
    // 4. Reduced motion: every stage is reached by Next and Previous, nothing animates.
    ({context,page}=await open(file,width,{reducedMotion:'reduce'}));const reduced=[];

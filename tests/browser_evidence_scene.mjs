@@ -78,7 +78,7 @@ try{
   stage(locale,'measure fonts',{themes:Object.fromEntries(Object.entries(themes).map(([k,v])=>[k,v.fonts]))});
   // 4–5. Legend focus by mouse and keyboard, pause and seek, rapid navigation: on the measured preview in presentation view.
   const artifact=(await studio.locator('#preview').getAttribute('src')).split('#')[0],present=await (await context({viewport:{width:1440,height:1000}})).newPage();present.on('pageerror',e=>report.errors.push(locale+' present: '+e.message));
-  await ready(present,app.url+artifact+'#scene=evidence');assert.equal(await pageLabel(present),'1 / 2');
+  await ready(present,app.url+artifact+'#scene=evidence');assert.equal(await pageLabel(present),'01 / 02');
   const specs=compileCues(source.document,source.plan.scenes[0]),focus=[];
   // Layered focus rule (S6): a single-series chart offers no series focus or show/hide controls; its emphasis is the declared category focus.
   focus.push({input:'series controls on a single-series chart',page:await pageLabel(present),state:(await snapshot(present)).state[0],hidden:await present.locator('#evidence .chart-series-switch').isHidden()&&await present.locator('#evidence .chart-series-visibility').isHidden()});
@@ -88,7 +88,7 @@ try{
   focus.push({input:'keyboard ArrowDown/ArrowRight/ArrowLeft on the To category',page:await pageLabel(present),state:(await snapshot(present)).state[0],bars:await present.locator('#evidence .chart-current-view .chart-mark rect').count()});
   await present.locator('#evidence select[data-range="fromId"]').focus();await present.keyboard.press('Enter');await present.keyboard.press('Tab');await present.keyboard.press('ArrowRight');
   focus.push({input:'keyboard Enter/Tab/ArrowRight on the range controls',page:await pageLabel(present),state:(await snapshot(present)).state[0],focused:await present.evaluate(()=>document.activeElement.textContent)});
-  assert.ok(focus.every(f=>f.page==='1 / 2'),'keyboard and pointer focus changes never advance the page');assert.deepEqual(focus[1].state.toId,'data-first');assert.equal(focus[1].bars,3);assert.equal(focus[2].state.toId,'template');
+  assert.ok(focus.every(f=>f.page==='01 / 02'),'keyboard and pointer focus changes never advance the page');assert.deepEqual(focus[1].state.toId,'data-first');assert.equal(focus[1].bars,3);assert.equal(focus[2].state.toId,'template');
   // S4 draws the declared category focus; with no series controls the reader's focus stays empty, so the declared focus is what both views draw.
   assert.equal(focus[0].hidden,true);assert.equal(focus[0].state.focusSeriesId,null);const focusRows=await present.locator('#evidence .chart-current-view .chart-row').evaluateAll(rows=>rows.map(r=>r.dataset.focus));assert.deepEqual(focusRows,['true',...Array(focusRows.length-1).fill('false')]);report.conflicts.push({id:'C1',observed:'Fixed in S6 (layered rule): the declared category focus (Claim first) is drawn in both views; a single-series chart offers no series controls',locale});
   stage(locale,'switch legend focus',{focus});
@@ -96,12 +96,12 @@ try{
   await replay.click();const playing=await snapshot(present);assert.equal(playing.playing,true);assert.equal(playing.resources.timers,1);
   await present.waitForFunction(()=>window.deckweftInteractions.snapshot().find(s=>s.sceneId==='evidence').position===1,null,{timeout:3000});await pause.click();const paused=await snapshot(present);
   assert.equal(paused.playing,false);assert.equal(paused.position,1);assert.equal(paused.resources.timers,0);
-  await seek.focus();await present.keyboard.press('ArrowRight');const sought=await snapshot(present);assert.equal(sought.position,2);assert.deepEqual(sought.state,seekInteractionState(specs.interactions,specs.cues,2));assert.equal(await pageLabel(present),'1 / 2');
+  await seek.focus();await present.keyboard.press('ArrowRight');const sought=await snapshot(present);assert.equal(sought.position,2);assert.deepEqual(sought.state,seekInteractionState(specs.interactions,specs.cues,2));assert.equal(await pageLabel(present),'01 / 02');
   await present.keyboard.press('Home');assert.equal((await snapshot(present)).position,0);
   // Rapid next/previous while a cue timer is pending: every scene-owned timer and animation must be cancelled.
   await replay.click();for(let i=0;i<6;i++){await present.locator('#next').click();await present.locator('#previous').click();}
   await replay.click();await timeline.locator('[data-cue-next]').click();await seek.focus();await present.keyboard.press('ArrowLeft');await present.keyboard.press('ArrowLeft');await replay.click();await present.locator('#next').click();
-  const left=await pending(present);assert.equal(left.timers,0,JSON.stringify(left));assert.ok(left.scenes.every(s=>!s.playing&&s.timers===0&&s.animations===0&&s.registered===0));assert.equal(left.animations,0);assert.equal(await pageLabel(present),'2 / 2');
+  const left=await pending(present);assert.equal(left.timers,0,JSON.stringify(left));assert.ok(left.scenes.every(s=>!s.playing&&s.timers===0&&s.animations===0&&s.registered===0));assert.equal(left.animations,0);assert.equal(await pageLabel(present),'02 / 02');
   stage(locale,'pause and seek',{playingTimers:playing.resources.timers,paused:{position:paused.position,timers:paused.resources.timers},seekPosition:sought.position,rapidNavigation:left});
   await present.context().close();
   // 6. Freeze the author's static state in Studio, beside "Use current chart / step as opening"; cue and motion locks refuse it.
@@ -148,15 +148,15 @@ try{
   const audit=await gate.evaluate(()=>{const style=document.createElement('style');style.textContent='.chart-rows{min-width:600px}.region[data-block-id="evidence-chart"] .chart-current-view{overflow-x:auto}';document.head.append(style);const r=window.deckweftAuditScene(document.getElementById('evidence'));style.remove();return {broken:r.clipIssues.filter(i=>i.element==='conclusion label').map(i=>i.reason),restored:window.deckweftAuditScene(document.getElementById('evidence')).clipIssues.length};});
   assert.ok(audit.broken.includes('Conclusion label is clipped or only reachable by scrolling'),JSON.stringify(audit));assert.equal(audit.restored,0);await gate.context().close();
   stage(locale,'conclusion-label gate',{width:390,injected:'.chart-rows{min-width:600px} inside an overflow-x:auto view',issues:audit.broken.length,reasons:[...new Set(audit.broken)],afterRemoval:audit.restored});
-  // Reduced motion: the static fallback is shown and cues do not play, from the OS setting or the page control.
+  // Reduced motion: the static fallback is shown and cues do not play, from the OS setting at load or when it changes. The page has no toggle of its own.
   const reduced=await (await context({viewport:{width:1440,height:1000},reducedMotion:'reduce'})).newPage();reduced.on('pageerror',e=>report.errors.push(locale+' reduced: '+e.message));await ready(reduced,url+'#scene=evidence');
   const replayButton=reduced.locator('#evidence .semantic-timeline button').nth(0);assert.equal(await replayButton.isDisabled(),true);assert.equal(await reduced.locator('#evidence [data-static-fallback]').isVisible(),true);
   await reduced.evaluate(()=>window.deckweftInteractions.play('evidence'));const still=await snapshot(reduced);assert.equal(still.position,1);assert.equal(still.playing,false);
   await capture(reduced,`${locale}-reduced-1440.png`);const reducedPending=await pending(reduced);assert.equal(reducedPending.timers,0);await reduced.context().close();
   const toggled=await (await context({viewport:{width:1440,height:1000}})).newPage();await ready(toggled,url+'#scene=evidence');await toggled.locator('#evidence .semantic-timeline button').nth(0).click();assert.equal((await snapshot(toggled)).playing,true);
-  await toggled.locator('#semantic-motion').click();const user=await snapshot(toggled);assert.equal(user.playing,false);assert.equal(user.position,1);assert.equal(await toggled.locator('#evidence .semantic-timeline button').nth(0).isDisabled(),true);
-  await toggled.locator('#semantic-motion').click();assert.equal(await toggled.locator('#evidence .semantic-timeline button').nth(0).isDisabled(),false);const toggledPending=await pending(toggled);await toggled.context().close();
-  stage(locale,'static state and reduced motion',{views,reducedMotion:{system:{position:still.position,playing:still.playing,replayDisabled:true,pending:reducedPending},userControl:{position:user.position,playing:user.playing,pending:toggledPending}}});
+  assert.equal(await toggled.locator('#semantic-motion').count(),0);await toggled.emulateMedia({reducedMotion:'reduce'});await toggled.waitForFunction(()=>document.body.classList.contains('semantic-reduced'));const user=await snapshot(toggled);assert.equal(user.playing,false);assert.equal(user.position,1);assert.equal(await toggled.locator('#evidence .semantic-timeline button').nth(0).isDisabled(),true);
+  await toggled.emulateMedia({reducedMotion:'no-preference'});await toggled.waitForFunction(()=>!document.body.classList.contains('semantic-reduced'));assert.equal(await toggled.locator('#evidence .semantic-timeline button').nth(0).isDisabled(),false);const toggledPending=await pending(toggled);await toggled.context().close();
+  stage(locale,'static state and reduced motion',{views,reducedMotion:{system:{position:still.position,playing:still.playing,replayDisabled:true,pending:reducedPending},systemChange:{position:user.position,playing:user.playing,pending:toggledPending}}});
   // 9. Declared PPTX / PDF level per component; no export code is added.
   const levels=declaredExportLevels(frozen.document,frozen.plan);stage(locale,'declared pptx/pdf levels',levels);
   await studioContext.close();
